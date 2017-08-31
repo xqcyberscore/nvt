@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-060.nasl 2646 2016-02-12 08:18:48Z benallard $
+# $Id: gb_ms15-060.nasl 6453 2017-06-28 09:59:05Z teissa $
 #
 # Microsoft Windows Common Controls Remote Code Execution Vulnerability (3059317)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805399");
-  script_version("$Revision: 2646 $");
+  script_version("$Revision: 6453 $");
   script_cve_id("CVE-2015-1756");
   script_bugtraq_id(75017);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:48 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-10 10:08:31 +0530 (Wed, 10 Jun 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Common Controls Remote Code Execution Vulnerability (3059317)");
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3059317");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-060");
 
-  script_summary("Check for the vulnerable 'Comctl32.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

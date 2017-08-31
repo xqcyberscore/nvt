@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: formmail_pl.nasl 5864 2017-04-05 07:47:30Z cfi $
+# $Id: formmail_pl.nasl 6703 2017-07-12 13:57:25Z cfischer $
 # Description: formmail.pl
 #
 # Authors:
@@ -31,8 +31,8 @@ tag_solution = "remove it from /cgi-bin.";
 if(description)
 {
  script_id(10076);
- script_version("$Revision: 5864 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:47:30 +0200 (Wed, 05 Apr 2017) $");
+ script_version("$Revision: 6703 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:57:25 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2079);
  script_tag(name:"cvss_base", value:"7.5");
@@ -45,7 +45,6 @@ if(description)
  script_family("Web application abuses");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("FormMail/installed");
  
  script_tag(name : "solution" , value : tag_solution);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_ms14-022.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_sharepoint_server_ms14-022.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Microsoft SharePoint Server Multiple Vulnerabilities (2952166)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-0251", "CVE-2014-1754");
   script_bugtraq_id(67283, 67288);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-14 12:56:31 +0530 (Wed, 14 May 2014)");
   script_name("Microsoft SharePoint Server Multiple Vulnerabilities (2952166)");
 
@@ -78,7 +78,6 @@ http://technet.microsoft.com/en-us/security/bulletin/ms14-022";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57834");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms14-022");
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

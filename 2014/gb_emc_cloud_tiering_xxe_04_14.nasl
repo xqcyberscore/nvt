@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_cloud_tiering_xxe_04_14.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_emc_cloud_tiering_xxe_04_14.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # EMC Cloud Tiering Appliance v10.0 Unauthenticated XXE Arbitrary File Read
 #
@@ -45,7 +45,7 @@ tag_vuldetect = "Send a special crafted HTTP POST request and check the response
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6663 $");
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
 
@@ -54,9 +54,8 @@ if (description)
 
  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/32623/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-04-01 11:51:50 +0200 (Tue, 01 Apr 2014)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rt_remote_dos_vuln_july14.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_rt_remote_dos_vuln_july14.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # Request Tracker (RT) 'Email::Address::List' Remote Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:best_practical_solutions:request_tracker";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804718");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-1474");
   script_bugtraq_id(68690);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-24 15:22:19 +0530 (Thu, 24 Jul 2014)");
   script_name("Request Tracker (RT) 'Email::Address::List' Remote Denial of Service Vulnerability");
 
@@ -73,7 +73,6 @@ For updates refer to http://bestpractical.com/rt";
 
   script_xref(name : "URL" , value : "http://blog.bestpractical.com/2014/01/security-vulnerability-in-rt-42.html");
   script_xref(name : "URL" , value : "http://lists.bestpractical.com/pipermail/rt-announce/2014-June/000257.html");
-  script_summary("Check for the vulnerable version of Request Tracker");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

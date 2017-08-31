@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: domino_default_db.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: domino_default_db.nasl 6825 2017-08-01 06:06:31Z cfischer $
 # 
 # Lotus Domino administration databases
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10629");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 6825 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-01 08:06:31 +0200 (Tue, 01 Aug 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(5101, 881);
   script_tag(name:"cvss_base", value:"7.5");
@@ -45,12 +45,9 @@ if(description)
   script_dependencies("gb_lotus_domino_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("dominowww/installed");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"verify all the ACLs for these databases and remove those not needed
-  # This really could be high if, for example some 
-  # sensitive data, but same databases do not give
-  # much information. Make separate tests for each?");
+  script_tag(name:"solution", value:"verify all the ACLs for these databases and remove those not needed");
+
   script_tag(name:"summary", value:"This script determines if some default databases can be read remotely.
 
   An anonymous user can retrieve information from this Lotus Domino server: users, databases, configuration
@@ -80,7 +77,8 @@ function test_cgi( port, url, output ) {
 
     if( "Please identify yourself" >!< res &&
         'type="password"' >!< res && 
-        "<TITLE>Server Login</TITLE>" >!< res ) {
+        "<TITLE>Server Login</TITLE>" >!< res &&
+        res !~ ">Domino Administrator.*Help</" ) { # The homepage.nsf is just a default landing page these days...
       vuln_db += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE ) + " Reason: This must be considered a security risk since " + output + ".";
       set_kb_item( name: "www/domino/" + port + "/db", value:url );
     } else {

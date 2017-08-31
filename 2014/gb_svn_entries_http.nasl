@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_svn_entries_http.nasl 4151 2016-09-27 09:18:12Z cfi $
+# $Id: gb_svn_entries_http.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # Apache Subversion Module Metadata Accessible
 #
@@ -30,11 +30,10 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105099");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 4151 $");
+  script_version("$Revision: 6750 $");
   script_name("Apache Subversion Module Metadata Accessible");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 11:18:12 +0200 (Tue, 27 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-28 14:27:24 +0100 (Tue, 28 Oct 2014)");
-  script_summary("Determine if it is possible to read .svn/entries");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

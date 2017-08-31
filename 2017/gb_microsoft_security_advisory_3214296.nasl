@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3214296.nasl 5013 2017-01-16 09:56:36Z antu123 $
+# $Id: gb_microsoft_security_advisory_3214296.nasl 6506 2017-07-03 10:22:51Z cfischer $
 #
 # Microsoft Identity Model Extensions Token Signing Verification Advisory (3214296)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810269");
-  script_version("$Revision: 5013 $");
+  script_version("$Revision: 6506 $");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-16 10:56:36 +0100 (Mon, 16 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 12:22:51 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-01-12 18:49:43 +0530 (Thu, 12 Jan 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Identity Model Extensions Token Signing Verification Advisory (3214296)");
@@ -97,6 +97,8 @@ host    = get_host_ip();
 
 usrname = get_kb_item("SMB/login");
 passwd  = get_kb_item("SMB/password");
+domain  = get_kb_item("SMB/domain");
+if( domain ) usrname = domain + '\\' + usrname;
 
 if(!host || !usrname || !passwd){
   exit(0);

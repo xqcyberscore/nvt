@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872595");
-  script_version("$Revision: 6012 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_version("$Revision: 6634 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-04-20 06:42:33 +0200 (Thu, 20 Apr 2017)");
   script_cve_id("CVE-2017-7578", "CVE-2016-9265", "CVE-2016-9828", "CVE-2016-9827", 
                 "CVE-2016-9829", "CVE-2016-9831", "CVE-2016-9266", "CVE-2016-9264");
@@ -52,7 +52,7 @@ Flash files (.swf), written in C, and includes useful utilities for working with
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

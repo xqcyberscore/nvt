@@ -62,8 +62,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-March/001617.html");
   script_id(840912);
-  script_version("$Revision: 5888 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_version("$Revision: 6643 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:00:30 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-03-07 11:19:13 +0530 (Wed, 07 Mar 2012)");
   script_cve_id("CVE-2011-1927", "CVE-2011-0716", "CVE-2011-3353", "CVE-2011-3619",
                 "CVE-2011-4622", "CVE-2012-0038", "CVE-2012-0044");
@@ -76,7 +76,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);

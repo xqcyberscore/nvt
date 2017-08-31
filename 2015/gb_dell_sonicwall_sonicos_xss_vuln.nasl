@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_sonicos_xss_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_dell_sonicwall_sonicos_xss_vuln.nasl 6700 2017-07-12 12:16:21Z cfischer $
 #
 # Dell SonicWALL SonicOS 'macIpSpoofView.html' Cross Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805067");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6700 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-04-29 12:50:10 +0530 (Wed, 29 Apr 2015)");
   script_name("Dell SonicWALL SonicOS 'macIpSpoofView.html' Cross Site Scripting Vulnerability");
 
@@ -64,14 +64,12 @@ if(description)
 
   script_xref(name: "URL" , value : "http://www.securityfocus.com/archive/1/535393");
   script_xref(name: "URL" , value : "http://www.vulnerability-lab.com/get_content.php?id=1359");
-  script_summary("Check if Dell SonicWall SonicOS vulnerable to XSS.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("SonicWALL/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("SonicWALL/banner");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_symantec_messaging_gateway_xss_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Symantec Messaging Gateway 'displayTab' Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-1648");
   script_bugtraq_id(66966);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-02 11:16:59 +0530 (Fri, 02 May 2014)");
   script_name("Symantec Messaging Gateway 'displayTab' Cross-Site Scripting Vulnerability");
 
@@ -75,7 +75,6 @@ For updates refer to http://www.symantec.com/messaging-gateway";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/58047");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126264/");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Apr/256");
-  script_summary("Check for the vulnerable version of Symantec Messaging Gateway ");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");
@@ -93,7 +92,7 @@ include("host_details.inc");
 smgVer = "";
 
 ## Get application version
-smgVer = get_app_version(cpe:CPE );
+smgVer = get_app_version(cpe:CPE, nofork:TRUE);
 if(!smgVer){
   exit(0);
 }

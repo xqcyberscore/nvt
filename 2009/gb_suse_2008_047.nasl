@@ -59,8 +59,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.novell.com/linux/security/advisories/2008_47_kernel.html");
   script_id(850008);
-  script_version("$Revision: 3243 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-06 15:08:16 +0200 (Fri, 06 May 2016) $");
+  script_version("$Revision: 6665 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:01:58 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-01-23 16:44:26 +0100 (Fri, 23 Jan 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -73,7 +73,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_xss_vuln_win_jun11.nasl 5424 2017-02-25 16:52:36Z teissa $
+# $Id: gb_adobe_prdts_xss_vuln_win_jun11.nasl 6475 2017-06-29 06:35:11Z cfischer $
 #
 # Adobe Products Unspecified Cross-Site Scripting Vulnerability June-2011 (Windows)
 #
@@ -29,12 +29,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802206";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5424 $");
+  script_version("$Revision: 6475 $");
   script_cve_id("CVE-2011-2107");
   script_bugtraq_id(48107);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_name("Adobe Products Unspecified Cross-Site Scripting Vulnerability June-2011 (Windows)");
 
@@ -80,7 +80,7 @@ For details refer, http://www.adobe.com/downloads/";
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl", "secpod_adobe_prdts_detect_win.nasl");
-  script_require_keys("AdobeFlashPlayer/Win/Ver", "Adobe/Reader/Win/Ver", "Adobe/Acrobat/Win/Ver");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed");
   exit(0);
 }
 

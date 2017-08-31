@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-1386.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-1386.nasl 6557 2017-07-06 11:55:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123795");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6557 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:08:39 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:55:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-1386");
 script_tag(name: "insight", value: "ELSA-2012-1386 -  java-1.7.0-openjdk security update - [1.7.0.9-2.3.3.0.1.el6_3.1]- Update DISTRO_NAME in specfile[1.7.0.9-2.3.3.el6.1]- Changed permissions of sa-jdi.jar to correct 644- Resolves: rhbz#865050[1.7.0.9-2.3.3.el6]- Updated to 2.3.3- Updated java-1.7.0-openjdk-java-access-bridge-security.patch- Resolves rhbz#s 856124, 865346, 865348, 865350, 865352, 865354, 865357, 865359, 865363, 865365, 865370, 865428, 865471, 865434, 865511, 865514, 865519, 865531, 865541, 865568[1.7.0.5-2.3.2.el6.1]- Cleanup before security release- Updated to latest IcedTea7-forest 2.3- Resolves: rhbz#852299[1.7.0.5-2.2.1.1.el6.4]- Cleanup before security release- Removed patches: patch 1001 sec-webrevs-openjdk7-29_aug_2012-7162473.patch patch 1002 sec-webrevs-openjdk7-29_aug_2012-7162476.patch patch 1003 sec-webrevs-openjdk7-29_aug_2012-7163201.patch patch 1004 sec-webrevs-openjdk7-29_aug_2012-7194567.patch patch 1005 sec-webrevs-openjdk7-29_aug_2012-78e01a6ca8d3.patch- Resolves: rhbz#852299"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-1386");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-1274.nasl 6141 2017-05-17 09:03:37Z teissa $
+# $Id: ELSA-2013-1274.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123570");
-script_version("$Revision: 6141 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:05:39 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-1274");
 script_tag(name: "insight", value: "ELSA-2013-1274 -  hplip security update - [3.12.4-4:.1]- Applied patch to avoid unix-process authorization subject when using polkit as it is racy (CVE-2013-4325)."); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

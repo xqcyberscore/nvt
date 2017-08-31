@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_extbase_hmac_unserialization_weakness.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_typo3_extbase_hmac_unserialization_weakness.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # TYPO3 Extbase HMAC Unserialization Weakness
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2012-1605");
   script_bugtraq_id(52771);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-02 12:00:45 +0530 (Thu, 02 Jan 2014)");
   script_name("TYPO3 Extbase HMAC Unserialization Weakness");
 
@@ -74,7 +74,6 @@ For updates refer to, http://typo3.org/";
 
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2012/03/30/4");
   script_xref(name : "URL" , value : "http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2012-001");
-  script_summary("Check for the vulnerable version of TYPO3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

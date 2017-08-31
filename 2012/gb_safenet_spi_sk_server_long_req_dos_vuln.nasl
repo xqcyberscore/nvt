@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_safenet_spi_sk_server_long_req_dos_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: gb_safenet_spi_sk_server_long_req_dos_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # SafeNet Sentinel Protection Installer Long Request DoS Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802460");
-  script_version("$Revision: 6022 $");
+  script_version("$Revision: 6697 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-09-25 09:53:12 +0530 (Tue, 25 Sep 2012)");
   script_name("SafeNet Sentinel Protection Installer Long Request DoS Vulnerability");
 
@@ -43,9 +43,8 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_require_ports("Services/www", 7002);
   script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 7002);
   script_mandatory_keys("SentinelKeysServer/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause the

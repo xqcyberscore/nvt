@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_hips_activex_ctrl_code_exec_vuln.nasl 3116 2016-04-19 10:11:19Z benallard $
+# $Id: gb_ca_hips_activex_ctrl_code_exec_vuln.nasl 6517 2017-07-04 13:34:20Z cfischer $
 #
 # CA Host-Based Intrusion Prevention System 'XMLSecDB' ActiveX Control Code Execution Vulnerability
 #
@@ -57,8 +57,8 @@ System(HIPS) and is prone to a remote code-execution vulnerability.";
 if(description)
 {
   script_id(801858);
-  script_version("$Revision: 3116 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:11:19 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 6517 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-03-10 13:33:28 +0100 (Thu, 10 Mar 2011)");
   script_cve_id("CVE-2011-1036");
   script_bugtraq_id(46539);
@@ -72,12 +72,11 @@ if(description)
   script_xref(name : "URL" , value : "https://support.ca.com/irj/portal/anonymous/phpsupcontent?contentID={53A608DF-BFDB-4AB3-A98F-E4BB6BC7A2F4}");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of HIPS");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_ca_mult_prdts_detect_win.nasl");
-  script_require_keys("CA/ISS/Win/Ver", "CA/HIPS/Engine/Win/Ver", "CA/HIPS/Server/Win/Ver");
+  script_require_keys("CA/Multiple_Products/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

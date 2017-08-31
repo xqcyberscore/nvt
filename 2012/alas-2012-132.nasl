@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2012-132.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: alas-2012-132.nasl 6578 2017-07-06 13:44:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120333");
-script_version("$Revision: 5940 $");
+script_version("$Revision: 6578 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:23:47 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:44:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2012-132");
 script_tag(name: "insight", value: "Fetchmail 5.0.8 through 6.3.21, when using NTLM authentication in debug mode, allows remote NTLM servers to (1) cause a denial of service (crash and delayed delivery of inbound mail) via a crafted NTLM response that triggers an out-of-bounds read in the base64 decoder, or (2) obtain sensitive information from memory via an NTLM Type 2 message with a crafted Target Name structure, which triggers an out-of-bounds read."); 
 script_tag(name : "solution", value : "Run yum update fetchmail to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"5.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

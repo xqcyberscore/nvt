@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_51402.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: gb_wordpress_51402.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # WordPress Count per Day Plugin Arbitrary File Download and Cross Site Scripting Vulnerabilities
 #
@@ -46,7 +46,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(51402);
- script_version ("$Revision: 5958 $");
+ script_version ("$Revision: 6720 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("WordPress Count per Day Plugin Arbitrary File Download and Cross Site Scripting Vulnerabilities");
@@ -54,7 +54,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51402");
  script_xref(name : "URL" , value : "http://wordpress.org/extend/plugins/count-per-day/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-01-13 10:18:15 +0100 (Fri, 13 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -62,7 +62,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("wordpress/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -75,11 +74,8 @@ include("http_keepalive.inc");
 include("version_func.inc");
    
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
-if(!can_host_php(port:port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+
 files = traversal_files();
 
 foreach file (keys(files)) {

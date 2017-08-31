@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_shockwave_player_bof_vuln.nasl 5369 2017-02-20 14:48:07Z cfi $
+# $Id: secpod_adobe_shockwave_player_bof_vuln.nasl 6530 2017-07-05 06:23:50Z cfischer $
 #
 # Adobe Shockwave Player ActiveX Control BOF Vulnerability
 #
@@ -41,8 +41,8 @@ tag_summary = "This host has Adobe Shockwave Player ActiveX Control installed
 if(description)
 {
   script_id(900949);
-  script_version("$Revision: 5369 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:48:07 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6530 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 08:23:50 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-09-24 10:05:51 +0200 (Thu, 24 Sep 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -56,7 +56,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
   script_dependencies("secpod_adobe_shockwave_player_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "Adobe/ShockwavePlayer/Ver");
+  script_mandatory_keys("Adobe/ShockwavePlayer/Ver");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

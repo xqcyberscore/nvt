@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_asf_demuxer_dos_vuln_macosx.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_vlc_media_player_asf_demuxer_dos_vuln_macosx.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # VLC Media Player ASF Demuxer Denial of Service Vulnerability (Mac OS X)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-1684");
   script_bugtraq_id(65399);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-06 01:02:27 +0530 (Thu, 06 Mar 2014)");
   script_name("VLC Media Player ASF Demuxer Denial of Service Vulnerability (Mac OS X)");
 
@@ -79,7 +79,6 @@ For updates refer to http://www.videolan.org/vlc";
   script_xref(name : "URL" , value : "http://www.videolan.org/developers/vlc-branch/NEWS");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125080/VLC-Media-Player-2.1.2-Denial-Of-Service.html");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of VLC Media Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_vlc_media_player_detect_macosx.nasl");

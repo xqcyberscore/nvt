@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftp_os_detection.nasl 5169 2017-02-02 14:06:37Z cfi $
+# $Id: gb_ftp_os_detection.nasl 6863 2017-08-07 14:00:23Z cfischer $
 #
 # FTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105355");
-  script_version("$Revision: 5169 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-02 15:06:37 +0100 (Thu, 02 Feb 2017) $");
+  script_version("$Revision: 6863 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-07 16:00:23 +0200 (Mon, 07 Aug 2017) $");
   script_tag(name:"creation_date", value:"2015-09-15 15:57:03 +0200 (Tue, 15 Sep 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -57,6 +57,16 @@ port = get_ftp_port( default:21 );
 
 banner = get_ftp_banner( port:port );
 if( ! banner  || banner == "" || isnull( banner ) ) exit( 0 );
+
+if( "Network Management Card AOS" >< banner ) {
+  version = eregmatch( pattern:"Network Management Card AOS v([0-9.]+)", string:banner );
+  if( ! isnull( version[1] ) ) {
+    register_and_report_os( os:"APC AOS", version:version[1], cpe:"cpe:/o:apc:aos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else {
+    register_and_report_os( os:"APC AOS", cpe:"cpe:/o:apc:aos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  }
+  exit( 0 );
+}
 
 if( ( "Microsoft FTP Service" >< banner && "WINDOWS SERVER 2003" >< banner ) || "OS=Windows Server 2003;" >< banner ) {
   register_and_report_os( os:"Microsoft Windows Server 2003", cpe:"cpe:/o:microsoft:windows_2003_server", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
@@ -89,6 +99,12 @@ if( "OS=Windows XP;" >< banner ) {
 }
 
 if( "ProFTPD" >< banner && "(Windows" >< banner ) {
+  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  exit( 0 );
+}
+
+# FileZilla Server currently runs only on Windows
+if( "FileZilla Server" >< banner ) {
   register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
@@ -127,7 +143,7 @@ if( "OS=Windows Server 2012;" >< banner ) {
 }
 
 if( "ProFTPD" >< banner ) {
-  if( "(Debian)" >< banner ) {
+  if( "(Debian)" >< banner || "(Raspbian)" >< banner ) {
     register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }

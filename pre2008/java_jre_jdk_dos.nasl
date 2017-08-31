@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: java_jre_jdk_dos.nasl 6410 2017-06-23 08:17:07Z cfischer $
+# $Id: java_jre_jdk_dos.nasl 6456 2017-06-28 11:19:33Z cfischer $
 # Description: Sun Java Runtime Environment DoS
 #
 # Authors:
@@ -30,44 +30,34 @@ tag_solution = "Upgrade to SDK and JRE 1.4.2_04
 
 if(description)
 {
- script_id(12244);
- script_version("$Revision: 6410 $");
- script_tag(name:"last_modification", value:"$Date: 2017-06-23 10:17:07 +0200 (Fri, 23 Jun 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_cve_id("CVE-2004-0651");
- script_bugtraq_id(10301);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.12244");
+  script_version("$Revision: 6456 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_cve_id("CVE-2004-0651");
+  script_bugtraq_id(10301);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("Sun Java Runtime Environment DoS");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004 Netteksecure Inc.");
+  script_family("Windows");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
 
- name = " Sun Java Runtime Environment DoS ";
- script_name(name);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
 
- summary = "Checks for Java SDK and JRE versions prior to 1.4.2_04";
- script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
- script_copyright("This script is Copyright (C) 2004 Netteksecure Inc.");
- family= "Windows";
- script_family(family);
- script_dependencies("secpod_reg_enum.nasl");
- script_require_keys("SMB/name", "SMB/login", "SMB/password",
-                     "SMB/registry_full_access");
- script_mandatory_keys("SMB/WindowsVersion");
- script_require_ports(139, 445);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+
+  exit(0);
 }
-
-# start script
-
-
 
 include("smb_nt.inc");
 
 port = get_kb_item("SMB/transport");
 if(!port) port = 445;
-#access = get_kb_item("SMB/registry_full_access");
-#if(!access) exit(0);
 
 x_name = kb_smb_name();
 if(!x_name)exit(0);

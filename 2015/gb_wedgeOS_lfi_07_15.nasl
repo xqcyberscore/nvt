@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wedgeOS_lfi_07_15.nasl 2580 2016-02-05 08:23:59Z benallard $
+# $Id: gb_wedgeOS_lfi_07_15.nasl 6551 2017-07-06 09:58:21Z teissa $
 #
 # WedgeOS Multiple Vulnerabilities
 #
@@ -32,7 +32,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105311");
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
- script_version ("$Revision: 2580 $");
+ script_version ("$Revision: 6551 $");
 
  script_name("WedgeOS Multiple Vulnerabilities");
 
@@ -51,9 +51,8 @@ functionality.");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:23:59 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-07-02 13:50:31 +0200 (Thu, 02 Jul 2015)");
- script_summary("Try to read /etc/shadow");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

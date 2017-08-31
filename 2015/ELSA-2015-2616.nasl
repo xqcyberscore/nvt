@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2616.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: ELSA-2015-2616.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122804");
-script_version("$Revision: 6443 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-12-15 02:50:31 +0200 (Tue, 15 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2616");
 script_tag(name: "insight", value: "ELSA-2015-2616 -  openssl security update - [0.9.8e-37.0.1]- To disable SSLv2 client connections create the file /etc/sysconfig/openssl-ssl-client-kill-sslv2 (John Haxby) [orabug 21673934]- Backport openssl 08-Jan-2015 security fixes (John Haxby) [orabug 20409893]- fix CVE-2014-3570 - Bignum squaring may produce incorrect results- fix CVE-2014-3571 - DTLS segmentation fault in dtls1_get_record- fix CVE-2014-3572 - ECDHE silently downgrades to ECDH [Client][0.9.8e-37]- fix CVE-2015-3195 - X509_ATTRIBUTE memory leak"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

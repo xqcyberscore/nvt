@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iwork_detect_macosx.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_iwork_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
 #
 # iWork Version Detection (Mac OS X)
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(802145);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5877 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+ script_version("$Revision: 6484 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("iWork Version Detection (Mac OS X)");
@@ -40,8 +40,8 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_dependencies("gather-package-list.nasl");
-  script_family("Service detection");
-  script_mandatory_keys("login/SSH/success");
+  script_family("Product detection");
+  script_mandatory_keys("ssh/login/osx_name");
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }

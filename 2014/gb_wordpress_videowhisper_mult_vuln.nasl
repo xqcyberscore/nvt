@@ -30,12 +30,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-1906", "CVE-2014-1907", "CVE-2014-1905", "CVE-2014-1908");
   script_bugtraq_id(65876, 65877, 65866, 65880);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-01 12:28:38 +0530 (Tue, 01 Apr 2014)");
   script_name("WordPress VideoWhisper Live Streaming Integration Multiple Vulnerabilities");
 
@@ -83,7 +83,6 @@ For updates refer to http://wordpress.org/plugins/videowhisper-live-streaming-in
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31986");
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23199");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125454");
-  script_summary("Check if Wordpress VideoWhisper Live Streaming Integration Plugin is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0065.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: mgasa-2016-0065.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131238");
-script_version("$Revision: 5612 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-02-18 07:27:43 +0200 (Thu, 18 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0065");
 script_tag(name: "insight", value: "Updated nginx package fixes security vulnerabilities: Several vulnerabilities were discovered in the resolver in nginx, leading to denial of service or, potentially, to arbitrary code execution. These only affect nginx if the resolver directive is used in a configuration file (CVE-2016-0742, CVE-2016-0746, CVE-2016-0747)."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0065");
 script_copyright("Eero Volotinen");

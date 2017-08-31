@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netdecision_http_server_long_req_dos_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
+# $Id: gb_netdecision_http_server_long_req_dos_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # NetDecision HTTP Server Long HTTP Request Remote Denial of Service Vulnerability
 #
@@ -28,11 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802617");
   script_bugtraq_id(52208);
-  script_version("$Revision: 5956 $");
+  script_version("$Revision: 6697 $");
   script_cve_id("CVE-2012-1465");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-03-08 15:19:34 +0530 (Thu, 08 Mar 2012)");
   script_name("NetDecision HTTP Server Long HTTP Request Remote Denial of Service Vulnerability");
 
@@ -46,9 +46,8 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_require_ports("Services/www", 80);
   script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 80);
   script_mandatory_keys("NetDecision-HTTP-Server/banner");
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the application

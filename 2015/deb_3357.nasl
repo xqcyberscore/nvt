@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3357.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3357.nasl 6637 2017-07-10 09:58:13Z teissa $
 # Auto-generated from advisory DSA 3357-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703357);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6637 $");
     script_cve_id("CVE-2015-6927");
     script_name("Debian Security Advisory DSA 3357-1 (vzctl - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-09-13 00:00:00 +0200 (Sun, 13 Sep 2015)");
     script_tag(name:"cvss_base", value:"3.6");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
@@ -42,14 +42,13 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3357.html");
 
-    script_summary("Debian Security Advisory DSA 3357-1 (vzctl - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "vzctl on Debian Linux");
         script_tag(name: "insight",   value: "OpenVZ is an Operating System-level server virtualization solution, built
 on Linux. OpenVZ creates isolated, secure virtual private servers on a single

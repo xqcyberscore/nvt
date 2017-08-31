@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipb_56288.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_ipb_56288.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # Invision Power Board 'unserialize()' PHP Code Execution
 #
@@ -43,13 +43,13 @@ if (description)
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6018 $");
+ script_version ("$Revision: 6720 $");
 
  script_name("Invision Power Board 'unserialize()' PHP Code Execution");
 
  script_xref(name : "URL" , value : "http://community.invisionpower.com/topic/371625-ipboard-31x-32x-and-33x-security-update/");
  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22398/");
- script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-11-01 16:02:27 +0200 (Thu, 01 Nov 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -57,7 +57,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("invision_power_board_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("invision_power_board/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -69,8 +68,6 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
 url = dir + '/index.php';

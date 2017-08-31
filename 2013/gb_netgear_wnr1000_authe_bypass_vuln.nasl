@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_wnr1000_authe_bypass_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_netgear_wnr1000_authe_bypass_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # NETGEAR WNR1000 'Image' Request Authentication Bypass Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803188");
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 6698 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-04-05 18:28:47 +0530 (Fri, 05 Apr 2013)");
   script_name("NETGEAR WNR1000 'Image' Request Authentication Bypass Vulnerability");
 
@@ -42,10 +42,9 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Privilege escalation");
-  script_require_ports("Services/www", 8080);
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 8080);
   script_mandatory_keys("WNR1000/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"insight", value:"The web server skipping authentication for certain requests that contain
   a '.jpg' substring. With a specially crafted URL, a remote attacker can

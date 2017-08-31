@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiny_server_file_disc_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_tiny_server_file_disc_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # Tiny Server Arbitrary File Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802721");
-  script_version("$Revision: 5950 $");
+  script_version("$Revision: 6697 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-03-21 10:53:33 +0530 (Wed, 21 Mar 2012)");
   script_name("Tiny Server Arbitrary File Disclosure Vulnerability");
 
@@ -40,10 +40,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_require_ports("Services/www", 80);
   script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
   script_mandatory_keys("TinyServer/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform
   directory traversal attacks and read arbitrary files on the affected application.

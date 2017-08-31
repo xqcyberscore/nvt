@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871749");
-  script_version("$Revision: 5204 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-06 08:45:16 +0100 (Mon, 06 Feb 2017) $");
+  script_version("$Revision: 6691 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:51:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-01-21 05:41:52 +0100 (Sat, 21 Jan 2017)");
   script_cve_id("CVE-2016-5546", "CVE-2016-5547", "CVE-2016-5548", "CVE-2016-5552",
                 "CVE-2017-3231", "CVE-2017-3241", "CVE-2017-3252", "CVE-2017-3253",
@@ -103,7 +103,7 @@ properly parse user info from the URL. A remot ...
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

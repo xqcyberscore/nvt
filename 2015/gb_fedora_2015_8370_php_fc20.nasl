@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869423");
-  script_version("$Revision: 6333 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
+  script_version("$Revision: 6630 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-06-09 10:54:55 +0200 (Tue, 09 Jun 2015)");
   script_cve_id("CVE-2006-7243", "CVE-2014-0185", "CVE-2013-6420", "CVE-2015-4025",
                 "CVE-2015-4021", "CVE-2015-4026", "CVE-2015-4024", "CVE-2015-4022");
@@ -57,7 +57,7 @@ support for the PHP language to Apache HTTP Server.
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

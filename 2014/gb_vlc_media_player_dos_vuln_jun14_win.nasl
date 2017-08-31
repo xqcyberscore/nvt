@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_dos_vuln_jun14_win.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_vlc_media_player_dos_vuln_jun14_win.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # VLC Media Player Denial of Service Vulnerability -01 June14 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804613");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-3441");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-04 11:00:40 +0530 (Wed, 04 Jun 2014)");
   script_name("VLC Media Player Denial of Service Vulnerability -01 June14 (Windows)");
 
@@ -75,7 +75,6 @@ features, remove the product or replace the product by another one.";
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126564");
-  script_summary("Check for the vulnerable version of VLC Media Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Denial of Service");

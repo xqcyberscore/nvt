@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_putty_dos_vuln_win.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_putty_dos_vuln_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
 #
 # Putty Denial of Service Vulnerability
 #
@@ -44,21 +44,20 @@ service vulnerability.";
 if(description)
 {
   script_id(902780);
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 6519 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"creation_date", value:"2011-12-26 18:52:49 +0530 (Mon, 26 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_name("Putty Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18270/");
   script_xref(name : "URL" , value : "http://packetstorm.linuxsecurity.com/1112-exploits/putty060-dos.txt");
 
-  script_summary("Check for Putty version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Denial of Service");
   script_dependencies("secpod_putty_version.nasl");
-  script_require_keys("SMB/WindowsVersion","PuTTY/Version");
+  script_mandatory_keys("PuTTY/Version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

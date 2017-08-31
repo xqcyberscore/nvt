@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_axis2_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_apache_axis2_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # Apache Axis2 Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100813");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6701 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-09-20 15:31:27 +0200 (Mon, 20 Sep 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache Axis2 Detection");
@@ -37,10 +37,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("Simple-Server/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8080, 8081);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"This host is running Apache Axis2, a Web Services / SOAP / WSDL
   engine, the successor to the widely used Apache Axis SOAP stack.");

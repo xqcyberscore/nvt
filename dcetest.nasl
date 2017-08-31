@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dcetest.nasl 6319 2017-06-13 07:06:12Z cfischer $
+# $Id: dcetest.nasl 6829 2017-08-01 12:56:19Z cfischer $
 #
 # DCE/RPC and MSRPC Services Enumeration
 #
@@ -40,8 +40,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108044");
-  script_version("$Revision: 6319 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-13 09:06:12 +0200 (Tue, 13 Jun 2017) $");
+  script_version("$Revision: 6829 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-01 14:56:19 +0200 (Tue, 01 Aug 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -70,6 +70,7 @@ if(description)
 }
 
 include("misc_func.inc");
+include("host_details.inc");
 
 # Ref : http://www.hsc.fr/ressources/articles/win_net_srv/index.html.en by Jean-Baptiste Marchand
 rpc_svc_pipes["1ff70682-0a51-30e8-076d-740be8cee98b"] = "atsvc";
@@ -653,13 +654,17 @@ function dce_parse( result ) {
 
     if( ( proto == "udp" ) || ( proto == "tcp" ) ) {
       if( proto == "tcp" ) {
-        if( get_port_state( ncaport ) )
+        if( get_port_state( ncaport ) && ! in_array( search:ncaport, array:tcp_services_list ) ) {
+          tcp_services_list = make_list( tcp_services_list, ncaport );
           register_service( port:ncaport, proto:"msrpc", ipproto:"tcp", message:"A DCE/RPC or MSRPC service seems to be running on this port" );
+        }
         set_kb_item( name:"dcetest/" + port + "/enumerated/tcp/ports", value:ncaport );
         set_kb_item( name:"dcetest/" + port + "/enumerated/tcp/" + ncaport + "/report", value:report );
       } else {
-        if( get_udp_port_state( ncaport ) )
+        if( get_udp_port_state( ncaport ) && ! in_array( search:ncaport, array:udp_services_list ) ) {
+          udp_services_list = make_list( udp_services_list, ncaport );
           register_service( port:ncaport, proto:"msrpc", ipproto:"udp", message:"A DCE/RPC or MSRPC service seems to be running on this port" );
+        }
         set_kb_item( name:"dcetest/" + port + "/enumerated/udp/ports", value:ncaport );
         set_kb_item( name:"dcetest/" + port + "/enumerated/udp/" + ncaport, value:report );
       }
@@ -745,6 +750,15 @@ if( strlen( r ) < 60 ) {  # bad reply length
 
 log_message( port:port, data:"A DCE endpoint resolution service seems to be running on this port." );
 register_service( port:port, proto:"epmap", message:"A DCE endpoint resolution service seems to be running on this port." );
+
+# Assume Windows if such an endpoint is detected
+register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:"DCE/RPC and MSRPC Services Enumeration", port:port, desc:"DCE/RPC and MSRPC Services Enumeration", runs_key:"windows" );
+
+# nb: Some of the enumerated tcp/udp ports might expose several services
+# Those lists are used for handling a list of already registered so we don't
+# register those services multiple times on the same port.
+udp_services_list = make_list();
+tcp_services_list = make_list();
 
 for( x = 0; x < 4096; x++ ) {
 

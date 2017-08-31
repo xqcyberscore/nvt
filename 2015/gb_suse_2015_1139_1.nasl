@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850661");
-  script_version("$Revision: 6369 $");
+  script_version("$Revision: 6675 $");
   script_cve_id("CVE-2015-1788", "CVE-2015-1789", "CVE-2015-1790", "CVE-2015-1791",
                 "CVE-2015-1792", "CVE-2015-3216", "CVE-2015-4000");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:54:28 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-06-26 06:23:36 +0200 (Fri, 26 Jun 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for openssl openSUSE-SU-2015:1139-1 (openssl)");
@@ -64,7 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

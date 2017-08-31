@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3866.nasl 6433 2017-06-26 14:58:57Z teissa $
+# $Id: deb_3866.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3866-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703866);
-    script_version("$Revision: 6433 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-9022", "CVE-2017-9023");
     script_name("Debian Security Advisory DSA 3866-1 (strongswan - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-26 16:58:57 +0200 (Mon, 26 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-05-30 00:00:00 +0200 (Tue, 30 May 2017)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "strongswan on Debian Linux");
         script_tag(name: "insight",   value: "The strongSwan VPN suite uses the native IPsec stack in the standard Linux
 kernel. It supports both the IKEv1 and IKEv2 protocols.");

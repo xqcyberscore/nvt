@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850605");
-  script_version("$Revision: 2808 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 12:35:38 +0100 (Wed, 09 Mar 2016) $");
+  script_version("$Revision: 6674 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:45:49 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-11 12:26:14 +0200 (Mon, 11 Aug 2014)");
   script_cve_id("CVE-2014-0100", "CVE-2014-0131", "CVE-2014-2309", "CVE-2014-3917",
                 "CVE-2014-4014", "CVE-2014-4171", "CVE-2014-4508", "CVE-2014-4652",
@@ -108,7 +108,7 @@ if(description)
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

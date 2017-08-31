@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_mult_vuln01_dec14_win.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_adobe_flash_mult_vuln01_dec14_win.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Adobe Flash Player Multiple Vulnerabilities(APSB14-27)- 01 Dec14 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805210");
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-0580", "CVE-2014-0587", "CVE-2014-8443", "CVE-2014-9162",
                  "CVE-2014-9164");
   script_bugtraq_id(71584, 71586, 71585, 71581, 71583);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-15 17:08:41 +0530 (Mon, 15 Dec 2014)");
   script_name("Adobe Flash Player Multiple Vulnerabilities(APSB14-27)- 01 Dec14 (Windows)");
 
@@ -68,7 +68,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/61094");
   script_xref(name : "URL" , value : "http://helpx.adobe.com/security/products/flash-player/apsb14-27.html");
-  script_summary("Check for the vulnerable version of Adobe Flash Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

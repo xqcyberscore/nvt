@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0772.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: ELSA-2013-0772.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123631");
-script_version("$Revision: 6431 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:06:30 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0772");
 script_tag(name: "insight", value: "ELSA-2013-0772 -  mysql security update - [5.1.69-1]- Update to 5.1.69, for assorted upstream bugfixes including CVEs announced in April 2013Resolves: #953084"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

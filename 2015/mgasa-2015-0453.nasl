@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0453.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: mgasa-2015-0453.nasl 6563 2017-07-06 12:23:47Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131135");
-script_version("$Revision: 6214 $");
+script_version("$Revision: 6563 $");
 script_tag(name:"creation_date", value:"2015-11-23 07:46:09 +0200 (Mon, 23 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:23:47 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0453");
 script_tag(name: "insight", value: "A format string vulnerability was found in CmdKeywords function when processing \keywords command in tex file. When the user runs latex2rtf with malicious crafted tex file, an attacker can execute arbitrary code. The variable 'keywords' in the function CmdKeywords may hold a malicious input string, which can be used as a format argument of vsnprintf (CVE-2015-8106)."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"9.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0453");
 script_copyright("Eero Volotinen");

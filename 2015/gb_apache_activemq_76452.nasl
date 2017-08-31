@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_76452.nasl 5082 2017-01-24 11:14:23Z cfi $
+# $Id: gb_apache_activemq_76452.nasl 6551 2017-07-06 09:58:21Z teissa $
 #
 # Apache ActiveMQ Directory Traversal Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-1830");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 5082 $");
+ script_version ("$Revision: 6551 $");
 
  script_name("Apache ActiveMQ Directory Traversal Vulnerability");
 
@@ -56,9 +56,8 @@ sufficiently sanitize user-supplied input.");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-08-24 13:28:31 +0200 (Mon, 24 Aug 2015)");
- script_summary("Try to read a local file via traversal characters.");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

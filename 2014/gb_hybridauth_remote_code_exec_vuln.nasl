@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hybridauth_remote_code_exec_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_hybridauth_remote_code_exec_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # HybridAuth 'install.php' Remote Code Execution Vulnerability
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804753");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6637 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-26 10:58:06 +0530 (Tue, 26 Aug 2014)");
   script_name("HybridAuth 'install.php' Remote Code Execution Vulnerability");
-  script_summary("Check if HybridAuthr is vulnerable to remote code execution");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

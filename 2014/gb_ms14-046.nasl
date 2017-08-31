@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-046.nasl 5365 2017-02-20 13:46:09Z cfi $
+# $Id: gb_ms14-046.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Microsoft .NET Framework Security Bypass Vulnerability (2984625)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804740");
-  script_version("$Revision: 5365 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-4062");
   script_bugtraq_id(69145);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:46:09 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-13 16:07:41 +0530 (Wed, 13 Aug 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft .NET Framework Security Bypass Vulnerability (2984625)");
@@ -72,7 +72,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-046";
 
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/MS14-046");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2984625");
-  script_summary("Check for the version of vulnerable files");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

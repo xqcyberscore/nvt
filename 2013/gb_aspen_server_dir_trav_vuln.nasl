@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aspen_server_dir_trav_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_aspen_server_dir_trav_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # Aspen Sever Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803367");
-  script_version("$Revision: 6086 $");
+  script_version("$Revision: 6698 $");
   script_cve_id("CVE-2013-2619");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-04-04 12:47:57 +0530 (Thu, 04 Apr 2013)");
   script_name("Aspen Sever Directory Traversal Vulnerability");
 
@@ -43,10 +43,9 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_require_ports("Services/www", 8080);
   script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 8080);
   script_mandatory_keys("Aspen/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"insight", value:"The flaw is due to the program not properly sanitizing user supplied input.");
   script_tag(name:"solution", value:"Upgrade to Aspen Server 0.22 or later,

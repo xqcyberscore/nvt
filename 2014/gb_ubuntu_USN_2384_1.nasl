@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842009");
-  script_version("$Revision: 2812 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 12:51:30 +0100 (Wed, 09 Mar 2016) $");
+  script_version("$Revision: 6769 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-16 06:00:46 +0200 (Thu, 16 Oct 2014)");
   script_cve_id("CVE-2012-5615", "CVE-2014-4274", "CVE-2014-4287", "CVE-2014-6463",
                 "CVE-2014-6464", "CVE-2014-6469", "CVE-2014-6478", "CVE-2014-6484",
@@ -61,12 +61,11 @@ http://www.oracle.com/technetwork/topics/security/cpuoct2014-1972960.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2384-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-October/002701.html");
-  script_summary("Check for the Version of mysql-5.5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

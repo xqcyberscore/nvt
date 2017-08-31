@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_dos_vuln_jun09_win.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_mozilla_prdts_dos_vuln_jun09_win.nasl 6467 2017-06-28 13:51:19Z cfischer $
 #
 # Mozilla Products DoS Vulnerability June-09 (Windows)
 #
@@ -42,8 +42,8 @@ tag_summary = "The host is installed with Thunderbird/Seamonkey and is prone to
 if(description)
 {
   script_id(900389);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 6467 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:51:19 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -56,9 +56,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
-  script_dependencies("gb_seamonkey_detect_win.nasl",
-                      "gb_thunderbird_detect_win.nasl");
-  script_require_keys("Seamonkey/Win/Ver", "Thunderbird/Win/Ver");
+  script_dependencies("gb_seamonkey_detect_win.nasl", "gb_thunderbird_detect_win.nasl");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

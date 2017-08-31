@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_adrotate_track_pram_sqli_vul.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_adrotate_track_pram_sqli_vul.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # WordPress AdRotate Plugin 'clicktracker.php' SQL Injection Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-1854");
   script_bugtraq_id(65709);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-11 11:17:52 +0530 (Tue, 11 Mar 2014)");
   script_name("WordPress AdRotate Plugin 'clicktracker.php' SQL Injection Vulnerability");
 
@@ -76,7 +76,6 @@ plugin version 3.9 through 3.9.4";
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31834");
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23201");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125330");
-  script_summary("Check if Wordpress AdRotate Plugin is prone to sql injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

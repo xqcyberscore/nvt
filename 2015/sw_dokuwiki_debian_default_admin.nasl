@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dokuwiki_debian_default_admin.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: sw_dokuwiki_debian_default_admin.nasl 6505 2017-07-03 09:58:27Z teissa $
 #
 # Dokuwiki default admin credentials on Debian
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:dokuwiki:dokuwiki';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111044");
-  script_version("$Revision: 3694 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6505 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-10-30 09:00:00 +0100 (Fri, 30 Oct 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,7 +45,6 @@ if(description)
   script_mandatory_keys("dokuwiki/installed");
 
   script_tag(name : "summary" , value : "Detection of Dokuwiki default admin credentials on Debian.");
-  script_summary("Check if it is possible to login with default admin credentials");
   script_tag(name : "vuldetect" , value : "Check if it is possible to login with default admin credentials.");
   script_tag(name : "impact" , value : "This issue may be exploited by a remote attacker to gain
   access to sensitive information.");

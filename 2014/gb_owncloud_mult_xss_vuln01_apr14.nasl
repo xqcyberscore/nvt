@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_xss_vuln01_apr14.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_owncloud_mult_xss_vuln01_apr14.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # ownCloud Multiple XSS Vulnerabilities-01 Apr14
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804361";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2013-0201", "CVE-2013-0202", "CVE-2013-0203");
   script_bugtraq_id(57497);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-04 14:54:56 +0530 (Fri, 04 Apr 2014)");
   script_name("ownCloud Multiple XSS Vulnerabilities-01 Apr14");
 
@@ -87,7 +87,6 @@ For updates refer to http://owncloud.org";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51872");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2013/01/22/12");
   script_xref(name : "URL" , value : "http://owncloud.org/about/security/advisories/oc-sa-2013-001");
-  script_summary("Check the version of ownCloud is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

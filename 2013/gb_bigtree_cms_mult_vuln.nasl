@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_cms_mult_vuln.nasl 5329 2017-02-17 12:25:45Z mime $
+# $Id: gb_bigtree_cms_mult_vuln.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # BigTree CMS Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:bigtree:bigtree';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803869");
-  script_version("$Revision: 5329 $");
+  script_version("$Revision: 6755 $");
   script_cve_id("CVE-2013-4879", "CVE-2013-4880", "CVE-2013-5313", "CVE-2013-4881");
   script_bugtraq_id(61699, 61701, 61839, 61702);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 13:25:45 +0100 (Fri, 17 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-08-19 12:51:13 +0530 (Mon, 19 Aug 2013)");
   script_name("BigTree CMS Multiple Vulnerabilities");
 
@@ -65,7 +65,6 @@ if (description)
   script_family("Web application abuses");
   script_dependencies("gb_bigtree_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("BigTree/Installed");
 
   script_tag(name:"solution_type", value:"VendorFix");

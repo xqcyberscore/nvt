@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868664");
-  script_version("$Revision: 3340 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:41:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6630 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-01-05 14:40:45 +0100 (Mon, 05 Jan 2015)");
   script_cve_id("CVE-2014-8104");
   script_tag(name:"cvss_base", value:"6.8");
@@ -47,12 +47,11 @@ for compression.
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-December/145833.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of openvpn");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

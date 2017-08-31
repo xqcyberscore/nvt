@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: spybot_detection.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: spybot_detection.nasl 6456 2017-06-28 11:19:33Z cfischer $
 # Description: Spybot Search & Destroy Detection
 #
 # Authors:
@@ -23,41 +23,33 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote Windows host has a spyware detection program installed on it.
-
-Description :
-
-The remote Windows host is running Spybot Search & Destroy, a privacy 
-enhancing application that can detect and remove spyware of different 
-kinds from your computer.";
-
 if(description)
 {
- script_id(80045);
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5370 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
- script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"0.0");
- name = "Spybot Search & Destroy Detection";
- script_name(name);
+  script_oid("1.3.6.1.4.1.25623.1.0.80045");
+  script_version("$Revision: 6456 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Spybot Search & Destroy Detection");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2006 Josh Zlatin-Amishav and Tenable Network Security");
+  script_family("Service detection");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
 
- summary = "Checks whether Spybot Search & Destroy is installed";
+  script_xref(name:"URL" , value:"http://www.safer-networking.org/");
 
- script_category(ACT_GATHER_INFO);
+  tag_summary = "The remote Windows host is running Spybot Search & Destroy, a privacy 
+  enhancing application that can detect and remove spyware of different 
+  kinds from your computer.";
+
+  script_tag(name:"summary", value:tag_summary);
+
   script_tag(name:"qod_type", value:"executable_version");
 
- script_copyright("This script is Copyright (C) 2006 Josh Zlatin-Amishav and Tenable Network Security");
- family = "Service detection";
- script_family(family);
-
- script_dependencies("secpod_reg_enum.nasl");
- script_require_keys("SMB/name", "SMB/login", "SMB/password", "SMB/transport");
- script_mandatory_keys("SMB/WindowsVersion");
- script_require_ports(139, 445);
- script_xref(name : "URL" , value : "http://www.safer-networking.org/");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 include("smb_nt.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_wnr1000v3_information_disclosure.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_netgear_wnr1000v3_information_disclosure.nasl 6699 2017-07-12 12:07:37Z cfischer $
 #
 # NETGEAR WNR1000v3 Password Disclosure Vulnerability
 #
@@ -52,7 +52,7 @@ is possible to read username and password.";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103880");
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 6699 $");
  script_tag(name:"cvss_base", value:"9.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:C");
 
@@ -60,16 +60,14 @@ if (description)
 
  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124759/NETGEAR-WNR1000v3-Password-Disclosure.html");
  
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:07:37 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-14 10:28:55 +0100 (Tue, 14 Jan 2014)");
- script_summary("Determine if it is possible to read username and password");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("WNR1000v3/banner");
  script_require_ports("Services/www", 80, 8080);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("WNR1000v3/banner");
 
  script_tag(name : "impact" , value : tag_impact);
  script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -89,7 +87,6 @@ include("http_keepalive.inc");
 include("global_settings.inc");
    
 port = get_http_port( default:8080 );
-if ( ! get_port_state( port ) ) exit( 0 );
 
 banner = get_http_banner(port:port);
 if ( "NETGEAR WNR1000v3" >!< banner ) exit (0 );

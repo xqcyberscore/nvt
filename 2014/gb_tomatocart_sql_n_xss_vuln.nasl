@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tomatocart_sql_n_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_tomatocart_sql_n_xss_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # TomatoCart SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804871");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-3830", "CVE-2014-3978");
   script_bugtraq_id(69110, 69072);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-28 14:44:09 +0530 (Tue, 28 Oct 2014)");
 
   script_name("TomatoCart SQL Injection and Cross Site Scripting Vulnerabilities");
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "https://breaking.technology/advisories/CVE-2014-3830.txt");
   script_xref(name : "URL" , value : "https://breaking.technology/advisories/CVE-2014-3978.txt");
 
-  script_summary("Check if TomatoCart is vulnerable to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-679.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: alas-2016-679.nasl 6574 2017-07-06 13:41:26Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120669");
-script_version("$Revision: 5505 $");
+script_version("$Revision: 6574 $");
 script_tag(name:"creation_date", value:"2016-03-31 08:02:12 +0300 (Thu, 31 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:41:26 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-679");
 script_tag(name: "insight", value: "ResourceLinkFactory.setGlobalContext() is a public method and was discovered to be accessible by web applications running under a security manager without any checks. This allowed a malicious web application to inject a malicious global context that could in turn be used to disrupt other web applications and/or read and write data owned by other web applications. (CVE-2016-0763 )A session fixation vulnerability was discovered that might allow remote attackers to hijack web sessions by leveraging use of a requestedSessionSSL field for an unintended request when different session settings are used for deployments of multiple versions of the same web application. (CVE-2015-5346 )The Manager and Host Manager applications were discovered to establish sessions and send CSRF tokens for arbitrary new requests, which allows remote attackers to bypass a CSRF protection mechanism by using a token. (CVE-2015-5351 )The session-persistence implementation was discovered to mishandle session attributes, which allows remote authenticated users to bypass intended SecurityManager restrictions and execute arbitrary code in a privileged context via a web application that places a crafted object in a session. (CVE-2016-0714 )It was discovered that org.apache.catalina.manager.StatusManagerServlet was not placed on the org/apache/catalina/core/RestrictedServlets.properties list, which allows remote authenticated users to bypass intended SecurityManager restrictions and read arbitrary HTTP requests, and consequently discover session ID values, via a crafted web application. (CVE-2016-0706 )"); 
 script_tag(name : "solution", value : "Run yum update tomcat8 to update your system.");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"6.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

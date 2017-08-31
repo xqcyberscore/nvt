@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_artifactory_64760.nasl 2825 2016-03-10 08:11:16Z benallard $
+# $Id: gb_artifactory_64760.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Artifactory XStream Remote Code Execution Vulnerability
 #
@@ -47,23 +47,21 @@ if (description)
  script_cve_id("CVE-2013-7285");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2825 $");
+ script_version ("$Revision: 6759 $");
 
  script_name("Artifactory XStream Remote Code Execution Vulnerability");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64760");
  script_xref(name:"URL", value:"http://www.jfrog.com/confluence/display/RTF/Artifactory+3.1.1");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:11:16 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-03-13 10:30:44 +0100 (Thu, 13 Mar 2014)");
- script_summary("Check thew installed version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_artifactory_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("artifactory/installed");
 
  script_tag(name : "impact" , value : tag_impact);
@@ -80,8 +78,6 @@ include("host_details.inc");
 include("version_func.inc");
 
 if( ! port = get_app_port( cpe:CPE, nvt:SCRIPT_OID ) ) exit( 0 );
-if( ! get_port_state( port ) ) exit( 0 );
-
 if( vers = get_app_version( cpe:CPE, nvt:SCRIPT_OID, port:port ) )
 {
   if( version_is_less( version: vers, test_version: "3.1.1.1" ) )

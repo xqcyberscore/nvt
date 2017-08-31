@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3702.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: deb_3702.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3702-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703702);
-    script_version("$Revision: 5557 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2016-6321");
     script_name("Debian Security Advisory DSA 3702-1 (tar - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name:"creation_date", value:"2016-11-08 15:52:38 +0530 (Tue, 08 Nov 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "tar on Debian Linux");
     script_tag(name: "insight",   value: "Tar is a program for packaging a set
 of files as a single archive in tar format. The function it performs is

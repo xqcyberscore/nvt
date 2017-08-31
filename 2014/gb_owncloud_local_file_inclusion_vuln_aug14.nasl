@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_local_file_inclusion_vuln_aug14.nasl 5621 2017-03-20 13:56:15Z cfi $
+# $Id: gb_owncloud_local_file_inclusion_vuln_aug14.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # ownCloud Local File Inclusion Vulnerability -01 Aug14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804821");
-  script_version("$Revision: 5621 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-4929");
   script_bugtraq_id(68975);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-25 21:35:23 +0530 (Mon, 25 Aug 2014)");
   script_name("ownCloud Local File Inclusion Vulnerability -01 Aug14");
 
@@ -74,7 +74,6 @@ For updates refer to http://owncloud.org";
 
   script_xref(name : "URL" , value : "http://owncloud.org/changelog/");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/59543");
-  script_summary("Check the version of ownCloud is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

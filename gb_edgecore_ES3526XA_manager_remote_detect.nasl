@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_edgecore_ES3526XA_manager_remote_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_edgecore_ES3526XA_manager_remote_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # EdgeCore ES3526XA Manager Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808237");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6701 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-06-27 15:50:17 +0530 (Mon, 27 Jun 2016)");
   script_name("EdgeCore ES3526XA Manager Remote Version Detection");
 
@@ -45,10 +45,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_require_ports("Services/www", 80);
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
   script_mandatory_keys("SMC6128L2/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -64,9 +64,7 @@ edgeVer = 0;
 edgePort = 0;
 
 ## Get HTTP Port
-if(!edgePort = get_http_port(default:80)){
-  exit(0);
-}
+edgePort = get_http_port(default:80);
 
 ## Get banner
 banner = get_http_banner(port:edgePort);

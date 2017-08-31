@@ -45,8 +45,8 @@ advisory GLSA 200710-02.";
 if(description)
 {
  script_id(58650);
- script_version("$Revision: 4424 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-07 10:04:34 +0100 (Mon, 07 Nov 2016) $");
+ script_version("$Revision: 6596 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:21:37 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
  script_cve_id("CVE-2007-1883", "CVE-2007-1887", "CVE-2007-1900", "CVE-2007-2756", "CVE-2007-2872", "CVE-2007-3007", "CVE-2007-3378", "CVE-2007-3806", "CVE-2007-3996", "CVE-2007-3997", "CVE-2007-3998", "CVE-2007-4652", "CVE-2007-4657", "CVE-2007-4658", "CVE-2007-4659", "CVE-2007-4660", "CVE-2007-4661", "CVE-2007-4662", "CVE-2007-4663", "CVE-2007-4670", "CVE-2007-4727", "CVE-2007-4782", "CVE-2007-4783", "CVE-2007-4784", "CVE-2007-4825", "CVE-2007-4840", "CVE-2007-4887");
  script_tag(name:"cvss_base", value:"7.8");
@@ -60,7 +60,7 @@ if(description)
  script_copyright("Copyright (c) 2007 E-Soft Inc. http://www.securityspace.com");
  script_family("Gentoo Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("login/SSH/success", "ssh/login/gentoo");
+ script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-034.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms09-034.nasl 6527 2017-07-05 05:56:34Z cfischer $
 #
 # Cumulative Security Update for Internet Explorer (972260)
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_id(900906);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 6527 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-07-29 15:02:57 +0200 (Wed, 29 Jul 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_ie_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
+  script_mandatory_keys("MS/IE/Version");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : "Specially crafted HTML page will let the attacker execute arbitrary
   codes in the context of the affected system and cause memory corruption.

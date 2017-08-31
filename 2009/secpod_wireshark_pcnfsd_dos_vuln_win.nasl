@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_pcnfsd_dos_vuln_win.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: secpod_wireshark_pcnfsd_dos_vuln_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
 #
 # Wireshark PCNFSD Dissector Processing Denial of Service Vulnerability (Windows)
 #
@@ -38,8 +38,8 @@ tag_summary = "The remote host is installed with Wireshark and is prone to
 if(description)
 {
   script_id(900559);
-  script_version("$Revision: 5148 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 6519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -52,7 +52,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_win.nasl");
-  script_require_keys("SMB/WindowsVersion","Wireshark/Win/Ver");
+  script_mandatory_keys("Wireshark/Win/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

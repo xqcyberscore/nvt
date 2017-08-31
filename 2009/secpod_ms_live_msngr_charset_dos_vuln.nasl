@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_live_msngr_charset_dos_vuln.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: secpod_ms_live_msngr_charset_dos_vuln.nasl 6532 2017-07-05 07:42:05Z cfischer $
 #
 # Microsoft MSN Live Messneger Denial of Service Vulnerability
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is running Microsoft MSN Live Messenger and is prone
 if(description)
 {
   script_id(900461);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6532 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-02-26 05:27:20 +0100 (Thu, 26 Feb 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -54,7 +54,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_ms_win_live_messenger_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/LiveMessenger/Ver");
+  script_mandatory_keys("MS/LiveMessenger/Ver");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808753");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6701 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-08-08 15:37:50 +0530 (Mon, 08 Aug 2016)");
   script_name("OrientDB Server Version Detection");
   script_tag(name : "summary" , value : "Detection of installed version
@@ -45,9 +45,9 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("OrientDB/banner");
   script_require_ports("Services/www", 2480);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("OrientDB/banner");
+
   exit(0);
 }
 
@@ -65,9 +65,6 @@ banner = "";
 
 ##Get HTTP Port
 orientdbPort = get_http_port(default:2480);
-if(!orientdbPort){
-  exit(0);
-}
 
 ## Confirm the application from banner
 banner = get_http_banner(port:orientdbPort);

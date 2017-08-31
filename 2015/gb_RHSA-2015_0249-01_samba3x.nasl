@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871318");
-  script_version("$Revision: 6214 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+  script_version("$Revision: 6689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:50:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-02-25 05:42:23 +0100 (Wed, 25 Feb 2015)");
   script_cve_id("CVE-2015-0240");
   script_tag(name:"cvss_base", value:"10.0");
@@ -66,7 +66,7 @@ update, the smb service will be restarted automatically.
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

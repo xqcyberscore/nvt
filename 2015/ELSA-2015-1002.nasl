@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1002.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: ELSA-2015-1002.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123115");
-script_version("$Revision: 6125 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:59:33 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1002");
 script_tag(name: "insight", value: "ELSA-2015-1002 -  xen security update - [3.0.3-146.el5]- xen-fdc-force-the-fifo-access-to-be-in-bounds-of-the-all.patch- xen-FDC-Fix-buffer-overflow-Herv-Poussineau.patch- Resolves: bz#1219333 (xen: qemu: floppy disk controller flaw [rhel-5.11.z])[3.0.3-144.el5]- xm: Fix vcpu-pin complain for CPU number out of range (rhbz 955656)- libxc: Support set affinity for more than 64 CPUS (rhbz 955656)- libxc: Fixes for 'support affinity for more than 64 CPUS' (rhbz 955656)- xend: Fix bug of a cpu affinity vcpu-pin under ia32pa (rhbz 955656)- libxc: Fix cpu number overflow for vcpu-pin (rhbz 955656)[3.0.3-143.el5]- libxc: move error checking next to the function which returned the error (rhbz 870413)- libxc: builder: limit maximum size of kernel/ramdisk (rhbz 870413)- e1000: discard packets that are too long if !SBP and !LPE (rhbz 910844)- e1000: discard oversized packets based on SBP or LPE (rhbz 910844)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.7");
 script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

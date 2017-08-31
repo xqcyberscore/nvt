@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cs121_ups_default_admin_credentials.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_cs121_ups_default_admin_credentials.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # CS121 UPS Default Admin Credentials
 #
@@ -28,13 +28,12 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105023"); 
- script_version("$Revision: 5390 $");
+ script_version("$Revision: 6637 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("CS121 UPS Default Admin Credentials");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-05-12 11:02:06 +0200 (Mon, 12 May 2014)");
- script_summary("Determine if it is possible to login with default credentials.");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

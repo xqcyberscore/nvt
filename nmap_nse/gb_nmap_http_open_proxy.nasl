@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_http_open_proxy.nasl 4716 2016-12-08 12:42:15Z cfi $
+# $Id: gb_nmap_http_open_proxy.nasl 6603 2017-07-07 10:21:45Z cfischer $
 #
 # Wrapper for Nmap HTTP Open Proxy NSE script
 #
@@ -34,8 +34,8 @@ tag_summary = "This script attempts to check if an HTTP proxy is open.
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801621");
-  script_version("$Revision: 4716 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 13:42:15 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 6603 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:21:45 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-10-29 15:30:03 +0200 (Fri, 29 Oct 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,7 +51,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
+  script_mandatory_keys("Tools/Launch/nmap_nse", "Tools/Present/nmap");
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }

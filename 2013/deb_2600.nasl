@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2600.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: deb_2600.nasl 6611 2017-07-07 12:07:20Z cfischer $
 # Auto-generated from advisory DSA 2600-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -58,10 +58,10 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(892600);
-    script_version("$Revision: 6086 $");
+    script_version("$Revision: 6611 $");
     script_cve_id("CVE-2012-5519");
     script_name("Debian Security Advisory DSA 2600-1 (cups - privilege escalation)");
-    script_tag(name: "last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-07-07 14:07:20 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value:"2013-01-06 00:00:00 +0100 (Sun, 06 Jan 2013)");
     script_tag(name: "cvss_base", value:"7.2");
     script_tag(name: "cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -74,7 +74,7 @@ if(description)
     script_copyright("Copyright (c) 2013 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: tag_affected);
     script_tag(name: "insight",   value: tag_insight);
 #    script_tag(name: "impact",    value: tag_impact);

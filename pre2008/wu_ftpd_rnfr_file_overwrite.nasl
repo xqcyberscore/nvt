@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: wu_ftpd_rnfr_file_overwrite.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: wu_ftpd_rnfr_file_overwrite.nasl 6522 2017-07-04 15:22:28Z cfischer $
 # Description: wu-ftpd rnfr file overwrite
 #
 # Authors:
@@ -38,30 +38,22 @@ tag_solution = "Upgrade to Wu-FTPd 2.4.2 or newer";
 if(description)
 {
  script_id(14302);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 6522 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:22:28 +0200 (Tue, 04 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-1999-0081");
  script_xref(name:"OSVDB", value:"8717");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-
- 
  name = "wu-ftpd rnfr file overwrite";
- 
  script_name(name);
-	     
-
-		    
- 
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  script_family("FTP");
- 
  script_copyright("This script is Copyright (C) 2004 David Maciejak");
 		  
  script_dependencies("find_service.nasl", "ftpserver_detect_type_nd_version.nasl", "secpod_ftp_anonymous.nasl");
- script_require_keys("ftp/login", "ftp/wuftpd");
+ script_require_keys("ftp/wuftpd");
  script_require_ports("Services/ftp", 21);
   
  script_tag(name : "solution" , value : tag_solution);
@@ -69,13 +61,7 @@ if(description)
  exit(0);
 }
 
-#
-# The script code starts here : 
-#
 include("ftp_func.inc");
-
-#login = get_kb_item("ftp/login");
-#pass  = get_kb_item("ftp/password");
 
 port = get_kb_item("Services/ftp");
 if(!port)

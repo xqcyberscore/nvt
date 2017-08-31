@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_dos_vuln_feb14_macosx.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_mozilla_firefox_dos_vuln_feb14_macosx.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Mozilla Firefox Cookie Verification Denial of Service Vulnerability (Mac OS X)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804502";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2013-6167");
   script_bugtraq_id(62969);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-19 11:18:41 +0530 (Wed, 19 Feb 2014)");
   script_name("Mozilla Firefox Cookie Verification Denial of Service Vulnerability (Mac OS X)");
 
@@ -79,7 +79,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2013/q4/121");
   script_xref(name : "URL" , value : "http://redmine.lighttpd.net/issues/2188");
   script_xref(name : "URL" , value : "https://bugzilla.mozilla.org/show_bug.cgi?id=858215");
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

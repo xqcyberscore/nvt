@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: DDI_IIS_dotNet_Trace.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: DDI_IIS_dotNet_Trace.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: IIS ASP.NET Application Trace Enabled
 #
 # Authors:
@@ -34,8 +34,8 @@ tag_solution = "Set <trace enabled=false> in web.config";
 if(description)
 {
     script_id(10993);
-    script_version("$Revision: 6053 $");
-    script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+    script_version("$Revision: 6702 $");
+    script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
     script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
     script_tag(name:"cvss_base", value:"7.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -56,23 +56,18 @@ if(description)
     script_family(family);
     script_dependencies("secpod_ms_iis_detect.nasl");
     script_require_ports("Services/www", 80);
+    script_mandatory_keys("IIS/installed");
+
     script_tag(name : "solution" , value : tag_solution);
     script_tag(name : "summary" , value : tag_summary);
-    script_require_keys("IIS/installed");
+
     exit(0);
 }
-
-
-#
-# The script code starts here
-#
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port)){ exit(0); }
 
 if( ! get_kb_item("IIS/" + port + "/Ver" ) ) exit( 0 );
 

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0400.nasl 6376 2017-06-20 10:00:24Z teissa $
+# $Id: mgasa-2015-0400.nasl 6563 2017-07-06 12:23:47Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131093");
-script_version("$Revision: 6376 $");
+script_version("$Revision: 6563 $");
 script_tag(name:"creation_date", value:"2015-10-15 06:54:50 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:23:47 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0400");
 script_tag(name: "insight", value: "Multiple security issues in the DBMail driver for the password plugin, including buffer overflows (CVE-2015-2181) and the ability for a remote attacker to execute arbitrary shell commands as root (CVE-2015-2180). An authenticated user can download arbitrary files from the web server that the web server process has read access to, by uploading a vCard with a specially crafted POST (CVE-2015-5382). The roundcubemail package has been updated to version 1.0.6, fixing these issues and several other bugs, however the installer is currently known to be broken."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"9.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0400");
 script_copyright("Eero Volotinen");

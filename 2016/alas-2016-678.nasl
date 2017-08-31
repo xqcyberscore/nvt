@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-678.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: alas-2016-678.nasl 6574 2017-07-06 13:41:26Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120668");
-script_version("$Revision: 5836 $");
+script_version("$Revision: 6574 $");
 script_tag(name:"creation_date", value:"2016-03-31 08:02:11 +0300 (Thu, 31 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:41:26 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-678");
 script_tag(name: "insight", value: "An out-of-bounds read flaw was found in the parsing of GIF files using GraphicsMagick."); 
 script_tag(name : "solution", value : "Run yum update GraphicsMagick to update your system.");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"4.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

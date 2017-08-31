@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_uploader_mult_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_uploader_mult_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # WordPress Uploader Plugin Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2013-2287");
   script_bugtraq_id(58285);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-14 18:31:45 +0530 (Mon, 14 Apr 2014)");
   script_name("WordPress Uploader Plugin Multiple Vulnerabilities");
 
@@ -81,7 +81,6 @@ features, remove the product or replace the product by another one.";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52465");
   script_xref(name : "URL" , value : "https://www.dognaedis.com/vulns/DGS-SEC-16.html");
-  script_summary("Check if Wordpress Uploader Plugin is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-090.nasl 2646 2016-02-12 08:18:48Z benallard $
+# $Id: gb_ms15-090.nasl 6486 2017-06-29 09:59:06Z teissa $
 #
 # Microsoft Windows Privilege Elevation Vulnerabilities (3060716)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805094");
-  script_version("$Revision: 2646 $");
+  script_version("$Revision: 6486 $");
   script_cve_id("CVE-2015-2428", "CVE-2015-2429", "CVE-2015-2430");
   script_bugtraq_id(76227, 76231, 76233);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:48 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-12 08:31:02 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Privilege Elevation Vulnerabilities (3060716)");
@@ -73,7 +73,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3060716");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-090");
-  script_summary("Check for the vulnerable 'Ntoskrnl.exe' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

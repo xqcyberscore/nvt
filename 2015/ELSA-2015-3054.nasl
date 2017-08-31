@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-3054.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: ELSA-2015-3054.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123043");
-script_version("$Revision: 6333 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 09:47:02 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-3054");
 script_tag(name: "insight", value: "ELSA-2015-3054 - Unbreakable Enterprise kernel security update - [2.6.39-400.250.9]- x86, tls: Interpret an all-zero struct user_desc as 'no segment' (Andy Lutomirski) [Orabug: 21514969] - x86, tls, ldt: Stop checking lm in LDT_empty (Andy Lutomirski) [Orabug: 21514969][2.6.39-400.250.8]- KVM: x86: SYSENTER emulation is broken (Nadav Amit) [Orabug: 21502740] {CVE-2015-0239} {CVE-2015-0239}- x86/tls: Validate TLS entries to protect espfix (Andy Lutomirski) [Orabug: 20223777] {CVE-2014-8133}- fs: take i_mutex during prepare_binprm for set[ug]id executables (Jann Horn) [Orabug: 21502255] {CVE-2015-3339}- eCryptfs: Remove buggy and unnecessary write in file name decode routine (Michael Halcrow) [Orabug: 21502066] {CVE-2014-9683}"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.2");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

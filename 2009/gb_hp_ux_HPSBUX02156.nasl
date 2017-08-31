@@ -42,7 +42,7 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www11.itrc.hp.com/service/cki/docDisplay.do?docId=emr_na-c00774579-4");
   script_id(835179);
-  script_version("$Revision: 3220 $");
+  script_version("$Revision: 6584 $");
   script_cve_id("CVE-2006-0292", "CVE-2006-0293", "CVE-2006-0294", "CVE-2006-0295", 
                 "CVE-2006-0296", "CVE-2006-0297", "CVE-2006-0298", "CVE-2006-0299", 
                 "CVE-2006-0748", "CVE-2006-0884", "CVE-2006-1045", "CVE-2006-1529", 
@@ -56,7 +56,7 @@ if(description)
                 "CVE-2006-3811", "CVE-2007-1558", "CVE-2007-2867", "CVE-2007-2868", 
                 "CVE-2007-3670", "CVE-2007-3734", "CVE-2007-3735", "CVE-2007-3844", 
                 "CVE-2007-3845", "CVE-2007-4841", "CVE-2007-5339", "CVE-2007-5340");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-03 15:59:06 +0200 (Tue, 03 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-06 16:13:23 +0200 (Thu, 06 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-05-05 12:14:23 +0200 (Tue, 05 May 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -68,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("HP-UX Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:hp:hp-ux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/hp_hp-ux", "ssh/login/release");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

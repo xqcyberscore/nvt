@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpldapadmin_37327.nasl 5016 2017-01-17 09:06:21Z teissa $
+# $Id: phpldapadmin_37327.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # phpldapadmin 'cmd.php' Local File Include Vulnerability
 #
@@ -38,8 +38,8 @@ affected.";
 if (description)
 {
  script_id(100396);
- script_version("$Revision: 5016 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+ script_version("$Revision: 6704 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-12-15 19:11:56 +0100 (Tue, 15 Dec 2009)");
  script_cve_id("CVE-2009-4427");
  script_bugtraq_id(37327);
@@ -57,7 +57,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("phpldapadmin_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("phpldapadmin/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -68,8 +67,6 @@ include("http_keepalive.inc");
 include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
 
 if(!version = get_kb_item(string("www/", port, "/phpldapadmin")))exit(0);
 if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);

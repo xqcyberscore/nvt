@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-3011.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: ELSA-2014-3011.nasl 6559 2017-07-06 11:57:32Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123464");
-script_version("$Revision: 6254 $");
+script_version("$Revision: 6559 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:04:09 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:57:32 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-3011");
 script_tag(name: "insight", value: "ELSA-2014-3011 - Unbreakable Enterprise kernel security update - [3.8.13-26.1.1.el6uek]- inet: fix addr_len/msg->msg_namelen assignment in recv_error and rxpmtu functions (Hannes Frederic Sowa) [18247287] {CVE-2013-7263} {CVE-2013-7265}- inet: prevent leakage of uninitialized memory to user in recv syscalls (Hannes Frederic Sowa) [18238377] {CVE-2013-7263} {CVE-2013-7265}- exec/ptrace: fix get_dumpable() incorrect tests (Kees Cook) [18238348] {CVE-2013-2929}"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"4.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

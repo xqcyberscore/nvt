@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zxv10_w300_hardcoded_credentials_2014.nasl 3997 2016-09-07 13:51:55Z cfi $
+# $Id: gb_zxv10_w300_hardcoded_credentials_2014.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # ZTE ZXV10 W300 Wireless Router Hardcoded Credentials Security Bypass Vulnerability
 #
@@ -59,17 +59,16 @@ if (description)
  script_cve_id("CVE-2014-0329");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3997 $");
+ script_version ("$Revision: 6692 $");
 
  script_name("ZTE ZXV10 W300 Wireless Router Hardcoded Credentials Security Bypass Vulnerability");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65310");
 
- script_tag(name:"last_modification", value:"$Date: 2016-09-07 15:51:55 +0200 (Wed, 07 Sep 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-02-10 13:47:33 +0100 (Mon, 10 Feb 2014)");
  script_tag(name:"qod_type", value:"exploit");
  script_tag(name:"solution_type", value:"NoneAvailable");
- script_summary("Determine if it is possible to login via telnet");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

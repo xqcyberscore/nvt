@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mssqlserver_detect.nasl 6432 2017-06-26 13:16:02Z cfischer $
+# $Id: mssqlserver_detect.nasl 6734 2017-07-15 16:47:32Z cfischer $
 #
 # Microsoft SQL TCP/IP listener is running
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10144");
-  script_version("$Revision: 6432 $");
+  script_version("$Revision: 6734 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-26 15:16:02 +0200 (Mon, 26 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-15 18:47:32 +0200 (Sat, 15 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Microsoft SQL TCP/IP listener is running");
   script_category(ACT_GATHER_INFO);
@@ -93,6 +93,8 @@ if( blen < 6 || ( pos + 6 ) > strlen( buf ) ) exit( 0 );
 
 version = ord( buf[ pos ] ) + '.' + ord( buf[ pos + 1 ] ) + '.' + getword( blob:buf, pos:pos + 2 ) + '.' + getword( blob:buf, pos:pos + 4 );
 register_service( port:port, proto:"mssql" );
+
+register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", port:port, desc:"Microsoft SQL TCP/IP listener is running", runs_key:"windows" );
 
 replace_kb_item( name:"MS/SQLSERVER/Running", value:TRUE );
 

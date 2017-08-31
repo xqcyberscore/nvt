@@ -29,7 +29,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804060";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2013-5165", "CVE-2013-5166", "CVE-2013-5167", "CVE-2013-5168",
                 "CVE-2013-5169", "CVE-2013-5170", "CVE-2013-5171", "CVE-2013-5172",
                 "CVE-2013-5173", "CVE-2013-5174", "CVE-2013-5175", "CVE-2013-5176",
@@ -46,7 +46,7 @@ if(description)
                     60444, 77576);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-20 11:29:14 +0530 (Mon, 20 Jan 2014)");
   script_name("Apple Mac OS X Multiple Vulnerabilities - 01 Jan14");
 
@@ -88,12 +88,11 @@ For updates refer to http://support.apple.com/kb/HT1222";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55446");
   script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN56210048/index.html");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2013/Oct/msg00004.html");
-  script_summary("Check for the vulnerable version of Apple Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/uname", "ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
   exit(0);
 }
 

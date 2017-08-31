@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weborf_43016.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_weborf_43016.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # Weborf HTTP 'modURL()' Function Directory Traversal Vulnerability
 #
@@ -37,8 +37,8 @@ Weborf 0.12.2 and prior versions are vulnerable.";
 if (description)
 {
  script_id(100788);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6696 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-09-07 15:26:31 +0200 (Tue, 07 Sep 2010)");
  script_bugtraq_id(43016);
  script_tag(name:"cvss_base", value:"5.0");
@@ -52,10 +52,9 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_weborf_webserver_detect.nasl","gb_get_http_banner.nasl");
- script_mandatory_keys("Weborf/banner");
+ script_dependencies("gb_weborf_webserver_detect.nasl", "gb_get_http_banner.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("Weborf/banner");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
@@ -65,7 +64,6 @@ include("http_keepalive.inc");
 include("global_settings.inc");
    
 port = get_http_port(default:8080);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if("Server: Weborf" >!< banner)exit(0);

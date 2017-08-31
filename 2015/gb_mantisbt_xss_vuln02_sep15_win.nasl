@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln02_sep15_win.nasl 5082 2017-01-24 11:14:23Z cfi $
+# $Id: gb_mantisbt_xss_vuln02_sep15_win.nasl 6600 2017-07-07 09:58:31Z teissa $
 #
 # MantisBT Cross Site Scripting Vulnerability-02 September15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805975");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 6600 $");
   script_cve_id("CVE-2014-9272");
   script_bugtraq_id(71375);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-09-08 18:15:16 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("MantisBT Cross Site Scripting Vulnerability-02 September15 (Windows)");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2014/q4/867");
   script_xref(name : "URL" , value : "https://www.mantisbt.org/bugs/view.php?id=17297");
 
-  script_summary("Check for the vulnerable version of MantisBT on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

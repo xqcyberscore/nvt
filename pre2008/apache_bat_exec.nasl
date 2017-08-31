@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_bat_exec.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: apache_bat_exec.nasl 6540 2017-07-05 12:42:02Z cfischer $
 # Description: Apache Remote Command Execution via .bat files
 #
 # Authors:
@@ -34,33 +34,29 @@ tag_solution = "This bug is fixed in 1.3.24 and 2.0.34-beta, or remove /cgi-bin/
 
 if(description)
 {
- script_id(10938);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(4335);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_cve_id("CVE-2002-0061");
- name = "Apache Remote Command Execution via .bat files";
- script_name(name);
- 
- summary = "Tests for presence of Apache Command Execution via .bat vulnerability";
- 
- 
- script_category(ACT_ATTACK);
+  script_oid("1.3.6.1.4.1.25623.1.0.10938");
+  script_version("$Revision: 6540 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:42:02 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(4335);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2002-0061");
+  script_name("Apache Remote Command Execution via .bat files");
+  script_category(ACT_ATTACK);
+  script_copyright("This script is Copyright (C) 2002 Matt Moore");
+  script_family("Web Servers");
+  script_dependencies("gb_get_http_banner.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("apache/banner");
+
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
- 
- script_copyright("This script is Copyright (C) 2002 Matt Moore");
- family = "Web Servers";
- script_family(family);
- script_dependencies("gb_get_http_banner.nasl", "http_version.nasl");
- script_mandatory_keys("apache/banner");
- script_require_ports("Services/www", 80);
- script_require_keys("www/apache");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+
+  exit(0);
 }
 
 # Check makes request for cgi-bin/test-cgi.bat?|echo - which should return
@@ -71,10 +67,6 @@ if(description)
 include("http_func.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port)){ exit(0); }
-
-if ( get_kb_item("Services/www/" + port + "/embedded") ) exit(0);
 
 sig = get_http_banner(port:port);
 if ( sig && "Apache" >!< sig ) exit(0);

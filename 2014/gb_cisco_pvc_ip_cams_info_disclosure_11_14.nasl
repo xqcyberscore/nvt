@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pvc_ip_cams_info_disclosure_11_14.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_cisco_pvc_ip_cams_info_disclosure_11_14.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Cisco PVC IP Cam Information Disclosure
 #
@@ -30,7 +30,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105106");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 6769 $");
 
  script_name("Cisco PVC IP Cam Information Disclosure");
 
@@ -43,17 +43,15 @@ usernames and passwords.");
  script_tag(name: "solution" , value:"Ask the Vendor for an update.");
  script_tag(name: "summary" , value:"Cisco PVC IP Camis prone to an information disclosure vulnerability.");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-11-05 10:38:34 +0100 (Wed, 05 Nov 2014)");
- script_summary("Determine if it is possible to read the config of the device");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("lighttpd/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("lighttpd/banner");
 
  exit(0);
 }

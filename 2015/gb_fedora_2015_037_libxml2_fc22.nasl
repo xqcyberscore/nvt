@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806792");
-  script_version("$Revision: 6345 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+  script_version("$Revision: 6630 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-12-01 06:12:35 +0100 (Tue, 01 Dec 2015)");
   script_cve_id("CVE-2015-8242", "CVE-2015-7500", "CVE-2015-7499", "CVE-2015-5312",
                 "CVE-2015-7498", "CVE-2015-7497", "CVE-2015-1819", "CVE-2015-7941",
@@ -57,7 +57,7 @@ existing HTTP and FTP modules and combined to an URI library.
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

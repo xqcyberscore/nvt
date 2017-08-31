@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_etag_6939.nasl 5424 2017-02-25 16:52:36Z teissa $
+# $Id: gb_apache_etag_6939.nasl 6700 2017-07-12 12:16:21Z cfischer $
 #
 # Apache Web Server ETag Header Information Disclosure Weakness
 #
@@ -31,8 +31,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.openbsd.org/errata32.html");
  script_xref(name : "URL" , value : "http://support.novell.com/docs/Tids/Solutions/10090670.html");
  script_oid("1.3.6.1.4.1.25623.1.0.103122");
- script_version("$Revision: 5424 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+ script_version("$Revision: 6700 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-03-21 17:38:45 +0100 (Mon, 21 Mar 2011)");
  script_bugtraq_id(6939);
  script_cve_id("CVE-2003-1418");
@@ -46,9 +46,8 @@ if (description)
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("apache/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("apache/banner", "ETag/banner");
 
  script_tag(name : "summary" , value : "A weakness has been discovered in Apache web servers that are
  configured to use the FileETag directive.");

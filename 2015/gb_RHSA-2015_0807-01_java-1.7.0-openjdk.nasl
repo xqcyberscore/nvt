@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871356");
-  script_version("$Revision: 6194 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+  script_version("$Revision: 6689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:50:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-04-16 07:00:48 +0200 (Thu, 16 Apr 2015)");
   script_cve_id("CVE-2005-1080", "CVE-2015-0460", "CVE-2015-0469", "CVE-2015-0477",
                 "CVE-2015-0478", "CVE-2015-0480", "CVE-2015-0488");
@@ -85,7 +85,7 @@ must be restarted for the update to take effect.
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

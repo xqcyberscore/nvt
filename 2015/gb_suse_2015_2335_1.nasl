@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851145");
-  script_version("$Revision: 6439 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 10:37:25 +0200 (Tue, 27 Jun 2017) $");
+  script_version("$Revision: 6665 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:01:58 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-12-22 05:43:13 +0100 (Tue, 22 Dec 2015)");
   script_cve_id("CVE-2015-7201", "CVE-2015-7202", "CVE-2015-7205", "CVE-2015-7210",
                 "CVE-2015-7212", "CVE-2015-7213", "CVE-2015-7214", "CVE-2015-7222");
@@ -60,12 +60,11 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "SUSE-SU", value: "2015:2335_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-12/msg00022.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of MozillaFirefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "ssh/login/release", "SuSeLinuxEnterprise/Desktop_or_Server/Installed");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

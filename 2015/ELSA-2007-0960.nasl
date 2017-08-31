@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-0960.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: ELSA-2007-0960.nasl 6561 2017-07-06 12:03:14Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122653");
-script_version("$Revision: 6345 $");
+script_version("$Revision: 6561 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:50:20 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:03:14 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-0960");
 script_tag(name: "insight", value: "ELSA-2007-0960 -  Important: hplip security update - [1.6.7-4.1.el5_0.3] - Fixed post scriptlet to make sure it restarts the daemon on upgrade (part of bug #320011). [1.6.7-4.1.el5_0.2] - Build requires openssl-devel (part of bug #320011). [1.6.7-4.1.el5_0.1] - Applied patch to fix CVE-2007-5208 (bug #320011)."); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.6");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

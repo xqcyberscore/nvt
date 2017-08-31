@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_groupwise_69424.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_novell_groupwise_69424.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # Novell Groupwise 'FileUploadServlet' Arbitrary File Access Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-0600");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6756 $");
 
  script_tag(name:"qod_type", value:"remote_app");
 
@@ -58,16 +58,15 @@ for more information.");
  script_tag(name: "summary" , value:"Novell Groupwise is prone to an arbitrary file-access vulnerability.");
  script_tag(name: "affected" , value:"Novell GroupWise 2014 before SP1");
   
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-09-03 15:23:42 +0200 (Wed, 03 Sep 2014)");
- script_summary("Determine if access to /gwadmin-console/gwAdminConsole/fileUpload is restricted");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_novell_groupwise_admin_console_detect.nasl");
  script_require_ports("Services/www", 9710);
  script_mandatory_keys("groupwise/admin_console/installed");
- script_exclude_keys("Settings/disable_cgi_scanning");
+
  exit(0);
 }
 
@@ -86,9 +85,7 @@ test = '------------------------OpenVAS\r\n' +
 
 len = strlen( test ) + 2;
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name(port:port);
 
 req = 'POST /gwadmin-console/gwAdminConsole/fileUpload HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsa_admin_login.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: gb_gsa_admin_login.nasl 6845 2017-08-03 14:41:54Z cfischer $
 #
 # GSA Default Admin Credentials
 #
@@ -25,16 +25,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:greenbone:security_assistant';
+CPE = "cpe:/a:greenbone:greenbone_security_assistant";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105354");
-  script_version("$Revision: 6132 $");
+  script_version("$Revision: 6845 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("GSA Default Admin Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-03 16:41:54 +0200 (Thu, 03 Aug 2017) $");
   script_tag(name:"creation_date", value:"2015-09-14 14:47:11 +0200 (Mon, 14 Sep 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");

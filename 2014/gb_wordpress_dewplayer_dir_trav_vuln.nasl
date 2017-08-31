@@ -30,12 +30,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5628 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2013-7240");
   script_bugtraq_id(64587);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-07 16:29:23 +0530 (Tue, 07 Jan 2014)");
   script_name("WordPress Advanced Dewplayer 'dew_file' Directory Traversal Vulnerability");
 
@@ -75,7 +75,6 @@ For updates refer to http://wordpress.org/plugins/advanced-dewplayer";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55941");
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2013/q4/566");
-  script_summary("Check if WordPress Advanced Dewplayer plugin is prone to directory traversal vulnerability");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

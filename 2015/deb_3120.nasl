@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3120.nasl 6170 2017-05-19 09:03:42Z teissa $
+# $Id: deb_3120.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3120-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,7 +30,7 @@
 if(description)
 {
     script_id(703120);
-    script_version("$Revision: 6170 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2013-1811", "CVE-2013-1934", "CVE-2013-4460", "CVE-2014-6316",
                   "CVE-2014-6387", "CVE-2014-7146", "CVE-2014-8553", "CVE-2014-8554",
                   "CVE-2014-8598", "CVE-2014-8986", "CVE-2014-8988", "CVE-2014-9089",
@@ -38,7 +38,7 @@ if(description)
                   "CVE-2014-9272", "CVE-2014-9280", "CVE-2014-9281", "CVE-2014-9388",
                   "CVE-2014-9506");
     script_name("Debian Security Advisory DSA 3120-1 (mantis - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-01-06 00:00:00 +0100 (Tue, 06 Jan 2015)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,7 +52,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "mantis on Debian Linux");
     script_tag(name: "insight",   value: "Mantis is an issue tracker that is
 implemented in PHP. The main features include:

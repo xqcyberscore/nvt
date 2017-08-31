@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_eol_lin.nasl 6428 2017-06-26 07:51:28Z cfischer $
+# $Id: gb_mariadb_eol_lin.nasl 6788 2017-07-21 19:16:52Z cfischer $
 #
 # MariaDB End Of Life Detection (Linux)
 #
@@ -30,18 +30,18 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108186");
-  script_version("$Revision: 6428 $");
+  script_version("$Revision: 6788 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-26 09:51:28 +0200 (Mon, 26 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-06-26 07:48:20 +0200 (Mon, 26 Jun 2017)");
   script_name("MariaDB End Of Life Detection (Linux)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MariaDB/installed", "Host/runs_unixoide");
-  script_require_ports("Services/mariadb", 3306);
 
   script_xref(name:"URL", value:"https://mariadb.org/about/maintenance-policy/");
 
@@ -75,11 +75,12 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( ret = product_reached_eol( cpe:CPE, version:version ) ) {
-  report = 'The MariaDB version has reached the end of life.\n\n' +
-           'Installed version: ' + version + '\n' +
-           'EOL version:       ' + ret['eol_version'] + '\n' +
-           'EOL date:          ' + ret['eol_date'] + '\n';
-
+  report = build_eol_message( name:"MariaDB",
+                              cpe:CPE,
+                              version:version,
+                              eol_version:ret["eol_version"],
+                              eol_date:ret["eol_date"],
+                              eol_type:"prod" );
   security_message( port:port, data:report );
   exit( 0 );
 }

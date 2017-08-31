@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_40944.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_moodle_40944.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # Moodle Multiple Vulnerabilities
 #
@@ -42,8 +42,8 @@ tag_solution = "Updates are available. Please see the references for more inform
 if (description)
 {
  script_id(100686);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-06-21 20:36:15 +0200 (Mon, 21 Jun 2010)");
  script_bugtraq_id(40944);
  script_cve_id("CVE-2010-2228", "CVE-2010-2229", "CVE-2010-2230", "CVE-2010-2231");
@@ -65,7 +65,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("gb_moodle_cms_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("Moodle/Version");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -77,9 +76,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
-if (!can_host_php(port:port)) exit(0);
 
 if(vers = get_version_from_kb(port:port,app:"moodle")) {
 

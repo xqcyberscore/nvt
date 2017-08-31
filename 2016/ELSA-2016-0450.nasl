@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0450.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: ELSA-2016-0450.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122900");
-script_version("$Revision: 5527 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-03-16 11:14:18 +0200 (Wed, 16 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0450");
 script_tag(name: "insight", value: "ELSA-2016-0450 -  kernel security update - kernel[2.6.18-409]- [fs] ext4: limit group search loop for non-extent files (Lukas Czerner) [1301100]- [fb] vm: convert fb_mmap to vm_iomap_memory() helper (Jacob Tanenbaum) [1035240] {CVE-2013-2596}- [s390] add dummy io_remap_pfn_range() to asm-s390/pgtable.h (Jacob Tanenbaum) [1035240] {CVE-2013-2596}- [mm] vm: add vm_iomap_memory() helper function (Jacob Tanenbaum) [1035240] {CVE-2013-2596}- [sched] prevent division by zero x->cpu_power (Denys Vlasenko) [1209728]- [xen] x86: fully ignore segment override for register-only ops (Mateusz Guzik) [1200373] {CVE-2015-2151}"); 
 script_tag(name : "solution", value : "update software");
@@ -41,7 +41,7 @@ script_tag(name:"cvss_base", value:"7.2");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

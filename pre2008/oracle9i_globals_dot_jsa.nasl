@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: oracle9i_globals_dot_jsa.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: oracle9i_globals_dot_jsa.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Oracle 9iAS Globals.jsa access
 #
 # Authors:
@@ -32,8 +32,8 @@ tag_solution = "Edit httpd.conf to disallow access to *.jsa.";
 if(description)
 {
  script_id(10850);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(4034);
  script_cve_id("CVE-2002-0562");
@@ -46,8 +46,7 @@ if(description)
  script_xref(name : "URL" , value : "http://www.oracle.com");
 
  summary = "Tests for Oracle9iAS Globals.jsa access";
- 
- 
+  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
  
@@ -62,14 +61,10 @@ if(description)
  exit(0);
 }
 
-# Check starts here
-
 include("http_func.inc");
 
 port = get_http_port(default:80);
 
-if(get_port_state(port))
-{
 # Make a request for one of the demo files .jsa files. This can be 
 # improved to use the output of webmirror.nasl, allowing the plugin to
 # test for this problem in configurations where the demo files have
@@ -87,4 +82,3 @@ if(get_port_state(port))
  	security_message(port);
 
  }
-}

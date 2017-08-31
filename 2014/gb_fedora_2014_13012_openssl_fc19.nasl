@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868417");
-  script_version("$Revision: 2798 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 13:57:39 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 6692 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-20 05:58:46 +0200 (Mon, 20 Oct 2014)");
   script_cve_id("CVE-2014-3567", "CVE-2014-3513", "CVE-2014-3566", "CVE-2014-3505",
                 "CVE-2014-3506", "CVE-2014-3507", "CVE-2014-3508", "CVE-2014-3509",
@@ -50,12 +50,11 @@ protocols.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2014-13012");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-October/141158.html");
-  script_summary("Check for the Version of openssl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

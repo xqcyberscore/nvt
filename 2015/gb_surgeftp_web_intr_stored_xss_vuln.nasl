@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_surgeftp_web_intr_stored_xss_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_surgeftp_web_intr_stored_xss_vuln.nasl 6700 2017-07-12 12:16:21Z cfischer $
 #
 # Surgeftp Web Interface Multiple Stored XSS Vulnerabilities
 #
@@ -28,10 +28,10 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.806805");
- script_version("$Revision: 5390 $");
+ script_version("$Revision: 6700 $");
  script_tag(name:"cvss_base", value:"3.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-12-18 09:54:55 +0530 (Fri, 18 Dec 2015)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_name("Surgeftp Web Interface Multiple Stored XSS Vulnerabilities");
@@ -69,9 +69,8 @@ if (description)
  script_family("Web application abuses");
  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("surgeftp/banner");
  script_require_ports("Services/www", 7021);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("surgeftp/banner");
 
  exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-024.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: gb_ms08-024.nasl 6526 2017-07-05 05:43:52Z cfischer $
 #
 # Microsoft Internet Explorer Data Stream Handling Remote Code Execution Vulnerability (947864)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(801488);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 6526 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:43:52 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-01-10 14:22:58 +0100 (Mon, 10 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -44,7 +44,7 @@ if(description)
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_ie_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
+  script_mandatory_keys("MS/IE/Version");
   script_require_ports(139, 445);
 
   script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary code with

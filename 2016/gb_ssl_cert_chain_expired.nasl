@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_cert_chain_expired.nasl 4686 2016-12-06 09:38:11Z cfi $
+# $Id: gb_ssl_cert_chain_expired.nasl 6883 2017-08-09 09:44:10Z cfischer $
 #
-# SSL/TLS: Certificate in Chain Expired
+# SSL/TLS: Certificate In Chain Expired
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,12 +28,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106237");
-  script_version("$Revision: 4686 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 10:38:11 +0100 (Tue, 06 Dec 2016) $");
+  script_version("$Revision: 6883 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-09 11:44:10 +0200 (Wed, 09 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-09-09 11:33:30 +0700 (Fri, 09 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_name("SSL/TLS: Certificate in Chain Expired");
+  script_name("SSL/TLS: Certificate In Chain Expired");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SSL and TLS");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
 # Description: Gentoo Linux security check
-# $Id: glsa-201603-01.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: glsa-201603-01.nasl 6591 2017-07-07 09:15:39Z cfischer $
 
 # Authors:
 # Eero Volotinen <eero.volotinen@solinor.fi>
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.121443");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 6591 $");
 script_tag(name:"creation_date", value:"2016-03-08 07:14:12 +0200 (Tue, 08 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:15:39 +0200 (Fri, 07 Jul 2017) $");
 script_name("Gentoo Linux Local Check: https://security.gentoo.org/glsa/201603-01");
 script_tag(name: "insight", value: "GIMPs network server, scriptfu, is vulnerable to the remote execution of arbitrary code via the python-fu-eval command due to not requiring authentication. Additionally, the X Window Dump (XWD) plugin is vulnerable to multiple buffer overflows possibly allowing the remote execution of arbitrary code or Denial of Service. The XWD plugin is vulnerable due to not validating large color entries."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"6.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/gentoo");
+script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
 script_category(ACT_GATHER_INFO);
 script_summary("Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201603-01");
 script_copyright("Eero Volotinen");

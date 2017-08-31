@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_44384.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_otrs_44384.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # OTRS 'AgentTicketZoom' HTML Injection Vulnerability
 #
@@ -30,14 +30,14 @@ CPE = "cpe:/a:otrs:otrs";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5323 $");
+ script_version("$Revision: 6705 $");
  script_tag(name:"deprecated", value:TRUE);
  script_cve_id("CVE-2010-4071");
  script_bugtraq_id(44384);
  script_tag(name:"cvss_base", value:"2.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-11-01 13:16:04 +0100 (Mon, 01 Nov 2010)");
  script_name("OTRS 'AgentTicketZoom' HTML Injection Vulnerability");
 
@@ -87,7 +87,6 @@ http://otrs.org/advisory/OSA-2010-03-en/";
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("secpod_otrs_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("OTRS/installed");
  exit(0);
 }

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0036.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: mgasa-2016-0036.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131206");
-script_version("$Revision: 5650 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-02-02 07:44:22 +0200 (Tue, 02 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0036");
 script_tag(name: "insight", value: "A directory traversal flaw while lxc-start in lxc before 1.0.8 in initially setting up the mounts for a container (CVE-2015-1335)."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"7.2");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0036");
 script_copyright("Eero Volotinen");

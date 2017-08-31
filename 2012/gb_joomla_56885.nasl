@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_56885.nasl 5999 2017-04-21 09:02:32Z teissa $
+# $Id: gb_joomla_56885.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # Joomla! JooProperty Component SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -47,14 +47,14 @@ if (description)
  script_bugtraq_id(56885);
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
- script_version ("$Revision: 5999 $");
+ script_version ("$Revision: 6720 $");
 
  script_name("Joomla! JooProperty Component SQL Injection and Cross Site Scripting Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56885");
  script_xref(name : "URL" , value : "http://www.joomla.org");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-12-12 12:59:16 +0100 (Wed, 12 Dec 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -62,7 +62,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("joomla_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("joomla/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -74,8 +73,6 @@ include("http_keepalive.inc");
 include("global_settings.inc");
    
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
 ex = '?option=com_jooproperty&view=booking&layout=modal&product_id=1%20and%201=0%20union%20select%20111111,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374+--';

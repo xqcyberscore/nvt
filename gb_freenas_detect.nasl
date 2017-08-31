@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freenas_detect.nasl 5723 2017-03-24 15:46:34Z cfi $
+# $Id: gb_freenas_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # FreeNAS Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
  script_id(100911);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5723 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:46:34 +0100 (Fri, 24 Mar 2017) $");
+ script_version("$Revision: 6701 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-11-19 13:40:50 +0100 (Fri, 19 Nov 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("FreeNAS Detection");
@@ -41,9 +41,9 @@ if(description)
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("lighttpd/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("lighttpd/banner");
+
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://freenas.org/");
  exit(0);

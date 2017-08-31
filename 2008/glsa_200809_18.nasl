@@ -43,8 +43,8 @@ advisory GLSA 200809-18.";
 if(description)
 {
  script_id(61683);
- script_version("$Revision: 4489 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
+ script_version("$Revision: 6596 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:21:37 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-09-28 06:42:28 +0200 (Sun, 28 Sep 2008)");
  script_cve_id("CVE-2008-1389", "CVE-2008-3912", "CVE-2008-3913", "CVE-2008-3914");
  script_tag(name:"cvss_base", value:"10.0");
@@ -58,7 +58,7 @@ if(description)
  script_copyright("Copyright (c) 2008 E-Soft Inc. http://www.securityspace.com");
  script_family("Gentoo Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("login/SSH/success", "ssh/login/gentoo");
+ script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

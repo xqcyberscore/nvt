@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(881885);
-  script_version("$Revision: 2775 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 10:00:27 +0100 (Fri, 04 Mar 2016) $");
+  script_version("$Revision: 6656 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:49:38 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-20 15:09:20 +0530 (Thu, 20 Feb 2014)");
   script_cve_id("CVE-2013-3839", "CVE-2013-5807", "CVE-2013-5891", "CVE-2013-5908",
                 "CVE-2014-0001", "CVE-2014-0386", "CVE-2014-0393", "CVE-2014-0401",
@@ -82,7 +82,7 @@ these issues. After installing this update, the MySQL server daemon
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

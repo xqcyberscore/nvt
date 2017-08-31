@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_1067_1.nasl 3863 2016-08-22 14:43:06Z teissa $
+# $Id: deb_1067_1.nasl 6616 2017-07-07 12:10:49Z cfischer $
 # Description: Auto-generated from advisory DSA 1067-1
 #
 # Authors:
@@ -45,8 +45,8 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 if(description)
 {
  script_id(56784);
- script_version("$Revision: 3863 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-22 16:43:06 +0200 (Mon, 22 Aug 2016) $");
+ script_version("$Revision: 6616 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:10:49 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-01-17 23:09:45 +0100 (Thu, 17 Jan 2008)");
  script_cve_id("CVE-2004-0427", "CVE-2005-0489", "CVE-2004-0394", "CVE-2004-0447", "CVE-2004-0554", "CVE-2004-0565", "CVE-2004-0685", "CVE-2005-0001", "CVE-2004-0883", "CVE-2004-0949", "CVE-2004-1016", "CVE-2004-1333", "CVE-2004-0997", "CVE-2004-1335", "CVE-2004-1017", "CVE-2005-0124", "CVE-2003-0985", "CVE-2003-0984", "CVE-2004-1070", "CVE-2004-1071", "CVE-2004-1072", "CVE-2004-1073", "CVE-2004-1074", "CVE-2004-0138", "CVE-2004-1068", "CVE-2004-1234", "CVE-2005-0003", "CVE-2004-1235", "CVE-2005-0504", "CVE-2005-0384", "CVE-2005-0135");
  script_tag(name:"cvss_base", value:"10.0");
@@ -60,7 +60,7 @@ if(description)
  script_copyright("Copyright (c) 2006 E-Soft Inc. http://www.securityspace.com");
  script_family("Debian Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842560");
-  script_version("$Revision: 2741 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:45:36 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6646 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:03:11 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-12-16 05:50:34 +0100 (Wed, 16 Dec 2015)");
   script_cve_id("CVE-2015-7201", "CVE-2015-7202", "CVE-2015-7203", "CVE-2015-7220",
                 "CVE-2015-7221", "CVE-2015-7204", "CVE-2015-7205", "CVE-2015-7207",
@@ -100,12 +100,11 @@ textures. If a user ...
   script_xref(name: "USN", value: "2833-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-December/003220.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

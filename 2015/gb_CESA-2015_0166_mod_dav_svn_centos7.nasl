@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882116");
-  script_version("$Revision: 6415 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+  script_version("$Revision: 6657 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:50:44 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-02-11 05:39:38 +0100 (Wed, 11 Feb 2015)");
   script_cve_id("CVE-2014-3528", "CVE-2014-3580", "CVE-2014-8108");
   script_tag(name:"cvss_base", value:"5.0");
@@ -77,7 +77,7 @@ serving Subversion repositories via the svn:// protocol.
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

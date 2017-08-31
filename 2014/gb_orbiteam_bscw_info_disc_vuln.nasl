@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orbiteam_bscw_info_disc_vuln.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_orbiteam_bscw_info_disc_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # OrbiTeam BSCW 'op' Parameter Information Disclosure Vulnerability
 #
@@ -27,12 +27,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804297");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-2301");
   script_bugtraq_id(67284);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-16 11:22:00 +0530 (Fri, 16 May 2014)");
   script_name("OrbiTeam BSCW 'op' Parameter Information Disclosure Vulnerability");
 
@@ -54,7 +54,6 @@ if (description)
   script_xref(name : "URL" , value : "https://xforce.iss.net/xforce/xfdb/93030");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126551");
   script_xref(name : "URL" , value : "https://www.redteam-pentesting.de/en/advisories/rt-sa-2014-003");
-  script_summary("Check if OrbiTeam BSCW is vulnerable to information disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

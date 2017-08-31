@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mac_lte_dissector_bof_vuln_win.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_wireshark_mac_lte_dissector_bof_vuln_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
 #
 # Wireshark MAC-LTE dissector Buffer Overflow Vulnerability (Windows)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with Wireshark and is prone to buffer
 if(description)
 {
   script_id(801832);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 6519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-01-31 05:37:34 +0100 (Mon, 31 Jan 2011)");
   script_bugtraq_id(45775);
   script_cve_id("CVE-2011-0444");
@@ -52,12 +52,11 @@ if(description)
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2011-02.html");
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=5530");
 
-  script_summary("Check for the version of Wireshark");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_wireshark_detect_win.nasl");
-  script_require_keys("SMB/WindowsVersion","Wireshark/Win/Ver");
+  script_mandatory_keys("Wireshark/Win/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842476");
-  script_version("$Revision: 6369 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
+  script_version("$Revision: 6646 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:03:11 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-10-06 12:42:54 +0200 (Tue, 06 Oct 2015)");
   script_cve_id("CVE-2015-4500", "CVE-2015-4501", "CVE-2015-4502", "CVE-2015-4504",
                 "CVE-2015-4506", "CVE-2015-4507", "CVE-2015-4508", "CVE-2015-4509",
@@ -106,7 +106,7 @@ Looben Yang discovered a use-after-free when using a shar ...
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

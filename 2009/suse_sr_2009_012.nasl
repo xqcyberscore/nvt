@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: suse_sr_2009_012.nasl 5220 2017-02-07 11:42:33Z teissa $
+# $Id: suse_sr_2009_012.nasl 6668 2017-07-11 13:34:29Z cfischer $
 # Description: Auto-generated from advisory SUSE-SR:2009:012
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "Update all out of date packages.";
 if(description)
 {
  script_id(64360);
- script_version("$Revision: 5220 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-07 12:42:33 +0100 (Tue, 07 Feb 2017) $");
+ script_version("$Revision: 6668 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:34:29 +0200 (Tue, 11 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-07-06 20:36:15 +0200 (Mon, 06 Jul 2009)");
  script_cve_id("CVE-2008-5515", "CVE-2008-6123", "CVE-2009-0033", "CVE-2009-0146", "CVE-2009-0147", "CVE-2009-0165", "CVE-2009-0166", "CVE-2009-0198", "CVE-2009-0509", "CVE-2009-0510", "CVE-2009-0511", "CVE-2009-0512", "CVE-2009-0580", "CVE-2009-0663", "CVE-2009-0749", "CVE-2009-0755", "CVE-2009-0756", "CVE-2009-0781", "CVE-2009-0783", "CVE-2009-0791", "CVE-2009-0799", "CVE-2009-0800", "CVE-2009-0949", "CVE-2009-1179", "CVE-2009-1180", "CVE-2009-1181", "CVE-2009-1182", "CVE-2009-1183", "CVE-2009-1194", "CVE-2009-1271", "CVE-2009-1272", "CVE-2009-1341", "CVE-2009-1386", "CVE-2009-1387", "CVE-2009-1391", "CVE-2009-1438", "CVE-2009-1572", "CVE-2009-1574", "CVE-2009-1632", "CVE-2009-1648", "CVE-2009-1855", "CVE-2009-1856", "CVE-2009-1857", "CVE-2009-1858", "CVE-2009-1859", "CVE-2009-1861", "CVE-2009-1882", "CVE-2009-1957", "CVE-2009-1958", "CVE-2009-1959");
  script_tag(name:"cvss_base", value:"10.0");
@@ -53,7 +53,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("SuSE Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/rpms");
+ script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name:"qod_type", value:"package");

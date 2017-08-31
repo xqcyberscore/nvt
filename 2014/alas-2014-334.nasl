@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2014-334.nasl 4514 2016-11-15 10:04:28Z cfi $
+# $Id: alas-2014-334.nasl 6663 2017-07-11 09:58:05Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120050");
-script_version("$Revision: 4514 $");
+script_version("$Revision: 6663 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:16:19 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:04:28 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2014-334");
 script_tag(name: "insight", value: "apache2/modsecurity.c in ModSecurity before 2.7.6 allows remote attackers to bypass rules by using chunked transfer coding with a capitalized Chunked value in the Transfer-Encoding HTTP header."); 
 script_tag(name : "solution", value : "Run yum update mod24_security to update your system.");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2014-334");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

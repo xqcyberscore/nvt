@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872771");
-  script_version("$Revision: 6406 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:42:26 +0200 (Thu, 22 Jun 2017) $");
+  script_version("$Revision: 6634 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-06-17 07:22:43 +0200 (Sat, 17 Jun 2017)");
   script_cve_id("CVE-2017-3313", "CVE-2017-3308", "CVE-2017-3309", "CVE-2017-3453", 
                 "CVE-2017-3456", "CVE-2017-3464", "CVE-2017-3238", "CVE-2017-3243", 
@@ -56,7 +56,7 @@ contains the standard MariaDB/MySQL client programs and generic MySQL files.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

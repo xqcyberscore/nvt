@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-076.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: secpod_ms12-076.nasl 6523 2017-07-04 15:46:12Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2720184)
 #
@@ -51,12 +51,12 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(902930);
-  script_version("$Revision: 6018 $");
+  script_version("$Revision: 6523 $");
   script_cve_id("CVE-2012-1885", "CVE-2012-1886", "CVE-2012-1887", "CVE-2012-2543");
   script_bugtraq_id(56425, 56426, 56430, 56431);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:46:12 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-11-14 08:46:19 +0530 (Wed, 14 Nov 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2720184)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51242/");
@@ -70,10 +70,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_office_products_version_900032.nasl",
-                      "secpod_ms_office_detection_900025.nasl");
-  script_require_keys("SMB/Office/Excel/Version", "MS/Office/Ver",
-                      "SMB/Office/XLView/Version");
+  script_dependencies("secpod_office_products_version_900032.nasl", "secpod_ms_office_detection_900025.nasl");
+  script_mandatory_keys("SMB/Office/Excel/Version", "MS/Office/Ver", "SMB/Office/XLView/Version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

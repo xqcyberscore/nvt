@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_ip_video_cam__server_default_admin_credentials.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_multiple_ip_video_cam__server_default_admin_credentials.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Multiple IP Video/Camera Server Web Interface Default Admin Credentials
 #
@@ -40,7 +40,7 @@ tag_solution = 'Change the password.';
 if (description)
 {
  script_oid(SCRIPT_OID); 
- script_version("$Revision: 5390 $");
+ script_version("$Revision: 6735 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Multiple IP Video/Camera Server Web Interface Default Admin Credentials");
@@ -49,9 +49,8 @@ if (description)
 
  script_xref(name : "URL" , value : "http://dariusfreamon.wordpress.com/2014/01/18/s3-s2071-s4071-ip-video-server-web-interface-default-admin-credentials/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-21 15:02:06 +0200 (Tue, 21 Jan 2014)");
- script_summary("Determine if it is possible to login with default credentials.");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");

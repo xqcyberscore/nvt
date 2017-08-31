@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(881814);
-  script_version("$Revision: 2867 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-16 12:11:15 +0100 (Wed, 16 Mar 2016) $");
+  script_version("$Revision: 6655 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-10-29 15:42:00 +0530 (Tue, 29 Oct 2013)");
   script_cve_id("CVE-2013-3829", "CVE-2013-4002", "CVE-2013-5772", "CVE-2013-5774", "CVE-2013-5778", "CVE-2013-5780", "CVE-2013-5782", "CVE-2013-5783", "CVE-2013-5784", "CVE-2013-5790", "CVE-2013-5797", "CVE-2013-5800", "CVE-2013-5802", "CVE-2013-5803", "CVE-2013-5804", "CVE-2013-5809", "CVE-2013-5814", "CVE-2013-5817", "CVE-2013-5820", "CVE-2013-5823", "CVE-2013-5825", "CVE-2013-5829", "CVE-2013-5830", "CVE-2013-5838", "CVE-2013-5840", "CVE-2013-5842", "CVE-2013-5849", "CVE-2013-5850", "CVE-2013-5851");
   script_tag(name:"cvss_base", value:"10.0");
@@ -106,7 +106,7 @@ on a domain not controlled by the code author, the ...
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

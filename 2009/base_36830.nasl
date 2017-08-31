@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: base_36830.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: base_36830.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # Basic Analysis and Security Engine Multiple Input Validation Vulnerabilities
 #
@@ -48,8 +48,8 @@ tag_solution = "Updates are available. Please see the references for details.";
 if (description)
 {
  script_id(100323);
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_version("$Revision: 6704 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-10-29 12:31:54 +0100 (Thu, 29 Oct 2009)");
  script_bugtraq_id(36830,18298);
  script_cve_id("CVE-2009-4590", "CVE-2009-4591", "CVE-2009-4592","CVE-2009-4837","CVE-2009-4838","CVE-2009-4839");
@@ -68,7 +68,6 @@ if (description)
  script_dependencies("base_detect.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("BASE/installed");
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -78,9 +77,6 @@ include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
-if (!can_host_php(port:port)) exit(0);
 
 if(!version = get_kb_item(string("www/", port, "/BASE")))exit(0);
 if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);

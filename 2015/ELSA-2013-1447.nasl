@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-1447.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: ELSA-2013-1447.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123549");
-script_version("$Revision: 6254 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:05:23 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-1447");
 script_tag(name: "insight", value: "ELSA-2013-1447 -  java-1.7.0-openjdk security update - [1.7.0.45-2.4.3.1.0.1.el5_10]- Add oracle-enterprise.patch- Fix DISTRO_NAME to 'Enterprise Linux'[1.7.0.45-2.4.3.1.el5]- Updated to icedtea 2.4.3- Resolves: rhbz#1017623[1.7.0.45-2.4.3.0.el5]- fixed and updated tapset- removed bootstrap- source 11 redeclared to 1111- added source12: TestCryptoLevel.java- removed upstreamed patch103 java-1.7.0-openjdk-arm-fixes.patch- removed unnecessary patch112 java-1.7.0-openjdk-doNotUseDisabledEcc.patch- added patch120: java-1.7.0-openjdk-freetype-check-fix.patch- fixed nss- cleaned sources- Resolves: rhbz#1017623[1.7.0.25-2.4.1.4.el5]- updated to icedtea 2.4.1- improoved handling of patch111 - nss-config-2.patch- backported uniquesuffix from 6.5- Resolves: rhbz#978421"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

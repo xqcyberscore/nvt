@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: netware_post_perl.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: netware_post_perl.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Novell NetWare HTTP POST Perl Code Execution Vulnerability
 #
 # Authors:
@@ -40,8 +40,8 @@ this service would be appropriate.";
 if(description)
 {
  script_id(11158);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(5520, 5521, 5522);
  script_tag(name:"cvss_base", value:"7.5");
@@ -62,26 +62,19 @@ if(description)
  family = "Netware";
  script_family(family);
 
- script_dependencies("http_version.nasl");
- script_require_ports("Services/www",80,2200);
+ script_dependencies("find_service.nasl", "http_version.nasl");
+ script_require_ports("Services/www", 80, 2200);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-#
-# ATTACK
-#
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-
-if (! get_port_state(port)) port = 2200;
-if (! get_port_state(port)) exit(0);
-
 
 http_POST = string("POST /perl/ HTTP/1.1\r\n",
 	 	   "Content-Type: application/octet-stream\r\n",

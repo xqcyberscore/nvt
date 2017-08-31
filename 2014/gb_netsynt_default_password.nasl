@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netsynt_default_password.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_netsynt_default_password.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Netsynt CRD Voice Router Telnet CLI Default Password
 #
@@ -39,7 +39,7 @@ tag_solution = 'Change the password.';
 if (description)
 {
  script_oid(SCRIPT_OID); 
- script_version("$Revision: 2780 $");
+ script_version("$Revision: 6715 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Netsynt CRD Voice Router Telnet CLI Default Password");
@@ -47,9 +47,8 @@ if (description)
 
  script_xref(name:"URL" , value:"http://dariusfreamon.wordpress.com/2014/02/04/netsynt-crd-voice-router-telnet-cli-default-password/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-02-06 15:02:06 +0200 (Thu, 06 Feb 2014)");
- script_summary("Determine if it is possible to login with default password.");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871326");
-  script_version("$Revision: 6357 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
+  script_version("$Revision: 6689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:50:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-03-06 06:50:03 +0100 (Fri, 06 Mar 2015)");
   script_cve_id("CVE-2013-5704", "CVE-2014-3581");
   script_tag(name:"cvss_base", value:"5.0");
@@ -97,7 +97,7 @@ SetHandler 'proxy:fcgi://127.0.0.1:9000'. (BZ#1136290)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

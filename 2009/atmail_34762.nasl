@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: atmail_34762.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: atmail_34762.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # @Mail 'admin.php' Cross-Site Scripting Vulnerabilities
 #
@@ -42,8 +42,8 @@ CPE = "cpe:/a:atmail:atmail";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_version("$Revision: 6704 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-07-22 19:53:45 +0200 (Wed, 22 Jul 2009)");
  script_bugtraq_id(34762);
  script_cve_id("CVE-2009-2455");
@@ -61,7 +61,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("atmail_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("Atmail/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -73,8 +72,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
 if(!isnull(vers) && vers >!< "unknown") {

@@ -1,5 +1,5 @@
 #CESA-2009:0315 63568 8
-# $Id: ovcesa2009_0315.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: ovcesa2009_0315.nasl 6650 2017-07-10 11:43:12Z cfischer $
 # Description: Auto-generated from advisory CESA-2009:0315 (firefox)
 #
 # Authors:
@@ -39,8 +39,8 @@ advisory CESA-2009:0315.";
 if(description)
 {
  script_id(63568);
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+ script_version("$Revision: 6650 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:43:12 +0200 (Mon, 10 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-03-13 19:24:56 +0100 (Fri, 13 Mar 2009)");
  script_cve_id("CVE-2009-0040", "CVE-2009-0771", "CVE-2009-0772", "CVE-2009-0773", "CVE-2009-0774", "CVE-2009-0775", "CVE-2009-0776", "CVE-2009-0777");
  script_tag(name:"cvss_base", value:"10.0");
@@ -54,7 +54,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("CentOS Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/rpms");
+ script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_encodes_denial_of_service_vuln_win.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_ruby_encodes_denial_of_service_vuln_win.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Ruby 'encodes' function Denial-of-Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ruby-lang:ruby";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804887");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-4975");
   script_bugtraq_id(68474);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-20 17:12:57 +0530 (Thu, 20 Nov 2014)");
   script_name("Ruby 'encodes' function Denial-of-Service Vulnerability (Windows)");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name:"URL", value:"https://bugs.ruby-lang.org/issues/10019");
   script_xref(name:"URL", value:"http://svn.ruby-lang.org/repos/ruby/tags/v2_1_3/ChangeLog");
 
-  script_summary("Check for the vulnerable version of Ruby");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Denial of Service");

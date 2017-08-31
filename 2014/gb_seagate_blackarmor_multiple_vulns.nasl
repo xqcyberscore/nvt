@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seagate_blackarmor_multiple_vulns.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_seagate_blackarmor_multiple_vulns.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # Seagate BlackArmor NAS Multiple Vulnerabilities
 #
@@ -47,7 +47,7 @@ if (description)
  script_cve_id("CVE-2013-6923","CVE-2013-6924","CVE-2013-6922");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6756 $");
 
  script_name("Seagate BlackArmor NAS Multiple Vulnerabilities");
 
@@ -55,16 +55,14 @@ if (description)
  script_xref(name:"URL", value:"http://www.nerdbox.it/seagate-nas-multiple-vulnerabilities/");
  script_xref(name:"URL", value:"http://www.seagate.com/external-hard-drives/network-storage/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-06 12:27:03 +0100 (Mon, 06 Jan 2014)");
- script_summary("Determine if it is possible to execute the id command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_seagate_blackarmor_nas_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("seagate_nas/installed");
 
  script_tag(name : "impact" , value : tag_impact);
@@ -80,7 +78,6 @@ include("http_func.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port)) exit(0);
 
 url = '/backupmgt/killProcess.php?session=OpenVAS;id;%20#';
 req = http_get(item:url, port:port);

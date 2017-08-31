@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-2588.nasl 6391 2017-06-21 09:59:48Z teissa $
+# $Id: ELSA-2013-2588.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123495");
-script_version("$Revision: 6391 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:04:38 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-2588");
 script_tag(name: "insight", value: "ELSA-2013-2588 - unbreakable enterprise kernel security update - [2.6.39-400.211.3]- ip6_output: do skb ufo init for peeked non ufo skb as well (Jiri Pirko) [Orabug: 17951806] {CVE-2013-4470}- ip_output: do skb ufo init for peeked non ufo skb as well (Jiri Pirko) [Orabug: 17951818] {CVE-2013-4470}- KVM: x86: Fix potential divide by 0 in lapic (CVE-2013-6367) (Andy Honig) [Orabug: 17951705] {CVE-2013-6367}"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

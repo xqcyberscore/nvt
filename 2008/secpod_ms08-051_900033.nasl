@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-051_900033.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_ms08-051_900033.nasl 6538 2017-07-05 11:38:27Z cfischer $
 # Description: Microsoft PowerPoint Could Allow Remote Code Execution Vulnerabilities (949785)
 #
 # Authors:
@@ -47,8 +47,8 @@ tag_summary = "This host is missing critical security update according to
 if(description)
 {
  script_id(900033);
- script_version("$Revision: 5370 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 6538 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
  script_bugtraq_id(30552, 30554, 30579);
  script_cve_id("CVE-2008-0120", "CVE-2008-0121", "CVE-2008-1455");
@@ -58,10 +58,9 @@ if(description)
  script_category(ACT_GATHER_INFO);
  script_family("Windows : Microsoft Bulletins");
  script_name("Microsoft PowerPoint Could Allow Remote Code Execution Vulnerabilities (949785)");
- script_dependencies("secpod_reg_enum.nasl", "secpod_office_products_version_900032.nasl",
-		     "secpod_ms_office_detection_900025.nasl");
- script_mandatory_keys("SMB/WindowsVersion", "SMB/Office/PowerPnt/Version");
- script_require_ports(139, 445);
+ script_dependencies("secpod_reg_enum.nasl", "secpod_office_products_version_900032.nasl", "secpod_ms_office_detection_900025.nasl");
+ script_mandatory_keys("MS/Office/Ver", "SMB/Office/PowerPnt/Version");
+
  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-051.mspx");
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name : "insight" , value : tag_insight);
@@ -75,10 +74,6 @@ if(description)
 
 
 include("version_func.inc");
-
-if(!get_kb_item("SMB/WindowsVersion")){
-  exit(0);
-}
 
 if(egrep(pattern:"^(9|10|11|12)\..*", string:get_kb_item("MS/Office/Ver")))
 {

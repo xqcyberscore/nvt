@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mem_corrup_vuln_jun14_win.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_realplayer_mem_corrup_vuln_jun14_win.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # RealNetworks RealPlayer '.3gp' Memory Corruption Vulnerability Jun14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:realnetworks:realplayer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804619");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-3444");
   script_bugtraq_id(67434);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-06 18:25:49 +0530 (Fri, 06 Jun 2014)");
   script_name("RealNetworks RealPlayer '.3gp' Memory Corruption Vulnerability Jun14 (Windows)");
 
@@ -76,7 +76,6 @@ features, remove the product or replace the product by another one.";
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126637");
-  script_summary("Check the vulnerable version of RealPlayer on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-502.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-502.nasl 6575 2017-07-06 13:42:08Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120367");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6575 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:24:44 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:42:08 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-502");
 script_tag(name: "insight", value: "Multiple integer overflow flaws and an integer signedness flaw, leading to heap-based buffer overflows, were found in the way FreeType handled Mac fonts. If a specially crafted font file was loaded by an application linked against FreeType, it could cause the application to crash or, potentially, execute arbitrary code with the privileges of the user running the application. (CVE-2014-9673 , CVE-2014-9674 )Multiple flaws were found in the way FreeType handled fonts in various formats. If a specially crafted font file was loaded by an application linked against FreeType, it could cause the application to crash or, possibly, disclose a portion of the application memory. (CVE-2014-9657 , CVE-2014-9658 , CVE-2014-9660 , CVE-2014-9661 , CVE-2014-9663 , CVE-2014-9664 , CVE-2014-9667 , CVE-2014-9669 , CVE-2014-9670 , CVE-2014-9671 , CVE-2014-9675 )"); 
 script_tag(name : "solution", value : "Run yum update freetype to update your system.");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2015-502");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

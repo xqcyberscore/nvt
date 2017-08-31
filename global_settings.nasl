@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: global_settings.nasl 5896 2017-04-07 14:47:18Z cfi $
+# $Id: global_settings.nasl 6905 2017-08-11 11:50:56Z cfischer $
 #
 # Global variable settings
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12288");
-  script_version("$Revision: 5896 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 16:47:18 +0200 (Fri, 07 Apr 2017) $");
+  script_version("$Revision: 6905 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-11 13:50:56 +0200 (Fri, 11 Aug 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -41,9 +41,11 @@ if(description)
   script_add_preference(name:"Regex pattern to exclude directories from CGI scanning : ", type:"entry", value:"/(index\.php|image|img|css|js$|js/|javascript|style|theme|icon|jquery|graphic|grafik|picture|bilder)");
   script_add_preference(name:"Use regex pattern to exclude directories from CGI scanning : ", type:"checkbox", value:"yes");
 
+  script_add_preference(name:"Enable generic web application scanning", type:"checkbox", value:"no");
+
   script_add_preference(name:"Network type", type:"radio", value:"Mixed (use RFC 1918);Private LAN; Public WAN (Internet)");
   script_add_preference(name:"Report verbosity", type:"radio", value:"Normal;Quiet;Verbose");
- 
+
   script_add_preference(name:"Log verbosity", type:"radio", value:"Normal;Quiet;Verbose;Debug");
   script_add_preference(name:"Debug level", type:"entry", value:"0");
   script_add_preference(name:"HTTP User-Agent", type:"entry", value: "");
@@ -61,8 +63,11 @@ if(description)
 
 include("network_func.inc");
 
-opt = script_get_preference("Enable CGI scanning");
-if ( opt == "no" ) set_kb_item(name:"Settings/disable_cgi_scanning", value:TRUE);
+opt = script_get_preference( "Enable CGI scanning" );
+if( opt == "no" ) set_kb_item( name:"Settings/disable_cgi_scanning", value:TRUE );
+
+opt = script_get_preference( "Enable generic web application scanning" );
+if( opt == "no" ) set_kb_item( name:"Settings/disable_generic_webapp_scanning", value:TRUE );
 
 opt = script_get_preference( "Regex pattern to exclude directories from CGI scanning : " );
 if( ! opt ) {
@@ -72,44 +77,43 @@ if( ! opt ) {
 }
 
 opt = script_get_preference( "Use regex pattern to exclude directories from CGI scanning : " );
-if ( opt != "no" ) set_kb_item( name:"Settings/use_cgi_dirs_exclude_pattern", value:TRUE );
+if( opt != "no" ) set_kb_item( name:"Settings/use_cgi_dirs_exclude_pattern", value:TRUE );
 
-opt = script_get_preference("Report verbosity");
-if (! opt) opt = "Normal";
-set_kb_item(name:"global_settings/report_verbosity", value:opt);
+opt = script_get_preference( "Report verbosity" );
+if( ! opt ) opt = "Normal";
+set_kb_item( name:"global_settings/report_verbosity", value:opt );
 
-opt = script_get_preference("Log verbosity");
-if (! opt) opt = "Quiet";
-set_kb_item(name:"global_settings/log_verbosity", value:opt);
+opt = script_get_preference( "Log verbosity" );
+if( ! opt ) opt = "Quiet";
+set_kb_item( name:"global_settings/log_verbosity", value:opt );
 
-opt = script_get_preference("Debug level");
-if (! opt) opt = "0";
-set_kb_item(name:"global_settings/debug_level", value:int(opt));
+opt = script_get_preference( "Debug level" );
+if( ! opt ) opt = "0";
+set_kb_item( name:"global_settings/debug_level", value:int( opt ) );
 
-opt = script_get_preference("Network type");
-if (! opt) opt = "Mixed (RFC 1918)";
-set_kb_item(name:"global_settings/network_type", value:opt);
+opt = script_get_preference( "Network type" );
+if( ! opt ) opt = "Mixed (RFC 1918)";
+set_kb_item( name:"global_settings/network_type", value:opt );
 
-opt = script_get_preference("HTTP User-Agent");
-if (! opt) opt = "Mozilla/5.0 [en] (X11, U; OpenVAS " + OPENVAS_VERSION + ")";
-set_kb_item(name:"global_settings/http_user_agent", value:opt);
-set_kb_item(name:"http/user-agent", value:opt);
+opt = script_get_preference( "HTTP User-Agent" );
+if( ! opt ) opt = "Mozilla/5.0 [en] (X11, U; OpenVAS " + OPENVAS_VERSION + ")";
+set_kb_item( name:"global_settings/http_user_agent", value:opt );
+set_kb_item( name:"http/user-agent", value:opt );
 
-opt = script_get_preference("Strictly unauthenticated");
-if ( opt == "yes" ) set_kb_item( name:"global_settings/authenticated_scans_disabled", value:TRUE) ;
+opt = script_get_preference( "Strictly unauthenticated" );
+if( opt == "yes" ) set_kb_item( name:"global_settings/authenticated_scans_disabled", value:TRUE );
 
-opt = script_get_preference("Exclude printers from scan");
-if ( opt == "yes" ) set_kb_item( name:"global_settings/exclude_printers", value:"yes") ;
+opt = script_get_preference( "Exclude printers from scan" );
+if( opt == "yes" ) set_kb_item( name:"global_settings/exclude_printers", value:"yes" );
 
 cgi_bin = cgibin();
-cgis = split( cgi_bin, sep:":", keep:FALSE);
-foreach cgi ( cgis )
-{
-  set_kb_item(name:"/user/cgis", value:cgi);
+cgis = split( cgi_bin, sep:":", keep:FALSE );
+foreach cgi( cgis ) {
+  set_kb_item( name:"/user/cgis", value:cgi );
 }
 
-opt = script_get_preference("Enable SSH Debug");
-if ( opt == "yes" ) set_kb_item( name:"global_settings/ssh/debug", value:TRUE) ;
+opt = script_get_preference( "Enable SSH Debug" );
+if( opt == "yes" ) set_kb_item( name:"global_settings/ssh/debug", value:TRUE );
 
 if( TARGET_IS_IPV6() )
   set_kb_item( name:"keys/TARGET_IS_IPV6", value:TRUE );
@@ -122,4 +126,3 @@ if( islocalnet() )
 
 if( is_private_addr() )
   set_kb_item( name:"keys/is_private_addr", value:TRUE );
-

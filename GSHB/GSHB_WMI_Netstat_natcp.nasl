@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_Netstat_natcp.nasl 5486 2017-03-04 18:08:45Z cfi $
+# $Id: GSHB_WMI_Netstat_natcp.nasl 6816 2017-07-31 09:28:27Z cfischer $
 #
 # Get Windows TCP Netstat over win_cmd_exec
 #
@@ -32,8 +32,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94251");
-  script_version("$Revision: 5486 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-04 19:08:45 +0100 (Sat, 04 Mar 2017) $");
+  script_version("$Revision: 6816 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-31 11:28:27 +0200 (Mon, 31 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:12:52 +0200 (Tue, 08 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_dependencies("toolcheck.nasl", "smb_login.nasl", "os_detection.nasl");
-  script_mandatory_keys("Tools/Present/wmi", "SMB/password", "SMB/login", "Host/runs_windows");
+  script_mandatory_keys("Compliance/Launch/GSHB", "Tools/Present/wmi", "SMB/password", "SMB/login", "Host/runs_windows");
 
   script_tag(name:"summary", value:"Get Windows TCP Netstat over win_cmd_exec");
 
@@ -56,24 +56,21 @@ include("host_details.inc");
 
 if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
+samba = get_kb_item( "SMB/samba" );
+if( samba ) exit( 0 );
+
 if( ! defined_func("win_cmd_exec") ) exit( 0 );
 
 host    = get_host_ip();
 usrname = get_kb_item("SMB/login");
 domain  = get_kb_item("SMB/domain");
-if (domain){
-  usrname = domain + '\\' + usrname;
-}
 passwd  = get_kb_item("SMB/password");
+if (domain){
+  usrname = domain + '/' + usrname;
+}
 
 if(!host || !usrname || !passwd){
-    set_kb_item(name:"GSHB/WMI/NETSTAT/log", value:"nocred");
-    exit(0);
-}
-
-samba = get_kb_item("SMB/samba");
-
-if(samba){
+  set_kb_item(name:"GSHB/WMI/NETSTAT/log", value:"nocred");
   exit(0);
 }
 

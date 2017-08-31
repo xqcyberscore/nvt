@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_dos_vuln_jul09.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: gb_ms_ie_dos_vuln_jul09.nasl 6527 2017-07-05 05:56:34Z cfischer $
 #
 # Microsoft Internet Explorer Denial Of Service Vulnerability - July09
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800669");
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6527 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-07-22 21:36:53 +0200 (Wed, 22 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_ms_ie_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
+  script_mandatory_keys("MS/IE/Version");
 
   script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/9160");
   script_xref(name:"URL", value:"http://www.g-sec.lu/one-bug-to-rule-them-all.html");

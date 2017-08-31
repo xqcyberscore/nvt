@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ajaxplorer_51960.nasl 5625 2017-03-20 15:02:04Z cfi $
+# $Id: gb_ajaxplorer_51960.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # AjaXplorer 'doc_file' Parameter Local File Disclosure Vulnerability
 #
@@ -29,18 +29,17 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103422");
   script_bugtraq_id(51960);
-  script_version ("$Revision: 5625 $");
+  script_version ("$Revision: 6720 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("AjaXplorer 'doc_file' Parameter Local File Disclosure Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:02:04 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-02-15 12:40:42 +0100 (Wed, 15 Feb 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("gb_AjaXplorer_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("AjaXplorer/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51960");

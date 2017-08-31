@@ -43,8 +43,8 @@ tag_solution = "Please install the updates provided by SuSE.";
 if(description)
 {
  script_id(66278);
- script_version("$Revision: 5148 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+ script_version("$Revision: 6666 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:13:36 +0200 (Tue, 11 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-11-17 21:42:12 +0100 (Tue, 17 Nov 2009)");
  script_cve_id("CVE-2009-3555");
  script_tag(name:"cvss_base", value:"5.8");
@@ -58,7 +58,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("SuSE Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:suse:linux_enterprise_server", "ssh/login/rpms");
+ script_mandatory_keys("ssh/login/suse_sles", "ssh/login/rpms");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name:"qod_type", value:"package");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dup_scount_enterprise_server_login_bof_vuln.nasl 5231 2017-02-08 11:52:34Z teissa $
+# $Id: gb_dup_scount_enterprise_server_login_bof_vuln.nasl 6586 2017-07-07 06:23:25Z cfischer $
 #
 # Dup Scout Enterprise Server 'Login' Buffer Overflow Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:dup:dup_scout_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809487");
-  script_version("$Revision: 5231 $");
+  script_version("$Revision: 6586 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 08:23:25 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-12-02 12:30:49 +0530 (Fri, 02 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Dup Scout Enterprise Server 'Login' Buffer Overflow Vulnerability");
@@ -54,11 +54,14 @@ if(description)
 
   script_tag(name: "affected" , value:"Dup Scout Enterprise version 9.1.14 and prior.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  08th February, 2017. Information regarding this issue will be updated once the
-  solution details are available. For updates refer to http://www.dupscout.com");
+  script_tag(name: "solution" , value:"No solution or patch was made available for at least one year
+  since disclosure of this vulnerability. Likely none will be provided anymore. General solution options
+  are to upgrade to a newer release, disable respective features, remove the product or replace the product
+  by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  script_xref(name : "URL" , value : "http://www.dupscout.com");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40832/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -68,10 +71,6 @@ if(description)
   script_require_ports("Services/www", 8080);
   exit(0);
 }
-
-##
-#Code Starts Here
-##
 
 include("host_details.inc");
 include("version_func.inc");

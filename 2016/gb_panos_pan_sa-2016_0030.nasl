@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0030.nasl 4351 2016-10-25 15:12:03Z mime $
+# $Id: gb_panos_pan_sa-2016_0030.nasl 6840 2017-08-03 08:38:20Z ckuersteiner $
 #
 # Palo Alto PAN-OS OpenSSL Vulnerabilities (PAN-SA-2016-0030)
 #
@@ -32,7 +32,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140017");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 4351 $");
+ script_version ("$Revision: 6840 $");
 
  script_name("Palo Alto PAN-OS OpenSSL Vulnerabilities (PAN-SA-2016-0030)");
 
@@ -48,10 +48,10 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-25 17:12:03 +0200 (Tue, 25 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-03 10:38:20 +0200 (Thu, 03 Aug 2017) $");
  script_tag(name:"creation_date", value:"2016-10-25 14:27:55 +0200 (Tue, 25 Oct 2016)");
  script_category(ACT_GATHER_INFO);
- script_family("General");
+ script_family("Palo Alto PAN-OS Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_palo_alto_panOS_version.nasl");
  script_mandatory_keys("palo_alto_pan_os/version");

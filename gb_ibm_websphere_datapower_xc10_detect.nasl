@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_datapower_xc10_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_ibm_websphere_datapower_xc10_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # IBM WebSphere DataPower XC10 Appliance Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808183");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6701 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-07-05 13:49:16 +0530 (Tue, 05 Jul 2016)");
   script_name("IBM WebSphere DataPower XC10 Appliance Version Detection");
 
@@ -45,9 +45,9 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("IBM_WebSphere/banner");
   script_require_ports("Services/www", 80, 443);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("IBM_WebSphere/banner");
+
   exit(0);
 }
 
@@ -65,15 +65,9 @@ xc_port = 0;
 
 ##Get HTTP Port
 xc_port = get_http_port(default:80);
-if(!xc_port){
- exit(0);
-}
 
 ## Get host name or IP
 host = http_host_name(port:xc_port);
-if(!host){
-  exit(0);
-}
 
 banner = get_http_banner(port:xc_port);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_snmp_agents_detect_lin.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_hp_snmp_agents_detect_lin.nasl 6602 2017-07-07 10:09:52Z cfischer $
 #
 # HP SNMP Agents Version Detection (Linux)
 #
@@ -35,8 +35,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5499 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version("$Revision: 6602 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:09:52 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-05-08 12:53:44 +0530 (Tue, 08 May 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -45,8 +45,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
-  script_require_keys("ssh/login/rpms");
-  script_mandatory_keys("login/SSH/Linux");
+  script_mandatory_keys("ssh/login/rpms", "login/SSH/Linux");
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_func.inc 6008 2017-04-21 14:54:44Z cfi $
+# $Id: http_func.inc 6722 2017-07-14 08:54:37Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6008 $
+# $Revision: 6722 $
 #
 ###############################################################################
 
@@ -785,7 +785,7 @@ function extract_location_from_redirect( port, data, debug ) {
 
     location_host = ereg_replace( string:location, pattern:"(https:|http:)?//([^/]*)/.*", replace:"\2", icase:TRUE );
 
-    #if( debug ) display( 'DEBUG: Location header is pointing to host/ip: "' + location_host + '"\n' );
+    if( debug ) display( 'DEBUG: Location header is pointing to host/ip: "' + location_host + '"\n' );
 
     # The location header is pointing to the same hostname / ip
     if( host >< location_host || ip >< location_host ) {

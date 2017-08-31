@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_web_gateway_info_disc_vuln.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_mcafee_web_gateway_info_disc_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # McAfee Web Gateway Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mcafee:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804839");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-6064");
   script_bugtraq_id(69556);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-09 17:31:29 +0530 (Tue, 09 Sep 2014)");
 
   script_name("McAfee Web Gateway Information Disclosure Vulnerability");
@@ -62,7 +62,6 @@ if(description)
   7.3.2.9 or 7.4.2 or later, For updates refer to http://www.mcafee.com/us");
 
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1030675");
-  script_summary("Check for the vulnerable version of McAfee Web Gateway");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

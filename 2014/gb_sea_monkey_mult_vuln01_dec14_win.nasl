@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sea_monkey_mult_vuln01_dec14_win.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_sea_monkey_mult_vuln01_dec14_win.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # SeaMonkey Multiple Vulnerabilities-01 Dec14 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:seamonkey";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805223");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-1594", "CVE-2014-1593", "CVE-2014-1592", "CVE-2014-1590",
                 "CVE-2014-1589", "CVE-2014-1588", "CVE-2014-1587", "CVE-2014-8632",
                 "CVE-2014-8631", "CVE-2014-1591");
@@ -37,7 +37,7 @@ if(description)
                     71399);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-16 11:56:05 +0530 (Tue, 16 Dec 2014)");
   script_name("SeaMonkey Multiple Vulnerabilities-01 Dec14 (Windows)");
 
@@ -81,7 +81,6 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/60558");
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2014-83");
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2014-84");
-  script_summary("Check for the vulnerable version of SeaMonkey on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

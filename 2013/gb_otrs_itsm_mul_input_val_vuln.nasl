@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_itsm_mul_input_val_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_otrs_itsm_mul_input_val_vuln.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # OTRS ITSM Multiple Input Validation Vulnerability
 #
@@ -31,13 +31,13 @@ ITSMCPE = "cpe:/a:otrs:otrs_itsm";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6104 $");
+  script_version("$Revision: 6755 $");
   script_cve_id("CVE-2013-4717", "CVE-2013-4718");
   script_bugtraq_id(61036, 61037);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-09-27 16:44:31 +0530 (Fri, 27 Sep 2013)");
   script_name("OTRS ITSM Multiple Input Validation Vulnerability");
 
@@ -87,7 +87,6 @@ http://otrs.org/advisory/OSA-2013-05-en/";
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("secpod_otrs_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("OTRS/installed");
 
   exit(0);
@@ -134,4 +133,3 @@ if(itsmvers = get_app_version(cpe:ITSMCPE, nvt:SCRIPT_OID, port:port))
     exit(0);
   }
 }
-

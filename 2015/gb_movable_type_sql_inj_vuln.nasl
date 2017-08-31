@@ -29,11 +29,11 @@ CPE = "cpe:/a:sixapart:movable_type";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805390");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6497 $");
   script_cve_id("CVE-2014-9057");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-27 17:12:55 +0530 (Wed, 27 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Movable Type SQL Injection Vulnerability");
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://movabletype.org/documentation/appendices/release-notes/6.0.6.html");
 
-  script_summary("Check the version Movable Type is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

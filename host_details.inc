@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 6416 2017-06-23 10:02:44Z cfischer $
+# $Id: host_details.inc 6925 2017-08-15 12:08:40Z asteins $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6416 $
+# $Revision: 6925 $
 #
 ###############################################################################
 
@@ -118,11 +118,17 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.111067", # sw_http_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.111068", # sw_mail_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.111069", # sw_telnet_os_detection.nasl
+    "1.3.6.1.4.1.25623.1.0.108192", # gb_mysql_mariadb_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.10884",  # ntp_open.nasl
-    "1.3.6.1.4.1.25623.1.0.10401",  # smb_reg_service_pack.nasl
     "1.3.6.1.4.1.25623.1.0.101013", # remote-detect-MDNS.nasl
+    "1.3.6.1.4.1.25623.1.0.10144",  # mssqlserver_detect.nasl
     "1.3.6.1.4.1.25623.1.0.140000", # gb_apple_tv_version.nasl
     "1.3.6.1.4.1.25623.1.0.105899", # gb_apple_tv_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108200", # gb_upnp_os_detection.nasl
+    "1.3.6.1.4.1.25623.1.0.108201", # gb_sip_os_detection.nasl
+    "1.3.6.1.4.1.25623.1.0.140096", # gb_check_mk_agent_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.100062", # ms_rdp_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108044", # dcetest.nasl
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl
 );
@@ -174,15 +180,20 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.111067", # sw_http_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.111068", # sw_mail_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.111069", # sw_telnet_os_detection.nasl
+    "1.3.6.1.4.1.25623.1.0.108192", # gb_mysql_mariadb_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.10884",  # ntp_open.nasl
-    "1.3.6.1.4.1.25623.1.0.10401",  # smb_reg_service_pack.nasl
     "1.3.6.1.4.1.25623.1.0.101013", # remote-detect-MDNS.nasl
+    "1.3.6.1.4.1.25623.1.0.10144",  # mssqlserver_detect.nasl
     "1.3.6.1.4.1.25623.1.0.140000", # gb_apple_tv_version.nasl
     "1.3.6.1.4.1.25623.1.0.105899", # gb_apple_tv_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108200", # gb_upnp_os_detection.nasl
+    "1.3.6.1.4.1.25623.1.0.108201", # gb_sip_os_detection.nasl
+    "1.3.6.1.4.1.25623.1.0.140096", # gb_check_mk_agent_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.100062", # ms_rdp_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108044", # dcetest.nasl
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl
 );
-
 
 function register_host_detail( name, value, desc ) {
 
@@ -338,7 +349,7 @@ function host_runs() {
 
   #nb: update this to include possible cpes and txt from ssh_detect.nasl, gb_ssh_os_detection.nasl, gather-package-list.nasl and and other *_os_detection.nasl
   if( "linux" >< tolower( ospattern ) )
-    ospattern = '(' + ospattern + '|ubuntu|debian|bsd|opensuse|fedora|suse|redhat|red hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|' +
+    ospattern = '(' + ospattern + '|apc:aos|ubuntu|debian|bsd|opensuse|fedora|suse|redhat|red hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|' +
                 'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen)';
 
   if( eregmatch( pattern:ospattern, string:best_os, icase:TRUE ) )
@@ -808,7 +819,7 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
   local_var t_oid, t_loc, app_details, x, x_oid, x_cpe, x_loc, x_port, x_proto, x_service, ret_arr;
 
   if( ! base_cpe = get_base_cpe( cpe:cpe ) ) {
-    set_kb_item( name: "nvt_debug_cpe_syntax/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_details" );
+    set_kb_item( name:"nvt_debug_cpe_syntax/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_details" );
     return;
   }
 
@@ -1011,33 +1022,75 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
 
 }
 
-function get_version_from_cpe( cpe )
-{
+function get_version_from_cpe( cpe ) {
+
   local_var cpe, token_val, tokens, app_versions;
 
-  if( "x64" >< cpe )
-    token_val = 1;
-  else
-    token_val = 0;
+  if( isnull ( cpe ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_version_from_cpe" );
+    return;
+  }
 
-  tokens = split( cpe, sep:":", keep:0 );
+  tokens = split( cpe, sep:":", keep:FALSE );
 
-  if (!isnull(tokens[4 + token_val])) {
-    if (!isnull(tokens[5 + token_val])) { # for example cpe:/a:extplorer:extplorer:2.1.0:RC5
-      app_versions = tokens[4 + token_val] + tokens[5 + token_val];
+  # Possible CPEs are e.g.
+  # cpe:/a:extplorer:extplorer:2.1.0:RC5
+  # cpe:/o:canonical:ubuntu_linux:12.04:-:lts
+  # cpe:/o:microsoft:windows_7:::x64
+  # nb: Some are also setting a CPE with a wrong syntax like cpe:/a:vendor:product:x64:1.1
+  # which should be cpe:/a:vendor:product:1.1::x64
+
+  # Test-cases:
+  # CPE: cpe:/a:foo0:bar0:x64:1.2.3 , expected version: 1.2.3, returned version: 1.2.3
+  # CPE: cpe:/a:foo1:bar1:x64:1.2.3:RC1 , expected version: 1.2.3RC1 , returned version: 1.2.3RC1
+  # CPE: cpe:/a:foo2:bar2:1.2.3 , expected version: 1.2.3, returned version: 1.2.3
+  # CPE: cpe:/a:foo3:bar3:1.2.3:RC2 , expected version: 1.2.3RC2, returned version: 1.2.3RC2
+  # CPE: cpe:/a:foo4:bar4:1.2.3:RC3:x64 , expected version: 1.2.3RC3, returned version: 1.2.3RC3
+  # CPE: cpe:/a:foo5:bar5:1.2.3:RC4:x32 , expected version: 1.2.3RC4, returned version: 1.2.3RC4
+  # CPE: cpe:/a:foo6:bar6:1.2.3:-:x64 , expected version: 1.2.3, returned version: 1.2.3
+  # CPE: cpe:/a:foo7:bar7:1.2.3:-:x32 , expected version: 1.2.3, returned version: 1.2.3
+  # CPE: cpe:/a:foo8:bar8:1.2.3::x64 , expected version: 1.2.3, returned version: 1.2.3
+  # CPE: cpe:/a:foo9:bar9:1.2.3::x32 , expected version: 1.2.3, returned version: 1.2.3
+  # CPE: cpe:/a:foo10:bar10:-:-:x64 , expected version: NULL, returned version:
+  # CPE: cpe:/a:foo11:bar11:-:-:x32 , expected version: NULL, returned version:
+  # CPE: cpe:/a:foo12:bar12:::x64 , expected version: NULL, returned version:
+  # CPE: cpe:/a:foo13:bar13:::x32 , expected version: NULL, returned version:
+  # CPE: cpe:/a:foo14:bar14::sp2:x64 , expected version: sp2, returned version: sp2
+  # CPE: cpe:/a:foo15:bar15::sp2:x32 , expected version: sp2, returned version: sp2
+  # CPE: cpe:/a:foo16:bar16:-:sp2:x64 , expected version: sp2, returned version: sp2
+  # CPE: cpe:/a:foo17:bar17:-:sp2:x32 , expected version: sp2, returned version: sp2
+
+  if( ! isnull( tokens[4] ) ) {
+
+    # catch the wrong CPE syntax cpe:/a:foo0:bar0:x64:1.2.3 described above
+    if( tokens[4] == "x64" )
+      token_val = 1;
+    else
+      token_val = 0;
+
+    # handle cpe:/a:foo3:bar3:1.2.3:RC2
+    if( ! isnull( tokens[5 + token_val] ) &&
+        tokens[5 + token_val] != "-" && tokens[5 + token_val] != "" ) {
+
+      if( tokens[4 + token_val] != "-" && tokens[4 + token_val] != "" )
+        app_versions = tokens[4 + token_val] + "." + tokens[5 + token_val]; # handle cpe:/a:foo3:bar3:1.2.3:RC2
+      else
+        app_versions = tokens[5 + token_val]; # handle cpe:/a:foo10:bar10:-:sp2
+
     } else {
-      app_versions = tokens[4 + token_val];
+      # handle cpe:/a:foo2:bar2:1.2.3
+      if( tokens[4 + token_val] != "-" && tokens[4 + token_val] != "" )
+        app_versions = tokens[4 + token_val];
     }
   }
 
   if( ! app_versions ) return;
 
   return app_versions;
-
 }
 
-function get_base_cpe( cpe )
-{
+function get_base_cpe( cpe ) {
+
   local_var cpe, base_cpe, bc;
 
   if( ! cpe ) return;
@@ -1050,7 +1103,6 @@ function get_base_cpe( cpe )
   base_cpe = bc[0] + ':' + bc[1] + ':' + bc[2] + ':' + bc[3];
 
   return base_cpe;
-
 }
 
 function build_detection_report( app, version, install, regpath, cpe, concluded, concludedUrl, extra ) {
@@ -1059,7 +1111,7 @@ function build_detection_report( app, version, install, regpath, cpe, concluded,
 
   if( ! version ) version = 'unknown';
 
-  report = 'Detected ' + app + '\n' + 
+  report = 'Detected ' + app + '\n' +
            '\nVersion:  ' + version +
            '\nLocation: ' + install;
 
@@ -1135,7 +1187,7 @@ function register_and_report_os( os, version, cpe, banner_type, port, proto, ban
 
   # Keep down here as we only need this defaults for the set_kb_item
   if( ! port ) port = "0";
-  set_kb_item( name:"os_detection_report/" + oid + "/" + port + "/" + proto, value:report );
+  set_kb_item( name:"os_detection_report/reports/" + oid + "/" + port + "/" + proto, value:report );
 
   # For setting the "Host/runs_windows" or "Host/runs_unixoide" key in os_detection.nasl
   if( ! isnull( runs_key ) ) {
@@ -1172,22 +1224,44 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
   if( banner == '* ID ("name" "Dovecot")' ||
       banner == "+OK Dovecot ready." ||
       banner == "dnsmasq" ||
+      banner == "220 Welcome message" || # Default welcome messages on some FTP servers
+      banner == "Server:" ||
+      banner == "Server: " ||
       banner == "Server: squid" ||
       banner == "Server: nginx" ||
       banner == "Server: Apache" ||
+      banner == "Server: lighttpd" ||
+      banner == "Server: sfcHttpd" ||
+      banner == "Server: Allegro-Software-RomPager" || # Vendor: "Works with any OS vendor and will function without an OS if needed"
+      banner == "SSH-2.0-RomSShell" || # Vendor: "Works with any OS vendor and will function without an OS if needed"
       banner == "SSH-2.0-OpenSSH" ||
       banner == "SSH-2.0-OpenSSH_" ||
       banner == "Server: Apache-Coyote/1.0" ||
       banner == "Server: Apache-Coyote/1.1" ||
+      banner == "Server: HASP LM" || # Is running under windows and linux
+      banner == "Server: Mbedthis-Appweb" || # Is running under various OS variants
       banner == "+OK POP3 ready" ||
-      banner == "Server: NessusWWW" ||
+      banner == "220 FTP server ready" ||
+      banner == "Server: NessusWWW" || # Nessus could be running on Windows, Linux/Unix or MacOS
+      "erver: BBC " >< banner || # OV Communication Broker runs on various different OS variants
+      egrep( pattern:"^220 ([0-9a-zA-Z._\-]+) ESMTP$", string:banner ) || # E.g. 220 hostname ESMTP
+      egrep( pattern:"ESMTP Exim ([0-9._]+) ", string:banner ) || # e.g. 220 host ESMTP Exim 4.84_2 Tue, 01 Aug 2017 13:01:18 +0200
       egrep( pattern:"^X-Powered-By: PHP/([0-9.]+)$", string:banner ) ||
-      egrep( pattern:"^Server: CUPS/([0-9.]+) IPP/([0-9.]+)$", string:banner ) ||
+      egrep( pattern:"^Server: CUPS/([0-9.]+) IPP/([0-9.]+)$", string:banner ) || # Handled at the bottom of sw_http_os_detection.nasl
       egrep( pattern:"^Server: squid/([0-9.]+)$", string:banner ) ||
+      egrep( pattern:"^Server: squid/([0-9.]+)\.STABLE([0-9.]+)$", string:banner ) || # e.g. Server: squid/2.7.STABLE5
       egrep( pattern:"^dnsmasq-([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: nginx/([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: Apache/([0-9.]+)$", string:banner ) ||
-      egrep( pattern:"^([0-9.]+)$", string:banner ) || # Bind9 which is sometimes only sending e.g. 9.4.2
+      egrep( pattern:"^Server: lighttpd/([0-9.]+)$", string:banner ) ||
+      egrep( pattern:"^Server: HASP LM/([0-9.]+)$", string:banner ) || # Is running under windows and linux
+      egrep( pattern:"^Server: Server: Mbedthis-Appweb/([0-9.]+)$", string:banner ) || # Is running under various OS variants
+      egrep( pattern:"^Server: Allegro-Software-RomPager/([0-9.]+)$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
+      egrep( pattern:"^SSH-2\.0-RomSShell_([0-9]+)$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
+      egrep( pattern:"^([0-9.]+)$", string:banner ) || # Bind9 and MySQL. Both are often only sending e.g. 9.4.2
+      egrep( pattern:"^([0-9.]+)(-[0-9.]+)?-(MariaDB|log)$", string:banner ) || # MariaDB, e.g. 5.5.5-10.1.19-MariaDB or 5.5.49-MariaDB, MySQL e.g. 5.5.54-38.6-log or 5.6.25-log
+      egrep( pattern:"^PowerDNS Authoritative Server ([0-9.]+)$", string:banner ) ||
+      egrep( pattern:"^Knot DNS ([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^SSH-2\.0-dropbear_([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^SSH-2\.0-OpenSSH_([0-9.p]+)$", string:banner ) ) {
     return;
@@ -1198,5 +1272,4 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
 
   set_kb_item( name:"os_detection_report/unknown_os_banner/" + oid + "/" + port + "/" + proto + "/" + banner_type_short + "/banner", value:banner );
   set_kb_item( name:"os_detection_report/unknown_os_banner/" + oid + "/" + port + "/" + proto + "/" + banner_type_short + "/type_full", value:banner_type_name );
-
 }

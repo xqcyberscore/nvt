@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_54114.nasl 4336 2016-10-24 15:48:20Z mime $
+# $Id: gb_openssh_54114.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # OpenSSH 'ssh_gssapi_parse_ename()' Function Denial of Service Vulnerability
 #
@@ -44,7 +44,7 @@ if (description)
  script_tag(name:"cvss_base", value:"3.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_version ("$Revision: 4336 $");
+ script_version ("$Revision: 6750 $");
 
  script_name("OpenSSH 'ssh_gssapi_parse_ename()' Function Denial of Service Vulnerability");
 
@@ -52,9 +52,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54114");
  script_xref(name:"URL", value:"http://www.openssh.com");
  
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:48:20 +0200 (Mon, 24 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-04-09 12:03:56 +0200 (Wed, 09 Apr 2014)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

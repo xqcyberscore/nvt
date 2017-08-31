@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geeklog_calendar_plugin_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_geeklog_calendar_plugin_xss_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Geeklog Calendar Plugin Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804237");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2013-1470");
   script_bugtraq_id(58209);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-13 18:21:52 +0530 (Thu, 13 Feb 2014)");
   script_name("Geeklog Calendar Plugin Cross Site Scripting Vulnerability");
 
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/82326");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120593");
   script_xref(name : "URL" , value : "http://www.geeklog.net/article.php/geeklog-1.8.2sr1");
-  script_summary("Check if Geeklog is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

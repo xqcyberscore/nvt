@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_zxdsl_admin_pass_remote_disc_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_zte_zxdsl_admin_pass_remote_disc_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # ZTE ZXDSL Modem /adminpasswd.cgi Admin Password Remote Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804798");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6692 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-14 16:42:38 +0530 (Fri, 14 Nov 2014)");
   script_name("ZTE ZXDSL Modem /adminpasswd.cgi Admin Password Remote Disclosure Vulnerability");
 
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/35203");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/533929/30/0/threaded");
 
-  script_summary("Check if it is possible to get admin password");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_ms15-097.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_lync_ms15-097.nasl 6473 2017-06-29 06:07:30Z cfischer $
 #
 # Microsoft Lync Buffer Overflow Vulnerability (3089656)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806117");
-  script_version("$Revision: 6415 $");
+  script_version("$Revision: 6473 $");
   script_cve_id("CVE-2015-2510");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:07:30 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-09 14:26:26 +0530 (Wed, 09 Sep 2015)");
   script_name("Microsoft Lync Buffer Overflow Vulnerability (3089656)");
 
@@ -70,7 +70,9 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("smb_reg_service_pack.nasl", "secpod_ms_lync_detect_win.nasl");
-  script_require_keys("MS/Lync/Ver", "MS/Lync/path", "MS/Lync/Basic/path");
+  script_require_ports(139, 445);
+  script_mandatory_keys("MS/Lync/Installed");
+
   exit(0);
 }
 

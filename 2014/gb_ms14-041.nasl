@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804670");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-2780");
   script_bugtraq_id(68392);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-09 08:09:40 +0530 (Wed, 09 Jul 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft DirectShow Elevation of Privileges Vulnerability (2975681)");
@@ -82,7 +82,6 @@ https://technet.microsoft.com/library/security/ms14-041";
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2972280");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2973932");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms14-041");
-  script_summary("Check for the vulnerable 'qedit.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

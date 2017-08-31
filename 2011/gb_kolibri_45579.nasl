@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kolibri_45579.nasl 5839 2017-04-03 10:43:34Z cfi $
+# $Id: gb_kolibri_45579.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # Kolibri Remote Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103009");
-  script_version("$Revision: 5839 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:43:34 +0200 (Mon, 03 Apr 2017) $");
+  script_version("$Revision: 6696 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-01-04 15:14:45 +0100 (Tue, 04 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -38,9 +38,8 @@ if(description)
   script_category(ACT_MIXED_ATTACK);
   script_family("Web Servers");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
-  script_require_ports("Services/www", 8080);
   script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 8080);
   script_mandatory_keys("kolibri/banner");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/45579");

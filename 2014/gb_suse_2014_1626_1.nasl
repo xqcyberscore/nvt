@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850624");
-  script_version("$Revision: 2808 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 12:35:38 +0100 (Wed, 09 Mar 2016) $");
+  script_version("$Revision: 6759 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-13 05:53:58 +0100 (Sat, 13 Dec 2014)");
   script_cve_id("CVE-2014-0574", "CVE-2014-7899", "CVE-2014-7900", "CVE-2014-7901",
                 "CVE-2014-7902", "CVE-2014-7903", "CVE-2014-7904", "CVE-2014-7905",
@@ -65,12 +65,11 @@ if(description)
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-12/msg00015.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of chromium");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

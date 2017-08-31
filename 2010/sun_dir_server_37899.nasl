@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sun_dir_server_37899.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: sun_dir_server_37899.nasl 6606 2017-07-07 11:29:00Z cfischer $
 #
 # Sun Java System Directory Server LDAP Search Request Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100510");
-  script_version("$Revision: 5190 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 6606 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 13:29:00 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-02-26 12:01:21 +0100 (Fri, 26 Feb 2010)");
   script_bugtraq_id(37899);
   script_cve_id("CVE-2010-0708");
@@ -40,7 +40,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("sun_dir_server_detect.nasl");
   script_require_ports("Services/ldap", 389, 636);
-  script_mandatory_keys("ldap/detected", "SunJavaDirServer/installed");
+  script_mandatory_keys("SunJavaDirServer/installed", "ldap/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37899");
   script_xref(name:"URL", value:"http://www.sun.com/software/products/directory_srvr/home_directory.xml");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_mult_vuln_lin.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_vmware_prdts_mult_vuln_lin.nasl 6539 2017-07-05 12:02:14Z cfischer $
 #
 # HGFS VmWare Code Execution Vulnerability (Linux)
 #
@@ -54,8 +54,8 @@ tag_summary = "The host is installed with VMWare product(s) that are vulnerable 
 if(description)
 {
   script_id(800003);
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 6539 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-09-25 10:10:31 +0200 (Thu, 25 Sep 2008)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -71,7 +71,7 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_vmware_prdts_detect_lin.nasl");
-  script_mandatory_keys("login/SSH/success","VMware/Linux/Installed");
+  script_mandatory_keys("VMware/Linux/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "affected" , value : tag_affected);
@@ -79,11 +79,6 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
-  exit(0);
-}
-
-
-if(!get_kb_item("VMware/Linux/Installed")){
   exit(0);
 }
 

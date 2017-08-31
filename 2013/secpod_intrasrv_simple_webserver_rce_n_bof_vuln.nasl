@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_intrasrv_simple_webserver_rce_n_bof_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: secpod_intrasrv_simple_webserver_rce_n_bof_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # Intrasrv Simple Web Server RCE and Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902973");
-  script_version("$Revision: 6104 $");
+  script_version("$Revision: 6698 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-05-31 11:32:38 +0530 (Fri, 31 May 2013)");
 
   script_name("Intrasrv Simple Web Server RCE and Buffer Overflow Vulnerability");
@@ -41,10 +41,9 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Buffer overflow");
-  script_require_ports("Services/www", 80);
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
   script_mandatory_keys("intrasrv/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will let remote unauthenticated attackers
   to cause a denial of service or execute arbitrary code.

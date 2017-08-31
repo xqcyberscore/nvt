@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3869.nasl 6302 2017-06-10 17:10:53Z cfischer $
+# $Id: deb_3869.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3869-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703869);
-    script_version("$Revision: 6302 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-8911");
     script_name("Debian Security Advisory DSA 3869-1 (tnef - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-10 19:10:53 +0200 (Sat, 10 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-06-01 00:00:00 +0200 (Thu, 01 Jun 2017)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "tnef on Debian Linux");
         script_tag(name: "insight",   value: "TNEF is a program for unpacking MIME attachments of type
 'application/ms-tnef'. This is typcially a Microsoft only attachment.");

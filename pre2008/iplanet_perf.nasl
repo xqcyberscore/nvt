@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iplanet_perf.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: iplanet_perf.nasl 6522 2017-07-04 15:22:28Z cfischer $
 # Description: Netscape /.perf accessible
 #
 # Authors:
@@ -31,8 +31,8 @@ disabled in the magnus.conf file or web server admin.";
 if(description)
 {
  script_id(11220);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 6522 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:22:28 +0200 (Tue, 04 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -50,7 +50,7 @@ if(description)
  script_family("Web Servers");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
- script_require_keys("www/netscape-commerce", "www/netscape-fasttrack", "www/iplanet");
+ script_require_keys("www/netscape_servers");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

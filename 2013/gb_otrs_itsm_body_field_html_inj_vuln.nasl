@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_itsm_body_field_html_inj_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_otrs_itsm_body_field_html_inj_vuln.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # OTRS ITSM 'Body' Field HTML Injection Vulnerability
 #
@@ -32,13 +32,13 @@ ITSMCPE = "cpe:/a:otrs:otrs_itsm";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 6755 $");
   script_cve_id("CVE-2012-2582");
   script_bugtraq_id(54890);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-09-25 19:02:06 +0530 (Wed, 25 Sep 2013)");
   script_name("OTRS ITSM 'Body' Field HTML Injection Vulnerability");
 
@@ -88,7 +88,6 @@ http://otrs.org/advisory/OSA-2012-01-en/";
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("secpod_otrs_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("OTRS/installed");
   exit(0);
 }

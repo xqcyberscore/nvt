@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3344.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: deb_3344.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3344-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703344);
-    script_version("$Revision: 6194 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2015-4598", "CVE-2015-4643", "CVE-2015-4644", "CVE-2015-5589",
                   "CVE-2015-5590");
     script_name("Debian Security Advisory DSA 3344-1 (php5 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-08-27 00:00:00 +0200 (Thu, 27 Aug 2015)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "php5 on Debian Linux");
     script_tag(name: "insight",   value: "This package is a metapackage that,
 when installed, guarantees that you have at least one of the four server-side

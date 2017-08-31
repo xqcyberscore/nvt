@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iis_propfind2.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: iis_propfind2.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: IIS 5.0 PROPFIND Vulnerability
 #
 # Authors:
@@ -37,8 +37,8 @@ http://support.microsoft.com/support/kb/articles/Q241/5/20.AS";
 if(description)
 {
  script_id(10667);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2453);
  script_cve_id("CVE-2001-0151");
@@ -52,33 +52,25 @@ if(description)
  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");
 
-
  script_copyright("This script is Copyright (C) 2001 John Lampe");
  family = "Denial of Service";
  script_family(family);
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("IIS/banner");
  script_require_ports("Services/www", 80);
+ script_mandatory_keys("IIS/banner");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/MS01-016.mspx");
  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("http_func.inc");
 
 port = get_http_port(default:80);
 
 sig = get_http_banner(port:port);
-if ( sig && "IIS" >!< sig ) exit(0);
-
-if(!get_port_state(port))exit(0);
-
-
+if ( !sig || "IIS" >!< sig ) exit(0);
 
 if(safe_checks())
 {

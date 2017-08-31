@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869040");
-  script_version("$Revision: 6391 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+  script_version("$Revision: 6630 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-02-26 05:39:29 +0100 (Thu, 26 Feb 2015)");
   script_cve_id("CVE-2015-0240", "CVE-2014-3560", "CVE-2014-0244", "CVE-2014-3493",
                 "CVE-2014-0178", "CVE-2013-4496", "CVE-2013-6442", "CVE-2013-4408",
@@ -51,7 +51,7 @@ interoperability suite of programs for Linux and Unix.
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

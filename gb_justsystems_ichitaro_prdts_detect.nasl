@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_justsystems_ichitaro_prdts_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
+# $Id: gb_justsystems_ichitaro_prdts_detect.nasl 6515 2017-07-04 11:54:15Z cfischer $
 #
 # JustSystems Ichitaro Product(s) Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800542");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5943 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
+  script_version("$Revision: 6515 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("JustSystems Ichitaro Product(s) Version Detection");
@@ -71,6 +71,7 @@ if(viewerPath)
 
   if(viewerVer != NULL)
   {
+    replace_kb_item(name:"Ichitaro/Ichitaro_or_Viewer/Installed", value:TRUE);
     set_kb_item(name:"Ichitaro/Viewer/Ver", value:viewerVer);
 
     ## build cpe and store it as host_detail
@@ -92,6 +93,7 @@ foreach item (registry_enum_keys(key:key))
     appVer = eregmatch(pattern:"ATOK ([0-9.]+)", string:appName);
     if(appVer[1] != NULL)
     {
+      replace_kb_item(name:"Ichitaro/Ichitaro_or_Viewer/Installed", value:TRUE);
       set_kb_item(name:"Ichitaro/Ver", value:appVer[1]);
  
       ## build cpe and store it as host_detail

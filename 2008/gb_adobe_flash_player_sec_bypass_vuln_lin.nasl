@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_sec_bypass_vuln_lin.nasl 4218 2016-10-05 14:20:48Z teissa $
+# $Id: gb_adobe_flash_player_sec_bypass_vuln_lin.nasl 6539 2017-07-05 12:02:14Z cfischer $
 #
 # Adobe Flash Player Multiple Security Bypass Vulnerabilities (Linux)
 #
@@ -43,8 +43,8 @@ tag_summary = "This host has Adobe Flash Player installed and is prone to
 if(description)
 {
   script_id(800028);
-  script_version("$Revision: 4218 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 16:20:48 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 6539 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-10-16 18:25:33 +0200 (Thu, 16 Oct 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -61,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
-  script_mandatory_keys("login/SSH/success","AdobeFlashPlayer/Linux/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

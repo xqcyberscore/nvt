@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_c2s_dvr_mgmt_cred_disc_n_auth_bypass_vuln.nasl 6257 2017-05-31 14:33:17Z cfi $
+# $Id: gb_c2s_dvr_mgmt_cred_disc_n_auth_bypass_vuln.nasl 6766 2017-07-20 06:44:05Z cfischer $
 #
 # C2S DVR Management Credentials Disclosure and Authentication Bypass Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808663");
-  script_version("$Revision: 6257 $");
+  script_version("$Revision: 6766 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 08:44:05 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-08-23 18:12:02 +0530 (Tue, 23 Aug 2016)");
   script_name("C2S DVR Management Credentials Disclosure and Authentication Bypass Vulnerabilities");
 
@@ -54,7 +54,7 @@ if(description)
   IRBOX-II-C2S, DVR.");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  31st May, 2017. Information regarding this issue will be updated once solution
+  20th July, 2017. Information regarding this issue will be updated once solution
   details are available. For updates refer to http://www.cash2s.com/en");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

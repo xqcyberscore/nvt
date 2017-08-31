@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerisystems_access_control_detect.nasl 3467 2016-06-09 20:02:36Z jan $
+# $Id: gb_kerisystems_access_control_detect.nasl 6486 2017-06-29 09:59:06Z teissa $
 #
 # Keri Systems Access Control Systems Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105418");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 3467 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-09 22:02:36 +0200 (Thu, 09 Jun 2016) $");
+ script_version ("$Revision: 6486 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-10-21 16:57:28 +0200 (Wed, 21 Oct 2015)");
  script_name("Keri Systems Access Control Systems Detection");
 
@@ -39,7 +39,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of Keri Systems Access Control systems");
  script_category(ACT_GATHER_INFO);
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

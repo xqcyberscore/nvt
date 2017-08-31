@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_theme_method_arbitrary_file_download_06_14.nasl 5628 2017-03-20 15:27:40Z cfi $
+# $Id: gb_wordpress_theme_method_arbitrary_file_download_06_14.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # Wordpress Theme Method Arbitrary File Download Vulnerability 
 #
@@ -32,22 +32,20 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105051");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5628 $");
+ script_version ("$Revision: 6756 $");
 
  script_name("Wordpress Theme Method Arbitrary File Download Vulnerability");
 
  script_xref(name:"URL", value:"http://1337day.com/exploit/22350");
  
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-06-26 14:02:57 +0200 (Thu, 26 Jun 2014)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("wordpress/installed");
- script_exclude_keys("Settings/disable_cgi_scanning");
 
  script_tag(name : "impact" , value : "Exploiting this issue could allow an attacker to compromise the
  application and the underlying system; other attacks are also
@@ -68,9 +66,7 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name(port:port);
 
 url = dir + '/wp-content/themes/method/lib/scripts/dl-skin.php';
 

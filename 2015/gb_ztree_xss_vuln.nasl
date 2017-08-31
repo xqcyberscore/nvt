@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ztree_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_ztree_xss_vuln.nasl 6600 2017-07-07 09:58:31Z teissa $
 #
 # zTree Cross Site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:ztree_project:ztree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806901");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6600 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-12-16 11:04:52 +0530 (Wed, 16 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("zTree Cross Site Scripting Vulnerability");
@@ -60,7 +60,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "https://www.netsparker.com/cve-2015-7348-multiple-xss-vulnerabilities-identified-in-ztree");
 
-  script_summary("Check if zTree is prone to cross site scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

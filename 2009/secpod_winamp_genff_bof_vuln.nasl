@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_winamp_genff_bof_vuln.nasl 5369 2017-02-20 14:48:07Z cfi $
+# $Id: secpod_winamp_genff_bof_vuln.nasl 6530 2017-07-05 06:23:50Z cfischer $
 #
 # Winamp gen_ff.dll Buffer Overflow Vulnerability
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is installed with Winamp and is prone to Buffer
 if(description)
 {
   script_id(900552);
-  script_version("$Revision: 5369 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:48:07 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6530 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 08:23:50 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-06-04 10:49:28 +0200 (Thu, 04 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -55,7 +55,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
   script_dependencies("secpod_winamp_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "Winamp/Version");
+  script_mandatory_keys("Winamp/Version");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

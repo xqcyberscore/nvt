@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_55057.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_phpmyadmin_55057.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # phpMyAdmin  'show_config_errors.php' Full Path Information Disclosure Vulnerability
 #
@@ -44,14 +44,14 @@ if (description)
  script_cve_id("CVE-2012-4219");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5963 $");
+ script_version ("$Revision: 6720 $");
 
  script_name("phpMyAdmin 'show_config_errors.php' Full Path Information Disclosure Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55057");
  script_xref(name : "URL" , value : "http://www.phpmyadmin.net/home_page/index.php");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-08-17 11:08:07 +0200 (Fri, 17 Aug 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_active");
@@ -59,7 +59,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("phpMyAdmin/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -72,11 +71,9 @@ include("http_keepalive.inc");
 include("global_settings.inc");
    
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
-url = dir + '/show_config_errors.php';
 
+url = dir + '/show_config_errors.php';
 
 if(http_vuln_check(port:port, url:url,pattern:'Call to undefined function.*/.*' + dir + '/show_config_errors.php')) {
      

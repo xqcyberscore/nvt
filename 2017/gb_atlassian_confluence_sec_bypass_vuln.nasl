@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_confluence_sec_bypass_vuln.nasl 6395 2017-06-21 12:24:37Z teissa $
+# $Id: gb_atlassian_confluence_sec_bypass_vuln.nasl 6585 2017-07-07 05:33:18Z cfischer $
 #
 # Atlassian Confluence CVE-2017-9505 Security Bypass Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:atlassian:confluence";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107224");
-  script_version("$Revision: 6395 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 14:24:37 +0200 (Wed, 21 Jun 2017) $");
+  script_version("$Revision: 6585 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 07:33:18 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-06-19 17:36:44 +0200 (Mon, 19 Jun 2017)");
   script_cve_id("CVE-2017-9505");
 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
  

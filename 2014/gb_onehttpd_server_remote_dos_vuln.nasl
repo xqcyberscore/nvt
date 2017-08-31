@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_onehttpd_server_remote_dos_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_onehttpd_server_remote_dos_vuln.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # OneHTTPD HTTP Server Remote Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803798");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6715 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-10 14:48:46 +0530 (Mon, 10 Feb 2014)");
   script_name("OneHTTPD HTTP Server Remote Denial of Service Vulnerability");
 
@@ -54,15 +54,13 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31522");
   script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/windows/onehttpd-08-crash-poc");
-  script_summary("Check if OneHTTPD Server is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_require_ports("Services/www", 8080);
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 8080);
   script_mandatory_keys("onehttpd/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }

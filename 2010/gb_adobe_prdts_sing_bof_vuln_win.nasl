@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_sing_bof_vuln_win.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_adobe_prdts_sing_bof_vuln_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
 #
 # Adobe Acrobat and Reader SING 'uniqueName' Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.801515";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5263 $");
+  script_version("$Revision: 6475 $");
   script_cve_id("CVE-2010-2883");
   script_bugtraq_id(43057);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2010-09-15 08:47:45 +0200 (Wed, 15 Sep 2010)");
   script_name("Adobe Acrobat and Reader SING 'uniqueName' Buffer Overflow Vulnerability (Windows)");
 
@@ -82,7 +82,7 @@ For updates refer http://www.adobe.com/downloads/";
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_require_keys("Adobe/Acrobat/Win/Ver", "Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed");
   exit(0);
 }
 

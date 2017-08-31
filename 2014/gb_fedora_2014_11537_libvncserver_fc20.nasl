@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868353");
-  script_version("$Revision: 2796 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 13:49:17 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 6629 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-01 16:58:32 +0530 (Wed, 01 Oct 2014)");
   script_cve_id("CVE-2014-6051", "CVE-2014-6052", "CVE-2014-6053", "CVE-2014-6054",
                 "CVE-2014-6055", "CVE-2010-5304");
@@ -52,7 +52,7 @@ compression schemata.
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

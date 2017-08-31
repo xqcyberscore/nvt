@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_48554.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_webid_48554.nasl 6719 2017-07-13 13:53:39Z cfischer $
 #
 # WeBid 'converter.php' Multiple Remote PHP Code Injection Vulnerabilities
 #
@@ -45,8 +45,8 @@ CPE = "cpe:/a:webidsupport:webid";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 3911 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_version("$Revision: 6719 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-07-06 13:49:20 +0200 (Wed, 06 Jul 2011)");
  script_bugtraq_id(48554);
  script_tag(name:"cvss_base", value:"7.5");
@@ -64,8 +64,8 @@ if (description)
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("gb_webid_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("webid/installed");
+
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name : "solution" , value : tag_solution);
  exit(0);
@@ -77,17 +77,17 @@ include("http_keepalive.inc");
 include("version_func.inc");
    
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if( ! get_port_state(port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
 url = string(dir,"/converter.php");
+
+host = http_host_name(port:port);
 
 postdata = string("action=convert&from=USD&to=%00%27%29%29%3Bprint%28%27openvas-c-i-test%27%2F%2F");
 
  req = string(
             "POST ", url, " HTTP/1.1\r\n",
-            "Host: ", get_host_name(), "\r\n",
+            "Host: ", host, "\r\n",
             "Content-Type: application/x-www-form-urlencoded\r\n",
             "Content-Length: ", strlen(postdata), "\r\n",
             "\r\n",

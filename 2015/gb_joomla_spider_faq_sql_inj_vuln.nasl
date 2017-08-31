@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_spider_faq_sql_inj_vuln.nasl 3021 2016-04-11 06:20:06Z antu123 $
+# $Id: gb_joomla_spider_faq_sql_inj_vuln.nasl 6600 2017-07-07 09:58:31Z teissa $
 #
 # Joomla Spider-FAQ SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805499");
-  script_version("$Revision: 3021 $");
+  script_version("$Revision: 6600 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 08:20:06 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-03-26 10:48:48 +0530 (Thu, 26 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Joomla Spider-FAQ SQL Injection Vulnerability");
@@ -63,7 +63,6 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36464");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130962");
-  script_summary("Check if Joomla Spider FAQ component is prone to sql injection vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

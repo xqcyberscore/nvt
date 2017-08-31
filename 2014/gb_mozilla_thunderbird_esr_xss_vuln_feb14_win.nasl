@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_xss_vuln_feb14_win.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_mozilla_thunderbird_esr_xss_vuln_feb14_win.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Mozilla Thunderbird ESR Multiple XSS Vulnerabilities Feb14 (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804505";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2013-6674", "CVE-2014-2018");
   script_bugtraq_id(65158, 65620);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-19 16:45:33 +0530 (Wed, 19 Feb 2014)");
   script_name("Mozilla Thunderbird ESR Multiple XSS Vulnerabilities Feb14 (Windows)");
 
@@ -78,7 +78,6 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird";
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/863369");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31223");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2014/mfsa2014-14.html");
-  script_summary("Check for the vulnerable version of Mozilla Thunderbird ESR on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

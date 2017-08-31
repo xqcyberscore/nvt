@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_63298.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_cisco_ios_xr_63298.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Cisco IOS XR Software Fragmented Packets Processing Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2013-5549");
  script_tag(name:"cvss_base", value:"7.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6735 $");
 
  script_name("Cisco IOS XR Software Fragmented Packets Processing Denial of Service Vulnerability");
 
@@ -55,9 +55,8 @@ for more information.");
 that are running version 4.2.1 or later of Cisco IOS XR Software, or that have previously installed the 
 Software Maintenance Upgrades (SMU) for Cisco bug ID CSCtz62593 are not affected by this vulnerability.");
   
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-09-04 10:43:54 +0200 (Thu, 04 Sep 2014)");
- script_summary("Check the IOS XR Version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("CISCO");

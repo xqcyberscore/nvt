@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882250");
-  script_version("$Revision: 6207 $");
+  script_version("$Revision: 6657 $");
   script_cve_id("CVE-2014-6568", "CVE-2015-0374", "CVE-2015-0381", "CVE-2015-0382",
                 "CVE-2015-0391", "CVE-2015-0411", "CVE-2015-0432", "CVE-2015-0433",
                 "CVE-2015-0441", "CVE-2015-0499", "CVE-2015-0501", "CVE-2015-0505",
@@ -35,7 +35,7 @@ if(description)
                 "CVE-2015-4752", "CVE-2015-4757");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:50:44 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-08-18 06:49:53 +0200 (Tue, 18 Aug 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for mysql55-mysql CESA-2015:1628 centos5 ");
@@ -70,7 +70,7 @@ these issues. After installing this update, the MySQL server daemon
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841757);
-  script_version("$Revision: 2810 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 12:41:27 +0100 (Wed, 09 Mar 2016) $");
+  script_version("$Revision: 6645 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-20 09:49:40 +0530 (Thu, 20 Mar 2014)");
   script_cve_id("CVE-2014-1493", "CVE-2014-1494", "CVE-2014-1497", "CVE-2014-1498",
                 "CVE-2014-1499", "CVE-2014-1500", "CVE-2014-1502", "CVE-2014-1504",
@@ -112,7 +112,7 @@ Mariusz Mlynski discovered ...
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

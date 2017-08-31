@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-053.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms10-053.nasl 6527 2017-07-05 05:56:34Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2183461)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_id(901139);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 6527 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-08-11 15:08:29 +0200 (Wed, 11 Aug 2010)");
   script_cve_id("CVE-2010-1258", "CVE-2010-2556", "CVE-2010-2557",
                 "CVE-2010-2558", "CVE-2010-2559", "CVE-2010-2560");
@@ -47,7 +47,7 @@ if(description)
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_ie_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
+  script_mandatory_keys("MS/IE/Version");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to conduct cross-domain
   scripting attacks, or to execute arbitrary code by tricking a user into

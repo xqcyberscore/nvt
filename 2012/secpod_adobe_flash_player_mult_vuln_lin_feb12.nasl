@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flash_player_mult_vuln_lin_feb12.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: secpod_adobe_flash_player_mult_vuln_lin_feb12.nasl 6521 2017-07-04 14:51:10Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities (Linux) - Feb12
 #
@@ -47,13 +47,13 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 if(description)
 {
   script_id(802804);
-  script_version("$Revision: 5958 $");
+  script_version("$Revision: 6521 $");
   script_cve_id("CVE-2012-0752", "CVE-2012-0753", "CVE-2012-0754", "CVE-2012-0757",
                 "CVE-2012-0756", "CVE-2012-0767");
   script_bugtraq_id(52032, 52033, 52034, 51999, 52036, 52040);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-02-22 14:34:05 +0530 (Wed, 22 Feb 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities (Linux) - Feb12");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48033");
@@ -66,7 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
-  script_require_keys("AdobeFlashPlayer/Linux/Ver", "ssh/login/uname");
+  script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

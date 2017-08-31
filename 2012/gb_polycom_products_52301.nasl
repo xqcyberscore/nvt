@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_polycom_products_52301.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_polycom_products_52301.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # Polycom Products Directory Traversal and Command Injection Vulnerabilities
 #
@@ -40,14 +40,14 @@ if (description)
 {
  script_id(103442);
  script_bugtraq_id(52301);
- script_version ("$Revision: 5963 $");
+ script_version ("$Revision: 6697 $");
 
  script_name("Polycom Products Directory Traversal and Command Injection Vulnerabilities");
 
 
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-03-06 10:45:23 +0100 (Tue, 06 Mar 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -56,7 +56,6 @@ if (description)
  script_dependencies("gb_get_http_banner.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("lighttpd/banner");
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52301");
@@ -72,7 +71,6 @@ include("host_details.inc");
 include("http_keepalive.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if(!banner || "Server: lighttpd" >!< banner)exit(0);

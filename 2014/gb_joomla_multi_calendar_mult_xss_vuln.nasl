@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_multi_calendar_mult_xss_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_joomla_multi_calendar_mult_xss_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Joomla Component Multi Calendar Multiple Cross Site Scripting Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2013-5953");
   script_bugtraq_id(66260);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-17 19:46:07 +0530 (Mon, 17 Mar 2014)");
   script_name("Joomla Component Multi Calendar Multiple Cross Site Scripting Vulnerabilities");
 
@@ -78,7 +78,6 @@ features, remove the product or replace the product by another one.";
 
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/joomla-multi-calendar-402-cross-site-scripting");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125738/Joomla-Multi-Calendar-4.0.2-Cross-Site-Scripting.html");
-  script_summary("Check if Joomla Multi Calendar is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

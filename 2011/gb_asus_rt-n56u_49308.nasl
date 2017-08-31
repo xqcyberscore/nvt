@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asus_rt-n56u_49308.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_asus_rt-n56u_49308.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # ASUS RT-N56U Wireless Router 'QIS_wizard.htm' Password Information Disclosure Vulnerability
 #
@@ -38,9 +38,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 if (description)
 {
  script_id(103228);
- script_version("$Revision: 5390 $");
+ script_version("$Revision: 6696 $");
  script_cve_id("CVE-2011-4497");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-08-26 14:51:18 +0200 (Fri, 26 Aug 2011)");
  script_bugtraq_id(49308);
  script_tag(name:"cvss_base", value:"3.3");
@@ -60,7 +60,6 @@ if (description)
  script_dependencies("gb_get_http_banner.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("RT-N56U/banner");
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -71,7 +70,6 @@ include("host_details.inc");
 include("http_keepalive.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if(!banner || 'Basic realm="RT-N56U"' >!< banner)exit(0);

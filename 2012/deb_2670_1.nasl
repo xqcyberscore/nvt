@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2670_1.nasl 5999 2017-04-21 09:02:32Z teissa $
+# $Id: deb_2670_1.nasl 6612 2017-07-07 12:08:03Z cfischer $
 # Description: Auto-generated from advisory DSA 2670-1 (wordpress)
 #
 # Authors:
@@ -55,8 +55,8 @@ if(description)
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2011-3122", "CVE-2011-3125", "CVE-2011-3126", "CVE-2011-3127", "CVE-2011-3128", "CVE-2011-3129", "CVE-2011-3130", "CVE-2011-4956", "CVE-2011-4957", "CVE-2012-2399", "CVE-2012-2400", "CVE-2012-2401", "CVE-2012-2402", "CVE-2012-2403", "CVE-2012-2404");
- script_version("$Revision: 5999 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
+ script_version("$Revision: 6612 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-05-31 11:44:38 -0400 (Thu, 31 May 2012)");
  script_name("Debian Security Advisory DSA 2670-1 (wordpress)");
 
@@ -67,7 +67,7 @@ if(description)
  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
  script_family("Debian Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);

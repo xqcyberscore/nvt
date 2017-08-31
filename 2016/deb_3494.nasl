@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3494.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: deb_3494.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3494-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703494);
-    script_version("$Revision: 5759 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2015-8377", "CVE-2015-8604");
     script_name("Debian Security Advisory DSA 3494-1 (cacti - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name:"creation_date", value:"2016-03-08 12:37:48 +0530 (Tue, 08 Mar 2016)");
     script_tag(name:"cvss_base", value:"6.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "cacti on Debian Linux");
         script_tag(name: "insight",   value: "Cacti is a complete PHP-driven front-end for RRDTool. It stores all of
 the necessary data source information to create graphs, handles the data

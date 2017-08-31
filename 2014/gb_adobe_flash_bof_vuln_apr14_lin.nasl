@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_bof_vuln_apr14_lin.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_adobe_flash_bof_vuln_apr14_lin.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # Adobe Flash Player Buffer Overflow Vulnerability - Apr14 (Linux)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804561";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-0515");
   script_bugtraq_id(67092);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-29 11:45:09 +0530 (Tue, 29 Apr 2014)");
   script_name("Adobe Flash Player Buffer Overflow Vulnerability - Apr14 (Linux)");
 
@@ -77,7 +77,6 @@ For updates refer to  http://get.adobe.com/flashplayer";
   script_xref(name : "URL" , value : "http://secpod.org/blog/?p=2577");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/blog/8212");
   script_xref(name : "URL" , value : "http://helpx.adobe.com/security/products/flash-player/apsb14-13.html");
-  script_summary("Check for the vulnerable version of Adobe Flash Player on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

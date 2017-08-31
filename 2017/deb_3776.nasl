@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3776.nasl 5441 2017-02-28 08:41:33Z cfi $
+# $Id: deb_3776.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3776-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,7 +30,7 @@
 if(description)
 {
     script_id(703776);
-    script_version("$Revision: 5441 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-5006", "CVE-2017-5007", "CVE-2017-5008", "CVE-2017-5009",
                   "CVE-2017-5010", "CVE-2017-5011", "CVE-2017-5012", "CVE-2017-5013",
                   "CVE-2017-5014", "CVE-2017-5015", "CVE-2017-5016", "CVE-2017-5017",
@@ -38,7 +38,7 @@ if(description)
                   "CVE-2017-5022", "CVE-2017-5023", "CVE-2017-5024", "CVE-2017-5025",
                   "CVE-2017-5026");
     script_name("Debian Security Advisory DSA 3776-1 (chromium-browser - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-02-28 09:41:33 +0100 (Tue, 28 Feb 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name:"creation_date", value:"2017-02-03 12:11:15 +0530 (Fri, 03 Feb 2017)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -52,7 +52,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "chromium-browser on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (jessie),
 these problems have been fixed in version 56.0.2924.76-1~deb8u1.

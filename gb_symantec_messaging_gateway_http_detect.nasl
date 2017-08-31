@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_http_detect.nasl 6308 2017-06-12 04:12:59Z ckuersteiner $
+# $Id: gb_symantec_messaging_gateway_http_detect.nasl 6493 2017-06-30 07:00:59Z ckuersteiner $
 #
 # Symantec Messaging Gateway Detection (HTTP)
 #
@@ -28,10 +28,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105720");
-  script_version("$Revision: 6308 $");
+  script_version("$Revision: 6493 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-12 06:12:59 +0200 (Mon, 12 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 09:00:59 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2012-12-03 10:06:00 +0100 (Mon, 03 Dec 2012)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Symantec Messaging Gateway Detection (HTTP)");
@@ -53,6 +53,8 @@ extract the version number from the reply.";
   exit(0);
 }
 
+include("cpe.inc");
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -61,7 +63,6 @@ sgPort = get_http_port(default:443);
 url = '/brightmail/viewLogin.do';
 req = http_get(item:url, port:sgPort);
 buf = http_keepalive_send_recv(port:sgPort, data:req, bodyonly:FALSE);
-if( buf == NULL )continue;
 
 if( egrep( pattern:"<title>Symantec Messaging Gateway -&nbsp;Login", string:buf, icase:TRUE ) ||
   ( "Symantec Messaging Gateway -&nbsp;" >< buf && "Symantec Corporation" >< buf && "images/Symantec_Logo.png" >< buf ) ||
@@ -73,6 +74,12 @@ if( egrep( pattern:"<title>Symantec Messaging Gateway -&nbsp;Login", string:buf,
     set_kb_item( name:"symantec_messaging_gateway/version/http", value:version[1] );
 
   replace_kb_item( name:"smg/installed", value:TRUE );
+
+  cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:symantec:messaging_gateway:");
+  if (!cpe)
+    cpe = 'cpe:/a:symantec:messaging_gateway';
+
+  register_product(cpe: cpe, location: "/", port: sgPort, service: "www");
 }
 
 exit(0);

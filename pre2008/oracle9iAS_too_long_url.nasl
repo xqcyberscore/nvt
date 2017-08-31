@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle9iAS_too_long_url.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: oracle9iAS_too_long_url.nasl 6695 2017-07-12 11:17:53Z cfischer $
 #
 # Oracle9iAS too long URL
 #
@@ -37,8 +37,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11081");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 6695 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3443);
   script_tag(name:"cvss_base", value:"7.5");
@@ -51,7 +51,6 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("Oracle/banner");
   script_require_ports("Services/www", 1100, 4000, 4001, 4002);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   tag_summary = "It may be possible to make the Oracle9i application server
   crash or execute arbitrary code by sending it a too long url

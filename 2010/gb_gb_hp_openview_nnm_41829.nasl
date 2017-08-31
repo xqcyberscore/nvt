@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gb_hp_openview_nnm_41829.nasl 5428 2017-02-27 07:50:09Z cfi $
+# $Id: gb_gb_hp_openview_nnm_41829.nasl 6599 2017-07-07 09:50:33Z cfischer $
 #
 # HP OpenView Network Node Manager 'execvp_nc()' Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:openview_network_node_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100786");
-  script_version("$Revision: 5428 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 08:50:09 +0100 (Mon, 27 Feb 2017) $");
+  script_version("$Revision: 6599 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:50:33 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-09-07 15:26:31 +0200 (Tue, 07 Sep 2010)");
   script_bugtraq_id(41829);
   script_tag(name:"cvss_base", value:"10.0");
@@ -42,7 +42,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("os_detection.nasl", "secpod_hp_openview_nnm_detect.nasl");
   script_require_ports("Services/www", 7510);
-  script_mandatory_keys("Host/runs_windows", "HP/OVNNM/installed");
+  script_mandatory_keys("HP/OVNNM/installed", "Host/runs_windows");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/41829");
   script_xref(name:"URL", value:"http://www.exploit-db.com/moaub-6-hp-openview-nnm-webappmon-exe-execvp_nc-remote-code-execution/");

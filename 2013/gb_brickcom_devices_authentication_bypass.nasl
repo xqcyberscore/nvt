@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brickcom_devices_authentication_bypass.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_brickcom_devices_authentication_bypass.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # Multiple Brickcom Devices Authentication Bypass Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103738");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 6698 $");
   script_cve_id("CVE-2013-3689","CVE-2013-3690");
   script_bugtraq_id(60525, 60526);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-06-12 13:41:30 +0200 (Wed, 12 Jun 2013)");
   script_name("Multiple Brickcom Devices Authentication Bypass Vulnerability");
 
@@ -47,10 +47,9 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Privilege escalation");
-  script_require_ports("Services/www", 80);
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
   script_mandatory_keys("Brickcom/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"The remote host is a Brickcom device and it is prone to
   authentication bypass vulnerability.");

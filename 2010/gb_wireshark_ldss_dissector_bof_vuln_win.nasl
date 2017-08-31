@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ldss_dissector_bof_vuln_win.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_wireshark_ldss_dissector_bof_vuln_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
 #
 # Wireshark LDSS Dissector Buffer Overflow Vulnerability (Windows)
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is installed with Wireshark and is prone to buffer
 if(description)
 {
   script_id(801555);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-12-09 06:36:39 +0100 (Thu, 09 Dec 2010)");
   script_cve_id("CVE-2010-4300");
   script_tag(name:"cvss_base", value:"7.5");
@@ -55,7 +55,7 @@ if(description)
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_wireshark_detect_win.nasl");
-  script_require_keys("SMB/WindowsVersion","Wireshark/Win/Ver");
+  script_mandatory_keys("Wireshark/Win/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackstratus_LOGStorm_mysql_htr_login.nasl 5889 2017-04-07 09:14:58Z cfi $
+# $Id: gb_blackstratus_LOGStorm_mysql_htr_login.nasl 6788 2017-07-21 19:16:52Z cfischer $
 #
 # Blackstratus LOGStorm default MySQL password for user `htr`
 #
@@ -29,8 +29,8 @@ if (description)
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
  script_oid("1.3.6.1.4.1.25623.1.0.140093");
- script_version("$Revision: 5889 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
+ script_version("$Revision: 6788 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
  script_tag(name:"creation_date", value:"2016-12-05 17:47:01 +0100 (Mon, 05 Dec 2016)");
  script_name("Blackstratus LOGStorm default MySQL password for user `htr`");
  script_category(ACT_ATTACK);
@@ -39,7 +39,7 @@ if (description)
  script_tag(name: "solution_type", value: "Workaround");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("mysql_version.nasl");
- script_require_ports("Services/mysql", "Services/mysql_mariadb", "Services/mariadb", 3306);
+ script_require_ports("Services/mysql", 3306);
  script_mandatory_keys("MySQL_MariaDB/installed");
 
  script_tag(name : "solution" , value : 'Change the password.');

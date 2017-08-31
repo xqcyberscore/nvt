@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_laserjet_multiple_vuln.nasl 2790 2016-03-08 06:11:44Z antu123 $
+# $Id: gb_hp_laserjet_multiple_vuln.nasl 6453 2017-06-28 09:59:05Z teissa $
 #
 # HP LaserJet Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805040");
-  script_version("$Revision: 2790 $");
+  script_version("$Revision: 6453 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 07:11:44 +0100 (Tue, 08 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-29 13:07:29 +0530 (Thu, 29 Jan 2015)");
   script_name("HP LaserJet Multiple Vulnerabilities");
 
@@ -68,7 +68,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Jan/118");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Dec/98)");
-  script_summary("Check if HP LaserJet is prone to information disclosure");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

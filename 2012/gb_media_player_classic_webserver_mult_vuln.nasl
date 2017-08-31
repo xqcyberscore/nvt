@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_media_player_classic_webserver_mult_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_media_player_classic_webserver_mult_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # Media Player Classic (MPC) Webserver Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802494");
-  script_version("$Revision: 5988 $");
+  script_version("$Revision: 6697 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-11-16 16:43:52 +0530 (Fri, 16 Nov 2012)");
   script_name("Media Player Classic (MPC) Webserver Multiple Vulnerabilities");
 
@@ -40,9 +40,8 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_require_ports("Services/www", 13579);
   script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 13579);
   script_mandatory_keys("MPC-HC/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert

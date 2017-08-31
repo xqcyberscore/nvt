@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_word_null_pntr_dos_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_ms_office_word_null_pntr_dos_vuln.nasl 6523 2017-07-04 15:46:12Z cfischer $
 #
 # Microsoft Word 2003 'MSO.dll' Null Pointer Dereference Vulnerability
 #
@@ -46,8 +46,8 @@ null pointer dereference vulnerability.";
 if(description)
 {
   script_id(902250);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 6523 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:46:12 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-09-23 08:13:58 +0200 (Thu, 23 Sep 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -60,7 +60,7 @@ if(description)
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Denial of Service");
   script_dependencies("secpod_office_products_version_900032.nasl");
-  script_require_keys("MS/Office/Ver", "SMB/Office/Word/Version");
+  script_mandatory_keys("MS/Office/Ver", "SMB/Office/Word/Version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

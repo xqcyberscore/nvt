@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_http_server_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_h2o_http_server_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # H2O HTTP Server Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806993");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 6701 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-01-25 13:12:26 +0530 (Mon, 25 Jan 2016)");
   script_name("H2O HTTP Server Version Detection");
 
@@ -45,9 +45,9 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("h2o/banner");
   script_require_ports("Services/www", 443);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("h2o/banner");
+
   exit(0);
 }
 
@@ -62,9 +62,7 @@ banner = "";
 version = "unknown";
 
 ## Get HTTP Port
-if(!h2oport = get_http_port(default:443)){
-  exit(0);
-}
+h2oport = get_http_port(default:443);
 
 ## Confirm the application from banner
 banner = get_http_banner(port: h2oport);
@@ -76,8 +74,7 @@ if("Server: h2o" >!< banner) {
 vers = eregmatch(pattern:"Server: h2o/([0-9a-zA-Z.-]+)", string:banner);
 if(vers[1]){
   version = vers[1];
-}
-else{
+}else{
   version ="Unknown";
 }
 

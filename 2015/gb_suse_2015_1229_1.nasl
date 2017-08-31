@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850664");
-  script_version("$Revision: 6329 $");
+  script_version("$Revision: 6675 $");
   script_cve_id("CVE-2015-2721", "CVE-2015-2722", "CVE-2015-2724", "CVE-2015-2725",
                 "CVE-2015-2726", "CVE-2015-2727", "CVE-2015-2728", "CVE-2015-2729",
                 "CVE-2015-2730", "CVE-2015-2731", "CVE-2015-2733", "CVE-2015-2734",
@@ -35,7 +35,7 @@ if(description)
                 "CVE-2015-4000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:54:28 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-07-14 06:31:52 +0200 (Tue, 14 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaFirefox, openSUSE-SU-2015:1229-1 (MozillaFirefox,)");
@@ -92,7 +92,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

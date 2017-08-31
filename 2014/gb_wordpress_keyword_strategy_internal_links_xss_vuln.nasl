@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_keyword_strategy_internal_links_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_keyword_strategy_internal_links_xss_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # WordPress Keyword Strategy Internal Links Plugin Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804675");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-4537");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-14 10:16:28 +0530 (Mon, 14 Jul 2014)");
   script_name("WordPress Keyword Strategy Internal Links Plugin Cross Site Scripting Vulnerability");
 
@@ -74,7 +74,6 @@ features, remove the product or replace the product by another one.";
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://codevigilant.com/disclosure/wp-plugin-keyword-strategy-internal-links-a3-cross-site-scripting-xss");
-  script_summary("Check if WordPress Keyword Strategy Internal Links Plugin is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

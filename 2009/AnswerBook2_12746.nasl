@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: AnswerBook2_12746.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: AnswerBook2_12746.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # Sun Solaris AnswerBook2 Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -55,8 +55,8 @@ Please see the referenced advisory for more information.";
 if (description)
 {
  script_id(100388);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6696 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-12-10 18:09:58 +0100 (Thu, 10 Dec 2009)");
  script_bugtraq_id(12746);
  script_cve_id("CVE-2005-0548","CVE-2005-0549");
@@ -72,7 +72,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
  script_require_ports("Services/www", 8888);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("dwhttpd/banner");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -88,7 +87,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
    
 port = get_http_port(default:8888);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port: port);
 if("dwhttpd" >!< banner)exit(0);

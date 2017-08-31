@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_43264.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_otrs_43264.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # OTRS Core System Multiple Cross-Site Scripting and Denial of Service Vulnerabilities
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:otrs:otrs";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5323 $");
+  script_version("$Revision: 6705 $");
   script_cve_id("CVE-2010-2080", "CVE-2010-3476");
   script_bugtraq_id(43264);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-09-22 16:24:51 +0200 (Wed, 22 Sep 2010)");
   script_name("OTRS Core System Multiple Cross-Site Scripting and Denial of Service Vulnerabilities");
 
@@ -83,7 +83,6 @@ vendor advisory link http://otrs.org/advisory/OSA-2010-02-en/";
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("secpod_otrs_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("OTRS/installed");
   exit(0);
 }

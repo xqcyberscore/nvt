@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tversity_dir_trav_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: gb_tversity_dir_trav_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # TVersity Directory Traversal Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802619");
-  script_version("$Revision: 5977 $");
+  script_version("$Revision: 6697 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-03-15 12:12:12 +0530 (Thu, 15 Mar 2012)");
   script_name("TVersity Directory Traversal Vulnerability");
 
@@ -41,9 +41,8 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_require_ports("Services/www",41952);
   script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www",41952);
   script_mandatory_keys("TVersity_Media_Server/banner");
 
   script_tag(name:"impact", value:"Successful exploitation may allow an attacker to obtain sensitive

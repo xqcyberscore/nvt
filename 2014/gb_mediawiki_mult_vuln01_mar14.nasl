@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln01_mar14.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_mediawiki_mult_vuln01_mar14.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Mediawiki Multiple Vulnerabilities-01 Mar14
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-2242", "CVE-2014-2243", "CVE-2014-2244");
   script_bugtraq_id(65910, 65883, 65906);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-04 10:37:52 +0530 (Tue, 04 Mar 2014)");
   script_name("Mediawiki Multiple Vulnerabilities-01 Mar14");
 
@@ -79,7 +79,6 @@ For updates refer to http://www.mediawiki.org/wiki/MediaWiki";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57184/");
   script_xref(name : "URL" , value : "http://openwall.com/lists/oss-security/2014/03/01/2");
-  script_summary("Check if MediaWiki is vulnerable to xss vulnerability");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

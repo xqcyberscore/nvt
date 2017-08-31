@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0957.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-0957.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123607");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:06:11 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0957");
 script_tag(name: "insight", value: "ELSA-2013-0957 -  java-1.7.0-openjdk security update - [1.7.0.25-2.3.10.3.0.1.el6_4]- Update DISTRO_NAME in specfile[1.7.0.25-2.3.10.3.el6]- removed upstreamed patch1000 MBeanFix.patch- updated to newer IcedTea7-forest 2.3.10 with 8010118 fix- Resolves: rhbz#973119[1.7.0.25-2.3.10.2.el6]- added patch1000 MBeanFix.patch to fix regressions caused by security patches- Resolves: rhbz#973119[1.7.0.25-2.3.10.1.el6]- build bumped to 25- Resolves: rhbz#973119[1.7.0.19-2.3.10.0.el6]- Updated to latest IcedTea7-forest 2.3.10- patch 107 renamed to 500 for cosmetic purposes- improved handling of patch111 - nss-config-2.patch- removed patch 117, java-1.7.0-openjdk-nss-multiplePKCS11libraryInitialisationNnonCritical.patch duplicated with patch 108 (java-1.7.0-openjdk-nss-icedtea-e9c857dcb964)- Added client/server directories so they can be owned- Added fix for RH857717, owned /etc/.java/ and /etc/.java/.systemPrefs- Resolves: rhbz#973119"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-0957");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

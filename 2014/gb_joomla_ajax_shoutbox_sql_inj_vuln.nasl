@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_ajax_shoutbox_sql_inj_vuln.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_joomla_ajax_shoutbox_sql_inj_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Joomla Component AJAX Shoutbox SQL Injection Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2780 $");
+  script_version("$Revision: 6692 $");
   script_bugtraq_id(66261);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-18 10:00:07 +0530 (Tue, 18 Mar 2014)");
   script_name("Joomla Component AJAX Shoutbox SQL Injection Vulnerability");
 
@@ -77,7 +77,6 @@ For updates refer to http://batjo.nl/shoutbox";
   script_xref(name : "URL" , value : "http://extensions.joomla.org/extensions/communication/shoutbox/43");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/joomla-ajax-shoutbox-sql-injection");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125721/Joomla-AJAX-Shoutbox-SQL-Injection.html");
-  script_summary("Check if Joomla AJAX Shoutbox is vulnerable to SQL injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

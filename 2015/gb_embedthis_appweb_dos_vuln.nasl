@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_embedthis_appweb_dos_vuln.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_embedthis_appweb_dos_vuln.nasl 6486 2017-06-29 09:59:06Z teissa $
 #
 # Embedthis Appweb Web Server Remote Denial of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805157");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6486 $");
   script_cve_id("CVE-2014-9708");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-04-01 17:00:37 +0530 (Wed, 01 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Embedthis Appweb Web Server Remote Denial of Service Vulnerability");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Mar/158");
   script_xref(name : "URL" , value : "https://github.com/embedthis/appweb/issues/413");
 
-  script_summary("Check if Embedthis Appweb Web Server is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Denial of Service");

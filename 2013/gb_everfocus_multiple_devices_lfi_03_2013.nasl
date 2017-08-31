@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_everfocus_multiple_devices_lfi_03_2013.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_everfocus_multiple_devices_lfi_03_2013.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # EverFocus Multiple Devices Directory Traversal
 #
@@ -37,7 +37,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103682";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 6074 $");
+ script_version ("$Revision: 6698 $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
@@ -46,16 +46,15 @@ if (description)
  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120827/DDIVRT-2013-50.txt");
  script_xref(name : "URL" , value : "http://www.everfocus.com/firmware_upgrade.cfm");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-03-20 10:34:19 +0100 (Wed, 20 Mar 2013)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("EverFocus/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("EverFocus/banner");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -67,7 +66,6 @@ include("http_keepalive.inc");
 include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if(!banner || banner !~ 'realm="(EPARA|EPHD|ECOR)[^"]+"')exit(0);

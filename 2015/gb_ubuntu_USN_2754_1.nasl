@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842482");
-  script_version("$Revision: 6214 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+  script_version("$Revision: 6646 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:03:11 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-10-06 12:43:29 +0200 (Tue, 06 Oct 2015)");
   script_cve_id("CVE-2015-4500", "CVE-2015-4506", "CVE-2015-4509", "CVE-2015-4511",
                 "CVE-2015-4517", "CVE-2015-4521", "CVE-2015-4522", "CVE-2015-7174",
@@ -92,7 +92,7 @@ attacker could potentially exploit these to bypass CORS restrictions.
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

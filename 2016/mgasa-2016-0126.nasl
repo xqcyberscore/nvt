@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0126.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: mgasa-2016-0126.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131272");
-script_version("$Revision: 5557 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-03-31 08:04:58 +0300 (Thu, 31 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0126");
 script_tag(name: "insight", value: "A vulnerability was found in a way VPNv4 NLRI parser copied packet data to the stack. Memcpy to stack data structure based on length field from packet data whose length field upper-bound was not properly checked (CVE-2016-2342)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"7.6");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0126");
 script_copyright("Eero Volotinen");

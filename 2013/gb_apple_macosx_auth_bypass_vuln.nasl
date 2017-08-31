@@ -29,12 +29,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804184";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6115 $");
+  script_version("$Revision: 6601 $");
   script_cve_id("CVE-2013-5163");
   script_bugtraq_id(62812);
   script_tag(name:"cvss_base", value:"6.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:00:10 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-12-31 20:51:30 +0530 (Tue, 31 Dec 2013)");
   script_name("Apple Mac OS X Authentication Bypass Vulnerability");
 
@@ -84,7 +84,7 @@ Impact Level: System";
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/uname", "ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_JSA10520.nasl 3817 2016-08-10 05:18:42Z ckuerste $
+# $Id: gb_junos_JSA10520.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Junos Exclusive Edit Mode Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105913");
-  script_version ("$Revision: 3817 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-10 07:18:42 +0200 (Wed, 10 Aug 2016) $");
+  script_version ("$Revision: 6663 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-19 10:58:12 +0700 (Thu, 19 Jun 2014)");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:M/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if (description)
 
   script_name("Junos Exclusive Edit Mode Privilege Escalation Vulnerability");
 
-  script_summary("Junos Edit Mode Privilege Escalation");
 
   script_category(ACT_GATHER_INFO);
 

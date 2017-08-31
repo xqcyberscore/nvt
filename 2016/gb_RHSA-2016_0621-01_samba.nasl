@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871594");
-  script_version("$Revision: 5836 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+  script_version("$Revision: 6690 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:51:07 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-04-13 05:16:54 +0200 (Wed, 13 Apr 2016)");
   script_cve_id("CVE-2016-2110", "CVE-2016-2111", "CVE-2016-2112", "CVE-2016-2115",
                 "CVE-2016-2118");
@@ -92,7 +92,7 @@ of CVE-2016-2118, CVE-2016-2110, CVE-2016-2112, and CVE-2016-2115.
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

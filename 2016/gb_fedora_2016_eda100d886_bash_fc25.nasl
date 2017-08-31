@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871953");
-  script_version("$Revision: 4707 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 06:46:19 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 6631 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:36:10 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-12-07 05:21:39 +0100 (Wed, 07 Dec 2016)");
   script_cve_id("CVE-2016-0634");
   script_tag(name:"cvss_base", value:"10.0");
@@ -51,7 +51,7 @@ incorporates useful features from the Korn shell (ksh) and the C shell
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

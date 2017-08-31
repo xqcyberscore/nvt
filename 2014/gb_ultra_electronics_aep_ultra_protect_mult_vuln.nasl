@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ultra_electronics_aep_ultra_protect_mult_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_ultra_electronics_aep_ultra_protect_mult_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Ultra Electronics AEP Ultra Protect Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804491");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6735 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-14 17:03:16 +0530 (Tue, 14 Oct 2014)");
 
   script_name("Ultra Electronics AEP Ultra Protect Multiple Vulnerabilities");
@@ -68,7 +68,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/34918");
   script_xref(name : "URL" , value : "http://www.osisecurity.com.au/advisories/ultra-aep-netilla-vulnerabilities");
-  script_summary("Check if IBM Global Console Manager switches is prone directory traversal");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

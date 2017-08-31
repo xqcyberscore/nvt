@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_backup_exec_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
+# $Id: gb_symantec_backup_exec_detect.nasl 6517 2017-07-04 13:34:20Z cfischer $
 #
 # Symantec Backup Exec Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802105");
-  script_version("$Revision: 5871 $");
+  script_version("$Revision: 6517 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-06-17 11:16:31 +0200 (Fri, 17 Jun 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec Backup Exec Version Detection");
@@ -47,7 +47,6 @@ version from 'Version' string in registry.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Sets Symantec Backup Exec Version in the KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -95,6 +94,7 @@ foreach item (registry_enum_keys(key:key))
     symVer = registry_get_sz(key:key + item, item:"DisplayVersion");
     if(symVer != NULL)
     {
+      replace_kb_item(name:"Symantec/Backup/Exec/Win/Installed", value:TRUE);
       set_kb_item(name:"Symantec/Backup/Exec/Win/Server", value:symVer);
 
       ## build cpe and store it as host_detail
@@ -108,6 +108,7 @@ foreach item (registry_enum_keys(key:key))
       if("x64" >< os_arch)
       {
         ## Set KB
+        replace_kb_item(name:"Symantec/Backup/Exec/Win/Installed", value:TRUE);
         set_kb_item(name:"Symantec/Backup/Exec64/Win/Server", value:symVer);
 
         ## Build CPE
@@ -132,6 +133,7 @@ foreach item (registry_enum_keys(key:key))
         set_kb_item(name:"Symantec/Backup/Exec/2010", value:symVer);
       }
 
+      replace_kb_item(name:"Symantec/Backup/Exec/Win/Installed", value:TRUE);
       set_kb_item(name:"Symantec/Backup/Exec/Win/Ver", value:symVer);
 
       ## build cpe and store it as host_detail
@@ -148,6 +150,7 @@ foreach item (registry_enum_keys(key:key))
           set_kb_item(name:"Symantec/Backup/Exec64/2010", value:symVer);
         }
 
+        replace_kb_item(name:"Symantec/Backup/Exec/Win/Installed", value:TRUE);
         set_kb_item(name:"Symantec/Backup/Exec64/Win/Ver", value:symVer);
 
         ## build cpe and store it as host_detail

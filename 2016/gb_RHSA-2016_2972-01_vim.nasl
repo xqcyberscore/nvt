@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871734");
-  script_version("$Revision: 4845 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-23 06:29:54 +0100 (Fri, 23 Dec 2016) $");
+  script_version("$Revision: 6690 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:51:07 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-12-22 05:44:55 +0100 (Thu, 22 Dec 2016)");
   script_cve_id("CVE-2016-1248");
   script_tag(name:"cvss_base", value:"6.8");
@@ -60,7 +60,7 @@ user running vim. (CVE-2016-1248)");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

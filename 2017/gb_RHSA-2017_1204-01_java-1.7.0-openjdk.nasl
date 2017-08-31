@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871811");
-  script_version("$Revision: 6143 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-17 12:03:21 +0200 (Wed, 17 May 2017) $");
+  script_version("$Revision: 6691 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:51:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-05-10 06:48:46 +0200 (Wed, 10 May 2017)");
   script_cve_id("CVE-2017-3509", "CVE-2017-3511", "CVE-2017-3526", "CVE-2017-3533",
                 "CVE-2017-3539", "CVE-2017-3544", "CVE-2016-5542");
@@ -95,7 +95,7 @@ established by a Java application. (CVE-2017-3533, CVE-2017-3544)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

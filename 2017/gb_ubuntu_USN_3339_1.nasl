@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843225");
-  script_version("$Revision: 6420 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 15:10:46 +0200 (Fri, 23 Jun 2017) $");
+  script_version("$Revision: 6782 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 10:32:32 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-06-23 07:17:19 +0200 (Fri, 23 Jun 2017)");
   script_cve_id("CVE-2016-6329", "CVE-2017-7479", "CVE-2017-7508", "CVE-2017-7512", 
                 "CVE-2017-7520", "CVE-2017-7521"); 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for openvpn USN-3339-1");
   script_tag(name: "summary", value: "Check the version of openvpn");
@@ -72,7 +72,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

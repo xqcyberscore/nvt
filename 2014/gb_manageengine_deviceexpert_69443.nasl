@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_deviceexpert_69443.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_manageengine_deviceexpert_69443.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # ManageEngine DeviceExpert User Credentials Information Disclosure Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
  script_cve_id("CVE-2014-5377");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6692 $");
 
  script_name("ManageEngine DeviceExpert User Credentials Information Disclosure Vulnerability");
 
@@ -53,9 +53,8 @@ a GET request to 'ReadUsersFromMasterServlet'.");
  script_tag(name: "affected" , value:"ManageEngine DeviceExpert 5.9 Build 5980 is vulnerable; other versions
 may also be affected.");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-09-09 14:44:24 +0200 (Tue, 09 Sep 2014)");
- script_summary("Determine if usernames exposed via /ReadUsersFromMasterServlet");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

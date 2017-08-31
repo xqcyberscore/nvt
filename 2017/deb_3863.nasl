@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3863.nasl 6302 2017-06-10 17:10:53Z cfischer $
+# $Id: deb_3863.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3863-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703863);
-    script_version("$Revision: 6302 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-7606", "CVE-2017-7619", "CVE-2017-7941", "CVE-2017-7943", "CVE-2017-8343", "CVE-2017-8344", "CVE-2017-8345", "CVE-2017-8346", "CVE-2017-8347", "CVE-2017-8348", "CVE-2017-8349", "CVE-2017-8350", "CVE-2017-8351", "CVE-2017-8352", "CVE-2017-8353", "CVE-2017-8354", "CVE-2017-8355", "CVE-2017-8356", "CVE-2017-8357", "CVE-2017-8765", "CVE-2017-8830", "CVE-2017-9098", "CVE-2017-9141", "CVE-2017-9142", "CVE-2017-9143", "CVE-2017-9144");
     script_name("Debian Security Advisory DSA 3863-1 (imagemagick - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-10 19:10:53 +0200 (Sat, 10 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-05-25 00:00:00 +0200 (Thu, 25 May 2017)");
     script_tag(name:"cvss_base", value:"7.1");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "imagemagick on Debian Linux");
         script_tag(name: "insight",   value: "ImageMagick is a software suite to create, edit, and compose bitmap images.
 It can read, convert and write images in a variety of formats (over 100)

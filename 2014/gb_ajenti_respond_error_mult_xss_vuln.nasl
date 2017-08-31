@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ajenti_respond_error_mult_xss_vuln.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_ajenti_respond_error_mult_xss_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Eugene Ajenti 'respond_error' Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804654");
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-4301");
   script_bugtraq_id(68047);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-01 11:38:34 +0530 (Tue, 01 Jul 2014)");
   script_name("Eugene Ajenti 'respond_error' Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -53,7 +53,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/93903");
   script_xref(name : "URL" , value : "https://www.netsparker.com/critical-xss-vulnerabilities-in-ajenti");
-  script_summary("Check if Eugene Ajenti is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

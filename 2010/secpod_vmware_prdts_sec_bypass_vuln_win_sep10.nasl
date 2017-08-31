@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vmware_prdts_sec_bypass_vuln_win_sep10.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_vmware_prdts_sec_bypass_vuln_win_sep10.nasl 6518 2017-07-04 13:49:06Z cfischer $
 #
 # VMware Products Security Bypass Vulnerability (Windows) -Sep10
 #
@@ -43,8 +43,8 @@ tag_summary = "The host is installed with VMWare product(s) which are vulnerable
 if(description)
 {
   script_id(902260);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 6518 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:49:06 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-10-01 08:36:34 +0200 (Fri, 01 Oct 2010)");
   script_cve_id("CVE-2010-3277");
   script_tag(name:"cvss_base", value:"2.1");
@@ -62,8 +62,7 @@ if(description)
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("General");
   script_dependencies("gb_vmware_prdts_detect_win.nasl");
-  script_require_keys("VMware/Win/Installed", "VMware/Player/Win/Ver",
-                      "VMware/Workstation/Win/Ver");
+  script_mandatory_keys("VMware/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

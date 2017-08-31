@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_mult_vuln_dec08_win.nasl 4218 2016-10-05 14:20:48Z teissa $
+# $Id: gb_firefox_mult_vuln_dec08_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities December-08 (Windows)
 #
@@ -41,8 +41,8 @@ tag_solution = "Upgrade to Firefox version 2.0.0.19 or 3.0.5
 if(description)
 {
   script_id(800088);
-  script_version("$Revision: 4218 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 16:20:48 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 6519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-12-23 15:23:02 +0100 (Tue, 23 Dec 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -67,7 +67,7 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_firefox_detect_win.nasl");
-  script_require_keys("SMB/WindowsVersion","Firefox/Win/Ver");
+  script_mandatory_keys("Firefox/Win/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);

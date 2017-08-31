@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-0114.nasl 6369 2017-06-19 10:00:04Z teissa $
+# $Id: ELSA-2007-0114.nasl 6561 2017-07-06 12:03:14Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122678");
-script_version("$Revision: 6369 $");
+script_version("$Revision: 6561 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:50:59 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:03:14 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-0114");
 script_tag(name: "insight", value: "ELSA-2007-0114 -  Important: xen security update - [3.0.3-25.0.3.el5] - fix ethernet bonding in balanced-rr mode, respin (rhbz#215887) [3.0.3-25.0.2.el5] - fix ethernet bonding in balanced-rr mode (rhbz#215887) [3.0.3-25.0.1.el5] - disable qemu monitor mode, for security reasons (rhbz#230295) - fix IA64 shadow page table mode (rhbz#230459, rhbz#230331)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"4.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

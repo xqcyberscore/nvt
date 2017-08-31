@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtls_virtua_mult_sql_inj_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_vtls_virtua_mult_sql_inj_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # vtls-Virtua 'InfoStation.cgi' Multiple SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804759");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-2081");
   script_bugtraq_id(69413);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-27 13:21:53 +0530 (Wed, 27 Aug 2014)");
   script_name("vtls-Virtua 'InfoStation.cgi' Multiple SQL Injection Vulnerabilities");
 
@@ -53,7 +53,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127997");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Aug/64");
-  script_summary("Check if vtls-Virtua is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3513 $");
+  script_version("$Revision: 6750 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 13:14:20 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-09 17:04:49 +0530 (Thu, 09 Jan 2014)");
   script_name("WordPress WP-Members Multiple Cross Site Scripting Vulnerabilities");
 
@@ -72,7 +72,6 @@ For updates refer to http://wordpress.org/plugins/wp-members";
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2014010044");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Jan/29");
   script_xref(name : "URL" , value : "http://wordpress.org/plugins/wp-members/changelog");
-  script_summary("Check if Wordpress WP-Members Plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

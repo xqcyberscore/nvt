@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barcode_actvx_bof_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: gb_barcode_actvx_bof_vuln.nasl 6532 2017-07-05 07:42:05Z cfischer $
 #
 # BarCodeWiz 'BarcodeWiz.dll' ActiveX Control BOF Vulnerability
 #
@@ -49,8 +49,8 @@ bufer overflow vulnerability.";
 if(description)
 {
   script_id(801395);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6532 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-08-06 17:02:44 +0200 (Fri, 06 Aug 2010)");
   script_cve_id("CVE-2010-2932");
   script_bugtraq_id(42097);
@@ -67,7 +67,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_barcode_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "BarCodeWiz/Barcode/AX");
+  script_mandatory_keys("BarCodeWiz/Barcode/AX");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

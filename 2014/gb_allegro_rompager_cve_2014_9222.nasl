@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_allegro_rompager_cve_2014_9222.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_allegro_rompager_cve_2014_9222.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Allegro RomPager `Misfortune Cookie` Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2014-9222");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6692 $");
 
  script_name("Allegro RomPager `Misfortune Cookie` Vulnerability");
 
@@ -47,9 +47,8 @@ if (description)
 
  script_tag(name: "affected" , value:"RomPager services with versions before 4.34");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-12-23 10:22:44 +0100 (Tue, 23 Dec 2014)");
- script_summary("Send a HTTP GET request with a special crafted cookie");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0008.nasl 6029 2017-04-26 07:02:41Z teissa $
+# $Id: gb_panos_pan_sa-2017_0008.nasl 6840 2017-08-03 08:38:20Z ckuersteiner $
 #
 # Palo Alto PAN-OS Tampering of temporary export files in the Management Web Interface
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-7217");
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
- script_version ("$Revision: 6029 $");
+ script_version ("$Revision: 6840 $");
 
  script_name("Palo Alto PAN-OS Tampering of temporary export files in the Management Web Interface");
 
@@ -49,10 +49,10 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 09:02:41 +0200 (Wed, 26 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-03 10:38:20 +0200 (Thu, 03 Aug 2017) $");
  script_tag(name:"creation_date", value:"2017-04-12 16:25:31 +0200 (Wed, 12 Apr 2017)");
  script_category(ACT_GATHER_INFO);
- script_family("General");
+ script_family("Palo Alto PAN-OS Local Security Checks");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_dependencies("gb_palo_alto_panOS_version.nasl");
  script_mandatory_keys("palo_alto_pan_os/version");

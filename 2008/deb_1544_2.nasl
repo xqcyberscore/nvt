@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_1544_2.nasl 3913 2016-08-31 08:01:39Z teissa $
+# $Id: deb_1544_2.nasl 6616 2017-07-07 12:10:49Z cfischer $
 # Description: Auto-generated from advisory DSA 1544-2 (pdns-recursor)
 #
 # Authors:
@@ -61,8 +61,8 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 if(description)
 {
  script_id(61360);
- script_version("$Revision: 3913 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-31 10:01:39 +0200 (Wed, 31 Aug 2016) $");
+ script_version("$Revision: 6616 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:10:49 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-08-15 15:52:52 +0200 (Fri, 15 Aug 2008)");
  script_cve_id("CVE-2008-1637");
  script_tag(name:"cvss_base", value:"6.8");
@@ -76,7 +76,7 @@ if(description)
  script_copyright("Copyright (c) 2008 E-Soft Inc. http://www.securityspace.com");
  script_family("Debian Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);

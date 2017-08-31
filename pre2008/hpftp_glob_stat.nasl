@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: hpftp_glob_stat.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: hpftp_glob_stat.nasl 6522 2017-07-04 15:22:28Z cfischer $
 # Description: HP-UX ftpd glob() Expansion STAT Buffer Overflow
 #
 # Authors:
@@ -48,36 +48,26 @@ Consider removing directories writable by 'anonymous'.";
 if(description)
 {
  script_id(11372);
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 6522 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:22:28 +0200 (Tue, 04 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2552);
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2001-0248");
  name = "HP-UX ftpd glob() Expansion STAT Buffer Overflow";
-
  script_name(name);
-
-
  script_category(ACT_MIXED_ATTACK);
-  script_tag(name:"qod_type", value:"remote_banner"); 
+ script_tag(name:"qod_type", value:"remote_banner"); 
  script_family("FTP");
-
-
  script_copyright("This script is Copyright (C) 2003 Xue Yong Zhi");
-
  script_dependencies("find_service.nasl", "ftp_writeable_directories.nasl");
- script_require_keys("ftp/login", "ftp/writeable_dir");
+ script_mandatory_keys("ftp/login", "ftp/writeable_dir");
  script_require_ports("Services/ftp", 21);
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
-
-#
-# The script code starts here :
-#
 
 include("ftp_func.inc");
 
@@ -91,10 +81,8 @@ login = get_kb_item("ftp/login");
 password = get_kb_item("ftp/password");
 
 
-
 # Then, we need a writeable directory
 wri = get_kb_item("ftp/writeable_dir");
-
 
 
 safe_checks = 0;

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_db2_8_udb_mult_vuln_lin_900216.nasl 4522 2016-11-15 14:52:19Z teissa $
+# $Id: secpod_ibm_db2_8_udb_mult_vuln_lin_900216.nasl 6602 2017-07-07 10:09:52Z cfischer $
 # Description: IBM DB2 Universal Database Multiple Vulnerabilities - Sept08 (Linux)
 #
 # Authors:
@@ -49,8 +49,8 @@ tag_summary = "The host is running DB2 Database Server, which is prone to multip
 if(description)
 {
  script_id(900216);
- script_version("$Revision: 4522 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-15 15:52:19 +0100 (Tue, 15 Nov 2016) $");
+ script_version("$Revision: 6602 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:09:52 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
  script_bugtraq_id(31058);
  script_cve_id("CVE-2008-2154", "CVE-2008-3958", "CVE-2008-3960");
@@ -61,12 +61,8 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
  script_family("Denial of Service");
  script_name("IBM DB2 Universal Database Multiple Vulnerabilities - Sept08 (Linux)");
-
-
- script_dependencies("gather-package-list.nasl",
-                     "secpod_ibm_db2_detect_linux_900217.nasl");
- script_require_keys("ssh/login/uname", "Linux/IBM_db2/Ver",
-                     "Linux/IBM_db2/FixPack");
+ script_dependencies("gather-package-list.nasl", "secpod_ibm_db2_detect_linux_900217.nasl");
+ script_mandatory_keys("Linux/IBM_db2/Ver", "Linux/IBM_db2/FixPack", "ssh/login/uname");
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "affected" , value : tag_affected);

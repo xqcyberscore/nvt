@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-1100.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-1100.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123593");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:05:58 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-1100");
 script_tag(name: "insight", value: "ELSA-2013-1100 -  qemu-kvm security update - [qemu-kvm-0.12.1.2-2.355.el6_4.6]- kvm-qga-cast-to-int-for-DWORD-type.patch [bz#980758]- kvm-qga-remove-undefined-behavior-in-ga_install_service.patch [bz#980758]- kvm-qga-diagnostic-output-should-go-to-stderr.patch [bz#980758]- kvm-qa_install_service-nest-error-paths-more-idiomatically.patch [bz#980758]- kvm-qga-escape-cmdline-args-when-registering-win32-service.patch [bz#980758]- Resolves: bz#980758 (qemu-kvm: CVE-2013-2231 qemu: qemu-ga win32 service unquoted search path [rhel-6.4.z])"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"7.2");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-1100");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

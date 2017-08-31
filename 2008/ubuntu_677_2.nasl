@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_677_2.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: ubuntu_677_2.nasl 6638 2017-07-10 10:47:25Z cfischer $
 # Description: Auto-generated from advisory USN-677-2 (fixed)
 #
 # Authors:
@@ -46,8 +46,8 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=USN-67
 if(description)
 {
  script_id(63074);
- script_version("$Revision: 4557 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+ script_version("$Revision: 6638 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:47:25 +0200 (Mon, 10 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-12-29 22:42:24 +0100 (Mon, 29 Dec 2008)");
  script_cve_id("CVE-2008-2237", "CVE-2008-2238", "CVE-2008-4937");
  script_tag(name:"cvss_base", value:"9.3");
@@ -61,7 +61,7 @@ if(description)
  script_copyright("Copyright (c) 2008 E-Soft Inc. http://www.securityspace.com");
  script_family("Ubuntu Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name:"qod_type", value:"package");

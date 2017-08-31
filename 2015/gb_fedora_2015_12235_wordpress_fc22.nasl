@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869867");
-  script_version("$Revision: 6211 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+  script_version("$Revision: 6630 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-08-14 05:33:10 +0200 (Fri, 14 Aug 2015)");
   script_cve_id("CVE-2015-5622", "CVE-2015-5623", "CVE-2015-2213", "CVE-2015-5730",
                 "CVE-2015-5731", "CVE-2015-5732", "CVE-2015-5733", "CVE-2015-5734");
@@ -53,7 +53,7 @@ Important information in /usr/share/doc/wordpress/README.fedora
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

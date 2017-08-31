@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mycio_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: mycio_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # McAfee myCIO HTTP Server Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10707");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6701 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -38,9 +38,8 @@ if(description)
   script_family("Web Servers");
   script_copyright("This script is Copyright (C) 2001 SecuriTeam");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("myCIO/banner");
   script_require_ports("Services/www", 6515);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("myCIO/banner");
 
   tag_summary = "We detected the presence of McAfee's myCIO HTTP Server.
   The server provides other clients on the network with antivirus updates. 

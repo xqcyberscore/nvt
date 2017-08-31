@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842119");
-  script_version("$Revision: 2737 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:54:46 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6646 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:03:11 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-03-10 06:33:44 +0100 (Tue, 10 Mar 2015)");
   script_cve_id("CVE-2015-0819", "CVE-2015-0820", "CVE-2015-0821", "CVE-2015-0822",
                 "CVE-2015-0823", "CVE-2015-0824", "CVE-2015-0825", "CVE-2015-0826",
@@ -101,12 +101,11 @@ SVG conte ...
   script_xref(name: "USN", value: "2505-2");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-March/002856.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

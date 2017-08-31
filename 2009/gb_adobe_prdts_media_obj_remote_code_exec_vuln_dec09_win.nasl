@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_media_obj_remote_code_exec_vuln_dec09_win.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_adobe_prdts_media_obj_remote_code_exec_vuln_dec09_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
 #
 # Adobe Reader/Acrobat Multimedia Doc.media.newPlayer Code Execution Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.901096";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 4865 $");
+  script_version("$Revision: 6475 $");
   script_cve_id("CVE-2009-4324");
   script_bugtraq_id(37331);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-12-21 07:14:17 +0100 (Mon, 21 Dec 2009)");
   script_name("Adobe Reader/Acrobat Multimedia Doc.media.newPlayer Code Execution Vulnerability (Windows)");
 
@@ -89,7 +89,7 @@ configuration menu settings.";
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_require_keys("Adobe/Acrobat/Win/Ver", "Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed");
   exit(0);
 }
 

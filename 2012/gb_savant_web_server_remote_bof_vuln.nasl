@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_savant_web_server_remote_bof_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
+# $Id: gb_savant_web_server_remote_bof_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # Savant Web Server Remote Buffer Overflow Vulnerability
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802296");
-  script_version("$Revision: 5956 $");
+  script_version("$Revision: 6697 $");
   script_bugtraq_id(12429);
   script_cve_id("CVE-2005-0338");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-01-23 14:14:14 +0530 (Mon, 23 Jan 2012)");
   script_name("Savant Web Server Remote Buffer Overflow Vulnerability");
 
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_require_ports("Services/www", 80);
   script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 80);
   script_mandatory_keys("Savant/banner");
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to execute

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851482");
-  script_version("$Revision: 5185 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 10:39:41 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 6677 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:58:27 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-02-03 12:10:58 +0530 (Fri, 03 Feb 2017)");
   script_cve_id("CVE-2016-5545", "CVE-2017-3290", "CVE-2017-3316", "CVE-2017-3332");
   script_tag(name:"cvss_base", value:"6.8");
@@ -70,7 +70,7 @@ of detect NVT and check if the version is vulnerable or not.");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:opensuse:opensuse", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

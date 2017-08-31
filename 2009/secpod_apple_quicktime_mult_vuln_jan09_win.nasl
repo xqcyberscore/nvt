@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_quicktime_mult_vuln_jan09_win.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_apple_quicktime_mult_vuln_jan09_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
 #
 # Apple QuickTime Multiple Vulnerabilities - Jan09 (Windows)
 #
@@ -48,8 +48,8 @@ tag_summary = "The host is installed with Apple QuickTime and is prone to
 if(description)
 {
   script_id(900074);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 6519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-01-23 16:33:16 +0100 (Fri, 23 Jan 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -64,7 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("secpod_apple_quicktime_detection_win_900124.nasl");
-  script_require_keys("SMB/WindowsVersion","QuickTime/Win/Ver");
+  script_mandatory_keys("QuickTime/Win/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);

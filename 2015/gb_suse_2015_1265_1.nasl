@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850783");
-  script_version("$Revision: 3353 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:36:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6675 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:54:28 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-10-13 15:34:07 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2015-3411", "CVE-2015-3412", "CVE-2015-4148", "CVE-2015-4598",
                 "CVE-2015-4599", "CVE-2015-4600", "CVE-2015-4601", "CVE-2015-4602",
@@ -91,12 +91,11 @@ http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4603
   script_xref(name: "SUSE-SU", value: "2015:1265_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-07/msg00030.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of PHP");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:suse:linux_enterprise_server", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

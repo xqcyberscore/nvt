@@ -45,8 +45,8 @@ advisory GLSA 201101-02.";
 if(description)
 {
  script_id(69038);
- script_version("$Revision: 3109 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 09:00:53 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 6594 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:18:43 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-03-09 05:54:11 +0100 (Wed, 09 Mar 2011)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -61,7 +61,7 @@ if(description)
  script_copyright("Copyright (c) 2011 E-Soft Inc. http://www.securityspace.com");
  script_family("Gentoo Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("login/SSH/success", "ssh/login/gentoo");
+ script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

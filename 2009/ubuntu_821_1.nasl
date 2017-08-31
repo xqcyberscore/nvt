@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_821_1.nasl 5231 2017-02-08 11:52:34Z teissa $
+# $Id: ubuntu_821_1.nasl 6639 2017-07-10 10:52:06Z cfischer $
 # Description: Auto-generated from advisory USN-821-1 (xulrunner-1.9)
 #
 # Authors:
@@ -86,8 +86,8 @@ announced via advisory USN-821-1.";
 if(description)
 {
  script_id(64889);
- script_version("$Revision: 5231 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+ script_version("$Revision: 6639 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:52:06 +0200 (Mon, 10 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-09-15 22:46:32 +0200 (Tue, 15 Sep 2009)");
  script_cve_id("CVE-2009-3070", "CVE-2009-3071", "CVE-2009-3072", "CVE-2009-3074", "CVE-2009-3075", "CVE-2009-3076", "CVE-2009-3077", "CVE-2009-3078", "CVE-2009-3079");
  script_tag(name:"cvss_base", value:"10.0");
@@ -101,7 +101,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("Ubuntu Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name : "solution" , value : tag_solution);

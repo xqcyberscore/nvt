@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-2587.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-2587.nasl 6600 2017-07-07 09:58:31Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123493");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6600 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:04:36 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-2587");
 script_tag(name: "insight", value: "ELSA-2013-2587 - unbreakable enterprise kernel security update - kernel-uek[3.8.13-16.2.3.el6uek]- ip_output: do skb ufo init for peeked non ufo skb as well (Jiri Pirko) [Orabug: 17951078] {CVE-2013-4470}- ip6_output: do skb ufo init for peeked non ufo skb as well (Jiri Pirko) [Orabug: 17951080] {CVE-2013-4470}- KVM: x86: fix guest-initiated crash with x2apic (CVE-2013-6376) (Gleb Natapov) [Orabug: 17951067] {CVE-2013-6376}- KVM: x86: Convert vapic synchronization to _cached functions (CVE-2013-6368) (Andy Honig) [Orabug: 17951071] {CVE-2013-6368}- KVM: x86: Fix potential divide by 0 in lapic (CVE-2013-6367) (Andy Honig) [Orabug: 17951073] {CVE-2013-6367}"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"6.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-2587");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

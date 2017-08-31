@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6715 $");
   script_bugtraq_id(65141);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-28 13:07:10 +0530 (Tue, 28 Jan 2014)");
   script_name("WordPress SS Downloads Multiple Cross Site Scripting Vulnerability");
 
@@ -79,7 +79,6 @@ For updates refer to http://wordpress.org/plugins/ss-downloads";
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124958");
   script_xref(name : "URL" , value : "https://plugins.trac.wordpress.org/changeset/842702");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-ss-downloads-cross-site-scripting");
-  script_summary("Check if Wordpress SS Downloads Plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

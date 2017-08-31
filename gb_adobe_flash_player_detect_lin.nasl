@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_detect_lin.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_adobe_flash_player_detect_lin.nasl 6476 2017-06-29 07:32:00Z cfischer $
 #
 # Adobe Flash Player/AIR Version Detection (Linux)
 #
@@ -35,10 +35,10 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.800032";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 6476 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:32:00 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2008-10-21 16:25:40 +0200 (Tue, 21 Oct 2008)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Flash Player/AIR Version Detection (Linux)");
@@ -105,6 +105,7 @@ if(flashName != NULL)
       {
         flashVer = ereg_replace(pattern:",|_|-", string:flashVer[0], replace: ".");
 
+        replace_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Linux/Installed", value:TRUE);
         set_kb_item(name:"AdobeFlashPlayer/Linux/Ver", value:flashVer);
 
         ## Build CPE
@@ -135,6 +136,7 @@ if(airPaths != NULL)
       {
         airVer = ereg_replace(pattern:",|_|-", string:airVer[1], replace: ".");
 
+        replace_kb_item(name:"Adobe/Air_or_Flash_or_Reader/Linux/Installed", value:TRUE);
         set_kb_item(name:"Adobe/Air/Linux/Ver", value:airVer);
 
         ## Build CPE

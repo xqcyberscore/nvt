@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpgroupware_detect.nasl 5613 2017-03-20 10:08:39Z cfi $
+# $Id: phpgroupware_detect.nasl 6712 2017-07-13 08:58:17Z cfischer $
 #
 # phpgroupware Detection
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100092");
-  script_version("$Revision: 5613 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:08:39 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 6712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 10:58:17 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-03-30 14:26:52 +0200 (Mon, 30 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("phpGroupWare Detection");  
   script_category(ACT_GATHER_INFO);
-  script_family("General");
+  script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);

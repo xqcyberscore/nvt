@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ms_rdp_detect.nasl 5248 2017-02-09 10:43:55Z cfi $
+# $Id: ms_rdp_detect.nasl 6879 2017-08-09 06:08:56Z emoss $
 #
 # Microsoft Remote Desktop Protocol Detection 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100062");
-  script_version("$Revision: 5248 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-09 11:43:55 +0100 (Thu, 09 Feb 2017) $");
+  script_version("$Revision: 6879 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-09 08:08:56 +0200 (Wed, 09 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-03-19 19:54:28 +0100 (Thu, 19 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -50,6 +50,7 @@ if(description)
 }
 
 include("misc_func.inc");
+include("host_details.inc");
 
 port = get_unknown_port( default:3389 );
 
@@ -68,6 +69,7 @@ if( isnull( buf ) || strlen( buf ) < 5 ) exit( 0 );
 response = hexstr( buf );
 
 if( response =~ "^0300000b06$" ) {
+  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:"Microsoft Remote Desktop Protocol", port:port, desc:"Microsoft Remote Desktop Protocol Detection", runs_key:"windows" );
   replace_kb_item( name:"msrpd/detected", value:TRUE );
   register_service( port:port, proto:"msrdp" );
   log_message( port:port );

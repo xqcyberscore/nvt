@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: savant_cgi_download.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: savant_cgi_download.nasl 6521 2017-07-04 14:51:10Z cfischer $
 # Description: Savant original form CGI access
 #
 # Authors:
@@ -25,8 +25,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10623");
- script_version("$Revision: 6056 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+ script_version("$Revision: 6521 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1313);
  script_tag(name:"cvss_base", value:"5.0");
@@ -38,9 +38,8 @@ if (description)
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2001 SecuriTeam");
  script_dependencies("gb_get_http_banner.nasl", "no404.nasl");
-
- script_require_keys("www/apache","Savant/banner");
  script_require_ports("Services/www", 80);
+ script_mandatory_keys("Savant/banner");
 
  script_tag(name : "solution" , value : "A security vulnerability in the Savant web server allows attackers to download the original form of CGIs (unprocessed).
  This would allow them to see any sensitive information stored inside those CGIs.");

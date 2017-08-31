@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2551_1.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: deb_2551_1.nasl 6612 2017-07-07 12:08:03Z cfischer $
 # Description: Auto-generated from advisory DSA 2551-1 (isc-dhcp)
 #
 # Authors:
@@ -53,8 +53,8 @@ if(description)
  script_tag(name:"cvss_base", value:"7.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
  script_cve_id("CVE-2012-3955");
- script_version("$Revision: 6022 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+ script_version("$Revision: 6612 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-09-26 11:19:41 -0400 (Wed, 26 Sep 2012)");
  script_name("Debian Security Advisory DSA 2551-1 (isc-dhcp)");
 
@@ -65,7 +65,7 @@ if(description)
  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
  script_family("Debian Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);

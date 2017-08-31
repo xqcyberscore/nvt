@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_managed_engine_eventlog_analyzer_11_14.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_managed_engine_eventlog_analyzer_11_14.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # ManageEngine EventLog Analyzer Multiple Vulnerabilities
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2014-6038","CVE-2014-6039");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6692 $");
 
  script_name("ManageEngine EventLog Analyzer Multiple Vulnerabilities");
 
@@ -44,9 +44,8 @@ if (description)
  script_tag(name: "affected", value:"all versions from v7 to v9.9 build 9002.");
  script_tag(name: "summary" , value:"ManageEngine EventLog Analyzer is prone to an information disclosure vulnerability.");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-11-06 16:38:34 +0100 (Thu, 06 Nov 2014)");
- script_summary("Determine if it is possible to read the usernames/passwords");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

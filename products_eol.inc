@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 6432 2017-06-26 13:16:02Z cfischer $
+# $Id: products_eol.inc 6909 2017-08-11 13:38:48Z asteins $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6432 $
+# $Revision: 6909 $
 #
 ###############################################################################
 
@@ -58,11 +58,7 @@ eol_cpes[ 'cpe:/a:apache:http_server' ]      = make_array(
                                                            'version_regex', '^([0-9]+\\.[0-9]+)'
                                                          );
 
-# IIS EOL dates are mostly coupled to the EOL of the OS, see os_eol.inc
-eol_cpes[ 'cpe:/a:microsoft:iis' ]           = make_array(
-                                                           'versions',      '6.0:2015-07-14;5.1:2014-04-08;5.0:2010-07-13;4.0:2002-12-31;3.0:2002-12-31;2.0:2002-12-31;1.0:2000-09-30',
-                                                           'version_regex', '^([0-9]+\\.[0-9]+)'
-                                                         );
+
 
 # https://secure.php.net/eol.php and https://secure.php.net/supported-versions.php
 eol_cpes[ 'cpe:/a:php:php' ]                 = make_array(
@@ -75,6 +71,30 @@ eol_cpes[ 'cpe:/a:mariadb:mariadb' ]         = make_array(
                                                            'versions',      '10.2:2022-05-23;10.1:2020-10-17;10.0:2019-03-31;5.5:2020-04-11;5.3:2017-03-01;5.2:2015-11-10;5.1:2015-02-01',
                                                            'version_regex', '^([0-9]+\\.[0-9]+)'
                                                          );
+
+# https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=exchange%20server&Filter=FilterNO
+eol_cpes[ 'cpe:/a:microsoft:exchange_server' ] = make_array(
+                                                               'versions', '5.5:2010-01-01;2007:2017-01-01;2013:2017-01-01;2013sp1:2017-01-01;2013sp2:2017-01-01;2013sp3:2017-10-01',
+                                                               'version_regex', '^([0-9.]+)(sp[0-9])?'
+                                                           );
+
+# IIS EOL dates are mostly coupled to the EOL of the OS, see os_eol.inc
+eol_cpes[ 'cpe:/a:microsoft:iis' ]           = make_array(
+                                                           'versions',      '6.0:2015-07-14;5.1:2014-04-08;5.0:2010-07-13;4.0:2002-12-31;3.0:2002-12-31;2.0:2002-12-31;1.0:2000-09-30',
+                                                           'version_regex', '^([0-9]+\\.[0-9]+)'
+                                                         );
+
+# https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=sharepoint%20foundation&Filter=FilterNO
+eol_cpes[ 'cpe:/a:microsoft:sharepoint_foundation' ] = make_array(
+                                                              'versions',      '2010:2012-07-10;2010sp1:2014-10-14;2010sp2:2020-10-13;2013:2015-04-14;2013sp1:2023-04-11',
+                                                              'version_regex', '^([0-9.]+)(sp[0-9])?'
+                                                            );
+
+# https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=sharepoint%20server&Filter=FilterNO
+eol_cpes[ 'cpe:/a:microsoft:sharepoint_server' ] = make_array(
+                                                              'versions',      '2003:2014-04-08;2007:2009-01-13;2007sp1:2010-07-13;2007sp2:2013-01-08;2007sp3:2017-10-10;2010:2012-07-10;2010sp1:2014-10-14;2010sp2:2020-10-13;2013:2015-04-14;2013sp1:2023-04-11;2016:2026-07-14',
+                                                              'version_regex', '^([0-9.]+)(sp[0-9])?'
+                                                            );
 
 # https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=sql%20server&Filter=FilterNO
 # https://en.wikipedia.org/wiki/History_of_Microsoft_SQL_Server#Release_summary
@@ -92,9 +112,33 @@ eol_cpes[ 'cpe:/a:mysql:mysql' ]             = make_array(
                                                            'version_regex', '^([0-9]+\\.[0-9]+)'
                                                          );
 
-function product_reached_eol( cpe, version ) {
+# No EOL versions yet
+eol_cpes[ 'cpe:/a:oracle:mysql' ]            = make_array(
+                                                           'versions',      '',
+                                                           'version_regex', '^([0-9]+\\.[0-9]+)'
+                                                         );
 
-  local_var cpe, version, eol_array, v, test_versions, tv, test_version, eol_date, v_d;
+# http://lists.wald.intevation.org/pipermail/openvas-announce/2016-May/000194.html
+# http://lists.wald.intevation.org/pipermail/openvas-announce/2015-April/000181.html
+# http://lists.wald.intevation.org/pipermail/openvas-announce/2014-August/000166.html
+# http://lists.wald.intevation.org/pipermail/openvas-announce/2013-August/000155.html
+# http://lists.wald.intevation.org/pipermail/openvas-announce/2012-September/000143.html
+# http://lists.wald.intevation.org/pipermail/openvas-announce/2011-June/000127.html
+# http://lists.wald.intevation.org/pipermail/openvas-announce/2009-December/000084.html
+
+eol_cpes[ 'cpe:/a:greenbone:greenbone_security_assistant' ] = make_array(
+                                                           'versions',      '5.0:2016-05-10;4.0:2015-04-27;3.0:2014-08-28;2.0:2013-08-07;1.0:2012-09-05',
+                                                           'version_regex', '^([0-9]+\\.[0-9]+)'
+                                                         );
+
+eol_cpes[ 'cpe:/a:openvas:openvas_manager' ] = make_array(
+                                                           'versions',      '5.0:2016-05-10;4.0:2015-04-27;3.0:2014-08-28;2.0:2013-08-07;1.0:2012-09-05',
+                                                           'version_regex', '^([0-9]+\\.[0-9]+)'
+                                                         );
+
+function product_reached_eol( cpe, version, debug ) {
+
+  local_var cpe, version, debug, eol_array, v, test_versions, tv, test_version, eol_date, v_d;
 
   if( ! cpe ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#product_reached_eol" );
@@ -102,7 +146,8 @@ function product_reached_eol( cpe, version ) {
   }
 
   if( ! eol_cpes[ cpe ] ) {
-    set_kb_item( name:"nvt_debug_cpe_syntax/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#product_reached_eol" );
+    if( debug ) display( "DEBUG: CPE " + cpe + " not in eol_cpes array." );
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#CPE '" + cpe + "' passed to cpe parameter of product_reached_eol is not in the list of EOL products" );
     return;
   }
 
@@ -116,30 +161,37 @@ function product_reached_eol( cpe, version ) {
   if( ! is_array( eol_array ) )
     return;
 
-  if( ! eol_array[ 'versions' ] )
+  if( ! eol_array[ 'versions' ] ) {
+    if( debug ) display( "DEBUG: eol_cpes array doesn't contain a 'versions' statement." );
     return;
+  }
 
   if( eol_array[ 'version_regex' ] ) {
-
     v = eregmatch( pattern:eol_array[ 'version_regex' ], string:version );
-    if( isnull( v[1] ) )
+    if( isnull( v[0] ) ) {
+      if( debug ) display( "DEBUG: Passed version_regex: " + eol_array[ 'version_regex' ] + " doesn't match version : " + version + " . No EOL version identified." );
       return;
-
-    version = v[ max_index( v ) - 1 ];
+    } else {
+      version = v[0];
+    }
   }
 
   test_versions = split( eol_array[ 'versions' ], sep:';', keep:FALSE );
-  if( ! is_array( test_versions ) )
+  if( ! is_array( test_versions ) ) {
+    if( debug ) display( "DEBUG: versions of " + cpe + " couldn't be split into an array." );
     return;
+  }
 
-  foreach tv ( test_versions ) {
+  foreach tv( test_versions ) {
 
     test_version = '';
     eol_date     = '';
 
     v_d = eregmatch( pattern:'^([^:]+):(.*)$', string:tv );
-    if( isnull( v_d[1] ) || isnull( v_d[2] ) )
+    if( isnull( v_d[1] ) || isnull( v_d[2] ) ) {
+      if( debug ) display( "DEBUG: eol_cpes array has a wrong 'version:date' syntax." ); 
       return;
+    }
 
     test_version = v_d[1];
     eol_date     = v_d[2];
@@ -147,47 +199,8 @@ function product_reached_eol( cpe, version ) {
     if( version == test_version )
       if( eol_date_reached( eol_date:eol_date ) )
         return make_array( 'eol_version', test_version,
-                           'eol_date',    eol_date
-                         );
+                           'eol_date',    eol_date );
   }
 
   return;
-}
-
-function eol_date_reached( eol_date ) {
-
-  local_var eol_date, local_time;
-
-  if( ! eol_date ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#eol_date#-#eol_date_reached" );
-    return;
-  }
-
-  eol_date = str_replace( string:eol_date, find:"-", keep:FALSE );
-  local_time = make_date_str( date:localtime( unixtime() ) );
-
-  if( int( local_time ) >= int( eol_date ) )
-    return TRUE;
-
-  return;
-}
-
-function make_date_str( date ) {
-
-  time = localtime(date);
-
-  month  = fancy_date ( time["mon"]  );
-  day    = fancy_date ( time["mday"] );
-
-  return time["year"] + month + day;
-}
-
-function fancy_date() {
-
-  local_var datestr;
-
-  datestr =  _FCT_ANON_ARGS[0];
-  if (int (datestr ) < 10) return string ("0", datestr);
-
-  return datestr;
 }

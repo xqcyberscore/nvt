@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln01_apr14_macosx.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_apple_safari_mult_vuln01_apr14_macosx.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Apple Safari Multiple Memory Corruption Vulnerabilities-01 Apr14 (Mac OS X)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-1300", "CVE-2014-1303");
   script_bugtraq_id(66583, 66242);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-07 12:52:16 +0530 (Mon, 07 Apr 2014)");
   script_name("Apple Safari Multiple Memory Corruption Vulnerabilities-01 Apr14 (Mac OS X)");
 
@@ -77,7 +77,6 @@ For updates refer to 'http://www.apple.com/support'";
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT6181");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57688");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Apple Safari on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");

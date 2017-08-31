@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_gpu_mult_vuln_lin.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_google_chrome_gpu_mult_vuln_lin.nasl 6521 2017-07-04 14:51:10Z cfischer $
 #
 # Google Chrome 'GPU process' Multiple Vulnerabilities (Linux)
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 if(description)
 {
   script_id(802715);
-  script_version("$Revision: 5950 $");
+  script_version("$Revision: 6521 $");
   script_cve_id("CVE-2011-3047");
   script_bugtraq_id(52395);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-03-20 11:24:20 +0530 (Tue, 20 Mar 2012)");
   script_name("Google Chrome 'GPU process' Multiple Vulnerabilities (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48375/");
@@ -54,7 +54,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
-  script_require_keys("Google-Chrome/Linux/Ver", "ssh/login/uname");
+  script_mandatory_keys("Google-Chrome/Linux/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

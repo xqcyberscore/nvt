@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_eol.nasl 5300 2017-02-15 08:24:14Z mime $
+# $Id: gb_samba_eol.nasl 6494 2017-06-30 08:10:34Z cfischer $
 #
 # Samba End Of Life Detection
 #
@@ -32,26 +32,25 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.140159");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 5300 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-15 09:24:14 +0100 (Wed, 15 Feb 2017) $");
+  script_version("$Revision: 6494 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 10:10:34 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-02-14 13:48:20 +0100 (Tue, 14 Feb 2017)");
   script_name("Samba End Of Life Detection");
-  script_summary("Determine if the Samba version on the remote host has reached the end of life");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_samba_detect.nasl","smb_nativelanman.nasl");
+  script_dependencies("gb_samba_detect.nasl", "smb_nativelanman.nasl");
   script_mandatory_keys("samba/detected");
 
   script_xref(name:"URL", value:"https://wiki.samba.org/index.php/Samba_Release_Planning");
 
-  tag_summary = "The PostgreSQL version on the remote host has reached the end of life and should
+  tag_summary = "The Samba version on the remote host has reached the end of life and should
   not be used anymore.";
 
-  tag_impact = "An end of life version of PostgreSQL is not receiving any security updates from the vendor. Unfixed security vulnerabilities
+  tag_impact = "An end of life version of Samba is not receiving any security updates from the vendor. Unfixed security vulnerabilities
   might be leveraged by an attacker to compromise the security of this host.";
 
-  tag_solution = "Update the PostgreSQL version on the remote host to a still supported version.";
+  tag_solution = "Update the Samba version on the remote host to a still supported version.";
 
   tag_vuldetect = "Get the installed version with the help of the detect NVT and check if the version is unsupported.";
 
@@ -73,13 +72,13 @@ include("host_details.inc");
 
 if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
-if( ret = product_reached_eol( cpe:CPE, version:version ) )
-{
-  report = 'The Samba version has reached the end of life.\n\n' + 
-           'Installed version: ' + version + '\n' +
-           'EOL version:       ' + ret['eol_version'] + '\n' +
-           'EOL date:          ' + ret['eol_date'] + '\n';
-
+if( ret = product_reached_eol( cpe:CPE, version:version ) ) {
+  report = build_eol_message( name:"Samba",
+                              cpe:CPE,
+                              version:version,
+                              eol_version:ret["eol_version"],
+                              eol_date:ret["eol_date"],
+                              eol_type:"prod" );
   security_message( port:0, data:report );
   exit( 0 );
 }

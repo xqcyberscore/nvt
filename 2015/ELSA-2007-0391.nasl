@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-0391.nasl 6141 2017-05-17 09:03:37Z teissa $
+# $Id: ELSA-2007-0391.nasl 6561 2017-07-06 12:03:14Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122701");
-script_version("$Revision: 6141 $");
+script_version("$Revision: 6561 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:51:27 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:03:14 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-0391");
 script_tag(name: "insight", value: "ELSA-2007-0391 -  Moderate: file security update - [4.10-3.0.2] - resolves: #241026: CVE-2007-2799 file integer overflow - added dependency on zlib-devel"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"5.1");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

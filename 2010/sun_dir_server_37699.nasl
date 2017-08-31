@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sun_dir_server_37699.nasl 5194 2017-02-03 14:20:34Z cfi $
+# $Id: sun_dir_server_37699.nasl 6606 2017-07-07 11:29:00Z cfischer $
 #
 # Sun Java System Directory Server 'core_get_proxyauth_dn' Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100438");
-  script_version("$Revision: 5194 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 15:20:34 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 6606 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 13:29:00 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-01-12 12:22:08 +0100 (Tue, 12 Jan 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -40,7 +40,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("sun_dir_server_detect.nasl");
   script_require_ports("Services/ldap", 389, 636);
-  script_mandatory_keys("ldap/detected", "SunJavaDirServer/installed");
+  script_mandatory_keys("SunJavaDirServer/installed", "ldap/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37699");
   script_xref(name:"URL", value:"http://intevydis.blogspot.com/2010/01/sun-directory-server-70.html");

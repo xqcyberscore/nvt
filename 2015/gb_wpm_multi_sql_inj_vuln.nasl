@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wpm_multi_sql_inj_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_wpm_multi_sql_inj_vuln.nasl 6453 2017-06-28 09:59:05Z teissa $
 #
 # SolarWinds Web Performance Monitor Multiple SQL Injection Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:solarwinds:web_performance_monitor';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105973");
-  script_version("$Revision: 3694 $");
-  script_tag(name : "last_modification", value : "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6453 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name : "creation_date", value : "2015-03-06 14:12:05 +0700 (Fri, 06 Mar 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,6 @@ if (description)
 
   script_tag(name : "summary", value : "SolarWinds Web Performace Monitor is prone to multiple
 SQL Injection vulnerabilities.");
-  script_summary("Check the version");
 
   script_tag(name : "vuldetect", value : "Check the version.");
 

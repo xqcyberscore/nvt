@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2233.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: ELSA-2015-2233.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122783");
-script_version("$Revision: 6345 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-11-25 13:18:50 +0200 (Wed, 25 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2233");
 script_tag(name: "insight", value: "ELSA-2015-2233 -  tigervnc security, bug fix, and enhancement update - [1.3.1-3]- Do not mention that display number is required in the file name Resolves: bz#1195266[1.3.1-2]- Resolves: bz#1248422 CVE-2014-8240 CVE-2014-8241 tigervnc: various flaws[1.3.1-1]- Drop unecessary patches- Re-base to 1.3.1 (bug #1199453)- Re-build against re-based xserver (bug #1194898)- Check the return value from XShmAttach (bug #1072733)- Add missing part of xserver114.patch (bug #1140603)- Keep pointer in sync (bug #1100661)- Make input device class global (bug #1119640)- Add IPv6 support (bug #1162722)- Set initial mode as prefered (bug #1181287)- Do not mention that display number is required in the file name (bug #1195266)- Enable Xinerama extension (bug #1199437)- Specify full path for runuser command (bug #1208817)[1.2.80-0.31.20130314svn5065]- Rebuilt against xorg-x11-server to pick up ppc64le fix (bug #1140424)."); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

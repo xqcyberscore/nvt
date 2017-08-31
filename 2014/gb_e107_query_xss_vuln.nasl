@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_e107_query_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_e107_query_xss_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # e107 query Cross Site Scripting Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:e107:e107";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2013-2750");
   script_bugtraq_id(58841);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-28 15:46:24 +0530 (Tue, 28 Jan 2014)");
   script_name("e107 query Cross Site Scripting Vulnerability");
 
@@ -74,7 +74,6 @@ For updates refer to http://www.e107.org/";
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/83210");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52858");
-  script_summary("Check if e107 is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

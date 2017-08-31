@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_edgecore_ES3526XA_manager_mult_vuln_july16.nasl 5827 2017-04-03 06:27:11Z cfi $
+# $Id: gb_edgecore_ES3526XA_manager_mult_vuln_july16.nasl 6707 2017-07-12 14:57:13Z cfischer $
 #
 # EdgeCore ES3526XA Manager Multiple Vulnerabilities
 #
@@ -24,13 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/o:edgecore:es3526xa_manager";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808238");
-  script_version("$Revision: 5827 $");
+  script_version("$Revision: 6707 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 08:27:11 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:57:13 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-06-27 15:50:17 +0530 (Mon, 27 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("EdgeCore ES3526XA Manager Multiple Vulnerabilities");

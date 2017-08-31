@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_mar12_macosx.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_apple_safari_webkit_mult_vuln_mar12_macosx.nasl 6521 2017-07-04 14:51:10Z cfischer $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - March12 (Mac OS X)
 #
@@ -38,7 +38,7 @@ tag_summary = "The host is installed with Apple Safari web browser and is prone
 if(description)
 {
   script_id(802813);
-  script_version("$Revision: 5950 $");
+  script_version("$Revision: 6521 $");
   script_cve_id("CVE-2012-0647", "CVE-2012-0585", "CVE-2011-3881", "CVE-2012-0586",
                 "CVE-2012-0587", "CVE-2012-0588", "CVE-2012-0589", "CVE-2011-3887",
                 "CVE-2012-0590", "CVE-2011-2825", "CVE-2011-2833", "CVE-2011-2846",
@@ -73,7 +73,7 @@ if(description)
                     52363, 52423, 52421);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-03-13 18:17:52 +0530 (Tue, 13 Mar 2012)");
   script_name("Apple Safari Webkit Multiple Vulnerabilities - March12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5190");
@@ -84,7 +84,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
-  script_require_keys("AppleSafari/MacOSX/Version", "ssh/login/uname");
+  script_mandatory_keys("AppleSafari/MacOSX/Version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

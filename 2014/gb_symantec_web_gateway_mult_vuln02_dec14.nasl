@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_mult_vuln02_dec14.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_symantec_web_gateway_mult_vuln02_dec14.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Symantec Web Gateway Multiple Vulnerabilities -02 Dec14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805228");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-1651", "CVE-2014-1652");
   script_bugtraq_id(67754, 67755);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-23 12:50:52 +0530 (Tue, 23 Dec 2014)");
   script_name("Symantec Web Gateway Multiple Vulnerabilities -02 Dec14");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1030443");
   script_xref(name : "URL" , value : "http://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2014&suid=20140616_00");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Symantec Web Gateway");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

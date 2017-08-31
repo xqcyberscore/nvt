@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mysql_auth_bypas_cve_2012_2122.nasl 5889 2017-04-07 09:14:58Z cfi $
+# $Id: mysql_auth_bypas_cve_2012_2122.nasl 6788 2017-07-21 19:16:52Z cfischer $
 #
 # MySQL / MariaDB Authentication Bypass
 #
@@ -30,19 +30,18 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103492");
   script_bugtraq_id(53911);
   script_cve_id("CVE-2012-2122");
-  script_version("$Revision: 5889 $");
+  script_version("$Revision: 6788 $");
   script_name("MySQL / MariaDB Authentication Bypass");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-06-11 18:38:54 +0200 (Mon, 11 Jun 2012)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
   script_category(ACT_ATTACK);
   script_family("Databases");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_timeout(0);
   script_dependencies("mysql_version.nasl");
+  script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL_MariaDB/installed");
-  script_require_ports("Services/mysql", "Services/mysql_mariadb", "Services/mariadb", 3306);
 
   script_xref(name:"URL", value:"http://bugs.mysql.com/bug.php?id=64884");
   script_xref(name:"URL", value:"https://mariadb.atlassian.net/browse/MDEV-212");

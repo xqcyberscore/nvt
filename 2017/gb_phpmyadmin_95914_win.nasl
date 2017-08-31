@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_95914_win.nasl 5441 2017-02-28 08:41:33Z cfi $
+# $Id: gb_phpmyadmin_95914_win.nasl 6922 2017-08-15 07:12:37Z asteins $
 #
-# phpMyAdmin CVE-2016-6621 Server Side Request Forgery Security Bypass Vulnerability (Windows)
+# phpMyAdmin 4.0.x < 4.0.10.19, 4.4.x < 4.4.15.10 and 4.6.x < 4.6.6 Multiple Vulnerabilities (Windows)
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -30,14 +30,14 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108076");
-  script_version("$Revision: 5441 $");
-  script_tag(name:"last_modification", value: "$Date: 2017-02-28 09:41:33 +0100 (Tue, 28 Feb 2017) $");
+  script_version("$Revision: 6922 $");
+  script_tag(name:"last_modification", value: "$Date: 2017-08-15 09:12:37 +0200 (Tue, 15 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-02-07 15:18:02 +0100 (Tue, 07 Feb 2017)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_cve_id("CVE-2016-6621");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_cve_id("CVE-2016-6621", "CVE-2017-1000013", "CVE-2017-1000014", "CVE-2017-1000015", "CVE-2017-1000016", "CVE-2017-1000017", "CVE-2017-1000018");
   script_bugtraq_id(95914);
-  script_name("phpMyAdmin CVE-2016-6621 Server Side Request Forgery Security Bypass Vulnerability (Windows)");
+  script_name("phpMyAdmin 4.0.x < 4.0.10.19, 4.4.x < 4.4.15.10 and 4.6.x < 4.6.6 Multiple Vulnerabilities (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -45,18 +45,35 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("phpMyAdmin/installed", "Host/runs_windows");
 
-  script_tag(name:"summary", value:"phpMyAdmin is prone to a security bypass vulnerability.");
+  script_tag(name:"summary", value:"phpMyAdmin is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name:"impact", value: "An attacker can exploit this issue to bypass security
-  restrictions and perform unauthorized actions. This may aid in further attacks.");
+  script_tag(name:"impact", value: "An attacker can exploit this issues to:
+
+  - bypass security restrictions and perform unauthorized actions. This may aid in further attacks (CVE-2016-6621).
+
+  - to redirect to insecure using special request path (CVE-2017-1000013)
+
+  - cause CSS injection in themes by crafted cookie parameters (CVE-2017-1000015)
+
+  - inject arbitrary values in the browser cookies (CVE-2017-1000016)
+
+  - connect to an arbitrary MySQL server (CVE-2017-1000017)
+
+  - cause a DOS attack (CVE-2017-1000014, CVE-2017-1000018)");
 
   script_tag(name:"affected", value:"phpMyAdmin 4.6.x prior to 4.6.6, 4.4.x prior to 4.4.15.10, and 4.0.x prior to 4.0.10.19.");
 
   script_tag(name:"solution", value:"Update to version 4.6.6, 4.4.15.10 or 4.0.10.19.");
 
   script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2016-44/");
+  script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2017-1/");
+  script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2017-3/");
+  script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2017-4/");
+  script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2017-5/");
+  script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2017-6/");
+  script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2017-7/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/95914");
 
   script_tag(name:"qod_type", value:"remote_banner");

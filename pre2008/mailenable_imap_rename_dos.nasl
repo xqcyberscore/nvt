@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mailenable_imap_rename_dos.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: mailenable_imap_rename_dos.nasl 6472 2017-06-28 19:56:31Z cfischer $
 # Description: MailEnable IMAP rename DoS Vulnerability
 #
 # Authors:
@@ -40,8 +40,8 @@ referenced above.";
 
 if (description) {
   script_id(20245);
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 6472 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 21:56:31 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -64,7 +64,6 @@ if (description) {
 
   script_dependencies("find_service.nasl");
   script_require_keys("imap/login", "imap/password");
-  script_exclude_keys("imap/false_imap");
   script_require_ports("Services/smtp", 25, "Services/imap", 143);
 
   script_tag(name : "solution" , value : tag_solution);

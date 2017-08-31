@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2008-0008.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: ELSA-2008-0008.nasl 6553 2017-07-06 11:52:12Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122617");
-script_version("$Revision: 6194 $");
+script_version("$Revision: 6553 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:49:28 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:52:12 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2008-0008");
 script_tag(name: "insight", value: "ELSA-2008-0008 -  Moderate: httpd security update - [2.2.3-12.el5_1.3.0.1] - use oracle index page oracle_index.html, update vstring and distro [2.2.3-12.el5_1.3] - further update to backport for CVE-2007-6421 (#427240) [2.2.3-12.el5_1.2] - updated backport for CVE-2007-6421 (#427240) [2.2.3-11.el5_1.1] - add security fixes for CVE-2007-6388, CVE-2007-6421 and CVE-2007-6422 (#427240) - add security fix for CVE-2007-4465, CVE-2007-5000 (#421631) - add security fix for mod_proxy_ftp UTF-7 XSS (#427745)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"4.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

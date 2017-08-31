@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-660.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: alas-2016-660.nasl 6574 2017-07-06 13:41:26Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120650");
-script_version("$Revision: 5527 $");
+script_version("$Revision: 6574 $");
 script_tag(name:"creation_date", value:"2016-03-11 07:09:13 +0200 (Fri, 11 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:41:26 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-660");
 script_tag(name: "insight", value: "It was discovered that the calloc implementation in glibc could return memory areas which contain non-zero bytes. This could result in unexpected application behavior such as hangs or crashes."); 
 script_tag(name : "solution", value : "Run yum update glibc to update your system.");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

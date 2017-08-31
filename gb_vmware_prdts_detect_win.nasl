@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_detect_win.nasl 5943 2017-04-12 14:44:26Z antu123 $
+# $Id: gb_vmware_prdts_detect_win.nasl 6588 2017-07-07 08:21:40Z santu $
 #
 # VMware products version detection (Windows)
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800000");
-  script_version("$Revision: 5943 $");
+  script_version("$Revision: 6588 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 10:21:40 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-09-25 10:10:31 +0200 (Thu, 25 Sep 2008)");
   script_tag(name:"qod_type", value:"registry"); 
   script_name("VMWare products version detection (Windows)");
@@ -267,21 +267,25 @@ if(vmVer != NULL)
   ##CPE based on product
   if("Player" >< product)
   {
+    set_kb_item(name:"VMware/Player/Installed", value:TRUE);
     app = "VMware Player";
     tmpBase = "cpe:/a:vmware:player:" ;
   }else
   if("Server" >< product)
   {
+    set_kb_item(name:"VMware/Server/Installed", value:TRUE);
     app = "VMware Server";
     tmpBase = "cpe:/a:vmware:server:";
   }else
   if("Workstation" >< product)
   {
+    set_kb_item(name:"VMware/Workstation/Installed", value:TRUE);
     app = "VMware Workstation";
     tmpBase = "cpe:/a:vmware:workstation:";
   }else
   if("ACE" >< product)
   {
+    set_kb_item(name:"VMware/ACE/Installed", value:TRUE);
     app = "VMware ACE";
     tmpBase = "cpe:/a:vmware:ace:";
   }

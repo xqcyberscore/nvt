@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rexecd.nasl 4378 2016-10-28 09:01:50Z cfi $
+# $Id: rexecd.nasl 6849 2017-08-04 07:21:15Z cfischer $
 #
 # Check for rexecd Service
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100111");
-  script_version("$Revision: 4378 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-28 11:01:50 +0200 (Fri, 28 Oct 2016) $");
+  script_version("$Revision: 6849 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:21:15 +0200 (Fri, 04 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-04-08 12:09:59 +0200 (Wed, 08 Apr 2009)");
   #Remark: NIST don't see "configuration issues" as software flaws so this CVSS has a value of 0.0.
   #However we still should report such a configuration issue with a criticality so this has been commented
@@ -40,8 +40,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Useless services");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/unknown", 512);
+  script_dependencies("find_service6.nasl");
+  script_require_ports("Services/rexec", 512);
 
   script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0618");
 
@@ -73,7 +73,9 @@ for( i = 0; i < 260; i++ ) {
 
 rexecd_string = string( raw_string( 0 ), username, raw_string( 0 ), "xxx", raw_string( 0 ), "id", raw_string( 0 ) );
 
-port = get_unknown_port( default:512 );
+port = get_kb_item( "Services/rexec" );
+if( ! port ) port = 512;
+if( ! get_port_state( port ) ) exit( 0 );
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
@@ -86,7 +88,7 @@ if( isnull( buf ) ) exit( 0 );
 # TBD: ord( buf[0] ) == 1 || was previously tested here but
 # that is to prone for false positives against all unknown ports...
 if( "too long" >< buf || "Where are you?" >< buf ) {
-  register_service( port:port, proto:"rexecd" );
+  register_service( port:port, proto:"rexec", message:"A rexec service seems to be running on this port." );
   if( "Where are you?" >< buf ) {
     report = "The rexecd Service is not allowing connections from this host.";
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_opensso_data_manipulation_vuln.nasl 3381 2016-05-24 17:57:45Z jan $
+# $Id: gb_oracle_opensso_data_manipulation_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Oracle OpenSSO Administration Component Data Manipulation Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:oracle:opensso";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3381 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2012-0079");
   script_bugtraq_id(51492);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-24 19:57:45 +0200 (Tue, 24 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-22 14:57:24 +0530 (Tue, 22 Apr 2014)");
   script_name("Oracle OpenSSO Administration Component Data Manipulation Vulnerability");
 
@@ -78,7 +78,6 @@ NOTE: Ignore this warning, if above mentioned patch is manually applied.
 
   script_xref(name : "URL" , value : "");
   script_xref(name : "URL" , value : "");
-  script_summary("Check for the vulnerable version of Oracle OpenSSO");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

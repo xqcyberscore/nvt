@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-3509.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: ELSA-2016-3509.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122854");
-script_version("$Revision: 5534 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-01-21 07:29:51 +0200 (Thu, 21 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-3509");
 script_tag(name: "insight", value: "ELSA-2016-3509 - Unbreakable Enterprise kernel security update - kernel-uek[3.8.13-118.2.5]- KEYS: Fix keyring ref leak in join_session_keyring() (Yevgeny Pats) [Orabug: 22563965] {CVE-2016-0728}"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.2");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

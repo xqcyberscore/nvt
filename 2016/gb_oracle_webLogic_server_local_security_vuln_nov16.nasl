@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webLogic_server_local_security_vuln_nov16.nasl 4573 2016-11-18 13:29:14Z antu123 $
+# $Id: gb_oracle_webLogic_server_local_security_vuln_nov16.nasl 6449 2017-06-28 05:33:48Z santu $
 #
 # Oracle WebLogic Server Local Security Vulnerability - Nov16
 #
@@ -28,14 +28,14 @@ CPE = "cpe:/a:bea:weblogic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809712");
-  script_version("$Revision: 4573 $");
+  script_version("$Revision: 6449 $");
   script_cve_id("CVE-2016-5601");
   script_bugtraq_id(93704);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:29:14 +0100 (Fri, 18 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 07:33:48 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-11-02 16:34:01 +0530 (Wed, 02 Nov 2016)");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle WebLogic Server Local Security Vulnerability - Nov16");
 
   script_tag(name: "summary" , value:"The host is running Oracle WebLogic Server

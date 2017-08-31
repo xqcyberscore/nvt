@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sybase_easerver_61358.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_sybase_easerver_61358.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # Sybase EAServer Multiple Security Vulnerabilities
 #
@@ -47,7 +47,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(61358);
- script_version ("$Revision: 6074 $");
+ script_version ("$Revision: 6698 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -57,16 +57,15 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61358");
  script_xref(name:"URL", value:"http://www.sybase.com/products/modelingdevelopment/easerver");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-08-08 13:44:48 +0200 (Thu, 08 Aug 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
- script_mandatory_keys("Jetty_EAServer/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("Jetty_EAServer/banner");
 
  script_tag(name : "impact" , value : tag_impact);
  script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -84,7 +83,6 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if("Server: Jetty(EAServer/" >!< banner)exit(0);

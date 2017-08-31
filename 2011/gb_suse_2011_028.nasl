@@ -67,8 +67,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.suse.com/support/security/advisories/2011_28_firefox.html");
   script_id(850169);
-  script_version("$Revision: 3104 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:53:56 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 6671 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:42:45 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -81,7 +81,7 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

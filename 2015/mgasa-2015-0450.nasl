@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0450.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: mgasa-2015-0450.nasl 6563 2017-07-06 12:23:47Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131137");
-script_version("$Revision: 6211 $");
+script_version("$Revision: 6563 $");
 script_tag(name:"creation_date", value:"2015-11-23 07:46:11 +0200 (Mon, 23 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:23:47 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0450");
 script_tag(name: "insight", value: "This kernel update is based on upstream 4.1.13 longterm kernel and fixes the following security issues: The virtnet_probe function in drivers/net/virtio_net.c in the Linux kernel before 4.2 attempts to support a FRAGLIST feature without proper memory allocation, which allows guest OS users to cause a denial of service (buffer overflow and memory corruption) via a crafted sequence of fragmented packets. (CVE-2015-5156) A guest to host DoS issue was found affecting various hypervisors. In that, a guest can DoS the host by triggering an infinite stream of alignment check (#AC) exceptions. This causes the microcode to enter an infinite loop where the core never receives another interrupt. The host kernel panics due to this effect (CVE-2015-5307). A guest to host DoS issue was found affecting various hypervisors. In that, a guest can DoS the host by triggering an infinite stream of debug check (#DB) exceptions. This causes the microcode to enter an infinite loop where the core never receives another interrupt. The host kernel panics due to this effect (CVE-2015-8104). For other fixes in this update, see the referenced changelog."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"6.1");
 script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0450");
 script_copyright("Eero Volotinen");

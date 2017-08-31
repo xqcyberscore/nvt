@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mailenable_imap_search_dos.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: mailenable_imap_search_dos.nasl 6522 2017-07-04 15:22:28Z cfischer $
 # Description: MailEnable IMAP Service Search DoS Vulnerability
 #
 # Authors:
@@ -34,8 +34,8 @@ tag_solution = "Upgrade to MailEnable Professional 1.5e or later.";
 
 if (description) {
   script_id(15487);
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 6522 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:22:28 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,8 +47,6 @@ if (description) {
   name = "MailEnable IMAP Service Search DoS Vulnerability";
   script_name(name);
  
-  summary = "Checks for Search DoS Vulnerability in MailEnable's IMAP Service";
- 
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
@@ -58,7 +56,7 @@ if (description) {
 
   script_dependencies("find_service.nasl", "global_settings.nasl");
   script_require_ports("Services/imap", 143);
-  script_require_keys("imap/login", "imap/password");
+  script_mandatory_keys("imap/login", "imap/password");
 
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);

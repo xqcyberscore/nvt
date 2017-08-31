@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alcatel_luc_omnvista_detect.nasl 4852 2016-12-23 16:06:26Z teissa $
+# $Id: gb_alcatel_luc_omnvista_detect.nasl 6936 2017-08-16 10:12:17Z ckuersteiner $
 #
 # Alcatel Lucent Omnivista Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107113");
-  script_version("$Revision: 4852 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-23 17:06:26 +0100 (Fri, 23 Dec 2016) $");
+  script_version("$Revision: 6936 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-16 12:12:17 +0200 (Wed, 16 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-12-22 06:40:16 +0200 (Thu, 22 Dec 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning"); 
 
-  script_tag(name:"summary", value:"Detection of installed version of ntopng
+  script_tag(name:"summary", value:"Detection of installed version of Alcatel Lucent Omnivista.
 
   The script detects the version of Alcatel Lucent Omnivista on remote host and sets the KB.");
 
@@ -75,7 +75,7 @@ if( ! cpe )
   cpe = 'cpe:/a:alcatel-lucent:omnivista';
 
 register_product( cpe:cpe, location:appPort + '/tcp', port:appPort );
-log_message( data:build_detection_report( app:"alcatel-lucent-omnivista",
+log_message( data:build_detection_report( app:"Alcatel-Lucent Omnivista",
                                           version:alclucomnvistaVer,
                                           install:appPort + '/tcp',
                                           cpe:cpe,

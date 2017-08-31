@@ -28,7 +28,7 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805764");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 6600 $");
   script_cve_id("CVE-2015-4913", "CVE-2015-4830", "CVE-2015-4826", "CVE-2015-4815",
                 "CVE-2015-4807", "CVE-2015-4802", "CVE-2015-4792", "CVE-2015-4870",
                 "CVE-2015-4861", "CVE-2015-4858", "CVE-2015-4836");
@@ -36,7 +36,7 @@ if(description)
                     77145, 77190);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-10-28 13:07:06 +0530 (Wed, 28 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-01 Oct15 (Windows)");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuoct2015-2367953.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Oracle MySQL");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_parsequery_vuln.nasl 4625 2016-11-25 07:14:52Z cfi $
+# $Id: gb_oracle_parsequery_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Oracle Forms and Reports Database Vulnerability
 #
@@ -31,7 +31,7 @@ if(description)
   script_cve_id("CVE-2012-3153");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 4625 $");
+  script_version("$Revision: 6759 $");
 
   script_name("Oracle Forms and Reports Database Vulnerability");
 
@@ -39,9 +39,8 @@ if(description)
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2012-1515893.html");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55955");
 
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 08:14:52 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-03 23:08:02 +0700 (Mon, 03 Feb 2014)");
-  script_summary("Oracle Forms and Reports Database Vulnerability");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webcam_7_xp_52119.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_webcam_7_xp_52119.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # WebcamXP and Webcam7 Directory Traversal Vulnerability
 #
@@ -39,7 +39,7 @@ if (description)
 {
  script_id(103434);
  script_bugtraq_id(52119);
- script_version ("$Revision: 5931 $");
+ script_version ("$Revision: 6697 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -48,7 +48,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52119");
  script_xref(name : "URL" , value : "http://www.webcamxp.com/home.aspx");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-02-23 11:44:32 +0100 (Thu, 23 Feb 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -56,7 +56,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("webcam_7_xp/banner");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -68,7 +67,6 @@ include("http_keepalive.inc");
 include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if(!banner || ("Server: webcam 7" >!< banner && "Server: webcamXP" >!< banner))exit(0);

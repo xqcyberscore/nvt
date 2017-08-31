@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_router_64230.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_sap_router_64230.nasl 6787 2017-07-21 16:58:52Z cfischer $
 #
 # SAProuter Remote Authentication Bypass Vulnerability
 #
@@ -43,48 +43,45 @@ for more information.";
 
 tag_vuldetect = "Send an information request and check the response.";
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105035");
- script_bugtraq_id(64230);
- script_cve_id("CVE-2013-7093");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 3911 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105035");
+  script_bugtraq_id(64230);
+  script_cve_id("CVE-2013-7093");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 6787 $");
+  script_name("SAProuter Remote Authentication Bypass Vulnerability");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 18:58:52 +0200 (Fri, 21 Jul 2017) $");
+  script_tag(name:"creation_date", value:"2014-05-27 15:35:11 +0200 (Tue, 27 May 2014)");
+  script_category(ACT_ATTACK);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_sap_router_detect.nasl");
+  script_require_ports("Services/SAProuter", 3299);
+  script_mandatory_keys("SAProuter/installed");
 
- script_name("SAProuter Remote Authentication Bypass Vulnerability");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64230");
+  script_xref(name:"URL", value:"http://erpscan.com/advisories/erpscan-13-023-saprouter-authentication-bypass/");
+  script_xref(name:"URL", value:"https://service.sap.com/sap/support/notes/1853140");
 
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"vuldetect", value:tag_vuldetect);
+  script_tag(name:"insight", value:tag_insight);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"affected", value:tag_affected);
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64230");
- script_xref(name:"URL", value:"http://erpscan.com/advisories/erpscan-13-023-saprouter-authentication-bypass/");
- script_xref(name:"URL", value:"https://service.sap.com/sap/support/notes/1853140");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_vul");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
- script_tag(name:"creation_date", value:"2014-05-27 15:35:11 +0200 (Tue, 27 May 2014)");
- script_summary("Determine if SAProuter is prone to an authentication bypass vulnerability");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("General");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_sap_router_detect.nasl");
- script_require_ports("Services/unknown", 'Services/SAProuter', 3299);
- script_mandatory_keys("SAProuter/installed");
- 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
-
- exit(0);
+  exit(0);
 }
 
 include("byte_func.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! get_port_state( port ) ) exit( 0 );
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
@@ -93,35 +90,34 @@ req = raw_string( 0x00,0x00,0x00,0x0f,'ROUTER_ADM\0',39,0x02,0x00,0x00 );
 
 send( socket:soc, data:req );
 
-while( TRUE )
-{
-   buf = recv( socket:soc, min:4, length:4 );
-   if( ! buf || strlen( buf ) != 4 ) exit( 0 );
+while( TRUE ) {
 
-   len = getdword( blob:buf );
+  buf = recv( socket:soc, min:4, length:4 );
+  if( ! buf || strlen( buf ) != 4 ) {
+    close( soc );
+    exit( 0 );
+  }
 
-   if( ! len || int( len ) < 1 ) break;
+  len = getdword( blob:buf );
 
-   buf = recv( socket:soc, length:len );
+  if( ! len || int( len ) < 1 ) break;
 
-   if( ! buf || "NI_RTERR" >< buf || strlen( buf ) != len ) 
-   {
+  buf = recv( socket:soc, length:len );
+
+  if( ! buf || "NI_RTERR" >< buf || strlen( buf ) != len ) {
     close( soc );
     exit( 99 );
-   }  
+  }
 
-   if( buf =~ "[:^cntrl:]+") report += substr( buf, 0, strlen( buf ) - 2 ) + '\n';
-
+  if( buf =~ "[:^cntrl:]+") report += substr( buf, 0, strlen( buf ) - 2 ) + '\n';
 }
 
 close( soc );
 
-if( report )
-{
+if( report ) {
   report = 'The following information could be gathered by the scanner:\n' + report;
   security_message( port:port, data: report );
   exit( 0 );
-}  
+}
 
 exit( 99 );
-

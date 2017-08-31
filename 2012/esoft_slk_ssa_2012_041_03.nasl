@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2012_041_03.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: esoft_slk_ssa_2012_041_03.nasl 6581 2017-07-06 13:58:51Z cfischer $
 # Description: Auto-generated from advisory SSA:2012-041-03
 #
 # Authors:
@@ -37,10 +37,10 @@ if(description)
 {
  script_id(71964);
  script_cve_id("CVE-2009-5029");
- script_version("$Revision: 5958 $");
+ script_version("$Revision: 6581 $");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:58:51 +0200 (Thu, 06 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-09-10 07:16:18 -0400 (Mon, 10 Sep 2012)");
  script_name("Slackware Advisory SSA:2012-041-03 glibc ");
 
@@ -50,8 +50,7 @@ if(description)
  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
  script_family("Slackware Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_require_keys("ssh/login/slackpack");
- script_mandatory_keys("HostDetails/OS/cpe:/o:slackware:slackware_linux", "login/SSH/success", "ssh/login/slackpack");
+ script_mandatory_keys("ssh/login/slackware_linux", "ssh/login/slackpack");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);

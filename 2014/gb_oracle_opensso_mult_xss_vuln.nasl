@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_opensso_mult_xss_vuln.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_oracle_opensso_mult_xss_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Oracle OpenSSO Multiple XSS Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:oracle:opensso";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6759 $");
   script_bugtraq_id(56733);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-22 13:06:41 +0530 (Tue, 22 Apr 2014)");
   script_name("Oracle OpenSSO Multiple XSS Vulnerabilities");
 
@@ -84,7 +84,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/80368");
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2012110221");
   script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5114.php");
-  script_summary("Check for the vulnerable version of Oracle OpenSSO");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

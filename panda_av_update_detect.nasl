@@ -23,28 +23,29 @@
 # <http://www.gnu.org/licenses/>.
 ###################################################################
 
-tag_summary = "Extracts date of the last update for Panda Antivirus software, from the 
-  Titanium.ini file and stores it to KB.";
-
 if(description)
 {
-  script_id(102048);
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5453 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 10:55:35 +0100 (Wed, 01 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.102048");
+  script_version("$Revision: 6456 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Panda Antivirus Update Detect");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2010 LSS");
   script_family("Service detection");
-  script_dependencies("secpod_reg_enum.nasl", "gb_panda_prdts_detect.nasl");
-  script_require_keys("SMB/name", "SMB/login", "SMB/password", "SMB/registry_access");
+  script_dependencies("smb_reg_service_pack.nasl", "gb_panda_prdts_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  tag_summary = "Extracts date of the last update for Panda Antivirus software, from the 
+  Titanium.ini file and stores it to KB.";
+
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"qod_type", value:"registry");
+
   exit(0);
 }
 

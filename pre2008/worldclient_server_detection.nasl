@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: worldclient_server_detection.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: worldclient_server_detection.nasl 6695 2017-07-12 11:17:53Z cfischer $
 #
 # WorldClient for MDaemon Server Detection
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10745");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 6695 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2000-0660");
   script_bugtraq_id(1462, 2478, 4687, 4689, 823);
@@ -47,7 +47,6 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("WDaemon/banner");
   script_require_ports("Services/www", 3000);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   tag_summary = "We detected the remote web server is
   running WorldClient for MDaemon. This web server enables attackers

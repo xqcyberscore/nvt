@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phorum_register_xss.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: phorum_register_xss.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Phorum register.php Cross-Site Scripting
 #
 # Authors:
@@ -33,8 +33,8 @@ tag_solution = "Upgrade to Phorum 5.0.18 or later.";
 
 if (description) {
 script_id(19584);
-script_version("$Revision: 6046 $");
-script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+script_version("$Revision: 6702 $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
 script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
 script_bugtraq_id(14726);
 script_cve_id("CVE-2005-2836");
@@ -53,6 +53,7 @@ script_family(family);
 
 script_dependencies("phorum_detect.nasl");
 script_require_ports("Services/www", 80);
+script_exclude_keys("Settings/disable_cgi_scanning");
 
 script_tag(name : "solution" , value : tag_solution);
 script_tag(name : "summary" , value : tag_summary);
@@ -63,9 +64,7 @@ exit(0);
 include("http_func.inc");
 
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
-
 
 install = get_kb_item(string("www/", port, "/phorum"));
 if (isnull(install)) exit(0);

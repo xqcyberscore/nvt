@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_mult_vuln.nasl 2834 2016-03-11 08:39:36Z benallard $
+# $Id: gb_sun_java_sys_web_serv_mult_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Sun Java System Web Server Multiple Vulnerabilities
 #
@@ -53,8 +53,8 @@ Multiple Vulnerabilities.";
 if (description)
 {
  script_id(100567);
- script_version("$Revision: 2834 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:39:36 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 6637 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-04-12 18:40:45 +0200 (Mon, 12 Apr 2010)");
  script_bugtraq_id(37874,37910);
  script_cve_id("CVE-2010-0272","CVE-2010-0273", "CVE-2010-0360",
@@ -71,14 +71,13 @@ if (description)
 
 script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-script_summary("Check for the version of Java System Web Server");
 script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
 script_family("Buffer overflow");
 script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
 script_dependencies("gb_sun_java_sys_web_serv_detect.nasl");
 script_require_ports("Services/www", 8989);
-script_require_keys("Sun/JavaSysWebServ/Ver","Sun/JavaSysWebServ/Port");
+ script_mandatory_keys("java_system_web_server/installed");
  script_tag(name : "impact" , value : tag_impact);
  script_tag(name : "affected" , value : tag_affected);
  script_tag(name : "insight" , value : tag_insight);

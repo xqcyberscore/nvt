@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sles9p5018527.nasl 5212 2017-02-06 16:45:27Z teissa $
+# $Id: sles9p5018527.nasl 6666 2017-07-11 13:13:36Z cfischer $
 # Description: Security update for Mozilla
 #
 # Authors:
@@ -53,8 +53,8 @@ tag_solution = "Please install the updates provided by SuSE.";
 if(description)
 {
  script_id(65522);
- script_version("$Revision: 5212 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-06 17:45:27 +0100 (Mon, 06 Feb 2017) $");
+ script_version("$Revision: 6666 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:13:36 +0200 (Tue, 11 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-10-10 16:11:46 +0200 (Sat, 10 Oct 2009)");
  script_cve_id("CVE-2007-3844", "CVE-2007-5339", "CVE-2007-5340", "CVE-2007-1095", "CVE-2007-2292", "CVE-2007-3511", "CVE-2006-2894", "CVE-2007-5334", "CVE-2007-5337", "CVE-2007-5338", "CVE-2007-3845", "CVE-2006-4965", "CVE-2007-4841");
  script_tag(name:"cvss_base", value:"9.3");
@@ -68,7 +68,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("SuSE Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:suse:linux_enterprise_server", "ssh/login/rpms");
+ script_mandatory_keys("ssh/login/suse_sles", "ssh/login/rpms");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name:"qod_type", value:"package");

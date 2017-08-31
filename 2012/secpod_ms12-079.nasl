@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-079.nasl 5366 2017-02-20 13:55:38Z cfi $
+# $Id: secpod_ms12-079.nasl 6533 2017-07-05 08:41:34Z santu $
 #
 # Microsoft Office Word Remote Code Execution Vulnerability (2780642)
 #
@@ -49,12 +49,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902937";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5366 $");
+  script_version("$Revision: 6533 $");
   script_cve_id("CVE-2012-2539");
   script_bugtraq_id(56834);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:55:38 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 10:41:34 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-12-12 10:23:39 +0530 (Wed, 12 Dec 2012)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerability (2780642)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51467/");
@@ -75,9 +75,7 @@ if(description)
                       "gb_ms_office_web_apps_detect.nasl",
                       "gb_ms_sharepoint_sever_n_foundation_detect.nasl",
                       "gb_smb_windows_detect.nasl");
-  script_require_keys("SMB/Office/Word/Version", "SMB/Office/WordView/Version",
-                      "SMB/Office/WordCnv/Version", "MS/Office/Web/Apps/Path");
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("MS/Office/Prdts/Installed", "MS/SharePoint/Server_or_Foundation_or_Services/Installed");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

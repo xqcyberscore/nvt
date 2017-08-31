@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_wicket_dos.nasl 4946 2017-01-05 06:55:35Z antu123 $
+# $Id: gb_apache_wicket_dos.nasl 6873 2017-08-08 12:35:26Z teissa $
 #
 # Apache Wicket Denial of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:wicket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107117");
-  script_version("$Revision: 4946 $");
+  script_version("$Revision: 6873 $");
   script_cve_id("CVE-2016-6793");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-05 07:55:35 +0100 (Thu, 05 Jan 2017) $");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-08 14:35:26 +0200 (Tue, 08 Aug 2017) $");
   script_tag(name:"creation_date", value: "2017-01-02 13:26:09 +0700 (Mon, 02 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Wicket Denial of Service Vulnerability");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-053.nasl 2826 2016-03-10 08:19:43Z benallard $
+# $Id: gb_ms14-053.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Microsoft .NET Framework Denial of Service Vulnerability (2990931)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804480");
-  script_version("$Revision: 2826 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-4072");
   script_bugtraq_id(69603);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:19:43 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-10 09:34:51 +0530 (Wed, 10 Sep 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name: "URL" , value: "http://secunia.com/advisories/60982");
   script_xref(name: "URL" , value: "https://technet.microsoft.com/library/security/MS14-053");
-  script_summary("Check for the version of vulnerable files");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

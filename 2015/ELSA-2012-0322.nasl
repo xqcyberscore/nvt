@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-0322.nasl 6141 2017-05-17 09:03:37Z teissa $
+# $Id: ELSA-2012-0322.nasl 6557 2017-07-06 11:55:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123981");
-script_version("$Revision: 6141 $");
+script_version("$Revision: 6557 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:11:08 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:55:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-0322");
 script_tag(name: "insight", value: "ELSA-2012-0322 -  java-1.6.0-openjdk security update - [1.6.0.0-1.25.1.10.6.0.1.el5_8]- Add oracle-enterprise.patch[1:1.6.0.0-1.25.1.10.6]- Updated to IcedTea6 1.10.6- Resolves: rhbz#787142- Security fixes - S7082299: Fix in AtomicReferenceArray - S7088367: Fix issues in java sound - S7110683: Issues with some KeyboardFocusManager method - S7110687: Issues with TimeZone class - S7110700: Enhance exception throwing mechanism in ObjectStreamClass - S7110704: Issues with some method in corba - S7112642: Incorrect checking for graphics rendering object - S7118283: Better input parameter checking in zip file processing - S7126960: Add property to limit number of request headers to the HTTP Server- Bug fixes - RH580478: Desktop files should not use hardcoded path- Removed and deleted upstreamed patch7 - name-rmi-fix.patch- Removed and deleted upstreamed Hugepages patches: - Source100: 7034464-hugepage.patch - Source101: 7037939-hugepage.patch - Source102: 7043564-hugepage.patch"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

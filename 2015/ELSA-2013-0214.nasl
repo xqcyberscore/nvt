@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0214.nasl 6141 2017-05-17 09:03:37Z teissa $
+# $Id: ELSA-2013-0214.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123734");
-script_version("$Revision: 6141 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:07:51 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0214");
 script_tag(name: "insight", value: "ELSA-2013-0214 -  nss and nspr security, bug fix, and enhancement update - nspr[4.9.2-2]- NVR bump[4.9.2-1]- Resolves: rhbz#893372- [RFE] Rebase nspr to 4.9.2 due to Firefox 17 ESRnss[3.13.6-3]- Fix changelog inconsistencies with commit and bug resolved- Resolves: rhbz#891149 [CVE-2013-0743][3.13.6-2]- [CVE-2013-0743] - Resolves: rhbz#891149 - Dis-trust TURKTRUST mis-issued *.google.com certificate[3.13.6-1]- Update to NSS_3_13_6_RTM- Resolves: rhbz#893371 - [RFE] [RHEL5] Rebase to NSS >= 3.13.6"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

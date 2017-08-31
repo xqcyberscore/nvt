@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webLogic_server_cpuapr2017-3236618_02.nasl 6092 2017-05-10 07:02:40Z cfi $
+# $Id: gb_oracle_webLogic_server_cpuapr2017-3236618_02.nasl 6449 2017-06-28 05:33:48Z santu $
 #
 # Oracle WebLogic Server 'Servlet Runtime' RCE Vulnerability (cpuapr2017-3236618)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:bea:weblogic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810749");
-  script_version("$Revision: 6092 $");
+  script_version("$Revision: 6449 $");
   script_cve_id("CVE-2017-3531");
   script_bugtraq_id(97894);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 09:02:40 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 07:33:48 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-04-19 15:13:16 +0530 (Wed, 19 Apr 2017)");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle WebLogic Server 'Servlet Runtime' RCE Vulnerability (cpuapr2017-3236618)");
 
   script_tag(name: "summary" , value:"The host is running Oracle WebLogic Server

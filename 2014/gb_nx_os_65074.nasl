@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nx_os_65074.nasl 3306 2016-05-12 16:54:38Z mime $
+# $Id: gb_nx_os_65074.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Cisco NX-OS Label Distribution Protocol Message Remote Denial of Service Vulnerability
 #
@@ -45,7 +45,7 @@ if (description)
  script_cve_id("CVE-2014-0677");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 3306 $");
+ script_version ("$Revision: 6724 $");
 
  script_name("Cisco NX-OS Label Distribution Protocol Message Remote Denial of Service Vulnerability");
 
@@ -53,9 +53,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65074");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityNotice/CVE-2014-0677");
  
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 18:54:38 +0200 (Thu, 12 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-23 12:42:53 +0100 (Thu, 23 Jan 2014)");
- script_summary("Check the NX OS version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("CISCO");

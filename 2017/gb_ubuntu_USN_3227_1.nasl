@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843092");
-  script_version("$Revision: 5601 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 15:04:50 +0100 (Fri, 17 Mar 2017) $");
+  script_version("$Revision: 6648 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:05:27 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-03-14 05:47:56 +0100 (Tue, 14 Mar 2017)");
   script_cve_id("CVE-2014-9911", "CVE-2015-4844", "CVE-2016-0494", "CVE-2016-6293",
                 "CVE-2016-7415");
@@ -56,7 +56,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

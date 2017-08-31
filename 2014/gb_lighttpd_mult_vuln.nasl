@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lighttpd_mult_vuln.nasl 5628 2017-03-20 15:27:40Z cfi $
+# $Id: gb_lighttpd_mult_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Lighttpd Multiple vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:lighttpd:lighttpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802072");
-  script_version("$Revision: 5628 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-2323", "CVE-2014-2324");
   script_bugtraq_id(66153, 66157);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-13 12:18:43 +0530 (Tue, 13 May 2014)");
   script_name("Lighttpd Multiple vulnerabilities");
 
@@ -56,7 +56,6 @@ if(description)
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2014/q1/561");
   script_xref(name:"URL", value:"http://download.lighttpd.net/lighttpd/security/lighttpd_sa_2014_01.txt");
 
-  script_summary("Check if we get bad response for crafted request");
   script_category(ACT_ATTACK);
   script_family("Web Servers");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

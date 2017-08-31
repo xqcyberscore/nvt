@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Netscape_Enterprise_Default_Administrative_Password.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: DDI_Netscape_Enterprise_Default_Administrative_Password.nasl 6695 2017-07-12 11:17:53Z cfischer $
 #
 # Netscape Enterprise Default Administrative Password
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11208");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 6695 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,7 +40,6 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("Netscape_iPlanet/banner");
   script_require_ports("Services/www", 8888);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   tag_summary = "This host is running the Netscape Enterprise Server. The Administrative
   interface for this web server, which operates on port 8888/TCP, is using

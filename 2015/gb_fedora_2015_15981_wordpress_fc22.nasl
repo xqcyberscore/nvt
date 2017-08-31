@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869965");
-  script_version("$Revision: 3397 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-30 07:19:53 +0200 (Mon, 30 May 2016) $");
+  script_version("$Revision: 6630 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-09-26 08:00:50 +0200 (Sat, 26 Sep 2015)");
   script_cve_id("CVE-2015-5714", "CVE-2015-5715");
   script_tag(name:"cvss_base", value:"4.3");
@@ -46,12 +46,11 @@ Important information in /usr/share/doc/wordpress/README.fedora
   script_xref(name: "FEDORA", value: "2015-15981");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-September/167701.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of wordpress");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3091.nasl 2768 2016-03-03 09:41:07Z benallard $
+# $Id: deb_3091.nasl 6692 2017-07-12 09:57:43Z teissa $
 # Auto-generated from advisory DSA 3091-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703091);
-    script_version("$Revision: 2768 $");
+    script_version("$Revision: 6692 $");
     script_cve_id("CVE-2014-7273", "CVE-2014-7274", "CVE-2014-7275");
     script_name("Debian Security Advisory DSA 3091-1 (getmail4 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-03-03 10:41:07 +0100 (Thu, 03 Mar 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
     script_tag(name: "creation_date", value: "2014-12-07 00:00:00 +0100 (Sun, 07 Dec 2014)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -41,14 +41,13 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-3091.html");
 
-    script_summary("Debian Security Advisory DSA 3091-1 (getmail4 - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2014 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "getmail4 on Debian Linux");
     script_tag(name: "insight",   value: "getmail is intended as a simple
 replacement for fetchmail. It retrieves mail (either all messages, or only

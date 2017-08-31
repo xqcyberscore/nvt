@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3062.nasl 2768 2016-03-03 09:41:07Z benallard $
+# $Id: deb_3062.nasl 6637 2017-07-10 09:58:13Z teissa $
 # Auto-generated from advisory DSA 3062-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,24 +30,23 @@
 if(description)
 {
     script_id(703062);
-    script_version("$Revision: 2768 $");
+    script_version("$Revision: 6637 $");
     script_cve_id("CVE-2014-4877");
     script_name("Debian Security Advisory DSA 3062-1 (wget - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2016-03-03 10:41:07 +0100 (Thu, 03 Mar 2016) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
     script_tag(name: "creation_date", value:"2014-11-01 00:00:00 +0100 (Sat, 01 Nov 2014)");
     script_tag(name:"cvss_base", value:"9.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-3062.html");
 
-    script_summary("Debian Security Advisory DSA 3062-1 (wget - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2014 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "wget on Debian Linux");
         script_tag(name: "insight",   value: "Wget is a network utility to retrieve files from the web
 using HTTP(S) and FTP, the two most widely used internet

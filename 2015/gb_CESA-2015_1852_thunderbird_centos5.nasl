@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882295");
-  script_version("$Revision: 3327 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_version("$Revision: 6657 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:50:44 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-10-02 07:12:12 +0200 (Fri, 02 Oct 2015)");
   script_cve_id("CVE-2015-4500", "CVE-2015-4509", "CVE-2015-4517", "CVE-2015-4519", "CVE-2015-4520", "CVE-2015-4521", "CVE-2015-4522", "CVE-2015-7174", "CVE-2015-7175", "CVE-2015-7176", "CVE-2015-7177", "CVE-2015-7180");
   script_tag(name:"cvss_base", value:"7.5");
@@ -74,13 +74,12 @@ to take effect.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:1852");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-October/021423.html");
-  script_summary("Check for the Version of thunderbird");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

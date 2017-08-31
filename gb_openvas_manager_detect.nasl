@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvas_manager_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_openvas_manager_detect.nasl 6820 2017-07-31 11:37:34Z cfischer $
 #
 # OpenVAS Manager Detection
 #
@@ -25,66 +25,95 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_oid("1.3.6.1.4.1.25623.1.0.103825");
- script_version ("$Revision: 5888 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
- script_tag(name:"creation_date", value:"2013-11-08 12:24:10 +0100 (Fri, 08 Nov 2013)");
- script_name("OpenVAS Manager Detection");
+  script_oid("1.3.6.1.4.1.25623.1.0.103825");
+  script_version("$Revision: 6820 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-31 13:37:34 +0200 (Mon, 31 Jul 2017) $");
+  script_tag(name:"creation_date", value:"2013-11-08 12:24:10 +0100 (Fri, 08 Nov 2013)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("OpenVAS Manager Detection");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("find_service3.nasl");
+  script_require_ports("Services/openvas-manager", 9390);
 
- script_tag(name : "summary" , value : "The script sends a connection request to the server and attempts to
- determine if it is a OpenVAS Manager");
+  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to
+  determine if it is a OpenVAS Manager");
 
- script_category(ACT_GATHER_INFO);
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl");
- script_require_ports("Services/unknown", 9390);
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name: "qod_type", value: "remote_banner");
-
- exit(0);
+  exit(0);
 }
 
+include("cpe.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
 port = get_unknown_port( default:9390 );
+soc = open_sock_tcp( port );
+if( ! soc ) exit( 0 );
 
-soc = open_sock_tcp(port);
-if(!soc)exit(0);
+send( socket:soc, data:'<foo/>\r\n' );
+ret = recv( socket:soc, length:256 );
+close( soc );
 
-send(socket:soc, data:'<foo/>\r\n');
-ret = recv(socket:soc, length:256);
+if( "omp_response" >< ret && "GET_VERSION" >< ret ) {
 
-close(soc);
+  replace_kb_item( name:"openvas_manager/installed", value:TRUE );
+  replace_kb_item( name:"openvas_framework_component/installed", value:TRUE );
 
-if("omp_response" >< ret && "GET_VERSION" >< ret) {
+  manager_version = "unknown";
+  omp_version = "unknown";
+  install = port + "/tcp";
+  concluded = ret;
 
-  set_kb_item(name:"openvas_manager/installed",value:TRUE);
-  cpe = 'cpe:/a:openvas:openvas_manager';
+  soc = open_sock_tcp( port );
+  if( soc ) {
+    send( socket:soc, data:'<get_version/>\r\n' );
+    ret = recv( socket:soc, length:256 );
+    close( soc );
 
-  soc = open_sock_tcp(port);
-  if(!soc)exit(0);
+    ver = eregmatch( pattern:"<version>([0-9.]+)</version>", string:ret );
+    if( ver[1] ) {
+      concluded = "OMP protocol version request: " + ver[0];
+      omp_version = ver[1];
+      # We can fingerprint the major OpenVAS Manager version from the supported OMP protocol version.
+      # The OMP protocol version is currently matching the OpenVAS Manager protocol but that could change.
+      # http://www.openvas.org/protocol-doc.html
+      if( omp_version == "7.0" ) {
+        manager_version = "7.0";
+      } else if( omp_version == "6.0" ) {
+        manager_version = "6.0";
+      } else if( omp_version == "5.0" ) {
+        manager_version = "5.0";
+      } else if( omp_version == "4.0" ) {
+        manager_version = "4.0";
+      } else if( omp_version == "3.0" ) {
+        manager_version = "3.0";
+      } else if( omp_version == "2.0" ) {
+        manager_version = "2.0";
+      } else if( omp_version == "1.0" ) {
+        manager_version = "1.0";
+      }
+    }
+  }
 
-  send(socket:soc, data:'<get_version/>\r\n');
-  ret = recv(socket:soc, length:256);
+  cpe = build_cpe( value:manager_version, exp:"^([0-9.]+)", base:"cpe:/a:openvas:openvas_manager:" );
+  if( isnull( cpe ) )
+    cpe = "cpe:/a:openvas:openvas_manager";
 
-  ver = eregmatch( pattern:"<version>([0-9.]+)</version>", string:ret );
+  register_service( port:port, proto:"openvas-manager" );
+  register_product( cpe:cpe, location:install, port:port );
 
-  register_product(cpe:cpe, location:port + '/tcp', port:port);
-
-  log_message( data: build_detection_report( app:"OpenVAS Manager",
-                                             install:port + '/tcp',
-                                             cpe:cpe,
-                                             extra:"OpenVAS Manager is speaking OMP version " + ver[1] ),
-                                             port:port );
-
-  close(soc);
-
+  log_message( data:build_detection_report( app:"OpenVAS Manager",
+                                            version:manager_version,
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:concluded ),
+                                            port:port );
 }
 
-exit(0);
+exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_mult_vuln_feb10_lin01.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_mozilla_prdts_mult_vuln_feb10_lin01.nasl 6482 2017-06-29 08:31:43Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities feb-10 (Linux)
 #
@@ -50,8 +50,8 @@ tag_summary = "The host is installed with Mozilla Firefox/Seamonkey and is prone
 if(description)
 {
   script_id(902127);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 6482 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:31:43 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2010-02-26 10:13:54 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -65,7 +65,7 @@ if(description)
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("General");
   script_dependencies("gb_firefox_detect_lin.nasl", "gb_seamonkey_detect_lin.nasl");
-  script_require_keys("Firefox/Linux/Ver", "Seamonkey/Linux/Ver");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Linux/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

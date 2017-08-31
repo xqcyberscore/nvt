@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871309");
-  script_version("$Revision: 3338 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:25:35 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:50:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-01-29 05:13:46 +0100 (Thu, 29 Jan 2015)");
   script_cve_id("CVE-2014-4171", "CVE-2014-5471", "CVE-2014-5472", "CVE-2014-7145",
                 "CVE-2014-7822", "CVE-2014-7841");
@@ -94,12 +94,11 @@ completing an abort operation. ...
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-January/msg00040.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

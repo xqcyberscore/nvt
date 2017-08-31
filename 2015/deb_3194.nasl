@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3194.nasl 6329 2017-06-13 15:39:42Z teissa $
+# $Id: deb_3194.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3194-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703194);
-    script_version("$Revision: 6329 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2015-1802", "CVE-2015-1803", "CVE-2015-1804");
     script_name("Debian Security Advisory DSA 3194-1 (libxfont - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-03-17 00:00:00 +0100 (Tue, 17 Mar 2015)");
     script_tag(name:"cvss_base", value:"8.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "libxfont on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (wheezy),
 these problems have been fixed in version 1.4.5-5.

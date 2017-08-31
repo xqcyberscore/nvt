@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882692");
-  script_version("$Revision: 5979 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 14:34:57 +0200 (Wed, 19 Apr 2017) $");
+  script_version("$Revision: 6873 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-08 14:35:26 +0200 (Tue, 08 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-04-14 06:30:21 +0200 (Fri, 14 Apr 2017)");
   script_cve_id("CVE-2016-0736", "CVE-2016-2161", "CVE-2016-8743");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for httpd CESA-2017:0906 centos7 ");
   script_tag(name: "summary", value: "Check the version of httpd");
@@ -99,7 +99,7 @@ using LDAP no longer fails. (BZ#1420047)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

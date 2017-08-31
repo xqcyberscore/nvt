@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_sametime_meet_server_mult_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_ibm_sametime_meet_server_mult_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # IBM Sametime Classic Meeting Server Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804825");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-4747", "CVE-2014-4748");
   script_bugtraq_id(68823, 68841);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-27 17:35:20 +0530 (Wed, 27 Aug 2014)");
   script_name("IBM Sametime Classic Meeting Server Multiple Vulnerabilities");
 
@@ -76,7 +76,6 @@ http://www-01.ibm.com/support/docview.wss?uid=swg21679454";
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127831");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21679221");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21679454");
-  script_summary("Check if IBM Sametime Classic Meeting Server is vulnerable to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

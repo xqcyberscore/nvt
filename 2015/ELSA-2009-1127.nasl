@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2009-1127.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: ELSA-2009-1127.nasl 6554 2017-07-06 11:53:20Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122472");
-script_version("$Revision: 6194 $");
+script_version("$Revision: 6554 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:46:07 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:53:20 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2009-1127");
 script_tag(name: "insight", value: "ELSA-2009-1127 -  kdelibs security update - [3.5.4-22.0.1.el5_3]- Remove Version branding- Maximum rpm trademark logos removed (pics/crystalsvg/*-mime-rpm*) in tarball[3.5.4-22]- Resolves: #505621, CVE-2009-1687, integer overflow in KJS JavaScript garbage collector CVE-2009-1698, KHTML CSS parser - incorrect handling CSS style attribute content (DoS, ACE)[3.5.4-21]- Resolves: #505621, CVE-2009-1687, integer overflow in KJS JavaScript garbage collector CVE-2009-1698, KHTML CSS parser - incorrect handling CSS style attribute content (DoS, ACE)[3.5.4-20]- Resolves: #505621, CVE-2009-1687, integer overflow in KJS JavaScript garbage collector CVE-2009-1698, KHTML CSS parser - incorrect handling CSS style attribute content (DoS, ACE)[3.5.4-19]- Resolves: #505621, CVE-2009-1690"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"9.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

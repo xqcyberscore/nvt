@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868599");
-  script_version("$Revision: 2798 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 13:57:39 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 6637 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-15 05:56:20 +0100 (Mon, 15 Dec 2014)");
   script_cve_id("CVE-2014-9091", "CVE-2014-9018");
   script_tag(name:"cvss_base", value:"5.0");
@@ -48,12 +48,11 @@ communication and interaction.
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-December/146204.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of icecast");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

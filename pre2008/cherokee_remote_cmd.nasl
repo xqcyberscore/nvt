@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cherokee_remote_cmd.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: cherokee_remote_cmd.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Cherokee remote command execution
 #
 # Authors:
@@ -42,8 +42,8 @@ tag_solution = "Upgrade to Cherokee 0.2.7 or newer";
 if(description)
 {
  script_id(15622);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2001-1433");
  script_bugtraq_id(3771, 3773);
@@ -72,13 +72,9 @@ if(description)
  exit(0);
 }
 
-#
-# The script code starts here
-#
 include("http_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port: port);
 if(!banner)exit(0);

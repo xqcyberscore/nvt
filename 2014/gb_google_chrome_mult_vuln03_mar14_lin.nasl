@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln03_mar14_lin.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_google_chrome_mult_vuln03_mar14_lin.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities-03 Mar2014 (Linux)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.804344";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-1705", "CVE-2014-1713", "CVE-2014-1714", "CVE-2014-1715");
   script_bugtraq_id(66252, 66243, 66249, 66239);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-19 14:00:04 +0530 (Wed, 19 Mar 2014)");
   script_name("Google Chrome Multiple Vulnerabilities-03 Mar2014 (Linux)");
 
@@ -83,7 +83,6 @@ For updates refer to http://www.google.com/chrome";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57439");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2014/03/stable-channel-update_14.html");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Google Chrome on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");

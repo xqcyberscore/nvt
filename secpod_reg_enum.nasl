@@ -1,7 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_reg_enum.nasl 5336 2017-02-18 15:08:15Z cfi $
-# Description: Enumerates List of Windows Hotfixes
+# $Id: secpod_reg_enum.nasl 6456 2017-06-28 11:19:33Z cfischer $
+#
+# Enumerates List of Windows Hotfixes
 #
 # Authors:
 # Chandan S <schandan@secpod.com>
@@ -28,49 +29,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-tag_summary = "This script will enumerates the list of all installed hotfixes
- on the remote host and sets Knowledge Base.";
-
 if(description)
 {
- script_id(900012);
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5336 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-18 16:08:15 +0100 (Sat, 18 Feb 2017) $");
- script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
- script_copyright("Copyright (C) 2008 SecPod");
- script_tag(name:"cvss_base", value:"0.0");
- script_category(ACT_GATHER_INFO);
+  script_oid("1.3.6.1.4.1.25623.1.0.900012");
+  script_version("$Revision: 6456 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_category(ACT_GATHER_INFO);
+  script_name("Enumerates List of Windows Hotfixes");
+  script_family("Windows");
+  script_copyright("Copyright (C) 2008 SecPod");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsName");
+
+  script_tag(name:"summary", value:"This script will enumerates the list of all installed hotfixes
+  on the remote host and sets Knowledge Base.");
+
   script_tag(name:"qod_type", value:"registry");
- script_name("Enumerates List of Windows Hotfixes");
- script_family("Windows");
- script_summary("Check for Hotfixes and set KB List");
- script_dependencies("netbios_name_get.nasl", "smb_login.nasl", "smb_registry_access.nasl", "smb_reg_service_pack.nasl","smb_nativelanman.nasl");
- script_require_keys("SMB/name", "SMB/login", "SMB/password",
-		     "SMB/registry_access");
- script_exclude_keys("SMB/samba");
- script_require_ports(139, 445);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+
+  exit(0);
 }
 
+include("smb_nt.inc");
+include("secpod_smb_func.inc");
 
- include("smb_nt.inc");
- include("secpod_smb_func.inc");
+if( get_kb_item( "SMB/Registry/Enumerated" ) ) exit( 0 );
 
-
- if(get_kb_item("SMB/samba")){
-	exit(0);
- }
-
-lanman = get_kb_item("SMB/NativeLanManager");
-if("Samba" >< lanman)exit(0);
-
- if(get_kb_item("SMB/Registry/Enumerated")){
-	exit(0);
- }
-
- global_var handle;
+global_var handle;
 
  function crawlLevel(key, level, maxlevel)
  {

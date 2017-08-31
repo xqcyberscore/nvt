@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2623.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: ELSA-2015-2623.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122805");
-script_version("$Revision: 6211 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-12-16 11:36:46 +0200 (Wed, 16 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2623");
 script_tag(name: "insight", value: "ELSA-2015-2623 -  grub2 security and bug fix update - [2.02-0.33.0.1]- Fix comparison in patch for 18504756- Remove symlink to grub environment file during uninstall on EFI platforms [bug 19231481]- update Oracle Linux certificates (Alexey Petrenko)- Put 'with' in menuentry instead of 'using' [bug 18504756]- Use different titles for UEK and RHCK kernels [bug 18504756][2.02-0.33]- Don't remove 01_users, it's the wrong thing to do. Related:rhbz1290089[2.02-0.32]- Rebuild for .z so the release number is different. Related: rhbz#1290089[2.02-0.31]- More work on handling of GRUB2_PASSWORD Resolves: rhbz#1290089[2.02-0.30]- Fix security issue when reading username and password Resolves: CVE-2015-8370- Do a better job of handling GRUB_PASSWORD Resolves: rhbz#1290089"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

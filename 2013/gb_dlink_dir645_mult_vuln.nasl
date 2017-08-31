@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir645_mult_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_dlink_dir645_mult_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # D-Link DIR-645 Router Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803730");
-  script_version("$Revision: 6086 $");
+  script_version("$Revision: 6698 $");
   script_cve_id("CVE-2013-7389");
   script_bugtraq_id(61579);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-08-05 15:17:38 +0530 (Mon, 05 Aug 2013)");
   script_name("D-Link DIR-645 Router Multiple Vulnerabilities");
 
@@ -66,10 +66,9 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 8080);
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 8080);
   script_mandatory_keys("DIR-645/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }

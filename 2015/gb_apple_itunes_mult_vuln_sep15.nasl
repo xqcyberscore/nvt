@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_sep15.nasl 2582 2016-02-05 08:32:27Z benallard $
+# $Id: gb_apple_itunes_mult_vuln_sep15.nasl 6486 2017-06-29 09:59:06Z teissa $
 #
 # Apple iTunes Multiple Vulnerabilities Sep15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806063");
-  script_version("$Revision: 2582 $");
+  script_version("$Revision: 6486 $");
   script_cve_id("CVE-2015-1157", "CVE-2015-3686", "CVE-2015-3687", "CVE-2015-3688",
                 "CVE-2015-5755", "CVE-2015-5761", "CVE-2015-5874", "CVE-2014-8146",
                 "CVE-2015-1205", "CVE-2010-3190", "CVE-2015-1152", "CVE-2015-1153",
@@ -49,7 +49,7 @@ if(description)
                 "CVE-2015-5821", "CVE-2015-5822");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-01 10:34:38 +0530 (Thu, 01 Oct 2015)");
   script_name("Apple iTunes Multiple Vulnerabilities Sep15 (Windows)");
 
@@ -84,7 +84,6 @@ if(description)
   script_xref(name: "URL" , value : "https://support.apple.com/en-in/HT201222");
   script_xref(name: "URL" , value : "http://lists.apple.com/archives/security-announce/2015/Sep/msg00003.html");
 
-  script_summary("Check for the vulnerable version of Apple iTunes on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

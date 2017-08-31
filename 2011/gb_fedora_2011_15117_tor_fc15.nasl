@@ -51,8 +51,8 @@ if(description)
   script_id(863607);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
- script_version("$Revision: 3078 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-15 14:08:28 +0200 (Fri, 15 Apr 2016) $");
+ script_version("$Revision: 6626 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:30:10 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-11-08 19:01:20 +0530 (Tue, 08 Nov 2011)");
   script_xref(name: "FEDORA", value: "2011-15117");
   script_cve_id("CVE-2011-2768", "CVE-2011-2769");
@@ -63,7 +63,7 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

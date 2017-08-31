@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mailpoet_arib_file_upload_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_mailpoet_arib_file_upload_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # WordPress MailPoet Newsletters Plugin Remote File Upload Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804724");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-4725");
   script_bugtraq_id(68310);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-28 12:35:07 +0530 (Mon, 28 Jul 2014)");
   script_name("WordPress MailPoet Newsletters Plugin Remote File Upload Vulnerability");
 
@@ -74,7 +74,6 @@ For updates refer to http://wordpress.org/plugins/wysija-newsletters";
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/33991");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127363");
   script_xref(name : "URL" , value : "http://blog.sucuri.net/2014/07/remote-file-upload-vulnerability-on-mailpoet-wysija-newsletters.html");
-  script_summary("Determine if it is possible to upload a file");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

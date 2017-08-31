@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seamonkey_mult_vuln_july08_lin.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_seamonkey_mult_vuln_july08_lin.nasl 6539 2017-07-05 12:02:14Z cfischer $
 #
 # Mozilla Seamonkey Multiple Vulnerability July-08 (Linux)
 #
@@ -54,8 +54,8 @@ tag_solution = "Upgrade to Seamonkey version 1.1.10 or later
 if(description)
 {
   script_id(800022);
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 6539 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-10-07 14:21:23 +0200 (Tue, 07 Oct 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -83,7 +83,7 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_seamonkey_detect_lin.nasl");
-  script_mandatory_keys("login/SSH/success","Seamonkey/Linux/Ver");
+  script_mandatory_keys("Seamonkey/Linux/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

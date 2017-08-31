@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_asset_manager_mult_vuln.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_mcafee_asset_manager_mult_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # McAfee Asset Manager Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mcafee:asset_manager";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-2587", "CVE-2014-2588");
   script_bugtraq_id(66302);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-17 11:25:02 +0530 (Thu, 17 Apr 2014)");
   script_name("McAfee Asset Manager Multiple Vulnerabilities");
 
@@ -82,7 +82,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/32368");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125775");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Mar/325");
-  script_summary("Check for the vulnerable version of McAfee Asset Manager");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

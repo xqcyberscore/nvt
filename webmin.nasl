@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmin.nasl 6032 2017-04-26 09:02:50Z teissa $
-# Description: Check for Webmin / Usermin
+# $Id: webmin.nasl 6776 2017-07-20 14:40:59Z cfischer $
+#
+# Check for Webmin / Usermin
 #
 # Authors:
 # Georges Dagousset <georges.dagousset@alert4web.com>
@@ -20,34 +22,35 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.10757");
- script_version("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_name("Check for Webmin / Usermin");
- script_category(ACT_GATHER_INFO);
- script_copyright("This script is Copyright (C) 2001 Alert4Web.com");
- script_family("Product detection");
- script_dependencies("find_service.nasl");
- script_require_ports("Services/www", 10000, 20000);
+  script_oid("1.3.6.1.4.1.25623.1.0.10757");
+  script_version("$Revision: 6776 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 16:40:59 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Check for Webmin / Usermin");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2001 Alert4Web.com");
+  script_family("Product detection");
+  # nb: Don't add a dependency to http_version.nasl which depends on this NVT.
+  script_dependencies("find_service.nasl", "httpver.nasl");
+  script_require_ports("Services/www", 10000, 20000);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : "Detection of Webmin / Usermin.
+  script_tag(name:"summary", value:"Detection of Webmin / Usermin.
                     
- The script sends a connection request to the server and attempts to
- extract the version number from the reply.");
- script_tag(name:"qod_type", value:"remote_banner");
- exit(0);
+  The script sends a connection request to the server and attempts to
+  extract the version number from the reply.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
 }
 
-#
-# The script code starts here
-#
 include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
@@ -55,9 +58,13 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 
 ports = get_kb_list( "Services/www" );
-if( ! ports) ports = make_list( 10000, 20000 );
+if( ! ports ) ports = make_list( 10000, 20000 );
 
 foreach port ( ports ) {
+
+  vers = "unknown";
+  usermin = FALSE;
+  webmin = FALSE;
 
   if( get_port_state( port ) ) {
 
@@ -66,16 +73,18 @@ foreach port ( ports ) {
 
     if( ( banner && egrep( pattern:"^Server: MiniServ.*", string:banner, icase: TRUE ) ) || "Login to Webmin" >< buf ) {
 
-      vers = 'unknown';
+      vers = "unknown";
+      install = "/";
+      replace_kb_item( name:"usermin_or_webmin/installed", value:TRUE );
 
       if( "Usermin Server" >< banner ) {
         set_kb_item( name:"www/" + port + "/usermin", value:TRUE );
-        set_kb_item( name:"usermin/installed", value:TRUE );
-        usermin = 1;
+        replace_kb_item( name:"usermin/installed", value:TRUE );
+        usermin = TRUE;
       } else {
         set_kb_item( name:"www/" + port + "/webmin", value:TRUE );
-        set_kb_item( name:"webmin/installed", value:TRUE );
-        webmin = 1;
+        replace_kb_item( name:"webmin/installed", value:TRUE );
+        webmin = TRUE;
       }
 
       version = eregmatch( pattern:"Server: MiniServ/([0-9]\.[0-9]+)", string:banner );
@@ -85,27 +94,35 @@ foreach port ( ports ) {
 
         if( usermin ) {
           set_kb_item( name:"usermin/" + port + "/version", value:vers );
-        } else if(webmin) {
+        } else if( webmin ) {
           set_kb_item( name:"webmin/" + port + "/version", value:vers );
         }
       }
 
       if( usermin ) {
-        cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:webmin:usermin:");
+        cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:webmin:usermin:" );
         if( ! cpe )
-          cpe = 'cpe:/a:webmin:usermin';
+          cpe = "cpe:/a:webmin:usermin";
 
-        register_product( cpe:cpe, install:'/', port:port );
-        log_message( data: build_detection_report( app:"Usermin", version:vers, install:'/', cpe:cpe, concluded: version[0] ),
-                    port:port );
+        register_product( cpe:cpe, location:install, port:port );
+        log_message( data:build_detection_report( app:"Usermin",
+                                                  version:vers,
+                                                  install:install,
+                                                  cpe:cpe,
+                                                  concluded:version[0] ),
+                                                  port:port );
       } else if( webmin ) {
         cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:webmin:webmin:" );
         if( ! cpe )
-          cpe = 'cpe:/a:webmin:webmin';
+          cpe = "cpe:/a:webmin:webmin";
 
-        register_product( cpe:cpe, install:'/', port:port );
-        log_message( data: build_detection_report( app:"Webmin", version:vers, install:'/', cpe:cpe, concluded: version[0] ),
-                    port:port );
+        register_product( cpe:cpe, location:install, port:port );
+        log_message( data:build_detection_report( app:"Webmin",
+                                                  version:vers,
+                                                  install:install,
+                                                  cpe:cpe,
+                                                  concluded:version[0] ),
+                                                  port:port );
       }
     }
   }

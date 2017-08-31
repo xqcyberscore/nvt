@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804068";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2014-0493", "CVE-2014-0495", "CVE-2014-0496");
   script_bugtraq_id(64802, 64803, 64804);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-21 12:29:20 +0530 (Tue, 21 Jan 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 Jan14 (Windows)");
 
@@ -77,7 +77,6 @@ For updates refer to http://get.adobe.com/reader";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56303");
   script_xref(name : "URL" , value : "http://helpx.adobe.com/security/products/acrobat/apsb14-01.html");
-  script_summary("Check for the vulnerable version of Adobe Reader on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

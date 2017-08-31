@@ -34,8 +34,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(865665);
-  script_version("$Revision: 2909 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-22 14:47:14 +0100 (Tue, 22 Mar 2016) $");
+  script_version("$Revision: 6628 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-05-31 09:49:50 +0530 (Fri, 31 May 2013)");
   script_cve_id("CVE-2012-6087", "CVE-2013-2079", "CVE-2013-2080", "CVE-2013-2081",
                 "CVE-2013-2082", "CVE-2013-2083");
@@ -50,7 +50,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

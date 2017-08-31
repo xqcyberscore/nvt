@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_prdts_priv_escalation_vuln_jan10.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_kaspersky_prdts_priv_escalation_vuln_jan10.nasl 6516 2017-07-04 12:20:47Z cfischer $
 #
 # Kaspersky Products Privilege Escalation Vulnerability
 #
@@ -45,8 +45,8 @@ tag_summary = "This host is installed with Kaspersky Products and is prone
 if(description)
 {
   script_id(800979);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 6516 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-01-09 13:17:56 +0100 (Sat, 09 Jan 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
@@ -62,8 +62,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Privilege escalation");
   script_dependencies("gb_kaspersky_av_detect.nasl");
-  script_require_keys("Kaspersky/AV/Ver", "Kaspersky/AV-Workstation/Ver",
-                "Kaspersky/IntNetSec/Ver", "Kaspersky/AV-FileServer/Ver");
+  script_mandatory_keys("Kaspersky/products/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

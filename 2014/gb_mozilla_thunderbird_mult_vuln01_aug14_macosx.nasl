@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804735");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-1549", "CVE-2014-1548", "CVE-2014-1560", "CVE-2014-1559",
                 "CVE-2014-1547", "CVE-2014-1558", "CVE-2014-1552", "CVE-2014-1555",
                 "CVE-2014-1557", "CVE-2014-1544", "CVE-2014-1556", "CVE-2014-1550");
@@ -37,7 +37,7 @@ if(description)
                     68814, 68824, 68816, 68822, 68810);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-07 16:04:43 +0530 (Thu, 07 Aug 2014)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 August14 (Mac OS X)");
 
@@ -85,7 +85,6 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/59803");
   script_xref(name : "URL" , value : "https://www.mozilla.org/security/announce/2014/mfsa2014-57.html");
-  script_summary("Check for the vulnerable version of Mozilla Thunderbird on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

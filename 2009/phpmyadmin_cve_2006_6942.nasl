@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpmyadmin_cve_2006_6942.nasl 5016 2017-01-17 09:06:21Z teissa $
+# $Id: phpmyadmin_cve_2006_6942.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # phpMyAdmin Multiple Input Validation Vulnerabilities
 #
@@ -46,8 +46,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5016 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+ script_version("$Revision: 6704 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-03-21 10:04:15 +0100 (Sat, 21 Mar 2009)");
  script_bugtraq_id(21137);
  script_cve_id("CVE-2006-6942");
@@ -63,7 +63,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("phpMyAdmin/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -71,15 +70,12 @@ if (description)
  exit(0);
 }
 
-
- include("http_func.inc");
- include("version_func.inc");
- include("host_details.inc");
+include("http_func.inc");
+include("version_func.inc");
+include("host_details.inc");
   
- if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
- if(!get_port_state(port))exit(0);
-
- if(!version = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
+if(!version = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
    if (version_is_less(version:version, test_version:"2.9.1.1") ) { 
         security_message(port:port);

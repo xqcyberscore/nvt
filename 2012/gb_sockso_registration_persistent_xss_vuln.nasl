@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sockso_registration_persistent_xss_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: gb_sockso_registration_persistent_xss_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # Sockso Registration Persistent Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802853");
-  script_version("$Revision: 5912 $");
+  script_version("$Revision: 6697 $");
   script_cve_id("CVE-2012-4267");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-05-14 13:06:50 +0530 (Mon, 14 May 2012)");
   script_name("Sockso Registration Persistent Cross Site Scripting Vulnerability");
 
@@ -43,9 +43,8 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_require_ports("Services/www", 4444);
   script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 4444);
   script_mandatory_keys("Sockso/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert

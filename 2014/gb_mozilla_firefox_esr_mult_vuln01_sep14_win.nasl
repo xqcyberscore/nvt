@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_sep14_win.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_sep14_win.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 September14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804829");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-1562", "CVE-2014-1567");
   script_bugtraq_id(69519, 69520);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-05 17:30:31 +0530 (Fri, 05 Sep 2014)");
 
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 September14 (Windows)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2014/mfsa2014-67.html");
   script_xref(name:"URL", value:"https://www.mozilla.org/security/announce/2014/mfsa2014-72.html");
 
-  script_summary("Check for the vulnerable version of Mozilla Firefox ESR on Windows.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

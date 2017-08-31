@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3097966.nasl 2651 2016-02-12 10:45:45Z benallard $
+# $Id: gb_microsoft_security_advisory_3097966.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Microsoft Inadvertently Disclosed Digital Certificates Advisory (3097966)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806092");
-  script_version("$Revision: 2651 $");
+  script_version("$Revision: 6637 $");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:M/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:45:45 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-10-15 10:51:26 +0530 (Thu, 15 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Inadvertently Disclosed Digital Certificates Advisory (3097966)");
@@ -70,7 +70,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3097966");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/3097966");
 
-  script_summary("Check for the vulnerable 'Ci.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows");

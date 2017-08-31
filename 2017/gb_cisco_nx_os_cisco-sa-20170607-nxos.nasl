@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20170607-nxos.nasl 6292 2017-06-08 06:36:42Z ckuersteiner $
+# $Id: gb_cisco_nx_os_cisco-sa-20170607-nxos.nasl 6585 2017-07-07 05:33:18Z cfischer $
 #
 # Cisco NX-OS Software Fibre Channel over Ethernet Denial of Service Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106858");
  script_cve_id("CVE-2017-6655");
- script_tag(name: "cvss_base", value: "6.1");
- script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 6292 $");
+ script_tag(name:"cvss_base", value:"3.3");
+ script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
+ script_version("$Revision: 6585 $");
 
  script_name("Cisco NX-OS Software Fibre Channel over Ethernet Denial of Service Vulnerability");
 
@@ -58,7 +58,7 @@ impact FCoE traffic passing through the device.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-06-08 08:36:42 +0200 (Thu, 08 Jun 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-07-07 07:33:18 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name: "creation_date", value: "2017-06-08 12:12:26 +0700 (Thu, 08 Jun 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

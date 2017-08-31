@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_maxdb_detect.nasl 4063 2016-09-15 05:33:34Z teissa $
+# $Id: gb_sap_maxdb_detect.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # SAP MaxDB Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100540");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4063 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-15 07:33:34 +0200 (Thu, 15 Sep 2016) $");
+  script_version("$Revision: 6637 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-03-17 21:52:47 +0100 (Wed, 17 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SAP MaxDB Detection");
-  script_summary("Checks for the presence of SAP MaxDB");
   script_category(ACT_GATHER_INFO);
   script_family("Service detection");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");

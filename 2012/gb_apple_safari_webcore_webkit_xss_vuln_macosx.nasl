@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webcore_webkit_xss_vuln_macosx.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: gb_apple_safari_webcore_webkit_xss_vuln_macosx.nasl 6521 2017-07-04 14:51:10Z cfischer $
 #
 # Apple Safari Webcore Webkit 'XSSAuditor.cpp' XSS Vulnerability (Mac OS X)
 #
@@ -45,12 +45,12 @@ site scripting vulnerability.";
 if(description)
 {
   script_id(803108);
-  script_version("$Revision: 5958 $");
+  script_version("$Revision: 6521 $");
   script_cve_id("CVE-2012-5851");
   script_bugtraq_id(56570);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-11-21 16:01:28 +0530 (Wed, 21 Nov 2012)");
   script_name("Apple Safari Webcore Webkit 'XSSAuditor.cpp' XSS Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "https://bugs.webkit.org/show_bug.cgi?id=92692");
@@ -60,7 +60,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
-  script_require_keys("AppleSafari/MacOSX/Version", "ssh/login/uname");
+  script_mandatory_keys("AppleSafari/MacOSX/Version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

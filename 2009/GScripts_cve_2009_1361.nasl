@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GScripts_cve_2009_1361.nasl 5767 2017-03-29 13:32:35Z cfi $
+# $Id: GScripts_cve_2009_1361.nasl 6901 2017-08-11 08:28:09Z cfischer $
 #
 # GScripts.net DNS Tools 'dig.php' Remote Command Execution
 # Vulnerability
@@ -25,34 +25,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "GScripts.net DNS Tools is prone to a remote command-execution
-  vulnerability because the software fails to adequately sanitize
-  user-supplied input.
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100182");
+  script_version("$Revision: 6901 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-11 10:28:09 +0200 (Fri, 11 Aug 2017) $");
+  script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
+  script_bugtraq_id(34559);
+  script_cve_id("CVE-2009-1361", "CVE-2009-1916");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("GScripts.net DNS Tools 'dig.php' Remote Command Execution Vulnerability");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("Host/runs_unixoide");
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
-  Successful attacks can compromise the affected software and possibly
+  tag_summary = "GScripts.net DNS Tools is prone to a remote command-execution
+  vulnerability because the software fails to adequately sanitize user-supplied input.";
+
+  tag_impact = "Successful attacks can compromise the affected software and possibly
   the computer.";
 
-if (description)
-{
- script_id(100182);
- script_version("$Revision: 5767 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:32:35 +0200 (Wed, 29 Mar 2017) $");
- script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
- script_bugtraq_id(34559);
- script_cve_id("CVE-2009-1361", "CVE-2009-1916");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_name("GScripts.net DNS Tools 'dig.php' Remote Command Execution Vulnerability");
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34559");
- exit(0);
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:tag_impact);
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34559");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+
+  exit(0);
 }
 
 include("http_func.inc");

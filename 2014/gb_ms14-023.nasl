@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-023.nasl 2485 2016-01-22 13:30:20Z benallard $
+# $Id: gb_ms14-023.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2961037)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(804450);
-  script_version("$Revision: 2485 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-1756", "CVE-2014-1808");
   script_bugtraq_id(67274, 67279);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 14:30:20 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-14 12:01:21 +0530 (Wed, 14 May 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2961037)");
@@ -80,7 +80,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-023";
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2878284");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2878316");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-023");
-  script_summary("Check for the vulnerable file versions");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

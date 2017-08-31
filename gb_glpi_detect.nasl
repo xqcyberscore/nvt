@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_glpi_detect.nasl 5723 2017-03-24 15:46:34Z cfi $
+# $Id: gb_glpi_detect.nasl 6454 2017-06-28 10:41:59Z teissa $
 #
 # GLPI Detection
 #
@@ -39,8 +39,8 @@ if (description)
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 5723 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:46:34 +0100 (Fri, 24 Mar 2017) $");
+ script_version ("$Revision: 6454 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-28 12:41:59 +0200 (Wed, 28 Jun 2017) $");
  script_tag(name:"creation_date", value:"2013-06-20 11:43:29 +0200 (Thu, 20 Jun 2013)");
  script_name("GLPI Detection");
  script_category(ACT_GATHER_INFO);
@@ -69,11 +69,10 @@ foreach dir( make_list_unique( "/glpi", cgi_dirs( port:port ) ) ) {
  buf = http_get_cache( item:url, port:port );
  if( buf == NULL ) continue;
 
- if("<title>GLPI - Authentication" >< buf && ("Powered By Indepnet" >< buf ||
+ if(("<title>GLPI - Authentification</title>" >< buf || "<title>GLPI - Authentication" >< buf ) && ("Powered By Indepnet" >< buf ||
         "Powered By Teclib" >< buf))
 
  {
-
     vers = string("unknown");
     ### try to get version
     version = eregmatch(string: buf, pattern: "GLPI version[ ]+([0-9.]+) ",icase:TRUE);

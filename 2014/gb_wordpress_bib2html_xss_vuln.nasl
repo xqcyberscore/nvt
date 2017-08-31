@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_bib2html_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_bib2html_xss_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Wordpress bib2html 'styleShortName' Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804592");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-3870");
   script_bugtraq_id(67589);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-02 15:00:13 +0530 (Mon, 02 Jun 2014)");
   script_name("Wordpress bib2html 'styleShortName' Cross Site Scripting Vulnerability");
 
@@ -75,7 +75,6 @@ For updates refer to http://wordpress.org/plugins/bib2html";
 
   script_xref(name : "URL" , value : "http://1337day.com/exploit/22281");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126782");
-  script_summary("Check if WordPress bib2html Plugin is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

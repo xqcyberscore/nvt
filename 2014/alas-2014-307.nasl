@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2014-307.nasl 4514 2016-11-15 10:04:28Z cfi $
+# $Id: alas-2014-307.nasl 6769 2017-07-20 09:56:33Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120528");
-script_version("$Revision: 4514 $");
+script_version("$Revision: 6769 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:28:38 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:04:28 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2014-307");
 script_tag(name: "insight", value: "A heap-based buffer overflow and a use-after-free flaw were found in the tiff2pdf tool. An attacker could use these flaws to create a specially crafted TIFF file that would cause tiff2pdf to crash or, possibly, execute arbitrary code. (CVE-2013-1960 , CVE-2013-4232 )Multiple buffer overflow flaws were found in the gif2tiff tool. An attacker could use these flaws to create a specially crafted GIF file that could cause gif2tiff to crash or, possibly, execute arbitrary code. (CVE-2013-4231 , CVE-2013-4243 , CVE-2013-4244 )A flaw was found in the way libtiff handled OJPEG-encoded TIFF images. An attacker could use this flaw to create a specially crafted TIFF file that would cause an application using libtiff to crash. (CVE-2010-2596 )Multiple buffer overflow flaws were found in the tiff2pdf tool. An attacker could use these flaws to create a specially crafted TIFF file that would cause tiff2pdf to crash. (CVE-2013-1961 )"); 
 script_tag(name : "solution", value : "Run yum update libtiff to update your system.");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"9.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2014-307");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

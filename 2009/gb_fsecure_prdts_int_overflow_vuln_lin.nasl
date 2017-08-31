@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fsecure_prdts_int_overflow_vuln_lin.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_fsecure_prdts_int_overflow_vuln_lin.nasl 6516 2017-07-04 12:20:47Z cfischer $
 #
 # F-Secure Product(s) Integer Overflow Vulnerability (Linux)
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is installed with F-Secure Product(s) and is prone to
 if(description)
 {
   script_id(800358);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 6516 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-03-13 14:39:10 +0100 (Fri, 13 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
@@ -56,8 +56,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_fsecure_prdts_detect_lin.nasl");
-  script_require_keys("F-Sec/AV/LnxSec/Ver", "F-Sec/AV/LnxClntSec/Ver");
-  script_require_keys("F-Sec/AV/LnxSerSec/Ver", "F-Sec/IntGatekeeper/Lnx/Ver");
+  script_mandatory_keys("F-Sec/Products/Lin/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

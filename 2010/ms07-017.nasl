@@ -37,8 +37,8 @@ tag_summary = "Stack-based buffer overflow in the animated cursor code in Micros
 if(description)
 {
   script_id(102055);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6527 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_bugtraq_id(23273, 23276, 23278, 23275, 20940, 23277);
   script_cve_id("CVE-2006-5586", "CVE-2006-5758", "CVE-2007-1211", 
@@ -54,7 +54,7 @@ if(description)
   script_copyright("Copyright (C) 2010 LSS");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_ie_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
+  script_mandatory_keys("MS/IE/Version");
   script_require_ports(139, 445);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);

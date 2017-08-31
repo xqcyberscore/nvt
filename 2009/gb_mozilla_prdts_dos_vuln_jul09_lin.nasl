@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_dos_vuln_jul09_lin.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_mozilla_prdts_dos_vuln_jul09_lin.nasl 6482 2017-06-29 08:31:43Z cfischer $
 #
 # Mozilla Products 'select()' Denial Of Service Vulnerability (Linux)
 #
@@ -50,8 +50,8 @@ tag_summary = "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird 
 if(description)
 {
   script_id(800849);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 6482 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:31:43 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-07-22 21:36:53 +0200 (Wed, 22 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -65,10 +65,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("gb_firefox_detect_lin.nasl", "gb_seamonkey_detect_lin.nasl",
-                      "gb_thunderbird_detect_lin.nasl");
-  script_require_keys("Firefox/Linux/Ver", "Seamonkey/Linux/Ver",
-                      "Thunderbird/Linux/Ver");
+  script_dependencies("gb_firefox_detect_lin.nasl", "gb_seamonkey_detect_lin.nasl", "gb_thunderbird_detect_lin.nasl");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Linux/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

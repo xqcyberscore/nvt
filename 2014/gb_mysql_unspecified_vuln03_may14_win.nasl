@@ -30,13 +30,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5081 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-2434", "CVE-2014-2442", "CVE-2014-2444",
                 "CVE-2014-2450", "CVE-2014-2451");
   script_bugtraq_id(66872, 66823, 66885, 66863, 66828);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:05:06 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-08 13:23:07 +0530 (Thu, 08 May 2014)");
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities - 03 May14 (Windows)");
 
@@ -76,7 +76,6 @@ http://www.oracle.com/technetwork/topics/security/cpuapr2014-1972952.html";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57940");
   script_xref(name : "URL" , value : "http://www.scaprepo.com/view.jsp?id=oval:org.secpod.oval:def:701638");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2014-1972952.html");
-  script_summary("Check for the vulnerable version of Oracle MySQL on windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Databases");

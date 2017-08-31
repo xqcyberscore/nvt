@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3462.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: deb_3462.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3462-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703462);
-    script_version("$Revision: 5836 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2015-8747", "CVE-2015-8748");
     script_name("Debian Security Advisory DSA 3462-1 (radicale - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-01-30 00:00:00 +0100 (Sat, 30 Jan 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "radicale on Debian Linux");
     script_tag(name: "insight",   value: "Radicale is a CalDAV (calendar) and CardDAV (contact) server.");
     script_tag(name: "solution",  value: "For the oldstable distribution (wheezy),

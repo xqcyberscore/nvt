@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_frontend_open_redirection_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_typo3_frontend_open_redirection_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # TYPO3 Frontend Open Redirection Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6735 $");
   script_bugtraq_id(42029);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-07 18:00:17 +0530 (Tue, 07 Jan 2014)");
   script_name("TYPO3 Frontend Open Redirection Vulnerability");
 
@@ -73,7 +73,6 @@ For updates refer to, http://typo3.org/";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/40742/");
   script_xref(name : "URL" , value : "http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-sa-2010-012");
-  script_summary("Check if we can redirect URL from TYPO3 environment");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");

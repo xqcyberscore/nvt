@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868073");
-  script_version("$Revision: 2802 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 15:35:48 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 6629 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-08 06:01:34 +0200 (Fri, 08 Aug 2014)");
   script_cve_id("CVE-2014-2828", "CVE-2014-3476", "CVE-2014-3520", "CVE-2014-2237",
                 "CVE-2013-6391", "CVE-2013-4477");
@@ -60,7 +60,7 @@ This package contains the Keystone daemon.
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

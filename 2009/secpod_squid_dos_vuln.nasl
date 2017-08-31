@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_squid_dos_vuln.nasl 4918 2017-01-02 14:56:10Z cfi $
+# $Id: secpod_squid_dos_vuln.nasl 6891 2017-08-10 12:44:59Z cfischer $
 #
 # Squid External Auth Header Parser DOS Vulnerabilities
 #
@@ -24,13 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:squid-cache:squid';
+CPE = "cpe:/a:squid-cache:squid";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101105");
-  script_version("$Revision: 4918 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:56:10 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 6891 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-10 14:44:59 +0200 (Thu, 10 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-08-24 07:49:31 +0200 (Mon, 24 Aug 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -40,6 +40,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("secpod_squid_detect.nasl");
+  script_require_ports("Services/http_proxy", 3128, "Services/www", 8080);
   script_mandatory_keys("squid_proxy_server/installed");
 
   script_xref(name:"URL", value:"http://www.squid-cache.org/bugs/show_bug.cgi?id=2704");
@@ -68,7 +69,7 @@ if(description)
   script_tag(name:"summary", value:tag_summary);
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
 }

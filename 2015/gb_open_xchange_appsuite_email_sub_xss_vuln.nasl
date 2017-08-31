@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_email_sub_xss_vuln.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: gb_open_xchange_appsuite_email_sub_xss_vuln.nasl 6707 2017-07-12 14:57:13Z cfischer $
 #
 # Open-Xchange AppSuite Email Subject Cross Site Scripting Vulnerability
 #
@@ -24,15 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806082");
-  script_version("$Revision: 6194 $");
+  script_version("$Revision: 6707 $");
   script_cve_id("CVE-2014-2077");
   script_bugtraq_id(71888);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:57:13 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-10-13 09:25:09 +0530 (Tue, 13 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange AppSuite Email Subject Cross Site Scripting Vulnerability");
@@ -68,7 +70,6 @@ if(description)
   script_require_ports("Services/www", 80);
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

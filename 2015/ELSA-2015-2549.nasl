@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2549.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-2549.nasl 6637 2017-07-10 09:58:13Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122795");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6637 $");
 script_tag(name:"creation_date", value:"2015-12-08 11:03:28 +0200 (Tue, 08 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2549");
 script_tag(name: "insight", value: "ELSA-2015-2549 -  libxml2 security update - [2.7.6-20.0.1]- Update doc/redhat.gif in tarball- Add libxml2-oracle-enterprise.patch and update logos in tarball[2.7.6-20.1]- Fix a series of CVEs (rhbz#1286495)- CVE-2015-7941 Cleanup conditional section error handling- CVE-2015-8317 Fail parsing early on if encoding conversion failed- CVE-2015-7942 Another variation of overflow in Conditional sections- CVE-2015-7942 Fix an error in previous Conditional section patch- Fix parsing short unclosed comment uninitialized access- CVE-2015-7498 Avoid processing entities after encoding conversion failures- CVE-2015-7497 Avoid an heap buffer overflow in xmlDictComputeFastQKey- CVE-2015-5312 Another entity expansion issue- CVE-2015-7499 Add xmlHaltParser() to stop the parser- CVE-2015-7499 Detect incoherency on GROW- CVE-2015-7500 Fix memory access error due to incorrect entities boundaries- CVE-2015-8242 Buffer overead with HTML parser in push mode- Libxml violates the zlib interface and crashes"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"7.1");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-2549");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

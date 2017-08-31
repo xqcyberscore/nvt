@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_was_ms14-081.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_sharepoint_server_was_ms14-081.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Microsoft SharePoint Server WAS Remote Code Execution Vulnerability (3017301)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805113");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-6356", "CVE-2014-6357");
   script_bugtraq_id(71470, 71469);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-10 11:30:23 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft SharePoint Server WAS Remote Code Execution Vulnerability (3017301)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2883050");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms14-081");
 
-  script_summary("Check for the version of 'sword.dll' vulnerable file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

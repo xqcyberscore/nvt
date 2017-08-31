@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wordpress_38368.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: wordpress_38368.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # WordPress Trashed Posts Information Disclosure Vulnerability
 #
@@ -40,8 +40,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5401 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-02-24 18:35:31 +0100 (Wed, 24 Feb 2010)");
  script_bugtraq_id(38368);
  script_cve_id("CVE-2010-0682");
@@ -61,7 +61,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("secpod_wordpress_detect_900182.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("wordpress/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -73,10 +72,6 @@ include("version_func.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
-if (!can_host_php(port:port)) exit(0);
-
 if(!vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
 if(!isnull(vers) && vers >!< "unknown") {

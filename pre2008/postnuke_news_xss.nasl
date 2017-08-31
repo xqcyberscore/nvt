@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: postnuke_news_xss.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: postnuke_news_xss.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Post-Nuke News module XSS
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "Upgrade to the latest version of postnuke";
 if(description)
 {
   script_id(14727);
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 6702 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(5809);
   script_tag(name:"cvss_base", value:"4.3");
@@ -50,6 +50,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_dependencies("secpod_zikula_detect.nasl", "cross_site_scripting.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
@@ -61,10 +62,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port)){
-  exit(0);
-}
 
 postVer =get_kb_item("www/" + port + "/postnuke");
 if(!postVer){

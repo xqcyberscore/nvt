@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_prosafe_snmp_detect.nasl 6162 2017-05-18 11:36:31Z cfi $
+# $Id: gb_netgear_prosafe_snmp_detect.nasl 6770 2017-07-20 10:01:28Z cfischer $
 #
 # NETGEAR ProSafe Devices Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108163");
-  script_version("$Revision: 6162 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 13:36:31 +0200 (Thu, 18 May 2017) $");
+  script_version("$Revision: 6770 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 12:01:28 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-05-18 10:24:16 +0200 (Thu, 18 May 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -117,7 +117,7 @@ if( "ProSafe" >< sysdesc ) {
   set_kb_item( name:"Host/OS/SNMP", value:"NETGEAR Prosafe Firmware" );
   set_kb_item( name:"Host/OS/SNMP/Confidence", value:100 );
 
-  register_and_report_os( os:osapp, cpe:oscpe, banner_type:"SNMP sysdesc", proto:"udp", banner:sysdesc, desc:"NETGEAR ProSafe Devices Detection (SNMP)", runs_key:"unknown" );
+  register_and_report_os( os:osapp, cpe:oscpe, banner_type:"SNMP sysdesc", proto:"udp", banner:sysdesc, desc:"NETGEAR ProSafe Devices Detection (SNMP)", runs_key:"unixoide" );
 
   report = build_detection_report( app:osapp,
                                    version:version,

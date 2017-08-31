@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843069");
-  script_version("$Revision: 5925 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 08:36:17 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 6648 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:05:27 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-03-01 05:46:21 +0100 (Wed, 01 Mar 2017)");
   script_cve_id("CVE-2016-10166", "CVE-2016-10167", "CVE-2016-10168", "CVE-2016-6906", "CVE-2016-6912", "CVE-2016-9317", "CVE-2016-9933");
   script_tag(name:"cvss_base", value:"7.5");
@@ -85,7 +85,7 @@ an attacker could cause a denial of service. (CVE-2016-9933)");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

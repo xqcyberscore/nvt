@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_clickjacking_vuln.nasl 5656 2017-03-21 11:03:12Z cfi $
+# $Id: gb_ms_ie_clickjacking_vuln.nasl 6527 2017-07-05 05:56:34Z cfischer $
 #
 # Microsoft Internet Explorer Clickjacking Vulnerability
 #
@@ -41,8 +41,8 @@ tag_summary = "This host has installed Internet Explorer and is prone to
 if(description)
 {
   script_id(800347);
-  script_version("$Revision: 5656 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 6527 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-02-04 15:43:54 +0100 (Wed, 04 Feb 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -55,7 +55,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_ms_ie_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
+  script_mandatory_keys("MS/IE/Version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

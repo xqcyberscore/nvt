@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0046.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: mgasa-2016-0046.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131214");
-script_version("$Revision: 5580 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-02-08 19:55:20 +0200 (Mon, 08 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0046");
 script_tag(name: "insight", value: "Gajim before 0.16.5 doesnt verify the origin of roster pushes thus allowing third parties to modify the roster via a man-in-the-middle attack (CVE-2015-8688)."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"5.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0046");
 script_copyright("Eero Volotinen");

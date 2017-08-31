@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3888.nasl 6380 2017-06-20 11:55:30Z teissa $
+# $Id: deb_3888.nasl 6618 2017-07-07 14:17:52Z cfischer $
 # Auto-generated from advisory DSA 3888-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703888);
-    script_version("$Revision: 6380 $");
+    script_version("$Revision: 6618 $");
     script_cve_id("CVE-2017-1000369");
     script_name("Debian Security Advisory DSA 3888-1 (exim4 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-20 13:55:30 +0200 (Tue, 20 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 16:17:52 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-06-19 00:00:00 +0200 (Mon, 19 Jun 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"2.1");
+    script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "exim4 on Debian Linux");
         script_tag(name: "insight",   value: "Exim (v4) is a mail transport agent. exim4 is the metapackage depending
 on the essential components for a basic exim4 installation.");

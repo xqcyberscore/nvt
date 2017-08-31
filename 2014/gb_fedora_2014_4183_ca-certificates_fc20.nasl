@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(867623);
-  script_version("$Revision: 2801 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 15:33:54 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 6629 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-25 10:18:48 +0530 (Tue, 25 Mar 2014)");
   script_tag(name:"cvss_base", value:"3.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:P/I:P/A:N");
@@ -56,7 +56,7 @@ Mozilla Foundation for use with the Internet PKI.
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

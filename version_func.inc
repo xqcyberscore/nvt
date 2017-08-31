@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Include File
-# $Id: version_func.inc 6246 2017-05-30 13:04:03Z cfi $
+# OpenVAS Vulnerability Test
+# $Id: version_func.inc 6738 2017-07-17 10:53:33Z cfischer $
 #
 # Helper functions for SSH-based target host access
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6246 $
+# $Revision: 6738 $
 #
 ###############################################################################
 
@@ -443,8 +443,29 @@ function check_locate( sock ) {
 ## This function will return the version of the given file
 function fetch_file_version( sysPath, file_name ) {
 
-  local_var share, file, file_name, sysVer;
+  local_var share, file, file_name, sysVer, kb_proxy_file, kb_proxy, kbsysPath ;
   # nb: Don't add sysPath to local_var as quite a lot LSCs are calling fetch_file_version(sysPath)
+
+  if( ! sysPath )   set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#sysPath#-#fetch_file_version" );
+  if( ! file_name ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file_name#-#fetch_file_version" );
+
+  ## Query KB with specified file name first.
+  ## Convert file name and sysPath to lower case.
+  file_name = tolower( file_name );
+  kbsysPath = tolower( sysPath ); # sysPath is currently not a local_var
+
+  ## Construct KB string with file name.
+  kb_proxy_file = "SMB//fetch_file_version//" + kbsysPath + "//" + file_name;
+
+  ## Try to get the file version if already exists in KB
+  kb_proxy = get_kb_item( kb_proxy_file );
+  if( ! isnull( kb_proxy ) || kb_proxy ) {
+    # Set to unknown to avoid that we're querying the version again if we already know that the file doesn't exist
+    if( kb_proxy == "unknown" )
+      return FALSE;
+    else
+      return kb_proxy;
+  }
 
   share = ereg_replace( pattern:"([A-Za-z]):.*", replace:"\1$", string:sysPath );
   file =  ereg_replace( pattern:"[A-Za-z]:(.*)", replace:"\1", string:sysPath + "\" + file_name );
@@ -454,10 +475,14 @@ function fetch_file_version( sysPath, file_name ) {
 
   sysVer = GetVer( file:file, share:share );
   if( ! sysVer || isnull( sysVer ) || sysVer == "" || sysVer == 0 || sysVer == '0' ) {
-    return( FALSE );
+    set_kb_item( name:kb_proxy_file, value:"unknown" );
+    return FALSE;
   }
 
-  return( sysVer );
+  ## set KB string with file name if its not exists already
+  set_kb_item( name:kb_proxy_file, value:sysVer );
+
+  return sysVer;
 }
 
 ########################################################################

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842954");
-  script_version("$Revision: 4636 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-28 10:13:01 +0100 (Mon, 28 Nov 2016) $");
+  script_version("$Revision: 6906 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-11 15:21:18 +0200 (Fri, 11 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-11-22 05:37:20 +0100 (Tue, 22 Nov 2016)");
   script_cve_id("CVE-2014-8354", "CVE-2014-8355", "CVE-2014-8562", "CVE-2014-8716",
 		"CVE-2014-9805", "CVE-2014-9806", "CVE-2014-9807", "CVE-2014-9808",
@@ -39,8 +39,8 @@ if(description)
 		"CVE-2014-9833", "CVE-2014-9834", "CVE-2014-9835", "CVE-2014-9836",
 		"CVE-2014-9837", "CVE-2014-9838", "CVE-2014-9839", "CVE-2014-9840",
 		"CVE-2014-9841", "CVE-2014-9843", "CVE-2014-9844", "CVE-2014-9845");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for imagemagick USN-3131-1");
   script_tag(name: "summary", value: "Check the version of imagemagick");
@@ -64,7 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

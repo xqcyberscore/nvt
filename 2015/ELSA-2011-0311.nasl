@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-0311.nasl 6391 2017-06-21 09:59:48Z teissa $
+# $Id: ELSA-2011-0311.nasl 6556 2017-07-06 11:54:54Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122232");
-script_version("$Revision: 6391 $");
+script_version("$Revision: 6556 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:15:08 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:54 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-0311");
 script_tag(name: "insight", value: "ELSA-2011-0311 -  thunderbird security update - [3.1.8-4.0.2.el6_0]- Replace clean.gif in tarball[3.1.8-4.0.1.el6_0]- Replaced thunderbird-redhat-default-prefs.js with thunderbird-oracle-default-prefs.js[3.1.8-4]- Update to build3[3.1.8-3]- Update to build2[3.1.8-2]- Update to 3.1.8"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

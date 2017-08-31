@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_version.nasl 5943 2017-04-12 14:44:26Z antu123 $
+# $Id: http_version.nasl 6760 2017-07-19 14:00:26Z cfischer $
 #
 # HTTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10107");
-  script_version("$Revision: 5943 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
+  script_version("$Revision: 6760 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 16:00:26 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -128,7 +128,7 @@ if( soc ) {
     svr = ereg_replace( pattern:".*Server: (.*)$", string:svrline, replace:"\1" );
     report = 'The remote web server type is :\n\n';
 
-    if( "Apache" >< svr ) {
+    if( "Apache" >< svr && "Apache-Coyote" >!< svr ) {
       if( "Apache/" >< svr ) {
         report = report + svr + '\n\nSolution : You can set the directive "ServerTokens Prod" to limit\nthe information emanating from the server in its response headers.';
       } else {
@@ -201,11 +201,15 @@ if( soc ) {
     if( egrep( pattern:"^Server:.*NCSA.*", string:svrline ) )
       set_kb_item( name:"www/ncsa", value:TRUE );
 
-    if( egrep( pattern:"^Server:.*Netscape-Enterprise.*", string:svrline ) )
+    if( egrep( pattern:"^Server:.*Netscape-Enterprise.*", string:svrline ) ) {
       set_kb_item( name:"www/iplanet", value:TRUE );
+      replace_kb_item( name:"www/netscape_servers", value:TRUE );
+    }
 
-    if( egrep( pattern:"^Server:.*Netscape-Administrator.*", string:svrline ) )
+    if( egrep( pattern:"^Server:.*Netscape-Administrator.*", string:svrline ) ) {
       set_kb_item( name:"www/iplanet", value:TRUE );
+      replace_kb_item( name:"www/netscape_servers", value:TRUE );
+    }
 
     if( egrep( pattern:"^Server:.*thttpd/.*", string:svrline ) )
       set_kb_item( name:"www/thttpd", value:TRUE );
@@ -324,8 +328,10 @@ if( soc ) {
     if( egrep( pattern:"^Server:.*Ipswitch-IMail.*", string:svrline ) )
       set_kb_item( name:"www/ipswitch-imail", value:TRUE );
 
-    if( egrep( pattern:"^Server:.*Netscape-FastTrack.*", string:svrline ) )
+    if( egrep( pattern:"^Server:.*Netscape-FastTrack.*", string:svrline ) ) {
       set_kb_item( name:"www/netscape-fasttrack", value:TRUE );
+      replace_kb_item( name:"www/netscape_servers", value:TRUE );
+    }
 
     if( egrep( pattern:"^Server:.*AkamaiGHost.*", string:svrline ) )
       set_kb_item( name:"www/akamaighost", value:TRUE );
@@ -336,8 +342,10 @@ if( soc ) {
     if( egrep( pattern:"^Server:.*tigershark.*", string:svrline ) )
       set_kb_item( name:"www/tigershark", value:TRUE );
 
-    if( egrep( pattern:"^Server:.*Netscape-Commerce.*", string:svrline ) )
+    if( egrep( pattern:"^Server:.*Netscape-Commerce.*", string:svrline ) ) {
       set_kb_item( name:"www/netscape-commerce", value:TRUE );
+      replace_kb_item( name:"www/netscape_servers", value:TRUE );
+    }
 
     if( egrep( pattern:"^Server:.*Oracle_Web_listener.*", string:svrline ) )
       set_kb_item( name:"www/oracle-web-listener", value:TRUE );

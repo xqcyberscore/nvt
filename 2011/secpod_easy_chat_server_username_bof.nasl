@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_easy_chat_server_username_bof.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: secpod_easy_chat_server_username_bof.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # Easy Chat Server 'username' Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901201");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6696 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-08-25 09:25:35 +0200 (Thu, 25 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,9 +42,8 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");
-  script_require_ports("Services/www", 80);
   script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 80);
   script_mandatory_keys("Easy_Chat_Server/banner");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute

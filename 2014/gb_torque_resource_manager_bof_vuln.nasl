@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_torque_resource_manager_bof_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_torque_resource_manager_bof_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # TORQUE Resource Manager Stack Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804456");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-0749");
   script_bugtraq_id(67420);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-29 14:39:49 +0530 (Thu, 29 May 2014)");
   script_name("TORQUE Resource Manager Stack Buffer Overflow Vulnerability");
 
@@ -72,7 +72,6 @@ http://www.adaptivecomputing.com/support/download-center/torque-download ";
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2014/May/75");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126651");
   script_xref(name : "URL" , value : "https://labs.mwrinfosecurity.com/advisories/2014/05/14/torque-buffer-overflow/");
-  script_summary("Check if TORQUE Resource Manager is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

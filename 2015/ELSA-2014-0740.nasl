@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-0740.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-0740.nasl 6559 2017-07-06 11:57:32Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123392");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6559 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:03:12 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:57:32 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-0740");
 script_tag(name: "insight", value: "ELSA-2014-0740 -  kernel security and bug fix update - kernel[2.6.18-371.9.1]- [nfs] sunrpc: don't use a credential with extra groups (Mateusz Guzik) [1095062 976201]- [scsi] lpfc: Remove NDLP reference put in lpfc_cmpl_els_logo_acc (Rob Evers) [1096061 1075228]- [infiniband] rds: dereference of a NULL device (Jacob Tanenbaum) [1079216 1079217] {CVE-2013-7339}- [kernel] futex: check relative timeouts for overflow (Denys Vlasenko) [1091832 1084168]- [virt] kvm: correctly detect KVM when hv emulation is enalbed (Jason Wang) [1094152 985767]- [security] Fix spurious warnings in security_ops_task_setrlimit (Mateusz Guzik) [1092869 916235]- [block] floppy: don't write kernel-only members to FDRAWCMD output (Denys Vlasenko) [1094302 1094303] {CVE-2014-1738 CVE-2014-1737}- [block] floppy: ignore kernel-only members in FDRAWCMD input (Denys Vlasenko) [1094302 1094303] {CVE-2014-1738 CVE-2014-1737}"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"7.2");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-0740");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

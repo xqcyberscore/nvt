@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842880");
-  script_version("$Revision: 5588 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_version("$Revision: 6647 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:04:05 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-09-09 06:02:11 +0200 (Fri, 09 Sep 2016)");
   script_cve_id("CVE-2016-3994", "CVE-2016-3993", "CVE-2014-9771", "CVE-2016-4024",
 		"CVE-2011-5326", "CVE-2014-9762", "CVE-2014-9763", "CVE-2014-9764");
@@ -83,7 +83,7 @@ Ubuntu 12.04 LTS and Ubuntu 14.04 LTS. (CVE-2014-9764)");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

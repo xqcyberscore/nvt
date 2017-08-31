@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-3032.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-3032.nasl 6600 2017-07-07 09:58:31Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123124");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6600 $");
 script_tag(name:"creation_date", value:"2015-10-06 09:48:11 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-3032");
 script_tag(name: "insight", value: "ELSA-2015-3032 - Unbreakable Enterprise kernel security update - kernel-uek[3.8.13-68.1.3]- isofs: Fix unchecked printing of ER records (Jan Kara) [Orabug: 20930551] {CVE-2014-9584}- KEYS: close race between key lookup and freeing (Sasha Levin) [Orabug: 20930548] {CVE-2014-9529} {CVE-2014-9529}- mm: memcg: do not allow task about to OOM kill to bypass the limit (Johannes Weiner) [Orabug: 20930539] {CVE-2014-8171}- mm: memcg: do not declare OOM from __GFP_NOFAIL allocations (Johannes Weiner) [Orabug: 20930539] {CVE-2014-8171}- fs: buffer: move allocation failure loop into the allocator (Johannes Weiner) [Orabug: 20930539] {CVE-2014-8171}- mm: memcg: handle non-error OOM situations more gracefully (Johannes Weiner) [Orabug: 20930539] {CVE-2014-8171}- mm: memcg: do not trap chargers with full callstack on OOM (Johannes Weiner) [Orabug: 20930539] {CVE-2014-8171}- mm: memcg: rework and document OOM waiting and wakeup (Johannes Weiner) [Orabug: 20930539] {CVE-2014-8171}- mm: memcg: enable memcg OOM killer only for user faults (Johannes Weiner) [Orabug: 20930539] {CVE-2014-8171}- x86: finish user fault error path with fatal signal (Johannes Weiner) [Orabug: 20930539] {CVE-2014-8171}- arch: mm: pass userspace fault flag to generic fault handler (Johannes Weiner) [Orabug: 20930539] {CVE-2014-8171}- selinux: Permit bounded transitions under NO_NEW_PRIVS or NOSUID. (Stephen Smalley) [Orabug: 20930501] {CVE-2014-3215}"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"7.2");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-3032");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

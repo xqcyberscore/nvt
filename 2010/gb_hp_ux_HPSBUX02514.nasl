@@ -38,8 +38,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www11.itrc.hp.com/service/cki/docDisplay.do?docId=emr_na-c02063258");
   script_id(835228);
-  script_version("$Revision: 3148 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 13:49:04 +0200 (Fri, 22 Apr 2016) $");
+  script_version("$Revision: 6583 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-06 16:12:45 +0200 (Thu, 06 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-04-07 16:26:52 +0200 (Wed, 07 Apr 2010)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:N/I:N/A:C");
@@ -52,7 +52,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("HP-UX Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:hp:hp-ux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/hp_hp-ux", "ssh/login/release");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

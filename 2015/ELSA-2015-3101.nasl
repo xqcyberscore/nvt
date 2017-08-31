@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-3101.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: ELSA-2015-3101.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122793");
-script_version("$Revision: 6211 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-12-02 11:24:55 +0200 (Wed, 02 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-3101");
 script_tag(name: "insight", value: "ELSA-2015-3101 - Unbreakable Enterprise kernel security update - kernel-uek[3.8.13-118.2.1]- ipc/sem.c: fully initialize sem_array before making it visible (Manfred Spraul) [Orabug: 22277382] {CVE-2015-7613}- ipc: fix msg newqueue add (Guru Anbalagane) [Orabug: 22277382] {CVE-2015-7613}[3.8.13-118.1.1]- sctp: fix race on protocol/netns initialization (Marcelo Ricardo Leitner) [Orabug: 22249981] {CVE-2015-5283}- Initialize msg/shm IPC objects before doing ipc_addid() (Linus Torvalds) [Orabug: 22250045] {CVE-2015-7613}- ixgbe: reset copper phy power mode (Ethan Zhao) [Orabug: 22271769]"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

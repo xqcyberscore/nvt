@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-018.nasl 2485 2016-01-22 13:30:20Z benallard $
+# $Id: gb_ms14-018.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (2950467)
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2485 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2014-0235", "CVE-2014-1751", "CVE-2014-1752", "CVE-2014-1753",
                 "CVE-2014-1755", "CVE-2014-1760");
   script_bugtraq_id(66646, 66647, 66654, 66648, 66652, 66653);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 14:30:20 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-09 07:58:41 +0530 (Wed, 09 Apr 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (2950467)");
@@ -78,7 +78,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-018";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57586");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2936068");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-018");
-  script_summary("Check for the vulnerable 'Mshtml.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

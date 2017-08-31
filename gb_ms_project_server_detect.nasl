@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_project_server_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_ms_project_server_detect.nasl 6922 2017-08-15 07:12:37Z asteins $
 #
 # Microsoft Project Server Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805168");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 6922 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-15 09:12:37 +0200 (Tue, 15 Aug 2017) $");
   script_tag(name:"creation_date", value:"2015-04-15 16:57:38 +0530 (Wed, 15 Apr 2015)");
   script_name("Microsoft Project Server Detection");
 
@@ -71,7 +71,7 @@ foreach item (registry_enum_keys(key:key))
 {
   if(psName = registry_get_sz(key:key + item, item:"DisplayName"))
   {
-    ## Check for SharePoint Server
+    ## Check for Project Server
     if("Microsoft Project Server" >< psName)
     {
       psVer = registry_get_sz(key:key + item, item:"DisplayVersion");

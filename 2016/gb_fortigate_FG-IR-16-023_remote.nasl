@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortigate_FG-IR-16-023_remote.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_fortigate_FG-IR-16-023_remote.nasl 6700 2017-07-12 12:16:21Z cfischer $
 #
 # FortiOS: Cookie Parser Buffer Overflow Vulnerability (remote check)
 #
@@ -30,7 +30,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105886");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5732 $");
+ script_version ("$Revision: 6700 $");
 
  script_name("FortiOS: Cookie Parser Buffer Overflow Vulnerability (remote check)");
 
@@ -53,15 +53,14 @@ Upgrade to release 4.3.9 or above for models not compatible with FortiOS 5.x.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2016-09-06 11:28:49 +0200 (Tue, 06 Sep 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("ETag/banner");
  script_require_ports("Services/www", 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("ETag/banner");
 
  exit(0);
 }

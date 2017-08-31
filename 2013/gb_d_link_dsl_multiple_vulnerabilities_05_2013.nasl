@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_d_link_dsl_multiple_vulnerabilities_05_2013.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_d_link_dsl_multiple_vulnerabilities_05_2013.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # D-Link DSL-320B Multiple Security Vulnerabilities
 #
@@ -44,7 +44,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103706";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 6093 $");
+ script_version ("$Revision: 6698 $");
 
  script_name("D-Link DSL-320B Multiple Security Vulnerabilities");
  script_tag(name:"cvss_base", value:"9.0");
@@ -54,16 +54,15 @@ if (description)
  script_xref(name:"URL", value:"http://www.dlink.com/de/de/home-solutions/connect/modems-and-gateways/dsl-320b-adsl-2-ethernet-modem");
  script_xref(name:"URL", value:"http://www.dlink.com/");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-05-06 12:58:41 +0200 (Mon, 06 May 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("micro_httpd/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("micro_httpd/banner");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -74,7 +73,6 @@ include("host_details.inc");
 include("http_keepalive.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if(banner && "Server: micro_httpd" >!< banner)exit(0);

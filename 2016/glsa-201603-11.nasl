@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
 # Description: Gentoo Linux security check
-# $Id: glsa-201603-11.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: glsa-201603-11.nasl 6591 2017-07-07 09:15:39Z cfischer $
 
 # Authors:
 # Eero Volotinen <eero.volotinen@solinor.fi>
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.121453");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 6591 $");
 script_tag(name:"creation_date", value:"2016-03-14 15:52:46 +0200 (Mon, 14 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:15:39 +0200 (Fri, 07 Jul 2017) $");
 script_name("Gentoo Linux Local Check: https://security.gentoo.org/glsa/201603-11");
 script_tag(name: "insight", value: "Multiple vulnerabilities exist in both Oracles JRE and JDK. Please review the referenced CVEs for additional information."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/gentoo");
+script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
 script_category(ACT_GATHER_INFO);
 script_summary("Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201603-11");
 script_copyright("Eero Volotinen");

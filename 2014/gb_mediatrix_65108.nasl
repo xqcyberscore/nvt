@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediatrix_65108.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_mediatrix_65108.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Mediatrix 4402 Web Management Interface 'login' Page Cross Site Scripting Vulnerability
 #
@@ -55,24 +55,22 @@ if (description)
  script_cve_id("CVE-2014-1612");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 6769 $");
 
  script_name("Mediatrix 4402 Web Management Interface 'login' Page Cross Site Scripting Vulnerability");
 
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65108");
  
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-02-04 14:02:25 +0100 (Tue, 04 Feb 2014)");
- script_summary("Determine if it is possible to execute JS code");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("Mbedthis-Appweb/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("Mbedthis-Appweb/banner");
 
  script_tag(name : "impact" , value : tag_impact);
  script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -90,7 +88,6 @@ include("http_keepalive.inc");
 include("global_settings.inc");
    
 port = get_http_port( default:80 );
-if( ! get_port_state( port ) ) exit (0);
 
 banner = get_http_banner( port:port );
 if( "Mbedthis-Appweb" >!< banner ) exit (0);

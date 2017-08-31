@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_cisco-sa-20170621-piepnm1.nasl 6402 2017-06-22 08:03:23Z ckuersteiner $
+# $Id: gb_cisco_pis_cisco-sa-20170621-piepnm1.nasl 6585 2017-07-07 05:33:18Z cfischer $
 #
 # Cisco Prime Infrastructure XML Injection Vulnerability 
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106897");
  script_cve_id("CVE-2017-6662");
- script_tag(name: "cvss_base", value: "9.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version("$Revision: 6402 $");
+ script_tag(name:"cvss_base", value:"6.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+ script_version("$Revision: 6585 $");
 
  script_name("Cisco Prime Infrastructure XML Injection Vulnerability");
 
@@ -55,7 +55,7 @@ and write files and execute remote code within the application.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-06-22 10:03:23 +0200 (Thu, 22 Jun 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-07-07 07:33:18 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name: "creation_date", value: "2017-06-22 12:07:33 +0700 (Thu, 22 Jun 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_log_report_dos_vuln.nasl 5839 2017-04-03 10:43:34Z cfi $
+# $Id: gb_apache_subversion_log_report_dos_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # Apache Subversion 'mod_dav_svn' log REPORT Request DoS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802054");
-  script_version("$Revision: 5839 $");
+  script_version("$Revision: 6698 $");
   script_bugtraq_id(58898);
   script_cve_id("CVE-2013-1884");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:43:34 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-06-06 15:08:09 +0530 (Thu, 06 Jun 2013)");
   script_name("Apache Subversion 'mod_dav_svn' log REPORT Request DoS Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52966/");
@@ -42,9 +42,8 @@ if(description)
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("Apache_SVN/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("Apache_SVN/banner");
 
   script_tag(name:"affected", value:"Apache Subversion 1.7.0 through 1.7.8");
   script_tag(name:"insight", value:"An error within the 'mod_dav_svn' module when handling crafted log 'REPORT'

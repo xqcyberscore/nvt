@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fckeditor_textinputs_xss_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_fckeditor_textinputs_xss_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # FCKeditor 'print_textinputs_var()' Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804701");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6692 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-01 12:07:59 +0530 (Tue, 01 Jul 2014)");
   script_name("FCKeditor 'print_textinputs_var()' Multiple Cross Site Scripting Vulnerabilities");
 
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49606");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2014/Jun/14");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126902");
-  script_summary("Check if FCKeditor is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2010-0430.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: ELSA-2010-0430.nasl 6555 2017-07-06 11:54:09Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122357");
-script_version("$Revision: 6214 $");
+script_version("$Revision: 6555 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:17:28 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:09 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2010-0430");
 script_tag(name: "insight", value: "ELSA-2010-0430 -  postgresql84 security update - [8.4.4-1.el5_5.1]- Update to PostgreSQL 8.4.4, for various fixes described at http://www.postgresql.org/docs/8.4/static/release-8-4-4.html including fixes for CVE-2010-1169 and CVE-2010-1170Resolves: #586060"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"8.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

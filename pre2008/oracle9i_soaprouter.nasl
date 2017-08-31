@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: oracle9i_soaprouter.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: oracle9i_soaprouter.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Oracle 9iAS SOAP Default Configuration Vulnerability
 #
 # Authors:
@@ -68,8 +68,8 @@ available at http://www.nextgenss.com/papers/hpoas.pdf";
 if(description)
 {
  script_id(11227);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(4289);
  script_tag(name:"cvss_base", value:"7.5");
@@ -77,11 +77,7 @@ if(description)
  script_cve_id("CVE-2001-1371");
  name = "Oracle 9iAS SOAP Default Configuration Vulnerability ";
  script_name(name);
- 
-
  summary = "Tests for Oracle9iAS default SOAP installation";
- 
- 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  
@@ -96,15 +92,10 @@ if(description)
  exit(0);
 }
 
-# Check starts here
-
 include("http_func.inc");
 
 port = get_http_port(default:80);
 
-
-if(get_port_state(port))
-{ 
 # Make a request for /soap/servlet/soaprouter
 
  req = http_get(item:"/soap/servlet/soaprouter", port:port);
@@ -118,4 +109,3 @@ if(get_port_state(port))
  	security_message(port);
 
  }
-}

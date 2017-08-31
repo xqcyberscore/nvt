@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_cotp_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_simatic_s7_cotp_detect.nasl 6799 2017-07-26 06:46:11Z ckuersteiner $
 #
 # Siemens SIMATIC S7 Device Detection (COTP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106099");
- script_version ("$Revision: 5877 $");
- script_tag(name: "last_modification", value: "$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+ script_version ("$Revision: 6799 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-07-26 08:46:11 +0200 (Wed, 26 Jul 2017) $");
  script_tag(name: "creation_date", value: "2016-06-17 17:08:52 +0700 (Fri, 17 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -174,7 +174,6 @@ if (recv) {
         mod = eregmatch(pattern: "simatic([ ,]+)?([0-9]+)", string: plcName, icase: TRUE);
         if (mod[2]) {
           model = mod[2];
-          break;
         }
       }
       else
@@ -183,8 +182,12 @@ if (recv) {
           mod = eregmatch(pattern: "((CPU )||(S7-))([0-9]+)", string: moduleName, icase: TRUE);
           if (mod[4]) {
             model = mod[4];
-            break;
           }
+       }
+       else if (hexstr(element[1]) == "07") {
+         moduleType = substr(element, 2);
+         # We get this just over COTP, therefore set the KB direct
+         set_kb_item(name: "simatic_s7/modtype", value: moduleType);
        }
     }
   }

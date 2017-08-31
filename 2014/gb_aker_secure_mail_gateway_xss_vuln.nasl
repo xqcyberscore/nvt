@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aker_secure_mail_gateway_xss_vuln.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_aker_secure_mail_gateway_xss_vuln.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Aker Secure Mail Gateway Cross-Site Scripting Vulnerability
 #
@@ -28,12 +28,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804413";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2013-6037");
   script_bugtraq_id(66024);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-17 13:12:47 +0530 (Mon, 17 Mar 2014)");
   script_name("Aker Secure Mail Gateway Cross-Site Scripting Vulnerability");
 
@@ -74,7 +74,6 @@ http://www.aker.com.br/produtos/aker-secure-mail-gateway";
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/687278");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125599");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Mar/51");
-  script_summary("Check if Aker Secure Mail Gateway is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

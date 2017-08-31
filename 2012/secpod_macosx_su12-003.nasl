@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_macosx_su12-003.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: secpod_macosx_su12-003.nasl 6521 2017-07-04 14:51:10Z cfischer $
 #
 # Mac OS X 'Internet plug-ins' Unspecified Vulnerability (2012-003)
 #
@@ -39,10 +39,10 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(903027);
-  script_version("$Revision: 6018 $");
+  script_version("$Revision: 6521 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-05-21 14:38:50 +0530 (Mon, 21 May 2012)");
   script_name("Mac OS X 'Internet plug-ins' Unspecified Vulnerability (2012-003)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/DL1533");
@@ -55,8 +55,7 @@ if(description)
   script_family("Mac OS X Local Security Checks");
   script_copyright("Copyright (C) 2012 SecPod");
   script_dependencies("gather-package-list.nasl");
-  script_require_keys("ssh/login/uname", "ssh/login/osx_name", "ssh/login/osx_version");
-  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);

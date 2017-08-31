@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2905.nasl 6369 2017-06-19 10:00:04Z teissa $
+# $Id: deb_2905.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 2905-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(702905);
-    script_version("$Revision: 6369 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2014-1716", "CVE-2014-1717", "CVE-2014-1718", "CVE-2014-1719",
                   "CVE-2014-1720", "CVE-2014-1721", "CVE-2014-1722", "CVE-2014-1723",
                   "CVE-2014-1724", "CVE-2014-1725", "CVE-2014-1726", "CVE-2014-1727",
                   "CVE-2014-1728", "CVE-2014-1729");
     script_name("Debian Security Advisory DSA 2905-1 (chromium-browser - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2014-04-15 00:00:00 +0200 (Tue, 15 Apr 2014)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,7 +50,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "chromium-browser on Debian Linux");
     script_tag(name: "insight",   value: "Chromium is an open-source browser project
 that aims to build a safer, faster, and more stable way for all Internet users to

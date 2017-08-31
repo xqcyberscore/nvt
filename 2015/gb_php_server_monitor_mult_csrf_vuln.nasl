@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_server_monitor_mult_csrf_vuln.nasl 4431 2016-11-07 14:02:24Z antu123 $
+# $Id: gb_php_server_monitor_mult_csrf_vuln.nasl 6505 2017-07-03 09:58:27Z teissa $
 #
 # PHP Server Monitor Multiple CSRF Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:phpserver:monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806528");
-  script_version("$Revision: 4431 $");
+  script_version("$Revision: 6505 $");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-07 15:02:24 +0100 (Mon, 07 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-11-02 18:23:47 +0530 (Mon, 02 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("PHP Server Monitor Multiple CSRF Vulnerabilities");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/134144");
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/134143");
 
-  script_summary("Check for the vulnerable version of PHP Server Monitor");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

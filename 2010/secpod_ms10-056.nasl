@@ -46,8 +46,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902228);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6533 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 10:41:34 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-08-11 15:08:29 +0200 (Wed, 11 Aug 2010)");
   script_cve_id("CVE-2010-1900","CVE-2010-1901", "CVE-2010-1902", "CVE-2010-1903");
   script_bugtraq_id(42133, 42132);
@@ -66,8 +66,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl",
                       "secpod_ms_office_detection_900025.nasl");
-  script_require_keys("SMB/Office/Word/Version", "SMB/Office/WordView/Version",
-                       "SMB/Office/WordCnv/Version");
+  script_mandatory_keys("MS/Office/Prdts/Installed");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 

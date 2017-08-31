@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872411");
-  script_version("$Revision: 5442 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-28 10:01:46 +0100 (Tue, 28 Feb 2017) $");
+  script_version("$Revision: 6634 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-02-25 05:49:04 +0100 (Sat, 25 Feb 2017)");
   script_cve_id("CVE-2017-5495");
   script_tag(name:"cvss_base", value:"7.8");
@@ -59,7 +59,7 @@ Quagga is a fork of GNU Zebra.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

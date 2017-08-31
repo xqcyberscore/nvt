@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: DDI_Netware_Management_Portal.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: DDI_Netware_Management_Portal.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Unprotected Netware Management Portal
 #
 # Authors:
@@ -35,8 +35,8 @@ this server on TCP ports 8008 and 8009.";
 if(description)
 {
  script_id(10826);
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,27 +52,22 @@ if(description)
  family = "General";
  script_family(family);
 
- script_dependencies("http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 8008);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-
 # ssl version sometimes on port 8009
 port = get_http_port(default:8008);
-if( ! port ) exit(0);
-if(get_port_state(port))
-{
-    res = http_get_cache(item:"/", port:port);
-    if (res && "NetWare Server" >< res )
-     security_message(port);
-}
+
+res = http_get_cache(item:"/", port:port);
+
+if (res && "NetWare Server" >< res )
+  security_message(port);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_your_online_shop_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_your_online_shop_xss_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Your Online Shop 'products_id' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805000");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-6618");
   script_bugtraq_id(70073);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-16 16:50:50 +0530 (Thu, 16 Oct 2014)");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -66,7 +66,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/96163");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/128336");
-  script_summary("Check if Your Online Shop is prone to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

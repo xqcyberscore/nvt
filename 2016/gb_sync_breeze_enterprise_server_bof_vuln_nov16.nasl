@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sync_breeze_enterprise_server_bof_vuln_nov16.nasl 5220 2017-02-07 11:42:33Z teissa $
+# $Id: gb_sync_breeze_enterprise_server_bof_vuln_nov16.nasl 6586 2017-07-07 06:23:25Z cfischer $
 #
 # Sync Breeze Enterprise Server Buffer Overflow Vulnerability - Nov16
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:sync:sync_breeze_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809481");
-  script_version("$Revision: 5220 $");
+  script_version("$Revision: 6586 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-07 12:42:33 +0100 (Tue, 07 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 08:23:25 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-11-29 12:58:33 +0530 (Tue, 29 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Sync Breeze Enterprise Server Buffer Overflow Vulnerability - Nov16");
@@ -56,11 +56,14 @@ if(description)
   script_tag(name: "affected" , value:"Sync Breeze Enterprise version 9.1.16
   and earlier.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  07th February, 2017. Information regarding this issue will be updated once the
-  solution details are available. For updates refer to http://www.syncbreeze.com");
+  script_tag(name: "solution" , value:"No solution or patch was made available for at least one year
+  since disclosure of this vulnerability. Likely none will be provided anymore. General solution options
+  are to upgrade to a newer release, disable respective features, remove the product or replace the product
+  by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  script_xref(name : "URL" , value : "http://www.syncbreeze.com");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40831");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

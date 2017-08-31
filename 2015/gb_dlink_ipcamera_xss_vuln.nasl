@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_ipcamera_xss_vuln.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: gb_dlink_ipcamera_xss_vuln.nasl 6700 2017-07-12 12:16:21Z cfischer $
 #
 # D-link IP Camera DCS-2103 Cross-site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805034");
-  script_version("$Revision: 6229 $");
+  script_version("$Revision: 6700 $");
   script_cve_id("CVE-2014-9517");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-01-08 11:21:29 +0530 (Thu, 08 Jan 2015)");
   script_name("D-link IP Camera DCS-2103 Cross-site Scripting Vulnerability");
 
@@ -63,9 +63,8 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("DCS-2103/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("DCS-2103/banner");
 
   exit(0);
 }

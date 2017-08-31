@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_keywords_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_mybb_keywords_xss_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # MyBB keywords Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804234");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-1840");
   script_bugtraq_id(65344);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-05 15:23:57 +0530 (Wed, 05 Feb 2014)");
   script_name("MyBB keywords Cross Site Scripting Vulnerability");
 
@@ -53,7 +53,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/mybb-1612-post-cross-site-scripting");
   script_xref(name : "URL" , value : "http://osandamalith.wordpress.com/2014/02/02/mybb-1-6-12-post-xss-0day/");
-  script_summary("Check if MyBB is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0609.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: ELSA-2013-0609.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123671");
-script_version("$Revision: 6333 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:07:03 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0609");
 script_tag(name: "insight", value: "ELSA-2013-0609 -  qemu-kvm security update - [qemu-kvm-0.12.1.2-2.355.el6_4.2]- kvm-e1000-Discard-packets-that-are-too-long-if-SBP-and-L.patch [bz#910841]- kvm-e1000-Discard-oversized-packets-based-on-SBP-LPE.patch [bz#910841]- Resolves: bz#910841 (CVE-2012-6075 qemu (e1000 device driver): Buffer overflow when processing large packets when SBP and LPE flags are disabled [rhel-6.4.z])[qemu-kvm-0.12.1.2-2.355.el6_4.1]- kvm-Revert-e1000-no-need-auto-negotiation-if-link-was-do.patch [bz#907397]- Resolves: bz#907397 (Patch 'e1000: no need auto-negotiation if link was down' may break e1000 guest)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"9.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

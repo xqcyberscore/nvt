@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-064.nasl 5366 2017-02-20 13:55:38Z cfi $
+# $Id: secpod_ms12-064.nasl 6533 2017-07-05 08:41:34Z santu $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities (2742319)
 #
@@ -55,12 +55,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902926";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5366 $");
+  script_version("$Revision: 6533 $");
   script_cve_id("CVE-2012-0182", "CVE-2012-2528");
   script_bugtraq_id(55780, 55781);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:55:38 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 10:41:34 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-10-10 08:46:36 +0530 (Wed, 10 Oct 2012)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities (2742319)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50835/");
@@ -76,12 +76,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_office_products_version_900032.nasl",
-                      "secpod_ms_office_detection_900025.nasl",
-                      "gb_ms_office_web_apps_detect.nasl",
-                      "gb_ms_sharepoint_sever_n_foundation_detect.nasl");
-  script_require_keys("SMB/Office/Word/Version", "SMB/Office/WordView/Version",
-                      "SMB/Office/WordCnv/Version", "MS/Office/Web/Apps/Path");
+  script_dependencies("secpod_office_products_version_900032.nasl", "secpod_ms_office_detection_900025.nasl",
+                      "gb_ms_office_web_apps_detect.nasl", "gb_ms_sharepoint_sever_n_foundation_detect.nasl");
+  script_mandatory_keys("MS/Office/Prdts/Installed", "MS/SharePoint/Server_or_Foundation_or_Services/Installed");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   script_tag(name : "impact" , value : tag_impact);

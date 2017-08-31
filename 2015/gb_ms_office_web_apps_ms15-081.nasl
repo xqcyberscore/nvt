@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms15-081.nasl 2645 2016-02-12 08:18:34Z benallard $
+# $Id: gb_ms_office_web_apps_ms15-081.nasl 6600 2017-07-07 09:58:31Z teissa $
 #
 # Microsoft Office Web Apps RCE Vulnerability (3080790)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805733");
-  script_version("$Revision: 2645 $");
+  script_version("$Revision: 6600 $");
   script_cve_id("CVE-2015-2468");
   script_bugtraq_id(76206);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:34 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-08-13 11:50:44 +0530 (Thu, 13 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Web Apps RCE Vulnerability (3080790)");
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3054974");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-081");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

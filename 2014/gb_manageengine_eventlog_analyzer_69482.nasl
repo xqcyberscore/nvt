@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_eventlog_analyzer_69482.nasl 2826 2016-03-10 08:19:43Z benallard $
+# $Id: gb_manageengine_eventlog_analyzer_69482.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # ManageEngine EventLog Analyzer Multiple Security Vulnerabilities
 #
@@ -32,7 +32,7 @@ if (description)
  script_cve_id("CVE-2014-6037");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2826 $");
+ script_version ("$Revision: 6663 $");
 
  script_name("ManageEngine EventLog Analyzer Multiple Security Vulnerabilities");
 
@@ -87,9 +87,8 @@ vulnerability and an unauthorized-access vulnerability.");
 
  script_tag(name: "affected" , value:"EventLog Analyzer 9.9 Build 9002 and prior are vulnerable.");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:19:43 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-09-09 12:16:43 +0200 (Tue, 09 Sep 2014)");
- script_summary("Determine if it is possible to upload a zip file");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

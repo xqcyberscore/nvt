@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-0320.nasl 6369 2017-06-19 10:00:04Z teissa $
+# $Id: ELSA-2011-0320.nasl 6556 2017-07-06 11:54:54Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122230");
-script_version("$Revision: 6369 $");
+script_version("$Revision: 6556 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:15:06 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:54 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-0320");
 script_tag(name: "insight", value: "ELSA-2011-0320 -  libcgroup security update - [0.36-6.1]- Fixed buffer overflow when parsing cgexec command line parameters.- Added checking of source of netlink messages to cgrulesengd daemon.- Resolves: CVE-2011-1006 CVE-2011-1022"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.2");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

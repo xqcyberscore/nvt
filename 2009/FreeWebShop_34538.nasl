@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: FreeWebShop_34538.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: FreeWebShop_34538.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # FreeWebShop 'startmodules.inc.php' Local File Include Vulnerability
 #
@@ -41,8 +41,8 @@ CPE = "cpe:/a:freewebshop:freewebshop";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 4865 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+ script_version("$Revision: 6704 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-07-21 20:55:39 +0200 (Tue, 21 Jul 2009)");
  script_bugtraq_id(34538);
  script_cve_id("CVE-2009-2338");
@@ -58,7 +58,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("FreeWebShop_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("FreeWebshop/installed");
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34538");
@@ -72,8 +71,6 @@ include("host_details.inc");
 include("version_func.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 infos = get_app_version_and_location( cpe:CPE, port:port );
 
 dir = infos['location'];

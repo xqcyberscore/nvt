@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ida_pro_mult_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_ida_pro_mult_vuln.nasl 6900 2017-08-11 08:03:42Z cfischer $
 #
 # Hex-Rays IDA Pro Multiple Vulnerabilities
 #
@@ -33,17 +33,24 @@ tag_solution = "Apply patch
 
 tag_impact = "Successful exploitation will allow attackers to execute arbitrary code or
   cause a denial of service.
+
   Impact Level: Application";
 tag_affected = "Hex-Rays IDA Pro versions 5.7 and 6.0";
 tag_insight = "Multiple flaws are due to
+
   - A buffer overflow error in the Mach-O input file loader allows user-assisted
     remote attackers to cause a denial of service.
-  - An unspecified error related to 'converson of string encodings' and
+
+  - An unspecified error related to 'conversion of string encodings' and
     'inconsistencies in the handling of UTF8 sequences by the user interface'.
+
   - An integer overflow error in the COFF/EPOC/EXPLOAD input file loaders.
+
   - An Integer overflow error in the PSX/GEOS input file loaders.
+
   - An unspecified error in the Mach-O input file loader allows user-assisted
     remote attackers to cause a denial of service.
+
   - An unspecified error in the PEF input file loader.";
 tag_summary = "This host is installed with Hex-Rays IDA Pro and is prone to
   multiple vulnerabilities.";
@@ -51,8 +58,8 @@ tag_summary = "This host is installed with Hex-Rays IDA Pro and is prone to
 if(description)
 {
   script_id(901189);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 6900 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-11 10:03:42 +0200 (Fri, 11 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2011-1049", "CVE-2011-1050", "CVE-2011-1051",
                 "CVE-2011-1052", "CVE-2011-1053", "CVE-2011-1054");

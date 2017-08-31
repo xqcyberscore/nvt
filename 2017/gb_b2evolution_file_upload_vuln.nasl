@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_b2evolution_file_upload_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
+# $Id: gb_b2evolution_file_upload_vuln.nasl 6836 2017-08-02 14:05:29Z asteins $
 #
 # b2evolution File Upload Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:b2evolution:b2evolution";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106669");
-  script_version("$Revision: 6166 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
+  script_version("$Revision: 6836 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-02 16:05:29 +0200 (Wed, 02 Aug 2017) $");
   script_tag(name: "creation_date", value: "2017-03-17 15:44:20 +0700 (Fri, 17 Mar 2017)");
   script_tag(name: "cvss_base", value: "6.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("b2evolution File Upload Vulnerability");
 
@@ -59,13 +59,12 @@ restricted extension (php).");
 
   script_tag(name: "affected", value: "b2evolution 6.8.8.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 17th March, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "This issue is no longer subject to a fix and therefore does not need a solution.");
 
   script_xref(name: "URL", value: "https://rungga.blogspot.co.id/2017/03/remote-file-upload-vulnerability-in.html");
 
 ## Deprecated since CVE-2017-6902 has been REJECTED
-  script_tag(name:"deprecated", value:TRUE);
+  script_tag(name: "deprecated", value: TRUE);
 
   exit(0);
 }

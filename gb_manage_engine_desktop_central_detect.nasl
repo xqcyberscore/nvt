@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_detect.nasl 2662 2016-02-16 06:27:52Z antu123 $
+# $Id: gb_manage_engine_desktop_central_detect.nasl 6758 2017-07-19 09:21:22Z ckuersteiner $
 #
 # ManageEngine Desktop Central MSP Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805717");
-  script_version("$Revision: 2662 $");
+  script_version("$Revision: 6758 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-16 07:27:52 +0100 (Tue, 16 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:21:22 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-07-08 18:54:23 +0530 (Wed, 08 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ManageEngine Desktop Central MSP Version Detection");
@@ -47,6 +47,8 @@ if(description)
   script_family("Product detection");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/www", 8040);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -59,31 +61,21 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variables Initialization
-mePort  = "";
-dir  = "";
-req = "";
-res = "";
-meVer = "";
-cpe = "";
-dir = "";
-
 ##Get ManageEngine Desktop Central MSP
 mePort = get_http_port(default:8040);
 
 ##Send Request and Receive Response
-req = http_get(item:"/configurations.do", port:mePort);
-res = http_keepalive_send_recv(port:mePort, data:req);
+res = http_get_cache(port: mePort, item: "/configurations.do");
 
 #Confirm application
 if(">ManageEngine Desktop Central" >< res)
 {
-  meVer = eregmatch(pattern:'id="buildNum" value="([0-9]+)', string:res);
-  if(!meVer[1]){
+  ver = eregmatch(pattern:'id="buildNum" value="([0-9]+)', string:res);
+  if(!ver[1]){
    meVer = "Unknown";
   }
   else {
-    meVer = meVer[1];
+    meVer = ver[1];
   }
 
   ## Set the KB
@@ -100,8 +92,9 @@ if(">ManageEngine Desktop Central" >< res)
                                            version:meVer,
                                            install:"/",
                                            cpe:cpe,
-                                           concluded:meVer),
+                                           concluded:ver[0]),
                                            port:mePort);
+  exit(0);
 }
 
 exit(0);

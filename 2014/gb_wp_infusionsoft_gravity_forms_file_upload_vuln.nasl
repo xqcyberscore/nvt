@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_infusionsoft_gravity_forms_file_upload_vuln.nasl 3008 2016-04-07 13:17:01Z antu123 $
+# $Id: gb_wp_infusionsoft_gravity_forms_file_upload_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Wordpress Infusionsoft Gravity Forms Add-on Arbitrary File Upload Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804769");
-  script_version("$Revision: 3008 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-6446");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 15:17:01 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-29 17:24:16 +0530 (Mon, 29 Sep 2014)");
 
   script_name("Wordpress Infusionsoft Gravity Forms Add-on Arbitrary File Upload Vulnerability");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://research.g0blin.co.uk/cve-2014-6446");
   script_xref(name : "URL" , value : "https://wordpress.org/plugins/infusionsoft/changelog/");
 
-  script_summary("Determine if it is possible to upload a file");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

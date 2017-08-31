@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_info_disc_vuln_dec14_macosx.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_mozilla_firefox_info_disc_vuln_dec14_macosx.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Mozilla Firefox CSP Information Disclosure Vulnerability Dec14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805218");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-1591");
   script_bugtraq_id(71399);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-16 09:53:28 +0530 (Tue, 16 Dec 2014)");
   script_name("Mozilla Firefox CSP Information Disclosure Vulnerability Dec14 (Mac OS X)");
 
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/60605");
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2014-86");
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Mac OS X.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

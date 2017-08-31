@@ -29,12 +29,12 @@ CPE = "cpe:/a:cisco:asa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805760");
-  script_version("$Revision: 5000 $");
+  script_version("$Revision: 6551 $");
   script_cve_id("CVE-2015-4458");
   script_bugtraq_id(75918);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-13 08:00:40 +0100 (Fri, 13 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-10-07 18:52:56 +0530 (Wed, 07 Oct 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("Cisco ASA Unauthorized Modification Vulnerability");
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=39919");
 
-  script_summary("Check if Cisco ASA is vulnerable to unauthorized modification");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

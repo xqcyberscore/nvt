@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869230");
-  script_version("$Revision: 6254 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+  script_version("$Revision: 6630 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-04-12 05:51:42 +0200 (Sun, 12 Apr 2015)");
   script_cve_id("CVE-2015-2752", "CVE-2015-2756", "CVE-2015-2751", "CVE-2015-2152", "CVE-2015-2151", "CVE-2015-2044", "CVE-2015-2045", "CVE-2015-0361", "CVE-2014-9065", "CVE-2014-8866", "CVE-2014-8867", "CVE-2014-9030", "CVE-2014-8594", "CVE-2014-8595", "CVE-2014-0150", "CVE-2014-7188", "CVE-2014-7154", "CVE-2014-7155", "CVE-2014-7156", "CVE-2014-5146", "CVE-2014-4021", "CVE-2014-3967", "CVE-2014-3968", "CVE-2014-3124", "CVE-2014-2599", "CVE-2013-2212", "CVE-2014-1950", "CVE-2014-1891", "CVE-2014-1892", "CVE-2014-1893", "CVE-2014-1894", "CVE-2014-1895", "CVE-2014-1896", "CVE-2014-1666", "CVE-2014-1642", "CVE-2013-6400", "CVE-2013-6885", "CVE-2013-4553", "CVE-2013-4554", "CVE-2013-6375");
   script_tag(name:"cvss_base", value:"8.3");
@@ -49,7 +49,7 @@ Xen hypervisor
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

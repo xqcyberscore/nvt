@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0081.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: mgasa-2016-0081.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131242");
-script_version("$Revision: 5745 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-02-23 16:01:20 +0200 (Tue, 23 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0081");
 script_tag(name: "insight", value: "An infinite-loop vulnerability was discovered in the 389 directory server, where the server failed to correctly handle unexpectedly closed client connections. A remote attacker able to connect to the server could use this flaw to make the directory server consume an excessive amount of CPU and stop accepting connections (denial of service) (CVE-2016-0741)."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"7.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0081");
 script_copyright("Eero Volotinen");

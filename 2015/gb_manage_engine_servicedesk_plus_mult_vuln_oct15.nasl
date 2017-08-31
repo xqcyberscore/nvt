@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_servicedesk_plus_mult_vuln_oct15.nasl 2651 2016-02-12 10:45:45Z benallard $
+# $Id: gb_manage_engine_servicedesk_plus_mult_vuln_oct15.nasl 6486 2017-06-29 09:59:06Z teissa $
 #
 # ManageEngine ServiceDesk Plus Multiple Vulnerabilities - Oct15
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:manageengine:servicedesk_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806509");
-  script_version("$Revision: 2651 $");
+  script_version("$Revision: 6486 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:45:45 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-21 12:04:52 +0530 (Wed, 21 Oct 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("ManageEngine ServiceDesk Plus Multiple Vulnerabilities - Oct15");
@@ -68,7 +68,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/35904");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/35890");
 
-  script_summary("Check if ManageEngine ServiceDesk Plus is vulnerable to user enumeration or not");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

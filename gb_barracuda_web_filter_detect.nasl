@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_web_filter_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_barracuda_web_filter_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # Barracuda Web Filter Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105286");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5877 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+ script_version ("$Revision: 6701 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-06-03 15:28:32 +0200 (Wed, 03 Jun 2015)");
  script_name("Barracuda Web Filter Detection");
 
@@ -44,9 +44,9 @@ from the reply.");
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("BarracudaHTTP/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("BarracudaHTTP/banner");
+
  exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_mult_vuln_nov11_win.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_adobe_prdts_mult_vuln_nov11_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
 #
 # Adobe Flash Player/Air Multiple Vulnerabilities - November 11 (Windows)
 #
@@ -44,7 +44,7 @@ tag_summary = "This host is installed with Adobe Flash Player/Air and is prone t
 if(description)
 {
   script_id(902750);
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 6475 $");
   script_cve_id("CVE-2011-2445", "CVE-2011-2450", "CVE-2011-2451", "CVE-2011-2452",
                 "CVE-2011-2453", "CVE-2011-2454", "CVE-2011-2455", "CVE-2011-2456",
                 "CVE-2011-2457", "CVE-2011-2458", "CVE-2011-2459", "CVE-2011-2460");
@@ -52,7 +52,7 @@ if(description)
                     50621, 50629, 50620, 50628);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-11-16 11:45:29 +0530 (Wed, 16 Nov 2011)");
   script_name("Adobe Flash Player/Air Multiple Vulnerabilities - November 11 (Windows)");
 
@@ -64,7 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_require_keys("AdobeFlashPlayer/Win/Ver", "Adobe/Air/Win/Ver");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

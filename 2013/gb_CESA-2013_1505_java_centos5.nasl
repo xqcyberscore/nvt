@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(881822);
-  script_version("$Revision: 2867 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-16 12:11:15 +0100 (Wed, 16 Mar 2016) $");
+  script_version("$Revision: 6655 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-11-08 10:49:01 +0530 (Fri, 08 Nov 2013)");
   script_cve_id("CVE-2013-3829", "CVE-2013-4002", "CVE-2013-5772", "CVE-2013-5774",
                 "CVE-2013-5778", "CVE-2013-5780", "CVE-2013-5782", "CVE-2013-5783",
@@ -112,7 +112,7 @@ easie ...
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

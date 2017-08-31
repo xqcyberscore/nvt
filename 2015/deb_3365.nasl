@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3365.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3365.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3365-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703365);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2015-4500", "CVE-2015-4506", "CVE-2015-4509", "CVE-2015-4511", "CVE-2015-4517", "CVE-2015-4519", "CVE-2015-4520", "CVE-2015-4521", "CVE-2015-4522", "CVE-2015-7174", "CVE-2015-7175", "CVE-2015-7176", "CVE-2015-7177", "CVE-2015-7180");
     script_name("Debian Security Advisory DSA 3365-1 (iceweasel - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-09-23 00:00:00 +0200 (Wed, 23 Sep 2015)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,14 +42,13 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3365.html");
 
-    script_summary("Debian Security Advisory DSA 3365-1 (iceweasel - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "iceweasel on Debian Linux");
         script_tag(name: "insight",   value: "Iceweasel is Firefox, rebranded. It is a powerful, extensible web browser
 with support for modern web application technologies.");

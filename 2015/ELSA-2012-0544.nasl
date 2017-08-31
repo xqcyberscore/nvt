@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-0544.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: ELSA-2012-0544.nasl 6557 2017-07-06 11:55:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123925");
-script_version("$Revision: 6183 $");
+script_version("$Revision: 6557 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:10:22 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:55:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-0544");
 script_tag(name: "insight", value: "ELSA-2012-0544 -  ImageMagick security update - [6.5.4.7-6]- Add fix for CVE-2010-4167- Add fix for CVE-2012-0247 CVE-2012-0248 CVE-2012-1185 CVE-2012-1186- Add fix for CVE-2012-0259 CVE-2012-0260 CVE-2012-1798"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"9.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

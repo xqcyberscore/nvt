@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eDirectory_DHost_web_server_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_eDirectory_DHost_web_server_detect.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # eDirectory DHost Web Server Detection
 #
@@ -30,8 +30,8 @@ if (description)
 {
  script_id(103125);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6696 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-03-23 13:28:27 +0100 (Wed, 23 Mar 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("eDirectory DHost Web Server Detection");
@@ -41,9 +41,9 @@ if (description)
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("DHost/banner");
  script_require_ports("Services/www", 8028,8030);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("DHost/banner");
+
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
@@ -53,7 +53,6 @@ include("http_keepalive.inc");
 include("global_settings.inc");
 
 port = get_http_port(default:8028);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if(banner !~ "Server: DHost/[0-9.]+ HttpStk")exit(0);

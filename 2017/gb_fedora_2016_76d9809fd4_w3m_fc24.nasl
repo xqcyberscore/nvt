@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872301");
-  script_version("$Revision: 5133 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-30 08:27:54 +0100 (Mon, 30 Jan 2017) $");
+  script_version("$Revision: 6634 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-01-25 05:51:17 +0100 (Wed, 25 Jan 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -57,7 +57,7 @@ w3m-img package as well.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

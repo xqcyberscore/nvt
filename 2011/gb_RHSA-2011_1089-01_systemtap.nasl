@@ -44,8 +44,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-July/msg00030.html");
   script_id(870459);
-  script_version("$Revision: 3074 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-15 11:03:13 +0200 (Fri, 15 Apr 2016) $");
+  script_version("$Revision: 6685 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:44:46 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-07-27 14:47:11 +0200 (Wed, 27 Jul 2011)");
   script_xref(name: "RHSA", value: "2011:1089-01");
   script_tag(name:"cvss_base", value:"3.7");
@@ -58,7 +58,7 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "insight" , value : tag_insight);

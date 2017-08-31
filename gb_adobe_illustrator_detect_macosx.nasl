@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_illustrator_detect_macosx.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_adobe_illustrator_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
 #
 # Adobe Illustrator Version Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802787");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 6484 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2012-05-16 19:13:07 +0530 (Wed, 16 May 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Illustrator Version Detection (Mac OS X)");
@@ -48,7 +48,7 @@ line option 'defaults read'.";
   script_family("Product detection");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "ssh/login/osx_name");
+  script_mandatory_keys("ssh/login/osx_name");
   exit(0);
 }
 

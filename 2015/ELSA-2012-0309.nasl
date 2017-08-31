@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-0309.nasl 6391 2017-06-21 09:59:48Z teissa $
+# $Id: ELSA-2012-0309.nasl 6557 2017-07-06 11:55:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123966");
-script_version("$Revision: 6391 $");
+script_version("$Revision: 6557 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:10:56 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:55:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-0309");
 script_tag(name: "insight", value: "ELSA-2012-0309 -  sudo security and bug fix update - [1.7.2p1-13]- patch: parse ldap.conf more closely to nss_ldap Resolves: rhbz#750318[1.7.2p1-12]- added patch for CVE-2011-0010 Resolves: rhbz#757157[1.7.2p1-11]- backported selinux support from 1.7.4p5 (#477185, #673157)- fixed bug in Runas_Spec group matching (#627543)- disable 'sudo -l' output word wrapping if the output is piped (#697111)- fixed overwriting of errno after execve failure (#673157)- fixed segmentation fault (#673072)- add a sudoers entry to the nsswitch.conf file on install (and delete it on uninstall) (#617061) Resolves: rhbz#697111 Resolves: rhbz#673157 Resolves: rhbz#673072 Resolves: rhbz#627543 Resolves: rhbz#617061 Resolves: rhbz#477185"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"4.4");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

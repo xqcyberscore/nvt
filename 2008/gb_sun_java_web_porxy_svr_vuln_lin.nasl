@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_web_porxy_svr_vuln_lin.nasl 5657 2017-03-21 11:08:08Z cfi $
+# $Id: gb_sun_java_web_porxy_svr_vuln_lin.nasl 6602 2017-07-07 10:09:52Z cfischer $
 #
 # Sun Java System Web Proxy Server Two Vulnerabilities (Linux)
 #
@@ -42,8 +42,8 @@ tag_summary = "This host has Sun Java Web Proxy Server running, which is prone
 if(description)
 {
   script_id(800026);
-  script_version("$Revision: 5657 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 6602 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:09:52 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-10-16 18:25:33 +0200 (Thu, 16 Oct 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -60,8 +60,8 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_require_ports("Services/www", 8081);
-  script_mandatory_keys("login/SSH/success","Sun-Java-System-Web-Proxy-Server/banner");
-  script_dependencies("gather-package-list.nasl","gb_get_http_banner.nasl");
+  script_mandatory_keys("Sun-Java-System-Web-Proxy-Server/banner", "login/SSH/success");
+  script_dependencies("gather-package-list.nasl", "gb_get_http_banner.nasl");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

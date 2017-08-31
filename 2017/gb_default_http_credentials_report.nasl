@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_default_http_credentials_report.nasl 5467 2017-03-02 10:34:11Z cfi $
+# $Id: gb_default_http_credentials_report.nasl 6680 2017-07-12 08:37:02Z cfischer $
 #
 # HTTP Brute Force Logins With Default Credentials Reporting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103240");
-  script_version("$Revision: 5467 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-02 11:34:11 +0100 (Thu, 02 Mar 2017) $");
+  script_version("$Revision: 6680 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 10:37:02 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-01-06 13:47:00 +0100 (Fri, 06 Jan 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -68,7 +68,7 @@ credentials = get_kb_list( "default_http_auth_credentials/" + port + "/credentia
 
 if( ! isnull( credentials ) ) {
 
-  report = 'It was possible to login with the following credentials <Url>:<User>:<Password>\n\n';
+  report = 'It was possible to login with the following credentials <Url>:<User>:<Password>:<HTTP status code>\n\n';
 
   # Sort to not report changes on delta reports if just the order is different
   credentials = sort( credentials );

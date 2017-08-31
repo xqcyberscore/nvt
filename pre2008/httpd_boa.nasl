@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: httpd_boa.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: httpd_boa.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Boa file retrieval
 #
 # Authors:
@@ -38,8 +38,8 @@ server found at http://www.boa.org";
 if(description)
 {
  script_id(10527);
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1770);
  script_tag(name:"cvss_base", value:"5.0");
@@ -59,8 +59,10 @@ if(description)
  script_copyright("This script is Copyright (C) 2000 Thomas Reinke");
  family = "Remote file access";
  script_family(family);
- script_dependencies("find_service.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -73,8 +75,6 @@ include("http_func.inc");
 
 port = get_http_port(default:80);
 
-if(get_port_state(port))
-{
  soc = http_open_socket(port);
  if(soc)
  {
@@ -86,4 +86,3 @@ if(get_port_state(port))
   	security_message(port);
   http_close_socket(soc);
  }
-}

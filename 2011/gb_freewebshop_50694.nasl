@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freewebshop_50694.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_freewebshop_50694.nasl 6719 2017-07-13 13:53:39Z cfischer $
 #
 # FreeWebshop 'ajax_save_name.php' Remote Code Execution Vulnerability
 #
@@ -41,7 +41,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(50694);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6719 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("FreeWebshop 'ajax_save_name.php' Remote Code Execution Vulnerability");
@@ -49,7 +49,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50694");
  script_xref(name : "URL" , value : "http://www.freewebshop.org");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-11-17 08:34:17 +0100 (Thu, 17 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_summary("Determine if FreeWebshop is prone to a remote code-execution vulnerability");
@@ -58,7 +58,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("FreeWebShop_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("FreeWebshop/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -70,7 +69,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
    
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
 
 function random_mkdir() {
 

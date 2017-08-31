@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_detect_win.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_mozilla_detect_win.nasl 6468 2017-06-28 14:05:02Z cfischer $
 #
 # Mozilla Version Detection (Windows)
 #
@@ -30,8 +30,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 6468 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 16:05:02 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-09-07 19:45:38 +0200 (Mon, 07 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"registry");
@@ -161,6 +161,7 @@ if("mozilla.org" >< mozillaName)
   if(!isnull(mozillaVer))
   {
     set_kb_item(name:"Mozilla/Win/Ver", value:mozillaVer);
+    replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE );
 
     ## build cpe and store it as host_detail
     cpe = build_cpe(value:mozillaVer, exp:"^([0-9.]+)", base:"cpe:/a:mozilla:mozilla:");

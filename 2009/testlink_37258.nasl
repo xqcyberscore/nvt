@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: testlink_37258.nasl 5220 2017-02-07 11:42:33Z teissa $
+# $Id: testlink_37258.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # TestLink Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -43,8 +43,8 @@ CPE = "cpe:/a:teamst:testlink";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5220 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-07 12:42:33 +0100 (Tue, 07 Feb 2017) $");
+ script_version("$Revision: 6704 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-12-10 18:09:58 +0100 (Thu, 10 Dec 2009)");
  script_bugtraq_id(37258);
  script_cve_id("CVE-2009-4237","CVE-2009-4238");
@@ -60,7 +60,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("testlink_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("testlink/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -77,8 +76,6 @@ include("version_func.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
 if(!isnull(vers) && vers >!< "unknown") {

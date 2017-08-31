@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_django_algorithmic_complexity_vuln.nasl 5904 2017-04-10 06:18:08Z teissa $
+# $Id: secpod_django_algorithmic_complexity_vuln.nasl 6539 2017-07-05 12:02:14Z cfischer $
 #
 # Django Forms Library Algorithmic Complexity Vulnerability
 #
@@ -41,8 +41,8 @@ CPE = "cpe:/a:django_project:django";
 if(description)
 {
   script_id(900882);
-  script_version("$Revision: 5904 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 08:18:08 +0200 (Mon, 10 Apr 2017) $");
+  script_version("$Revision: 6539 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-10-29 07:53:15 +0100 (Thu, 29 Oct 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -58,8 +58,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_django_detect_lin.nasl");
-  script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("login/SSH/success","Django/Linux/Ver");
+  script_mandatory_keys("Django/Linux/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -78,6 +77,6 @@ if(djangoVer)
 {
   if(version_in_range(version:djangoVer, test_version:"1.0", test_version2:"1.0.3")||
      version_is_equal(version:djangoVer, test_version:"1.1")){
-    security_message(djangoPort);
+    security_message(port:0);
   }
 }

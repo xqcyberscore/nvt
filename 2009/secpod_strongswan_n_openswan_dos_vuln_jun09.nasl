@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_strongswan_n_openswan_dos_vuln_jun09.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_strongswan_n_openswan_dos_vuln_jun09.nasl 6515 2017-07-04 11:54:15Z cfischer $
 #
 # StrongSwan/Openswan Denial Of Service Vulnerability June-09
 #
@@ -42,8 +42,8 @@ tag_summary = "The host is installed with strongSwan/Openswan and is prone to De
 if(description)
 {
   script_id(900386);
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 6515 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -57,10 +57,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
-  script_dependencies("secpod_openswan_detect.nasl",
-                      "gb_strongswan_detect.nasl");
-  script_require_keys("Openswan/Ver", "StrongSwan/Ver");
-  script_require_udp_ports(500);
+  script_dependencies("secpod_openswan_detect.nasl", "gb_strongswan_detect.nasl");
+  script_mandatory_keys("Openswan_or_StrongSwan/Lin/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -69,12 +67,7 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
-
-if(!get_udp_port_state(500)){
-  exit(0);
-}
 
 oswanVer = get_kb_item("Openswan/Ver");
 if(oswanVer != NULL)

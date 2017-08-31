@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_cameras_51922.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_trendnet_cameras_51922.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # Multiple Trendnet Camera Products Remote Security Bypass Vulnerability
 #
@@ -66,7 +66,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(51922);
- script_version ("$Revision: 6115 $");
+ script_version ("$Revision: 6698 $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
@@ -78,16 +78,15 @@ if (description)
  script_xref(name:"URL", value:"http://www.trendnet.com/products/proddetail.asp?prod=145_TV-IP110W");
  script_xref(name:"URL", value:"http://console-cowboys.blogspot.com.au/2012/01/trendnet-cameras-i-always-feel-like.html");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-09-19 18:42:42 +0200 (Thu, 19 Sep 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("netcam/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("netcam/banner");
 
  script_tag(name : "impact" , value : tag_impact);
  script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -105,7 +104,6 @@ include("http_keepalive.inc");
 include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if("401 Unauthorized" >!< banner || 'Basic realm="netcam"' >!< banner)exit(0);

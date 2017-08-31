@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2780 $");
+  script_version("$Revision: 6637 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-05 13:09:46 +0530 (Wed, 05 Feb 2014)");
   script_name("WordPress Stop User Enumeration Security Bypass Vulnerability");
 
@@ -77,7 +77,6 @@ For updates refer to http://wordpress.org/plugins/stop-user-enumeration";
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/56643");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/fulldisclosure/current/0003.html");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-stop-user-enumeration-124-bypass");
-  script_summary("Check if Wordpress Stop User Enumeration Plugin is prone information disclosure");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

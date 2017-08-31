@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 6210 2017-05-24 15:02:34Z cfi $
+# $Id: sw_http_os_detection.nasl 6881 2017-08-09 06:55:24Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 6210 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 17:02:34 +0200 (Wed, 24 May 2017) $");
+  script_version("$Revision: 6881 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-09 08:55:24 +0200 (Wed, 09 Aug 2017) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -61,9 +61,97 @@ if( banner && banner = egrep( pattern:"^Server:(.*)$", string:banner, icase:TRUE
 
   banner_type = "HTTP Server banner";
 
-  if( "Microsoft-HTTPAPI" >< banner || "Microsoft-IIS" >< banner || ( "Apache" >< banner && ( "(Win32)" >< banner || "(Win64)" >< banner ) ) ) {
+  if( "NetApp" >< banner ) {
+    # e.g. Server: NetApp/7.3.7 or Server: NetApp//8.2.3P3
+    version = eregmatch( pattern:"NetApp//?([0-9a-zA-Z.]+)", string:banner );
+    if( ! isnull( version[1] ) ) {
+      register_and_report_os( os:"NetApp Data ONTAP", version:version[1], cpe:"cpe:/o:netapp:data_ontap", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    } else {
+      register_and_report_os( os:"NetApp Data ONTAP", cpe:"cpe:/o:netapp:data_ontap", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    }
+    exit( 0 );
+  }
+
+  if( "HPE-iLO-Server" >< banner ) {
+    register_and_report_os( os:"HP iLO", cpe:"cpe:/o:hp:integrated_lights-out", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "AirTunes" >< banner ) {
+    register_and_report_os( os:"Apple TV", cpe:"cpe:/o:apple:tv", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  # Cisco Secure Access Control Server
+  if( banner =~ "ACS ([0-9.]+)" ) {
+    register_and_report_os( os:"Cisco", cpe:"cpe:/o:cisco", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "Microsoft-HTTPAPI" >< banner || ( "Apache" >< banner && ( "(Win32)" >< banner || "(Win64)" >< banner ) ) ) {
     register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
     exit( 0 );
+  }
+
+  # https://en.wikipedia.org/wiki/Internet_Information_Services#History
+  # Some IIS versions are shipped with two OS variants so registering both here
+  if( "Microsoft-IIS" >< banner ) {
+    version = eregmatch( pattern:"Microsoft-IIS/([0-9.]+)", string:banner );
+    if( ! isnull( version[1] ) && version[1] == "10.0" ) {
+      register_and_report_os( os:"Microsoft Windows Server 2016", cpe:"cpe:/o:microsoft:windows_server_2016", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      register_and_report_os( os:"Microsoft Windows 10", cpe:"cpe:/o:microsoft:windows_10", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      exit( 0 );
+    }
+    if( ! isnull( version[1] ) && version[1] == "8.5" ) {
+      register_and_report_os( os:"Microsoft Windows Server 2012 R2", cpe:"cpe:/o:microsoft:windows_server_2012:r2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      register_and_report_os( os:"Microsoft Windows 8.1", cpe:"cpe:/o:microsoft:windows_8.1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      exit( 0 );
+    }
+    if( ! isnull( version[1] ) && version[1] == "8.0" ) {
+      register_and_report_os( os:"Microsoft Windows Server 2012", cpe:"cpe:/o:microsoft:windows_server_2012", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      register_and_report_os( os:"Microsoft Windows 8", cpe:"cpe:/o:microsoft:windows_8", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      exit( 0 );
+    }
+    if( ! isnull( version[1] ) && version[1] == "7.5" ) {
+      register_and_report_os( os:"Microsoft Windows Server 2008 R2", cpe:"cpe:/o:microsoft:windows_server_2008:r2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      register_and_report_os( os:"Microsoft Windows 7", cpe:"cpe:/o:microsoft:windows_7", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      exit( 0 );
+    }
+    if( ! isnull( version[1] ) && version[1] == "7.0" ) {
+      register_and_report_os( os:"Microsoft Windows Server 2008", cpe:"cpe:/o:microsoft:windows_server_2008", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      register_and_report_os( os:"Microsoft Windows Vista", cpe:"cpe:/o:microsoft:windows_vista", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      exit( 0 );
+    }
+    if( ! isnull( version[1] ) && version[1] == "6.0" ) {
+      register_and_report_os( os:"Microsoft Windows Server 2003", cpe:"cpe:/o:microsoft:windows_server_2003", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      register_and_report_os( os:"Microsoft XP Professional x64", cpe:"cpe:/o:microsoft:windows_xp:::x64", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      exit( 0 );
+    }
+    if( ! isnull( version[1] ) && version[1] == "5.1" ) {
+      register_and_report_os( os:"Microsoft Windows XP Professional", cpe:"cpe:/o:microsoft:windows_xp", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      exit( 0 );
+    }
+    if( ! isnull( version[1] ) && version[1] == "5.0" ) {
+      register_and_report_os( os:"Microsoft Windows 2000", cpe:"cpe:/o:microsoft:windows_2000", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      exit( 0 );
+    }
+    if( ! isnull( version[1] ) && version[1] == "4.0" ) {
+      register_and_report_os( os:"Microsoft Windows NT 4.0 Option Pack", cpe:"cpe:/o:microsoft:windows_nt:4.0", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      exit( 0 );
+    }
+    if( ! isnull( version[1] ) && version[1] == "3.0" ) {
+      register_and_report_os( os:"Microsoft Windows NT 4.0 SP2", cpe:"cpe:/o:microsoft:windows_nt:4.0:sp2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      exit( 0 );
+    }
+    if( ! isnull( version[1] ) && version[1] == "2.0" ) {
+      register_and_report_os( os:"Microsoft Windows NT 4.0", cpe:"cpe:/o:microsoft:windows_nt:4.0", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      exit( 0 );
+    }
+    if( ! isnull( version[1] ) && version[1] == "1.0" ) {
+      register_and_report_os( os:"Microsoft Windows NT 3.51", cpe:"cpe:/o:microsoft:windows_nt:3.51", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+      exit( 0 );
+    }
+    register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   }
 
   if( "Apache" >< banner || "nginx" >< banner || "lighttpd" >< banner ) {
@@ -88,7 +176,7 @@ if( banner && banner = egrep( pattern:"^Server:(.*)$", string:banner, icase:TRUE
       exit( 0 );
     }
 
-    if( "(Debian)" >< banner || "(Debian GNU/Linux)" >< banner || "devel-debian" >< banner || "~dotdeb+" >< banner ) {
+    if( "(Debian)" >< banner || "(Debian GNU/Linux)" >< banner || "devel-debian" >< banner || "~dotdeb+" >< banner || "(Raspbian)" >< banner ) {
       register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       exit( 0 );
     }
@@ -140,7 +228,17 @@ if( banner && banner = egrep( pattern:"^Server:(.*)$", string:banner, icase:TRUE
     }
 
     if( "(Unix)" >< banner ) {
-      register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    if( "mini-http" >< banner && "(unix)" >< banner ) {
+      register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    if( "(Univention)" >< banner ) {
+      register_and_report_os( os:"Univention Corporate Server", cpe:"cpe:/o:univention:univention_corporate_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       exit( 0 );
     }
   }
@@ -150,8 +248,18 @@ if( banner && banner = egrep( pattern:"^Server:(.*)$", string:banner, icase:TRUE
     exit( 0 );
   }
 
+  # nb: The +deb banner (which is using something like +deb1~bpo8) doesn't match directly to the OS
   if( "ZNC" >< banner && ( "~bpo" >< banner || "+deb" >< banner ) ) {
-    register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
+    if( "~bpo7" >< banner ) {
+      register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    } else if( "~bpo8" >< banner ) {
+      register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    } else if( "~bpo9" >< banner ) {
+      register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    } else {
+      register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    }
     exit( 0 );
   }
 
@@ -188,207 +296,245 @@ if( phpList ) phpFiles = make_list( phpList );
 phpinfoBanner = get_kb_item( "php/phpinfo/phpversion/" + port );
 
 if( phpFiles[0] ) {
-  banner = get_http_banner( port:port, file:phpFiles[0] );
+  phpBanner = get_http_banner( port:port, file:phpFiles[0] );
 } else {
-  banner = get_http_banner( port:port, file:"/index.php" );
+  phpBanner = get_http_banner( port:port, file:"/index.php" );
 }
 
-if( banner && banner = egrep( pattern:"^X-Powered-By: PHP/(.*)$", string:banner, icase:TRUE ) ) {
+if( phpBanner && phpBanner = egrep( pattern:"^X-Powered-By: PHP/(.*)$", string:phpBanner, icase:TRUE ) ) {
 
   banner_type = "PHP Server banner";
 
-  if( "+deb" >< banner || "~dotdeb+" >< banner || "~deb" >< banner ) {
-    if( "+deb6" >< banner || "~deb6" >< banner || "~dotdeb+squeeze" >< banner ) {
-      register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    } else if( "+deb7" >< banner || "~dotdeb+7" >< banner ) {
-      register_and_report_os( os:"Debian GNU/Linux", version:"7.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    } else if ( "+deb8" >< banner || "~dotdeb+8" >< banner ) {
-      register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  if( "+deb" >< phpBanner || "~dotdeb+" >< phpBanner || "~deb" >< phpBanner || "~bpo" >< phpBanner ) {
+
+    # nb: The order matters in case of backports which might have something like +deb9~bpo8
+    if( "+deb6" >< phpBanner || "~deb6" >< phpBanner || "~dotdeb+squeeze" >< phpBanner || "~bpo6" >< phpBanner ) {
+      register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
+    } else if( "+deb7" >< phpBanner || "~dotdeb+7" >< phpBanner || "~bpo7" >< phpBanner ) {
+      register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    } else if( "+deb8" >< phpBanner || "~dotdeb+8" >< phpBanner || "~bpo8" >< phpBanner ) {
+      register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     } else {
-      register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     }
     exit( 0 );
   }
-  if( "ubuntu" >< banner ) {
-    register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  if( "ubuntu" >< phpBanner ) {
+    register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:phpBanner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
-  register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"php_banner", port:port );
+  register_unknown_os_banner( banner:phpBanner, banner_type_name:banner_type, banner_type_short:"php_banner", port:port );
 }
 
 buf = http_get_cache( item:"/", port:port );
-if( ! buf || buf !~ "HTTP/1.. 200" ) exit( 0 );
+if( buf && buf =~ "^HTTP/1\.[01] 200" ) {
 
-banner_type = "HTTP Server default page";
+  banner_type = "HTTP Server default page";
 
-if( "<title>Test Page for the Apache HTTP Server" >< buf ||
-    "<title>Apache HTTP Server Test Page" >< buf ||
-    "<title>Test Page for the Nginx HTTP Server" >< buf ) {
+  if( "<title>Test Page for the Apache HTTP Server" >< buf ||
+      "<title>Apache HTTP Server Test Page" >< buf ||
+      "<title>Test Page for the Nginx HTTP Server" >< buf ) {
 
-  check = "on Red Hat Enterprise Linux</title>";
+    check = "on Red Hat Enterprise Linux</title>";
 
-  if( check >< buf ) {
-    register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
+    if( check >< buf ) {
+      register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "powered by CentOS</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "on CentOS</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "on Fedora Core</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"Fedora Core", cpe:"cpe:/o:fedoraproject:fedora_core", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "on Fedora</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"Fedora", cpe:"cpe:/o:fedoraproject:fedora", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "powered by Ubuntu</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "powered by Debian</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "on Mageia</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"Mageia", cpe:"cpe:/o:mageia:linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "on EPEL</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "on Scientific Linux</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"Scientific Linux", cpe:"cpe:/o:scientificlinux:scientificlinux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "on the Amazon Linux AMI</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"Amazon Linux", cpe:"cpe:/o:amazon:linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "on CloudLinux</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"CloudLinux", cpe:"cpe:/o:cloudlinux:cloudlinux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "on SLES Expanded Support Platform</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"SUSE Linux Enterprise Server", cpe:"cpe:/o:suse:linux_enterprise_server", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "on Oracle Linux</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"Oracle Linux", cpe:"cpe:/o:oraclelinux:oraclelinux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    if( check = eregmatch( string:buf, pattern:"<title>(Test Page for the (Apache|Nginx) HTTP Server|Apache HTTP Server Test Page) (powered by|on).*</title>" ) ) {
+      register_unknown_os_banner( banner:check[0], banner_type_name:banner_type, banner_type_short:"http_test_banner", port:port );
+    }
   }
 
-  check = "powered by CentOS</title>";
+  if( "<TITLE>Welcome to Jetty" >< buf ) {
 
-  if( check >< buf ) {
-    register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
+    check = "on Debian</TITLE>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    if( check = eregmatch( string:buf, pattern:"<TITLE>Welcome to Jetty.*on.*</TITLE>" ) ) {
+      register_unknown_os_banner( banner:check[0], banner_type_name:banner_type, banner_type_short:"http_test_banner", port:port );
+    }
   }
 
-  check = "on CentOS</title>";
+  if( "<title>Welcome to nginx" >< buf ) {
 
-  if( check >< buf ) {
-    register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
+    check = "on Debian!</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "on Ubuntu!</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "on Fedora!</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"Fedora", cpe:"cpe:/o:fedoraproject:fedora", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    check = "on Slackware!</title>";
+
+    if( check >< buf ) {
+      register_and_report_os( os:"Slackware", cpe:"cpe:/o:slackware:slackware_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    if( check = eregmatch( string:buf, pattern:"<title>Welcome to nginx on.*!</title>" ) ) {
+      register_unknown_os_banner( banner:check[0], banner_type_name:banner_type, banner_type_short:"http_test_banner", port:port );
+    }
   }
 
-  check = "on Fedora Core</title>";
+  if( "<title>Apache2" >< buf && "Default Page: It works</title>" >< buf ) {
 
-  if( check >< buf ) {
-    register_and_report_os( os:"Fedora Core", cpe:"cpe:/o:fedoraproject:fedora_core", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
+    check = "<title>Apache2 Debian Default Page";
 
-  check = "on Fedora</title>";
+    if( check >< buf ) {
+      register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
 
-  if( check >< buf ) {
-    register_and_report_os( os:"Fedora", cpe:"cpe:/o:fedoraproject:fedora", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
+    check = "<title>Apache2 Ubuntu Default Page";
 
-  check = "powered by Ubuntu</title>";
+    if( check >< buf ) {
+      register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
 
-  if( check >< buf ) {
-    register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
+    check = "<title>Apache2 centos Default Page";
 
-  check = "powered by Debian</title>";
+    if( check >< buf ) {
+      register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
 
-  if( check >< buf ) {
-    register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
-
-  check = "on Mageia</title>";
-
-  if( check >< buf ) {
-    register_and_report_os( os:"Mageia", cpe:"cpe:/o:mageia:linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
-
-  check = "on EPEL</title>";
-
-  if( check >< buf ) {
-    register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
-
-  check = "on Scientific Linux</title>";
-
-  if( check >< buf ) {
-    register_and_report_os( os:"Scientific Linux", cpe:"cpe:/o:scientificlinux:scientificlinux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
-
-  check = "on the Amazon Linux AMI</title>";
-
-  if( check >< buf ) {
-    register_and_report_os( os:"Amazon Linux", cpe:"cpe:/o:amazon:linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
-
-  check = "on CloudLinux</title>";
-
-  if( check >< buf ) {
-    register_and_report_os( os:"CloudLinux", cpe:"cpe:/o:cloudlinux:cloudlinux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
-
-  check = "on SLES Expanded Support Platform</title>";
-
-  if( check >< buf ) {
-    register_and_report_os( os:"SUSE Linux Enterprise Server", cpe:"cpe:/o:suse:linux_enterprise_server", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
-
-  check = "on Oracle Linux</title>";
-
-  if( check >< buf ) {
-    register_and_report_os( os:"Oracle Linux", cpe:"cpe:/o:oraclelinux:oraclelinux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
-
-  if( check = eregmatch( string:buf, pattern:"<title>(Test Page for the (Apache|Nginx) HTTP Server|Apache HTTP Server Test Page) (powered by|on).*</title>" ) ) {
-    register_unknown_os_banner( banner:check[0], banner_type_name:banner_type, banner_type_short:"http_test_banner", port:port );
+    if( check = eregmatch( string:buf, pattern:"<title>Apache2 .* Default Page: It works</title>" ) ) {
+      register_unknown_os_banner( banner:check[0], banner_type_name:banner_type, banner_type_short:"http_test_banner", port:port );
+    }
   }
 }
 
-if( "<title>Welcome to nginx" >< buf ) {
-
-  check = "on Debian!</title>";
-
-  if( check >< buf ) {
-    register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
-
-  check = "on Ubuntu!</title>";
-
-  if( check >< buf ) {
-    register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
-
-  check = "on Fedora!</title>";
-
-  if( check >< buf ) {
-    register_and_report_os( os:"Fedora", cpe:"cpe:/o:fedoraproject:fedora", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
-
-  check = "on Slackware!</title>";
-
-  if( check >< buf ) {
-    register_and_report_os( os:"Slackware", cpe:"cpe:/o:slackware:slackware_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
-
-  if( check = eregmatch( string:buf, pattern:"<title>Welcome to nginx on.*!</title>" ) ) {
-    register_unknown_os_banner( banner:check[0], banner_type_name:banner_type, banner_type_short:"http_test_banner", port:port );
-  }
+# CUPS is running only on macOS and other UNIX-like operating systems
+if( ( banner && "Server: CUPS/" >< banner ) || buf =~ "<TITLE>(Forbidden|Home|Not Found|Bad Request) - CUPS.*</TITLE>" ) {
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:chomp( banner ) + " and/or CUPS title page", desc:SCRIPT_DESC, runs_key:"unixoide" );
 }
 
-if( "<title>Apache2" >< buf && "Default Page: It works</title>" >< buf ) {
+# nb: Using buf here as the previously "banner" is currently overwritten at the top if no Server: header exists
+if( buf && user_agent = egrep( pattern:"^User-Agent:(.*)$", string:buf, icase:TRUE ) ) {
 
-  check = "<title>Apache2 Debian Default Page";
+  banner_type = "HTTP Server banner";
 
-  if( check >< buf ) {
-    register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  # LibreOffice Online WebSocket server: https://github.com/LibreOffice/online/blob/master/wsd/README
+  # This is the only service i have seen so far which is responding with a User-Agent: header
+  # nb: loolwsd is only running on Linux/Unix
+  if( "LOOLWSD WOPI Agent" >< user_agent ) {
+    register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:user_agent, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
-
-  check = "<title>Apache2 Ubuntu Default Page";
-
-  if( check >< buf ) {
-    register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
-
-  check = "<title>Apache2 centos Default Page";
-
-  if( check >< buf ) {
-    register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
-
-  if( check = eregmatch( string:buf, pattern:"<title>Apache2 .* Default Page: It works</title>" ) ) {
-    register_unknown_os_banner( banner:check[0], banner_type_name:banner_type, banner_type_short:"http_test_banner", port:port );
-  }
+  register_unknown_os_banner( banner:user_agent, banner_type_name:banner_type, banner_type_short:"http_banner", port:port );
 }
 
 exit( 0 );

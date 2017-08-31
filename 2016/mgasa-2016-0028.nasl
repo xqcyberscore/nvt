@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0028.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: mgasa-2016-0028.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131191");
-script_version("$Revision: 5557 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-01-21 07:32:03 +0200 (Thu, 21 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0028");
 script_tag(name: "insight", value: "A badly formed packet with an invalid IPv4 UDP length field can cause an ISC DHCP server, client, or relay program to terminate abnormally (CVE-2015-8605). The dhcp package has been updated to version 4.3.3-P1, which fixes this issue and several other bugs. Also, the package has also been enhanced to provide better support for running a DHCPv6 server (mga#17177)."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"5.7");
 script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0028");
 script_copyright("Eero Volotinen");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-0139.nasl 6170 2017-05-19 09:03:42Z teissa $
+# $Id: ELSA-2014-0139.nasl 6559 2017-07-06 11:57:32Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123472");
-script_version("$Revision: 6170 $");
+script_version("$Revision: 6559 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:04:16 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:57:32 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-0139");
 script_tag(name: "insight", value: "ELSA-2014-0139 -  pidgin security update - [2.7.9-27.el6]- Fix regression in CVE-2013-6483.[2.7.9-26.el6]- Fix patch for CVE-2012-6152 (RH bug #1058242).[2.7.9-25.el6]- Add patch for CVE-2014-0020 (RH bug #1058242).[2.7.9-24.el6]- Add patch for CVE-2013-6490 (RH bug #1058242).[2.7.9-23.el6]- Add patch for CVE-2013-6489 (RH bug #1058242).[2.7.9-22.el6]- Add patch for CVE-2013-6487 (RH bug #1058242).[2.7.9-21.el6]- Add patch for CVE-2013-6477 (RH bug #1058242).[2.7.9-20.el6]- Add patch for CVE-2013-6485 (RH bug #1058242).[2.7.9-19.el6]- Add patch for CVE-2013-6484 (RH bug #1058242).[2.7.9-18.el6]- Add patch for CVE-2013-6483 (RH bug #1058242).[2.7.9-17.el6]- Add patch for CVE-2013-6482 (RH bug #1058242).[2.7.9-16.el6]- Add patch for CVE-2013-6481 (RH bug #1058242).[2.7.9-15.el6]- Add patch for CVE-2013-6479 (RH bug #1058242).[2.7.9-14.el6]- Turns out the previous patch is actually for CVE-2013-6478.[2.7.9-13.el6]- Add patch for CVE-2013-6477 (RH bug #1058242).[2.7.9-12.el6]- Add patch for CVE-2012-6152 (RH bug #1058242)."); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_bof_vuln_jun09_win.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_adobe_prdts_mult_bof_vuln_jun09_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
 #
 # Adobe Reader/Acrobat Multiple BOF Vulnerabilities - Jun09 (Windows)
 #
@@ -29,7 +29,7 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.800585";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 4865 $");
+  script_version("$Revision: 6475 $");
   script_cve_id("CVE-2009-0198", "CVE-2009-0509", "CVE-2009-0510", "CVE-2009-0511",
                 "CVE-2009-0512", "CVE-2009-1855", "CVE-2009-1856", "CVE-2009-1857",
                 "CVE-2009-0889", "CVE-2009-0888", "CVE-2009-1858", "CVE-2009-1859",
@@ -38,7 +38,7 @@ if(description)
                     35299,35301, 35302, 35303);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-06-16 15:11:01 +0200 (Tue, 16 Jun 2009)");
   script_name("Adobe Reader/Acrobat Multiple BOF Vulnerabilities - Jun09 (Windows)");
 
@@ -85,7 +85,7 @@ http://www.adobe.com/support/security/bulletins/apsb09-07.html";
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_require_keys("Adobe/Reader/Win/Ver", "Adobe/Acrobat/Win/Ver");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20170607-ncs.nasl 6292 2017-06-08 06:36:42Z ckuersteiner $
+# $Id: gb_cisco_ios_xr_cisco-sa-20170607-ncs.nasl 6501 2017-07-03 07:48:47Z teissa $
 #
 # Cisco Network Convergence System 5500 Series Routers Local Denial of Service Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106857");
  script_cve_id("CVE-2017-6666");
- script_tag(name: "cvss_base", value: "4.3");
- script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:M/C:N/I:N/A:C");
- script_version("$Revision: 6292 $");
+ script_tag(name:"cvss_base", value:"1.9");
+ script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:P");
+ script_version("$Revision: 6501 $");
 
  script_name("Cisco Network Convergence System 5500 Series Routers Local Denial of Service Vulnerability");
 
@@ -58,7 +58,7 @@ router's CLI with administrator privileges and issuing the clear arp-cache comma
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-06-08 08:36:42 +0200 (Thu, 08 Jun 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-07-03 09:48:47 +0200 (Mon, 03 Jul 2017) $");
  script_tag(name: "creation_date", value: "2017-06-08 11:35:21 +0700 (Thu, 08 Jun 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

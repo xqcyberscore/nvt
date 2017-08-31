@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850660");
-  script_version("$Revision: 3353 $");
+  script_version("$Revision: 6675 $");
   script_cve_id("CVE-2015-2751", "CVE-2015-3209", "CVE-2015-4103", "CVE-2015-4104",
                 "CVE-2015-4105", "CVE-2015-4106", "CVE-2015-4163", "CVE-2015-4164");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:36:03 +0200 (Wed, 18 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:54:28 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-06-23 05:01:02 +0200 (Tue, 23 Jun 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xen openSUSE-SU-2015:1094-1 (xen)");
@@ -63,12 +63,11 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2015:1094_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-06/msg00017.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of xen");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

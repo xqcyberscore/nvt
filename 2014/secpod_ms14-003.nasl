@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(903424);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-0262");
   script_bugtraq_id(64725);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-15 08:05:29 +0530 (Wed, 15 Jan 2014)");
   script_name("Microsoft Windows Kernel-Mode Drivers Privilege Escalation Vulnerability (2913602)");
 
@@ -75,7 +75,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-003";
 
    script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2913602");
    script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-003");
-   script_summary("Check for the vulnerable 'Win32k.sys' file version");
    script_category(ACT_GATHER_INFO);
    script_copyright("Copyright (C) 2014 SecPod");
    script_family("Windows : Microsoft Bulletins");

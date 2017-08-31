@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln_aug07_win.nasl 2482 2016-01-22 12:57:27Z benallard $
+# $Id: gb_adobe_reader_mult_vuln_aug07_win.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Adobe Reader Multiple Vulnerabilities - Aug07 (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.804264";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2482 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2007-0103");
   script_bugtraq_id(21910);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 13:57:27 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-16 12:27:12 +0530 (Wed, 16 Apr 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities - Aug07 (Windows)");
 
@@ -75,7 +75,6 @@ updates refer to http://get.adobe.com/reader";
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/31364");
   script_xref(name : "URL" , value : "http://projects.info-pull.com/moab/MOAB-06-01-2007.html");
-  script_summary("Check for the vulnerable version of Adobe Reader on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

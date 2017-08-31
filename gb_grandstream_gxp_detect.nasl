@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grandstream_gxp_detect.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_grandstream_gxp_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # Grandstream GXP Detection
 #
@@ -35,20 +35,20 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103594";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 6125 $");
+ script_version ("$Revision: 6701 $");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-10-26 11:15:41 +0200 (Fri, 26 Oct 2012)");
  script_name("Grandstream GXP Detection");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("Grandstream_GXP/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("Grandstream_GXP/banner");
+
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
@@ -59,7 +59,6 @@ include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if(!banner || "Server: Grandstream GXP" >!< banner)exit(0);

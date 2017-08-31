@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3354.nasl 6357 2017-06-16 10:00:29Z teissa $
+# $Id: deb_3354.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3354-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703354);
-    script_version("$Revision: 6357 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2015-3247");
     script_name("Debian Security Advisory DSA 3354-1 (spice - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-09-08 00:00:00 +0200 (Tue, 08 Sep 2015)");
     script_tag(name:"cvss_base", value:"6.9");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "spice on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (jessie), this problem has been fixed in
 version 0.12.5-1+deb8u1.

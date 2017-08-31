@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1153.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: ELSA-2015-1153.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123096");
-script_version("$Revision: 6229 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:59:19 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1153");
 script_tag(name: "insight", value: "ELSA-2015-1153 -  mailman security and bug fix update - [3:2.1.15-21]- fix CVE-2015-2775 - directory traversal in MTA transports[3:2.1.15-20]- fix #1107652 - do not install patch backup files in documentation[3:2.1.15-19]- fix #1188043 - set 2775 permission only for /etc/mailman[3:2.1.15-18]- fix #1107652 - add support for DMARC- fix #1180981 - install tmpfiles.d into /usr/lib instead of /etc- fix #1188043 - set 2775 permission for /etc/mailman"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.6");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

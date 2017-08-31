@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3230.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: deb_3230.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3230-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703230);
-    script_version("$Revision: 6345 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2015-0846");
     script_name("Debian Security Advisory DSA 3230-1 (django-markupfield - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-04-20 00:00:00 +0200 (Mon, 20 Apr 2015)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "django-markupfield on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (wheezy),
 this problem has been fixed in version 1.0.2-2+deb7u1.

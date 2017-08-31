@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_oldplugin_sig_bypass_vuln_win.nasl 3008 2016-04-07 13:17:01Z antu123 $
+# $Id: gb_adobe_reader_oldplugin_sig_bypass_vuln_win.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Adobe Reader Old Plugin Signature Bypass Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804627");
-  script_version("$Revision: 3008 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2003-0142");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 15:17:01 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-05 10:39:40 +0530 (Thu, 05 Jun 2014)");
   script_name("Adobe Reader Old Plugin Signature Bypass Vulnerability (Windows)");
 
@@ -76,7 +76,6 @@ features, remove the product or replace the product by another one.";
 
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/689835");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/328224");
-  script_summary("Check for the version of Adobe Reader on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

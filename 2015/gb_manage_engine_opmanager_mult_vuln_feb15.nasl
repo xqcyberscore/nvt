@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_opmanager_mult_vuln_feb15.nasl 5629 2017-03-20 15:36:33Z cfi $
+# $Id: gb_manage_engine_opmanager_mult_vuln_feb15.nasl 6600 2017-07-07 09:58:31Z teissa $
 #
 # ZOHO ManageEngine OpManager Multiple Vulnerabilities - Feb15
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805473");
-  script_version("$Revision: 5629 $");
+  script_version("$Revision: 6600 $");
   script_cve_id("CVE-2014-7864");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:36:33 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-03-20 11:53:55 +0530 (Fri, 20 Mar 2015)");
   script_name("ZOHO ManageEngine OpManager Multiple Vulnerabilities - Feb15");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/130162");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/534575/100/0/threaded");
   script_xref(name:"URL", value:"https://support.zoho.com/portal/manageengine/helpcenter/articles/vulnerabilities-in-failoverhelperservle");
-  script_summary("Try to read a local file via a crafted HTTP POST request");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

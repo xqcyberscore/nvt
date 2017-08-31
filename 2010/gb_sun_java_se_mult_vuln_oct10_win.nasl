@@ -49,8 +49,8 @@ tag_summary = "This host is installed with Oracle Java JDK/JRE and is prone to
 if(description)
 {
   script_id(801530);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6465 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:17:01 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2010-10-28 11:50:37 +0200 (Thu, 28 Oct 2010)");
   script_cve_id("CVE-2010-3550", "CVE-2010-3551", "CVE-2010-3552", "CVE-2010-3553",
                 "CVE-2010-3554", "CVE-2010-3555", "CVE-2010-3556", "CVE-2010-3557",
@@ -69,7 +69,7 @@ if(description)
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_win.nasl");
-  script_require_keys("Sun/Java/JDK/Win/Ver", "Sun/Java/JRE/Win/Ver");
+  script_mandatory_keys("Sun/Java/JDK_or_JRE/Win/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

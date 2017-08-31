@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_babygekko_cms_mult_vuln.nasl 3513 2016-06-14 11:14:20Z mime $
+# $Id: gb_babygekko_cms_mult_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Baby Gekko CMS Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804856");
-  script_version("$Revision: 3513 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2012-5698", "CVE-2012-5699", "CVE-2012-5700");
   script_bugtraq_id(56523, 56523, 56523);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 13:14:20 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-24 14:10:24 +0530 (Wed, 24 Sep 2014)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22741");
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23122");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/118104");
-  script_summary("Check if Baby Gekko CMS is vulnerable to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

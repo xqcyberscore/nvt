@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eyesofnetwork_logout_sqli.nasl 6290 2017-06-07 10:07:39Z cfischer $
+# $Id: gb_eyesofnetwork_logout_sqli.nasl 6800 2017-07-26 06:58:22Z cfischer $
 #
 # Eyes Of Network (EON) 'logout.php' SQL Injection Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:eyes_of_network:eyes_of_network";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108174");
-  script_version("$Revision: 6290 $");
+  script_version("$Revision: 6800 $");
   script_cve_id("CVE-2017-1000060");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-07 12:07:39 +0200 (Wed, 07 Jun 2017) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-26 08:58:22 +0200 (Wed, 26 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-06-07 09:31:19 +0200 (Wed, 07 Jun 2017)");
   script_name("Eyes Of Network (EON) 'logout.php' SQL Injection Vulnerability");
   script_category(ACT_ATTACK);

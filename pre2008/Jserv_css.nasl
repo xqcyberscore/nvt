@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: Jserv_css.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: Jserv_css.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: JServ Cross Site Scripting
 #
 # Authors:
@@ -37,8 +37,8 @@ maintained.";
 if(description)
 {
  script_id(10957);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -55,8 +55,9 @@ if(description)
  family = "Web Servers";
  script_family(family);
  script_dependencies("gb_get_http_banner.nasl", "cross_site_scripting.nasl");
- script_mandatory_keys("apache/banner");
  script_require_ports("Services/www", 80);
+ script_mandatory_keys("apache/banner");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -73,10 +74,7 @@ if(get_kb_item(string("www/", port, "/generic_xss")))exit(0);
 banner = get_http_banner( port:port );
 if( "Apache" >!< banner ) exit(0);
 
-if(get_port_state(port))
-{ 
  req = http_get(item:"/a.jsp/<SCRIPT>alert(document.domain)</SCRIPT>", port:port);
  res = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
  if( res == NULL ) exit(0);
  if(res =~ "HTTP/1\.. 200" && "<SCRIPT>alert(document.domain)</SCRIPT>" >< res) security_message(port);
-}

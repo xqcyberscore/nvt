@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_65200.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_horde_65200.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # Horde '_formvars' Form Input Remote Code Execution Vulnerability
 #
@@ -50,7 +50,7 @@ if (description)
  script_cve_id("CVE-2014-1691");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6756 $");
 
  script_name("Horde '_formvars' Form Input Remote Code Execution Vulnerability");
 
@@ -58,16 +58,14 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65200");
  script_xref(name:"URL", value:"http://www.horde.org");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-03-21 11:45:12 +0100 (Fri, 21 Mar 2014)");
- script_summary("Determine if it is possible to execute phpinfo()");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("horde_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("horde/installed");
 
  script_tag(name : "impact" , value : tag_impact);
@@ -86,11 +84,9 @@ include("http_keepalive.inc");
 include("global_settings.inc");
    
 if( ! port = get_app_port( cpe:CPE, nvt:SCRIPT_OID ) ) exit( 0 );
-if( ! get_port_state( port ) ) exit( 0 );
-
 if( ! dir = get_app_location( cpe:CPE, nvt:SCRIPT_OID, port:port ) ) exit( 0 );
 
-host = get_host_name();
+host = http_host_name(port:port);
 
 formwars = '_formvars=O%3a34%3a%22Horde_Kolab_Server_Decorator_Clean%22%3a2%3a%7bs%3a43%3a%22%00Horde_Kolab_Server_Decorator_Clean%00'       + 
            '_server%22%3bO%3a20%3a%22Horde_Prefs_Identity%22%3a2%3a%7bs%3a9%3a%22%00%2a%00_prefs%22%3bO%3a11%3a%22Horde_Prefs%22%3a2%3a'     + 

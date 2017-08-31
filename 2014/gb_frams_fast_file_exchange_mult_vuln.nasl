@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_frams_fast_file_exchange_mult_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_frams_fast_file_exchange_mult_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Frams&qt Fast File EXchange Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804664");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-3876", "CVE-2014-3877", "CVE-2014-3875");
   script_bugtraq_id(67785, 67788, 67783);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-04 10:06:54 +0530 (Fri, 04 Jul 2014)");
   script_name("Frams&qt Fast File EXchange Multiple Vulnerabilities");
 
@@ -63,15 +63,13 @@ if(description)
   script_xref(name:"URL", value:"http://fex.rus.uni-stuttgart.de/fex.html");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/126906");
   script_xref(name:"URL", value:"https://www.lsexperts.de/advisories/lse-2014-05-22.txt");
-  script_summary("Check if Frams&qt Fast File EXchange is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("fexsrv/banner");
   script_require_ports("Services/www", 8080);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("fexsrv/banner");
 
   exit(0);
 }

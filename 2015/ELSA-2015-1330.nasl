@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1330.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-1330.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123066");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:58:55 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1330");
 script_tag(name: "insight", value: "ELSA-2015-1330 -  python security, bug fix, and enhancement update - [2.6.6-64.0.1]- Add Oracle Linux distribution in platform.py [orabug 21288328] (Keshav Sharma)[2.6.6-64]- Enable use of deepcopy() with instance methodsResolves: rhbz#1223037[2.6.6-63]- Since -libs now provide python-ordered dict, added ordereddict dist-info to site-packagesResolves: rhbz#1199997[2.6.6-62]- Fix CVE-2014-7185/4650/1912 CVE-2013-1752Resolves: rhbz#1206572[2.6.6-61]- Fix logging module error when multiprocessing module is not initializedResolves: rhbz#1204966[2.6.6-60]- Add provides for python-ordereddictResolves: rhbz#1199997[2.6.6-59]- Let ConfigParse handle options without values- Add check phase to specfile, fix and skip relevant failing testsResolves: rhbz#1031709[2.6.6-58]- Make Popen.communicate catch EINTR errorResolves: rhbz#1073165[2.6.6-57]- Add choices for sort option of cProfile for better outputResolves: rhbz#1160640[2.6.6-56]- Make multiprocessing ignore EINTRResolves: rhbz#1180864[2.6.6-55]- Fix iteration over files with very long linesResolves: rhbz#794632[2.6.6-54]- Fix subprocess.Popen.communicate() being broken by SIGCHLD handler.Resolves: rhbz#1065537- Rebuild against latest valgrind-devel.Resolves: rhbz#1142170[2.6.6-53]- Bump release up to ensure proper upgrade path.Related: rhbz#958256"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-1330");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

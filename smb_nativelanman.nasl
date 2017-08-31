@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: smb_nativelanman.nasl 6425 2017-06-24 08:33:41Z cfischer $
+# $Id: smb_nativelanman.nasl 6895 2017-08-11 06:54:34Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 6425 $");
+  script_version("$Revision: 6895 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-24 10:33:41 +0200 (Sat, 24 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-11 08:54:34 +0200 (Fri, 11 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -155,22 +155,37 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
 
       if( os_str && ! isnull( os_str ) ) {
 
-        # At least Samba 4.2.10, 4.2.14 and 4.5.8 on Debian jessieand stretch has a os_str of "Windows 6.1"
+        banner_type = "SMB/Samba banner";
+
+        # At least Samba 4.2.10, 4.2.14 and 4.5.8 on Debian jessie and stretch has a os_str of "Windows 6.1"
         # but we can identify it from the smb_str: Samba 4.2.10-Debian, Samba 4.5.8-Debian
         # Older Debian versions have "Unix" as os_str and smb_str: like Samba 3.0.20-Debian
-        if( samba && ( "windows" >< tolower( os_str ) || ( "unix" >< tolower( os_str ) && "debian" >< tolower( smb_str ) ) ) ) {
+        # The same above is also valid for SLES:
+        # SLES11: os_str: Unix, smb_str: Samba 3.6.3-0.58.1-3399-SUSE-CODE11-x86_64
+        # SLES12: os_str: Windows 6.1, smb_str: Samba 4.4.2-29.4-3709-SUSE-SLE_12-x86_64
+        if( samba && ( "windows" >< tolower( os_str ) || ( "unix" >< tolower( os_str ) && ( "debian" >< tolower( smb_str ) || "SUSE" >< smb_str ) ) ) ) {
           if( "debian" >< tolower( smb_str ) ) {
             # 4.2.10 was up to 8.6 and 4.2.14 was 8.7 or later
+            # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
             if( "Samba 4.2.10-Debian" >< smb_str || "Samba 4.2.14-Debian" >< smb_str ) {
-              os_str = "Debian GNU/Linux 8.0";
+              os_str = "Debian GNU/Linux 8";
             } else if( "Samba 4.5.8-Debian" >< smb_str ) {
-              os_str = "Debian GNU/Linux 9.0";
+              os_str = "Debian GNU/Linux 9";
             } else {
               os_str = "Debian GNU/Linux";
             }
-          # On other reporting the same "Windows 6.1" or simlar exit here for now...
+          } else if ( "SUSE" >< smb_str ) {
+            if( "CODE11" >< smb_str ) {
+              os_str = "SUSE Linux Enterprise Server 11";
+            } else if( "SLE_12" >< smb_str ) {
+              os_str = "SUSE Linux Enterprise Server 12";
+            } else {
+              os_str = "Unknown SUSE";
+            }
+          # On other reporting the same "Windows 6.1" or simlar exit here for now with a generic OS registered
           # TODO: Recheck with other OS
           } else {
+            register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:smb_str, desc:SCRIPT_DESC, runs_key:"unixoide" );
             exit( 0 );
           }
         }
@@ -180,7 +195,6 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
         info = "Detected OS: "+ os_str + '\n';
         result += info;
         report = TRUE;
-        banner_type = "SMB/Samba banner";
         banner = "OS String: " + os_str + "; SMB String: " + smb_str;
 
         if( "windows" >< tolower( os_str ) ) {
@@ -192,17 +206,15 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
           #smb_str: Windows 7 Enterprise 6.1, os_str: Windows 7 Enterprise 7600 -> No Service Pack
           #smb_str: Windows Server 2008 R2 Datacenter 6.1, os_str: Windows Server 2008 R2 Datacenter 7601 Service Pack 1
           #smb_str: Windows XP 5.2, os_str: Windows XP 3790 Service Pack 2 -> Windows XP SP2, 64bit
-          #OS String: Windows Server 2016 Standard 14393; SMB String: Windows Server 2016 Standard 6.3
+          #smb_str: Windows Server 2016 Standard 6.3, os_str: Windows Server 2016 Standard 14393
           if( "windows 10 " >< tolower( os_str ) ) {
             cpe = "cpe:/o:microsoft:windows_10";
-            # https://en.wikipedia.org/wiki/Windows_10_version_history for the version <> build mapping
-            if( "10240" >< os_str ) cpe += ":1507";
-            if( "10586" >< os_str ) cpe += ":1511";
-            if( "14393" >< os_str ) cpe += ":1607";
-            if( "15063" >< os_str ) cpe += ":1703";
+            if( ver = get_version_from_build( string:os_str, win_name:"win10" ) ) cpe += ":" + ver;
             register_and_report_os( os:os_str, cpe:cpe, banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows 5.1" >< tolower( os_str ) ) {
+          } else if( "windows 5.1" >< tolower( os_str ) && "windows 2000 lan manager" >< tolower( smb_str ) ) {
             register_and_report_os( os:"Windows XP", cpe:"cpe:/o:microsoft:windows_xp", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+          } else if( "windows 5.0" >< tolower( os_str ) && "windows 2000 lan manager" >< tolower( smb_str ) ) {
+            register_and_report_os( os:"Windows 2000", cpe:"cpe:/o:microsoft:windows_2000", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows xp 5.2" >< tolower( smb_str ) && "service pack 2" >< tolower( os_str ) ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_xp:-:sp2:x64", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows xp 5.2" >< tolower( smb_str ) ) {
@@ -248,21 +260,34 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
           } else if( "windows server 2016 " >< tolower( os_str ) ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2016", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else {
+            register_unknown_os_banner( banner:banner, banner_type_name:SCRIPT_DESC, port:port, banner_type_short:"smb_nativelanman_banner" );
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           }
         } else if( "vxworks" >< tolower( os_str ) ) {
-          register_and_report_os( os:"Wind River VxWorks", cpe:"cpe:/o:windriver:vxworks", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unknown" ); # TBD: What to set here? unixoide?
+          register_and_report_os( os:"Wind River VxWorks", cpe:"cpe:/o:windriver:vxworks", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else if( "debian" >< tolower( os_str ) ) {
-          if( "8.0" >< os_str ) {
-            register_and_report_os( os:"Debian GNU/Linux", version:"8.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "9.0" >< os_str ) {
-            register_and_report_os( os:"Debian GNU/Linux", version:"9.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          if( "8" >< os_str ) {
+            # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
+            register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "9" >< os_str ) {
+            register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           } else {
             register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           }
+        } else if( "SUSE" >< os_str ) {
+          if( "SUSE Linux Enterprise Server 11" >< os_str ) {
+            register_and_report_os( os:"SUSE Linux Enterprise Server", version:"11", cpe:"cpe:/o:suse:linux_enterprise_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "SUSE Linux Enterprise Server 12" >< os_str ) {
+            register_and_report_os( os:"SUSE Linux Enterprise Server", version:"12", cpe:"cpe:/o:suse:linux_enterprise_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            register_and_report_os( os:"Unknown SUSE Linux release", cpe:"cpe:/o:suse:unknown_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+            # nb: We want to report an unknown banner here as well to catch reports with more detailed info
+            register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
+          }
         } else if( "unix" >< tolower( os_str ) ) {
-          # TBD: Really register linux:kernel here?
-          register_and_report_os( os:'Linux', cpe:'cpe:/o:linux:kernel', banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # nb: We want to report an unknown banner here as well to catch reports with more detailed info
+          register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
         } else {
           register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
         }

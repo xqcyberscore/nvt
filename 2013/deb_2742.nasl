@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2742.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: deb_2742.nasl 6611 2017-07-07 12:07:20Z cfischer $
 # Auto-generated from advisory DSA 2742-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -54,10 +54,10 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(892742);
-    script_version("$Revision: 6104 $");
+    script_version("$Revision: 6611 $");
     script_cve_id("CVE-2013-4248");
     script_name("Debian Security Advisory DSA 2742-1 (php5 - interpretation conflict)");
-    script_tag(name: "last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-07-07 14:07:20 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value:"2013-08-26 00:00:00 +0200 (Mon, 26 Aug 2013)");
     script_tag(name: "cvss_base", value:"4.3");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -70,7 +70,7 @@ if(description)
     script_copyright("Copyright (c) 2013 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: tag_affected);
     script_tag(name: "insight",   value: tag_insight);
 #    script_tag(name: "impact",    value: tag_impact);

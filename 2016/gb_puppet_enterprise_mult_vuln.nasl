@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_puppet_enterprise_mult_vuln.nasl 4397 2016-11-01 10:09:12Z ckuerste $
+# $Id: gb_puppet_enterprise_mult_vuln.nasl 6890 2017-08-10 09:58:07Z ckuersteiner $
 #
 # Puppet Enterprise Multiple Vulnerabilities
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:puppet:enterprise";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106363");
-  script_version("$Revision: 4397 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-11-01 11:09:12 +0100 (Tue, 01 Nov 2016) $");
+  script_version("$Revision: 6890 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-10 11:58:07 +0200 (Thu, 10 Aug 2017) $");
   script_tag(name: "creation_date", value: "2016-11-01 10:57:40 +0700 (Tue, 01 Nov 2016)");
   script_tag(name: "cvss_base", value: "8.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:P/A:P");
 
-  script_cve_id("CVE-2016-5714", "CVE-2016-5715");
+  script_cve_id("CVE-2016-5714", "CVE-2016-5715", "CVE-2016-5716");
 
   script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
@@ -60,7 +60,7 @@ if (description)
 - Unprivileged access to environment catalogs which may reveal sensitive information about your infrastructure
 if you are using Application Orchestration. (CVE-2016-5714)
 
-- Remote code execution because of unsafe string reads.
+- Remote code execution because of unsafe string reads. (CVE-2016-5716)
 
 - Puppet Communications Protocol (PCP) Broker String Validation Vulnerability.
 

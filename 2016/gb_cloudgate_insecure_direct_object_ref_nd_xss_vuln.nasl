@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudgate_insecure_direct_object_ref_nd_xss_vuln.nasl 6264 2017-06-01 12:53:37Z cfischer $
+# $Id: gb_cloudgate_insecure_direct_object_ref_nd_xss_vuln.nasl 6586 2017-07-07 06:23:25Z cfischer $
 #
 # Option CloudGate Insecure Direct Object References And XSS Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/o:option:cloudgate";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808246");
-  script_version("$Revision: 6264 $");
+  script_version("$Revision: 6586 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-01 14:53:37 +0200 (Thu, 01 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 08:23:25 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-07-04 18:38:14 +0530 (Mon, 04 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Option CloudGate Insecure Direct Object References And XSS Vulnerabilities");
@@ -57,12 +57,14 @@ if(description)
 
   script_tag(name: "affected" , value:"Option CloudGate CG0192-11897");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of 
-  01st June, 2017. Information regarding this issue will be updated once the 
-  solution details are available. For updates refer to http://www.option.com");
+  script_tag(name: "solution" , value:"No solution or patch was made available for at least
+  one year since disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
+  script_xref(name : "URL" , value : "http://www.option.com");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40016");
 
   script_category(ACT_ATTACK);

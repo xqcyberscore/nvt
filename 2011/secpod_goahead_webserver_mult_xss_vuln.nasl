@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_goahead_webserver_mult_xss_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: secpod_goahead_webserver_mult_xss_vuln.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # GoAhead WebServer 'name' and 'address' Cross-Site Scripting Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902589");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6696 $");
   script_bugtraq_id(50729);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-11-23 12:12:12 +0530 (Wed, 23 Nov 2011)");
   script_name("GoAhead WebServer 'name' and 'address' Cross-Site Scripting Vulnerabilities");
 
@@ -39,9 +39,8 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web Servers");
-  script_require_ports("Services/www", 80);
   script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 80);
   script_mandatory_keys("GoAhead-Webs/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert

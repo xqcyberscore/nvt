@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2014-0006_remote.nasl 2492 2016-01-22 14:46:36Z benallard $
+# $Id: gb_VMSA-2014-0006_remote.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # VMSA-2014-0006: VMware product updates address OpenSSL security vulnerabilities (remote check)
 #
@@ -43,15 +43,14 @@ if (description)
  script_cve_id("CVE-2014-0224","CVE-2014-0198","CVE-2010-5298","CVE-2014-3470");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2492 $");
+ script_version ("$Revision: 6759 $");
  script_name("VMSA-2014-0006: VMware product updates address OpenSSL security vulnerabilities (remote check)");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0006.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:46:36 +0100 (Fri, 22 Jan 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-06-13 11:04:01 +0100 (Fri, 13 Jun 2014)");
- script_summary("Check the build number");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

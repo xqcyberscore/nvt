@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-0724.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: ELSA-2007-0724.nasl 6561 2017-07-06 12:03:14Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122673");
-script_version("$Revision: 6132 $");
+script_version("$Revision: 6561 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:50:50 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:03:14 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-0724");
 script_tag(name: "insight", value: "ELSA-2007-0724 -  Critical: firefox security update - [1.5.0.12-0.3.el4.0.1] - Add firefox-oracle-default-bookmarks.html and firefox-oracle-default-prefs.js for errata rebuild [1.5.0.12-0.3.el4] - Add a patch to stick with major versions 1.5.0.12 / 1.8.0.12 [1.5.0.12-0.2.el4] - Update to latest snapshot of Mozilla 1.8.0 branch - Include patches for Mozilla bugs 379245, 384925, 178993, 381300 (+382686), 358594 (+380933), 382532 (+382503)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"9.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

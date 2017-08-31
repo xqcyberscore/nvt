@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2014-298.nasl 4514 2016-11-15 10:04:28Z cfi $
+# $Id: alas-2014-298.nasl 6769 2017-07-20 09:56:33Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120161");
-script_version("$Revision: 4514 $");
+script_version("$Revision: 6769 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:18:51 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:04:28 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2014-298");
 script_tag(name: "insight", value: "This update fixes several vulnerabilities in the MySQL database server. (CVE-2014-0386 , CVE-2014-0393 , CVE-2014-0401 , CVE-2014-0402 , CVE-2014-0412 , CVE-2014-0437 , CVE-2013-5908 )A buffer overflow flaw was found in the way the MySQL command line client tool (mysql) processed excessively long version strings. If a user connected to a malicious MySQL server via the mysql client, the server could use this flaw to crash the mysql client or, potentially, execute arbitrary code as the user running the mysql client. (CVE-2014-0001 )"); 
 script_tag(name : "solution", value : "Run yum update mysql51 to update your system.");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2014-298");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

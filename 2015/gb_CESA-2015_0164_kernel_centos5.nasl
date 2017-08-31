@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882118");
-  script_version("$Revision: 6376 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
+  script_version("$Revision: 6657 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:50:44 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-02-12 05:28:11 +0100 (Thu, 12 Feb 2015)");
   script_cve_id("CVE-2014-7822");
   script_tag(name:"cvss_base", value:"7.2");
@@ -81,7 +81,7 @@ rebooted for this update to take effect.
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

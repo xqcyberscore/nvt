@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_65674.nasl 4336 2016-10-24 15:48:20Z mime $
+# $Id: gb_openssh_65674.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # OpenSSH 'ssh-keysign.c' Local Information Disclosure Vulnerability
 #
@@ -49,7 +49,7 @@ if (description)
  script_tag(name:"cvss_base", value:"2.1");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_version ("$Revision: 4336 $");
+ script_version ("$Revision: 6724 $");
 
  script_name("OpenSSH 'ssh-keysign.c' Local Information Disclosure Vulnerability");
 
@@ -57,9 +57,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.openssh.com");
  script_xref(name:"URL", value:"http://www.openssh.com/txt/portable-keysign-rand-helper.adv");
  
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:48:20 +0200 (Mon, 24 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-04-09 12:29:38 +0200 (Wed, 09 Apr 2014)");
- script_summary("Check the version.");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

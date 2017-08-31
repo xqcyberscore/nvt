@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ioserver_mult_dir_trav_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
+# $Id: gb_ioserver_mult_dir_trav_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # IOServer Trailing Backslash Multiple Directory Traversal Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802445");
-  script_version("$Revision: 5999 $");
+  script_version("$Revision: 6697 $");
   script_cve_id("CVE-2012-4680");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-08-20 16:21:46 +0530 (Mon, 20 Aug 2012)");
   script_name("IOServer Trailing Backslash Multiple Directory Traversal Vulnerabilities");
 
@@ -41,10 +41,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_require_ports("Services/www", 81);
   script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 81);
   script_mandatory_keys("IOServer/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive information
   that could aid in further attacks.

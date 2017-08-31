@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2008-0031.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: ELSA-2008-0031.nasl 6553 2017-07-06 11:52:12Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122616");
-script_version("$Revision: 6229 $");
+script_version("$Revision: 6553 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:49:26 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:52:12 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2008-0031");
 script_tag(name: "insight", value: "ELSA-2008-0031 -  Important: xorg-x11-server security update - [1.1.1-48.26.4.0.1] - Add Enterprise Linux detection [1.1.1-48.26.4] - cve-2007-5760.patch: XFree86-Misc Extension Invalid Array Index Vulnerability - cve-2007-5958.patch: Xorg / XFree86 file existence disclosure vulnerability - cve-2007-6427.patch: XInput Extension Memory Corruption Vulnerability - cve-2007-6428.patch: TOG-CUP Extension Memory Corruption Vulnerability - cve-2007-6429.patch: EVI and MIT-SHM Extension Integer Overflow Vulnerability"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"9.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_piwik_php_code_exec_vuln.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_piwik_php_code_exec_vuln.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # Piwik PHP Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:piwik:piwik";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900992");
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 6704 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-12-31 08:44:14 +0100 (Thu, 31 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,7 +46,6 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("sw_piwik_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("piwik/installed");
 
   script_tag(name : "impact" , value : "Successful exploitation will let the remote attackers execute malicious PHP
@@ -77,12 +76,12 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-
 if(safe_checks()){
   exit(0);
 }
+
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if (dir == "/") dir = "";
 

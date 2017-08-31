@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882319");
-  script_version("$Revision: 6229 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+  script_version("$Revision: 6657 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:50:44 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-11-05 06:16:48 +0100 (Thu, 05 Nov 2015)");
   script_cve_id("CVE-2015-4513", "CVE-2015-7188", "CVE-2015-7189", "CVE-2015-7193",
                 "CVE-2015-7194", "CVE-2015-7196", "CVE-2015-7197", "CVE-2015-7198");
@@ -75,7 +75,7 @@ the update, Firefox must be restarted for the changes to take effect.
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

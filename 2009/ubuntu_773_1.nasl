@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_773_1.nasl 5231 2017-02-08 11:52:34Z teissa $
+# $Id: ubuntu_773_1.nasl 6639 2017-07-10 10:52:06Z cfischer $
 # Description: Auto-generated from advisory USN-773-1 (pango1.0)
 #
 # Authors:
@@ -57,8 +57,8 @@ announced via advisory USN-773-1.";
 if(description)
 {
  script_id(64174);
- script_version("$Revision: 5231 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+ script_version("$Revision: 6639 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:52:06 +0200 (Mon, 10 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-06-05 18:04:08 +0200 (Fri, 05 Jun 2009)");
  script_cve_id("CVE-2009-1194", "CVE-2009-1364", "CVE-2009-0719", "CVE-2009-0652", "CVE-2009-1302", "CVE-2009-1303", "CVE-2009-1304", "CVE-2009-1305", "CVE-2009-1306", "CVE-2009-1307", "CVE-2009-1308", "CVE-2009-1309", "CVE-2009-1311", "CVE-2009-1312", "CVE-2009-1572", "CVE-2009-1482", "CVE-2008-0068", "CVE-2008-1697", "CVE-2008-0928", "CVE-2008-4539", "CVE-2008-1945", "CVE-2009-1464", "CVE-2009-1465", "CVE-2009-1466", "CVE-2009-0042", "CVE-2009-1131", "CVE-2009-0556", "CVE-2009-1130", "CVE-2009-0227", "CVE-2009-0223", "CVE-2009-0220", "CVE-2009-1128");
  script_tag(name:"cvss_base", value:"10.0");
@@ -72,7 +72,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("Ubuntu Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name : "solution" , value : tag_solution);

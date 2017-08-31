@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_70372.nasl 5670 2017-03-21 15:13:03Z cfi $
+# $Id: gb_twiki_70372.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # TWiki 'debugenableplugins' Parameter Remote Code Execution Vulnerability
 #
@@ -34,17 +34,15 @@ if (description)
  script_cve_id("CVE-2014-7236");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 5670 $");
+ script_version ("$Revision: 6756 $");
  script_name("TWiki 'debugenableplugins' Parameter Remote Code Execution Vulnerability");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 16:13:03 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-10-27 12:57:24 +0100 (Mon, 27 Oct 2014)");
- script_summary("Determine if it is possible to execute perl code");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_twiki_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("twiki/installed");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/70372");

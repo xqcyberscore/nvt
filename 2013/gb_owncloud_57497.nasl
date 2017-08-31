@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_57497.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_owncloud_57497.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # ownCloud Multiple Security Vulnerabilities
 #
@@ -55,14 +55,14 @@ if (description)
  script_cve_id("CVE-2013-0201","CVE-2013-0202","CVE-2013-0203","CVE-2013-0204");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:P/A:P");
- script_version ("$Revision: 6086 $");
+ script_version ("$Revision: 6755 $");
 
  script_name("ownCloud Multiple Security Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/57497");
  script_xref(name : "URL" , value : "http://owncloud.org/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-01-24 11:21:02 +0100 (Thu, 24 Jan 2013)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -70,7 +70,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_owncloud_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("owncloud/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -82,8 +81,6 @@ include("host_details.inc");
 include("http_keepalive.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 url = dir + '/core/lostpassword/templates/resetpassword.php?l="><script>alert(/openvas-xss-test/)</script>&_=1';
 

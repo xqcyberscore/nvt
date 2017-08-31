@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0175.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: ELSA-2016-0175.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122881");
-script_version("$Revision: 5527 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-02-18 07:27:22 +0200 (Thu, 18 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0175");
 script_tag(name: "insight", value: "ELSA-2016-0175 -  glibc security and bug fix update - [2.12-1.166.7]- Update fix for CVE-2015-7547 (#1296028).[2.12-1.166.6]- Create helper threads with enough stack for POSIX AIO and timers (#1301625).[2.12-1.166.5]- Fix CVE-2015-7547: getaddrinfo() stack-based buffer overflow (#1296028).[2.12-1.166.4]- Support loading more libraries with static TLS (#1291270)."); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

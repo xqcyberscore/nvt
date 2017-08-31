@@ -30,11 +30,11 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6724 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-08 18:30:39 +0530 (Wed, 08 Jan 2014)");
   script_name("TYPO3 mailforms Unspecified Arbitrary Mail Relay Vulnerability");
 
@@ -72,7 +72,6 @@ http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-20050307-1";
   script_tag(name : "affected" , value : tag_affected);
 
   script_xref(name : "URL" , value : "http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-20050307-1");
-  script_summary("Check for the vulnerable version of TYPO3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

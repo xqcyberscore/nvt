@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mime_dos_vuln_win.nasl 4456 2016-11-09 12:40:37Z cfi $
+# $Id: gb_opera_mime_dos_vuln_win.nasl 6532 2017-07-05 07:42:05Z cfischer $
 #
 # Opera Web Browser DoS attacks on MIME via malformed MIME emails (Windows)
 #
@@ -38,8 +38,8 @@ tag_summary = "The host is installed with Opera Web Browser and is prone to
 if(description)
 {
   script_id(800081);
-  script_version("$Revision: 4456 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 13:40:37 +0100 (Wed, 09 Nov 2016) $");
+  script_version("$Revision: 6532 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-12-16 16:12:00 +0100 (Tue, 16 Dec 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -51,7 +51,7 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_opera_detection_win_900036.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "Opera/Win/Version");
+  script_mandatory_keys("Opera/Win/Version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

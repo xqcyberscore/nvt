@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0104.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: mgasa-2016-0104.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131261");
-script_version("$Revision: 5513 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-03-10 07:17:42 +0200 (Thu, 10 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0104");
 script_tag(name: "insight", value: "Multiple directory traversal vulnerabilities in pigz 2.3.1 allow remote attackers to write to arbitrary files via a full pathname or .. (dot dot) in an archive (CVE-2015-1191)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0104");
 script_copyright("Eero Volotinen");

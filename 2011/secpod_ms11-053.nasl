@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-053.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-053.nasl 6506 2017-07-03 10:22:51Z cfischer $
 #
 # Microsoft Bluetooth Stack Remote Code Execution Vulnerability (2566220)
 #
@@ -38,19 +38,24 @@ tag_solution = "Run Windows Update and update the listed hotfixes or download an
 
 tag_impact = "Successful exploitation could allow remote attackers to execute arbitrary
   code with SYSTEM-level privileges.
+
   Impact Level: System";
+
 tag_affected = "Microsoft Windows Vista Service Pack 2 and prior
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior";
+
 tag_insight = "The flaw is due to the way an object in memory is accessed when it has
   not been correctly initialized or has been deleted.";
+
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS11-053.";
 
 if(description)
 {
-  script_id(902395);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902395");
+  script_version("$Revision: 6506 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 12:22:51 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-07-13 17:31:13 +0200 (Wed, 13 Jul 2011)");
   script_cve_id("CVE-2011-1265");
   script_bugtraq_id(48617);
@@ -64,8 +69,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("smb_reg_service_pack.nasl", "smb_login.nasl");
-  script_require_keys("SMB/login","SMB/password");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name : "impact" , value : tag_impact);
@@ -73,6 +78,7 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "solution" , value : tag_solution);
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -101,6 +107,8 @@ host    = get_host_ip();
 
 usrname = get_kb_item("SMB/login");
 passwd  = get_kb_item("SMB/password");
+domain  = get_kb_item("SMB/domain");
+if( domain ) usrname = domain + '\\' + usrname;
 
 if(!host || !usrname || !passwd){
   exit(0);

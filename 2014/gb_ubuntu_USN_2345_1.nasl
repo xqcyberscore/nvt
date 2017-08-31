@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842005");
-  script_version("$Revision: 2812 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 12:51:30 +0100 (Wed, 09 Mar 2016) $");
+  script_version("$Revision: 6724 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-15 06:09:08 +0200 (Wed, 15 Oct 2014)");
   script_cve_id("CVE-2014-3178", "CVE-2014-3190", "CVE-2014-3191", "CVE-2014-3192",
                 "CVE-2014-3179", "CVE-2014-3200", "CVE-2014-3188", "CVE-2014-3194",
@@ -93,12 +93,11 @@ sandboxed render process. (CVE-2014-7967)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2345-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-October/002697.html");
-  script_summary("Check for the Version of oxide-qt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

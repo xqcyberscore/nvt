@@ -38,8 +38,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://195.135.221.135/opensuse-security-announce/2012-11/msg00005.html");
   script_id(850362);
-  script_version("$Revision: 3049 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:02:28 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 6672 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:43:53 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:45 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-5274", "CVE-2012-5275", "CVE-2012-5276", "CVE-2012-5277",
                 "CVE-2012-5278", "CVE-2012-5279", "CVE-2012-5280");
@@ -53,7 +53,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

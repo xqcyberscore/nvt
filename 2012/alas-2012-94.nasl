@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2012-94.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: alas-2012-94.nasl 6578 2017-07-06 13:44:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120099");
-script_version("$Revision: 5958 $");
+script_version("$Revision: 6578 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:17:23 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:44:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2012-94");
 script_tag(name: "insight", value: "A flaw was found in the way the crypt() password hashing function from the optional PostgreSQL pgcrypto contrib module performed password transformation when used with the DES algorithm. If the password string to be hashed contained the 0x80 byte value, the remainder of the string was ignored when calculating the hash, significantly reducing the password strength. This made brute-force guessing more efficient as the whole password was not required to gain access to protected resources. (CVE-2012-2143 )Note: With this update, the rest of the string is properly included in the DES hash; therefore, any previously stored password values that are affected by this issue will no longer match. In such cases, it will be necessary for those stored password hashes to be updated.A denial of service flaw was found in the way the PostgreSQL server performed a user privileges check when applying SECURITY DEFINER or SET attributes to a procedural language's (such as PL/Perl or PL/Python) call handler function. A non-superuser database owner could use this flaw to cause the PostgreSQL server to crash due to infinite recursion. (CVE-2012-2655 )"); 
 script_tag(name : "solution", value : "Run yum update postgresql8 to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"4.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

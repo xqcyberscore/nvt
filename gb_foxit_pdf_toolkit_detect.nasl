@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_pdf_toolkit_detect.nasl 5141 2017-01-31 07:40:05Z antu123 $
+# $Id: gb_foxit_pdf_toolkit_detect.nasl 6506 2017-07-03 10:22:51Z cfischer $
 #
 # Foxit PDF Toolkit Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810522");
-  script_version("$Revision: 5141 $");
+  script_version("$Revision: 6506 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 08:40:05 +0100 (Tue, 31 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 12:22:51 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-01-25 15:52:27 +0530 (Wed, 25 Jan 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Foxit PDF Toolkit Detection");
@@ -61,6 +61,8 @@ host    = get_host_ip();
 
 usrname = get_kb_item("SMB/login");
 passwd  = get_kb_item("SMB/password");
+domain  = get_kb_item("SMB/domain");
+if( domain ) usrname = domain + '\\' + usrname;
 
 if(!host || !usrname || !passwd){
   exit(0);

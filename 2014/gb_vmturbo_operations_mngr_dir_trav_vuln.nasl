@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmturbo_operations_mngr_dir_trav_vuln.nasl 5628 2017-03-20 15:27:40Z cfi $
+# $Id: gb_vmturbo_operations_mngr_dir_trav_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # VM Turbo Operations Manager Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804448");
-  script_version("$Revision: 5628 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-3806");
   script_bugtraq_id(67292);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-09 14:42:04 +0530 (Fri, 09 May 2014)");
   script_name("VM Turbo Operations Manager Directory Traversal Vulnerability");
 
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/532061");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/vm-turbo-operations-manager-45x-directory-traversal");
   script_xref(name : "URL" , value : "https://support.vmturbo.com/hc/en-us/articles/203170127-VMTurbo-Operations-Manager-v4-6-Announcement");
-  script_summary("Check if VM Turbo Operations Manager is vulnerable to Directory Traversal");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_71204.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_wordpress_71204.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # WordPress CM Download Manager Plugin Remote PHP Code Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-8877");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6756 $");
 
  script_name("WordPress CM Download Manager Plugin Remote PHP Code Execution Vulnerability");
 
@@ -54,17 +54,15 @@ execution vulnerability");
  script_tag(name: "affected" , value:"CM Download Manager 2.0.0 and prior are vulnerable.");
  script_tag(name:"solution_type", value: "VendorFix"); 
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-11-21 10:16:00 +0100 (Fri, 21 Nov 2014)");
- script_summary("Determine if it is possible to execute php code");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("secpod_wordpress_detect_900182.nasl");
- script_mandatory_keys("wordpress/installed");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("wordpress/installed");
 
  exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-022.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: secpod_ms12-022.nasl 6520 2017-07-04 14:28:49Z cfischer $
 #
 # Microsoft Expression Design Remote Code Execution Vulnerability (2651018)
 #
@@ -45,12 +45,12 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(903000);
-  script_version("$Revision: 5977 $");
+  script_version("$Revision: 6520 $");
   script_cve_id("CVE-2012-0016");
   script_bugtraq_id(52375);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:28:49 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-03-14 10:53:40 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Expression Design Remote Code Execution Vulnerability (2651018)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48353/");
@@ -61,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_expression_design_detect.nasl");
-  script_require_keys("MS/Expression/Design/Ver", "MS/Expression/Install/Path");
+  script_mandatory_keys("MS/Expression/Design/Ver", "MS/Expression/Install/Path");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

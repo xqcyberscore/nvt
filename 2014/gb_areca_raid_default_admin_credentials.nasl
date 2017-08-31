@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_areca_raid_default_admin_credentials.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_areca_raid_default_admin_credentials.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Areca Raid Storage Manager Default Admin Credentials
 #
@@ -40,13 +40,12 @@ tag_solution = 'Change the password.';
 if (description)
 {
  script_oid(SCRIPT_OID); 
- script_version("$Revision: 5390 $");
+ script_version("$Revision: 6692 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Areca Raid Storage Manager Default Admin Credentials");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-03-13 12:02:06 +0200 (Thu, 13 Mar 2014)");
- script_summary("Determine if it is possible to login with default credentials.");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");

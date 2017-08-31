@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: horde_33367.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: horde_33367.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # Horde XSS Filter Cross Site Scripting Vulnerability
 #
@@ -40,8 +40,8 @@ tag_summary = "Horde is prone to a cross-site scripting vulnerability because it
 if (description)
 {
  script_id(100117);
- script_version("$Revision: 4970 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+ script_version("$Revision: 6704 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-04-10 19:06:18 +0200 (Fri, 10 Apr 2009)");
  script_bugtraq_id(33367);
  script_cve_id("CVE-2008-5917");
@@ -57,7 +57,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("horde_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("horde/installed");
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/33367");
@@ -68,9 +67,6 @@ include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
-
 if(!version = get_kb_item(string("www/", port, "/horde")))exit(0);
 if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
 

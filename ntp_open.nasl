@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ntp_open.nasl 5738 2017-03-27 14:25:56Z mime $
+# $Id: ntp_open.nasl 6839 2017-08-03 07:56:46Z cfischer $
 #
 # NTP read variables
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10884");
-  script_version("$Revision: 5738 $");
+  script_version("$Revision: 6839 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:25:56 +0200 (Mon, 27 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-03 09:56:46 +0200 (Thu, 03 Aug 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("NTP read variables");
   script_category(ACT_GATHER_INFO);
@@ -119,13 +119,69 @@ if( r ) {
       os = ereg_replace( string:s, pattern:".*system='([^']*)'.*", replace:"\1" );
       set_kb_item( name:"Host/OS/ntp", value:os );
 
-      #TODO: Add more patterns
       if( "linux" >< tolower( os ) ) {
-        register_and_report_os( os:os, cpe:"cpe:/o:linux:kernel", banner_type:banner_type, banner:list, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        if( "-gentoo" >< os ) {
+          register_and_report_os( os:"Gentoo", cpe:"cpe:/o:gentoo:linux", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else if( "-amazon" >< tolower( os ) ) {
+          register_and_report_os( os:"Amazon Linux", cpe:"cpe:/o:amazon:linux", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else {
+          version = eregmatch( pattern:"Linux/([0-9.]+)", string:os );
+          if( ! isnull( version[1] ) ) {
+            register_and_report_os( os:"Linux", version:version[1], cpe:"cpe:/o:linux:kernel", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          }
+        }
       } else if( "windows" >< tolower( os ) ) {
-        register_and_report_os( os:os, cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, banner:list, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"windows" );
+        register_and_report_os( os:os, cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"windows" );
+      } else if( "unix" >< tolower( os ) ) {
+        register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else if( "freebsd" >< tolower( os ) ) {
+        version = eregmatch( pattern:"FreeBSD/([0-9.a-zA-Z\-]+)", string:os );
+        if( ! isnull( version[1] ) ) {
+          register_and_report_os( os:"FreeBSD", version:version[1], cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else {
+          register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
+      } else if( "netbsd" >< tolower( os ) ) {
+        version = eregmatch( pattern:"NetBSD/([0-9.a-zA-Z\-]+)", string:os );
+        if( ! isnull( version[1] ) ) {
+          register_and_report_os( os:"NetBSD", version:version[1], cpe:"cpe:/o:netbsd:netbsd", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else {
+          register_and_report_os( os:"NetBSD", cpe:"cpe:/o:netbsd:netbsd", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
+      } else if( "openbsd" >< tolower( os ) ) {
+        version = eregmatch( pattern:"OpenBSD/([0-9.a-zA-Z\-]+)", string:os );
+        if( ! isnull( version[1] ) ) {
+          register_and_report_os( os:"OpenBSD", version:version[1], cpe:"cpe:/o:openbsd:openbsd", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else {
+          register_and_report_os( os:"OpenBSD", cpe:"cpe:/o:openbsd:openbsd", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
+      } else if( "sunos" >< tolower( os ) ) {
+        version = eregmatch( pattern:"SunOS/([0-9.a-zA-Z\-]+)", string:os );
+        if( ! isnull( version[1] ) ) {
+          register_and_report_os( os:"SunOS", version:version[1], cpe:"cpe:/o:sun:sunos", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else {
+          register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
+      } else if( "hp-ux" >< tolower( os ) ) {
+        version = eregmatch( pattern:"HP-UX/([0-9.a-zA-Z\-]+)", string:os );
+        if( ! isnull( version[1] ) ) {
+          register_and_report_os( os:"HP-UX", version:version[1], cpe:"cpe:/o:hp:hp-ux", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else {
+          register_and_report_os( os:"HP-UX", cpe:"cpe:/o:hp:hp-ux", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
+      } else if( "data ontap" >< tolower( os ) ) {
+        version = eregmatch( pattern:"Data ONTAP/([0-9.a-zA-Z\-]+)", string:os );
+        if( ! isnull( version[1] ) ) {
+          register_and_report_os( os:"NetApp Data ONTAP", version:version[1], cpe:"cpe:/o:netapp:data_ontap", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else {
+          register_and_report_os( os:"NetApp Data ONTAP", cpe:"cpe:/o:netapp:data_ontap", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
       } else {
-        register_and_report_os( os:os, banner_type:banner_type, banner:list, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unknown" );
+        # Setting the runs_key to unixoide makes sure that we still schedule NVTs using Host/runs_unixoide as a fallback
+        register_and_report_os( os:os, banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        register_unknown_os_banner( banner:s, banner_type_name:banner_type, banner_type_short:"ntp_banner", port:port, proto:proto );
       }
     }
 

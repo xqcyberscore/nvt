@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_20170313.nasl 5806 2017-03-31 07:21:48Z teissa $
+# $Id: gb_qnap_qts_20170313.nasl 6923 2017-08-15 10:09:03Z ckuersteiner $
 #
 # QNAP QTS Multiple Arbitrary Command Execution Vulnerabilities
 #
@@ -31,14 +31,16 @@ if (description)
  script_cve_id("CVE-2017-6361","CVE-2017-6360","CVE-2017-6359");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5806 $");
+ script_version ("$Revision: 6923 $");
+
+ script_cve_id("CVE-2017-6359", "CVE-2017-6360", "CVE-2017-6361");
 
  script_name("QNAP QTS Multiple Arbitrary Command Execution Vulnerabilities");
 
  script_xref(name:"URL", value:"https://www.qnap.com/en-us/releasenotes/");
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/97059");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-31 09:21:48 +0200 (Fri, 31 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-15 12:09:03 +0200 (Tue, 15 Aug 2017) $");
  script_tag(name:"creation_date", value:"2017-03-24 12:56:10 +0100 (Fri, 24 Mar 2017)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-0728.nasl 6369 2017-06-19 10:00:04Z teissa $
+# $Id: ELSA-2015-0728.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123150");
-script_version("$Revision: 6369 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:59:59 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-0728");
 script_tag(name: "insight", value: "ELSA-2015-0728 -  ipa and slapi-nis security and bug fix update - ipa[4.1.0-18.0.1.el7_1.3]- Replace login-screen-logo.png [20362818]- Drop subscription-manager requires for OL7- Drop redhat-access-plugin-ipa requires for OL7- Blank out header-logo.png product-name.png[4.1.0-18.3]- [ipa-python] ipalib.errors.LDAPError: failed to decode certificate: (SEC_ERROR_INVALID_ARGS) security library: invalid arguments. (#1194312)[4.1.0-18.2]- IPA extdom plugin fails when encountering large groups (#1193759)- CVE-2015-0283 ipa: slapi-nis: infinite loop in getgrnam_r() and getgrgid_r() (#1202997)[4.1.0-18.1]- 'an internal error has occurred' during ipa host-del --updatedns (#1198431)- Renamed patch 1013 to 0114, as it was merged upstream- Fax number not displayed for user-show when kinit'ed as normal user. (#1198430)- Replication agreement with replica not disabled when ipa-restore done without IPA installed (#1199060)- Limit deadlocks between DS plugin DNA and slapi-nis (#1199128)slapi-nis[0.54-3]- Fix CVE-2015-0283- Resolves: #1202995"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

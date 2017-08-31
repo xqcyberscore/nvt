@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-033.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-033.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Microsoft Window XML Core Services Information Disclosure Vulnerability (2966061)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804635");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-1816");
   script_bugtraq_id(67895);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-11 08:45:39 +0530 (Wed, 11 Jun 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name(" Microsoft Window XML Core Services Information Disclosure Vulnerability (2966061)");
@@ -84,7 +84,6 @@ https://technet.microsoft.com/en-us/library/security/ms14-033";
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2957482");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2966631");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/ms14-033");
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

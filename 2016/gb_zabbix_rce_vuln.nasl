@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_rce_vuln.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: gb_zabbix_rce_vuln.nasl 6722 2017-07-14 08:54:37Z cfischer $
 #
 # Zabbix Remote Code Execution Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106181");
-  script_version("$Revision: 5712 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 6722 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-14 10:54:37 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name: "creation_date", value: "2016-08-17 11:04:27 +0700 (Wed, 17 Aug 2016)");
   script_tag(name: "cvss_base", value: "8.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:N");
 
   script_cve_id("CVE-2016-9140");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
   script_tag(name: "solution_type", value: "VendorFix");
 

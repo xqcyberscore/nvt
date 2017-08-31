@@ -41,8 +41,8 @@ if(description)
   script_cve_id("CVE-2011-1589");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 3084 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-15 15:25:44 +0200 (Fri, 15 Apr 2016) $");
+ script_version("$Revision: 6626 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:30:10 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-05-05 07:14:22 +0200 (Thu, 05 May 2011)");
   script_xref(name: "FEDORA", value: "2011-5504");
   script_name("Fedora Update for perl-Mojolicious FEDORA-2011-5504");
@@ -52,7 +52,7 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

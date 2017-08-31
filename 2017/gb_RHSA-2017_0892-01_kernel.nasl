@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871794");
-  script_version("$Revision: 5962 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 10:01:50 +0200 (Tue, 18 Apr 2017) $");
+  script_version("$Revision: 6691 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:51:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-04-12 06:32:25 +0200 (Wed, 12 Apr 2017)");
   script_cve_id("CVE-2016-7910", "CVE-2017-2636");
   script_tag(name:"cvss_base", value:"9.3");
@@ -84,7 +84,7 @@ can now read /proc/stat without consuming a large amount of CPU.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

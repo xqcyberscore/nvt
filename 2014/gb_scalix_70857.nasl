@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scalix_70857.nasl 2823 2016-03-10 07:27:58Z antu123 $
+# $Id: gb_scalix_70857.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Scalix Web Access XML External Entity Injection and Cross Site Scripting Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_bugtraq_id(70857,70859);
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 2823 $");
+ script_version ("$Revision: 6715 $");
 
  script_name("Scalix Web Access XML External Entity Injection and Cross Site Scripting Vulnerability");
 
@@ -56,9 +56,8 @@ and to a Cross Site Scripting vulnerability.");
  script_tag(name: "affected" , value:"Scalix Web Access versions 11.4.6.12377, and 12.2.0.14697 are
 vulnerable.");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 08:27:58 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-11-03 14:30:39 +0100 (Mon, 03 Nov 2014)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("General");

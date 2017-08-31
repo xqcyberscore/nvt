@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804350";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-0506", "CVE-2014-0510");
   script_bugtraq_id(66208, 66241);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-01 12:15:19 +0530 (Tue, 01 Apr 2014)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - 01 Apr14 (Windows)");
 
@@ -76,7 +76,6 @@ For updates refer to http://get.adobe.com/flashplayer";
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1029969");
   script_xref(name : "URL" , value : "https://www.hkcert.org/my_url/en/alert/14033103");
   script_xref(name : "URL" , value : "http://www.pwn2own.com/2014/03/pwn2own-results-for-wednesday-day-one");
-  script_summary("Check for the vulnerable version of Adobe Flash Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

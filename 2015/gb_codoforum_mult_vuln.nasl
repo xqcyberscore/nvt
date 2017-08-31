@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_codoforum_mult_vuln.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_codoforum_mult_vuln.nasl 6497 2017-06-30 09:58:54Z teissa $
 #
 # Codoforum Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:codoforum:codoforum";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806015");
-  script_version("$Revision: 2583 $");
+  script_version("$Revision: 6497 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-19 14:54:43 +0530 (Wed, 19 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Codoforum Multiple Vulnerabilities");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Aug/32");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Aug/31");
 
-  script_summary("Check if Codoforum is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

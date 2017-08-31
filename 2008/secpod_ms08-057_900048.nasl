@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-057_900048.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_ms08-057_900048.nasl 6538 2017-07-05 11:38:27Z cfischer $
 # Description: Microsoft Excel Remote Code Execution Vulnerability (956416)
 #
 # Authors:
@@ -45,8 +45,8 @@ tag_summary = "This host is missing critical security update according to
 if(description)
 {
   script_id(900048);
-  script_version("$Revision: 5370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6538 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-10-15 19:56:48 +0200 (Wed, 15 Oct 2008)");
   script_bugtraq_id(31702, 31705, 31706);
   script_cve_id("CVE-2008-3471", "CVE-2008-3477", "CVE-2008-4019");
@@ -57,10 +57,9 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_name("Microsoft Excel Remote Code Execution Vulnerability (956416)");
   script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-057.mspx");
-  script_dependencies("secpod_office_products_version_900032.nasl",
-                      "secpod_ms_office_detection_900025.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "SMB/Office/Excel/Version");
-  script_require_ports(139, 445);
+  script_dependencies("secpod_office_products_version_900032.nasl", "secpod_ms_office_detection_900025.nasl");
+  script_mandatory_keys("MS/Office/Ver", "SMB/Office/Excel/Version");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -71,12 +70,7 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
-
-if(!get_kb_item("SMB/WindowsVersion")){
-  exit(0);
-}
 
 if(egrep(pattern:"^(9|10|11|12)\..*", string:get_kb_item("MS/Office/Ver")))
 {

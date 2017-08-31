@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mediahouse_statistics_web_server.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: mediahouse_statistics_web_server.nasl 6540 2017-07-05 12:42:02Z cfischer $
 # Description: Mediahouse Statistics Web Server Detect
 #
 # Authors:
@@ -45,45 +45,34 @@ upgrade to the latest version if necessary.";
 
 if(description)
 {
- script_id(10748);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(1568);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_cve_id("CVE-2000-0776");
+  script_oid("1.3.6.1.4.1.25623.1.0.10748");
+  script_version("$Revision: 6540 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:42:02 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(1568);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2000-0776");
+  script_name("Mediahouse Statistics Web Server Detect");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2001 SecuriTeam");
+  script_family("Web Servers");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("Statistics_Server/banner");
 
- name = "Mediahouse Statistics Web Server Detect";
- script_name(name);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
 
- summary = "Mediahouse Statistics Web Server Detection";
-
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
- script_copyright("This script is Copyright (C) 2001 SecuriTeam");
- family = "General";
- script_family(family);
-
- script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("Statistics_Server/banner");
- script_require_keys("www/statistics-server");
- script_require_ports("Services/www", 80);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
 include("http_func.inc");
 
 port = get_http_port(default:80);
-
-
-if(!get_port_state(port))exit(0);
 
 buf  = get_http_banner(port:port);
 

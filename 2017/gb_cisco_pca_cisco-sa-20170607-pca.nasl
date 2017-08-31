@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pca_cisco-sa-20170607-pca.nasl 6292 2017-06-08 06:36:42Z ckuersteiner $
+# $Id: gb_cisco_pca_cisco-sa-20170607-pca.nasl 6479 2017-06-29 07:59:07Z teissa $
 #
 # Cisco Prime Collaboration Assurance Cross-Site Request Forgery Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106859");
  script_cve_id("CVE-2017-6659");
- script_tag(name: "cvss_base", value: "7.5");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 6292 $");
+ script_tag(name:"cvss_base", value:"6.8");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+ script_version("$Revision: 6479 $");
 
  script_name("Cisco Prime Collaboration Assurance Cross-Site Request Forgery Vulnerability");
 
@@ -57,7 +57,7 @@ a targeted device via a web browser and with the privileges of the user.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-06-08 08:36:42 +0200 (Thu, 08 Jun 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-06-29 09:59:07 +0200 (Thu, 29 Jun 2017) $");
  script_tag(name: "creation_date", value: "2017-06-08 13:13:16 +0700 (Thu, 08 Jun 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

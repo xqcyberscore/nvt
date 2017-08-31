@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_appweb_45568.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_appweb_45568.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # Appweb Web Server Cross Site Scripting Vulnerability
 #
@@ -39,8 +39,8 @@ tag_solution = "Updates are available. Please see the reference for more details
 if (description)
 {
  script_id(103001);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6696 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-01-03 14:40:34 +0100 (Mon, 03 Jan 2011)");
  script_bugtraq_id(45568);
  script_tag(name:"cvss_base", value:"2.6");
@@ -60,7 +60,6 @@ if (description)
  script_dependencies("gb_get_http_banner.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("Embedthis-Appweb/banner");
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -71,7 +70,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
    
 port = get_http_port(default:8080);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if(!banner || "Server: Embedthis-Appweb/" >!< banner)exit(0);

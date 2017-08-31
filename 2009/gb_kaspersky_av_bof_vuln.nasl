@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_av_bof_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_kaspersky_av_bof_vuln.nasl 6516 2017-07-04 12:20:47Z cfischer $
 #
 # Kaspersky AntiVirus Buffer Overflow Vulnerability
 #
@@ -45,8 +45,8 @@ tag_summary = "This host is running Kaspersky AntiVirus or Workstation and is
 if(description)
 {
   script_id(800242);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 6516 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-02-16 16:42:20 +0100 (Mon, 16 Feb 2009)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -61,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_kaspersky_av_detect.nasl");
-  script_require_keys("Kaspersky/AV/Ver", "Kaspersky/AV-Workstation/Ver");
+  script_mandatory_keys("Kaspersky/products/installed");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

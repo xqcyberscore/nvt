@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_detect.nasl 5506 2017-03-07 10:08:00Z ckuerste $
+# $Id: gb_openemr_detect.nasl 6933 2017-08-16 08:22:25Z asteins $
 #
 # OpenEMR Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103018");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5506 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:08:00 +0100 (Tue, 07 Mar 2017) $");
+  script_version("$Revision: 6933 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-16 10:22:25 +0200 (Wed, 16 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-07 13:52:38 +0100 (Fri, 07 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OpenEMR Detection");
@@ -84,7 +84,8 @@ foreach dir( make_list_unique( "/", "/openemr", cgi_dirs( port:port ) ) ) {
       req = http_get(item: url, port: port);
       buf = http_keepalive_send_recv(port: port, data: req);
 
-      ver = eregmatch(pattern: "<td>([0-9dev (.-]+)</td>.*Log In</a></td>", string: buf);
+      ## the following regex is matching to this (for example): "<td>5.0.0 (3)</td><td><a href="[...]">Log In</a></td>"
+      ver = eregmatch(pattern: "<td>([0-9dev (.-]+)\)?</td>.*Log In</a></td>", string: buf);
     }
 
     if( isnull( ver[1] ) ) {
@@ -105,9 +106,9 @@ foreach dir( make_list_unique( "/", "/openemr", cgi_dirs( port:port ) ) ) {
     set_kb_item( name:"openemr/installed", value:TRUE );
     set_kb_item( name:"www/" + port + "/OpenEMR", value:tmp_version );
 
-    cpe = build_cpe( value:version, exp:"^([0-9dev.-]+)", base:"cpe:/a:openemr:openemr:" );
+    cpe = build_cpe( value:version, exp:"^([0-9dev.]+)-?([0-9])?", base:"cpe:/a:open-emr:openemr:" );
     if( ! cpe )
-      cpe = 'cpe:/a:openemr:openemr';
+      cpe = 'cpe:/a:open-emr:openemr';
 
     register_product( cpe:cpe, location:install, port:port );
 

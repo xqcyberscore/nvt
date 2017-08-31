@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: mssql_version.nasl 5943 2017-04-12 14:44:26Z antu123 $
+# $Id: mssql_version.nasl 6456 2017-06-28 11:19:33Z cfischer $
 #
 # Microsoft's SQL Version Query
 #
@@ -40,8 +40,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11217");
-  script_version("$Revision: 5943 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
+  script_version("$Revision: 6456 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 18:10:09 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(1292, 2030, 2042, 2043, 2863, 3733, 4135, 4847, 5014, 5205);
   script_tag(name:"cvss_base", value:"7.5");
@@ -54,11 +54,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 John Lampe");
   script_family("Windows");
-  script_dependencies("netbios_name_get.nasl", "smb_login.nasl",
-                      "smb_registry_access.nasl", "mssqlserver_detect.nasl");
-  script_require_keys("SMB/transport", "SMB/name", "SMB/login", "SMB/password");
-  script_mandatory_keys("SMB/registry_full_access");
+  script_dependencies("smb_reg_service_pack.nasl", "mssqlserver_detect.nasl");
   script_require_ports(139, 445, 1433, "Services/mssql");
+  script_mandatory_keys("SMB/WindowsVersion");
 
   tag_summary = "The plugin attempts a smb connection to read version from
   the registry key 
@@ -80,7 +78,6 @@ if(description)
  
   exit(0);
 }
-
 
 mssql_port = get_kb_item("Services/mssql");
 if(!mssql_port)mssql_port = 1433;

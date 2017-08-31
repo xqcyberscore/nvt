@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vBulletin_38179.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: vBulletin_38179.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # vBulletin Multiple Cross Site Scripting Vulnerabilities
 #
@@ -34,12 +34,11 @@ credentials and to launch other attacks.
 
 These issues affect vBulletin 3.0.0 through 3.5.4.";
 
-
 if (description)
 {
  script_id(100500);
- script_version("$Revision: 5401 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-02-22 14:49:01 +0100 (Mon, 22 Feb 2010)");
  script_bugtraq_id(38179);
  script_tag(name:"cvss_base", value:"2.6");
@@ -57,7 +56,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("vbulletin_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("vBulletin/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -68,9 +66,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
-if (!can_host_php(port:port)) exit(0);
 
 if(!version = get_kb_item(string("www/", port, "/vBulletin")))exit(0);
 if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);

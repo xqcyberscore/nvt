@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_session_hijacking_vuln.nasl 5347 2017-02-19 09:15:55Z cfi $
+# $Id: gb_drupal_session_hijacking_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Drupal Session Hijacking Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:drupal:drupal';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105935");
-  script_version("$Revision: 5347 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-02-19 10:15:55 +0100 (Sun, 19 Feb 2017) $");
+  script_version("$Revision: 6692 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name : "creation_date", value : "2014-12-09 16:55:49 +0700 (Tue, 09 Dec 2014)");
   script_tag(name : "cvss_base", value : "6.8");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -52,7 +52,6 @@ if (description)
   script_mandatory_keys("drupal/installed");
 
   script_tag(name : "summary", value : "Drupal is vulnerable to session hijacking.");
-  script_summary("Drupal is vulnerable to session hijacking.");
 
   script_tag(name : "vuldetect", value : "Check the version of Drupal.");
 

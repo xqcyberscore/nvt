@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-091.nasl 4588 2016-11-22 08:31:30Z cfi $
+# $Id: secpod_ms11-091.nasl 6538 2017-07-05 11:38:27Z cfischer $
 #
 # Microsoft Publisher Remote Code Execution Vulnerabilities (2607702)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902493");
-  script_version("$Revision: 4588 $");
+  script_version("$Revision: 6538 $");
   script_cve_id("CVE-2011-1508", "CVE-2011-3410", "CVE-2011-3411", "CVE-2011-3412");
   script_bugtraq_id(50090, 50943, 50949, 50955);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-22 09:31:30 +0100 (Tue, 22 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-12-14 09:22:08 +0530 (Wed, 14 Dec 2011)");
   script_name("Microsoft Publisher Remote Code Execution Vulnerabilities (2607702)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_office_products_version_900032.nasl",
-                      "secpod_ms_office_detection_900025.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "SMB/Office/Publisher/Version");
+  script_dependencies("secpod_office_products_version_900032.nasl", "secpod_ms_office_detection_900025.nasl");
+  script_mandatory_keys("MS/Office/Ver", "SMB/Office/Publisher/Version");
 
   tag_impact = "Successful exploitation could allow an attacker to execute arbitrary code on
   the remote system.
@@ -78,8 +77,6 @@ if(description)
 }
 
 include("version_func.inc");
-
-if( ! get_kb_item( "SMB/WindowsVersion" ) ) exit( 0 );
 
 ## Grep for Office Publisher Version from KB
 pubVer = get_kb_item( "SMB/Office/Publisher/Version" );

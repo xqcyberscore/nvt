@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 6130 2017-05-15 14:47:43Z cfi $
+# $Id: cgi_directories.nasl 6905 2017-08-11 11:50:56Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 6130 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 16:47:43 +0200 (Mon, 15 May 2017) $");
+  script_version("$Revision: 6905 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-11 13:50:56 +0200 (Fri, 11 Aug 2017) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,7 +54,8 @@ if(description)
 
   - The configured 'cgi_path' within the 'Scanner Preferences' of the scan config in use
 
-  - The configured 'Enable CGI scanning' within the 'Global variable settings' of the scan config in use
+  - The configured 'Enable CGI scanning' and 'Enable generic web application scanning' within the 'Global variable settings'
+  of the scan config in use
 
   If you think any of these are wrong please report openvas-plugins@wald.intevation.org");
 
@@ -87,10 +88,15 @@ frontpageList = get_kb_list( "www/" + port + "/content/frontpage_results" );
 skippedDirList = get_kb_list( "www/" + port + "/content/skipped_directories" );
 excludedDirList = get_kb_list( "www/" + port + "/content/excluded_directories" );
 httpVersion = get_kb_item( "http/" + port );
+maxPagesReached = get_kb_item( "www/" + port + "/content/max_pages_reached" );
 
 #report = 'The hostname "' + http_host_name( port:port ) + '" is used.\n\n'; #TODO is this forking?
 
 #TODO: Add no404.nasl
+
+if( get_kb_item( "Settings/disable_generic_webapp_scanning" ) ) {
+  report += 'Generic web application scanning is disabled for this host via the "Enable generic web application scanning" option within the "Global variable settings" of the scan config in use.\n\n';
+}
 
 if( get_kb_item( "Services/www/" + port + "/broken" ) ) {
   report += 'This service is marked as broken and no CGI scanning is launched against it.\n\n';
@@ -262,6 +268,14 @@ if( ! isnull( frontpageList ) ) {
     report += frontpage + '\n';
   }
   report += '\n';
+}
+
+if( maxPagesReached ) {
+
+  report += 'The "Number of pages to mirror" setting of the NVT';
+  report += ' "Web mirroring" (OID: 1.3.6.1.4.1.25623.1.0.10662) was reached.';
+  report += ' Raising this limit allows to mirror this host more thoroughly';
+  report += ' but might increase the scanning time.\n\n';
 }
 
 if( ! isnull( cgiList ) ) {

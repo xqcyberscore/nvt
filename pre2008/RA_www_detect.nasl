@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: RA_www_detect.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: RA_www_detect.nasl 6695 2017-07-12 11:17:53Z cfischer $
 #
 # RemotelyAnywhere WWW detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10920");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 6695 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("RemotelyAnywhere WWW detection");
@@ -42,7 +42,6 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("RemotelyAnywhere/banner");
   script_require_ports("Services/www", 2000, 2001);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   tag_summary = "The RemotelyAnywhere WWW server is running on this system.
   According to NAVCIRT attackers love this management tool.

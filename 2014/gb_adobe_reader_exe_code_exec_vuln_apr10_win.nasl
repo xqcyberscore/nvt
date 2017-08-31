@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_exe_code_exec_vuln_apr10_win.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_adobe_reader_exe_code_exec_vuln_apr10_win.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Adobe Reader EXE Code Execution Vulnerability Apr10 (Windows)
 #
@@ -30,11 +30,11 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804367";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2009-4764");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-08 14:57:04 +0530 (Tue, 08 Apr 2014)");
   script_name("Adobe Reader EXE Code Execution Vulnerability Apr10 (Windows)");
 
@@ -76,7 +76,6 @@ features, remove the product or replace the product by another one.";
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/57994");
   script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/392605.php");
-  script_summary("Check for the vulnerable version of Adobe Reader on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

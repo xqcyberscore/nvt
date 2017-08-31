@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: gator.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: gator.nasl 6456 2017-06-28 11:19:33Z cfischer $
 # Description: Gator/GAIN Spyware Installed
 #
 # Authors:
@@ -32,39 +32,26 @@ tag_solution = "Uninstall the software";
 
 if(description)
 {
- script_id(11883);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.11883");
+  script_version("$Revision: 6456 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("Gator/GAIN Spyware Installed");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2003 Jeff Adams");
+  script_family("Windows");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
 
- name = "Gator/GAIN Spyware Installed";
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
 
- script_name(name);
- 
-
-
- 
- summary = "Determines if Gator Spyware is installed";
-
- 
- script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
- 
- script_copyright("This script is Copyright (C) 2003 Jeff Adams");
- family = "Windows";
- script_family(family);
- 
- script_dependencies("secpod_reg_enum.nasl");
- script_require_keys("SMB/name", "SMB/login", "SMB/password",
-		     "SMB/domain","SMB/transport");
- script_mandatory_keys("SMB/WindowsVersion");
 
- script_require_ports(139, 445);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 include("smb_nt.inc");

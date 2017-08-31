@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mysql_auth_bypass_zeropass.nasl 5236 2017-02-08 14:38:12Z cfi $
+# $Id: mysql_auth_bypass_zeropass.nasl 6788 2017-07-21 19:16:52Z cfischer $
 #
 # MySQL Authentication bypass through a zero-length password
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12639");
-  script_version("$Revision: 5236 $");
+  script_version("$Revision: 6788 $");
   script_bugtraq_id(10654, 10655);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 15:38:12 +0100 (Wed, 08 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("MySQL Authentication bypass through a zero-length password");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 Beyond Security");
   script_family("Default Accounts");
   script_dependencies("mysql_version.nasl");
+  script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL_MariaDB/installed");
-  script_require_ports("Services/mysql", "Services/mysql_mariadb", "Services/mariadb", 3306);
 
   script_tag(name:"summary", value:"It is possible to bypass password authentication for a database
   user using a crafted authentication packet with a zero-length password

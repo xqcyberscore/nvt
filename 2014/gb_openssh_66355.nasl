@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_66355.nasl 4336 2016-10-24 15:48:20Z mime $
+# $Id: gb_openssh_66355.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # OpenSSH 'child_set_env()' Function Security Bypass Vulnerability
 #
@@ -47,7 +47,7 @@ if (description)
  script_tag(name:"cvss_base", value:"5.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_version ("$Revision: 4336 $");
+ script_version ("$Revision: 6724 $");
 
  script_name("OpenSSH 'child_set_env()' Function Security Bypass Vulnerability");
 
@@ -55,9 +55,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66355");
  script_xref(name:"URL", value:"http://www.openssh.com");
  
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:48:20 +0200 (Mon, 24 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-04-09 12:39:48 +0200 (Wed, 09 Apr 2014)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

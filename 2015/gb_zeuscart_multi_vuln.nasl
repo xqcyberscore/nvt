@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zeuscart_multi_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_zeuscart_multi_vuln.nasl 6534 2017-07-05 09:58:29Z teissa $
 #
 # Zeuscart Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:zeuscart:zeuscart';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105956");
-  script_version("$Revision: 3694 $");
-  script_tag(name : "last_modification", value : "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6534 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name : "creation_date", value : "2015-03-02 09:33:03 +0700 (Mon, 02 Mar 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -52,7 +52,6 @@ if (description)
   script_mandatory_keys("zeuscart/installed");
 
   script_tag(name : "summary", value : "Zeuscart is vulnerable to multiple vulnerabilities.");
-  script_summary("Send a special crafted HTTP GET request and check the response");
 
   script_tag(name : "vuldetect", value : "Send a crafted data via HTTP GET request and check
   the response");

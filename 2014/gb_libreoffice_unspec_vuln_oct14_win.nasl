@@ -1,6 +1,6 @@
 #############################################################################/##
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_unspec_vuln_oct14_win.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_libreoffice_unspec_vuln_oct14_win.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # LibreOffice Unspecified Vulnerability Oct14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804928");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-0247");
   script_bugtraq_id(68151);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-01 12:57:57 +0450 (Wed, 01 Oct 2014)");
 
   script_name("LibreOffice Unspecified Vulnerability Oct14 (Windows)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/57383");
   script_xref(name:"URL", value:"https://www.libreoffice.org/about-us/security/advisories/cve-2014-0247");
 
-  script_summary("Check for the vulnerable version of LibreOffice on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

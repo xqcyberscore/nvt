@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-2035.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: ELSA-2012-2035.nasl 6557 2017-07-06 11:55:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123811");
-script_version("$Revision: 6125 $");
+script_version("$Revision: 6557 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:08:52 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:55:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-2035");
 script_tag(name: "insight", value: "ELSA-2012-2035 - Unbreakable Enterprise kernel security update - [2.6.32-300.32.3]- dl2k: Clean up rio_ioctl (Stephan Mueller) [Orabug: 14675306] {CVE-2012-2313}- hugetlb: fix resv_map leak in error path (Christoph Lameter) [Orabug: 14676403] {CVE-2012-2390}- rds: set correct msg_namelen (Jay Fenlason) [Orabug: 14676504] {CVE-2012-3430}"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"4.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

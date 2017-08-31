@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_file_heap_bof_vuln_win.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_opera_file_heap_bof_vuln_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
 #
 # Opera Web Browser Heap Based Buffer Overflow Vulnerability (Windows)
 #
@@ -38,8 +38,8 @@ tag_summary = "The host is installed with Opera Web Browser and is prone to
 if(description)
 {
   script_id(800066);
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 6519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-11-21 14:18:03 +0100 (Fri, 21 Nov 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_opera_detection_win_900036.nasl");
-  script_require_keys("SMB/WindowsVersion","Opera/Win/Version");
+  script_mandatory_keys("Opera/Win/Version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

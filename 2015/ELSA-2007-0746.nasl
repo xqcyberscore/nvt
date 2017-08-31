@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-0746.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2007-0746.nasl 6600 2017-07-07 09:58:31Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122642");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6600 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:50:00 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-0746");
 script_tag(name: "insight", value: "ELSA-2007-0746 -  httpd security, bug fix, and enhancement update - [2.2.3-11.el5.0.1]- use oracle index page oracle_index.html, update vstring and distro[2.2.3-11.el5]- mark httpd.conf config(noreplace) (#247881)[2.2.3-10.el5]- add security fix for CVE-2007-3847 (#250761)[2.2.3-9.el5]- load mod_version by default (#247881)[2.2.3-8.el5]- add 'ServerTokens Full-Release' config option (#240857)- use init script in logrotate postrotate (#241680)- fix mod_proxy option inheritance (#245719)- fix ProxyErrorOverride to only affect 4xx, 5xx responses (#240024)- bump logresolve line buffer length to 10K (#245763)- add security fixes for CVE-2007-1863, CVE-2007-3304, and CVE-2006-5752 (#244666)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2007-0746");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -48,8 +48,8 @@ prone to Multiple Buffer Overflow vulnerabilities.";
 if(description)
 {
   script_id(900918);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 6519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-08-20 09:27:17 +0200 (Thu, 20 Aug 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -66,7 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("SMTP problems");
   script_dependencies("secpod_reg_enum.nasl", "secpod_cmailserver_detect.nasl");
-  script_require_keys("SMB/WindowsVersion", "CMailServer/Ver");
+  script_mandatory_keys("CMailServer/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

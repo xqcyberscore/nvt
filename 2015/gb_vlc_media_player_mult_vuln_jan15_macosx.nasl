@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_vuln_jan15_macosx.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_vlc_media_player_mult_vuln_jan15_macosx.nasl 6453 2017-06-28 09:59:05Z teissa $
 #
 # VLC Media Player Multiple Vulnerabilities Jan15 (MAC OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805427");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6453 $");
   script_cve_id("CVE-2014-9598", "CVE-2014-9597");
   script_bugtraq_id(72106,72105);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-27 17:11:51 +0530 (Tue, 27 Jan 2015)");
   script_name("VLC Media Player Multiple Vulnerabilities Jan15 (MAC OS X)");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130004/");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of VLC media player on MAC OS X");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_family("General");

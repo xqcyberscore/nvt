@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_jomsocial_02_14.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_joomla_jomsocial_02_14.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # Joomla JomSocial 2.6 Code Execution
 #
@@ -39,7 +39,7 @@ tag_vuldetect = "Try to execute the phpinfo() command by using a special crafted
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6756 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -48,16 +48,14 @@ if (description)
 
  script_xref(name:"URL", value:"http://www.jomsocial.com/blog/hot-fix-3-1-0-4");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-02-11 17:03:11 +0100 (Tue, 11 Feb 2014)");
- script_summary("Determine if it is possible to execute the phpinfo() command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("joomla_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("joomla/installed");
 
  script_tag(name : "impact" , value : tag_impact);
@@ -92,7 +90,7 @@ if( isnull( cookie[1] ) ) exit( 0 );
 
 cookie = cookie[1];
 
-host = get_host_name();
+host = http_host_name(port:port);
 
 ex = 'option=community&no_html=1&task=azrul_ajax&func=photos,ajaxUploadAvatar&' + 
      token + '=1&arg2=["_d_","Event"]&arg3=["_d_","374"]&arg4=["_d_","%7B%22'   + 

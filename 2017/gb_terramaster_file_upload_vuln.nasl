@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_terramaster_file_upload_vuln.nasl 6253 2017-05-31 05:28:51Z ckuerste $
+# $Id: gb_terramaster_file_upload_vuln.nasl 6766 2017-07-20 06:44:05Z cfischer $
 #
 # Terramaster NAS File Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:noontec:terramaster";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106839");
-  script_version("$Revision: 6253 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-31 07:28:51 +0200 (Wed, 31 May 2017) $");
+  script_version("$Revision: 6766 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-20 08:44:05 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-05-31 10:41:50 +0700 (Wed, 31 May 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -60,7 +60,7 @@ as root.");
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP POST request to upload a php file and checks if
 phpinfo() could be executed.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 31st May, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 20th July, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/");

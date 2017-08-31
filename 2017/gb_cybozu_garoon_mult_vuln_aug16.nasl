@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_garoon_mult_vuln_aug16.nasl 6311 2017-06-12 09:06:32Z cfischer $
+# $Id: gb_cybozu_garoon_mult_vuln_aug16.nasl 6757 2017-07-19 05:57:31Z cfischer $
 #
 # Cybozu Garoon Multiple Vulnerabilities - Aug16
 #
@@ -29,13 +29,14 @@ CPE = "cpe:/a:cybozu:garoon";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.1071655555");
-  script_version("$Revision: 6311 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-12 11:06:32 +0200 (Mon, 12 Jun 2017) $");
+  script_version("$Revision: 6757 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 07:57:31 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-05-11 11:54:29 +0200 (Thu, 11 May 2017)");
-  script_cve_id("CVE-2016-1214", "CVE-2016-1215", "CVE-2016-1216", "CVE-2016-1217");
+  script_cve_id("CVE-2016-1213", "CVE-2016-1214", "CVE-2016-1215", "CVE-2016-1216", "CVE-2016-1217",
+                "CVE-2016-1218", "CVE-2016-1219", "CVE-2016-1220");
   script_bugtraq_id(92596, 92598, 92599, 92600, 92601);
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Cybozu Garoon Multiple Vulnerabilities - Aug16");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_ssh_credentials.nasl 5990 2017-04-20 13:39:40Z cfi $
+# $Id: default_ssh_credentials.nasl 6664 2017-07-11 10:20:11Z cfischer $
 #
 # SSH Brute Force Logins With Default Credentials
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108013");
-  script_version("$Revision: 5990 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 15:39:40 +0200 (Thu, 20 Apr 2017) $");
+  script_version("$Revision: 6664 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 12:20:11 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-09-06 14:38:09 +0200 (Tue, 06 Sep 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,19 +55,16 @@ include("default_credentials.inc");
 include("ssh_func.inc");
 include("misc_func.inc");
 
-port = get_kb_item("Services/ssh");
-if( ! port ) port = 22;
-if( ! get_port_state( port ) ) exit( 0 );
+port = get_ssh_port( default:22 );
 
 # Exit if any random user/pass pair is accepted by the SSH service.
 if( ssh_broken_random_login( port:port ) ) exit( 0 );
 
-if( ! soc = open_sock_tcp( port ) ) exit( 0 );
-sess_id = ssh_session_id_from_sock( soc );
-ssh_supported_authentication = get_ssh_supported_authentication( sess_id:sess_id );
-close( soc );
-
-if( ssh_supported_authentication =~ "^publickey$" ) exit( 0 );
+# nb: From ssh_detect.nasl. This is only checking the supported authentication of an invalid user.
+# However some SSH configs might allow passwords for specific users only with e.g. a "Match User"
+# directive. To catch such configs we would need to bruteforce common users first.
+ssh_supported_authentication = get_kb_item( "SSH/supportedauth/" + port );
+if( ssh_supported_authentication && ssh_supported_authentication =~ "^publickey$" ) exit( 0 );
 
 c = 0;
 
@@ -84,7 +81,7 @@ foreach credential( credentials ) {
 
   if( isnull( user_pass[0] ) || isnull( user_pass[1] ) ) continue;
 
-  if( ! soc = open_sock_tcp( port ) ) exit( 0 );
+  if( ! soc = open_sock_tcp( port ) ) break;
 
   user = chomp( user_pass[0] );
   pass = chomp( user_pass[1] );
@@ -95,13 +92,9 @@ foreach credential( credentials ) {
   if( tolower( pass ) == "none" ) pass = "";
 
   login = ssh_login( socket:soc, login:user, password:pass, pub:NULL, priv:NULL, passphrase:NULL );
-
-  if( login == '-2' ) {
-    close( soc );
-    exit( 0 ); # "authentication succeeded using the none method". Against such ssh services it makes no sense to continue here
-  }
-
   close( soc );
+
+  if( login == '-2' ) break; # "authentication succeeded using the none method". Against such ssh services it makes no sense to continue here
 
   if( login == 0 ) {
     c++;
@@ -109,7 +102,7 @@ foreach credential( credentials ) {
 
     if( c >= 10 ) {
       set_kb_item( name:"default_ssh_credentials/" + port + "/too_many_logins", value:c );
-      exit( 0 );
+      break;
     }
   }
 

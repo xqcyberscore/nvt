@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_upnp_detect.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: gb_upnp_detect.nasl 6829 2017-08-01 12:56:19Z cfischer $
 #
 # UPnP Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103652");
-  script_version("$Revision: 5309 $");
+  script_version("$Revision: 6829 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-01 14:56:19 +0200 (Tue, 01 Aug 2017) $");
   script_tag(name:"creation_date", value:"2013-02-01 09:39:54 +0100 (Fri, 01 Feb 2013)");
   script_name("UPnP Detection");
   script_category(ACT_GATHER_INFO);
@@ -100,10 +100,12 @@ if( result && "HTTP/" >< result ) {
 
   server = egrep( pattern:"Server: ", string:result, icase:TRUE );
   if( server ) {
-    set_kb_item( name:"upnp/server", value:server );
-    set_kb_item( name:"upnp/identified", value:TRUE );
+    replace_kb_item( name:"upnp/server", value:server );
     set_kb_item( name:"upnp/" + port + "/server", value:server );
   }
+
+  set_kb_item( name:"upnp/" + port + "/banner", value:result );
+  replace_kb_item( name:"upnp/identified", value:TRUE );
 
   report  = "The remote Host supports the UPnP protocol. You should restrict access to port " + port + '/udp.\n';
   report += 'The remote Host answers the following to a SSDP M-SEARCH request:\n\n' + result;

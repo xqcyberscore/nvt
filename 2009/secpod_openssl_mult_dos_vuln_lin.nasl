@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openssl_mult_dos_vuln_lin.nasl 3265 2016-05-10 14:46:15Z benallard $
+# $Id: secpod_openssl_mult_dos_vuln_lin.nasl 6503 2017-07-03 08:30:30Z cfischer $
 #
 # OpenSSL DTLS Packets Multiple Denial of Service Vulnerabilities (Linux)
 #
@@ -8,7 +8,7 @@
 # Antu Sanadi <santu@secpod.com>
 #
 # Updated by:  Antu Sanadi<santu@secpod.com> on 2010-11-08
-# Updated the desciption part
+# Updated the description part
 #
 # Copyright:
 # Copyright (c) 2009 SecPod, http://www.secpod.com
@@ -35,8 +35,8 @@ tag_impact = "Successful exploitation will allow attacker to cause denial-of-ser
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900653");
-  script_version("$Revision: 3265 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-10 16:46:15 +0200 (Tue, 10 May 2016) $");
+  script_version("$Revision: 6503 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 10:30:30 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-05-28 07:14:08 +0200 (Thu, 28 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

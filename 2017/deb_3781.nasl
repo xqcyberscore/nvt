@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3781.nasl 5752 2017-03-29 04:01:01Z teissa $
+# $Id: deb_3781.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3781-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703781);
-    script_version("$Revision: 5752 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-5617");
     script_name("Debian Security Advisory DSA 3781-1 (svgsalamander - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-02-05 00:00:00 +0100 (Sun, 05 Feb 2017)");
     script_tag(name:"cvss_base", value:"5.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "svgsalamander on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (jessie),
 this problem has been fixed in version 0~svn95-1+deb8u1.

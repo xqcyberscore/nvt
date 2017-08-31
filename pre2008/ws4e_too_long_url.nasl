@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ws4e_too_long_url.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: ws4e_too_long_url.nasl 6540 2017-07-05 12:42:02Z cfischer $
 # Description: Webserver4everyone too long URL
 #
 # Authors:
@@ -38,47 +38,35 @@ tag_solution = "Upgrade your web server.";
 
 if(description)
 {
- script_id(11167);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(5967);
- script_cve_id("CVE-2002-1212");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- 
- name = "Webserver4everyone too long URL";
- script_name(name);
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.11167");
+  script_version("$Revision: 6540 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:42:02 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(5967);
+  script_cve_id("CVE-2002-1212");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("Webserver4everyone too long URL");
+  script_category(ACT_MIXED_ATTACK);
+  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
+  script_family("Gain a shell remotely");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("W4E/banner");
+  script_exclude_keys("www/too_long_url_crash");
 
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
 
-
- summary = "Webserver4everyone too long URL with Host field set";
- 
- script_category(ACT_MIXED_ATTACK);
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner"); # mixed
- 
- 
- script_copyright("This script is Copyright (C) 2002 Michel Arboi");
- family = "Gain a shell remotely";
- script_family(family);
- script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("W4E/banner");
- script_require_ports("Services/www",80);
- script_exclude_keys("www/too_long_url_crash");
- script_require_keys("www/webserver4everyone");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
-}
 
-#
+  exit(0);
+}
 
 include("http_func.inc");
 
 port = get_http_port(default:80);
-
-if (! get_port_state(port)) exit(0);
 
 if(safe_checks())
 { 

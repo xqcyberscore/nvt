@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2009-0397.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: ELSA-2009-0397.nasl 6554 2017-07-06 11:53:20Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122503");
-script_version("$Revision: 6229 $");
+script_version("$Revision: 6554 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:46:49 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:53:20 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2009-0397");
 script_tag(name: "insight", value: "ELSA-2009-0397 -  firefox security update - xulrunner:[1.9.0.7-3.0.1.el5]- Added xulrunner-oracle-default-prefs.js and removed the corresponding RedHat one[1.9.0.7-3]- Updated per 1.9.0.8firefox:[3.0.7-3.0.1.el4]- Update firstrun and homepage URLS- Add oracle-firefox-branding.patch- Add firefox-oracle-default-prefs.js and firefox-oracle-default-bookmarks.html and remove the corresponding RedHat ones[3.0.7-3.el4]- Updated per 1.9.0.8"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"9.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

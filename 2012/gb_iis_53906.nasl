@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iis_53906.nasl 5814 2017-03-31 09:13:55Z cfi $
+# $Id: gb_iis_53906.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # Microsoft IIS Authentication Bypass and Source Code Disclosure Vulnerabilities
 #
@@ -31,7 +31,7 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103507");
  script_bugtraq_id(53906);
- script_version ("$Revision: 5814 $");
+ script_version ("$Revision: 6720 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -40,14 +40,13 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53906");
  script_xref(name : "URL" , value : "http://www.microsoft.com/windowsserver2003/iis/default.mspx");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-07-03 10:23:40 +0200 (Tue, 03 Jul 2012)");
  script_category(ACT_ATTACK);
  script_family("Web Servers");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("secpod_ms_iis_detect.nasl","webmirror.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("IIS/installed");
 
  script_tag(name : "summary" , value : "Microsoft IIS is prone to an authentication-bypass vulnerability and a

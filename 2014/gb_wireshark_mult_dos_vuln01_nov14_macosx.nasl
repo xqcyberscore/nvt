@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln01_nov14_macosx.nasl 3008 2016-04-07 13:17:01Z antu123 $
+# $Id: gb_wireshark_mult_dos_vuln01_nov14_macosx.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Wireshark Multiple Denial-of-Service Vulnerability-01 Nov14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804896");
-  script_version("$Revision: 3008 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-8714", "CVE-2014-8713", "CVE-2014-8712", "CVE-2014-8711");
   script_bugtraq_id(71072, 71073, 71071, 71070);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 15:17:01 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-28 12:00:30 +0530 (Fri, 28 Nov 2014)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerability-01 Nov14 (Mac OS X)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2014-22.html");
   script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2014-23.html");
 
-  script_summary("Check for the vulnerable version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

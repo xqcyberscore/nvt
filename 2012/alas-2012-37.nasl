@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2012-37.nasl 5999 2017-04-21 09:02:32Z teissa $
+# $Id: alas-2012-37.nasl 6578 2017-07-06 13:44:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120220");
-script_version("$Revision: 5999 $");
+script_version("$Revision: 6578 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:20:39 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:44:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2012-37");
 script_tag(name: "insight", value: "It was found that the hashing routine used by PHP arrays was susceptible to predictable hash collisions. If an HTTP POST request to a PHP application contained many parameters whose names map to the same hash value, a large amount of CPU time would be consumed. This flaw has been mitigated by adding a new configuration directive, max_input_vars, that limits the maximum number of parameters processed per request. By default, max_input_vars is set to 1000. (CVE-2011-4885 )An integer overflow flaw was found in the PHP exif extension. On 32-bit systems, a specially-crafted image file could cause the PHP interpreter to crash or disclose portions of its memory when a PHP script tries to extract Exchangeable image file format (Exif) metadata from the image file. (CVE-2011-4566 )"); 
 script_tag(name : "solution", value : "Run yum update php to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"6.4");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

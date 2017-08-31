@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_mult_vuln_macosx.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_adobe_prdts_mult_vuln_macosx.nasl 6477 2017-06-29 07:53:14Z cfischer $
 #
 # Adobe Air and Flash Player Multiple Vulnerabilities (Mac OS X)
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is installed with Adobe Air and/or Flash Player and is
 if(description)
 {
   script_id(902712);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 6477 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:53:14 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-08-31 10:37:30 +0200 (Wed, 31 Aug 2011)");
   script_cve_id("CVE-2011-2130", "CVE-2011-2134", "CVE-2011-2137",
                 "CVE-2011-2135", "CVE-2011-2136", "CVE-2011-2138",
@@ -61,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
-  script_require_keys("Adobe/Flash/Player/MacOSX/Version", "Adobe/Air/MacOSX/Version");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader/MacOSX/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

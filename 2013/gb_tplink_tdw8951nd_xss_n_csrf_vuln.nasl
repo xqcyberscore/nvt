@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tplink_tdw8951nd_xss_n_csrf_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_tplink_tdw8951nd_xss_n_csrf_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # TP-Link TD-W8951ND XSS and CSRF Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803752");
-  script_version("$Revision: 6115 $");
+  script_version("$Revision: 6698 $");
   script_bugtraq_id(62103);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-09-03 13:14:17 +0530 (Tue, 03 Sep 2013)");
   script_name("TP-Link TD-W8951ND XSS and CSRF Vulnerabilities");
 
@@ -68,9 +68,8 @@ if(description)
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("TD-W8951ND/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("TD-W8951ND/banner");
 
   exit(0);
 }

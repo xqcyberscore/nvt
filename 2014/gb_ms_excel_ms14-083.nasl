@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_ms14-083.nasl 2826 2016-03-10 08:19:43Z benallard $
+# $Id: gb_ms_excel_ms14-083.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Microsoft Office Excel Remote Code Execution Vulnerabilities (3017347)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805023");
-  script_version("$Revision: 2826 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-6360", "CVE-2014-6361");
   script_bugtraq_id(71500, 71501);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:19:43 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-10 10:25:07 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Office Excel Remote Code Execution Vulnerabilities (3017347)");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/61151");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3017347");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-083");
-  script_summary("Check for the version of 'Excel.exe' file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

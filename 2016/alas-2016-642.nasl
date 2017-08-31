@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-642.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: alas-2016-642.nasl 6574 2017-07-06 13:41:26Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120632");
-script_version("$Revision: 5850 $");
+script_version("$Revision: 6574 $");
 script_tag(name:"creation_date", value:"2016-01-20 07:22:48 +0200 (Wed, 20 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:41:26 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-642");
 script_tag(name: "insight", value: "Perception Point Research identified a use-after-free vulnerability, representing a local privilege escalation vulnerability in the Linux kernel. Their post contains a detailed analysis of the bug.kernel-4.1.13-19.30.amzn1 and earlier versions are impacted."); 
 script_tag(name : "solution", value : "Run yum clean all followed by yum update kernel to update your system. You will need to reboot your system in order for the new kernel to be running.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"7.2");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

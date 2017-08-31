@@ -20,7 +20,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-PLUGIN_SET = "201706280651";
+PLUGIN_SET = "201708170555";
 PLUGIN_FEED = "OpenVAS NVT Feed";
 FEED_VENDOR = "The OpenVAS Project";
 FEED_HOME = "http://www.openvas.org/openvas-nvt-feed.html";
+FEED_NAME = "GCF";

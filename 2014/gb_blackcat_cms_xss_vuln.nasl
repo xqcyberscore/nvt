@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackcat_cms_xss_vuln.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_blackcat_cms_xss_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # BlackCat CMS Reflected Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804749");
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6724 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-25 18:48:58 +0530 (Mon, 25 Aug 2014)");
   script_name("BlackCat CMS Reflected Cross-Site Scripting Vulnerability");
 
@@ -52,7 +52,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23228");
   script_xref(name : "URL" , value : "http://forum.blackcat-cms.org/viewtopic.php?f=2&t=263");
-  script_summary("Check if BlackCat CMS is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_bof_vuln_sep09_win.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_adobe_reader_bof_vuln_sep09_win.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Adobe Reader Buffer Overflow Vulnerability Sep09 (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804365";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-1999-1576");
   script_bugtraq_id(666);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-07 18:42:55 +0530 (Mon, 07 Apr 2014)");
   script_name("Adobe Reader Buffer Overflow Vulnerability Sep09 (Windows)");
 
@@ -77,7 +77,6 @@ For updates refer to http://get.adobe.com/reader";
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/3318");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/19514");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/1999-q3/1061.html");
-  script_summary("Check for the vulnerable version of Adobe Reader on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Buffer overflow");

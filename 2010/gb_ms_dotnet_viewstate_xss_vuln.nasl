@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_dotnet_viewstate_xss_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_ms_dotnet_viewstate_xss_vuln.nasl 6519 2017-07-04 14:08:14Z cfischer $
 #
 # Microsoft .NET '__VIEWSTATE'  Cross-Site Scripting Vulnerability
 #
@@ -45,8 +45,8 @@ Scripting Vulnerability.";
 if(description)
 {
   script_id(801344);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 6519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-06-09 08:34:53 +0200 (Wed, 09 Jun 2010)");
   script_cve_id("CVE-2010-2088");
   script_tag(name:"cvss_base", value:"4.3");
@@ -60,8 +60,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Windows");
   script_dependencies("remote-detect-MSdotNET-version.nasl");
-  script_require_ports("Services/www");
-  script_require_keys("dotNET/install", "aspNET/installed", "dotNET/version");
+  script_mandatory_keys("dotNET/install", "aspNET/installed", "dotNET/version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

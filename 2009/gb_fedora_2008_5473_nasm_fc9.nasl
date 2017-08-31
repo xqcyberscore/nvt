@@ -39,8 +39,8 @@ if(description)
   script_cve_id("CVE-2008-7177");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 3217 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-03 15:20:33 +0200 (Tue, 03 May 2016) $");
+ script_version("$Revision: 6623 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:10:20 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-02-17 16:50:22 +0100 (Tue, 17 Feb 2009)");
   script_xref(name: "FEDORA", value: "2008-5473");
   script_name( "Fedora Update for nasm FEDORA-2008-5473");
@@ -50,7 +50,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

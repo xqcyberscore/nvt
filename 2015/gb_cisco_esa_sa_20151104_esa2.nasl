@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_sa_20151104_esa2.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_cisco_esa_sa_20151104_esa2.nasl 6551 2017-07-06 09:58:21Z teissa $
 #
 # Cisco Email Security Appliance Email Scanner Denial of Service Vulnerability 
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6291");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 2583 $");
+ script_version ("$Revision: 6551 $");
 
  script_name("Cisco Email Security Appliance Email Scanner Denial of Service Vulnerability");
 
@@ -52,9 +52,8 @@ Cisco has released software updates that address this vulnerability. There are n
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-11-10 11:02:51 +0100 (Tue, 10 Nov 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872183");
-  script_version("$Revision: 4884 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 10:57:28 +0100 (Fri, 30 Dec 2016) $");
+  script_version("$Revision: 6873 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-08 14:35:26 +0200 (Tue, 08 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-12-26 06:03:39 +0100 (Mon, 26 Dec 2016)");
   script_cve_id("CVE-2016-8743", "CVE-2016-2161", "CVE-2016-0736");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for httpd FEDORA-2016-d22f50d985");
   script_tag(name: "summary", value: "Check the version of httpd");
@@ -52,7 +52,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

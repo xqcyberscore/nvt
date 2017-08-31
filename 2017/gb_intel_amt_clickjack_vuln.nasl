@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_amt_clickjack_vuln.nasl 6356 2017-06-16 09:38:18Z ckuersteiner $
+# $Id: gb_intel_amt_clickjack_vuln.nasl 6495 2017-06-30 09:07:21Z teissa $
 #
 # Intel Active Management Technology Clickjacking Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/h:intel:active_management_technology";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106877");
-  script_version("$Revision: 6356 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-16 11:38:18 +0200 (Fri, 16 Jun 2017) $");
+  script_version("$Revision: 6495 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-30 11:07:21 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name: "creation_date", value: "2017-06-16 13:48:56 +0700 (Fri, 16 Jun 2017)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-5697");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_endpoint_71424.nasl 2823 2016-03-10 07:27:58Z antu123 $
+# $Id: gb_ibm_endpoint_71424.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # IBM Tivoli Endpoint Manager Mobile Device Management Cross Site Scripting Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-6140");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2823 $");
+ script_version ("$Revision: 6759 $");
 
  script_name("IBM Tivoli Endpoint Manager Mobile Device Management Cross Site Scripting Vulnerability");
 
@@ -59,16 +59,14 @@ site scripting vulnerability because it fails to sanitize user-supplied input.")
 
  script_tag(name:"solution_type", value: "VendorFix"); 
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 08:27:58 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-12-03 16:30:20 +0100 (Wed, 03 Dec 2014)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_ibm_endpoint_manager_mdm_installed.nasl");
  script_require_ports("Services/www", 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("ibm_endpoint_manager/MDM");
 
  exit(0);

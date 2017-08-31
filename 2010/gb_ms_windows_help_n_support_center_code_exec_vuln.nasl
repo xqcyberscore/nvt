@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_help_n_support_center_code_exec_vuln.nasl 5660 2017-03-21 11:29:28Z cfi $
+# $Id: gb_ms_windows_help_n_support_center_code_exec_vuln.nasl 6529 2017-07-05 06:05:51Z cfischer $
 #
 # MS Windows Help and Support Center Remote Code Execution Vulnerability
 #
@@ -56,8 +56,8 @@ tag_summary = "This host is prone to remote code execution vulnerability.";
 if(description)
 {
   script_id(801358);
-  script_version("$Revision: 5660 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 6529 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 08:05:51 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
   script_cve_id("CVE-2010-1885", "CVE-2010-2265"); 
   script_tag(name:"cvss_base", value:"9.3");
@@ -80,11 +80,14 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "solution" , value : tag_solution);
+
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
 
 ## This plugin is invalidated by secpod_ms10-042.nasl 
-exit(0);
+exit(66);
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

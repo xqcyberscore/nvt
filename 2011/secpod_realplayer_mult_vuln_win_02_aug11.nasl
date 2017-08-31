@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realplayer_mult_vuln_win_02_aug11.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_realplayer_mult_vuln_win_02_aug11.nasl 6516 2017-07-04 12:20:47Z cfischer $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities (Windows) - Aug11
 #
@@ -48,8 +48,8 @@ tag_summary = "This host is installed with RealPlayer which is prone to multiple
 if(description)
 {
   script_id(902624);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 6516 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-08-31 10:37:30 +0200 (Wed, 31 Aug 2011)");
   script_cve_id("CVE-2011-2946", "CVE-2011-2948", "CVE-2011-2949", "CVE-2011-2952",
                 "CVE-2011-2953", "CVE-2011-2955", "CVE-2011-2947");
@@ -62,12 +62,11 @@ if(description)
   script_xref(name : "URL" , value : "http://service.real.com/realplayer/security/08162011_player/en/");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of RealPlayer");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("General");
   script_dependencies("gb_realplayer_detect_win.nasl");
-  script_require_keys("RealPlayer/Win/Ver", "RealPlayer-Enterprise/Win/Ver");
+  script_mandatory_keys("RealPlayer/RealPlayer_or_Enterprise/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipfire_2_17_core_91.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_ipfire_2_17_core_91.nasl 6497 2017-06-30 09:58:54Z teissa $
 #
 # IPFire 2.17 - Core Update 91
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2015-1788","CVE-2015-1789","CVE-2015-1790","CVE-2015-1792","CVE-2015-1791","CVE-2014-8176","CVE-2015-3991","CVE-2015-4171");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2676 $");
+ script_version ("$Revision: 6497 $");
 
  script_name("IPFire 2.17 - Core Update 91");
 
@@ -60,9 +60,8 @@ IPFire ships now version 5.3.2 which fixes an second vulnerability (CVE-2015-417
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-06-30 12:19:16 +0200 (Tue, 30 Jun 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_mult_vuln_mar10_lin.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_mozilla_prdts_mult_vuln_mar10_lin.nasl 6482 2017-06-29 08:31:43Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities Mar-10 (Linux)
 #
@@ -56,8 +56,8 @@ tag_summary = "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird 
 if(description)
 {
   script_id(902150);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 6482 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:31:43 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2010-03-30 16:15:33 +0200 (Tue, 30 Mar 2010)");
   script_cve_id("CVE-2010-0167", "CVE-2010-0169", "CVE-2010-0171");
   script_bugtraq_id(38918);
@@ -74,10 +74,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("General");
-  script_dependencies("gb_firefox_detect_lin.nasl", "gb_seamonkey_detect_lin.nasl",
-                      "gb_thunderbird_detect_lin.nasl");
-  script_require_keys("Firefox/Linux/Ver", "Seamonkey/Linux/Ver",
-                      "Thunderbird/Linux/Ver");
+  script_dependencies("gb_firefox_detect_lin.nasl", "gb_seamonkey_detect_lin.nasl", "gb_thunderbird_detect_lin.nasl");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Linux/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

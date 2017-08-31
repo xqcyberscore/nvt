@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-099.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-099.nasl 6526 2017-07-05 05:43:52Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2618444)
 #
@@ -42,12 +42,12 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(902642);
-  script_version("$Revision: 5362 $");
+  script_version("$Revision: 6526 $");
   script_cve_id("CVE-2011-1992", "CVE-2011-2019", "CVE-2011-3404");
   script_bugtraq_id(50974, 50975, 50976);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:43:52 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-12-14 09:25:00 +0530 (Wed, 14 Dec 2011)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2618444)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2618444");
@@ -57,7 +57,7 @@ if(description)
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_ie_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
+  script_mandatory_keys("MS/IE/Version");
   script_require_ports(139, 445);
 
   script_tag(name : "impact" , value : tag_impact);

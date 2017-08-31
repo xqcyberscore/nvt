@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022725.nasl 6343 2017-06-15 09:48:13Z santu $
+# $Id: gb_ms_kb4022725.nasl 6853 2017-08-04 11:45:08Z santu $
 #
 # Microsoft Windows Multiple Vulnerabilites (KB4022725)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811167");
-  script_version("$Revision: 6343 $");
+  script_version("$Revision: 6853 $");
   script_cve_id("CVE-2017-8474", "CVE-2017-8524", "CVE-2017-8527", "CVE-2017-8475", 
                 "CVE-2017-8476", "CVE-2017-8529", "CVE-2017-8530", "CVE-2017-0282", 
                 "CVE-2017-0283", "CVE-2017-8477", "CVE-2017-8478", "CVE-2017-8531", 
@@ -42,7 +42,8 @@ if(description)
                 "CVE-2017-8493", "CVE-2017-8498", "CVE-2017-8499", "CVE-2017-8504", 
                 "CVE-2017-8460", "CVE-2017-8462", "CVE-2017-8470", "CVE-2017-8471", 
                 "CVE-2017-8520", "CVE-2017-8521", "CVE-2017-8522", "CVE-2017-8523", 
-                "CVE-2017-8464", "CVE-2017-8465", "CVE-2017-8515", "CVE-2017-8517");
+                "CVE-2017-8464", "CVE-2017-8465", "CVE-2017-8515", "CVE-2017-8517",
+		        "CVE-2017-8554", "CVE-2017-8575", "CVE-2017-8518");
   script_bugtraq_id(98902, 98930, 98933, 98853, 98903, 98953, 98863, 98885, 98920,
 		    98854, 98845, 98819, 98820, 98914, 98856, 98857, 98821, 98824,
                     98922, 98923, 98862, 98858, 98826, 98932, 98954, 98955, 98929,
@@ -52,7 +53,7 @@ if(description)
                     98818, 98843, 98833, 98895);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-15 11:48:13 +0200 (Thu, 15 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-04 13:45:08 +0200 (Fri, 04 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-06-14 13:30:05 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilites (KB4022725)");
 
@@ -73,12 +74,15 @@ if(description)
 
   - An issue with the Privacy Separator feature of a Wireless Access Point
     does not block communication between wireless devices on local subnets.
+  
+  - Microsoft Edge improperly accesses objects in memory.
 
   For More Information about thse updates refer to refrence links.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  attackers to gain the same user rights as the current user and to
-  take control of an affected system.
+  attackers to execute arbitrary code in the context of the current user, 
+  gain the same user rights as the current user and to take control of 
+  an affected system.
 
   Impact Level: System");
 

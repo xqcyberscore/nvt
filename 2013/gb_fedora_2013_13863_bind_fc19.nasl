@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(866823);
-  script_version("$Revision: 2890 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-18 12:36:19 +0100 (Fri, 18 Mar 2016) $");
+  script_version("$Revision: 6628 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-08-20 15:29:55 +0530 (Tue, 20 Aug 2013)");
   script_cve_id("CVE-2013-4854");
   script_tag(name:"cvss_base", value:"7.8");
@@ -60,7 +60,7 @@ tools for verifying that the DNS server is operating properly.
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

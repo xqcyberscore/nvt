@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_1219_1.nasl 3879 2016-08-24 13:27:57Z teissa $
+# $Id: deb_1219_1.nasl 6616 2017-07-07 12:10:49Z cfischer $
 # Description: Auto-generated from advisory DSA 1219-1
 #
 # Authors:
@@ -56,8 +56,8 @@ run texindex or tex2dvi on a specially crafted texinfo file.";
 if(description)
 {
  script_id(57654);
- script_version("$Revision: 3879 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-24 15:27:57 +0200 (Wed, 24 Aug 2016) $");
+ script_version("$Revision: 6616 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:10:49 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-01-17 23:17:11 +0100 (Thu, 17 Jan 2008)");
  script_cve_id("CVE-2005-3011", "CVE-2006-4810");
  script_bugtraq_id(14854,20959);
@@ -72,7 +72,7 @@ if(description)
  script_copyright("Copyright (c) 2006 E-Soft Inc. http://www.securityspace.com");
  script_family("Debian Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name:"qod_type", value:"package");

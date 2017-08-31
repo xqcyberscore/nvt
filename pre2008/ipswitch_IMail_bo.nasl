@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ipswitch_IMail_bo.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: ipswitch_IMail_bo.nasl 6695 2017-07-12 11:17:53Z cfischer $
 #
 # ipswitch IMail DoS
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14684");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 6695 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2422", "CVE-2004-2423");
   script_bugtraq_id(11106);
@@ -41,7 +41,6 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl", "no404.nasl");
   script_mandatory_keys("Ipswitch/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   tag_summary = "The remote host is running IMail web interface.  This version contains 
   multiple buffer overflows.";

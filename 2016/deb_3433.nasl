@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3433.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: deb_3433.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3433-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703433);
-    script_version("$Revision: 5612 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2015-2535", "CVE-2015-3223", "CVE-2015-5252", "CVE-2015-5296",
                   "CVE-2015-5299", "CVE-2015-5330", "CVE-2015-7540", "CVE-2015-8467");
     script_name("Debian Security Advisory DSA 3433-1 (samba - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name:"creation_date", value:"2016-05-06 15:29:32 +0530 (Fri, 06 May 2016)");
     script_tag(name:"cvss_base", value:"6.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -49,7 +49,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "samba on Debian Linux");
     script_tag(name: "insight",   value: "Samba is an implementation of the SMB/CIFS
 protocol for Unix systems, providing support for cross-platform file and printer

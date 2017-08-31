@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln03_jan14.nasl 2490 2016-01-22 14:43:50Z benallard $
+# $Id: gb_java_mult_unspecified_vuln03_jan14.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Oracle Java SE Multiple Unspecified Vulnerabilities-03 Jan 2014 (Windows)
 #
@@ -30,7 +30,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804191";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2490 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2013-5884", "CVE-2013-5896", "CVE-2013-5905", "CVE-2013-5906",
                 "CVE-2013-5907", "CVE-2014-0368", "CVE-2014-0373", "CVE-2014-0376",
                 "CVE-2014-0411", "CVE-2014-0416", "CVE-2014-0417", "CVE-2014-0422",
@@ -39,7 +39,7 @@ if(description)
                     64918, 64937, 64932, 64921, 64914, 64935);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:43:50 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-22 10:20:04 +0530 (Wed, 22 Jan 2014)");
   script_name("Oracle Java SE Multiple Unspecified Vulnerabilities-03 Jan 2014 (Windows)");
 
@@ -87,7 +87,6 @@ NOTE: Ignore this warning if above mentioned patch is installed.
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/64918");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/64930");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html");
-  script_summary("Check the vulnerable version of Oracle Java SE on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

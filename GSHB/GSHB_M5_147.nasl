@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_147.nasl 4047 2016-09-13 08:43:09Z cfi $
+# $Id: GSHB_M5_147.nasl 6604 2017-07-07 10:31:59Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 5.147
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95076");
-  script_version("$Revision: 4047 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-13 10:43:09 +0200 (Tue, 13 Sep 2016) $");
+  script_version("$Revision: 6604 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:31:59 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
-  script_mandatory_keys("Tools/Present/wmi", "Compliance/Launch/GSHB");
+  script_mandatory_keys("Compliance/Launch/GSHB", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl");
 
   script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05147.html");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_se_mult_unspecified_vuln.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_sun_java_se_mult_unspecified_vuln.nasl 6466 2017-06-28 13:28:20Z cfischer $
 #
 # Sun Java SE Multiple Unspecified Vulnerabilities
 #
@@ -44,8 +44,8 @@ tag_summary = "This host is installed with Sun Java SE and is prone to multiple
 if(description)
 {
   script_id(900819);
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 6466 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:28:20 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-08-24 07:49:31 +0200 (Mon, 24 Aug 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -59,10 +59,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl",
-                      "gb_java_prdts_detect_lin.nasl");
-  script_require_keys("Sun/Java/JRE/Win/Ver", "Sun/Java/JRE/Linux/Ver",
-                      "Sun/Java/JDK/Win/Ver");
+  script_dependencies("gb_java_prdts_detect_win.nasl", "gb_java_prdts_detect_lin.nasl");
+  script_mandatory_keys("Sun/Java/JDK_or_JRE/Win_or_Linux/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

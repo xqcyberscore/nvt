@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_jrun_mult_vuln_win.nasl 5364 2017-02-20 13:26:07Z cfi $
+# $Id: secpod_adobe_jrun_mult_vuln_win.nasl 6605 2017-07-07 11:22:07Z cfischer $
 #
 # Adobe JRun Management Console Multiple Vulnerabilities (Windows)
 #
@@ -47,8 +47,8 @@ tag_summary = "The host is running Adobe JRun and is prone to multiple vulnerabi
 if(description)
 {
   script_id(900823);
-  script_version("$Revision: 5364 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:26:07 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6605 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 13:22:07 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-08-26 14:01:08 +0200 (Wed, 26 Aug 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -62,7 +62,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_adobe_jrun_detect.nasl", "secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion", "/Adobe/JRun/Ver");
+  script_mandatory_keys("/Adobe/JRun/Ver", "SMB/WindowsVersion");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

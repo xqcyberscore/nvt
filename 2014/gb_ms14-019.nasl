@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-019.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-019.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # Microsoft File Handling Component Remote Code Execution Vulnerability (2922229)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(804375);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-0315");
   script_bugtraq_id(66619);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-09 08:14:46 +0530 (Wed, 09 Apr 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft File Handling Component Remote Code Execution Vulnerability (2922229)");
@@ -86,7 +86,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-019";
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/91356");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2922229");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-019");
-  script_summary("Check for the vulnerable 'kernel32.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

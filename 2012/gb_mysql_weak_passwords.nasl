@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_weak_passwords.nasl 5889 2017-04-07 09:14:58Z cfi $
+# $Id: gb_mysql_weak_passwords.nasl 6788 2017-07-21 19:16:52Z cfischer $
 #
 # MySQL / MariaDB weak password 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103551");
-  script_version("$Revision: 5889 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
+  script_version("$Revision: 6788 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-08-23 10:38:09 +0200 (Thu, 23 Aug 2012)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -37,8 +37,8 @@ if(description)
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("mysql_version.nasl");
+  script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL_MariaDB/installed");
-  script_require_ports("Services/mysql", "Services/mysql_mariadb", "Services/mariadb", 3306);
 
   tag_summary = "It was possible to login into the remote MySQL as root using weak credentials.";
 

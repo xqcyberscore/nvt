@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_acroread_priv_escalation_vuln_lin.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_adobe_reader_acroread_priv_escalation_vuln_lin.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Adobe Reader 'acroread' Privilege Escalation Vulnerability (Linux)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804371";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2008-0883");
   script_bugtraq_id(28091);
   script_tag(name:"cvss_base", value:"3.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-08 18:15:57 +0530 (Tue, 08 Apr 2014)");
   script_name("Adobe Reader 'acroread' Privilege Escalation Vulnerability (Linux)");
 
@@ -78,7 +78,6 @@ http://www.adobe.com/support/downloads/detail.jsp?ftpID=3992";
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/40987");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id?1019539");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/advisories/apsa08-02.html");
-  script_summary("Check for the vulnerable version of Adobe Reader on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

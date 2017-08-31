@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-656.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: alas-2016-656.nasl 6574 2017-07-06 13:41:26Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120646");
-script_version("$Revision: 5580 $");
+script_version("$Revision: 6574 $");
 script_tag(name:"creation_date", value:"2016-03-11 07:09:10 +0200 (Fri, 11 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:41:26 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-656");
 script_tag(name: "insight", value: "It was found that the expression language resolver evaluated expressions within a privileged code section. A malicious web application could use this flaw to bypass security manager protections. (CVE-2014-7810 )It was found that Tomcat would keep connections open after processing requests with a large enough request body. A remote attacker could potentially use this flaw to exhaust the pool of available connections and preventing further, legitimate connections to the Tomcat server to be made. (CVE-2014-0230 )"); 
 script_tag(name : "solution", value : "Run yum update tomcat6 to update your system.");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"7.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

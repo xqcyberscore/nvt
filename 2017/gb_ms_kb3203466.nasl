@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3203466.nasl 6343 2017-06-15 09:48:13Z santu $
+# $Id: gb_ms_kb3203466.nasl 6479 2017-06-29 07:59:07Z teissa $
 #
 # Microsoft Office Web Apps 2010 Multiple Vulnerabilities (KB3203466)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811157");
-  script_version("$Revision: 6343 $");
+  script_version("$Revision: 6479 $");
   script_cve_id("CVE-2017-8509", "CVE-2017-8511", "CVE-2017-8512");
   script_bugtraq_id(98812, 98815, 98816);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-15 11:48:13 +0200 (Thu, 15 Jun 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:59:07 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-06-14 12:49:31 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Office Web Apps 2010 Multiple Vulnerabilities (KB3203466)");
 

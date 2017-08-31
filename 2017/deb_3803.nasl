@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3803.nasl 6157 2017-05-18 08:15:25Z teissa $
+# $Id: deb_3803.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3803-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703803);
-    script_version("$Revision: 6157 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2016-10243");
     script_name("Debian Security Advisory DSA 3803-1 (texlive-base - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-18 10:15:25 +0200 (Thu, 18 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-03-08 00:00:00 +0100 (Wed, 08 Mar 2017)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "texlive-base on Debian Linux");
         script_tag(name: "insight",   value: "These files are regarded as basic for any TeX system, covering plain TeX
 macros, Computer Modern fonts, and configuration for common drivers; no

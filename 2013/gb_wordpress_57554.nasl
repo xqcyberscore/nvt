@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_57554.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_wordpress_57554.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # WordPress Pingback Vulnerability
 #
@@ -49,14 +49,14 @@ if (description)
  script_cve_id("CVE-2013-0235");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 6115 $");
+ script_version ("$Revision: 6755 $");
 
  script_name("WordPress Pingback Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/57554");
  script_xref(name : "URL" , value : "http://www.acunetix.com/blog/web-security-zone/wordpress-pingback-vulnerability/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-02-07 10:52:18 +0100 (Thu, 07 Feb 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -64,7 +64,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("secpod_wordpress_detect_900182.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("wordpress/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -78,7 +77,7 @@ include("http_keepalive.inc");
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
-host = get_host_name();
+host = http_host_name(port:port);
 
 function _check(c) {
 
@@ -119,7 +118,7 @@ if(!ret1 = _check(c:"i-dont-exist"))exit(0);
 
 if("The source URL does not exist" >< ret1) {
 
-  tests = make_list('localhost:22', 'localhost:25', host + ':' + port);
+  tests = make_list('localhost:22', 'localhost:25', get_host_name() + ':' + port);
   foreach test (tests) {
 
     ret = _check(c:test);

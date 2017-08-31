@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-0345.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: ELSA-2011-0345.nasl 6556 2017-07-06 11:54:54Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122218");
-script_version("$Revision: 6214 $");
+script_version("$Revision: 6556 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:14:57 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:54 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-0345");
 script_tag(name: "insight", value: "ELSA-2011-0345 -  qemu-kvm security update - [qemu-kvm-0.12.1.2-2.113.el6_0.8]- kvm-Revert-blockdev-Fix-drive_del-not-to-crash-when-driv.patch [bz#677170]- kvm-Revert-blockdev-check-dinfo-ptr-before-using-v2.patch [bz#677170]- kvm-Revert-Implement-drive_del-to-decouple-block-removal.patch [bz#677170]- kvm-Revert-block-Catch-attempt-to-attach-multiple-device.patch [bz#677170]- kvm-Revert-qdev-Decouple-qdev_prop_drive-from-DriveInfo-.patch [bz#677170]- kvm-Revert-blockdev-Clean-up-automatic-drive-deletion-v2.patch [bz#677170]- kvm-Revert-blockdev-New-drive_get_by_blockdev-v2.patch [bz#677170]- kvm-Revert-qdev-Don-t-leak-string-property-value-on-hot-.patch [bz#677170]- kvm-Revert-ide-Split-non-qdev-code-off-ide_init2.patch [bz#677170]- kvm-Revert-ide-Change-ide_init_drive-to-require-valid-di.patch [bz#677170]- kvm-Revert-ide-Split-ide_init1-off-ide_init2-v2.patch [bz#677170]- kvm-Revert-ide-Remove-redundant-IDEState-member-conf.patch [bz#677170]- Related: bz#677170 (drive_del command to let libvirt safely remove block device from guest)[qemu-kvm-0.12.1.2-2.113.el6_0.7]- kvm-ide-Remove-redundant-IDEState-member-conf.patch [bz#677170]- kvm-ide-Split-ide_init1-off-ide_init2-v2.patch [bz#677170]- kvm-ide-Change-ide_init_drive-to-require-valid-dinfo-arg.patch [bz#677170]- kvm-ide-Split-non-qdev-code-off-ide_init2.patch [bz#677170]- kvm-qdev-Don-t-leak-string-property-value-on-hot-unplug.patch [bz#677170]- kvm-blockdev-New-drive_get_by_blockdev-v2.patch [bz#677170]- kvm-blockdev-Clean-up-automatic-drive-deletion-v2.patch [bz#677170]- kvm-qdev-Decouple-qdev_prop_drive-from-DriveInfo-v2.patch [bz#677170]- kvm-block-Catch-attempt-to-attach-multiple-devices-to-a-.patch [bz#677170]- kvm-Implement-drive_del-to-decouple-block-removal-from-d.patch [bz#677170]- kvm-blockdev-check-dinfo-ptr-before-using-v2.patch [bz#677170]- kvm-blockdev-Fix-drive_del-not-to-crash-when-drive-is-no.patch [bz#677170]- kvm-Fix-CVE-2011-0011-qemu-kvm-Setting-VNC-password-to-e.patch [bz#668598]- Resolves: bz#668598 (CVE-2011-0011 qemu-kvm: Setting VNC password to empty string silently disables all authentication [rhel-6.0.z])- Resolves: bz#677170 (drive_del command to let libvirt safely remove block device from guest)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"4.3");
 script_tag(name:"cvss_base_vector", value:"AV:A/AC:H/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

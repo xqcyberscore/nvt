@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blogengine_net_info_disc_vuln.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_blogengine_net_info_disc_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # BlogEngine.NET 'sioc.axd' Information Disclosure Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803791");
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2013-6953");
   script_bugtraq_id(64635);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-08 13:24:03 +0530 (Wed, 08 Jan 2014)");
   script_name("BlogEngine.NET 'sioc.axd' Information Disclosure Vulnerability");
 
@@ -56,7 +56,6 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/553166");
-  script_summary("Check if BlogEngine.net is vulnerable to information disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

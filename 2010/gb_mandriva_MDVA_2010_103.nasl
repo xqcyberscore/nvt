@@ -38,9 +38,9 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-03/msg00029.php");
   script_id(830953);
-  script_version("$Revision: 3147 $");
+  script_version("$Revision: 6569 $");
   script_cve_id("CVE-2010-0442", "CVE-2010-1169", "CVE-2010-1170", "CVE-2010-1975");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 13:44:34 +0200 (Fri, 22 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-03-22 11:34:53 +0100 (Mon, 22 Mar 2010)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
@@ -52,7 +52,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:mandriva:linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

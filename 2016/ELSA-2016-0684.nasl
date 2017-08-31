@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0684.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: ELSA-2016-0684.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122932");
-script_version("$Revision: 5675 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:24:48 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0684");
 script_tag(name: "insight", value: "ELSA-2016-0684 -  nss and nspr security, bug fix, and enhancement update - nspr[4.11.0-0.1]- Rebase to NSPR 4.11- Resolves: Bug 1297943 - Rebase RHEL 5.11.z to NSPR 4.11 in preparation for Firefox 45nss[3.21.0-6]- Fix SSL_DH_MIN_P_BITS in more places.[3.21.0-5]- Keep SSL_DH_MIN_P_BITS at 768 as in the previously released build.[3.21.0-4]- Run SSL tests[3.21.0-3]- Add compatility patches to prevent regressions[3.21.0-2]- Ensure all ssl.sh tests are executed[3.21.0-1]- Rebase to nss 3.21- Resolves: Bug 1297944 - Rebase RHEL 5.11.z to NSS 3.21 in preparation for Firefox 45"); 
 script_tag(name : "solution", value : "update software");
@@ -41,7 +41,7 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

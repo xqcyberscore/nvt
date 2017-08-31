@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_mar14_macosx.nasl 2489 2016-01-22 14:42:19Z benallard $
+# $Id: gb_apple_safari_webkit_mult_vuln_mar14_macosx.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Apple Safari 'Webkit' Multiple Vulnerabilities-01 Mar14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2489 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-1268", "CVE-2014-1269", "CVE-2014-1270");
   script_bugtraq_id(65778, 65780, 65781);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:42:19 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-03 16:56:35 +0530 (Mon, 03 Mar 2014)");
   script_name("Apple Safari 'Webkit' Multiple Vulnerabilities-01 Mar14 (Mac OS X)");
 
@@ -77,7 +77,6 @@ For updates refer to http://www.apple.com/support";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57093");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125428/Apple-Security-Advisory-2014-02-25-2.html");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Apple Safari on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");

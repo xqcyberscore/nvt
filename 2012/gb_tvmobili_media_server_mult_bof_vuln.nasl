@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tvmobili_media_server_mult_bof_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_tvmobili_media_server_mult_bof_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # TVMOBiLi Media Server HTTP Request Multiple BOF Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803125");
-  script_version("$Revision: 5950 $");
+  script_version("$Revision: 6697 $");
   script_cve_id("CVE-2012-5451");
   script_bugtraq_id(56853);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-12-10 10:36:49 +0530 (Mon, 10 Dec 2012)");
   script_name("TVMOBiLi Media Server HTTP Request Multiple BOF Vulnerabilities");
 
@@ -40,9 +40,8 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_require_ports("Services/www", 30888);
   script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 30888);
   script_mandatory_keys("TVMOBiLi/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the

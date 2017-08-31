@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_snmp_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_symantec_messaging_gateway_snmp_detect.nasl 6490 2017-06-30 05:39:55Z ckuersteiner $
 #
 # Symantec Messaging Gateway Detection (SNMP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105718");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version ("$Revision: 6490 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-30 07:39:55 +0200 (Fri, 30 Jun 2017) $");
  script_tag(name:"creation_date", value:"2016-05-17 12:13:39 +0200 (Tue, 17 May 2016)");
  script_name("Symantec Messaging Gateway Detection (SNMP)");
 
@@ -42,49 +42,39 @@ if (description)
  script_category(ACT_GATHER_INFO);
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_snmp_sysdesc.nasl");
+ script_dependencies("gb_snmp_get_installed_sw.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);
- script_mandatory_keys("SNMP/sysdesc");
+ script_mandatory_keys("SNMP/installed_software");
  exit(0);
 }
 
-port = get_kb_item("Services/udp/snmp");
-if( ! port ) port = 161;
+include("snmp_func.inc");
 
-sysdesc = get_kb_item( "SNMP/sysdesc" );
+if (!release = snmp_get_sw_oid(pattern: "sms-appliance-release"))
+  exit(0);
 
-if( "Linux" >!< sysdesc ) exit( 0 );
+replace_kb_item(name: "smg/installed", value: TRUE);
 
-if( defined_func( "snmpv2c_get" ) )
-{
-  community = get_kb_item( "SNMP/community" );
-  if( ! community) community = "public";
-
-  version = snmpv2c_get( port:port, protocol:'udp', community:community, oid:'1.3.6.1.2.1.25.6.3.1.2.600' );
-  if( version[0] == 0 )
-  {
-    if( "sms-appliance-release" >!< version ) exit( 0 );
-    replace_kb_item( name:"smg/installed", value:TRUE );
-
-    vers = eregmatch( pattern:'sms-appliance-release-([0-9+][^ $\r\n"]+)', string:version[1] );
-    if( ! isnull( vers[1] ) )
-    {
-
-      version = vers[1];
-      if( "-" >< vers[1] )
-      {
-       _v = split( vers[1], sep:"-", keep:FALSE );
-
-       version = _v[0];
-       patch = _v[1];
-      }
-    }
-      if( version )
-        set_kb_item( name:"symantec_messaging_gateway/version/snmp", value:version );
-
-      if( patch )
-        set_kb_item( name:"symantec_messaging_gateway/patch/snmp", value:patch );
+vers = eregmatch(pattern: 'sms-appliance-release-([0-9+][^ $\r\n"]+)', string: release[1]);
+if (!isnull(vers[1])) {
+  version = vers[1];
+  if ("-" >< version) {
+    v = split(version, sep: "-", keep: FALSE);
+    version = v[0];
+    patch = v[1];
   }
+
+  if (p = snmp_get_sw_oid(pattern: "sms-appliance-patch")) {
+    pa = eregmatch(pattern: "sms-appliance-patch-" + version + "-([0-9]+)", string: p[1]);
+    if (!isnull(pa[1]))
+      patch = pa[1];
+  }
+
+  if (version)
+    set_kb_item(name: "symantec_messaging_gateway/version/snmp", value: version);
+
+  if (patch)
+    set_kb_item(name: "symantec_messaging_gateway/patch/snmp", value: patch);
 }
 
 exit(0);

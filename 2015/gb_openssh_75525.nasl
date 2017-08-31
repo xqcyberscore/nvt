@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_75525.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_openssh_75525.nasl 6497 2017-06-30 09:58:54Z teissa $
 #
 # OpenSSH 'x11_open_helper()' Function Security Bypass Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
  script_cve_id("CVE-2015-5352");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 2676 $");
+ script_version ("$Revision: 6497 $");
 
  script_name("OpenSSH 'x11_open_helper()' Function Security Bypass Vulnerability");
 
@@ -52,9 +52,8 @@ This NVT has been replaced by NVT gb_openssh_security_bypass_vuln.nasl (1.3.6.1.
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-07-09 10:06:32 +0200 (Thu, 09 Jul 2015)");
- script_summary("Check the version from ssh-banner");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

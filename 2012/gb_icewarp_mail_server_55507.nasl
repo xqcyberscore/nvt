@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icewarp_mail_server_55507.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_icewarp_mail_server_55507.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # IceWarp Mail Server 'raw.php' Information Disclosure Vulnerability
 #
@@ -44,14 +44,14 @@ if (description)
  script_bugtraq_id(55507);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5940 $");
+ script_version ("$Revision: 6720 $");
 
  script_name("IceWarp Mail Server 'raw.php' Information Disclosure Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55507");
  script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/50441");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-09-13 10:46:19 +0200 (Thu, 13 Sep 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -59,7 +59,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_merak_mail_server_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("MerakMailServer/Ver");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -70,9 +69,8 @@ include("host_details.inc");
 include("http_keepalive.inc");
    
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+
 url = dir + '/pda/controller/raw.php';
 
 if(http_vuln_check(port:port, url:url,pattern:"<title>phpinfo\(\)")) {

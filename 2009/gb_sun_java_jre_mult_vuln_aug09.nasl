@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_jre_mult_vuln_aug09.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_sun_java_jre_mult_vuln_aug09.nasl 6466 2017-06-28 13:28:20Z cfischer $
 #
 # Sun Java JDK/JRE Multiple Vulnerabilities - Aug09
 #
@@ -49,8 +49,8 @@ tag_summary = "This host is installed with Sun Java JDK/JRE and is prone to
 if(description)
 {
   script_id(800867);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 6466 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:28:20 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-08-20 09:27:17 +0200 (Thu, 20 Aug 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -74,10 +74,8 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_java_prdts_detect_win.nasl",
-                      "gb_java_prdts_detect_lin.nasl");
-  script_require_keys("Sun/Java/JRE/Win/Ver", "Sun/Java/JRE/Linux/Ver",
-                      "Sun/Java/JDK/Win/Ver");
+  script_dependencies("gb_java_prdts_detect_win.nasl", "gb_java_prdts_detect_lin.nasl");
+  script_mandatory_keys("Sun/Java/JDK_or_JRE/Win_or_Linux/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

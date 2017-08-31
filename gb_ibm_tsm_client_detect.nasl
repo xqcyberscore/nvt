@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tsm_client_detect.nasl 6272 2017-06-02 09:59:57Z santu $
+# $Id: gb_ibm_tsm_client_detect.nasl 6485 2017-06-29 09:21:18Z santu $
 #
 # IBM Tivoli Storage Manager Client Version Detection (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811126");
-  script_version("$Revision: 6272 $");
+  script_version("$Revision: 6485 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-02 11:59:57 +0200 (Fri, 02 Jun 2017) $");
-  script_tag(name:"creation_date", value:"2017-06-02 15:14:30 +0530 (Fri, 02 Jun 2017)");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:21:18 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"creation_date", value:"2017-05-29 16:58:07 +0530 (Mon, 29 May 2017)");
   script_name("IBM Tivoli Storage Manager Client Version Detection (Windows)");
 
   script_tag(name: "summary" , value: "Detection of installed version of
@@ -78,7 +78,7 @@ foreach item (registry_enum_keys(key:key))
   tivName = registry_get_sz(key:key + item, item:"DisplayName");
 
   #### Confirm Application
-  if("IBM Tivoli Storage Manager Client" >< tivName)
+  if("IBM Tivoli Storage Manager Client" >< tivName || "IBM Spectrum Protect Client" >< tivName)
   {
     tivPath = registry_get_sz(key:key + item, item:"InstallLocation");
     if(tivPath)

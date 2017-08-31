@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: fcore_2009_7337.nasl 4732 2016-12-09 14:13:45Z teissa $
+# $Id: fcore_2009_7337.nasl 6624 2017-07-10 06:11:55Z cfischer $
 # Description: Auto-generated from advisory FEDORA-2009-7337 (phpMyAdmin)
 #
 # Authors:
@@ -57,10 +57,10 @@ announced via advisory FEDORA-2009-7337.";
 if(description)
 {
  script_id(64348);
- script_version("$Revision: 4732 $");
+ script_version("$Revision: 6624 $");
  script_cve_id("CVE-2009-2284");
  script_bugtraq_id(35543);
- script_tag(name:"last_modification", value:"$Date: 2016-12-09 15:13:45 +0100 (Fri, 09 Dec 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:11:55 +0200 (Mon, 10 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-07-06 20:36:15 +0200 (Mon, 06 Jul 2009)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -73,7 +73,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("Fedora Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/rpms");
+ script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

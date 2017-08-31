@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_egroupware_mult_vulns_09_10.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_egroupware_mult_vulns_09_10.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # EGroupware multiple vulnerabilities.
 #
@@ -47,8 +47,8 @@ CPE = "cpe:/a:egroupware:egroupware";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-09-24 14:46:08 +0200 (Fri, 24 Sep 2010)");
  script_cve_id("CVE-2010-3313","CVE-2010-3314");
  script_tag(name:"cvss_base", value:"7.5");
@@ -63,7 +63,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("gb_egroupware_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("egroupware/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -76,8 +75,6 @@ include("host_details.inc");
 include("version_func.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 url = string(dir,'/login.php?lang="%20style="width:100%;height:100%;display:block;position:absolute;top:0px;left:0px"%20onMouseOver="alert(%27openvas-xss-test%27)');
 

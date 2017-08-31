@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-0675.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: ELSA-2014-0675.nasl 6559 2017-07-06 11:57:32Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123377");
-script_version("$Revision: 6132 $");
+script_version("$Revision: 6559 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:02:59 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:57:32 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-0675");
 script_tag(name: "insight", value: "ELSA-2014-0675 -  java-1.7.0-openjdk security update - [1.7.0.55-2.4.7.2.0.1.el7_0]- Update DISTRO_NAME in specfile[1.7.0.55-2.4.7.2]- Remove NSS patches. Issues with PKCS11 provider mean it shouldn't be enabled.- Always setup nss.cfg and depend on nss-devel at build-time to do so.- This allows users who wish to use PKCS11+NSS to just add it to java.security.- Patches to PKCS11 provider will be included upstream in 2.4.8 (ETA July 2014)- Resolves: rhbz#1099565[1.7.0.55-2.4.7.0.el7]- bumped to future icedtea-forest 2.4.7- updatever set to 55, buildver se to 13, release reset to 0- removed upstreamed patch402 gstackbounds.patch- removed Requires: rhino, BuildRequires is enough- ppc64 repalced by power64 macro- patch111 applied as dry-run (6.6 forward port)- nss enabled, but notused as default (6.6 forward port)- Resolves: rhbz#1099565"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

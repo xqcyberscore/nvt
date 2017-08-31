@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_status2k_mult_vuln.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_status2k_mult_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Status2K Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804736");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-5088", "CVE-2014-5089", "CVE-2014-5090", "CVE-2014-5091",
                 "CVE-2014-5092", "CVE-2014-5093", "CVE-2014-5094");
   script_bugtraq_id(69012, 69015, 69017, 69008, 69009, 69013, 69010);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-08 11:40:09 +0530 (Fri, 08 Aug 2014)");
   script_name("Status2K Multiple Vulnerabilities");
 
@@ -65,7 +65,6 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/34239");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127719");
-  script_summary("Check if Status2K is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

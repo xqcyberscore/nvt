@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871526");
-  script_version("$Revision: 2736 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:49:21 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:50:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-12-17 05:07:29 +0100 (Thu, 17 Dec 2015)");
   script_cve_id("CVE-2015-7201", "CVE-2015-7205", "CVE-2015-7210", "CVE-2015-7212",
                 "CVE-2015-7213", "CVE-2015-7214", "CVE-2015-7222");
@@ -70,12 +70,11 @@ the update, Firefox must be restarted for the changes to take effect.
   script_xref(name: "RHSA", value: "2015:2657-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-December/msg00044.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

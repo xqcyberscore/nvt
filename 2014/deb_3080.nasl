@@ -1,6 +1,6 @@
 ###########################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3080.nasl 2768 2016-03-03 09:41:07Z benallard $
+# $Id: deb_3080.nasl 6769 2017-07-20 09:56:33Z teissa $
 # Auto-generated from advisory DSA 3080-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -31,26 +31,25 @@
 if(description)
 {
     script_id(703080);
-    script_version("$Revision: 2768 $");
+    script_version("$Revision: 6769 $");
     script_cve_id("CVE-2014-6457", "CVE-2014-6502", "CVE-2014-6504", "CVE-2014-6506",
                   "CVE-2014-6511", "CVE-2014-6512", "CVE-2014-6517", "CVE-2014-6519",
                   "CVE-2014-6531", "CVE-2014-6558");
     script_name("Debian Security Advisory DSA 3080-1 (openjdk-7 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-03-03 10:41:07 +0100 (Thu, 03 Mar 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
     script_tag(name: "creation_date", value: "2014-11-29 00:00:00 +0100 (Sat, 29 Nov 2014)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-3080.html");
 
-    script_summary("Debian Security Advisory DSA 3080-1 (openjdk-7 - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2014 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "openjdk-7 on Debian Linux");
     script_tag(name: "insight",   value: "OpenJDK is a development environment for
 building applications, applets, and components using the Java programming

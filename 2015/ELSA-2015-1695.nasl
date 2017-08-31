@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1695.nasl 6243 2017-05-30 09:04:14Z teissa $
+# $Id: ELSA-2015-1695.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123017");
-script_version("$Revision: 6243 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 09:46:41 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1695");
 script_tag(name: "insight", value: "ELSA-2015-1695 -  jakarta-taglibs-standard security update - [0:1.1.1-11.7]- Gracefully handle parsers without FSP support (e.g. Java 5 GCJ)- Resolves: CVE-2015-0254[0:1.1.1-11.6]- Prevent XXE and RCE in JSTL XML tags- Apply correction for previous CVE-2015-0254 patch (prevent XXE in )- Resolves: CVE-2015-0254[0:1.1.1-11.5]- Prevent XXE and RCE in JSTL XML tags- Resolves: CVE-2015-0254"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0293.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: mgasa-2015-0293.nasl 6563 2017-07-06 12:23:47Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130085");
-script_version("$Revision: 6214 $");
+script_version("$Revision: 6563 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:42:31 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:23:47 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0293");
 script_tag(name: "insight", value: "Eric Peterson and Lin Hua Cheng discovered that a new empty record used to be created in the session storage every time a session was accessed and an unknown session key was provided in the request cookie. This could allow remote attackers to saturate the session store or cause other users' session records to be evicted (CVE-2015-5143). Sjoerd Job Postmus discovered that some built-in validators did not properly reject newlines in input values. This could allow remote attackers to inject headers in emails and HTTP responses (CVE-2015-5144). django.core.validators.URLValidator included a regular expression that was extremely slow to evaluate against certain inputs. This regular expression has been simplified and optimized (CVE-2015-5145). The Mageia 4 python-django14 and Mageia 5 python-django packages have been updated to versions 1.4.21 and 1.8.3 respectively to fix these issues. Note that the CVE-2015-5145 issue only affected python-django. Note: the python-django package in Mageia 4, based on Django 1.5.9, is no longer supported. Users of this package are advised to migrate to Mageia 5."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"7.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0293");
 script_copyright("Eero Volotinen");

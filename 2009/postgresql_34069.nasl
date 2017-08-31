@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: postgresql_34069.nasl 5016 2017-01-17 09:06:21Z teissa $
+# $Id: postgresql_34069.nasl 6707 2017-07-12 14:57:13Z cfischer $
 #
 # PostgreSQL Low Cost Function Information Disclosure Vulnerability
 #
@@ -38,8 +38,8 @@ CPE = "cpe:/a:postgresql:postgresql";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5016 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+ script_version("$Revision: 6707 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:57:13 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-04-24 20:04:08 +0200 (Fri, 24 Apr 2009)");
  script_bugtraq_id(34069);
  script_tag(name:"cvss_base", value:"2.1");
@@ -65,11 +65,8 @@ include("version_func.inc");
 include("misc_func.inc");
 include("host_details.inc");
 
-port = get_kb_item("Services/postgresql");
-if(!port)port = 5432;
-if(!get_tcp_port_state(port))exit(0);
-
-if(!ver = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!port = get_app_port(cpe:CPE)) exit(0);
+if(!ver = get_app_version(cpe:CPE, port:port))exit(0);
 
 if(version_in_range(version:ver, test_version:"8.3", test_version2:"8.3.6") )
 {

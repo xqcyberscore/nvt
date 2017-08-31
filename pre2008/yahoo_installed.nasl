@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: yahoo_installed.nasl 5452 2017-03-01 08:53:44Z cfi $
+# $Id: yahoo_installed.nasl 6456 2017-06-28 11:19:33Z cfischer $
 #
 # Yahoo!Messenger is installed
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11432");
-  script_version("$Revision: 5452 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 09:53:44 +0100 (Wed, 01 Mar 2017) $");
+  script_version("$Revision: 6456 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(2299, 4162, 4163, 4164, 4173, 4837, 4838, 5579, 6121);
   script_cve_id("CVE-2002-0320", "CVE-2002-0321", "CVE-2002-0031", "CVE-2002-0032", "CVE-2002-0322");  
@@ -38,11 +38,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 Xue Yong Zhi");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl");
-  script_require_keys("SMB/name", "SMB/login", "SMB/password",
-                      "SMB/domain","SMB/transport");
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
 
   tag_summary = "Yahoo!Messenger - an instant messaging software, which may not be suitable 
   for a business environment - is installed on the remote host. If its use

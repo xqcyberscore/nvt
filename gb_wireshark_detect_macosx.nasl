@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_detect_macosx.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_wireshark_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
 #
 # Wireshark Version Detection (MacOSX)
 #
@@ -32,10 +32,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802762";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 6484 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2012-04-24 14:25:07 +0530 (Tue, 24 Apr 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Wireshark Version Detection (MacOSX)");
@@ -54,7 +54,7 @@ via command line option 'defaults read'.";
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success");
+  script_mandatory_keys("ssh/login/osx_name");
   exit(0);
 }
 

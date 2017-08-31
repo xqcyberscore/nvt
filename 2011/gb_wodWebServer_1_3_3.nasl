@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wodWebServer_1_3_3.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_wodWebServer_1_3_3.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # wodWebServer.NET 1.3.3 Directory Traversal
 #
@@ -33,8 +33,8 @@ wodWebServer.NET 1.3.3 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103131);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6696 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-03-28 13:42:17 +0200 (Mon, 28 Mar 2011)");
  script_bugtraq_id(47050);
  script_tag(name:"cvss_base", value:"5.0");
@@ -49,9 +49,9 @@ if (description)
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("wodWebServer/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("wodWebServer/banner");
+
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
@@ -60,7 +60,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if(!banner || "wodWebServer" >!< banner)exit(0);

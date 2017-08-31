@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_authorization.nasl 5462 2017-03-02 07:35:28Z cfi $
+# $Id: ssh_authorization.nasl 6664 2017-07-11 10:20:11Z cfischer $
 #
 # This script allows to set SSH credentials for target hosts.
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.90022");
-  script_version("$Revision: 5462 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-02 08:35:28 +0100 (Thu, 02 Mar 2017) $");
+  script_version("$Revision: 6664 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 12:20:11 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2007-11-01 23:55:52 +0100 (Thu, 01 Nov 2007)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,61 +56,48 @@ if(description)
 include("ssh_func.inc");
 include("host_details.inc");
 
-if ( get_kb_item( "global_settings/authenticated_scans_disabled" ) )exit(0); 
+if( get_kb_item( "global_settings/authenticated_scans_disabled" ) ) exit( 0 ); 
 
 # Check if port for us is known
-port = get_preference("auth_port_ssh");
+port = get_preference( "auth_port_ssh" );
+if( ! port )
+  port = get_kb_item( "Services/ssh" );
 
-if(!port) {
-    port = get_kb_item("Services/ssh");
-}
+# Check if an account was defined either by the preferences ("old") or by the server ("new").
+if( kb_ssh_login() && ( kb_ssh_password() || kb_ssh_privatekey() ) ) {
 
-# Check if an account was defined either by the preferences ("old") or by the
-# server ("new").
-
-if(kb_ssh_login() && (kb_ssh_password() || kb_ssh_privatekey()))
-{
-
-  if(!port)
-  {
-      log_message(data:'No port for an ssh connect was found open.\nHence authenticated checks are not enabled.');
-      register_host_detail(name:"Auth-SSH-Failure", value:
-        "Protocol SSH, User " + kb_ssh_login() + " : No port open");
-      exit(0); # If port is not open
+  if( ! port ) {
+    log_message( data:"No port for an ssh connect was found open. Hence authenticated checks are not enabled." );
+    register_host_detail( name:"Auth-SSH-Failure", value:"Protocol SSH, User " + kb_ssh_login() + " : No port open" );
+    exit( 0 ); # If port is not open
   }
 
   sock = ssh_login_or_reuse_connection();
 
-  if(!sock)
-  {
-    log_message(data: 'It was not possible to login using the provided SSH credentials.\nHence authenticated checks are not enabled.', port:port);
-    set_kb_item(name:"login/SSH/failed", value:TRUE);
-    register_host_detail(name:"Auth-SSH-Failure", value:
-      "Protocol SSH, Port " + port + ", User " + kb_ssh_login() + " : Login failure" );
+  if( ! sock ) {
+    log_message( port:port, data:"It was not possible to login using the provided SSH credentials. Hence authenticated checks are not enabled." );
+    set_kb_item( name:"login/SSH/failed", value:TRUE );
+    register_host_detail( name:"Auth-SSH-Failure", value:"Protocol SSH, Port " + port + ", User " + kb_ssh_login() + " : Login failure" );
     ssh_close_connection();
-    exit(0);
+    exit( 0 );
   }
 
-  set_kb_item(name:"login/SSH/success", value:TRUE);
-  register_host_detail(name:"Auth-SSH-Success", value:
-    "Protocol SSH, Port " + port + ", User " + kb_ssh_login() );
+  set_kb_item( name:"login/SSH/success", value:TRUE );
+  register_host_detail( name:"Auth-SSH-Success", value:"Protocol SSH, Port " + port + ", User " + kb_ssh_login() );
 
   ## Confirm Linux and set the KB
-  result = ssh_cmd(socket:sock, cmd:"uname");
-  if("Linux" >< result){
-    set_kb_item(name:"login/SSH/Linux", value:TRUE);
+  result = ssh_cmd( socket:sock, cmd:"uname" );
+  if( "Linux" >< result ) {
+    set_kb_item( name:"login/SSH/Linux", value:TRUE );
   }
 
-
-  log_message(data:'It was possible to login using the provided SSH credentials.\nHence authenticated checks are enabled.', port:port);
+  log_message( port:port, data:"It was possible to login using the provided SSH credentials. Hence authenticated checks are enabled." );
   ssh_close_connection();
-}
-else
-{
+} else {
   # Actually it is not necessary to send log information in case no
   # credentials at all were provided. The user simply does not want
   # to run a authenticated scan.
   #log_message(data:'No sufficient SSH credentials were supplied.\nHence authenticated checks are not enabled.', port:port);
 }
 
-exit(0);
+exit( 0 );

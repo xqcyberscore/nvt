@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2963983.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_microsoft_security_advisory_2963983.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Microsoft Internet Explorer Remote Code Execution Vulnerability (2965111)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-1776");
   script_bugtraq_id(67075);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-30 13:55:25 +0530 (Wed, 30 Apr 2014)");
   script_name("Microsoft Internet Explorer Remote Code Execution Vulnerability (2965111)");
 
@@ -78,7 +78,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-021";
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/222929");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/2963983");
   script_xref(name : "URL" , value : "http://www.fireeye.com/blog/uncategorized/2014/04/new-zero-day-exploit-targeting-internet-explorer-versions-9-through-11-identified-in-targeted-attacks.html");
-  script_summary("Check for the vulnerable 'Mshtml.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

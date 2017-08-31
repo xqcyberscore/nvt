@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3187.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: deb_3187.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3187-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,12 +30,12 @@
 if(description)
 {
     script_id(703187);
-    script_version("$Revision: 6254 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2013-1569", "CVE-2013-2383", "CVE-2013-2384", "CVE-2013-2419",
                   "CVE-2014-6585", "CVE-2014-6591", "CVE-2014-7923", "CVE-2014-7926",
                   "CVE-2014-7940", "CVE-2014-9654");
     script_name("Debian Security Advisory DSA 3187-1 (icu - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-03-15 00:00:00 +0100 (Sun, 15 Mar 2015)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "icu on Debian Linux");
     script_tag(name: "insight",   value: "ICU is a C++ and C library that
 provides robust and full-featured Unicode and locale support.");

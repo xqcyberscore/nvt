@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpldapadmin_51794.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_phpldapadmin_51794.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # phpLDAPadmin 'server_id' Parameter Cross Site Scripting Vulnerabilities
 #
@@ -41,7 +41,7 @@ if (description)
 {
  script_id(103406);
  script_bugtraq_id(51794);
- script_version ("$Revision: 6018 $");
+ script_version ("$Revision: 6720 $");
  script_tag(name:"cvss_base", value:"2.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
 
@@ -51,7 +51,7 @@ if (description)
  script_xref(name : "URL" , value : "http://packages.debian.org/lenny/phpldapadmin");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521450");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-02-02 11:00:37 +0100 (Thu, 02 Feb 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -59,8 +59,8 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("phpldapadmin_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("phpldapadmin/installed");
+
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
@@ -71,8 +71,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if(!can_host_php(port:port))exit(0);
 
 if(!dir = get_dir_from_kb(port:port,app:"phpldapadmin"))exit(0);

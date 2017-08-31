@@ -69,8 +69,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2013-March/019264.html");
   script_id(881620);
-  script_version("$Revision: 2868 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-16 12:15:11 +0100 (Wed, 16 Mar 2016) $");
+  script_version("$Revision: 6655 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:58 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-03-08 10:19:35 +0530 (Fri, 08 Mar 2013)");
   script_cve_id("CVE-2012-4929", "CVE-2013-0166", "CVE-2013-0169");
   script_tag(name:"cvss_base", value:"5.0");
@@ -83,7 +83,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "insight" , value : tag_insight);

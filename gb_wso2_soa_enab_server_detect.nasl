@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wso2_soa_enab_server_detect.nasl 5443 2017-02-28 09:48:09Z ckuerste $
+# $Id: gb_wso2_soa_enab_server_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # WSO2 SOA Enablement Server Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808060");
-  script_version("$Revision: 5443 $");
+  script_version("$Revision: 6701 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-28 10:48:09 +0100 (Tue, 28 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-05-25 15:44:11 +0530 (Wed, 25 May 2016)");
   script_name("WSO2 SOA Enablement Server Detection");
 
@@ -45,9 +45,9 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("WSO2_SOA/banner");
   script_require_ports("Services/www", 8080);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("WSO2_SOA/banner");
+
   exit(0);
 }
 

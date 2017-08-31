@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: linpha_34422.nasl 4975 2017-01-10 16:07:01Z teissa $
+# $Id: linpha_34422.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # LinPHA 1.3.4 Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:linpha:linpha";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100120");
- script_version("$Revision: 4975 $");
+ script_version("$Revision: 6704 $");
  script_cve_id("CVE-2014-7265");
  script_bugtraq_id(34422);
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_tag(name:"last_modification", value:"$Date: 2017-01-10 17:07:01 +0100 (Tue, 10 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-04-10 19:06:18 +0200 (Fri, 10 Apr 2009)");
  script_name("LinPHA 1.3.4 Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -71,7 +71,7 @@ if (description)
  script_dependencies("linpha_detect.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("linpha/installed");
- script_exclude_keys("Settings/disable_cgi_scanning");
+
  exit(0);
 }
 
@@ -80,9 +80,6 @@ include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
-
 if(!version = get_kb_item(string("www/", port, "/linpha")))exit(0);
 if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
 

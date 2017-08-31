@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_mult_vuln_dec08_win.nasl 4522 2016-11-15 14:52:19Z teissa $
+# $Id: secpod_opera_mult_vuln_dec08_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
 #
 # Opera Web Browser Multiple Vulnerabilities - Dec08 (Windows)
 #
@@ -44,8 +44,8 @@ tag_summary = "The host is installed with Opera web browser and is prone to
 if(description)
 {
   script_id(900081);
-  script_version("$Revision: 4522 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-15 15:52:19 +0100 (Tue, 15 Nov 2016) $");
+  script_version("$Revision: 6519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-12-26 14:23:17 +0100 (Fri, 26 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -63,7 +63,7 @@ if(description)
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("Buffer overflow");
   script_dependencies("secpod_opera_detection_win_900036.nasl");
-  script_require_keys("SMB/WindowsVersion","Opera/Win/Version");
+  script_mandatory_keys("Opera/Win/Version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

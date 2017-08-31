@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871728");
-  script_version("$Revision: 4779 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-16 07:31:18 +0100 (Fri, 16 Dec 2016) $");
+  script_version("$Revision: 6690 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:51:07 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-12-15 06:02:50 +0100 (Thu, 15 Dec 2016)");
   script_cve_id("CVE-2016-9893", "CVE-2016-9895", "CVE-2016-9897", "CVE-2016-9898",
                 "CVE-2016-9899", "CVE-2016-9900", "CVE-2016-9901", "CVE-2016-9902",
@@ -73,7 +73,7 @@ Forbes, and Boris Zbarsky as the original reporters.
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

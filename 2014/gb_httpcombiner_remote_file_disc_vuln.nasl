@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpcombiner_remote_file_disc_vuln.nasl 2827 2016-03-10 08:33:09Z benallard $
+# $Id: gb_httpcombiner_remote_file_disc_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # HttpCombiner ASP.NET Remote File Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805007");
-  script_version("$Revision: 2827 $");
+  script_version("$Revision: 6759 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:33:09 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-28 15:22:01 +0530 (Tue, 28 Oct 2014)");
 
   script_name("HttpCombiner ASP.NET Remote File Disclosure Vulnerability");
@@ -59,7 +59,6 @@ if(description)
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/34920");
-  script_summary("Check if HttpCombiner is vulnerable to remote file disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

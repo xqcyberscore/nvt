@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_activeperl_dos_vuln_feb14_win.nasl 2489 2016-01-22 14:42:19Z benallard $
+# $Id: gb_activeperl_dos_vuln_feb14_win.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Active Perl Denial of Service Vulnerability Feb 2014 (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804315";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2489 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2010-4777");
   script_bugtraq_id(47006);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:42:19 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-17 10:12:58 +0530 (Mon, 17 Feb 2014)");
   script_name("Active Perl Denial of Service Vulnerability Feb 2014 (Windows)");
 
@@ -80,7 +80,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://news.debuntu.org/content/56643-cve-2010-4777-perl");
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2010-4777");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Perl");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_perl_detect_win.nasl");

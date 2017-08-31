@@ -30,7 +30,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804526";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-1493", "CVE-2014-1496", "CVE-2014-1497", "CVE-2014-1505",
                 "CVE-2014-1508", "CVE-2014-1509", "CVE-2014-1510", "CVE-2014-1511",
                 "CVE-2014-1512", "CVE-2014-1513", "CVE-2014-1514");
@@ -38,7 +38,7 @@ if(description)
                     66206, 66207, 66209, 66203, 66240);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-27 12:47:53 +0530 (Thu, 27 Mar 2014)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Mar14 (Windows)");
 
@@ -92,7 +92,6 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57500");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2014/mfsa2014-15.html");
-  script_summary("Check for the vulnerable version of Mozilla Thunderbird on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

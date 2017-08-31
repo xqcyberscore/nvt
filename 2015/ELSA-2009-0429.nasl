@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2009-0429.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2009-0429.nasl 6600 2017-07-07 09:58:31Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122493");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6600 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:46:36 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2009-0429");
 script_tag(name: "insight", value: "ELSA-2009-0429 -  cups security update - [1:1.3.7-8:.4]- Applied additional patches by Tim Waugh for batch3892.pdf, batch4781.pdf, batch5486.pdf, batch19856.pdf, batch19869.pdf testing files from CERT (bug #491864).- Resolves: rhbz#492386.[1:1.3.7-8:.3]- Applied patches to fix CVE-2009-0163 (bug #490596), CVE-2009-0146 (bug #490612), CVE-2009-0147 (bug #490614), and CVE-2009-0166 (bug #490625)."); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2009-0429");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

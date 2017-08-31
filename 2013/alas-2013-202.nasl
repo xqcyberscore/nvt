@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2013-202.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: alas-2013-202.nasl 6577 2017-07-06 13:43:46Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120025");
-script_version("$Revision: 6115 $");
+script_version("$Revision: 6577 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:15:35 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:43:46 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2013-202");
 script_tag(name: "insight", value: "socat 1.2.0.0 before 1.7.2.2 and 2.0.0-b1 before 2.0.0-b6, when used for a listen type address and the fork option is enabled, allows remote attackers to cause a denial of service (file descriptor consumption) via multiple request that are refused based on the (1) sourceport, (2) lowport, (3) range, or (4) tcpwrap restrictions."); 
 script_tag(name : "solution", value : "Run yum update socat to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"2.6");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

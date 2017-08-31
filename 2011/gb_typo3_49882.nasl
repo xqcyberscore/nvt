@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_49882.nasl 2915 2016-03-23 10:30:25Z antu123 $
+# $Id: gb_typo3_49882.nasl 6719 2017-07-13 13:53:39Z cfischer $
 #
 # TYPO3 'download.php' Local File Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:typo3:typo3";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103291");
-  script_version("$Revision: 2915 $");
+  script_version("$Revision: 6719 $");
   script_bugtraq_id(49882);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 11:30:25 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-10-06 13:32:57 +0200 (Thu, 06 Oct 2011)");
   script_name("TYPO3 'download.php' Local File Disclosure Vulnerability");
 
@@ -59,9 +59,8 @@ vulnerability.");
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("gb_typo3_detect.nasl");
-  script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("TYPO3/installed");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

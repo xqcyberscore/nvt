@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_july14_macosx.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_google_chrome_mult_vuln01_july14_macosx.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities - 01 July14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804728");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-3160", "CVE-2014-3162");
   script_bugtraq_id(68677);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-01 18:43:05 +0530 (Fri, 01 Aug 2014)");
   script_name("Google Chrome Multiple Vulnerabilities - 01 July14 (Mac OS X)");
 
@@ -76,7 +76,6 @@ For updates refer to http://www.google.com/chrome";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/60077");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/2014/07/stable-channel-update.html");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Google Chrome on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");

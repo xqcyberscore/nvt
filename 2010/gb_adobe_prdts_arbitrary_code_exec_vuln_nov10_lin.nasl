@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_arbitrary_code_exec_vuln_nov10_lin.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_adobe_prdts_arbitrary_code_exec_vuln_nov10_lin.nasl 6476 2017-06-29 07:32:00Z cfischer $
 #
 # Adobe Products Arbitrary Code Execution Vulnerability (Linux)
 #
@@ -49,8 +49,8 @@ installed, and is prone to arbitrary code execution vulnerability.";
 if(description)
 {
   script_id(801478);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 6476 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:32:00 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2010-11-10 14:58:25 +0100 (Wed, 10 Nov 2010)");
   script_cve_id("CVE-2010-3654");
   script_bugtraq_id(44504);
@@ -66,7 +66,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_prdts_detect_lin.nasl", "gb_adobe_flash_player_detect_lin.nasl");
-  script_require_keys("Adobe/Reader/Linux/Version", "AdobeFlashPlayer/Linux/Ver");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader/Linux/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

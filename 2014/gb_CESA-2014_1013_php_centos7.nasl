@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882003");
-  script_version("$Revision: 2776 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 10:03:22 +0100 (Fri, 04 Mar 2016) $");
+  script_version("$Revision: 6656 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:49:38 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-10 06:19:35 +0200 (Wed, 10 Sep 2014)");
   script_cve_id("CVE-2013-7345", "CVE-2014-0207", "CVE-2014-0237", "CVE-2014-0238",
                 "CVE-2014-3479", "CVE-2014-3480", "CVE-2014-3487", "CVE-2014-3515",
@@ -90,7 +90,7 @@ take effect.
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
 exit(0);
 }
 

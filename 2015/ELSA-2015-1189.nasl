@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1189.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: ELSA-2015-1189.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123089");
-script_version("$Revision: 6345 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:59:14 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1189");
 script_tag(name: "insight", value: "ELSA-2015-1189 -  kvm security update - [kvm-83-273.0.1.el5]- Added kvm-add-oracle-workaround-for-libvirt-bug.patch- Added kvm-Introduce-oel-machine-type.patch[kvm-83.273.el5]- kvm-pcnet-Properly-handle-TX-requests-during-Link-Fail.patch [bz#1225896]- kvm-pcnet-fix-Negative-array-index-read.patch [bz#1225896]- kvm-pcnet-force-the-buffer-access-to-be-in-bounds-during.patch [bz#1225896]- Resolves: bz#1225896 (EMBARGOED CVE-2015-3209 kvm: qemu: pcnet: multi-tmd buffer overflow in the tx path [rhel-5.11.z)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

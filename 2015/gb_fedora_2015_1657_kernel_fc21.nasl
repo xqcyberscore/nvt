@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868980");
-  script_version("$Revision: 3342 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6630 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-02-06 05:43:52 +0100 (Fri, 06 Feb 2015)");
   script_cve_id("CVE-2015-0239", "CVE-2014-9585", "CVE-2014-9529", "CVE-2014-9419",
                 "CVE-2014-9428", "CVE-2014-8989", "CVE-2014-8559", "CVE-2014-8133",
@@ -46,12 +46,11 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-February/149172.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums_win.nasl 5462 2017-03-02 07:35:28Z cfi $
+# $Id: policy_file_checksums_win.nasl 6741 2017-07-17 15:53:49Z cfischer $
 #
 # Check for File Checksum Violations in Windows
 #
@@ -28,16 +28,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96180");
-  script_version("$Revision: 5462 $");
+  script_version("$Revision: 6741 $");
   script_name("Windows file Checksums");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-02 08:35:28 +0100 (Thu, 02 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 17:53:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-07-02 10:55:14 +0530 (Tue, 02 Jul 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Policy");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_dependencies("smb_authorization.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl", "os_detection.nasl");
+  script_dependencies("smb_login.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl", "os_detection.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("SMB/samba");
@@ -76,6 +76,7 @@ include("smb_nt.inc");
 include("host_details.inc");
 
 if( host_runs( "Windows" ) != "yes" ) exit( 0 );
+if( ! defined_func( "win_cmd_exec" ) ) exit( 0 );
 
 ## Variable Initialization
 cmd = "";
@@ -88,25 +89,15 @@ filename = "";
 algorithm = "";
 
 port = kb_smb_transport();
-if(!port){
-  port = 139;
-}
+if( ! port ) port = 139;
+if( ! get_port_state( port ) ) exit( 0 );
 
-if(!get_port_state(port)){
-  exit(0);
-}
+username = kb_smb_login();
+password = kb_smb_password();
+if( ! username && ! password ) exit( 0 );
 
-if (!defined_func("win_cmd_exec")){
-  exit(0);
-}
-
-username =  string(get_kb_item("SMB/login_filled/0"));
-password = string(get_kb_item("SMB/password_filled/0"));
-domain = string(get_kb_item("SMB/domain_filled/0"));
-if (!username && !password) exit(0);
-
-if(domain)
-username = string(domain, "/", username);
+domain = kb_smb_domain();
+if( domain ) username = domain + "/" + username;
 
 listall = script_get_preference("List all and not only the first 100 entries");
 

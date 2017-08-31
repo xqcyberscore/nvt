@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_explorer_version.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: smb_explorer_version.nasl 6527 2017-07-05 05:56:34Z cfischer $
 # Description: Internet Explorer version check
 #
 # Authors:
@@ -83,27 +83,27 @@ tag_solution = "Update Internet Explorer.";
 
 if(description)
 {
- script_id(80041);
- script_version("$Revision: 4557 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
- script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"7.6");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
- name = "Internet Explorer version check";
+  script_oid("1.3.6.1.4.1.25623.1.0.80041");
+  script_version("$Revision: 6527 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_name("Internet Explorer version check");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2006 Montgomery County Maryland"); 
+  script_family("Windows");
+  script_dependencies("gb_ms_ie_detect.nasl");
+  script_mandatory_keys("MS/IE/Version");
 
- script_name(name);
- summary = "Checks that Internet Explorer is a supported version."; 
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_xref(name:"URL", value:"http://support.microsoft.com/gp/lifesupsps/#Internet_Explorer");
+
   script_tag(name:"qod_type", value:"registry");
- script_copyright("This script is Copyright (C) 2006 Montgomery County Maryland"); 
- family = "Windows"; 
- script_family(family);
- script_dependencies("smb_login.nasl", "smb_registry_access.nasl", "gb_ms_ie_detect.nasl");
- script_require_keys("SMB/registry_full_access");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://support.microsoft.com/gp/lifesupsps/#Internet_Explorer");
- exit(0);
+
+  exit(0);
 }
 
 #==================================================================#
@@ -113,9 +113,6 @@ if(description)
 include("smb_nt.inc");
 
 warning = 0;
-
-access = get_kb_item("SMB/registry_full_access");
-if( ! access )exit(0);
 
 # Note: only IE 4.0 and later will be detected by this kb item
 version = get_kb_item("MS/IE/Version");

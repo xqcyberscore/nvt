@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_e-comm_bradesco_gateway_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wp_e-comm_bradesco_gateway_xss_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # WordPress WP-Ecommerce with Bradesco Gateway 'falha.php' XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804599");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2013-5916");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-12 11:40:09 +0530 (Thu, 12 Jun 2014)");
   script_name("WordPress WP-Ecommerce with Bradesco Gateway 'falha.php' XSS Vulnerability");
 
@@ -93,7 +93,6 @@ For updates refer to https://github.com/wp-plugins/bradesco-gateway";
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/123356");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2013-09/0112.html");
-  script_summary("Check if WordPress WP-Ecommerce Plugin with Bradesco Gateway is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

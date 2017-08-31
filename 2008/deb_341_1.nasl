@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_341_1.nasl 3960 2016-09-05 14:22:24Z teissa $
+# $Id: deb_341_1.nasl 6616 2017-07-07 12:10:49Z cfischer $
 # Description: Auto-generated from advisory DSA 341-1
 #
 # Authors:
@@ -47,8 +47,8 @@ if(description)
 {
  script_id(53630);
  script_cve_id("CVE-2003-0537");
- script_version("$Revision: 3960 $");
- script_tag(name:"last_modification", value:"$Date: 2016-09-05 16:22:24 +0200 (Mon, 05 Sep 2016) $");
+ script_version("$Revision: 6616 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:10:49 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-01-17 22:36:24 +0100 (Thu, 17 Jan 2008)");
  script_tag(name:"cvss_base", value:"4.6");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -61,7 +61,7 @@ if(description)
  script_copyright("Copyright (c) 2005 E-Soft Inc. http://www.securityspace.com");
  script_family("Debian Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);

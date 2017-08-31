@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3393.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: deb_3393.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3393-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703393);
-    script_version("$Revision: 6431 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2015-4513", "CVE-2015-7181", "CVE-2015-7182", "CVE-2015-7183",
                   "CVE-2015-7188", "CVE-2015-7189", "CVE-2015-7193", "CVE-2015-7194",
                   "CVE-2015-7196", "CVE-2015-7197", "CVE-2015-7198", "CVE-2015-7199",
                   "CVE-2015-7200");
     script_name("Debian Security Advisory DSA 3393-1 (iceweasel - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-11-04 00:00:00 +0100 (Wed, 04 Nov 2015)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,7 +51,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "iceweasel on Debian Linux");
     script_tag(name: "insight",   value: "Iceweasel is Firefox, rebranded. It
 is a powerful, extensible web browser with support for modern web application

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_str_buf_cat_dos_vuln_win.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_ruby_str_buf_cat_dos_vuln_win.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # Ruby 'str_buf_cat' function Denial-of-Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ruby-lang:ruby";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804888");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-3916");
   script_bugtraq_id(67705);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-21 11:58:24 +0530 (Fri, 21 Nov 2014)");
   script_name("Ruby 'str_buf_cat' function Denial-of-Service Vulnerability (Windows)");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/93505");
   script_xref(name:"URL", value:"http://svn.ruby-lang.org/repos/ruby/tags/v2_1_3/ChangeLog");
 
-  script_summary("Check for the vulnerable version of Ruby");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Denial of Service");

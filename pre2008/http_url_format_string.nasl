@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: http_url_format_string.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: http_url_format_string.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Format string on URI
 #
 # Authors:
@@ -25,10 +25,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15640");
-  script_version("$Revision: 6040 $");
+  script_version("$Revision: 6702 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Format string on URI");
 
@@ -60,11 +60,12 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_copyright("This script is Copyright (C) 2004 Michel Arboi");
   script_family("Gain a shell remotely");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("global_settings.inc");
@@ -72,7 +73,6 @@ include("misc_func.inc");
 
 format_Port = get_http_port(default:80);
 
-if (! get_port_state(format_Port)) exit(0);
 if (http_is_dead(port: format_Port)) exit(0);
 
 req = http_get(item: strcat("/openvas", rand_str(), ".html"), port: format_Port);

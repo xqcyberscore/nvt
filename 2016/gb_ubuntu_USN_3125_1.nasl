@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842944");
-  script_version("$Revision: 4645 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-29 13:16:49 +0100 (Tue, 29 Nov 2016) $");
+  script_version("$Revision: 6647 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:04:05 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-11-14 18:01:13 +0530 (Mon, 14 Nov 2016)");
   script_cve_id("CVE-2016-5403", "CVE-2016-6833", "CVE-2016-6834", "CVE-2016-6888",
 		"CVE-2016-6835", "CVE-2016-6836", "CVE-2016-7116", "CVE-2016-7155",
@@ -107,7 +107,7 @@ emulation support. A privileged attacker in ...
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

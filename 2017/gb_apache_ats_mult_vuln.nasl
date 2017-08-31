@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ats_mult_vuln.nasl 6021 2017-04-25 11:58:59Z ckuerste $
+# $Id: gb_apache_ats_mult_vuln.nasl 6711 2017-07-13 06:53:09Z cfischer $
 #
 # Apache Traffic Server (ATS) Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:apache:traffic_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106789");
-  script_version("$Revision: 6021 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-25 13:58:59 +0200 (Tue, 25 Apr 2017) $");
+  script_version("$Revision: 6711 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-13 08:53:09 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-04-25 13:31:59 +0200 (Tue, 25 Apr 2017)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -44,7 +44,7 @@ if (description)
 
   script_name("Apache Traffic Server (ATS) Multiple Vulnerabilities");
 
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");

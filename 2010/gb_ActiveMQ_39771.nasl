@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ActiveMQ_39771.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_ActiveMQ_39771.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # Apache ActiveMQ 'admin/queueBrowse' Cross Site Scripting Vulnerability
 #
@@ -42,8 +42,8 @@ CPE = "cpe:/a:apache:activemq";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100613");
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-04-30 13:41:49 +0200 (Fri, 30 Apr 2010)");
  script_bugtraq_id(39771);
 
@@ -64,11 +64,10 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("gb_apache_activemq_detect.nasl");
  script_require_ports("Services/www", 8161);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("ActiveMQ/installed");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
-
- script_mandatory_keys("ActiveMQ/installed");
 
  exit(0);
 }

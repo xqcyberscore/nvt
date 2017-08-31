@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2009-1140.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: ELSA-2009-1140.nasl 6554 2017-07-06 11:53:20Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122470");
-script_version("$Revision: 6183 $");
+script_version("$Revision: 6554 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:46:02 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:53:20 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2009-1140");
 script_tag(name: "insight", value: "ELSA-2009-1140 -  ruby security update - [1.8.5-5.el5_3.7]- security fixes. (#505087)- CVE-2007-1558: APOP password disclosure vulnerability.- CVE-2009-0642: Incorrect checks for validity of X.509 certificates.- CVE-2009-1904: DoS vulnerability in BigDecimal."); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

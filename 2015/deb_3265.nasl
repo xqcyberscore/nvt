@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3265.nasl 6376 2017-06-20 10:00:24Z teissa $
+# $Id: deb_3265.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3265-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,12 +30,12 @@
 if(description)
 {
     script_id(703265);
-    script_version("$Revision: 6376 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2012-5657", "CVE-2012-6532", "CVE-2014-2681", "CVE-2014-2682",
                   "CVE-2014-2683", "CVE-2014-2684", "CVE-2014-2685", "CVE-2014-4914",
                   "CVE-2014-8088", "CVE-2014-8089", "CVE-2015-3154");
     script_name("Debian Security Advisory DSA 3265-1 (zendframework - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-05-20 00:00:00 +0200 (Wed, 20 May 2015)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,7 +50,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "zendframework on Debian Linux");
     script_tag(name: "insight",   value: "Extending the art & spirit of PHP, Zend
 Framework is based on simplicity, object-oriented best practices, corporate friendly

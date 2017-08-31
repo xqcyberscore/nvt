@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_edition_info_disc_vuln_win.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_adobe_digital_edition_info_disc_vuln_win.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Adobe Digital Edition Information Disclosure Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804867");
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2014-8068");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-22 10:42:59 +0530 (Wed, 22 Oct 2014)");
 
   script_name("Adobe Digital Edition Information Disclosure Vulnerability (Windows)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://the-digital-reader.com/2014/10/06/adobe-spying-users-collecting-data-ebook-libraries");
   script_xref(name : "URL" , value : "http://arstechnica.com/security/2014/10/adobes-e-book-reader-sends-your-reading-logs-back-to-adobe-in-plain-text");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Adobe Digital Edition on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_adobe_digital_edition_detect_win.nasl");

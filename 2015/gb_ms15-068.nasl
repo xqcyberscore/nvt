@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-068.nasl 3146 2016-04-22 11:06:11Z antu123 $
+# $Id: gb_ms15-068.nasl 6513 2017-07-04 09:59:28Z teissa $
 #
 # MS Windows Hyper-V Remote Code Execution Vulnerability (3072000)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805922");
-  script_version("$Revision: 3146 $");
+  script_version("$Revision: 6513 $");
   script_cve_id("CVE-2015-2361", "CVE-2015-2362");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 13:06:11 +0200 (Fri, 22 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-07-15 13:50:29 +0530 (Wed, 15 Jul 2015)");
   script_name("MS Windows Hyper-V Remote Code Execution Vulnerability (3072000)");
 
@@ -72,7 +72,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3046339");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-068");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882658");
-  script_version("$Revision: 5334 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 08:03:13 +0100 (Sat, 18 Feb 2017) $");
+  script_version("$Revision: 6659 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:52:22 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-02-16 05:01:00 +0100 (Thu, 16 Feb 2017)");
   script_cve_id("CVE-2017-3135");
   script_tag(name:"cvss_base", value:"10.0");
@@ -65,7 +65,7 @@ as the original reporter.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

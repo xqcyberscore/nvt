@@ -38,8 +38,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(841487);
-  script_version("$Revision: 2931 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:12:09 +0100 (Thu, 24 Mar 2016) $");
+  script_version("$Revision: 6644 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:01:20 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-06-24 15:06:48 +0530 (Mon, 24 Jun 2013)");
   script_cve_id("CVE-2013-2126");
   script_tag(name:"cvss_base", value:"7.5");
@@ -53,7 +53,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

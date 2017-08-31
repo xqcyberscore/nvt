@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_244.nasl 3312 2016-05-13 07:08:19Z benallard $
+# $Id: GSHB_M4_244.nasl 6502 2017-07-03 08:15:27Z cfischer $
 #
-# IT-Grundschutz, 14. EL, Maßnahme 4.244
+# IT-Grundschutz, 15. EL, Maßnahme 4.244
 #
 # Authors:
 # Thomas Rotter <thomas.rotter@greenbone.net>
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94221);
-  script_version("$Revision: 3312 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 09:08:19 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 6502 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 10:15:27 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,7 +46,7 @@ if(description)
   script_tag(name : "summary" , value :
 "IT-Grundschutz M4.244: Sichere Systemkonfiguration von Windows Client-Betriebssystemen.
 
-Stand: 14. Ergänzungslieferung (14. EL).
+Stand: 15. Ergänzungslieferung (15. EL).
 ");
 
   exit(0);
@@ -170,6 +170,10 @@ AUTOSHARE = get_kb_item("WMI/AUTOSHARE");
 LegalNoticeCaption = get_kb_item("WMI/LegalNoticeCaption");
 LegalNoticeText = get_kb_item("WMI/LegalNoticeText");
 CDAutostart = get_kb_item("WMI/CD_Autostart");
+WindowsStore = get_kb_item("WMI/Win8Policies/WindowsStore");
+HandwritingRecognition1 = get_kb_item("WMI/Win8Policies/HandwritingRecognition1");
+HandwritingRecognition2 = get_kb_item("WMI/Win8Policies/HandwritingRecognition2");
+
 
 servicelist = "
 alerter|disabled
@@ -248,6 +252,7 @@ vss|disabled
 w32time|auto
 w3svc|disabled
 webclient|disabled
+windefend|disabled
 winmgmt|auto
 wmdmpmsn|disabled
 wmi|manual
@@ -334,6 +339,7 @@ vss@Volumenschattenkopie
 w32time@Windows-Zeitgeber
 w3svc@WWW-Publishing-Dienst
 webclient@WebClient
+windefend@Windows Defender
 winmgmt@Windows-Verwaltungsadministration
 wmdmpmsn @Dienst für Seriennummern der tragbaren Medien
 wmi@Treibererweiterungen für Windows-Verwaltungsinstrumentation
@@ -484,6 +490,11 @@ if (MaximumLogSizeSec != "None")
   MaximumLogSizeSec = MaximumLogSizeSec[2];
 }
 
+if (WindowsStore != "None" ){
+  WindowsStore = split(WindowsStore, sep:'\n', keep:0);
+  WindowsStore = split(WindowsStore[1], sep:'|', keep:0);
+}
+
 if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System."){
   result = string("nicht zutreffend");
   desc = string("Auf dem System läuft Samba,\nes ist kein Microsoft Windows System.");
@@ -497,15 +508,17 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
 }else if(OSVER < '5.1' || ( OSVER == '5.2' && OSNAME >!< 'Microsoft(R) Windows(R) XP Professional x64 Edition') || (OSVER > '5.2' && OSTYPE != '1')){
   result = string("nicht zutreffend");
   desc = string("Das System ist kein Windows Client-Betriebssystem.");
-}else if(AddPrinterDrivers == "1" &&  AllocateCDRoms == "1" &&  AllocateDASD == "2" &&  AllocateFloppies == "1" &&  AuditAccountLogon[1] == "True" &&  AuditAccountLogon[3] == "True" &&  AuditAccountManage[1] == "True" &&  AuditAccountManage[3] == "True" &&  AuditBaseObjects == "0" &&  AuditLogonEvents[1] == "True" &&  AuditLogonEvents[3] == "True" &&  AuditObjectAccess[1] == "True" &&  AuditPolicyChange[1] == "True" &&  AuditPolicyChange[3] == "True" &&  AuditPrivilegeUse[1] == "True" &&  AuditSystemEvents[1] == "True" &&  AuditSystemEvents[3] == "True" &&  autodisconnect == "15" &&  cachedlogonscount == "0" &&  ClearPageFileAtShutdown == "1" &&  ClearTextPassword == "False" &&  crashonauditfail == "0" &&  DisableCAD == "0" &&  DisableDomainCreds == "1" &&  disablepasswordchange == "0" &&  DontDisplayLastUserName == "on" &&  enableforcedlogoff == "1" &&  EnablePlainTextPassword == "0" &&  EnableSecuritySignatureSvr == "1" &&  EnableSecuritySignatureWs == "1" &&  EveryoneIncludesAnonymous == "0" &&  FIPSAlgorithmPolicy == "0" &&  ForceGuest == "0" &&  ForceUnlockLogon == "1" &&  fullprivilegeauditing == "0" &&  LDAPClientIntegrity == "1" &&  ldapserverintegrity == "2" &&  LegalNoticeCaption == "on" &&  LegalNoticeText == "on" &&  LimitBlankPasswordUse == "1" &&  LmCompatibilityLevel == "5" &&  LockoutBadCount == "3" &&  LockoutDuration == "4294967295" &&  LSAAnonymousNameLookup == "False" &&  MachinePaths == "Empty" && maximumComppasswordage <= 30 &&  MaximumLogSizeApp >= 30080 &&  MaximumLogSizeEvent >= 30080 &&  MaximumLogSizeSec >= 100992 &&  MaximumPasswordAge <= 90 && MinimumPasswordAge == "1" &&  MinimumPasswordLength >= 8 &&  nodefaultadminowner == "1" &&  NoLMHash == "1" &&  NTLMMinClientSec == "537395248" &&  NTLMMinServerSec == "537395248" &&  NullSessionPipes == "Empty" &&  NullSessionShares == "Empty" &&  ObCaseInsensitive == "1" &&  (OverWritePolicyApp[1] == "Bei Bedarf" || OverWritePolicyApp[1] == "WhenNeeded") &&  (OverWritePolicyEvent[1] == "Bei Bedarf" || OverWritePolicyEvent[1] == "WhenNeeded") &&  (OverWritePolicySec[1] == "Bei Bedarf" || OverWritePolicySec[1] == "WhenNeeded") &&  PasswordComplexity == "True" &&  passwordexpirywarning == "14" &&  PasswordHistorySize >= 6 &&  Policy == "1" &&  ProtectionMode == "1" &&  RequireSecuritySignatureSvr == "1" &&  RequireSecuritySignatureWs == "1" &&  requiresignorseal == "1" &&  requirestrongkey == "1" &&  ResetLockoutCount >= 30 &&  RestrictAnonymous == "1" &&  RestrictAnonymousSAM == "1" &&  RestrictGuestAccessApp == "True" &&  RestrictGuestAccessEvent == "True" &&  RestrictGuestAccessSec == "True" &&  scremoveoption == "1" &&  sealsecurechannel == "1" &&  securitylevel == "0" &&  setcommand == "0" &&  ShutdownWithoutLogon == "0" &&  signsecurechannel == "1" && undockwithoutlogon == "0" && ServiceFailList == "None" && CDAutostart == "off" && NoUpdateCheck == "1" && PreventAutoRun == "1" && EnabledNTPServer == "0" && Headlines == "0" && DisableWindowsUpdateAccess == "1" && DontSearchWindowsUpdate == "1" && NoRegistration == "1" && DisableRootAutoUpdate == "1" && MicrosoftEventVwrDisableLinks == "1" && NoInternetOpenWith == "1" && DoReport == "0")
+}else if(AddPrinterDrivers == "1" &&  AllocateCDRoms == "1" &&  AllocateDASD == "2" &&  AllocateFloppies == "1" &&  AuditAccountLogon[1] == "True" &&  AuditAccountLogon[3] == "True" &&  AuditAccountManage[1] == "True" &&  AuditAccountManage[3] == "True" &&  AuditBaseObjects == "0" &&  AuditLogonEvents[1] == "True" &&  AuditLogonEvents[3] == "True" &&  AuditObjectAccess[1] == "True" &&  AuditPolicyChange[1] == "True" &&  AuditPolicyChange[3] == "True" &&  AuditPrivilegeUse[1] == "True" &&  AuditSystemEvents[1] == "True" &&  AuditSystemEvents[3] == "True" &&  autodisconnect == "15" &&  cachedlogonscount == "0" &&  ClearPageFileAtShutdown == "1" &&  ClearTextPassword == "False" &&  crashonauditfail == "0" &&  DisableCAD == "0" &&  DisableDomainCreds == "1" &&  disablepasswordchange == "0" &&  DontDisplayLastUserName == "on" &&  enableforcedlogoff == "1" &&  EnablePlainTextPassword == "0" &&  EnableSecuritySignatureSvr == "1" &&  EnableSecuritySignatureWs == "1" &&  EveryoneIncludesAnonymous == "0" &&  FIPSAlgorithmPolicy == "0" &&  ForceGuest == "0" &&  ForceUnlockLogon == "1" &&  fullprivilegeauditing == "0" &&  LDAPClientIntegrity == "1" &&  ldapserverintegrity == "2" &&  LegalNoticeCaption == "on" &&  LegalNoticeText == "on" &&  LimitBlankPasswordUse == "1" &&  LmCompatibilityLevel == "5" &&  LockoutBadCount == "3" &&  LockoutDuration == "4294967295" &&  LSAAnonymousNameLookup == "False" &&  MachinePaths == "Empty" && maximumComppasswordage <= 30 &&  MaximumLogSizeApp >= 30080 &&  MaximumLogSizeEvent >= 30080 &&  MaximumLogSizeSec >= 100992 &&  MaximumPasswordAge <= 90 && MinimumPasswordAge == "1" &&  MinimumPasswordLength >= 8 &&  nodefaultadminowner == "1" &&  NoLMHash == "1" &&  NTLMMinClientSec == "537395248" &&  NTLMMinServerSec == "537395248" &&  NullSessionPipes == "Empty" &&  NullSessionShares == "Empty" &&  ObCaseInsensitive == "1" &&  (OverWritePolicyApp[1] == "Bei Bedarf" || OverWritePolicyApp[1] == "WhenNeeded") &&  (OverWritePolicyEvent[1] == "Bei Bedarf" || OverWritePolicyEvent[1] == "WhenNeeded") &&  (OverWritePolicySec[1] == "Bei Bedarf" || OverWritePolicySec[1] == "WhenNeeded") &&  PasswordComplexity == "True" &&  passwordexpirywarning == "14" &&  PasswordHistorySize >= 6 &&  Policy == "1" &&  ProtectionMode == "1" &&  RequireSecuritySignatureSvr == "1" &&  RequireSecuritySignatureWs == "1" &&  requiresignorseal == "1" &&  requirestrongkey == "1" &&  ResetLockoutCount >= 30 &&  RestrictAnonymous == "1" &&  RestrictAnonymousSAM == "1" &&  RestrictGuestAccessApp == "True" &&  RestrictGuestAccessEvent == "True" &&  RestrictGuestAccessSec == "True" &&  scremoveoption == "1" &&  sealsecurechannel == "1" &&  securitylevel == "0" &&  setcommand == "0" &&  ShutdownWithoutLogon == "0" &&  signsecurechannel == "1" && undockwithoutlogon == "0" && ServiceFailList == "None" && CDAutostart == "off" && NoUpdateCheck == "1" && PreventAutoRun == "1" && EnabledNTPServer == "0" && Headlines == "0" && DisableWindowsUpdateAccess == "1" && DontSearchWindowsUpdate == "1" && NoRegistration == "1" && DisableRootAutoUpdate == "1" && MicrosoftEventVwrDisableLinks == "1" && NoInternetOpenWith == "1" && DoReport == "0" && WindowsStore == "1" && HandwritingRecognition1 == "1" && HandwritingRecognition2 == "1")
 {
   result = string("erfüllt");
-  desc = string('\nDie Sicherheitseinstellung stimmen mit der Maßnahme\nM4.224 überein. Bitte überprüfen Sie weiterhin, ob\nfolgende Domainpolicies richtig konfiguriert sind:\nBenutzerkonfiguration\\Administrative Vorlagen\\\nWindows-Komponenten\\Windows Media Player\\Abruf von\nMedieninformationen zu Musikdateien verhinden\n\nBenutzerkonfiguration\\Administrative Vorlagen\\\nWindows-Komponenten\\Windows Media Player\\\nBenutzeroberfläche\\Design festlegen und fixieren\n\nBenutzerkonfiguration\\Administrative Vorlagen\\\nWindows-Komponenten\\Windows Media Player\\Wiedergabe\\\nCodec-Download verhindern\n\nBitte beachten Sie auch das Kapitel -Restriktive\nBerechtigungsvergabe unter Windows XP- aus dem\nDokument -Konfigurations- und Sicherheitseinstellungen\nunter Windows XP-. Zu finden unter: https://www.bsi.\nbund.de/cae/servlet/contentblob/471594/\npublicationFile/31046/Hilfsmittel_Windows_XP_pdf.pdf');
+  desc = string('\nDie Sicherheitseinstellung stimmen mit der Maßnahme\nM4.224 überein. Bitte überprüfen Sie weiterhin, ob\nfolgende Domainpolicies richtig konfiguriert sind:\nBenutzerkonfiguration\\Administrative Vorlagen\\\nWindows-Komponenten\\Windows Media Player\\Abruf von\nMedieninformationen zu Musikdateien verhinden\n\nBenutzerkonfiguration\\Administrative Vorlagen\\\nWindows-Komponenten\\Windows Media Player\\\nBenutzeroberfläche\\Design festlegen und fixieren\n\nBenutzerkonfiguration\\Administrative Vorlagen\\\nWindows-Komponenten\\Windows Media Player\\Wiedergabe\\\nCodec-Download verhindern\n\nBitte prüfen Sie, ob der Einsatz von AppLocker hilfreich sein kann.\n\nBitte beachten Sie auch das Kapitel -Restriktive\nBerechtigungsvergabe unter Windows XP- aus dem\nDokument -Konfigurations- und Sicherheitseinstellungen\nunter Windows XP-. Zu finden unter: https://www.bsi.\nbund.de/cae/servlet/contentblob/471594/\npublicationFile/31046/Hilfsmittel_Windows_XP_pdf.pdf');
 }else
 {
   result = string("nicht erfüllt");
   if (ServiceFailList != "None")val = ServiceFailList;
   if (CDAutostart == "on")  val = val + '\n\n' + "CD-ROM Autoplay-Funktionalität: " + CDAutostart;
+  if (WindowsStore != "1") val = val + '\n\n' + "Windows Store ist nicht deaktiviert (kein Registry-Key: HKLM\Software\Policies\Microsoft\WindowsStore!DisableStoreApps=DWORD(1) vorhanden).";
+  if (HandwritingRecognition1 != "1" || HandwritingRecognition2 != "1") val = val + '\n\n' + 'Handschrifterkennung ist nicht deaktiviert (keine Registry-Keys:\n HKLM\\SOFTWARE\\Policies\\Microsoft\\InputPersonalization[RestrictImplicitTextCollection|RestrictImplicitInkCollection] 0 DWORD(1) vorhanden.';
   if (AddPrinterDrivers != "1") val = val + '\n\n' + "Geräte: Anwendern das Installieren von Druckertreibern\nnicht erlauben: " + AddPrinterDrivers;
   if (AllocateCDRoms != "1") val = val + '\n\n' + "Geräte: Zugriff auf CD-ROM-Laufwerke auf lokal ange-\nmeldete Benutzer beschränken: " + AllocateCDRoms;
   if (AllocateDASD != "2") val = val + '\n\n' + "Geräte: Formatieren und Auswerfen von Wechselmedien\nzulassen: " + AllocateDASD;
@@ -678,7 +691,7 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
   if(DoReport == "1") val = val + '\n\n' + "Fehlerberichterstattung deaktivieren: " + DoReport;
   else if (DoReport >< "None")  val = val + '\n\n' + "Fehlerberichterstattung deaktivieren wurde\nnicht konfiguriert";
 
-  desc = string('\nDie Sicherheitseinstellung stimmen nicht mit der Maß-\nnahme M4.224 Überein. Folgende Dienste und Ein-\nstellungen sind nicht wie gewünscht konfiguriert:\n' + val + '\nBitte überprüfen Sie weiterhin, ob folgende Domain-\npolicies richtig konfiguriert sind:\nBenutzerkonfiguration\\Administrative Vorlagen\\\nWindows-Komponenten\\Windows Media Player\\Abruf von\nMedieninformationen zu Musikdateien verhinden\n\nBenutzerkonfiguration\\Administrative Vorlagen\\\nWindows-Komponenten\\Windows Media Player\\\nBenutzeroberfläche\\Design festlegen und fixieren\n\nBenutzerkonfiguration\\Administrative Vorlagen\\\nWindows-Komponenten\\Windows Media Player\\Wiedergabe\\\nCodec-Download verhindern\n\nBitte beachten Sie auch das Kapitel -Restriktive\nBerechtigungsvergabe unter Windows XP- aus dem\nDokument -Konfigurations- und Sicherheitseinstellungen\nunter Windows XP-. Zu finden unter:\nhttps://www.bsi.bund.de/cae/servlet/contentblob/471594\n/publicationFile/31046/Hilfsmittel_Windows_XP_pdf.pdf');
+  desc = string('\nDie Sicherheitseinstellung stimmen nicht mit der Maß-\nnahme M4.224 Überein. Folgende Dienste und Ein-\nstellungen sind nicht wie gewünscht konfiguriert:\n' + val + '\nBitte überprüfen Sie weiterhin, ob folgende Domain-\npolicies richtig konfiguriert sind:\nBenutzerkonfiguration\\Administrative Vorlagen\\\nWindows-Komponenten\\Windows Media Player\\Abruf von\nMedieninformationen zu Musikdateien verhinden\n\nBenutzerkonfiguration\\Administrative Vorlagen\\\nWindows-Komponenten\\Windows Media Player\\\nBenutzeroberfläche\\Design festlegen und fixieren\n\nBenutzerkonfiguration\\Administrative Vorlagen\\\nWindows-Komponenten\\Windows Media Player\\Wiedergabe\\\nCodec-Download verhindern\n\nBitte prüfen Sie, ob der Einsatz von AppLocker sinnvoll sein kann.\n\nBitte beachten Sie auch das Kapitel -Restriktive\nBerechtigungsvergabe unter Windows XP- aus dem\nDokument -Konfigurations- und Sicherheitseinstellungen\nunter Windows XP-. Zu finden unter:\nhttps://www.bsi.bund.de/cae/servlet/contentblob/471594\n/publicationFile/31046/Hilfsmittel_Windows_XP_pdf.pdf');
 }
 
 set_kb_item(name:"GSHB/M4_244/result", value:result);

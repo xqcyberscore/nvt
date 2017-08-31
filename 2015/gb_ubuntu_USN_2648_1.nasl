@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842252");
-  script_version("$Revision: 2739 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:39:55 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6812 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-31 08:15:43 +0200 (Mon, 31 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-06-17 06:11:01 +0200 (Wed, 17 Jun 2015)");
   script_cve_id("CVE-2015-1323");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for aptdaemon USN-2648-1");
   script_tag(name: "summary", value: "Check the version of aptdaemon");
@@ -48,12 +48,11 @@ the root user.");
   script_xref(name: "USN", value: "2648-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-June/002996.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of aptdaemon");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

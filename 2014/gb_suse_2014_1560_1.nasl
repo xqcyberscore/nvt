@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850622");
-  script_version("$Revision: 2808 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 12:35:38 +0100 (Wed, 09 Mar 2016) $");
+  script_version("$Revision: 6750 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-06 06:47:37 +0100 (Sat, 06 Dec 2014)");
   script_cve_id("CVE-2013-6497", "CVE-2014-9050");
   script_tag(name:"cvss_base", value:"5.0");
@@ -64,12 +64,11 @@ detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-12/msg00003.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of clamav");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

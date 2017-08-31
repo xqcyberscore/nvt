@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symphony_56094.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_symphony_56094.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # Symphony Multiple Remote Security Vulnerabilities
 #
@@ -33,8 +33,8 @@ if(description)
  script_bugtraq_id(56094);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5888 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+ script_version ("$Revision: 6720 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-11-06 13:03:17 +0100 (Tue, 06 Nov 2012)");
  script_name("Symphony Multiple Remote Security Vulnerabilities");
  script_category(ACT_ATTACK);
@@ -42,7 +42,6 @@ if(description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_symphony_cms_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("symphony/installed");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56094");

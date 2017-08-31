@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_encryption_server_72308.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_symantec_encryption_server_72308.nasl 6513 2017-07-04 09:59:28Z teissa $
 #
 # Symantec Encryption Management Server Local Command Injection Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-7288");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 2748 $");
+ script_version ("$Revision: 6513 $");
 
  script_name("Symantec Encryption Management Server  Local Command Injection Vulnerability");
 
@@ -59,9 +59,8 @@ fields such as the subject field.");
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-06-18 15:29:34 +0200 (Thu, 18 Jun 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

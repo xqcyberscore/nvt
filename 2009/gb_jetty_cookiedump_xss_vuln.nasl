@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetty_cookiedump_xss_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_jetty_cookiedump_xss_vuln.nasl 6831 2017-08-01 14:36:41Z cfischer $
 #
 # Jetty 'CookieDump.java' Cross-Site Scripting Vulnerability
 #
@@ -24,65 +24,64 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
-  code and conduct XSS attacks via a direct GET request to cookie/.
-  Impact Level: Application";
-tag_affected = "Jetty version 6.1.19 and 6.1.20.";
-tag_insight = "The user supplied data passed into the 'Value' parameter in the Sample
-  Cookies aka 'CookieDump.java' application is not adequately sanitised
-  before being returned to the user.";
-tag_solution = "Upgrade to version 6.1.21 or 7.0.0 or later.
-  http://jetty.mortbay.org/jetty/";
-tag_summary = "This host is running Jetty WebServer and is prone to Cross-Site
-  Scripting vulnerability.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800954";
-CPE = "cpe:/a:mortbay:jetty";
+CPE = "cpe:/a:eclipse:jetty";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800954");
+  script_version("$Revision: 6831 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-01 16:36:41 +0200 (Tue, 01 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-10-20 14:26:56 +0200 (Tue, 20 Oct 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+
   script_cve_id("CVE-2009-3579");
+
   script_name("Jetty 'CookieDump.java' Cross-Site Scripting Vulnerability");
+
   script_xref(name : "URL" , value : "http://www.coresecurity.com/content/jetty-persistent-xss");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/507013/100/0/threaded");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_jetty_detect.nasl");
   script_require_ports("Services/www", 8080);
-  script_require_keys("Jetty/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("Jetty/installed");
+
+  script_tag(name: "impact", value: "Successful exploitation will allow remote attackers to execute arbitrary code
+and conduct XSS attacks via a direct GET request to cookie/.
+
+Impact Level: Application");
+
+  script_tag(name: "affected", value: "Jetty version 6.1.19 and 6.1.20.");
+
+  script_tag(name: "insight", value: "The user supplied data passed into the 'Value' parameter in the Sample
+Cookies aka 'CookieDump.java' application is not adequately sanitised before being returned to the user.");
+
+  script_tag(name: "solution", value: "Upgrade to version 6.1.21 or 7.0.0 or later.");
+
+  script_tag(name: "summary", value: "This host is running Jetty WebServer and is prone to Cross-Site Scripting
+vulnerability.");
+
   exit(0);
 }
 
-
-include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-jettyPort =  get_app_port(cpe:CPE, nvt:SCRIPT_OID);
-if(!jettyPort){
+if (!jettyPort = get_app_port(cpe:CPE))
+  exit(0);
+
+if (!jettyVer = get_app_version(cpe:CPE, port:jettyPort))
+  exit(0);
+
+if (version_is_equal(version: jettyVer, test_version: "6.1.19")||
+    version_is_equal(version: jettyVer, test_version: "6.1.20")) {
+  report = report_fixed_ver(installed_version: jettyVer, fixed_version: "6.1.21");
+  security_message(port: jettyPort, data: report);
   exit(0);
 }
 
-jettyVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:jettyPort);
-
-if(!isnull(jettyVer))
-{
-  if(version_is_equal(version:jettyVer, test_version:"6.1.19")||
-     version_is_equal(version:jettyVer, test_version:"6.1.20")){
-    security_message(jettyPort);
-  }
-}
+exit(99);

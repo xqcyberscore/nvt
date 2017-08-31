@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_dng_converter_detect_win.nasl 4784 2016-12-16 10:07:12Z antu123 $
+# $Id: gb_adobe_dng_converter_detect_win.nasl 6506 2017-07-03 10:22:51Z cfischer $
 #
 # Adobe DNG Converter Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809761");
-  script_version("$Revision: 4784 $");
+  script_version("$Revision: 6506 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-16 11:07:12 +0100 (Fri, 16 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 12:22:51 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-12-15 15:01:50 +0530 (Thu, 15 Dec 2016)");
   script_name("Adobe DNG Converter Detection (Windows)");
   script_tag(name: "summary" , value: "Detection of installed version of
@@ -70,6 +70,8 @@ host    = get_host_ip();
 
 usrname = get_kb_item("SMB/login");
 passwd  = get_kb_item("SMB/password");
+domain  = get_kb_item("SMB/domain");
+if( domain ) usrname = domain + '\\' + usrname;
 
 if(!host || !usrname || !passwd){
   exit(0);

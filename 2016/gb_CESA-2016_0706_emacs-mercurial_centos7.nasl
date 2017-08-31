@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882481");
-  script_version("$Revision: 5527 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+  script_version("$Revision: 6658 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:51:48 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-05-06 15:29:34 +0530 (Fri, 06 May 2016)");
   script_cve_id("CVE-2016-3068", "CVE-2016-3069");
   script_tag(name:"cvss_base", value:"6.8");
@@ -65,7 +65,7 @@ Red Hat would like to thank Blake Burkhart for reporting these issues.
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_mar12_lin.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: gb_google_chrome_mult_dos_vuln_mar12_lin.nasl 6521 2017-07-04 14:51:10Z cfischer $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - March12 (Linux)
 #
@@ -37,7 +37,7 @@ tag_summary = "The host is installed with Google Chrome and is prone to multiple
 if(description)
 {
   script_id(802808);
-  script_version("$Revision: 5912 $");
+  script_version("$Revision: 6521 $");
   script_cve_id("CVE-2011-3031", "CVE-2011-3032", "CVE-2011-3033", "CVE-2011-3034",
                 "CVE-2011-3035", "CVE-2011-3036", "CVE-2011-3037", "CVE-2011-3038",
                 "CVE-2011-3039", "CVE-2011-3040", "CVE-2011-3041", "CVE-2011-3042",
@@ -45,7 +45,7 @@ if(description)
   script_bugtraq_id(52271);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-03-08 15:50:55 +0530 (Thu, 08 Mar 2012)");
   script_name("Google Chrome Multiple Denial of Service Vulnerabilities - March12 (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48265");
@@ -56,7 +56,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
-  script_require_keys("Google-Chrome/Linux/Ver", "ssh/login/uname");
+  script_mandatory_keys("Google-Chrome/Linux/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_mssql7.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: smb_mssql7.nasl 6456 2017-06-28 11:19:33Z cfischer $
 # Description: SMB Registry : SQL7 Patches
 #
 # Authors:
@@ -38,38 +38,29 @@ Reference : http://online.securityfocus.com/advisories/4308";
 
 if(description)
 {
- script_id(10642);
- script_version("$Revision: 6056 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(5205);
- script_tag(name:"cvss_base", value:"7.2");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-2002-0642");
- script_xref(name:"IAVA", value:"2002-B-0004");
- name = "SMB Registry : SQL7 Patches";
- 
- 
- script_name(name);
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.10642");
+  script_version("$Revision: 6456 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(5205);
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2002-0642");
+  script_xref(name:"IAVA", value:"2002-B-0004");
+  script_name("SMB Registry : SQL7 Patches");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2001 Intranode <plugin@intranode.com>");
+  script_family("Windows");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
 
- summary = "Determines if a key exists and is set";
- 
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
   script_tag(name:"qod_type", value:"registry");
- 
- script_copyright("This script is Copyright (C) 2001 Intranode <plugin@intranode.com>");
- family = "Windows";
 
- script_family(family);
- 
- script_dependencies("secpod_reg_enum.nasl");
- script_require_keys("SMB/transport", "SMB/name", "SMB/login", "SMB/password", "SMB/registry_access");
- script_mandatory_keys("SMB/WindowsVersion");
- script_require_ports(139, 445);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 include("smb_nt.inc");
@@ -77,14 +68,9 @@ include("smb_nt.inc");
 port = get_kb_item("SMB/transport");
 if(!port)port = 139;
 
-
-
 #---------------------------------------------------------------------#
 # Here is our main()                                                  #
 #---------------------------------------------------------------------#
-
-
-
 
 
 function check_key(key)

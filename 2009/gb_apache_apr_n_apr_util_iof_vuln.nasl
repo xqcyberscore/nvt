@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_apr_n_apr_util_iof_vuln.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_apache_apr_n_apr_util_iof_vuln.nasl 6516 2017-07-04 12:20:47Z cfischer $
 #
 # Apache APR and APR-util Multiple Integer Overflow Vulnerabilities
 #
@@ -51,8 +51,8 @@ tag_summary = "The host is installed with Apache APR and APR-Util and is prone t
 if(description)
 {
   script_id(800679);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 6516 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-08-17 14:35:19 +0200 (Mon, 17 Aug 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -63,12 +63,12 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/36138");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/36140");
 
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_apache_apr-utils_detect.nasl", "gb_apache_apr_detect.nasl");
-  script_require_keys("Apache/APR-Utils/Ver","Apache/APR/Ver");
+  script_mandatory_keys("Apache/APR_or_Utils/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -92,8 +92,9 @@ if(apruVer != NULL)
     security_message(0);
   }
 }
+
 # Apache APR
-else if(aprVer != NULL)
+if(aprVer != NULL)
 {
   # Check for Apache APR version 0.9 <= 0.9.18 or 1.3.x < 1.3.8
   if(version_in_range(version:aprVer, test_version:"0.9.0", test_version2:"0.9.18")||

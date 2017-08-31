@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_livezilla_php_obj_inj_vuln.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_livezilla_php_obj_inj_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # LiveZilla PHP Object Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:livezilla:livezilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802075");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2013-7034");
   script_bugtraq_id(64383);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-21 11:01:15 +0530 (Wed, 21 May 2014)");
   script_name("LiveZilla PHP Object Injection Vulnerability");
 
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/89796");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124445");
   script_xref(name : "URL" , value : "http://forums.livezilla.net/index.php?/topic/163-livezilla-changelog/");
-  script_summary("Check if we get error message while trying to execute serialized PHP object.");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

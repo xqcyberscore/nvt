@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843072");
-  script_version("$Revision: 5925 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 08:36:17 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 6648 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:05:27 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-03-03 05:50:19 +0100 (Fri, 03 Mar 2017)");
   script_cve_id("CVE-2016-9422", "CVE-2016-9423", "CVE-2016-9424", "CVE-2016-9425", "CVE-2016-9426", "CVE-2016-9428", "CVE-2016-9429", "CVE-2016-9430", "CVE-2016-9431", "CVE-2016-9432", "CVE-2016-9433", "CVE-2016-9434", "CVE-2016-9435", "CVE-2016-9436", "CVE-2016-9437", "CVE-2016-9438", "CVE-2016-9439", "CVE-2016-9440", "CVE-2016-9441", "CVE-2016-9442", "CVE-2016-9443", "CVE-2016-9622", "CVE-2016-9623", "CVE-2016-9624", "CVE-2016-9625", "CVE-2016-9626", "CVE-2016-9627", "CVE-2016-9628", "CVE-2016-9629", "CVE-2016-9630", "CVE-2016-9631", "CVE-2016-9632", "CVE-2016-9633");
   script_tag(name:"cvss_base", value:"6.8");
@@ -52,7 +52,7 @@ execution.");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

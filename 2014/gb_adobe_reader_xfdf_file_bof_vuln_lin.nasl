@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_xfdf_file_bof_vuln_lin.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_adobe_reader_xfdf_file_bof_vuln_lin.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # Adobe Reader 'XFDF' File Buffer Overflow Vulnerability (Linux)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804389";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2004-0194");
   script_bugtraq_id(9802);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-10 15:10:46 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader 'XFDF' File Buffer Overflow Vulnerability (Linux)");
 
@@ -75,7 +75,6 @@ http://get.adobe.com/reader";
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/15384");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17488/");
-  script_summary("Check for the vulnerable version of Adobe Reader on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Buffer overflow");

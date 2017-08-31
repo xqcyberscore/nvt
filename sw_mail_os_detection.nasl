@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_mail_os_detection.nasl 5711 2017-03-24 09:41:57Z cfi $
+# $Id: sw_mail_os_detection.nasl 6882 2017-08-09 07:05:06Z cfischer $
 #
 # SMTP/POP3/IMAP Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111068");
-  script_version("$Revision: 5711 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 10:41:57 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 6882 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-09 09:05:06 +0200 (Wed, 09 Aug 2017) $");
   script_tag(name:"creation_date", value:"2015-12-11 14:00:00 +0100 (Fri, 11 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -84,8 +84,9 @@ foreach port( ports ) {
           register_and_report_os( os:"Debian GNU/Linux", version:"3.1", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else if( "(Debian Lenny)" >< banner || "lenny" >< banner ) {
           register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
         } else if( "deb7" >< banner || "wheezy" >< banner ) {
-          register_and_report_os( os:"Debian GNU/Linux", version:"7.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else if( "deb8" >< banner ) {
           register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else {
@@ -209,6 +210,12 @@ foreach port( ports ) {
       }
     }
 
+    # Cisco Unity Connection
+    if( " UnityMailer " >< banner ) {
+      register_and_report_os( os:"Cisco", cpe:"cpe:/o:cisco", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      continue;
+    }
+
     if( "for Windows ready" >< banner || "Microsoft ESMTP MAIL Service" >< banner ||
         "ESMTP Exchange Server" >< banner || "ESMTP Microsoft Exchange" >< banner ||
         "ESMTP MS Exchange" >< banner || "on Windows" >< banner ) {
@@ -244,6 +251,12 @@ foreach port( ports ) {
         "ImapServer" >< banner || "IMAP4 Service" >< banner ||
         " IMAP4 " >< banner ) {
 
+      # Cisco Unity Connection
+      if( "UMSS IMAP4rev1 Server" >< banner ) {
+        register_and_report_os( os:"Cisco", cpe:"cpe:/o:cisco", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        continue;
+      }
+
       if( "(Ubuntu)" >< banner || " ubuntu " >< banner ||
           ( "-Debian-" >< banner && "ubuntu" >< banner ) ) {
         register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
@@ -257,8 +270,9 @@ foreach port( ports ) {
           register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else if( "squeeze" >< banner ) {
           register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
         } else if( "deb7" >< banner || "wheezy" >< banner ) {
-          register_and_report_os( os:"Debian GNU/Linux", version:"7.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else if( "deb8" >< banner ) {
           register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else {
@@ -444,8 +458,9 @@ if( "Cyrus POP3" >< banner || "Dovecot" >< banner ||
       register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     } else if( "+squeeze" >< banner ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
     } else if( "deb7" >< banner || "wheezy" >< banner ) {
-      register_and_report_os( os:"Debian GNU/Linux", version:"7.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     } else if( "deb8" >< banner ) {
       register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     } else {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_skyipcam_rce_07_15.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_skyipcam_rce_07_15.nasl 6851 2017-08-04 07:31:24Z asteins $
 #
 # AirLink101 SkyIPCam1620W OS Command Injection
 #
@@ -28,10 +28,10 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105318");
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 6851 $");
  script_cve_id("CVE-2015-2280");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+ script_tag(name:"cvss_base", value:"9.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
  script_name("AirLink101 SkyIPCam1620W OS Command Injection");
 
@@ -48,16 +48,14 @@ Other devices based on the same firmware are probably affected too,");
  script_tag(name:"solution_type", value: "NoneAvailable");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:31:24 +0200 (Fri, 04 Aug 2017) $");
  script_tag(name:"creation_date", value:"2015-07-09 11:01:55 +0200 (Thu, 09 Jul 2015)");
- script_summary("Try to access snwrite.cgi");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("SkyIPCam/banner");
  script_require_ports("Services/www", 8080);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("SkyIPCam/banner");
 
  exit(0);
 }

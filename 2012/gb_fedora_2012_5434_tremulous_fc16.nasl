@@ -52,8 +52,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-April/078387.html");
   script_id(864162);
-  script_version("$Revision: 3027 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 14:18:03 +0200 (Mon, 11 Apr 2016) $");
+  script_version("$Revision: 6627 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-04-20 10:20:25 +0530 (Fri, 20 Apr 2012)");
   script_cve_id("CVE-2010-5077", "CVE-2011-2764", "CVE-2011-3012");
   script_tag(name:"cvss_base", value:"10.0");
@@ -66,7 +66,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "insight" , value : tag_insight);

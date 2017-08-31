@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-2713.nasl 3817 2016-08-10 05:18:42Z ckuerste $
+# $Id: gb_junos_cve_2014-2713.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Junos PFE Denial of Service Vulnerability 
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105904");
-  script_version ("$Revision: 3817 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-10 07:18:42 +0200 (Wed, 10 Aug 2016) $");
+  script_version ("$Revision: 6769 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-29 14:26:16 +0700 (Tue, 29 Apr 2014)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -45,7 +45,6 @@ if (description)
 
   script_name("Junos PFE Denial of Service Vulnerability");
 
-  script_summary("Junos CVE-2014-2713");
 
   script_category(ACT_GATHER_INFO);
 

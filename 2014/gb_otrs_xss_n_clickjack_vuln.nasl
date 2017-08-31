@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_xss_n_clickjack_vuln.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_otrs_xss_n_clickjack_vuln.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # OTRS Help Desk Cross-Site Scripting and Clickjacking Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6756 $");
   script_cve_id("CVE-2014-2553", "CVE-2014-2554");
   script_bugtraq_id(66569, 66567);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-07 15:00:42 +0530 (Mon, 07 Apr 2014)");
   script_name("OTRS Help Desk Cross-Site Scripting and Clickjacking Vulnerabilities");
 
@@ -78,14 +78,13 @@ For updates refer to http://www.otrs.com";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57616");
   script_xref(name : "URL" , value : "http://bugs.otrs.org/show_bug.cgi?id=10361");
   script_xref(name : "URL" , value : "http://bugs.otrs.org/show_bug.cgi?id=10374");
-  script_summary("Check for the vulnerable version of OTRS");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("secpod_otrs_detect.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
-  script_mandatory_keys("OTRS/installed");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("OTRS/installed");
+
   exit(0);
 }
 

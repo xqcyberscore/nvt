@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_foundation_ms14-073.nasl 2827 2016-03-10 08:33:09Z benallard $
+# $Id: gb_sharepoint_foundation_ms14-073.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # Microsoft SharePoint Foundation Privilege Elevation Vulnerability (3000431)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_foundation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805014");
-  script_version("$Revision: 2827 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-4116");
   script_bugtraq_id(70980);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:33:09 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-12 09:52:30 +0530 (Wed, 12 Nov 2014)");
   script_name("Microsoft SharePoint Foundation Privilege Elevation Vulnerability (3000431)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3000431");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-073");
 
-  script_summary("Check for the version of 'Onetutil.dll' vulnerable file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843156");
-  script_version("$Revision: 6118 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 12:37:30 +0200 (Fri, 12 May 2017) $");
+  script_version("$Revision: 6873 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-08 14:35:26 +0200 (Tue, 08 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-05-10 06:53:55 +0200 (Wed, 10 May 2017)");
   script_cve_id("CVE-2016-0736", "CVE-2016-2161", "CVE-2016-8743");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for apache2 USN-3279-1");
   script_tag(name: "summary", value: "Check the version of apache2");
@@ -68,7 +68,7 @@ environments. (CVE-2016-8743)");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

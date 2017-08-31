@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842998");
-  script_version("$Revision: 4845 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-23 06:29:54 +0100 (Fri, 23 Dec 2016) $");
+  script_version("$Revision: 6647 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:04:05 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-12-21 05:45:13 +0100 (Wed, 21 Dec 2016)");
   script_cve_id("CVE-2016-6213", "CVE-2016-8630", "CVE-2016-8633", "CVE-2016-8645",
 		"CVE-2016-9313", "CVE-2016-9555");
@@ -75,7 +75,7 @@ could use this to cause a denial of service (system crash). (CVE-2016-9555)");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

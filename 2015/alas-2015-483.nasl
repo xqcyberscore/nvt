@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-483.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: alas-2015-483.nasl 6575 2017-07-06 13:42:08Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120323");
-script_version("$Revision: 6345 $");
+script_version("$Revision: 6575 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:23:32 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:42:08 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-483");
 script_tag(name: "insight", value: "mod_lua.c in the mod_lua module in the Apache HTTP Server 2.3.x and 2.4.x through 2.4.10 does not support an httpd configuration in which the same Lua authorization provider is used with different arguments within different contexts, which allows remote attackers to bypass intended access restrictions in opportunistic circumstances by leveraging multiple Require directives, as demonstrated by a configuration that specifies authorization for one group to access a certain directory, and authorization for a second group to access a second directory. (CVE-2014-8109 )A flaw was found in the way httpd handled HTTP Trailer headers when processing requests using chunked encoding. A malicious client could use Trailer headers to set additional HTTP headers after header processing was performed by other modules. This could, for example, lead to a bypass of header restrictions defined with mod_headers. (CVE-2013-5704 )A NULL pointer dereference flaw was found in the way the mod_cache httpd module handled Content-Type headers. A malicious HTTP server could cause the httpd child process to crash when the Apache HTTP server was configured to proxy to a server with caching enabled. (CVE-2014-3581 )The handle_headers function in mod_proxy_fcgi.c in the mod_proxy_fcgi module in the Apache HTTP Server 2.4.10 allows remote FastCGI servers to cause a denial of service (buffer over-read and daemon crash) via long response headers. (CVE-2014-3583 )"); 
 script_tag(name : "solution", value : "Run yum update httpd24 to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

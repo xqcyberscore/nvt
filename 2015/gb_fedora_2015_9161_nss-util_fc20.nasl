@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869446");
-  script_version("$Revision: 3350 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:56:09 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6630 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-06-15 06:11:58 +0200 (Mon, 15 Jun 2015)");
   script_cve_id("CVE-2015-4000", "CVE-2013-5605", "CVE-2013-5606", "CVE-2013-1741");
   script_tag(name:"cvss_base", value:"7.5");
@@ -45,12 +45,11 @@ and the Softoken module
   script_xref(name: "FEDORA", value: "2015-9161");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-June/160116.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of nss-util");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

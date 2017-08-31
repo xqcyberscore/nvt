@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871261");
-  script_version("$Revision: 2781 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:56:38 +0100 (Fri, 04 Mar 2016) $");
+  script_version("$Revision: 6724 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-15 06:03:56 +0200 (Wed, 15 Oct 2014)");
   script_cve_id("CVE-2014-6457", "CVE-2014-6468", "CVE-2014-6502", "CVE-2014-6504",
                 "CVE-2014-6506", "CVE-2014-6511", "CVE-2014-6512", "CVE-2014-6517",
@@ -93,12 +93,11 @@ must be restarted for the update to take effect.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "RHSA", value: "2014:1636-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-October/msg00027.html");
-  script_summary("Check for the Version of java-1.8.0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882622");
-  script_version("$Revision: 4948 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-05 09:06:23 +0100 (Thu, 05 Jan 2017) $");
+  script_version("$Revision: 6659 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:52:22 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-01-03 05:44:04 +0100 (Tue, 03 Jan 2017)");
   script_cve_id("CVE-2016-7030", "CVE-2016-9575");
   script_tag(name:"cvss_base", value:"10.0");
@@ -68,7 +68,7 @@ CVE-2016-9575 issue was discovered by Liam Campbell (Red Hat).
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

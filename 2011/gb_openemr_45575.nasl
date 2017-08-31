@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_45575.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_openemr_45575.nasl 6719 2017-07-13 13:53:39Z cfischer $
 #
 # OpenEMR Multiple Input Validation Vulnerabilities
 #
@@ -38,8 +38,8 @@ OpenEMR 3.2.0 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103019);
- script_version("$Revision: 3911 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_version("$Revision: 6719 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-01-07 13:52:38 +0100 (Fri, 07 Jan 2011)");
  script_bugtraq_id(45575);
 
@@ -58,7 +58,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("gb_openemr_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("openemr/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -69,8 +68,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if (!can_host_php(port:port)) exit(0);
 
 if(vers = get_version_from_kb(port:port,app:"OpenEMR")) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_GS110TP_default_password.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_netgear_GS110TP_default_password.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # Netgear GS110TP Default Password
 #
@@ -28,19 +28,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103666");
-  script_version ("$Revision: 6079 $");
+  script_version ("$Revision: 6698 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Netgear GS110TP Default Password");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-02-20 12:01:48 +0100 (Wed, 20 Feb 2013)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("Web_Server/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("Web_Server/banner");
 
   script_xref(name:"URL", value:"http://support.netgear.com/product/GS110TP");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_virtualization_manager_webdetect.nasl 3777 2016-07-30 10:14:39Z cfi $
+# $Id: gb_solarwinds_virtualization_manager_webdetect.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # SolarWinds Virtualization Manager Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105766");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 3777 $");
- script_tag(name:"last_modification", value:"$Date: 2016-07-30 12:14:39 +0200 (Sat, 30 Jul 2016) $");
+ script_version ("$Revision: 6637 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
  script_tag(name:"creation_date", value:"2016-06-15 21:09:20 +0200 (Wed, 15 Jun 2016)");
  script_name("SolarWinds Virtualization Manager Detection");
 
@@ -39,7 +39,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of SolarWinds Virtualization Manager");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

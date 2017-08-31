@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843172");
-  script_version("$Revision: 6167 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 08:16:05 +0200 (Fri, 19 May 2017) $");
+  script_version("$Revision: 6851 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:31:24 +0200 (Fri, 04 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-05-17 06:54:41 +0200 (Wed, 17 May 2017)");
   script_cve_id("CVE-2017-7377", "CVE-2017-8086", "CVE-2017-7718", "CVE-2017-7980", 
                 "CVE-2017-8309", "CVE-2017-8379"); 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for qemu USN-3289-1");
   script_tag(name: "summary", value: "Check the version of qemu");
@@ -69,7 +69,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

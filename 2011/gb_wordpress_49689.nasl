@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_49689.nasl 5646 2017-03-21 09:37:44Z cfi $
+# $Id: gb_wordpress_49689.nasl 6719 2017-07-13 13:53:39Z cfischer $
 #
 # WordPress Annonces Plugin 'abspath' Parameter Remote File Include Vulnerability
 #
@@ -41,8 +41,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5646 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:37:44 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 6719 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-09-20 13:31:33 +0200 (Tue, 20 Sep 2011)");
  script_bugtraq_id(49689);
  script_tag(name:"cvss_base", value:"5.0");
@@ -60,7 +60,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("wordpress/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -72,9 +71,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
    
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
-if(!can_host_php(port:port))exit(0);
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
 files = traversal_files();

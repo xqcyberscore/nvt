@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: nimda.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: nimda.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Tests for Nimda Worm infected HTML files
 #
 # Authors:
@@ -54,17 +54,15 @@ See:  http://www.cert.org/advisories/CA-2001-26.html";
 if(description)
 {
  script_id(10767);
- script_version("$Revision: 6046 $");
+ script_version("$Revision: 6702 $");
  script_cve_id("CVE-2001-0545", "CVE-2001-0508", "CVE-2001-0544", "CVE-2001-0506",
                "CVE-2001-0507");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
  name = "Tests for Nimda Worm infected HTML files";
  script_name(name);
- 
-
  summary = "Tests for Nimda Worm infected HTML files";
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -73,6 +71,7 @@ if(description)
  script_family(family);
  script_dependencies("find_service.nasl", "no404.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -84,10 +83,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(get_port_state(port))
-{ 
  r = http_get_cache(item:"/", port:port);
  if(r && "readme.eml" >< r)	
  	security_message(port);
-}

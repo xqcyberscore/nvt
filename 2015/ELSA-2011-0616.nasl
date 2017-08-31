@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-0616.nasl 6170 2017-05-19 09:03:42Z teissa $
+# $Id: ELSA-2011-0616.nasl 6556 2017-07-06 11:54:54Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122172");
-script_version("$Revision: 6170 $");
+script_version("$Revision: 6556 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:14:14 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:54 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-0616");
 script_tag(name: "insight", value: "ELSA-2011-0616 -  pidgin security and bug fix update - [2.7.9-3.el6]- Add patch for RH bug #684685 (zero-out crypto keys before freeing).[2.7.9-2.el6]- Add patch for CVE-2011-1091 (RH bug #683031).[2.7.9-1.el6]- Update to 2.7.9 (RH bug #616917).- Remove patches now included upstream: pidgin-2.6.6-clientLogin-proxy-fix.patch pidgin-2.6.6-clientLogin-use-https.patch pidgin-2.6.6-CVE-2010-1624.patch pidgin-2.6.6-CVE-2010-3711.patch- Disable the translation updates patch. It doesn't apply anymore and will have to be redone. Saving the patch for now in case some parts are still useful to translators."); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"4.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

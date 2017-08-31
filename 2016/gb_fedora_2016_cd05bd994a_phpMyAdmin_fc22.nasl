@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808324");
-  script_version("$Revision: 5598 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_version("$Revision: 6631 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:36:10 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 15:38:28 +0200 (Wed, 08 Jun 2016)");
   script_cve_id("CVE-2016-5097", "CVE-2016-5098", "CVE-2016-5099");
   script_tag(name:"cvss_base", value:"5.0");
@@ -65,7 +65,7 @@ like displaying BLOB-data as image or download-link and much more...
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exchange_server_ms14-075.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_exchange_server_ms14-075.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Microsoft Exchange Server Multiple Vulnerabilities (3009712)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805115");
-  script_version("$Revision: 2780 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-6319", "CVE-2014-6325", "CVE-2014-6326", "CVE-2014-6336");
   script_bugtraq_id(71437, 71440, 71441, 71443);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-10 15:28:46 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Exchange Server Multiple Vulnerabilities (3009712)");
 
@@ -74,7 +74,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3011140");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-075");
 
-  script_summary("Check for the version of 'ExSetup.exe' vulnerable file");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

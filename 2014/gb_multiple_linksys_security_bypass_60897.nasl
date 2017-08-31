@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_linksys_security_bypass_60897.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_multiple_linksys_security_bypass_60897.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Multiple Cisco Linksys Products Security Bypass Vulnerability
 #
@@ -51,7 +51,7 @@ if (description)
  script_cve_id("CVE-2013-5122");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6759 $");
 
  script_name("Multiple Cisco Linksys Products Security Bypass Vulnerability");
 
@@ -59,9 +59,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60897");
  script_xref(name:"URL", value:"http://www.cisco.com/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-06-05 11:24:23 +0200 (Thu, 05 Jun 2014)");
- script_summary("Determine if there is an unprotected admin interface on port 8083");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-0615.nasl 3817 2016-08-10 05:18:42Z ckuerste $
+# $Id: gb_junos_cve_2014-0615.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Junos Multiple Privilege Escalation Vulnerabilities in Junos CLI
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103970");
-  script_version ("$Revision: 3817 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-10 07:18:42 +0200 (Wed, 10 Aug 2016) $");
+  script_version ("$Revision: 6715 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-21 09:45:15 +0700 (Tue, 21 Jan 2014)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,7 +45,6 @@ if (description)
 
   script_name("Junos Multiple Privilege Escalation Vulnerabilities in Junos CLI");
 
-  script_summary("Junos CVE-2014-0615");
 
   script_category(ACT_GATHER_INFO);
 

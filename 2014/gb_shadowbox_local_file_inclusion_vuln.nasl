@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804309");
-  script_version("$Revision: 5628 $");
+  script_version("$Revision: 6750 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-06 21:04:07 +0530 (Thu, 06 Feb 2014)");
   script_name("Shadowbox Local file Inclusion Vulnerability");
 
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2014020022");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125039/shadowbox-lfi.txt");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/shadowbox-local-file-inclusion");
-  script_summary("Check if Shadowbox is vulnerable to file inclusion vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

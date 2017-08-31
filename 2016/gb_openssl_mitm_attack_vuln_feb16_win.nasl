@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mitm_attack_vuln_feb16_win.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_openssl_mitm_attack_vuln_feb16_win.nasl 6707 2017-07-12 14:57:13Z cfischer $
 #
 # OpenSSL 'Diffie-Hellman small subgroups' MitM Attack Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806673");
-  script_version("$Revision: 5568 $");
+  script_version("$Revision: 6707 $");
   script_cve_id("CVE-2016-0701");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N"); 
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:57:13 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-02-01 15:45:03 +0530 (Mon, 01 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL 'Diffie-Hellman small subgroups' MitM Attack Vulnerability (Windows)");
@@ -81,6 +81,8 @@ sslVer = "";
 ## exit, if its not  windows
 if(host_runs("Windows") != "yes")exit(0);
 
+if(!sslPort = get_app_port(cpe:CPE)) exit(0);
+
 ## Get Version
 if(!sslVer = get_app_version(cpe:CPE, port:sslPort)){
   exit(0);
@@ -92,7 +94,7 @@ if(sslVer =~ "^(1\.0\.2)")
   if(version_is_less(version:sslVer, test_version:"1.0.2f"))
   {
     report = report_fixed_ver(installed_version:sslVer, fixed_version:"1.0.2f");
-    security_message(data:report);
+    security_message(port:sslPort, data:report);
     exit(0);
   }
 }

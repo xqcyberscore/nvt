@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804353";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-0511", "CVE-2014-0512");
   script_bugtraq_id(66205, 66512);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-21 14:00:20 +0530 (Tue, 21 Jan 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 Apr14 (Windows)");
 
@@ -76,7 +76,6 @@ For updates refer to http://get.adobe.com/reader";
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1029970");
   script_xref(name : "URL" , value : "https://www.hkcert.org/my_url/en/alert/14033102");
   script_xref(name : "URL" , value : "http://www.pwn2own.com/2014/03/pwn2own-results-for-wednesday-day-one");
-  script_summary("Check for the vulnerable version of Adobe Reader on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

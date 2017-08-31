@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_1922_1.nasl 4627 2016-11-25 09:14:40Z teissa $
+# $Id: deb_1922_1.nasl 6615 2017-07-07 12:09:52Z cfischer $
 # Description: Auto-generated from advisory DSA 1922-1 (xulrunner)
 #
 # Authors:
@@ -103,8 +103,8 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 if(description)
 {
  script_id(66146);
- script_version("$Revision: 4627 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-25 10:14:40 +0100 (Fri, 25 Nov 2016) $");
+ script_version("$Revision: 6615 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:09:52 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-11-11 15:56:44 +0100 (Wed, 11 Nov 2009)");
  script_cve_id("CVE-2009-3274", "CVE-2009-3370", "CVE-2009-3372", "CVE-2009-3373", "CVE-2009-3374", "CVE-2009-3375", "CVE-2009-3376", "CVE-2009-3380", "CVE-2009-3382");
  script_tag(name:"cvss_base", value:"10.0");
@@ -118,7 +118,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("Debian Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);

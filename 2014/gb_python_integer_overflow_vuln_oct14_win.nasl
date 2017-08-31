@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_integer_overflow_vuln_oct14_win.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_python_integer_overflow_vuln_oct14_win.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Python Integer Overflow Vulnerability - 01 Oct14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:python:python";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804939");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-7185");
   script_bugtraq_id(70089);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-17 12:50:02 +0530 (Fri, 17 Oct 2014)");
 
   script_name("Python Integer Overflow Vulnerability - 01 Oct14 (Windows)");
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://bugs.python.org/issue2183");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/96193");
-  script_summary("Check for the vulnerable version of Python on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

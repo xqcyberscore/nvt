@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_cisco-sa-20170607-sip.nasl 6293 2017-06-08 07:38:48Z ckuersteiner $
+# $Id: gb_cisco_ip_phone_cisco-sa-20170607-sip.nasl 6585 2017-07-07 05:33:18Z cfischer $
 #
 # Cisco IP Phone 8800 Series SIP Denial of Service Vulnerability
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106860");
-  script_version("$Revision: 6293 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-08 09:38:48 +0200 (Thu, 08 Jun 2017) $");
+  script_version("$Revision: 6585 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-07 07:33:18 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-06-08 13:49:55 +0700 (Thu, 08 Jun 2017)");
-  script_tag(name: "cvss_base", value: "5.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:H/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-6656");
 

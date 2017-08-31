@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868451");
-  script_version("$Revision: 2798 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 13:57:39 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 6769 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-05 06:21:54 +0100 (Wed, 05 Nov 2014)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -68,12 +68,11 @@ Take a look into README.fedora about legal issues cause of missing content.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2014-14241");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-November/142686.html");
-  script_summary("Check for the Version of gnurobbo");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

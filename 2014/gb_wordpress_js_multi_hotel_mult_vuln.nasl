@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_js_multi_hotel_mult_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_js_multi_hotel_mult_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # WordPress Js-Multi-Hotel Plugin Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6759 $");
   script_bugtraq_id(66529);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-08 11:09:59 +0530 (Thu, 08 May 2014)");
   script_name("WordPress Js-Multi-Hotel Plugin Multiple Vulnerabilities");
 
@@ -83,7 +83,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://websecurity.com.ua/7082");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125959");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Mar/413");
-  script_summary("Check if Wordpress Js-Multi-Hotel Plugin is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

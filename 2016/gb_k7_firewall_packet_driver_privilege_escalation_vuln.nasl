@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_firewall_packet_driver_privilege_escalation_vuln.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_k7_firewall_packet_driver_privilege_escalation_vuln.nasl 6506 2017-07-03 10:22:51Z cfischer $
 #
 # K7Firewall Packet Driver Privilege Escalation Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809088");
-  script_version("$Revision: 5557 $");
+  script_version("$Revision: 6506 $");
   script_cve_id("CVE-2014-7136");
   script_bugtraq_id(71611);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 12:22:51 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-11-07 14:25:26 +0530 (Mon, 07 Nov 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("K7Firewall Packet Driver Privilege Escalation Vulnerability");
@@ -97,6 +97,8 @@ host    = get_host_ip();
 
 usrname = get_kb_item("SMB/login");
 passwd  = get_kb_item("SMB/password");
+domain  = get_kb_item("SMB/domain");
+if( domain ) usrname = domain + '\\' + usrname;
 
 if(!host || !usrname || !passwd){
   exit(0);

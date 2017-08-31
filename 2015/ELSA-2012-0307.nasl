@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-0307.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: ELSA-2012-0307.nasl 6557 2017-07-06 11:55:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123969");
-script_version("$Revision: 6159 $");
+script_version("$Revision: 6557 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:10:59 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:55:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-0307");
 script_tag(name: "insight", value: "ELSA-2012-0307 -  util-linux security, bug fix, and enhancement update - [2.13-0.59.0.1.el5]- Merge UEK modification fix #10104470 - Import hwclock from util-linux-ng [Kris Van Hees][2.13-0.59]- fix #768382 - CVE-2011-1675 CVE-2011-1677 util-linux various flaws[2.13-0.58]- fix #677452 - util-linux fails to build with gettext-0.17[2.13-0.57]- fix #646300 - login doesn't update /var/run/utmp properly- fix #726572 - import missing fsfreeze into util-linux - fix #678430 - fdisk should not report error on 1gB LUNs- fix #699639 - mount man page is missing support for ext4/xfs- fix #650937 - blockdev man page missing information- fix #678407 - ipcs and ipcrm in wrong man section"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"4.6");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

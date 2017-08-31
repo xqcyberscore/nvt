@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-1801.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-1801.nasl 6559 2017-07-06 11:57:32Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123258");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6559 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:01:23 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:57:32 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-1801");
 script_tag(name: "insight", value: "ELSA-2014-1801 -  shim security update - shim[0.7-8.0.1]- update Oracle Linux certificates (Alexey Petrenko)- replace securebootca.cer (Alexey Petrenko)[0.7-8]- out-of-bounds memory read flaw in DHCPv6 packet processing Resolves: CVE-2014-3675- heap-based buffer overflow flaw in IPv6 address parsing Resolves: CVE-2014-3676- memory corruption flaw when processing Machine Owner Keys (MOKs) Resolves: CVE-2014-3677[0.7-7]- Use the right key for ARM Aarch64.[0.7-6]- Preliminary build for ARM Aarch64.shim-signed[0.7-8.0.1]- Oracle Linux certificates (Alexey Petrenko)[0.7-8]- out-of-bounds memory read flaw in DHCPv6 packet processing Resolves: CVE-2014-3675- heap-based buffer overflow flaw in IPv6 address parsing Resolves: CVE-2014-3676- memory corruption flaw when processing Machine Owner Keys (MOKs) Resolves: CVE-2014-3677[0.7-5.2]- Get the right signatures on shim-redhat.efi Related: rhbz#1064449[0.7-5.1]- Update for signed shim for RHEL 7 Resolves: rhbz#1064449"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-1801");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

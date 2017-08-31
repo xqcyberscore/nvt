@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_inguest_prv_esc_vuln_win.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_vmware_prdts_inguest_prv_esc_vuln_win.nasl 6518 2017-07-04 13:49:06Z cfischer $
 #
 # VMware Products Trap Flag In-Guest Privilege Escalation Vulnerability (Windows)
 #
@@ -49,8 +49,8 @@ tag_insight = "The issue is due to an error in the CPU hardware emulation while
 if(description)
 {
   script_id(800071);
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 6518 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:49:06 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-12-15 15:44:51 +0100 (Mon, 15 Dec 2008)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -64,7 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_vmware_prdts_detect_win.nasl");
-  script_require_keys("SMB/WindowsVersion","VMware/Win/Installed");
+  script_mandatory_keys("VMware/Win/Installed");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "summary" , value : tag_summary);

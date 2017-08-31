@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(867683);
-  script_version("$Revision: 2799 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 13:59:17 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 6629 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-10 13:34:38 +0530 (Thu, 10 Apr 2014)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -56,7 +56,7 @@ the OpenSSH server with NetworkManager.
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

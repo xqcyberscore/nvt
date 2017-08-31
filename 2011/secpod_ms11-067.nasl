@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-067.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-067.nasl 6532 2017-07-05 07:42:05Z cfischer $
 #
 # Microsoft Report Viewer Information Disclosure Vulnerability (2578230)
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(900299);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6532 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-08-11 06:41:03 +0200 (Thu, 11 Aug 2011)");
   script_bugtraq_id(49033);
   script_cve_id("CVE-2011-1976");
@@ -57,9 +57,8 @@ if(description)
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_ms_visual_prdts_detect.nasl");
-  script_require_keys("Microsoft/VisualStudio/Ver");
+  script_mandatory_keys("Microsoft/VisualStudio/Ver");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

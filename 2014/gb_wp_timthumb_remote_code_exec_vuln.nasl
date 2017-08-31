@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_timthumb_remote_code_exec_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wp_timthumb_remote_code_exec_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Binary Moon TimThumb Remote Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805116");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-4663");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-23 11:22:48 +0530 (Tue, 23 Dec 2014)");
   script_name("Binary Moon TimThumb Remote Code Execution Vulnerability");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://code.google.com/p/timthumb/source/detail?r=219");
   script_xref(name : "URL" , value : "https://code.google.com/p/timthumb/issues/detail?id=485");
 
-  script_summary("Check if Binary Moon TimThumb is prone to remote code execution");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

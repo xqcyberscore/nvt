@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0594.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: ELSA-2016-0594.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122920");
-script_version("$Revision: 5732 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-04-06 14:32:59 +0300 (Wed, 06 Apr 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0594");
 script_tag(name: "insight", value: "ELSA-2016-0594 -  graphite2 security, bug fix, and enhancement update - [1.3.6-1]- Related: rhbz#1309052 CVE-2016-1521 CVE-2016-1522 CVE-2016-1523 CVE-2016-1526[1.3.5-1]- Resolves: rhbz#1309052 CVE-2016-1521 CVE-2016-1522 CVE-2016-1523 CVE-2016-1526[1.2.4-6]- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild[1.2.4-5]- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild[1.2.4-4]- Rebuilt for Fedora 23 Change https://fedoraproject.org/wiki/Changes/Harden_all_packages_with_position-independent_code[1.2.4-3]- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild[1.2.4-2]- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild[1.2.4-1]- New upstream release"); 
 script_tag(name : "solution", value : "update software");
@@ -41,7 +41,7 @@ script_tag(name:"cvss_base", value:"9.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

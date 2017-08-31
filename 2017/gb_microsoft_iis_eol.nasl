@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_iis_eol.nasl 5809 2017-03-31 08:06:49Z cfi $
+# $Id: gb_microsoft_iis_eol.nasl 6494 2017-06-30 08:10:34Z cfischer $
 #
 # Microsoft IIS Web Server End Of Life Detection
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108114");
-  script_version("$Revision: 5809 $");
+  script_version("$Revision: 6494 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 10:06:49 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 10:10:34 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-03-31 08:00:00 +0200 (Fri, 31 Mar 2017)");
   script_name("Microsoft IIS Web Server End Of Life Detection");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -76,12 +76,12 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( ret = product_reached_eol( cpe:CPE, version:version ) ) {
-
-  report = 'The Microsoft IIS Web Server version has reached the end of life.\n\n' + 
-           'Installed version: ' + version + '\n' +
-           'EOL version:       ' + ret['eol_version'] + '\n' +
-           'EOL date:          ' + ret['eol_date'] + '\n';
-
+  report = build_eol_message( name:"Microsoft IIS Web Server",
+                              cpe:CPE,
+                              version:version,
+                              eol_version:ret["eol_version"],
+                              eol_date:ret["eol_date"],
+                              eol_type:"prod" );
   security_message( port:port, data:report );
   exit( 0 );
 }

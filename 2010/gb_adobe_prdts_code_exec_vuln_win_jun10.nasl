@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_code_exec_vuln_win_jun10.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_adobe_prdts_code_exec_vuln_win_jun10.nasl 6475 2017-06-29 06:35:11Z cfischer $
 #
 # Adobe Products Remote Code Execution Vulnerability - jun10 (Windows)
 #
@@ -51,8 +51,8 @@ remote code execution vulnerability.";
 if(description)
 {
   script_id(801360);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 6475 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2010-06-15 06:05:27 +0200 (Tue, 15 Jun 2010)");
   script_cve_id("CVE-2010-1297");
   script_bugtraq_id(40586);
@@ -68,10 +68,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_adobe_prdts_detect_win.nasl",
-                      "gb_adobe_flash_player_detect_win.nasl");
-  script_require_keys("AdobeFlashPlayer/Win/Ver", "Adobe/Acrobat/Win/Ver",
-                      "Adobe/Reader/Win/Ver");
+  script_dependencies("secpod_adobe_prdts_detect_win.nasl", "gb_adobe_flash_player_detect_win.nasl");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

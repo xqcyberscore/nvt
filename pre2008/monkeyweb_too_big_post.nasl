@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: monkeyweb_too_big_post.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: monkeyweb_too_big_post.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: MonkeyWeb POST with too much data
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "Upgrade your web server.";
 if(description)
 {
  script_id(11544);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2003-0218");
  script_bugtraq_id(7202);
@@ -68,12 +68,9 @@ if(description)
  exit(0);
 }
 
-#
 include("http_func.inc");
 
-port = get_http_port(default:80);
-	# 2001 ?
-if(! get_port_state(port)) exit(0);
+port = get_http_port(default:80); # 2001 ?
 
 if (safe_checks())
 {

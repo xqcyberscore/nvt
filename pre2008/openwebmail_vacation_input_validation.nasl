@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: openwebmail_vacation_input_validation.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: openwebmail_vacation_input_validation.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Open WebMail vacation.pl Arbitrary Command Execution
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Upgrade to Open WebMail version 2.32 20040629 or later.";
 
 if (description) {
   script_id(12637);
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 6702 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -61,6 +61,7 @@ if (description) {
 
   script_dependencies("global_settings.nasl", "openwebmail_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -74,7 +75,6 @@ include("http_keepalive.inc");
 host = get_host_name();
 port = get_http_port(default:80);
 
-if (!get_port_state(port)) exit(0);
 if (debug_level) display("debug: checking for Arbitrary Command Execution flaw in vacation.pl in Open WebMail on ", host, ":", port, ".\n");
 
 # Check each installed instance, stopping if we find a vulnerability.

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-1505.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: ELSA-2013-1505.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123534");
-script_version("$Revision: 6159 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:05:11 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-1505");
 script_tag(name: "insight", value: "ELSA-2013-1505 -  java-1.6.0-openjdk security update - [1:1.6.0.0-1.68.1.11.14]- updated to icedtea6-1.11.14.tar.gz- added and applied 1.11.14-fixes.patch, patch10 to fix build issues- adapted patch8 java-1.6.0-openjdk-timezone-id.patch- Resolves: rhbz#1017618[1:1.6.0.1-1.67.1.13.0]- reverted previous update- Resolves: rhbz#1017618[1:1.6.0.1-1.66.1.13.0]- updated to icedtea 1.13- updated to openjdk-6-src-b28-04_oct_2013- added --disable-lcms2 configure switch to fix tck- removed upstreamed patch7,java-1.6.0-openjdk-jstack.patch- added patch7 1.13_fixes.patch to fix 1.13 build issues- adapted patch0 java-1.6.0-openjdk-optflags.patch- adapted patch3 java-1.6.0-openjdk-java-access-bridge-security.patch- adapted patch8 java-1.6.0-openjdk-timezone-id.patch- removed useless runtests parts- included also java.security.old files- Resolves: rhbz#1017618"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

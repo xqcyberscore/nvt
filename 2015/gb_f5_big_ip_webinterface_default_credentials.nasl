@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_webinterface_default_credentials.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_f5_big_ip_webinterface_default_credentials.nasl 6551 2017-07-06 09:58:21Z teissa $
 #
 # F5 Networks BIG-IP Webinterface Default Credentials
 #
@@ -28,13 +28,12 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105163");
- script_version("$Revision: 3911 $");
+ script_version("$Revision: 6551 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("F5 Networks BIG-IP Webinterface Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-01-09 16:30:36 +0100 (Fri, 09 Jan 2015)");
- script_summary("Determine if it is possible to login with default credentials");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Default Accounts");

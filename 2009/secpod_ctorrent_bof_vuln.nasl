@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ctorrent_bof_vuln.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_ctorrent_bof_vuln.nasl 6517 2017-07-04 13:34:20Z cfischer $
 #
 # CTorrent/Enhanced CTorrent Buffer Overflow Vulnerability
 #
@@ -46,8 +46,8 @@ prone to Buffer Overflow Vulnerability.";
 if(description)
 {
   script_id(900557);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 6517 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -63,7 +63,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
   script_dependencies("secpod_ctorrent_detect.nasl");
-  script_require_keys("CTorrent/Ver", "Enhanced/CTorrent/Ver");
+  script_mandatory_keys("CTorrent/CTorrent_or_Enhanced/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

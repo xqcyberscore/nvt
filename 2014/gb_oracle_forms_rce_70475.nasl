@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_forms_rce_70475.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_oracle_forms_rce_70475.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Oracle E-Business Suite/Oracle Forms Remote Security Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
  script_cve_id("CVE-2014-4278");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6735 $");
 
  script_name("Oracle E-Business Suite/Oracle Forms Remote Security Vulnerability");
 
@@ -54,9 +54,8 @@ Oracle E-Business Suite 12..6, 12.1.3, 12.2.2, 12.2.3, 12.2.4
 Oracle Forms 10g");
 
  script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-11-13 14:38:29 +0100 (Thu, 13 Nov 2014)");
- script_summary("Determine if it is possible to execute java code");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");
  script_family("Web application abuses");

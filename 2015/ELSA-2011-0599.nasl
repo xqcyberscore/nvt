@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-0599.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: ELSA-2011-0599.nasl 6556 2017-07-06 11:54:54Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122174");
-script_version("$Revision: 6254 $");
+script_version("$Revision: 6556 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:14:15 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:54 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-0599");
 script_tag(name: "insight", value: "ELSA-2011-0599 -  sudo security and bug fix update - [1.7.4p5-5]- patch: log failed user role changes Resolves: rhbz#665131[1.7.4p5-4]- added #includedir /etc/sudoers.d to sudoers Resolves: rhbz#615087[1.7.4p5-3]- added !visiblepw option to sudoers Resolves: rhbz#688640[1.7.4p5-2]- added patch for rhbz#665131 Resolves: rhbz#665131[1.7.4p5-1]- rebase to latest stable version- sudo now uses /var/db/sudo for timestamps- new command available: sudoreplay- use native audit support- sync configuration paths with the nss_ldap package Resolves: rhbz#615087 Resolves: rhbz#652726 Resolves: rhbz#634159 Resolves: rhbz#603823"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"4.4");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

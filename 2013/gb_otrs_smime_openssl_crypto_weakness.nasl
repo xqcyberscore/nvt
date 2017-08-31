@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_smime_openssl_crypto_weakness.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_otrs_smime_openssl_crypto_weakness.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # OTRS S/MIME OpenSSL Cryptographic Entropy Weakness
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6074 $");
+  script_version("$Revision: 6755 $");
   script_cve_id("CVE-2008-7278");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-09-20 17:07:00 +0530 (Fri, 20 Sep 2013)");
   script_name("OTRS S/MIME OpenSSL Cryptographic Entropy Weakness");
 
@@ -76,7 +76,6 @@ or later, For updates refer to http://www.otrs.com/en/";
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("secpod_otrs_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("OTRS/installed");
   exit(0);
 }

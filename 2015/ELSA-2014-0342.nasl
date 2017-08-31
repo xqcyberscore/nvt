@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-0342.nasl 6369 2017-06-19 10:00:04Z teissa $
+# $Id: ELSA-2014-0342.nasl 6559 2017-07-06 11:57:32Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123434");
-script_version("$Revision: 6369 $");
+script_version("$Revision: 6559 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:03:45 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:57:32 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-0342");
 script_tag(name: "insight", value: "ELSA-2014-0342 -  wireshark security update - [1.8.10-7.0.1.el6]- Add oracle-ocfs2-network.patch to allow disassembly of OCFS2 interconnect[1.8.10-7]- security patches- Resolves: CVE-2013-6337[1.8.10-6]- security patches- Resolves: CVE-2014-2281 CVE-2014-2283 CVE-2014-2299[1.8.10-5]- security patches- Resolves: CVE-2013-6336 CVE-2013-6338 CVE-2013-6339 CVE-2013-6340 CVE-2013-7112 CVE-2013-7114"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"9.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

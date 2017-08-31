@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2550.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: ELSA-2015-2550.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122794");
-script_version("$Revision: 6229 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-12-08 11:03:27 +0200 (Tue, 08 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2550");
 script_tag(name: "insight", value: "ELSA-2015-2550 -  libxml2 security update - [2.9.1-6.0.1.el7_1.2]- Update doc/redhat.gif in tarball- Add libxml2-oracle-enterprise.patch and update logos in tarball[2.9.1-6.2]- Fix a series of CVEs (rhbz#1286496)- CVE-2015-7941 Stop parsing on entities boundaries errors- CVE-2015-7941 Cleanup conditional section error handling- CVE-2015-8317 Fail parsing early on if encoding conversion failed- CVE-2015-7942 Another variation of overflow in Conditional sections- CVE-2015-7942 Fix an error in previous Conditional section patch- Fix parsing short unclosed comment uninitialized access- CVE-2015-7498 Avoid processing entities after encoding conversion failures- CVE-2015-7497 Avoid an heap buffer overflow in xmlDictComputeFastQKey- CVE-2015-5312 Another entity expansion issue- CVE-2015-7499 Add xmlHaltParser() to stop the parser- CVE-2015-7499 Detect incoherency on GROW- CVE-2015-7500 Fix memory access error due to incorrect entities boundaries- CVE-2015-8242 Buffer overead with HTML parser in push mode- CVE-2015-1819 Enforce the reader to run in constant memory[2.9.1-6]- Fix missing entities after CVE-2014-3660 fix- CVE-2014-0191 Do not fetch external parameter entities (rhbz#1195650)- Fix regressions introduced by CVE-2014-0191 patch[2.9.1-5.1]- CVE-2014-3660 denial of service via recursive entity expansion (rhbz#1149087)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.1");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

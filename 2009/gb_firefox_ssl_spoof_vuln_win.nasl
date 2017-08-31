@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_ssl_spoof_vuln_win.nasl 5369 2017-02-20 14:48:07Z cfi $
+# $Id: gb_firefox_ssl_spoof_vuln_win.nasl 6530 2017-07-05 06:23:50Z cfischer $
 #
 # Firefox SSL Server Spoofing Vulnerability (Windows)
 #
@@ -44,8 +44,8 @@ tag_summary = "The host is installed with Mozilla Firefox browser and is prone
 if(description)
 {
   script_id(800915);
-  script_version("$Revision: 5369 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:48:07 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6530 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 08:23:50 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-08-05 14:14:14 +0200 (Wed, 05 Aug 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -59,7 +59,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_firefox_detect_win.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "Firefox/Win/Ver");
+  script_mandatory_keys("Firefox/Win/Ver");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

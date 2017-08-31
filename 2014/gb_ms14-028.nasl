@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-028.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-028.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Microsoft iSCSI Denial of Service Vulnerabilities (2962485)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(802074);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-0255", "CVE-2014-0256");
   script_bugtraq_id(67280, 67281);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-14 17:09:23 +0530 (Wed, 14 May 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft iSCSI Denial of Service Vulnerabilities (2962485)");
@@ -77,7 +77,6 @@ https://technet.microsoft.com/library/security/ms14-028";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/58281");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2933826");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms14-028");
-  script_summary("Check for the vulnerable 'Iscsitgt.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

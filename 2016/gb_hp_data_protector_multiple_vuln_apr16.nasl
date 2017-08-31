@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_multiple_vuln_apr16.nasl 6435 2017-06-27 06:17:04Z cfischer $
+# $Id: gb_hp_data_protector_multiple_vuln_apr16.nasl 6883 2017-08-09 09:44:10Z cfischer $
 #
 # HP Data Protector Multiple Vulnerabilities - Apr16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807814");
-  script_version("$Revision: 6435 $");
+  script_version("$Revision: 6883 $");
   script_cve_id("CVE-2016-2004", "CVE-2016-2005", "CVE-2016-2006", "CVE-2016-2007",
                 "CVE-2016-2008", "CVE-2015-2808");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 08:17:04 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-09 11:44:10 +0200 (Wed, 09 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-04-26 18:03:24 +0530 (Tue, 26 Apr 2016)");
   script_name("HP Data Protector Multiple Vulnerabilities - Apr16");
 
@@ -67,7 +67,7 @@ if(description)
   http://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05085988");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable"); # 09.00 versions are currently not reporting a reliable version in the banner
 
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/267328");
   script_xref(name:"URL", value:"http://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05085988");

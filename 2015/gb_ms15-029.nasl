@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-029.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ms15-029.nasl 6551 2017-07-06 09:58:21Z teissa $
 #
 # Microsoft Windows Photo Decoder Information Disclosure Vulnerability (3035126)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805501");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6551 $");
   script_cve_id("CVE-2015-0076");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-03-11 13:26:55 +0530 (Wed, 11 Mar 2015)");
   script_name("Microsoft Windows Photo Decoder Information Disclosure Vulnerability (3035126)");
 
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3035126");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-029");
 
-  script_summary("Check for the vulnerable 'Wmphoto.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

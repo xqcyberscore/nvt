@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_iplanet_web_server_mult_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_oracle_iplanet_web_server_mult_vuln.nasl 6483 2017-06-29 08:51:15Z cfischer $
 #
 # Oracle iPlanet Web Server Multiple Unspecified Vulnerabilities
 #
@@ -44,8 +44,8 @@ tag_summary = "The host is running Oracle iPlanet Web Server and is prone to
 if(description)
 {
   script_id(801607);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 6483 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:51:15 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2010-10-22 15:51:55 +0200 (Fri, 22 Oct 2010)");
   script_bugtraq_id(43984);
   script_cve_id("CVE-2010-3544","CVE-2010-3545");
@@ -60,7 +60,7 @@ if(description)
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_sun_java_sys_web_serv_detect.nasl");
-  script_require_keys("Sun/JavaSysWebServ/Ver","Sun/JavaSysWebServ/Port");
+  script_mandatory_keys("java_system_web_server/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

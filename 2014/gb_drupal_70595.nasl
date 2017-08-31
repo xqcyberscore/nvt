@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_70595.nasl 2827 2016-03-10 08:33:09Z benallard $
+# $Id: gb_drupal_70595.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Drupal Core SQL Injection Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-3704");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2827 $");
+ script_version ("$Revision: 6735 $");
 
  script_name("Drupal Core SQL Injection Vulnerability");
 
@@ -55,9 +55,8 @@ it in an SQL query.");
 
  script_tag(name:"solution_type", value: "VendorFix"); 
  script_tag(name:"qod_type", value:"remote_app");
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:33:09 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-10-30 17:18:15 +0100 (Thu, 30 Oct 2014)");
- script_summary("Determine if it is possible to inject sql code");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

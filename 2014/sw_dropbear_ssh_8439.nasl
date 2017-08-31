@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dropbear_ssh_8439.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: sw_dropbear_ssh_8439.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # Dropbear SSH Server Username Remote Format String Buffer Overflow
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:matt_johnston:dropbear_ssh_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105121");
-  script_version("$Revision: 3555 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_version("$Revision: 6750 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-19 07:00:00 +0100 (Wed, 19 Nov 2014)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -39,7 +39,6 @@ if(description)
 
   script_name("Dropbear SSH Server Username Remote Format String Buffer Overflow");
 
-  script_summary("Check the version");
 
   script_category(ACT_GATHER_INFO);
 

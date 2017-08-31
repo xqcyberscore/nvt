@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_inneradmission_sql_inj_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_joomla_inneradmission_sql_inj_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Joomla Component Inneradmission SQL Injection Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6692 $");
   script_bugtraq_id(66708);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-29 19:08:26 +0530 (Tue, 29 Apr 2014)");
   script_name("Joomla Component Inneradmission SQL Injection Vulnerability");
 
@@ -76,7 +76,6 @@ features, remove the product or replace the product by another one.";
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126062");
-  script_summary("Check if Joomla Inneradmission is vulnerable to SQL injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

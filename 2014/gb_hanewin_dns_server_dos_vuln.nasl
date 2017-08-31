@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hanewin_dns_server_dos_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_hanewin_dns_server_dos_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # haneWIN DNS Server Denial Of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_id(803796);
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6769 $");
   script_bugtraq_id(65024);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-28 19:50:58 +0530 (Tue, 28 Jan 2014)");
   script_name("haneWIN DNS Server Denial Of Service Vulnerability");
 
@@ -70,7 +70,6 @@ features, remove the product or replace the product by another one.";
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31014");
-  script_summary("Check if haneWIN DNS Server is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

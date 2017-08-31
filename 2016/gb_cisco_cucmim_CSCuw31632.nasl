@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucmim_CSCuw31632.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_cisco_cucmim_CSCuw31632.nasl 6721 2017-07-14 01:48:00Z ckuersteiner $
 #
 # Cisco Unified Communications Manager IM and Presence Service REST API Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-6310");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5759 $");
+ script_version ("$Revision: 6721 $");
 
  script_name("Cisco Unified Communications Manager IM and Presence Service EST API Denial of Service Vulnerability");
 
@@ -51,7 +51,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-14 03:48:00 +0200 (Fri, 14 Jul 2017) $");
  script_tag(name:"creation_date", value:"2016-02-15 12:13:16 +0100 (Mon, 15 Feb 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -65,7 +65,7 @@ if (description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! vers =  get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! vers =  get_app_version( cpe:CPE) ) exit( 0 );
 
 # For example: 10.0.1.10000-26
 vers = str_replace( string:vers, find:"-", replace:"." );

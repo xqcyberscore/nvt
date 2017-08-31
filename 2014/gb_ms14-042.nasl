@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-042.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-042.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Microsoft Windows Service Bus Denial of Service Vulnerability (2972621)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804474");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-2814");
   script_bugtraq_id(68393);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-09 15:14:23 +0530 (Wed, 09 Jul 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft Windows Service Bus Denial of Service Vulnerability (2972621)");
@@ -79,7 +79,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-042";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/59780");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2972621");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-042");
-  script_summary("Check for the vulnerable 'Microsoft.ServiceBus.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022839.nasl 6377 2017-06-20 10:16:39Z santu $
+# $Id: gb_ms_kb4022839.nasl 6479 2017-06-29 07:59:07Z teissa $
 #
 # Microsoft Windows Multiple RCE Vulnerabilities (KB4022839)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811208");
-  script_version("$Revision: 6377 $");
+  script_version("$Revision: 6479 $");
   script_cve_id("CVE-2017-8464", "CVE-2017-8543", "CVE-2017-8552");
   script_bugtraq_id(98818, 98824, 99035);
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:16:39 +0200 (Tue, 20 Jun 2017) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:59:07 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-06-16 16:41:25 +0530 (Fri, 16 Jun 2017)");
   script_name("Microsoft Windows Multiple RCE Vulnerabilities (KB4022839)");
 

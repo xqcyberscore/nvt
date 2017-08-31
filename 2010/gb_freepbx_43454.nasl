@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_43454.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_freepbx_43454.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # FreePBX System Recordings Menu Arbitrary File Upload Vulnerability
 #
@@ -38,8 +38,8 @@ tag_solution = "Updates are available; please see the references for more inform
 if (description)
 {
  script_id(100890);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-11-03 12:47:25 +0100 (Wed, 03 Nov 2010)");
  script_bugtraq_id(43454);
  script_tag(name:"cvss_base", value:"6.5");
@@ -60,7 +60,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("gb_freepbx_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("freepbx/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -72,7 +71,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 if(vers = get_version_from_kb(port:port,app:"freepbx")) {
 
@@ -80,7 +78,6 @@ if(vers = get_version_from_kb(port:port,app:"freepbx")) {
       security_message(port:port);
       exit(0);
   }
-
 }
 
 exit(0);

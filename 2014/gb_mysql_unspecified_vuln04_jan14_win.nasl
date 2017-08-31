@@ -30,12 +30,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5081 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2014-0401", "CVE-2014-0412", "CVE-2014-0437", "CVE-2013-5908");
   script_bugtraq_id(64898, 64880, 64849, 64896);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:05:06 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-21 15:25:16 +0530 (Tue, 21 Jan 2014)");
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities - 04 Jan14 (Windows)");
 
@@ -75,7 +75,6 @@ http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56491");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html");
-  script_summary("Check for the vulnerable version of Oracle MySQL on windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Databases");

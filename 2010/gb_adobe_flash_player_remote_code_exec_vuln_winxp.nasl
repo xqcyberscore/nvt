@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_remote_code_exec_vuln_winxp.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_adobe_flash_player_remote_code_exec_vuln_winxp.nasl 6519 2017-07-04 14:08:14Z cfischer $
 #
 # Adobe Flash Player Remote Code Execution Vulnerability (WinXP)
 #
@@ -44,8 +44,8 @@ tag_summary = "This host has Adobe Flash Player installed and is prone to remote
 if(description)
 {
   script_id(800420);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 6519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-01-13 15:42:20 +0100 (Wed, 13 Jan 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -61,7 +61,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Windows");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_require_keys("SMB/WindowsVersion","AdobeFlashPlayer/Win/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Win/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

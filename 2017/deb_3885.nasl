@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3885.nasl 6379 2017-06-20 11:55:13Z teissa $
+# $Id: deb_3885.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3885-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703885);
-    script_version("$Revision: 6379 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-9468", "CVE-2017-9469");
     script_name("Debian Security Advisory DSA 3885-1 (irssi - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-20 13:55:13 +0200 (Tue, 20 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-06-18 00:00:00 +0200 (Sun, 18 Jun 2017)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "irssi on Debian Linux");
         script_tag(name: "insight",   value: "Irssi is a terminal based IRC client for UNIX systems. It also supports
 SILC and ICB protocols via plugins.");

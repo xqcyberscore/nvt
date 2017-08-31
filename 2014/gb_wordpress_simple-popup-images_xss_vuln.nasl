@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_simple-popup-images_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_simple-popup-images_xss_vuln.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # WordPress Simple Popup Images Cross Site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804594");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6715 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-02 15:55:29 +0530 (Mon, 02 Jun 2014)");
   script_name("WordPress Simple Popup Images Cross Site Scripting Vulnerability");
 
@@ -73,7 +73,6 @@ For updates refer to http://wordpress.org/plugins";
 
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2014050118");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126763");
-  script_summary("Check if WordPress Simple Popup Images Plugin is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

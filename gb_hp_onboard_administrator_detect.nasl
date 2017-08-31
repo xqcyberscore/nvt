@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_onboard_administrator_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_hp_onboard_administrator_detect.nasl 6838 2017-08-03 05:37:10Z ckuersteiner $
 #
 # HP Onboard Administrator Detection
 #
@@ -25,25 +25,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103794";   
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 5499 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103794");
+ script_version ("$Revision: 6838 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-03 07:37:10 +0200 (Thu, 03 Aug 2017) $");
  script_tag(name:"creation_date", value:"2013-10-01 10:46:38 +0200 (Tue, 01 Oct 2013)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
  script_name("HP Onboard Administrator Detection");
 
-tag_summary =
-"The script sends a connection request to the server and attempts to
-extract the version number from the reply.";
+ script_tag(name: "summary", value: "Detection of HP Onboard Administrator.
 
-
- script_tag(name : "summary" , value : tag_summary);
+The script sends a connection request to the server and attempts to detect HP Onboard Administrator and to extract
+its version.");
 
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
@@ -60,18 +56,21 @@ include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 url = '/xmldata?item=All';
 req = http_get(item:url, port:port);
 buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
 
-if("Onboard Administrator" >!< buf || "<FWRI>" >!< buf)exit(0);
+if(buf !~ "<PN>.*Onboard Administrator.*</PN>" || "<FWRI>" >!< buf)
+  exit(0);
 
 vers = 'unknown';
 
 version = eregmatch(pattern:"<FWRI>([^<]+)</FWRI>", string:buf);
-if(!isnull(version[1]))vers = version[1];
+if(!isnull(version[1])) {
+  vers = version[1];
+  set_kb_item(name: "hp_onboard_admin/version", value: vers);
+}
 
 set_kb_item(name:"hp_onboard_admin/installed",value:TRUE);
 
@@ -79,9 +78,10 @@ cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:hp:onboard_administra
 if(isnull(cpe))
   cpe = 'cpe:/a:hp:onboard_administrator';
 
-register_product(cpe:cpe, location:"/", nvt:SCRIPT_OID, port:port);
+register_product(cpe:cpe, location:"/", port:port);
 
-log_message(data: build_detection_report(app:"HP Onboard Administrator",version:vers,install:"/", cpe:cpe, concluded: url + ' => ' + version[0]),
+log_message(data: build_detection_report(app:"HP Onboard Administrator",version:vers,install:"/", cpe:cpe,
+                  concluded: version[0], concludedUrl: url),
             port:port);
 exit(0);
 

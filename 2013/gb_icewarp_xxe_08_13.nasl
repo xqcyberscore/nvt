@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icewarp_xxe_08_13.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_icewarp_xxe_08_13.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # IceWarp Web Mail Information Disclosure Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103750");
- script_version ("$Revision: 6065 $");
+ script_version ("$Revision: 6698 $");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:P");
 
@@ -37,15 +37,14 @@ if (description)
  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/icewarp-mail-server-1045-xss-xxe-injection");
  script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20130625-0_IceWarp_Mail_Server_Multiple_Vulnerabilities_v10.txt");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-08-07 16:35:04 +0200 (Wed, 07 Aug 2013)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
- script_mandatory_keys("IceWarp/banner");
  script_require_ports("Services/www", 80, 32000);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("IceWarp/banner");
 
  script_tag(name : "impact" , value : "Attackers can exploit these issues to gain access to potentially
  sensitive information.
@@ -70,7 +69,6 @@ include("host_details.inc");
 include("misc_func.inc");
 
 port = get_http_port(default:32000);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if("Server: IceWarp/" >!< banner)exit(0);
@@ -78,9 +76,7 @@ if("Server: IceWarp/" >!< banner)exit(0);
 soc = open_sock_tcp(port, transport:get_port_transport(port));
 if(!soc)exit(0);
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name(port:port);
 
 req = 'GET /rpc/gw.html HTTP/1.1\r\nHost: ' + host + '\r\n\r\n';
 resp = http_send_recv(port:port, data:req, bodyonly:FALSE);

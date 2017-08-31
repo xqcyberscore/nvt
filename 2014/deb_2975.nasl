@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2975.nasl 2767 2016-03-03 09:38:42Z benallard $
+# $Id: deb_2975.nasl 6769 2017-07-20 09:56:33Z teissa $
 # Auto-generated from advisory DSA 2975-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -64,24 +64,23 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(702975);
-    script_version("$Revision: 2767 $");
+    script_version("$Revision: 6769 $");
     script_cve_id("CVE-2013-4995", "CVE-2013-4996", "CVE-2013-5002", "CVE-2013-5003", "CVE-2014-1879");
     script_name("Debian Security Advisory DSA 2975-1 (phpmyadmin - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2016-03-03 10:38:42 +0100 (Thu, 03 Mar 2016) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
     script_tag(name: "creation_date", value:"2014-07-09 00:00:00 +0200 (Wed, 09 Jul 2014)");
     script_tag(name:"cvss_base", value:"6.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-2975.html");
 
-    script_summary("Debian Security Advisory DSA 2975-1 (phpmyadmin - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2014 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: tag_affected);
     script_tag(name: "insight",   value: tag_insight);
 #    script_tag(name: "impact",    value: tag_impact);

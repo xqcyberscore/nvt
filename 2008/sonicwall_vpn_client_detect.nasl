@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sonicwall_vpn_client_detect.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: sonicwall_vpn_client_detect.nasl 6456 2017-06-28 11:19:33Z cfischer $
 # Description: SonicWall Global VPN Client Detection
 #
 # Authors:
@@ -23,36 +23,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "This script detects the installed version of
-SonicWall Global VPN Client and sets the result in KB.";
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.80044");
+  script_version("$Revision: 6456 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("SonicWall Global VPN Client Detection");
+  script_category(ACT_GATHER_INFO);
+  script_family("Service detection");
+  script_copyright("This script is Copyright (C) 2008 Ferdy Riphagen");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
 
-if (description) {
- script_id(80044);
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5370 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
- script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"0.0");
+  tag_summary = "This script detects the installed version of
+  SonicWall Global VPN Client and sets the result in KB.";
 
- desc = "
- Summary:
- " + tag_summary;
- name = "SonicWall Global VPN Client Detection";
- script_name(name);
- summary = "Detects the presence and version of the SNWL Global VPN Client";
- 
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"summary", value:tag_summary);
+
   script_tag(name:"qod_type", value:"executable_version");
- script_family("Service detection");
- script_copyright("This script is Copyright (C) 2008 Ferdy Riphagen");
 
- script_require_ports(139, 445);
- script_dependencies("secpod_reg_enum.nasl");
- script_require_keys("SMB/login", "SMB/password", "SMB/name", "SMB/transport");
- script_mandatory_keys("SMB/WindowsVersion");
-
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 include("smb_nt.inc");

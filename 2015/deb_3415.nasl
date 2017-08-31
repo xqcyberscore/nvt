@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3415.nasl 2735 2016-02-26 10:40:03Z benallard $
+# $Id: deb_3415.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3415-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,7 +30,7 @@
 if(description)
 {
     script_id(703415);
-    script_version("$Revision: 2735 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2015-1302", "CVE-2015-6764", "CVE-2015-6765", "CVE-2015-6766",
                   "CVE-2015-6767", "CVE-2015-6768", "CVE-2015-6769", "CVE-2015-6770",
                   "CVE-2015-6771", "CVE-2015-6772", "CVE-2015-6773", "CVE-2015-6774",
@@ -38,7 +38,7 @@ if(description)
                   "CVE-2015-6779", "CVE-2015-6780", "CVE-2015-6781", "CVE-2015-6782",
                   "CVE-2015-6784", "CVE-2015-6785", "CVE-2015-6786");
     script_name("Debian Security Advisory DSA 3415-1 (chromium-browser - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:40:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-12-09 00:00:00 +0100 (Wed, 09 Dec 2015)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,14 +47,13 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3415.html");
 
-    script_summary("Debian Security Advisory DSA 3415-1 (chromium-browser - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "chromium-browser on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (jessie),
 these problems have been fixed in version 47.0.2526.73-1~deb8u1.

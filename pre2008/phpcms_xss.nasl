@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phpcms_xss.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: phpcms_xss.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: phpCMS XSS
 #
 # Authors:
@@ -37,35 +37,30 @@ tag_solution = "Upgrade to version 1.2.1pl1 or newer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15850");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 6702 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2004-1202");
   script_bugtraq_id(11765);
-  
   script_name("phpCMS XSS");
-
-
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 80);
   script_dependencies("http_version.nasl", "cross_site_scripting.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }
 
-#the code
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if ( ! get_port_state(port))exit(0);
 if ( ! can_host_php(port:port) ) exit(0);
 
 if ( get_kb_item("www/" + port + "/generic_xss") ) exit(0);

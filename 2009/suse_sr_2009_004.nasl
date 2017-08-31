@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: suse_sr_2009_004.nasl 5220 2017-02-07 11:42:33Z teissa $
+# $Id: suse_sr_2009_004.nasl 6668 2017-07-11 13:34:29Z cfischer $
 # Description: Auto-generated from advisory SUSE-SR:2009:004
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "Update all out of date packages.";
 if(description)
 {
  script_id(63412);
- script_version("$Revision: 5220 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-07 12:42:33 +0100 (Tue, 07 Feb 2017) $");
+ script_version("$Revision: 6668 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:34:29 +0200 (Tue, 11 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-02-18 23:13:28 +0100 (Wed, 18 Feb 2009)");
  script_cve_id("CVE-2006-3835", "CVE-2007-0184", "CVE-2007-0185", "CVE-2007-2377", "CVE-2007-2449", "CVE-2007-2450", "CVE-2007-3382", "CVE-2007-3385", "CVE-2007-3386", "CVE-2007-5333", "CVE-2007-5342", "CVE-2007-5461", "CVE-2007-5613", "CVE-2007-5615", "CVE-2007-6286", "CVE-2008-0002", "CVE-2008-1232", "CVE-2008-1586", "CVE-2008-1947", "CVE-2008-2235", "CVE-2008-2370", "CVE-2008-2938", "CVE-2008-3231", "CVE-2008-3651", "CVE-2008-3652", "CVE-2008-3663", "CVE-2008-3796", "CVE-2008-4577", "CVE-2008-5086", "CVE-2008-5233", "CVE-2008-5234", "CVE-2008-5235", "CVE-2008-5236", "CVE-2008-5237", "CVE-2008-5238", "CVE-2008-5239", "CVE-2008-5240", "CVE-2008-5241", "CVE-2008-5242", "CVE-2008-5243", "CVE-2008-5244", "CVE-2008-5245", "CVE-2008-5246", "CVE-2008-5247", "CVE-2008-5248", "CVE-2008-5250", "CVE-2008-5252", "CVE-2008-5256", "CVE-2008-5302", "CVE-2008-5557", "CVE-2008-5587", "CVE-2008-5658", "CVE-2008-5718", "CVE-2009-0030", "CVE-2009-0310", "CVE-2009-0313", "CVE-2009-0416", "CVE-2009-0490");
  script_tag(name:"cvss_base", value:"10.0");
@@ -53,7 +53,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("SuSE Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/rpms");
+ script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name:"qod_type", value:"package");

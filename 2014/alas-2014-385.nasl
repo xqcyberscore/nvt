@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2014-385.nasl 4514 2016-11-15 10:04:28Z cfi $
+# $Id: alas-2014-385.nasl 6750 2017-07-18 09:56:47Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120407");
-script_version("$Revision: 4514 $");
+script_version("$Revision: 6750 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:25:38 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:04:28 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2014-385");
 script_tag(name: "insight", value: "Use-after-free vulnerability in the CERT_DestroyCertificate function in libnss3.so in Mozilla Network Security Services (NSS) 3.x, as used in Firefox before 31.0, Firefox ESR 24.x before 24.7, and Thunderbird before 24.7, allows remote attackers to execute arbitrary code via vectors that trigger certain improper removal of an NSSCertificate structure from a trust domain."); 
 script_tag(name : "solution", value : "Run yum update nss to update your system.");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2014-385");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

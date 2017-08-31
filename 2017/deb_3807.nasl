@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3807.nasl 5566 2017-03-14 09:25:39Z teissa $
+# $Id: deb_3807.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3807-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703807);
-    script_version("$Revision: 5566 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-6009", "CVE-2017-6010", "CVE-2017-6011");
     script_name("Debian Security Advisory DSA 3807-1 (icoutils - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-14 10:25:39 +0100 (Tue, 14 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-03-12 00:00:00 +0100 (Sun, 12 Mar 2017)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "icoutils on Debian Linux");
         script_tag(name: "insight",   value: "Icoutils is a set of programs that deal with MS Windows icons and
 cursors. Resources such as icons and cursors can be extracted from MS

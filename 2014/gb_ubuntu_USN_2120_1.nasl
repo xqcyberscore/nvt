@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841727);
-  script_version("$Revision: 2810 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 12:41:27 +0100 (Wed, 09 Mar 2016) $");
+  script_version("$Revision: 6645 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-25 16:53:04 +0530 (Tue, 25 Feb 2014)");
   script_cve_id("CVE-2014-0060", "CVE-2014-0061", "CVE-2014-0062", "CVE-2014-0063",
                 "CVE-2014-0064", "CVE-2014-0065", "CVE-2014-0066");
@@ -90,7 +90,7 @@ a denial of service (CVE-2014-0066)";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2900.nasl 2735 2016-02-26 10:40:03Z benallard $
+# $Id: deb_2900.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 2900-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(702900);
-    script_version("$Revision: 2735 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2013-6369");
     script_name("Debian Security Advisory DSA 2900-1 (jbigkit - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:40:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2014-04-10 00:00:00 +0200 (Thu, 10 Apr 2014)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -41,14 +41,13 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-2900.html");
 
-    script_summary("Debian Security Advisory DSA 2900-1 (jbigkit - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "jbigkit on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (wheezy),
 this problem has been fixed in version 2.0-2+deb7u1.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: hp_power_manager_default_credentials.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: hp_power_manager_default_credentials.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # HP Power Manager Management Web Server Login Remote Code Execution Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100350");
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6696 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-11-18 12:44:57 +0100 (Wed, 18 Nov 2009)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -40,13 +40,12 @@ if (description)
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("GoAhead-Webs/banner");
  script_tag(name : "solution" , value : "Change the password for the user 'admin'.");
  script_tag(name : "summary" , value : "The installed remote HP Power Manager has the default credentials
  'admin' for username and password set.");
 
  script_tag(name:"qod_type", value:"remote_app");
- script_mandatory_keys("GoAhead-Webs/banner");
 
  exit(0);
 }

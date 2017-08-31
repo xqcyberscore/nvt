@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-053.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: secpod_ms09-053.nasl 6605 2017-07-07 11:22:07Z cfischer $
 #
 # Microsoft IIS FTP Service Remote Code Execution Vulnerabilities (975254)
 #
@@ -49,8 +49,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(900874);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6605 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 13:22:07 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-10-15 15:35:39 +0200 (Thu, 15 Oct 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -66,7 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl", "secpod_ms_iis_ftpd_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/IIS-FTP/Installed");
+  script_mandatory_keys("MS/IIS-FTP/Installed", "SMB/WindowsVersion");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

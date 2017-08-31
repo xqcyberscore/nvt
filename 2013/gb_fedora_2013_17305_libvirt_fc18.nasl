@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(866949);
-  script_version("$Revision: 2922 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:19:34 +0100 (Wed, 23 Mar 2016) $");
+  script_version("$Revision: 6628 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-10-03 10:15:02 +0530 (Thu, 03 Oct 2013)");
   script_cve_id("CVE-2013-4311", "CVE-2013-4296", "CVE-2013-4291", "CVE-2013-1962", "CVE-2013-0170");
   script_tag(name:"cvss_base", value:"9.3");
@@ -58,7 +58,7 @@ the libvirtd server exporting the virtualization support.
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

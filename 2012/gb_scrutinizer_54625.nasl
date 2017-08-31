@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrutinizer_54625.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_scrutinizer_54625.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # Dell SonicWALL Scrutinizer 'q' Parameter SQL Injection Vulnerability
 #
@@ -34,16 +34,15 @@ if(description)
  script_cve_id("CVE-2012-2962");
  script_tag(name:"cvss_base", value:"6.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_version ("$Revision: 5988 $");
+ script_version ("$Revision: 6720 $");
  script_name("Dell SonicWALL Scrutinizer 'q' Parameter SQL Injection Vulnerability");
- script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-08-21 09:30:41 +0200 (Tue, 21 Aug 2012)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_scrutinizer_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("scrutinizer/installed");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54625");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_win.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_java_prdts_detect_win.nasl 6466 2017-06-28 13:28:20Z cfischer $
 #
 # Sun Java Products Version Detection (Windows)
 #
@@ -29,10 +29,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800383";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 6466 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:28:20 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Sun Java Products Version Detection (Windows)");
@@ -115,6 +115,8 @@ foreach jreKey (adkeylist)
          if(jreVer[1] != NULL)
          {
             set_kb_item(name:"Sun/Java/JRE/Win/Ver", value:jreVer[1]);
+            replace_kb_item(name:"Sun/Java/JDK_or_JRE/Win/installed", value:TRUE);
+            replace_kb_item(name:"Sun/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE);
             jrVer = ereg_replace(pattern:"_|-", string:jreVer[1], replace: ".");
 
             jreVer1 = eregmatch(pattern:"([0-9]+\.[0-9]+\.[0-9]+)\.([0-9]+)", string:jrVer);
@@ -225,6 +227,8 @@ foreach jdkKey (adkeylist)
        if(jdkVer[1] != NULL)
        {
          set_kb_item(name:"Sun/Java/JDK/Win/Ver", value:jdkVer[1]);
+         replace_kb_item(name:"Sun/Java/JDK_or_JRE/Win/installed", value:TRUE);
+         replace_kb_item(name:"Sun/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE);
          jdVer = ereg_replace(pattern:"_|-", string:jdkVer[1], replace: ".");
 
          jdkVer1 = eregmatch(pattern:"([0-9]+\.[0-9]+\.[0-9]+)\.([0-9]+)", string:jdVer);

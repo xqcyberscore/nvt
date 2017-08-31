@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-3043.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: ELSA-2014-3043.nasl 6559 2017-07-06 11:57:32Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123388");
-script_version("$Revision: 6211 $");
+script_version("$Revision: 6559 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:03:08 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:57:32 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-3043");
 script_tag(name: "insight", value: "ELSA-2014-3043 - unbreakable enterprise kernel security update - kernel-uek[2.6.32-400.36.3uek]- fix autofs/afs/etc. magic mountpoint breakage (Al Viro) [Orabug: 19028505] {CVE-2014-0203}- SELinux: Fix kernel BUG on empty security contexts. (Stephen Smalley) [Orabug: 19028381] {CVE-2014-1874}- floppy: don't write kernel-only members to FDRAWCMD ioctl output (Matthew Daley) [Orabug: 19028446] {CVE-2014-1738}- floppy: ignore kernel-only members in FDRAWCMD ioctl input (Matthew Daley) [Orabug: 19028439] {CVE-2014-1737}- libertas: potential oops in debugfs (Dan Carpenter) [Orabug: 19028417] {CVE-2013-6378}"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.2");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

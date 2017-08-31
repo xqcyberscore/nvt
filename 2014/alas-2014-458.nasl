@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2014-458.nasl 4514 2016-11-15 10:04:28Z cfi $
+# $Id: alas-2014-458.nasl 6724 2017-07-14 09:57:17Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120019");
-script_version("$Revision: 4514 $");
+script_version("$Revision: 6724 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:15:11 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:04:28 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2014-458");
 script_tag(name: "insight", value: "It was found that RPM could encounter an integer overflow, leading to a stack-based overflow, while parsing a crafted CPIO header in the payload section of an RPM file. This could allow an attacker to modify signed RPM files in such a way that they would execute code chosen by the attacker during package installation.  (CVE-2014-8118 )It was found that RPM wrote file contents to the target installation directory under a temporary name, and verified its cryptographic signature only after the temporary file has been written completely. Under certain conditions, the system interprets the unverified temporary file contents and extracts commands from it. This could allow an attacker to modify signed RPM files in such a way that they would execute code chosen by the attacker during package installation.  Red Hat has published an excellent analysis of this issue.  (CVE-2013-6435 )"); 
 script_tag(name : "solution", value : "Run yum update rpm to update your system.");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2014-458");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seamonkey_detect_lin.nasl 2834 2016-03-11 08:39:36Z benallard $
+# $Id: gb_seamonkey_detect_lin.nasl 6482 2017-06-29 08:31:43Z cfischer $
 #
 # Mozilla Seamonkey Version Detection (Linux)
 #
@@ -27,17 +27,16 @@
 tag_summary = "This script finds the Mozilla SeaMonkey installed version on
   Linux and saves the version in KB.";
 
-
 if(description)
 {
   script_id(800019);
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2834 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:39:36 +0100 (Fri, 11 Mar 2016) $");
+  script_version("$Revision: 6482 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:31:43 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2008-10-07 14:21:23 +0200 (Tue, 07 Oct 2008)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Mozilla SeaMonkey Version Detection (Linux)");
-  script_family("General");
+  script_family("Product detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
@@ -47,7 +46,6 @@ if(description)
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }
-
 
 include("ssh_func.inc");
 include("version_func.inc");
@@ -77,6 +75,7 @@ foreach binary_seaName (seaName)
   if(seaVer)
   {
     set_kb_item(name:"Seamonkey/Linux/Ver", value:seaVer[0]);
+    replace_kb_item(name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Linux/Installed", value:TRUE);
     log_message(data:"Mozilla Seamonkey version " + seaVer[0] + 
                   " running at location " + binary_seaName + " was detected on the host");
     ssh_close_connection();

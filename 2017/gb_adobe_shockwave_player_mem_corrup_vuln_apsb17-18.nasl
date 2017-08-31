@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mem_corrup_vuln_apsb17-18.nasl 6377 2017-06-20 10:16:39Z santu $
+# $Id: gb_adobe_shockwave_player_mem_corrup_vuln_apsb17-18.nasl 6495 2017-06-30 09:07:21Z teissa $
 #
 # Adobe Shockwave Player Memory Corruption Vulnerability (APSB17-18)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:shockwave_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811210");
-  script_version("$Revision: 6377 $");
+  script_version("$Revision: 6495 $");
   script_cve_id("CVE-2017-3086");
   script_bugtraq_id(99019);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:16:39 +0200 (Tue, 20 Jun 2017) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:07:21 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-06-19 11:33:41 +0530 (Mon, 19 Jun 2017)");
   script_name("Adobe Shockwave Player Memory Corruption Vulnerability (APSB17-18)");
 

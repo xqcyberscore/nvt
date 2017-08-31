@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icehrm_multiple_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_icehrm_multiple_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # IceHrm Multiple Security Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805032");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6692 $");
   script_bugtraq_id(71552);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-17 11:48:55 +0530 (Wed, 17 Dec 2014)");
   script_name("IceHrm Multiple Security Vulnerabilities");
 
@@ -80,7 +80,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/35490");
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2014120041");
   script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2014-5215.php");
-  script_summary("Check if IceHrm is prone to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

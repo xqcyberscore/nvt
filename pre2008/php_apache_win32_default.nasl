@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: php_apache_win32_default.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: php_apache_win32_default.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: PHP.EXE / Apache Win32 Arbitrary File Reading Vulnerability
 #
 # Authors:
@@ -35,8 +35,8 @@ tag_solution = "Obtain the latest version from http://www.php.net";
 if(description)
 {
  script_id(10839);
- script_version("$Revision: 6056 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2002-2029");
  script_bugtraq_id(3786);
@@ -60,19 +60,17 @@ if(description)
  script_family(family);
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-# Check starts here
-
 include("http_func.inc");
 
 port = get_http_port(default:80);
 
-if(get_port_state(port))
-{ 	      
  if ( ! can_host_php(port:port) ) exit(0);
  req = http_get(item:"/php/php.exe?c:\winnt\win.ini", port:port);
  soc = http_open_socket(port);
@@ -85,4 +83,3 @@ if(get_port_state(port))
  	security_message(port);
 
  }
-}

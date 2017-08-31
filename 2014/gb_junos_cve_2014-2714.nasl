@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-2714.nasl 3817 2016-08-10 05:18:42Z ckuerste $
+# $Id: gb_junos_cve_2014-2714.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # Junos Web Filtering Denial of Service Vulnerability 
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105907");
-  script_version ("$Revision: 3817 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-10 07:18:42 +0200 (Wed, 10 Aug 2016) $");
+  script_version ("$Revision: 6750 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-02 14:00:33 +0700 (Fri, 02 May 2014)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -45,7 +45,6 @@ if (description)
 
   script_name("Junos Web Filtering Denial of Service Vulnerability");
 
-  script_summary("Junos CVE-2014-2714");
 
   script_category(ACT_GATHER_INFO);
 

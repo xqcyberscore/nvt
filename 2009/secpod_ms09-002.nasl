@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-002.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms09-002.nasl 6527 2017-07-05 05:56:34Z cfischer $
 #
 # Cumulative Security Update for Internet Explorer (961260)
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_id(900078);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 6527 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-02-11 16:51:00 +0100 (Wed, 11 Feb 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -42,8 +42,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl", "gb_ms_ie_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
+  script_dependencies("gb_ms_ie_detect.nasl");
+  script_mandatory_keys("MS/IE/Version");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : "Successful exploitation results in memory corruption by executing
   arbitrary code when user visits a specially crafted web page.

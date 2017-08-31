@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webLogic_server_mult_unspecified_vuln01.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_oracle_webLogic_server_mult_unspecified_vuln01.nasl 6449 2017-06-28 05:33:48Z santu $
 #
 # Oracle WebLogic Server Multiple Unspecified Vulnerabilities -01 May16
 #
@@ -28,7 +28,7 @@ CPE = "cpe:/a:bea:weblogic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807566");
-  script_version("$Revision: 5588 $");
+  script_version("$Revision: 6449 $");
   script_cve_id("CVE-2016-0638", "CVE-2016-3416", "CVE-2016-0675", "CVE-2016-0700",
                 "CVE-2016-0688", "CVE-2016-0696", "CVE-2014-4217", "CVE-2013-5855",
                 "CVE-2014-2481", "CVE-2014-2480", "CVE-2014-2479", "CVE-2014-4267",
@@ -37,9 +37,9 @@ if(description)
                 "CVE-2014-2470");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 07:33:48 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-05-03 17:27:14 +0530 (Tue, 03 May 2016)");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle WebLogic Server Multiple Unspecified Vulnerabilities -01 May16");
 
   script_tag(name: "summary" , value:"The host is running Oracle WebLogic Server

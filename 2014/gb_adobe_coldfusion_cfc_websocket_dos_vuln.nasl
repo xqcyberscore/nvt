@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_cfc_websocket_dos_vuln.nasl 2823 2016-03-10 07:27:58Z antu123 $
+# $Id: gb_adobe_coldfusion_cfc_websocket_dos_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Adobe ColdFusion Components (CFC) Denial Of Service Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2823 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2013-3350");
   script_bugtraq_id(61042);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 08:27:58 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-06 15:14:38 +0530 (Tue, 06 May 2014)");
   script_name("Adobe ColdFusion Components (CFC) Denial Of Service Vulnerability");
 
@@ -75,7 +75,6 @@ https://www.adobe.com/cfusion/tdrc/index.cfm?product=coldfusion";
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1028757");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-19.html");
   script_xref(name : "URL" , value : "http://blogs.coldfusion.com/post.cfm/coldfusion-10-websocket-vulnerebility");
-  script_summary("Check for the vulnerable version of Adobe ColdFusion");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

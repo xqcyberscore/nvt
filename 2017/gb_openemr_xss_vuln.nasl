@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_xss_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
+# $Id: gb_openemr_xss_vuln.nasl 6926 2017-08-15 12:34:07Z asteins $
 #
 # OpenEMR Multiple XSS Vulnerabilities
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:openemr:openemr";
+CPE = "cpe:/a:open-emr:openemr";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106635");
-  script_version("$Revision: 6166 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
+  script_version("$Revision: 6926 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-15 14:34:07 +0200 (Tue, 15 Aug 2017) $");
   script_tag(name: "creation_date", value: "2017-03-07 08:12:26 +0700 (Tue, 07 Mar 2017)");
   script_tag(name: "cvss_base", value: "4.3");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -64,7 +64,7 @@ context of the vulnerable website.");
 
   script_tag(name: "affected", value: "OpenEMR 5.0.1-dev and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 19th May, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 02nd August, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://github.com/openemr/openemr/issues/498");

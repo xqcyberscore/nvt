@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: php3_path_disclosure.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: php3_path_disclosure.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: PHP3 Physical Path Disclosure Vulnerability
 #
 # Authors:
@@ -42,17 +42,15 @@ Reference : http://online.securityfocus.com/archive/101/184240";
 if(description)
 {
  script_id(10670);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  name = "PHP3 Physical Path Disclosure Vulnerability";
  script_name(name);
  
-
  summary = "Tests for PHP3 Physical Path Disclosure Vulnerability";
- 
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -62,6 +60,8 @@ if(description)
  script_family(family);
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -74,8 +74,6 @@ include("http_func.inc");
 
 port = get_http_port(default:80);
 
-if(get_port_state(port))
-{ 
  if ( ! can_host_php(port:port) ) exit(0);
  req = http_get(item:"/nosuchfile-10303-10310.php3", port:port);
  soc = http_open_socket(port);
@@ -88,4 +86,3 @@ if(get_port_state(port))
  	security_message(port);
 
  }
-}

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3430.nasl 2735 2016-02-26 10:40:03Z benallard $
+# $Id: deb_3430.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3430-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703430);
-    script_version("$Revision: 2735 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2015-1819", "CVE-2015-5312", "CVE-2015-7497", "CVE-2015-7498", "CVE-2015-7499", "CVE-2015-7500", "CVE-2015-7941", "CVE-2015-7942", "CVE-2015-8035", "CVE-2015-8241", "CVE-2015-8317");
     script_name("Debian Security Advisory DSA 3430-1 (libxml2 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:40:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-12-23 00:00:00 +0100 (Wed, 23 Dec 2015)");
     script_tag(name:"cvss_base", value:"7.1");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -42,14 +42,13 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3430.html");
 
-    script_summary("Debian Security Advisory DSA 3430-1 (libxml2 - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "libxml2 on Debian Linux");
         script_tag(name: "insight",   value: "XML is a metalanguage to let you design your own markup language.
 A regular markup language defines a way to describe information in

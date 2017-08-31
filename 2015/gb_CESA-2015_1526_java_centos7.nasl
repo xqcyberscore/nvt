@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882237");
-  script_version("$Revision: 6431 $");
+  script_version("$Revision: 6657 $");
   script_cve_id("CVE-2015-2590", "CVE-2015-2601", "CVE-2015-2621", "CVE-2015-2625",
                 "CVE-2015-2628", "CVE-2015-2632", "CVE-2015-2808", "CVE-2015-4000",
                 "CVE-2015-4731", "CVE-2015-4732", "CVE-2015-4733", "CVE-2015-4748",
                 "CVE-2015-4749", "CVE-2015-4760");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:50:44 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-08-10 12:58:28 +0530 (Mon, 10 Aug 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for java CESA-2015:1526 centos7 ");
@@ -102,7 +102,7 @@ certificate ident ...
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

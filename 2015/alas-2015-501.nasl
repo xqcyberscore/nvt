@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-501.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: alas-2015-501.nasl 6575 2017-07-06 13:42:08Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120368");
-script_version("$Revision: 6254 $");
+script_version("$Revision: 6575 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:24:49 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:42:08 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-501");
 script_tag(name: "insight", value: "An information disclosure flaw was found in the way the 389 Directory Server stored information in the Changelog that is exposed via the 'cn=changelog' LDAP sub-tree. An unauthenticated user could in certain cases use this flaw to read data from the Changelog, which could include sensitive information such as plain-text passwords. (CVE-2014-8105 )It was found that when the nsslapd-unhashed-pw-switch 389 Directory Server configuration option was set to off, it did not prevent the writing of unhashed passwords into the Changelog. This could potentially allow an authenticated user able to access the Changelog to read sensitive information. (CVE-2014-8112 )"); 
 script_tag(name : "solution", value : "Run yum update 389-ds-base to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

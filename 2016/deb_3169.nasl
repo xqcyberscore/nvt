@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3169.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: deb_3169.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3169-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703169);
-    script_version("$Revision: 5568 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2012-3404", "CVE-2012-3405", "CVE-2012-3406", "CVE-2013-7424",
                 "CVE-2014-4043", "CVE-2014-9402", "CVE-2015-1472", "CVE-2015-1473");
     script_name("Debian Security Advisory DSA 3169-1 (eglibc - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-02-23 00:00:00 +0100 (Mon, 23 Feb 2015)");
     script_tag(name:"cvss_base", value:"7.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -49,7 +49,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "eglibc on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (wheezy),
 these issues are fixed in version 2.13-38+deb7u8 of the eglibc package.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-061.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: secpod_ms12-061.nasl 6532 2017-07-05 07:42:05Z cfischer $
 #
 # MS Visual Studio Team Foundation Server Privilege Elevation Vulnerability (2719584)
 #
@@ -42,12 +42,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.903040";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5912 $");
+  script_version("$Revision: 6532 $");
   script_bugtraq_id(55409);
   script_cve_id("CVE-2012-1892");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-09-12 11:38:17 +0530 (Wed, 12 Sep 2012)");
   script_name("MS Visual Studio Team Foundation Server Privilege Elevation Vulnerability (2719584)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50463/");
@@ -56,9 +56,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("smb_reg_service_pack.nasl",
-                      "gb_ms_vs_team_foundation_server_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/VS/Team/Foundation/Server/Ver");
+  script_dependencies("gb_ms_vs_team_foundation_server_detect.nasl");
+  script_mandatory_keys("MS/VS/Team/Foundation/Server/Ver");
+  script_require_ports(139, 445);
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_eol_win.nasl 6427 2017-06-24 10:33:44Z cfischer $
+# $Id: gb_apache_tomcat_eol_win.nasl 6494 2017-06-30 08:10:34Z cfischer $
 #
 # Apache Tomcat End Of Life Detection (Windows)
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108134");
-  script_version("$Revision: 6427 $");
+  script_version("$Revision: 6494 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-24 12:33:44 +0200 (Sat, 24 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 10:10:34 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-02-27 11:48:20 +0100 (Mon, 27 Feb 2017)");
   script_name("Apache Tomcat End Of Life Detection (Windows)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -78,12 +78,12 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( ret = product_reached_eol( cpe:CPE, version:version ) ) {
-
-  report = 'The Apache Tomcat version has reached the end of life.\n\n' + 
-           'Installed version: ' + version + '\n' +
-           'EOL version:       ' + ret['eol_version'] + '\n' +
-           'EOL date:          ' + ret['eol_date'] + '\n';
-
+  report = build_eol_message( name:"Apache Tomcat",
+                              cpe:CPE,
+                              version:version,
+                              eol_version:ret["eol_version"],
+                              eol_date:ret["eol_date"],
+                              eol_type:"prod" );
   security_message( port:port, data:report );
   exit( 0 );
 }

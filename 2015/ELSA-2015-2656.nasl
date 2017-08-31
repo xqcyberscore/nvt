@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2656.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-2656.nasl 6600 2017-07-07 09:58:31Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122808");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6600 $");
 script_tag(name:"creation_date", value:"2015-12-18 07:26:16 +0200 (Fri, 18 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2656");
 script_tag(name: "insight", value: "ELSA-2015-2656 -  bind security update - [30:9.3.6-25.P1.5]- Fix CVE-2015-8000[30:9.3.6-25.P1.4]- Fix CVE-2015-5722[30:9.3.6-25.P1.3]- Fix CVE-2015-5477[30:9.3.6-25.P1.2]- Remove files backup after patching (Related: #1171971)[30:9.3.6-25.P1.1]- Fix CVE-2014-8500 (#1171971)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-2656");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

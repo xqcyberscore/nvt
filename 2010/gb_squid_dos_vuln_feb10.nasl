@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_dos_vuln_feb10.nasl 4919 2017-01-02 15:22:45Z cfi $
+# $Id: gb_squid_dos_vuln_feb10.nasl 6891 2017-08-10 12:44:59Z cfischer $
 #
 # Squid 'lib/rfc1035.c' Denial Of Service Vulnerability
 #
@@ -28,13 +28,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:squid-cache:squid';
+CPE = "cpe:/a:squid-cache:squid";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800460");
-  script_version("$Revision: 4919 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 16:22:45 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 6891 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-10 14:44:59 +0200 (Thu, 10 Aug 2017) $");
   script_tag(name:"creation_date", value:"2010-02-08 10:53:20 +0100 (Mon, 08 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -44,6 +44,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_squid_detect.nasl");
+  script_require_ports("Services/http_proxy", 3128, "Services/www", 8080);
   script_mandatory_keys("squid_proxy_server/installed");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/38455");
@@ -80,7 +81,7 @@ if(description)
   script_tag(name:"solution", value:tag_solution);
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuxeo_platform_detect.nasl 5733 2017-03-27 10:09:31Z ckuerste $
+# $Id: gb_nuxeo_platform_detect.nasl 6761 2017-07-19 14:40:40Z cfischer $
 #
 # Nuxeo Platform Detection 
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106695");
-  script_version("$Revision: 5733 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-27 12:09:31 +0200 (Mon, 27 Mar 2017) $");
+  script_version("$Revision: 6761 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-19 16:40:40 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-03-27 14:18:27 +0700 (Mon, 27 Mar 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,7 +46,7 @@ to extract its version.");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -65,7 +65,9 @@ port = get_http_port(default: 8080);
 res = recv_http_buf(port: port, url: "/nuxeo/login.jsp");
 
 if ("nxtimezone.js" >< res && "nxstartup.faces" >< res && "Nuxeo and respective authors" >< res) {
+
   version = "unknown";
+  install = "/nuxeo";
 
   vers = eregmatch(pattern: '&nbsp;.{10}([^\r\n]+)', string: res);
   if (!isnull(vers[1])) {
@@ -73,16 +75,16 @@ if ("nxtimezone.js" >< res && "nxstartup.faces" >< res && "Nuxeo and respective 
     set_kb_item(name: "nuxeo_platform/version", value: version);
   }
 
-  set_kb_item(name: "nuxeo_platform/installed", value: TRUE);
+  replace_kb_item(name: "nuxeo_platform/installed", value: TRUE);
 
   cpe_vers = str_replace(string: tolower(version), find: " ", replace: "-");
   cpe = build_cpe(value: cpe_vers, exp: "([0-9lts.-]+)", base: "cpe:/a:nuxeo:platform:");
   if (!cpe)
     cpe = 'cpe:/a:nuxeo:platform';
 
-  register_product(cpe: cpe, install: "/nuxeo", port: port);
+  register_product(cpe: cpe, location: install, port: port);
 
-  log_message(data: build_detection_report(app: "Nuxeo Platform", version: version, install: "/nuxeo",
+  log_message(data: build_detection_report(app: "Nuxeo Platform", version: version, install: install ,
                                            cpe: cpe, concluded: vers[0]),
               port: port);
   exit(0);

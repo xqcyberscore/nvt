@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_68005.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_cisco_ios_xr_68005.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Cisco IOS XR Software IPv6 Packet Handling  Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-2176");
  script_tag(name:"cvss_base", value:"7.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6769 $");
 
  script_name("Cisco IOS XR Software IPv6 Packet Handling Denial of Service Vulnerability");
 
@@ -55,9 +55,8 @@ for more information.");
  script_tag(name: "affected" , value:"This issue is being tracked by Cisco Bug ID CSCun71928.");
   
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-09-04 10:43:53 +0200 (Thu, 04 Sep 2014)");
- script_summary("Check the IOS XR Version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("CISCO");

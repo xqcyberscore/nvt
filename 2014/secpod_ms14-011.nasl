@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-011.nasl 2492 2016-01-22 14:46:36Z benallard $
+# $Id: secpod_ms14-011.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Microsoft VBScript Remote Code Execution Vulnerability (2928390)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2492 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-0271");
   script_bugtraq_id(65395);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:46:36 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-12 09:18:06 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft VBScript Remote Code Execution Vulnerability (2928390)");
 
@@ -88,7 +88,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-011";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56796");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2928390");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-011");
-  script_summary("Check for the vulnerable 'Vbscript.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 SecPod");
   script_family("Windows : Microsoft Bulletins");

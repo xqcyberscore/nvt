@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3736.nasl 5552 2017-03-13 07:50:17Z teissa $
+# $Id: deb_3736.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3736-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703736);
-    script_version("$Revision: 5552 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2016-6255", "CVE-2016-8863");
     script_name("Debian Security Advisory DSA 3736-1 (libupnp - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-13 08:50:17 +0100 (Mon, 13 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-12-16 00:00:00 +0100 (Fri, 16 Dec 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "libupnp on Debian Linux");
     script_tag(name: "insight",   value: "The Portable SDK for UPnP Devices
 (libupnp) provides developers with an API and open source code for building

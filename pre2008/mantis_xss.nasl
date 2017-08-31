@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mantis_xss.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: mantis_xss.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Mantis multiple unspecified XSS
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "Upgrade to Mantis 0.18.1 or newer.";
 if(description)
 {
  script_id(14344);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(9184);
  script_tag(name:"cvss_base", value:"4.3");
@@ -64,23 +64,18 @@ if(description)
  script_family(family);
  script_dependencies("mantis_detect.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://sourceforge.net/project/shownotes.php?release_id=202559");
  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("http_func.inc");
 
-
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
-
 
 # Test an install.
 install = get_kb_item(string("www/", port, "/mantis"));

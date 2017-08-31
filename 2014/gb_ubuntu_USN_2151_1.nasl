@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841761);
-  script_version("$Revision: 2810 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 12:41:27 +0100 (Wed, 09 Mar 2016) $");
+  script_version("$Revision: 6645 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-25 10:24:04 +0530 (Tue, 25 Mar 2014)");
   script_cve_id("CVE-2014-1493", "CVE-2014-1497", "CVE-2014-1505", "CVE-2014-1508",
                 "CVE-2014-1509", "CVE-2014-1510", "CVE-2014-1511", "CVE-2014-1512",
@@ -108,7 +108,7 @@ with the privileges of the user invoking Thunderbird. (CVE-2014-1514)";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

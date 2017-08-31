@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_rexml_dos_vuln.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_ruby_rexml_dos_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Ruby 'REXML' parser Denial-of-Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ruby-lang:ruby";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804889");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-8080");
   script_bugtraq_id(70935);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-21 16:58:24 +0530 (Fri, 21 Nov 2014)");
   script_name("Ruby 'REXML' parser Denial-of-Service Vulnerability (Windows)");
 
@@ -63,7 +63,6 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/61607");
   script_xref(name:"URL", value:"https://www.ruby-lang.org/en/news/2014/10/27/rexml-dos-cve-2014-8080");
 
-  script_summary("Check for the vulnerable version of Ruby");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

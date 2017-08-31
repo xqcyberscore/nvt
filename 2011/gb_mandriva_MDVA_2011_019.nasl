@@ -45,8 +45,8 @@ if(description)
   script_cve_id("CVE-2011-0065","CVE-2011-0066","CVE-2011-0067","CVE-2011-0069","CVE-2011-0070","CVE-2011-0071","CVE-2011-0072","CVE-2011-0073","CVE-2011-0074","CVE-2011-0075","CVE-2011-0076","CVE-2011-0077","CVE-2011-0078","CVE-2011-0080","CVE-2011-0081","CVE-2011-1202");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 3096 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 14:04:22 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 6570 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:06:35 +0200 (Thu, 06 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-05-10 14:04:15 +0200 (Tue, 10 May 2011)");
   script_xref(name: "MDVA", value: "2011:019");
   script_name("Mandriva Update for tcl-sqlite3 MDVA-2011:019 (tcl-sqlite3)");
@@ -56,7 +56,7 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:mandriva:linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

@@ -40,8 +40,8 @@ advisory GLSA 200505-06.";
 if(description)
 {
  script_id(54938);
- script_version("$Revision: 5663 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 6596 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:21:37 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
  script_cve_id("CVE-2005-1267", "CVE-2005-1278", "CVE-2005-1279", "CVE-2005-1280");
  script_tag(name:"cvss_base", value:"5.0");
@@ -57,7 +57,7 @@ if(description)
  script_copyright("Copyright (c) 2005 E-Soft Inc. http://www.securityspace.com");
  script_family("Gentoo Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("login/SSH/success", "ssh/login/gentoo");
+ script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0521.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-0521.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123701");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:07:25 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0521");
 script_tag(name: "insight", value: "ELSA-2013-0521 -  pam security, bug fix, and enhancement update - [1.1.1-13]- fix environment file handling problems - CVE-2011-3148 (#746619) and CVE-2011-3148 (#746620)[1.1.1-12]- add character sequence test to pam_cracklib- drop unused difignore option from pam_cracklib (#811243)- add enforce_for_root option to pam_cracklib (#588893)- mention limits.d in the limits.conf(5) manpage (#723297)- add ability to lock out inactive accounts to pam_lastlog- fix require_selinux option in pam_namespace (#750601)- add mntopts flag for tmpfs polyinstantiation method- preserve authtok_type in pam_get_authtok() (#811168)- fix username mismatch in pam_unix remember feature (#815516)- relax restriction of root in pam_pwhistory- relax soft nproc limit for root in 90-nproc.conf[1.1.1-11]- additional password checks in pam_cracklib"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"4.6");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-0521");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_credential_cmd_exec_vuln_04.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_bash_shellshock_credential_cmd_exec_vuln_04.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # GNU Bash Environment Variable Handling Shell RCE Vulnerability (LSC) - 04
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802086");
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-6277");
   script_bugtraq_id(70165);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-08 12:11:49 +0530 (Wed, 08 Oct 2014)");
 
   script_name("GNU Bash Environment Variable Handling Shell RCE Vulnerability (LSC) - 04");
@@ -61,7 +61,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://shellshocker.net");
   script_xref(name : "URL" , value : "http://lcamtuf.blogspot.in/2014/09/bash-bug-apply-unofficial-patch-now.html");
-  script_summary("Check for RCE vulnerability in GNU Bash");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -29,11 +29,11 @@ CPE = "cpe:/a:zohocorp:manageengine_assetexplorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805707");
-  script_version("$Revision: 2651 $");
+  script_version("$Revision: 6486 $");
   script_cve_id("CVE-2015-5061", "CVE-2015-2169");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:45:45 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-24 14:40:38 +0530 (Wed, 24 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Manage Engine Asset Explorer Multiple Cross Site Scripting Vulnerabilities");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Jun/60");
   script_xref(name:"URL", value:"http://www.vulnerability-lab.com/get_content.php?id=1488");
 
-  script_summary("Check for the vulnerable version of ManageEngine AssetExplorer");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

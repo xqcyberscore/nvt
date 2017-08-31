@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_39148.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_zabbix_39148.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # ZABBIX 'DBcondition' Parameter SQL Injection Vulnerability
 #
@@ -42,8 +42,8 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-04-12 18:40:45 +0200 (Mon, 12 Apr 2010)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -62,7 +62,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("zabbix_web_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("Zabbix/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -75,15 +74,12 @@ include("host_details.inc");
 include("version_func.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port)) {
 
-  if(version_is_less(version: vers, test_version: "1.8.2")) {
-      security_message(port:port);
-      exit(0);
+if(version_is_less(version: vers, test_version: "1.8.2")) {
+    security_message(port:port);
+    exit(0);
   }
-
 }
 
 exit(0);

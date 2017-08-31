@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_oct14_macosx.nasl 3008 2016-04-07 13:17:01Z antu123 $
+# $Id: gb_adobe_air_mult_vuln01_oct14_macosx.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Adobe AIR Multiple Vulnerabilities(APSB14-22)-(Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805006");
-  script_version("$Revision: 3008 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-0558", "CVE-2014-0564", "CVE-2014-0569", "CVE-2014-8439");
   script_bugtraq_id(70437, 70442, 70441, 71289);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 15:17:01 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-20 12:56:20 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Adobe AIR Multiple Vulnerabilities(APSB14-22)-(Mac OS X)");
@@ -66,7 +66,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/59729");
   script_xref(name : "URL" , value : "http://helpx.adobe.com/security/products/flash-player/apsb14-22.html");
-  script_summary("Check for the vulnerable version of Adobe AIR on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_wmp_int_overflow_vuln.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: secpod_ms_wmp_int_overflow_vuln.nasl 6532 2017-07-05 07:42:05Z cfischer $
 #
 # Microsoft Windows Media Player MID File Integer Overflow Vulnerability
 #
@@ -41,8 +41,8 @@ tag_summary = "The host is installed with Windows Media Player and is prone to
 if(description)
 {
   script_id(900336);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6532 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("secpod_ms_win_media_player_detect_900173.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "Win/MediaPlayer/Ver");
+  script_mandatory_keys("Win/MediaPlayer/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

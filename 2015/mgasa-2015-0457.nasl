@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0457.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0457.nasl 6600 2017-07-07 09:58:31Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131140");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6600 $");
 script_tag(name:"creation_date", value:"2015-11-27 11:00:03 +0200 (Fri, 27 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0457");
 script_tag(name: "insight", value: "Updated libxml2 packages fix security vulnerabilities: In libxml2 before 2.9.3, one case where when dealing with entities expansion, it failed to exit, leading to a denial of service (CVE-2015-5312). In libxml2 before 2.9.3, it was possible to hit a negative offset in the name indexing used to randomize the dictionary key generation, causing a heap buffer overflow in xmlDictComputeFastQKey (CVE-2015-7497). In libxml2 before 2.9.3, after encoding conversion failures, the parser was continuing to process to extract more errors, which can potentially lead to unexpected behaviour (CVE-2015-7498). In libxml2 before 2.9.3, the parser failed to detect a case where the current pointer to the input was out of range, leaving it in an incoherent state (CVE-2015-7499). In libxml2 before 2.9.3, a memory access error could happen while processing a start tag due to incorrect entities boundaries (CVE-2015-7500). In libxml2 before 2.9.3, a buffer overread in xmlNextChar due to extra processing of MarkupDecl after EOF has been reached (CVE-2015-8241). In libxml2 before 2.9.3, stack-basedb uffer overead with HTML parser in push mode (CVE-2015-8242). In libxml2 before 2.9.3, out of bounds heap reads could happen due to failure processing the encoding declaration of the XMLDecl in xmlParseEncodingDecl (CVE-2015-8317)."); 
 script_tag(name : "solution", value : "update software");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"7.1");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0457");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0457");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: webcalendar_info_disclosure.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: webcalendar_info_disclosure.nasl 6703 2017-07-12 13:57:25Z cfischer $
 # Description: WebCalendar User Account Enumeration Disclosure Issue
 #
 # Authors:
@@ -39,8 +39,8 @@ or the password is invalid.";
 if(description)
 {
  script_id(80021);
- script_version("$Revision: 4557 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+ script_version("$Revision: 6703 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:57:25 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 19:51:47 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -62,9 +62,8 @@ if(description)
  script_family(family);
 
  script_dependencies("webcalendar_detect.nasl");
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_require_ports("Services/www", 80);
- script_require_keys("webcalendar/installed");
+ script_mandatory_keys("webcalendar/installed");
 
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name : "solution" , value : tag_solution);
@@ -74,15 +73,11 @@ if(description)
  exit(0);
 }
 
-#code
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
-
 
 # Test an install.
 install = get_kb_item(string("www/", port, "/webcalendar"));

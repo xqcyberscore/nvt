@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-1088.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: ELSA-2012-1088.nasl 6557 2017-07-06 11:55:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123861");
-script_version("$Revision: 6443 $");
+script_version("$Revision: 6557 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:09:32 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:55:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-1088");
 script_tag(name: "insight", value: "ELSA-2012-1088 -  firefox security update - firefox[10.0.6-1.0.1.el6_3]- Replace firefox-redhat-default-prefs.js with firefox-oracle-default-prefs.js[10.0.6-1]- Update to 10.0.6 ESR[10.0.5-3]- Enabled WebM[10.0.5-2]- Added fix for mozbz#703633, rhbz#818341xulrunner[10.0.6-1.0.1.el6_3]- Replace xulrunner-redhat-default-prefs.js with xulrunner-oracle-default-prefs.js[10.0.6-1]- Update to 10.0.6 ESR[10.0.5-3]- Added fix for rhbz#808136 (mozbz#762301)[10.0.5-2]- Enabled WebM (rhbz#798880)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

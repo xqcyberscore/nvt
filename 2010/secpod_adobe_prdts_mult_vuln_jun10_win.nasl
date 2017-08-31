@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_mult_vuln_jun10_win.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_adobe_prdts_mult_vuln_jun10_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
 #
 # Adobe Flash Player/Air Multiple Vulnerabilities - June10 (Windows)
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is installed with Adobe Flash Player/Air and is prone t
 if(description)
 {
   script_id(902200);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 6475 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2010-06-22 13:34:32 +0200 (Tue, 22 Jun 2010)");
   script_cve_id("CVE-2008-4546", "CVE-2009-3793", "CVE-2010-1297", "CVE-2010-2160",
                 "CVE-2010-2161", "CVE-2010-2162", "CVE-2010-2163", "CVE-2010-2164",
@@ -64,7 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2010 SecPOd");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_require_keys("AdobeFlashPlayer/Win/Ver", "Adobe/Air/Win/Ver");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-024.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: secpod_ms13-024.nasl 6469 2017-06-28 14:24:07Z cfischer $
 #
 # Microsoft SharePoint Server Privilege Elevation Vulnerabilities (2780176)
 #
@@ -49,12 +49,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902953";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6125 $");
+  script_version("$Revision: 6469 $");
   script_bugtraq_id(58372, 58370, 58367, 58371);
   script_cve_id("CVE-2013-0080", "CVE-2013-0083", "CVE-2013-0084", "CVE-2013-0085");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 16:24:07 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2013-03-13 11:50:53 +0530 (Wed, 13 Mar 2013)");
   script_name("Microsoft SharePoint Server Privilege Elevation Vulnerabilities (2780176)");
 
@@ -67,9 +67,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("smb_reg_service_pack.nasl",
-                      "gb_ms_sharepoint_sever_n_foundation_detect.nasl");
-  script_mandatory_keys("MS/SharePoint/Server/Ver", "MS/SharePoint/Foundation/Ver");
+  script_dependencies("smb_reg_service_pack.nasl", "gb_ms_sharepoint_sever_n_foundation_detect.nasl");
+  script_mandatory_keys("MS/SharePoint/Server_or_Foundation_or_Services/Installed");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

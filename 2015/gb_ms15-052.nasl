@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-052.nasl 3006 2016-04-07 12:32:11Z antu123 $
+# $Id: gb_ms15-052.nasl 6513 2017-07-04 09:59:28Z teissa $
 #
 # Microsoft Windows Kernel Security Feature Bypass Vulnerability (3050514)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805382");
-  script_version("$Revision: 3006 $");
+  script_version("$Revision: 6513 $");
   script_cve_id("CVE-2015-1674");
   script_bugtraq_id(74488);
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 14:32:11 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-05-13 11:36:27 +0530 (Wed, 13 May 2015)");
   script_name("Microsoft Windows Kernel Security Feature Bypass Vulnerability (3050514)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3050514");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-052");
 
-  script_summary("Check for the vulnerable 'Lsasrv.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -30,12 +30,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2013-5583");
   script_bugtraq_id(61600);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-06 12:53:52 +0530 (Mon, 06 Jan 2014)");
   script_name("Joomla! 'lang' Parameter Reflected Cross Site Scripting Vulnerability");
 
@@ -76,7 +76,6 @@ For updates refer to www.joomla.org";
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Aug/27");
   script_xref(name : "URL" , value : "https://github.com/joomla/joomla-cms/issues/1658");
   script_xref(name : "URL" , value : "http://disse.cting.org/2013/08/05/joomla-core-3_1_5_reflected-xss-vulnerability");
-  script_summary("Check if Joomla is prone to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_omsa_remote_detect.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_dell_omsa_remote_detect.nasl 6919 2017-08-14 09:55:24Z ckuersteiner $
 #
 # Dell OpenManage Server Administrator Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807563");
-  script_version("$Revision: 6125 $");
+  script_version("$Revision: 6919 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-14 11:55:24 +0200 (Mon, 14 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-04-27 10:47:16 +0530 (Wed, 27 Apr 2016)");
   script_name("Dell OpenManage Server Administrator Remote Detection");
 
@@ -58,16 +58,8 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-omsaReq = "";
-omsaRes = "";
-omsaPort = "";
-omsaVer = "";
-
 ##Get HTTP Port
-if(!omsaPort = get_http_port(default:1311)){
-  exit(0);
-}
+omsaPort = get_http_port(default:1311);
 
 ## Taking care of root installation and servlet installation
 foreach dir (make_list("/", "/servlet"))
@@ -84,16 +76,17 @@ foreach dir (make_list("/", "/servlet"))
      'dell' >< omsaRes)
   {
     ## Send and Receive the response
-    omsaReq = http_get(item: string(dir, "/UDataArea?plugin=com.dell.oma.webplugins.AboutWebPlugin"), port:omsaPort);
+    url =  dir + "/UDataArea?plugin=com.dell.oma.webplugins.AboutWebPlugin";
+    omsaReq = http_get(item: url, port:omsaPort);
     omsaRes = http_keepalive_send_recv(port:omsaPort, data:omsaReq);
    
     ## Grep for version
-    omsaVer = eregmatch(pattern:'class="desc25">Version ([0-9.]+)' , string:omsaRes);
-    if(omsaVer[1]){
-      omsaVer = omsaVer[1];
-    } else{
-        omsaVer = "Unknown";
-      }
+    vers = eregmatch(pattern:'class="desc25">Version ([0-9.]+)' , string:omsaRes);
+    if(vers[1]){
+      omsaVer = vers[1];
+    } else {
+      omsaVer = "Unknown";
+    }
 
     ## Set the KB value
     set_kb_item(name:"Dell/OpenManage/Server/Administrator/Installed", value:TRUE);
@@ -109,8 +102,8 @@ foreach dir (make_list("/", "/servlet"))
                                              version: omsaVer,
                                              install: install,
                                              cpe: cpe,
-                                             concluded: omsaVer),
-                                             port: omsaPort);
+                                             concluded: vers[0], concludedUrl: url),
+                port: omsaPort);
     exit(0);
   }
 }

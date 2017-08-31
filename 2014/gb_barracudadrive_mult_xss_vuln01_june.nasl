@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracudadrive_mult_xss_vuln01_june.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_barracudadrive_mult_xss_vuln01_june.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # BarracudaDrive Multiple XSS Vulnerabilities -01 June14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:barracudadrive:barracudadrive";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804610");
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-2526");
   script_bugtraq_id(66269);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-02 11:00:40 +0530 (Mon, 02 Jun 2014)");
   script_name("BarracudaDrive Multiple XSS Vulnerabilities -01 June14");
 
@@ -72,7 +72,6 @@ http://barracudadrive.com";
   script_tag(name : "solution" , value : tag_solution);
 
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SecPod_BarracudaDrive_Mult_XSS_Vuln.txt");
-  script_summary("Check for the vulnerable version of BarracudaDrive");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

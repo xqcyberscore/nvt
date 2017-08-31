@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powerpoint_ms15-081.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: gb_ms_powerpoint_ms15-081.nasl 6523 2017-07-04 15:46:12Z cfischer $
 #
 # Microsoft Office PowerPoint Multiple Remote Code Execution Vulnerabilities (3080790)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805089");
-  script_version("$Revision: 6211 $");
+  script_version("$Revision: 6523 $");
   script_cve_id("CVE-2015-2423");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:46:12 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-08-12 16:01:10 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office PowerPoint Multiple Remote Code Execution Vulnerabilities (3080790)");
@@ -70,8 +70,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-script_dependencies("secpod_office_products_version_900032.nasl");
-  script_require_keys("MS/Office/Ver", "SMB/Office/PowerPnt/Version");
+  script_dependencies("secpod_office_products_version_900032.nasl");
+  script_mandatory_keys("MS/Office/Ver", "SMB/Office/PowerPnt/Version");
   exit(0);
 }
 

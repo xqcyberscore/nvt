@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2010-0616.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: ELSA-2010-0616.nasl 6555 2017-07-06 11:54:09Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122330");
-script_version("$Revision: 6229 $");
+script_version("$Revision: 6555 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:16:56 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:09 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2010-0616");
 script_tag(name: "insight", value: "ELSA-2010-0616 -  dbus-glib security update - NetworkManager:[1:0.7.0-10.el5_5.1]- Rebuild to fix D-Bus property access (for dbus-glib CVE-2010-1172)dbus-glib:[0.73-10]- Add patch to fix CVE-2010-1172 Drop broken-xml.patch which this one now incorporates Resolves: #588397 (and #585395)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"3.6");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

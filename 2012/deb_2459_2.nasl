@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2459_2.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: deb_2459_2.nasl 6612 2017-07-07 12:08:03Z cfischer $
 # Description: Auto-generated from advisory DSA 2459-2 (quagga)
 #
 # Authors:
@@ -41,10 +41,10 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 if(description)
 {
  script_id(71342);
- script_version("$Revision: 5940 $");
+ script_version("$Revision: 6612 $");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-05-31 11:42:51 -0400 (Thu, 31 May 2012)");
  script_name("Debian Security Advisory DSA 2459-2 (quagga)");
 
@@ -55,7 +55,7 @@ if(description)
  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
  script_family("Debian Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);

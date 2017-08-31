@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_prdts_insecure_lib_load_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_ms_office_prdts_insecure_lib_load_vuln.nasl 6538 2017-07-05 11:38:27Z cfischer $
 #
 # Microsoft Office Products Insecure Library Loading Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902254");
-  script_version("$Revision: 5394 $");
+  script_version("$Revision: 6538 $");
   script_cve_id("CVE-2010-3141", "CVE-2010-3142", "CVE-2010-3146", "CVE-2010-3148");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-09-09 10:16:10 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Office Products Insecure Library Loading Vulnerability");
@@ -73,7 +73,9 @@ if(description)
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Windows");
   script_dependencies("secpod_office_products_version_900032.nasl", "secpod_ms_office_detection_900025.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "SMB/Office/Publisher/Version");
+  script_mandatory_keys("MS/Office/Ver", "MS/Office/Prdts/Installed");
+  script_require_ports(139, 445);
+
   exit(0);
 }
 

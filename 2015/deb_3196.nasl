@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3196.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: deb_3196.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3196-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703196);
-    script_version("$Revision: 6443 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2014-9653");
     script_name("Debian Security Advisory DSA 3196-1 (file - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-03-18 00:00:00 +0100 (Wed, 18 Mar 2015)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "file on Debian Linux");
         script_tag(name: "insight",   value: "File tests each argument in an attempt to classify it. There are three sets of
 tests, performed in this order: filesystem tests, magic number tests, and

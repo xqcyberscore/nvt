@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_dir_trav.nasl 5969 2017-04-18 14:59:34Z ckuerste $
+# $Id: gb_http_dir_trav.nasl 6760 2017-07-19 14:00:26Z cfischer $
 #
 # Generic HTTP Directory Traversal
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106756");
-  script_version("$Revision: 5969 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-18 16:59:34 +0200 (Tue, 18 Apr 2017) $");
+  script_version("$Revision: 6760 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-19 16:00:26 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-04-18 14:50:27 +0200 (Tue, 18 Apr 2017)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -79,7 +79,9 @@ foreach trav (traversal) {
   foreach file (keys(files)) {
     url = "/" + trav + files[file];
     req = http_get(port: port, item: url);
-    res = http_keepalive_send_recv(port: port, data: req);
+    #nb: Don't use http_keepalive_send_recv() here as embedded devices
+    #which are often vulnerable shows issues when requesting a keepalive connection.
+    res = http_send_recv(port: port, data: req);
 
     if (egrep(pattern: file, string: res)) {
       vuln += report_vuln_url(port: port, url: url) + "\n\n";

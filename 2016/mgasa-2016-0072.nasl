@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0072.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: mgasa-2016-0072.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131231");
-script_version("$Revision: 5745 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-02-18 07:27:38 +0200 (Thu, 18 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0072");
 script_tag(name: "insight", value: "Updated libgcrypt packages fix security vulnerability: Daniel Genkin, Lev Pachmanov, Itamar Pipman and Eran Tromer discovered that the ECDH secret decryption keys in applications using the libgcrypt20 library could be leaked via a side-channel attack (CVE-2015-7511). The libgcrypt package was also updated to include countermeasures against Lenstra's fault attack on RSA Chinese Remainder Theorem optimization in RSA. A signature verification step was updated to protect against leaks of private keys in case of hardware faults or implementation errors in numeric libraries. This issue is equivalent to the CVE-2015-5738 issue in gnupg."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"1.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0072");
 script_copyright("Eero Volotinen");

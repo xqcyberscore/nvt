@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_46787.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_joomla_46787.nasl 6719 2017-07-13 13:53:39Z cfischer $
 #
 # Joomla! Prior to 1.6.1 Multiple Security Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103114");
- script_version("$Revision: 3911 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_version("$Revision: 6719 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-03-09 13:38:24 +0100 (Wed, 09 Mar 2011)");
  script_bugtraq_id(46787);
  script_tag(name:"cvss_base", value:"7.5");
@@ -45,7 +45,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("joomla_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("joomla/installed");
 
  script_tag(name : "solution" , value : "The vendor released a patch. Please see the references for more
@@ -81,8 +80,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if (!can_host_php(port:port)) exit(0);
 
 if(vers = get_version_from_kb(port:port,app:"joomla")) {

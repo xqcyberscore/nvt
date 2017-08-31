@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_credential_word_lineno_cmd_exec_vuln.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_bash_shellshock_credential_word_lineno_cmd_exec_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # GNU Bash Off-by-one aka 'word_lineno' Buffer Overflow Vulnerability (LSC)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802084");
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-7187");
   script_bugtraq_id(70154);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-01 14:11:51 +0530 (Wed, 01 Oct 2014)");
 
   script_name("GNU Bash Off-by-one aka 'word_lineno' Buffer Overflow Vulnerability (LSC)");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://openwall.com/lists/oss-security/2014/09/28/10");
   script_xref(name : "URL" , value : "https://access.redhat.com/security/cve/CVE-2014-7187");
 
-  script_summary("Check for Off-by-one aka 'word_lineno' vulnerability in GNU Bash");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

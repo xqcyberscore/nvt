@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-130.nasl 2646 2016-02-12 08:18:48Z benallard $
+# $Id: gb_ms15-130.nasl 6453 2017-06-28 09:59:05Z teissa $
 #
 # Microsoft Windows Uniscribe Remote Code Execution Vulnerability (3108670)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806172");
-  script_version("$Revision: 2646 $");
+  script_version("$Revision: 6453 $");
   script_cve_id("CVE-2015-6130");
   script_bugtraq_id(78500);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:48 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-12-09 09:39:22 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft Windows Uniscribe Remote Code Execution Vulnerability (3108670)");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-130");
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3108670#bookmark-fileinfo");
 
-  script_summary("Check for the vulnerable version of'Usp10.dll' on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

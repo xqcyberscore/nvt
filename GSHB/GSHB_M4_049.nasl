@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_049.nasl 3312 2016-05-13 07:08:19Z benallard $
+# $Id: GSHB_M4_049.nasl 6502 2017-07-03 08:15:27Z cfischer $
 #
-# IT-Grundschutz, 14. EL, Maﬂnahme 4.049
+# IT-Grundschutz, 15. EL, Maﬂnahme 4.049
 #
 # Authors:
 # Thomas Rotter <thomas.rotter@greenbone.net>
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94205);
-  script_version("$Revision: 3312 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 09:08:19 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 6502 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 10:15:27 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,7 +46,7 @@ if(description)
   script_tag(name : "summary" , value :
 "IT-Grundschutz M4.049: Absicherung des Boot-Vorgangs f¸r ein Windows-System.
 
-Stand: 14. Erg‰nzungslieferung (14. EL).
+Stand: 15. Erg‰nzungslieferung (15. EL).
 ");
 
   exit(0);
@@ -95,9 +95,10 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
       }
     desc = desc + string("Folgende Logischen Laufwerke sind nicht\nNFTS-formatiert: " + '\n' + LDdesc + '\n');
   }
+	desc += 'Pr¸fen Sie zudem, ob bei UEFI-basierten Ger‰ten UEFI Secure Boot aktiviert ist.\n';
 }else if("FAT" >!< FS && "None" >< FDD && "None" >< CD && "None" >< USB && "False" >< BOOTINI){
   result = string("erf¸llt");
-  desc = string("Ihr System entspricht der Maﬂnahme M4.049.");
+  desc = string("Ihr System entspricht der Maﬂnahme M4.049.\nPr¸fen Sie zudem, ob bei UEFI-basierten Ger‰ten UEFI Secure Boot aktiviert ist.");
 }
 
 set_kb_item(name:"GSHB/M4_049/result", value:result);

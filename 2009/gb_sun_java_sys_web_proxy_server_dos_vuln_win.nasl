@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_proxy_server_dos_vuln_win.nasl 5409 2017-02-24 07:16:34Z cfi $
+# $Id: gb_sun_java_sys_web_proxy_server_dos_vuln_win.nasl 6599 2017-07-07 09:50:33Z cfischer $
 #
 # Sun Java System Web Proxy Server Denial Of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:sun:java_system_web_proxy_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800865");
-  script_version("$Revision: 5409 $");
+  script_version("$Revision: 6599 $");
   script_cve_id("CVE-2009-2597");
   script_bugtraq_id(35788);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-24 08:16:34 +0100 (Fri, 24 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:50:33 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-08-12 19:54:51 +0200 (Wed, 12 Aug 2009)");
   script_name("Sun Java System Web Proxy Server Denial Of Service Vulnerability (Windows)");
 
@@ -67,7 +67,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_sun_java_sys_web_proxy_server_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("Host/runs_windows", "Sun/JavaWebProxyServ/Installed");
+  script_mandatory_keys("Sun/JavaWebProxyServ/Installed", "Host/runs_windows");
   script_require_ports(139, 445);
   exit(0);
 }

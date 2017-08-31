@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powerpoint_ms16-088.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_ms_powerpoint_ms16-088.nasl 6523 2017-07-04 15:46:12Z cfischer $
 #
 # Microsoft Office PowerPoint Security Bypass Vulnerability (3170008)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807863");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 6523 $");
   script_cve_id("CVE-2016-3279");
   script_bugtraq_id(91587);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:46:12 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-07-13 14:01:15 +0530 (Wed, 13 Jul 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office PowerPoint Security Bypass Vulnerability (3170008)");
@@ -71,7 +71,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
-  script_require_keys("MS/Office/Ver", "SMB/Office/PowerPnt/Version");
+  script_mandatory_keys("MS/Office/Ver", "SMB/Office/PowerPnt/Version");
   exit(0);
 }
 

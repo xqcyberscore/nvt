@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_http_srv_cookie_info_disc_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: secpod_apache_http_srv_cookie_info_disc_vuln.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # Apache HTTP Server 'httpOnly' Cookie Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:apache:http_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902830");
-  script_version("$Revision: 5950 $");
+  script_version("$Revision: 6720 $");
   script_bugtraq_id(51706);
   script_cve_id("CVE-2012-0053");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-04-26 12:12:12 +0530 (Thu, 26 Apr 2012)");
   script_name("Apache HTTP Server 'httpOnly' Cookie Information Disclosure Vulnerability");
 
@@ -44,7 +44,6 @@ if(description)
   script_require_ports("Services/www", 80);
   script_dependencies("secpod_apache_detect.nasl");
   script_mandatory_keys("apache/installed");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to obtain sensitive information
   that may aid in further attacks.

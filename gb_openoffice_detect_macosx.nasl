@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openoffice_detect_macosx.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_openoffice_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
 #
 # OpenOffice Version Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805609");
-  script_version("$Revision: 5499 $");
+  script_version("$Revision: 6484 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-01 12:25:40 +0530 (Mon, 01 Jun 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("OpenOffice Version Detection (Mac OS X)");
@@ -45,7 +45,7 @@ if (description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gather-package-list.nasl");
   script_family("Product detection");
-  script_mandatory_keys("login/SSH/success");
+  script_mandatory_keys("ssh/login/osx_name");
   exit(0);
 }
 

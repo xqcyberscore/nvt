@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arris_docsis_password_disclosure_08_14.nasl 2825 2016-03-10 08:11:16Z benallard $
+# $Id: gb_arris_docsis_password_disclosure_08_14.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Arris DOCSIS Password Disclosure
 #
@@ -31,13 +31,12 @@ if (description)
  script_cve_id("CVE-2014-4863");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 2825 $");
+ script_version ("$Revision: 6663 $");
 
  script_name("Arris DOCSIS Password Disclosure");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:11:16 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-08-25 12:47:33 +0100 (Mon, 25 Aug 2014)");
- script_summary("Determine if it is possible to get the password via snmp");
  script_category(ACT_ATTACK);
  script_family("General");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

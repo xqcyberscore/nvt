@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_global_prot_bof_vuln.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_panda_global_prot_bof_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Panda Global Protection Heap Based Buffer Overflow Sept14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:pandasecurity:panda_global_protection_2014";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804906");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-5307");
   script_bugtraq_id(69293);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-22 16:48:04 +0530 (Mon, 22 Sep 2014)");
 
   script_name("Panda Global Protection Heap Based Buffer Overflow Sept14");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/95382");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127948/Panda-Security-2014-Privilege-Escalation.html");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Panda Global Protection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_family("Buffer overflow");

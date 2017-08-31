@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0049.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: mgasa-2016-0049.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131211");
-script_version("$Revision: 5534 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-02-08 19:55:18 +0200 (Mon, 08 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0049");
 script_tag(name: "insight", value: "Various issues in imlib before 1.4.7 in the GIF loader (CVE-2014-9762, CVE-2014-9764) and PNM loader (CVE-2014-9763) could cause crashes. The imlib2 package has been updated to version 1.4.7, fixing these issues and several other bugs."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0049");
 script_copyright("Eero Volotinen");

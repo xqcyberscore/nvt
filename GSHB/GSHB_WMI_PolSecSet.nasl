@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_PolSecSet.nasl 3313 2016-05-13 07:10:22Z benallard $
+# $Id: GSHB_WMI_PolSecSet.nasl 6502 2017-07-03 08:15:27Z cfischer $
 #
 # Read all Windows Policy Security Settings (Windows)
 #
@@ -33,8 +33,8 @@ tag_summary = "The script read all Windows Policy Security Settings.";
 if(description)
 {
   script_id(96036);
-  script_version("$Revision: 3313 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 09:10:22 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 6502 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 10:15:27 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -210,6 +210,10 @@ if (TcpMaxDataRetransmissions != "0")TcpMaxDataRetransmissions = hex2dec(xvalue:
 undockwithoutlogon = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"Software\Microsoft\Windows\CurrentVersion\Policies\System", val_name:"undockwithoutlogon");
 WarningLevel = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SYSTEM\CurrentControlSet\Services\Eventlog\Security", val_name:"WarningLevel");
 if (WarningLevel != "0")WarningLevel = hex2dec(xvalue:WarningLevel);
+WindowsStore = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"HKLM\Software\Policies\Microsoft\WindowsStore", val_name:"DisableStoreApps");
+HandwritingRecognition1 = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"HKLM\SOFTWARE\Policies\Microsoft\InputPersonalization", val_name:"RestrictImplicitTextCollection");
+HandwritingRecognition2 = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"HKLM\SOFTWARE\Policies\Microsoft\InputPersonalization", val_name:"RestrictImplicitInkCollection");
+DisablePinLogin = wmi_reg_get_dword_val(mi_handle:handlereg, key:"HKLM\SOFTWARE\Policies\Microsoft\Windows\System", val_name:"AllowDomainPINLogon");
 
 val = "None";
 
@@ -494,6 +498,19 @@ if(undockwithoutlogon == "0" || undockwithoutlogon){
 if(WarningLevel == "0" || WarningLevel){
   set_kb_item(name:"WMI/cps/WarningLevel", value:WarningLevel);
 }else  set_kb_item(name:"WMI/cps/WarningLevel", value:val);
+
+if(WindowsStore == "0" || WindowsStore){
+  set_kb_item(name:"WMI/Win8Policies/WindowsStore", value:WindowsStore);
+}else set_kb_item(name:"WMI/Win8Policies/WindowsStore", value:val);
+
+if(HandwritingRecognition1 == "0" || HandwritingRecognition1){
+  set_kb_item(name:"WMI/Win8Policies/HandwritingRecognition1", value:HandwritingRecognition1);
+}else set_kb_item(name:"WMI/Win8Policies/HandwritingRecognition1", value:val);
+
+if(HandwritingRecognition2 == "0" || HandwritingRecognition2){
+  set_kb_item(name:"WMI/Win8Policies/HandwritingRecognition2", value:HandwritingRecognition2);
+}else set_kb_item(name:"WMI/Win8Policies/HandwritingRecognition2", value:val);
+
 
 #---------------------------------------------------------
 

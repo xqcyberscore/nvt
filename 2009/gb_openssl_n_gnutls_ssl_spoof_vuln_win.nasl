@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_n_gnutls_ssl_spoof_vuln_win.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_openssl_n_gnutls_ssl_spoof_vuln_win.nasl 6516 2017-07-04 12:20:47Z cfischer $
 #
 # OpenSSL/GnuTLS SSL Server Spoofing Vulnerability (Windows)
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is running OpenSSL/GnuTLS and is prone to SSL server
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800917");
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 6516 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-08-05 14:14:14 +0200 (Wed, 05 Aug 2009)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -56,7 +56,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_openssl_detect_win.nasl", "gb_gnutls_detect_win.nasl");
-  script_require_keys("OpenSSL/Win/Ver", "GnuTLS/Win/Ver");
+  script_mandatory_keys("GnuTLS_or_OpenSSL/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

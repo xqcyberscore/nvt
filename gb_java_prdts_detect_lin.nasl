@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_lin.nasl 5943 2017-04-12 14:44:26Z antu123 $
+# $Id: gb_java_prdts_detect_lin.nasl 6466 2017-06-28 13:28:20Z cfischer $
 #
 # Sun Java Products Version Detection (Linux)
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800385");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5943 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
+  script_version("$Revision: 6466 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:28:20 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -119,6 +119,7 @@ if(javapaths)
     else if(javaVer[1] =~ "([0-9]\.[0-9._]+)-([b0-9]+)")
     {
       set_kb_item(name:"Sun/Java/JRE/Linux/Ver", value:javaVer[1]);
+      replace_kb_item(name:"Sun/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE);
       register_and_report_cpe(app:"Sun Java JRE", ver:javaVer[1], base:"cpe:/a:sun:jre:",
                               expr:"^([0-9._]+)", insloc:executableFile);
     }

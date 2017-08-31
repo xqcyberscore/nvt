@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_ipcomera_mult_vuln.nasl 5628 2017-03-20 15:27:40Z cfi $
+# $Id: gb_dlink_ipcomera_mult_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # D-link IP Camera DCS-2103 Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805031");
-  script_version("$Revision: 5628 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-9234", "CVE-2014-9238");
   script_bugtraq_id(71484);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-15 14:54:29 +0530 (Mon, 15 Dec 2014)");
   script_name("D-link IP Camera DCS-2103 Multiple Vulnerabilities");
 
@@ -67,14 +67,12 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/129138");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Nov/42");
 
-  script_summary("Check if D-link IP camera DCS-2103 is vulnerable to directory traversel");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
-  script_mandatory_keys("DCS-2103/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("DCS-2103/banner");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pandora_fms_5_0_rc1_rce.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_pandora_fms_5_0_rc1_rce.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # Pandora FMS Remote Command Execution Vulnerability
 #
@@ -32,21 +32,19 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103897");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6756 $");
 
  script_name("Pandora FMS Remote Command Execution Vulnerability");
 
  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124983/Pandora-FMS-5.0RC1-Code-Execution.html");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-30 13:13:42 +0100 (Thu, 30 Jan 2014)");
- script_summary("Determine if it is possible to execute a command");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_pandora_fms_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("pandora_fms/installed");
 
  script_tag(name : "impact" , value : "Successful exploits will allow remote attackers to execute arbitrary

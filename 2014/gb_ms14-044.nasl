@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-044.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_ms14-044.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Microsoft SQL Server Elevation of Privilege Vulnerability (2984340)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802080");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-1820", "CVE-2014-4061");
   script_bugtraq_id(69071, 69088);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-13 17:35:15 +0530 (Wed, 13 Aug 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft SQL Server Elevation of Privilege Vulnerability (2984340)");
@@ -77,7 +77,6 @@ https://technet.microsoft.com/library/security/MS14-044";
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-044");
-  script_summary("Check for the vulnerable 'Microsoft.sqlserver.chainer.infrastructure.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

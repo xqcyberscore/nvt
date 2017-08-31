@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0266.nasl 6391 2017-06-21 09:59:48Z teissa $
+# $Id: mgasa-2015-0266.nasl 6563 2017-07-06 12:23:47Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130111");
-script_version("$Revision: 6391 $");
+script_version("$Revision: 6563 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:42:51 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:23:47 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0266");
 script_tag(name: "insight", value: "If SELinux is enabled, the _unix_run_helper_binary function in Linux-PAM 1.1.8 and earlier hangs indefinitely when verifying a password of 65536 characters, which allows attackers to conduct username enumeration and denial of service attacks (CVE-2015-3238)."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"5.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0266");
 script_copyright("Eero Volotinen");

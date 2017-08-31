@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2908.nasl 3692 2016-07-13 06:47:53Z antu123 $
+# $Id: deb_2908.nasl 6637 2017-07-10 09:58:13Z teissa $
 # Auto-generated from advisory DSA 2908-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -70,24 +70,23 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(702908);
-    script_version("$Revision: 3692 $");
+    script_version("$Revision: 6637 $");
     script_cve_id("CVE-2010-5298", "CVE-2014-0076");
     script_name("Debian Security Advisory DSA 2908-1 (openssl - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2016-07-13 08:47:53 +0200 (Wed, 13 Jul 2016) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
     script_tag(name: "creation_date", value:"2014-04-17 00:00:00 +0200 (Thu, 17 Apr 2014)");
     script_tag(name:"cvss_base", value:"4.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:P");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-2908.html");
 
-    script_summary("Debian Security Advisory DSA 2908-1 (openssl - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2014 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: tag_affected);
     script_tag(name: "insight",   value: tag_insight);
 #    script_tag(name: "impact",    value: tag_impact);

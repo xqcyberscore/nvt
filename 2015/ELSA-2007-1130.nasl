@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-1130.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2007-1130.nasl 6637 2017-07-10 09:58:13Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122624");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6637 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:49:37 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-1130");
 script_tag(name: "insight", value: "ELSA-2007-1130 -  Moderate: squid security update - [2.5.STABLE3-8.3E] - fix for #410181 - CVE-2007-6239 Squid DoS in cache updates [2.5.STABLE3-7] - resolves: #238103: 'forwarded_for off' in squid.conf does not work."); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2007-1130");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

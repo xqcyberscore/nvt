@@ -1,11 +1,12 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_doublepulsar_infection_detect.nasl 5972 2017-04-18 17:45:20Z veerendragg $
+# $Id: gb_doublepulsar_infection_detect.nasl 6450 2017-06-28 07:54:52Z santu $
 #
 # Double Pulsar Infection Detect
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
+# Antu Sanadi <santu@secpod.com> on 2017-06-28Fixed the validation issues.
 #
 # Copyright:
 # Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
@@ -27,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810698");
-  script_version("$Revision: 5972 $");
+  script_version("$Revision: 6450 $");
   script_cve_id("CVE-2017-0146", "CVE-2017-0147");
   script_bugtraq_id(96707, 96709);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 19:45:20 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 09:54:52 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-04-18 15:25:17 +0530 (Tue, 18 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_active");
   script_name("Double Pulsar Infection Detect");
@@ -66,8 +67,9 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "https://github.com/countercept/doublepulsar-detection-script");
-
-  script_category(ACT_ATTACK);
+  script_xref(name : "URL" , value : "https://isc.sans.edu/forums/diary/Detecting+SMB+Covert+Channel+Double+Pulsar/22312");
+  script_xref(name : "URL" , value : "http://blog.binaryedge.io/2017/04/21/doublepulsar");
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_smb_version_detect.nasl", "os_detection.nasl");
@@ -103,7 +105,6 @@ if(host_runs("Windows") != "yes") exit(0);
 
 name = kb_smb_name();
 smbPort = kb_smb_transport();
-
 if(!name || !smbPort){
   exit(0);
 }
@@ -131,11 +132,10 @@ smb_neg_req = raw_string(0x00, 0x00, 0x00, 0x85, 0xff, 0x53, 0x4d, 0x42,
                          0x20, 0x4c, 0x4d, 0x20, 0x30, 0x2e, 0x31, 0x32, 
                          0x00);
 
-send( socket:soc, data:smb_neg_req );
-
 ## SMB Negotiate Protocol Response
+send( socket:soc, data:smb_neg_req );
 smb_neg_resp = smb_recv( socket:soc );
-if( !smb_neg_resp || !ord(smb_neg_resp[9])==0)
+if(strlen(smb_neg_resp) < 9 || !ord(smb_neg_resp[9])==0)
 {
   close( soc );
   exit( 0 );
@@ -162,10 +162,10 @@ smb_sess_req = raw_string(0x00, 0x00, 0x00, 0x88, 0xff, 0x53, 0x4d, 0x42,
                           0x30, 0x00, 0x20, 0x00, 0x35, 0x00, 0x2e, 0x00, 
                           0x30, 0x00, 0x00, 0x00);
 
-send( socket:soc, data:smb_sess_req );
 ## Session Setup AndX Response
+send( socket:soc, data:smb_sess_req );
 smb_sess_resp = smb_recv( socket:soc );
-if( ! smb_sess_resp || !ord(smb_neg_resp[9])==0)
+if(strlen(smb_sess_resp) < 9 || !ord(smb_sess_resp[9])==0)
 {
   close( soc );
   exit( 0 );
@@ -180,10 +180,9 @@ if(smb_sess_resp)
   uid  += uid_low;
 }
 
-
 ## SMB Tree Connect AndX Request, Path: \\xxx.xxx.xxx.xxx\IPC$
 smb_tree_resp = smb_tconx( soc:soc, name:name, uid:uid, share:"IPC$" );
-if(! smb_tree_resp || !ord(smb_tree_resp[9])==0)
+if(strlen(smb_tree_resp) < 9 || !ord(smb_tree_resp[9])==0)
 {
   close( soc );
   exit( 0 );
@@ -211,8 +210,15 @@ smbtrans2_request = raw_string(0x00, 0x00, 0x00, 0x4e, 0xff, 0x53, 0x4d, 0x42,
                                0x00, 0x00 );
 
 send( socket:soc, data: smbtrans2_request);
+
 ##Trans2 Response, SESSION_SETUP, Error: STATUS_NOT_IMPLEMENTED
 smb_trans2_resp = smb_recv( socket:soc );
+if(strlen(smb_trans2_resp) < 34)
+{
+  close( soc );
+  exit( 0 );
+}
+
 ##The intent of this request is to check if the system is already compromised.
 ##Infected or not, the system will respond with a "Not Implemented" message.
 if(smb_trans2_resp && (ord(smb_trans2_resp[9])==2 && ord(smb_trans2_resp[10])==0

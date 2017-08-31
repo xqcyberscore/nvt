@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3565.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: deb_3565.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3565-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703565);
-    script_version("$Revision: 5745 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2015-5726", "CVE-2015-5727", "CVE-2015-7827", "CVE-2016-2194",
                   "CVE-2016-2195", "CVE-2016-2849");
     script_name("Debian Security Advisory DSA 3565-1 (botan1.10 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-05-02 00:00:00 +0200 (Mon, 02 May 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "botan1.10 on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (jessie),
 these problems have been fixed in version 1.10.8-2+deb8u1.

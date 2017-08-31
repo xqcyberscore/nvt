@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3220.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: deb_3220.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3220-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703220);
-    script_version("$Revision: 6229 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2015-2806");
     script_name("Debian Security Advisory DSA 3220-1 (libtasn1-3 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-04-11 00:00:00 +0200 (Sat, 11 Apr 2015)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "libtasn1-3 on Debian Linux");
     script_tag(name: "insight",   value: "Manage ASN1 (Abstract Syntax
 Notation One) structures. The main features of this library are:

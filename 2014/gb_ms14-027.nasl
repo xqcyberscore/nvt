@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-027.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-027.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Microsoft Windows Shell Handler Privilege Escalation Vulnerability (2962488)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804295");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-1807");
   script_bugtraq_id(67276);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-14 08:27:46 +0530 (Wed, 14 May 2014)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Shell Handler Privilege Escalation Vulnerability (2962488)");
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2926765");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2962123");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms14-027");
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

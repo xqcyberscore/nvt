@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: atmail_34529.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: atmail_34529.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # @Mail WebMail Email Body HTML Injection Vulnerability
 #
@@ -39,8 +39,8 @@ CPE = "cpe:/a:atmail:atmail";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_version("$Revision: 6704 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-04-17 18:35:24 +0200 (Fri, 17 Apr 2009)");
  script_bugtraq_id(34529);
  script_tag(name:"cvss_base", value:"4.3");
@@ -48,14 +48,12 @@ if (description)
 
  script_name("@Mail WebMail Email Body HTML Injection Vulnerability");
 
-
  script_tag(name:"qod_type", value:"remote_banner");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("atmail_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("Atmail/installed");
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34529");
@@ -67,9 +65,6 @@ include("host_details.inc");
 include("version_func.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-
-if(!get_port_state(port))exit(0);
-
 if(!vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
   if(!isnull(vers) && vers >!< "unknown") {

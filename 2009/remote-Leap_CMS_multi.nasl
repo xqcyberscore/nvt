@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: remote-Leap_CMS_multi.nasl 5016 2017-01-17 09:06:21Z teissa $
+# $Id: remote-Leap_CMS_multi.nasl 6520 2017-07-04 14:28:49Z cfischer $
 # Description: This script multiple remote vulnerabilities on the Leap CMS
 #
 # remote-Leap_CMS_multi.nasl
@@ -32,9 +32,9 @@ for other vulnerabilities, it's recommanded to download the latest stable versio
 if(description)
 {
 script_id(101026);
-script_version("$Revision: 5016 $");
+script_version("$Revision: 6520 $");
 script_cve_id("CVE-2009-1613", "CVE-2009-1614", "CVE-2009-1615");
-script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:28:49 +0200 (Tue, 04 Jul 2017) $");
 script_tag(name:"creation_date", value:"2009-04-30 23:55:19 +0200 (Thu, 30 Apr 2009)");
 script_tag(name:"cvss_base", value:"6.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -43,8 +43,6 @@ script_name(name);
  
 script_tag(name:"qod_type", value:"remote_banner"); 
 
-summary = "Detect multiple remote vulnarabilities on the Leap CMS";
-
 script_category(ACT_GATHER_INFO);
 
 script_copyright("Christian Eric Edjenguele <christian.edjenguele@owasp.org>");
@@ -52,8 +50,7 @@ family = "Service detection";
 script_family(family);
 script_dependencies("find_service.nasl", "remote-detect-Leap_CMS.nasl");
 script_require_ports("Services/www", 80, 8080);
-script_require_keys("LeapCMS/installed","LeapCMS/version", "LeapCMS/port");
-
+script_mandatory_keys("LeapCMS/installed");
 
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);

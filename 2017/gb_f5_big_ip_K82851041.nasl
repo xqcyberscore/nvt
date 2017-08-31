@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K82851041.nasl 6249 2017-05-30 13:27:41Z teissa $
+# $Id: gb_f5_big_ip_K82851041.nasl 6826 2017-08-01 08:56:22Z ckuersteiner $
 #
 # F5 BIG-IP - TMM vulnerability CVE-2017-6137
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-6137");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 6249 $");
+ script_version ("$Revision: 6826 $");
 
  script_name("F5 BIG-IP - TMM vulnerability CVE-2017-6137");
 
@@ -49,7 +49,7 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-30 15:27:41 +0200 (Tue, 30 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-01 10:56:22 +0200 (Tue, 01 Aug 2017) $");
 
  script_tag(name:"creation_date", value:"2017-05-29 14:28:20 +0200 (Mon, 29 May 2017)");
  script_category(ACT_GATHER_INFO);
@@ -69,42 +69,42 @@ include("f5.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 check_f5['LTM'] = 
-                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0 HF3-HF4;11.6.1 HF1;',
-                              'unaffected', '13.0.0;12.1.2 HF1;11.6.1 HF2;11.4.0-11.6.1;11.2.1;');
+                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0_HF3-HF4;11.6.1_HF1;',
+                              'unaffected', '13.0.0;12.1.2_HF1;11.6.1_HF2;11.4.0-11.6.1;11.2.1;');
 
 check_f5['AAM'] =
-                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0 HF3-HF4;11.6.1 HF1;',
-                              'unaffected', '13.0.0;12.1.2 HF1;11.6.1 HF2;11.4.0-11.6.1;');
+                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0_HF3-HF4;11.6.1_HF1;',
+                              'unaffected', '13.0.0;12.1.2_HF1;11.6.1_HF2;11.4.0-11.6.1;');
  
 
 check_f5['AFM'] =
-                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0 HF3-HF4;11.6.1 HF1;',
-                              'unaffected', '13.0.0;12.1.2 HF1;11.6.1 HF2;11.4.0-11.6.1;');
+                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0_HF3-HF4;11.6.1_HF1;',
+                              'unaffected', '13.0.0;12.1.2_HF1;11.6.1_HF2;11.4.0-11.6.1;');
  
 
 check_f5['AVR'] = 
-                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0 HF3-HF4;11.6.1 HF1;',
-                              'unaffected', '13.0.0;12.1.2 HF1;11.6.1 HF2;11.4.0-11.6.1;11.2.1;');
+                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0_HF3-HF4;11.6.1_HF1;',
+                              'unaffected', '13.0.0;12.1.2_HF1;11.6.1_HF2;11.4.0-11.6.1;11.2.1;');
 
 
 check_f5['APM'] = 
-                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0 HF3-HF4;11.6.1 HF1;',
-                              'unaffected', '13.0.0;12.1.2 HF1;11.6.1 HF2;11.4.0-11.6.1;11.2.1;');
+                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0_HF3-HF4;11.6.1_HF1;',
+                              'unaffected', '13.0.0;12.1.2_HF1;11.6.1_HF2;11.4.0-11.6.1;11.2.1;');
 
 
 check_f5['ASM'] = 
-                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0 HF3-HF4;11.6.1 HF1;',
-                              'unaffected', '13.0.0;12.1.2 HF1;11.6.1 HF2;11.4.0-11.6.1;11.2.1;');
+                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0_HF3-HF4;11.6.1_HF1;',
+                              'unaffected', '13.0.0;12.1.2_HF1;11.6.1_HF2;11.4.0-11.6.1;11.2.1;');
 
  
 check_f5['LC'] = 
-                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0 HF3-HF4;11.6.1 HF1;',
-                              'unaffected', '13.0.0;12.1.2 HF1;11.6.1 HF2;11.4.0-11.6.1;11.2.1;');
+                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0_HF3-HF4;11.6.1_HF1;',
+                              'unaffected', '13.0.0;12.1.2_HF1;11.6.1_HF2;11.4.0-11.6.1;11.2.1;');
 
 
 check_f5['PEM'] = 
-                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0 HF3-HF4;11.6.1 HF1;',
-                              'unaffected', '13.0.0;12.1.2 HF1;11.6.1 HF2;11.4.0-11.6.1;');
+                  make_array( 'affected',   '12.1.0-12.1.2;12.0.0_HF3-HF4;11.6.1_HF1;',
+                              'unaffected', '13.0.0;12.1.2_HF1;11.6.1_HF2;11.4.0-11.6.1;');
 
 
 if( report = is_f5_vulnerable( ca:check_f5, version:version ) )

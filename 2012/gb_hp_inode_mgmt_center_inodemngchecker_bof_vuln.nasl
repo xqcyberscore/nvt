@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_inode_mgmt_center_inodemngchecker_bof_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_hp_inode_mgmt_center_inodemngchecker_bof_vuln.nasl 6520 2017-07-04 14:28:49Z cfischer $
 #
 # HP iNode Management Center iNodeMngChecker.exe Multiple Vulnerabilities
 #
@@ -42,12 +42,12 @@ CPE = "cpe:/a:hp:inode_management_center_pc";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5940 $");
+  script_version("$Revision: 6520 $");
   script_cve_id("CVE-2012-3254");
   script_bugtraq_id(55160);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:28:49 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-09-20 13:36:31 +0530 (Thu, 20 Sep 2012)");
   script_name("HP iNode Management Center iNodeMngChecker.exe Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50350/");
@@ -61,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_hp_inode_mgmt_center_detect.nasl");
-  script_require_keys("HP/iMC/Version", "HP/iMC/Path");
+  script_mandatory_keys("HP/iMC/Version", "HP/iMC/Path");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

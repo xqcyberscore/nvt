@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3848.nasl 6354 2017-06-16 08:50:49Z teissa $
+# $Id: deb_3848.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3848-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703848);
-    script_version("$Revision: 6354 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-8386");
     script_name("Debian Security Advisory DSA 3848-1 (git - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-16 10:50:49 +0200 (Fri, 16 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-05-10 00:00:00 +0200 (Wed, 10 May 2017)");
     script_tag(name:"cvss_base", value:"6.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "git on Debian Linux");
         script_tag(name: "insight",   value: "Git is popular version control system designed to handle very large
 projects with speed and efficiency; it is used for many high profile

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871467");
-  script_version("$Revision: 3339 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:26:32 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:50:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-11-04 05:52:03 +0100 (Wed, 04 Nov 2015)");
   script_cve_id("CVE-2014-8559", "CVE-2015-5156");
   script_tag(name:"cvss_base", value:"6.1");
@@ -67,12 +67,11 @@ enhancement. The system must be rebooted for this update to take effect.
   script_xref(name: "RHSA", value: "2015:1978-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-November/msg00002.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

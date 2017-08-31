@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openswan_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: secpod_openswan_detect.nasl 6515 2017-07-04 11:54:15Z cfischer $
 #
 # Openswan Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(900387);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 6515 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Openswan Version Detection");
@@ -68,6 +68,7 @@ foreach swanBin (paths)
                              ver_pattern:"Openswan U(([0-9.]+)(rc[0-9])?)");
   if(oswanVer[1] != NULL)
   {
+    replace_kb_item(name:"Openswan_or_StrongSwan/Lin/Installed", value:TRUE);
     set_kb_item(name:"Openswan/Ver", value:oswanVer[1]);
     log_message(data:"Openswan version " + oswanVer[1] + 
                        " was detected on the host");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-0744.nasl 6170 2017-05-19 09:03:42Z teissa $
+# $Id: ELSA-2012-0744.nasl 6557 2017-07-06 11:55:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123901");
-script_version("$Revision: 6170 $");
+script_version("$Revision: 6557 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:10:03 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:55:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-0744");
 script_tag(name: "insight", value: "ELSA-2012-0744 -  python security update - [2.6.6-29.el6_2.2]- if hash randomization is enabled, also enable it within pyexpatResolves: CVE-2012-0876[2.6.6-29.el6_2.1]- distutils.config: create ~/.pypirc securelyResolves: CVE-2011-4944- fix endless loop in SimpleXMLRPCServer upon malformed POST requestResolves: CVE-2012-0845- send encoding in SimpleHTTPServer.list_directory to protect IE7 againstpotential XSS attacksResolves: CVE-2011-4940- oCERT-2011-003: add -R command-line option and PYTHONHASHSEED environmentvariable, to provide an opt-in way to protect against denial of serviceattacks due to hash collisions within the dict and set typesResolves: CVE-2012-1150"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

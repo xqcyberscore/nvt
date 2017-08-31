@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_media_player_int_overflow_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_ms_win_media_player_int_overflow_vuln.nasl 6532 2017-07-05 07:42:05Z cfischer $
 #
 # Integer Overflow vulnerability in Microsoft Windows Media Player
 #
@@ -39,8 +39,8 @@ tag_summary = "This host has Windows Media Player installed and is prone to
 if(description)
 {
   script_id(800328);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 6532 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-01-06 15:38:06 +0100 (Tue, 06 Jan 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -55,7 +55,7 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_ms_win_media_player_detect_900173.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "Win/MediaPlayer/Ver");
+  script_mandatory_keys("Win/MediaPlayer/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

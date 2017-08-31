@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843205");
-  script_version("$Revision: 6360 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-16 16:00:24 +0200 (Fri, 16 Jun 2017) $");
+  script_version("$Revision: 6648 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:05:27 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-06-14 06:40:43 +0200 (Wed, 14 Jun 2017)");
   script_cve_id("CVE-2017-7507", "CVE-2017-7869");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for gnutls28 USN-3318-1");
   script_tag(name: "summary", value: "Check the version of gnutls28");
@@ -58,7 +58,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_bof_vuln_mar14_win.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_python_bof_vuln_mar14_win.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Python 'socket.recvfrom_into' Buffer Overflow Vulnerability Mar14 (Windows)
 #
@@ -30,13 +30,13 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804322";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-1912");
   script_bugtraq_id(65379);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-05 12:18:28 +0530 (Wed, 05 Mar 2014)");
   script_name("Python 'socket.recvfrom_into' Buffer Overflow Vulnerability Mar14 (Windows)");
 
@@ -86,7 +86,6 @@ http://bugs.python.org/issue20246
   script_xref(name : "URL" , value : "http://pastebin.com/raw.php?i=GHXSmNEg");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31875");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1029831");
-  script_summary("Check for the vulnerable version of Python on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Buffer overflow");

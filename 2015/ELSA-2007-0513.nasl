@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-0513.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2007-0513.nasl 6600 2017-07-07 09:58:31Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122659");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6600 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:50:27 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-0513");
 script_tag(name: "insight", value: "ELSA-2007-0513 -  Moderate: gimp security update - [1.2.3-20.9.el3] - validate bytesperline header field when loading PCX files (#247570) [1.2.3-20.8.el3] - reduce GIMP_MAX_IMAGE_SIZE to 2^18 to detect bogus image widths/heights (#247570) [1.2.3-20.7.el3] - replace gimp_error() by gimp_message()/gimp_quit() in a few plugins so they don't crash but gracefully exit when encountering error conditions - fix endianness issues in the PSP plugin to avoid it doing (seemingly) endless loops when loading images - fix endianness issues in the PCX plugin which cause it to not detect corrupt images [1.2.3-20.6.el3] - add ChangeLog entry to psd-invalid-dimensions patch (#247570) - validate size values read from files before using them to allocate memory in various file plugins (#247570, patch by Mukund Sivaraman and Rapha??l Quinet, adapted) - detect invalid image data when reading files in several plugins (#247570, patch by Sven Neumann and Rapha??l Quinet, adapted) - validate size values read from files before using them to allocate memory in the PSD and sunras plugins (#247570, patch by Mukund Sivaraman and Sven Neumann, partly adapted) - add safeguard to avoid crashes while loading corrupt PSD images (#247570, patch by Rapha??l Quinet, adapted) - convert spec file to UTF-8 [1.2.3-20.5.el3] - use adapted upstream PSD fix by Sven Neumann (#244406) [1.2.3-20.4.el3] - refuse to open PSD files with insanely large dimensions (#244406)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"6.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2007-0513");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

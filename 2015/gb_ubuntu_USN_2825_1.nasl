@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842556");
-  script_version("$Revision: 6207 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+  script_version("$Revision: 6646 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:03:11 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-12-11 05:47:48 +0100 (Fri, 11 Dec 2015)");
   script_cve_id("CVE-2015-6765", "CVE-2015-6766", "CVE-2015-6767", "CVE-2015-6768",
                 "CVE-2015-6770", "CVE-2015-6769", "CVE-2015-6771", "CVE-2015-6772",
@@ -104,7 +104,7 @@ It was discovered that the Content Security Pol ...
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service.nasl 6149 2017-05-17 15:42:24Z cfi $
+# $Id: find_service.nasl 6821 2017-07-31 13:16:41Z cfischer $
 #
 # Wrapper for calling built-in NVT "find_service" which was previously
 # a binary ".nes".
@@ -28,11 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10330");
-  script_version("$Revision: 6149 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-17 17:42:24 +0200 (Wed, 17 May 2017) $");
+  script_version("$Revision: 6821 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-31 15:16:41 +0200 (Mon, 31 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-01-14 10:12:23 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  # nb: Don't change this name as it will affect the script preferences of existing scan configs
+  # as well as the predefined scan config which uses a fixed name for the preferences.
   script_name("Services");
   script_category(ACT_GATHER_INFO);
   script_family("Service detection");
@@ -72,16 +74,14 @@ plugin_run_find_service();
 # Check for zebos_routing_shell and register it to avoid wrong service detection (dns, sip, yahoo messenger, ...)
 
 p = 2650;
-if( get_port_state( p ) )
-{
+if( get_port_state( p ) ) {
   soc = open_sock_tcp( p );
-  if( soc )
-  {
+  if( soc ) {
     recv = recv( socket:soc, length:128 );
     close( soc );
-    if( "ZebOS" >< recv )
-    {
-      register_service( port:p, proto:'zebos_routing_shell' );
+    if( "ZebOS" >< recv ) {
+      register_service( port:p, proto:"zebos_routing_shell", message:"A ZebOS routing shell seems to be running on this port." );
+      log_message( port:p, data:"A ZebOS routing shell seems to be running on this port." );
       exit( 0 );
     }
   }
@@ -95,7 +95,7 @@ if( get_port_state( p ) ) {
     recv = recv( socket:soc, length:128 );
     close( soc );
     if( egrep( pattern:"Welcome (.*). You have ([0-9]+) seconds to identify.", string:recv ) ) {
-      register_service( port:p, proto:"enemyterritory" );
+      register_service( port:p, proto:"enemyterritory", message:"An Enemy Territory Admin Mod seems to be running on this port." );
       log_message( port:p, data:"An Enemy Territory Admin Mod seems to be running on this port." );
       exit( 0 );
     }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vmware_server_mult_xss_vuln_dec09_win.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: secpod_vmware_server_mult_xss_vuln_dec09_win.nasl 6518 2017-07-04 13:49:06Z cfischer $
 #
 # VMware Server Multiple Cross-Site Scripting Vulnerabilities (Windows)
 #
@@ -48,8 +48,8 @@ tag_summary = "This host is installed with VMWare Server that is vulnerable to
 if(description)
 {
   script_id(900896);
-  script_version("$Revision: 5148 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 6518 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:49:06 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-12-21 07:14:17 +0100 (Mon, 21 Dec 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -65,7 +65,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_vmware_prdts_detect_win.nasl");
-  script_require_keys("VMware/Server/Win/Ver", "VMware/Win/Installed");
+  script_mandatory_keys("VMware/Server/Win/Ver", "VMware/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

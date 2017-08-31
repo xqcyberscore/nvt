@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_ssh_detect.nasl 4487 2016-11-14 07:41:39Z cfi $
+# $Id: gb_symantec_messaging_gateway_ssh_detect.nasl 6490 2017-06-30 05:39:55Z ckuersteiner $
 #
 # Symantec Messaging Gateway Detection (SSH)
 #
@@ -29,8 +29,8 @@ tag_summary = "Get Symantec Messaging Gateway Version via SSH.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105719");
-  script_version("$Revision: 4487 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 08:41:39 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 6490 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 07:39:55 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-05-17 12:36:46 +0200 (Tue, 17 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -82,6 +82,16 @@ if( "Version:" >< ret )
           vers = _v[0];
           patch = _v[1];
         }
+      }
+    }
+    # Since version 10.6.3 the patch version is shown in the patch installation history e.g.
+    # SMG patch installation history:
+    #      patch-10.6.3-266    2017-06-29 20:35
+    if (line =~ "patch-") {
+      p = eregmatch(pattern: "patch-[0-9.]+-([0-9]+)", string: line);
+      if (!isnull(p[1])) {
+        patch = p[1];
+        break;
       }
     }
   }

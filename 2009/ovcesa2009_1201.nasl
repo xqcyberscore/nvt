@@ -1,5 +1,5 @@
 #CESA-2009:1201 64660 2
-# $Id: ovcesa2009_1201.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: ovcesa2009_1201.nasl 6650 2017-07-10 11:43:12Z cfischer $
 # Description: Auto-generated from advisory CESA-2009:1201 (java-1.6.0-openjdk)
 #
 # Authors:
@@ -39,8 +39,8 @@ advisory CESA-2009:1201.";
 if(description)
 {
  script_id(64660);
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+ script_version("$Revision: 6650 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:43:12 +0200 (Mon, 10 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-08-17 16:54:45 +0200 (Mon, 17 Aug 2009)");
  script_cve_id("CVE-2009-0217", "CVE-2009-2475", "CVE-2009-2476", "CVE-2009-2625", "CVE-2009-2670", "CVE-2009-2671", "CVE-2009-2672", "CVE-2009-2673", "CVE-2009-2674", "CVE-2009-2675", "CVE-2009-2689", "CVE-2009-2690");
  script_tag(name:"cvss_base", value:"10.0");
@@ -54,7 +54,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("CentOS Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/rpms");
+ script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

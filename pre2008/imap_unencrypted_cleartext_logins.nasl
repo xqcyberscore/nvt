@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: imap_unencrypted_cleartext_logins.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: imap_unencrypted_cleartext_logins.nasl 6522 2017-07-04 15:22:28Z cfischer $
 # Description: IMAP Unencrypted Cleartext Logins
 #
 # Authors:
@@ -33,8 +33,8 @@ TLS using stunnel.";
 
 if (description) {
   script_id(15856);
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 6522 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:22:28 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
@@ -43,11 +43,6 @@ if (description) {
 
   name = "IMAP Unencrypted Cleartext Logins";
   script_name(name);
-
-
-
-  summary = "Checks if IMAP daemon allows unencrypted cleartext logins";
-
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
@@ -56,7 +51,7 @@ if (description) {
 
   script_dependencies("find_service.nasl", "global_settings.nasl", "logins.nasl");
   script_require_ports("Services/imap", 143);
-  script_require_keys("imap/login", "imap/password");
+  script_mandatory_keys("imap/login", "imap/password");
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_xref(name : "URL" , value : "http://www.ietf.org/rfc/rfc2222.txt");

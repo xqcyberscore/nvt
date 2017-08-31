@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbseo_51647.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_vbseo_51647.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # vBSEO 'proc_deutf()' Remote Code Execution Vulnerability
 #
@@ -40,7 +40,7 @@ if (description)
  script_id(103405);
  script_cve_id("CVE-2012-5223");
  script_bugtraq_id(51647);
- script_version ("$Revision: 5963 $");
+ script_version ("$Revision: 6720 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -50,7 +50,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.vbseo.com/f5/vbseo-security-bulletin-all-supported-versions-patch-release-52783/");
  script_xref(name : "URL" , value : "http://www.vbseo.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-01-31 14:44:01 +0100 (Tue, 31 Jan 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -58,7 +58,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("vbulletin_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("vBulletin/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -72,8 +71,6 @@ include("version_func.inc");
 include("misc_func.inc");
    
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
 if(! dir = get_dir_from_kb(port:port, app:"vBulletin"))exit(0);

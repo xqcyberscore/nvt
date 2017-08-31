@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ldapsearch.nasl 5201 2017-02-05 16:06:27Z cfi $
+# $Id: ldapsearch.nasl 6604 2017-07-07 10:31:59Z cfischer $
 #
 # LDAP information extraction with ldapsearch
 #
@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.91984");
-  script_version("$Revision: 5201 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-05 17:06:27 +0100 (Sun, 05 Feb 2017) $");
+  script_version("$Revision: 6604 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:31:59 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2006-04-23 14:49:44 +0200 (Sun, 23 Apr 2006)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -35,7 +35,7 @@ if(description)
   script_family("Remote file access");
   script_dependencies("toolcheck.nasl", "ldap_detect.nasl", "ldap_null_base.nasl", "ldap_null_bind.nasl");
   script_require_ports("Services/ldap", 389, 636);
-  script_mandatory_keys("Tools/Present/ldapsearch", "ldap/detected");
+  script_mandatory_keys("ldap/detected", "Tools/Present/ldapsearch");
 
   script_add_preference(name:"timelimit value (in seconds)", type:"entry", value:"3600");
   script_add_preference(name:"sizelimit value", type:"entry", value:"500");

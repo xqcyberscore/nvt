@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0373.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: mgasa-2015-0373.nasl 6563 2017-07-06 12:23:47Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130018");
-script_version("$Revision: 6229 $");
+script_version("$Revision: 6563 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:41:34 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:23:47 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0373");
 script_tag(name: "insight", value: "Updated spice packages fix security vulnerability: A race condition flaw, leading to a heap-based memory corruption, was found in spice's worker_update_monitors_config() function, which runs under the QEMU-KVM context on the host. A user in a guest could leverage this flaw to crash the host QEMU-KVM process or, possibly, execute arbitrary code with the privileges of the host QEMU-KVM process (CVE-2015-3247)."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"6.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0373");
 script_copyright("Eero Volotinen");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantom_detect.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: gb_foxit_phantom_detect.nasl 6515 2017-07-04 11:54:15Z cfischer $
 #
 # Foxit Phantom Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script finds the Foxit Phantom version and saves
 
 if(description)
 {
-  script_id(801754);
+  script_oid("1.3.6.1.4.1.25623.1.0.801754");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6515 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-03-04 14:32:35 +0100 (Fri, 04 Mar 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Foxit Phantom Version Detection");
@@ -79,6 +79,7 @@ if("Foxit Phantom" >< name)
 }
 
 set_kb_item(name:"Foxit/Phantom/Ver", value:foxitVer);
+replace_kb_item(name:"Foxit/Phantom_or_Reader/Installed", value:TRUE);
 log_message(data:"Foxit Phantom version " + foxitVer + " was detected on the host");
       
 ## build cpe and store it as host_detail

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_youtube_gallery_component_xss_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_joomla_youtube_gallery_component_xss_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Joomla Component Youtube Gallery Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2013-5956");
   script_bugtraq_id(66245);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-17 17:05:07 +0530 (Mon, 17 Mar 2014)");
   script_name("Joomla Component Youtube Gallery Cross Site Scripting Vulnerability");
 
@@ -75,7 +75,6 @@ For updates refer to http://www.joomlaboat.com/youtube-gallery";
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Mar/264");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/joomla-youtube-gallery-340-cross-site-scripting");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125732/Joomla-Youtube-Gallery-3.4.0-Cross-Site-Scripting.html");
-  script_summary("Check if Joomla Youtube Gallery is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

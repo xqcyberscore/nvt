@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_envialosimple_mult_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_envialosimple_mult_xss_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # WordPress EnvialoSimple Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804757");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-4527");
   script_bugtraq_id(69226);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-26 16:21:56 +0530 (Tue, 26 Aug 2014)");
   script_name("WordPress EnvialoSimple Multiple Cross Site Scripting Vulnerabilities");
 
@@ -74,7 +74,6 @@ For updates refer to http://wordpress.org/plugins/envialosimple-email-marketing-
   script_tag(name : "solution" , value : tag_solution);
 
   script_xref(name : "URL" , value : "http://codevigilant.com/disclosure/wp-plugin-envialosimple-email-marketing-y-newsletters-gratis-a3-cross-site-scripting-xss");
-  script_summary("Check if WordPress EnvialoSimple Plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

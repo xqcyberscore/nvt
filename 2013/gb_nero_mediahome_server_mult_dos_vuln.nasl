@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nero_mediahome_server_mult_dos_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_nero_mediahome_server_mult_dos_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # Nero MediaHome Server Multiple Remote DoS Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803150");
-  script_version("$Revision: 6104 $");
+  script_version("$Revision: 6698 $");
   script_cve_id("CVE-2012-5876", "CVE-2012-5877");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-01-10 14:19:03 +0530 (Thu, 10 Jan 2013)");
   script_name("Nero MediaHome Server Multiple Remote DoS Vulnerabilities");
 
@@ -65,10 +65,9 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_require_ports("Services/www", 54444);
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 54444);
   script_mandatory_keys("Nero-MediaHome/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }

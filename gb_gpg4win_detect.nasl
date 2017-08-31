@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gpg4win_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_gpg4win_detect.nasl 6540 2017-07-05 12:42:02Z cfischer $
 #
 # Gpg4win And Components Version Detection (Windows)
 #
@@ -32,10 +32,10 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.801128";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 6540 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:42:02 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-11-02 14:39:30 +0100 (Mon, 02 Nov 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Gpg4win And Components Version Detection (Windows)");
@@ -108,6 +108,7 @@ foreach key (key_list)
     # Set KB for Gpg4Win
     if(gpgVer != NULL)
     {
+      replace_kb_item(name:"Gpg4win_or_Kleopatra/Win/Installed", value:TRUE);
       set_kb_item(name:"Gpg4win/Win/Ver", value:gpgVer);
 
       ## build cpe
@@ -130,6 +131,7 @@ foreach key (key_list)
         kleoVer = eregmatch(pattern:"Kleopatra: +([0-9.]+)", string:txtRead);
         if(kleoVer[1])
         {
+          replace_kb_item(name:"Gpg4win_or_Kleopatra/Win/Installed", value:TRUE);
           set_kb_item(name:"Kleopatra/Win/Ver", value:kleoVer[1]);
 
           ## build cpe

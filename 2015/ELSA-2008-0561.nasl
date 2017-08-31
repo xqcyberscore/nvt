@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2008-0561.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: ELSA-2008-0561.nasl 6553 2017-07-06 11:52:12Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122569");
-script_version("$Revision: 6345 $");
+script_version("$Revision: 6553 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:48:17 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:52:12 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2008-0561");
 script_tag(name: "insight", value: "ELSA-2008-0561 -  ruby security update - [1.8.5-5.el5_2.3]- CVE-2008-2376: Integer overflow in rb_ary_fill().[1.8.5-5.el5_2.1]- security fixes. (#451928)- CVE-2008-2662: Integer overflow in rb_str_buf_append().- CVE-2008-2663: Integer overflow in rb_ary_store().- CVE-2008-2664: Unsafe use of alloca in rb_str_format().- CVE-2008-2725: Integer overflow in rb_ary_splice().- CVE-2008-2726: Integer overflow in rb_ary_splice()."); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

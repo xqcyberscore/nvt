@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_iprint_client_dos_vuln_feb14_win.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_novell_iprint_client_dos_vuln_feb14_win.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Novell iPrint Client Denial of Service (dos) Vulnerability (Windows)
 #
@@ -30,11 +30,11 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804308";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2013-3708");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-05 21:04:07 +0530 (Wed, 05 Feb 2014)");
   script_name("Novell iPrint Client Denial of Service (dos) Vulnerability (Windows)");
 
@@ -75,7 +75,6 @@ For updates refer to http://www.novell.com";
 
   script_xref(name : "URL" , value : "https://www.novell.com/support/kb/doc.php?id=7014184");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Novell iPrint Client on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_novell_prdts_detect_win.nasl");

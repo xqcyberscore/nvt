@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_domino_http_server_mult_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_ibm_lotus_domino_http_server_mult_vuln.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # IBM Lotus Domino HTTP Server Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803187");
-  script_version("$Revision: 6079 $");
+  script_version("$Revision: 6755 $");
   script_bugtraq_id(55095, 58152);
   script_cve_id("CVE-2012-3301", "CVE-2012-3302", "CVE-2012-4842", "CVE-2012-4844");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-03-27 14:56:20 +0530 (Wed, 27 Mar 2013)");
   script_name("IBM Lotus Domino HTTP Server Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50330");
@@ -51,7 +51,6 @@ if(description)
   script_dependencies("gb_lotus_domino_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("dominowww/installed");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML or
   web script in a user's browser session in context of an affected site, compromise the application and access

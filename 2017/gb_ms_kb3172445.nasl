@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3172445.nasl 6359 2017-06-16 13:38:53Z santu $
+# $Id: gb_ms_kb3172445.nasl 6479 2017-06-29 07:59:07Z teissa $
 #
 # Microsoft SharePoint Server Multiple RCE Vulnerabilities (KB3172445)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811201");
-  script_version("$Revision: 6359 $");
+  script_version("$Revision: 6479 $");
   script_cve_id("CVE-2017-8511", "CVE-2017-8512");
   script_bugtraq_id(98815, 98816);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-16 15:38:53 +0200 (Fri, 16 Jun 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:59:07 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-06-15 14:24:16 +0530 (Thu, 15 Jun 2017)");
   script_name("Microsoft SharePoint Server Multiple RCE Vulnerabilities (KB3172445)");
 

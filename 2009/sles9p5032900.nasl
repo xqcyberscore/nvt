@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sles9p5032900.nasl 5212 2017-02-06 16:45:27Z teissa $
+# $Id: sles9p5032900.nasl 6666 2017-07-11 13:13:36Z cfischer $
 # Description: Security update for Python
 #
 # Authors:
@@ -54,8 +54,8 @@ tag_solution = "Please install the updates provided by SuSE.";
 if(description)
 {
  script_id(65027);
- script_version("$Revision: 5212 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-06 17:45:27 +0100 (Mon, 06 Feb 2017) $");
+ script_version("$Revision: 6666 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:13:36 +0200 (Tue, 11 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-10-10 16:11:46 +0200 (Sat, 10 Oct 2009)");
  script_cve_id("CVE-2008-1679", "CVE-2008-1887", "CVE-2008-3143", "CVE-2008-3142", "CVE-2008-3144", "CVE-2008-2315", "CVE-2008-2316");
  script_tag(name:"cvss_base", value:"9.3");
@@ -69,7 +69,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("SuSE Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:suse:linux_enterprise_server", "ssh/login/rpms");
+ script_mandatory_keys("ssh/login/suse_sles", "ssh/login/rpms");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name:"qod_type", value:"package");

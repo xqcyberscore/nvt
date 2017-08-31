@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_usvn_login_param_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_usvn_login_param_xss_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # User Friendly SVN 'login' Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804725");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-4719");
   script_bugtraq_id(68155);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-29 17:06:00 +0530 (Tue, 29 Jul 2014)");
   script_name("User Friendly SVN 'login' Cross Site Scripting Vulnerability");
 
@@ -52,7 +52,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127177");
   script_xref(name : "URL" , value : "http://www.zerodaylab.com/vulnerabilities/CVE-2014/CVE-2014-4719.html");
-  script_summary("Check if User-Friendly SVN is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

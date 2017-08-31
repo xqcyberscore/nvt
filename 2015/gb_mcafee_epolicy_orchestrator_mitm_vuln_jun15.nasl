@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_mitm_vuln_jun15.nasl 2651 2016-02-12 10:45:45Z benallard $
+# $Id: gb_mcafee_epolicy_orchestrator_mitm_vuln_jun15.nasl 6505 2017-07-03 09:58:27Z teissa $
 #
 # McAfee ePolicy Orchestrator Man-in-the-Middle Attack Vulnerability - June15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:epolicy_orchestrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805595");
-  script_version("$Revision: 2651 $");
+  script_version("$Revision: 6505 $");
   script_cve_id("CVE-2015-2859");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:45:45 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-06-25 14:42:10 +0530 (Thu, 25 Jun 2015)");
   script_name("McAfee ePolicy Orchestrator Man-in-the-Middle Attack Vulnerability - June15");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=KB84628");
   script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10120");
 
-  script_summary("Check if the version McAfee ePolicy Orchestrator is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: DDI_JRun_Sample_Files.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: DDI_JRun_Sample_Files.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: JRun Sample Files
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "Sample files should never be left on production
 if(description)
 {
     script_id(10996);
-    script_version("$Revision: 6046 $");
-    script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+    script_version("$Revision: 6702 $");
+    script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
     script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
     script_bugtraq_id(1386);
     script_tag(name:"cvss_base", value:"6.4");
@@ -50,12 +50,7 @@ if(description)
     name = "JRun Sample Files";
     script_name(name);
 
-
-
-
     summary = "Checks for the presence of JRun sample files";
-
-
     script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
 
@@ -63,33 +58,22 @@ if(description)
 
     family = "Malware";
     script_family(family);
-    script_dependencies("http_version.nasl");
+    script_dependencies("find_service.nasl", "http_version.nasl");
     script_require_ports("Services/www", 80);
-    
+    script_exclude_keys("Settings/disable_cgi_scanning");
+
     script_tag(name : "solution" , value : tag_solution);
     script_tag(name : "summary" , value : tag_summary);
     exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
-
-#
-# The script code starts here
-#
-
 
 file[0] = "/cfanywhere/index.html";     res[0] = "CFML Sample";
 file[1] = "/docs/servlets/index.html";  res[1] = "JRun Servlet Engine";
 file[2] = "/jsp/index.html";            res[2] = "JRun Scripting Examples";
 file[3] = "/webl/index.html";           res[3] = "What is WebL";
-
-port = get_http_port(default:80);
-
-
-
-if(!get_port_state(port)){ exit(0); }
 
 function check_page(req, pat)
 {
@@ -104,6 +88,8 @@ function check_page(req, pat)
             }
     return(0);
 }
+
+port = get_http_port(default:80);
 
 for(i=0;file[i];i=i+1)
 {

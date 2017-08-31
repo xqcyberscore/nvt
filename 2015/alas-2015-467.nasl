@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-467.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: alas-2015-467.nasl 6575 2017-07-06 13:42:08Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120453");
-script_version("$Revision: 6194 $");
+script_version("$Revision: 6575 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:26:43 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:42:08 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-467");
 script_tag(name: "insight", value: "A flaw was found in the way mailx handled the parsing of email addresses. A syntactically valid email address could allow a local attacker to cause mailx to execute arbitrary shell commands through shell meta-characters and the direct command execution functionality. (CVE-2004-2771 , CVE-2014-7844 )Note: Applications using mailx to send email to addresses obtained from untrusted sources will still remain vulnerable to other attacks if they accept email addresses which start with - (so that they can be confused with mailx options). To counteract this issue, this update also introduces the -- option, which will treat the remaining command line arguments as email addresses."); 
 script_tag(name : "solution", value : "Run yum update mailx to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"3.6");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

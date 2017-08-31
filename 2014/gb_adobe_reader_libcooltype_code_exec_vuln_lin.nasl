@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_libcooltype_code_exec_vuln_lin.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_adobe_reader_libcooltype_code_exec_vuln_lin.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Adobe Reader libCoolType Library Code Execution Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804630");
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2001-1069");
   script_bugtraq_id(3225);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-05 12:35:17 +0530 (Thu, 05 Jun 2014)");
   script_name("Adobe Reader libCoolType Library Code Execution Vulnerability (Linux)");
 
@@ -74,7 +74,6 @@ http://www.adobe.com";
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/7024");
-  script_summary("Check for the version of Adobe Reader on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

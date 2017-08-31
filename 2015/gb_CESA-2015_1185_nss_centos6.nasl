@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882209");
-  script_version("$Revision: 3327 $");
+  script_version("$Revision: 6657 $");
   script_cve_id("CVE-2015-4000");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:50:44 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-06-26 06:24:32 +0200 (Fri, 26 Jun 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for nss CESA-2015:1185 centos6 ");
@@ -62,13 +62,12 @@ which fix these security flaws, bugs, and add these enhancements.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:1185");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-June/021220.html");
-  script_summary("Check for the Version of nss");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_kolibri_bof_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_kolibri_bof_vuln.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # Kolibri Webserver 'HEAD' Request Processing Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901171");
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 6696 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-12-31 07:04:16 +0100 (Fri, 31 Dec 2010)");
   script_bugtraq_id(45579);
   script_tag(name:"cvss_base", value:"5.0");
@@ -39,7 +39,6 @@ if(description)
   script_family("Web Servers");
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 8080);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("kolibri/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to crash the

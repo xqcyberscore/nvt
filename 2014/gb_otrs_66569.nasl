@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_66569.nasl 4589 2016-11-22 08:40:50Z cfi $
+# $Id: gb_otrs_66569.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # OTRS Help Desk Cross Site Scripting/Clickjacking Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103933");
-  script_version("$Revision: 4589 $");
+  script_version("$Revision: 6756 $");
   script_bugtraq_id(66569);
   script_cve_id("CVE-2014-2553","CVE-2014-2554");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-22 09:40:50 +0100 (Tue, 22 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-03 12:44:23 +0200 (Thu, 03 Apr 2014)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N"); 
@@ -43,7 +43,6 @@ if(description)
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("secpod_otrs_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("OTRS/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66569");

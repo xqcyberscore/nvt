@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_file_upload_vuln.nasl 6264 2017-06-01 12:53:37Z cfischer $
+# $Id: gb_magento_file_upload_vuln.nasl 6766 2017-07-20 06:44:05Z cfischer $
 #
 # Magento Arbitrary File Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:magentocommerce:magento";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106792");
-  script_version("$Revision: 6264 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-01 14:53:37 +0200 (Thu, 01 Jun 2017) $");
+  script_version("$Revision: 6766 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-20 08:44:05 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-04-27 10:41:56 +0200 (Thu, 27 Apr 2017)");
   script_tag(name: "cvss_base", value: "9.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -59,11 +59,11 @@ remote code execution and thus the complete system compromise including the data
 customer information such as stored credit card numbers and other payment information. The main attack vector
 uses an additional Cross Site Request Forgery vulnerability.");
 
-  script_tag(name: "affected", value: "Magento version 2.1.6 and prior.");
+  script_tag(name: "affected", value: "Magento CE and EE prior to 2.0.14/2.1.7.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 01st June, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update to version 2.0.14/2.1.7 or later.");
 
+  script_xref(name: "URL", value: "https://magento.com/security/patches/magento-2014-and-217-security-update");
   script_xref(name: "URL", value: "http://www.defensecode.com/advisories/DC-2017-04-003_Magento_Arbitrary_File_Upload.pdf");
 
   exit(0);
@@ -78,10 +78,24 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version_is_less_equal(version: version, test_version: "2.1.6")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+if( version =~ "^2\.0" ) {
+  if (version_is_less(version: version, test_version: "2.0.14")) {
+    vuln = TRUE;
+    fix = "2.0.14";
+  }
+}
+
+if( version =~ "^2\.1" ) {
+  if (version_is_less(version: version, test_version: "2.1.7")) {
+    vuln = TRUE;
+    fix = "2.1.7";
+  }
+}
+
+if( vuln ) {
+  report = report_fixed_ver(installed_version: version, fixed_version: fix);
   security_message(port: port, data: report);
   exit(0);
 }
 
-exit(0);
+exit(99);

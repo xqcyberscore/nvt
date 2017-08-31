@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_op5_51212.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_op5_51212.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # op5 Appliance Multiple Remote Command Execution Vulnerabilities
 #
@@ -32,7 +32,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103380");
  script_bugtraq_id(51212);
  script_cve_id("CVE-2012-0261","CVE-2012-0262");
- script_version ("$Revision: 6018 $");
+ script_version ("$Revision: 6720 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("op5 Appliance Multiple Remote Command Execution Vulnerabilities");
@@ -41,14 +41,13 @@ if (description)
  script_xref(name : "URL" , value : "http://www.op5.com/news/support-news/fixed-vulnerabilities-op5-monitor-op5-appliance/");
  script_xref(name : "URL" , value : "http://www.op5.com/accessories/appliance-server/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-01-09 11:07:18 +0100 (Mon, 09 Jan 2012)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_op5_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("OP5/installed");
  script_tag(name : "solution" , value : "Updates are available. Please see the references for more details.");
  script_tag(name : "summary" , value : "op5 Appliance is prone to multiple remote command-execution
@@ -69,13 +68,9 @@ include("http_keepalive.inc");
 include("version_func.inc");
    
 if(!port = get_app_port(cpe:CPE))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name(port:port);
 
 filename = string("/license.php");
 

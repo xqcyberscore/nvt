@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-497.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-497.nasl 6575 2017-07-06 13:42:08Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120171");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6575 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:19:09 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:42:08 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-497");
 script_tag(name: "insight", value: "The ELF parser in file 5.08 through 5.21 allows remote attackers to cause a denial of service via a large number of notes. (CVE-2014-9620 )The ELF parser (readelf.c) in file before 5.21 allows remote attackers to cause a denial of service (CPU consumption or crash) via a large number of (1) program or (2) section headers or (3) invalid capabilities. (CVE-2014-8116 )It was reported that a malformed elf file can cause file urility to access invalid memory. (CVE-2014-9653 )The ELF parser in file 5.16 through 5.21 allows remote attackers to cause a denial of service via a long string. (CVE-2014-9621 )softmagic.c in file before 5.21 does not properly limit recursion, which allows remote attackers to cause a denial of service (CPU consumption or crash) via unspecified vectors. (CVE-2014-8117 )"); 
 script_tag(name : "solution", value : "Run yum update file to update your system.");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2015-497");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

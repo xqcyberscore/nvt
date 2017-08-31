@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmirror.nasl 6283 2017-06-06 10:01:29Z cfischer $
+# $Id: webmirror.nasl 6722 2017-07-14 08:54:37Z cfischer $
 #
 # WEBMIRROR 2.0
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10662");
-  script_version("$Revision: 6283 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-06 12:01:29 +0200 (Tue, 06 Jun 2017) $");
+  script_version("$Revision: 6722 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 10:54:37 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -922,6 +922,11 @@ if( dirs ) {
   URLs = make_list( start_page );
 }
 
+# From DDI_Directory_Scanner.nasl
+redirects = get_kb_list( "DDI_Directory_Scanner/" + port + "/received_redirects" );
+if( redirects )
+  URLs = make_list( URLs, redirects );
+
 URLs_hash = make_list();
 CGIs = make_list();
 Misc = make_list();
@@ -963,7 +968,11 @@ foreach URL( URLs ) {
     pre_parse( src_page:URL, data:page );
     parse_main( data:page, current:URL );
     URLs_hash[URL] = 1;
-    if( cnt >= max_pages ) break;
+    if( cnt >= max_pages ) {
+      if( debug ) display( "*** Max pages ", max_pages, " reached, stopping test.\n" );
+      replace_kb_item( name:"www/" + port + "/content/max_pages_reached", value:TRUE );
+      break;
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_dvr_dir_traversal_05_2013.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_multiple_dvr_dir_traversal_05_2013.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # Multiple DVR HTTP Server Directory Traversal Vulnerability
 #
@@ -38,7 +38,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103714";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 6104 $");
+ script_version ("$Revision: 6698 $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
@@ -46,16 +46,15 @@ if (description)
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60010");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-05-23 09:50:08 +0200 (Thu, 23 May 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("thttpd/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("thttpd/banner");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
@@ -66,7 +65,6 @@ include("http_keepalive.inc");
 include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if("Server: thttpd/" >!< banner)exit(0);

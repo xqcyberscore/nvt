@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-023.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-023.nasl 6538 2017-07-05 11:38:27Z cfischer $
 #
 # Microsoft Office Publisher Remote Code Execution Vulnerability (981160)
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902158);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6538 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-04-14 17:51:53 +0200 (Wed, 14 Apr 2010)");
   script_cve_id("CVE-2010-0479");
   script_bugtraq_id(39347);
@@ -55,9 +55,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_office_products_version_900032.nasl",
-                      "secpod_ms_office_detection_900025.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/Office/Ver", "SMB/Office/Publisher/Version");
+  script_dependencies("secpod_office_products_version_900032.nasl", "secpod_ms_office_detection_900025.nasl");
+  script_mandatory_keys("MS/Office/Ver", "SMB/Office/Publisher/Version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

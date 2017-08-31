@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872744");
-  script_version("$Revision: 6365 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-16 19:18:45 +0200 (Fri, 16 Jun 2017) $");
+  script_version("$Revision: 6634 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-06-11 07:02:19 +0200 (Sun, 11 Jun 2017)");
   script_cve_id("CVE-2017-9226", "CVE-2017-9224", "CVE-2017-9227", "CVE-2017-9229", 
                 "CVE-2017-9228");
@@ -53,7 +53,7 @@ for every regular expression object can be specified.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

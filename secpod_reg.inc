@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Include File
-# $Id: secpod_reg.inc 6246 2017-05-30 13:04:03Z cfi $
+# $Id: secpod_reg.inc 6680 2017-07-12 08:37:02Z cfischer $
 #
 # Retrieving Windows Registry Related Queries
 #
@@ -41,548 +41,503 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6246 $
+# $Revision: 6680 $
 #
 ##############################################################################
 
- include("global_settings.inc");
+include("global_settings.inc" );
 
- #-----------------------------------------------------------------------------
- # hotfix_check_sp() : This function is to check whether the OS is installed
- # with the given Service Pack or not.
- #
- # Returns Value ;
- #  1 : If the OS is installed with the given Service Pack.
- #  0 : If the OS not installed with the given Service Pack.
- # -1 : If invalid credentials or could not connect to registry.
- #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+# hotfix_check_sp() : This function is to check whether the OS is installed
+# with the given Service Pack or not.
+#
+# Return Values:
+#  1 : If the OS is NOT installed with the given Service Pack.
+#  0 : If the OS is installed with the given Service Pack.
+# -1 : If invalid credentials or could not connect to registry.
+#-----------------------------------------------------------------------------
 
- function hotfix_check_sp(nt, win2k, xp, xpx64, win2003, win2003x64, winVista, winVistax64,
-                         win7, win7x64, win2008, win2008x64, win2008r2, win8, win8x64, win2012, 
-                         win2012R2, win8_1, win8_1x64, win10, win10x64, win2016)
- {
- 	local_var winVer, SvPk;
+function hotfix_check_sp( nt, win2k, xp, xpx64, win2003, win2003x64, winVista, winVistax64,
+                          win7, win7x64, win2008, win2008x64, win2008r2, win8, win8x64, win2012,
+                          win2012R2, win8_1, win8_1x64, win10, win10x64, win2016 ) {
 
-  	winVer = get_kb_item("SMB/WindowsVersion");
-        winName = get_kb_item("SMB/WindowsName");
-        arch = get_kb_item("SMB/Windows/Arch");
-  	if(!winVer){
-		return -1;
-	}
+  local_var winVer, winName, arch, SvPk;
 
-   	if(nt && ("4.0" >< winVer))
-  	{
-    		SvPk = get_kb_item("SMB/WinNT4/ServicePack");
-		if(SvPk){
-    			SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-			 	        pattern:".*Service Pack ([0-9]).*"));
-		}
-    		else {
-			SvPk = 0;
-		}
+  winVer = get_kb_item( "SMB/WindowsVersion" );
+  winName = get_kb_item( "SMB/WindowsName" );
+  arch = get_kb_item( "SMB/Windows/Arch" );
+  if( ! winVer ) return -1;
 
-    		if(SvPk < nt){
-			return 1;
-		}
-		else {
-			return 0;
-		}
-  	}
+  if( nt && ( "4.0" >< winVer ) ) {
 
-  	else if(win2k && ("5.0" >< winVer) && ("Microsoft Windows 2000" >< winName))
-  	{
-    		SvPk = get_kb_item("SMB/Win2K/ServicePack");
-    		if(SvPk){
-			SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-			 		pattern:".*Service Pack ([0-9]).*"));
-		}
-    		else {
-			SvPk = 0;
-		}
+    SvPk = get_kb_item( "SMB/WinNT4/ServicePack" );
 
-		if(SvPk < win2k ){
-			return 1;
-		}
-    		else {
-			return 0;
-		}
-  	}
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
 
-	else if(xp && ("5.1" >< winVer) && ("Microsoft Windows XP" >< winName))
-	{
-		SvPk = get_kb_item("SMB/WinXP/ServicePack");
-		if(SvPk){
-			SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-					pattern:".*Service Pack ([0-9]).*"));
-		}
-    		else {
-			SvPk = 0;
-		}
-
-		if(SvPk < xp){
-			return 1;
-		}
-		else {
-			return 0;
-		}
-  	}
-
-        else if(xpx64 && ("5.2" >< winVer) && ("Microsoft Windows XP" >< winName) && (arch == "x64"))
-        {
-                SvPk = get_kb_item("SMB/WinXPx64/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < xpx64){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-        }
-
-  	else if(win2003 &&  ("5.2" >< winVer) && ("Microsoft Windows Server 2003" >< winName) && (arch == "x86"))
-  	{
-    		SvPk = get_kb_item("SMB/Win2003/ServicePack");
-    		if(SvPk){
-			SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-				 	pattern:".*Service Pack ([0-9]).*"));
-		}
-		else {
-			SvPk = 0;
-		}
-
-    		if(SvPk < win2003){
-			return 1;
-		}
-		else {
-			return 0;
-		}
-  	}
-
-        else if(win2003x64 && ("5.2" >< winVer) && ("Microsoft Windows Server 2003" >< winName) && (arch == "x64"))
-        {
-                SvPk = get_kb_item("SMB/Win2003x64/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < win2003x64){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-        }
-
-        else if(winVista &&  ("6.0" >< winVer) && ("Windows Vista" >< winName) && (arch == "x86"))
-        {
-                SvPk = get_kb_item("SMB/WinVista/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < winVista){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-
-        }
-
-        else if(winVistax64 &&  ("6.0" >< winVer) && ("Windows Vista" >< winName) && (arch == "x64"))
-        {
-                SvPk = get_kb_item("SMB/WinVistax64/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < winVistax64){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-         }
-
-        else if(win7 &&  ("6.1" >< winVer) && ("Windows 7" >< winName) && (arch == "x86"))
-        {
-                SvPk = get_kb_item("SMB/Win7/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < win7){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-
-        }
-
-        else if(win7x64 &&  ("6.1" >< winVer) && ("Windows 7" >< winName) && (arch == "x64"))
-        {
-                SvPk = get_kb_item("SMB/Win7x64/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < win7x64){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-
-        }
-
-        else if(win2008 &&  ("6.0" >< winVer) && ("Windows Server (R) 2008" >< winName) && (arch == "x86"))
-        {
-                SvPk = get_kb_item("SMB/Win2008/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < win2008){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-
-        }
-
-        else if(win2008x64 &&  ("6.0" >< winVer) && ("Windows Server (R) 2008" >< winName) && (arch == "x64"))
-        {
-                SvPk = get_kb_item("SMB/Win2008x64/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < win2008x64){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-
-        }
-
-	else if(win2008r2 &&  ("6.1" >< winVer) && ("Windows Server 2008 R2" >< winName) && (arch == "x64"))
-        {
-                SvPk = get_kb_item("SMB/Win2008R2/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < win2008r2){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-        }
-        
-        else if(win8 &&  ("6.2" >< winVer) && ("Windows 8" >< winName) && (arch == "x86"))
-        {
-                SvPk = get_kb_item("SMB/Win8/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < win8){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-        }
-
-        else if(win8x64 &&  ("6.2" >< winVer) && ("Windows 8" >< winName) && (arch == "x64"))
-        {
-                SvPk = get_kb_item("SMB/Win8x64/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < win8x64){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-        }
-        
-        else if(win2012 &&  ("6.2" >< winVer) && ("Windows Server 2012" >< winName) && (arch == "x64"))
-        {
-                SvPk = get_kb_item("SMB/Win2012/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < win2012){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-        }
-
-        else if(win2012R2 &&  ("6.3" >< winVer) && ("Windows Server 2012 R2" >< winName) && (arch == "x64"))
-        {
-                SvPk = get_kb_item("SMB/Win2012R2/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < win2012R2){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-        }
-
-        else if(win8_1 &&  ("6.3" >< winVer) && ("Windows 8.1" >< winName) && (arch == "x86"))
-        {
-                SvPk = get_kb_item("SMB/Win8.1/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < win8_1){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-        }
-
-        else if(win8_1x64 &&  ("6.3" >< winVer) && ("Windows 8.1" >< winName) && (arch == "x64"))
-        {
-                SvPk = get_kb_item("SMB/Win8.1x64/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
- 
-                if(SvPk < win8_1x64){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-        }
-
-       else if(win10 &&  ("6.3" >< winVer) && ("Windows 10" >< winName) && (arch == "x86"))
-        {
-                SvPk = get_kb_item("SMB/Win10/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < win10){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-        }
-
-        else if(win10x64 &&  ("6.3" >< winVer) && ("Windows 10" >< winName) && (arch == "x64"))
-        {
-                SvPk = get_kb_item("SMB/Win10x64/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < win10x64){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-        }
-
-        else if(win2016 &&  ("6.3" >< winVer) && ("Windows Server 2016" >< winName ) && (arch == "x64" ))
-        {
-                SvPk = get_kb_item("SMB/Win2016/ServicePack");
-                if(SvPk){
-                        SvPk = int(ereg_replace(string:SvPk, replace:"\1",
-                                        pattern:".*Service Pack ([0-9]).*"));
-                }
-                else {
-                        SvPk = 0;
-                }
-
-                if(SvPk < win2016){
-                        return 1;
-                }
-                else {
-                        return 0;
-                }
-        }
-
-       return -1;
- }
-
- #-----------------------------------------------------------------------------
- # hotfix_missing() : This function is to check whether the OS is installed
- # with given hotfix or not.
- #
- # Returns Value :
- #  1 : If hotfix is missing.
- #  0 : If hotfix is present.
- # -1 : If invalid credentials or could not connect to registry.
- #-----------------------------------------------------------------------------
-
- function hotfix_missing(name)
- {
-       local_var KB, key;
-
-      KB = get_kb_list("SMB/Registry/*");
-      if(isnull(KB) || max_index(make_list(keys(KB))) == 0){
- 		return -1;
- 	}
-
- 	if("KB" >< name){
-		name -= "KB";
- 	}
- 	else if("Q" >< name){
-		name -= "Q";
- 	}
- 	else if("M" >< name){
-		name -= "M";
-	}
-
- 	foreach key (keys(KB))
- 	{
-                if(ereg(pattern:"SMB/Registry/HKLM/SOFTWARE/Microsoft/(Updates/.*|" +
-                                "Windows NT/CurrentVersion/HotFix)/(KB|Q|M)" + name,
-                        string:key) ){
-                        return 0;
-                }
-                else if(ereg(pattern:"SMB/Registry/HKLM/SOFTWARE/Microsoft/Windows/" +
-                                     "CurrentVersion/Component Based Servicing/" +
-                                     "Packages/[P|P]ackage.?[0-9].?for.?KB.*" + name, string:key)){
-                     return 0;
-                }
-  	}
+    if( SvPk < nt ) {
       return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win2k && ( "5.0" >< winVer ) && ( "Microsoft Windows 2000" >< winName ) ) {
+
+    SvPk = get_kb_item( "SMB/Win2K/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win2k ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( xp && ( "5.1" >< winVer ) && ( "Microsoft Windows XP" >< winName ) ) {
+
+    SvPk = get_kb_item( "SMB/WinXP/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < xp ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( xpx64 && ( "5.2" >< winVer ) && ( "Microsoft Windows XP" >< winName ) && ( arch == "x64" ) ) {
+
+    SvPk = get_kb_item( "SMB/WinXPx64/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < xpx64 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win2003 && ( "5.2" >< winVer ) && ( "Microsoft Windows Server 2003" >< winName ) && ( arch == "x86" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win2003/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int(ereg_replace(string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win2003 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win2003x64 && ( "5.2" >< winVer ) && ( "Microsoft Windows Server 2003" >< winName ) && ( arch == "x64" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win2003x64/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win2003x64 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( winVista && ( "6.0" >< winVer ) && ( "Windows Vista" >< winName ) && ( arch == "x86" ) ) {
+
+    SvPk = get_kb_item( "SMB/WinVista/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < winVista ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( winVistax64 && ( "6.0" >< winVer ) && ( "Windows Vista" >< winName ) && ( arch == "x64" ) ) {
+
+    SvPk = get_kb_item( "SMB/WinVistax64/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < winVistax64 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win7 && ( "6.1" >< winVer ) && ( "Windows 7" >< winName ) && ( arch == "x86" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win7/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win7 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win7x64 && ( "6.1" >< winVer ) && ( "Windows 7" >< winName ) && ( arch == "x64" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win7x64/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win7x64 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win2008 && ( "6.0" >< winVer ) && ( "Windows Server (R) 2008" >< winName ) && ( arch == "x86" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win2008/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win2008 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win2008x64 && ( "6.0" >< winVer ) && ( "Windows Server (R) 2008" >< winName ) && ( arch == "x64" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win2008x64/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win2008x64 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win2008r2 && ( "6.1" >< winVer ) && ( "Windows Server 2008 R2" >< winName ) && ( arch == "x64" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win2008R2/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win2008r2 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win8 && ( "6.2" >< winVer ) && ( "Windows 8" >< winName ) && ( arch == "x86" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win8/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win8 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win8x64 && ( "6.2" >< winVer ) && ( "Windows 8" >< winName ) && ( arch == "x64" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win8x64/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win8x64 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win2012 && ( "6.2" >< winVer ) && ( "Windows Server 2012" >< winName ) && ( arch == "x64" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win2012/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win2012 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win2012R2 && ( "6.3" >< winVer ) && ( "Windows Server 2012 R2" >< winName ) && ( arch == "x64" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win2012R2/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win2012R2 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win8_1 && ( "6.3" >< winVer ) && ( "Windows 8.1" >< winName ) && ( arch == "x86" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win8.1/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win8_1) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win8_1x64 && ( "6.3" >< winVer ) && ( "Windows 8.1" >< winName ) && ( arch == "x64" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win8.1x64/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win8_1x64 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if(win10 && ( "6.3" >< winVer ) && ( "Windows 10" >< winName ) && ( arch == "x86" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win10/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win10 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win10x64 && ( "6.3" >< winVer ) && ( "Windows 10" >< winName ) && ( arch == "x64" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win10x64/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win10x64 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  else if( win2016 && ( "6.3" >< winVer ) && ( "Windows Server 2016" >< winName ) && (arch == "x64" ) ) {
+
+    SvPk = get_kb_item( "SMB/Win2016/ServicePack" );
+
+    if( SvPk ) {
+      SvPk = int( ereg_replace( string:SvPk, replace:"\1", pattern:".*Service Pack ([0-9]).*" ) );
+    } else {
+      SvPk = 0;
+    }
+
+    if( SvPk < win2016 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+  return -1;
 }
 
+#-----------------------------------------------------------------------------
+# hotfix_missing() : This function is to check whether the OS is installed
+# with given hotfix or not.
+#
+# Returns Value :
+#  1 : If hotfix is missing.
+#  0 : If hotfix is present.
+# -1 : If invalid credentials or could not connect to registry.
+#-----------------------------------------------------------------------------
 
-function hotfix_check_domain_controler()
-{
-  local_var product_options;
-  product_options = get_kb_item("SMB/Registry/HKLM/SYSTEM/CurrentControlSet/Control/ProductOptions");
-  if(!product_options){
+function hotfix_missing( name ) {
+
+  local_var KB, key;
+
+  if( isnull( name ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#hotfix_missing" );
+
+  KB = get_kb_list( "SMB/Registry/*" );
+
+  if( isnull( KB ) || max_index( make_list( keys( KB ) ) ) == 0 ) {
     return -1;
   }
-  if("LanmanNT" >< product_options)
+
+  if( "KB" >< name ) {
+    name -= "KB";
+  } else if( "Q" >< name ) {
+    name -= "Q";
+  } else if( "M" >< name ) {
+    name -= "M";
+  }
+
+  foreach key( keys( KB ) ) {
+
+    if( ereg( pattern:"SMB/Registry/HKLM/SOFTWARE/Microsoft/(Updates/.*|" +
+                      "Windows NT/CurrentVersion/HotFix)/(KB|Q|M)" + name,
+              string:key ) ) {
+      return 0;
+    } else if( ereg( pattern:"SMB/Registry/HKLM/SOFTWARE/Microsoft/Windows/" +
+                             "CurrentVersion/Component Based Servicing/" +
+                             "Packages/[P|P]ackage.?[0-9].?for.?KB.*" + name,
+                     string:key ) ) {
+      return 0;
+    }
+  }
+  return 1;
+}
+
+function hotfix_check_domain_controler() {
+
+  local_var product_options;
+
+  product_options = get_kb_item( "SMB/Registry/HKLM/SYSTEM/CurrentControlSet/Control/ProductOptions" );
+
+  if( ! product_options )
+    return -1;
+  else if( "LanmanNT" >< product_options )
     return 1;
-  else return 0;
+  else
+    return 0;
 }
 
-function hotfix_check_nt_server()
-{
+function hotfix_check_nt_server() {
+
   local_var product_options;
-  product_options = get_kb_item("SMB/Registry/HKLM/SYSTEM/CurrentControlSet/Control/ProductOptions");
-  if(!product_options){
+
+  product_options = get_kb_item( "SMB/Registry/HKLM/SYSTEM/CurrentControlSet/Control/ProductOptions" );
+
+  if( ! product_options )
     return -1;
-  }
-  if("WinNT" >< product_options)
+  else if( "WinNT" >< product_options )
     return 0;
-  else return 1;
+  else
+    return 1;
 }
 
-function hotfix_check_exchange_installed()
-{
+function hotfix_check_exchange_installed() {
+
   local_var vers;
-  vers = get_kb_item("SMB/Registry/HKLM/SOFTWARE/Microsoft/Exchange/Setup/ServicePackBuild");
-  if(!vers)
+
+  vers = get_kb_item( "SMB/Registry/HKLM/SOFTWARE/Microsoft/Exchange/Setup/ServicePackBuild" );
+  if( ! vers )
     return NULL;
-  else return vers;
+  else
+    return vers;
 }
 
-function hotfix_check_iis_installed()
-{
+function hotfix_check_iis_installed() {
+
   local_var w3svc;
-  w3svc = get_kb_item("SMB/Registry/HKLM/SYSTEM/CurrentControlSet/Services/W3SVC/ImagePath");
-  if(!w3svc){
+
+  w3svc = get_kb_item( "SMB/Registry/HKLM/SYSTEM/CurrentControlSet/Services/W3SVC/ImagePath" );
+  if( ! w3svc )
     return -1;
-  }
-  if("inetinfo" >!< w3svc)
+  else if( "inetinfo" >!< w3svc )
     return 0;
-  else return 1;
+  else
+    return 1;
 }

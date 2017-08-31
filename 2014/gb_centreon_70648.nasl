@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_70648.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_centreon_70648.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Centreon and Centreon Enterprise Server Multiple SQL Injection Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-3828","CVE-2014-3829");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6769 $");
 
  script_name("Centreon and Centreon Enterprise Server Multiple SQL Injection Vulnerabilities");
 
@@ -58,16 +58,14 @@ Centreon Enterprise Server 2.2 and prior versions");
 
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-10-28 12:37:14 +0100 (Tue, 28 Oct 2014)");
- script_summary("Determine if it is possible to inject sql code");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_analysis");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("centreon_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("centreon/installed");
  exit(0);
 }

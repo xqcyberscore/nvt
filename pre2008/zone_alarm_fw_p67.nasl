@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: zone_alarm_fw_p67.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: zone_alarm_fw_p67.nasl 6532 2017-07-05 07:42:05Z cfischer $
 # Description: ZoneAlarm Personal Firewall port 67 flaw
 #
 # Authors:
@@ -39,42 +39,28 @@ tag_solution = "Upgrade at least to version 2.1.25";
 
 if(description)
 {
- script_id(14660);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(1137);
- script_cve_id("CVE-2000-0339");  
- script_xref(name:"OSVDB", value:"1294");
+  script_oid("1.3.6.1.4.1.25623.1.0.14660");
+  script_version("$Revision: 6532 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(1137);
+  script_cve_id("CVE-2000-0339");  
+  script_xref(name:"OSVDB", value:"1294");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("ZoneAlarm Personal Firewall port 67 flaw");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_family("Firewalls");
+  script_dependencies("zone_alarm_local_dos.nasl");
+  script_mandatory_keys("zonealarm/version");
 
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
 
- name = "ZoneAlarm Personal Firewall port 67 flaw";
-
- script_name(name);
- 
-
- summary = "Check ZoneAlarm version";
-
- 
- script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
- 
- script_copyright("This script is Copyright (C) 2004 David Maciejak");
- 
- family = "Firewalls";
- script_family(family);
- 
- script_dependencies("secpod_reg_enum.nasl", "zone_alarm_local_dos.nasl");
- script_require_keys("SMB/name", "SMB/login", "SMB/password",
-		     "SMB/domain","SMB/transport");
- script_mandatory_keys("SMB/WindowsVersion", "zonealarm/version");
 
- script_require_ports(139, 445);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 zaversion = get_kb_item ("zonealarm/version");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_keepalive.inc 5997 2017-04-21 07:33:08Z cfi $
+# $Id: http_keepalive.inc 6781 2017-07-21 08:31:34Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5997 $
+# $Revision: 6781 $
 #
 ###############################################################################
 
@@ -234,8 +234,9 @@ if( 0 ) on_exit(); #TBD: Whats the purpose of this?
 # host on port <port>, and returns the result, or NULL if no connection
 # could be established.
 #
-function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_body_only ) {
+function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_body_only, headersonly ) {
 
+  local_var headersonly;
   local_var id, n, ret, headers;
   local_var soc, r, body, lendata;
 
@@ -293,6 +294,10 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
     if( "content-encoding: gzip" >< tolower( headers ) )
       body = http_gunzip( buf:body, onlybody:TRUE );
 
+    if( headersonly ) {
+      return( headers );
+    }
+
     if( bodyonly ) {
       return( body );
     } else {
@@ -324,6 +329,10 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
       return NULL;
     }
     headers = http_recv_headers2( socket:__ka_socket );
+  }
+
+  if( headersonly ) {
+    return( headers );
   }
 
   # Allows to fetch pages with e.g. only Content-Type: text/html by passing
@@ -440,19 +449,31 @@ function get_http_page( port, url, redirect ) {
 
 function http_get_cache( port, item ) {
 
-  local_var req, res;
+  local_var port, item, req, res;
 
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_get_cache" );
-  if( ! item ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#item#-#http_get_cache" );
+  if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_get_cache" );
+  if( ! item ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#item#-#http_get_cache" );
 
   res = get_kb_item( "Cache/" + port + "/URL_" + item );
   if( res ) return res;
 
   req = http_get( port:port, item:item );
-  res = http_keepalive_send_recv( port:port, data:req );
+  res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
   if( ! res ) return NULL;
 
-  replace_kb_item( name:"Cache/" + port + "/URL_" + item, value:res );
+  # Only save a valid HTTP response into the KB. We also
+  # don't want so save the following HTTP status codes
+  # into our cache which might be just temporary:
+  # Internal Server Errors (5xx)
+  # Too Many Requests (429)
+  # Request Timeout (408)
+  if( res !~ "^HTTP/1\.[01] 50[0-9]" &&
+      res !~ "^HTTP/1\.[01] 51[01]" &&
+      res !~ "^HTTP/1\.[01] 408" &&
+      res !~ "^HTTP/1\.[01] 429" &&
+      res =~ "^HTTP/1\.[01]" ) {
+    replace_kb_item( name:"Cache/" + port + "/URL_" + item, value:res );
+  }
 
   return res;
 }

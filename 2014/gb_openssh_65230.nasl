@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_65230.nasl 4336 2016-10-24 15:48:20Z mime $
+# $Id: gb_openssh_65230.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # OpenSSH 'schnorr.c' Remote Memory Corruption Vulnerability
 #
@@ -51,16 +51,15 @@ if (description)
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_version ("$Revision: 4336 $");
+ script_version ("$Revision: 6715 $");
 
  script_name("OpenSSH 'schnorr.c' Remote Memory Corruption Vulnerability");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65230");
  script_xref(name:"URL", value:"http://www.openssh.com");
  
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:48:20 +0200 (Mon, 24 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-04-09 12:35:11 +0200 (Wed, 09 Apr 2014)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

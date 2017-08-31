@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3256.nasl 2733 2016-02-26 10:26:36Z benallard $
+# $Id: deb_3256.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3256-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703256);
-    script_version("$Revision: 2733 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2015-3622");
     script_name("Debian Security Advisory DSA 3256-1 (libtasn1-6 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:26:36 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-05-10 00:00:00 +0200 (Sun, 10 May 2015)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -42,14 +42,13 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3256.html");
 
-    script_summary("Debian Security Advisory DSA 3256-1 (libtasn1-6 - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "libtasn1-6 on Debian Linux");
         script_tag(name: "insight",   value: "Manage ASN1 (Abstract Syntax Notation One) structures.
 The main features of this library are:

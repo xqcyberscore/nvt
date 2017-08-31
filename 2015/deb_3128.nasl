@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3128.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: deb_3128.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3128-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703128);
-    script_version("$Revision: 6211 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2013-6885", "CVE-2014-8133", "CVE-2014-9419", "CVE-2014-9529",
                   "CVE-2014-9584");
     script_name("Debian Security Advisory DSA 3128-1 (linux - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-01-15 00:00:00 +0100 (Thu, 15 Jan 2015)");
     script_tag(name:"cvss_base", value:"7.2");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "linux on Debian Linux");
         script_tag(name: "insight",   value: "The Linux kernel is the core of the Linux operating system.");
     script_tag(name: "solution",  value: "For the stable distribution (wheezy), these problems have been fixed in

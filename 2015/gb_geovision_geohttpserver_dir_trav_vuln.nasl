@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geovision_geohttpserver_dir_trav_vuln.nasl 5629 2017-03-20 15:36:33Z cfi $
+# $Id: gb_geovision_geohttpserver_dir_trav_vuln.nasl 6700 2017-07-12 12:16:21Z cfischer $
 #
 # GeoVision GeoHttpServer WebCams Directory Traversal Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805072");
-  script_version("$Revision: 5629 $");
+  script_version("$Revision: 6700 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:36:33 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-06-25 15:49:40 +0530 (Thu, 25 Jun 2015)");
   script_name("GeoVision GeoHttpServer WebCams Directory Traversal Vulnerability");
 
@@ -61,14 +61,12 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37258");
 
-  script_summary("Check if GeoVision GeoHttpServer is prone to directory traversal");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
-  script_mandatory_keys("GeoHttpServer/banner");
   script_require_ports("Services/www", 81);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("GeoHttpServer/banner");
 
   exit(0);
 }

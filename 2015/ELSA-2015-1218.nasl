@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1218.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: ELSA-2015-1218.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123083");
-script_version("$Revision: 6431 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:59:09 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1218");
 script_tag(name: "insight", value: "ELSA-2015-1218 -  php security update - [5.3.3-46]- fix gzfile accept paths with NUL character #1213407- fix patch for CVE-2015-4024[5.3.3-45]- fix more functions accept paths with NUL character #1213407[5.3.3-44]- soap: missing fix for #1222538 and #1204868[5.3.3-43]- core: fix multipart/form-data request can use excessive amount of CPU usage CVE-2015-4024- fix various functions accept paths with NUL character CVE-2015-4026, #1213407- ftp: fix integer overflow leading to heap overflow when reading FTP file listing CVE-2015-4022- phar: fix buffer over-read in metadata parsing CVE-2015-2783- phar: invalid pointer free() in phar_tar_process_metadata() CVE-2015-3307- phar: fix buffer overflow in phar_set_inode() CVE-2015-3329- phar: fix memory corruption in phar_parse_tarfile caused by empty entry file name CVE-2015-4021- soap: more fix type confusion through unserialize #1222538[5.3.3-42]- soap: more fix type confusion through unserialize #1204868[5.3.3-41]- core: fix double in zend_ts_hash_graceful_destroy CVE-2014-9425- core: fix use-after-free in unserialize CVE-2015-2787- exif: fix free on unitialized pointer CVE-2015-0232- gd: fix buffer read overflow in gd_gif.c CVE-2014-9709- date: fix use after free vulnerability in unserialize CVE-2015-0273- enchant: fix heap buffer overflow in enchant_broker_request_dict CVE-2014-9705- phar: use after free in phar_object.c CVE-2015-2301- soap: fix type confusion through unserialize"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

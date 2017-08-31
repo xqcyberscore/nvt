@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winamp_flv_memory_corrup_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_winamp_flv_memory_corrup_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Winamp '.flv' File Processing Memory Corruption Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:nullsoft:winamp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804826");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-3442");
   script_bugtraq_id(67429);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-03 15:23:48 +0530 (Wed, 03 Sep 2014)");
   script_name("Winamp '.flv' File Processing Memory Corruption Vulnerability");
 
@@ -76,7 +76,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/93173");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126636");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of XnView on Windows");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_family("General");

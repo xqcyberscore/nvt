@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netiq_access_manager_mult_vuln_12_14.nasl 3853 2016-08-18 12:59:06Z mime $
+# $Id: gb_netiq_access_manager_mult_vuln_12_14.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # NetIQ Access Manager XSS / CSRF / XXE Injection / Disclosure
 #
@@ -31,7 +31,7 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105149");
  script_cve_id("CVE-2014-5214","CVE-2014-5216","CVE-2014-5217","CVE-2014-5215");
- script_version ("$Revision: 3853 $");
+ script_version ("$Revision: 6759 $");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P"); 
 
@@ -62,16 +62,14 @@ injection, information disclosure, and cross site scripting vulnerabilities.");
 
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-18 14:59:06 +0200 (Thu, 18 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-12-19 15:05:33 +0100 (Fri, 19 Dec 2014)");
- script_summary("Check for XSS attack");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_netiq_access_manager_detect.nasl");
  script_require_ports("Services/www", 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("netiq_access_manager/installed");
 
  exit(0);

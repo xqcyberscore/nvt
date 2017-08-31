@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872690");
-  script_version("$Revision: 6213 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-26 10:21:23 +0200 (Fri, 26 May 2017) $");
+  script_version("$Revision: 6634 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-05-20 07:14:53 +0200 (Sat, 20 May 2017)");
   script_cve_id("CVE-2017-6318");
   script_tag(name:"cvss_base", value:"5.0");
@@ -52,7 +52,7 @@ hand-held scanner, video and still cameras, frame-grabbers, etc.).
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

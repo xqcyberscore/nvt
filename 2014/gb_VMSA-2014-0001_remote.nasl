@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2014-0001_remote.nasl 2492 2016-01-22 14:46:36Z benallard $
+# $Id: gb_VMSA-2014-0001_remote.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # VMSA-2014-0001 VMware ESXi address several security issues (remote check).
 #
@@ -56,15 +56,14 @@ if (description)
  script_cve_id("CVE-2014-1207","CVE-2014-1208");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 2492 $");
+ script_version ("$Revision: 6769 $");
  script_name("VMSA-2014-0001 VMware ESXi address several security issues (remote check).");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0001.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:46:36 +0100 (Fri, 22 Jan 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-20 12:04:01 +0100 (Mon, 20 Jan 2014)");
- script_summary("Check the build number");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

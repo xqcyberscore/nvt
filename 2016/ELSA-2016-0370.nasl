@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0370.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: ELSA-2016-0370.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122895");
-script_version("$Revision: 5588 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-03-11 07:06:40 +0200 (Fri, 11 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0370");
 script_tag(name: "insight", value: "ELSA-2016-0370 -  nss-util security update - [3.19.1-5]- Actually apply the fix for CVE-2016-1950 from NSS 3.19.2.3 ...[3.19.1-4]- Rebuild to ensure use of correct NSPR.[3.19.1-3]- Include the fix for CVE-2016-1950 from NSS 3.19.2.3"); 
 script_tag(name : "solution", value : "update software");
@@ -41,7 +41,7 @@ script_tag(name:"cvss_base", value:"6.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

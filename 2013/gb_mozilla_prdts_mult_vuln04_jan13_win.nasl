@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln04_jan13_win.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_mozilla_prdts_mult_vuln04_jan13_win.nasl 6469 2017-06-28 14:24:07Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities-04 January13 (Windows)
 #
@@ -57,13 +57,13 @@ tag_summary = "This host is installed with Mozilla Firefox/Thunderbird/Seamonkey
 if(description)
 {
   script_id(803204);
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 6469 $");
   script_cve_id("CVE-2013-0764", "CVE-2013-0768", "CVE-2013-0757", "CVE-2013-0745",
                 "CVE-2013-0747", "CVE-2013-0752", "CVE-2013-0755", "CVE-2013-0756");
   script_bugtraq_id(57211, 57204, 57236, 57240, 57241, 57213, 57215);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 16:24:07 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2013-01-16 16:41:34 +0530 (Wed, 16 Jan 2013)");
   script_name("Mozilla Products Multiple Vulnerabilities-04 January13 (Windows)");
 
@@ -83,10 +83,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
-                      "gb_thunderbird_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver", "Seamonkey/Win/Ver", "Thunderbird/Win/Ver",
-                      "Firefox-ESR/Win/Ver", "Thunderbird-ESR/Win/Ver");
+  script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl", "gb_thunderbird_detect_win.nasl");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

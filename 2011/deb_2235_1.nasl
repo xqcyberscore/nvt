@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2235_1.nasl 5413 2017-02-24 08:22:28Z teissa $
+# $Id: deb_2235_1.nasl 6613 2017-07-07 12:08:40Z cfischer $
 # Description: Auto-generated from advisory DSA 2235-1 (icedove)
 #
 # Authors:
@@ -72,8 +72,8 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 if(description)
 {
  script_id(69731);
- script_version("$Revision: 5413 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-24 09:22:28 +0100 (Fri, 24 Feb 2017) $");
+ script_version("$Revision: 6613 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:40 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-08-03 04:36:20 +0200 (Wed, 03 Aug 2011)");
  script_cve_id("CVE-2011-0065", "CVE-2011-0066", "CVE-2011-0067", "CVE-2011-0069", "CVE-2011-0070", "CVE-2011-0071", "CVE-2011-0072", "CVE-2011-0073", "CVE-2011-0074", "CVE-2011-0075", "CVE-2011-0077", "CVE-2011-0078", "CVE-2011-0080", "CVE-2011-0081");
  script_tag(name:"cvss_base", value:"10.0");
@@ -87,7 +87,7 @@ if(description)
  script_copyright("Copyright (c) 2011 E-Soft Inc. http://www.securityspace.com");
  script_family("Debian Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);

@@ -30,12 +30,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6692 $");
   script_bugtraq_id(46377);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-10 12:10:05 +0530 (Fri, 10 Jan 2014)");
   script_name("TYPO3 Backend Unspecified CSRF Vulnerability");
 
@@ -74,7 +74,6 @@ http://typo3.org/";
   script_tag(name : "affected" , value : tag_affected);
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/65387");
-  script_summary("Check for the vulnerable version of TYPO3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

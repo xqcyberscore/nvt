@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgres_eol.nasl 6428 2017-06-26 07:51:28Z cfischer $
+# $Id: gb_postgres_eol.nasl 6494 2017-06-30 08:10:34Z cfischer $
 #
 # PostgreSQL End Of Life Detection (Linux)
 #
@@ -32,8 +32,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.140158");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 6428 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-26 09:51:28 +0200 (Mon, 26 Jun 2017) $");
+  script_version("$Revision: 6494 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 10:10:34 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-02-14 13:48:20 +0100 (Tue, 14 Feb 2017)");
   script_name("PostgreSQL End Of Life Detection (Linux)");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -74,13 +74,13 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if( ret = product_reached_eol( cpe:CPE, version:version ) )
-{
-  report = 'The PostgreSQL version has reached the end of life.\n\n' +
-           'Installed version: ' + version + '\n' +
-           'EOL version:       ' + ret['eol_version'] + '\n' +
-           'EOL date:          ' + ret['eol_date'] + '\n';
-
+if( ret = product_reached_eol( cpe:CPE, version:version ) ) {
+  report = build_eol_message( name:"PostgreSQL",
+                              cpe:CPE,
+                              version:version,
+                              eol_version:ret["eol_version"],
+                              eol_date:ret["eol_date"],
+                              eol_type:"prod" );
   security_message( port:port, data:report );
   exit( 0 );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nvt_debugging.nasl 5858 2017-04-04 13:51:59Z cfi $
+# $Id: nvt_debugging.nasl 6779 2017-07-21 05:34:46Z cfischer $
 #
 # Report NVT debug logs
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111091");
-  script_version("$Revision: 5858 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 15:51:59 +0200 (Tue, 04 Apr 2017) $");
+  script_version("$Revision: 6779 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 07:34:46 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-03-25 15:12:12 +0100 (Fri, 25 Mar 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,8 +65,10 @@ foreach item( items ) {
   x_function = x[2];
 
   if( "1.3.6.1.4.1.25623.1.0.11160" >< x_oid ) continue; # ftp_administrator.nasl needs an empty password
-  if( "http_keepalive_recv_body" >< x_function || "http_keepalive_check_connection" >< x_function || "http_gunzip" >< x_function  ) continue; # Hide until those are debugged
+  if( "http_keepalive_recv_body" >< x_function || "http_keepalive_check_connection" >< x_function || "http_gunzip" >< x_function  ) continue; # TODO. Hide until those are debugged
   if( "1.3.6.1.4.1.25623.1.0.14707" >< x_oid ) continue; # typsoftftp_empty_username_dos.nasl needs an empty username
+  if( "1.3.6.1.4.1.25623.1.0.100259" >< x_oid ) continue; # ssh_proto_version.nasl is not passing a login. TODO: Check this
+  if( "1.3.6.1.4.1.25623.1.0.102011" >< x_oid && "smb_session_setup_NTLMvN" >< x_function ) continue; # smb_neg_prot_cs in smb_nativelanman.nasl doesn't return a value against Samba servers
 
   found = TRUE;
   if( "port" >< x_variable && "get_app_location" >< x_function ) {

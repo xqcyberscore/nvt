@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841526);
-  script_version("$Revision: 2932 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:15:28 +0100 (Thu, 24 Mar 2016) $");
+  script_version("$Revision: 6644 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:01:20 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-08-08 11:48:18 +0530 (Thu, 08 Aug 2013)");
   script_cve_id("CVE-2013-4242");
   script_tag(name:"cvss_base", value:"1.9");
@@ -61,7 +61,7 @@ data, which could be used to expose the contents of private keys.";
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

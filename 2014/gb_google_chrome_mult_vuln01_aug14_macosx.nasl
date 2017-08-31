@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_aug14_macosx.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_google_chrome_mult_vuln01_aug14_macosx.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities - 01 Aug14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804811");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-3165", "CVE-2014-3166", "CVE-2014-3167");
   script_bugtraq_id(69201, 69202, 69203);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-19 11:25:08 +0530 (Tue, 19 Aug 2014)");
   script_name("Google Chrome Multiple Vulnerabilities - 01 Aug14 (Mac OS X)");
 
@@ -80,7 +80,6 @@ For updates refer to http://www.google.com/chrome";
   script_xref(name : "URL" , value : "https://www.hkcert.org/my_url/en/alert/14081401");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2014/08/stable-channel-update.html");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Google Chrome on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");

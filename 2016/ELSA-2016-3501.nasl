@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-3501.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: ELSA-2016-3501.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122823");
-script_version("$Revision: 5505 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-01-11 11:11:59 +0200 (Mon, 11 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-3501");
 script_tag(name: "insight", value: "ELSA-2016-3501 - Unbreakable Enterprise kernel security update - kernel-uek[3.8.13-118.2.4]- KEYS: Don't permit request_key() to construct a new keyring (David Howells) [Orabug: 22373442] {CVE-2015-7872}[3.8.13-118.2.3]- dcache: Handle escaped paths in prepend_path (Eric W. Biederman) [Orabug: 22373283] - vfs: Test for and handle paths that are unreachable from their mnt_root (Eric W. Biederman) [Orabug: 22249875] - KEYS: Fix crash when attempt to garbage collect an uninstantiated keyring (David Howells) [Orabug: 22373442] {CVE-2015-7872}- KEYS: Fix race between key destruction and finding a keyring by name (David Howells) [Orabug: 22373442]"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

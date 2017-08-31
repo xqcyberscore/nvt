@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zenbership_mul_sql_inj_vuln.nasl 6370 2017-06-19 13:00:34Z teissa $
+# $Id: gb_zenbership_mul_sql_inj_vuln.nasl 6855 2017-08-04 13:23:41Z cfischer $
 #
 # Zenbership 1.0.8 CMS - Multiple SQL Injection Vulnerabilities
 #
@@ -29,17 +29,18 @@ CPE = 'cpe:/a:castlamp:zenbership';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107222");
-  script_version("$Revision: 6370 $");
-  script_tag(name:"last_modification", value:"$Date$");
+  script_version("$Revision: 6855 $");
+  script_cve_id("CVE-2017-9759");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-04 15:23:41 +0200 (Fri, 04 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-06-19 11:59:56 +0200 (Mon, 19 Jun 2017)");
 
 
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_name("Zenbership 1.0.8 CMS - Multiple SQL Injection Vulnerabilities.");
+  script_name("Zenbership 1.0.8 CMS - Multiple SQL Injection Vulnerabilities");
 
   script_tag(name: "summary", value: "Zenbership is vulnerable to multiple SQL injection vulnerabilities.");
 
@@ -53,7 +54,7 @@ request.");
   script_tag(name: "affected", value: "Zenbership - Content Management System (Web-Application) 1.0.8");
 
   script_tag(name: "solution", value: "No solution or patch is available as of
-  19th June, 2017. Information regarding this issue will be updated once the
+  04th August, 2017. Information regarding this issue will be updated once the
   solution details are available. For updates refer to https://www.zenbership.com/");
 
   script_xref(name: "URL" , value: "http://seclists.org/fulldisclosure/2017/Jun/16");

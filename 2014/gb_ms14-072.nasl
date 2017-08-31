@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-072.nasl 5365 2017-02-20 13:46:09Z cfi $
+# $Id: gb_ms14-072.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Microsoft .NET Framework Privilege Elevation Vulnerability (3005210)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804791");
-  script_version("$Revision: 5365 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-4149");
   script_bugtraq_id(70979);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:46:09 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-12 11:23:27 +0530 (Wed, 12 Nov 2014)");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerability (3005210)");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name:"URL", value:"https://support.microsoft.com/kb/3005210");
   script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS14-072");
 
-  script_summary("Check for the vulnerable 'System.Runtime.Remoting.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

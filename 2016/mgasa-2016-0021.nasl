@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0021.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: mgasa-2016-0021.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131183");
-script_version("$Revision: 5557 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-01-15 08:28:59 +0200 (Fri, 15 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0021");
 script_tag(name: "insight", value: "Out-of-bounds heap read in librsvg2 was found when parsing SVG file (CVE-2015-7557). Stack exhaustion due to cyclic dependency causing to crash an application was found in librsvg2 while parsing SVG file (CVE-2015-7558). The librsvg package has been updated to version 2.40.13, fixing these issues and several other bugs. See the upstream NEWS file for details."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0021");
 script_copyright("Eero Volotinen");

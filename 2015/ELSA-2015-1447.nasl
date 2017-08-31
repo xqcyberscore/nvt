@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1447.nasl 6391 2017-06-21 09:59:48Z teissa $
+# $Id: ELSA-2015-1447.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123069");
-script_version("$Revision: 6391 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:58:57 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1447");
 script_tag(name: "insight", value: "ELSA-2015-1447 -  grep security, bug fix, and enhancement update - [2.20-3]- Updated pcre buildrequires to require pcre-devel >= 7.8-7 Related: rhbz#1193030[2.20-2]- Fixed invalid UTF-8 byte sequence error in PCRE mode (by pcre-backported-fixes patch) Resolves: rhbz#1193030- Fixed buffer overrun for grep -F Resolves: CVE-2015-1345- Fixed bogus date in the changelog[2.20-1]- New version Resolves: rhbz#1064668 Resolves: rhbz#982215 Resolves: rhbz#1126757 Resolves: rhbz#1167766 Resolves: rhbz#1171806- Fixed \w and \W behaviour in multibyte locales Resolves: rhbz#799863- Documented --fixed-regexp option Resolves: rhbz#1103270"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"4.4");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_http_manager_bof_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: gb_asterisk_http_manager_bof_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # Asterisk HTTP Manager Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802838");
-  script_version("$Revision: 6022 $");
+  script_version("$Revision: 6697 $");
   script_cve_id("CVE-2012-1184");
   script_bugtraq_id(52815);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-04-23 16:56:33 +0530 (Mon, 23 Apr 2012)");
   script_name("Asterisk HTTP Manager Buffer Overflow Vulnerability");
 
@@ -45,9 +45,8 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_require_ports("Services/www", 8080, 8088);
   script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 8080, 8088);
   script_mandatory_keys("Asterisk/banner");
 
   script_tag(name:"insight", value:"The flaw is due to an error in the 'ast_parse_digest()' function

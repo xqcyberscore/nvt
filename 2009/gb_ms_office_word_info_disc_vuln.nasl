@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_word_info_disc_vuln.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: gb_ms_office_word_info_disc_vuln.nasl 6523 2017-07-04 15:46:12Z cfischer $
 #
 # Microsoft Word 2007 Sensitive Information Disclosure Vulnerability
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is installed with Microsoft Word and is prone to
 if(description)
 {
   script_id(800343);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6523 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:46:12 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-02-06 13:48:17 +0100 (Fri, 06 Feb 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -55,10 +55,8 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_office_products_version_900032.nasl",
-                      "secpod_ms_office_detection_900025.nasl");
-  script_require_keys("MS/Office/Ver", "SMB/Office/Word/Version");
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_dependencies("secpod_office_products_version_900032.nasl", "secpod_ms_office_detection_900025.nasl");
+  script_mandatory_keys("MS/Office/Ver", "SMB/Office/Word/Version");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

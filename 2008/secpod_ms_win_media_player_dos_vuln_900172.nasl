@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_win_media_player_dos_vuln_900172.nasl 5657 2017-03-21 11:08:08Z cfi $
+# $Id: secpod_ms_win_media_player_dos_vuln_900172.nasl 6532 2017-07-05 07:42:05Z cfischer $
 # Description: Microsoft Windows Media Player 'MIDI' or 'DAT' File DoS Vulnerability
 #
 # Authors:
@@ -41,8 +41,8 @@ For updates refer to http://windows.microsoft.com/en-us/windows/windows-media ";
 if(description)
 {
   script_id(900172);
-  script_version("$Revision: 5657 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 6532 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-11-11 15:58:44 +0100 (Tue, 11 Nov 2008)");
   script_bugtraq_id(32077);
   script_cve_id("CVE-2008-4927");
@@ -55,9 +55,8 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.securityfocus.com/data/vulnerabilities/exploits/32077.py");
 
-  script_dependencies("secpod_reg_enum.nasl",
-                      "secpod_ms_win_media_player_detect_900173.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "Win/MediaPlayer/Ver");
+  script_dependencies("secpod_ms_win_media_player_detect_900173.nasl");
+  script_mandatory_keys("Win/MediaPlayer/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);

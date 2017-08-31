@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_dir_trav_sym16_016.nasl 6029 2017-04-26 07:02:41Z teissa $
+# $Id: gb_symantec_messaging_gateway_dir_trav_sym16_016.nasl 6493 2017-06-30 07:00:59Z ckuersteiner $
 #
 # Symantec Messaging Gateway Directory Traversal Vulnerability (SYM16-016)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807891");
-  script_version("$Revision: 6029 $");
+  script_version("$Revision: 6493 $");
   script_cve_id("CVE-2016-5312");
   script_bugtraq_id(93148);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 09:02:41 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 09:00:59 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-09-30 10:38:42 +0530 (Fri, 30 Sep 2016)");
   script_name("Symantec Messaging Gateway Directory Traversal Vulnerability (SYM16-016)");
 
@@ -77,15 +77,8 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-
-##Variable Initialization
-sgPort = "";
-req = "";
-res = "";
-
-if(!sgPort = get_app_port(cpe:CPE)){
+if (!sgPort = get_app_port(cpe: CPE, service: "www"))
   exit(0);
-}
 
 ##Construct attack request
 url = "/brightmail/servlet/com.ve.kavachart.servlet.ChartStream?sn=../../WEB-INF/lib";

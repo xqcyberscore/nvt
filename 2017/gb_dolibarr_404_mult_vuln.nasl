@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_404_mult_vuln.nasl 6157 2017-05-18 08:15:25Z teissa $
+# $Id: gb_dolibarr_404_mult_vuln.nasl 6834 2017-08-02 12:03:22Z asteins $
 #
 # Dolibarr ERP & CRM <= 4.0.4 Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:dolibarr:dolibarr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108160");
-  script_version("$Revision: 6157 $");
-  script_cve_id("CVE-2017-7886", "CVE-2017-7887", "CVE-2017-7888", "CVE-2017-7889");
+  script_version("$Revision: 6834 $");
+  script_cve_id("CVE-2017-7886", "CVE-2017-7887", "CVE-2017-7888", "CVE-2017-8879");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 10:15:25 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-02 14:03:22 +0200 (Wed, 02 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-05-15 10:42:44 +0200 (Mon, 15 May 2017)");
   script_name("Dolibarr ERP & CRM <= 4.0.4 Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -45,6 +45,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2017/q2/243");
   script_xref(name:"URL", value:"https://www.foxmole.com/advisories/foxmole-2017-02-23.txt");
+  script_xref(name:"URL", value:"https://github.com/Dolibarr/dolibarr/issues/6504");
 
   tag_summary = "This host is running Dolibarr ERP & CRM and is prone to multiple vulnerabilities.";
 
@@ -67,8 +68,7 @@ if(description)
   - allowing password changes without supplying the current password, which makes it easier for
   physically proximate attackers to obtain access via an unattended workstation.";
 
-  tag_solution = "No solution or patch is available as of 15th May, 2017. Information regarding this
-  issue will be updated once the solution details are available.";
+  tag_solution = "Upgrade to Dolibarr ERP/CRM version 4.0.7/5.0.3/6.0.0 or later. For updates refer to https://www.dolibarr.org";
 
   script_tag(name:"impact", value:tag_impact);
   script_tag(name:"affected", value:tag_affected);
@@ -76,7 +76,7 @@ if(description)
   script_tag(name:"solution", value:tag_solution);
   script_tag(name:"summary", value:tag_summary);
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);

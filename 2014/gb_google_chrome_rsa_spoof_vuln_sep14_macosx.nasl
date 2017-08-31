@@ -1,6 +1,6 @@
 #############################################################################/##
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_rsa_spoof_vuln_sep14_macosx.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_google_chrome_rsa_spoof_vuln_sep14_macosx.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Google Chrome RSA Spoof Vulnerability September14 (Macosx)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804927");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-1568");
   script_bugtraq_id(70116);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-30 10:00:31 +0530 (Tue, 30 Sep 2014)");
 
   script_name("Google Chrome RSA Spoof Vulnerability September14 (Macosx)");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2014/09/stable-channel-update-for-chrome-os_24.html");
   script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2014/09/stable-channel-update_24.html");
 
-  script_summary("Check for the vulnerable version of Google Chrome on Macosx");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

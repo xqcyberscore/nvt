@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_nsx_webui_default_credentials.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_vmware_nsx_webui_default_credentials.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Vmware NSX Web Management Interface Default Credentials
 #
@@ -28,13 +28,12 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105423");
- script_version("$Revision: 2748 $");
+ script_version("$Revision: 6637 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Vmware NSX Web Management Interface Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-10-27 16:29:45 +0100 (Tue, 27 Oct 2015)");
- script_summary("Determine if it is possible to login with default credentials");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

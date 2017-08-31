@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_IIS_Compromised.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: DDI_IIS_Compromised.nasl 6695 2017-07-12 11:17:53Z cfischer $
 #
 # IIS Possible Compromise
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11003");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6695 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
@@ -39,7 +39,6 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl", "DDI_Directory_Scanner.nasl", "webmirror.nasl");
   script_mandatory_keys("IIS/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   tag_summary = "One or more files were found on this host that 
   indicate a possible compromise.";

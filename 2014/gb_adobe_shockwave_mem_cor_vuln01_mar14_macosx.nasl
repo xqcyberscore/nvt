@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804518";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-0505");
   script_bugtraq_id(66182);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-21 14:15:03 +0530 (Fri, 21 Mar 2014)");
   script_name("Adobe Shockwave Player Memory Corruption Vulnerability Mar14 (Mac OS X)");
 
@@ -76,7 +76,6 @@ For updates refer to http://get.adobe.com/shockwave";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57277");
   script_xref(name : "URL" , value : "https://www.hkcert.org/my_url/en/alert/14031701");
   script_xref(name : "URL" , value : "http://helpx.adobe.com/security/products/shockwave/apsb14-10.html");
-  script_summary("Check for the vulnerable version of Adobe Shockwave Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

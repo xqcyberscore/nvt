@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_application_server_68210.nasl 3775 2016-07-29 16:30:59Z mime $
+# $Id: gb_ibm_websphere_application_server_68210.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # IBM WebSphere Application Server Unspecified Information Disclosure Vulnerability
 #
@@ -49,7 +49,7 @@ if (description)
  script_cve_id("CVE-2014-0965","CVE-2014-3022");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 3775 $");
+ script_version ("$Revision: 6692 $");
 
  script_name("IBM WebSphere Application Server Unspecified Information Disclosure Vulnerability");
 
@@ -59,9 +59,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.ibm.com");
  script_xref(name:"URL", value:"http://www-4.ibm.com/software/webservers/appserv/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-07-29 18:30:59 +0200 (Fri, 29 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-08-21 11:58:12 +0200 (Thu, 21 Aug 2014)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");

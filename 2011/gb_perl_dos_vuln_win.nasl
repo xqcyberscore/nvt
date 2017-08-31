@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_dos_vuln_win.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_perl_dos_vuln_win.nasl 6483 2017-06-29 08:51:15Z cfischer $
 #
 # Perl Denial of Service Vulnerability (Windows)
 #
@@ -41,8 +41,8 @@ tag_summary = "The host is installed with Perl and is prone to denial of service
 if(description)
 {
   script_id(801790);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6483 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:51:15 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-05-23 15:31:07 +0200 (Mon, 23 May 2011)");
   script_cve_id("CVE-2011-0761");
   script_bugtraq_id(47766);
@@ -58,7 +58,7 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_perl_detect_win.nasl");
-  script_require_keys("Strawberry/Perl/Ver", "ActivePerl/Ver");
+  script_mandatory_keys("Perl/Strawberry_or_Active/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

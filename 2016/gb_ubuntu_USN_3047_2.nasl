@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842861");
-  script_version("$Revision: 5557 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_version("$Revision: 6647 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:04:05 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-08-13 05:52:38 +0200 (Sat, 13 Aug 2016)");
   script_cve_id("CVE-2016-5403", "CVE-2016-4439", "CVE-2016-4441", "CVE-2016-5238",
 		"CVE-2016-5338", "CVE-2016-6351", "CVE-2016-4453", "CVE-2016-4454",
@@ -92,7 +92,7 @@ crash, resulting in a denial of service. (CVE-2016-5403)");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

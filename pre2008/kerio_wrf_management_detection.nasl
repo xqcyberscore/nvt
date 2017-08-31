@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: kerio_wrf_management_detection.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: kerio_wrf_management_detection.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Kerio WinRoute Firewall HTTP/HTTPS Management Detection
 #
 # Authors:
@@ -39,8 +39,8 @@ or filter incoming requests to the ports from untrusted sources.";
 
 if (description) {
  script_id(20225);
- script_version("$Revision: 6056 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -57,7 +57,7 @@ if (description) {
 
  script_copyright("This script is Copyright (C) 2005 Ferdy Riphagen");
 
- script_dependencies("http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 4080, 4081);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
@@ -76,9 +76,6 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.20225";
 SCRIPT_DESC = "Kerio WinRoute Firewall HTTP/HTTPS Management Detection";
 
 port = get_http_port(default:4080);
-if (!get_port_state(port)) get_http_port(default:4081);
-if (!get_port_state(port)) exit(0);
-
 
 res = http_get_cache(item: "/", port: port);
 if (!res) exit(0);

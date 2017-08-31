@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_audemat_fmb80_default_telnet_credentials.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_audemat_fmb80_default_telnet_credentials.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Audemat FMB80 RDS Encoder Default root Credentials
 #
@@ -39,7 +39,7 @@ tag_solution = 'Change/Set the password.';
 if (description)
 {
  script_oid(SCRIPT_OID); 
- script_version("$Revision: 2780 $");
+ script_version("$Revision: 6724 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Audemat FMB80 RDS Encoder Default root Credentials");
@@ -47,9 +47,8 @@ if (description)
 
  script_xref(name:"URL" , value:"http://dariusfreamon.wordpress.com/2014/01/28/audemat-fmb80-rds-encoder-default-root-credentials/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-29 15:02:06 +0200 (Wed, 29 Jan 2014)");
- script_summary("Determine if it is possible to login with default credentials.");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");

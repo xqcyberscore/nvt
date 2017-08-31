@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_sametime_xss_vuln.nasl 2398 2016-01-14 10:39:46Z cfi $
+# $Id: gb_ibm_lotus_sametime_xss_vuln.nasl 6719 2017-07-13 13:53:39Z cfischer $
 #
 # IBM Lotus Sametime Server 'stcenter.nsf' Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801901");
-  script_version("$Revision: 2398 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-14 11:39:46 +0100 (Thu, 14 Jan 2016) $");
+  script_version("$Revision: 6719 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-03-09 16:08:21 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2011-1106");
   script_tag(name:"cvss_base", value:"4.3");
@@ -47,7 +47,6 @@ if(description)
   script_dependencies("gb_lotus_domino_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("dominowww/installed");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to execute
   arbitrary HTML and script code in a user's browser session in context of an affected site.

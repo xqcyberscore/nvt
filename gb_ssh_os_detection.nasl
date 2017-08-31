@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_os_detection.nasl 6378 2017-06-20 11:53:10Z cfischer $
+# $Id: gb_ssh_os_detection.nasl 6881 2017-08-09 06:55:24Z cfischer $
 #
 # SSH OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105586");
-  script_version("$Revision: 6378 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 13:53:10 +0200 (Tue, 20 Jun 2017) $");
+  script_version("$Revision: 6881 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-09 08:55:24 +0200 (Wed, 09 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-03-23 14:28:40 +0100 (Wed, 23 Mar 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -59,8 +59,7 @@ if( ! get_port_state( port ) ) exit( 0 );
 
 banner = get_kb_item( "SSH/banner/" + port );
 if( ! banner  || banner == "" || isnull( banner ) ) exit( 0 );
-
-#TODO: Also check "SSH/textbanner/" + port ?
+textbanner = get_kb_item( "SSH/textbanner/" + port );
 
 #For banners see e.g. https://github.com/BetterCrypto/Applied-Crypto-Hardening/blob/master/unsorted/ssh/ssh_version_strings.txt
 
@@ -165,7 +164,7 @@ if( "ubuntu" >< tolower( banner ) )
     exit( 0 );
   }
 
-  if( "SSH-2.0-OpenSSH_6.6p1 Ubuntu-2" >< banner )
+  if( "SSH-2.0-OpenSSH_6.6p1 Ubuntu-2" >< banner || "SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2" >< banner )
   {
     register_and_report_os( os:"Ubuntu", version:"14.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
@@ -212,7 +211,7 @@ if( "ubuntu" >< tolower( banner ) )
   exit( 0 );
 }
 
-else if( "Debian" >< banner )
+else if( "Debian" >< banner || "Raspbian" >< banner )
 {
   if( "SSH-2.0-OpenSSH_5.1p1 Debian" >< banner )
   {
@@ -226,21 +225,22 @@ else if( "Debian" >< banner )
     exit( 0 );
   }
 
-  if( "SSH-2.0-OpenSSH_6.0p1 Debian-4" >< banner )
+  # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
+  if( "SSH-2.0-OpenSSH_6.0p1 Debian-4" >< banner || ( "~bpo7" >< banner && "SSH-2.0-OpenSSH_" >< banner ) )
   {
-    register_and_report_os( os:"Debian GNU/Linux", version:"7.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
 
-  if( "SSH-2.0-OpenSSH_6.7p1 Debian-5" >< banner )
+  if( "SSH-2.0-OpenSSH_6.7p1 Debian-5" >< banner || "SSH-2.0-OpenSSH_6.7p1 Raspbian-5" >< banner || ( "~bpo8" >< banner && "SSH-2.0-OpenSSH_" >< banner )  )
   {
-    register_and_report_os( os:"Debian GNU/Linux", version:"8.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
 
-  if( "SSH-2.0-OpenSSH_7.4p1 Debian-10" >< banner )
+  if( "SSH-2.0-OpenSSH_7.4p1 Debian-10" >< banner || ( "~bpo9" >< banner && "SSH-2.0-OpenSSH_" >< banner ) )
   {
-    register_and_report_os( os:"Debian GNU/Linux", version:"9.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
 
@@ -314,43 +314,61 @@ else if( "NetBSD" >< banner )
 
 else if( "CISCO_WLC" >< banner )
 {
-  register_and_report_os( os:"Cisco Wireless Lan Controller", cpe:"cpe:/o:cisco:wireless_lan_controller", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unknown" );
+  register_and_report_os( os:"Cisco Wireless Lan Controller", cpe:"cpe:/o:cisco:wireless_lan_controller", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 
-else if( eregmatch( string:banner, pattern:"cisco|FIPS User Access Verification", icase:TRUE ) )
+else if( eregmatch( string:banner, pattern:"cisco|FIPS User Access Verification", icase:TRUE ) || "Cisco Systems, Inc. All rights Reserved" >< textbanner )
 {
-  register_and_report_os( os:"Cisco", cpe:"cpe:/o:cisco", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unknown" );
+  register_and_report_os( os:"Cisco", cpe:"cpe:/o:cisco", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 
 else if( "SSH-2.0-Sun" >< banner )
 {
-  register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unknown" );
+  register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 
 else if( "SSH-2.0-NetScreen" >< banner )
 {
-  register_and_report_os( os:"NetScreen ScreenOS", cpe:"cpe:/o:juniper:netscreen_screenos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unknown" );
+  register_and_report_os( os:"NetScreen ScreenOS", cpe:"cpe:/o:juniper:netscreen_screenos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 
 else if( eregmatch( string:banner, pattern:"SSH-2.0-xxxxxxx|FortiSSH" ) )
 {
-  register_and_report_os( os:"FortiOS", cpe:"cpe:/o:fortinet:fortios", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unknown" );
+  register_and_report_os( os:"FortiOS", cpe:"cpe:/o:fortinet:fortios", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 
 else if( "OpenVMS" >< banner )
 {
-  register_and_report_os( os:"OpenVMS", cpe:"cpe:/o:hp:openvms", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unknonw" );
+  register_and_report_os( os:"OpenVMS", cpe:"cpe:/o:hp:openvms", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 
 else if( "SSH-2.0-MS_" >< banner )
 {
   register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows_10:::iot", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  exit( 0 );
+}
+
+else if( "SSH-2.0-WeOnlyDo-wodFTPD" >< banner )
+{
+  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  exit( 0 );
+}
+
+else if( "SSH-2.0-mpSSH_" >< banner )
+{
+  register_and_report_os( os:"HP iLO", cpe:"cpe:/o:hp:integrated_lights-out", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+else if( "SSH-2.0-Data ONTAP SSH" >< banner )
+{
+  register_and_report_os( os:"NetApp Data ONTAP", cpe:"cpe:/o:netapp:data_ontap", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 

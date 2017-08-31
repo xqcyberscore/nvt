@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2404_1.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: deb_2404_1.nasl 6612 2017-07-07 12:08:03Z cfischer $
 # Description: Auto-generated from advisory DSA 2404-1 (xen-qemu-dm-4.0)
 #
 # Authors:
@@ -54,8 +54,8 @@ if(description)
  script_tag(name:"cvss_base", value:"7.4");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:C/A:C");
  script_cve_id("CVE-2012-0029");
- script_version("$Revision: 5958 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+ script_version("$Revision: 6612 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-02-12 06:39:51 -0500 (Sun, 12 Feb 2012)");
  script_name("Debian Security Advisory DSA 2404-1 (xen-qemu-dm-4.0)");
 
@@ -65,7 +65,7 @@ if(description)
  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
  script_family("Debian Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);

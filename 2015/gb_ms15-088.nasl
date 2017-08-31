@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-088.nasl 3146 2016-04-22 11:06:11Z antu123 $
+# $Id: gb_ms15-088.nasl 6453 2017-06-28 09:59:05Z teissa $
 #
 # MS Windows Command Line Parameter Information Disclosure Vulnerability (3082458)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806012");
-  script_version("$Revision: 3146 $");
+  script_version("$Revision: 6453 $");
   script_cve_id("CVE-2015-2423");
   script_bugtraq_id(76202);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 13:06:11 +0200 (Fri, 22 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-12 08:30:53 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Command Line Parameter Information Disclosure Vulnerability (3082458)");
@@ -73,7 +73,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3079757");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-088");
 
-  script_summary("Check for the vulnerable 'Notepad.exe' and 'Shell32.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

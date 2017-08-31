@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ms_lync_server_remote_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: sw_ms_lync_server_remote_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # Microsoft Lync Server Remote Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111035");
-  script_version("$Revision: 5877 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_version("$Revision: 6701 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-09-03 16:00:00 +0200 (Thu, 03 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,9 +39,8 @@ if(description)
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("RTC/banner");
   script_require_ports("Services/www", 443);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("RTC/banner");
 
   script_tag(name : "summary" , value : "The script sends a HTTP
   request to the server and attempts to identify Microsoft Lync Server.");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0514.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: ELSA-2013-0514.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123689");
-script_version("$Revision: 6229 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:07:16 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0514");
 script_tag(name: "insight", value: "ELSA-2013-0514 -  php security, bug fix and enhancement update - [5.3.3-22] - php-xml provides php-xmlreader and php-xmlwriter (#874987) - fix possible NULL derefence and buffer overflow (#879179) - fix zend garbage collector (#848186, #868375) [5.3.3-21] - fix CVE reference in previous changelog entry [5.3.3-20] - remove reproducer from security fix for CVE-2012-0781 [5.3.3-19] - add FastCGI Process Manager (php-fpm) SAPI (#806132, #824293) [5.3.3-18] - php script hangs when it exceeds max_execution_time when inside an ODBC call (#864951) [5.3.3-17] - add security fixes for CVE-2012-2688, CVE-2012-0831, CVE-2011-1398 [5.3.3-16] - fix stream support in fileinfo (#858653) - fix imap_open DISABLE_AUTHENTICATOR param ignores array (#859371) [5.3.3-15] - fix permission on source files (#676364) - fix negative keys with var_export (#771738) - fix setDate when DateTime created from timestamp (#812819) - add php(language) and missing provides (#837042) - use arch-specific requires (#833545) - fix possible buffer overflow in pdo_odbc (#836264) - fix possible segfault in pdo_mysql (#824199)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

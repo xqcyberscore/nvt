@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-060.nasl 3008 2016-04-07 13:17:01Z antu123 $
+# $Id: gb_ms14-060.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Windows OLE Object Handling Arbitrary Code Execution Vulnerability (3000869)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804860");
-  script_version("$Revision: 3008 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-4114");
   script_bugtraq_id(70419);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 15:17:01 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-15 10:28:55 +0530 (Wed, 15 Oct 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
 
@@ -70,7 +70,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/60972");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3000869");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms14-060");
-  script_summary("Check for the vulnerable 'Packager.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

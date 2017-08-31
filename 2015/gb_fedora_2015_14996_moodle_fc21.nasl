@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869945");
-  script_version("$Revision: 6357 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
+  script_version("$Revision: 6630 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-09-16 07:40:44 +0200 (Wed, 16 Sep 2015)");
   script_cve_id("CVE-2015-3181", "CVE-2015-3180", "CVE-2015-3178", "CVE-2015-3179",
                 "CVE-2015-3176", "CVE-2015-3177", "CVE-2015-3174", "CVE-2015-3175",
@@ -52,7 +52,7 @@ principles, to help educators create effective online learning communities.
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

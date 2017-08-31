@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_ip_cameras_dir_trav_vuln.nasl 6429 2017-06-26 08:48:56Z ckuersteiner $
+# $Id: gb_mult_ip_cameras_dir_trav_vuln.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # Multiple IP-Cameras Directory Traversal Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106907");
-  script_version("$Revision: 6429 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-26 10:48:56 +0200 (Mon, 26 Jun 2017) $");
+  script_version("$Revision: 6701 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-06-26 14:23:36 +0700 (Mon, 26 Jun 2017)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -49,7 +49,6 @@ if (description)
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Boa/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name: "summary", value: "The IP-Camera is prone to a diretory traversal vulnerability.");
 

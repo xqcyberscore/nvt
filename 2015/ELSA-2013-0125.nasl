@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0125.nasl 6329 2017-06-13 15:39:42Z teissa $
+# $Id: ELSA-2013-0125.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123763");
-script_version("$Revision: 6329 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:08:12 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0125");
 script_tag(name: "insight", value: "ELSA-2013-0125 -  wireshark security, bug fix, and enhancement update - [1.0.15-5.0.1.el5] - Added oracle-ocfs2-network.patch - increase max packet size to 65536 (Herbert van den Bergh) [orabug 13542633] [1.0.15-5] - fixed CVE-2012-4285, CVE-2012-4289, CVE-2012-4291 and CVE-2012-4290 (#849521) [1.0.15-4] - fixed NetDump dissector (#484999) [1.0.15-3] - fixed various flaws: CVE-2011-1959 CVE-2011-2175 CVE-2011-1958 CVE-2011-2698 CVE-2011-4102 CVE-2012-0041 CVE-2012-0042 CVE-2012-0066 CVE-2012-0067 [1.0.15-2] - fixed tshark -s option (#580513) - fixed tshark exit code when dumpcap fails (#580510) - fixed editing of columns in Wireshark preferences (#493693) - added netdump protocol dissector (#484999) - fixed tshark / Wireshark automatic filter when started in ssh connection over IPv6 (#438473)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"4.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

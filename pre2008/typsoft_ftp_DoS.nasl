@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: typsoft_ftp_DoS.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: typsoft_ftp_DoS.nasl 6472 2017-06-28 19:56:31Z cfischer $
 # Description: TypSoft FTP STOR/RETR DoS
 #
 # Authors:
@@ -45,8 +45,8 @@ tag_solution = "upgrade your software or use another FTP service.";
 if(description)
 {
  script_id(11097);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 6472 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-28 21:56:31 +0200 (Wed, 28 Jun 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(3409);
  script_tag(name:"cvss_base", value:"5.0");
@@ -68,7 +68,6 @@ if(description)
  script_family(family);
  script_dependencies("find_service.nasl", "secpod_ftp_anonymous.nasl");
  script_require_ports("Services/ftp", 21);
- script_exclude_keys("ftp/false_ftp");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

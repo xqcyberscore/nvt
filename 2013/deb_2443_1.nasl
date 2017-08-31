@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2443_1.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: deb_2443_1.nasl 6611 2017-07-07 12:07:20Z cfischer $
 # Auto-generated from advisory DSA 2443-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -70,10 +70,10 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(892443);
-    script_version("$Revision: 6104 $");
+    script_version("$Revision: 6611 $");
     script_cve_id("CVE-2012-1097", "CVE-2011-4347", "CVE-2009-4307", "CVE-2011-1833", "CVE-2012-1090", "CVE-2012-0045");
     script_name("Debian Security Advisory DSA 2443-1 (linux-2.6 - privilege escalation/denial of service)");
-    script_tag(name: "last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-07-07 14:07:20 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name:"creation_date", value:"2013-09-18 11:53:02 +0200 (Wed, 18 Sep 2013)");
     script_tag(name: "cvss_base", value:"7.2");
     script_tag(name: "cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -86,7 +86,7 @@ if(description)
     script_copyright("Copyright (c) 2013 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: tag_affected);
     script_tag(name: "insight",   value: tag_insight);
 #    script_tag(name: "impact",    value: tag_impact);

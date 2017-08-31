@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-115.nasl 3146 2016-04-22 11:06:11Z antu123 $
+# $Id: gb_ms15-115.nasl 6486 2017-06-29 09:59:06Z teissa $
 #
 # Microsoft Windows Remote Code Execution Vulnerabilities (3105864)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806157");
-  script_version("$Revision: 3146 $");
+  script_version("$Revision: 6486 $");
   script_cve_id("CVE-2015-6100", "CVE-2015-6101", "CVE-2015-6102", "CVE-2015-6103",
                 "CVE-2015-6104", "CVE-2015-6109", "CVE-2015-6113");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 13:06:11 +0200 (Fri, 22 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-11 10:53:23 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft Windows Remote Code Execution Vulnerabilities (3105864)");
 
@@ -82,7 +82,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3101746");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms15-115");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

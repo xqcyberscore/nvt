@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mdksa_2009_086.nasl 4975 2017-01-10 16:07:01Z teissa $
+# $Id: mdksa_2009_086.nasl 6587 2017-07-07 06:35:35Z cfischer $
 # Description: Auto-generated from advisory MDVSA-2009:086 (gstreamer-plugins)
 #
 # Authors:
@@ -46,8 +46,8 @@ announced via advisory MDVSA-2009:086.";
 if(description)
 {
  script_id(63719);
- script_version("$Revision: 4975 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-10 17:07:01 +0100 (Tue, 10 Jan 2017) $");
+ script_version("$Revision: 6587 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 08:35:35 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-04-06 20:58:11 +0200 (Mon, 06 Apr 2009)");
  script_cve_id("CVE-2009-0398");
  script_tag(name:"cvss_base", value:"9.3");
@@ -61,7 +61,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("Mandrake Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("login/SSH/success", "ssh/login/rpms");
+ script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/rpms");
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

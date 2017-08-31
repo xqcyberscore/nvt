@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2010-0062.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: ELSA-2010-0062.nasl 6555 2017-07-06 11:54:09Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122397");
-script_version("$Revision: 6333 $");
+script_version("$Revision: 6555 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:18:15 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:09 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2010-0062");
 script_tag(name: "insight", value: "ELSA-2010-0062 -  bind security update - [30:9.3.6-4.P1.2]- NSEC validation code could cause wrong NXDOMAIN responses (#554851, CVE-2010-0097)- improve fix for CVE-2009-4022 (#538744) - {C,D}NAMEs could be returned to clients without proper DNSSEC validation - don't validate + cache out-of-bailiwick data returned with a secure answer. Refetch it instead."); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.6");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

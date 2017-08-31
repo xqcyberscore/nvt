@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_monlist_enabled.nasl 5655 2017-03-21 10:44:19Z cfi $
+# $Id: gb_ntp_monlist_enabled.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # NTP Monlist Feature Enabled
 #
@@ -49,7 +49,7 @@ if (description)
  script_cve_id("CVE-2013-5211");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5655 $");
+ script_version ("$Revision: 6759 $");
 
  script_name("NTP Monlist Feature Enabled");
 
@@ -57,9 +57,8 @@ if (description)
  script_xref(name:"URL", value:"http://bugs.ntp.org/show_bug.cgi?id=1532");
  script_xref(name:"URL", value:"http://lists.ntp.org/pipermail/pool/2011-December/005616.html");
  
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-06 14:14:08 +0100 (Mon, 06 Jan 2014)");
- script_summary("Determine if monlist command is enabled");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Denial of Service");

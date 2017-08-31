@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3743.nasl 4855 2016-12-27 10:54:25Z antu123 $
+# $Id: deb_3743.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3743-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703743);
-    script_version("$Revision: 4855 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2016-9964");
     script_name("Debian Security Advisory DSA 3743-1 (python-bottle - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-12-27 11:54:25 +0100 (Tue, 27 Dec 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-12-20 00:00:00 +0100 (Tue, 20 Dec 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "python-bottle on Debian Linux");
     script_tag(name: "insight",   value: "Bottle is a fast and simple
 WSGI-framework for the Python programming language. It offers request

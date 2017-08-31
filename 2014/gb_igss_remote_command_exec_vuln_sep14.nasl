@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_igss_remote_command_exec_vuln_sep14.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_igss_remote_command_exec_vuln_sep14.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # 7T Interactive Graphical SCADA System 'dc.exe' Command Injection Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804768");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2011-1566");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-25 16:14:02 +0530 (Thu, 25 Sep 2014)");
 
 
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://aluigi.altervista.org/adv/igss_8-adv.txt");
   script_xref(name : "URL" , value : "https://ics-cert.us-cert.gov/alerts/ICS-ALERT-11-080-03");
 
-  script_summary("Check if Interactive Graphical SCADA System is vulnerable to remote command execution");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

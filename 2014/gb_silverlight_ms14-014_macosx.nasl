@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms14-014_macosx.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_silverlight_ms14-014_macosx.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Microsoft Silverlight Security Bypass Vulnerability (2932677) (Mac OS X)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804408";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-0319");
   script_bugtraq_id(66046);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-12 08:10:37 +0530 (Wed, 12 Mar 2014)");
   script_name("Microsoft Silverlight Security Bypass Vulnerability (2932677) (Mac OS X)");
 
@@ -76,7 +76,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-014";
 
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2932677");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-014");
-  script_summary("Check for the vulnerable version of Silverlight on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

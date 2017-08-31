@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln01_dec14_win.nasl 3008 2016-04-07 13:17:01Z antu123 $
+# $Id: gb_adobe_reader_mult_vuln01_dec14_win.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Adobe Reader Multiple Vulnerabilities-01 Dec14 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805303");
-  script_version("$Revision: 3008 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-9150", "CVE-2014-9165", "CVE-2014-8445", "CVE-2014-8446",
                 "CVE-2014-8447", "CVE-2014-8448", "CVE-2014-8449", "CVE-2014-8451",
                 "CVE-2014-8452", "CVE-2014-8453", "CVE-2014-8454", "CVE-2014-8455",
@@ -40,7 +40,7 @@ if(description)
                     71580, 71579);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 15:17:01 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-11 17:14:05 +0530 (Thu, 11 Dec 2014)");
 
   script_name("Adobe Reader Multiple Vulnerabilities-01 Dec14 (Windows)");
@@ -79,7 +79,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/61095/");
   script_xref(name : "URL" , value : "http://helpx.adobe.com/security/products/reader/apsb14-28.html");
   script_xref(name : "URL" , value : "https://code.google.com/p/google-security-research/issues/detail?id=103");
-  script_summary("Check for the vulnerable version of Adobe Reader on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

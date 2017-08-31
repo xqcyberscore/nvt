@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(871047);
-  script_version("$Revision: 2876 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-17 10:10:52 +0100 (Thu, 17 Mar 2016) $");
+  script_version("$Revision: 6687 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-10-03 10:17:21 +0530 (Thu, 03 Oct 2013)");
   script_cve_id("CVE-2006-7243", "CVE-2011-1398", "CVE-2012-0831", "CVE-2012-2688",
                 "CVE-2013-1643", "CVE-2013-4248");
@@ -101,7 +101,7 @@ be restarted for the update to take effect.
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

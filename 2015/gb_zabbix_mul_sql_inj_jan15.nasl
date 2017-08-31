@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_mul_sql_inj_jan15.nasl 6207 2017-05-24 09:04:07Z teissa $
+# $Id: gb_zabbix_mul_sql_inj_jan15.nasl 6722 2017-07-14 08:54:37Z cfischer $
 #
 # Zabbix Multiple SQL injection Vulnerabilities - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:zabbix:zabbix";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805319");
-  script_version("$Revision: 6207 $");
+  script_version("$Revision: 6722 $");
   script_cve_id("CVE-2014-9450");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 10:54:37 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-16 10:22:50 +0530 (Mon, 16 Jun 2014)");
   script_name("Zabbix Multiple SQL injection Vulnerabilities - Jan15");
 
@@ -66,7 +66,7 @@ if(description)
   script_xref(name: "URL" , value : "http://secunia.com/advisories/61554");
   script_xref(name: "URL" , value : "https://support.zabbix.com/browse/ZBX-8582");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("zabbix_web_detect.nasl");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843007");
-  script_version("$Revision: 5360 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:43:30 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6648 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:05:27 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-01-06 05:45:22 +0100 (Fri, 06 Jan 2017)");
   script_cve_id("CVE-2016-9963");
   script_tag(name:"cvss_base", value:"2.6");
@@ -51,7 +51,7 @@ configurations, private DKIM signing keys could be leaked to the log files.");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2595_1.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: deb_2595_1.nasl 6611 2017-07-07 12:07:20Z cfischer $
 # Auto-generated from advisory DSA 2595-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -49,10 +49,10 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(892595);
-    script_version("$Revision: 6079 $");
+    script_version("$Revision: 6611 $");
     script_cve_id("CVE-2012-4405");
     script_name("Debian Security Advisory DSA 2595-1 (ghostscript - integer overflow)");
-    script_tag(name: "last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-07-07 14:07:20 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name:"creation_date", value:"2013-09-18 11:53:02 +0200 (Wed, 18 Sep 2013)");
     script_tag(name: "cvss_base", value:"6.8");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -65,7 +65,7 @@ if(description)
     script_copyright("Copyright (c) 2013 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: tag_affected);
     script_tag(name: "insight",   value: tag_insight);
 #    script_tag(name: "impact",    value: tag_impact);

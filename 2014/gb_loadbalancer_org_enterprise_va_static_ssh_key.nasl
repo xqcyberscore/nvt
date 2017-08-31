@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_loadbalancer_org_enterprise_va_static_ssh_key.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_loadbalancer_org_enterprise_va_static_ssh_key.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Loadbalancer.org Enterprise VA 7.5.2 Static SSH Key
 #
@@ -47,7 +47,7 @@ tag_vuldetect = "Try to login as root using the known static private key";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6759 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("Loadbalancer.org Enterprise VA 7.5.2 Static SSH Key");
@@ -55,9 +55,8 @@ if (description)
 
  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125754/Loadbalancer.org-Enterprise-VA-7.5.2-Static-SSH-Key.html");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-03-18 11:16:16 +0100 (Tue, 18 Mar 2014)");
- script_summary("Determine if it is possible to login as root using the known static private key");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Gain a shell remotely");

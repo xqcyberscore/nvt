@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-630.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: alas-2015-630.nasl 6575 2017-07-06 13:42:08Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120620");
-script_version("$Revision: 6443 $");
+script_version("$Revision: 6575 $");
 script_tag(name:"creation_date", value:"2015-12-16 11:39:19 +0200 (Wed, 16 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:42:08 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-630");
 script_tag(name: "insight", value: "An unsafe use of string concatenation in a shell string occurs in FontManager. If the developer allows the attacker to choose the font and outputs an image, the attacker can execute any shell command on the remote system. The name variable injected comes from the constructor of FontManager, which is invoked by ImageFormatter from options."); 
 script_tag(name : "solution", value : "Run yum update python-pygments to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"9.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

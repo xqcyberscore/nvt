@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smbcl_mozilla.nasl 5672 2017-03-22 08:15:28Z teissa $
+# $Id: smbcl_mozilla.nasl 6467 2017-06-28 13:51:19Z cfischer $
 # Description: Mozilla Firefox, Thunderbird, Seamonkey. Several vulnerabilitys (Windows)
 #
 # Authors:
@@ -44,13 +44,13 @@ tag_solution = "All Users should upgrade to the latest versions of Firefox, Thun
   http://www.seamonkey-project.org/releases/
   http://www.mozillamessaging.com/en-US/thunderbird/all.html";
 
-# $Revision: 5672 $
+# $Revision: 6467 $
 
 if(description)
 {
   script_id(90013);
-  script_version("$Revision: 5672 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 09:15:28 +0100 (Wed, 22 Mar 2017) $");
+  script_version("$Revision: 6467 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:51:19 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2008-06-17 20:22:38 +0200 (Tue, 17 Jun 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -63,10 +63,8 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
-                      "gb_thunderbird_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver", "Seamonkey/Win/Ver",
-                      "Thunderbird/Win/Ver");
+  script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl", "gb_thunderbird_detect_win.nasl");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "impact" , value : tag_impact);

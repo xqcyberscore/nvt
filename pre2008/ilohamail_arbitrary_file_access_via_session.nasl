@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ilohamail_arbitrary_file_access_via_session.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: ilohamail_arbitrary_file_access_via_session.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: IlohaMail Arbitrary File Access via Session Variable Vulnerability
 #
 # Authors:
@@ -32,8 +32,8 @@ tag_solution = "Upgrade to IlohaMail version 0.7.12 or later.";
 
 if (description) {
   script_id(14631);
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 6702 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -54,6 +54,7 @@ if (description) {
 
   script_dependencies("global_settings.nasl", "ilohamail_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -73,8 +74,6 @@ file = "../../README";
 host = get_host_name();
 port = get_http_port(default:80);
 if (debug_level) display("debug: searching for IlohaMail Arbitrary File Access via Session Variable vulnerability on ", host, ":", port, ".\n");
-
-if (!get_port_state(port)) exit(0);
 
 # Check each installed instance, stopping if we find a vulnerable version.
 installs = get_kb_list(string("www/", port, "/ilohamail"));

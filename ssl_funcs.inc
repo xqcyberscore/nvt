@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssl_funcs.inc 5924 2017-04-11 06:17:24Z cfi $
+# $Id: ssl_funcs.inc 6664 2017-07-11 10:20:11Z cfischer $
 #
 # Implementation of common ssl functions
 #
@@ -25,7 +25,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5924 $
+# $Revision: 6664 $
 #
 ###############################################################################
 
@@ -1752,6 +1752,7 @@ function search_ssl_record( data, search ) {
 
 function read_ssl_record( data, part )
 {
+  # alpn_prot is a global_var passed by gb_tls_npn_alpn_detect.nasl
   local_var record, data, part, max_len, data_len, len, typ, x, l, pos, version;
 
   if( ! data ) {
@@ -1875,8 +1876,12 @@ function read_ssl_record( data, part )
 
               alpn_supported_protocols = parse_npn_alpn_prot( data:data, pos:record['pos'], j:j, alpn:TRUE );
 
-              if( is_array( alpn_supported_protocols ) )
-                 record["extension_alpn_supported_protocols"] = alpn_supported_protocols;
+              # alpn_prot is set in gb_tls_npn_alpn_detect.nasl and makes sure that we're
+              # only reporting back what we have requested.
+              if( is_array( alpn_supported_protocols ) &&
+                  ! isnull( alpn_supported_protocols[0] ) &&
+                  alpn_supported_protocols[0] == alpn_prot )
+                record["extension_alpn_supported_protocols"] = alpn_supported_protocols;
             }
           }
           else if( typ == 0x00 )

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sharepoint_business_prod_ms13-100.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: secpod_sharepoint_business_prod_ms13-100.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Microsoft SharePoint Business Productivity Server RCE Vulnerability (2904244)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2013-5059");
   script_bugtraq_id(64081);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-09 12:53:16 +0530 (Thu, 09 Jan 2014)");
   script_name("Microsoft SharePoint Business Productivity Server RCE Vulnerability (2904244)");
 
@@ -79,7 +79,6 @@ http://technet.microsoft.com/en-us/security/bulletin/ms13-100";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55985");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/MS13-100");
-  script_summary("Check for the vulnerable 'ascalc.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 SecPod");
   script_family("Windows : Microsoft Bulletins");

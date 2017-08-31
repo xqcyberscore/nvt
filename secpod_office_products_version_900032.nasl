@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_office_products_version_900032.nasl 6413 2017-06-23 09:16:58Z cfischer $#
+# $Id: secpod_office_products_version_900032.nasl 6544 2017-07-05 14:50:30Z cfischer $#
 #
 # MS Office Products Version Detection
 #
@@ -58,8 +58,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900032");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6413 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:16:58 +0200 (Fri, 23 Jun 2017) $");
+  script_version("$Revision: 6544 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 16:50:30 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("MS Office Products Version Detection");
@@ -187,12 +187,15 @@ wordviewFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
 if(wordviewFile)
 {
   set_kb_item(name:"SMB/Office/WordView/Install/Path", value:wordviewFile);
+  replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
+
   wordviewFile += "\WORDVIEW.exe";
   share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:wordviewFile);
   wview = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:wordviewFile);
   wordviewVer = GetVer(file:wview, share:share);
   if(wordviewVer){
     set_kb_item(name:"SMB/Office/WordView/Version", value:wordviewVer);
+    replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
     ## build cpe and store it as host_detail  
     for (i = 0; i < WORDVIEW_MAX-1; i = i + 2) {
@@ -235,6 +238,7 @@ foreach item (registry_enum_keys(key:key))
         xlviewVer = GetVer(file:xlview, share:share);
         if(xlviewVer != NULL){
           set_kb_item(name:"SMB/Office/XLView/Version", value:xlviewVer);
+          replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
           ## build cpe and store it as host_detail  
           for (i = 0; i < XLVIEW_MAX-1; i = i + 2) {
@@ -272,6 +276,7 @@ foreach item (registry_enum_keys(key:key))
         if(pptviewVer != NULL){
           set_kb_item(name:"SMB/Office/PPView/Version", value:pptviewVer);
           set_kb_item(name:"SMB/Office/PPView/FilePath", value:ppviewFile);
+          replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );  
 
           ## build cpe and store it as host_detail  
           for (i = 0; i < PPVIEW_MAX-1; i = i + 2) {
@@ -288,6 +293,7 @@ foreach item (registry_enum_keys(key:key))
     cPackVer = registry_get_sz(key:key + item, item:"DisplayVersion");
     if(cPackVer != NULL){
       set_kb_item(name:"SMB/Office/ComptPack/Version", value:cPackVer);
+      replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
       ## build cpe and store it as host detail
       register_and_report_cpe(app:"Microsoft Office Compatibility Pack", ver:cPackVer,
@@ -309,6 +315,7 @@ if(groovePath != NULL)
   grooveVer = GetVer(file:groove, share:share);
   if(grooveVer != NULL){
     set_kb_item(name:"SMB/Office/Groove/Version", value:grooveVer);
+    replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
     ## build cpe and store it as host detail
     register_and_report_cpe(app:"Microsoft Office Groove", ver:grooveVer,
@@ -330,6 +337,7 @@ if(registry_key_exists(key:"SOFTWARE\Microsoft\Office"))
     ppcnvVer = GetVer(file:ppfile, share:share);
     if(ppcnvVer){
       set_kb_item(name:"SMB/Office/PowerPntCnv/Version", value:ppcnvVer);
+      replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
       ## build cpe and store it as host detail
       ##Need to update base value
@@ -360,6 +368,7 @@ if(visioPath)
      {
        set_kb_item(name:"SMB/Office/VisioViewer/Path", value:exePath);
        set_kb_item(name:"SMB/Office/VisioViewer/Ver", value:visiovVer);
+       replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE ); 
 
        ## build cpe and store it as host_detail  
        for (i = 0; i < VISIO_MAX-1; i = i + 2) {
@@ -382,6 +391,7 @@ wordFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
 if(wordFile)
 {
   set_kb_item(name:"SMB/Office/Word/Install/Path", value:wordFile);
+  replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
   wordFile += "\winword.exe";
   share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:wordFile);
@@ -389,6 +399,7 @@ if(wordFile)
   wordVer = GetVer(file:word, share:share);
   if(wordVer){
     set_kb_item(name:"SMB/Office/Word/Version", value:wordVer);
+    replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE ); 
 
     ## build cpe and store it as host_detail  
     for (i = 0; i < WORD_MAX-1; i = i + 2) {
@@ -404,6 +415,7 @@ excelFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
 if(excelFile)
 {
   set_kb_item(name:"SMB/Office/Excel/Install/Path", value:excelFile);
+  replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
   excelFile += "\excel.exe";
   share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:excelFile);
@@ -411,6 +423,7 @@ if(excelFile)
   excelVer = GetVer(file:excel, share:share);
   if(excelVer){
     set_kb_item(name:"SMB/Office/Excel/Version", value:excelVer);
+    replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
     ## build cpe and store it as host_detail  
     for (i = 0; i < EXCEL_MAX-1; i = i + 2) {
@@ -431,6 +444,7 @@ if(accessFile)
   accessVer = GetVer(file:access, share:share);
   if(accessVer){
     set_kb_item(name:"SMB/Office/Access/Version", value:accessVer);
+    replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
     ## build cpe and store it as host_detail  
     for (i = 0; i < ACCESS_MAX-1; i = i + 2) {
@@ -451,6 +465,7 @@ if(powerpointFile)
   powerPptVer = GetVer(file:power, share:share);
   if(powerPptVer){
     set_kb_item(name:"SMB/Office/PowerPnt/Version", value:powerPptVer);
+    replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
     ## build cpe and store it as host_detail  
     for (i = 0; i < POWERPNT_MAX-1; i = i + 2) {
@@ -471,6 +486,7 @@ if(wordcnvFile)
   wordcnvVer = GetVer(file:word, share:share);
    if(wordcnvVer){
     set_kb_item(name:"SMB/Office/WordCnv/Version", value:wordcnvVer);
+    replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
     ## build cpe and store it as host detail
     ## Add BASE Value
@@ -490,6 +506,7 @@ if(xlcnvFile)
   xlcnvVer = GetVer(file:xlfile, share:share);
   if(xlcnvVer){
     set_kb_item(name:"SMB/Office/XLCnv/Version", value:xlcnvVer);
+    replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
     ## Add BASE Value
     ## build cpe and store it as host detail
@@ -504,12 +521,15 @@ pubFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
 if(pubFile)
 {
   set_kb_item(name:"SMB/Office/Publisher/Installed/Path", value:pubFile);
+  replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
+ 
   share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:pubFile);
   pub = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
                      string:pubFile + "\MSPUB.exe");
   pubVer = GetVer(file:pub, share:share);
   if(pubVer){
     set_kb_item(name:"SMB/Office/Publisher/Version", value:pubVer);
+    replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
     ## build cpe and store it as host_detail  
     for (i = 0; i < PUBLISHER_MAX-1; i = i + 2) {
@@ -530,6 +550,7 @@ if(outlookFile)
   outlookVer = GetVer(file:outlookFile, share:share);
   if(outlookVer){
     set_kb_item(name:"SMB/Office/Outlook/Version", value:outlookVer);
+    replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
     ## build cpe and store it as host_detail  
     for (i = 0; i < OUTLOOK_MAX-1; i = i + 2) {

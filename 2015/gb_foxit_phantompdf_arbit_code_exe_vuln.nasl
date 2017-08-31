@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_arbit_code_exe_vuln.nasl 2617 2016-02-09 08:24:24Z benallard $
+# $Id: gb_foxit_phantompdf_arbit_code_exe_vuln.nasl 6453 2017-06-28 09:59:05Z teissa $
 #
 # Foxit PhantomPDF Arbitrary Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806904");
-  script_version("$Revision: 2617 $");
+  script_version("$Revision: 6453 $");
   script_cve_id("CVE-2015-8580");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-09 09:24:24 +0100 (Tue, 09 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-12-31 18:45:52 +0530 (Thu, 31 Dec 2015)");
   script_name("Foxit PhantomPDF Arbitrary Code Execution Vulnerability");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value:"https://www.foxitsoftware.com/support/security-bulletins.php#FRD-34");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Foxit PhantomPDF");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_foxit_phantom_reader_detect.nasl");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3673.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: deb_3673.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3673-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,12 +30,12 @@
 if(description)
 {
     script_id(703673);
-    script_version("$Revision: 5612 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2016-2177", "CVE-2016-2178", "CVE-2016-2179", "CVE-2016-2180",
                   "CVE-2016-2181", "CVE-2016-2182", "CVE-2016-2183", "CVE-2016-6302",
                   "CVE-2016-6303", "CVE-2016-6304", "CVE-2016-6306");
     script_name("Debian Security Advisory DSA 3673-1 (openssl - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-09-22 00:00:00 +0200 (Thu, 22 Sep 2016)");
     script_tag(name:"cvss_base", value:"7.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -50,7 +50,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "openssl on Debian Linux");
     script_tag(name: "insight",   value: "This package is part of the OpenSSL
 project's implementation of the SSL and TLS cryptographic protocols for secure

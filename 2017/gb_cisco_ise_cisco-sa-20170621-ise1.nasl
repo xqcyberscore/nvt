@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20170621-ise1.nasl 6402 2017-06-22 08:03:23Z ckuersteiner $
+# $Id: gb_cisco_ise_cisco-sa-20170621-ise1.nasl 6682 2017-07-12 09:00:18Z cfischer $
 #
 # Cisco Identity Services Engine Reflected Cross-Site Scripting Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106896");
  script_cve_id("CVE-2017-6605");
- script_tag(name: "cvss_base", value: "4.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:P/A:N");
- script_version ("$Revision: 6402 $");
+ script_tag(name:"cvss_base", value:"3.5");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+ script_version ("$Revision: 6682 $");
 
  script_name("Cisco Identity Services Engine Reflected Cross-Site Scripting Vulnerability");
 
@@ -57,7 +57,7 @@ code in the context of the interface or allow the attacker to access sensitive b
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-06-22 10:03:23 +0200 (Thu, 22 Jun 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-07-12 11:00:18 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name: "creation_date", value: "2017-06-22 11:09:34 +0700 (Thu, 22 Jun 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

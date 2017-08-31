@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_releaseinterface_code_execution_vuln.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: gb_ms_ie_releaseinterface_code_execution_vuln.nasl 6526 2017-07-05 05:43:52Z cfischer $
 #
 # Microsoft IE 'ReleaseInterface()' Remote Code Execution Vulnerability
 #
@@ -47,9 +47,9 @@ This NVT has been replaced by NVT secpod_ms11-018.nasl
 if(description)
 {
   script_id(801830);
-  script_version("$Revision: 5362 $");
+  script_version("$Revision: 6526 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:43:52 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-02-01 16:46:08 +0100 (Tue, 01 Feb 2011)");
   script_cve_id("CVE-2011-0346");
   script_bugtraq_id(45639);
@@ -66,7 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_ms_ie_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
+  script_mandatory_keys("MS/IE/Version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

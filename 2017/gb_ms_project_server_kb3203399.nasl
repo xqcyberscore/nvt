@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_project_server_kb3203399.nasl 6400 2017-06-22 05:47:08Z santu $
+# $Id: gb_ms_project_server_kb3203399.nasl 6479 2017-06-29 07:59:07Z teissa $
 #
 # Microsoft Project Server 2013 XSS Vulnerability (KB3203399)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:project_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810948");
-  script_version("$Revision: 6400 $");
+  script_version("$Revision: 6479 $");
   script_cve_id("CVE-2017-8551");
   script_bugtraq_id(98913);
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 07:47:08 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:59:07 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-06-16 11:00:41 +0530 (Fri, 16 Jun 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Project Server 2013 XSS Vulnerability (KB3203399)");

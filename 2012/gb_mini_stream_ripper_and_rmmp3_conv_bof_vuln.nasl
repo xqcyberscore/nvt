@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mini_stream_ripper_and_rmmp3_conv_bof_vuln.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_mini_stream_ripper_and_rmmp3_conv_bof_vuln.nasl 6517 2017-07-04 13:34:20Z cfischer $
 #
 # Mini-Stream Ripper And RM-MP3 Converter '.pls' File Buffer Overflow Vulnerability
 #
@@ -47,12 +47,12 @@ Converter and is prone to buffer overflow vulnerability.";
 if(description)
 {
   script_id(802368);
-  script_version("$Revision: 5931 $");
+  script_version("$Revision: 6517 $");
   script_cve_id("CVE-2009-5109", "CVE-2010-5081");
   script_bugtraq_id(41332, 34514);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-01-03 10:37:57 +0530 (Tue, 03 Jan 2012)");
   script_name("Mini-Stream Ripper And RM-MP3 Converter '.pls' File Buffer Overflow Vulnerability");
   script_xref(name : "URL" , value : "http://sebug.net/vuldb/ssvid-18793");
@@ -68,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_mini_stream_prdts_detect.nasl");
-  script_require_keys("MiniStream/RmToMp3/Conv/Ver", "MiniStream/Ripper/Ver");
+  script_mandatory_keys("MiniStream/Products/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

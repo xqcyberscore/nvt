@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3814.nasl 5741 2017-03-28 05:13:03Z teissa $
+# $Id: deb_3814.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3814-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703814);
-    script_version("$Revision: 5741 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-6827", "CVE-2017-6828", "CVE-2017-6829", "CVE-2017-6830", "CVE-2017-6831", "CVE-2017-6832", "CVE-2017-6833", "CVE-2017-6834", "CVE-2017-6835", "CVE-2017-6836", "CVE-2017-6837", "CVE-2017-6838", "CVE-2017-6839");
     script_name("Debian Security Advisory DSA 3814-1 (audiofile - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-28 07:13:03 +0200 (Tue, 28 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-03-22 00:00:00 +0100 (Wed, 22 Mar 2017)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "audiofile on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (jessie), these problems have been fixed in
 version 0.3.6-2+deb8u2.

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-1384.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: ELSA-2012-1384.nasl 6557 2017-07-06 11:55:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123796");
-script_version("$Revision: 6431 $");
+script_version("$Revision: 6557 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:08:40 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:55:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-1384");
 script_tag(name: "insight", value: "ELSA-2012-1384 -  java-1.6.0-openjdk security update - [1:1.6.0.0-1.50.1.11.5]- Changed permissions of sa-jdi.jar to correct 644- Resolves: rhbz#865045[1:1.6.0.0-1.49.1.11.5]- Updated to IcedTea6 1.11.5- Resolves rhbz#s 856124, 865346, 865348, 865350, 865352, 865354, 865357, 865359, 865363, 865365, 865370, 865428, 865471, 865434, 865511, 865514, 865519, 865531, 865541, 865568"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

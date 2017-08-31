@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_email_gateway_sb10091.nasl 2774 2016-03-04 08:00:52Z antu123 $
+# $Id: gb_mcafee_email_gateway_sb10091.nasl 6600 2017-07-07 09:58:31Z teissa $
 #
 # McAfee Email Gateway - Three SSLv3 Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2014-3513","CVE-2014-3567","CVE-2014-3568");
  script_tag(name:"cvss_base", value:"7.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 2774 $");
+ script_version ("$Revision: 6600 $");
 
  script_name("McAfee Email Gateway - Three SSLv3 Vulnerabilities");
 
@@ -47,9 +47,8 @@ Sockets Layer (OpenSSL) 3.0 (SSLv3) vulnerabilities.");
 
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 09:00:52 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-01-07 17:42:14 +0100 (Wed, 07 Jan 2015)");
- script_summary("Check the installed version and hotfixes");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("General");

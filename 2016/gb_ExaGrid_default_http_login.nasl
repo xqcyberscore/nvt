@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ExaGrid_default_http_login.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_ExaGrid_default_http_login.nasl 6700 2017-07-12 12:16:21Z cfischer $
 #
 # ExaGrid Default HTTP Login
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105598");
- script_version ("$Revision: 5588 $");
+ script_version ("$Revision: 6700 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("ExaGrid Default HTTP Login");
@@ -41,15 +41,14 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2016-04-07 17:41:14 +0200 (Thu, 07 Apr 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("ExaGrid/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("ExaGrid/banner");
 
  exit(0);
 }

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: gb_python_hash_collision_dos_vuln_win.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_python_hash_collision_dos_vuln_win.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Python 'Hash Collision' Denial of Service Vulnerability (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:python:python";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804632");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2013-7040");
   script_bugtraq_id(64194);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-09 14:43:46 +0530 (Mon, 09 Jun 2014)");
   script_name("Python 'Hash Collision' Denial of Service Vulnerability (Windows)");
 
@@ -75,7 +75,6 @@ For updates refer to www.python.org/download";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55955");
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2013/q4/439");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2013/12/09/3");
-  script_summary("Check for the vulnerable version of Python on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Denial of Service");

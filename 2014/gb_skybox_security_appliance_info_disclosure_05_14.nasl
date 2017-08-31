@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_skybox_security_appliance_info_disclosure_05_14.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_skybox_security_appliance_info_disclosure_05_14.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Skybox Security Appliance Multiple Information Disclosure Vulnerabilities
 #
@@ -48,16 +48,15 @@ if (description)
  script_cve_id("CVE-2014-2084");
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6769 $");
 
  script_name("Skybox Security Appliance Multiple Information Disclosure Vulnerabilities");
 
 
  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/33327/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-05-13 16:33:50 +0200 (Tue, 13 May 2014)");
- script_summary("Determine if t is possible to access the admin without authentication.");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_apr-utils_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: secpod_apache_apr-utils_detect.nasl 6516 2017-07-04 12:20:47Z cfischer $
 #
 # Apache APR-Utils Version Detection
 #
@@ -34,8 +34,8 @@ if(description)
 {
   script_id(900571);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5877 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_version("$Revision: 6516 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-06-24 07:17:25 +0200 (Wed, 24 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache APR-Utils Version Detection");
@@ -74,6 +74,7 @@ foreach path (make_list("apu-config" ,"apu-1-config"))
                                version_argv:"--version", ver_pattern:"[0-9.]+");
 
     if(utilsVer[0] != NULL){
+      replace_kb_item(name:"Apache/APR_or_Utils/Installed", value:TRUE);
       set_kb_item(name:"Apache/APR-Utils/Ver", value:utilsVer[0]);
       log_message(data:"Apache APR-Utils version " + utilsVer[0] +
           " running at location " + binaryFile + " was detected on the host");

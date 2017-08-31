@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2924.nasl 2767 2016-03-03 09:38:42Z benallard $
+# $Id: deb_2924.nasl 6724 2017-07-14 09:57:17Z teissa $
 # Auto-generated from advisory DSA 2924-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -53,24 +53,23 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(702924);
-    script_version("$Revision: 2767 $");
+    script_version("$Revision: 6724 $");
     script_cve_id("CVE-2014-1518", "CVE-2014-1523", "CVE-2014-1524", "CVE-2014-1529", "CVE-2014-1530", "CVE-2014-1531", "CVE-2014-1532");
     script_name("Debian Security Advisory DSA 2924-1 (icedove - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2016-03-03 10:38:42 +0100 (Thu, 03 Mar 2016) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
     script_tag(name: "creation_date", value:"2014-05-05 00:00:00 +0200 (Mon, 05 May 2014)");
     script_tag(name: "cvss_base", value:"10.0");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-2924.html");
 
-    script_summary("Debian Security Advisory DSA 2924-1 (icedove - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2014 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: tag_affected);
     script_tag(name: "insight",   value: tag_insight);
 #    script_tag(name: "impact",    value: tag_impact);

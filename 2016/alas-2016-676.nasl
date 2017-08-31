@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-676.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: alas-2016-676.nasl 6574 2017-07-06 13:41:26Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120666");
-script_version("$Revision: 5689 $");
+script_version("$Revision: 6574 $");
 script_tag(name:"creation_date", value:"2016-03-31 08:02:09 +0300 (Thu, 31 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:41:26 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-676");
 script_tag(name: "insight", value: "It was found that when an SVN server (both svnserve and httpd with the mod_dav_svn module) searched the history of a file or a directory, it would disclose its location in the repository if that file or directory was not readable (for example, if it had been moved). (CVE-2015-3187 )An integer overflow was discovered allowing remote attackers to execute arbitrary code via an svn:// protocol string, which triggers a heap-based buffer overflow and an out-of-bounds read. (CVE-2015-5259 )It was found that the mod_authz_svn module did not properly restrict anonymous access to Subversion repositories under certain configurations when used with Apache httpd 2.4.x. This could allow a user to anonymously access files in a Subversion repository, which should only be accessible to authenticated users. (CVE-2015-3184 )It was found that the mod_dav_svn module was vulnerable to a remotely triggerable heap-based buffer overflow and out-of-bounds read caused by an integer overflow when parsing skel-encoded request bodies, allowing an attacker with write access to a repository to cause a denial of service attack (on 32-bit or 64-bit servers) or possibly execute arbitrary code (on 32-bit servers only) under the context of the httpd process. (CVE-2015-5343 )");
 script_tag(name : "solution", value : "Run yum update mod_dav_svn to update your system.
@@ -41,7 +41,7 @@ script_tag(name:"cvss_base", value:"9.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

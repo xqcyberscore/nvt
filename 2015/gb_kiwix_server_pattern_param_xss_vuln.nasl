@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kiwix_server_pattern_param_xss_vuln.nasl 3514 2016-06-14 11:29:47Z mime $
+# $Id: gb_kiwix_server_pattern_param_xss_vuln.nasl 6497 2017-06-30 09:58:54Z teissa $
 #
 # Kiwix Server 'pattern' Parameter Cross-Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805131");
-  script_version("$Revision: 3514 $");
+  script_version("$Revision: 6497 $");
   script_cve_id("CVE-2015-1032");
   script_bugtraq_id(72279);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 13:29:47 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-28 13:22:01 +0530 (Wed, 28 Jan 2015)");
   script_name("Kiwix Server 'pattern' Parameter Cross-Site Scripting Vulnerability");
 
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/534502/100/0/threaded");
   script_xref(name : "URL" , value : "http://sourceforge.net/p/kiwix/kiwix/ci/d1af5f0375c6db24d4071acf4806735725fd206e");
 
-  script_summary("Check if Kiwix is prone to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_solr_xxe_vuln01_jan14.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: secpod_apache_solr_xxe_vuln01_jan14.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Apache Solr XML External Entity(XXE) Vulnerability-01 Jan-14
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.903507";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2013-6408");
   script_bugtraq_id(64009);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-29 16:29:04 +0530 (Wed, 29 Jan 2014)");
   script_name("Apache Solr XML External Entity(XXE) Vulnerability-01 Jan-14");
 
@@ -74,7 +74,6 @@ For updates refer to http://lucene.apache.org/solr";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55542");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2013/11/29/2");
-  script_summary("Determine if Apache Solr version is vulnerable");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 SecPod");

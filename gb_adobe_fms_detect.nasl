@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_fms_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_adobe_fms_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # Adobe Flash Media Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800559");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6701 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-05-11 08:41:11 +0200 (Mon, 11 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,9 +37,8 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 8086);
   script_mandatory_keys("FlashCom/banner");
-  script_require_ports("Services/www", 1111);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"This script detects the version of Adobe Flash Media Server and
   sets the result in the KB.");
@@ -54,7 +53,7 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-port = get_http_port( default:80 );
+port = get_http_port( default:8086 );
 banner = get_http_banner( port:port );
 
 if( "erver: FlashCom" >!< banner ) exit( 0 );

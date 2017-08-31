@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rlogin.nasl 4378 2016-10-28 09:01:50Z cfi $
+# $Id: secpod_rlogin.nasl 6849 2017-08-04 07:21:15Z cfischer $
 #
 # Check for rlogin Service
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901202");
-  script_version("$Revision: 4378 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-28 11:01:50 +0200 (Fri, 28 Oct 2016) $");
+  script_version("$Revision: 6849 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:21:15 +0200 (Fri, 04 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-25 09:25:35 +0200 (Thu, 25 Aug 2011)");
   #Remark: NIST don't see "configuration issues" as software flaws so this CVSS has a value of 0.0.
   #However we still should report such a configuration issue with a criticality so this has been commented
@@ -39,9 +39,9 @@ if(description)
   script_name("Check for rlogin Service");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service6.nasl");
   script_family("Useless services");
-  script_require_ports("Services/unknown", 513);
+  script_require_ports("Services/rlogin", 513);
 
   script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0651");
   script_xref(name:"URL", value:"http://en.wikipedia.org/wiki/Rlogin");
@@ -75,7 +75,9 @@ nullStr = raw_string( 0x00 );
 ## Client user name : Server user name : Terminal Type / Terminal Speed
 req1 = "root" + nullStr + "root" + nullStr + "vt100/9600" + nullStr;
 
-port = get_unknown_port( default:513 );
+port = get_kb_item( "Services/rlogin" );
+if( ! port ) port = 513;
+if( ! get_port_state( port ) ) exit( 0 );
 
 soc = open_priv_sock_tcp( dport:port );
 if( ! soc ) exit( 0 );
@@ -107,7 +109,7 @@ if( res1 == nullStr && "Password:" >< res2 ) {
 if( vuln ) {
   security_message( port:port, data:report );
   set_kb_item( name:"rlogin/active", value:TRUE );
-  register_service( port:port, proto:"rlogin" );
+  register_service( port:port, proto:"rlogin", message:"A rlogin service seems to be running on this port." );
   exit( 0 );
 }
 

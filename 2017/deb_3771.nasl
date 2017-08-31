@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3771.nasl 5142 2017-01-31 08:48:18Z antu123 $
+# $Id: deb_3771.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3771-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,12 +30,12 @@
 if(description)
 {
     script_id(703771);
-    script_version("$Revision: 5142 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-5373", "CVE-2017-5375", "CVE-2017-5376", "CVE-2017-5378",
                   "CVE-2017-5380", "CVE-2017-5383", "CVE-2017-5386", "CVE-2017-5390",
                   "CVE-2017-5396");
     script_name("Debian Security Advisory DSA 3771-1 (firefox-esr - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-01-31 09:48:18 +0100 (Tue, 31 Jan 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-01-25 00:00:00 +0100 (Wed, 25 Jan 2017)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "firefox-esr on Debian Linux");
     script_tag(name: "insight",   value: "Firefox ESR is a powerful, extensible
 web browser with support for modern web application technologies.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_bof_vuln_oct2000_win.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_adobe_reader_bof_vuln_oct2000_win.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Adobe Reader '/Registry' and '/Ordering' Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804622");
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2000-0713");
   script_bugtraq_id(1509);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-04 14:12:30 +0530 (Wed, 04 Jun 2014)");
   script_name("Adobe Reader '/Registry' and '/Ordering' Buffer Overflow Vulnerability (Windows)");
 
@@ -77,7 +77,6 @@ NOTE : Ignore this warning, if above mentioned patch is already applied.";
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/31554");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/5002");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2000-07/0382.html");
-  script_summary("Check for the version of Adobe Reader");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Buffer overflow");

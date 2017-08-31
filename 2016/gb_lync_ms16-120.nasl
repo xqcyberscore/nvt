@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_ms16-120.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_lync_ms16-120.nasl 6473 2017-06-29 06:07:30Z cfischer $
 #
 # Microsoft Lync Multiple Vulnerabilities (3192884)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809444");
-  script_version("$Revision: 5568 $");
+  script_version("$Revision: 6473 $");
   script_cve_id("CVE-2016-3209", "CVE-2016-3262", "CVE-2016-3263", "CVE-2016-3396",
                 "CVE-2016-7182");
   script_bugtraq_id(93385, 93390, 93394, 93380, 93395);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:07:30 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-10-12 12:47:25 +0530 (Wed, 12 Oct 2016)");
   script_name("Microsoft Lync Multiple Vulnerabilities (3192884)");
 
@@ -74,7 +74,9 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("smb_reg_service_pack.nasl", "secpod_ms_lync_detect_win.nasl");
-  script_require_keys("MS/Lync/Ver", "MS/Lync/path", "MS/Lync/Basic/path");
+  script_require_ports(139, 445);
+  script_mandatory_keys("MS/Lync/Installed");
+
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_flexolio_mult_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_flexolio_mult_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # WordPress Flexolio Multiple Vulnerabilities May14
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6637 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-09 16:46:52 +0530 (Fri, 09 May 2014)");
   script_name("WordPress Flexolio Multiple Vulnerabilities May14");
 
@@ -76,7 +76,6 @@ features, remove the product or replace the product by another one.";
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126475");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/May/15");
-  script_summary("Check if Wordpress Flexolio Theme is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openx_multiple_open_redirect_vuln.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_openx_multiple_open_redirect_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # OpenX Multiple Open Redirect Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804877");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-2230");
   script_bugtraq_id(70603);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-05 11:59:46 +0530 (Wed, 05 Nov 2014)");
   script_name("OpenX Multiple Open Redirect Vulnerabilities");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/128718");
   script_xref(name : "URL" , value : "http://www.tetraph.com/blog/cves/cve-2014-2230-openx-open-redirect-vulnerability-2");
 
-  script_summary("Check if OpenX is vulnerable to open redirect");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

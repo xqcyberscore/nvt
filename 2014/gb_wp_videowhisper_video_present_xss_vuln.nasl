@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_videowhisper_video_present_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wp_videowhisper_video_present_xss_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # WordPress VideoWhisper Video Presentation Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804754");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-4570");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-26 15:03:45 +0530 (Tue, 26 Aug 2014)");
   script_name("WordPress VideoWhisper Video Presentation Cross Site Scripting Vulnerability");
 
@@ -72,7 +72,6 @@ For updates refer to https://wordpress.org/plugins/videowhisper-video-presentati
   script_tag(name : "solution" , value : tag_solution);
 
   script_xref(name : "URL" , value : "http://codevigilant.com/disclosure/wp-plugin-videowhisper-video-presentation-a3-cross-site-scripting-xss");
-  script_summary("Check if WordPress VideoWhisper Video Presentation Plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

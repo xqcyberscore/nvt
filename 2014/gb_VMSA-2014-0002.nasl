@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2014-0002.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_VMSA-2014-0002.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # VMSA-2014-0002: VMware vSphere updates to third party libraries
 #
@@ -60,15 +60,14 @@ if (description)
  script_cve_id("CVE-2013-5211","CVE-2013-4332");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6692 $");
  script_name("VMSA-2014-0002 VMware vSphere updates to third party libraries");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0002.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-03-12 14:04:01 +0100 (Wed, 12 Mar 2014)");
- script_summary("Checks for installed patches.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

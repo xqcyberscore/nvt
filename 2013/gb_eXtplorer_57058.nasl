@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eXtplorer_57058.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_eXtplorer_57058.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # eXtplorer 'ext_find_user()' Function Authentication Bypass Vulnerability
 #
@@ -42,7 +42,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(57058);
- script_version ("$Revision: 6093 $");
+ script_version ("$Revision: 6755 $");
  script_tag(name:"cvss_base", value:"9.7");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:P");
 
@@ -51,7 +51,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/57058");
  script_xref(name : "URL" , value : "http://extplorer.net/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-01-10 12:43:09 +0100 (Thu, 10 Jan 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -59,7 +59,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_eXtplorer_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("eXtplorer/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -71,15 +70,11 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
-host = get_host_name();
 
-req = string("GET ",dir,"/index.php HTTP/1.1\r\n",
-             "Host: ", host,"\r\n\r\n");
-
-result = http_send_recv(port:port, data:req, bodyonly:FALSE);
+url = dir + "/index.php";
+req = http_get(item:url, port:port);
+result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if(!egrep(pattern:"<title>.*eXtplorer</title>", string:result))exit(0);
 
@@ -90,6 +85,8 @@ co = cookie[1];
 
 ex = 'option=com_extplorer&action=login&type=extplorer&username=admin&password[]=';
 len = strlen(ex);
+
+host = http_host_name(port:port);
 
 req = string("POST ",dir,"/index.php HTTP/1.1\r\n",
              "Host: ",host,"\r\n",

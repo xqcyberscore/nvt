@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_domino_mult_info_disc_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_ibm_lotus_domino_mult_info_disc_vuln.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # IBM Lotus Domino Multiple Information Disclosure Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803755");
-  script_version("$Revision: 6086 $");
+  script_version("$Revision: 6755 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-09-04 16:22:08 +0530 (Wed, 04 Sep 2013)");
   script_name("IBM Lotus Domino Multiple Information Disclosure Vulnerabilities");
 
@@ -44,7 +44,6 @@ if(description)
   script_dependencies("gb_lotus_domino_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("dominowww/installed");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "summary" , value : "This host is running Lotus Domino Server and is prone to multiple information
   disclosure vulnerabilities.");
@@ -68,7 +67,6 @@ if(description)
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");

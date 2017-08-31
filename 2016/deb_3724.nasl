@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3724.nasl 5266 2017-02-10 15:10:59Z teissa $
+# $Id: deb_3724.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3724-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703724);
-    script_version("$Revision: 5266 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2016-9634", "CVE-2016-9635", "CVE-2016-9636");
     script_name("Debian Security Advisory DSA 3724-1 (gst-plugins-good0.10 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-02-10 16:10:59 +0100 (Fri, 10 Feb 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-11-24 00:00:00 +0100 (Thu, 24 Nov 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,7 +46,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "gst-plugins-good0.10 on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (jessie),
 these problems have been fixed in version 0.10.31-3+nmu4+deb8u2.

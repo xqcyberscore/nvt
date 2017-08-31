@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-3083.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-3083.nasl 6559 2017-07-06 11:57:32Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123276");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6559 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:01:38 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:57:32 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-3083");
 script_tag(name: "insight", value: "ELSA-2014-3083 - Unbreakable Enterprise kernel Security update - kernel-uek[2.6.32-400.36.9uek]- ALSA: control: Don't access controls outside of protected regions (Lars-Peter Clausen) [Orabug: 19817787] {CVE-2014-4653} {CVE-2014-4654} {CVE-2014-4655}- ALSA: control: Fix replacing user controls (Lars-Peter Clausen) [Orabug: 19817749] {CVE-2014-4653} {CVE-2014-4654} {CVE-2014-4655}- mm: try_to_unmap_cluster() should lock_page() before mlocking (Vlastimil Babka) [Orabug: 19817324] {CVE-2014-3122}- vm: convert fb_mmap to vm_iomap_memory() helper (Linus Torvalds) [Orabug: 19816564] {CVE-2013-2596}- vm: add vm_iomap_memory() helper function (Linus Torvalds) [Orabug: 19816564] {CVE-2013-2596}- net: sctp: inherit auth_capable on INIT collisions (Daniel Borkmann) [Orabug: 19816069] {CVE-2014-5077}"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"6.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-3083");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

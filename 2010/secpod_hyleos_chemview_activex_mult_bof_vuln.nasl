@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hyleos_chemview_activex_mult_bof_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: secpod_hyleos_chemview_activex_mult_bof_vuln.nasl 6532 2017-07-05 07:42:05Z cfischer $
 #
 # Hyleos ChemView ActiveX Control Multiple Buffer Overflow Vulnerabilities
 #
@@ -46,8 +46,8 @@ tag_summary = "This host is installed with Hyleos ChemView ActiveX Control and i
 if(description)
 {
   script_id(900749);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6532 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-03-02 12:02:59 +0100 (Tue, 02 Mar 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -64,7 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Buffer overflow");
   script_dependencies("secpod_hyleos_chemview_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "Hyleos/ChemViewX/Ver");
+  script_mandatory_keys("Hyleos/ChemViewX/Ver");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "insight" , value : tag_insight);

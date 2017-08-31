@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16949.nasl 4335 2016-10-24 15:25:45Z mime $
+# $Id: gb_f5_big_ip_sol16949.nasl 6497 2017-06-30 09:58:54Z teissa $
 #
 # F5 BIG-IP - SOL16949 - Expat vulnerabilities CVE-2012-0876 and CVE-2012-1148
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2012-0876","CVE-2012-1148");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 4335 $");
+ script_version ("$Revision: 6497 $");
 
  script_name("F5 BIG-IP - SOL16949 - Expat vulnerabilities CVE-2012-0876 and CVE-2012-1148");
 
@@ -51,9 +51,8 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:25:45 +0200 (Mon, 24 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-09-19 10:34:51 +0200 (Sat, 19 Sep 2015)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

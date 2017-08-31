@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2010-0165.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2010-0165.nasl 6555 2017-07-06 11:54:09Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122383");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6555 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:17:54 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:09 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2010-0165");
 script_tag(name: "insight", value: "ELSA-2010-0165 -  nss security update - nspr:[4.8.4-1]- Update to NSPR 4.8.4nss:[3.12.6-1.0.1.el5_4]- Update clean.gif in the nss-3.12.6-stripped.tar.bz2 tarball[3.12.6-1]- Update to 3.12.6[3.12.5.99-1.2]- Fix an unsatified tools runtime dependency[3.12.5.99-1.1]- Preserve file attributes and include some test cleanup[3.12.5.99-1]- Update to NSS_3_12_6_RC1[3.12.3.99.3-1.el5_3.4]- CVE-2009-3555 (bug 543536)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"5.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2010-0165");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

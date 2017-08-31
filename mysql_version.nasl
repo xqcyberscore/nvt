@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mysql_version.nasl 5235 2017-02-08 14:09:56Z cfi $
+# $Id: mysql_version.nasl 6788 2017-07-21 19:16:52Z cfischer $
 #
 # Detection of MySQL/MariaDB
 #
@@ -27,23 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100152");
-  script_version("$Revision: 5235 $");
+  script_version("$Revision: 6788 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 15:09:56 +0100 (Wed, 08 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("MySQL/MariaDB Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "sw_sphinxsearch_detect.nasl");
-  script_require_ports("Services/unknown", "Services/mysql", 3306);
+  script_dependencies("find_service1.nasl", "sw_sphinxsearch_detect.nasl");
+  script_require_ports("Services/mysql", 3306);
 
   script_tag(name:"summary", value:"Detection of installed version of
   MySQL/MariaDB.
 
-  Detect a running MySQL/MariaDB by getting the banner, Extract the version
-  from the banner and store the information in KB");
+  Detect a running MySQL/MariaDB by getting the banner, extract the version
+  from the banner and store the information in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -57,36 +57,21 @@ include("cpe.inc");
 include("host_details.inc");
 include("byte_func.inc");
 include("version_func.inc");
-include("http_func.inc"); # make_list_unique()
 
 set_byte_order(BYTE_ORDER_LITTLE_ENDIAN);
 
-ports = get_kb_list("Services/mysql");
-
-if( ! ports ) {
-  ports = make_list( 3306 );
-
-  p = get_unknown_port_list( default:3306 );
-  if( p ) ports = make_list( ports, p );
-
-  ports = make_list_unique( ports );
-}
-
-foreach _p( ports )
-  set_kb_item( name:"ports_to_check_for_mysql", value:_p );
-
-port = get_kb_item( "ports_to_check_for_mysql" );
+port = get_kb_item( "Services/mysql" );
+if( ! port ) port = 3306;
 if( ! get_port_state( port ) ) exit( 0 );
 
 # Don't detect MySQL / MariaDB on SphinxQL
 if( get_kb_item( "sphinxsearch/" + port + "/installed" ) ) exit( 0 );
 
-version = 'unknown';
-
-if( ! version = get_mysql_version( port:port ) ) { # I found no Plugin that ever set mysql_version ("mysql/version/"). But perhaps i missed somthing, so i check first if version is set.
+# I found no Plugin that ever set mysql_version ("mysql/version/"). But perhaps i missed somthing, so i check first if version is set.
+if( ! version = get_mysql_version( port:port ) ) {
 
   soc = open_sock_tcp( port );
-  if( ! soc) exit( 0 );
+  if( ! soc ) exit( 0 );
   buf = recv_mysql_server_handshake( soc:soc );
   close( soc );
 
@@ -134,7 +119,8 @@ if( ! version = get_mysql_version( port:port ) ) { # I found no Plugin that ever
     }
 
     for( i = 1; i < strlen( buf ); i++ ) {
-      if( ord( buf[i] ) != 0 ) { # server_version is a Null-Terminated String
+      # server_version is a Null-Terminated String
+      if( ord( buf[i] ) != 0 ) {
         version += buf[i];
       } else {
         break;
@@ -148,38 +134,43 @@ if( ! version = get_mysql_version( port:port ) ) { # I found no Plugin that ever
 
 if( MySQL_FOUND ) {
   if( version ) {
+    concluded = version;
     if( ! getVERSION ) {
       set_mysql_version( port:port, version:version );
     }
   } else {
-    version = 'unknown';
+    version = "unknown";
   }
 
   replace_kb_item( name:"MySQL/installed", value:TRUE );
   replace_kb_item( name:"MySQL_MariaDB/installed", value:TRUE );
 
   register_service( port:port, proto:"mysql" );
-  register_service( port:port, proto:"mysql_mariadb" );
 
   if( version_is_less_equal( version:version, test_version:"5.0.96" ) ||
       version_in_range( version:version, test_version:"5.1", test_version2:"5.1.50" ) ||
       version_in_range( version:version, test_version:"5.5", test_version2:"5.5.9" ) ) {
     cpe = build_cpe( value:version, exp:"^([0-9.]+-?[a-zA-Z]+?)", base:"cpe:/a:mysql:mysql:" );
     if( isnull( cpe ) )
-      cpe = 'cpe:/a:mysql:mysql';
+      cpe = "cpe:/a:mysql:mysql";
   } else {
     cpe = build_cpe( value:version, exp:"^([0-9.]+[a-zA-Z]+?)", base:"cpe:/a:oracle:mysql:" );
     if( isnull( cpe ) )
-      cpe = 'cpe:/a:oracle:mysql';
+      cpe = "cpe:/a:oracle:mysql";
   }
 
-  register_product( cpe:cpe, location:port + '/tcp', port:port );
+  if( version != "unknown" )
+    set_kb_item( name:"mysql_mariadb/full_banner/" + port, value:version );
+
+  install = port + "/tcp";
+
+  register_product( cpe:cpe, location:install, port:port );
 
   log_message( data:build_detection_report( app:"MySQL",
                                             version:version,
-                                            install:port + '/tcp',
+                                            install:install,
                                             cpe:cpe,
-                                            concluded:version,
+                                            concluded:concluded,
                                             extra:extra ),
                                             port:port );
 }
@@ -203,25 +194,27 @@ if( MariaDB_FOUND ) {  # If MariaDB is found in the port, set the version for Ma
     # Regex to not print the changing buf with binary data in the report
     # buf is e.g. 5.5.5-10.1.19-MariaDB or 5.5.49-MariaDB
     concluded = egrep( pattern:"([0-9.]+)(-([0-9.]+))?-", string:buf );
+    set_kb_item( name:"mysql_mariadb/full_banner/" + port, value:concluded );
   } else {
-    version = 'unknown';
+    version = "unknown";
   }
 
   replace_kb_item( name:"MariaDB/installed", value:TRUE );
   replace_kb_item( name:"MySQL_MariaDB/installed", value:TRUE );
 
-  register_service( port:port, proto:"mariadb" );
-  register_service( port:port, proto:"mysql_mariadb" );
+  register_service( port:port, proto:"mysql" );
 
   cpe = build_cpe( value:version, exp:"^([0-9.]+-?[a-zA-Z]+?)", base:"cpe:/a:mariadb:mariadb:" );
   if( isnull( cpe ) )
-    cpe = 'cpe:/a:mariadb:mariadb';
+    cpe = "cpe:/a:mariadb:mariadb";
 
-  register_product( cpe:cpe, location:port + '/tcp', port:port );
+  install = port + "/tcp";
+
+  register_product( cpe:cpe, location:install, port:port );
 
   log_message( data:build_detection_report( app:"MariaDB",
                                             version:version,
-                                            install:port + '/tcp',
+                                            install:install,
                                             cpe:cpe,
                                             concluded:concluded,
                                             extra:extra ),

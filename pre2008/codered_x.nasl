@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: codered_x.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: codered_x.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: CodeRed version X detection
 #
 # Authors:
@@ -48,8 +48,8 @@ http://www.microsoft.com/technet/itsolutions/security/tools/redfix.asp";
 if(description)
 {
  script_id(10713); 
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2880);
  script_tag(name:"cvss_base", value:"10.0");
@@ -70,26 +70,22 @@ if(description)
  script_family(family);
 
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("IIS/banner");
  script_require_ports("Services/www", 80);
+ script_mandatory_keys("IIS/banner");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-#
-# The script code starts here
-#
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 
-if(!get_port_state(port))exit(0);
 if ( get_kb_item("Services/www/" + port + "/embedded") ) exit(0);
 
 sig = get_http_banner(port:port);
-if ( sig && "IIS" >!< sig ) exit(0);
+if ( !sig || "IIS" >!< sig ) exit(0);
 
 soc = http_open_socket(port);
 if(soc)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zyxel_router_multiple_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_zyxel_router_multiple_vuln.nasl 6699 2017-07-12 12:07:37Z cfischer $
 #
 # ZyXEL ADSL Router Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804471");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6699 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:07:37 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-25 12:28:41 +0530 (Wed, 25 Jun 2014)");
   script_name("ZyXEL ADSL Router Multiple Vulnerabilities");
 
@@ -56,15 +56,13 @@ if(description)
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127179");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Jun/103");
-  script_summary("Determine if it is possible to read the cookie or not.");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("RomPager/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("RomPager/banner");
 
   exit(0);
 }

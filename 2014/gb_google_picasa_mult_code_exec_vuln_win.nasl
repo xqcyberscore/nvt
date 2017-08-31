@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804185";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2489 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2013-5349", "CVE-2013-5357", "CVE-2013-5358", "CVE-2013-5359");
   script_bugtraq_id(64467, 64468, 64466, 64470);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:42:19 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-20 11:18:19 +0530 (Mon, 20 Jan 2014)");
   script_name("Google Picasa Multiple Code Execution Vulnerabilities");
 
@@ -82,7 +82,6 @@ For updates refer to http://picasa.google.com";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55555");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1029527");
   script_xref(name : "URL" , value : "https://support.google.com/picasa/answer/53209");
-  script_summary("Check for the vulnerable version of Google Picasa on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

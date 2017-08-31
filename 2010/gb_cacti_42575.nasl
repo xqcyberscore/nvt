@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_42575.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_cacti_42575.nasl 6941 2017-08-16 12:17:27Z cfischer $
 #
 # Cacti Cross Site Scripting and HTML Injection Vulnerabilities
 #
@@ -40,11 +40,11 @@ tag_solution = "Updates are available. Please see the references for more inform
 if (description)
 {
  script_id(100764);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_version("$Revision: 6941 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-16 14:17:27 +0200 (Wed, 16 Aug 2017) $");
  script_tag(name:"creation_date", value:"2010-08-30 14:30:07 +0200 (Mon, 30 Aug 2010)");
  script_bugtraq_id(42575);
- script_cve_id("CVE-2010-2544","CVE-2010-2545");
+ script_cve_id("CVE-2010-2543", "CVE-2010-2544","CVE-2010-2545");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 

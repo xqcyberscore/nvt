@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_techboard_syac_backdoor_07_14.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_techboard_syac_backdoor_07_14.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Backdoor access to Techboard/Syac devices
 #
@@ -39,16 +39,15 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105059");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6759 $");
 
  script_name("Backdoor access to Techboard/Syac devices");
 
 
  script_xref(name:"URL", value:"http://blog.emaze.net/2014/07/backdoor-techboardsyac.html");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-07-08 15:03:46 +0200 (Tue, 08 Jul 2014)");
- script_summary("Check for a backdoor in Techboard/Syac devices");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("General");

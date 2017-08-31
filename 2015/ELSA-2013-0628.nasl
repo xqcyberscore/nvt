@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0628.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-0628.nasl 6600 2017-07-07 09:58:31Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123669");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6600 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:07:02 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0628");
 script_tag(name: "insight", value: "ELSA-2013-0628 -  389-ds-base security and bug fix update - [1.2.11.15-12]- Resolves: Bug 910994 - PamConfig schema not updated during upgrade- Resolves: Bug 910995 - Valgrind reports memleak in modify_update_last_modified_attr- Resolves: Bug 910996 - DS returns error 20 when replacing values of a multi-valued attribute (only when replication is enabled)- Resolves: Bug 911467 - DNA: use event queue for config update only at the start up- Resolves: Bug 911468 - Error messages encountered when using POSIX winsync- Resolves: Bug 911469 - dse.ldif is 0 length after server kill or machine kill- Resolves: Bug 911474 - Invalid chaining config triggers a disk full error and shutdown- Resolves: Bug 914305 - ns-slapd segfaults while trying to delete a tombstone entry- Resolves: Bug 913228 - unauthenticated denial of service vulnerability in handling of LDAPv3 control data"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-0628");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882187");
-  script_version("$Revision: 3327 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_version("$Revision: 6657 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:50:44 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-06-09 11:03:40 +0200 (Tue, 09 Jun 2015)");
   script_cve_id("CVE-2015-0797", "CVE-2015-2708", "CVE-2015-2710", "CVE-2015-2713", "CVE-2015-2716");
   script_tag(name:"cvss_base", value:"7.5");
@@ -63,13 +63,12 @@ update, Firefox must be restarted for the changes to take effect.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:0988");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-May/021132.html");
-  script_summary("Check for the Version of firefox");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-1581.nasl 6141 2017-05-17 09:03:37Z teissa $
+# $Id: ELSA-2011-1581.nasl 6556 2017-07-06 11:54:54Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122037");
-script_version("$Revision: 6141 $");
+script_version("$Revision: 6556 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:12:02 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:54 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-1581");
 script_tag(name: "insight", value: "ELSA-2011-1581 -  ruby security, bug fix, and enhancement update - [1.8.7.352-3]- mkconfig.rb: fix for continued lines. * ruby-1.8.7-p352-mkconfig.rb-fix-for-continued-lines.patch- Resolves: rhbz#730287[1.8.7.352-2]- Fix of ruby interpreter crash in FIPS mode. * ruby-1.8.7-FIPS.patch- Resolves: rhbz#717709[1.8.7.352-1]- Update to Ruby 1.8.7-p352. * Remove Patch43: ruby-1.8.7-CVE-2011-1004.patch; subsumed * Remove Patch44: ruby-1.8.7-CVE-2011-1005.patch; subsumed * Remove Patch200: ruby-1.8.7-webrick-CVE.patch; subsumed- Resolves: rhbz#706332- Fix of conflict between 32bit and 64bit library versions.- Resolves: rhbz#674787- Add systemtap static probes.- Resolves: rhbz#673162- Remove duplicate path entry- Resolves: rhbz#722887[1.8.7.299-8]- Address CVE-2011-1004 'Symlink race condition by removing directory trees in fileutils module' * ruby-1.8.7-CVE-2011-1004.patch- Address CVE-2011-1005 'Untrusted codes able to modify arbitrary strings' * ruby-1.8.7-CVE-2011-1005.patch- Address CVE-2011-0188 'memory corruption in BigDecimal on 64bit platforms' * ruby-1.8.7-CVE-2011-0188.patch- Resolves: rhbz#709964"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

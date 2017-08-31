@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806911");
-  script_version("$Revision: 3344 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:52:57 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6632 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:48:18 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-12-19 05:42:42 +0100 (Sat, 19 Dec 2015)");
   script_cve_id("CVE-2015-8126", "CVE-2015-8472");
   script_tag(name:"cvss_base", value:"7.5");
@@ -49,13 +49,11 @@ if(description)
   script_xref(name: "FEDORA", value: "2015-3461");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-December/174127.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libpng10");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora",
-                        "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

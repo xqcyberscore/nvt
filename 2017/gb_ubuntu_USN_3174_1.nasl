@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843022");
-  script_version("$Revision: 5204 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-06 08:45:16 +0100 (Mon, 06 Feb 2017) $");
+  script_version("$Revision: 6648 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:05:27 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-01-20 05:40:06 +0100 (Fri, 20 Jan 2017)");
   script_cve_id("CVE-2016-8318", "CVE-2016-8327", "CVE-2017-3238", "CVE-2017-3243",
 		"CVE-2017-3244", "CVE-2017-3251", "CVE-2017-3256", "CVE-2017-3258", 
@@ -67,7 +67,7 @@ http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

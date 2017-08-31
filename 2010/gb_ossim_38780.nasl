@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ossim_38780.nasl 5404 2017-02-23 12:41:31Z antu123 $
+# $Id: gb_ossim_38780.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # OSSIM 'file' Parameter Directory Traversal Vulnerability
 #
@@ -40,8 +40,8 @@ the references for more information.";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100542");
- script_version("$Revision: 5404 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-23 13:41:31 +0100 (Thu, 23 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-03-19 11:14:17 +0100 (Fri, 19 Mar 2010)");
  script_bugtraq_id(38780);
  script_tag(name:"cvss_base", value:"5.0");
@@ -59,9 +59,9 @@ if (description)
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("gb_ossim_web_detect.nasl");
- script_mandatory_keys("OSSIM/installed");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("OSSIM/installed");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

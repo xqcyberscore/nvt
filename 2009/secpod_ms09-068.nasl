@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-068.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: secpod_ms09-068.nasl 6533 2017-07-05 08:41:34Z santu $
 #
 # Microsoft Office Word Remote Code Execution Vulnerability (976307)
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(900973);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6533 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 10:41:34 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-11-11 19:07:38 +0100 (Wed, 11 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -56,8 +56,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl",
                       "secpod_ms_office_detection_900025.nasl");
-  script_require_keys("SMB/Office/Word/Version",
-                      "SMB/Office/WordView/Version");
+  script_mandatory_keys("MS/Office/Prdts/Installed");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 

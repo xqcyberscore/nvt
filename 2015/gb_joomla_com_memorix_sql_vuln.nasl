@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_memorix_sql_vuln.nasl 3883 2016-08-25 05:37:27Z antu123 $
+# $Id: gb_joomla_com_memorix_sql_vuln.nasl 6513 2017-07-04 09:59:28Z teissa $
 #
 # Joomla Com_Memorix Component SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806031");
-  script_version("$Revision: 3883 $");
+  script_version("$Revision: 6513 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-25 07:37:27 +0200 (Thu, 25 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-08-24 15:13:35 +0530 (Mon, 24 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Joomla Com_Memorix Component SQL Injection Vulnerability");
@@ -63,7 +63,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37773");
-  script_summary("Check if Joomla Com_Memorix Component is prone to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

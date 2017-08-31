@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1458.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-1458.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123054");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:58:46 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1458");
 script_tag(name: "insight", value: "ELSA-2015-1458 -  libreoffice security, bug fix, and enhancement update - [1:4.2.8.2-11.0.1]- Replaced RedHat colors with Oracle colors, and the filename redhat.soc with oracle.soc in specfile (jingdong.lu@oracle.com)- Build with --with-vendor='Oracle America, Inc.' (jingdong.lu@oracle.com)[1:4.2.8.2-11]- Resolves: rhbz#1223696 some labels in print dialog are not translated, even though the translations exist[1:4.2.8.2-10]- Resolves: rhbz#1217466 CVE-2015-1774 HWP filter fix[1:4.2.8.2-9]- Resolves: rhbz#1209852 enable accidentally disabled GIO UCP[1:4.2.8.2-8]- Related: rhbz#1150048 rpmdiff: avoid multilib conflict[1:4.2.8.2-7]- Related: rhbz#1150048 packaging fix[1:4.2.8.2-6]- Related: rhbz#1150048 rpmdiff fixes[1:4.2.8.2-5]- Related: rhbz#1150048 fix some indic shortcuts[1:4.2.8.2-4]- Resolves: rhbz#1150048 rebase to latest stable 4.2.8.2"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"6.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-1458");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

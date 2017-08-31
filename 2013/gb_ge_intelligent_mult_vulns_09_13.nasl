@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ge_intelligent_mult_vulns_09_13.nasl 5699 2017-03-23 14:53:33Z cfi $
+# $Id: gb_ge_intelligent_mult_vulns_09_13.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # GE Intelligent Platforms Proficy Cimplicity Multiple Vulnerabilities
 #
@@ -51,21 +51,20 @@ if (description)
  script_cve_id("CVE-2013-0653","CVE-2013-0654");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5699 $");
+ script_version ("$Revision: 6698 $");
  script_name("GE Intelligent Platforms Proficy Cimplicity Multiple Vulnerabilities");
  script_xref(name:"URL", value:"http://ics-cert.us-cert.gov/advisories/ICSA-13-022-02");
  script_xref(name:"URL", value:"http://support.ge-ip.com/support/index?page=kbchannel&id=S:KB15153");
  script_xref(name:"URL", value:"http://support.ge-ip.com/support/index?page=kbchannel&id=S:KB15244");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:53:33 +0100 (Thu, 23 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-09-11 14:38:23 +0200 (Wed, 11 Sep 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
- script_mandatory_keys("CIMPLICITY/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("CIMPLICITY/banner");
 
  script_tag(name : "impact" , value : tag_impact);
  script_tag(name : "vuldetect" , value : tag_vuldetect);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_agentticketforward_info_disclosure_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_otrs_agentticketforward_info_disclosure_vuln.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # OTRS AgentTicketForward Information Disclosure Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6115 $");
+  script_version("$Revision: 6755 $");
   script_cve_id("CVE-2010-4766");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-09-22 12:18:31 +0530 (Sun, 22 Sep 2013)");
   script_name("OTRS AgentTicketForward Information Disclosure Vulnerability");
 
@@ -77,11 +77,9 @@ For updates refer to http://www.otrs.com/en/";
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("secpod_otrs_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("OTRS/installed");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

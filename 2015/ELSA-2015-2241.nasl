@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2241.nasl 6170 2017-05-19 09:03:42Z teissa $
+# $Id: ELSA-2015-2241.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122737");
-script_version("$Revision: 6170 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-11-24 10:17:15 +0200 (Tue, 24 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2241");
 script_tag(name: "insight", value: "ELSA-2015-2241 -  chrony security, bug fix, and enhancement update - [2.1.1-1]- update to 2.1.1 (#1117882)- add -n option to gzip command to not save timestamp[2.1-1]- update to 2.1 (#1117882 #1169353 #1206504 #1209568 CVE-2015-1821 CVE-2015-1822 CVE-2015-1853)- extend chrony-helper to allow using servers from DNS SRV records (#1211600)- add servers from DHCP with iburst option by default (#1219492)- execute test suite"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mdksa_2009_096.nasl 4975 2017-01-10 16:07:01Z teissa $
+# $Id: mdksa_2009_096.nasl 6587 2017-07-07 06:35:35Z cfischer $
 # Description: Auto-generated from advisory MDVSA-2009:096 (printer-drivers)
 #
 # Authors:
@@ -58,8 +58,8 @@ announced via advisory MDVSA-2009:096.";
 if(description)
 {
  script_id(63874);
- script_version("$Revision: 4975 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-10 17:07:01 +0100 (Tue, 10 Jan 2017) $");
+ script_version("$Revision: 6587 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 08:35:35 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-04-28 20:40:12 +0200 (Tue, 28 Apr 2009)");
  script_cve_id("CVE-2007-6725", "CVE-2009-0583", "CVE-2009-0584", "CVE-2009-0792");
  script_tag(name:"cvss_base", value:"9.3");
@@ -73,7 +73,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("Mandrake Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("login/SSH/success", "ssh/login/rpms");
+ script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/rpms");
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

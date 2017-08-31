@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3652.nasl 6044 2017-04-28 08:14:10Z teissa $
+# $Id: deb_3652.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3652-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,12 +30,12 @@
 if(description)
 {
     script_id(703652);
-    script_version("$Revision: 6044 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2016-4562", "CVE-2016-4563", "CVE-2016-4564", "CVE-2016-5010",
                   "CVE-2016-5687", "CVE-2016-5688", "CVE-2016-5689", "CVE-2016-5690",
                   "CVE-2016-5691", "CVE-2016-5841", "CVE-2016-5842", "CVE-2016-6491");
     script_name("Debian Security Advisory DSA 3652-1 (imagemagick - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-04-28 10:14:10 +0200 (Fri, 28 Apr 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-08-25 00:00:00 +0200 (Thu, 25 Aug 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,7 +50,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "imagemagick on Debian Linux");
     script_tag(name: "insight",   value: "ImageMagick is a software suite to
 create, edit, and compose bitmap images. It can read, convert and write images in

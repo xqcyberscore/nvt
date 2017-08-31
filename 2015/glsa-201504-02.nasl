@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
 # Description: Gentoo Linux security check
-# $Id: glsa-201504-02.nasl 6092 2017-05-10 07:02:40Z cfi $
+# $Id: glsa-201504-02.nasl 6592 2017-07-07 09:16:27Z cfischer $
 
 # Authors:
 # Eero Volotinen <eero.volotinen@solinor.com>
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.121369");
-script_version("$Revision: 6092 $");
+script_version("$Revision: 6592 $");
 script_tag(name:"creation_date", value:"2015-09-29 11:28:46 +0300 (Tue, 29 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-10 09:02:40 +0200 (Wed, 10 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:16:27 +0200 (Fri, 07 Jul 2017) $");
 script_name("Gentoo Linux Local Check: https://security.gentoo.org/glsa/201504-02");
 script_tag(name: "insight", value: "sudo does not handle the TZ environment variable properly."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"2.1");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/gentoo");
+script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
 script_category(ACT_GATHER_INFO);
 script_summary("Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201504-02");
 script_copyright("Eero Volotinen");

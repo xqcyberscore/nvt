@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: misc_func.inc 5970 2017-04-18 16:07:13Z mime $
+# OpenVAS Include File
+# $Id: misc_func.inc 6849 2017-08-04 07:21:15Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5970 $
+# $Revision: 6849 $
 #
 ###############################################################################
 
@@ -222,10 +222,10 @@ function get_unknown_banner( port, ipproto, dontfetch ) {
   banner = get_kb_item( "Amap/" + ipproto + "/" + port + "/FullBanner" );
   if( banner ) return( banner );
 
-  foreach p( make_list( "spontaneous", "get_http", "help" ) ) {
+  foreach p( make_list( "spontaneous", "get_http", "help", "xml", "json", "sip", "bin" ) ) {
     banner = get_kb_item( "FindService/" + ipproto + "/" + port + "/" + p );
     bannerHex = get_kb_item( "FindService/" + ipproto + "/" + port + "/" + p + "Hex" );
-    if( banner && bannerHex ) {
+    if( banner || bannerHex ) {
       if( strlen( bannerHex ) > 2 * strlen( banner ) )
        return hex2raw( s:bannerHex );
       else
@@ -891,12 +891,12 @@ function get_unknown_port( default, nodefault ) {
 
   if( ! _port ) exit( 0 );
 
+  # Ignore NetBIOS port as previously done in get_unknown_svc()
+  if( _port == 139 ) exit( 0 );
+
   # PJL ports printing everything sent to them
   # so exit for such a port here
   if( is_pjl_port( port:_port ) ) exit( 0 );
-
-  # Ignore NetBIOS port as previously done in get_unknown_svc()
-  if( _port == 139 ) exit( 0 );
 
   # Always check port passed in default variable. Other detections
   # (like telnet.nasl) might have falsely marked this as known.
@@ -919,19 +919,23 @@ function get_unknown_port_list( default ) {
 
   port_list = get_kb_list( "Services/unknown" );
   if( port_list ) {
-    _port_list = make_list( default, port_list ); # TBD: Check if default already exists in list?
+    if( ! in_array( search:default, array:port_list ) ) { # The passed default might be already in the Services/unknown list
+      _port_list = make_list( default, port_list );
+    } else {
+      _port_list = port_list;
+    }
   } else {
     _port_list = make_list( default );
   }
 
   foreach port( _port_list ) {
 
+    # Ignore NetBIOS port as previously done in get_unknown_svc()
+    if( port == 139 ) continue;
+
     # PJL ports printing everything sent to them
     # so continue for such a port here
     if( is_pjl_port( port:port ) ) continue;
-
-    # Ignore NetBIOS port as previously done in get_unknown_svc()
-    if( port == 139 ) continue;
 
     # Always check port passed in default variable. Other detections
     # (like telnet.nasl) might have falsely marked this as known.
@@ -1075,9 +1079,9 @@ function ascii2unicode( data ) {
   return ret;
 }
 
-function join( list, sep )
-{
-  local_var l, ret;
+function join( list, sep ) {
+
+  local_var list, sep, l, ret;
 
   if( ! list )
     return;
@@ -1091,12 +1095,11 @@ function join( list, sep )
    return ereg_replace( string:ret, pattern:sep +'$', replace:'' );
 }
 
-function socket_send_recv( port, soc, data, proto, length )
-{
+function socket_send_recv( port, soc, data, proto, length ) {
+
   local_var port, soc, data, proto, length, nosock;
 
-  if( ! port && ! soc )
-  {
+  if( ! port && ! soc ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port/soc#-#socket_send_recv" );
     return;
   }
@@ -1104,8 +1107,7 @@ function socket_send_recv( port, soc, data, proto, length )
   if( ! soc )
     nosock = TRUE;
 
-  if( port && nosock )
-  {
+  if( port && nosock ) {
     if( ! proto )
       proto = "tcp";
 
@@ -1134,8 +1136,8 @@ function socket_send_recv( port, soc, data, proto, length )
 
 }
 
-function text_format_table( array, sep )
-{
+function text_format_table( array, sep ) {
+
   local_var maxlen, array, sep, len, a, report, flen;
 
   if( ! array || ! is_array( array ) )
@@ -1144,12 +1146,10 @@ function text_format_table( array, sep )
   if( ! sep )
     sep = " : ";
 
-  foreach a ( sort( keys( array ) ) )
-  {
+  foreach a( sort( keys( array ) ) ) {
     len = strlen( a );
 
-    if( ! maxlen )
-    {
+    if( ! maxlen ) {
       maxlen = len;
       continue;
     }
@@ -1158,8 +1158,7 @@ function text_format_table( array, sep )
       maxlen = len;
   }
 
-  foreach a ( sort( keys( array ) ) )
-  {
+  foreach a( sort( keys( array ) ) ) {
     flen = strlen( a );
     padding_len = ( maxlen - flen ) + 1;
 
@@ -1170,8 +1169,8 @@ function text_format_table( array, sep )
     return report;
 }
 
-function close_sock_and_exit()
-{
+function close_sock_and_exit() {
+
   soc = _FCT_ANON_ARGS[0];
 
   if( soc )
@@ -1180,3 +1179,93 @@ function close_sock_and_exit()
   exit( 0 );
 }
 
+function eol_date_reached( eol_date ) {
+
+  local_var eol_date, local_time;
+
+  if( ! eol_date ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#eol_date#-#eol_date_reached" );
+    return;
+  }
+
+  # Special case to mark an OS/Product as EOL if the date is unknown.
+  # This avoids that we need to guess a date for e.g. older products.
+  if( eol_date == "unknown" ) return TRUE;
+
+  eol_date = str_replace( string:eol_date, find:"-", keep:FALSE );
+  local_time = make_date_str( date:localtime( unixtime() ) );
+
+  if( int( local_time ) >= int( eol_date ) )
+    return TRUE;
+
+  return;
+}
+
+function build_eol_message( eol_type, name, cpe, version, eol_version, eol_date, eol_url ) {
+
+  local_var eol_type, name, cpe, version, eol_version, eol_date, report;
+
+  if( eol_type != "prod" && eol_type != "os" ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#build_prod_eol_message: Wrong value passed to eol_type. Valid values are: prod, os" );
+    return "";
+  }
+
+  if( eol_type == "prod" ) {
+
+    if( isnull( name ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#build_eol_message" );
+    if( isnull( cpe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#build_eol_message" );
+    if( isnull( version ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#build_eol_message" );
+    if( isnull( eol_version ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#eol_version#-#build_eol_message" );
+    if( isnull( eol_date ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#eol_date#-#build_eol_message" );
+
+    report = 'The "' + name + '" version on the remote host has reached the end of life.\n\n' +
+             'CPE:               ' + cpe + ':' + version + '\n' +
+             'Installed version: ' + version + '\n' +
+             'EOL version:       ' + eol_version + '\n' +
+             'EOL date:          ' + eol_date;
+  } else if( eol_type == "os" ) {
+
+    if( isnull( name ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#build_eol_message" );
+    if( isnull( cpe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#build_eol_message" );
+    if( isnull( eol_date ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#eol_date#-#build_eol_message" );
+    if( isnull( eol_url ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#eol_url#-#build_eol_message" );
+
+    report = 'The "' + name + '" Operating System on the remote host has reached the end of life.\n\n' +
+             'CPE:               ' + cpe;
+
+    if( version && version != "unknown" ) {
+      report += '\nInstalled version,\n';
+      report += 'build or SP:       ' + version;
+    }
+
+    if( eol_date )
+      report += '\nEOL date:          ' + eol_date;
+
+    if( eol_url )
+      report += '\nEOL info:          ' + eol_url;
+  }
+
+  return report;
+}
+
+function make_date_str( date ) {
+
+  local_var date, time, month, day;
+
+  time = localtime( date );
+
+  month = fancy_date( time["mon"]  );
+  day   = fancy_date( time["mday"] );
+
+  return time["year"] + month + day;
+}
+
+function fancy_date() {
+
+  local_var datestr;
+
+  datestr = _FCT_ANON_ARGS[0];
+  if( int( datestr ) < 10 ) return string( "0", datestr );
+
+  return datestr;
+}

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serva32_47760.nasl 5648 2017-03-21 09:52:17Z cfi $
+# $Id: gb_serva32_47760.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # Serva32 Directory Traversal and Denial of Service Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103160");
- script_version("$Revision: 5648 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 6696 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-05-12 13:24:44 +0200 (Thu, 12 May 2011)");
  script_bugtraq_id(47760);
  script_tag(name:"cvss_base", value:"7.5");
@@ -42,9 +42,8 @@ if(description)
  script_category(ACT_ATTACK);
  script_family("Web Servers");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_require_ports("Services/www", 80);
  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_require_ports("Services/www", 80);
  script_mandatory_keys("Serva32/banner");
 
  script_tag(name:"impact", value:"Exploiting these issues will allow attackers to obtain sensitive

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0267.nasl 4821 2016-12-21 07:18:13Z antu123 $
+# $Id: mgasa-2015-0267.nasl 6563 2017-07-06 12:23:47Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130110");
-script_version("$Revision: 4821 $");
+script_version("$Revision: 6563 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:42:50 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-12-21 08:18:13 +0100 (Wed, 21 Dec 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:23:47 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0267");
 script_tag(name: "insight", value: "PCRE library is prone to a vulnerability which leads to Heap Overflow. During subpattern calculation of a malformed regular expression, an offset that is used as an array index is fully controlled and can be large enough so that unexpected heap memory regions are accessed (CVE-2015-5073)."); 
 script_tag(name : "solution", value : "update software");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"6.4");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0267");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0267");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

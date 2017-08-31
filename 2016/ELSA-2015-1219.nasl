@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1219.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: ELSA-2015-1219.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122867");
-script_version("$Revision: 5612 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-02-05 14:01:36 +0200 (Fri, 05 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1219");
 script_tag(name: "insight", value: "ELSA-2015-1219 -  php54-php security update - [5.4.40-3]- fix more functions accept paths with NUL character #1213407[5.4.40-2]- core: fix multipart/form-data request can use excessive amount of CPU usage CVE-2015-4024- fix various functions accept paths with NUL character CVE-2015-4025, CVE-2015-4026- ftp: fix integer overflow leading to heap overflow when reading FTP file listing CVE-2015-4022- phar: fix memory corruption in phar_parse_tarfile caused by empty entry file name CVE-2015-4021- pgsql: fix NULL pointer dereference CVE-2015-1352"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

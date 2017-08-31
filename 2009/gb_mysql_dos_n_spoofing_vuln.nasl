@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_dos_n_spoofing_vuln.nasl 5237 2017-02-08 14:57:10Z cfi $
+# $Id: gb_mysql_dos_n_spoofing_vuln.nasl 6788 2017-07-21 19:16:52Z cfischer $
 #
 # MySQL Denial Of Service and Spoofing Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801064");
-  script_version("$Revision: 5237 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 15:57:10 +0100 (Wed, 08 Feb 2017) $");
+  script_version("$Revision: 6788 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-12-04 14:17:59 +0100 (Fri, 04 Dec 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -40,7 +40,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("mysql_version.nasl");
-  script_require_ports("Services/mysql", "Services/mysql_mariadb", 3306);
+  script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed");
 
   script_xref(name:"URL", value:"http://bugs.mysql.com/47780");

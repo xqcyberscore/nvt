@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms04-001.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: smb_nt_ms04-001.nasl 6456 2017-06-28 11:19:33Z cfischer $
 # Description: Vulnerability in Microsoft ISA Server 2000 H.323 Filter(816458)
 #
 # Authors:
@@ -49,47 +49,33 @@ See http://www.microsoft.com/technet/security/bulletin/ms04-001.mspx";
 
 if(description)
 {
- script_id(11992);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(9408);
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_xref(name:"IAVA", value:"2004-B-0002");
- script_cve_id("CVE-2003-0819");
- 
- name = "Vulnerability in Microsoft ISA Server 2000 H.323 Filter(816458)";
- 
- script_name(name);
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.11992");
+  script_version("$Revision: 6456 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(9408);
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"IAVA", value:"2004-B-0002");
+  script_cve_id("CVE-2003-0819");
+  script_name("Vulnerability in Microsoft ISA Server 2000 H.323 Filter(816458)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004 Jeff Adams");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
 
- summary = "Checks for hotfix Q816458";
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "summary" , value : tag_summary);
 
- 
- script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
- 
- script_copyright("This script is Copyright (C) 2004 Jeff Adams");
- family = "Windows : Microsoft Bulletins";
- script_family(family);
- script_dependencies("secpod_reg_enum.nasl");
- script_require_keys("SMB/registry_full_access");
- script_mandatory_keys("SMB/WindowsVersion");
- script_require_ports(139, 445);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+
+  exit(0);
 }
-
-port = get_kb_item("SMB/transport");
-if(!port)port = 139;
-
-access = get_kb_item("SMB/registry_full_access");
-if(!access)exit(0);
 
 fpc = get_kb_item("SMB/Registry/HKLM/SOFTWARE/Microsoft/Fpc");
 if (!fpc) exit(0);
 
 fix = get_kb_item("SMB/Registry/HKLM/SOFTWARE/Microsoft/Fpc/Hotfixes/SP1/291");
-if(!fix)security_message(port);
+if(!fix)security_message(port:0);

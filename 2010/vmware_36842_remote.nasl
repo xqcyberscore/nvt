@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vmware_36842_remote.nasl 5616 2017-03-20 13:32:41Z cfi $
+# $Id: vmware_36842_remote.nasl 6463 2017-06-28 12:38:50Z cfischer $
 #
 # VMware Products Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100502");
- script_version("$Revision: 5616 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:32:41 +0100 (Mon, 20 Mar 2017) $");
+ script_version("$Revision: 6463 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-28 14:38:50 +0200 (Wed, 28 Jun 2017) $");
  script_tag(name:"creation_date", value:"2010-02-23 17:05:07 +0100 (Tue, 23 Feb 2010)");
  script_bugtraq_id(36842);
  script_cve_id("CVE-2009-3733");
@@ -47,22 +47,27 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("gb_vmware_esx_web_detect.nasl", "gb_vmware_esx_snmp_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 8222);
- script_mandatory_keys("Host/runs_unixoide"); # only vmware running under linux is affected
- script_require_keys("VMware/ESX/installed");
+ script_mandatory_keys("VMware/ESX/installed", "Host/runs_unixoide"); # only vmware running under linux is affected
  script_exclude_keys("Settings/disable_cgi_scanning");
 
  script_tag(name : "impact" , value : "Successful exploitation will let the remote/local attacker to disclose
  sensitive information.
+
  Impact Level: System");
+
  script_tag(name : "affected" , value : "VMware Server version 2.0.x prior to 2.0.2 Build 203138,
  VMware Server version 1.0.x prior to 1.0.10 Build 203137 on Linux.");
+
  script_tag(name : "insight" , value : "An error exists while handling certain requests can be exploited to download
  arbitrary files from the host system via directory traversal attacks.");
+
  script_tag(name : "solution" , value : "Upgrade your VMWares according to the below link,
  http://www.vmware.com/security/advisories/VMSA-2009-0015.html");
+
  script_tag(name : "summary" , value : "The host is installed with VMWare product(s) and is prone to multiple
  vulnerability.");
 
+ script_tag(name:"solution_type", value:"VendorFix");
  script_tag(name:"qod_type", value:"remote_vul");
  exit(0);
 }

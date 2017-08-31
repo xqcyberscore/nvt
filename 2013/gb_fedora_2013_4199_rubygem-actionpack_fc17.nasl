@@ -37,8 +37,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2013-March/101113.html");
   script_id(865515);
-  script_version("$Revision: 2908 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-22 14:38:14 +0100 (Tue, 22 Mar 2016) $");
+  script_version("$Revision: 6628 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-04-02 12:25:29 +0530 (Tue, 02 Apr 2013)");
   script_cve_id("CVE-2013-1855", "CVE-2013-1857", "CVE-2013-0155", "CVE-2012-3463",
                 "CVE-2012-3464", "CVE-2012-3465", "CVE-2012-3424", "CVE-2012-2694",
@@ -53,7 +53,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

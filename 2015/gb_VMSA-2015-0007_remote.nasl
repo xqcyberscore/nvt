@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2015-0007_remote.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_VMSA-2015-0007_remote.nasl 6497 2017-06-30 09:58:54Z teissa $
 #
 # VMSA-2015-0007: VMware ESXi OpenSLP Remote Code Execution (remote check)
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2015-5177","CVE-2015-2342","CVE-2015-1047");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2748 $");
+ script_version ("$Revision: 6497 $");
 
  script_name("VMSA-2015-0007: VMware ESXi OpenSLP Remote Code Execution (remote check)");
 
@@ -61,11 +61,10 @@ VMware vCenter Server 5.5 prior to version 5.5 update 3
 VMware vCenter Server 5.1 prior to version 5.1 update u3b
 VMware vCenter Server 5.0 prior to version 5.u update u3e");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-10-05 10:47:03 +0200 (Mon, 05 Oct 2015)");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
- script_summary("Check the build number");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

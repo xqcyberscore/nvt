@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ossim_67999.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_ossim_67999.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # AlienVault OSSIM  Multiple Unspecified Remote Code Execution Vulnerabilities
 #
@@ -34,22 +34,20 @@ if (description)
  script_cve_id("CVE-2014-3804","CVE-2014-3805");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6769 $");
 
  script_name("AlienVault OSSIM  Multiple Remote Code Execution Vulnerabilities");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/67999");
  script_xref(name:"URL", value:"http://www.alienvault.com/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-06-20 12:08:51 +0200 (Fri, 20 Jun 2014)");
- script_summary("Determine if is is possible to execute code");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_ossim_web_detect.nasl");
  script_require_ports("Services/www", 40007);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("OSSIM/installed");
 
  script_tag(name : "impact" , value : "An attacker can leverage these issues to execute arbitrary code with
@@ -77,7 +75,7 @@ if( ! dir = get_app_location( cpe:CPE, port:wport ) ) exit( 0 );
 port = 40007;
 if( ! get_port_state( port ) ) exit( 0 );
 
-host = get_host_name();
+host = http_host_name(port:port);
 cmd = 'id';
 
 soap = "<soap:Envelope soap:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/' " +

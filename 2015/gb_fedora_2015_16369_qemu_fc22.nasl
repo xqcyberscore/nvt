@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806129");
-  script_version("$Revision: 6254 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+  script_version("$Revision: 6630 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-10-13 07:15:01 +0200 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2015-6815", "CVE-2015-6855", "CVE-2015-5278", "CVE-2015-5279");
   script_tag(name:"cvss_base", value:"7.2");
@@ -57,7 +57,7 @@ As QEMU requires no host kernel patches to run, it is safe and easy to use.
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

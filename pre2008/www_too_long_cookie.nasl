@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: www_too_long_cookie.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: www_too_long_cookie.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: HTTP Cookie overflow
 #
 # Authors:
@@ -35,8 +35,8 @@ tag_solution = "upgrade your software or protect it with a filtering reverse pro
 if(description)
 {
  script_id(11077);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-1999-0071");
  script_tag(name:"cvss_base", value:"7.5");
@@ -61,20 +61,17 @@ if(description)
  script_family(family);
  script_dependencies("find_service.nasl", "http_version.nasl", "no404.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-########
-
-
-
 include ("http_func.inc");
 
 port = get_http_port(default:80);
 
-if(! get_port_state(port)) exit(0);
 if (http_is_dead(port: port)) exit(0);
 
 soc = http_open_socket(port);

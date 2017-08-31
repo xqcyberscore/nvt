@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_lync_detect_win.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: secpod_ms_lync_detect_win.nasl 6473 2017-06-29 06:07:30Z cfischer $
 #
 # Microsoft Lync Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902843");
-  script_version("$Revision: 6125 $");
+  script_version("$Revision: 6473 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:07:30 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2012-06-13 12:12:12 +0530 (Wed, 13 Jun 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Lync Version Detection");
@@ -117,6 +117,8 @@ foreach key (key_list)
           ## Set Path in KB, it may required in vulnerable plugin
           set_kb_item(name:"MS/Lync/Attendant/path", value:path);
 
+          replace_kb_item(name:"MS/Lync/Installed", value:TRUE);
+
           ## Register for 64 bit app on 64 bit OS once again
           if("32" >< os_arch || "Wow6432Node" >< key)
           {
@@ -133,6 +135,7 @@ foreach key (key_list)
           {
             ## Set Version in KB
             set_kb_item(name:"MS/Lync/Attendant64/Ver", value:ver);
+            replace_kb_item(name:"MS/Lync/Installed", value:TRUE);
 
             ## Build CPE
             cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
@@ -152,6 +155,8 @@ foreach key (key_list)
 
           ## Set Path in KB
           set_kb_item(name:"MS/Lync/Attendee/path", value:path);
+
+          replace_kb_item(name:"MS/Lync/Installed", value:TRUE);
 
           ## Build CPE
           cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
@@ -202,6 +207,8 @@ foreach key (key_list)
           ## Set Path in KB
           set_kb_item(name:"MS/Lync/Basic/path", value:path);
 
+          replace_kb_item(name:"MS/Lync/Installed", value:TRUE);
+
           ## Build CPE
           cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
                           base:"cpe:/a:microsoft:lync_basic:" + rlsVer[0] + ":");
@@ -212,6 +219,8 @@ foreach key (key_list)
           {
             ## Set Version in KB
             set_kb_item(name:"MS/Lync/Basic64/Ver", value:ver);
+
+            replace_kb_item(name:"MS/Lync/Installed", value:TRUE);
 
             ## Build CPE
             cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
@@ -240,6 +249,8 @@ foreach key (key_list)
           ## Set Path in KB
           set_kb_item(name:"MS/Lync/path", value:path);
 
+          replace_kb_item(name:"MS/Lync/Installed", value:TRUE);
+
           ## Build CPE
           cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
                           base:"cpe:/a:microsoft:lync:"  + rlsVer[0] + ":");
@@ -248,6 +259,8 @@ foreach key (key_list)
           {
             ## Set Version in KB
             set_kb_item(name:"MS/Lync64/Ver", value:ver);
+
+            replace_kb_item(name:"MS/Lync/Installed", value:TRUE);
 
             ## Build CPE
             cpe = build_cpe(value:ver, exp:"^([0-9.]+)",

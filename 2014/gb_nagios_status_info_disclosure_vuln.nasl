@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_status_info_disclosure_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_nagios_status_info_disclosure_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Nagios status.cgi Information Disclosure Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:nagios:nagios";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2013-2214");
   script_bugtraq_id(60814);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-17 18:31:41 +0530 (Mon, 17 Mar 2014)");
   script_name("Nagios status.cgi Information Disclosure Vulnerability");
 
@@ -74,7 +74,6 @@ For updates refer to http://www.nagios.org";
 
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2013/q3/54");
   script_xref(name : "URL" , value : "http://tracker.nagios.org/view.php?id=456");
-  script_summary("Check if Nagios is vulnerable to information disclosure");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-0612.nasl 3817 2016-08-10 05:18:42Z ckuerste $
+# $Id: gb_junos_cve_2014-0612.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Junos Denial of Service Vulnerability for New Dynamic VPN Connections
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105906");
-  script_version ("$Revision: 3817 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-10 07:18:42 +0200 (Wed, 10 Aug 2016) $");
+  script_version ("$Revision: 6692 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-02 11:08:01 +0700 (Fri, 02 May 2014)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -45,7 +45,6 @@ if (description)
 
   script_name("Junos Denial of Service Vulnerability for New Dynamic VPN Connections");
 
-  script_summary("Junos CVE-2014-0612");
 
   script_category(ACT_GATHER_INFO);
 

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842816");
-  script_version("$Revision: 5836 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+  script_version("$Revision: 6647 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:04:05 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-06-28 05:26:20 +0200 (Tue, 28 Jun 2016)");
   script_cve_id("CVE-2016-3951", "CVE-2016-4482", "CVE-2016-4565", "CVE-2016-4569",
  		"CVE-2016-4578", "CVE-2016-4580", "CVE-2016-4805", "CVE-2016-4913");
@@ -81,7 +81,7 @@ potentially sensitive information from kernel memory. (CVE-2016-4913)");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

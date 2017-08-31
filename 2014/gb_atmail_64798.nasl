@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atmail_64798.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_atmail_64798.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # Atmail Multiple Unspecified Security Vulnerabilities.
 #
@@ -42,7 +42,7 @@ if (description)
  script_cve_id("CVE-2013-5034","CVE-2013-5033","CVE-2013-5032","CVE-2013-5031");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6756 $");
 
  script_name("Atmail Multiple Unspecified Security Vulnerabilities.");
 
@@ -54,16 +54,14 @@ if (description)
  script_xref(name:"URL", value:"http://blog.atmail.com/2013/atmail-7-1-2-security-hotfix/");
  script_xref(name:"URL", value:"http://atmail.com/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-14 12:23:14 +0100 (Tue, 14 Jan 2014)");
- script_summary("Check the installed Atmail version.");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("atmail_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("Atmail/installed");
 
  script_tag(name : "impact" , value : tag_impact);
@@ -82,8 +80,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 if ( ! port = get_app_port( cpe:CPE, nvt:SCRIPT_OID ) ) exit(0);
-if ( ! get_port_state( port ) ) exit(0);
-
 if ( vers = get_app_version( cpe:CPE, nvt:SCRIPT_OID, port:port ) )
 {
   if ( vers  =~ "^6\." )

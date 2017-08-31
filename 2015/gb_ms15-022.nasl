@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-022.nasl 2646 2016-02-12 08:18:48Z benallard $
+# $Id: gb_ms15-022.nasl 6513 2017-07-04 09:59:28Z teissa $
 #
 # Microsoft Office Suite Remote Code Execution Vulnerabilities (3038999)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805054");
-  script_version("$Revision: 2646 $");
+  script_version("$Revision: 6513 $");
   script_cve_id("CVE-2015-0085", "CVE-2015-0086", "CVE-2015-0097");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:48 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-03-11 12:12:11 +0530 (Wed, 11 Mar 2015)");
   script_name("Microsoft Office Suite Remote Code Execution Vulnerabilities (3038999)");
 
@@ -70,7 +70,6 @@ if(description)
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2883100");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2956138");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms15-022");
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

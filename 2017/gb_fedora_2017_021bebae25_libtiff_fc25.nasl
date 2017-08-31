@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872566");
-  script_version("$Revision: 6012 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_version("$Revision: 6634 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-04-15 06:40:11 +0200 (Sat, 15 Apr 2017)");
   script_cve_id("CVE-2017-7592", "CVE-2017-7593", "CVE-2017-7594", "CVE-2017-7595", 
                 "CVE-2017-7596", "CVE-2017-7597", "CVE-2017-7598", "CVE-2017-7599", 
@@ -57,7 +57,7 @@ format image files.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

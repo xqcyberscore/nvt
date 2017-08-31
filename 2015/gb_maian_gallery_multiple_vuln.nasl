@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_maian_gallery_multiple_vuln.nasl 5789 2017-03-30 11:42:46Z cfi $
+# $Id: gb_maian_gallery_multiple_vuln.nasl 6497 2017-06-30 09:58:54Z teissa $
 #
 # Maian Gallery Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805648");
-  script_version("$Revision: 5789 $");
+  script_version("$Revision: 6497 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-09 15:25:55 +0530 (Tue, 09 Jun 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Maian Gallery Multiple Vulnerabilities");
@@ -66,7 +66,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132154");
 
-  script_summary("Check if Maian Galleryn is prone to SQL");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

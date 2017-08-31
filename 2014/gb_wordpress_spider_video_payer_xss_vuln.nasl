@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_spider_video_payer_xss_vuln.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_wordpress_spider_video_payer_xss_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # WordPress Web Dorado Spider Video Player XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804788");
-  script_version("$Revision: 2780 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-8584");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-07 16:00:58 +0530 (Fri, 07 Nov 2014)");
   script_name("WordPress Web Dorado Spider Video Player XSS Vulnerability");
 
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://wordpress.org/plugins/player/changelog");
 
-  script_summary("Check if  Web Dorado Spider Video Player plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

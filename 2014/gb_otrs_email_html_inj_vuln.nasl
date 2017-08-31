@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_email_html_inj_vuln.nasl 3381 2016-05-24 17:57:45Z jan $
+# $Id: gb_otrs_email_html_inj_vuln.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # OTRS Email HTML Injection Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3381 $");
+  script_version("$Revision: 6756 $");
   script_cve_id("CVE-2014-1695");
   script_bugtraq_id(65844);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-24 19:57:45 +0200 (Tue, 24 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-04 17:31:09 +0530 (Tue, 04 Mar 2014)");
   script_name("OTRS Email HTML Injection Vulnerability");
 
@@ -75,14 +75,13 @@ For updates refer to http://www.otrs.com";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57018");
   script_xref(name : "URL" , value : "https://www.otrs.com/security-advisory-2014-03-xss-issue");
-  script_summary("Check for the vulnerable version of OTRS");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("secpod_otrs_detect.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
-  script_mandatory_keys("OTRS/installed");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("OTRS/installed");
+
   exit(0);
 }
 

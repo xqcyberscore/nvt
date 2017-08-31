@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2524_1.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: deb_2524_1.nasl 6612 2017-07-07 12:08:03Z cfischer $
 # Description: Auto-generated from advisory DSA 2524-1 (openttd)
 #
 # Authors:
@@ -46,8 +46,8 @@ if(description)
  script_cve_id("CVE-2012-0049", "CVE-2012-3436");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 5950 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+ script_version("$Revision: 6612 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-08-10 03:21:14 -0400 (Fri, 10 Aug 2012)");
  script_name("Debian Security Advisory DSA 2524-1 (openttd)");
 
@@ -58,7 +58,7 @@ if(description)
  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
  script_family("Debian Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);

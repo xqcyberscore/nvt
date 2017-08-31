@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_mult_xss_vuln_apr14.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_vtiger_crm_mult_xss_vuln_apr14.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Vtiger 'return_url' Parameter Multiple Cross Site Scripting Vulnerabilities
 #
@@ -30,12 +30,12 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.804541";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2013-7326");
   script_bugtraq_id(64236);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-17 17:45:25 +0530 (Thu, 17 Apr 2014)");
   script_name("Vtiger 'return_url' Parameter Multiple Cross Site Scripting Vulnerabilities");
 
@@ -76,7 +76,6 @@ For updates refer to https://www.vtiger.com";
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/89662");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Dec/51");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124402");
-  script_summary("Check for the vulnerable version of vTiger");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_mult_unspecified_vuln02_jan14.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_oracle_db_mult_unspecified_vuln02_jan14.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Oracle Database Server Multiple Unspecified Vulnerabilities-02 Jan2014
 #
@@ -30,13 +30,13 @@ CPE = 'cpe:/a:oracle:database_server';
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2013-5858", "CVE-2014-0377", "CVE-2014-0378");
   script_bugtraq_id(64820, 64824, 64812);
   script_tag(name:"cvss_base", value:"4.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-24 14:59:13 +0530 (Fri, 24 Jan 2014)");
   script_name("Oracle Database Server Multiple Unspecified Vulnerabilities-02 Jan2014");
 
@@ -81,7 +81,6 @@ NOTE: Ignore this warning if above mentioned patch is installed.
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56452");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Oracle Database Server");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_mandatory_keys("OracleDatabaseServer/installed");

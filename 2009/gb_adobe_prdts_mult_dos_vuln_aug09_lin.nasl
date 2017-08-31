@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_dos_vuln_aug09_lin.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_adobe_prdts_mult_dos_vuln_aug09_lin.nasl 6476 2017-06-29 07:32:00Z cfischer $
 #
 # Adobe Flash Player/Air Multiple DoS Vulnerabilities - Aug09 (Linux)
 #
@@ -44,8 +44,8 @@ tag_summary = "This host is installed with Adobe Flash Player/Air and is prone t
 if(description)
 {
   script_id(800854);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 6476 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:32:00 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-08-06 06:50:55 +0200 (Thu, 06 Aug 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -61,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
-  script_require_keys("AdobeFlashPlayer/Linux/Ver", "Adobe/Air/Linux/Ver");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader/Linux/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

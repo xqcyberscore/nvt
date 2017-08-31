@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sophos_web_appliance_mult_vuln_03_2013.nasl 4546 2016-11-16 16:05:02Z mime $
+# $Id: gb_sophos_web_appliance_mult_vuln_03_2013.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # Sophos Web Protection Appliance Web Interface Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = 'cpe:/a:sophos:web_appliance';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103688");
- script_version ("$Revision: 4546 $");
+ script_version ("$Revision: 6755 $");
  script_cve_id("CVE-2013-2641","CVE-2013-2642","CVE-2013-2643");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
  script_name("Sophos Web Protection Appliance Web Interface Multiple Vulnerabilities");
- script_tag(name:"last_modification", value:"$Date: 2016-11-16 17:05:02 +0100 (Wed, 16 Nov 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-04-04 14:28:20 +0200 (Thu, 04 Apr 2013)");
  script_xref(name:"URL" , value:"http://www.sophos.com/en-us/support/knowledgebase/118969.aspx");
  script_category(ACT_ATTACK);
@@ -44,7 +44,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_sophos_web_appliance_detect.nasl");
  script_require_ports("Services/www", 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("sophos/web_appliance/installed");
 
  script_tag(name : "solution" , value : "The vendor released version 3.7.8.2 to address these issues. Please see the references and contact the vendor for information on how to obtain and apply the updates");

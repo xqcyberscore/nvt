@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_xhtml_xss_vuln.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_open_xchange_appsuite_xhtml_xss_vuln.nasl 6551 2017-07-06 09:58:21Z teissa $
 #
 # Open-Xchange (OX) AppSuite XHTML File HTML Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806077");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6551 $");
   script_cve_id("CVE-2014-8993");
   script_bugtraq_id(71888);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-10-07 10:16:00 +0530 (Wed, 07 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite XHTML File HTML Injection Vulnerability");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1031488");
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/129811");
 
-  script_summary("Check if Open-Xchange (OX) AppSuite is installed with vulnerable version or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

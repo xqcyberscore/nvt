@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_unspecified_vuln07_jan16.nasl 5978 2017-04-19 12:01:36Z antu123 $
+# $Id: gb_oracle_db_unspecified_vuln07_jan16.nasl 6765 2017-07-20 06:20:42Z santu $
 #
 # Oracle Database Server Unspecified Vulnerability -07 Jan16
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807047");
-  script_version("$Revision: 5978 $");
+  script_version("$Revision: 6765 $");
   script_cve_id("CVE-2015-4755", "CVE-2016-3488", "CVE-2016-5572", "CVE-2016-5497",
-                "CVE-2016-5516", "CVE-2017-3240", "CVE-2017-3567");
-  script_bugtraq_id(75882, 91905, 93634, 93631, 93626, 95477, 97873);
+                "CVE-2016-5516", "CVE-2017-3240", "CVE-2017-3567", "CVE-2017-10120");
+  script_bugtraq_id(75882, 91905, 93634, 93631, 93626, 95477, 97873, 99867);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 14:01:36 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 08:20:42 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-01-25 14:59:25 +0530 (Mon, 25 Jan 2016)");
   script_name("Oracle Database Server Unspecified Vulnerability -07 Jan16");
 
@@ -44,8 +44,11 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The multiple flaws are due to multiple
-  unspecified vulnerabilities.");
+  script_tag(name:"insight", value:"The multiple flaws are due to,
+  
+  - Multiple unspecified errors.
+ 
+  - An unspecified error related to component 'RDBMS Security'.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote
   attackers to affect confidentiality, integrity, and availability
@@ -61,7 +64,8 @@ if(description)
   http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html
   http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html
   http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html
-  http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html");
+  http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html
+  http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +75,7 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html");
+  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html#AppendixDB");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

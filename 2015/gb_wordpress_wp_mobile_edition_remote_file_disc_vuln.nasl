@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_mobile_edition_remote_file_disc_vuln.nasl 3894 2016-08-26 09:56:27Z teissa $
+# $Id: gb_wordpress_wp_mobile_edition_remote_file_disc_vuln.nasl 6513 2017-07-04 09:59:28Z teissa $
 #
 # Wordpress WP Mobile Edition Plugin Remote File Disclosure Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805531");
-  script_version("$Revision: 3894 $");
+  script_version("$Revision: 6513 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-26 11:56:27 +0200 (Fri, 26 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-04-14 18:42:20 +0530 (Tue, 14 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress WP Mobile Edition Plugin Remote File Disclosure Vulnerability");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36733");
   script_xref(name : "URL" , value : "https://wordpress.org/plugins/wp-mobile-edition/changelog");
 
-  script_summary("Determine if Wordpress WP Mobile Edition Plugin is prone to File Disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2008-0890.nasl 6357 2017-06-16 10:00:29Z teissa $
+# $Id: ELSA-2008-0890.nasl 6553 2017-07-06 11:52:12Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122552");
-script_version("$Revision: 6357 $");
+script_version("$Revision: 6553 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:47:49 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:52:12 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2008-0890");
 script_tag(name: "insight", value: "ELSA-2008-0890 -  wireshark security update - [1.0.3-4.0.1.el5_2]- Add oracle-ocfs2-network.patch[1.0.3-4]- fix pam session file, wireshark requires root pswd everytime its started[1.0.3-3]- fix pie flags[1.0.3-1]- upgrade to 1.0.3- fixes several security issues- Resolves: #461569"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

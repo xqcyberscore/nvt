@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-055.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ms15-055.nasl 6534 2017-07-05 09:58:29Z teissa $
 #
 # Microsoft Schannel Information Disclosure Vulnerability (3061518)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805552");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6534 $");
   script_cve_id("CVE-2015-1716");
   script_bugtraq_id(74489);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-05-13 08:14:27 +0530 (Wed, 13 May 2015)");
   script_name("Microsoft Schannel Information Disclosure Vulnerability (3061518)");
 
@@ -73,7 +73,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3061518");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-055");
 
-  script_summary("Check for the vulnerable 'schannel.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

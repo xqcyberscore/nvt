@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_investintech_prdts_dos_vuln.nasl 3115 2016-04-19 10:09:30Z benallard $
+# $Id: gb_investintech_prdts_dos_vuln.nasl 6517 2017-07-04 13:34:20Z cfischer $
 #
 # Investintech Products Denial of Service Vulnerabilities
 #
@@ -64,26 +64,24 @@ to denial of service vulnerability.";
 if(description)
 {
   script_id(802506);
-  script_version("$Revision: 3115 $");
+  script_version("$Revision: 6517 $");
   script_cve_id("CVE-2011-4216", "CVE-2011-4218", "CVE-2011-4219", "CVE-2011-4220",
                 "CVE-2011-4217", "CVE-2011-4221", "CVE-2011-4222", "CVE-2011-4223");
   script_bugtraq_id(49923);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:09:30 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-11-09 17:35:24 +0530 (Wed, 09 Nov 2011)");
   script_name("Investintech Products Denial of Service Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/275036");
   script_xref(name : "URL" , value : "http://www.security-database.com/detail.php?alert=CVE-2011-4216");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of affected products");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_investintech_prdts_detect.nasl");
-  script_require_keys("SlimPDF/Reader/Ver", "Able2Doc/Ver", "Able2Doc/Pro/Ver",
-                      "Able2Extract/Ver", "Able2Extract/PDF/Server/Ver");
+  script_mandatory_keys("Investintech/Products/Installed");
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_AjaXplorer_39334.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_AjaXplorer_39334.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # AjaXplorer Remote Command Injection and Local File Disclosure Vulnerabilities
 #
@@ -40,8 +40,8 @@ tag_solution = "Updates are available. Please see the references for more inform
 if (description)
 {
  script_id(100574);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-04-13 13:16:59 +0200 (Tue, 13 Apr 2010)");
  script_bugtraq_id(39334);
  script_tag(name:"cvss_base", value:"5.1");
@@ -58,7 +58,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("gb_AjaXplorer_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("AjaXplorer/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -70,7 +69,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 if(!dir = get_dir_from_kb(port:port,app:"AjaXplorer"))exit(0);
 cmds = make_array("uid=[0-9]+.*gid=[0-9]+","id","<dir>","dir");

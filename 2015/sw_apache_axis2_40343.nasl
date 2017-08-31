@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_axis2_40343.nasl 2568 2016-02-03 15:43:36Z benallard $
+# $Id: sw_apache_axis2_40343.nasl 6551 2017-07-06 09:58:21Z teissa $
 #
 # Apache Axis2 xsd Parameter Directory Traversal Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:apache:axis2';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.111007");
- script_version("$Revision: 2568 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:43:36 +0100 (Wed, 03 Feb 2016) $");
+ script_version("$Revision: 6551 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-03-20 08:00:00 +0100 (Fri, 20 Mar 2015)");
 
  script_tag(name:"cvss_base", value:"7.5");
@@ -42,7 +42,6 @@ if (description)
 
  script_name("Apache Axis2 xsd Parameter Directory Traversal Vulnerability");
 
- script_summary("Check if Apache Axis2 is prone to Directory Traversal Vulnerability");
  script_category(ACT_ATTACK);
  script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
  script_family("Web application abuses");

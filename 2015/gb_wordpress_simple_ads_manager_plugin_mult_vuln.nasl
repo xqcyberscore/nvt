@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_simple_ads_manager_plugin_mult_vuln.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_wordpress_simple_ads_manager_plugin_mult_vuln.nasl 6453 2017-06-28 09:59:05Z teissa $
 #
 # Wordpress Simple Ads Manager Plugin Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805520");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6453 $");
   script_cve_id("CVE-2015-2824", "CVE-2015-2826");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-04-14 11:59:52 +0530 (Tue, 14 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Simple Ads Manager Plugin Multiple Vulnerabilities");
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36613");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36615");
 
-  script_summary("Check if it is possible to read sensitive information");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

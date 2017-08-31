@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0147.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: mgasa-2016-0147.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131302");
-script_version("$Revision: 5689 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:18:04 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0147");
 script_tag(name: "insight", value: "Updated libcryptopp packages fix security vulnerability: In libcryptopp, for both Rijndael::Enc::ProcessAndXorBlock and Rijndael::Dec::ProcessAndXorBlock there is some code to avoid timing attacks, however it is removed by the compiler due to optimizations, making the binary vulnerable to timing attacks (CVE-2016-3995). This update also corrects some bugs with the package."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0147");
 script_copyright("Eero Volotinen");

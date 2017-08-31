@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_pure-ftpd_remote_cmd_exec_vuln.nasl 4775 2016-12-15 13:02:25Z mime $
+# $Id: gb_bash_shellshock_pure-ftpd_remote_cmd_exec_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability (FTP Check)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105094");
-  script_version("$Revision: 4775 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-6271","CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-15 14:02:25 +0100 (Thu, 15 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-30 11:47:16 +0530 (Tue, 30 Sep 2014)");
 
   script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability (FTP Check)");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name:"URL", value:"https://blogs.akamai.com/2014/09/environment-bashing.html");
   script_xref(name:"URL", value:"https://community.qualys.com/blogs/securitylabs/2014/09/24/");
 
-  script_summary("Check for RCE vulnerability in GNU Bash");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("FTP");

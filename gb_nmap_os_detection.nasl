@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_os_detection.nasl 6226 2017-05-26 21:05:06Z cfi $
+# $Id: gb_nmap_os_detection.nasl 6877 2017-08-09 05:27:00Z cfischer $
 #
 # Nmap OS Identification (NASL wrapper)
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108021");
-  script_version("$Revision: 6226 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-26 23:05:06 +0200 (Fri, 26 May 2017) $");
+  script_version("$Revision: 6877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-09 07:27:00 +0200 (Wed, 09 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-11-21 12:08:04 +0100 (Mon, 21 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,15 +41,57 @@ if(description)
   script_family("Product detection");
   script_copyright("Copyright (c) 2016 Greenbone Networks GmbH");
   script_dependencies("toolcheck.nasl", "ping_host.nasl", "secpod_open_tcp_ports.nasl");
-  script_mandatory_keys("Tools/Present/nmap", "TCP/PORTS");
+                      #"gb_greenbone_os_detect.nasl", "gb_ami_megarac_sp_web_detect.nasl", # Keep in sync with os_detection.nasl...
+                      #"gb_ros_detect.nasl", "gb_apple_mobile_detect.nasl",
+                      #"gb_vmware_esx_web_detect.nasl", "gb_vmware_esx_snmp_detect.nasl",
+                      #"gb_ssh_cisco_ios_get_version.nasl", "gb_cisco_cucmim_version.nasl",
+                      #"gb_cisco_cucm_version.nasl", "gb_cisco_nx_os_version.nasl",
+                      #"gb_cyclades_detect.nasl", "gb_fortios_detect.nasl",
+                      #"gb_cisco_esa_version.nasl", "gb_cisco_wsa_version.nasl",
+                      #"gb_cisco_csma_version.nasl", "gb_cisco_ip_phone_detect.nasl",
+                      #"gb_cisco_ios_xr_version.nasl", "gb_ssh_junos_get_version.nasl",
+                      #"gb_palo_alto_panOS_version.nasl", "gb_screenos_version.nasl",
+                      #"gb_cisco_asa_version_snmp.nasl", "gb_cisco_asa_version.nasl",
+                      #"gb_arista_eos_snmp_detect.nasl", "gb_xenserver_version.nasl",
+                      #"gb_cisco_ios_xe_version.nasl", "gb_mcafee_email_gateway_version.nasl",
+                      #"gb_brocade_netiron_snmp_detect.nasl", "gb_arubaos_detect.nasl",
+                      #"gb_cyberoam_umt_ngfw_detect.nasl", "gb_aerohive_hiveos_detect.nasl",
+                      #"gb_windows_cpe_detect.nasl", "gather-package-list.nasl",
+                      #"gb_cisco_pis_version.nasl", "gb_smb_windows_detect.nasl",
+                      #"gb_ssh_os_detection.nasl", "gb_junos_snmp_version.nasl",
+                      #"gb_snmp_os_detection.nasl", "gb_dns_os_detection.nasl",
+                      #"gb_ftp_os_detection.nasl", "smb_nativelanman.nasl",
+                      #"gb_ucs_detect.nasl", "sw_http_os_detection.nasl",
+                      #"sw_mail_os_detection.nasl", "sw_telnet_os_detection.nasl",
+                      #"ntp_open.nasl", "remote-detect-MDNS.nasl",
+                      #"gb_mysql_mariadb_os_detection.nasl", "mssqlserver_detect.nasl",
+                      #"gb_apple_tv_version.nasl", "gb_apple_tv_detect.nasl",
+                      #"gb_upnp_os_detection.nasl", "gb_sip_os_detection.nasl",
+                      #"gb_check_mk_agent_detect.nasl", "ms_rdp_detect.nasl",
+                      #"dcetest.nasl",
+                      #"os_fingerprint.nasl"); # but without the gb_nmap_os_detection.nasl
+  script_mandatory_keys("TCP/PORTS", "Tools/Present/nmap");
 
   script_xref(name:"URL", value:"https://nmap.org/book/man-os-detection.html");
   script_xref(name:"URL", value:"https://nmap.org/book/osdetect.html");
 
   script_add_preference(name:"Guess OS more aggressively (safe checks off only)", type:"checkbox", value:"no");
   script_add_preference(name:"Guess OS more aggressively even if safe checks are set", type:"checkbox", value:"no");
+  script_add_preference(name:"Run routine", type:"checkbox", value:"yes");
 
-  script_tag(name:"summary", value:"This plugin runs nmap to identify the remote Operating System.");
+  script_tag(name:"summary", value:"This plugin runs nmap to identify the remote Operating System.
+
+  NOTE: This routine is only started as a last fallback if other more reliable OS detection methods failed.
+
+  This routine also has a few additional drawbacks:
+
+  - Depending on the exposed services on the target it might take a considerable amount of time to complete
+
+  - It needs to conntect to TCP ports which might be not within the configured port list of this target
+
+  - It might interfere with other service detection methods of the scanner
+
+  Due to this it is possible to disable this routine via the script preferences.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -63,6 +105,47 @@ include("network_func.inc");
 SCRIPT_DESC = "Nmap OS Identification (NASL wrapper)";
 
 if( get_kb_item( "Host/dead" ) ) exit( 0 );
+
+# Allow the user to disable this routine for the the reasons explained
+# in the sript summary.
+run_routine = script_get_preference( "Run routine" );
+if( ! run_routine ) run_routine = "yes";
+if( run_routine == "no" ) exit( 0 );
+
+# TODO: The following has been commented out as it triggers a bug in the
+# plugin scheduler of the current OpenVAS 9 releases.
+
+# nb: We only want to run this NVT as a "last fallback" if all of the other OS
+# detections failed. This is due to the reasons explained in the sript summary.
+# Furthermore we want to run it if os_fingerprint.nasl is the only detection
+# method and has a low confidence (it isn't that reliable these days...).
+#reports = get_kb_list( "os_detection_report/reports/*" );
+
+# We only have one OS detection, check if its from ICMP based OS Fingerprinting (OID: 1.3.6.1.4.1.25623.1.0.102002)
+#if( reports && max_index( keys( reports ) ) == 1 ) {
+
+  # We have one result which is not ICMP OS detection so we don't want to start
+#  if( ! in_array( search:"1.3.6.1.4.1.25623.1.0.102002", array:reports, part_match:TRUE ) ) exit( 0 );
+
+  # nb: This key might have multiple entries, don't use get_kb_item here to avoid forking.
+#  confidence = get_kb_list( "Host/OS/ICMP/Confidence" );
+
+  # Check if the ICMP OS detection has multiple OS detected
+#  if( confidence && max_index( keys( confidence ) ) == 1 ) {
+    # We only want to start if the confidence is low
+#    if( int( confidence["Host/OS/ICMP/Confidence"] ) >= 95 ) exit( 0 );
+#  }
+  # If the above (multiple OS by ICMP OS detection) is the case we want to start this routine
+#} else if( reports && max_index( keys( reports ) ) > 1 ) {
+  # We have multiple detections from other routines so we don't want to start
+#  exit( 0 );
+#}
+
+# If we're reaching this part none of the explained pattern above matches and we're running a nmap based OS detection as a fallback
+
+# -O needs at least one open and one closed TCP port
+openPorts = get_all_tcp_ports_list();
+if( ! openPorts || max_index( openPorts ) == 0 ) exit( 0 );
 
 tmpfile = NULL;
 
@@ -84,6 +167,12 @@ argv[i++] = "nmap";
 
 if( TARGET_IS_IPV6() ) {
   argv[i++] = "-6";
+}
+
+# Apply the choosen nmap timing policy from nmap.nasl here as well
+timing_policy = get_kb_item( "Tools/nmap/timing_policy" );
+if( timing_policy ) {
+  argv[i++] = timing_policy;
 }
 
 argv[i++] = "-n";
@@ -112,8 +201,6 @@ if( ! safe ) {
 }
 
 argv[i++] = "-p";
-# -O needs at least one open and one closed TCP port
-openPorts = get_all_tcp_ports_list();
 
 foreach port( openPorts ) {
 
@@ -128,9 +215,15 @@ foreach port( openPorts ) {
 }
 
 # Also add a few low-ports as nmap OS detection behaves strange with only closed/filtered high ports
-foreach port( make_list( "21", "22", "25", "80", "443" ) ) {
+foreach port( make_list( "21", "22", "25", "80", "135", "443" ) ) {
   if( ! in_array( search:port, array:openPorts ) ) {
-    portList += "," + port;
+    # openPorts = get_all_tcp_ports_list(); above might be an empty list in some special cases causing
+    # portList to be NULL. So make sure to create a valid portList in this case.
+    if( isnull ( portList ) ) {
+      portList = port;
+    } else {
+      portList += "," + port;
+    }
   }
 }
 
@@ -181,10 +274,14 @@ if( "JUST GUESSING" >< res || "test conditions non-ideal" >< res || "No exact OS
   exit( 0 );
 }
 
-# Example: OS details: Linux 3.8 - 4.5
+# Examples:
+# OS details: Linux 3.8 - 4.5
+# OS details: Microsoft Windows Server 2008 SP2 or Windows 10 Tech Preview, Microsoft Windows 7 SP0 - SP1, Windows Server 2008 SP1, Windows 8, or Windows 8.1 Update 1
 osTxt = eregmatch( string:res, pattern:"OS details: ([ -~]+)" );
 
-# Example: OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
+# Examples:
+# OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
+# OS CPE: cpe:/o:microsoft:windows_server_2008::sp2 cpe:/o:microsoft:windows cpe:/o:microsoft:windows_7::- cpe:/o:microsoft:windows_7::sp1 cpe:/o:microsoft:windows_8
 osCpe = eregmatch( string:res, pattern:"OS CPE: ([ -~]+)" );
 sep = " "; # Seperator to split multiple CVEs
 
@@ -202,15 +299,27 @@ if( ! isnull( osTxt ) && ! isnull( osCpe ) ) {
   cpe = cpes[max_index( cpes ) - 1];
 
   if( "linux" >< tolower( osTxt[1] ) || "linux" >< cpe ) {
+    osname   = osTxt[1];
+    oscpe    = cpe;
     runs_key = "unixoide";
   } else if( "windows" >< tolower( osTxt[1] ) || "windows" >< cpe ) {
+    osname = osTxt[1];
+    oscpe  = cpe;
+    # nb: Sometimes nmap is reporting e.g. the following:
+    # OS details: Microsoft Windows Server 2008 SP2 or Windows 10 Tech Preview, Microsoft Windows 7 SP0 - SP1, Windows Server 2008 SP1, Windows 8, or Windows 8.1 Update 1
+    # OS CPE: cpe:/o:microsoft:windows_server_2008::sp2 cpe:/o:microsoft:windows cpe:/o:microsoft:windows_7::- cpe:/o:microsoft:windows_7::sp1 cpe:/o:microsoft:windows_8
+    # In this case we don't want to report a specific CPE as we would e.g. mark Windows 8 as EOL (if choosen) where the system is actually running Windows 7 with SP1
+    if( max_index( cpes ) > 3 ) {
+      osname = "Microsoft Windows";
+      oscpe  = "cpe:/o:microsoft:windows";
+    }
     runs_key = "windows";
   } else {
+    osname   = osTxt[1];
+    oscpe    = cpe;
     runs_key = "unknown";
   }
-
-  register_and_report_os( os:osTxt[1], cpe:cpe, banner_type:"Nmap TCP/IP fingerprinting", banner:'\n' + osTxt[0] + '\n' + osCpe[0], desc:SCRIPT_DESC, runs_key:runs_key );
-
+  register_and_report_os( os:osname, cpe:oscpe, banner_type:"Nmap TCP/IP fingerprinting", banner:'\n' + osTxt[0] + '\n' + osCpe[0], desc:SCRIPT_DESC, runs_key:runs_key );
 }
 
 exit( 0 );

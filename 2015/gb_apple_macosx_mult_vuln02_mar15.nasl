@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln02_mar15.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_apple_macosx_mult_vuln02_mar15.nasl 6601 2017-07-07 10:00:10Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities -02 Mar15
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805484");
-  script_version("$Revision: 6415 $");
+  script_version("$Revision: 6601 $");
   script_cve_id("CVE-2014-8839", "CVE-2014-8836");
   script_bugtraq_id(72328);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:00:10 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-03-05 17:54:00 +0530 (Thu, 05 Mar 2015)");
   script_name("Apple Mac OS X Multiple Vulnerabilities -02 Mar15");
   script_tag(name: "summary" , value:"This host is running Apple Mac OS X and
@@ -66,7 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/uname", "ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
   exit(0);
 }
 

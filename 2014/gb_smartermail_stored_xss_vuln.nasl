@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smartermail_stored_xss_vuln.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_smartermail_stored_xss_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # SmarterMail Enterprise and Standard Stored XSS vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:smartertools:smartermail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803793");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6735 $");
   script_bugtraq_id(64970);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-20 13:17:30 +0530 (Mon, 20 Jan 2014)");
   script_name("SmarterMail Enterprise and Standard Stored XSS vulnerability");
 
@@ -57,7 +57,6 @@ if(description)
   script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2014010100");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124792/smartermail11-xss.txt");
 
-  script_summary("Check for the vulnerable version of SmarterMail");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

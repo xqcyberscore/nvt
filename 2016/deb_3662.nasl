@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3662.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: deb_3662.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3662-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703662);
-    script_version("$Revision: 5867 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2016-7142");
     script_name("Debian Security Advisory DSA 3662-1 (inspircd - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-09-08 00:00:00 +0200 (Thu, 08 Sep 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "inspircd on Debian Linux");
         script_tag(name: "insight",   value: "InspIRCd is a modular C++ IRC Daemon for several operating systems created
 to provide a stable, modern, lightweight irc server from scratch and provide

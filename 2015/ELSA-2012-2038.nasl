@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-2038.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-2038.nasl 6557 2017-07-06 11:55:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123793");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6557 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:08:38 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:55:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-2038");
 script_tag(name: "insight", value: "ELSA-2012-2038 - Unbreakable Enterprise kernel security and bug fix update - [2.6.32-300.37.1.] - sfc: Replace some literal constants with EFX_PAGE_SIZE/EFX_BUF_SIZE (Ben Hutchings) [Orabug: 14769994] - CVE-2012-3412 sfc: Fix maximum number of TSO segments and minimum TX queue size (Ben Hutchings) [Orabug: 14769994] {CVE-2012-3412} [2.6.32-300.36.1.] - dl2k: Clean up rio_ioctl (Stephan Mueller) [Orabug: 14675306] {CVE-2012-2313} - hugetlb: fix resv_map leak in error path (Christoph Lameter) [Orabug: 14676403] {CVE-2012-2390} - rds: set correct msg_namelen (Jay Fenlason) [Orabug: 14676504] {CVE-2012-3430} [2.6.32-300.35.1.] - oracleasm: Bring driver in sync with UEK2 (Martin K. Petersen) - Fix system hang due to bad protection module parameters (CR 130769) (Martin K. Petersen) - sd: Avoid remapping bad reference tags (Martin K. Petersen) - block: Fix bad range check in bio_sector_offset (Martin K. Petersen) [2.6.32-300.34.1.] - htrimer: fix kabi breakage (Joe Jin) - 2.6.32.x: timekeeping: Add missing update call in timekeeping_resume() (Thomas Gleixner) - 2.6.32.x: hrtimer: Update hrtimer base offsets each hrtimer_interrupt (John Stultz) - 2.6.32.x: timekeeping: Provide hrtimer update function (Thomas Gleixner) - 2.6.32.x: hrtimers: Move lock held region in hrtimer_interrupt() (Thomas Gleixner) - 2.6.32.x: timekeeping: Maintain ktime_t based offsets for hrtimers (Thomas Gleixner) - 2.6.32.x: timekeeping: Fix leapsecond triggered load spike issue (John Stultz) - 2.6.32.x: hrtimer: Provide clock_was_set_delayed() (John Stultz) - 2.6.32.x: time: Move common updates to a function (Thomas Gleixner) - 2.6.32.x: timekeeping: Fix CLOCK_MONOTONIC inconsistency during leapsecond (John Stultz) - 2.6.32.x: ntp: Correct TAI offset during leap second (Richard Cochran) - 2.6.32.x: ntp: Fix leap-second hrtimer livelock (John Stultz) - Revert '2.6.32.x: hrtimer: Fix clock_was_set so it is safe to call from irq context' (Joe Jin) - Revert '2.6.32.x: time: Fix leapsecond triggered hrtimer/futex load spike issue' (Joe Jin) - Revert '2.6.32.x: hrtimer: Update hrtimer base offsets each hrtimer_interrupt' (Joe Jin) [2.6.32-300.33.1.] - mpt2sas: Update mpt2sas to 120.105.11.00 (Guru Anbalagane) [Orabug: 14376481] - Revert 'mpt2sas: update to 12.105.11.00' (Maxim Uvarov)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"7.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-2038");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

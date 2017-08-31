@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2010-0221.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2010-0221.nasl 6555 2017-07-06 11:54:09Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122374");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6555 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:17:44 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:09 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2010-0221");
 script_tag(name: "insight", value: "ELSA-2010-0221 -  squid security and bug fix update - [7:2.6.STABLE21-6]- Resolves: #561828 - CVE-2009-2855 CVE-2010-0308 squid various flaws [rhel-5.5][7:2.6.STABLE21-5]- Resolves: #538738 - improved patch[7:2.6.STABLE21-4]- Resolves: #521926 - squid 'stop after stop' is not LSB compliant- Resolves: #496170 - Add arp filter option- Resolves: #516245 - negotiate support not enabled in squid- Resolves: #538738 - Squid accelerator mode works only if port 80 is opened- Resolves: #470843 - Squid 'error_map' does not work when used 'Accep-Encoding: gzip'"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2010-0221");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

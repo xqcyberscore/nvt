@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2014-280.nasl 4514 2016-11-15 10:04:28Z cfi $
+# $Id: alas-2014-280.nasl 6637 2017-07-10 09:58:13Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120001");
-script_version("$Revision: 4514 $");
+script_version("$Revision: 6637 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:14:31 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:04:28 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2014-280");
 script_tag(name: "insight", value: "An input validation flaw was discovered in the font layout engine in the 2D component. A specially crafted font file could trigger Java Virtual Machine memory corruption when processed. An untrusted Java application or applet could possibly use this flaw to bypass Java sandbox restrictions. (CVE-2013-5907 )Multiple improper permission check issues were discovered in the CORBA, JNDI, and Libraries components in OpenJDK. An untrusted Java application or applet could use these flaws to bypass Java sandbox restrictions. (CVE-2014-0428 , CVE-2014-0422 , CVE-2013-5893 )Multiple improper permission check issues were discovered in the Serviceability, Security, CORBA, JAAS, JAXP, and Networking components in OpenJDK. An untrusted Java application or applet could use these flaws to bypass certain Java sandbox restrictions. (CVE-2014-0373 , CVE-2013-5878 , CVE-2013-5910 , CVE-2013-5896 , CVE-2013-5884 , CVE-2014-0416 , CVE-2014-0376 , CVE-2014-0368 )It was discovered that the Beans component did not restrict processing of XML external entities. This flaw could cause a Java application using Beans to leak sensitive information, or affect application availability. (CVE-2014-0423 )It was discovered that the JSSE component could leak timing information during the TLS/SSL handshake. This could possibly lead to disclosure of information about the used encryption keys. (CVE-2014-0411 )"); 
 script_tag(name : "solution", value : "Run yum update java-1.7.0-openjdk to update your system.");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2014-280");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vdg_security_sense_mult_vuln.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: gb_vdg_security_sense_mult_vuln.nasl 6700 2017-07-12 12:16:21Z cfischer $
 #
 # VDG Security Sense Multiple Security Vulnerabilities
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805033");
-  script_version("$Revision: 6431 $");
+  script_version("$Revision: 6700 $");
   script_cve_id("CVE-2014-9451", "CVE-2014-9452");
   script_bugtraq_id(71736);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-01-06 15:11:26 +0530 (Tue, 06 Jan 2015)");
   script_name("VDG Security Sense Multiple Security Vulnerabilities");
 
@@ -82,9 +82,8 @@ if(description)
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
-  script_mandatory_keys("Diva_HTTP/banner");
   script_require_ports("Services/www", 8080);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("Diva_HTTP/banner");
 
   exit(0);
 }

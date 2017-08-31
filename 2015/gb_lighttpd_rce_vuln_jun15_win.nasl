@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lighttpd_rce_vuln_jun15_win.nasl 5082 2017-01-24 11:14:23Z cfi $
+# $Id: gb_lighttpd_rce_vuln_jun15_win.nasl 6497 2017-06-30 09:58:54Z teissa $
 #
 # Lighttpd 'http_auth.c' Remote Code Execution Vulnerability - June15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:lighttpd:lighttpd';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805591");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 6497 $");
   script_cve_id("CVE-2015-3200");
   script_bugtraq_id(74813);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-19 09:50:40 +0530 (Fri, 19 Jun 2015)");
   script_name("Lighttpd 'http_auth.c' Remote Code Execution Vulnerability - June15 (Windows)");
 
@@ -56,7 +56,6 @@ if(description)
   script_xref(name:"URL", value:"http://jaanuskp.blogspot.in/2015/05/cve-2015-3200.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Lighttpd on windows");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
   script_dependencies("sw_lighttpd_detect.nasl", "os_detection.nasl");

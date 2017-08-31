@@ -1,11 +1,14 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_opensso_detect.nasl 2833 2016-03-11 08:36:30Z benallard $
+# $Id: secpod_sun_opensso_detect.nasl 6938 2017-08-16 11:10:00Z santu $
 #
 # Sun/Oracle OpenSSO Version Detection
 #
 # Authors:
 # Sharath S <sharaths@secpod.com>
+#
+# Updated to detect new versions.
+# Kashinath T <tkashinath@secpod.com>
 #
 # Copyright:
 # Copyright (c) 2009 SecPod, http://www.secpod.com
@@ -24,27 +27,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.900817";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 2833 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900817");
+  script_version("$Revision: 6938 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:36:30 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-16 13:10:00 +0200 (Wed, 16 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-08-26 14:01:08 +0200 (Wed, 26 Aug 2009)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Sun/Oracle OpenSSO Version Detection");
 
-  tag_summary =
-"Detection of Sun/Oracle OpenSSO.
-
-The script sends a connection request to the server and attempts to
-extract the version number from the reply.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "Detection of Sun/Oracle OpenSSO.
+  The script sends a connection request to the server and attempts to
+  extract the version number from the reply.");
 
   script_summary("Check the presence of OpenSSO");
   script_category(ACT_GATHER_INFO);
@@ -88,7 +84,7 @@ foreach dir (make_list("/",  "/opensso"))
   if(("OpenSSO" >< rcvRes) && egrep(pattern:"^HTTP/.* 200 OK", string:rcvRes))
   {
     ## Grep the Sun OpenSSO Version from Response
-    ssoVer = eregmatch(pattern:"X-DSAMEVersion:( Enterprise)? " +
+    ssoVer = eregmatch(pattern:"X-DSAMEVersion:( Enterprise | Snapshot Build | Oracle OpenSSO )?" +
                                "([0-9]\.[0-9.]+([a-zA-Z0-9 ]+)?)",string:rcvRes);
     if(ssoVer[2] != NULL)
     {
@@ -104,7 +100,7 @@ foreach dir (make_list("/",  "/opensso"))
        cpe = 'cpe:/a:oracle:opensso';
 
       ## Register the product
-      register_product(cpe:cpe, location:am_port + '/tcp', nvt:SCRIPT_OID, port:am_port);
+      register_product(cpe:cpe, location:am_port + '/tcp', port:am_port);
 
       log_message(data: build_detection_report(app:"Sun/Oracle OpenSSO",
                                                version:tmp_version,

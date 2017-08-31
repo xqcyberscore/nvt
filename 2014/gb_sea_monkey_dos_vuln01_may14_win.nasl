@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804571";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-1518");
   script_bugtraq_id(67133);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-06 16:31:32 +0530 (Tue, 06 May 2014)");
   script_name("SeaMonkey Denial of Service Vulnerability-01 May14 (Windows)");
 
@@ -76,7 +76,6 @@ For updates refer to http://www.mozilla.com/en-US/seamonkey";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/58234");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2014/mfsa2014-34.html");
-  script_summary("Check for the vulnerable version of SeaMonkey on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

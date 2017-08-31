@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: RHSA_2008_0787.nasl 5016 2017-01-17 09:06:21Z teissa $
+# $Id: RHSA_2008_0787.nasl 6683 2017-07-12 09:41:57Z cfischer $
 # Description: Auto-generated from advisory RHSA-2008:0787 ()
 #
 # Authors:
@@ -47,8 +47,8 @@ http://www.redhat.com/security/updates/classification/#important";
 if(description)
 {
  script_id(63097);
- script_version("$Revision: 5016 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+ script_version("$Revision: 6683 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:41:57 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-01-07 23:16:01 +0100 (Wed, 07 Jan 2009)");
  script_cve_id("CVE-2007-3848", "CVE-2006-4538", "CVE-2006-4814", "CVE-2007-4308", "CVE-2007-2172", "CVE-2007-6063", "CVE-2007-6206", "CVE-2007-6151", "CVE-2008-0007", "CVE-2008-2136", "CVE-2008-3275", "CVE-2008-3525", "CVE-2008-4210");
  script_tag(name:"cvss_base", value:"7.8");
@@ -62,7 +62,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("Red Hat Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/rpms");
+ script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);

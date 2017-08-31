@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850662");
-  script_version("$Revision: 6345 $");
+  script_version("$Revision: 6675 $");
   script_cve_id("CVE-2015-3411", "CVE-2015-3412", "CVE-2015-4598", "CVE-2015-4599",
                 "CVE-2015-4600", "CVE-2015-4601", "CVE-2015-4602", "CVE-2015-4603",
                 "CVE-2015-4604", "CVE-2015-4605", "CVE-2015-4643", "CVE-2015-4644");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:54:28 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-07-07 06:19:20 +0200 (Tue, 07 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for php5 openSUSE-SU-2015:1197-1 (php5)");
@@ -62,7 +62,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

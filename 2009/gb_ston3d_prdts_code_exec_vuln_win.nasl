@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ston3d_prdts_code_exec_vuln_win.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_ston3d_prdts_code_exec_vuln_win.nasl 6517 2017-07-04 13:34:20Z cfischer $
 #
 # StoneTrip Ston3D Products Code Execution Vulnerability
 #
@@ -45,8 +45,8 @@ prone to Code Execution vulnerability.";
 if(description)
 {
   script_id(800574);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 6517 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-06-16 15:11:01 +0200 (Tue, 16 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -60,8 +60,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_ston3d_prdts_detect_win.nasl");
-  script_require_keys("Ston3D/Web/Player/Ver",
-                      "Ston3D/Standalone/Player/Win/Ver");
+  script_mandatory_keys("Ston3D/Standalone_or_Web/Player/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_048.nasl 6387 2017-06-21 09:03:11Z emoss $
+# $Id: GSHB_M4_048.nasl 6509 2017-07-04 05:11:26Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.048
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94204);
-  script_version("$Revision: 6387 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:03:11 +0200 (Wed, 21 Jun 2017) $");
+  script_version("$Revision: 6509 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 07:11:26 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -96,7 +96,7 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
   result = string("Fehler");
   if (!log) desc = string("Beim Testen des Systems trat ein Fehler auf.");
   if (log) desc = string("Beim Testen des Systems trat ein Fehler auf:\n" + log);
-}else if(MINPA >= 1 && PHS >= 6 && LD >= 60 && RLC >= 30 && MPL >= 8 && LBC <= 3 && MAXPA <= 90 && RLTCP >< "False" && PC >< "True" && CTP >< "False" && (PINLOGIN == TRUE || ! PINLOGIN)){
+}else if(MINPA >= 1 && PHS >= 6 && LD >= 60 && RLC >= 30 && MPL >= 8 && LBC <= 3 && MAXPA <= 90 && RLTCP >< "False" && PC >< "True" && CTP >< "False" && PINLOGIN != "0") {
   result = string("erfüllt");
   desc = string("Die Kennwortrichtlinien und Kontosperrungsrichtlinien\nentsprechen der IT-Grundschutz Maßnahme 4.048.");
 }else{
@@ -111,7 +111,7 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
     if (MPL < 8)desc = desc + string("Die minimale Kennwortlänge beträgt nur: " + MPL + '\n');
     if (LBC > 3)desc = desc + string("Die Kontosperrungsschwelle beträgt " + LBC + '\nVersuche\n');
     if (MAXPA > 90)desc = desc + string("Das maximale Kennwortalter beträgt nur " + MAXPA + '\nTage\n');
-    if (PINLOGIN == FALSE)desc = desc + string('Die PIN-Anmeldung ist nicht deaktiviert (ab Windows 8)\n');
+    if (PINLOGIN != "0")desc = desc + string('Die PIN-Anmeldung ist nicht deaktiviert (ab Windows 8, Registry-Value: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System ! AllowSignInOptions = DWORD(0) )\n');
   }
   if (PP >!< "False")
   {

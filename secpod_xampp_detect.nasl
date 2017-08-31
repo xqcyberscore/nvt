@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xampp_detect.nasl 5676 2017-03-22 16:29:37Z cfi $
+# $Id: secpod_xampp_detect.nasl 6507 2017-07-03 13:32:13Z cfischer $
 #
 # XAMPP Version Detection
 #
@@ -30,13 +30,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900526");
-  script_version("$Revision: 5676 $");
+  script_version("$Revision: 6507 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 15:32:13 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-03-30 15:53:34 +0200 (Mon, 30 Mar 2009)");
   script_name("XAMPP Version Detection");
-  script_summary("Set the Version of XAMPP in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
@@ -52,51 +51,76 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
-
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-foreach dir( make_list_unique( "/", "/xampp", cgi_dirs( port:port ) ) ) {
+dir = "/xampp";
+version = "unknown";
+url = dir + "/index.php";
+res = http_get_cache( item:dir + "/index.php", port:port );
 
+if( res =~ "^HTTP/1\.[01] 200" && ( "<title>XAMPP" >< res && "start.php" >< res ) ) {
+
+  installed = TRUE;
   install = dir;
-  if( dir == "/" ) dir = "";
+  vers = eregmatch( pattern:"<title>XAMPP (Version )?([0-9.]+)", string:res );
+  if( ! isnull ( vers[2] ) ) version = vers[2];
+  conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+}
 
-  rcvRes = http_get_cache( item: dir + "/index.php", port:port );
+if( ! installed || version == "unknown" ) {
 
-  if( rcvRes !~ "HTTP/1.. 200" && "XAMPP" >!< rcvRes ) {
-    rcvRes = http_get_cache( item: dir + "/start.php", port:port );
+  url = dir + "/start.php";
+  res = http_get_cache( item:dir + "/start.php", port:port );
+
+  if( res =~ "^HTTP/1\.[01] 200" && ( "<h1>Welcome to XAMPP" >< res || "and all other friends of XAMPP!<p>" >< res ||
+                                      "You successfully installed XAMPP on this system!" >< res ) ) {
+    installed = TRUE;
+    install = dir;
+    vers = eregmatch( pattern:"XAMPP.*Version ([0-9.]+)", string:res );
+    if( ! isnull ( vers[1] ) ) version = vers[1];
+    conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
   }
+}
 
-  if( rcvRes =~ "HTTP/1.. 200" && "XAMPP" >< rcvRes ) {
+if( ! installed || version == "unknown" ) {
 
-    version = "unknown";
+  # Location for the newer 5.6.x versions
+  url = "/dashboard";
+  install = url;
+  res = http_get_cache( item:url + "/", port:port );
 
-    ver = eregmatch( pattern:"XAMPP.* ([0-9.]+)", string:rcvRes );
-    if( ver[1] != NULL ) version = ver[1];
-
-    set_kb_item( name:"www/" + port + "/XAMPP", value:version );
-    replace_kb_item( name:"xampp/installed", value:TRUE );
-
-    ## build cpe and store it as host_detail
-    cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:apachefriends:xampp:");
-    if( isnull( cpe ) )
-      cpe = 'cpe:/a:apachefriends:xampp';
-
-    register_product( cpe:cpe, location:install, port:port );
-
-    log_message( data:build_detection_report( app:"XAMPP",
-                                              version:version,
-                                              install:install,
-                                              cpe:cpe,
-                                              concluded:ver[0] ),
-                                              port:port );
+  if( res =~ "^HTTP/1\.[01] 200" && ( "<h1>Welcome to XAMPP" >< res || "You have successfully installed XAMPP on this system!" >< res ) ) {
+    installed = TRUE;
+    vers = eregmatch( pattern:"<h2>Welcome to XAMPP.* ([0-9.]+)</h2>", string:res );
+    if( ! isnull ( vers[1] ) ) version = vers[1];
+    conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
   }
+}
+
+if( installed ) {
+
+  set_kb_item( name:"www/" + port + "/XAMPP", value:version );
+  replace_kb_item( name:"xampp/installed", value:TRUE );
+
+  cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:apachefriends:xampp:" );
+  if( isnull( cpe ) )
+    cpe = 'cpe:/a:apachefriends:xampp';
+
+  register_product( cpe:cpe, location:install, port:port );
+
+  log_message( data:build_detection_report( app:"XAMPP",
+                                            version:version,
+                                            install:install,
+                                            cpe:cpe,
+                                            concludedUrl:conclUrl,
+                                            concluded:vers[0] ),
+                                            port:port );
 }
 
 exit( 0 );

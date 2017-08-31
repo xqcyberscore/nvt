@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_php_code_exec_vuln_apr14.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_owncloud_php_code_exec_vuln_apr14.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # ownCloud PHP Remote Code Execution Vulnerabilities Apr14
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804364";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2013-7344", "CVE-2013-0303");
   script_bugtraq_id(58109);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-07 10:17:33 +0530 (Mon, 07 Apr 2014)");
   script_name("ownCloud PHP Remote Code Execution Vulnerabilities Apr14");
 
@@ -78,7 +78,6 @@ For updates refer to http://owncloud.org";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52303");
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2013/q1/378");
   script_xref(name : "URL" , value : "http://owncloud.org/about/security/advisories/oC-SA-2013-006");
-  script_summary("Check the version ownCloud vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

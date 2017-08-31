@@ -61,8 +61,8 @@ if(description)
  script_cve_id("CVE-2006-3738","CVE-2007-1351","CVE-2007-1667","CVE-2007-2445","CVE-2007-2754","CVE-2007-3108","CVE-2007-4730","CVE-2007-4995","CVE-2007-5135","CVE-2007-5266","CVE-2007-5268","CVE-2007-5269","CVE-2007-5760","CVE-2007-5958","CVE-2007-6427","CVE-2007-6428","CVE-2007-6429","CVE-2008-0006");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 4465 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-10 09:56:30 +0100 (Thu, 10 Nov 2016) $");
+ script_version("$Revision: 6596 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:21:37 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
  script_name("Gentoo Security Advisory GLSA 200805-07 (ltsp)");
 
@@ -73,7 +73,7 @@ if(description)
  script_copyright("Copyright (c) 2008 E-Soft Inc. http://www.securityspace.com");
  script_family("Gentoo Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("login/SSH/success", "ssh/login/gentoo");
+ script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

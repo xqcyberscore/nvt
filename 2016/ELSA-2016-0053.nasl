@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0053.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: ELSA-2016-0053.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122856");
-script_version("$Revision: 5759 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-01-25 07:30:41 +0200 (Mon, 25 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0053");
 script_tag(name: "insight", value: "ELSA-2016-0053 -  java-1.7.0-openjdk security update - [1.7.0.95-2.6.4.0.0.1]- Update DISTRO_NAME in specfile[1:1.7.0.95-2.6.4.0]- Remove reference to jre/lib/audio.- Resolves: rhbz#1295765[1:1.7.0.95-2.6.4.0]- Bump to 2.6.4 and u95b00.- Backport tarball creation script from OpenJDK 8 RPMs and update fsg.sh to work with it.- Drop 8072932or8074489 patch as applied upstream in u91b01.- Drop installation of soundfont symlink following inclusion of 8140620/PR2710 in 2.6.3- Resolves: rhbz#1295765"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

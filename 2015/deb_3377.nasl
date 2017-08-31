@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3377.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3377.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3377-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703377);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2015-4792", "CVE-2015-4802", "CVE-2015-4815", "CVE-2015-4816",
                   "CVE-2015-4819", "CVE-2015-4826", "CVE-2015-4830", "CVE-2015-4836",
                   "CVE-2015-4858", "CVE-2015-4861", "CVE-2015-4870", "CVE-2015-4879",
                   "CVE-2015-4913");
     script_name("Debian Security Advisory DSA 3377-1 (mysql-5.5 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-10-24 00:00:00 +0200 (Sat, 24 Oct 2015)");
     script_tag(name:"cvss_base", value:"7.2");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,14 +45,13 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3377.html");
 
-    script_summary("Debian Security Advisory DSA 3377-1 (mysql-5.5 - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "mysql-5.5 on Debian Linux");
     script_tag(name: "insight",   value: "MySQL is a fast, stable and true
 multi-user, multi-threaded SQL database server.");

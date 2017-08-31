@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_web_analytics_owa_user_id_xss_vuln.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: gb_open_web_analytics_owa_user_id_xss_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Open Web Analytics Reflected Cross-Site Scripting Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:openwebanalytics:open_web_analytics";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3516 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-1456");
   script_bugtraq_id(65571);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-05 13:12:41 +0530 (Wed, 05 Mar 2014)");
   script_name("Open Web Analytics Reflected Cross-Site Scripting Vulnerability");
 
@@ -75,7 +75,6 @@ For updates refer to http://downloads.openwebanalytics.com";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56885");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/91124");
   script_xref(name : "URL" , value : "http://www.secureworks.com/cyber-threat-intelligence/advisories/SWRX-2014-004");
-  script_summary("Check for the XSS in Open Web Analytics");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

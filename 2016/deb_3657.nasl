@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3657.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: deb_3657.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3657-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,14 +30,14 @@
 if(description)
 {
     script_id(703657);
-    script_version("$Revision: 5612 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2015-8916", "CVE-2015-8917", "CVE-2015-8919", "CVE-2015-8920",
 		  "CVE-2015-8921", "CVE-2015-8922", "CVE-2015-8923", "CVE-2015-8924",
 		  "CVE-2015-8925", "CVE-2015-8926", "CVE-2015-8928", "CVE-2015-8930",
 		  "CVE-2015-8931", "CVE-2015-8932", "CVE-2015-8933", "CVE-2015-8934",
   		  "CVE-2016-4300", "CVE-2016-4302", "CVE-2016-4809", "CVE-2016-5844");
     script_name("Debian Security Advisory DSA 3657-1 (libarchive - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name:"creation_date", value:"2016-09-07 10:08:38 +0530 (Wed, 07 Sep 2016)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -52,7 +52,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "libarchive on Debian Linux");
     script_tag(name: "insight",   value: "The libarchive library provides a flexible
     interface for reading and writing streaming archive files such as tar and cpio.");

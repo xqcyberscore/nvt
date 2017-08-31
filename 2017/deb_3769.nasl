@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3769.nasl 5132 2017-01-30 07:08:27Z antu123 $
+# $Id: deb_3769.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3769-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703769);
-    script_version("$Revision: 5132 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2016-10074");
     script_name("Debian Security Advisory DSA 3769-1 (libphp-swiftmailer - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-01-30 08:08:27 +0100 (Mon, 30 Jan 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-01-22 00:00:00 +0100 (Sun, 22 Jan 2017)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "libphp-swiftmailer on Debian Linux");
     script_tag(name: "insight",   value: "This is a transitional dummy package.
 It can safely be removed.");

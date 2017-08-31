@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_matrixssl_mult_vuln.nasl 6414 2017-06-23 09:35:47Z ckuersteiner $
+# $Id: gb_matrixssl_mult_vuln.nasl 6501 2017-07-03 07:48:47Z teissa $
 #
 # MatrixSSL Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:peersec_networks:matrixssl";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106904");
-  script_version("$Revision: 6414 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-23 11:35:47 +0200 (Fri, 23 Jun 2017) $");
+  script_version("$Revision: 6501 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-03 09:48:47 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-06-23 13:16:03 +0700 (Fri, 23 Jun 2017)");
-  script_tag(name: "cvss_base", value: "7.6");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-2780", "CVE-2017-2781", "CVE-2017-2782");
 

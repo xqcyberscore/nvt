@@ -45,8 +45,8 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2013-01/msg00002.html");
   script_id(850387);
-  script_version("$Revision: 2925 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:31:37 +0100 (Wed, 23 Mar 2016) $");
+  script_version("$Revision: 6673 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:45:02 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:33 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-4414", "CVE-2012-5611");
   script_tag(name:"cvss_base", value:"6.5");
@@ -61,7 +61,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

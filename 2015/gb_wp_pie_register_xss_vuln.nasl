@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_pie_register_xss_vuln.nasl 2580 2016-02-05 08:23:59Z benallard $
+# $Id: gb_wp_pie_register_xss_vuln.nasl 6513 2017-07-04 09:59:28Z teissa $
 #
 # Wordpress Pie Register Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805763");
-  script_version("$Revision: 2580 $");
+  script_version("$Revision: 6513 $");
   script_cve_id("CVE-2015-7377");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:23:59 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-10-20 12:43:41 +0530 (Tue, 20 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Pie Register Cross-Site Scripting Vulnerability");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133928");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/536668");
 
-  script_summary("Check if Wordpress Pie Register is prone to cross-site scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

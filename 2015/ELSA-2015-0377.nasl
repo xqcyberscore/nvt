@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-0377.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: ELSA-2015-0377.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123163");
-script_version("$Revision: 6333 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:00:09 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-0377");
 script_tag(name: "insight", value: "ELSA-2015-0377 -  libreoffice security, bug fix, and enhancement update - libabw[0.0.2-1]- new upstream release 0.0.2- generate man pages for the tools[0.0.1-1]- new upstream releaselibcmis[0.4.1-5]- Related: rhbz#1132065 coverity: fix mismatching exceptions[0.4.1-4]- a few use-after-free fixes for the C wrapper[0.4.1-3]- Resolves: rhbz#1132065 rebase to 0.4.1libetonyek[0.0.4-2]- Related: rhbz#1130553 fix coverity issue[0.0.4-1]- new upstream release[0.0.3-2]- generate man pages[0.0.3-1]- new release[0.0.2-1]- new release[0.0.1-1]- new releaselibfreehand[0.0.0-3]- fix memory leak[0.0.0-2]- add gperf to BuildRequires[0.0.0-1]- initial importliblangtag[0.5.4-8]- Related: rhbz#1132077 really resolve multilib conflict in -devel[0.5.4-7]- Related: rhbz#1132077 resolve multilib conflict in -devel[0.5.4-6]- Related: rhbz#1132077 add explicit dep on -gobject to -devel[0.5.4-5]- split GObject introspection files out of main package[0.5.3-1]- Resolves: rhbz#1132077 rebase to 0.5.4libmwaw[0.2.0-4]- Resolves: rhbz#1132070 rebase to 0.2.0libodfgen[0.0.4-1]- Resolves: rhbz#1132072 rebase to 0.0.4libreoffice[1:4.2.6.3-5]- Resolves: rhbz#1098973 crash on exit[1:4.2.6.3-4]- Resolves: rhbz#1111216 LibreOffice Calc: PDF export of an empty document fails with Write Error[1:4.2.6.3-3]- CVE-2014-3693: Disable sdremote by default and improve flow control[1:4.2.6.3-2]- Related: rhbz#1119709 port LibreOffice to aarch64[1:4.2.6.3-1]- Resolves: rhbz#1119709 rebase to 4.2.6[1:4.1.4.2-4]- Resolves: rhbz#1125588 port LibreOffice to ppc64lemdds[0.10.3-1]- Resolves: rhbz#1132069 rebase to 0.10.3"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

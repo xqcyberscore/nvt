@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: photopost_sql_injection.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: photopost_sql_injection.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: PhotoPost showgallery.php SQL Injection
 #
 # Authors:
@@ -31,8 +31,8 @@ tag_solution = "Upgrade to the newest version of this software.";
 if(description)
 {
  script_id(16101);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -41,39 +41,29 @@ if(description)
  script_bugtraq_id(12156, 12157);
  script_xref(name:"OSVDB", value:"12741");
  script_xref(name:"OSVDB", value:"12742");
- 
  name = "PhotoPost showgallery.php SQL Injection";
-
  script_name(name);
- 
-
  summary = "Checks for the presence of an SQL injection in showgallery.php";
- 
- 
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  
  script_copyright("This script is Copyright (C) 2005 Noam Rathaus");
  family = "Web application abuses";
  script_family(family);
  script_dependencies("photopost_detect.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://www.gulftech.org/?node=research&article_id=00063-01032005");
  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
 # Test an install.

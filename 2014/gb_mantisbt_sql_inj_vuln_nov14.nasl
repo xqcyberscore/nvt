@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_sql_inj_vuln_nov14.nasl 5067 2017-01-23 16:23:44Z cfi $
+# $Id: gb_mantisbt_sql_inj_vuln_nov14.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # MantisBT SQL Injection Vulnerability -01 November14
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804891");
-  script_version("$Revision: 5067 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-8554", "CVE-2014-9281", "CVE-2014-9280", "CVE-2014-9117",
                 "CVE-2014-6387", "CVE-2014-9506", "CVE-2014-9089", "CVE-2014-6316",
                 "CVE-2014-9388", "CVE-2014-8553");
   script_bugtraq_id(70856, 71371, 71361, 71321, 69780, 71298, 71478, 71553);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-23 17:23:44 +0100 (Mon, 23 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-25 14:59:21 +0530 (Tue, 25 Nov 2014)");
   script_name("MantisBT SQL Injection Vulnerability -01 November14");
 
@@ -86,7 +86,6 @@ if(description)
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2014/q4/479");
   script_xref(name:"URL", value:"http://www.mantisbt.org/bugs/view.php?id=17812");
 
-  script_summary("Check the version MantisBT is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

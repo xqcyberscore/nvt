@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_unauth_file_upload_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
+# $Id: gb_sysaid_unauth_file_upload_vuln.nasl 6497 2017-06-30 09:58:54Z teissa $
 #
 # SysAid Unauthenticated File Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:sysaid:sysaid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106006");
-  script_version("$Revision: 5933 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 6497 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name: "creation_date", value: "2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,6 @@ if (description)
 
   script_tag(name: "summary", value: "SysAid Help Desktop Software is prone to a unauthenticated
 file upload vulnerability");
-  script_summary("Check the version");
 
   script_tag(name: "vuldetect", value: "Determine if the vulnerable service is reachable and then
 check the version.");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-670.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: alas-2016-670.nasl 6574 2017-07-06 13:41:26Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120660");
-script_version("$Revision: 5712 $");
+script_version("$Revision: 6574 $");
 script_tag(name:"creation_date", value:"2016-03-17 16:05:04 +0200 (Thu, 17 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:41:26 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-670");
 script_tag(name: "insight", value: "A NULL pointer dereference flaw was found in the XSLTProcessor class in PHP. An attacker could use this flaw to cause a PHP application to crash if it performed Extensible Stylesheet Language (XSL) transformations using untrusted XSLT files and allowed the use of PHP functions to be used as XSLT functions within XSL stylesheets. (CVE-2015-6837 , CVE-2015-6838 )A flaw was discovered in the way PHP performed object unserialization. Specially crafted input processed by the unserialize() function could cause a PHP application to crash or, possibly, execute arbitrary code. (CVE-2015-6834 , CVE-2015-6835 , CVE-2015-6836 )"); 
 script_tag(name : "solution", value : "Run yum update php54 to update your system.");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_rce_vuln.nasl 6429 2017-06-26 08:48:56Z ckuersteiner $
+# $Id: gb_dolibarr_rce_vuln.nasl 6585 2017-07-07 05:33:18Z cfischer $
 #
 # Dolibarr ERP/CRM Remote Code Execution Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:dolibarr:dolibarr';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106908");
-  script_version("$Revision: 6429 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-26 10:48:56 +0200 (Mon, 26 Jun 2017) $");
+  script_version("$Revision: 6585 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-07 07:33:18 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-06-26 15:10:30 +0700 (Mon, 26 Jun 2017)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-9840");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_shockwave_detect_macosx.nasl 2636 2016-02-11 13:26:05Z antu123 $
+# $Id: secpod_adobe_shockwave_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
 #
 # Adobe Shockwave Player Version Detection (MacOSX)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902619");
-  script_version("$Revision: 2636 $");
+  script_version("$Revision: 6484 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-11 14:26:05 +0100 (Thu, 11 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_name("Adobe Shockwave Player Version Detection (MacOSX)");
 
@@ -47,7 +47,7 @@ if(description)
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success");
+  script_mandatory_keys("ssh/login/osx_name");
   exit(0);
 }
 

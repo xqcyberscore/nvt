@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3316.nasl 6243 2017-05-30 09:04:14Z teissa $
+# $Id: deb_3316.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3316-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,7 +30,7 @@
 if(description)
 {
     script_id(703316);
-    script_version("$Revision: 6243 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2014-8873", "CVE-2015-0460", "CVE-2015-0469", "CVE-2015-0470",
                   "CVE-2015-0477", "CVE-2015-0478", "CVE-2015-0480", "CVE-2015-0488",
                   "CVE-2015-2590", "CVE-2015-2601", "CVE-2015-2613", "CVE-2015-2621",
@@ -38,7 +38,7 @@ if(description)
                   "CVE-2015-4000", "CVE-2015-4731", "CVE-2015-4732", "CVE-2015-4733",
                   "CVE-2015-4748", "CVE-2015-4749", "CVE-2015-4760");
     script_name("Debian Security Advisory DSA 3316-1 (openjdk-7 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-07-25 00:00:00 +0200 (Sat, 25 Jul 2015)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "openjdk-7 on Debian Linux");
         script_tag(name: "insight",   value: "OpenJDK is a development environment for building applications,
 applets, and components using the Java programming language.");

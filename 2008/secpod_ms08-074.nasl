@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-074.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_ms08-074.nasl 6538 2017-07-05 11:38:27Z cfischer $
 #
 # Vulnerabilities in Microsoft Office Excel Could Allow Remote Code Execution (959070)
 #
@@ -43,8 +43,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(900061);
-  script_version("$Revision: 5370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6538 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-12-10 17:58:14 +0100 (Wed, 10 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -56,10 +56,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_office_products_version_900032.nasl",
-                      "secpod_ms_office_detection_900025.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "SMB/Office/Excel/Version");
-  script_require_ports(139, 445);
+  script_dependencies("secpod_office_products_version_900032.nasl", "secpod_ms_office_detection_900025.nasl");
+  script_mandatory_keys("MS/Office/Ver", "SMB/Office/Excel/Version");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -70,12 +69,7 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
-
-if(!get_kb_item("SMB/WindowsVersion")){
-  exit(0);
-}
 
 if(egrep(pattern:"^(9|10|11|12)\..*", string:get_kb_item("MS/Office/Ver")))
 {

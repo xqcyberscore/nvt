@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3510.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: deb_3510.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3510-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,7 +30,7 @@
 if(description)
 {
     script_id(703510);
-    script_version("$Revision: 5557 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2016-1950", "CVE-2016-1952", "CVE-2016-1954", "CVE-2016-1957",
                   "CVE-2016-1958", "CVE-2016-1960", "CVE-2016-1961", "CVE-2016-1962",
                   "CVE-2016-1964", "CVE-2016-1965", "CVE-2016-1966", "CVE-2016-1974",
@@ -39,7 +39,7 @@ if(description)
                   "CVE-2016-2797", "CVE-2016-2798", "CVE-2016-2799", "CVE-2016-2800",
                   "CVE-2016-2801", "CVE-2016-2802");
     script_name("Debian Security Advisory DSA 3510-1 (iceweasel - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-03-09 00:00:00 +0100 (Wed, 09 Mar 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "iceweasel on Debian Linux");
     script_tag(name: "insight",   value: "Iceweasel is Firefox, rebranded. It is
 a powerful, extensible web browser with support for modern web application

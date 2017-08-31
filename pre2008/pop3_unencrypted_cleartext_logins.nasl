@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: pop3_unencrypted_cleartext_logins.nasl 4685 2016-12-06 09:14:19Z cfi $
+# $Id: pop3_unencrypted_cleartext_logins.nasl 6522 2017-07-04 15:22:28Z cfischer $
 #
 # POP3 Unencrypted Cleartext Logins
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15855");
-  script_version("$Revision: 4685 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 10:14:19 +0100 (Tue, 06 Dec 2016) $");
+  script_version("$Revision: 6522 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:22:28 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_family("General");
   script_dependencies("find_service2.nasl", "global_settings.nasl", "logins.nasl");
   script_require_ports("Services/pop3", 110);
-  script_require_keys("pop3/login", "pop3/password");
+  script_mandatory_keys("pop3/login", "pop3/password");
 
   script_xref(name:"URL", value:"http://www.ietf.org/rfc/rfc2222.txt");
   script_xref(name:"URL", value:"http://www.ietf.org/rfc/rfc2595.txt");

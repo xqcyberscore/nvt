@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850663");
-  script_version("$Revision: 6132 $");
+  script_version("$Revision: 6675 $");
   script_cve_id("CVE-2014-6464", "CVE-2014-6469", "CVE-2014-6491", "CVE-2014-6494",
                 "CVE-2014-6496", "CVE-2014-6500", "CVE-2014-6507", "CVE-2014-6555",
                 "CVE-2014-6559", "CVE-2014-6568", "CVE-2014-8964", "CVE-2015-0374",
@@ -36,7 +36,7 @@ if(description)
                 "CVE-2015-2571", "CVE-2015-2573", "CVE-2015-3152", "CVE-2015-4000");
   script_tag(name:"cvss_base", value:"8.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:54:28 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-07-10 06:06:08 +0200 (Fri, 10 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MariaDB openSUSE-SU-2015:1216-1 (MariaDB)");
@@ -73,7 +73,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

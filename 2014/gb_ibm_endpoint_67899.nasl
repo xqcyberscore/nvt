@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_endpoint_67899.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_ibm_endpoint_67899.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # IBM Endpoint Manager 9.1 OpenSSL Man in the Middle Security Bypass Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-0224");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6724 $");
 
  script_name("IBM Endpoint Manager 9.1 OpenSSL Man in the Middle Security Bypass Vulnerability");
 
@@ -61,9 +61,8 @@ affected versions. Previous versions are not affected");
  
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-12-03 13:45:19 +0100 (Wed, 03 Dec 2014)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");

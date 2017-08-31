@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-WindowsSharepointServices.nasl 6000 2017-04-21 11:07:29Z cfi $
+# $Id: remote-detect-WindowsSharepointServices.nasl 6760 2017-07-19 14:00:26Z cfischer $
 #
 # This script ensure that Windows SharePointServices is installed and running
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101018");
-  script_version("$Revision: 6000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
+  script_version("$Revision: 6760 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 16:00:26 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-04-01 22:29:14 +0200 (Wed, 01 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,108 +60,129 @@ include("http_keepalive.inc");
 port = get_http_port( default:80 );
 if( ! can_host_asp( port:port ) ) exit( 0 );
 
-# request a non existent random page
-page = rand() + "openvas.aspx";
-
-request = http_get(item:"/" + page, port:port);
-
 report = '';
 
-if(port){
+# req a non existent random page
+page = rand() + "openvas.aspx";
 
-  response = http_keepalive_send_recv(port:port, data:request, bodyonly:0);
+req = http_get( item:"/" + page, port:port );
+res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+if( ! res || "microsoft" >!< tolower( res ) ) exit( 0 );
 
-  if(response){
+dotNetServer = eregmatch( pattern:"Server: Microsoft-IIS/([0-9.]+)",string:res, icase:TRUE );
+mstsVersion = eregmatch( pattern:"MicrosoftSharePointTeamServices: ([0-9.]+)",string:res, icase:TRUE );
+xPoweredBy = eregmatch( pattern:"X-Powered-By: ([a-zA-Z.]+)",string:res, icase:TRUE );
+aspNetVersion = eregmatch( pattern:"X-AspNet-Version: ([0-9.]+)",string:res, icase:TRUE );
 
-    if("microsoft" >!< tolower(response))exit(0);
+if( mstsVersion ) {
 
-      dotNetServer = eregmatch(pattern:"Server: Microsoft-IIS/([0-9.]+)",string:response, icase:TRUE);
-      mstsVersion = eregmatch(pattern:"MicrosoftSharePointTeamServices: ([0-9.]+)",string:response, icase:TRUE);
-      xPoweredBy = eregmatch(pattern:"X-Powered-By: ([a-zA-Z.]+)",string:response, icase:TRUE);
-      aspNetVersion = eregmatch(pattern:"X-AspNet-Version: ([0-9.]+)",string:response, icase:TRUE);
+  # TODO: extract the service pack using the [0-9] pattern (minor version number)
+  wssVersion = '';
 
-      if(mstsVersion){
+  set_kb_item( name:"WindowsSharePointServices/installed", value:TRUE );
+  set_kb_item( name:"MicrosoftSharePointTeamServices/version", value:mstsVersion[1] );
 
-        # TODO: extract the service pack using the [0-9] pattern (minor version number)
-        wssVersion = '';
+  ## build cpe and store it as host_detail
+  register_host_detail( name:"App", value:"cpe:/a:microsoft:sharepoint_team_services:2007" );
 
-        set_kb_item(name:"WindowsSharePointServices/installed", value:TRUE);
-        set_kb_item(name:"MicrosoftSharePointTeamServices/version", value:mstsVersion[1]);
+  if( eregmatch( pattern:"(6.0.2.[0-9]+)", string:mstsVersion[1], icase:TRUE ) ) {
+    wssVersion = "2.0";
+    set_kb_item( name:"WindowsSharePointServices/version", value:wssVersion );
 
-        ## build cpe and store it as host_detail
-        register_host_detail(name:"App", value:"cpe:/a:microsoft:sharepoint_team_services:2007");
+    ## build cpe and store it as host_detail
+    register_and_report_cpe( app:"WindowsSharePointServices", ver:wssVersion, base:"cpe:/a:microsoft:sharepoint_services:", expr:"^([0-9]\.[0-9])", regPort:port, insloc:"/" );
+  }
 
-        if( eregmatch(pattern:"(6.0.2.[0-9]+)", string:mstsVersion[1], icase:TRUE) ){
-          wssVersion = "2.0";
-          set_kb_item(name:"WindowsSharePointServices/version", value:wssVersion);
+  if( eregmatch( pattern:"(12.[0-9.]+)", string:mstsVersion[1], icase:TRUE ) ) {
+    wssVersion = "3.0";
+    set_kb_item( name:"WindowsSharePointServices/version", value:wssVersion) ;
 
-          ## build cpe and store it as host_detail
-          register_and_report_cpe(app:"WindowsSharePointServices", ver:wssVersion, base:"cpe:/a:microsoft:sharepoint_services:",
-                                  expr:"^([0-9]\.[0-9])");
-        }
-        if( eregmatch(pattern:"(12.[0-9.]+)", string:mstsVersion[1], icase:TRUE) ){
-          wssVersion = "3.0";
-          set_kb_item(name:"WindowsSharePointServices/version", value:wssVersion);
+    ## build cpe and store it as host_detail
+    register_and_report_cpe( app:"WindowsSharePointServices", ver:wssVersion, base:"cpe:/a:microsoft:sharepoint_services:", expr:"^([0-9]\.[0-9])", regPort:port, insloc:"/" );
+  }
 
-          ## build cpe and store it as host_detail
-          register_and_report_cpe(app:"WindowsSharePointServices", ver:wssVersion, base:"cpe:/a:microsoft:sharepoint_services:",
-                                  expr:"^([0-9]\.[0-9])");
-        }
+  report = "Detected: " + mstsVersion[0];
+  if( wssVersion )
+    report += '\n' + "Windows SharePoint Services " + wssVersion;
+}
 
-        report = "Detected: " + mstsVersion[0];
-        if(wssVersion)
-          report += "\n" + "Windows SharePoint Services " + wssVersion;
-      }
-      if(dotNetServer){
+if( dotNetServer ) {
 
-      # OS fingerprint using IIS signature
-      osVersion = '';
-      if( eregmatch(pattern:"(7.[0-4]+)", string:dotNetServer[1], icase:TRUE) ){
-        osVersion = "Windows 2008 / Vista";
-        set_kb_item(name:"wssOS/version", value:osVersion);
-      }
-      if( eregmatch(pattern:"(7.[5-9]+)", string:dotNetServer[1], icase:TRUE) ){
-        osVersion = "Windows 2008 R2 / Windows 7";
-        set_kb_item(name:"wssOS/version", value:osVersion);
-      }
-      if( eregmatch(pattern:"(6.[0-9]+)", string:dotNetServer[1], icase:TRUE) ){
-        osVersion = "Windows Server 2003 / Windows XP Professional x64";
-        set_kb_item(name:"wssOS/version", value:osVersion);
-      }
-      if( eregmatch(pattern:"(5.1)", string:dotNetServer[1], icase:TRUE) ){
-        osVersion = "Windows XP";
-        set_kb_item(name:"wssOS/version", value:osVersion);
-      }
-      if( eregmatch(pattern:"(5.0)", string:dotNetServer[1], icase:TRUE) ){
-        osVersion = "Windows Server 2000";
-        set_kb_item(name:"wssOS/version", value:osVersion);
-      }
+  # OS fingerprint using IIS signature
+  # https://en.wikipedia.org/wiki/Internet_Information_Services#History
+  osVersion = '';
+  if( dotNetServer[1] == "10.0" ) {
+    osVersion = "Windows Server 2016 / Windows 10";
+    set_kb_item(name:"wssOS/version", value:osVersion );
+  }
+  if( dotNetServer[1] == "8.5" ) {
+    osVersion = "Windows Server 2012 R2 / Windows 8.1";
+    set_kb_item(name:"wssOS/version", value:osVersion );
+  }
+  if( dotNetServer[1] == "8.0" ) {
+    osVersion = "Windows Server 2012 / Windows 8";
+    set_kb_item(name:"wssOS/version", value:osVersion );
+  }
+  if( dotNetServer[1] == "7.5" ) {
+    osVersion = "Windows Server 2008 R2 / Windows 7";
+    set_kb_item(name:"wssOS/version", value:osVersion );
+  }
+  if( dotNetServer[1] == "7.0" ) {
+    osVersion = "Windows Server 2008 / Windows Vista";
+    set_kb_item(name:"wssOS/version", value:osVersion );
+  }
+  if( dotNetServer[1] == "6.0" ) {
+    osVersion = "Windows Server 2003 / Windows XP Professional x64";
+    set_kb_item( name:"wssOS/version", value:osVersion );
+  }
+  if( dotNetServer[1] == "5.1" ) {
+    osVersion = "Windows XP Professional";
+    set_kb_item( name:"wssOS/version", value:osVersion );
+  }
+  if( dotNetServer[1] == "5.0" ) {
+    osVersion = "Windows 2000";
+    set_kb_item( name:"wssOS/version", value:osVersion );
+  }
+  if( dotNetServer[1] == "4.0" ) {
+    osVersion = "Windows NT 4.0 Option Pack";
+    set_kb_item( name:"wssOS/version", value:osVersion );
+  }
+  if( dotNetServer[1] == "3.0" ) {
+    osVersion = "Windows NT 4.0 SP2";
+    set_kb_item( name:"wssOS/version", value:osVersion );
+  }
+  if( dotNetServer[1] == "2.0" ) {
+    osVersion = "Windows NT 4.0";
+    set_kb_item( name:"wssOS/version", value:osVersion );
+  }
+  if( dotNetServer[1] == "1.0" ) {
+    osVersion = "Windows NT 3.51";
+    set_kb_item( name:"wssOS/version", value:osVersion );
+  }
 
-      set_kb_item(name:"IIS/installed", value:TRUE);
-      set_kb_item(name:"IIS/" + port + "/Ver", value:dotNetServer[1]);
+  set_kb_item( name:"IIS/installed", value:TRUE );
+  set_kb_item( name:"IIS/" + port + "/Ver", value:dotNetServer[1] );
 
-      ## build cpe and store it as host_detail
-      register_and_report_cpe(app:"Server: Microsoft-IIS", ver:dotNetServer[1], base:"cpe:/a:microsoft:iis:",
-                                  expr:"^([0-9.]+)");
-      report += "\n" + dotNetServer[0];
-      if( osVersion ){
-        report += "\n" + "Operating System Type: " + osVersion;
-      }
-    }
-    if(aspNetVersion){
-      set_kb_item(name:"aspNetVersion/version", value:aspNetVersion[1]);
-      report += "\n" + aspNetVersion[0];
-
-      if(xPoweredBy){
-        set_kb_item(name:"ASPX/enabled", value:TRUE);
-        report += "\n" + xPoweredBy[0];
-      }
-    }
+  ## build cpe and store it as host_detail
+  register_and_report_cpe( app:"Microsoft-IIS", ver:dotNetServer[1], base:"cpe:/a:microsoft:iis:", expr:"^([0-9.]+)", regPort:port, insloc:"/" );
+  report += '\n' + dotNetServer[0];
+  if( osVersion ) {
+    report += '\n' + "Operating System Type: " + osVersion;
   }
 }
 
-if ( report ) {
-  log_message(port:port, data:report);
+if( aspNetVersion ) {
+  set_kb_item( name:"aspNetVersion/version", value:aspNetVersion[1] );
+  report += '\n' + aspNetVersion[0];
+
+  if( xPoweredBy ) {
+    set_kb_item( name:"ASPX/enabled", value:TRUE );
+    report += '\n' + xPoweredBy[0];
+  }
 }
 
-exit(0);
+if( strlen( report ) > 0 ) {
+  log_message( port:port, data:report );
+}
+
+exit( 0 );

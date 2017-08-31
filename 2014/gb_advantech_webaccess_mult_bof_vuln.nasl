@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_mult_bof_vuln.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_advantech_webaccess_mult_bof_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Advantech WebAccess Multiple Stack Based Buffer Overflow Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804478");
-  script_version("$Revision: 2780 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-0985", "CVE-2014-0986", "CVE-2014-0987", "CVE-2014-0988",
                 "CVE-2014-0989", "CVE-2014-0990", "CVE-2014-0991", "CVE-2014-0992");
   script_bugtraq_id(69529, 69531, 69532, 69533, 69534, 69535, 69536, 69538);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-08 12:07:35 +0530 (Mon, 08 Sep 2014)");
 
   script_name("Advantech WebAccess Multiple Stack Based Buffer Overflow Vulnerabilities");
@@ -64,7 +64,6 @@ if(description)
   WebAccess 7.2 or later, For updates refer to http://webaccess.advantech.com");
 
   script_xref(name: "URL" , value: "http://www.coresecurity.com/advisories/advantech-webaccess-vulnerabilities");
-  script_summary("Check for the vulnerable version of Advantech WebAccess");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

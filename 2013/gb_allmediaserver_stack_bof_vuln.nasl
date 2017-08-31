@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_allmediaserver_stack_bof_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_allmediaserver_stack_bof_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # ALLMediaServer Request Handling Stack Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803745");
-  script_version("$Revision: 6079 $");
+  script_version("$Revision: 6698 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-08-22 10:39:02 +0530 (Thu, 22 Aug 2013)");
   script_name("ALLMediaServer Request Handling Stack Buffer Overflow Vulnerability");
 
@@ -59,10 +59,9 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_require_ports("Services/www", 888);
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 888);
   script_mandatory_keys("ALLPLAYER-DLNA/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }

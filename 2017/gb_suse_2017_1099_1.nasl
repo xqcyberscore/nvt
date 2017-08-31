@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851540");
-  script_version("$Revision: 6100 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 10:26:05 +0200 (Thu, 11 May 2017) $");
+  script_version("$Revision: 6677 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:58:27 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-04-25 06:34:14 +0200 (Tue, 25 Apr 2017)");
   script_cve_id("CVE-2017-5429", "CVE-2017-5443", "CVE-2017-5444", "CVE-2017-5446",
                 "CVE-2017-5447", "CVE-2017-5448", "CVE-2017-5449", "CVE-2017-5460",
@@ -80,7 +80,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:opensuse:opensuse", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

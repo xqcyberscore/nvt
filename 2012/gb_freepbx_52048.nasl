@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_52048.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_freepbx_52048.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # FreePBX 'gen_amp_conf.php' Credentials Information Disclosure Vulnerability
 #
@@ -38,7 +38,7 @@ if (description)
 {
  script_id(103428);
  script_bugtraq_id(52048);
- script_version ("$Revision: 5988 $");
+ script_version ("$Revision: 6720 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("FreePBX 'gen_amp_conf.php' Credentials Information Disclosure Vulnerability");
@@ -47,7 +47,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.freepbx.org/");
  script_xref(name : "URL" , value : "http://www.freepbx.org/forum/freepbx/development/security-gen-amp-conf-php");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-02-16 16:59:07 +0100 (Thu, 16 Feb 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -55,7 +55,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_freepbx_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("freepbx/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -68,7 +67,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
 if(!dir = get_dir_from_kb(port:port,app:"freepbx"))exit(0);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3251.nasl 6170 2017-05-19 09:03:42Z teissa $
+# $Id: deb_3251.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3251-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703251);
-    script_version("$Revision: 6170 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2015-3294");
     script_name("Debian Security Advisory DSA 3251-1 (dnsmasq - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-05-05 00:00:00 +0200 (Tue, 05 May 2015)");
     script_tag(name:"cvss_base", value:"6.4");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "dnsmasq on Debian Linux");
     script_tag(name: "insight",   value: "Dnsmasq is a lightweight, easy to
 configure, DNS forwarder and DHCP server. It is designed to provide DNS and

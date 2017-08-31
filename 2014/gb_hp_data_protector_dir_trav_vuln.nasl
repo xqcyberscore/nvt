@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_dir_trav_vuln.nasl 6435 2017-06-27 06:17:04Z cfischer $
+# $Id: gb_hp_data_protector_dir_trav_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # HP (OpenView Storage) Data Protector Backup Client Service Directory Traversal
 #
@@ -33,11 +33,10 @@ if(description)
   script_cve_id("CVE-2013-6194");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 6435 $");
+  script_version("$Revision: 6750 $");
   script_name("HP (OpenView Storage) Data Protector Backup Client Service Directory Traversal");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 08:17:04 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-11 11:34:29 +0700 (Tue, 11 Feb 2014)");
-  script_summary("HP (OpenView Storage) Data Protector Backup Client Service Directory Traversal which can lead to execute arbitrary code.");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

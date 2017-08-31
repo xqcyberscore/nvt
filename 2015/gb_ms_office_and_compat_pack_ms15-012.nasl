@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_and_compat_pack_ms15-012.nasl 5365 2017-02-20 13:46:09Z cfi $
+# $Id: gb_ms_office_and_compat_pack_ms15-012.nasl 6533 2017-07-05 08:41:34Z santu $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3032328)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805046");
-  script_version("$Revision: 5365 $");
+  script_version("$Revision: 6533 $");
   script_cve_id("CVE-2015-0063", "CVE-2015-0064");
   script_bugtraq_id(72460, 72463);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:46:09 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 10:41:34 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-02-11 11:47:10 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3032328)");
 
@@ -71,9 +71,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
-  script_require_keys("SMB/Office/ComptPack/Version", "SMB/Office/XLCnv/Version",
-                      "SMB/Office/WordCnv/Version");
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("MS/Office/Prdts/Installed");
   script_require_ports(139, 445);
   exit(0);
 }

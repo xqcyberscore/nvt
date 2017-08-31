@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0511.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-0511.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123706");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:07:29 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0511");
 script_tag(name: "insight", value: "ELSA-2013-0511 -  pki-core security, bug fix and enhancement update - [9.0.3-30]- Resolves #902474 - upgrading IPA from 2.2 to 3.0 sees certmonger errors[9.0.3-29]- Resolves #891985 - Increase FreeIPA root CA validity[9.0.3-28]- Resolves #885790 - Multiple cross-site scripting flaws by displaying CRL or processing profile[9.0.3-27]- Resolves #867640 - ipa-replica-install Configuration of CA failed by REVERTING #819111 - Non-existent container breaks replication[9.0.3-26]- Resolves #844459 - Increase audit cert renewal range to 2 years (mharmsen)- Resolves #841663 - serial number incorrectly cast from BigInt to integer in installation wizard (mharmsen)- Resolves #858864 - create/ identify a mechanism for clients to determine that the pki subsystem is up (alee)[9.0.3-25]- Resolves #819111 - Non-existent container breaks replication"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"4.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-0511");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

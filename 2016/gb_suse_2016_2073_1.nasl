@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851385");
-  script_version("$Revision: 5557 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_version("$Revision: 6906 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-11 15:21:18 +0200 (Fri, 11 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-08-16 05:43:14 +0200 (Tue, 16 Aug 2016)");
   script_cve_id("CVE-2014-9805", "CVE-2014-9807", "CVE-2014-9809", "CVE-2014-9815", 
                 "CVE-2014-9817", "CVE-2014-9819", "CVE-2014-9820", "CVE-2014-9831", 
@@ -35,8 +35,8 @@ if(description)
                 "CVE-2014-9845", "CVE-2014-9846", "CVE-2014-9853", "CVE-2015-8894", 
                 "CVE-2015-8896", "CVE-2016-2317", "CVE-2016-2318", "CVE-2016-5240", 
                 "CVE-2016-5241", "CVE-2016-5688");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for GraphicsMagick openSUSE-SU-2016:2073-1 (GraphicsMagick)");
   script_tag(name: "summary", value: "Check the version of GraphicsMagick");
@@ -83,7 +83,7 @@ of detect NVT and check if the version is vulnerable or not.");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:opensuse:opensuse", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

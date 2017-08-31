@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spip_54292.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_spip_54292.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # SPIP 'connect' Parameter PHP Code Injection Vulnerability
 #
@@ -50,7 +50,7 @@ if (description)
  script_cve_id("CVE-2013-4555", "CVE-2013-4556", "CVE-2013-4557");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6074 $");
+ script_version ("$Revision: 6755 $");
 
  script_name("SPIP 'connect' Parameter PHP Code Injection Vulnerability");
 
@@ -59,7 +59,7 @@ if (description)
  script_xref(name:"URL", value:"http://www.spip.net/en");
  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1029317");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-08-29 12:05:48 +0200 (Thu, 29 Aug 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -67,7 +67,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_spip_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("spip/installed");
 
  script_tag(name : "impact" , value : tag_impact);
@@ -86,7 +85,7 @@ include("host_details.inc");
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
-host = get_host_name();
+host = http_host_name(port:port);
 
 for(i=0;i<2;i++) { # sometimes there is no output from phpinfo() on the first request. So try twice...
 

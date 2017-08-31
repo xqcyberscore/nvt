@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(867250);
-  script_version("$Revision: 2797 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 13:51:07 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 6629 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-27 11:19:26 +0530 (Mon, 27 Jan 2014)");
   script_cve_id("CVE-2013-4389", "CVE-2013-6417", "CVE-2013-4491", "CVE-2013-6415", "CVE-2013-6414");
   script_tag(name:"cvss_base", value:"6.4");
@@ -58,7 +58,7 @@ unit/integration testing that doesn't require a browser.
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

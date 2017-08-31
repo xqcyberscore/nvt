@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_web_server_dir_trav_vuln_win.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_vmware_web_server_dir_trav_vuln_win.nasl 6518 2017-07-04 13:49:06Z cfischer $
 #
 # VMware 2 Web Server Directory Traversal Vulnerability (Windows)
 #
@@ -45,8 +45,8 @@ directory traversal vulnerability.";
 if(description)
 {
   script_id(801654);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6518 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:49:06 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-12-27 09:55:05 +0100 (Mon, 27 Dec 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -58,7 +58,7 @@ if(description)
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("gb_vmware_prdts_detect_win.nasl");
-  script_require_keys("VMware/Server/Win/Ver", "VMware/Win/Installed");
+  script_mandatory_keys("VMware/Server/Win/Ver", "VMware/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

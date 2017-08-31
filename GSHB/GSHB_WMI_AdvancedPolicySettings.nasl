@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_AdvancedPolicySettings.nasl 6417 2017-06-23 10:16:41Z emoss $
+# $Id: GSHB_WMI_AdvancedPolicySettings.nasl 6815 2017-07-31 09:16:46Z cfischer $
 #
 # Read all Windows Advanced Policy Security Settings (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109001");
-  script_version("$Revision: 6417 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 12:16:41 +0200 (Fri, 23 Jun 2017) $");
+  script_version("$Revision: 6815 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-31 11:16:46 +0200 (Mon, 31 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-06-23 12:03:14 +0200 (Fri, 23 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,10 +40,10 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_dependencies("GSHB_WMI_OSInfo.nasl");
+  script_mandatory_keys("Compliance/Launch/GSHB");
 
-	exit(0);
+  exit(0);
 }
-
 
 function auditing (pol){
   ret = "";
@@ -63,7 +63,6 @@ function auditing (pol){
   return ret;
 }
 
-
 include("smb_nt.inc");
 
 host    = get_host_ip();
@@ -72,8 +71,8 @@ domain  = get_kb_item("SMB/domain");
 if (domain){
   usrname = domain + '/' + usrname;
 }
-passwd  = get_kb_item("SMB/password");
-OSVER = get_kb_item("WMI/WMI_OSVER");
+passwd = get_kb_item("SMB/password");
+OSVER  = get_kb_item("WMI/WMI_OSVER");
 WindowsDomainrole = get_kb_item("WMI/WMI_WindowsDomainrole");
 
 if(!OSVER || OSVER >< "none"){

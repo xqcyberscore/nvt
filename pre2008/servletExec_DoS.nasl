@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: servletExec_DoS.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: servletExec_DoS.nasl 6695 2017-07-12 11:17:53Z cfischer $
 #
 # ServletExec 4.1 / JRun ISAPI DoS
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10958");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 6695 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1570, 4796);
   script_cve_id("CVE-2002-0894", "CVE-2000-0681");
@@ -45,7 +45,6 @@ if(description)
   script_mandatory_keys("JRun/banner");
   script_require_ports("Services/www", 80);
   script_exclude_keys("www/too_long_url_crash");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"www.westpoint.ltd.uk/advisories/wp-02-0006.txt");
   script_xref(name:"URL", value:"http://online.securityfocus.com/bid/6122");

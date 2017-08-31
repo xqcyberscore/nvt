@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_neobill_mult_vuln.nasl 5628 2017-03-20 15:27:40Z cfi $
+# $Id: gb_neobill_mult_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # NeoBill Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804226");
-  script_version("$Revision: 5628 $");
+  script_version("$Revision: 6759 $");
   script_bugtraq_id(64112);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-23 13:48:00 +0530 (Thu, 23 Jan 2014)");
   script_name("NeoBill Multiple Vulnerabilities");
 
@@ -55,7 +55,6 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124307");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/89516");
-  script_summary("Check if NeoBill is vulnerable to directory traversal");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

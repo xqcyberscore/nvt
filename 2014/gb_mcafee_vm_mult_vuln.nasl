@@ -29,12 +29,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804250";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-1472", "CVE-2014-1473", "CVE-2013-5094");
   script_bugtraq_id(64795, 58401);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-20 14:52:54 +0530 (Thu, 20 Mar 2014)");
   script_name("McAfee Vulnerability Manager Multiple Vulnerabilities");
 
@@ -78,7 +78,6 @@ For updates refer to http://www.mcafee.com/in/products/vulnerability-manager.asp
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/90244");
   script_xref(name : "URL" , value : "http://asheesh2000.blogspot.in/2013/08/mcafee-vulnerability-manager-75-cross.html");
   script_xref(name : "URL" , value : "https://kc.mcafee.com/corporate/index?page=content&id=SB10061");
-  script_summary("Check for the vulnerable version of McAfee Vulnerability Manager");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

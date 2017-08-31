@@ -1,7 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_login.nasl 5336 2017-02-18 15:08:15Z cfi $
-# Description: SMB log in
+# $Id: smb_login.nasl 6859 2017-08-07 09:59:48Z cfischer $
+#
+# SMB log in
 #
 # Authors:
 # Chandan S <schandan@secpod.com>
@@ -22,12 +23,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
- 
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10394");
-  script_version("$Revision: 5336 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 16:08:15 +0100 (Sat, 18 Feb 2017) $");
+  script_version("$Revision: 6859 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-07 11:59:48 +0200 (Mon, 07 Aug 2017) $");
   script_tag(name:"creation_date", value:"2008-09-10 10:22:48 +0200 (Wed, 10 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,189 +51,162 @@ if(description)
 
   exit(0);
 }
- 
+
 include("smb_nt.inc");
 include("host_details.inc");
- 
- if ( get_kb_item( "global_settings/authenticated_scans_disabled" ) )exit(0);
- 
- port = kb_smb_transport();
- if(!port){
-        port = 139;
- }
- 
- name = kb_smb_name();
- if(!name){
-        name = "*SMBSERVER";
- }
- 
- if(!get_port_state(port)){
-        exit(0);
- }
- 
- login =  string(get_kb_item("SMB/login_filled/0"));
- password = string(get_kb_item("SMB/password_filled/0"));
- user_domain = string(get_kb_item("SMB/domain_filled/0"));
- 
- if(!user_domain)
- {
-   if('\\' >< login)
-   {
-     matched_domain = eregmatch(pattern:".*\\",string:login);
-     if(!isnull(matched_domain[0]))
-     {
-       user_domain =  ereg_replace(pattern:"\\", replace:"", string:matched_domain[0]);
-     }
-   }
- 
-   if('@' >< login)
-   {
-     matched_domain = eregmatch(pattern:"@.*",string:login);
-     if(!isnull(matched_domain[0]))
-     {
-       user_domain =  ereg_replace(pattern:"@", replace:"", string:matched_domain[0]);
-       if(user_domain =~ ".*\..*") {
-         fqdn_domain = eregmatch(pattern:".*\.",string:user_domain);
-         if(!isnull(fqdn_domain[0])){
-           user_domain = ereg_replace(pattern:"\.", replace:"", string:fqdn_domain[0]);
-         }
-       }
-     }
-   }
- 
- }
- 
- if ('\\' >< login)
- {
-   user_login = eregmatch(pattern:"\\.*", string:login);
-   if('\\' >< user_login[0]) {
-       login =  ereg_replace(pattern:"\\", replace:"", string:user_login[0]);
-   }
- }
- 
- if ('@' >< login)
- {
-   user_login = eregmatch(pattern:".*@", string:login);
-   if('@' >< user_login[0]) {
-       login =  ereg_replace(pattern:"@", replace:"", string:user_login[0]);
-   }
- }
- 
-if(!strlen(login)){
-        login ="";
- }
- 
- if(!strlen(password)){
-        password = "";
- }
- 
- if(strlen(user_domain)){
-        domain = user_domain;
- }
- 
- if(!strlen(user_domain)){
-#    user_domain = "";
- 
-#        soc = open_sock_tcp(port);
-#        if(!soc){
-#                exit(0);
-#        }
- 
-#        smb_session_request(soc:soc, remote:name);
- 
-#        prot = smb_neg_prot(soc:soc);
-#        close(soc);
- 
-#        domain = smb_neg_prot_domain(prot:prot);
-                flag = 1;
- 
-        domain = string(get_kb_item("SMB/DOMAIN"));
-        if(!domain){
-                domain = string(get_kb_item("SMB/workgroup"));
-        }
-        if(!domain){
-                domain = "";
-        }
- }
- 
- set_kb_item(name:"SMB/login", value:login);
- set_kb_item(name:"SMB/password", value:password);
- 
- if(domain && flag != 1){
-        set_kb_item(name:"SMB/domain", value:domain);
- }
- 
- function remote_login(login, passwd, domain)
- {
-        login_defined = 0;
- 
-        soc = open_sock_tcp(port);
-        if(!soc){
-                return(login_defined);
-        }
- 
-        r = smb_session_request(soc:soc, remote:name);
-        if(!r){
-                close(soc);
-                return(login_defined);
-        }
- 
-        prot = smb_neg_prot(soc:soc);
-        if(!prot){
-                close(soc);
-                return(login_defined);
-        }
- 
-        r = smb_session_setup(soc:soc, login:login, password:passwd,
-                              domain:domain, prot:prot);
-        if(!r){
-                close(soc);
-                return(login_defined);
-        }
- 
-        uid = session_extract_uid(reply:r);
-        if(!uid){
-                close(soc);
-                return(login_defined);
-        }
 
-        r = smb_tconx(soc:soc, name:name, uid:uid, share:"IPC$");
-        if(!r){
-                close(soc);
-                return(login_defined);
-        }
+function remote_login( login, passwd, domain, name ) {
 
-        close(soc);
- 
-        if(r){
-                tid = tconx_extract_tid(reply:r);
-                login_defined = 1;
+  local_var login, passwd, domain, name;
+  local_var login_defined, soc, r, prot, uid, tid;
+
+  login_defined = 0;
+
+  soc = open_sock_tcp( port );
+  if( ! soc ) {
+    return login_defined;
+  }
+
+  r = smb_session_request( soc:soc, remote:name );
+  if( ! r ) {
+    close( soc );
+    return login_defined;
+  }
+
+  prot = smb_neg_prot( soc:soc );
+  if( ! prot ) {
+    close( soc );
+    return login_defined;
+  }
+
+  r = smb_session_setup( soc:soc, login:login, password:passwd, domain:domain, prot:prot );
+  if( ! r ) {
+    close( soc );
+    return login_defined;
+  }
+
+  uid = session_extract_uid( reply:r );
+  if( ! uid ) {
+    close( soc );
+    return login_defined;
+  }
+
+  r = smb_tconx( soc:soc, name:name, uid:uid, share:"IPC$" );
+  if( ! r ) {
+    close( soc );
+    return login_defined;
+  }
+
+  close( soc );
+
+  if( r ) {
+    tid = tconx_extract_tid( reply:r );
+    login_defined = 1;
+  } else {
+    login_defined = 0;
+  }
+  return login_defined;
+}
+
+if( get_kb_item( "global_settings/authenticated_scans_disabled" ) ) exit( 0 );
+
+port = kb_smb_transport();
+if( ! port ) port = 139;
+if( ! get_port_state( port ) ) exit( 0 );
+
+name = kb_smb_name();
+if( ! name ) name = "*SMBSERVER";
+
+login       = string( get_kb_item( "SMB/login_filled/0" ) );
+password    = string( get_kb_item( "SMB/password_filled/0" ) );
+user_domain = string( get_kb_item( "SMB/domain_filled/0" ) );
+
+if( ! user_domain ) {
+
+  if( '\\' >< login ) {
+    matched_domain = eregmatch( pattern:".*\\", string:login );
+    if( ! isnull( matched_domain[0] ) ) {
+      user_domain = ereg_replace( pattern:"\\", replace:"", string:matched_domain[0] );
+    }
+  }
+
+  if( '@' >< login ) {
+    matched_domain = eregmatch( pattern:"@.*", string:login );
+    if( ! isnull( matched_domain[0] ) ) {
+      user_domain = ereg_replace( pattern:"@", replace:"", string:matched_domain[0] );
+      if( user_domain =~ ".*\..*" ) {
+        fqdn_domain = eregmatch( pattern:".*\.", string:user_domain );
+        if( ! isnull( fqdn_domain[0] ) ) {
+          user_domain = ereg_replace(pattern:"\.", replace:"", string:fqdn_domain[0]);
         }
-        else{
-                login_defined = 0;
-        }
-        return(login_defined);
- }
- 
- 
- if(flag == 1 && !strlen(user_domain)) {
-  login_defined = remote_login(login:login, passwd:password, domain:"");
- }
- else login_defined = remote_login(login:login, passwd:password, domain:domain);
- 
- 
- if(login_defined == 1)
- {
-        report = string("It was possible to log into the remote host using the SMB protocol.\n");
-        register_host_detail(name:"Auth-SMB-Success", value:"Protocol SMB, Port " + port + ", User " + login );
-        log_message(data:report, port:port);
- }
- 
- else if((login_defined == 0) && login)
- {
-        report = string("It was not possible to log into the remote host using the SMB protocol.\n");
-        register_host_detail(name:"Auth-SMB-Failure", value:"Protocol SMB, Port " + port + ", User " + login );
-        log_message(data:report, port:port);
-        set_kb_item(name: "login/SMB/failed", value: TRUE);
-        set_kb_item(name: "login/SMB/failed/port", value: port);
- }
+      }
+    }
+  }
+}
+
+if( '\\' >< login ) {
+  user_login = eregmatch( pattern:"\\.*", string:login );
+  if( '\\' >< user_login[0] ) {
+    login = ereg_replace( pattern:"\\", replace:"", string:user_login[0] );
+  }
+}
+
+if( '@' >< login ) {
+  user_login = eregmatch( pattern:".*@", string:login );
+  if( '@' >< user_login[0] ) {
+    login = ereg_replace( pattern:"@", replace:"", string:user_login[0] );
+  }
+}
+
+if( ! strlen( login ) )     login = "";
+if( ! strlen( password ) )  password = "";
+if( strlen( user_domain ) ) domain = user_domain;
+
+if( ! strlen( user_domain ) ) {
+  #user_domain = "";
+  #soc = open_sock_tcp( port );
+  #if( ! soc ) exit( 0 );
+  #
+  #smb_session_request( soc:soc, remote:name );
+
+  #prot = smb_neg_prot( soc:soc );
+  #close( soc );
+
+  #domain = smb_neg_prot_domain( prot:prot );
+  flag = 1;
+
+  domain = string( get_kb_item( "SMB/DOMAIN" ) );
+  if( ! domain ) domain = string( get_kb_item( "SMB/workgroup" ) );
+  if( ! domain ) domain = "";
+}
+
+set_kb_item( name:"SMB/login", value:login );
+set_kb_item( name:"SMB/password", value:password );
+
+if( domain && flag != 1 ) {
+  set_kb_item( name:"SMB/domain", value:domain );
+}
+
+if( flag == 1 && ! strlen( user_domain ) ) {
+  login_defined = remote_login( login:login, passwd:password, domain:"", name:name );
+} else {
+  login_defined = remote_login( login:login, passwd:password, domain:domain, name:name );
+}
+
+if( login_defined == 1 ) {
+  report = "It was possible to log into the remote host using the SMB protocol.";
+  register_host_detail( name:"Auth-SMB-Success", value:"Protocol SMB, Port " + port + ", User " + login );
+  log_message( data:report, port:port );
+  set_kb_item( name:"login/SMB/success", value:TRUE );
+  set_kb_item( name:"login/SMB/success/port", value:port );
+}
+
+else if( ( login_defined == 0 ) && login ) {
+  report = "It was not possible to log into the remote host using the SMB protocol.";
+  register_host_detail( name:"Auth-SMB-Failure", value:"Protocol SMB, Port " + port + ", User " + login );
+  log_message( data:report, port:port );
+  set_kb_item( name:"login/SMB/failed", value:TRUE );
+  set_kb_item( name:"login/SMB/failed/port", value:port );
+}
+
+exit( 0 );

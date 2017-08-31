@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zavio_ip_cameras_multiple_vulns_05_13.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_zavio_ip_cameras_multiple_vulns_05_13.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # Zavio IP Cameras Multiple Vulnerabilities
 #
@@ -49,7 +49,7 @@ if (description)
  script_cve_id("CVE-2013-2567","CVE-2013-2569","CVE-2013-2568","CVE-2013-2570");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6065 $");
+ script_version ("$Revision: 6698 $");
 
  script_name("Zavio IP Cameras Multiple Vulnerabilities");
 
@@ -59,16 +59,15 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60188");
  script_xref(name:"URL", value:"http://www.coresecurity.com/advisories/zavio-IP-cameras-multiple-vulnerabilities");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-05-29 16:28:20 +0200 (Wed, 29 May 2013)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("Boa/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("Boa/banner");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
@@ -77,7 +76,6 @@ include("http_func.inc");
 include("misc_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if(!banner || "Server: Boa/" >!< banner)exit(0);

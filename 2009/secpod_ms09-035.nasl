@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-035.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: secpod_ms09-035.nasl 6517 2017-07-04 13:34:20Z cfischer $
 #
 # Microsoft Visual Studio ATL Remote Code Execution Vulnerability (969706)
 #
@@ -49,8 +49,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(900809);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6517 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-08-03 06:30:10 +0200 (Mon, 03 Aug 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -65,10 +65,8 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_ms_visual_prdts_detect.nasl");
-  script_require_keys("Microsoft/VisualStudio/Ver",
-                      "Microsoft/VisualStudio.Net/Ver");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("Microsoft/VisualStudio_or_VisualStudio.Net/Installed");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

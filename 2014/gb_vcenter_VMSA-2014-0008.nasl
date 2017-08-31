@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2014-0008.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_vcenter_VMSA-2014-0008.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # VMware Security Updates for vCenter Server (VMSA-2014-0008)
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2014-0114","CVE-2013-4590","CVE-2013-4322","CVE-2014-0050","CVE-2013-0242","CVE-2013-1914");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6759 $");
  script_name("VMware Security Updates for vCenter Server (VMSA-2014-0008)");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0008.html");
@@ -61,9 +61,8 @@ update 55 in the Oracle Java SE Critical Patch Update Advisory of April 2014");
  script_tag(name: "summary" , value: "VMware has updated vSphere third party libraries");
  script_tag(name: "affected" , value: 'VMware vCenter Server 5.5 prior to Update 2');
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-09-11 11:04:02 +0100 (Thu, 11 Sep 2014)");
- script_summary("Check the build number");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastisearch_code_execution_05_14.nasl 5622 2017-03-20 14:20:52Z cfi $
+# $Id: gb_elastisearch_code_execution_05_14.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # Elastisearch Remote Code Execution Vulnerability
 #
@@ -43,14 +43,14 @@ if (description)
  script_cve_id("CVE-2014-3120");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5622 $");
+ script_version ("$Revision: 6756 $");
 
  script_name("Elastisearch Remote Code Execution Vulnerability");
 
 
  script_xref(name:"URL", value:"http://bouk.co/blog/elasticsearch-rce/");
  
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 15:20:52 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-05-22 15:28:00 +0200 (Thu, 22 May 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -58,7 +58,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_elastsearch_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 9200);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("elastisearch/installed");
 
  script_tag(name : "impact" , value : tag_impact);

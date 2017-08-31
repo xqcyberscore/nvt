@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jan13_macosx.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_google_chrome_mult_vuln01_jan13_macosx.nasl 6521 2017-07-04 14:51:10Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 Jan2013 (MAC OS X)
 #
@@ -39,7 +39,7 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 if(description)
 {
   script_id(803159);
-  script_version("$Revision: 6115 $");
+  script_version("$Revision: 6521 $");
   script_cve_id("CVE-2012-5145", "CVE-2012-5146", "CVE-2012-5147", "CVE-2012-5148",
                 "CVE-2012-5149", "CVE-2012-5150", "CVE-2012-5151", "CVE-2012-5152",
                 "CVE-2012-5153", "CVE-2012-5156", "CVE-2012-5157", "CVE-2013-0828",
@@ -49,7 +49,7 @@ if(description)
   script_bugtraq_id(57251);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-01-17 14:52:37 +0530 (Thu, 17 Jan 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Jan2013 (MAC OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51825/");
@@ -59,8 +59,8 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_macosx.nasl", "ssh_authorization_init.nasl");
-  script_require_keys("GoogleChrome/MacOSX/Version", "ssh/login/uname");
+  script_dependencies("gb_google_chrome_detect_macosx.nasl");
+  script_mandatory_keys("GoogleChrome/MacOSX/Version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

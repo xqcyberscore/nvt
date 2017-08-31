@@ -29,12 +29,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804082";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2014-0001");
   script_bugtraq_id(65298);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-03 18:02:51 +0530 (Mon, 03 Feb 2014)");
   script_name("Oracle MySQL Client Remote Buffer Overflow Vulnerability (Windows)");
 
@@ -75,7 +75,6 @@ For Updates refer to http://www.mysql.com";
 
   script_xref(name : "URL" , value : "http://www.scip.ch/en/?vuldb.12135");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1029708");
-  script_summary("Check for the vulnerable version of Oracle MySQL on windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Buffer overflow");

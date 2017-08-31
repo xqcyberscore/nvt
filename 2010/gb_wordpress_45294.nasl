@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_45294.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_wordpress_45294.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # WordPress Twitter Feed Plugin 'url' Parameter Cross Site Scripting Vulnerability
 #
@@ -45,8 +45,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-12-10 13:28:59 +0100 (Fri, 10 Dec 2010)");
  script_bugtraq_id(45294);
  script_cve_id('CVE-2010-4825');
@@ -65,7 +65,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("secpod_wordpress_detect_900182.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("wordpress/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -78,22 +77,15 @@ include("version_func.inc");
 include("host_details.inc");
    
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port)) {
   if(!dir = get_app_location(cpe:"cpe:/a:wordpress:wordpress_mu", nvt:SCRIPT_OID, port:port))exit(0);
 }  
 
-   
 url = string(dir, "/wp-content/plugins/wp-twitter-feed/magpie/scripts/magpie_debug.php?url=%3cscript%3ealert('openvas-xss-test')%3c%2fscript%3e"); 
 
 if(http_vuln_check(port:port, url:url,pattern:"<script>alert\('openvas-xss-test'\)</script>",check_header:TRUE)) {
-     
   security_message(port:port);
   exit(0);
-
 }
 
 exit(0);
-

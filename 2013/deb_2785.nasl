@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2785.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: deb_2785.nasl 6611 2017-07-07 12:07:20Z cfischer $
 # Auto-generated from advisory DSA 2785-1 using nvtgen 1.0
 # Script version: 1.1
 #
@@ -125,10 +125,10 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(892794);
-    script_version("$Revision: 6086 $");
+    script_version("$Revision: 6611 $");
     script_cve_id("CVE-2013-2906", "CVE-2013-2927", "CVE-2013-2913", "CVE-2013-2915", "CVE-2013-2912", "CVE-2013-2928", "CVE-2013-2920", "CVE-2013-2919", "CVE-2013-2917", "CVE-2013-2910", "CVE-2013-2908", "CVE-2013-2925", "CVE-2013-2922", "CVE-2013-2923", "CVE-2013-2918", "CVE-2013-2924", "CVE-2013-2926", "CVE-2013-2921", "CVE-2013-2907", "CVE-2013-2916", "CVE-2013-2909", "CVE-2013-2911");
     script_name("Debian Security Advisory DSA 2785-1 (chromium-browser - several vulnerabilities)");
-    script_tag(name: "last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-07-07 14:07:20 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value:"2013-10-26 00:00:00 +0200 (Sat, 26 Oct 2013)");
     script_tag(name: "cvss_base", value:"7.5");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -141,7 +141,7 @@ if(description)
     script_copyright("Copyright (c) 2013 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: tag_affected);
     script_tag(name: "insight",   value: tag_insight);
 #    script_tag(name: "impact",    value: tag_impact);

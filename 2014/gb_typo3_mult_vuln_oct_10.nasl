@@ -30,14 +30,14 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2010-3714", "CVE-2010-3715", "CVE-2010-3716",
                 "CVE-2010-3717", "CVE-2010-4068");
   script_bugtraq_id(43786);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-09 15:25:39 +0530 (Thu, 09 Jan 2014)");
   script_name("TYPO3 Multiple Vulnerabilities Oct10");
 
@@ -80,7 +80,6 @@ http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-sa-2010-020/
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/41691");
   script_xref(name : "URL" , value : "http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-sa-2010-020/");
-  script_summary("Check for the vulnerable version of TYPO3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

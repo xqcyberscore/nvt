@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: telnet.nasl 5273 2017-02-12 13:11:18Z cfi $
+# $Id: telnet.nasl 6775 2017-07-20 14:25:57Z cfischer $
 #
 # Check for Telnet Server
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100074");
-  script_version("$Revision: 5273 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-12 14:11:18 +0100 (Sun, 12 Feb 2017) $");
+  script_version("$Revision: 6775 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 16:25:57 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-03-24 15:43:44 +0100 (Tue, 24 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -72,13 +72,20 @@ include("dump.inc");
 include("misc_func.inc");
 include("telnet_func.inc");
 
-no_telnet = make_list( "<<<check_mk>>>", "Press Enter for Setup Mode", "^ATQ", "HSQLDB JDBC Network Listener",
+no_telnet = make_list( "<<<check_mk>>>", "\\check_mk\.ini", "<<<uptime>>>", "<<<services>>>", "<<<mem>>>", "Check_MK_Agent",
+                       " stopped/demand ", " running/auto ", " stopped/disabled ", # Check_MK Agent
+                       "NOTIC: iSCSI:", "INFOR: iSCSI:", "ERROR: iSCSI:", # DELL TL2000/TL4000 iSCSI-SAS Bridge on 1234/tcp
+                       "Press Enter for Setup Mode", "^ATQ", "HSQLDB JDBC Network Listener",
                        "^OK MPD", "^IOR:", "Host.*is not allowed to connect to this (MySQL|MariaDB) server",
                        "Host.*is blocked.*mysqladmin flush-hosts",
                        "mysql_native_password",
                        "Where are you?", #rexecd
                        "DOCTYPE GANGLIA_XML", # Ganglia gmetad daemon
                        "^Asterisk Call Manager",
+                       "^w0256", # Unknown service on 10003/tcp
+                       "java\.rmi\.MarshalledObject",
+                       "<\?xml version=", # Unknown service on 5547/tcp
+                       "\-nthreads", "NServer:", # Unknown service on 34903/tcp
                        "^ERROR :Closing Link:.*Throttled: Reconnecting too fast", # unlrealircd
                        "^:.*NOTICE (Auth|AUTH).*Looking up your hostname", # unlrealircd
                        "\(Eggdrop v.* Eggheads\)" ); # Eggdrop Bot

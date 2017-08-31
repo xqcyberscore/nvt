@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipb_43053.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_ipb_43053.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # Invision Power Board BBCode Cross Site Scripting Vulnerability
 #
@@ -43,8 +43,8 @@ CPE = "cpe:/a:invision_power_services:invision_power_board";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-09-09 16:30:22 +0200 (Thu, 09 Sep 2010)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -64,7 +64,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("invision_power_board_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("invision_power_board/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -76,10 +75,7 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-
 port = get_app_port(cpe:CPE, nvt:SCRIPT_OID);
-if(!get_port_state(port))exit(0);
-
 if(vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port)) {
 
   if(version_is_less_equal(version: vers, test_version: "3.1.2")) {

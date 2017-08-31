@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_cpe_detect.nasl 6447 2017-06-27 14:23:05Z cfischer $
+# $Id: gb_windows_cpe_detect.nasl 6909 2017-08-11 13:38:48Z asteins $
 #
 # Windows Application CPE Detection
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96207");
-  script_version("$Revision: 6447 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 16:23:05 +0200 (Tue, 27 Jun 2017) $");
+  script_version("$Revision: 6909 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-11 15:38:48 +0200 (Fri, 11 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-26 12:54:47 +0200 (Tue, 26 Apr 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
   script_family("Windows");
   # Don't add a dependency to os_detection.nasl. This will cause a dependency sycle.
   script_dependencies("toolcheck.nasl", "smb_login.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
-  script_mandatory_keys("Tools/Present/wmi", "SMB/password", "SMB/login");
+  script_mandatory_keys("SMB/password", "SMB/login", "Tools/Present/wmi");
   script_exclude_keys("SMB/samba");
 
   script_tag(name:"summary", value:"This NVT collects information about installed applications
@@ -119,10 +119,6 @@ Visio = "VISLIB.dll";
 ###SMB Part starts here:
 if(!handle || !handlereg){
   OSSYSDIR = smb_get_systemroot();
-  ipnathlp = OSSYSDIR + "\system32\ipnathlp.dll";
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:ipnathlp);
-  file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:ipnathlp);
-  ipnathlp = GetVer(file:file, share:share);
 
   cputype = registry_get_sz(key:"SYSTEM\CurrentControlSet\Control\Session Manager\Environment", item:"PROCESSOR_ARCHITECTURE");
   type = registry_get_sz(key:"SYSTEM\CurrentControlSet\Control\ProductOptions", item:"ProductType");
@@ -1485,11 +1481,7 @@ if (OSVER == "6.3"){
     }
     else if ("Windows 10" >< OSNAME){
       cpe = "cpe:/o:microsoft:windows_10";
-      # https://en.wikipedia.org/wiki/Windows_10_version_history for the version <> build mapping
-      if( build == "10240" ) cpe += ":1507";
-      if( build == "10586" ) cpe += ":1511";
-      if( build == "14393" ) cpe += ":1607";
-      if( build == "15063" ) cpe += ":1703";
+      if( ver = get_version_from_build( string:build, win_name:"win10" ) ) cpe += ":" + ver;
       register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe, desc:SCRIPT_DESC);
     }
     else if ("Windows Embedded 8.1" >< OSNAME){
@@ -2236,6 +2228,7 @@ if (ipnathlp)register_host_detail(name:app, value:"cpe:/a:microsoft:windows_nt_h
 
 if (ExchProductMajor || Exch2010ProductMajor || Exch2013ProductMajor){
   cpe = "cpe:/a:microsoft:exchange_server";
+  replace_kb_item( name:"MS/Exchange/Server/installed", value:TRUE );
   if (ExchProductMajor != "0"){
     if(ExchSPBuild == "837")register_host_detail(name:app, value:cpe + ":4.0", desc:SCRIPT_DESC);
     else if(ExchSPBuild == "1457")register_host_detail(name:app, value:cpe + ":5.0", desc:SCRIPT_DESC);

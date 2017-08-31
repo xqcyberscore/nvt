@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_swftools_mult_int_overflow_vuln_lin.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_swftools_mult_int_overflow_vuln_lin.nasl 6539 2017-07-05 12:02:14Z cfischer $
 #
 # SWFTools Multiple Integer Overflow Vulnerabilities
 #
@@ -43,8 +43,8 @@ integer overflow vulnerabilities.";
 if(description)
 {
   script_id(801439);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6539 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-08-19 10:23:11 +0200 (Thu, 19 Aug 2010)");
   script_cve_id("CVE-2010-1516");
   script_tag(name:"cvss_base", value:"9.3");
@@ -58,7 +58,7 @@ if(description)
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_swftools_detect_lin.nasl");
-  script_mandatory_keys("login/SSH/success","SWFTools/Ver");
+  script_mandatory_keys("SWFTools/Ver");
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -81,4 +81,3 @@ if(swfVer != NULL)
       security_message(0);
   }
 }
-ssh_close_connection();

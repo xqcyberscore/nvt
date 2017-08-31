@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_JSA10538.nasl 3817 2016-08-10 05:18:42Z ckuerste $
+# $Id: gb_junos_JSA10538.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Junos RDP Crash
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105912");
-  script_version ("$Revision: 3817 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-10 07:18:42 +0200 (Wed, 10 Aug 2016) $");
+  script_version ("$Revision: 6637 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-16 11:34:19 +0700 (Mon, 16 Jun 2014)");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:C");
@@ -42,7 +42,6 @@ if (description)
 
   script_name("Junos RDP Crash Vulnerability");
 
-  script_summary("Junos RDP Crash");
 
   script_category(ACT_GATHER_INFO);
 

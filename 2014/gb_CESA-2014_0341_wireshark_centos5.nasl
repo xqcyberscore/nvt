@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(881912);
-  script_version("$Revision: 2775 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 10:00:27 +0100 (Fri, 04 Mar 2016) $");
+  script_version("$Revision: 6656 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:49:38 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-03 11:31:04 +0530 (Thu, 03 Apr 2014)");
   script_cve_id("CVE-2012-5595", "CVE-2012-5598", "CVE-2012-5599", "CVE-2012-5600",
                 "CVE-2012-6056", "CVE-2012-6060", "CVE-2012-6061", "CVE-2012-6062",
@@ -78,7 +78,7 @@ of Wireshark must be restarted for the update to take effect.
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

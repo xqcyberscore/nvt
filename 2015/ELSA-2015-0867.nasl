@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-0867.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: ELSA-2015-0867.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123130");
-script_version("$Revision: 6211 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:59:44 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-0867");
 script_tag(name: "insight", value: "ELSA-2015-0867 -  qemu-kvm security and bug fix update - [0.12.1.2-2.448.el6_6.2]- kvm-cirrus-fix-blit-region-check.patch [bz#1170571]- kvm-cirrus-don-t-overflow-CirrusVGAState-cirrus_bltbuf.patch [bz#1170571]- Resolves: bz#1170571 (CVE-2014-8106 qemu-kvm: qemu: cirrus: insufficient blit region checks [rhel-6.6.z])[0.12.1.2-2.448.el6_6.1]- kvm-net-Forbid-dealing-with-packets-when-VM-is-not-run_2.patch [bz#970103]- kvm-virtio-net-drop-assert-on-vm-stop.patch [bz#970103]- kvm-migration-set-speed-to-maximum-during-last-stage_2.patch [bz#970103]- kvm-migration-only-call-append-when-there-is-something_2.patch [bz#970103]- kvm-migration-Only-call-memmove-when-there-is-anything-t.patch [bz#970103]- kvm-migration-remove-not-needed-ram_save_remaining-fun_2.patch [bz#970103]- kvm-migration-move-bandwidth-calculation-to-inside-sta_2.patch [bz#970103]- kvm-migration-Don-t-calculate-bandwidth-when-last-cycl_2.patch [bz#970103]- kvm-buffered_flush-return-errors.patch [bz#970103]- kvm-bandwidth_limit-standarize-in-size_t.patch [bz#970103]- kvm-fix-bz-1196970.patch [bz#1196970]- Resolves: bz#1196970 (Migrate status is failed after migrate_cancel.)- Resolves: bz#970103 (Downtime during live migration of busy VM is much higher than migration_downtime in vdsm.conf)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"4.6");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_router_detect.nasl 5247 2017-02-09 10:21:21Z cfi $
+# $Id: gb_sap_router_detect.nasl 6787 2017-07-21 16:58:52Z cfischer $
 #
 # SAProuter Detection
 #
@@ -28,16 +28,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105034");
-  script_version("$Revision: 5247 $");
+  script_version("$Revision: 6787 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-09 11:21:21 +0100 (Thu, 09 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 18:58:52 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-27 14:06:45 +0200 (Tue, 27 May 2014)");
   script_name("SAProuter Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service2.nasl");
   script_require_ports("Services/unknown", 3299);
 
   script_tag(name:"summary", value:"The script sends a connection request to the server and attempts
@@ -64,18 +64,17 @@ req = raw_string( 0x00,0x00,0x27,0x29 );
 send( socket:soc, data:req );
 buf = recv( socket:soc, min:4, length:4 );
 
-if( ! buf || strlen( buf ) < 3 ) 
-{
+if( ! buf || strlen( buf ) < 3 ) {
   close( soc );
   exit( 0 );
-}  
+}
+
 len = getdword( blob:buf );
 
-if( ! len || int( len ) <= 0 )
-{
+if( ! len || int( len ) <= 0 ) {
   close( soc );
   exit( 0 );
-}  
+}
 
 buf = recv( socket:soc, length:len );
 
@@ -84,7 +83,7 @@ close( soc );
 if( ! buf || "SAProuter" >!< buf ) exit( 0 );
 
 replace_kb_item( name:"SAProuter/installed", value:TRUE );
-register_service( port: port, proto:"SAProuter" );
+register_service( port:port, proto:"SAProuter" );
 
 buf = bin2string( ddata:buf, noprint_replacement:' ' );
 
@@ -95,7 +94,7 @@ if( ! isnull( version[1] ) ) vers = version[1];
 if( ! isnull( version[3] ) ) SP   = version[3];
 
 cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:sap:network_interface_router:" );
-if( ! cpe ) 
+if( ! cpe )
   cpe = 'cpe:/a:sap:network_interface_router';
 else
   if( SP ) cpe += ':' + tolower( SP );

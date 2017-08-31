@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2009-1364.nasl 6170 2017-05-19 09:03:42Z teissa $
+# $Id: ELSA-2009-1364.nasl 6554 2017-07-06 11:53:20Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122443");
-script_version("$Revision: 6170 $");
+script_version("$Revision: 6554 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:45:29 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:53:20 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2009-1364");
 script_tag(name: "insight", value: "ELSA-2009-1364 -  gdm security and bug fix update - [1:2.16.0-56]- Resolves: #239818 181302- Fix tcp wrappers detection on 64-bit[1:2.16.0-55]Resolves: #196054- Fix docs subpackage Requires[1:2.16.0-53]Resolves: #196054- Add docs subpackage[1:2.16.0-52]Resolves: #226931- Add te_IN translations[1:2.16.0-51]Resolves: #441971- Make ctrl-alt-backspace at the login screen more robust[1:2.16.0-50]Resolves: #458331- Add GDM to audio group by default.[1:2.16.0-49]Resolves: #474588- Don't crash if defined extended input device is unplugged Patch by Olivier Fourdan.[1:2.16.0-48]Resolves: #239818- Rebuild with tcp_wrappers build requires[1:2.16.0-47]Resolves: #473262- Fix pointer on tablet devices."); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

@@ -1,6 +1,6 @@
 
 # OpenVAS Vulnerability Test
-# $Id: deb_3172.nasl 2732 2016-02-26 10:24:03Z benallard $
+# $Id: deb_3172.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3172-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -31,10 +31,10 @@
 if(description)
 {
     script_id(703172);
-    script_version("$Revision: 2732 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2014-9679");
     script_name("Debian Security Advisory DSA 3172-1 (cups - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:24:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-02-25 00:00:00 +0100 (Wed, 25 Feb 2015)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,14 +42,13 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3172.html");
 
-    script_summary("Debian Security Advisory DSA 3172-1 (cups - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "cups on Debian Linux");
     script_tag(name: "insight",   value: "The Common UNIX Printing System
 (or CUPS(tm)) is a printing system and general replacement for lpd and the

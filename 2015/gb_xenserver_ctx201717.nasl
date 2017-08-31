@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx201717.nasl 5595 2017-03-16 17:32:19Z mime $
+# $Id: gb_xenserver_ctx201717.nasl 6513 2017-07-04 09:59:28Z teissa $
 #
 # Vulnerability in Citrix XenServer Could Result in Information Disclosure (CTX201717)
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-5165");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5595 $");
+ script_version ("$Revision: 6513 $");
 
  script_name("Vulnerability in Citrix XenServer Could Result in Information Disclosure (CTX201717)");
 
@@ -54,9 +54,8 @@ also be possible for a remote attacker to obtain information from the HVM guest.
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 18:32:19 +0100 (Thu, 16 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-08-28 14:51:58 +0200 (Fri, 28 Aug 2015)");
- script_summary("Check the installed hotfixes");
  script_category(ACT_GATHER_INFO);
  script_family("Citrix Xenserver Local Security Checks");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

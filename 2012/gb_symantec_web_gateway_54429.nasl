@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_54429.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_symantec_web_gateway_54429.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # Symantec Web Gateway  Local File Manipulation Authentication Bypass Vulnerability
 #
@@ -47,14 +47,14 @@ if (description)
  script_cve_id("CVE-2012-2957");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5940 $");
+ script_version ("$Revision: 6720 $");
 
  script_name("Symantec Web Gateway Local File Manipulation Authentication Bypass Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54429");
  script_xref(name : "URL" , value : "http://www.symantec.com/business/web-gateway");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-07-24 10:16:58 +0200 (Tue, 24 Jul 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -62,7 +62,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_symantec_web_gateway_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("symantec_web_gateway/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -75,11 +74,8 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
-if(!can_host_php(port:port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+
 url = dir + '/spywall/languageTest.php?&language=' + crap(data:"../",length:6*9) + 'etc/passwd%00';
 
 req = http_get(item:url, port:port);

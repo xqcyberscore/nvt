@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850653");
-  script_version("$Revision: 6229 $");
+  script_version("$Revision: 6675 $");
   script_cve_id("CVE-2015-3456");
   script_tag(name:"cvss_base", value:"7.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:54:28 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-05-19 05:54:39 +0200 (Tue, 19 May 2015)");
   script_name("SuSE Update for qemu openSUSE-SU-2015:0894-1 (qemu)");
   script_tag(name: "summary", value: "Check the version of qemu");
@@ -53,7 +53,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

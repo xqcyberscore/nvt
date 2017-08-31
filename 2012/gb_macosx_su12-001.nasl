@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_su12-001.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_macosx_su12-001.nasl 6521 2017-07-04 14:51:10Z cfischer $
 #
 # Mac OS X Multiple Vulnerabilities (2012-001)
 #
@@ -42,7 +42,7 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(802392);
-  script_version("$Revision: 5931 $");
+  script_version("$Revision: 6521 $");
   script_cve_id("CVE-2011-3444", "CVE-2011-3348", "CVE-2011-3389", "CVE-2011-3246",
                 "CVE-2011-3447", "CVE-2011-0200", "CVE-2011-3252", "CVE-2011-3448",
                 "CVE-2011-3449", "CVE-2011-3450", "CVE-2011-2192", "CVE-2011-2895",
@@ -61,7 +61,7 @@ if(description)
                     50155, 51809, 50400, 51811, 50401, 51814, 50404, 40291, 42399,
                     48648, 48091, 51818, 48456, 51816, 49229, 47820, 49303, 50092,
                     50112, 50091, 50099, 48007, 48566, 37118);
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-02-06 17:42:28 +0530 (Mon, 06 Feb 2012)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -75,8 +75,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_require_ports("Services/ssh", 22);
-  script_require_keys("ssh/login/uname", "ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

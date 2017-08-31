@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsm_manager_auth_bypass_11_13.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_gsm_manager_auth_bypass_11_13.nasl 6793 2017-07-22 14:30:52Z cfischer $
 #
 # GSM Manager Authentication Bypass
 #
@@ -25,91 +25,86 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/o:greenbone:greenbone_os';
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103832";
+CPE = "cpe:/o:greenbone:greenbone_os";
 
-tag_impact = "Attackers can exploit these issues to gain unauthorized access to the
-affected application and perform certain actions.";
-
-tag_insight = "A software bug in the server module 'OpenVAS Manager' allowed to bypass the OMP
-authentication procedure. The attack vector is remotely available in case public OMP is enabled.
-In case of successful attack, the attacker gains partial rights to execute OMP commands. The bypass
-authentication is, however, incomplete and several OMP commands will fail to execute properly.";
-
-tag_affected = "Greenbone OS 2.2.0-1 up to 2.2.0-19 when public OMP is enabled.";
-tag_summary = "The remote GSM Manager is prone to an authentication bypass.";
-
-tag_solution = " Upgrade at least to Greenbone OS 2.2.0-20.
-Temporary workaround: Disable public OMP.";
-
-tag_vuldetect = "If public OMP is enabled, try to bypass OMP authentication by sending a special crafted request.
-If public OMP is not enabled, check the GOS version.";
-
-if (description)
+if(description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 6115 $");
- script_cve_id("CVE-2013-6765");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.103832");
+  script_version("$Revision: 6793 $");
+  script_cve_id("CVE-2013-6765");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-22 16:30:52 +0200 (Sat, 22 Jul 2017) $");
+  script_tag(name:"creation_date", value:"2013-11-08 13:02:55 +0200 (Fri, 08 Nov 2013)");
+  script_name("GSM Manager Authentication Bypass");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_openvas_manager_detect.nasl", "gb_greenbone_os_detect.nasl");
+  script_mandatory_keys("greenbone/G_OS");
 
- script_name("GSM Manager Authentication Bypass");
+  tag_impact = "Attackers can exploit these issues to gain unauthorized access to the
+  affected application and perform certain actions.";
 
+  tag_insight = "A software bug in the server module 'OpenVAS Manager' allowed to bypass the OMP
+  authentication procedure. The attack vector is remotely available in case public OMP is enabled.
+  In case of successful attack, the attacker gains partial rights to execute OMP commands. The bypass
+  authentication is, however, incomplete and several OMP commands will fail to execute properly.";
 
- script_xref(name:"URL", value:"http://greenbone.net/technology/gbsa2013-01.html");
+  tag_affected = "Greenbone OS 2.2.0-1 up to 2.2.0-19 when public OMP is enabled.";
+  tag_summary = "The remote GSM Manager is prone to an authentication bypass.";
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
- script_tag(name:"creation_date", value:"2013-11-08 13:02:55 +0200 (Fri, 08 Nov 2013)");
- script_category(ACT_ATTACK);
+  tag_solution = " Upgrade at least to Greenbone OS 2.2.0-20.
+  Temporary workaround: Disable public OMP.";
+
+  tag_vuldetect = "If public OMP is enabled, try to bypass OMP authentication by sending a special crafted request.
+  If public OMP is not enabled, check the GOS version.";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"vuldetect", value:tag_vuldetect);
+  script_tag(name:"insight", value:tag_insight);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"affected", value:tag_affected);
+
+  script_xref(name:"URL", value:"http://greenbone.net/technology/gbsa2013-01.html");
+
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
- script_family("General");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_openvas_manager_detect.nasl","gb_greenbone_os_detect.nasl");
- script_mandatory_keys("greenbone/G_OS");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
-
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
+include( "version_func.inc" );
 
-if(!get_kb_item("greenbone/G_OS"))exit(0); 
+if( ! get_kb_item( "greenbone/G_OS" ) ) exit( 0 );
 
 # public omp enabled
-if(port = get_app_port(cpe:'cpe:/a:openvas:openvas_manager', nvt:SCRIPT_OID)) {
+if( port = get_app_port( cpe:"cpe:/a:openvas:openvas_manager" ) ) {
 
-  soc = open_sock_tcp(port);
-  if(!soc)exit(0);
+  soc = open_sock_tcp( port );
+  if( ! soc ) exit( 0 );
 
-  send(socket:soc, data:"<get_version/><get_targets/>\r\n");
-  ret = recv(socket:soc, length: 1024); 
+  send( socket:soc, data:'<get_version/><get_targets/>\r\n' );
+  ret = recv( socket:soc, length: 1024 );
+  close( soc );
 
-  close(soc);
-
-  if("get_targets_response" >< ret && "target id" >< ret) {
-
-    security_message(port:port);
-    exit(0);
-
+  if( "get_targets_response" >< ret && "target id" >< ret ) {
+    security_message( port:port );
+    exit( 0 );
   }
-}  else {
+# public omp disabled
+} else {
 
-  # public omp disabled
-  include("version_func.inc");
+  if( ! vers = get_kb_item( "greenbone/G_OS" ) ) exit( 0 );
+  vers = str_replace( string:vers, find:"-", replace:"." );
 
-  if(!vers = get_kb_item("greenbone/G_OS"))exit(0);
-  vers = str_replace(string:vers, find:"-", replace:".");
+  if( version_is_less( version:vers, test_version:"2.2.0.20" ) ) {
+    report = report_fixed_ver( installed_version:vers, fixed_version:"2.2.0-20" );
+    security_message( port:0, data:report );
+    exit( 0 );
+  }
+}
 
-  if(version_is_less(version:vers, test_version:"2.2.0.20")) {
-    security_message(port:0);
-    exit(0);
-  }  
-}  
-
-exit(99);
+exit( 99 );

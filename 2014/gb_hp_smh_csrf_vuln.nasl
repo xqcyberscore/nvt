@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_csrf_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_hp_smh_csrf_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # HP System Management Homepage Cross-Site Request Forgery Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2013-6188");
   script_bugtraq_id(66128);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-19 13:49:55 +0530 (Wed, 19 Mar 2014)");
   script_name("HP System Management Homepage Cross-Site Request Forgery Vulnerability");
 
@@ -74,7 +74,6 @@ http://h18013.www1.hp.com/products/servers/management/agents/index.html";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57365");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2014/Mar/61");
-  script_summary("Check for the version of HP SMH");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

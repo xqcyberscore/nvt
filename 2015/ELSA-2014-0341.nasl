@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-0341.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: ELSA-2014-0341.nasl 6559 2017-07-06 11:57:32Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123435");
-script_version("$Revision: 6159 $");
+script_version("$Revision: 6559 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:03:46 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:57:32 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-0341");
 script_tag(name: "insight", value: "ELSA-2014-0341 -  wireshark security update - [1.0.15-6.0.1.el5]- Added oracle-ocfs2-network.patch- increase max packet size to 65536 (Herbert van den Bergh) [orabug 13542633][1.0.15-6]- security patches- Resolves: CVE-2012-6056 CVE-2012-6060 CVE-2012-6061 CVE-2012-6062 CVE-2013-3557 CVE-2013-3559 CVE-2013-4081 CVE-2013-4083 CVE-2013-4927 CVE-2013-4931 CVE-2013-4932 CVE-2013-4933 CVE-2013-4934 CVE-2013-4935 CVE-2013-5721 CVE-2013-7112 CVE-2014-2281 CVE-2014-2299"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"9.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

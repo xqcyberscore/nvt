@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850926");
-  script_version("$Revision: 6439 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 10:37:25 +0200 (Tue, 27 Jun 2017) $");
+  script_version("$Revision: 6665 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:01:58 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-10-16 14:32:44 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-3647", "CVE-2014-8086", "CVE-2014-8159", "CVE-2015-1465",
                 "CVE-2015-2041", "CVE-2015-2042", "CVE-2015-2666", "CVE-2015-2830",
@@ -92,12 +92,11 @@ if(description)
   script_xref(name: "SUSE-SU", value: "2015:1071_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-06/msg00012.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of the kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "ssh/login/release", "SuSeLinuxEnterprise/Desktop_or_Server/Installed");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_jhttpd_dir_traversal_vuln.nasl 5651 2017-03-21 10:09:09Z cfi $
+# $Id: secpod_jhttpd_dir_traversal_vuln.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # jHTTPd Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902404");
-  script_version("$Revision: 5651 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 6696 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-04-01 15:39:52 +0200 (Fri, 01 Apr 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -40,9 +40,8 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web Servers");
-  script_require_ports("Services/www", 8082);
   script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 8082);
   script_mandatory_keys("jHTTPd/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to perform directory

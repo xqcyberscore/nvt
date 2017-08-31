@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(867178);
-  script_version("$Revision: 2882 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-17 15:39:13 +0100 (Thu, 17 Mar 2016) $");
+  script_version("$Revision: 6628 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:32:47 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-12-23 11:06:18 +0530 (Mon, 23 Dec 2013)");
   script_cve_id("CVE-2013-4564");
   script_tag(name:"cvss_base", value:"5.0");
@@ -69,7 +69,7 @@ Libreswan is based on Openswan-2.6.38 which in turn is based on FreeS/WAN-2.04
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

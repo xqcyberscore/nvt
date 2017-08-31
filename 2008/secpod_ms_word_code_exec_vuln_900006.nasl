@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_word_code_exec_vuln_900006.nasl 4522 2016-11-15 14:52:19Z teissa $
+# $Id: secpod_ms_word_code_exec_vuln_900006.nasl 6519 2017-07-04 14:08:14Z cfischer $
 # Description: Microsoft Word Could Allow Remote Code Execution Vulnerability
 #
 # Authors:
@@ -45,8 +45,8 @@ tag_summary = "This host is installed with Microsoft Office (with MS Word), whic
 if(description)
 {
  script_id(900006);
- script_version("$Revision: 4522 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-15 15:52:19 +0100 (Tue, 15 Nov 2016) $");
+ script_version("$Revision: 6519 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
  script_bugtraq_id(30124);
  script_cve_id("CVE-2008-2244");
@@ -59,7 +59,7 @@ if(description)
 
  script_dependencies("secpod_reg_enum.nasl", "secpod_office_products_version_900032.nasl",
 		     "secpod_ms_office_detection_900025.nasl");
- script_require_keys("SMB/WindowsVersion", "SMB/Office/Word/Version");
+ script_mandatory_keys("MS/Office/Ver", "SMB/Office/Word/Version");
  script_xref(name : "URL" , value : "http://secunia.com/advisories/30975");
  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/43663");
  script_xref(name : "URL" , value : "http://www.frsirt.com/english/advisories/2008/2028");

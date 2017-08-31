@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868356");
-  script_version("$Revision: 2806 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 16:06:45 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 6724 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-04 05:55:39 +0200 (Sat, 04 Oct 2014)");
   script_cve_id("CVE-2014-5029", "CVE-2014-5030", "CVE-2014-5031", "CVE-2014-3537");
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,12 +47,11 @@ CUPS provides the System V and Berkeley command-line interfaces.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2014-9703");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-October/139672.html");
-  script_summary("Check for the Version of cups");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

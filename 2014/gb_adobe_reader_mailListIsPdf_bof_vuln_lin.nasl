@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mailListIsPdf_bof_vuln_lin.nasl 2482 2016-01-22 12:57:27Z benallard $
+# $Id: gb_adobe_reader_mailListIsPdf_bof_vuln_lin.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # Adobe Reader 'mailListIsPdf' Buffer Overflow Vulnerability (Linux)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804383";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2482 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2004-1152");
   script_bugtraq_id(11923);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 13:57:27 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-10 15:00:46 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader 'mailListIsPdf' Buffer Overflow Vulnerability (Linux)");
 
@@ -78,7 +78,6 @@ http://get.adobe.com/reader";
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/253024");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/18477");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/techdocs/331153.html");
-  script_summary("Check for the vulnerable version of Adobe Reader on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Buffer overflow");

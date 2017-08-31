@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_lilhttp_web_server_cgi_form_xss_vuln.nasl 5839 2017-04-03 10:43:34Z cfi $
+# $Id: secpod_lilhttp_web_server_cgi_form_xss_vuln.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # LilHTTP Server 'CGI Form Demo' Cross Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902437");
-  script_version("$Revision: 5839 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:43:34 +0200 (Mon, 03 Apr 2017) $");
+  script_version("$Revision: 6696 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -41,9 +41,8 @@ if(description)
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web Servers");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("LilHTTP/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("LilHTTP/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to plant XSS
   backdoors and inject arbitrary SQL statements via crafted XSS payloads.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mybb_sid_sql_inj_vuln.nasl 2827 2016-03-10 08:33:09Z benallard $
+# $Id: secpod_mybb_sid_sql_inj_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # MyBB sid Sql Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903231");
-  script_version("$Revision: 2827 $");
+  script_version("$Revision: 6750 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:33:09 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-26 11:23:07 +0530 (Wed, 26 Feb 2014)");
   script_name("MyBB sid Sql Injection Vulnerability");
 
@@ -50,7 +50,6 @@ if(description)
   For updates refer to http://mybb.com");
 
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/mybb-1612-sql-injection");
-  script_summary("Check if MyBB is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 SecPod");
   script_family("Web application abuses");

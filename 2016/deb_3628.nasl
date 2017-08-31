@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703628);
-    script_version("$Revision: 5557 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2016-1238", "CVE-2016-6185");
     script_name("Debian Security Advisory DSA 3628-1 (perl - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name:"creation_date", value:"2016-08-02 10:56:30 +0530 (Tue, 02 Aug 2016)");
     script_tag(name:"cvss_base", value:"7.2");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "perl on Debian Linux");
     script_tag(name: "insight",   value: "Perl is a highly capable, feature-rich
 programming language with over 20 years of development. Perl 5 runs on over 100

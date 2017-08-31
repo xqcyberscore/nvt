@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4025218.nasl 6377 2017-06-20 10:16:39Z santu $
+# $Id: gb_ms_kb4025218.nasl 6501 2017-07-03 07:48:47Z teissa $
 #
 # Microsoft Windows 'olecnv32.dll' Remote Code Execution Vulnerability (KB4025218)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811203");
-  script_version("$Revision: 6377 $");
+  script_version("$Revision: 6501 $");
   script_cve_id("CVE-2017-8487");
   script_bugtraq_id(99013);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:16:39 +0200 (Tue, 20 Jun 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 09:48:47 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-06-16 09:45:29 +0530 (Fri, 16 Jun 2017)");
   script_name("Microsoft Windows 'olecnv32.dll' Remote Code Execution Vulnerability (KB4025218)");
 

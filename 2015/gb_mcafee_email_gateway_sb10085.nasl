@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_email_gateway_sb10085.nasl 2774 2016-03-04 08:00:52Z antu123 $
+# $Id: gb_mcafee_email_gateway_sb10085.nasl 6551 2017-07-06 09:58:21Z teissa $
 #
 # McAfee Email Gateway - Bash Shellshock Code Injection Exploit
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2014-6271","CVE-2014-6277","CVE-2014-6278","CVE-2014-7169","CVE-2014-7186","CVE-2014-7187");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2774 $");
+ script_version ("$Revision: 6551 $");
 
  script_name("McAfee Email Gateway - Bash Shellshock Code Injection Exploit");
 
@@ -47,9 +47,8 @@ if (description)
 
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 09:00:52 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-01-07 17:42:14 +0100 (Wed, 07 Jan 2015)");
- script_summary("Check the installed version and hotfixes");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_archiva_detect.nasl 6195 2017-05-23 10:02:52Z ckuerste $
+# $Id: gb_apache_archiva_detect.nasl 6535 2017-07-05 10:05:25Z ckuersteiner $
 #
 # Apache Archiva Detection
 #
@@ -27,10 +27,10 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100923"); 
- script_version("$Revision: 6195 $");
+ script_version("$Revision: 6535 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2017-05-23 12:02:52 +0200 (Tue, 23 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-05 12:05:25 +0200 (Wed, 05 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-12-01 13:10:27 +0100 (Wed, 01 Dec 2010)");
  script_name("Apache Archiva Detection");
  
@@ -63,8 +63,7 @@ res = http_get_cache(port: port, item: "/");
 if ("<title>Apache Archiva" >!< res && "Archiva needs Javascript" >!< res) {
   res = http_get_cache(port: port, item: "/archiva/index.action");
 
-  if ("<title>Apache Archiva" >!< res && "The Apache Software Foundation" >!< res &&
-      ("Artifact ID" >!< res && ">Login" >!< res))
+  if ("<title>Apache Archiva" >!< res || "The Apache Software Foundation" >!< res || "Artifact ID" >!< res)
     exit(0);
   else
     install = "/archiva";

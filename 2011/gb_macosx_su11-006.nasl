@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_su11-006.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_macosx_su11-006.nasl 6521 2017-07-04 14:51:10Z cfischer $
 #
 # Mac OS X v10.6.8 Multiple Vulnerabilities (2011-006)
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(802336);
-  script_version("$Revision: 3100 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 6521 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-10-20 08:43:23 +0200 (Thu, 20 Oct 2011)");
   script_cve_id("CVE-2011-0419", "CVE-2011-3192", "CVE-2011-0185", "CVE-2011-3437",
                 "CVE-2011-0229", "CVE-2011-0230", "CVE-2011-1910", "CVE-2011-2464",
@@ -84,8 +84,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_require_keys("ssh/login/uname", "ssh/login/osx_name", "ssh/login/osx_version");
-  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

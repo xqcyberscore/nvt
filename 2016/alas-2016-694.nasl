@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-694.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: alas-2016-694.nasl 6574 2017-07-06 13:41:26Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120683");
-script_version("$Revision: 5557 $");
+script_version("$Revision: 6574 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:11:59 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:41:26 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-694");
 script_tag(name: "insight", value: "An integer overflow vulnerability was found in xt_alloc_table_info, which on 32-bit systems can lead to small structure allocation and a copy_from_user based heap corruption. (CVE-2016-3135 )In the mark_source_chains function (net/ipv4/netfilter/ip_tables.c) it is possible for a user-supplied ipt_entry structure to have a large next_offset field. This field is not bounds checked prior to writing a counter value at the supplied offset. (CVE-2016-3134 )A weakness was found in the Linux ASLR implementation. Any user able to run 32-bit applications in a x86 machine can disable the ASLR by setting the RLIMIT_STACK resource to unlimited. (CVE-2016-3672 )Destroying a network interface with a large number of IPv4 addresses keeps a rtnl_lock for a very long time, which can block many network-related operations. (CVE-2016-3156 )"); 
 script_tag(name : "solution", value : "Run yum update kernel to update your system.");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"7.2");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

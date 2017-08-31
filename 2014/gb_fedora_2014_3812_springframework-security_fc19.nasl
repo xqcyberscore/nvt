@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(867629);
-  script_version("$Revision: 6310 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-12 09:57:38 +0200 (Mon, 12 Jun 2017) $");
+  script_version("$Revision: 6629 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-25 10:19:04 +0530 (Tue, 25 Mar 2014)");
   script_cve_id("CVE-2014-0097");
   script_tag(name:"cvss_base", value:"7.5");
@@ -61,7 +61,7 @@ security components, and it can also be used with non-Spring applications.
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

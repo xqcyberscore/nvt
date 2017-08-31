@@ -84,8 +84,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-August/018822.html");
   script_id(881474);
-  script_version("$Revision: 3011 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-08 11:54:34 +0200 (Fri, 08 Apr 2016) $");
+  script_version("$Revision: 6654 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-08-24 09:56:01 +0530 (Fri, 24 Aug 2012)");
   script_cve_id("CVE-2010-2642", "CVE-2010-3702", "CVE-2010-3704", "CVE-2011-0433",
                 "CVE-2011-0764", "CVE-2011-1552", "CVE-2011-1553", "CVE-2011-1554");
@@ -99,7 +99,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "insight" , value : tag_insight);

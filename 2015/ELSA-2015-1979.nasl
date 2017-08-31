@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1979.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-1979.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122729");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-11-08 13:05:19 +0200 (Sun, 08 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1979");
 script_tag(name: "insight", value: "ELSA-2015-1979 -  libreswan security and enhancement update - [3.15-5.0.1]- add libreswan-oracle.patch to detect Oracle Linux distro[3.15-5]- Resolves: rhbz#1273719 libreswan FIPS test mistakenly looks for non-existent file hashes[3.15-4]- Resolves: rhbz#1268775 libreswan should support strictcrlpolicy alias- Resolves: rhbz#1268776 Pluto crashes after stop when I use floating ip address- Resolves: rhbz#1268773 Pluto crashes on INITIATOR site during 'service ipsec stop'- Resolves: rhbz#1208022 libreswan ignores module blacklist rules- Resolves: rhbz#1270673 ipsec does not work properly on loopback[3.15-2]- Resolves: rhbz#1259208 CVE-2015-3240- Merge rhel6 and rhel7 spec into one- Be lenient for racoon padding behaviour- Fix seedev option to /dev/random- Some IKEv1 PAM methods always gave 'Permission denied'- Parser workarounds for differences in gcc/flex/bison on rhel6/rhel7- Parser fix to allow specifying time without unit (openswan compat)- Fix Labeled IPsec on rekeyed IPsec SA's- Workaround for wrong padding by racoon2- Disable NSS HW GCM to workaround rhel6 xen builers bug"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"4.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-1979");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

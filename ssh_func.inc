@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 6355 2017-06-16 08:59:27Z cfischer $
+# $Id: ssh_func.inc 6548 2017-07-06 08:19:53Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,16 +23,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6355 $
+# $Revision: 6548 $
 #
 ###############################################################################
 
-#
 # To enable the new libssh based code, you need to set the environment
 # variable OPENVAS_USE_LIBSSH to any value.  This is a temporary
 # requirement until we can retire the NASL based code.
-#
-
 
 global_var session_id, enc_keys, seqn_w, seqn_r;
 global_var local_channel, remote_channel;
@@ -85,108 +82,114 @@ function ssh_hex2raw(s)
  return ret;
 }
 
-function kb_ssh_login()
-{
- return string(get_kb_item("Secret/SSH/login"));
+function kb_ssh_login() {
+  return string( get_kb_item( "Secret/SSH/login" ) );
 }
 
-function kb_ssh_password()
-{
- return string(get_kb_item("Secret/SSH/password"));
+function kb_ssh_password() {
+  return string( get_kb_item( "Secret/SSH/password" ) );
 }
 
-function kb_ssh_privatekey()
-{
- return string(get_kb_item("Secret/SSH/privatekey"));
+function kb_ssh_privatekey() {
+  return string( get_kb_item( "Secret/SSH/privatekey" ) );
 }
 
-function kb_ssh_publickey()
-{
- return string(get_kb_item("Secret/SSH/publickey"));
+function kb_ssh_publickey() {
+  return string( get_kb_item( "Secret/SSH/publickey" ) );
 }
 
-function kb_ssh_passphrase()
-{
- return string(get_kb_item("Secret/SSH/passphrase"));
+function kb_ssh_passphrase() {
+  return string( get_kb_item( "Secret/SSH/passphrase" ) );
 }
 
-function kb_ssh_transport()
-{
- local_var r;
- r = get_preference("auth_port_ssh");
- if ( r ) return int(r);
+function kb_ssh_transport() {
 
- r = get_kb_item("Services/ssh");
+  local_var r;
+  r = get_preference( "auth_port_ssh" );
+  if ( r )
+    return int( r );
 
- if ( r ) return int(r);
- else return 22;
+  r = get_kb_item( "Services/ssh" );
+
+  if ( r )
+    return int( r );
+  else
+    return 22;
 }
 
 #-----------------------------------------------------------------#
 # Get the SSH Host Key. See ssh_kex2().                           #
 #-----------------------------------------------------------------#
-function get_server_host_key(sess_id) {
-  if( defined_func( "ssh_get_host_key" ) )
-  {
-    if( sess_id && int( sess_id ) > 0 ) _last_libssh_sess = sess_id;
+function get_server_host_key( sess_id ) {
+
+  if( isnull( sess_id ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#sess_id#-#get_server_host_key" );
+
+  if( defined_func( "ssh_get_host_key" ) ) {
+    if( sess_id && int( sess_id ) > 0 )
+      _last_libssh_sess = sess_id;
+
     return ssh_get_host_key( _last_libssh_sess );
-  }
-  else
+  } else {
     return server_host_key_blob;
+  }
 }
 
 #-----------------------------------------------------------------#
 # Set SSH debugging error msg                                     #
 #-----------------------------------------------------------------#
-function set_ssh_error(msg)
-{
- _ssh_error = msg;
-}
+function set_ssh_error( msg ) {
 
+  local_var msg;
+
+  _ssh_error = msg;
+}
 
 #-----------------------------------------------------------------#
 # Get SSH debugging error msg                                     #
 #-----------------------------------------------------------------#
-function get_ssh_error()
-{
- return _ssh_error;
+function get_ssh_error() {
+  return _ssh_error;
 }
 
+#-----------------------------------------------------------------#
+# Get SSH supported authentication methods
+#-----------------------------------------------------------------#
+function get_ssh_supported_authentication( sess_id ) {
+
+  if( isnull( sess_id ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#sess_id#-#get_ssh_supported_authentication" );
+
+  if( defined_func( "ssh_get_auth_methods" ) ) {
+
+    if( sess_id && int( sess_id ) > 0 )
+      _last_libssh_sess = sess_id;
+
+    return ssh_get_auth_methods( _last_libssh_sess );
+  }
+  return _ssh_supported_authentication;
+}
 
 #-----------------------------------------------------------------#
 # Get SSH server's version                                        #
 #-----------------------------------------------------------------#
-function get_ssh_supported_authentication(sess_id)
-{
- if (defined_func("ssh_get_auth_methods"))
- {
-     if( sess_id && int( sess_id ) > 0 ) _last_libssh_sess = sess_id;
-     return ssh_get_auth_methods(_last_libssh_sess);
- }
- return _ssh_supported_authentication;
+function get_ssh_server_version() {
+  return _ssh_server_version;
 }
-
-
-#-----------------------------------------------------------------#
-# Get SSH server's version                                        #
-#-----------------------------------------------------------------#
-function get_ssh_server_version()
-{
- return _ssh_server_version;
-}
-
 
 #-----------------------------------------------------------------#
 # Get SSH banner                                                  #
+#                                                                 #
+# Please use ssh_get_session_banner directly for new code.        #
+# The saved session id is just a bad hack.                        #
 #-----------------------------------------------------------------#
-function get_ssh_banner(sess_id)
-{
-# Please use ssh_get_session_banner directly for new code.  The saved
-# session id is just a bad hack.
- if( sess_id && int( sess_id ) > 0 ) _last_libssh_sess = sess_id;
- return ssh_get_issue_banner (_last_libssh_sess);
-}
+function get_ssh_banner( sess_id ) {
 
+  if( isnull( sess_id ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#sess_id#-#get_ssh_banner" );
+
+  if( sess_id && int( sess_id ) > 0 )
+    _last_libssh_sess = sess_id;
+
+  return ssh_get_issue_banner( _last_libssh_sess );
+}
 
 #-----------------------------------------------------------------#
 # Convert network long (buffer) to long                           #
@@ -1710,30 +1713,32 @@ function ssh_close_channel(socket,end)
 #-----------------------------------------------------------------#
 # Login to SSH server                                             #
 #-----------------------------------------------------------------#
-function ssh_login(socket, login, password, pub, priv, passphrase, keytype)
-{
- local_var sess;
+function ssh_login( socket, login, password, pub, priv, passphrase, keytype ) {
 
- sess = ssh_connect( socket:socket, keytype:keytype );
- if (!sess)
-     return -1;
- _last_libssh_sess = sess;
+  local_var sess;
 
- if (ssh_userauth(sess, login:login, password:password, privatekey:priv, passphrase:passphrase))
-     return -1;
+  if( ! socket ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ssh_login" );
+  if( isnull( login ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#login#-#ssh_login" );
 
- # none method fix
- ssh_supported_authentication =  get_ssh_supported_authentication(sess_id:sess);
- if(ssh_supported_authentication == "" ||
-   ssh_supported_authentication == "none" ||
-   ord(ssh_supported_authentication) == "0") {
-   return -2;
- }
- # end none method fix
+  sess = ssh_connect( socket:socket, keytype:keytype );
+  if( ! sess ) return -1;
 
- return 0;
+  _last_libssh_sess = sess;
+
+  if( ssh_userauth( sess, login:login, password:password, privatekey:priv, passphrase:passphrase ) )
+    return -1;
+
+  # none method fix
+  ssh_supported_authentication = get_ssh_supported_authentication( sess_id:sess );
+  if( ssh_supported_authentication == "" ||
+      ssh_supported_authentication == "none" ||
+      ord( ssh_supported_authentication ) == "0" ) {
+    return -2;
+  }
+  # end none method fix
+
+  return 0;
 }
-
 
 #-----------------------------------------------------------------#
 # Return size we can send on the channel and in the packet        #
@@ -1800,13 +1805,12 @@ function del_esc_seq( data )
   return data;
 }
 
-function ssh_read_from_shell( sess, pattern, timeout, retry )
-{
+function ssh_read_from_shell( sess, pattern, timeout, retry ) {
+
   local_var sess, timeout, t, x, ret, buf, pattern, retry;
 
-  if( ! sess )
-  {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#sess#-#ssh_read_from_shell" );
+  if( ! sess ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#sess#-#ssh_read_from_shell" );
     return FALSE;
   }
 
@@ -1815,44 +1819,38 @@ function ssh_read_from_shell( sess, pattern, timeout, retry )
 
   x = 1;
 
-  while ( TRUE )
-  {
+  while ( TRUE ) {
+
     buf = del_esc_seq( data:ssh_shell_read( sess ) );
 
     len = strlen( buf );
     t++;
 
-    if( len > 0 )
-    {
+    if( len > 0 ) {
       ret += buf;
       x = 1;
-    }
-    else
-    {
+    } else {
       if( x++ >= retry ) return ret;
     }
 
     if( pattern && ret )
-      if( eregmatch( pattern:pattern, string: ret ) ) return ret;
+      if( eregmatch( pattern:pattern, string:ret ) ) return ret;
 
     if( t >= timeout ) return ret;
 
     sleep( 1 );
 
     if( "Press Enter to continue" >< ret || "--More" >< ret || "<--- More --->" >< ret ) ssh_shell_write( sess, cmd: '\n' );
- }
-
+  }
   return ret;
-
 }
 
-function ssh_cmd_pty( sess, cmd, pattern, timeout, retry, clear_buffer )
-{
+function ssh_cmd_pty( sess, cmd, pattern, timeout, retry, clear_buffer ) {
+
   local_var sess, cmd, pattern, ret, timeout, retry;
 
-  if( ! cmd )
-  {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cmd#-#ssh_cmd_pty" );
+  if( ! cmd ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cmd#-#ssh_cmd_pty" );
     return FALSE;
   }
 
@@ -1865,9 +1863,8 @@ function ssh_cmd_pty( sess, cmd, pattern, timeout, retry, clear_buffer )
   if( ! timeout ) timeout = 15;
   if( ! retry ) retry = 3;
 
-  if( get_kb_item( "ssh/send_extra_ln" ) )
-  {
-    ssh_shell_write( sess, cmd: '\n' );
+  if( get_kb_item( "ssh/send_extra_ln" ) ) {
+    ssh_shell_write( sess, cmd:'\n' );
     sleep( 5 );
   }
 
@@ -1877,10 +1874,8 @@ function ssh_cmd_pty( sess, cmd, pattern, timeout, retry, clear_buffer )
   # against Cisco NGIPS currently.
   # Do not use "clear_buffer" in gather-package-list.nasl for the
   # "uname" command. We need the complete buffer there...
-  if( clear_buffer )
-  {
-    while( TRUE )
-    {
+  if( clear_buffer ) {
+    while( TRUE ) {
       c = ssh_read_from_shell( sess:sess, timeout:3, retry:3 );
       if( strlen( c ) <= 0 ) break;
     }
@@ -1889,8 +1884,7 @@ function ssh_cmd_pty( sess, cmd, pattern, timeout, retry, clear_buffer )
   ssh_shell_write( sess, cmd:cmd + '\n' );
   sleep( 1 );
 
-  if( ! ret = ssh_read_from_shell( sess:sess, pattern:pattern, timeout:timeout, retry:retry ) )
-  {
+  if( ! ret = ssh_read_from_shell( sess:sess, pattern:pattern, timeout:timeout, retry:retry ) ) {
     if( defined_func( "ssh_shell_close" ) ) ssh_shell_close( sess );
     return FALSE;
   }
@@ -1906,73 +1900,70 @@ function ssh_cmd_pty( sess, cmd, pattern, timeout, retry, clear_buffer )
 #-----------------------------------------------------------------#
 # Execute command on SSH server                                   #
 #-----------------------------------------------------------------#
-function ssh_cmd(socket,cmd,timeout,nosh,return_errors,pty,pattern,retry)
-{
- local_var payload, ret, tempbuf, end, cret, messid_data, ret_payload, ret_ssh_buf, pty, sess;
+function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry ) {
 
- if( ! cmd )
- {
-   set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cmd#-#ssh_cmd" );
-   return;
- }
+  local_var payload, ret, tempbuf, end, cret, messid_data, ret_payload, ret_ssh_buf, pty, sess;
 
- if(get_kb_item("ssh/cmd_exec_error") ) nosh = TRUE; # NX-OS/IOS/JunOS/F5
+  if( ! cmd ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cmd#-#ssh_cmd" );
+    return;
+  }
 
- if( get_kb_item( "no_linux_shell" ) )
- {
-   nosh = TRUE;
-   if( cmd =~ "^(/bin|/sbin|cat |perl |cmd /|netstat |find |which |whereis |locate |/opt/slad)" ) return FALSE; # don't run find, which ... if target doesn't support it
- }
+  if( ! socket ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ssh_cmd" );
 
- if( ! nosh )
- {
-   cmd = str_replace(string:cmd, find:"'", replace:'"');
-   cmd = string("/bin/sh -c ", "'LANG=C; LC_ALL=C; " , cmd , "'");
- }
+  if( get_kb_item( "ssh/cmd_exec_error" ) ) nosh = TRUE; # NX-OS/IOS/JunOS/F5
+
+  if( get_kb_item( "no_linux_shell" ) ) {
+    nosh = TRUE;
+    if( cmd =~ "^(/bin|/sbin|cat |perl |cmd /|netstat |find |which |whereis |locate |/opt/slad)" ) return FALSE; # don't run find, which ... if target doesn't support it
+  }
+
+  if( ! nosh ) {
+    cmd = str_replace( string:cmd, find:"'", replace:'"' );
+    cmd = string( "/bin/sh -c ", "'LANG=C; LC_ALL=C; " , cmd , "'" );
+  }
 
   if( ! pty )
     if( get_kb_item( "ssh/force/pty" ) ) pty = TRUE;
 
-  sess = ssh_session_id_from_sock(socket);
-  if (sess) {
+  sess = ssh_session_id_from_sock( socket );
+  if ( sess ) {
     # Note: Setting stdout and stderr to 0 enables a
     # compatibility mode to be bug compliant to the NASL ssh code.
     if( pty && defined_func( "ssh_shell_open" ) )
       ret_ssh_buf = ssh_cmd_pty( sess:sess, cmd:cmd, pattern:pattern, timeout:timeout, retry:retry );
     else
-      ret_ssh_buf = ssh_request_exec(sess, cmd:cmd, stdout:0, stderr:0);
+      ret_ssh_buf = ssh_request_exec( sess, cmd:cmd, stdout:0, stderr:0 );
 
-    if( get_kb_item( "global_settings/ssh/debug" ) )
-    {
+    if( get_kb_item( "global_settings/ssh/debug" ) ) {
       debug_str = 'SSH DEBUG: ' + get_host_ip() + ':\n' +
                   'PTY:  ' + pty + '\n' +
                   'NOSH: ' + nosh + '\n' +
                   'CMD:  ' + cmd + '\n' +
                   'RES:  ' + ret_ssh_buf + '\n' +
                   '---------------------------------------------------------\n\n';
-      display(debug_str);
+      display( debug_str );
     }
 
-    if("Cmd exec error" >< ret_ssh_buf ||
-       "error: unknown command" >< ret_ssh_buf ||
-       "Unknown command: " >< ret_ssh_buf ||
-       "Invalid input detected" >< ret_ssh_buf ||
-       ": No such command" >< ret_ssh_buf ||
-       "-----unknown keyword " >< ret_ssh_buf ||
-       "Unknown action 0" >< ret_ssh_buf ||
-       "Syntax Error: unexpected argument" >< ret_ssh_buf ) { # NX-OS/IOS/JunOS/F5
-       set_kb_item(name:"ssh/cmd_exec_error", value:TRUE); # force nosh
-       if( ! return_errors )
+    if( "Cmd exec error" >< ret_ssh_buf ||
+        "error: unknown command" >< ret_ssh_buf ||
+        "Unknown command: " >< ret_ssh_buf ||
+        "Invalid input detected" >< ret_ssh_buf ||
+        ": No such command" >< ret_ssh_buf ||
+        "-----unknown keyword " >< ret_ssh_buf ||
+        "Unknown action 0" >< ret_ssh_buf ||
+        "Syntax Error: unexpected argument" >< ret_ssh_buf ) { # NX-OS/IOS/JunOS/F5
+        set_kb_item( name:"ssh/cmd_exec_error", value:TRUE ); # force nosh
+        if( ! return_errors )
          return '';
-       }
+    }
 
-     if( ": not found" >< ret_ssh_buf )
-     {
-       if( ! return_errors )
-         return '';
-     }
+    if( ": not found" >< ret_ssh_buf ) {
+      if( ! return_errors )
+        return '';
+    }
 
-     return chomp( ret_ssh_buf );
+    return chomp( ret_ssh_buf );
   }
 
 #
@@ -2109,34 +2100,33 @@ function ssh_close_connection()
 # function is pretty old and has never been implemented in the way its
 # name may surmise.  The function returns a socket on success but 0 on
 # error - this is a bit surprising.
-function ssh_login_or_reuse_connection()
-{
- local_var soc, sess;
- local_var login, password, pub, priv, passphrase;
+function ssh_login_or_reuse_connection() {
 
+  local_var soc, sess;
+  local_var login, password, pub, priv, passphrase;
 
- login = kb_ssh_login();
- password = kb_ssh_password();
- pub = kb_ssh_publickey();
- priv = kb_ssh_privatekey();
- passphrase = kb_ssh_passphrase();
+  login      = kb_ssh_login();
+  password   = kb_ssh_password();
+  pub        = kb_ssh_publickey();
+  priv       = kb_ssh_privatekey();
+  passphrase = kb_ssh_passphrase();
 
- if( ! login && ( ! password && ! priv ) )
-     return 0;
+  if( ! login && ( ! password && ! priv ) )
+    return 0;
 
- sess = ssh_connect();
- if (!sess)
-     return 0;
- if (ssh_userauth(sess, login:login, password:password, privatekey:priv, passphrase:passphrase))
- {
-     ssh_disconnect(sess);
-     last_sess = 0;
-     return 0;
- }
- soc = ssh_get_sock(sess);
- 
- _last_libssh_sess = sess;
- return soc;
+  sess = ssh_connect();
+  if( ! sess )
+    return 0;
+
+  if( ssh_userauth( sess, login:login, password:password, privatekey:priv, passphrase:passphrase ) ) {
+    ssh_disconnect( sess );
+    last_sess = 0;
+    return 0;
+  }
+
+  soc = ssh_get_sock( sess );
+  _last_libssh_sess = sess;
+  return soc;
 }
 
 # Connect to the host HOSTNAME via TCP and setup an ssh connection.
@@ -2163,72 +2153,74 @@ function ssh_login_or_reuse_connection()
 # would do on a command line.  Its implementation uses libssh.  It
 # should be used only for a single command to a host because each use
 # requires running the expensive ssh handshake.
-function ssh_cmd_exec(cmd)
-{
-  local_var sess;
+function ssh_cmd_exec( cmd ) {
 
-  if( ! cmd )
-  {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cmd#-#ssh_cmd_exec" );
+  local_var cmd, login, password, priv, passphrase, sess, result;
+
+  if( ! cmd ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cmd#-#ssh_cmd_exec" );
     return;
   }
 
-  login = kb_ssh_login();
-  password = kb_ssh_password();
-  priv = kb_ssh_privatekey();
+  login      = kb_ssh_login();
+  password   = kb_ssh_password();
+  priv       = kb_ssh_privatekey();
   passphrase = kb_ssh_passphrase();
 
   sess = ssh_connect();
-  if (!sess)
-      return NULL;
-  if (ssh_userauth(sess, login:login, password:password, privatekey:priv, passphrase:passphrase)) {
-      ssh_disconnect(sess);
-      return NULL;
+  if( ! sess )
+    return NULL;
+
+  if( ssh_userauth( sess, login:login, password:password, privatekey:priv, passphrase:passphrase ) ) {
+    ssh_disconnect( sess );
+    return NULL;
   }
-  result = ssh_request_exec(sess, cmd:cmd, stdout:1, stderr:1);
-  ssh_disconnect(sess);
+  result = ssh_request_exec( sess, cmd:cmd, stdout:1, stderr:1 );
+  ssh_disconnect( sess );
   return chomp( result );
 }
-
 
 # Workaround to get the server banner from a freshly opened socket.
 # This should be replaced as soon as we can switch to libssh 0.6 which
 # allows us to use ssh_get_server_banner.
-function ssh_hack_get_server_version(socket)
-{
- local_var buf;
+function ssh_hack_get_server_version( socket ) {
 
- if( ! socket )
- {
-   set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ssh_hack_get_server_version" );
- }
+  local_var socket, buf;
 
- buf = recv_line(socket:socket, length:1024);
+  if( ! socket ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ssh_hack_get_server_version" );
+    return;
+  }
 
- if (!buf)
- {
-   set_ssh_error(msg: "OpenVAS did not receive server's version");
-   return 0;
- }
+  buf = recv_line( socket:socket, length:1024 );
 
- # server ident : SSH-%d.%d-servername #
- if (!ereg(string:buf, pattern:"^SSH-*[0-9]\.*[0-9]-*[^\n]"))
- {
-   set_ssh_error(msg: "Remote service is not a valid SSH service");
-   return 0;
- }
+  if( ! buf ) {
+    set_ssh_error( msg:"OpenVAS did not receive server's version" );
+    return 0;
+  }
 
- if ( '\r\n' >< buf )
-     buf = buf - '\r\n';
- else
-     buf = buf - '\n';
+  # server ident : SSH-%d.%d-servername #
+  if( ! ereg( string:buf, pattern:"^SSH-*[0-9]\.*[0-9]-*[^\n]" ) ) {
+    set_ssh_error( msg:"Remote service is not a valid SSH service" );
+    return 0;
+  }
 
- return buf;
+  if( '\r\n' >< buf )
+    buf = buf - '\r\n';
+  else
+    buf = buf - '\n';
+
+  return buf;
 }
 
-function ssh_reconnect( sock )
-{
-  if( ! sock ) return;
+function ssh_reconnect( sock ) {
+
+  local_var sock;
+
+  if( ! sock ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_ssh_port" );
+    return;
+  }
  
   ssh_disconnect( ssh_session_id_from_sock( sock ) );
   sleep( 1 );
@@ -2244,7 +2236,7 @@ function get_ssh_port( default ) {
 
   local_var default, port, p;
 
-  if( ! default ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_ssh_port" );
+  if( ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_ssh_port" );
 
   port = get_kb_item( "Services/ssh" );
   if( port ) default = port;
@@ -2288,10 +2280,10 @@ function ssh_broken_random_login( port ) {
     return;
   }
 
-  if( ! soc = open_sock_tcp( port ) ) return;
-
   if( get_kb_item( "SSH/" + port + "/broken/random_login" ) ) return TRUE;
+  if( get_kb_item( "SSH/" + port + "/broken/random_login/checked" ) ) return;
 
+  if( ! soc = open_sock_tcp( port ) ) return;
   banner = ssh_hack_get_server_version( socket:soc );
   close( soc );
 
@@ -2300,16 +2292,16 @@ function ssh_broken_random_login( port ) {
     pass = "";
   } else {
     if( ! defined_func( "rand_str" ) ) include( "misc_func.inc" );
-    user = rand_str( length:8 );
-    pass = rand_str( length:8 );
+    user = rand_str( length:8, charset:"abcdefghiklmnopqrstuvwxyz" );
+    pass = rand_str( length:8, charset:"ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz" );
   }
 
   if( ! soc = open_sock_tcp( port ) ) return;
-
   login = ssh_login( socket:soc, login:user, password:pass, pub:NULL, priv:NULL, passphrase:NULL );
+  close( soc );
+  replace_kb_item( name:"SSH/" + port + "/broken/random_login/checked", value:TRUE );
 
   if( login == 0 ) {
-    close( soc );
     replace_kb_item( name:"SSH/" + port + "/broken/random_login", value:TRUE );
     return TRUE;
   }

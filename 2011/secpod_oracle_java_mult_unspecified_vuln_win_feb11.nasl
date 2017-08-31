@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_java_mult_unspecified_vuln_win_feb11.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_oracle_java_mult_unspecified_vuln_win_feb11.nasl 6465 2017-06-28 13:17:01Z cfischer $
 #
 # Oracle Java SE Multiple Unspecified Vulnerabilities - Feb11 (Windows)
 #
@@ -45,8 +45,8 @@ tag_summary = "This host is installed with Sun Java SE and is prone to multiple
 if(description)
 {
   script_id(902344);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 6465 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:17:01 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2010-4447", "CVE-2010-4448", "CVE-2010-4454", "CVE-2010-4462",
                 "CVE-2010-4465", "CVE-2010-4466", "CVE-2010-4469", "CVE-2010-4473",
@@ -65,7 +65,7 @@ if(description)
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_win.nasl");
-  script_require_keys("Sun/Java/JRE/Win/Ver", "Sun/Java/JDK/Win/Ver");
+  script_mandatory_keys("Sun/Java/JDK_or_JRE/Win/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-0988.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: ELSA-2015-0988.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123112");
-script_version("$Revision: 6415 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:59:31 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-0988");
 script_tag(name: "insight", value: "ELSA-2015-0988 -  firefox security update - [38.0-3.0.1.el7_1]- Add firefox-oracle-default-prefs.js and remove the corresponding Red Hat file[38.0-3]- Enabled system nss- Removed unused patches[38.0-2]- Update to 38.0 ESR[38.0b8-0.11]- Update to 38.0 Beta 8[38.0b6-0.10]- Added patch for mozbz#1152515[38.0b6-0.9]- Update to 38.0 Beta 6[38.0b5-0.8]- Update to 38.0 Beta 5[38.0b3-0.7]- Update to 38.0 Beta 3[38.0b1-0.6]- Added patch for mozbz#1152391[38.0b1-0.5]- Fix build on AArch64 (based on upstream skia changes)[38.0b1-0.4]- Enabled debug build[38.0b1-1]- Update to 38.0b1"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

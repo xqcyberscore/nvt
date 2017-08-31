@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_mult_vuln_apr10_win.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_adobe_prdts_mult_vuln_apr10_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
 #
 # Adobe Acrobat and Reader PDF Handling Multiple Vulnerabilities (Windows)
 #
@@ -29,7 +29,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902161";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5394 $");
+  script_version("$Revision: 6475 $");
   script_cve_id("CVE-2010-0190", "CVE-2010-0191", "CVE-2010-0192", "CVE-2010-0193",
                 "CVE-2010-0194", "CVE-2010-0195", "CVE-2010-0196", "CVE-2010-0197",
                 "CVE-2010-0198", "CVE-2010-0199", "CVE-2010-0201", "CVE-2010-0202",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(39329);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2010-04-16 16:17:26 +0200 (Fri, 16 Apr 2010)");
   script_name("Adobe Acrobat and Reader PDF Handling Multiple Vulnerabilities (Windows)");
 
@@ -85,7 +85,7 @@ For updates refer to http://www.adobe.com";
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_require_keys("Adobe/Acrobat/Win/Ver", "Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed");
   exit(0);
 }
 

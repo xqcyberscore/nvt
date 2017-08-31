@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804475");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6759 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-21 12:35:29 +0530 (Mon, 21 Jul 2014)");
   script_name("ZKSoftware WebServer Default Admin Credentials");
 
@@ -47,15 +47,13 @@ if(description)
   script_tag(name:"solution", value:"Change the default credentials.");
 
   script_xref(name:"URL", value:"http://blog.infobytesec.com/2014/07/perverting-embedded-devices-zksoftware_2920.html");
-  script_summary("Determine if it is possible to login with default credentials.");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Default Accounts");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("ZK_Web_Server/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("ZK_Web_Server/banner");
 
   exit(0);
 }

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843147");
-  script_version("$Revision: 6116 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 12:10:27 +0200 (Fri, 12 May 2017) $");
+  script_version("$Revision: 6648 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:05:27 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-04-29 07:16:15 +0200 (Sat, 29 Apr 2017)");
   script_cve_id("CVE-2017-8291", "CVE-2016-10217", "CVE-2016-10219", "CVE-2016-10220",
                 "CVE-2017-5951", "CVE-2017-7207");
@@ -69,7 +69,7 @@ Ghostscript. An attacker could use these to cause a denial of service
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

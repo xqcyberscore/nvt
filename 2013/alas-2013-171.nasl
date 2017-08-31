@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2013-171.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: alas-2013-171.nasl 6577 2017-07-06 13:43:46Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120555");
-script_version("$Revision: 6079 $");
+script_version("$Revision: 6577 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:29:30 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:43:46 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2013-171");
 script_tag(name: "insight", value: "It was discovered that OpenSSL leaked timing information when decrypting TLS/SSL and DTLS protocol encrypted records when CBC-mode cipher suites were used. A remote attacker could possibly use this flaw to retrieve plain text from the encrypted packets by using a TLS/SSL or DTLS server as a padding oracle. (CVE-2013-0169 )A NULL pointer dereference flaw was found in the OCSP response verification in OpenSSL. A malicious OCSP server could use this flaw to crash applications performing OCSP verification by sending a specially-crafted response. (CVE-2013-0166 )It was discovered that the TLS/SSL protocol could leak information about plain text when optional compression was used. An attacker able to control part of the plain text sent over an encrypted TLS/SSL connection could possibly use this flaw to recover other portions of the plain text. (CVE-2012-4929 )Note: This update disables zlib compression, which was previously enabled in OpenSSL by default. Applications using OpenSSL now need to explicitly enable  zlib compression to use it."); 
 script_tag(name : "solution", value : "Run yum update openssl to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

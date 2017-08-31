@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mult_vuln_aug15_win.nasl 5082 2017-01-24 11:14:23Z cfi $
+# $Id: gb_apache_mult_vuln_aug15_win.nasl 6453 2017-06-28 09:59:05Z teissa $
 #
 # Apache HTTP Server Multiple Vulnerabilities August15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805698");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 6453 $");
   script_cve_id("CVE-2015-3185", "CVE-2015-3183");
   script_bugtraq_id(75965, 75963);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-14 12:49:14 +0530 (Fri, 14 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache HTTP Server Multiple Vulnerabilities August15 (Windows)");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.apache.org/dist/httpd/CHANGES_2.4");
   script_xref(name : "URL" , value : "http://httpd.apache.org/security/vulnerabilities_24.html");
 
-  script_summary("Check for the vulnerable version of Apache HTTP Server on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web Servers");

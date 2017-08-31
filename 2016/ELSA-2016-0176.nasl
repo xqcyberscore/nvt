@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0176.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: ELSA-2016-0176.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122878");
-script_version("$Revision: 5850 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-02-18 07:27:20 +0200 (Thu, 18 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0176");
 script_tag(name: "insight", value: "ELSA-2016-0176 -  glibc security and bug fix update - [2.17-106.0.1.4]- Remove strstr and strcasestr implementations using sse4.2 instructions.- Upstream commits 584b18eb4df61ccd447db2dfe8c8a7901f8c8598 and 1818483b15d22016b0eae41d37ee91cc87b37510 backported.[2.17-106.4]- Revert problematic libresolv change, not needed for the CVE-2015-7547 fix (#1296030).[2.17-106.3]- Fix CVE-2015-7547: getaddrinfo() stack-based buffer overflow (#1296030).- Fix madvise performance issues (#1298930).- Avoid 'monstartup: out of memory' error on powerpc64le (#1298956).[2.17-106.2]- Fix CVE-2015-5229: calloc() may return non-zero memory (#1296453)."); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantis_multiple_sql_inj_vuln.nasl 5067 2017-01-23 16:23:44Z cfi $
+# $Id: gb_mantis_multiple_sql_inj_vuln.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # MantisBT Multiple SQL Injection Vulnerabilities
 #
@@ -31,7 +31,7 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105902");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 5067 $");
+  script_version("$Revision: 6715 $");
 
   script_name("MantisBT Multiple SQL Injection Vulnerabilities");
 
@@ -42,9 +42,8 @@ if(description)
   script_xref(name:"URL", value:"http://www.mantisbt.org/bugs/view.php?id=16879");
   script_xref(name:"URL", value:"http://www.mantisbt.org/bugs/view.php?id=16880");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-01-23 17:23:44 +0100 (Mon, 23 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-25 11:38:14 +0700 (Tue, 25 Mar 2014)");
-  script_summary("MantisBT Multiple SQL Injection Vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

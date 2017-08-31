@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-044_remote.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-044_remote.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Microsoft SQL Server Elevation of Privilege Vulnerability (2984340) - Remote
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sql_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805110");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-1820", "CVE-2014-4061");
   script_bugtraq_id(69071, 69088);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-01 16:03:48 +0530 (Mon, 01 Dec 2014)");
   script_name("Microsoft SQL Server Elevation of Privilege Vulnerability (2984340) - Remote");
 
@@ -67,7 +67,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-044");
 
-  script_summary("Check for the vulnerable version of Microsoft SQL Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

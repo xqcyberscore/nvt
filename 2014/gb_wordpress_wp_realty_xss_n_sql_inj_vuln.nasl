@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6663 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-02 15:02:10 +0530 (Thu, 02 Jan 2014)");
   script_name("WordPress WP Realty Plugin 'listing_id' XSS and SQL Injection Vulnerabilities");
 
@@ -77,7 +77,6 @@ For updates refer to http://wprealty.org";
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/29021");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124418");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-wp-realty-cross-site-scripting");
-  script_summary("Check if WordPress WP Realty plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

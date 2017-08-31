@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_platform_symphony_dev_edi_auth_bypass_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_ibm_platform_symphony_dev_edi_auth_bypass_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # IBM Platform Symphony Developer Edition Authentication Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804240";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2013-5400");
   script_bugtraq_id(65616);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-19 11:25:08 +0530 (Wed, 19 Feb 2014)");
   script_name("IBM Platform Symphony Developer Edition Authentication Bypass Vulnerability");
 
@@ -91,7 +91,6 @@ http://www-01.ibm.com/support/docview.wss?uid=isg3T1020564";
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/87296");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=isg3T1020564");
-  script_summary("Check authentication bypass in IBM Platform Symphony Developer Edition");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

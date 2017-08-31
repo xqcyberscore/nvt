@@ -28,12 +28,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804182";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2013-4858");
   script_bugtraq_id(61334);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-02 15:02:10 +0530 (Thu, 02 Jan 2014)");
   script_name("Microsoft Windows Movie Maker Denial of Service Vulnerability");
 
@@ -73,7 +73,6 @@ features, remove the product or replace the product by another one.";
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/122473/");
-  script_summary("Check for the vulnerable version of microsoft windows movie maker");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_resin_app_server_info_disc_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_resin_app_server_info_disc_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # Resin Application Server Source Code Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803713");
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 6698 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-06-10 16:11:12 +0530 (Mon, 10 Jun 2013)");
   script_name("Resin Application Server Source Code Disclosure Vulnerability");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/121933");
@@ -41,9 +41,8 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 80);
   script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 80);
   script_mandatory_keys("Resin/banner");
 
   script_tag(name:"insight", value:"The flaw is due to an improper sensitization of the 'file'

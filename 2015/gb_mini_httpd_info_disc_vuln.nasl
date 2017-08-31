@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mini_httpd_info_disc_vuln.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: gb_mini_httpd_info_disc_vuln.nasl 6700 2017-07-12 12:16:21Z cfischer $
 #
 # mini_httpd server Long Protocol String Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805289");
-  script_version("$Revision: 6183 $");
+  script_version("$Revision: 6700 $");
   script_cve_id("CVE-2015-1548");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-02-24 16:28:18 +0530 (Tue, 24 Feb 2015)");
   script_name("mini_httpd server Long Protocol String Information Disclosure Vulnerability");
 
@@ -66,9 +66,8 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("mini_httpd/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("mini_httpd/banner");
 
   exit(0);
 }

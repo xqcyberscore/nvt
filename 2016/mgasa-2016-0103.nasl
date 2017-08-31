@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0103.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: mgasa-2016-0103.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131262");
-script_version("$Revision: 5534 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-03-10 07:17:43 +0200 (Thu, 10 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0103");
 script_tag(name: "insight", value: "A path-traversal flaw was found in the way the libvirt daemon handled file-system names for storage volumes. A libvirt user with privileges to create storage volumes and without privileges to create and modify domains could possibly use this flaw to escalate their privileges (CVE-2015-5313)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"1.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0103");
 script_copyright("Eero Volotinen");

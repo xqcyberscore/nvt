@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-625.nasl 6329 2017-06-13 15:39:42Z teissa $
+# $Id: alas-2015-625.nasl 6575 2017-07-06 13:42:08Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120615");
-script_version("$Revision: 6329 $");
+script_version("$Revision: 6575 $");
 script_tag(name:"creation_date", value:"2015-12-15 02:51:26 +0200 (Tue, 15 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:42:08 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-625");
 script_tag(name: "insight", value: "A flaw was found in the way OpenSSH handled PAM authentication when using privilege separation. An attacker with valid credentials on the system and able to fully compromise a non-privileged pre-authentication process using a different flaw could use this flaw to authenticate as other users.It was discovered that the OpenSSH sshd daemon did not check the list of keyboard-interactive authentication methods for duplicates. A remote attacker could use this flaw to bypass the MaxAuthTries limit, making it easier to perform password guessing attacks.A use-after-free flaw was found in OpenSSH. An attacker able to fully compromise a non-privileged pre-authentication process using a different flaw could possibly cause sshd to crash or execute arbitrary code with root privileges."); 
 script_tag(name : "solution", value : "Run yum update openssh to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"8.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

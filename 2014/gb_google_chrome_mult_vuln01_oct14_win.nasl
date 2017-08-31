@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_oct14_win.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_google_chrome_mult_vuln01_oct14_win.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities - 01 Oct14 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804936");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-3200", "CVE-2014-3199", "CVE-2014-3198", "CVE-2014-3197",
                 "CVE-2014-3196", "CVE-2014-3195", "CVE-2014-3194", "CVE-2014-3193",
                 "CVE-2014-3192", "CVE-2014-3191", "CVE-2014-3190", "CVE-2014-3189",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(70273, 70262, 70587);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-16 15:21:08 +0530 (Thu, 16 Oct 2014)");
 
   script_name("Google Chrome Multiple Vulnerabilities - 01 Oct14 (Windows)");
@@ -75,7 +75,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/61755");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2014/10/stable-channel-update.html");
-  script_summary("Check for the vulnerable version of Google Chrome on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realvnc_remote_code_exe_vuln_win_900162.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: secpod_realvnc_remote_code_exe_vuln_win_900162.nasl 6605 2017-07-07 11:22:07Z cfischer $
 # Description: RealVNC VNC Viewer Remote Code Execution Vulnerability (Windows)
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "Update to version 4.1.3
 if(description)
 {
   script_id(900162);
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6605 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 13:22:07 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-10-29 14:53:11 +0100 (Wed, 29 Oct 2008)");
   script_cve_id("CVE-2008-4770");
  script_bugtraq_id(31832);
@@ -55,7 +55,7 @@ if(description)
 
 
   script_dependencies("secpod_reg_enum.nasl", "gb_get_http_banner.nasl");
-  script_mandatory_keys("SMB/WindowsVersion","RealVNC/banner");
+  script_mandatory_keys("RealVNC/banner", "SMB/WindowsVersion");
   script_require_ports("Services/vnc", 5800, 139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_sec_bypass_vuln_jul15_win.nasl 2569 2016-02-03 15:47:26Z benallard $
+# $Id: gb_mozilla_firefox_sec_bypass_vuln_jul15_win.nasl 6486 2017-06-29 09:59:06Z teissa $
 #
 # Mozilla Firefox Security Bypass Vulnerability - Jul15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805915");
-  script_version("$Revision: 2569 $");
+  script_version("$Revision: 6486 $");
   script_cve_id("CVE-2015-2727");
   script_bugtraq_id(75541);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:47:26 +0100 (Wed, 03 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-10 16:00:11 +0530 (Fri, 10 Jul 2015)");
   script_name("Mozilla Firefox Security Bypass Vulnerability - Jul15 (Windows)");
 
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2015-60");
 
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Windows.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

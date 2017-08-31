@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mult_bof_vuln_jul14_win.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_realplayer_mult_bof_vuln_jul14_win.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # RealNetworks RealPlayer Multiple Buffer Overflow Vulnerabilities July14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:realnetworks:realplayer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804678");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-3113");
   script_bugtraq_id(68442);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-14 16:18:41 +0530 (Mon, 14 Jul 2014)");
   script_name("RealNetworks RealPlayer Multiple Buffer Overflow Vulnerabilities July14 (Windows)");
 
@@ -77,7 +77,6 @@ For updates refer http://www.real.com";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/59238");
   script_xref(name : "URL" , value : "http://service.real.com/realplayer/security/06272014_player/en/");
   script_xref(name : "URL" , value : "http://www.fortiguard.com/advisory/RealNetworks-RealPlayer-Memory-Corruption/");
-  script_summary("Check the vulnerable version of RealPlayer on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Buffer overflow");

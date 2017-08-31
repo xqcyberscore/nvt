@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nagios_cve_2008_5027.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: nagios_cve_2008_5027.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # Nagios Web Interface Privilege Escalation Vulnerability
 #
@@ -45,8 +45,8 @@ CPE = "cpe:/a:nagios:nagios";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+ script_version("$Revision: 6704 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-05-06 14:55:27 +0200 (Wed, 06 May 2009)");
  script_bugtraq_id(32156);
  script_cve_id("CVE-2008-5027");
@@ -62,7 +62,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("nagios_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("nagios/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -83,7 +82,6 @@ if(!isnull(vers) && vers >!< "unknown") {
       security_message(port:port);
       exit(0);
   }  
-
 }
 
 exit(0);

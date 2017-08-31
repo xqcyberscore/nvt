@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_backup_exec_prdts_cmd_exec_vuln_win.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_symantec_backup_exec_prdts_cmd_exec_vuln_win.nasl 6517 2017-07-04 13:34:20Z cfischer $
 #
 # Symantec Backup Exec Products Arbitrary Command Execution vulnerability
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is installed with Symantec Backup Exec Products and is
 if(description)
 {
   script_id(801798);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6517 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-06-17 11:16:31 +0200 (Fri, 17 Jun 2011)");
   script_cve_id("CVE-2011-0546");
   script_bugtraq_id(47824);
@@ -52,12 +52,11 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/44698");
   script_xref(name : "URL" , value : "http://www.symantec.com/business/security_response/securityupdates/detail.jsp?");
 
-  script_summary("Check for the version of Symantec Backup Exec");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_symantec_backup_exec_detect.nasl");
-  script_require_keys("Symantec/Backup/Exec/Win/Server", "Symantec/Backup/Exec/2010");
+  script_mandatory_keys("Symantec/Backup/Exec/Win/Installed");
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);

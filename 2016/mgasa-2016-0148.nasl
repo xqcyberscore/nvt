@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0148.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: mgasa-2016-0148.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131301");
-script_version("$Revision: 5568 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:18:03 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0148");
 script_tag(name: "insight", value: "Updated squid packages fix security vulnerability: Due to incorrect buffer management Squid cachemgr.cgi tool is vulnerable to a buffer overflow when processing remotely supplied inputs relayed to it from Squid. This problem allows any client to seed the Squid manager reports with data that will cause a buffer overflow when processed by the cachemgr.cgi tool (CVE-2016-4051)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"6.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0148");
 script_copyright("Eero Volotinen");

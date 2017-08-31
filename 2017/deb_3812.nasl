@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3812.nasl 5806 2017-03-31 07:21:48Z teissa $
+# $Id: deb_3812.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3812-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703812);
-    script_version("$Revision: 5806 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-6903");
     script_name("Debian Security Advisory DSA 3812-1 (ioquake3 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-31 09:21:48 +0200 (Fri, 31 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-03-18 00:00:00 +0100 (Sat, 18 Mar 2017)");
     script_tag(name:"cvss_base", value:"9.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "ioquake3 on Debian Linux");
         script_tag(name: "insight",   value: "This package installs a modified version of the ioQuake3 game engine,
 which can be used to play various games based on that engine, such as

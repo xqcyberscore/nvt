@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1623.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-1623.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123034");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 09:46:54 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1623");
 script_tag(name: "insight", value: "ELSA-2015-1623 -  kernel security and bug fix update - [2.6.32-573.3.1]- [md] Revert 'dm: don't schedule delayed run of the queue if nothing to do' (Mike Snitzer) [1246095 1240767]- [md] Revert 'dm: only run the queue on completion if congested or no requests pending' (Mike Snitzer) [1246095 1240767][2.6.32-573.2.1]- [net] udp: fix behavior of wrong checksums (Denys Vlasenko) [1240758 1240759] {CVE-2015-5364 CVE-2015-5366}- [fs] vfs: Unhash and evict unused children dentries after rmdir (Lukas Czerner) [1243400 1241030]- [fs] vfs: Prevent syncing frozen file system (Lukas Czerner) [1243404 1241791]- [fs] vfs: Prevent freeing unlinked file to be indefinitely delayed (Lukas Czerner) [1243406 1236736]- [fs] vmcore: continue vmcore initialization if PT_NOTE is found empty (Baoquan He) [1245195 1236437]- [fs] vmcore: prevent PT_NOTE p_memsz overflow during header update (Baoquan He) [1245195 1236437]- [kernel] audit/fix non-modular users of module_init in core code (Baoquan He) [1245195 1236437]"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"7.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-1623");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bamboo_rce_vuln.nasl 6356 2017-06-16 09:38:18Z ckuersteiner $
+# $Id: gb_atlassian_bamboo_rce_vuln.nasl 6618 2017-07-07 14:17:52Z cfischer $
 #
 # Atlassian Bamboo Remote Command Execution Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:atlassian:bamboo";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106878");
-  script_version("$Revision: 6356 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-16 11:38:18 +0200 (Fri, 16 Jun 2017) $");
+  script_version("$Revision: 6618 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-07 16:17:52 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-06-16 14:35:00 +0700 (Fri, 16 Jun 2017)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-8907");
 

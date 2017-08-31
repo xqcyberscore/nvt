@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mssql_ping.nasl 6063 2017-05-03 09:03:05Z teissa $
-# Description: Microsoft's SQL UDP Info Query
+# $Id: mssql_ping.nasl 6760 2017-07-19 14:00:26Z cfischer $
+#
+# Microsoft's SQL UDP Info Query
 #
 # Authors:
 # H D Moore
@@ -20,11 +22,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-tag_summary = "It is possible to determine remote SQL server version
-
-Description :
+tag_summary = "It is possible to determine the remote MS SQL server version.
 
 Microsoft SQL server has a function wherein remote users can
 query the database server for the version that is being run.
@@ -32,44 +32,37 @@ The query takes place over the same UDP port which handles the
 mapping of multiple SQL server instances on the same machine.
 
 CAVEAT: It is important to note that, after Version 8.00.194,
-Microsoft decided not to update this function.  This means that
+Microsoft decided not to update this function. This means that
 the data returned by the SQL ping is inaccurate for newer releases
 of SQL Server.";
 
-tag_solution = "filter incoming traffic to this port";
-
- desc = "
- Summary:
- " + tag_summary + "
- Solution:
- " + tag_solution;
-
+tag_solution = "If you are not running multiple instances of Microsoft SQL Server
+on the same machine, it is suggested you filter incoming traffic to this port.";
 
 if(description)
 {
- script_id(10674);
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("Microsoft's SQL UDP Info Query");
- 
- 
- 
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_copyright("This script is Copyright (C) 2001 H D Moore");
- script_family("Windows");
- script_require_udp_ports(1434);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_oid("1.3.6.1.4.1.25623.1.0.10674");
+  script_version("$Revision: 6760 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 16:00:26 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Microsoft's SQL UDP Info Query");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2001 H D Moore");
+  script_family("Windows");
+  script_dependencies("find_service.nasl");
+  script_require_udp_ports(1434);
+
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
 }
 
-#
-# The script code starts here
-#
+include("misc_func.inc");
 
 ##
 # data returned will look like:
@@ -78,42 +71,37 @@ if(description)
 #
 ##
 
-# this magic info request packet
+# the magic info request packet
 req = raw_string(0x02);
 
+port = 1434;
+if( ! get_udp_port_state( port ) ) exit( 0 );
+soc = open_sock_udp( port );
+if( ! soc ) exit( 0 );
 
-if(!get_udp_port_state(1434))exit(0);
+send( socket:soc, data:req );
+r = recv( socket:soc, length:4096 );
+close( soc );
+if( ! r ) exit( 0 );
 
-soc = open_sock_udp(1434);
+set_kb_item( name:"MSSQL/UDP/Ping", value:TRUE );
+r = strstr( r, "Server" );
+r = str_replace( find:";", replace:" ", string:r );
 
+if( r ) {
 
-if(soc)
-{
-	send(socket:soc, data:req);
-	r  = recv(socket:soc, length:4096);
-	close(soc);
-	if(!r)exit(0);
-	set_kb_item(name:"MSSQL/UDP/Ping", value:TRUE);
-        r = strstr(r, "Server");
-        r = str_replace(find:";", replace:" ", string:r);
-	if(r)
-	{
- 		report += string("OpenVAS sent an MS SQL 'ping' request. The results were : \n", r, "\n\n");
-                report += string("If you are not running multiple instances of Microsoft SQL Server\n");
-                report += string("on the same machine, It is suggested you filter incoming traffic to this port");
+  report = string("OpenVAS sent a MS SQL 'ping' request. The result was : \n\n", r);
 
-		 report = string (desc,
-				"\n\nPlugin output :\n\n",
-				report);
+  if( "version" >< tolower( r ) ) { 
+    version = eregmatch( pattern:"Version ([0-9.]+)", string:r );
+    if( ! isnull( version[1] ) ) {
+      set_kb_item( name:"mssql/remote_version", value:version[1] );
+    }  
+  }  
 
-		if("version" >< tolower(r)) { 
-                  version = eregmatch(pattern:"Version ([0-9.]+)", string:r);
-		  if(!isnull(version[1])) {
-                    set_kb_item(name:"mssql/remote_version", value:version[1]);
-		  }  
-		}  
-
-		log_message(port:1434, protocol:"udp", data:report);
-		set_kb_item(name:"mssql/udp/1434", value:TRUE);
-	}
+  register_service( port:port, ipproto:"udp", proto:"mssql", message:"A MS SQL Browser Service seems to be running on this port." );
+  log_message( port:port, protocol:"udp", data:report );
+  set_kb_item( name:"mssql/udp/1434", value:TRUE );
 }
+
+exit( 0 );

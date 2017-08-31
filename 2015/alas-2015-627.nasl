@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-627.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: alas-2015-627.nasl 6575 2017-07-06 13:42:08Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120617");
-script_version("$Revision: 6404 $");
+script_version("$Revision: 6575 $");
 script_tag(name:"creation_date", value:"2015-12-15 02:51:28 +0200 (Tue, 15 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:42:08 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-627");
 script_tag(name: "insight", value: "A vulnerability in perl-IPTables-Parse was found, when using predictable file names for its temporary files. This vulnerability allows attacker on a multi-user system to set up symlinks to overwrite any file the current user has write access to."); 
 script_tag(name : "solution", value : "Run yum update perl-IPTables-Parse to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"3.6");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

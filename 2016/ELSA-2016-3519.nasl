@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-3519.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: ELSA-2016-3519.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122886");
-script_version("$Revision: 5580 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-02-22 07:34:20 +0200 (Mon, 22 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-3519");
 script_tag(name: "insight", value: "ELSA-2016-3519 - Unbreakable Enterprise kernel security update - kernel-uek[3.8.13-118.3.2]- x86/nmi/64: Use DF to avoid userspace RSP confusing nested NMI detection (Andy Lutomirski) [Orabug: 22742507] {CVE-2015-5157}- x86/nmi/64: Reorder nested NMI checks (Andy Lutomirski) [Orabug: 22742507] {CVE-2015-5157}- x86/nmi/64: Improve nested NMI comments (Andy Lutomirski) [Orabug: 22742507] {CVE-2015-5157}- x86/nmi/64: Switch stacks on userspace NMI entry (Andy Lutomirski) [Orabug: 22742507] {CVE-2015-5157}- x86/paravirt: Replace the paravirt nop with a bona fide empty function (Andy Lutomirski) [Orabug: 22742507] {CVE-2015-5157}"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.2");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

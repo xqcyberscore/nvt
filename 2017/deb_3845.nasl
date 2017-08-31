@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3845.nasl 6185 2017-05-22 11:17:57Z teissa $
+# $Id: deb_3845.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3845-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703845);
-    script_version("$Revision: 6185 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-8779");
     script_name("Debian Security Advisory DSA 3845-1 (libtirpc - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-22 13:17:57 +0200 (Mon, 22 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-05-08 00:00:00 +0200 (Mon, 08 May 2017)");
     script_tag(name:"cvss_base", value:"7.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "libtirpc on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (jessie), this problem has been fixed in
 version 0.2.5-1+deb8u1 of libtirpc and version 0.2.1-6+deb8u2 of rpcbind.

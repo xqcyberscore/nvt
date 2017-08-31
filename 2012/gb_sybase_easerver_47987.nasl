@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sybase_easerver_47987.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: gb_sybase_easerver_47987.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # Sybase EAServer Directory Traversal Vulnerability
 #
@@ -42,7 +42,7 @@ if (description)
  script_cve_id("CVE-2011-2474");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6022 $");
+ script_version ("$Revision: 6697 $");
 
  script_name("Sybase EAServer Directory Traversal Vulnerability");
 
@@ -51,16 +51,15 @@ if (description)
  script_xref(name : "URL" , value : "http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=912");
  script_xref(name : "URL" , value : "http://www.sybase.com/detail?id=1093216");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-04-25 14:01:37 +0200 (Wed, 25 Apr 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("EAServer/banner");
  script_require_ports("Services/www", 80, 8000);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("EAServer/banner");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -70,7 +69,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if("EAServer" >!< banner)exit(0);

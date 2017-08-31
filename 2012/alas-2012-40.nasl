@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2012-40.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: alas-2012-40.nasl 6578 2017-07-06 13:44:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120255");
-script_version("$Revision: 6022 $");
+script_version("$Revision: 6578 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:21:38 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:44:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2012-40");
 script_tag(name: "insight", value: "Two heap-based buffer overflow flaws were found in the way t1lib processed Adobe Font Metrics (AFM) files. If a specially-crafted font file was opened by an application linked against t1lib, it could cause the application to crash or, potentially, execute arbitrary code with the privileges of the user running the application. (CVE-2010-2642 , CVE-2011-0433 )An invalid pointer dereference flaw was found in t1lib. A specially-crafted font file could, when opened, cause an application linked against t1lib to crash or, potentially, execute arbitrary code with the privileges of the user running the application. (CVE-2011-0764 )A use-after-free flaw was found in t1lib. A specially-crafted font file could, when opened, cause an application linked against t1lib to crash or, potentially, execute arbitrary code with the privileges of the user running the application. (CVE-2011-1553 )An off-by-one flaw was found in t1lib. A specially-crafted font file could, when opened, cause an application linked against t1lib to crash or, potentially, execute arbitrary code with the privileges of the user running the application. (CVE-2011-1554 )An out-of-bounds memory read flaw was found in t1lib. A specially-crafted font file could, when opened, cause an application linked against t1lib to crash. (CVE-2011-1552 )"); 
 script_tag(name : "solution", value : "Run yum update t1lib to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"7.6");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

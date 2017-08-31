@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_seowonintech_devices_rce_06_13.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_multiple_seowonintech_devices_rce_06_13.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # Seowonintech Routers Remote Root Command Execution Vulnerability
 #
@@ -40,7 +40,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103745";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 6115 $");
+ script_version ("$Revision: 6698 $");
  script_cve_id("CVE-2013-7183", "CVE-2013-7179");
  script_tag(name:"cvss_base", value:"8.3");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,16 +49,16 @@ if (description)
 
  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/122126/Seowonintech-Remote-Root.html");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-06-24 12:51:39 +0200 (Mon, 24 Jun 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("thttpd/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("thttpd/banner");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -68,7 +68,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 

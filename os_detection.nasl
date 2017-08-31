@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 6356 2017-06-16 09:38:18Z ckuersteiner $
+# $Id: os_detection.nasl 6875 2017-08-08 13:59:06Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 6356 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-16 11:38:18 +0200 (Fri, 16 Jun 2017) $");
+  script_version("$Revision: 6875 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-08 15:59:06 +0200 (Tue, 08 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,6 +38,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Service detection");
   # Keep order the same as in host_details.inc. Also add OS register NVTs there if adding here.
+  # Keep in sync with os_detection.nasl as well.
   script_dependencies("gb_greenbone_os_detect.nasl", "gb_ami_megarac_sp_web_detect.nasl",
                       "gb_ros_detect.nasl", "gb_apple_mobile_detect.nasl",
                       "gb_vmware_esx_web_detect.nasl", "gb_vmware_esx_snmp_detect.nasl",
@@ -58,11 +59,14 @@ if(description)
                       "gb_ssh_os_detection.nasl", "gb_junos_snmp_version.nasl",
                       "gb_snmp_os_detection.nasl", "gb_dns_os_detection.nasl",
                       "gb_ftp_os_detection.nasl", "smb_nativelanman.nasl",
-                      "gb_ucs_detect.nasl",
-                      "sw_http_os_detection.nasl", "sw_mail_os_detection.nasl",
-                      "sw_telnet_os_detection.nasl", "ntp_open.nasl",
-                      "smb_reg_service_pack.nasl", "remote-detect-MDNS.nasl",
+                      "gb_ucs_detect.nasl", "sw_http_os_detection.nasl",
+                      "sw_mail_os_detection.nasl", "sw_telnet_os_detection.nasl",
+                      "ntp_open.nasl", "remote-detect-MDNS.nasl",
+                      "gb_mysql_mariadb_os_detection.nasl", "mssqlserver_detect.nasl",
                       "gb_apple_tv_version.nasl", "gb_apple_tv_detect.nasl",
+                      "gb_upnp_os_detection.nasl", "gb_sip_os_detection.nasl",
+                      "gb_check_mk_agent_detect.nasl", "ms_rdp_detect.nasl",
+                      "dcetest.nasl",
                       "gb_nmap_os_detection.nasl", "os_fingerprint.nasl");
 
   script_tag(name:"summary", value:"This script consolidates the OS information detected by several NVTs and tries to find the best matching OS.
@@ -95,16 +99,16 @@ foreach oid( OS_CPE_SRC ) {
 
       if( ! found_best ) {
 
-        os_reports = get_kb_list( "os_detection_report/" + oid + "/*" );
+        os_reports = get_kb_list( "os_detection_report/reports/" + oid + "/*" );
         if( ! os_reports ) continue;
 
         # Use keys to be able to extract the port and proto later
         foreach key( keys( os_reports ) ) {
 
           # We need the port and proto for the host_runs kb entry later
-          tmp = split( key, sep:"/", keep:FALSE );
-          port = tmp[2];
-          proto = tmp[3];
+          tmp   = split( key, sep:"/", keep:FALSE );
+          port  = tmp[3];
+          proto = tmp[4];
 
           os_report = get_kb_item( key );
           if( ! found_best ) {
@@ -124,7 +128,8 @@ foreach oid( OS_CPE_SRC ) {
               } else if( host_runs == "windows" ) {
                 set_key = "Host/runs_windows";
               } else {
-                set_key = "Host/runs_unknown";
+                # This makes sure that we still scheduling NVTs using Host/runs_unixoide as a fallback
+                set_key = "Host/runs_unixoide";
               }
               if( ! get_kb_item( set_key ) ) {
                 set_kb_item( name:set_key, value:TRUE );
@@ -137,7 +142,7 @@ foreach oid( OS_CPE_SRC ) {
           }
         }
       } else {
-        os_reports = get_kb_list( "os_detection_report/" + oid + "/*" );
+        os_reports = get_kb_list( "os_detection_report/reports/" + oid + "/*" );
         foreach os_report( os_reports ) {
           if( os_report >!< found_os )
             found_os += os_report + '\n\n';
@@ -149,6 +154,8 @@ foreach oid( OS_CPE_SRC ) {
 
 if( ! found_best ) {
   report += "No Best matching OS identified.";
+  # Setting the runs_key to unixoide makes sure that we still schedule NVTs using Host/runs_unixoide as a fallback
+  replace_kb_item( name:"Host/runs_unixoide", value:TRUE );
 } else {
   # TBD: Move into host_details.nasl?
   set_kb_item( name:"HostDetails/OS/BestMatch", value:best_match );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_IceWarp_49753.nasl 5769 2017-03-29 13:50:21Z cfi $
+# $Id: gb_IceWarp_49753.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # IceWarp Web Mail Multiple Information Disclosure Vulnerabilities
 #
@@ -37,8 +37,8 @@ information.";
 if (description)
 {
  script_id(103279);
- script_version("$Revision: 5769 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:50:21 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 6696 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-09-28 12:51:43 +0200 (Wed, 28 Sep 2011)");
  script_bugtraq_id(49753);
  script_cve_id("CVE-2011-3579","CVE-2011-3580");
@@ -58,7 +58,6 @@ if (description)
  script_dependencies("gb_get_http_banner.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("IceWarp/banner");
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

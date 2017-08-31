@@ -48,8 +48,8 @@ if(description)
   script_id(831559);
   script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 3044 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:34:24 +0200 (Mon, 11 Apr 2016) $");
+ script_version("$Revision: 6567 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-03-07 11:21:06 +0530 (Wed, 07 Mar 2012)");
   script_cve_id("CVE-2012-0866", "CVE-2012-0868");
   script_xref(name: "MDVSA", value: "2012:027");
@@ -60,7 +60,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "insight" , value : tag_insight);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_dir_server_39483.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: gb_sun_dir_server_39483.nasl 6606 2017-07-07 11:29:00Z cfischer $
 #
 # Oracle Java System Directory Server CVE-2010-0897 Multiple Remote Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100577");
-  script_version("$Revision: 5190 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 6606 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 13:29:00 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-04-15 19:15:10 +0200 (Thu, 15 Apr 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,7 +40,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("sun_dir_server_detect.nasl");
   script_require_ports("Services/ldap", 389, 636);
-  script_mandatory_keys("ldap/detected", "SunJavaDirServer/installed");
+  script_mandatory_keys("SunJavaDirServer/installed", "ldap/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/39453");
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-073/");

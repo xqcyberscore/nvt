@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-3523.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: ELSA-2016-3523.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122888");
-script_version("$Revision: 5568 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-03-02 06:56:05 +0200 (Wed, 02 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-3523");
 script_tag(name: "insight", value: "ELSA-2016-3523 -  openssl security update - [1.0.1e-51.4]- fix CVE-2016-0702 - side channel attack on modular exponentiation- fix CVE-2016-0705 - double-free in DSA private key parsing- fix CVE-2016-0797 - heap corruption in BN_hex2bn and BN_dec2bn[1.0.1e-51.3]- fix CVE-2015-3197 - SSLv2 ciphersuite enforcement- disable SSLv2 in the generic TLS method[1.0.1e-51.2]- fix CVE-2015-7575 - disallow use of MD5 in TLS1.2[1.0.1e-51.1]- fix CVE-2015-3194 - certificate verify crash with missing PSS parameter- fix CVE-2015-3195 - X509_ATTRIBUTE memory leak- fix CVE-2015-3196 - race condition when handling PSK identity hint"); 
 script_tag(name : "solution", value : "update software");
@@ -41,7 +41,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

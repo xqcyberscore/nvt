@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-030.nasl 5366 2017-02-20 13:55:38Z cfi $
+# $Id: secpod_ms12-030.nasl 6523 2017-07-04 15:46:12Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2663830)
 #
@@ -46,13 +46,13 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(903026);
-  script_version("$Revision: 5366 $");
+  script_version("$Revision: 6523 $");
   script_cve_id("CVE-2012-0141", "CVE-2012-0142", "CVE-2012-0143", "CVE-2012-0184",
                 "CVE-2012-0185", "CVE-2012-1847");
   script_bugtraq_id(53342, 53373, 53374, 53375, 53379);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:55:38 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:46:12 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-05-09 10:19:21 +0530 (Wed, 09 May 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2663830)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2597086");
@@ -67,12 +67,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_office_products_version_900032.nasl",
-                      "secpod_ms_office_detection_900025.nasl");
-  script_require_keys("SMB/Office/Excel/Version", "MS/Office/Ver",
-                      "SMB/Office/XLView/Version");
-  script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_dependencies("secpod_office_products_version_900032.nasl", "secpod_ms_office_detection_900025.nasl");
+  script_mandatory_keys("SMB/Office/Excel/Version", "MS/Office/Ver", "SMB/Office/XLView/Version");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

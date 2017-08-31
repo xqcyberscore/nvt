@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_transform_server_mult_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_transform_server_mult_xss_vuln.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Transform Foundation Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804637");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2014-2577");
   script_bugtraq_id(67810);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-12 12:37:47 +0530 (Thu, 12 Jun 2014)");
   script_name("Transform Foundation Server Multiple Cross Site Scripting Vulnerabilities");
 
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2014/Jun/34");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126907");
   script_xref(name : "URL" , value : "http://bot24.blogspot.in/2014/06/cve-2014-2577-xss-on-transform.html");
-  script_summary("Check if Transform Foundation Server is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

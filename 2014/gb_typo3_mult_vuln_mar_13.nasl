@@ -30,13 +30,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2013-1842", "CVE-2013-1843");
   script_bugtraq_id(58330, 60312);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-03 15:01:59 +0530 (Fri, 03 Jan 2014)");
   script_name("TYPO3 Multiple Vulnerabilities Mar13");
 
@@ -79,7 +79,6 @@ http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2013
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52638");
   script_xref(name : "URL" , value : "http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2013-001");
-  script_summary("Check for the vulnerable version of TYPO3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

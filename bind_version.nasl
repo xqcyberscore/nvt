@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bind_version.nasl 5445 2017-02-28 12:32:29Z antu123 $
+# $Id: bind_version.nasl 6485 2017-06-29 09:21:18Z santu $
 # Description: Determine which version of BIND name daemon is running
 #
 # Authors:
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10028");
-  script_version("$Revision: 5445 $");
+  script_version("$Revision: 6485 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-28 13:32:29 +0100 (Tue, 28 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:21:18 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Determine which version of BIND name daemon is running");
   script_category(ACT_GATHER_INFO);
@@ -72,6 +72,11 @@ function getVersion( data, port, proto ) {
     ver = eregmatch( pattern:'([0-9A-Za-z.-]+)', string:data );
   }
 
+  ## sometimes version comes with the ubuntu string
+  if(ver[1] && "ubuntu" >< version){
+    ver = eregmatch( pattern:'([0-9A-Za-z.-]+)ubuntu', string:ver[1] );
+  }
+ 
   if( ver[1] ) version = ver[1];
 
   version = ereg_replace( string:version, pattern: "-", replace: "." );

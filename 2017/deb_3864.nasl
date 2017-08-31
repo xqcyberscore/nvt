@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3864.nasl 6249 2017-05-30 13:27:41Z teissa $
+# $Id: deb_3864.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3864-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703864);
-    script_version("$Revision: 6249 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-5661");
     script_name("Debian Security Advisory DSA 3864-1 (fop - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-30 15:27:41 +0200 (Tue, 30 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-05-27 00:00:00 +0200 (Sat, 27 May 2017)");
     script_tag(name:"cvss_base", value:"7.9");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:N/A:C");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "fop on Debian Linux");
         script_tag(name: "insight",   value: "FOP is a Java application that reads a formatting object tree and then
 turns it into a wide variety of output presentations (including AFP,

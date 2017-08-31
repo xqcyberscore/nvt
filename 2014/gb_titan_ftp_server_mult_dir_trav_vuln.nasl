@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_titan_ftp_server_mult_dir_trav_vuln.nasl 2529 2016-01-29 09:19:57Z cfi $
+# $Id: gb_titan_ftp_server_mult_dir_trav_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Titan FTP Server Multiple Directory Traversal Vulnerabilities
 #
@@ -29,15 +29,14 @@ CPE = "cpe:/a:southrivertech:titan_ftp_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804400");
-  script_version("$Revision: 2529 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-1841", "CVE-2014-1842", "CVE-2014-1843");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-29 10:19:57 +0100 (Fri, 29 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-11 16:31:02 +0530 (Tue, 11 Feb 2014)");
   script_name("Titan FTP Server Multiple Directory Traversal Vulnerabilities");
 
-  script_summary("Check for the vulnerable versioln of Titan FTP Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("FTP");

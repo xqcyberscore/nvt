@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3775.nasl 5204 2017-02-06 07:45:16Z teissa $
+# $Id: deb_3775.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3775-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,7 +30,7 @@
 if(description)
 {
     script_id(703775);
-    script_version("$Revision: 5204 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2016-7922", "CVE-2016-7923", "CVE-2016-7924", "CVE-2016-7925",
                   "CVE-2016-7926", "CVE-2016-7927", "CVE-2016-7928", "CVE-2016-7929",
                   "CVE-2016-7930", "CVE-2016-7931", "CVE-2016-7932", "CVE-2016-7933",
@@ -43,7 +43,7 @@ if(description)
                   "CVE-2017-5482", "CVE-2017-5483", "CVE-2017-5484", "CVE-2017-5485",
                   "CVE-2017-5486");
     script_name("Debian Security Advisory DSA 3775-1 (tcpdump - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-02-06 08:45:16 +0100 (Mon, 06 Feb 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-01-29 00:00:00 +0100 (Sun, 29 Jan 2017)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "tcpdump on Debian Linux");
     script_tag(name: "insight",   value: "This program allows you to dump the
 traffic on a network. tcpdump is able to examine IPv4, ICMPv4, IPv6, ICMPv6, UDP,

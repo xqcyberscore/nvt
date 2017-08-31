@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-690.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: alas-2016-690.nasl 6574 2017-07-06 13:41:26Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120680");
-script_version("$Revision: 5568 $");
+script_version("$Revision: 6574 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:11:55 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:41:26 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-690");
 script_tag(name: "insight", value: "It was discovered that foomatic-rip failed to remove all shell special characters from inputs used to construct command lines for external programs run by the filter. An attacker could possibly use this flaw to execute arbitrary commands. (CVE-2015-8560 )It was discovered that the unhtmlify() function of foomatic-rip did not correctly calculate buffer sizes, possibly leading to a heap-based memory corruption. A malicious attacker could exploit this flaw to cause foomatic-rip to crash or, possibly, execute arbitrary code. (CVE-2010-5325 )"); 
 script_tag(name : "solution", value : "Run yum update foomatic to update your system.");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

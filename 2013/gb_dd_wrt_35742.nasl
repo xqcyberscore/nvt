@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dd_wrt_35742.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_dd_wrt_35742.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # DD-WRT Web Management Interface Remote Arbitrary Shell Command Injection Vulnerability
 #
@@ -48,7 +48,7 @@ if (description)
  script_oid(SCRIPT_OID);
  script_bugtraq_id(35742);
  script_cve_id("CVE-2009-2765");
- script_version ("$Revision: 6074 $");
+ script_version ("$Revision: 6698 $");
  script_tag(name:"cvss_base", value:"8.3");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -60,16 +60,15 @@ if (description)
  script_xref(name:"URL", value:"http://www.dd-wrt.com");
  script_xref(name:"URL", value:"http://www.heise.de/ct/artikel/Aufstand-der-Router-1960334.html");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-09-23 13:51:05 +0200 (Mon, 23 Sep 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("httpd/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("httpd/banner");
 
  script_tag(name : "impact" , value : tag_impact);
  script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -87,7 +86,6 @@ include("http_keepalive.inc");
 include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if("Server: httpd" >!< banner)exit(0);

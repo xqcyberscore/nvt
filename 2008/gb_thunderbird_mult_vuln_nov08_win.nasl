@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_mult_vuln_nov08_win.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_thunderbird_mult_vuln_nov08_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities November-08 (Windows)
 #
@@ -38,8 +38,8 @@ tag_summary = "The host is installed with Mozilla Thunderbird and is prone to
 if(description)
 {
   script_id(800059);
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 6519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-11-21 14:18:03 +0100 (Fri, 21 Nov 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -59,7 +59,7 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_thunderbird_detect_win.nasl");
-  script_require_keys("SMB/WindowsVersion","Thunderbird/Win/Ver");
+  script_mandatory_keys("Thunderbird/Win/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);

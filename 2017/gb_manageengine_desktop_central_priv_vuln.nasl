@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_desktop_central_priv_vuln.nasl 6213 2017-05-26 08:21:23Z teissa $
+# $Id: gb_manageengine_desktop_central_priv_vuln.nasl 6758 2017-07-19 09:21:22Z ckuersteiner $
 #
-# ManageEngine Destop Central Remote Control Privilege Violation Vulnerability
+# ManageEngine Desktop Central Remote Control Privilege Violation Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,8 +30,8 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106809");
-  script_version("$Revision: 6213 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-26 10:21:23 +0200 (Fri, 26 May 2017) $");
+  script_version("$Revision: 6758 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-19 11:21:22 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-05-17 16:32:04 +0700 (Wed, 17 May 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,7 @@ if (description)
 
   script_tag(name: "solution_type", value: "VendorFix");
 
-  script_name("ManageEngine Destop Central Remote Control Privilege Violation Vulnerability");
+  script_name("ManageEngine Desktop Central Remote Control Privilege Violation Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 

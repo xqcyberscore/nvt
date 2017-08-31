@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle_webLogic_server_37926.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: oracle_webLogic_server_37926.nasl 6449 2017-06-28 05:33:48Z santu $
 #
 # Oracle WebLogic Server Node Manager 'beasvc.exe' Remote Command Execution Vulnerability
 #
@@ -40,8 +40,8 @@ for details.";
 if (description)
 {
  script_id(100494);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_version("$Revision: 6449 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-28 07:33:48 +0200 (Wed, 28 Jun 2017) $");
  script_tag(name:"creation_date", value:"2010-02-14 12:35:00 +0100 (Sun, 14 Feb 2010)");
  script_bugtraq_id(37926);
  script_cve_id("CVE-2010-0073");
@@ -56,7 +56,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.oracle.com/technology/products/weblogic/index.html");
  script_xref(name : "URL" , value : "http://www.oracle.com/technology/deploy/security/alerts/alert-cve-2010-0073.html");
 
- script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner_unreliable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_privelege_escalation_vuln_oct09_win.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_adobe_reader_privelege_escalation_vuln_oct09_win.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Adobe Reader 'Download Manager' Privilege Escalation Vulnerability (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804368";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2009-2564");
   script_bugtraq_id(35740);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-08 16:15:57 +0530 (Tue, 08 Apr 2014)");
   script_name("Adobe Reader 'Download Manager' Privilege Escalation Vulnerability (Windows)");
 
@@ -80,7 +80,6 @@ http://www.adobe.com/downloads";
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/9199");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/54383");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb09-15.html");
-  script_summary("Check for the vulnerable version of Adobe Reader on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

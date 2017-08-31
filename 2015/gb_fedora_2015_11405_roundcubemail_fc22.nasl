@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869812");
-  script_version("$Revision: 6302 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-10 19:10:53 +0200 (Sat, 10 Jun 2017) $");
+  script_version("$Revision: 6637 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-07-30 05:06:04 +0200 (Thu, 30 Jul 2015)");
   script_cve_id("CVE-2015-5381", "CVE-2015-5382", "CVE-2015-5383");
   script_tag(name:"cvss_base", value:"5.0");
@@ -51,12 +51,11 @@ CSS 2.
   script_xref(name: "FEDORA", value: "2015-11405");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-July/162461.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of roundcubemail");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

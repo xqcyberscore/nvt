@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_listings_xss_vuln.nasl 6391 2017-06-21 09:59:48Z teissa $
+# $Id: gb_mediawiki_listings_xss_vuln.nasl 6709 2017-07-12 15:16:14Z cfischer $
 #
 # MediaWiki Listings extension Cross-site scripting Vulnerability - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805326");
-  script_version("$Revision: 6391 $");
+  script_version("$Revision: 6709 $");
   script_cve_id("CVE-2014-9477");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 17:16:14 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-01-23 12:37:41 +0530 (Fri, 23 Jan 2015)");
   script_name("MediaWiki Listings extension Cross-site scripting Vulnerability - Jan15");
 
@@ -85,32 +85,15 @@ reqwiki = "";
 reswiki = "";
 wikiPort = "";
 
-## Get HTTP Port
-wikiPort = get_http_port(default:80);
-if(!wikiPort){
-  wikiPort = 80;
-}
+if(!wikiPort = get_app_port(cpe:CPE)) exit(0);
+if(!dir = get_app_location(cpe:CPE, port:wikiPort)) exit(0);
 
-## Check the port state
-if(!get_port_state(wikiPort)){
- exit(0);
-}
+reqwiki = http_get(item:string(dir, "/index.php/Special:Version"), port:wikiPort);
+reswiki = http_keepalive_send_recv(port:wikiPort, data:reqwiki);
 
-#Check if host supports php
-if(!can_host_php(port:wikiPort)){
- exit(0);
-}
+## confirm the plugin
+if (reswiki =~">Listings<") {
 
-## Get Mediawiki Location
-if(!dir = get_app_location(cpe:CPE, port:wikiPort)){
-  exit(0);
-}
-  reqwiki = http_get(item:string(dir, "/index.php/Special:Version"), port:wikiPort);
-  reswiki = http_keepalive_send_recv(port:wikiPort, data:reqwiki);
-
-  ## confirm the plugin
-  if (reswiki =~">Listings<")
-  {
    ## Vulnerable Url
    url =dir+"/index.php?title=Extension:Listings&action=submit";
    reqwiki = http_get(item:url, port:wikiPort);
@@ -135,6 +118,8 @@ if(!dir = get_app_location(cpe:CPE, port:wikiPort)){
    if(!oldid[1]){
       exit(0);
    }
+
+   host = http_host_name(port:wikiPort);
 
    ## Construct the attack request
    postData = string('-----------------------------7523421607973306651860038372\r\n',
@@ -168,7 +153,7 @@ if(!dir = get_app_location(cpe:CPE, port:wikiPort)){
 
    #Send Attack Request
    sndReq = string("POST ", url, " HTTP/1.1\r\n",
-                   "Host: ", get_host_name(), "\r\n",
+                   "Host: ", host, "\r\n",
                    "Content-Type: multipart/form-data;",
                    "boundary=---------------------------7523421607973306651860038372\r\n",
                    "Content-Length: ", strlen(postData), "\r\n\r\n",
@@ -184,5 +169,4 @@ if(!dir = get_app_location(cpe:CPE, port:wikiPort)){
     security_message(wikiPort);
     exit(0);
    }
-
-  }
+}

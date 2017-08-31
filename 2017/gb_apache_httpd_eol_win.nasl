@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_httpd_eol_win.nasl 5928 2017-04-11 07:28:59Z cfi $
+# $Id: gb_apache_httpd_eol_win.nasl 6494 2017-06-30 08:10:34Z cfischer $
 #
 # Apache Web Server End Of Life Detection (Windows)
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108135");
-  script_version("$Revision: 5928 $");
+  script_version("$Revision: 6494 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 09:28:59 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 10:10:34 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-02-27 11:48:20 +0100 (Mon, 27 Feb 2017)");
   script_name("Apache Web Server End Of Life Detection (Windows)");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -77,12 +77,12 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( ret = product_reached_eol( cpe:CPE, version:version ) ) {
-
-  report = 'The Apache Web Server version has reached the end of life.\n\n' + 
-           'Installed version: ' + version + '\n' +
-           'EOL version:       ' + ret['eol_version'] + '\n' +
-           'EOL date:          ' + ret['eol_date'] + '\n';
-
+  report = build_eol_message( name:"Apache Web Server",
+                              cpe:CPE,
+                              version:version,
+                              eol_version:ret["eol_version"],
+                              eol_date:ret["eol_date"],
+                              eol_type:"prod" );
   security_message( port:port, data:report );
   exit( 0 );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX200254.nasl 2641 2016-02-11 16:51:04Z mime $
+# $Id: gb_citrix_netscaler_CTX200254.nasl 6534 2017-07-05 09:58:29Z teissa $
 #
 # Citrix NetScaler Unauthorised Access Vulnerability (CTX200254)
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-8580");
  script_tag(name:"cvss_base", value:"4.9");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
- script_version ("$Revision: 2641 $");
+ script_version ("$Revision: 6534 $");
 
  script_name("Citrix NetScaler Unauthorised Access Vulnerability (CTX200254)");
 
@@ -61,9 +61,8 @@ Version 10.1.x 'Enhanced' between 10.1-120.1316.e and 10.1-128.8003.e");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-11 17:51:04 +0100 (Thu, 11 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-05-12 13:12:00 +0200 (Tue, 12 May 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

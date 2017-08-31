@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_oct15_win.nasl 2581 2016-02-05 08:26:01Z benallard $
+# $Id: gb_google_chrome_mult_vuln02_oct15_win.nasl 6551 2017-07-06 09:58:21Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities-02 Oct15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805997");
-  script_version("$Revision: 2581 $");
+  script_version("$Revision: 6551 $");
   script_cve_id("CVE-2015-1304", "CVE-2015-1303");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:26:01 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-10-19 13:25:32 +0530 (Mon, 19 Oct 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Oct15 (Windows)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2015/09/stable-channel-update_24.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Google Chrome on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_win.nasl");

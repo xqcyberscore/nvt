@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_server_webaccess_mult_vuln_win.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_vmware_server_webaccess_mult_vuln_win.nasl 6518 2017-07-04 13:49:06Z cfischer $
 #
 # VMware WebAccess Multiple Vulnerabilities (Windows)
 #
@@ -47,8 +47,8 @@ tag_summary = "This host is installed with VMWare Server and is prone to
 if(description)
 {
   script_id(801308);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6518 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:49:06 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-0686", "CVE-2010-1193");
   script_bugtraq_id(39037,39105);
@@ -63,7 +63,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_vmware_prdts_detect_win.nasl");
-  script_require_keys("VMware/Server/Win/Ver", "VMware/Win/Installed");
+  script_mandatory_keys("VMware/Server/Win/Ver", "VMware/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

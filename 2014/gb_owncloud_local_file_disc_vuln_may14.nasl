@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_local_file_disc_vuln_may14.nasl 5081 2017-01-24 11:05:06Z cfi $
+# $Id: gb_owncloud_local_file_disc_vuln_may14.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # ownCloud 'SabreDAV' Local File Disclosure Vulnerability -01 May14
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804289";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5081 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2013-1939");
   script_bugtraq_id(59027);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:05:06 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-08 10:56:50 +0530 (Thu, 08 May 2014)");
   script_name(" ownCloud 'SabreDAV' Local File Disclosure Vulnerability -01 May14");
 
@@ -75,7 +75,6 @@ For updates refer to http://owncloud.org";
 
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2013/04/11/3");
   script_xref(name : "URL" , value : "http://owncloud.org/about/security/advisories/oC-SA-2013-016");
-  script_summary("Check the version of ownCloud is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

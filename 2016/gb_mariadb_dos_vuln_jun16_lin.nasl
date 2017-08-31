@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_dos_vuln_jun16_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_mariadb_dos_vuln_jun16_lin.nasl 6788 2017-07-21 19:16:52Z cfischer $
 #
 # MariaDB Denial Of Service Vulnerability (Linux)
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808153");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 6788 $");
   script_cve_id("CVE-2013-1861");
   script_bugtraq_id(58511);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-06-07 19:15:05 +0530 (Tue, 07 Jun 2016)");
   script_name("MariaDB Denial Of Service Vulnerability (Linux)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2016 Greenbone Networks GmbH");
   script_family("Databases");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
-  script_require_ports("Services/mariadb", 3306);
-  script_mandatory_keys("MariaDB/installed","Host/runs_unixoide");
+  script_require_ports("Services/mysql", 3306);
+  script_mandatory_keys("MariaDB/installed", "Host/runs_unixoide");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/52639");
   script_xref(name:"URL", value:"https://mariadb.atlassian.net/browse/MDEV-4252");

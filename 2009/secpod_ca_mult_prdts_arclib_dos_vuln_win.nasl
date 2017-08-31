@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ca_mult_prdts_arclib_dos_vuln_win.nasl 5369 2017-02-20 14:48:07Z cfi $
+# $Id: secpod_ca_mult_prdts_arclib_dos_vuln_win.nasl 6517 2017-07-04 13:34:20Z cfischer $
 #
 # CA Multiple Products 'arclib' Component DoS Vulnerability (Windows)
 #
@@ -45,8 +45,8 @@ tag_summary = "This host is installed with CA Multiple Products and is prone to
 if(description)
 {
   script_id(900967);
-  script_version("$Revision: 5369 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:48:07 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6517 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-10-29 07:53:15 +0100 (Thu, 29 Oct 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -62,9 +62,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("secpod_ca_mult_prdts_detect_win.nasl");
-  script_require_keys("CA/eTrust-EZ-AV/Win/Ver", "CA/AV/Win/Ver",
-                      "CA/ISS/Win/Ver");
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("CA/Multiple_Products/Win/Installed");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

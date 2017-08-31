@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_code_exec_vuln_jul09_lin.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_adobe_prdts_code_exec_vuln_jul09_lin.nasl 6476 2017-06-29 07:32:00Z cfischer $
 #
 # Adobe Products '.pdf' and '.swf' Code Execution Vulnerability - July09 (Linux)
 #
@@ -29,12 +29,12 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.900807";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5055 $");
+  script_version("$Revision: 6476 $");
   script_cve_id("CVE-2009-1862");
   script_bugtraq_id(35759);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:32:00 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-07-29 08:47:44 +0200 (Wed, 29 Jul 2009)");
   script_name("Adobe Products '.pdf' and '.swf' Code Execution Vulnerability - July09 (Linux)");
 
@@ -84,9 +84,8 @@ For updates refer to http://www.adobe.com/";
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("General");
-  script_dependencies("gb_adobe_flash_player_detect_lin.nasl",
-                      "gb_adobe_prdts_detect_lin.nasl");
-  script_require_keys("AdobeFlashPlayer/Linux/Ver", "Adobe/Reader/Linux/Version");
+  script_dependencies("gb_adobe_flash_player_detect_lin.nasl", "gb_adobe_prdts_detect_lin.nasl");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader/Linux/Installed");
   exit(0);
 }
 

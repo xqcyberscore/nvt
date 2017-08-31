@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: OpenVAS_detect.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: OpenVAS_detect.nasl 6790 2017-07-22 12:04:53Z cfischer $
 #
 # OpenVAS Scanner Detection
 #
@@ -26,28 +26,27 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100076");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
- script_tag(name:"creation_date", value:"2009-03-24 18:59:36 +0100 (Tue, 24 Mar 2009)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("OpenVAS Scanner Detection");
- 
- script_category(ACT_GATHER_INFO);
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_family("Product detection");
- script_require_ports("Services/unknown", 9390, 9391);
- script_dependencies("find_service2.nasl");
+  script_oid("1.3.6.1.4.1.25623.1.0.100076");
+  script_version("$Revision: 6790 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-22 14:04:53 +0200 (Sat, 22 Jul 2017) $");
+  script_tag(name:"creation_date", value:"2009-03-24 18:59:36 +0100 (Tue, 24 Mar 2009)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("OpenVAS Scanner Detection");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("find_service2.nasl");
+  script_require_ports("Services/unknown", 9391);
 
- script_tag(name : "summary" , value : "Detection of OpenVAS Scanner.
-                    
- The script sends a connection request to the server and attempts to
- extract the version number from the reply.");
+  script_tag(name:"summary", value:"Detection of OpenVAS Scanner.
 
- script_tag(name: "qod_type", value: "remote_banner");
+  The script sends a connection request to the server and attempts to
+  extract the version number from the reply.");
 
- exit(0);
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
 }
 
 include("misc_func.inc");
@@ -56,27 +55,36 @@ include("host_details.inc");
 
 port = get_unknown_port( default:9391 );
 
-soc = open_sock_tcp(port);
-if (soc) {
-  for(count=0; count < 3 ; count++)
-  {
-    senddata = string("< OTP/1.", count, " >\n");
-    send(socket:soc, data:senddata);
-    recvdata = recv_line(socket:soc, length:20);
-    if (ereg(pattern:"^< OTP/1." + count + " >$",string:recvdata)) {
-      close(soc);
+foreach protocol( make_list( "1.0", "1.1", "1.2", "2.0" ) ) {
 
-      cpe = 'cpe:/a:openvas:openvas_scanner';
-      vers = 'unknown';
-      install = port + '/tcp';
+  soc = open_sock_tcp( port );
+  if( ! soc ) exit( 0 );
 
-      register_product(cpe:cpe, location:install, port:port);
-      log_message(data: build_detection_report(app:"OpenVAS Scanner", version:vers, install:install, cpe:cpe, concluded: recvdata),
-                  port:port);
+  req = string( "< OTP/", protocol, " >\n" );
+  send( socket:soc, data:req );
+  res = recv_line( socket:soc, length:20 );
+  close( soc );
 
-      break;
-    }  	
+  if( ereg( pattern:"^< OTP/" + protocol + " >$", string:res ) ) {
+
+    replace_kb_item( name:"openvas_scanner/installed", value:TRUE );
+    replace_kb_item( name:"openvas_framework_component/installed", value:TRUE );
+
+    cpe = "cpe:/a:openvas:openvas_scanner";
+    vers = "unknown";
+    install = port + "/tcp";
+
+    register_service( port:port, proto:"openvas-scanner" );
+    register_product( cpe:cpe, location:install, port:port );
+
+    log_message( data:build_detection_report( app:"OpenVAS Scanner",
+                                              version:vers,
+                                              install:install,
+                                              cpe:cpe,
+                                              concluded:res ),
+                                              port:port );
+    break;
   }
 }
 
-exit(0);
+exit( 0 );

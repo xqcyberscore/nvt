@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_ms15-044.nasl 6207 2017-05-24 09:04:07Z teissa $
+# $Id: gb_lync_ms15-044.nasl 6473 2017-06-29 06:07:30Z cfischer $
 #
 # Microsoft Lync Remote Code Execution Vulnerability (3057110)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805559");
-  script_version("$Revision: 6207 $");
+  script_version("$Revision: 6473 $");
   script_cve_id("CVE-2015-1671");
   script_bugtraq_id(74490);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:07:30 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-14 11:44:26 +0530 (Thu, 14 May 2015)");
   script_name("Microsoft Lync Remote Code Execution Vulnerability (3057110)");
 
@@ -69,7 +69,9 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("smb_reg_service_pack.nasl", "secpod_ms_lync_detect_win.nasl");
-  script_require_keys("MS/Lync/Ver", "MS/Lync/path", "MS/Lync/Basic/path");
+  script_require_ports(139, 445);
+  script_mandatory_keys("MS/Lync/Installed");
+
   exit(0);
 }
 

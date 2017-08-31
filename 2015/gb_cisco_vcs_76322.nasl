@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_76322.nasl 3686 2016-07-11 16:22:45Z mime $
+# $Id: gb_cisco_vcs_76322.nasl 6513 2017-07-04 09:59:28Z teissa $
 #
 # Cisco TelePresence Video Communication Server (VCS) Multiple Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-4303","CVE-2015-4316","CVE-2015-4317","CVE-2015-4318","CVE-2015-4319","CVE-2015-4320");
  script_tag(name:"cvss_base", value:"6.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_version ("$Revision: 3686 $");
+ script_version ("$Revision: 6513 $");
 
  script_name("Cisco TelePresence Video Communication Server (VCS) Multiple Vulnerabilities");
 
@@ -95,9 +95,8 @@ CSCuv12340");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-11 18:22:45 +0200 (Mon, 11 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-08-27 15:44:02 +0200 (Thu, 27 Aug 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022887.nasl 6343 2017-06-15 09:48:13Z santu $
+# $Id: gb_ms_kb4022887.nasl 6585 2017-07-07 05:33:18Z cfischer $
 #
 # Microsoft Windows Multiple Information Disclosure Vulnerabilites (KB4022887)
 #
@@ -27,13 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810908");
-  script_version("$Revision: 6343 $");
+  script_version("$Revision: 6585 $");
   script_cve_id("CVE-2017-8470", "CVE-2017-8471", "CVE-2017-8475", "CVE-2017-8477", 
-                "CVE-2017-8484", "CVE-2017-8553", "CVE-2017-8472", "CVE-2017-8473");
+                "CVE-2017-8484", "CVE-2017-8553", "CVE-2017-8472", "CVE-2017-8473",
+		"CVE-2017-8554");
   script_bugtraq_id(98848, 98849, 98853, 98854, 98847, 98940, 98851, 98852);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-15 11:48:13 +0200 (Thu, 15 Jun 2017) $");
+  script_tag(name:"cvss_base", value:"1.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 07:33:18 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-06-14 09:15:00 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Windows Multiple Information Disclosure Vulnerabilites (KB4022887)");
 

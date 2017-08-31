@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_unspecified_vuln_jun06_macosx.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_adobe_reader_mult_unspecified_vuln_jun06_macosx.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Adobe Reader Multiple Unspecified Vulnerabilities Jun06 (Mac OS X)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804391";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2006-3093");
   script_bugtraq_id(18445);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-11 14:22:24 +0530 (Fri, 11 Apr 2014)");
   script_name("Adobe Reader Multiple Unspecified Vulnerabilities Jun06 (Mac OS X)");
 
@@ -76,7 +76,6 @@ http://get.adobe.com/reader";
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1016314");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/31829");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/techdocs/327817.html");
-  script_summary("Check for the vulnerable version of Adobe Reader on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_speedport_02_19.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_speedport_02_19.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Speedport DSL-Router Multiple Vulnerabilities
 #
@@ -39,7 +39,7 @@ tag_vuldetect = "Check the firmware version.";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6692 $");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
@@ -49,9 +49,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.telekom.com/verantwortung/sicherheit/216230");
  script_xref(name:"URL", value:"http://www.heise.de/newsticker/meldung/Fritzbox-Luecke-Vier-Speedport-Modelle-der-Telekom-betroffen-2118595.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-03-14 12:11:28 +0700 (Fri, 14 Mar 2014)");
- script_summary("Check the firmware version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("General");

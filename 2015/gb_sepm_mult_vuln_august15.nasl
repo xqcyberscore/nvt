@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sepm_mult_vuln_august15.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_sepm_mult_vuln_august15.nasl 6497 2017-06-30 09:58:54Z teissa $
 #
 # Symantec Endpoint Protection Manager Multiple Vulnerabilities August15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806004");
-  script_version("$Revision: 2748 $");
+  script_version("$Revision: 6497 $");
   script_cve_id("CVE-2015-1492", "CVE-2015-1491", "CVE-2015-1490", "CVE-2015-1489",
                 "CVE-2015-1488", "CVE-2015-1487", "CVE-2015-1486");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-14 12:49:14 +0530 (Fri, 14 Aug 2015)");
   script_name("Symantec Endpoint Protection Manager Multiple Vulnerabilities August15");
 
@@ -71,7 +71,6 @@ if(description)
   script_xref(name: "URL" , value : "http://seclists.org/fulldisclosure/2015/Aug/1");
   script_xref(name: "URL" , value : "http://codewhitesec.blogspot.in/2015/07/symantec-endpoint-protection.html");
 
-  script_summary("Check for the vulnerable version of SEPM on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

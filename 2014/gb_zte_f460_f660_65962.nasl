@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_f460_f660_65962.nasl 5843 2017-04-03 13:42:51Z cfi $
+# $Id: gb_zte_f460_f660_65962.nasl 6699 2017-07-12 12:07:37Z cfischer $
 #
 # ZTE F460/F660 Backdoor Unauthorized Access Vulnerability
 #
@@ -42,19 +42,18 @@ if (description)
  script_cve_id("CVE-2014-2321");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5843 $");
+ script_version ("$Revision: 6699 $");
  script_name("ZTE F460/F660 Backdoor Unauthorized Access Vulnerability");
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65962");
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:42:51 +0200 (Mon, 03 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:07:37 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-03-20 09:52:23 +0100 (Thu, 20 Mar 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("Mini_web_server/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("Mini_web_server/banner");
 
  script_tag(name : "impact" , value : tag_impact);
  script_tag(name : "vuldetect" , value : tag_vuldetect);

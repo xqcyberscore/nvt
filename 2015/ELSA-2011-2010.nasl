@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-2010.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: ELSA-2011-2010.nasl 6556 2017-07-06 11:54:54Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122217");
-script_version("$Revision: 6211 $");
+script_version("$Revision: 6556 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:14:56 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:54 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-2010");
 script_tag(name: "insight", value: "ELSA-2011-2010 -  Oracle Linux 6 Unbreakable Enterprise kernel security fix update - [2.6.32-100.28.9.el6] - sync up the version [2.6.32-100.28.8.el6] - [block] check for proper length of iov entries earlier in blk_rq_map_user_iov (Xiaotian Feng) {CVE-2010-4668} - scm: lower SCM_MAX_FD (Eric Dumazet) {CVE-2010-4249} - perf_events: Fix perf_counter_mmap() hook in mprotect() (Pekka Enberg) {CVE-2010-4169} - tcp: Increase TCP_MAXSEG socket option minimum (David S. Miller) {CVE-2010-4165} - Enable module force load option [orabug 11782146] - Enable vmw balloon and pvscsi (Guru Anbalagane) [orabug 11697522] [2.6.32-100.28.7.el6] - build from git [2.6.32-100.28.6.el6] - Remove crashkernel option if it is present [bug 11714928]"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"4.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

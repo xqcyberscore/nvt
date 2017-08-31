@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3727.nasl 4761 2016-12-14 07:26:20Z antu123 $
+# $Id: deb_3727.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3727-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703727);
-    script_version("$Revision: 4761 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2016-4330", "CVE-2016-4331", "CVE-2016-4332", "CVE-2016-4333");
     script_name("Debian Security Advisory DSA 3727-1 (hdf5 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-12-14 08:26:20 +0100 (Wed, 14 Dec 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-12-02 17:27:07 +0530 (Fri, 02 Dec 2016)");
     script_tag(name:"cvss_base", value:"6.9");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "hdf5 on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (jessie),
 these problems have been fixed in version 1.8.13+docs-15+deb8u1.

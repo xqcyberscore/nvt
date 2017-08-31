@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_detect.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_foxit_reader_detect.nasl 6515 2017-07-04 11:54:15Z cfischer $
 #
 # Foxit Reader Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800536");
-  script_version("$Revision: 2836 $");
+  script_version("$Revision: 6515 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-03-17 05:28:51 +0100 (Tue, 17 Mar 2009)");
   script_name("Foxit Reader Version Detection");
 
@@ -44,7 +44,6 @@ if(description)
   and gets the version from registry.");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Detection of installed version of Foxit Reader");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -127,6 +126,7 @@ foreach key (key_list)
 
   if(foxitVer)
   {
+    replace_kb_item(name:"Foxit/Phantom_or_Reader/Installed", value:TRUE);
     set_kb_item(name:"Foxit/Reader/Ver", value:foxitVer);
 
     if(!foxitPath){

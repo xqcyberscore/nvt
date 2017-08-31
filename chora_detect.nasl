@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: chora_detect.nasl 5720 2017-03-24 14:15:57Z cfi $
-# Description: Chora Detection
+# $Id: chora_detect.nasl 6722 2017-07-14 08:54:37Z cfischer $
+#
+# Chora Detection
 #
 # Authors:
 # George A. Theall, <theall@tifaware.com>
@@ -20,38 +22,32 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "This script detects whether the remote host is running Chora and
-extracts version numbers and locations of any instances found. 
-
-Chora is a PHP-based interface to CVS repositories from the Horde
-Project. See http://www.horde.org/chora/ for more information.";
-
-# NB: I define the script description here so I can later modify
-#     it with the version number and install directory.
-  desc = "
-  Summary:
-  " + tag_summary;
+###############################################################################
 
 if(description)
 {
-  script_id(13849);
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5720 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 15:15:57 +0100 (Fri, 24 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.13849");
+  script_version("$Revision: 6722 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 10:54:37 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Chora Detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
-  script_family("General");
+  script_family("Product detection");
   script_dependencies("global_settings.nasl", "http_version.nasl", "no404.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value :"This script detects whether the remote host is running Chora and
+  extracts version numbers and locations of any instances found. 
+
+  Chora is a PHP-based interface to CVS repositories from the Horde
+  Project. See http://www.horde.org/chora/ for more information.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
@@ -61,124 +57,99 @@ include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.13849";
-SCRIPT_DESC = "Chora Detection";
-
-port = get_http_port(default:80);
-host = http_host_name(port:port);
-if (debug_level) display("debug: looking for Chora on ", host, ":", port, ".\n");
-
-if (!can_host_php(port:port)) exit(0);
-if (get_kb_item("www/no404/" + port)) exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
 # Search for Chora in a couple of different locations.
-#
 # NB: Directories beyond cgi_dirs() come from a Google search - 
 #     'inurl:cvs.php horde' - and represent the more popular
 #     installation paths currently. Still, cgi_dirs() should catch
 #     the directory if its referenced elsewhere on the target.
+
 installs = 0;
+
+# Search for version number in a couple of different pages.
+files = make_list( "/horde/services/help/?module=chora&show=about", "/cvs.php", "/README" );
+
 foreach dir( make_list_unique( "/horde/chora", "/chora", "/", cgi_dirs( port:port ) ) ) {
-  # Search for version number in a couple of different pages.
-  files = make_list(
-    "/horde/services/help/?module=chora&show=about",
-    "/cvs.php",
-    "/README"
-  );
 
-  foreach file (files) {
-    if (debug_level) display("checking for Chora in ", dir, file, "...\n");
+  install = dir;
+  if( dir == "/" ) dir = "";
 
-    # Get the page.
-    req = http_get(item:string(dir, file), port:port);
-    res = http_keepalive_send_recv(port:port, data:req);
-    if (res == NULL) exit(0);           # can't connect
-    if (debug_level) display("debug: res =>>", res, "<<\n");
+  foreach file( files ) {
 
-    if (egrep(string:res, pattern:"^HTTP/.* 200 OK")) {
+    res = http_get_cache( item:dir + file, port:port );
+    if( res == NULL ) continue;
+
+    if( egrep( string:res, pattern:"^HTTP/1\.[01] 200" ) ) {
+
       # Specify pattern used to identify version string.
-      #
       # - version 2.x
-      if (file == "/horde/services/help/?module=chora&show=about") {
+      if( file == "/horde/services/help/?module=chora&show=about" ) {
         pat = '>This is Chora +(.+).<';
       }
       # - version 1.x
-      else if (file =~ "^/cvs.php") {
+      else if( file =~ "^/cvs.php" ) {
         pat = 'class=.+>CHORA +(.+)</a>';
       }
       # - other possibilities, but not necessarily good ones.
       #   nb: README is not guaranteed to be available and is sometimes
       #       inaccurate (eg, it reads 1.0 in version 1.2 and 1.2.1 in
       #       version 1.2.2).
-      else if (file == "/README") {
+      else if( file == "/README" ) {
         pat = '^Version +(.+) *$';
       }
       # - someone updated files but forgot to add a pattern???
       else {
-        if (debug_level) display("Don't know how to handle file '", file, "'!\n");
-        exit(1);
+        exit( 0 );
       }
 
       # Get the version string.
-      if (debug_level) display("debug: grepping results for =>>", pat, "<<\n");
-      matches = egrep(pattern:pat, string:res);
-      foreach match (split(matches)) {
-        match = chomp(match);
-        if (debug_level) display("debug: grepping >>", match, "<< for =>>", pat, "<<\n");
-        ver = eregmatch(pattern:pat, string:match);
-        if (ver == NULL) break;
+      matches = egrep( pattern:pat, string:res );
+
+      foreach match( split( matches ) ) {
+
+        # Avoid false positives against other products shipping a README file (e.g. Tiki)
+        if( file == "/README" && "Chora" >!< res ) continue;
+
+        match = chomp( match );
+        ver = eregmatch( pattern:pat, string:match );
+        if( ver == NULL ) break;
         ver = ver[1];
-        if (debug_level) display("Chora version ", ver, " found in ", dir, ".\n");
 
-        # Success!
-        tmp_version = string(ver, " under ", dir);
-        set_kb_item(
-          name:string("www/", port, "/chora"), 
-          value:tmp_version);
+        tmp_version = ver + " under " + install;
+        set_kb_item( name:"www/" + port + "/chora", value:tmp_version );
 
-        installations[dir] = ver;
+        installations[install] = ver;
         ++installs;
 
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value: tmp_version, exp:"^([0-9.]+)",base:"cpe:/a:horde:chora:");
-        if(!isnull(cpe))
-           register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+        cpe = build_cpe( value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:horde:chora:" );
+        if( isnull( cpe ) )
+          cpe = "cpe:/a:horde:chora";
 
-        # nb: only worried about the first match.
-        break;
+        register_product( cpe:cpe, location:install, port:port );
+
+        break; # nb: only worried about the first match.
       }
-      # nb: if we found an installation, stop iterating through files.
-      if (installs) break;
+      if( installs ) break; # nb: if we found an installation, stop iterating through files.
     }
   }
-  # Scan for multiple installations only if "Thorough Tests" is checked.
-  if (installs) break;
 }
 
-# Report any instances found unless Report verbosity is "Quiet".
-if (installs && report_verbosity > 0) {
-  if (installs == 1) {
-    foreach dir (keys(installations)) {
+if( installs ) {
+  if( installs == 1 ) {
+    foreach dir( keys( installations ) ) {
       # empty - just need to set 'dir'.
     }
-    info = string("Chora ", ver, " was detected on the remote host under the path ", dir, ".");
-  }
-  else {
-    info = string(
-      "Multiple instances of Chora were detected on the remote host:\n",
-      "\n"
-    );
-    foreach dir (keys(installations)) {
-      info = info + string("    ", installations[dir], ", installed under ", dir, "\n");
+    info = "Chora " + ver + " was detected on the remote host under the path " + dir + ".";
+  } else {
+    info = 'Multiple instances of Chora were detected on the remote host:\n\n';
+    foreach dir( keys( installations ) ) {
+      info += string("    ", installations[dir], ", installed under ", dir, "\n" );
     }
-    info = chomp(info);
+    info = chomp( info );
   }
-
-  desc = ereg_replace(
-    string:desc,
-    pattern:"This script[^\.]+\.", 
-    replace:info
-  );
-  log_message(port:port, data:desc);
+  log_message( port:port, data:info );
 }
+
+exit( 0 );

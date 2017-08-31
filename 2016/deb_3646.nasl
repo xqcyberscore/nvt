@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3646.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: deb_3646.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3646-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703646);
-    script_version("$Revision: 5580 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2016-5423", "CVE-2016-5424");
     script_name("Debian Security Advisory DSA 3646-1 (postgresql-9.4 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-08-11 00:00:00 +0200 (Thu, 11 Aug 2016)");
     script_tag(name:"cvss_base", value:"6.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "postgresql-9.4 on Debian Linux");
     script_tag(name: "insight",   value: "PostgreSQL is a fully featured
 object-relational database management system. It supports a large part of the SQL

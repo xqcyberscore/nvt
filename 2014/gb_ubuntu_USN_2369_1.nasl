@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841993");
-  script_version("$Revision: 2812 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 12:51:30 +0100 (Wed, 09 Mar 2016) $");
+  script_version("$Revision: 6759 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-03 05:57:59 +0200 (Fri, 03 Oct 2014)");
   script_cve_id("CVE-2014-3587");
   script_tag(name:"cvss_base", value:"4.3");
@@ -46,12 +46,11 @@ in a denial of service.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2369-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-October/002685.html");
-  script_summary("Check for the Version of file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

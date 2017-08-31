@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017-0080.nasl 6203 2017-05-24 04:40:49Z ckuerste $
+# $Id: gb_panos_pan_sa-2017-0080.nasl 6840 2017-08-03 08:38:20Z ckuersteiner $
 #
 # Palo Alto Networks PAN-OS CVE-2017-7216 Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/o:altaware:palo_alto_networks_panos';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107162");
-  script_version("$Revision: 6203 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 06:40:49 +0200 (Wed, 24 May 2017) $");
+  script_version("$Revision: 6840 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-03 10:38:20 +0200 (Thu, 03 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-05-02 11:40:28 +0200 (Tue, 02 May 2017)");
   script_cve_id("CVE-2017-7126");
   script_bugtraq_id(97590);
@@ -53,7 +53,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
 
-  script_family("General");
+  script_family("Palo Alto PAN-OS Local Security Checks");
 
   script_dependencies("gb_palo_alto_panOS_version.nasl");
   script_mandatory_keys("palo_alto_pan_os/version");

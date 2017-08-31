@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmturbo_operations_manager_69225.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_vmturbo_operations_manager_69225.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # VMTurbo Operations Manager '/cgi-bin/vmtadmin.cgi' Remote Command Execution Vulnerability
 #
@@ -52,7 +52,7 @@ if (description)
  script_cve_id("CVE-2014-5073");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6756 $");
 
  script_name("VMTurbo Operations Manager '/cgi-bin/vmtadmin.cgi' Remote Command Execution Vulnerability");
 
@@ -60,16 +60,14 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/69225");
  script_xref(name:"URL", value:"http://secunia.com/secunia_research/2014-8/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-08-18 14:14:43 +0200 (Mon, 18 Aug 2014)");
- script_summary("Determine if it is possible to execute shell code");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_vmturbo_operations_manager_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("vmturbo/installed");
 
  script_tag(name : "impact" , value : tag_impact);

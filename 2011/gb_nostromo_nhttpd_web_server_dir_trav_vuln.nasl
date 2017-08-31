@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nostromo_nhttpd_web_server_dir_trav_vuln.nasl 5648 2017-03-21 09:52:17Z cfi $
+# $Id: gb_nostromo_nhttpd_web_server_dir_trav_vuln.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # Nostromo nhttpd Webserver Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802010");
-  script_version("$Revision: 5648 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 6696 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -41,10 +41,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_require_ports("Services/www", 80, 8080);
   script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80, 8080);
   script_mandatory_keys("nostromo/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to perform directory traversal
   attacks and read arbitrary files on the affected application.

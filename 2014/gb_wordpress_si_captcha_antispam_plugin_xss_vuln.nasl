@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_si_captcha_antispam_plugin_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_si_captcha_antispam_plugin_xss_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # WordPress SI CAPTCHA Anti-Spam Plugin Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804816");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-5190");
   script_bugtraq_id(69011);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-19 18:46:50 +0530 (Tue, 19 Aug 2014)");
   script_name("WordPress SI CAPTCHA Anti-Spam Plugin Cross Site Scripting Vulnerability");
 
@@ -77,7 +77,6 @@ features, remove the product or replace the product by another one.";
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/95104");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127723");
-  script_summary("Check if WordPress SI CAPTCHA Anti-Spam Plugin is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

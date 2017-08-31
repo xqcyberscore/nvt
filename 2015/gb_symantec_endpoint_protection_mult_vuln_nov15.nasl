@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_protection_mult_vuln_nov15.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_symantec_endpoint_protection_mult_vuln_nov15.nasl 6505 2017-07-03 09:58:27Z teissa $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities Nov15
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806571");
-  script_version("$Revision: 2748 $");
+  script_version("$Revision: 6505 $");
   script_cve_id("CVE-2015-8113", "CVE-2015-6555", "CVE-2015-6554");
   script_bugtraq_id(77494, 77495, 77585);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-11-16 12:41:11 +0530 (Mon, 16 Nov 2015)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities Nov15");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name: "URL" , value : "https://www.tenable.com/plugins/index.php?view=single&id=86873");
   script_xref(name: "URL" , value : "https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=&suid=20151109_00");
 
-  script_summary("Check for the vulnerable version of Symantec Endpoint Protection");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unitrends_mult_vulns_04_17.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_unitrends_mult_vulns_04_17.nasl 6711 2017-07-13 06:53:09Z cfischer $
 #
 # Unitrends Multiple Vulnerabillities
 #
@@ -33,7 +33,7 @@ if (description)
  script_tag(name:"cvss_base", value:"10.0");
  script_cve_id("CVE-2017-7280","CVE-2017-7284","CVE-2017-7281","CVE-2017-7279");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6012 $");
+ script_version ("$Revision: 6711 $");
 
  script_name("Unitrends Multiple Vulnerabillities");
 
@@ -55,14 +55,13 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 08:53:09 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2017-04-12 16:05:50 +0200 (Wed, 12 Apr 2017)");
- script_category(ACT_ATTACK);
+ script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_dependencies("gb_unitrends_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("unitrends/version");
 
  exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_garoon_mult_vuln_jun16.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_cybozu_garoon_mult_vuln_jun16.nasl 6752 2017-07-18 11:20:18Z cfischer $
 #
 # Cybozu Garoon Multiple Vulnerabilities-01 Jun16 
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:cybozu:garoon";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807849");
-  script_version("$Revision: 5650 $");
+  script_version("$Revision: 6752 $");
   script_cve_id("CVE-2016-1190", "CVE-2016-1193", "CVE-2016-1192", "CVE-2016-1188",
                 "CVE-2016-1189", "CVE-2016-1195", "CVE-2016-1196", "CVE-2016-1191",
-                "CVE-2016-1197");
+                "CVE-2016-1197", "CVE-2016-1194");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 13:20:18 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-06-29 17:46:28 +0530 (Wed, 29 Jun 2016)");
   script_name("Cybozu Garoon Multiple Vulnerabilities-01 Jun16");
 

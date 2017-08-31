@@ -29,14 +29,14 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809814");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 6901 $");
   script_cve_id("CVE-2013-1502");
   script_bugtraq_id(59239);
   script_tag(name:"cvss_base", value:"1.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-11 10:28:09 +0200 (Fri, 11 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-11-18 15:18:27 +0530 (Fri, 18 Nov 2016)");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle MySQL Unspecified Vulnerability-01 Nov16 (Linux)");
 
   script_tag(name:"summary", value:"This host is running Oracle MySQL and is

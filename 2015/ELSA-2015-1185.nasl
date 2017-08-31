@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1185.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: ELSA-2015-1185.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123090");
-script_version("$Revision: 6443 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:59:14 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1185");
 script_tag(name: "insight", value: "ELSA-2015-1185 -  nss security update - nss[3.19.1-3.0.1]- Added nss-vendor.patch to change vendor[3.19.1-3]- Additional NULL initialization.[3.19.1-2]- Updated the patch to keep old cipher suite order- Resolves: Bug 1224449[3.19.1-1]- Rebase to nss-3.19.1- Resolves: Bug 1224449nss-util[3.19.0-1]- Rebase to nss-3.19.1- Resolves: Bug 1224449[3.18.0-1]- Resolves: - Bug 1205064 - [RHEL6.6] nss-util 3.18 rebase required for firefox 38 ESR"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"4.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hhvm_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_hhvm_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # HHVM Detection
 #
@@ -31,8 +31,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version ("$Revision: 6701 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-12-09 14:29:24 +0100 (Tue, 09 Dec 2014)");
  script_name("HHVM Detection");
 
@@ -47,9 +47,9 @@ from the reply.");
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("HHVM/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("HHVM/banner");
+
  exit(0);
 }
 

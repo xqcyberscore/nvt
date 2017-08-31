@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_mult_vuln_nov14_win.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_pidgin_mult_vuln_nov14_win.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Pidgin Multiple Vulnerabilities Nov 2014 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:pidgin:pidgin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804890");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-3694", "CVE-2014-3695", "CVE-2014-3696", "CVE-2014-3697",
                 "CVE-2014-3698");
   script_bugtraq_id(70701, 70702, 70705, 70704, 70703);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-21 18:58:24 +0530 (Fri, 21 Nov 2014)");
   script_name("Pidgin Multiple Vulnerabilities Nov 2014 (Windows)");
 
@@ -73,7 +73,6 @@ if(description)
   script_xref(name:"URL", value:"http://pidgin.im/news/security/?id=90");
 
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Pidgin");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_pidgin_detect_win.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_nov08_win.nasl 4218 2016-10-05 14:20:48Z teissa $
+# $Id: gb_adobe_flash_player_mult_vuln_nov08_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities - Nov08 (Windows)
 #
@@ -40,8 +40,8 @@ tag_summary = "This host has Adobe Flash Player installed and is prone to
 if(description)
 {
   script_id(800054);
-  script_version("$Revision: 4218 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 16:20:48 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 6519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-11-12 16:32:06 +0100 (Wed, 12 Nov 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -57,7 +57,7 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_require_keys("SMB/WindowsVersion","AdobeFlashPlayer/Win/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Win/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

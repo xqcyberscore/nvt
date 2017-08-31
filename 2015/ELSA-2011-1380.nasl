@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-1380.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2011-1380.nasl 6556 2017-07-06 11:54:54Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122071");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6556 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:12:34 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:54 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-1380");
 script_tag(name: "insight", value: "ELSA-2011-1380 -  java-1.6.0-openjdk security update - [1:1.6.0.0-1.40.1.9.10]- Resolves: rhbz#744788- Bumped to IcedTea6 1.9.8-removed font copying Security fixes - S7000600, CVE-2011-3547: InputStream skip() information leak - S7019773, CVE-2011-3548: mutable static AWTKeyStroke.ctor - S7023640, CVE-2011-3551: Java2D TransformHelper integer overflow - S7032417, CVE-2011-3552: excessive default UDP socket limit under SecurityManager - S7046823, CVE-2011-3544: missing SecurityManager checks in scripting engine - S7055902, CVE-2011-3521: IIOP deserialization code execution - S7057857, CVE-2011-3554: insufficient pack200 JAR files uncompress error checks - S7064341, CVE-2011-3389: JSSE - S7070134, CVE-2011-3558: Hotspot unspecified issue - S7077466, CVE-2011-3556: RMI DGC server remote code execution - S7083012, CVE-2011-3557: RMI registry privileged code execution - S7096936, CVE-2011-3560: missing checkSetFactory calls in HttpsURLConnection NetX - PR794: javaws does not work if a Web Start app jar has a Class-Path element in the manifest"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2011-1380");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

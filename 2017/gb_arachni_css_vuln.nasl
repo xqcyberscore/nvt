@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arachni_css_vuln.nasl 6363 2017-06-16 16:32:17Z teissa $
+# $Id: gb_arachni_css_vuln.nasl 6766 2017-07-20 06:44:05Z cfischer $
 #
 # Arachni v1.5-0.5.11 - Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:arachni:arachni";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107221");
-  script_version("$Revision: 6363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-16 18:32:17 +0200 (Fri, 16 Jun 2017) $");
+  script_version("$Revision: 6766 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 08:44:05 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-06-15 12:26:25 +0200 (Thu, 15 Jun 2017)");
 
   script_tag(name:"cvss_base", value:"4.3");
@@ -49,10 +49,11 @@ if(description)
 
   script_tag(name: "affected", value: "Arachni Version 1.5-0.5.11");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 15th June, 2017. Information regarding this issue will be updated once the solution details are available. For updates refer to http://www.arachni-scanner.com/blog/tag/release/");
+  script_tag(name: "solution", value: "Update to 1.5-0.5.12 or later.");
 
   script_xref(name: "URL" , value: "http://seclists.org/fulldisclosure/2017/May/5");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_xref(name: "URL" , value: "https://github.com/Arachni/arachni-ui-web/blob/experimental/CHANGELOG.md#0512-march-29-2017");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -76,10 +77,10 @@ if(!Ver = get_app_version(cpe: CPE, port: Port))  exit(0);
 
 if(!Webui = get_kb_item("arachni/webui")) exit(0);
 
-if(version_is_equal(version: Ver, test_version: "1.5") && version_is_equal(version: Webui, test_version: "0.5.11"))
+if(version_is_equal(version: Ver, test_version: "1.5") && version_is_less(version: Webui, test_version: "0.5.12"))
 
 {
-  report =  report_fixed_ver(installed_version: Ver, fixed_version: "None Available");
+  report =  report_fixed_ver(installed_version: Ver, fixed_version: "1.5-0.5.12");
   security_message(data: report, port: Port);
   exit(0);
 }

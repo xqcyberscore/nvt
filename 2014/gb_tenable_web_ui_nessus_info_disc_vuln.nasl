@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tenable_web_ui_nessus_info_disc_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_tenable_web_ui_nessus_info_disc_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Nessus Tenable Web UI Information Disclosure Vulnerbility
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:tenable:nessus';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804802");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-4980");
   script_bugtraq_id(68782);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-08 10:33:08 +0530 (Fri, 08 Aug 2014)");
   script_name("Nessus Tenable Web UI Information Disclosure Vulnerbility");
 
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.tenable.com/security/tns-2014-05");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127532");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/532839/100/0/threaded");
-  script_summary("Check if Nessus is vulnerable to information disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

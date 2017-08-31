@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882743");
-  script_version("$Revision: 6433 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-26 16:58:57 +0200 (Mon, 26 Jun 2017) $");
+  script_version("$Revision: 6819 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-31 12:03:19 +0200 (Mon, 31 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-06-23 07:17:13 +0200 (Fri, 23 Jun 2017)");
   script_cve_id("CVE-2017-1000368", "CVE-2017-1000367");
   script_tag(name:"cvss_base", value:"7.2");
@@ -60,7 +60,7 @@ commands via sudo could use this flaw to escalate their privileges to root.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 
@@ -77,7 +77,7 @@ if(release == NULL){
 if(release == "CentOS7")
 {
 
-  if ((res = isrpmvuln(pkg:"sudo", rpm:"sudo~1.9.6p7~23.el7_3", rls:"CentOS7")) != NULL)
+  if ((res = isrpmvuln(pkg:"sudo", rpm:"sudo~1.8.6p7~23.el7_3", rls:"CentOS7")) != NULL)
   {
     security_message(data:res);
     exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_wnr2000_router_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_netgear_wnr2000_router_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # NETGEAR WNR2000 Routers Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809774");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6701 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-12-30 14:43:15 +0530 (Fri, 30 Dec 2016)");
   script_name("NETGEAR WNR2000 Routers Detection");
 
@@ -45,9 +45,9 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("wnr2000/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("wnr2000/banner");
+
   exit(0);
 }
 
@@ -63,9 +63,7 @@ location = "";
 version ="";
 cpe = "";
 
-if(!netPort = get_http_port(default:80)){
-  exit(0);
-}
+netPort = get_http_port(default:80);
 
 ##Get http banner
 banner = get_http_banner(port:netPort);

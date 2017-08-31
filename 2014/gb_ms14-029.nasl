@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-029.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-029.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2962482)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2014-0310", "CVE-2014-1815");
   script_bugtraq_id(67299, 67301);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-14 08:23:13 +0530 (Wed, 14 May 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2962482)");
@@ -79,7 +79,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-029";
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2953522");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2961851");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms14-029");
-  script_summary("Check for the vulnerable 'Mshtml.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

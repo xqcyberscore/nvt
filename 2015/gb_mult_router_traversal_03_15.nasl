@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_router_traversal_03_15.nasl 2651 2016-02-12 10:45:45Z benallard $
+# $Id: gb_mult_router_traversal_03_15.nasl 6600 2017-07-07 09:58:31Z teissa $
 #
 # Multiple ADSL Routers Directory Traversal Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105242");
- script_version ("$Revision: 2651 $");
+ script_version ("$Revision: 6600 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2015-7252", "CVE-2015-7251", "CVE-2015-7250", "CVE-2015-7249",
@@ -62,9 +62,8 @@ Observa Telecom BHS_RTA_R1A");
  script_tag(name:"solution_type", value:"NoneAvailable");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:45:45 +0100 (Fri, 12 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-03-23 10:41:22 +0100 (Mon, 23 Mar 2015)");
- script_summary("Check for directory-traversal vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

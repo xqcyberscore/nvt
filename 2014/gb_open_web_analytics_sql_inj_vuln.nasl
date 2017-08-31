@@ -30,12 +30,12 @@ CPE = "cpe:/a:openwebanalytics:open_web_analytics";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-1206");
   script_bugtraq_id(64774);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-21 13:34:38 +0530 (Tue, 21 Jan 2014)");
   script_name("Open Web Analytics 'owa_email_address' SQL Injection Vulnerability");
 
@@ -77,7 +77,6 @@ For updates refer to http://downloads.openwebanalytics.com";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56350");
   script_xref(name : "URL" , value : "http://www.secureworks.com/advisories/SWRX-2014-001/SWRX-2014-001.pdf");
-  script_summary("Check for the sql injection in Open Web Analytics");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

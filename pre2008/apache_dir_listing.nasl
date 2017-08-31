@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_dir_listing.nasl 5829 2017-04-03 07:00:29Z cfi $
+# $Id: apache_dir_listing.nasl 6540 2017-07-05 12:42:02Z cfischer $
 # Description: Apache Directory Listing
 #
 # Authors:
@@ -49,27 +49,30 @@ httpd.conf file.";
 
 if(description)
 {
- script_id(10704);
- script_version("$Revision: 5829 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:00:29 +0200 (Mon, 03 Apr 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(3009);
- script_xref(name: "OWASP", value: "OWASP-CM-004");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_cve_id("CVE-2001-0731");
- script_name("Apache Directory Listing");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_vul");
- script_copyright("This script is Copyright (C) 2001 Matt Moore");
- script_family("Web Servers");
- script_dependencies("gb_get_http_banner.nasl", "no404.nasl");
- script_mandatory_keys("apache/banner");
- script_require_ports("Services/www", 80);
- script_require_keys("www/apache");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_oid("1.3.6.1.4.1.25623.1.0.10704");
+  script_version("$Revision: 6540 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:42:02 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(3009);
+  script_xref(name: "OWASP", value: "OWASP-CM-004");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_cve_id("CVE-2001-0731");
+  script_name("Apache Directory Listing");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2001 Matt Moore");
+  script_family("Web Servers");
+  script_dependencies("gb_get_http_banner.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("apache/banner");
+
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"solution_type", value:"Mitigation");
+  script_tag(name:"qod_type", value:"remote_vul");
+
+  exit(0);
 }
 
 # Make a request for the root directory followed by ?M=A

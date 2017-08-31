@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_sep14.nasl 2825 2016-03-10 08:11:16Z benallard $
+# $Id: gb_apple_macosx_mult_vuln01_sep14.nasl 6601 2017-07-07 10:00:10Z cfischer $
 #
 # Apple Mac OS X Multiple Vulnerabilities -01 Sep14
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804846");
-  script_version("$Revision: 2825 $");
+  script_version("$Revision: 6601 $");
   script_cve_id("CVE-2014-0015", "CVE-2014-1317", "CVE-2014-1375", "CVE-2014-1378",
                 "CVE-2014-1355", "CVE-2014-1359", "CVE-2014-1356", "CVE-2014-1357",
                 "CVE-2014-1358", "CVE-2014-1380", "CVE-2014-1381");
@@ -35,7 +35,7 @@ if(description)
                     68274, 68272, 68272);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:11:16 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:00:10 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-19 10:06:15 +0530 (Fri, 19 Sep 2014)");
 
   script_name("Apple Mac OS X Multiple Vulnerabilities -01 Sep14");
@@ -71,7 +71,7 @@ if(description)
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/uname", "ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
   exit(0);
 }
 

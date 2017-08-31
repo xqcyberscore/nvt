@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2016-0014.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_VMSA-2016-0014.nasl 6518 2017-07-04 13:49:06Z cfischer $
 #
 # VMSA-2016-0014: VMware ESXi updates address multiple security issues
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2016-7081","CVE-2016-7082","CVE-2016-7083","CVE-2016-7084","CVE-2016-7079","CVE-2016-7080","CVE-2016-7085","CVE-2016-7086");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5568 $");
+ script_version ("$Revision: 6518 $");
  script_name("VMSA-2016-0014: VMware ESXi updates address multiple security issues");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0014.html");
@@ -43,7 +43,7 @@ if (description)
  script_tag(name: "summary" , value:"The graphic acceleration functions used in VMware Tools for OSX handle memory incorrectly. Two resulting NULL pointer dereference vulnerabilities may allow for local privilege escalation on Virtual Machines that run OSX.
 The issues can be remediated by installing a fixed version of VMware Tools on affected OSX   VMs directly. Alternatively the fixed version of Tools can be installed through ESXi or Fusion after first updating to a version of ESXi or Fusion that ships with a fixed version of VMware Tools.");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:49:06 +0200 (Tue, 04 Jul 2017) $");
  script_tag(name:"creation_date", value:"2016-09-16 11:58:28 +0200 (Fri, 16 Sep 2016)");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
@@ -51,7 +51,7 @@ The issues can be remediated by installing a fixed version of VMware Tools on af
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_vmware_esxi_init.nasl");
- script_require_keys("VMware/ESXi/LSC","VMware/ESX/version");
+ script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
 
  exit(0);
 

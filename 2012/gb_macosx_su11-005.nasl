@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_su11-005.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_macosx_su11-005.nasl 6521 2017-07-04 14:51:10Z cfischer $
 #
 # Mac OS X Certificate Trust Policy Information Disclosure Vulnerability (2011-005)
 #
@@ -37,10 +37,10 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(802798);
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 6521 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-06-26 18:25:17 +0530 (Tue, 26 Jun 2012)");
   script_name("Mac OS X Certificate Trust Policy Information Disclosure Vulnerability (2011-005)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT4920");
@@ -51,8 +51,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_require_keys("ssh/login/uname", "ssh/login/osx_name", "ssh/login/osx_version");
-  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

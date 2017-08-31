@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol15220.nasl 4335 2016-10-24 15:25:45Z mime $
+# $Id: gb_f5_big_ip_sol15220.nasl 6534 2017-07-05 09:58:29Z teissa $
 #
 # F5 BIG-IP - iControl vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2014-2928");
  script_tag(name:"cvss_base", value:"7.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 4335 $");
+ script_version ("$Revision: 6534 $");
 
  script_name("F5 BIG-IP - iControl vulnerability");
 
@@ -53,9 +53,8 @@ in the hostname element in a SOAP request.");
 
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:25:45 +0200 (Mon, 24 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-03-09 12:19:05 +0100 (Mon, 09 Mar 2015)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

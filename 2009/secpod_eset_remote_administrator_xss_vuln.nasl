@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_eset_remote_administrator_xss_vuln.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_eset_remote_administrator_xss_vuln.nasl 6517 2017-07-04 13:34:20Z cfischer $
 #
 # ESET Remote Administrator XSS Vulnerability
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is running ESET Remote Administrator and is prone
 if(description)
 {
   script_id(900509);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 6517 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-02-26 05:27:20 +0100 (Thu, 26 Feb 2009)");
   script_cve_id("CVE-2009-0548");
   script_bugtraq_id(33633);
@@ -57,8 +57,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
   script_dependencies("secpod_eset_remote_administrator_detect.nasl");
-  script_require_keys("ESET/RemoteAdmin/Console/Ver",
-                      "ESET/RemoteAdmin/Server/Ver");
+  script_mandatory_keys("ESET/RemoteAdmin/Console_or_Server/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axigen_mail_server_xss_vuln.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_axigen_mail_server_xss_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # AXIGEN Mail Server Email Message Cross-site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:gecad_technologies:axigen_mail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804669");
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2012-2592");
   script_bugtraq_id(54899);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-07 14:34:53 +0530 (Mon, 07 Jul 2014)");
   script_name("AXIGEN Mail Server Email Message Cross-site Scripting Vulnerability");
 
@@ -74,7 +74,6 @@ For updates refer http://www.axigen.com";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50062");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/77515");
-  script_summary("Check for the vulnerable version of Axigen Mail Server");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

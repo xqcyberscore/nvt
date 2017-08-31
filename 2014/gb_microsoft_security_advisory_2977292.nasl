@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2977292.nasl 3008 2016-04-07 13:17:01Z antu123 $
+# $Id: gb_microsoft_security_advisory_2977292.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Microsoft EAP Implementation TLS Information Disclosure Vulnerability (2977292)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804869");
-  script_version("$Revision: 3008 $");
+  script_version("$Revision: 6735 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 15:17:01 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-27 18:07:16 +0530 (Mon, 27 Oct 2014)");
 
   script_name("Microsoft EAP Implementation TLS Information Disclosure Vulnerability (2977292)");
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2977292");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-US/library/security/2977292");
-  script_summary("Check for the vulnerable file 'Rastls.dll' version");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

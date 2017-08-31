@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_unspecified_vuln01_jan14_lin.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_oracle_virtualbox_unspecified_vuln01_jan14_lin.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Oracle VM VirtualBox Unspecified Vulnerability-01 Jan2014 (Linux)
 #
@@ -29,12 +29,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804194";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2013-5892");
   script_bugtraq_id(64909);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-23 10:45:12 +0530 (Thu, 23 Jan 2014)");
   script_name("Oracle VM VirtualBox Unspecified Vulnerability-01 Jan2014 (Linux)");
 
@@ -79,7 +79,6 @@ NOTE: Ignore this warning if above mentioned patch is installed.
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56490");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html");
-  script_summary("Check for the vulnerable version of Oracle VM VirtualBox on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

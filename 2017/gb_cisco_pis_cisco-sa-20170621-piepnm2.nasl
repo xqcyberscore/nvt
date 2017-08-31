@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_cisco-sa-20170621-piepnm2.nasl 6402 2017-06-22 08:03:23Z ckuersteiner $
+# $Id: gb_cisco_pis_cisco-sa-20170621-piepnm2.nasl 6682 2017-07-12 09:00:18Z cfischer $
 #
 # Cisco Prime Infrastructure SQL Injection Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106898");
  script_cve_id("CVE-2017-6698");
- script_tag(name: "cvss_base", value: "6.4");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version("$Revision: 6402 $");
+ script_tag(name:"cvss_base", value:"5.5");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
+ script_version("$Revision: 6682 $");
 
  script_name("Cisco Prime Infrastructure SQL Injection Vulnerability");
 
@@ -57,7 +57,7 @@ values and write malicious input to the SQL database.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-06-22 10:03:23 +0200 (Thu, 22 Jun 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-07-12 11:00:18 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name: "creation_date", value: "2017-06-22 13:24:18 +0700 (Thu, 22 Jun 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

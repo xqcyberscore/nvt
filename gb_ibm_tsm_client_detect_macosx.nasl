@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tsm_client_detect_macosx.nasl 6272 2017-06-02 09:59:57Z santu $
+# $Id: gb_ibm_tsm_client_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
 #
 # IBM Tivoli Storage Manager Client Version Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811062");
-  script_version("$Revision: 6272 $");
+  script_version("$Revision: 6484 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-02 11:59:57 +0200 (Fri, 02 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-06-02 15:14:25 +0530 (Fri, 02 Jun 2017)");
   script_name("IBM Tivoli Storage Manager Client Version Detection (Mac OS X)");
 
@@ -46,8 +46,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("gather-package-list.nasl", "ssh_authorization_init.nasl");
-  script_mandatory_keys("login/SSH/success", "ssh/login/osx_name");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/osx_name");
   exit(0);
 }
 

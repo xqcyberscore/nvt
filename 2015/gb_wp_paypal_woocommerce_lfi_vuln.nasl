@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_paypal_woocommerce_lfi_vuln.nasl 2580 2016-02-05 08:23:59Z benallard $
+# $Id: gb_wp_paypal_woocommerce_lfi_vuln.nasl 6551 2017-07-06 09:58:21Z teissa $
 #
 # WordPress Paypal Currency Converter Basic For Woocommerce File Read Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805700");
-  script_version("$Revision: 2580 $");
+  script_version("$Revision: 6551 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:23:59 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-06-15 13:39:51 +0530 (Mon, 15 Jun 2015)");
   script_name("WordPress Paypal Currency Converter Basic For Woocommerce File Read Vulnerability");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/37253");
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132278");
-  script_summary("Check if Wordpress Paypal Currency Converter Basic For Woocommerce is prone to File Read vulnerability.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

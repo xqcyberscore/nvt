@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_detect_lin.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_thunderbird_detect_lin.nasl 6482 2017-06-29 08:31:43Z cfischer $
 #
 # Mozilla Thunderbird Version Detection (Linux)
 #
@@ -27,17 +27,16 @@
 tag_summary = "This script retrieves Mozilla ThunderBird Version and
   saves it in KB.";
 
-
 if(description)
 {
   script_id(800018);
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 6482 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:31:43 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2008-10-07 14:21:23 +0200 (Tue, 07 Oct 2008)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Mozilla Thunderbird Version Detection (Linux)");
-  script_family("General");
+  script_family("Product detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
@@ -46,7 +45,6 @@ if(description)
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }
-
 
 include("ssh_func.inc");
 include("version_func.inc");
@@ -72,6 +70,7 @@ foreach binary_birdName (birdName)
   if(birdVer)
   {
     set_kb_item(name:"Thunderbird/Linux/Ver", value:birdVer[0]);
+    replace_kb_item(name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Linux/Installed", value:TRUE);
     log_message(data:"Mozilla Thunderbird version " + birdVer[0] + 
                   " running at location " + binary_birdName + " was detected on the host");
     ssh_close_connection();

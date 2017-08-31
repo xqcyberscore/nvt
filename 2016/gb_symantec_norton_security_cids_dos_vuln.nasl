@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_norton_security_cids_dos_vuln.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_symantec_norton_security_cids_dos_vuln.nasl 6506 2017-07-03 10:22:51Z cfischer $
 #
 # Symantec Norton Security 'CIDS' Driver Denial of Service Vulnerability
 # 
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:norton_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808624");
-  script_version("$Revision: 5850 $");
+  script_version("$Revision: 6506 $");
   script_cve_id("CVE-2016-5308");
   script_bugtraq_id(91608);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 12:22:51 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-10-07 13:20:51 +0530 (Fri, 07 Oct 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec Norton Security 'CIDS' Driver Denial of Service Vulnerability");
@@ -93,6 +93,8 @@ host    = get_host_ip();
 
 usrname = get_kb_item("SMB/login");
 passwd  = get_kb_item("SMB/password");
+domain  = get_kb_item("SMB/domain");
+if( domain ) usrname = domain + '\\' + usrname;
 
 if(!host || !usrname || !passwd){
   exit(0);

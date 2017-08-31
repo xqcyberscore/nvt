@@ -33,8 +33,8 @@ if(description)
 {
  script_id(80109);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5676 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
+ script_version("$Revision: 6617 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 15:14:20 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-10-18 22:12:25 +0200 (Sun, 18 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("w3af (NASL wrapper)");
@@ -52,7 +52,6 @@ if(description)
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_timeout(0); 
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }

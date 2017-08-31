@@ -79,8 +79,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2008-October/000767.html");
   script_id(840224);
-  script_version("$Revision: 4906 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 14:06:55 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 6640 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:57:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-03-23 10:59:50 +0100 (Mon, 23 Mar 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -92,7 +92,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);

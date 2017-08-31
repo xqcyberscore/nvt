@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_no_auth.nasl 4301 2016-10-19 09:04:30Z cfi $
+# $Id: gb_mongodb_no_auth.nasl 6513 2017-07-04 09:59:28Z teissa $
 #
 # Unprotected MongoDB Service
 #
@@ -30,7 +30,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105235");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 4301 $");
+ script_version ("$Revision: 6513 $");
 
  script_name("Unprotected MongoDB Service");
 
@@ -48,9 +48,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-19 11:04:30 +0200 (Wed, 19 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-03-13 09:16:37 +0100 (Fri, 13 Mar 2015)");
- script_summary("Check if MongoDB is protected");
  script_category(ACT_ATTACK);
  script_family("Databases");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

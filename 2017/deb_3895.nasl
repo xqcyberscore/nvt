@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3895.nasl 6418 2017-06-23 10:18:41Z teissa $
+# $Id: deb_3895.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3895-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703895);
-    script_version("$Revision: 6418 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-9780");
     script_name("Debian Security Advisory DSA 3895-1 (flatpak - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-23 12:18:41 +0200 (Fri, 23 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-06-22 00:00:00 +0200 (Thu, 22 Jun 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"7.2");
+    script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "flatpak on Debian Linux");
         script_tag(name: "insight",   value: "Flatpak installs, manages and runs sandboxed desktop application bundles.
 Application bundles run partially isolated from the wider system, using

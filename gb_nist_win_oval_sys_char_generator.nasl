@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nist_win_oval_sys_char_generator.nasl 4923 2017-01-02 16:43:44Z cfi $
+# $Id: gb_nist_win_oval_sys_char_generator.nasl 6893 2017-08-10 13:46:00Z cfischer $
 #
 # Create System Characteristics for NIST Windows OVAL Definitions
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802042");
-  script_version("$Revision: 4923 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 17:43:44 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 6893 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-10 15:46:00 +0200 (Thu, 10 Aug 2017) $");
   script_tag(name:"creation_date", value:"2012-07-05 12:24:54 +0530 (Thu, 05 Jul 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Create System Characteristics for NIST Windows OVAL Definitions");
-  script_category(ACT_END);
+  script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright ("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_add_preference(name:"Create OVAL System Characteristics for NIST Windows OVAL Definitions", type:"checkbox", value:"no");
   script_dependencies("secpod_reg_enum.nasl");
-  script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"summary", value:"Create a System Characteristics elements as defined by the OVAL specification
   for NIST Windows.xml and store it in the Knowledge Base.");
@@ -88,6 +88,8 @@ function get_system_info_using_wmi(host_ip)
   ## Get host details from KB
   usrname = get_kb_item("SMB/login");
   passwd  = get_kb_item("SMB/password");
+  domain  = get_kb_item("SMB/domain");
+  if( domain ) usrname = domain + '\\' + usrname;
 
   ## Return empty
   if(!host_ip || !usrname || !passwd){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_ip_cameras_mult_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
+# $Id: gb_mult_ip_cameras_mult_vuln.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # Multiple IP-Cameras Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106636");
-  script_version("$Revision: 6166 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
+  script_version("$Revision: 6701 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-03-08 12:16:59 +0700 (Wed, 08 Mar 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,7 +46,6 @@ if (description)
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 81);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("GoAhead-Webs/banner");
 
   script_tag(name: "summary", value: "The IP-Camera is prone to multiple vulnerabilities.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln_jan07_lin.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_adobe_reader_mult_vuln_jan07_lin.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Adobe Reader Multiple Vulnerabilities Jan07 (Linux)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804394";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2006-5857", "CVE-2007-0046", "CVE-2007-0047", "CVE-2007-0044");
   script_bugtraq_id(21858, 21981);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-11 18:00:34 +0530 (Fri, 11 Apr 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities Jan07 (Linux)");
 
@@ -82,7 +82,6 @@ http://get.adobe.com/reader";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/23483");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/31266");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb07-01.html");
-  script_summary("Check for the vulnerable version of Adobe Reader on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

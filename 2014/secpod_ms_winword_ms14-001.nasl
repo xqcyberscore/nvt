@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_winword_ms14-001.nasl 2492 2016-01-22 14:46:36Z benallard $
+# $Id: secpod_ms_winword_ms14-001.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities (2916605)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(903426);
-  script_version("$Revision: 2492 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2014-0258", "CVE-2014-0259", "CVE-2014-0260");
   script_bugtraq_id(64726, 64727, 64728);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:46:36 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-15 09:12:21 +0530 (Wed, 15 Jan 2014)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities (2916605)");
 
@@ -82,7 +82,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-001";
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2827224");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2863834");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms14-001");
-  script_summary("Check for the version of 'Winword.exe' file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 SecPod");
   script_family("Windows : Microsoft Bulletins");

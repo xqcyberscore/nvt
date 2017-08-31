@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2013-201.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: alas-2013-201.nasl 6577 2017-07-06 13:43:46Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120028");
-script_version("$Revision: 6125 $");
+script_version("$Revision: 6577 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:15:40 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:43:46 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2013-201");
 script_tag(name: "insight", value: "The openvpn_decrypt function in crypto.c in OpenVPN 2.3.0 and earlier, when running in UDP mode, allows remote attackers to obtain sensitive information via a timing attack involving an HMAC comparison function that does not run in constant time and a padding oracle attack on the CBC mode cipher."); 
 script_tag(name : "solution", value : "Run yum update openvpn to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"2.6");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_info_disc_vuln.nasl 2569 2016-02-03 15:47:26Z benallard $
+# $Id: gb_mongodb_info_disc_vuln.nasl 6534 2017-07-05 09:58:29Z teissa $
 #
 # MongoDB Information Disclosure Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805730");
-  script_version("$Revision: 2569 $");
+  script_version("$Revision: 6534 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:47:26 +0100 (Wed, 03 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-07-24 11:51:27 +0530 (Fri, 24 Jul 2015)");
   script_name("MongoDB Information Disclosure Vulnerability");
 
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "https://jira.mongodb.org/browse/SERVER-4216");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Determine if installed MongoDB is vulnerable to information disclosure");
   script_category(ACT_ATTACK);
   script_family("Databases");
   script_dependencies("gb_mongodb_webadmin_detect.nasl");

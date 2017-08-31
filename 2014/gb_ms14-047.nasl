@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-047.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-047.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Microsoft Windows RPC Security Feature Bypass Vulnerability (2978668)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802078");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-0316");
   script_bugtraq_id(69097);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-13 08:52:09 +0530 (Wed, 13 Aug 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft Windows RPC Security Feature Bypass Vulnerability (2978668)");
@@ -78,7 +78,6 @@ https://technet.microsoft.com/library/security/MS14-047";
 
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2978668");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-047");
-  script_summary("Check for the vulnerable 'Rpcrt4.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -95,8 +95,8 @@ if(description)
  script_xref(name : "URL" , value : "https://bugzilla.novell.com/show_bug.cgi?id=556864");
  script_xref(name : "URL" , value : "https://bugzilla.novell.com/show_bug.cgi?id=548074");
  script_id(66352);
- script_version("$Revision: 5155 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-01 09:46:52 +0100 (Wed, 01 Feb 2017) $");
+ script_version("$Revision: 6666 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:13:36 +0200 (Tue, 11 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-12-03 22:10:42 +0100 (Thu, 03 Dec 2009)");
  script_cve_id("CVE-2009-3547", "CVE-2009-2910", "CVE-2009-2903", "CVE-2009-3621", "CVE-2009-3612", "CVE-2005-4881", "CVE-2009-3620", "CVE-2009-3726", "CVE-2009-3286");
  script_tag(name:"cvss_base", value:"7.8");
@@ -110,7 +110,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("SuSE Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:suse:linux_enterprise_server", "ssh/login/rpms");
+ script_mandatory_keys("ssh/login/suse_sles", "ssh/login/rpms");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name:"qod_type", value:"package");

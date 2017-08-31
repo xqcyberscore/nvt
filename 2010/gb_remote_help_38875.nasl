@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_remote_help_38875.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_remote_help_38875.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # Remote Help HTTP GET Request Format String Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100548");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6696 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-03-23 13:24:50 +0100 (Tue, 23 Mar 2010)");
   script_bugtraq_id(38875);
   script_tag(name:"cvss_base", value:"5.0");
@@ -39,7 +39,6 @@ if(description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("httpd/banner");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38875");

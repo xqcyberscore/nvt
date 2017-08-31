@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_itunes_tutorials_sec_bypass_macosx.nasl 2492 2016-01-22 14:46:36Z benallard $
+# $Id: secpod_itunes_tutorials_sec_bypass_macosx.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Apple iTunes Tutorials Window Security Bypass Vulnerability (Mac OS X)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804231";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2492 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-1242");
   script_bugtraq_id(65088);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:46:36 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-30 16:38:39 +0530 (Thu, 30 Jan 2014)");
   script_name("Apple iTunes Tutorials Window Security Bypass Vulnerability (Mac OS X)");
 
@@ -76,7 +76,6 @@ For updates refer to http://www.apple.com/itunes/download";
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/90653");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT6001");
-  script_summary("Check for the vulnerable version of Apple iTunes on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 SecPod");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitweaver_41301.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_bitweaver_41301.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # Bitweaver 'style' Parameter Local File Include Vulnerability
 #
@@ -42,8 +42,8 @@ CPE = "cpe:/a:bitweaver:bitweaver";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-07-13 12:45:31 +0200 (Tue, 13 Jul 2010)");
  script_bugtraq_id(41301);
  script_tag(name:"cvss_base", value:"5.0");
@@ -59,7 +59,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("secpod_bitweaver_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("Bitweaver/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -70,8 +69,6 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
 files = make_array("root:.*:0:[01]:","etc/passwd","\[boot loader\]","boot.ini");

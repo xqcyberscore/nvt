@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jamon_mult_xss_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_jamon_mult_xss_vuln.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # JAMon Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803799");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2013-6235");
   script_bugtraq_id(65122);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-10 15:38:15 +0530 (Mon, 10 Feb 2014)");
   script_name("JAMon Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56570");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124933");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Jan/164");
-  script_summary("Check if JAMon (Java Application Monitor) is prone to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

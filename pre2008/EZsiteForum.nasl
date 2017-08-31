@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: EZsiteForum.nasl 5781 2017-03-30 08:15:57Z cfi $
+# $Id: EZsiteForum.nasl 6703 2017-07-12 13:57:25Z cfischer $
 # Description: EZsite Forum Discloses Passwords to Remote Users
 #
 # Authors:
@@ -41,8 +41,8 @@ features, remove the product or replace the product by another one.";
 if(description)
 {
  script_id(11833);
- script_version("$Revision: 5781 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 10:15:57 +0200 (Thu, 30 Mar 2017) $");
+ script_version("$Revision: 6703 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:57:25 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -54,7 +54,6 @@ if(description)
  script_dependencies("secpod_ms_iis_detect.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("IIS/installed");
- script_exclude_keys("Settings/disable_cgi_scanning");
 
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

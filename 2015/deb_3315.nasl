@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3315.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: deb_3315.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3315-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,7 +30,7 @@
 if(description)
 {
     script_id(703315);
-    script_version("$Revision: 6214 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2015-1263", "CVE-2015-1266", "CVE-2015-1267", "CVE-2015-1268",
                   "CVE-2015-1269", "CVE-2015-1270", "CVE-2015-1271", "CVE-2015-1272",
                   "CVE-2015-1273", "CVE-2015-1274", "CVE-2015-1276", "CVE-2015-1277",
@@ -38,7 +38,7 @@ if(description)
                   "CVE-2015-1282", "CVE-2015-1283", "CVE-2015-1284", "CVE-2015-1285",
                   "CVE-2015-1286", "CVE-2015-1287", "CVE-2015-1288", "CVE-2015-1289");
     script_name("Debian Security Advisory DSA 3315-1 (chromium-browser - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-07-23 00:00:00 +0200 (Thu, 23 Jul 2015)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "chromium-browser on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (jessie), these problems have been fixed in
 version 44.0.2403.89-1~deb8u1.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kolibri_webserver_remote_bof_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_kolibri_webserver_remote_bof_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Kolibri WebServer HTTP Request Buffer Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804438");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2010-5301", "CVE-2014-4158");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-28 15:47:50 +0530 (Mon, 28 Apr 2014)");
   script_name("Kolibri WebServer HTTP Request Buffer Overflow Vulnerability");
 
@@ -58,15 +58,13 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/33027");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15834");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/126332");
-  script_summary("Check if Kolibri webserver is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("kolibri/banner");
   script_require_ports("Services/www", 8080);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("kolibri/banner");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sunny_webbox_remote_detect.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: gb_sunny_webbox_remote_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # Sunny WebBox Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808203");
-  script_version("$Revision: 6040 $");
+  script_version("$Revision: 6701 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-05-24 10:37:42 +0530 (Tue, 24 May 2016)");
   script_name("Sunny WebBox Remote Version Detection");
 
@@ -44,10 +44,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_require_ports("Services/www", 8080);
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 8080);
   script_mandatory_keys("WebBox/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -63,9 +63,7 @@ sunnyVer = 0;
 sunnyPort = "";
 
 ## Get HTTP Port
-if(!sunnyPort = get_http_port(default:8080)){
-  exit(0);
-}
+sunnyPort = get_http_port(default:8080);
 
 ## Get banner
 banner = get_http_banner(port:sunnyPort);

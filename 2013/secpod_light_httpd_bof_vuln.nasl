@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_light_httpd_bof_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: secpod_light_httpd_bof_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # Light HTTPD Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903207");
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 6698 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-04-26 14:47:16 +0530 (Fri, 26 Apr 2013)");
   script_name("Light HTTPD Buffer Overflow Vulnerability");
 
@@ -41,9 +41,8 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Buffer overflow");
-  script_require_ports("Services/www", 3000);
   script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 3000);
   script_mandatory_keys("Light_HTTPd/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated

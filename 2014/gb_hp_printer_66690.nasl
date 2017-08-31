@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printer_66690.nasl 2823 2016-03-10 07:27:58Z antu123 $
+# $Id: gb_hp_printer_66690.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # HP Officejet Pro X Printers, Certain Officejet Pro Printers, Remote Disclosure of Information
 #
@@ -61,16 +61,15 @@ if (description)
  script_cve_id("CVE-2014-0160");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 2823 $");
+ script_version ("$Revision: 6692 $");
 
  script_name("HP Officejet Pro X Printers, Certain Officejet Pro Printers, Remote Disclosure of Information");
 
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/531993");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 08:27:58 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-06-03 16:01:41 +0200 (Tue, 03 Jun 2014)");
- script_summary("Check the firmware version");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("General");

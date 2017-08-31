@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0675.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: ELSA-2016-0675.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122935");
-script_version("$Revision: 5745 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:24:51 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0675");
 script_tag(name: "insight", value: "ELSA-2016-0675 -  java-1.7.0-openjdk security update - [1:1.7.0.101-2.6.6.1.0.1]- Update DISTRO_NAME in specfile[1:1.7.0.101-2.6.6.1]- added Patch666 fontpath.patch to fix tck regressions- Resolves: rhbz#1325425[1:1.7.0.101-2.6.6.0]- Fix ztos handling in templateTable_ppc_64.cpp to be same as others in 7.- Resolves: rhbz#1325425[1:1.7.0.101-2.6.6.0]- Bump to 2.6.6 and u101b00.- Drop a leading zero from the priority as the update version is now three digits- Resolves: rhbz#1325425"); 
 script_tag(name : "solution", value : "update software");
@@ -41,7 +41,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

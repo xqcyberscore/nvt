@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vBulletin_3_7_3_pl1_sql_injection.nasl 5231 2017-02-08 11:52:34Z teissa $
+# $Id: vBulletin_3_7_3_pl1_sql_injection.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # vBulletin 'admincalendar.php' SQL Injection Vulnerability
 #
@@ -42,8 +42,8 @@ tag_solution = "Upgrade to newest Version of VBulletin.";
 if (description)
 {
  script_id(100020);
- script_version("$Revision: 5231 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+ script_version("$Revision: 6704 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
  script_bugtraq_id(32348);
  script_cve_id("CVE-2008-6256");
@@ -57,7 +57,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("vbulletin_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("vBulletin/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -67,7 +66,6 @@ if (description)
 include("http_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 version = get_kb_item(string("www/", port, "/vBulletin"));
 if (isnull(version)) exit(0);

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-3531.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: ELSA-2016-3531.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122921");
-script_version("$Revision: 5513 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-04-06 14:33:00 +0300 (Wed, 06 Apr 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-3531");
 script_tag(name: "insight", value: "ELSA-2016-3531 -  openssh security update - [4.3p2-82.0.2]- CVE-2015-5600: MaxAuthTries limit bypass via duplicates in KbdInteractiveDevices (John Haxby) [orabug 22985024]- CVE-2016-3115: missing sanitisation of input for X11 forwarding (John Haxby) [orabug 22985024]"); 
 script_tag(name : "solution", value : "update software");
@@ -41,7 +41,7 @@ script_tag(name:"cvss_base", value:"8.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

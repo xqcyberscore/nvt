@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: fcore_2009_9721.nasl 4824 2016-12-21 08:49:38Z teissa $
+# $Id: fcore_2009_9721.nasl 6624 2017-07-10 06:11:55Z cfischer $
 # Description: Auto-generated from advisory FEDORA-2009-9721 (drupal)
 #
 # Authors:
@@ -48,8 +48,8 @@ announced via advisory FEDORA-2009-9721.";
 if(description)
 {
  script_id(64914);
- script_version("$Revision: 4824 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-21 09:49:38 +0100 (Wed, 21 Dec 2016) $");
+ script_version("$Revision: 6624 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:11:55 +0200 (Mon, 10 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-09-21 23:13:00 +0200 (Mon, 21 Sep 2009)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -62,7 +62,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("Fedora Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/rpms");
+ script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

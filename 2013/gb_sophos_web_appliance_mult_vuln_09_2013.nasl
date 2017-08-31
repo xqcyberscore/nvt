@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sophos_web_appliance_mult_vuln_09_2013.nasl 4546 2016-11-16 16:05:02Z mime $
+# $Id: gb_sophos_web_appliance_mult_vuln_09_2013.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # Sophos Web Protection Appliance Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = 'cpe:/a:sophos:web_appliance';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103781");
- script_version ("$Revision: 4546 $");
+ script_version ("$Revision: 6755 $");
  script_cve_id("CVE-2013-4983","CVE-2013-4983");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("Sophos Web Protection Appliance Multiple Vulnerabilities");
- script_tag(name:"last_modification", value:"$Date: 2016-11-16 17:05:02 +0100 (Wed, 16 Nov 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-09-09 14:28:20 +0200 (Mon, 09 Sep 2013)");
 
  script_xref(name:"URL" , value:"http://www.coresecurity.com/advisories/sophos-web-protection-appliance-multiple-vulnerabilities");
@@ -44,7 +44,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_sophos_web_appliance_detect.nasl");
  script_require_ports("Services/www", 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("sophos/web_appliance/installed");
 
  script_tag(name : "impact" , value : "An unauthenticated remote attacker can execute arbitrary OS commands

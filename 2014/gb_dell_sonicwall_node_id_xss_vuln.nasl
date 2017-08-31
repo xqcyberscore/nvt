@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_node_id_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_dell_sonicwall_node_id_xss_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # DELL SonicWALL 'node_id' Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804239";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-0332");
   script_bugtraq_id(65498);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-17 19:09:31 +0530 (Mon, 17 Feb 2014)");
   script_name("DELL SonicWALL 'node_id' Cross Site Scripting Vulnerability");
 
@@ -74,7 +74,6 @@ For updates refer to http://www.sonicwall.com/";
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/91062");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125180");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Feb/108");
-  script_summary("Check if DELL SonicWALL is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: winmx_installed.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: winmx_installed.nasl 6456 2017-06-28 11:19:33Z cfischer $
 # Description: WinMX is installed
 #
 # Authors:
@@ -29,40 +29,26 @@ tag_solution = "Uninstall this software";
 
 if(description)
 {
- script_id(11430);
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
- script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.11430");
+  script_version("$Revision: 6456 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("WinMX is installed");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2003 Xue Yong Zhi");
+  script_family("Peer-To-Peer File Sharing");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
 
- name = "WinMX is installed";
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
 
- script_name(name);
- 
-
-
-
- 
- summary = "Determines if WinMX is installed";
-
- 
- script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
- 
- script_copyright("This script is Copyright (C) 2003 Xue Yong Zhi");
- family = "Peer-To-Peer File Sharing";
- script_family(family);
- 
- script_dependencies("secpod_reg_enum.nasl");
- script_require_keys("SMB/name", "SMB/login", "SMB/password",
-		     "SMB/domain","SMB/transport");
- script_mandatory_keys("SMB/WindowsVersion");
 
- script_require_ports(139, 445);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-1053.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: ELSA-2014-1053.nasl 6559 2017-07-06 11:57:32Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123332");
-script_version("$Revision: 6404 $");
+script_version("$Revision: 6559 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:02:23 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:57:32 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-1053");
 script_tag(name: "insight", value: "ELSA-2014-1053 -  openssl security update - [0.9.8e-27.4]- fix CVE-2014-0221 - recursion in DTLS code leading to DoS- fix CVE-2014-3505 - doublefree in DTLS packet processing- fix CVE-2014-3506 - avoid memory exhaustion in DTLS- fix CVE-2014-3508 - fix OID handling to avoid information leak- fix CVE-2014-3510 - fix DoS in anonymous (EC)DH handling in DTLS[0.9.8e-27.3]- fix for CVE-2014-0224 - SSL/TLS MITM vulnerability[0.9.8e-27.1]- replace expired GlobalSign Root CA certificate in ca-bundle.crt"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

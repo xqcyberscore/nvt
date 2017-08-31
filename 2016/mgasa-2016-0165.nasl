@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0165.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: mgasa-2016-0165.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131287");
-script_version("$Revision: 5712 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:17:50 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0165");
 script_tag(name: "insight", value: "Updated quagga packages fix security vulnerability: A denial of dervice vulnerability have been found in BGP daemon from Quagga routing software (bgpd): if the following conditions are satisfied: - regular dumping is enabled - bgpd instance has many BGP peers then BGP message packets that are big enough cause bgpd to crash. The situation when the conditions above are satisfied is quite common. Moreover, it is easy to craft a packet which is much bigger than a typical packet, and hence such crafted packet can much more likely cause the crash (CVE-2016-4049)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0165");
 script_copyright("Eero Volotinen");

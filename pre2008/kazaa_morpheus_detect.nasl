@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: kazaa_morpheus_detect.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: kazaa_morpheus_detect.nasl 6695 2017-07-12 11:17:53Z cfischer $
 #
 # Kazaa / Morpheus Client Detection
 #
@@ -39,8 +39,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10751");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 6695 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,7 +51,6 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("X-Kazaa-Username/banner");
   script_require_ports("Services/www", 1214);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   tag_summary = "The Kazaa / Morpheus HTTP Server is running.
   This server is used to provide other clients with a

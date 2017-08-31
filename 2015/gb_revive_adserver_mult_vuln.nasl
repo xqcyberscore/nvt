@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_revive_adserver_mult_vuln.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_revive_adserver_mult_vuln.nasl 6534 2017-07-05 09:58:29Z teissa $
 #
 # Revive Adserver Multiple Vulnerabilities
 #
@@ -29,15 +29,14 @@ CPE = "cpe:/a:revive:adserver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805415");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6534 $");
   script_cve_id("CVE-2014-8875","CVE-2014-8793");
   script_bugtraq_id(71721, 71718);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-01-13 17:38:00 +0530 (Tue, 13 Jan 2015)");
   script_name("Revive Adserver Multiple Vulnerabilities");
-  script_summary("Check for the vulnerable version of Revive Adserver");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_code_exec_vuln_feb10_macosx.nasl 2482 2016-01-22 12:57:27Z benallard $
+# $Id: gb_adobe_prdts_code_exec_vuln_feb10_macosx.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # Adobe Acrobat and Reader PDF Handling Code Execution Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.804267";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2482 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2010-0188", "CVE-2010-0186");
   script_bugtraq_id(38195, 38198);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 13:57:27 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-16 15:25:45 +0530 (Wed, 16 Apr 2014)");
   script_name("Adobe Acrobat and Reader PDF Handling Code Execution Vulnerability (Mac OS X)");
 
@@ -80,12 +80,11 @@ refer to http://www.adobe.com";
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/0399");
   script_xref(name : "URL" , value : "http://securitytracker.com/alerts/2010/Feb/1023601.html");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb10-07.html");
-  script_summary("Check for the version of Adobe Reader/Acrobat");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
-  script_require_keys("Adobe/Reader/MacOSX/Version", "Adobe/Acrobat/MacOSX/Version");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader/MacOSX/Installed");
   exit(0);
 }
 

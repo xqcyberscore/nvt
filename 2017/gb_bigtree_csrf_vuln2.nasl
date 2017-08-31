@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_csrf_vuln2.nasl 6264 2017-06-01 12:53:37Z cfischer $
+# $Id: gb_bigtree_csrf_vuln2.nasl 6766 2017-07-20 06:44:05Z cfischer $
 #
 # BigTree CMS <= 4.2.17 CSRF Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:bigtree:bigtree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108143");
-  script_version("$Revision: 6264 $");
-  script_tag(name:"last_modification", value: "$Date: 2017-06-01 14:53:37 +0200 (Thu, 01 Jun 2017) $");
+  script_version("$Revision: 6766 $");
+  script_tag(name:"last_modification", value: "$Date: 2017-07-20 08:44:05 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-04-19 07:57:33 +0200 (Wed, 19 Apr 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -45,6 +45,7 @@ if(description)
   script_mandatory_keys("BigTree/Installed");
 
   script_xref(name:"URL", value:"https://www.cdxy.me/?p=765");
+  script_xref(name:"URL", value:"https://github.com/bigtreecms/BigTree-CMS/commit/7761481ac40d83ac29fef42bc6b3c07c86694b56");
 
   script_tag(name:"summary", value:"BigTree CMS is prone to a CSRF vulnerability.");
 
@@ -57,8 +58,7 @@ if(description)
 
   script_tag(name:"affected", value:"BigTree CMS versions through 4.2.17.");
 
-  script_tag(name: "solution", value:"No solution or patch is available as of 01st June, 2017. Information
-  regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value:"Update to 4.2.18 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"NoneAvailable");
@@ -73,7 +73,7 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( version_is_less_equal( version:vers, test_version:"4.2.17" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"None" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"4.2.18" );
   security_message( port:port, data:report );
   exit( 0 );
 }

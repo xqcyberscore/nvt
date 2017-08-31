@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gpg4win_dos_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_gpg4win_dos_vuln.nasl 6540 2017-07-05 12:42:02Z cfischer $
 #
 # Gpg4Win Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801129");
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 6540 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:42:02 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-11-02 14:39:30 +0100 (Mon, 02 Nov 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_gpg4win_detect.nasl");
-  script_mandatory_keys("Gpg4win/Win/Ver", "Kleopatra/Win/Ver");
+  script_mandatory_keys("Gpg4win_or_Kleopatra/Win/Installed");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/53908");
   script_xref(name:"URL", value:"http://www.packetstormsecurity.com/0910-exploits/gpg2kleo-dos.txt");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_55672.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_phpmyadmin_55672.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # phpMyAdmin 'server_sync.php' Backdoor Vulnerability
 #
@@ -45,7 +45,7 @@ if (description)
  script_cve_id("CVE-2012-5159");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5950 $");
+ script_version ("$Revision: 6720 $");
 
  script_name("phpMyAdmin 'server_sync.php' Backdoor Vulnerability");
 
@@ -53,7 +53,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.phpmyadmin.net/home_page/security/PMASA-2012-5.php");
  script_xref(name : "URL" , value : "http://www.phpmyadmin.net/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-09-26 09:52:24 +0200 (Wed, 26 Sep 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -61,7 +61,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("phpMyAdmin/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -74,8 +73,6 @@ include("version_func.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
 url = dir + '/server_sync.php';

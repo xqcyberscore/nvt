@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cupsd_xss_vuln.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_cupsd_xss_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # CUPS Web Interface Cross Site Scripting Vulnerability
 #
@@ -30,12 +30,12 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.802071";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-2856");
   script_bugtraq_id(66788);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-22 13:16:12 +0530 (Tue, 22 Apr 2014)");
   script_name("CUPS Web Interface Cross Site Scripting Vulnerability");
 
@@ -75,7 +75,6 @@ For updates refer to http://www.cups.org/software.php";
   script_xref(name : "URL" , value : "http://www.cups.org/str.php?L4356");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57880/");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2014/04/14/2");
-  script_summary("Check CUPS is vulnerable by sending crafted pacaket");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");

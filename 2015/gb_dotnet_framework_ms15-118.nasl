@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms15-118.nasl 2379 2016-01-12 11:02:51Z antu123 $
+# $Id: gb_dotnet_framework_ms15-118.nasl 6453 2017-06-28 09:59:05Z teissa $
 #
 # Microsoft .NET Framework Privilege Elevation Vulnerabilities (3104507)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806614");
-  script_version("$Revision: 2379 $");
+  script_version("$Revision: 6453 $");
   script_cve_id("CVE-2015-6096", "CVE-2015-6099", "CVE-2015-6115");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-12 12:02:51 +0100 (Tue, 12 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-11 09:47:24 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerabilities (3104507)");
 
@@ -77,7 +77,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3104507");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-118");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

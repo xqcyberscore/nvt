@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_homematic_default_ssh_access.nasl 2568 2016-02-03 15:43:36Z benallard $
+# $Id: sw_homematic_default_ssh_access.nasl 6486 2017-06-29 09:59:06Z teissa $
 #
 # HomeMatic SSH Default Credentials
 #
@@ -28,13 +28,12 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.111066");
- script_version("$Revision: 2568 $");
+ script_version("$Revision: 6486 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("HomeMatic SSH Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:43:36 +0100 (Wed, 03 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-12-09 15:00:00 +0100 (Wed, 09 Dec 2015)");
- script_summary("Determine if it is possible to login with default credentials");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");

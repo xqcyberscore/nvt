@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_53396.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_symantec_web_gateway_53396.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # Symantec Web Gateway 'l' Parameter Cross Site Scripting Vulnerability
 #
@@ -41,7 +41,7 @@ if (description)
 {
  script_oid(SCRIPT_OID); 
  script_bugtraq_id(53396);
- script_version ("$Revision: 5940 $");
+ script_version ("$Revision: 6720 $");
  script_cve_id("CVE-2012-0296");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -51,7 +51,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53396");
  script_xref(name : "URL" , value : "http://www.symantec.com/business/web-gateway");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-05-07 14:02:06 +0200 (Mon, 07 May 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -59,7 +59,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_symantec_web_gateway_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("symantec_web_gateway/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -71,9 +70,6 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
 url = string(dir, "/spywall/timer.php?d=0&l=0'<script>alert(/openvas-xss-test/)</script>&profile=0"); 

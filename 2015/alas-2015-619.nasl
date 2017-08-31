@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-619.nasl 6170 2017-05-19 09:03:42Z teissa $
+# $Id: alas-2015-619.nasl 6575 2017-07-06 13:42:08Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120609");
-script_version("$Revision: 6170 $");
+script_version("$Revision: 6575 $");
 script_tag(name:"creation_date", value:"2015-12-15 02:51:22 +0200 (Tue, 15 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:42:08 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-619");
 script_tag(name: "insight", value: "A memory leak error was discovered in the crypt() function of the pgCrypto extension. An authenticated attacker could possibly use this flaw to disclose a limited amount of the server memory. (CVE-2015-5288 )"); 
 script_tag(name : "solution", value : "Run yum update postgresql8 to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"6.4");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

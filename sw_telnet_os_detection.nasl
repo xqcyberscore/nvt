@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_telnet_os_detection.nasl 5711 2017-03-24 09:41:57Z cfi $
+# $Id: sw_telnet_os_detection.nasl 6882 2017-08-09 07:05:06Z cfischer $
 #
 # Telnet OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111069");
-  script_version("$Revision: 5711 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 10:41:57 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 6882 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-09 09:05:06 +0200 (Wed, 09 Aug 2017) $");
   script_tag(name:"creation_date", value:"2015-12-13 13:00:00 +0100 (Sun, 13 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -59,7 +59,8 @@ banner = get_telnet_banner( port:port );
 
 if( ! banner || banner == "" || isnull( banner ) ) exit( 0 );
 
-if( "Welcome to Microsoft Telnet Service" >< banner ) {
+if( "Welcome to Microsoft Telnet Service" >< banner || 
+    "Georgia SoftWorks Telnet Server for Windows" >< banner ) {
   register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
@@ -90,8 +91,9 @@ if( "login:" >< banner || "Kernel" >< banner ) {
           register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else if( "squeeze" >< banner ) {
           register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
         } else if( "wheezy" >< banner ) {
-          register_and_report_os( os:"Debian GNU/Linux", version:"7.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else if( "jessie" >< banner ) {
           register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else {
@@ -146,8 +148,27 @@ if( "login:" >< banner || "Kernel" >< banner ) {
     exit( 0 );
   }
 
-  register_unknown_os_banner( banner:banner, banner_type_name:BANNER_TYPE, banner_type_short:"telnet_banner", port:port );
+  if( "Welcome to openSUSE Leap" >< banner ) {
+    version = eregmatch( pattern:"Welcome to openSUSE Leap ([0-9.]+)", string:banner );
+    if( ! isnull( version[1] ) ) {
+      register_and_report_os( os:"openSUSE Leap", version:version[1], cpe:"cpe:/o:opensuse_project:leap", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    } else {
+      register_and_report_os( os:"openSUSE Leap", cpe:"cpe:/o:opensuse_project:leap", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    }
+    exit( 0 );
+  }
 
+  if( "Welcome to openSUSE" >< banner ) {
+    version = eregmatch( pattern:"Welcome to openSUSE ([0-9.]+)", string:banner );
+    if( ! isnull( version[1] ) ) {
+      register_and_report_os( os:"openSUSE", version:version[1], cpe:"cpe:/o:novell:opensuse", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    } else {
+      register_and_report_os( os:"openSUSE", cpe:"cpe:/o:novell:opensuse", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    }
+    exit( 0 );
+  }
+
+  register_unknown_os_banner( banner:banner, banner_type_name:BANNER_TYPE, banner_type_short:"telnet_banner", port:port );
 }
 
 exit( 0 );

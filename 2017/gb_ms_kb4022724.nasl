@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022724.nasl 6343 2017-06-15 09:48:13Z santu $
+# $Id: gb_ms_kb4022724.nasl 6474 2017-06-29 06:26:00Z santu $
 #
 # Microsoft Windows Server 2012 Multiple Vulnerabilities (KB4022724)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811171");
-  script_version("$Revision: 6343 $");
+  script_version("$Revision: 6474 $");
   script_cve_id("CVE-2017-0193", "CVE-2017-8472", "CVE-2017-8473", "CVE-2017-8474", 
                 "CVE-2017-8527", "CVE-2017-8528", "CVE-2017-0282", "CVE-2017-8475", 
                 "CVE-2017-8476", "CVE-2017-8529", "CVE-2017-8531", "CVE-2017-0283", 
@@ -41,7 +41,7 @@ if(description)
                 "CVE-2017-8490", "CVE-2017-8491", "CVE-2017-8492", "CVE-2017-0299", 
                 "CVE-2017-0300", "CVE-2017-8460", "CVE-2017-8462", "CVE-2017-8464", 
                 "CVE-2017-8470", "CVE-2017-8471", "CVE-2017-8519", "CVE-2017-8522", 
-                "CVE-2017-8469", "CVE-2017-8517");
+                "CVE-2017-8469", "CVE-2017-8517", "CVE-2017-8554");
   script_bugtraq_id(98878, 98851, 98852, 98902, 98933, 98949, 98885, 98853, 98903,
                     98953, 98819, 98920, 98918, 98854, 98845, 98856, 98820, 98821,
                     98914, 98857, 98862, 98824, 98922, 98923, 98858, 98859, 98826,
@@ -50,7 +50,7 @@ if(description)
                     98900, 98818, 98848, 98849, 98899, 98926, 98842, 98895);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-15 11:48:13 +0200 (Thu, 15 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:26:00 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-06-14 15:20:54 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Windows Server 2012 Multiple Vulnerabilities (KB4022724)");
 

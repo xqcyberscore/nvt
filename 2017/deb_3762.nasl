@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3762.nasl 5023 2017-01-18 07:20:41Z antu123 $
+# $Id: deb_3762.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3762-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,7 +30,7 @@
 if(description)
 {
     script_id(703762);
-    script_version("$Revision: 5023 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2016-10092", "CVE-2016-10093", "CVE-2016-10094", "CVE-2016-3622",
                   "CVE-2016-3623", "CVE-2016-3624", "CVE-2016-3945", "CVE-2016-3990",
                   "CVE-2016-3991", "CVE-2016-5314", "CVE-2016-5315", "CVE-2016-5316",
@@ -40,7 +40,7 @@ if(description)
                   "CVE-2016-9532", "CVE-2016-9533", "CVE-2016-9534", "CVE-2016-9535",
                   "CVE-2016-9536", "CVE-2016-9537", "CVE-2016-9538", "CVE-2016-9540");
     script_name("Debian Security Advisory DSA 3762-1 (tiff - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-01-18 08:20:41 +0100 (Wed, 18 Jan 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-01-13 00:00:00 +0100 (Fri, 13 Jan 2017)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "tiff on Debian Linux");
     script_tag(name: "insight",   value: "libtiff is a library providing support
 for the Tag Image File Format (TIFF), a widely used format for storing image data.");

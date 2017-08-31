@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2382_1.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: deb_2382_1.nasl 6612 2017-07-07 12:08:03Z cfischer $
 # Description: Auto-generated from advisory DSA 2382-1 (ecryptfs-utils)
 #
 # Authors:
@@ -87,8 +87,8 @@ if(description)
                "CVE-2011-1835", "CVE-2011-1837", "CVE-2011-3145");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version("$Revision: 6612 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-02-11 03:26:49 -0500 (Sat, 11 Feb 2012)");
  script_name("Debian Security Advisory DSA 2382-1 (ecryptfs-utils)");
 
@@ -98,7 +98,7 @@ if(description)
  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
  script_family("Debian Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);

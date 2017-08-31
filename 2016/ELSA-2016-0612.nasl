@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0612.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: ELSA-2016-0612.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122940");
-script_version("$Revision: 5675 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:24:56 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0612");
 script_tag(name: "insight", value: "ELSA-2016-0612 -  samba and samba4 security, bug fix, and enhancement update - ipa[4.2.0-15.0.1.6.1]- Drop redhat-access-plugin-ipa requires for OL7 Blank out header-logo.png product-name.png Replace login-screen-logo.png [20362818][4.2.0-15.6.1]- Rebuild against newer Samba version- Related: #1322690libldb[1.1.25-1]- Rebase libldb to 1.1.25- Related: rhbz#1322690libtalloc[2.1.5-1]- Rebase to libtalloc 2.1.5- Related: rhbz#1322690libtdb[1.3.8-1]- Rebase libtdb to 1.3.8- Related: rhbz#1322690libtevent[0.9.26-1]- Rebase libtevent to 0.9.26- Related: rhbz#1322690openchange[2.0-10]- Add a patch to fix connection string (Related: #1322690)samba[4.2.10-6]- Fix domain member winbind not being able to talk to trusted domains' DCs- relates: #1322690[4.2.10-5]- Fix crash in smb.conf processing- relates: #1322690[4.2.10-4]- Fix LDAP SASL bind with arcfour-hmac-md5- resolves: #1322690[4.2.10-3]- Make sure the package owns /var/lib/samba and uses it for cache purposes- resolves: #1322690[4.2.10-2]- Remove ldb modules and internal libraries for DC when not packaging DC build- resolves: #1322690[4.2.10-1]- resolves: #1322690"); 
 script_tag(name : "solution", value : "update software");
@@ -41,7 +41,7 @@ script_tag(name:"cvss_base", value:"6.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

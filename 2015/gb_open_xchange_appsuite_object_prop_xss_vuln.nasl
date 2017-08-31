@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_object_prop_xss_vuln.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_open_xchange_appsuite_object_prop_xss_vuln.nasl 6534 2017-07-05 09:58:29Z teissa $
 #
 # Open-Xchange (OX) AppSuite Object Properties Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806525");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6534 $");
   script_cve_id("CVE-2015-5375");
   script_bugtraq_id(76837);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-11-02 12:36:19 +0530 (Mon, 02 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Object Properties Cross Site Scripting Vulnerability");
@@ -68,7 +68,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/536523/100/0/threaded");
 
-  script_summary("Check if Open-Xchange (OX) AppSuite is installed with vulnerable version or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

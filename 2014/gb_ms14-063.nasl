@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-063.nasl 2826 2016-03-10 08:19:43Z benallard $
+# $Id: gb_ms14-063.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Microsoft Windows FAT32 Disk Partition Driver Privilege Escalation Vulnerability (2998579)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804493");
-  script_version("$Revision: 2826 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-4115");
   script_bugtraq_id(70343);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:19:43 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-15 09:05:23 +0530 (Wed, 15 Oct 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/60975");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2998579");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-063");
-  script_summary("Check for the version of 'Fastfat.sys' vulnerable file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

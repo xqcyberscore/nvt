@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-0907.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-0907.nasl 6637 2017-07-10 09:58:13Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123373");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6637 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:02:56 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-0907");
 script_tag(name: "insight", value: "ELSA-2014-0907 -  java-1.6.0-openjdk security and bug fix update - [1:1.6.0.1-6.1.13.4]- moved to icedteaver 1.13.4- moved to openjdkver b32 and openjdkdate 15_jul_2014- added upstreamed patch patch9 rh1115580-unsyncHashMap.patch- Resolves: rhbz#1115580- Resolves: rhbz#1115867"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"9.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-0907");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

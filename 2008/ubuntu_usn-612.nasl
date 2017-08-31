@@ -20,7 +20,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 4557 $
+# $Revision: 6638 $
 
 include("revisions-lib.inc");
 tag_summary = "The remote host is probably affected by the vulnerabilities described in
@@ -70,8 +70,8 @@ http://www.ubuntu.com/usn/usn-612-11";
 if(description)
 {
  script_id(90025);
- script_version("$Revision: 4557 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+ script_version("$Revision: 6638 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:47:25 +0200 (Mon, 10 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-09-04 22:29:05 +0200 (Thu, 04 Sep 2008)");
  script_cve_id("CVE-2008-0166");
  script_tag(name:"cvss_base", value:"7.8");
@@ -85,7 +85,7 @@ if(description)
 
  script_family("Ubuntu Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name:"qod_type", value:"package");

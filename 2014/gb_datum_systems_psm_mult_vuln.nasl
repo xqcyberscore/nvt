@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_datum_systems_psm_mult_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_datum_systems_psm_mult_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Datum Systems Satellite Modem Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804477");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-2951", "CVE-2014-2950");
   script_bugtraq_id(68515, 68514);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-30 14:56:40 +0530 (Wed, 30 Jul 2014)");
   script_name("Datum Systems Satellite Modem Multiple Vulnerabilities");
 
@@ -60,15 +60,13 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/917348");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/94483");
-  script_summary("Determine if it is possible to login with default credentials.");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Default Accounts");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("SnIP/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("SnIP/banner");
 
   exit(0);
 }

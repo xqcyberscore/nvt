@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882732");
-  script_version("$Revision: 6360 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-16 16:00:24 +0200 (Fri, 16 Jun 2017) $");
+  script_version("$Revision: 6851 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:31:24 +0200 (Fri, 04 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-06-14 06:40:38 +0200 (Wed, 14 Jun 2017)");
   script_cve_id("CVE-2017-7718", "CVE-2017-7980");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for qemu-img CESA-2017:1430 centos7 ");
   script_tag(name: "summary", value: "Check the version of qemu-img");
@@ -77,7 +77,7 @@ which prevents the described problem from occurring. (BZ#1452332)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

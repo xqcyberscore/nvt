@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_mul_input_val_vuln.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_otrs_mul_input_val_vuln.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # OTRS Multiple Input Validation Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6125 $");
+  script_version("$Revision: 6755 $");
   script_cve_id("CVE-2005-3893", "CVE-2005-3894", "CVE-2005-3895");
   script_bugtraq_id(15537);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-09-25 15:32:50 +0530 (Wed, 25 Sep 2013)");
   script_name("OTRS Multiple Input Validation Vulnerabilities");
 
@@ -86,7 +86,6 @@ For updates refer to http://www.otrs.com/en/";
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("logins.nasl", "secpod_otrs_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("OTRS/installed", "http/login");
   exit(0);
 }
@@ -139,15 +138,10 @@ if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
   exit(0);
 }
 
-## Get Host name
-host = get_host_name();
-if(!host){
-  exit(0);
-}
+host = http_host_name(port:port);
 
 ## Exploit code
 loca = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port);
-
 if(!loca){
   exit(0);
 }

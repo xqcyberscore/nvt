@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_silverlight_multiple_memory_leak_vuln.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: gb_ms_silverlight_multiple_memory_leak_vuln.nasl 6532 2017-07-05 07:42:05Z cfischer $
 #
 # Microsoft Silverlight Multiple Memory Leak Vulnerabilities
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is installed with Microsoft Silverlight and is prone to
 if(description)
 {
   script_id(801935);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6532 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_cve_id("CVE-2011-1844", "CVE-2011-1845");
   script_tag(name:"cvss_base", value:"7.8");
@@ -57,7 +57,7 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_ms_silverlight_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "Microsoft/Silverlight");
+  script_mandatory_keys("Microsoft/Silverlight");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

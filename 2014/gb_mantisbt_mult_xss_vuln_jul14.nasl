@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_xss_vuln_jul14.nasl 5067 2017-01-23 16:23:44Z cfi $
+# $Id: gb_mantisbt_mult_xss_vuln_jul14.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # MantisBT Multiple Cross-Site Scripting Vulnerabilites -01 July14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804676");
-  script_version("$Revision: 5067 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2013-1810", "CVE-2013-0197");
   script_bugtraq_id(57468, 57456);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-23 17:23:44 +0100 (Mon, 23 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-14 11:59:38 +0530 (Mon, 14 Jul 2014)");
   script_name("MantisBT Multiple Cross-Site Scripting Vulnerabilites -01 July14");
 
@@ -81,7 +81,6 @@ For updates refer to http://www.mantisbt.org/download.php";
   script_xref(name : "URL" , value : "http://www.mantisbt.org/bugs/view.php?id=15384");
   script_xref(name : "URL" , value : "http://www.mantisbt.org/bugs/view.php?id=15373");
   script_xref(name : "URL" , value : "http://hauntit.blogspot.de/2013/01/en-mantis-bug-tracker-1212-persistent.html");
-  script_summary("Check the version MantisBT is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_dsm_64516.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_synology_dsm_64516.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # Synology DiskStation Manager 'imageSelector.cgi' Remote Command Execution Vulnerability
 #
@@ -34,21 +34,19 @@ if (description)
  script_cve_id("CVE-2013-6955");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6756 $");
 
  script_name("Synology DiskStation Manager 'imageSelector.cgi' Remote Command Execution Vulnerability");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64516");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-07 14:57:33 +0100 (Tue, 07 Jan 2014)");
- script_summary("Determine if it is possible to execute the id command");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_synology_dsm_detect.nasl");
  script_require_ports("Services/www", 80, 5000, 5001);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("synology_dsm/installed");
 
  script_tag(name : "impact" , value : "An attacker can exploit this issue to execute arbitrary commands with
@@ -74,11 +72,8 @@ include("http_func.inc");
 include("global_settings.inc");
 
 if ( ! port = get_app_port( cpe:CPE ) )exit( 0 );
-if ( ! get_port_state( port ) )exit( 0 );
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name(port:port);
 
 function send_post_request ( cmd )
 {

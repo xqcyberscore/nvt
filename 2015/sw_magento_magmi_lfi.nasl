@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_magmi_lfi.nasl 5629 2017-03-20 15:36:33Z cfi $
+# $Id: sw_magento_magmi_lfi.nasl 6534 2017-07-05 09:58:29Z teissa $
 #
 # Magmi database client for Magento Local File Disclosure Vulnerability
 #
@@ -29,16 +29,14 @@ CPE = 'cpe:/a:magmi:magmi';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111041");
-  script_version("$Revision: 5629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:36:33 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 6534 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-10-14 18:00:00 +0200 (Wed, 14 Oct 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_name("Magmi database client for Magento Local File Disclosure Vulnerability");
 
-  script_summary("Check if Magmi database client for Magento is prone to a Local File
-  Disclosure Vulnerability");
 
   script_category(ACT_ATTACK);
 

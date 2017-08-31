@@ -36,8 +36,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-August/084564.html");
   script_id(864582);
-  script_version("$Revision: 3034 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 14:30:39 +0200 (Mon, 11 Apr 2016) $");
+  script_version("$Revision: 6627 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-08-03 11:15:08 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2012-3387", "CVE-2012-3388", "CVE-2012-3389", "CVE-2012-3390", "CVE-2012-3391", "CVE-2012-3392", "CVE-2012-3393", "CVE-2012-3394", "CVE-2012-3395", "CVE-2012-3396", "CVE-2012-3397", "CVE-2012-3398", "CVE-2012-2353");
   script_tag(name:"cvss_base", value:"6.5");
@@ -50,7 +50,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-0123.nasl 6170 2017-05-19 09:03:42Z teissa $
+# $Id: ELSA-2007-0123.nasl 6561 2017-07-06 12:03:14Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122709");
-script_version("$Revision: 6170 $");
+script_version("$Revision: 6561 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:51:45 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:03:14 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-0123");
 script_tag(name: "insight", value: "ELSA-2007-0123 -  Moderate: cups security update - [1.1.22-0.rc1.9.18] - REVERTED these changes: - Applied patch from STR #1301 (bug #195354). - Patch pdftops to understand 'includeifexists', and use that in the pdftops.conf file (bug #188583). - Clear the printer's state_message and state_reasons after successful job completion (bug #187457). - Include dest-cache-v2 patch (bug #175847). - Back-ported CUPS 1.2.x change to fix out of order IPP jobs (bug #171142). - Back-ported large file support (bug #211915). - Back-ported HTTP timing fix for STR #1020 (bug #194025). [1.1.22-0.rc1.9.16] - Restored use_dbus setting. [1.1.22-0.rc1.9.15] - Added timeouts to SSL negotiation (bug #232241). [1.1.22-0.rc1.9.14] - Back-ported HTTP timing fix for STR #1020 (bug #194025). [1.1.22-0.rc1.9.13] - Back-ported large file support (bug #211915). [1.1.22-0.rc1.9.12] - Back-ported CUPS 1.2.x change to fix out of order IPP jobs (bug #171142). - Include dest-cache-v2 patch (bug #175847). - Resolves: rhbz #171142"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

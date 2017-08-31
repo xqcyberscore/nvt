@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_devices_platform_cgi_lfi_01_16.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_multiple_devices_platform_cgi_lfi_01_16.nasl 6700 2017-07-12 12:16:21Z cfischer $
 #
 # Multiple Devices '/scgi-bin/platform.cgi' Unauthenticated File Disclosure
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105500");
- script_version ("$Revision: 5867 $");
+ script_version ("$Revision: 6700 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -44,15 +44,14 @@ if (description)
  script_tag(name:"solution_type", value: "NoneAvailable");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2016-01-07 15:24:11 +0100 (Thu, 07 Jan 2016)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("Embedded_HTTP_Server/banner");
  script_require_ports("Services/www", 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("Embedded_HTTP_Server/banner");
 
  exit(0);
 }

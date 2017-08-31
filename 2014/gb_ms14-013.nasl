@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-013.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-013.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Microsoft DirectShow Remote Code Execution Vulnerability (2929961)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(802068);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2014-0301");
   script_bugtraq_id(66045);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-12 08:12:10 +0530 (Wed, 12 Mar 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft DirectShow Remote Code Execution Vulnerability (2929961)");
@@ -85,7 +85,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-013";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57325");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2929961");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-013");
-  script_summary("Check for the vulnerable 'qedit.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_42874.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_phpmyadmin_42874.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # phpMyAdmin Debug Backtrace Cross Site Scripting Vulnerability
 #
@@ -44,8 +44,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
  script_bugtraq_id(42874);
  script_cve_id("CVE-2010-2958");
@@ -65,7 +65,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("phpMyAdmin/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -78,9 +77,6 @@ include("version_func.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
-
 if(vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port)) {
 
   if(version_in_range(version: vers, test_version:"3", test_version2:"3.3.5")) {

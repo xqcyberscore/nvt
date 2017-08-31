@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0372.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: ELSA-2016-0372.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122898");
-script_version("$Revision: 5612 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-03-11 07:06:41 +0200 (Fri, 11 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0372");
 script_tag(name: "insight", value: "ELSA-2016-0372 -  openssl098e security update - [0.9.8e-20.0.1.1]- Updated the description[0.9.8e-20.1]- fix CVE-2015-0293 - triggerable assert in SSLv2 server- fix CVE-2015-3197 - SSLv2 ciphersuite enforcement- disable SSLv2 in the generic TLS method[0.9.8e-20]- fix for CVE-2014-0224 - SSL/TLS MITM vulnerability"); 
 script_tag(name : "solution", value : "update software");
@@ -41,7 +41,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

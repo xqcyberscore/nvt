@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms14-081.nasl 2826 2016-03-10 08:19:43Z benallard $
+# $Id: gb_ms_office_web_apps_ms14-081.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Microsoft Office Web Apps Remote Code Execution Vulnerabilities (3017301)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805028");
-  script_version("$Revision: 2826 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-6356", "CVE-2014-6357");
   script_bugtraq_id(71469, 71470);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:19:43 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-10 12:57:43 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Office Web Apps Remote Code Execution Vulnerabilities (3017301)");
 
@@ -73,7 +73,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2889851");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2910892");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-081");
-  script_summary("Check for the version of 'msoserver.dll' vulnerable file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

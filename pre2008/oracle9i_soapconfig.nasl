@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: oracle9i_soapconfig.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: oracle9i_soapconfig.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Oracle 9iAS SOAP configuration file retrieval
 #
 # Authors:
@@ -48,8 +48,8 @@ available at http://www.nextgenss.com/papers/hpoas.pdf";
 if(description)
 {
  script_id(11224);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(4290);
  script_tag(name:"cvss_base", value:"2.1");
@@ -76,16 +76,11 @@ if(description)
  exit(0);
 }
 
-# Check starts here
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 
-
-if(get_port_state(port))
-{ 
 # Make a request for the configuration file
 
 # Note: this plugin can be expanded, I removed the call to 
@@ -100,4 +95,3 @@ if(get_port_state(port))
      if ( "SOAP configuration file" >< r )
 	      security_message(port, data:string("The SOAP configuration file ",config[i]," can be accessed directly :\n" + r));
  } # of the for loop
-}

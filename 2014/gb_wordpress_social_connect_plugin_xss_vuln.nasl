@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_social_connect_plugin_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_social_connect_plugin_xss_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # WordPress Social Connect plugin Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804677");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-4551");
   script_bugtraq_id(65103);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-14 14:43:06 +0530 (Mon, 14 Jul 2014)");
   script_name("WordPress Social Connect plugin Cross Site Scripting Vulnerability");
 
@@ -72,7 +72,6 @@ For updates refer to http://wordpress.org/plugins/social-connect";
   script_tag(name : "solution" , value : tag_solution);
 
   script_xref(name : "URL" , value : "http://codevigilant.com/disclosure/wp-plugin-social-connect-a3-cross-site-scripting-xss/");
-  script_summary("Check if WordPress Social Connect Plugin is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

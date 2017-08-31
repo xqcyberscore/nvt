@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_os_detection.nasl 6162 2017-05-18 11:36:31Z cfi $
+# $Id: gb_snmp_os_detection.nasl 6881 2017-08-09 06:55:24Z cfischer $
 #
 # SNMP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103429");
-  script_version("$Revision: 6162 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 13:36:31 +0200 (Thu, 18 May 2017) $");
+  script_version("$Revision: 6881 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-09 08:55:24 +0200 (Wed, 09 Aug 2017) $");
   script_tag(name:"creation_date", value:"2012-02-17 10:17:12 +0100 (Fri, 17 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -61,9 +61,21 @@ if( ! sysdesc  || sysdesc == "" || isnull( sysdesc ) ) exit( 0 );
 if( sysdesc =~ "Linux" && " Debian " >< sysdesc ) {
 
   set_kb_item( name:"Host/OS/SNMP/Confidence", value:100 );
-  if( "+deb8" >< sysdesc ) {
+
+  # nb: The order matters in case of backports which might have something like +deb9~bpo8
+  if( "~bpo6" >< sysdesc ) {
+    set_kb_item( name:"Host/OS/SNMP", value:"Debian GNU/Linux 6.0" );
+    register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
+  } else if( "+deb7" >< sysdesc || "~bpo7" >< sysdesc ) {
+    set_kb_item( name:"Host/OS/SNMP", value:"Debian GNU/Linux 7" );
+    register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else if( "+deb8" >< sysdesc || "~bpo8" >< sysdesc ) {
     set_kb_item( name:"Host/OS/SNMP", value:"Debian GNU/Linux 8" );
     register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else if( "+deb9" >< sysdesc || "~bpo9" >< sysdesc ) {
+    set_kb_item( name:"Host/OS/SNMP", value:"Debian GNU/Linux 9" );
+    register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
     set_kb_item( name:"Host/OS/SNMP", value:"Debian GNU/Linux" );
     register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
@@ -256,7 +268,7 @@ if( "JETDIRECT" >< sysdesc ) {
   set_kb_item( name:"Host/OS/SNMP", value:"HP JetDirect" );
   set_kb_item( name:"Host/OS/SNMP/Confidence", value:100 );
 
-  register_and_report_os( os:'JetDirect', cpe:"cpe:/h:hp:jetdirect", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+  register_and_report_os( os:'JetDirect', cpe:"cpe:/h:hp:jetdirect", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 
@@ -270,11 +282,11 @@ if( ( sysdesc =~ "^Cisco IOS" || "IOS (tm)" >< sysdesc ) && ( "Cisco IOS XR" >!<
   version = eregmatch(pattern:"IOS.*Version ([0-9]*\.[0-9]*\([0-9a-zA-Z]+\)[A-Z0-9.]*),", string:sysdesc);
 
   if( ! isnull( version[1] ) ) {
-    register_and_report_os( os:'IOS', version:version[1], cpe:"cpe:/o:cisco:ios", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'IOS', version:version[1], cpe:"cpe:/o:cisco:ios", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
     set_kb_item( name:"cisco_ios/snmp/version", value:version[1] );
     replace_kb_item( name:"cisco_ios/detected", value:TRUE );
   } else {
-    register_and_report_os( os:'IOS', cpe:"cpe:/o:cisco:ios", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'IOS', cpe:"cpe:/o:cisco:ios", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
   exit( 0 );
 }
@@ -289,11 +301,11 @@ if( ( sysdesc =~ "^Cisco IOS" || "IOS (tm)" >< sysdesc ) && "Cisco IOS XR" >!< s
   if( ! isnull( version[1] ) ) {
     version[1] = iosver_2_iosxe_ver( iosver:version[1] );
 
-    register_and_report_os( os:'IOS XE', version:version[1], cpe:"cpe:/o:cisco:ios_xe", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'IOS XE', version:version[1], cpe:"cpe:/o:cisco:ios_xe", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
     set_kb_item( name:"cisco_ios_xe/snmp/version", value:version[1] );
     replace_kb_item( name:"cisco_ios_xe/detected", value:TRUE );
   } else {
-    register_and_report_os( os:'IOS XE', cpe:"cpe:/o:cisco:ios_xe", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'IOS XE', cpe:"cpe:/o:cisco:ios_xe", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
   exit( 0 );
 }
@@ -307,9 +319,9 @@ if( "Base Operating System Runtime AIX" >< sysdesc ) {
   version = eregmatch( pattern:"Base Operating System Runtime AIX version: ([0-9.]+)", string:sysdesc );
 
   if( ! isnull( version[1] ) ) {
-    register_and_report_os( os:'AIX', version:version[1], cpe:"cpe:/o:ibm:aix", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'AIX', version:version[1], cpe:"cpe:/o:ibm:aix", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
-    register_and_report_os( os:'AIX', cpe:"cpe:/o:ibm:aix", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'AIX', cpe:"cpe:/o:ibm:aix", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
   exit( 0 );
 }
@@ -320,7 +332,7 @@ if( "Darwin Kernel" >< sysdesc ) {
   set_kb_item( name:"Host/OS/SNMP", value:"Apple Mac OS X" );
   set_kb_item( name:"Host/OS/SNMP/Confidence", value:100 );
 
-  register_and_report_os( os:'MAC OS X', cpe:"cpe:/o:apple:mac_os_x", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+  register_and_report_os( os:'MAC OS X', cpe:"cpe:/o:apple:mac_os_x", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
 
   exit( 0 );
 }
@@ -334,9 +346,9 @@ if( "Juniper Networks" >< sysdesc && "JUNOS" >< sysdesc ) {
   version = eregmatch( pattern:"JUNOS ([^ ]+)", string:sysdesc );
 
   if( ! isnull( version[1] ) ) {
-    register_and_report_os( os:'JunOS', version:version[1], cpe:"cpe:/o:juniper:junos", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'JunOS', version:version[1], cpe:"cpe:/o:juniper:junos", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }  else {
-    register_and_report_os( os:'JunOS', cpe:"cpe:/o:juniper:junos", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'JunOS', cpe:"cpe:/o:juniper:junos", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
   exit( 0 );
 }
@@ -350,9 +362,9 @@ if( "OpenVMS" >< sysdesc ) {
   version = eregmatch( pattern:"OpenVMS V([^ ]+)", string:sysdesc );
 
   if( ! isnull( version[1] ) ) {
-    register_and_report_os( os:'OpenVMS', version:version[1], cpe:"cpe:/o:hp:openvms", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'OpenVMS', version:version[1], cpe:"cpe:/o:hp:openvms", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
-    register_and_report_os( os:'OpenVMS', cpe:"cpe:/o:hp:openvms", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'OpenVMS', cpe:"cpe:/o:hp:openvms", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
   exit( 0 );
 }
@@ -366,9 +378,9 @@ if( "Novell NetWare" >< sysdesc ) {
   version = eregmatch( pattern:"Novell NetWare ([0-9.]+)", string:sysdesc );
 
   if( ! isnull( version[1] ) ) {
-    register_and_report_os( os:'Netware', version:version[1], cpe:"cpe:/o:novell:netware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'Netware', version:version[1], cpe:"cpe:/o:novell:netware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
-    register_and_report_os( os:'Netware', cpe:"cpe:/o:novell:netware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'Netware', cpe:"cpe:/o:novell:netware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
   exit( 0 );
 }
@@ -383,9 +395,9 @@ if( sysdesc =~ "running IRIX(64)? version" ) {
   version = eregmatch( pattern:"version ([0-9.]+)", string:sysdesc );
 
   if( ! isnull( version[1] ) ) {
-    register_and_report_os( os:'IRIX', version:version[1], cpe:"cpe:/o:sgi:irix", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'IRIX', version:version[1], cpe:"cpe:/o:sgi:irix", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
-    register_and_report_os( os:'IRIX', cpe:"cpe:/o:sgi:irix", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'IRIX', cpe:"cpe:/o:sgi:irix", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
   exit( 0 );
 }
@@ -399,9 +411,9 @@ if( "SCO OpenServer" >< sysdesc ) {
   version = eregmatch( pattern:"SCO OpenServer Release ([0-9]+)", string:sysdesc );
 
   if( ! isnull( version[1] ) ) {
-    register_and_report_os( os:'SCO', version:version[1], cpe:"cpe:/o:sco:openserver", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'SCO', version:version[1], cpe:"cpe:/o:sco:openserver", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
-    register_and_report_os( os:'SCO', cpe:"cpe:/o:sco:openserver", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'SCO', cpe:"cpe:/o:sco:openserver", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
   exit( 0 );
 }
@@ -415,9 +427,9 @@ if( "SCO UnixWare" >< sysdesc ) {
   version = eregmatch( pattern:"SCO UnixWare ([0-9.]+)", string:sysdesc );
 
   if( ! isnull( version[1] ) ) {
-    register_and_report_os( os:'Unixware', version:version[1], cpe:"cpe:/o:sco:unixware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'Unixware', version:version[1], cpe:"cpe:/o:sco:unixware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
-    register_and_report_os( os:'Unixware', cpe:"cpe:/o:sco:unixware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'Unixware', cpe:"cpe:/o:sco:unixware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
   exit( 0 );
 }
@@ -431,9 +443,9 @@ if( "Novell UnixWare" >< sysdesc ) {
   version = eregmatch( pattern:"Novell UnixWare v([0-9.]+)", string:sysdesc );
 
   if( ! isnull( version[1] ) ) {
-    register_and_report_os( os:'UnixWare', version:version[1], cpe:"cpe:/o:novell:unixware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'UnixWare', version:version[1], cpe:"cpe:/o:novell:unixware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
-    register_and_report_os( os:'UnixWare', cpe:"cpe:/o:novell:unixware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'UnixWare', cpe:"cpe:/o:novell:unixware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
   exit( 0 );
 }
@@ -471,16 +483,16 @@ if( "WatchGuard Fireware" >< sysdesc ) {
 
   if( ! isnull( version[1] ) ) {
     register_product( cpe:"cpe:/o:watchguard:fireware:" + version[1] );
-    register_and_report_os( os:'WatchGuard Fireware', version:version[1], cpe:"cpe:/o:watchguard:fireware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'WatchGuard Fireware', version:version[1], cpe:"cpe:/o:watchguard:fireware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
-    register_and_report_os( os:'WatchGuard Fireware', cpe:"cpe:/o:watchguard:fireware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+    register_and_report_os( os:'WatchGuard Fireware', cpe:"cpe:/o:watchguard:fireware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
   exit( 0 );
 }
 
 if( sysdesc =~ 'HP Comware (Platform )?Software' ) {
 
-  register_and_report_os( os:'HP Comware OS', cpe:"cpe:/o:hp:comware_os", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
+  register_and_report_os( os:'HP Comware OS', cpe:"cpe:/o:hp:comware_os", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
 
   exit( 0 );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_typo3_translations_php_file_disclosure.nasl 5628 2017-03-20 15:27:40Z cfi $
+# $Id: sw_typo3_translations_php_file_disclosure.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # TYPO3 Translations.php File Disclosure Vulnerability
 #
@@ -31,21 +31,19 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105141");
-  script_version("$Revision: 5628 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 6756 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-12 12:00:00 +0100 (Fri, 12 Dec 2014)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_bugtraq_id(6985);
   script_name("TYPO3 Translations.php File Disclosure Vulnerability");
-  script_summary("Check if TYPO3 is prone to File Disclosure Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2014 SCHUTZWERK GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_typo3_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"This host is installed with TYPO3 and
   is prone to a file disclosure vulnerability.");

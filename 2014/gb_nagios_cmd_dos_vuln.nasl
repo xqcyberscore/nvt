@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_cmd_dos_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_nagios_cmd_dos_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Nagios cmd.cgi Denial Of Service Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:nagios:nagios";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-1878");
   script_bugtraq_id(65605);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-18 12:05:18 +0530 (Tue, 18 Mar 2014)");
   script_name("Nagios cmd.cgi Denial Of Service Vulnerability");
 
@@ -73,7 +73,6 @@ For updates refer to http://www.nagios.org";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57024");
   script_xref(name : "URL" , value : "http://www.cnnvd.org.cn/vulnerability/show/cv_id/2014020484");
-  script_summary("Check for the vulnerable version of Nagios");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

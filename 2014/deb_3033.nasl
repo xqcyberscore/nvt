@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3033.nasl 2768 2016-03-03 09:41:07Z benallard $
+# $Id: deb_3033.nasl 6610 2017-07-07 12:06:40Z cfischer $
 # Auto-generated from advisory DSA 3033-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703033);
-    script_version("$Revision: 2768 $");
+    script_version("$Revision: 6610 $");
     script_cve_id("CVE-2014-1568");
     script_name("Debian Security Advisory DSA 3033-1 (nss - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2016-03-03 10:41:07 +0100 (Thu, 03 Mar 2016) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-07-07 14:06:40 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name:"creation_date", value:"2014-10-01 16:58:51 +0530 (Wed, 01 Oct 2014)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2014 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "nss on Debian Linux");
         script_tag(name: "insight",   value: "nss is a set of libraries designed to support cross-platform development
 of security-enabled client and server applications.");

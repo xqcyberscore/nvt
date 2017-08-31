@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: gentoo_unmaintained_packages.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gentoo_unmaintained_packages.nasl 6521 2017-07-04 14:51:10Z cfischer $
 # Description: Unmaintained Gentoo packages
 #
 # Authors:
@@ -38,8 +38,8 @@ upgrade and it will be impossible to recompile them.";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.24017");
- script_version("$Revision: 4227 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+ script_version("$Revision: 6521 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-10-08 21:18:44 +0200 (Wed, 08 Oct 2008)");
  script_tag(name:"cvss_base", value:"6.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -50,7 +50,7 @@ if (description)
   script_tag(name:"qod_type", value:"executable_version");
  script_family( "Gentoo Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_require_keys('ssh/login/pkg', 'ssh/login/gentoo_maintained');
+ script_mandatory_keys("ssh/login/pkg", "ssh/login/gentoo_maintained");
  script_tag(name: "solution", value: "Remove or upgrade those packages.");
  script_tag(name: "summary", value:"The remote operating system contains obsolete software
 

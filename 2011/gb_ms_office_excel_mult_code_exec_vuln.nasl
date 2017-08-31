@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_excel_mult_code_exec_vuln.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: gb_ms_office_excel_mult_code_exec_vuln.nasl 6538 2017-07-05 11:38:27Z cfischer $
 #
 # Microsoft Office Excel Axis and Art Object Parsing Remote Code Execution Vulnerabilities
 #
@@ -57,9 +57,9 @@ This NVT has been replaced by NVT secpod_ms11-021.nasl
 if(description)
 {
   script_id(801595);
-  script_version("$Revision: 5362 $");
+  script_version("$Revision: 6538 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_cve_id("CVE-2011-0978", "CVE-2011-0979");
   script_bugtraq_id(46225);
@@ -75,10 +75,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("secpod_office_products_version_900032.nasl",
-                      "secpod_ms_office_detection_900025.nasl");
-  script_require_keys("SMB/Office/Excel/Version");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/Office/Ver");
+  script_dependencies("secpod_office_products_version_900032.nasl", "secpod_ms_office_detection_900025.nasl");
+  script_mandatory_keys("MS/Office/Ver", "SMB/Office/Excel/Version");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -89,10 +88,6 @@ if(description)
 }
 
 exit(66); ## This NVT is deprecated as addressed in secpod_ms11-021.nasl.
-
-if(!get_kb_item("SMB/WindowsVersion")){
-  exit(0);
-}
 
 ## check for microsoft office installation
 if(!get_kb_item("MS/Office/Ver") =~ "^14\.*"){

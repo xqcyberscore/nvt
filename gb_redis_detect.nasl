@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_redis_detect.nasl 6785 2017-07-21 15:40:46Z cfischer $
 #
 # Redis Detection
 #
@@ -28,22 +28,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103844");
+  script_version("$Revision: 6785 $");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_version ("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 17:40:46 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-12-02 13:58:18 +0100 (Mon, 02 Dec 2013)");
   script_name("Redis Detection");
-  script_tag(name:"qod_type", value:"remote_banner");
-
-  script_tag(name : "summary" , value:"The script sends a connection request to the server and attempts to
-  extract the version number from the reply.");
-
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/unknown", 6379);
+  script_dependencies("find_service1.nasl");
+  script_require_ports("Services/redis", 6379);
+
+  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to
+  extract the version number from the reply.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
@@ -53,12 +53,14 @@ include("host_details.inc");
 
 cpe = 'cpe:/a:redis:redis';
 
-port = get_unknown_port( default:6379 );
+port = get_kb_item( "Services/redis" );
+if( ! port ) port = 6379;
+if( ! get_port_state( port ) ) exit( 0 );
 
-soc = open_sock_tcp(port);
-if(!soc)exit(0);
+soc = open_sock_tcp( port );
+if( ! soc ) exit( 0 );
 
-send( socket:soc, data:'PING\r\n');
+send( socket:soc, data:'PING\r\n' );
 recv = recv( socket:soc, length:32 );
 
 if( "-NOAUTH" >< recv )

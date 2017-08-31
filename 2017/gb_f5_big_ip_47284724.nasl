@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_47284724.nasl 6157 2017-05-18 08:15:25Z teissa $
+# $Id: gb_f5_big_ip_47284724.nasl 6826 2017-08-01 08:56:22Z ckuersteiner $
 #
 # F5 BIG-IP - iControl vulnerability CVE-2016-9256
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-9256","CVE-2016-9244");
  script_tag(name:"cvss_base", value:"6.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
- script_version ("$Revision: 6157 $");
+ script_version ("$Revision: 6826 $");
 
  script_name("F5 BIG-IP - iControl vulnerability CVE-2016-9256");
 
@@ -47,7 +47,7 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-18 10:15:25 +0200 (Thu, 18 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-01 10:56:22 +0200 (Tue, 01 Aug 2017) $");
  script_tag(name:"creation_date", value:"2017-03-17 10:25:58 +0100 (Fri, 17 Mar 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
@@ -66,28 +66,28 @@ include("f5.inc");
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 check_f5['LTM'] = make_array( 'affected',   '12.0.0-12.1.2;',
-                              'unaffected', '13.0.0;11.4.0-11.6.1;11.2.1;');
+                              'unaffected', '13.0.0;12.1.2_HF1;11.4.0-11.6.1;11.2.1;');
 
 check_f5['AAM'] = make_array( 'affected',   '12.0.0-12.1.2;',
-                              'unaffected', '13.0.0;11.4.0-11.6.1;');
+                              'unaffected', '13.0.0;12.1.2_HF1;11.4.0-11.6.1;');
 
 check_f5['AFM'] = make_array( 'affected',   '12.0.0-12.1.2;',
-                              'unaffected', '13.0.0;11.4.0-11.6.1;');
+                              'unaffected', '13.0.0;12.1.2_HF1;11.4.0-11.6.1;');
 
 check_f5['AVR'] = make_array( 'affected',   '12.0.0-12.1.2;',
-                              'unaffected', '13.0.0;11.4.0-11.6.1;11.2.1;');
+                              'unaffected', '13.0.0;12.1.2_HF1;11.4.0-11.6.1;11.2.1;');
 
 check_f5['APM'] = make_array( 'affected',   '12.0.0-12.1.2;',
-                              'unaffected', '13.0.0;11.4.0-11.6.1;11.2.1;');
+                              'unaffected', '13.0.0;12.1.2_HF1;11.4.0-11.6.1;11.2.1;');
 
 check_f5['ASM'] = make_array( 'affected',   '12.0.0-12.1.2;',
-                              'unaffected', '13.0.0;11.4.0-11.6.1;11.2.1;');
+                              'unaffected', '13.0.0;12.1.2_HF1;11.4.0-11.6.1;11.2.1;');
 
 check_f5['LC'] = make_array( 'affected',   '12.0.0-12.1.2;',
-                              'unaffected', '13.0.0;11.4.0-11.6.1;11.2.1;');
+                              'unaffected', '13.0.0;12.1.2_HF1;11.4.0-11.6.1;11.2.1;');
 
 check_f5['PEM'] = make_array( 'affected',   '12.0.0-12.1.2;',
-                              'unaffected', '13.0.0;11.4.0-11.6.1;');
+                              'unaffected', '13.0.0;12.1.2_HF1;11.4.0-11.6.1;');
 
 if( report = is_f5_vulnerable( ca:check_f5, version:version ) )
 {

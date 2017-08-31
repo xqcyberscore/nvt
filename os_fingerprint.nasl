@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: os_fingerprint.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: os_fingerprint.nasl 6881 2017-08-09 06:55:24Z cfischer $
 #
 # ICMP based OS Fingerprinting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("$Revision: 5309 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 6881 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-09 08:55:24 +0200 (Wed, 09 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -41,10 +41,7 @@ if(description)
 
   tag_summary = "This script performs ICMP based OS fingerprinting (as described by
   Ofir Arkin and Fyodor Yarochkin in Phrack #57). It can be used to determine
-  remote operating system version.
-
-  The result is stored in the KB for later analysis only. See the option 'Report detected OS'
-  for this NVT if you wan't to get a report about the ICMP based detected OS.";
+  remote operating system version. The result is stored in the KB for later analysis only.";
 
   script_tag(name:"summary", value:tag_summary);
 
@@ -935,9 +932,10 @@ if( typeof( best_os ) == "array") {
       }
     }
 
-    if( ! runs_key ) runs_key = "unknown";
+    # Setting the runs_key to unixoide makes sure that we still schedule NVTs using Host/runs_unixoide as a fallback
+    if( ! runs_key ) runs_key = "unixoide";
 
-    register_and_report_os( os:ostitle, cpe:best_os[ostitle], banner_type:"ICMP based OS fingerprint", banner:report, desc:SCRIPT_DESC, port:i, proto:"icmp", runs_key:runs_key );
+    register_and_report_os( os:ostitle, cpe:best_os[ostitle], banner_type:"ICMP based OS fingerprint", desc:SCRIPT_DESC, port:i, proto:"icmp", runs_key:runs_key );
   }
 } else {
 

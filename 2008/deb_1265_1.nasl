@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_1265_1.nasl 3888 2016-08-25 14:36:39Z teissa $
+# $Id: deb_1265_1.nasl 6616 2017-07-07 12:10:49Z cfischer $
 # Description: Auto-generated from advisory DSA 1265-1
 #
 # Authors:
@@ -83,8 +83,8 @@ that allow remote attackers to execute arbitrary code. [MFSA 2006-74]";
 if(description)
 {
  script_id(58120);
- script_version("$Revision: 3888 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-25 16:36:39 +0200 (Thu, 25 Aug 2016) $");
+ script_version("$Revision: 6616 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:10:49 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-01-17 23:17:11 +0100 (Thu, 17 Jan 2008)");
  script_cve_id("CVE-2006-6497", "CVE-2006-6498", "CVE-2006-6499", "CVE-2006-6501", "CVE-2006-6502", "CVE-2006-6503", "CVE-2006-6505");
  script_bugtraq_id(21668);
@@ -99,7 +99,7 @@ if(description)
  script_copyright("Copyright (c) 2007 E-Soft Inc. http://www.securityspace.com");
  script_family("Debian Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name:"qod_type", value:"package");

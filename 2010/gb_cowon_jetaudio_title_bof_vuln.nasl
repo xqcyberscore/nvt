@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cowon_jetaudio_title_bof_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: gb_cowon_jetaudio_title_bof_vuln.nasl 6532 2017-07-05 07:42:05Z cfischer $
 #
 # jetAudio jetCast Title Processing Buffer Overflow Vulnerability
 #
@@ -41,8 +41,8 @@ tag_summary = "This host has COWON Media Center JetAudio installed and is prone
 if(description)
 {
   script_id(800994);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6532 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-03-10 15:48:25 +0100 (Wed, 10 Mar 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -57,7 +57,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_dependencies("secpod_cowon_jetaudio_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "JetAudio/Ver");
+  script_mandatory_keys("JetAudio/Ver");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
@@ -72,10 +72,6 @@ if(description)
 include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-if(!get_kb_item("SMB/WindowsVersion")){
-  exit(0);
-}
 
 jaVer = get_kb_item("JetAudio/Ver");
 if(jaVer != NULL)

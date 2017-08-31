@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_mem_corr_vuln_win.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_oracle_virtualbox_mult_mem_corr_vuln_win.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Oracle VM VirtualBox Multiple Memory Corruption Vulnerabilities (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804355";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-0981", "CVE-2014-0983");
   script_bugtraq_id(66131, 66133);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-03 15:56:53 +0530 (Thu, 03 Apr 2014)");
   script_name("Oracle VM VirtualBox Multiple Memory Corruption Vulnerabilities (Windows)");
 
@@ -82,7 +82,6 @@ For updates refer to https://www.virtualbox.org";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57384");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/32208");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125660");
-  script_summary("Check for the vulnerable version of Oracle VM VirtualBox on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

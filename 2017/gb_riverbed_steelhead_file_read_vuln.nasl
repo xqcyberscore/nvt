@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_riverbed_steelhead_file_read_vuln.nasl 6280 2017-06-06 02:31:37Z ckuersteiner $
+# $Id: gb_riverbed_steelhead_file_read_vuln.nasl 6766 2017-07-20 06:44:05Z cfischer $
 #
 # Riverbed SteelHead Arbitrary File Read Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:riverbed:steelhead";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106846");
-  script_version("$Revision: 6280 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-06 04:31:37 +0200 (Tue, 06 Jun 2017) $");
+  script_version("$Revision: 6766 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-20 08:44:05 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-06-06 08:53:41 +0700 (Tue, 06 Jun 2017)");
   script_tag(name: "cvss_base", value: "6.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:N/A:N");
@@ -56,7 +56,7 @@ vulnerability.");
 
   script_tag(name: "affected", value: "Riverbed Steelhead VCX 9.6.0a");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 6th June, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 20th July, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42101/");

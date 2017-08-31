@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3893.nasl 6418 2017-06-23 10:18:41Z teissa $
+# $Id: deb_3893.nasl 6782 2017-07-21 08:32:32Z cfischer $
 # Auto-generated from advisory DSA 3893-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703893);
-    script_version("$Revision: 6418 $");
+    script_version("$Revision: 6782 $");
     script_cve_id("CVE-2016-4000");
     script_name("Debian Security Advisory DSA 3893-1 (jython - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-23 12:18:41 +0200 (Fri, 23 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-21 10:32:32 +0200 (Fri, 21 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-06-22 00:00:00 +0200 (Thu, 22 Jun 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"7.5");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "jython on Debian Linux");
         script_tag(name: "insight",   value: "Jython is an implementation of the high-level, dynamic, object-oriented
 language Python seamlessly integrated with the Java platform. The

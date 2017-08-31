@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842015");
-  script_version("$Revision: 2812 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 12:51:30 +0100 (Wed, 09 Mar 2016) $");
+  script_version("$Revision: 6735 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-29 05:53:47 +0100 (Wed, 29 Oct 2014)");
   script_cve_id("CVE-2014-3694", "CVE-2014-3695", "CVE-2014-3696", "CVE-2014-3698");
   script_tag(name:"cvss_base", value:"6.4");
@@ -65,12 +65,11 @@ resulting in an information leak. (CVE-2014-3698)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2390-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-October/002708.html");
-  script_summary("Check for the Version of pidgin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

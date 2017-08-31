@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_remote_desktop_info_disc_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_apple_remote_desktop_info_disc_vuln.nasl 6601 2017-07-07 10:00:10Z cfischer $
 #
 # Apple Remote Desktop Information Disclosure Vulnerability
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is installed with Apple Remote Desktop and is prone to
 if(description)
 {
   script_id(802964);
-  script_version("$Revision: 5988 $");
+  script_version("$Revision: 6601 $");
   script_cve_id("CVE-2012-0681");
   script_bugtraq_id(55100);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:00:10 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-09-25 18:02:57 +0530 (Tue, 25 Sep 2012)");
   script_name("Apple Remote Desktop Information Disclosure Vulnerability");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5462");
@@ -56,8 +56,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success");
-  script_require_keys("ssh/login/uname", "ssh/login/osx_name");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

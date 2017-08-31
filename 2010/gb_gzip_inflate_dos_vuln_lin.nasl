@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gzip_inflate_dos_vuln_lin.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_gzip_inflate_dos_vuln_lin.nasl 6664 2017-07-11 10:20:11Z cfischer $
 #
 # GZip 'huft_build()' in 'inflate.c' Input Validation Vulnerability (Linux)
 #
@@ -45,8 +45,8 @@ tag_summary = "This host is installed with GZip and is prone to Input Validation
 if(description)
 {
   script_id(800453);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 6664 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 12:20:11 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-02-04 12:53:38 +0100 (Thu, 04 Feb 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -62,13 +62,13 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_gzip_detect_lin.nasl");
-  script_require_keys("GZip/Win/Ver");
+  script_mandatory_keys("GZip/Linux/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "solution" , value : tag_solution);
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_50671.nasl 3116 2016-04-19 10:11:19Z benallard $
+# $Id: gb_cacti_50671.nasl 6942 2017-08-16 12:42:09Z cfischer $
 #
 # Cacti Unspecified SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -41,8 +41,8 @@ if (description)
 {
  script_id(103319);
  script_bugtraq_id(50671);
- script_cve_id("CVE-2011-4824");
- script_version ("$Revision: 3116 $");
+ script_cve_id("CVE-2011-4824", "CVE-2014-2326");
+ script_version ("$Revision: 6942 $");
 
  script_name("Cacti Unspecified SQL Injection and Cross Site Scripting Vulnerabilities");
 
@@ -52,7 +52,7 @@ if (description)
 
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:11:19 +0200 (Tue, 19 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-16 14:42:09 +0200 (Wed, 16 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-11-15 08:09:39 +0100 (Tue, 15 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_banner");
  script_summary("Determine if installed Cacti version is vulnerable");

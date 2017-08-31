@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804079");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2013-6786");
   script_bugtraq_id(63721);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-23 12:26:46 +0530 (Thu, 23 Jan 2014)");
   script_name("Allegro RomPager HTTP Referer Header Cross Site Scripting Vulnerability");
 
@@ -52,15 +52,13 @@ if(description)
   For updates refer to http://www.allegrosoft.com/embedded-web-server");
 
   script_xref(name:"URL", value:"http://antoniovazquezblanco.github.io/docs/advisories/Advisory_RomPagerXSS.pdf");
-  script_summary("Check if RomPager server is vulnerable to cross site scripting");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("RomPager/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("RomPager/banner");
 
   exit(0);
 }

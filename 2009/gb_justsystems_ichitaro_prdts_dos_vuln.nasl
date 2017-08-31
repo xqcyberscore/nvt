@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_justsystems_ichitaro_prdts_dos_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_justsystems_ichitaro_prdts_dos_vuln.nasl 6515 2017-07-04 11:54:15Z cfischer $
 #
 # JustSystems Ichitaro Products Denial Of Service Vulnerability.
 #
@@ -45,8 +45,8 @@ tag_summary = "This host has JustSystems Ichitaro product(s) installed and
 if(description)
 {
   script_id(800544);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 6515 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -63,7 +63,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_justsystems_ichitaro_prdts_detect.nasl");
-  script_require_keys("Ichitaro/Ver", "Ichitaro/Viewer/Ver");
+  script_mandatory_keys("Ichitaro/Ichitaro_or_Viewer/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-023.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-023.nasl 6538 2017-07-05 11:38:27Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilites (2489293)
 #
@@ -45,8 +45,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902364);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6538 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -61,8 +61,8 @@ if(description)
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
+  script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion", "MS/Office/Ver");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

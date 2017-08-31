@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netmaster_password_disclosure_08_14.nasl 2827 2016-03-10 08:33:09Z benallard $
+# $Id: gb_netmaster_password_disclosure_08_14.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # Netmaster Wireless Cable Modem Password Disclosure
 #
@@ -31,13 +31,12 @@ if (description)
  script_cve_id("CVE-2014-4862");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 2827 $");
+ script_version ("$Revision: 6750 $");
 
  script_name("Netmaster Wireless Cable Modem Password Disclosure");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:33:09 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-08-25 12:47:34 +0100 (Mon, 25 Aug 2014)");
- script_summary("Determine if it is possible to get the password via snmp");
  script_category(ACT_ATTACK);
  script_family("General");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

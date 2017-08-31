@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_info_disc_vuln.nasl 4892 2016-12-30 15:39:07Z teissa $
+# $Id: gb_sun_java_sys_web_serv_info_disc_vuln.nasl 6519 2017-07-04 14:08:14Z cfischer $
 #
 # Sun Java System Web Server '.jsp' Information Disclosure Vulnerability (Windows)
 #
@@ -48,8 +48,8 @@ Information Disclosure Vulnerability.";
 if(description)
 {
   script_id(800658);
-  script_version("$Revision: 4892 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 16:39:07 +0100 (Fri, 30 Dec 2016) $");
+  script_version("$Revision: 6519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-07-22 21:36:53 +0200 (Wed, 22 Jul 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -64,10 +64,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_sun_java_sys_web_serv_detect.nasl",
-                      "secpod_reg_enum.nasl");
-  script_require_keys("Sun/JavaSysWebServ/Ver", "SMB/WindowsVersion");
-  script_require_ports(139,445);
+  script_dependencies("gb_sun_java_sys_web_serv_detect.nasl", "secpod_reg_enum.nasl");
+  script_mandatory_keys("Sun/JavaSysWebServ/Ver", "SMB/WindowsVersion");
   script_require_ports("Services/www", 8888, 8989, 139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

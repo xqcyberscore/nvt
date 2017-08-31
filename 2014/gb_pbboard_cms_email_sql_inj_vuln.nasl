@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pbboard_cms_email_sql_inj_vuln.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_pbboard_cms_email_sql_inj_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # PBBoard CMS 'email' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805205");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-9215");
   script_bugtraq_id(71471);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-08 15:01:55 +0530 (Mon, 08 Dec 2014)");
   script_name("PBBoard CMS 'email' Parameter SQL Injection Vulnerability");
 
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/534149/30/0/threaded");
   script_xref(name : "URL" , value : "http://www.itas.vn/news/ITAS-Team-discovered-SQL-Injection-in-PBBoard-CMS-68.html");
 
-  script_summary("Check if PBBoard is prone to sql-injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

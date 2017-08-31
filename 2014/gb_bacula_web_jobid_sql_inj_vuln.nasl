@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bacula_web_jobid_sql_inj_vuln.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_bacula_web_jobid_sql_inj_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Bacula-web 'jobid' Parameter SQL Injection Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804771");
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6769 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-07 11:01:51 +0530 (Tue, 07 Oct 2014)");
 
   script_name("Bacula-web 'jobid' Parameter SQL Injection Vulnerability");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/34851");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/128480");
 
-  script_summary("Check if Bacula-web is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

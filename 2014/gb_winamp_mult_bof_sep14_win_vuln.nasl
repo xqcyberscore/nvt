@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winamp_mult_bof_sep14_win_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_winamp_mult_bof_sep14_win_vuln.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Winamp Libraries Multiple Buffer Overflow Vulnerability - Sep14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:nullsoft:winamp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804845");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2013-4694");
   script_bugtraq_id(60883);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-18 16:49:22 +0530 (Thu, 18 Sep 2014)");
 
   script_name("Winamp Libraries Multiple Buffer Overflow Vulnerability - Sep14");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/85399");
   script_xref(name : "URL" , value : "http://forums.winamp.com/showthread.php?t=364291");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Winamp on Windows");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_family("Buffer overflow");

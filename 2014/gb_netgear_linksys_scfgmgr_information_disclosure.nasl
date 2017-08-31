@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_linksys_scfgmgr_information_disclosure.nasl 3120 2016-04-19 12:41:49Z jan $
+# $Id: gb_netgear_linksys_scfgmgr_information_disclosure.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Netgear/Linksys Routers Backdoor
 #
@@ -62,7 +62,7 @@ if (description)
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3120 $");
+ script_version ("$Revision: 6715 $");
 
  script_name("Netgear/Linksys Routers Backdoor");
 
@@ -70,9 +70,8 @@ if (description)
  script_xref(name:"URL", value:"https://github.com/elvanderb/TCP-32764");
  script_xref(name:"URL", value:"http://www.netgear.com/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 14:41:49 +0200 (Tue, 19 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-02 14:46:14 +0100 (Thu, 02 Jan 2014)");
- script_summary("Determine if the remote router has a backdoor on port 32764");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("General");

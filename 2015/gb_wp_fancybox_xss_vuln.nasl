@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_fancybox_xss_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_wp_fancybox_xss_vuln.nasl 6534 2017-07-05 09:58:29Z teissa $
 #
 # FancyBox for Wordpress XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105958");
-  script_version("$Revision: 3694 $");
-  script_tag(name : "last_modification", value : "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6534 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name : "creation_date", value : "2015-03-02 09:33:03 +0700 (Mon, 02 Mar 2015)");
   script_tag(name : "cvss_base", value : "4.3");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -53,7 +53,6 @@ if (description)
   script_mandatory_keys("wordpress/installed");
 
   script_tag(name : "summary", value : "FancyBox for Wordpress is prone to a XSS vulnerability.");
-  script_summary("Check the version");
 
   script_tag(name : "vuldetect", value : "Tries to detect the version of FancyBox plugin.");
 

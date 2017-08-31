@@ -33,8 +33,8 @@ tag_summary = "Remote exploitation of an integer overflow vulnerability in the
 if(description)
 {
   script_id(102053);
-  script_version("$Revision: 5656 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 6527 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_bugtraq_id(21930);
   script_cve_id("CVE-2007-0024");
@@ -49,7 +49,7 @@ if(description)
   script_copyright("Copyright (C) 2010 LSS");
   script_family("Windows : Microsoft Bulletins"); 
   script_dependencies("gb_ms_ie_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
+  script_mandatory_keys("MS/IE/Version");
   script_require_ports(139, 445);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);

@@ -29,11 +29,11 @@ CPE = "cpe:/a:sixapart:movable_type";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805369");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6513 $");
   script_cve_id("CVE-2015-0845");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-04-22 16:50:00 +0530 (Wed, 22 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Movable Type Templates Arbitrary Code Execution Vulnerability");
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://movabletype.org/news/2015/04/movable_type_608_and_5213_released_to_close_security_vulnera.html");
 
-  script_summary("Check the version Movable Type is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

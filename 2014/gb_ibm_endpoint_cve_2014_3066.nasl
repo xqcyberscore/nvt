@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_endpoint_cve_2014_3066.nasl 2823 2016-03-10 07:27:58Z antu123 $
+# $Id: gb_ibm_endpoint_cve_2014_3066.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # IBM Endpoint Manager XML External Entity Injection
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2014-0224");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2823 $");
+ script_version ("$Revision: 6735 $");
 
  script_name("IBM Endpoint Manager XML External Entity Injection");
 
@@ -65,9 +65,8 @@ All 8.2 releases of Web Reports and Server API earlier than 8.2.1445.0");
  script_tag(name:"solution_type", value: "VendorFix"); 
 
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 08:27:58 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-12-03 14:44:19 +0100 (Wed, 03 Dec 2014)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");

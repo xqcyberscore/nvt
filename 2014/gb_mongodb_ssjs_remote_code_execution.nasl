@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_ssjs_remote_code_execution.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_mongodb_ssjs_remote_code_execution.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # MongoDB REST Interface Remote Code Execution Vulnerability
 #
@@ -45,7 +45,7 @@ tag_vuldetect = "Send a special crafted HTTP GET request and check the response.
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6735 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -55,9 +55,8 @@ if (description)
  script_xref(name:"URL", value:"http://en.securitylab.ru/lab/PT-2012-40");
  script_xref(name:"URL", value:"http://blog.ptsecurity.com/2012/11/attacking-mongodb.html");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-08 13:56:18 +0100 (Wed, 08 Jan 2014)");
- script_summary("Determine if it is possible to execute SSJS");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

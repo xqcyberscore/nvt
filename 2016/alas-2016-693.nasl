@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-693.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: alas-2016-693.nasl 6574 2017-07-06 13:41:26Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120682");
-script_version("$Revision: 5650 $");
+script_version("$Revision: 6574 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:11:58 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:41:26 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-693");
 script_tag(name: "insight", value: "It was discovered that the ObjectInputStream class in the Serialization component of OpenJDK failed to properly ensure thread consistency when deserializing serialized input. An untrusted Java application or applet could use this flaw to bypass Java sandbox restrictions. (CVE-2016-0686 )It was discovered that the Hotspot component of OpenJDK did not properly handle byte types. An untrusted Java application or applet could use this flaw to corrupt Java virtual machine memory and possibly execute arbitrary code, bypassing Java sandbox restrictions. (CVE-2016-0687 )It was discovered that the RMI server implementation in the JMX component in OpenJDK did not restrict which classes can be deserialized when deserializing authentication credentials. A remote, unauthenticated attacker able to connect to a JMX port could possibly use this flaw to trigger deserialization flaws. (CVE-2016-3427 )It was discovered that the JAXP component in OpenJDK failed to properly handle Unicode surrogate pairs used as part of the XML attribute values. Specially crafted XML input could cause a Java application to use an excessive amount of memory when parsed. (CVE-2016-3425 )It was discovered that the Security component in OpenJDK failed to check the digest algorithm strength when generating DSA signatures. The use of a digest weaker than the key strength could lead to the generation of signatures that were weaker than expected. (CVE-2016-0695 )"); 
 script_tag(name : "solution", value : "Run yum update java-1.7.0-openjdk to update your system.");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

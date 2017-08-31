@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smtp_starttls_pl_inj.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_smtp_starttls_pl_inj.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Multiple Vendors STARTTLS Implementation Plaintext Arbitrary Command Injection Vulnerability
 #
@@ -56,7 +56,7 @@ if (description)
  script_cve_id("CVE-2011-0411","CVE-2011-1430","CVE-2011-1431","CVE-2011-1432","CVE-2011-1575","CVE-2011-1926","CVE-2011-2165");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6769 $");
 
  script_name("Multiple Vendors STARTTLS Implementation Plaintext Arbitrary Command Injection Vulnerability");
 
@@ -79,9 +79,8 @@ if (description)
  script_xref(name:"URL", value:"http://inoa.net/qmail-tls/vu555316.patch");
  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/555316");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-04-08 13:52:07 +0200 (Tue, 08 Apr 2014)");
- script_summary("Send a special crafted STARTTLS request and check the response");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("SMTP problems");

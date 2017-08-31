@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_43001.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_horde_43001.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # Horde Application Framework 'icon_browser.php' Cross-Site Scripting Vulnerability
 #
@@ -43,8 +43,8 @@ Contact the vendor for more information.";
 if (description)
 {
  script_id(100787);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-09-07 15:26:31 +0200 (Tue, 07 Sep 2010)");
  script_cve_id("CVE-2010-3077", "CVE-2010-3694");
  script_bugtraq_id(43001);
@@ -60,7 +60,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("horde_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("horde/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -76,9 +75,8 @@ include("version_func.inc");
 include("url_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if(!dir = get_dir_from_kb(port:port,app:"horde"))exit(0);
+
 ex = string("<body onload=alert('openvas-xss-test')>");
 
 url = string(dir, "/util/icon_browser.php?subdir=",urlencode(str:ex),"&app=horde");

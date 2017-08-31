@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_65585.nasl 2490 2016-01-22 14:43:50Z benallard $
+# $Id: gb_linksys_65585.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # Multiple Linksys Devices Multiple Remote Code Execution Vulnerabilities
 #
@@ -67,7 +67,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(65585);
- script_version ("$Revision: 2490 $");
+ script_version ("$Revision: 6756 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -77,17 +77,15 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65585");
  script_xref(name:"URL", value:"http://www.linksys.com");
  
- script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:43:50 +0100 (Fri, 22 Jan 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-02-18 12:42:30 +0100 (Tue, 18 Feb 2014)");
  script_tag(name:"qod_type", value:"remote_analysis");
  script_tag(name:"solution_type", value: "VendorFix");
- script_summary("Determine if it is possible to execute a command");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_hnap_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("HNAP/model","HNAP/port");
 
  script_tag(name : "impact" , value : tag_impact);
@@ -111,7 +109,7 @@ if( ! port ) exit( 0 );
 
 sleep = make_list( 3, 5, 8 );
 
-host = get_host_name();
+host = http_host_name(port:port);
 userpass64 = base64( str: 'admin:OpenVAS' );
 
 foreach i ( sleep )

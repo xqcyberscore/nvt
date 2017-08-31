@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tiv_endpoint_manager_mult_vuln_feb17.nasl 5352 2017-02-20 09:34:30Z antu123 $
+# $Id: gb_ibm_tiv_endpoint_manager_mult_vuln_feb17.nasl 6783 2017-07-21 09:48:14Z ckuersteiner $
 #
 # IBM Tivoli Endpoint Manager Multiple Vulnerabilities Feb17
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:tivoli_endpoint_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809886");
-  script_version("$Revision: 5352 $");
+  script_version("$Revision: 6783 $");
   script_cve_id("CVE-2016-0296", "CVE-2016-0297", "CVE-2016-0396", "CVE-2016-0214");
   script_bugtraq_id(94213, 94188, 94193, 94155);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 10:34:30 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 11:48:14 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-02-16 11:44:50 +0530 (Thu, 16 Feb 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Tivoli Endpoint Manager Multiple Vulnerabilities Feb17");
@@ -102,12 +102,26 @@ if(!tivVer = get_app_version(cpe:CPE, port:tivPort)){
 }
 
 ##Check for Vulnerable Version
-if(version_is_equal(version:tivVer, test_version:"9.0") ||
-   version_is_equal(version:tivVer, test_version:"9.1") ||
-   version_is_equal(version:tivVer, test_version:"9.2") ||
-   version_is_equal(version:tivVer, test_version:"9.5"))
-{
-  report = report_fixed_ver(installed_version:tivVer, fixed_version:"Apply fix from the refernce links");
-  security_message(port:tivPort, data:report);
+if (version_is_less(version: tivVer, test_version: "9.1.1275.0")) {
+  report = report_fixed_ver(installed_version: tivVer, fixed_version: "9.1.1275.0");
+  security_message(port: tivPort, data: report);
   exit(0);
 }
+
+if (tivVer =~ "^9\.2\.") {
+  if (version_is_less(version: tivVer, test_version: "9.2.8.74")) {
+    report = report_fixed_ver(installed_version: tivVer, fixed_version: "9.2.8.74");
+    security_message(port: tivPort, data: report);
+    exit(0);
+  }
+}
+
+if (tivVer =~ "^9\.5\.") {
+  if (version_is_less(version: tivVer, test_version: "9.5.3.211")) {
+    report = report_fixed_ver(installed_version: tivVer, fixed_version: "9.5.3.211");
+    security_message(port: tivPort, data: report);
+    exit(0);
+  }
+}
+
+exit(99);

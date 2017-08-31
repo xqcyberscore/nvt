@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_acropdf_dos_vuln_lin.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_adobe_reader_acropdf_dos_vuln_lin.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Adobe Reader 'AcroPDF.DLL' Denial of Service Vulnerability (Linux)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804379";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2007-1377");
   script_bugtraq_id(22856);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-10 11:24:07 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader 'AcroPDF.DLL' Denial of Service Vulnerability (Linux)");
 
@@ -77,7 +77,6 @@ features, remove the product or replace the product by another one.";
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/32896");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/3430");
-  script_summary("Check for the vulnerable version of Adobe Reader on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Denial of Service");

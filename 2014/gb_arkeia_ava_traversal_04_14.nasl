@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arkeia_ava_traversal_04_14.nasl 3825 2016-08-11 10:23:05Z teissa $
+# $Id: gb_arkeia_ava_traversal_04_14.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Arkeia Appliance Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:knox_software:arkeia_appliance";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3825 $");
+  script_version("$Revision: 6769 $");
    script_cve_id("CVE-2014-2846");
   script_bugtraq_id(67039);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-11 12:23:05 +0200 (Thu, 11 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-23 13:16:06 +0200 (Wed, 23 Apr 2014)");
   script_name("Arkeia Appliance Path Traversal Vulnerability");
 
@@ -70,7 +70,6 @@ tag_solution =
   script_tag(name : "impact" , value : tag_impact);
 
   script_xref(name : "URL" , value : "https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20140423-0_WD_Arkeia_Path_Traversal_v10.txt");
-  script_summary("Check if Arkeia Appliance is vulnerable to LFI");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

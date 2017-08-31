@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-061_macosx.nasl 4569 2016-11-18 10:10:15Z antu123 $
+# $Id: gb_ms14-061_macosx.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Microsoft Office Word Remote Code Execution Vulnerability-3000434 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804496");
-  script_version("$Revision: 4569 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-4117");
   script_bugtraq_id(70360);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 11:10:15 +0100 (Fri, 18 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-15 11:42:29 +0530 (Wed, 15 Oct 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
 
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/60973");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-061");
-  script_summary("Check the vulnerable version of Microsoft Office for Mac");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

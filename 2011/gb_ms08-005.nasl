@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-005.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: gb_ms08-005.nasl 6605 2017-07-07 11:22:07Z cfischer $
 #
 # Microsoft Internet Information Services Privilege Elevation Vulnerability (942831)
 #
@@ -49,8 +49,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(801704);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6605 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 13:22:07 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-01-13 17:08:42 +0100 (Thu, 13 Jan 2011)");
   script_cve_id("CVE-2008-0074");
   script_bugtraq_id(27101);
@@ -66,7 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl", "gb_ms_iis_detect_win.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/IIS/Ver");
+  script_mandatory_keys("MS/IIS/Ver", "SMB/WindowsVersion");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

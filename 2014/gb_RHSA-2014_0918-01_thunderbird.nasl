@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871204");
-  script_version("$Revision: 2781 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:56:38 +0100 (Fri, 04 Mar 2016) $");
+  script_version("$Revision: 6688 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:49:31 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-28 16:42:15 +0530 (Mon, 28 Jul 2014)");
   script_cve_id("CVE-2014-1547", "CVE-2014-1555", "CVE-2014-1556", "CVE-2014-1557");
   script_tag(name:"cvss_base", value:"10.0");
@@ -81,7 +81,7 @@ to take effect.
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

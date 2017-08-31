@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-617.nasl 6357 2017-06-16 10:00:29Z teissa $
+# $Id: alas-2015-617.nasl 6575 2017-07-06 13:42:08Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120607");
-script_version("$Revision: 6357 $");
+script_version("$Revision: 6575 $");
 script_tag(name:"creation_date", value:"2015-12-15 02:51:20 +0200 (Tue, 15 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:42:08 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-617");
 script_tag(name: "insight", value: "A buffer overflow flaw was found in the way glibc's gethostbyname_r() and other related functions computed the size of a buffer when passed a misaligned buffer as input. An attacker able to make an application call any of these functions with a misaligned buffer could use this flaw to crash the application or, potentially, execute arbitrary code with the permissions of the user running the application. (CVE-2015-1781 )It was discovered that the nss_files backend for the Name Service Switch in glibc would return incorrect data to applications or corrupt the heap (depending on adjacent heap contents). A local attacker could potentially use this flaw to execute arbitrary code on the system. (CVE-2015-5277 )It was discovered that, under certain circumstances, glibc's getaddrinfo() function would send DNS queries to random file descriptors. An attacker could potentially use this flaw to send DNS queries to unintended recipients, resulting in information disclosure or data loss due to the application encountering corrupted data. (CVE-2013-7423 )A stack overflow flaw was found in glibc's swscanf() function. An attacker able to make an application call the swscanf() function could use this flaw to crash that application or, potentially, execute arbitrary code with the permissions of the user running the application. (CVE-2015-1473 )A heap-based buffer overflow flaw was found in glibc's swscanf() function. An attacker able to make an application call the swscanf() function could use this flaw to crash that application or, potentially, execute arbitrary code with the permissions of the user running the application. (CVE-2015-1472 )"); 
 script_tag(name : "solution", value : "Run yum update glibc to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

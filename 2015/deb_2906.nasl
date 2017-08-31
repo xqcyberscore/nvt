@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2906.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: deb_2906.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 2906-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,7 +30,7 @@
 if(description)
 {
     script_id(702906);
-    script_version("$Revision: 6443 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2013-0343", "CVE-2013-2147", "CVE-2013-2889", "CVE-2013-2893",
                   "CVE-2013-2929", "CVE-2013-4162", "CVE-2013-4299", "CVE-2013-4345",
                   "CVE-2013-4512", "CVE-2013-4587", "CVE-2013-6367", "CVE-2013-6380",
@@ -39,7 +39,7 @@ if(description)
                   "CVE-2014-1444", "CVE-2014-1445", "CVE-2014-1446", "CVE-2014-1874",
                   "CVE-2014-2039", "CVE-2014-2523");
     script_name("Debian Security Advisory DSA 2906-1 (linux-2.6 - privilege escalation/denial of service/information leak)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2014-04-24 00:00:00 +0200 (Thu, 24 Apr 2014)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "linux-2.6 on Debian Linux");
     script_tag(name: "insight",   value: "The Linux kernel is the core of the Linux operating system.");
     script_tag(name: "solution",  value: "For the oldstable distribution (squeeze), this problem has been fixed in

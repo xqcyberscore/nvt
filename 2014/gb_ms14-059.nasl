@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-059.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-059.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # ASP.NET MVC Security Feature Bypass Vulnerability (2990942)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804778");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-4075");
   script_bugtraq_id(70352);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-15 15:14:33 +0530 (Wed, 15 Oct 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
 
@@ -63,7 +63,6 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/60971");
   script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms14-059");
 
-  script_summary("Check for the vulnerable 'System.Web.Mvc.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

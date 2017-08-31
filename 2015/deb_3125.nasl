@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3125.nasl 6376 2017-06-20 10:00:24Z teissa $
+# $Id: deb_3125.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3125-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703125);
-    script_version("$Revision: 6376 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2014-3569", "CVE-2014-3570", "CVE-2014-3571", "CVE-2014-3572",
                   "CVE-2014-8275", "CVE-2015-0204", "CVE-2015-0205", "CVE-2015-0206");
     script_name("Debian Security Advisory DSA 3125-1 (openssl - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-01-11 00:00:00 +0100 (Sun, 11 Jan 2015)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "openssl on Debian Linux");
         script_tag(name: "insight",   value: "This package contains the openssl binary and related tools.");
     script_tag(name: "solution",  value: "For the stable distribution (wheezy),

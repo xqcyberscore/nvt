@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sql_injection.nasl 4805 2016-12-19 15:09:30Z cfi $
+# $Id: sql_injection.nasl 6905 2017-08-11 11:50:56Z cfischer $
 #
-# wpoison (nasl version)
+# Test for generic SQL injection in Web Applications
 #
 # Authors:
 # John Lampe ... j_lampe@bellsouth.net
@@ -31,24 +31,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11139");
-  script_version("$Revision: 4805 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-19 16:09:30 +0100 (Mon, 19 Dec 2016) $");
+  script_version("$Revision: 6905 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-11 13:50:56 +0200 (Fri, 11 Aug 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_name("wpoison (nasl version)");
+  script_name("Test for generic SQL injection in Web Applications");
   script_category(ACT_MIXED_ATTACK);
   script_copyright("This script is Copyright (C) 2002 John Lampe...j_lampe@bellsouth.net");
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_exclude_keys("Settings/disable_cgi_scanning", "Settings/disable_generic_webapp_scanning");
 
   script_xref(name:"URL", value:"http://en.wikipedia.org/wiki/SQL_injection");
   script_xref(name:"URL", value:"http://www.securiteam.com/securityreviews/5DP0N1P76E.html");
   script_xref(name:"URL", value:"http://www.securitydocs.com/library/2651");
 
-  tag_summary = "This script attempts to use SQL injection techniques on CGI scripts";
+  tag_summary = "This script attempts to use SQL injection techniques on CGI scripts.
+
+  NOTE: Please enable 'Enable generic web application scanning' within the NVT 'Global variable settings'
+  (OID: 1.3.6.1.4.1.25623.1.0.12288) if you want to run this script.";
 
   tag_impact = "An attacker may exploit this flaws to bypass authentication or to take the control of the remote database.";
 
@@ -59,7 +62,7 @@ if(description)
   script_tag(name:"solution", value:tag_solution);
 
   script_tag(name:"solution_type", value:"Workaround");
-  script_tag(name:"qod_type", value:"remote_probe");
+  script_tag(name:"qod_type", value:"remote_active");
 
   script_timeout(600);
 
@@ -68,6 +71,9 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+
+# nb: We also don't want to run if optimize_test is set to "no"
+if( get_kb_item( "Settings/disable_cgi_scanning" ) || get_kb_item( "Settings/disable_generic_webapp_scanning" ) ) exit( 0 );
 
 single_quote = raw_string(0x27);
 
@@ -109,7 +115,7 @@ posreply[10] = "mysql_query()";
 posreply[11] = "Unknown table";
 posreply[12] = "You have an error in your SQL syntax";
 posreply[13] = "Error Occurred While Processing Request";
-posreply[14] = "Syntax";
+posreply[14] = "Syntax error converting the varchar value";
 posreply[15] = "not a valid MySQL result resource";
 posreply[16] = "unexpected end of SQL command";
 posreply[17] = "mySQL error with query";
@@ -124,12 +130,15 @@ posreply[25] = "[IBM][CLI Driver][DB2/6000]";
 posreply[26] = "Unable to connect to PostgreSQL server:";
 posreply[27] = "Can't connect to local";
 posreply[28] = "ADODB.Recordset";
-
+posreply[29] = "Microsoft SQL Native Client error";
+posreply[30] = "Query failed: ERROR: syntax error at or near";
 
 port = get_http_port( default:80 );
 
 unsafe_urls = "";
-mywarningcount = blindwarningcount = 0;
+blind_urls = "";
+mywarningcount = 0;
+blindwarningcount = 0;
 
 cgi = get_kb_item( "www/" + port + "/cgis" );
 if( ! cgi ) exit( 0 );
@@ -151,8 +160,8 @@ failedReqs = 0;
 maxFailedReqs = 5;
 
 if( ! isdir ) {
-  vrequest = string(everythingrray[0],"?");
-  bogus_vrequest = string(everythingrray[0],"?",rand());
+  vrequest = string( everythingrray[0], "?" );
+  bogus_vrequest = string( everythingrray[0], "?", rand() );
   pseudocount = 0;
   foreach rrayval( everythingrray ) {
     if( pseudocount >= 2 ) {
@@ -181,9 +190,9 @@ for( z = 2; param[z]; z++ ) {
   blind = '';
   url = vrequest;
   req = http_get( item:url, port:port );
-  res = http_keepalive_send_recv( port:port, data:req );
+  res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-  if( ( res == NULL ) || ( ! egrep( string:res, pattern:"^HTTP/1\.(0|1) (200 OK|302)" ) ) ) {
+  if( ( res == NULL ) || ( ! egrep( string:res, pattern:"^HTTP/1\.[01] (200|302)" ) ) ) {
     failedReqs++;
     if( failedReqs >= maxFailedReqs ) {
       exit( 0 );
@@ -197,7 +206,7 @@ for( z = 2; param[z]; z++ ) {
   req = http_get( item:bogus_vrequest, port:port );
   bres = http_keepalive_send_recv( port:port, data:req );
 
-  if( egrep( string:bres, pattern:"^HTTP/1\.(0|1) 200 OK" ) ) {
+  if( egrep( string:bres, pattern:"^HTTP/1\.[01] 200" ) ) {
     continue;
   }
 
@@ -259,9 +268,9 @@ for( z = 2; param[z]; z++ ) {
 
     if( "Content-Length: 0" >< inbuff ) continue;
 
-    for( mu=0; posreply[mu]; mu++ ) {
+    for( mu = 0; posreply[mu]; mu++ ) {
       if( posreply[mu] >< inbuff ) {
-        unsafe_urls = string( unsafe_urls, url, "\n" );
+        unsafe_urls = string( unsafe_urls, report_vuln_url( port:port, url:url, url_only:TRUE ), ":", posreply[mu],  "\n" );
         mywarningcount++;
       }
     }
@@ -290,7 +299,7 @@ for( z = 2; param[z]; z++ ) {
         if( "Content-Length: 0" >< inbuff ) continue;
 
         if( qa_body != res_saved ) {
-          blind_urls = string( blind_urls, blind, "\n" );
+          blind_urls = string( blind_urls, report_vuln_url( port:port, url:blind, url_only:TRUE ), "\n" );
           blindwarningcount++;
         }
       }
@@ -303,9 +312,8 @@ for( z = 2; param[z]; z++ ) {
       mypostdata = tmppost[1];
       postreq = http_post( item:param[0], port:port, data:mypostdata );
 
-
       # Test the POST req
-      inbuff = http_keepalive_send_recv(port:port, data:postreq);
+      inbuff = http_keepalive_send_recv( port:port, data:postreq );
       if( inbuff == NULL ) {
         failedReqs++;
         if( failedReqs >= maxFailedReqs ) {
@@ -318,8 +326,8 @@ for( z = 2; param[z]; z++ ) {
 
       for( mu = 0; posreply[mu]; mu++ ) {
         if( posreply[mu] >< inbuff ) {
-          unsafe_urls = string(unsafe_urls, url, "\n");
-          mywarningcount = mywarningcount + 1;
+          unsafe_urls = string( unsafe_urls, report_vuln_url( port:port, url:url, url_only:TRUE ), ":", posreply[mu], "\n" );
+          mywarningcount++;
         }
       }
 
@@ -351,7 +359,7 @@ for( z = 2; param[z]; z++ ) {
           qa_body = strstr( qabuff, string( "\r\n\r\n" ) );
 
           if( qa_body != res_saved ) {
-            blind_urls = string( blind_urls, blind, "\n" );
+            blind_urls = string( blind_urls, report_vuln_url( port:port, url:blind, url_only:TRUE ), "\n" );
             blindwarningcount++;
           }
         }
@@ -364,16 +372,12 @@ for( z = 2; param[z]; z++ ) {
 report = "";
 
 if( mywarningcount > 0 ) {
-
   VULN = TRUE;
-
-  report += string( "The following URLs seem to be vulnerable to various SQL injection techniques : \n\n", unsafe_urls, "\n\n" );
+  report += string( "The following URLs seem to be vulnerable to various SQL injection techniques : <url>:<matching pattern>\n\n", unsafe_urls, "\n\n" );
 }
 
 if( blindwarningcount > 0 ) {
-
   VULN = TRUE;
-
   report += string("The following URLs seem to be vulnerable to BLIND SQL injection techniques : \n\n", blind_urls, "\n\n" );
 }
 

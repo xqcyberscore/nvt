@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.867908");
-  script_version("$Revision: 2803 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 15:37:27 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 6629 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-23 13:16:58 +0530 (Mon, 23 Jun 2014)");
   script_cve_id("CVE-2014-0238", "CVE-2014-0237", "CVE-2014-0185", "CVE-2013-6420");
   script_tag(name:"cvss_base", value:"7.5");
@@ -64,7 +64,7 @@ which adds support for the PHP language to Apache HTTP Server.
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

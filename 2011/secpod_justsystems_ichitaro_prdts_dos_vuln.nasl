@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_justsystems_ichitaro_prdts_dos_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_justsystems_ichitaro_prdts_dos_vuln.nasl 6515 2017-07-04 11:54:15Z cfischer $
 #
 # JustSystems Ichitaro Products Denial of Service Vulnerability
 #
@@ -46,8 +46,8 @@ tag_summary = "This host is installed with JustSystems Ichitaro product(s) and i
 if(description)
 {
   script_id(902396);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6515 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_bugtraq_id(48283);
   script_cve_id("CVE-2011-1331");
@@ -67,7 +67,7 @@ if(description)
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_justsystems_ichitaro_prdts_detect.nasl");
-  script_require_keys("Ichitaro/Ver", "Ichitaro/Viewer/Ver");
+  script_mandatory_keys("Ichitaro/Ichitaro_or_Viewer/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

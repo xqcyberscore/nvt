@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_itsm_ticket_split_info_disclosure_vuln.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_otrs_itsm_ticket_split_info_disclosure_vuln.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # OTRS ITSM Ticket Split Information Disclosure Vulnerability
 #
@@ -31,13 +31,13 @@ ITSMCPE = "cpe:/a:otrs:otrs_itsm";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6125 $");
+  script_version("$Revision: 6755 $");
   script_cve_id("CVE-2013-3551");
   script_bugtraq_id(60117);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-09-27 15:32:31 +0530 (Fri, 27 Sep 2013)");
   script_name("OTRS ITSM Ticket Split Information Disclosure Vulnerability");
 
@@ -87,7 +87,6 @@ http://www.otrs.com/en/open-source/community-news/security-advisories/security-a
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("secpod_otrs_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("OTRS/installed");
   exit(0);
 }

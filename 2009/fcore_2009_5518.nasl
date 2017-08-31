@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: fcore_2009_5518.nasl 4722 2016-12-08 18:05:08Z teissa $
+# $Id: fcore_2009_5518.nasl 6624 2017-07-10 06:11:55Z cfischer $
 # Description: Auto-generated from advisory FEDORA-2009-5518 (libwmf)
 #
 # Authors:
@@ -52,8 +52,8 @@ announced via advisory FEDORA-2009-5518.";
 if(description)
 {
  script_id(64092);
- script_version("$Revision: 4722 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-08 19:05:08 +0100 (Thu, 08 Dec 2016) $");
+ script_version("$Revision: 6624 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:11:55 +0200 (Mon, 10 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-06-05 18:04:08 +0200 (Fri, 05 Jun 2009)");
  script_cve_id("CVE-2009-1364");
  script_tag(name:"cvss_base", value:"7.5");
@@ -67,7 +67,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("Fedora Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/rpms");
+ script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

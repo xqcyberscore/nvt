@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_liveupdate_administrator_mult_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_symantec_liveupdate_administrator_mult_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Symantec LiveUpdate Administrator Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:symantec:liveupdate_administrator";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-1644", "CVE-2014-1645");
   script_bugtraq_id(66399, 66400);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-03 15:36:12 +0530 (Thu, 03 Apr 2014)");
   script_name("Symantec LiveUpdate Administrator Multiple Vulnerabilities");
 
@@ -79,7 +79,6 @@ For updates refer to http://www.symantec.com";
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1029972");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125925");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2014-03/0172.html");
-  script_summary("Check for the vulnerable version of Symantec LiveUpdate Administrator");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

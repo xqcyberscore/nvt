@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841914");
-  script_version("$Revision: 2811 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 12:43:34 +0100 (Wed, 09 Mar 2016) $");
+  script_version("$Revision: 6645 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-28 16:40:56 +0530 (Mon, 28 Jul 2014)");
   script_cve_id("CVE-2014-1547", "CVE-2014-1548", "CVE-2014-1549", "CVE-2014-1550",
                 "CVE-2014-1561", "CVE-2014-1555", "CVE-2014-1556", "CVE-2014-1544",
@@ -111,7 +111,7 @@ conduct cross-site scripting attacks. (CVE-2014-1552)";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

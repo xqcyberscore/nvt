@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_38876.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_wordpress_38876.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # WordPress Password Protection Security Bypass Vulnerability
 #
@@ -39,8 +39,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-03-24 17:54:30 +0100 (Wed, 24 Mar 2010)");
  script_bugtraq_id(38876);
  script_tag(name:"cvss_base", value:"5.0");
@@ -57,7 +57,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("secpod_wordpress_detect_900182.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("wordpress/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -68,10 +67,6 @@ include("version_func.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
-if (!can_host_php(port:port)) exit(0);
-
 if(vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port)) {
 
   if(version_is_less_equal(version: vers, test_version: "2.9.2")) {

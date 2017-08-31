@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_complete_gallery_file_upload_09_13.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_wordpress_complete_gallery_file_upload_09_13.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # Wordpress Plugin Complete Gallery Manager 3.3.3 - Arbitrary File Upload Vulnerability
 #
@@ -50,7 +50,7 @@ tag_vuldetect = "Upload a file by sending a HTTP POST request.";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 6079 $");
+ script_version ("$Revision: 6755 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Wordpress Plugin Complete Gallery Manager 3.3.3 - Arbitrary File Upload Vulnerability");
@@ -58,7 +58,7 @@ if (description)
  script_xref(name:"URL", value:"http://www.vulnerability-lab.com/get_content.php?id=1080");
  script_xref(name:"URL", value:"http://codecanyon.net/item/complete-gallery-manager-for-wordpress/2418606");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-09-19 11:10:11 +0200 (Thu, 19 Sep 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -66,7 +66,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("secpod_wordpress_detect_900182.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("wordpress/installed");
 
  script_tag(name : "impact" , value : tag_impact);

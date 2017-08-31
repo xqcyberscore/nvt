@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_sep_mult_vuln_jan14.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_symantec_sep_mult_vuln_jan14.nasl 6463 2017-06-28 12:38:50Z cfischer $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities Jan-14
 #
@@ -30,13 +30,13 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804199";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6463 $");
   script_cve_id("CVE-2013-5009", "CVE-2013-5010", "CVE-2013-5011");
   script_bugtraq_id(64128, 64129, 64130);
   script_tag(name:"cvss_base", value:"7.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:C/A:C");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 14:38:50 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2014-01-27 16:29:04 +0530 (Mon, 27 Jan 2014)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities Jan-14");
 
@@ -84,13 +84,11 @@ NOTE: Ignore this warning if above mentioned patch is installed.
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56354/");
   script_xref(name : "URL" , value : "http://www.symantec.com/connect/articles/what-are-symantec-endpoint-protection-sep-versions-released-officialy");
-  script_summary("Check for the vulnerable version of Symantec Endpoint Protection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_symantec_prdts_detect.nasl");
   script_mandatory_keys("Symantec/Endpoint/Protection");
-  script_require_keys("Symantec/SEP/SmallBusiness");
   exit(0);
 }
 

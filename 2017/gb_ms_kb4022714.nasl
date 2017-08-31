@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022714.nasl 6340 2017-06-14 15:08:31Z santu $
+# $Id: gb_ms_kb4022714.nasl 6853 2017-08-04 11:45:08Z santu $
 #
 # Microsoft Windows Multiple Vulnerabilites (KB4022714)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811164");
-  script_version("$Revision: 6340 $");
+  script_version("$Revision: 6853 $");
   script_cve_id("CVE-2017-0193", "CVE-2017-8473", "CVE-2017-8474", "CVE-2017-8527", 
                 "CVE-2017-0216", "CVE-2017-0218", "CVE-2017-0219", "CVE-2017-0282", 
                 "CVE-2017-8475", "CVE-2017-8476", "CVE-2017-8477", "CVE-2017-8529", 
@@ -43,7 +43,8 @@ if(description)
                 "CVE-2017-8493", "CVE-2017-8494", "CVE-2017-8462", "CVE-2017-8464", 
                 "CVE-2017-8470", "CVE-2017-8471", "CVE-2017-8522", "CVE-2017-8523", 
                 "CVE-2017-8524", "CVE-2017-8465", "CVE-2017-8466", "CVE-2017-8468", 
-                "CVE-2017-8515", "CVE-2017-8517");
+                "CVE-2017-8515", "CVE-2017-8517", "CVE-2017-8554", "CVE-2017-8575",
+                "CVE-2017-8518");
   script_bugtraq_id(98878, 98852, 98902, 98933, 98896, 98897, 98898, 98885, 98853,
                     98903, 98854, 98953, 98863, 98819, 98920, 98918, 98845, 98856,
                     98820, 98821, 98914, 98922, 98857, 98862, 98824, 98923, 98929,
@@ -53,7 +54,7 @@ if(description)
                     98928, 98930, 98843, 98844, 98846, 98833, 98895);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-14 17:08:31 +0200 (Wed, 14 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-04 13:45:08 +0200 (Fri, 04 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-06-14 10:02:48 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilites (KB4022714)");
 
@@ -75,10 +76,13 @@ if(description)
     Microsoft Scripting Engine, Microsoft Edge, Windows COM, Windows kernel, Windows
     kernel-mode drivers, Microsoft Uniscribe, Microsoft Graphics Component, Windows
     Shell, Microsoft Windows PDF and Internet Explorer. For more information about
-    the security vulnerabilities resolved, please refer to the Security Update Guide.");
+    the security vulnerabilities resolved, please refer to the Security Update Guide.
 
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain
-  the same user rights as the current user, to take control of an affected system.
+  - Microsoft Edge improperly accesses objects in memory.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to 
+  execute arbitrary code in the context of the current user, gain the same user 
+  rights as the current user, to take control of an affected system.
 
   Impact Level: System");
 

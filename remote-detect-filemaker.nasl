@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-filemaker.nasl 4688 2016-12-06 12:48:55Z cfi $
+# $Id: remote-detect-filemaker.nasl 6781 2017-07-21 08:31:34Z cfischer $
 #
 # FileMaker service detection
 #
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80003");
-  script_version("$Revision: 4688 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 13:48:55 +0100 (Tue, 06 Dec 2016) $");
+  script_version("$Revision: 6781 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 10:31:34 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-09-09 16:54:39 +0200 (Tue, 09 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,12 +42,14 @@ if(description)
 
   script_tag(name:"summary", value:"The remote host is running the Filemaker database server.
   FileMaker Pro is a cross-platform relational database application from FileMaker Inc.,
-  a subsidiary of Apple Inc., has compatible versions for both the Mac OS X and Microsoft Windows operating systems");
+  a subsidiary of Apple Inc., has compatible versions for both the Mac OS X and Microsoft Windows operating systems.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
+
+include("misc_func.inc");
 
 # define the default port for Filemaker
 port = 5003;
@@ -74,7 +76,7 @@ filemaker_auth_packet +=  "0x110x0e0x0e0x090x0a0x280x350x7a0x620x740x6a0x2c0x6b0
 filemaker_auth_packet +=  "0x600x6a0x390x600x680x630x600x6f0x690x600x390x6e0x600x6c0x3b0x15";
 
 # declare that Filemaker is not installed yet
-is_filemaker = 0;
+is_filemaker = FALSE;
 
 if( get_port_state( port ) ) {
   soc = open_sock_tcp( port );
@@ -82,20 +84,18 @@ if( get_port_state( port ) ) {
 
     send( socket:soc, data: filemaker_auth_packet );
     reply = recv( socket:soc, length:136 );
+    close( soc );
     if( isnull( reply ) ) exit ( 0 );
 
     # Check that Filemaker is not tcpwrapped. And that it's really Filemaker
-
-    if( stridx( reply, "GIOP", 0 ) ) is_filemaker = 1;
-    close( soc );
+    if( stridx( reply, "GIOP", 0 ) ) is_filemaker = TRUE;
   }
 }
 
-#
 # Report Filemaker installed
-#
-if( is_filemaker == 1 ) {
-  set_kb_item( name:"FileMaker/installed", value:TRUE );
+if( is_filemaker ) {
+  register_service( port:port, proto:"fmpro-internal", message:"A FileMaker service seems to be running on this port." );
+  replace_kb_item( name:"FileMaker/installed", value:TRUE );
   log_message( port:port );
 }
 

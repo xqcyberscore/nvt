@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service_nmap.nasl 6294 2017-06-08 18:11:49Z cfischer $
+# $Id: find_service_nmap.nasl 6846 2017-08-03 15:23:06Z cfischer $
 #
-# Identify unknown services with nmap
+# Service Detection with nmap
 #
 # Authors:
 # Thomas Reinke
@@ -38,13 +38,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.66286");
-  script_version("$Revision: 6294 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-08 20:11:49 +0200 (Thu, 08 Jun 2017) $");
+  script_version("$Revision: 6846 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-03 17:23:06 +0200 (Thu, 03 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-11-18 19:41:26 +0100 (Wed, 18 Nov 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("Identify unknown services with nmap");
-  script_category(ACT_END);
+  script_name("Service Detection with nmap");
+  # nb: This category is intended. It allows us to have this NVT scheduled after every Detection-NVT
+  # from ACT_GATHER_INFO has finished its job.
+  script_category(ACT_MIXED_ATTACK);
   script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
   script_family("Service detection");
   script_require_ports("Services/unknown");
@@ -52,7 +54,9 @@ if(description)
   script_mandatory_keys("Tools/Present/nmap");
 
   script_tag(name:"summary", value:"This plugin performs service detection by launching nmap's
-  service probe (nmap -sV) against ports that are running unidentified services.");
+  service probe (nmap -sV) against ports that are running unidentified services.
+
+  Note: This plugin is started at the end of a scan to register all remaining unknown services.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -73,7 +77,7 @@ if( isnull( extract ) || revcomp( a:extract[1], b:"4.62" ) < 0 ) {
   exit( 0 );
 }
 
-# This will fork.  Potential issue if large # of unknown services.
+# This will fork. Potential issue if large # of unknown services.
 # (But then the other find_service*.nasl scripts have the same problem.
 port = get_kb_item( "Services/unknown" );
 if( ! port ) exit( 0 );
@@ -82,12 +86,21 @@ if( ! service_is_unknown( port:port ) ) exit( 0 );
 
 # Check if we can still open that port before throwing nmap on it
 soc = open_sock_tcp( port, transport:ENCAPS_IP );
-if( ! soc ) exit( 0 );
-else close( soc );
+if( ! soc )
+  exit( 0 );
+else
+  close( soc );
 
 i = 0;
 ip = get_host_ip();
 argv[i++] = "nmap";
+
+# Apply the choosen nmap timing policy from nmap.nasl here as well
+timing_policy = get_kb_item( "Tools/nmap/timing_policy" );
+if( timing_policy ) {
+  argv[i++] = timing_policy;
+}
+
 argv[i++] = "-sV";
 argv[i++] = "-Pn";
 argv[i++] = "-p";
@@ -106,9 +119,9 @@ servicesig = extract[2];
 len = strlen( servicesig );
 
 if( len > 0 ) {
-  lastchar = substr( servicesig, len-1 );
+  lastchar = substr( servicesig, len - 1 );
   if( lastchar == "?" ) {
-    servicesig = substr( servicesig, 0, len-2 );
+    servicesig = substr( servicesig, 0, len - 2 );
     guess = TRUE;
   }
 }
@@ -117,13 +130,16 @@ if( strlen( servicesig ) > 0 ) {
 
   register_service( port:port, proto:servicesig );
 
-  message = 'Nmap service detection result for this port: ' + servicesig;
+  report = 'Nmap service detection result for this port: ' + servicesig;
 
   if( guess ) {
-    message += '\nThis is a guess. A confident identification of the service was not possible.';
+    command = "nmap -sV -Pn -p " + port + " " + ip;
+    report += '\n\nThis is a guess. A confident identification of the service was not possible.\n\n';
+    report += "Hint: If you're running a recent nmap version try to run nmap with the following command: '" + command;
+    report += "' and submit a possible collected fingerprint to the nmap database.";
   }
 
-  log_message( port:port, data:message );
+  log_message( port:port, data:report );
 }
 
 exit( 0 );

@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882219");
-  script_version("$Revision: 6404 $");
+  script_version("$Revision: 6657 $");
   script_cve_id("CVE-2014-9425", "CVE-2014-9705", "CVE-2014-9709", "CVE-2015-0232",
                 "CVE-2015-0273", "CVE-2015-2301", "CVE-2015-2783", "CVE-2015-2787",
                 "CVE-2015-3307", "CVE-2015-3329", "CVE-2015-3411", "CVE-2015-3412",
@@ -35,7 +35,7 @@ if(description)
                 "CVE-2015-4600", "CVE-2015-4601", "CVE-2015-4602", "CVE-2015-4603");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:50:44 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-07-10 06:08:37 +0200 (Fri, 10 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for php CESA-2015:1218 centos6 ");
@@ -105,7 +105,7 @@ take effect.
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: nds_web_based_browsing.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: nds_web_based_browsing.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Novell Web Server NDS Tree Browsing
 #
 # Authors:
@@ -38,8 +38,8 @@ For More Information: http://www.securiteam.com/securitynews/5XP0L1555W.html";
 if(description)
 {
  script_id(10739); 
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(484);
  script_cve_id("CVE-1999-1020");
@@ -49,7 +49,6 @@ if(description)
  name = "Novell Web Server NDS Tree Browsing";
  script_name(name);
  
-
  summary = "Novell Web Server NDS Tree Browsing";
  
  script_category(ACT_GATHER_INFO);
@@ -61,14 +60,12 @@ if(description)
  script_copyright("This script is Copyright (C) 2001 SecuriTeam");
  script_dependencies("find_service.nasl", "no404.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
-
-#
-# The script code starts here
-#
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -78,12 +75,8 @@ include("http_keepalive.inc");
  dir[2] = "/LCGI";
  dir[3] = "/apage/lcgi-bin";
 
- port = get_http_port(default:80);
+port = get_http_port(default:80);
 
- 
-
-if (get_port_state(port))
-{
   for(i=0;dir[i];i=i+1)
   {
   data = http_get(item:dir[i], port:port);
@@ -95,4 +88,3 @@ if (get_port_state(port))
     exit(0);
   }
  }
-}

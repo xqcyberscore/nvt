@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3039.nasl 2768 2016-03-03 09:41:07Z benallard $
+# $Id: deb_3039.nasl 6735 2017-07-17 09:56:49Z teissa $
 # Auto-generated from advisory DSA 3039-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,24 +30,23 @@
 if(description)
 {
     script_id(703039);
-    script_version("$Revision: 2768 $");
+    script_version("$Revision: 6735 $");
     script_cve_id("CVE-2014-3160", "CVE-2014-3162", "CVE-2014-3165", "CVE-2014-3166", "CVE-2014-3167", "CVE-2014-3168", "CVE-2014-3169", "CVE-2014-3170", "CVE-2014-3171", "CVE-2014-3172", "CVE-2014-3173", "CVE-2014-3174", "CVE-2014-3175", "CVE-2014-3176", "CVE-2014-3177", "CVE-2014-3178", "CVE-2014-3179");
     script_name("Debian Security Advisory DSA 3039-1 (chromium-browser - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2016-03-03 10:41:07 +0100 (Thu, 03 Mar 2016) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
     script_tag(name:"creation_date", value:"2014-10-01 16:58:59 +0530 (Wed, 01 Oct 2014)");
     script_tag(name: "cvss_base", value:"10.0");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-3039.html");
 
-    script_summary("Debian Security Advisory DSA 3039-1 (chromium-browser - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2014 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "chromium-browser on Debian Linux");
         script_tag(name: "insight",   value: "Chromium is an open-source browser project that aims to build a safer, faster,
 and more stable way for all Internet users to experience the web.");

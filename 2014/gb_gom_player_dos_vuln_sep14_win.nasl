@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gom_player_dos_vuln_sep14_win.nasl 3008 2016-04-07 13:17:01Z antu123 $
+# $Id: gb_gom_player_dos_vuln_sep14_win.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # GOM Media Player Denial of Service Vulnerability Sep14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:gomlab:gom_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804903");
-  script_version("$Revision: 3008 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-3899");
   script_bugtraq_id(69182);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 15:17:01 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-15 12:54:27 +0530 (Mon, 15 Sep 2014)");
 
   script_name("GOM Media Player Denial of Service Vulnerability Sep14 (Windows)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name:"URL" , value:"http://www.xforce.iss.net/xforce/xfdb/95133");
   script_xref(name:"URL" , value:"https://cxsecurity.com/cveshow/CVE-2014-3899");
   script_xref(name:"URL" , value:"http://jvndb.jvn.jp/en/contents/2014/JVNDB-2014-000085.html");
-  script_summary("Check the vulnerable version of GOM Media Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Denial of Service");

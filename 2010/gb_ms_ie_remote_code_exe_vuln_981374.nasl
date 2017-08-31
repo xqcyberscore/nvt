@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_remote_code_exe_vuln_981374.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: gb_ms_ie_remote_code_exe_vuln_981374.nasl 6527 2017-07-05 05:56:34Z cfischer $
 #
 # MS Internet Explorer Remote Code Execution Vulnerability (981374)
 #
@@ -42,9 +42,9 @@ tag_summary = "The host is installed with Internet Explorer and is prone to Remo
 if(description)
 {
   script_id(800176);
-  script_version("$Revision: 5368 $");
+  script_version("$Revision: 6527 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-03-10 15:48:25 +0100 (Wed, 10 Mar 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -62,8 +62,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_ms_ie_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
-  script_require_ports(139, 445);
+  script_mandatory_keys("MS/IE/Version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2014-0003.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_VMSA-2014-0003.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # VMSA-2014-0003: VMware vSphere Client updates address security vulnerabilities
 #
@@ -49,15 +49,14 @@ if (description)
  script_cve_id("CVE-2014-1209","CVE-2014-1210");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6663 $");
  script_name("VMSA-2014-0003 VMware vSphere Client updates address security vulnerabilities");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0003.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-04-24 13:04:01 +0100 (Thu, 24 Apr 2014)");
- script_summary("Checks for installed patches.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

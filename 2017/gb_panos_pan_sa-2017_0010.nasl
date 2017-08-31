@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0010.nasl 6203 2017-05-24 04:40:49Z ckuerste $
+# $Id: gb_panos_pan_sa-2017_0010.nasl 6840 2017-08-03 08:38:20Z ckuersteiner $
 #
 # Palo Alto PAN-OS  Information Disclosure in the Management Web Interface
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-7216");
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_version ("$Revision: 6203 $");
+ script_version ("$Revision: 6840 $");
 
  script_name("Palo Alto PAN-OS Information Disclosure in the Management Web Interface");
 
@@ -49,10 +49,10 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-24 06:40:49 +0200 (Wed, 24 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-03 10:38:20 +0200 (Thu, 03 Aug 2017) $");
  script_tag(name:"creation_date", value:"2017-04-12 16:25:31 +0200 (Wed, 12 Apr 2017)");
  script_category(ACT_GATHER_INFO);
- script_family("General");
+ script_family("Palo Alto PAN-OS Local Security Checks");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_dependencies("gb_palo_alto_panOS_version.nasl");
  script_mandatory_keys("palo_alto_pan_os/version");

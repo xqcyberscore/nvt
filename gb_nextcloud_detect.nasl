@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_detect.nasl 5896 2017-04-07 14:47:18Z cfi $
+# $Id: gb_nextcloud_detect.nasl 6847 2017-08-03 17:43:18Z cfischer $
 #
 # Nextcloud Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809413");
-  script_version("$Revision: 5896 $");
+  script_version("$Revision: 6847 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 16:47:18 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-03 19:43:18 +0200 (Thu, 03 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-09-27 12:37:02 +0530 (Tue, 27 Sep 2016)");
   script_name("Nextcloud Detection");
   script_category(ACT_GATHER_INFO);
@@ -59,7 +59,7 @@ include("version_func.inc");
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/NextCloud", "/cloud", cgi_dirs( port:port ) ) ) {
+foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/Nextcloud", "/cloud", cgi_dirs( port:port ) ) ) {
 
   install = dir;
   if( dir == "/" ) dir = "";
@@ -68,8 +68,11 @@ foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/NextCloud", "/cloud",
   buf = http_get_cache( item:url, port:port );
 
   # nb: Don't check for 200 as a 400 will be returned when accessing to an untrusted domain
+  # Example responses:
+  # {"installed":true,"maintenance":false,"needsDbUpgrade":false,"version":"12.0.0.29","versionstring":"12.0.0","edition":"","productname":"Nextcloud"}
+  # {"installed":true,"maintenance":false,"needsDbUpgrade":false,"version":"12.0.1.3","versionstring":"12.0.1 RC4","edition":"","productname":"Nextcloud"}
   if( "egroupware" >!< tolower( buf ) && # EGroupware is using the very same status.php
-    ( egrep( string:buf, pattern:'"installed":("true"|true),("maintenance":(true|false),)?("needsDbUpgrade":(true|false),)?"version":"([0-9.]+)","versionstring":"([0-9.]+)","edition":"(.*)"' ) ||
+    ( egrep( string:buf, pattern:'"installed":("true"|true),("maintenance":("true"|true|"false"|false),)?("needsDbUpgrade":("true"|true|"false"|false),)?"version":"([0-9.]+)","versionstring":"([0-9. a-zA-Z]+)","edition":"(.*)"' ) ||
       ( "You are accessing the server from an untrusted domain" >< buf && ">Nextcloud<" >< buf ))) {
 
     version = "unknown";
@@ -90,15 +93,15 @@ foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/NextCloud", "/cloud",
       }
     }
 
-    ver = eregmatch( string:buf, pattern:'version":"([0-9.]+)","versionstring":"([0-9.]+)"', icase:TRUE );
-    if( ! isnull( ver[2] ) ) version = ver[2];
+    ver = eregmatch( string:buf, pattern:'version":"([0-9.]+)","versionstring":"([0-9. a-zA-Z]+)"', icase:TRUE );
+    if( ! isnull( ver[2] ) ) version = ereg_replace( pattern:" ", replace:"", string:ver[2] );
 
-    ## Version fingerprinting, as we can't differ between oC and NC before NC11
-    # 9.0.50 was the first release of NC.
+    ## Version fingerprinting, as we can't differ between ownCloud and Nextcloud before Nextcloud11
+    # 9.0.50 was the first release of Nextcloud.
     if( version_in_range( version:version, test_version:"9.0.50", test_version2:"9.0.99" ) ) isNC = TRUE;
-    # NC10 has e.g. "version":"9.1.2.2","versionstring":"10.0.2"
+    # Nextcloud10 has e.g. "version":"9.1.2.2","versionstring":"10.0.2"
     if( ver[1] =~ "9.1.([0-9]+)" && ver[2] =~ "10.0.([0-9]+)" ) isNC = TRUE;
-    # Valid for NC11+
+    # Valid for Nextcloud11+
     if( '"productname":"Nextcloud"' >< buf ) isNC = TRUE;
 
     if( "You are accessing the server from an untrusted domain" >< buf && ">Nextcloud<" ) {
@@ -109,11 +112,11 @@ foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/NextCloud", "/cloud",
 
     if( ! isNC ) continue;
 
-    set_kb_item( name:"nextcloud/install/" + port + "/" + install, value:TRUE ); # For gb_owncloud_detect.nasl to avoid double detection of Nc and oC
+    set_kb_item( name:"nextcloud/install/" + port + "/" + install, value:TRUE ); # For gb_owncloud_detect.nasl to avoid double detection of Nextcloud and ownCloud
     replace_kb_item( name:"owncloud_or_nextcloud/installed", value:TRUE );
     replace_kb_item( name:"nextcloud/installed", value:TRUE );
 
-    cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:nextcloud:nextcloud:" );
+    cpe = build_cpe( value:version, exp:"^([0-9.a-zA-Z]+)", base:"cpe:/a:nextcloud:nextcloud:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:nextcloud:nextcloud';
 

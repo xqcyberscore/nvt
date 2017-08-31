@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: joomla_35780.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: joomla_35780.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # Joomla! Remote File Upload Vulnerability And Information Disclosure Weakness
 #
@@ -40,8 +40,8 @@ references for more information.";
 if (description)
 {
  script_id(100333);
- script_version("$Revision: 4970 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+ script_version("$Revision: 6704 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-11-03 12:50:27 +0100 (Tue, 03 Nov 2009)");
  script_bugtraq_id(35780);
  script_tag(name:"cvss_base", value:"7.5");
@@ -61,7 +61,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("joomla_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("joomla/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -73,9 +72,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
-if (!can_host_php(port:port)) exit(0);
 
 if(!version = get_kb_item(string("www/", port, "/joomla")))exit(0);
 if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);

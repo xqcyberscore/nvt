@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872307");
-  script_version("$Revision: 5133 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-30 08:27:54 +0100 (Mon, 30 Jan 2017) $");
+  script_version("$Revision: 6634 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-01-26 05:46:47 +0100 (Thu, 26 Jan 2017)");
   script_cve_id("CVE-2016-9587", "CVE-2016-8647");
   script_tag(name:"cvss_base", value:"10.0");
@@ -53,7 +53,7 @@ are transferred to managed machines automatically.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

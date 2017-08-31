@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_sep_remote_code_exec_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_symantec_sep_remote_code_exec_vuln.nasl 6517 2017-07-04 13:34:20Z cfischer $
 #
 # Symantec Endpoint Protection Management Console Remote Code Execution Vulnerability
 #
@@ -40,10 +40,10 @@ tag_summary = "This host is installed with Symantec Endpoint Protection and is
 if(description)
 {
   script_id(803094);
-  script_version("$Revision: 6074 $");
+  script_version("$Revision: 6517 $");
   script_cve_id("CVE-2012-4348");
   script_bugtraq_id(56846);
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-01-08 10:42:29 +0530 (Tue, 08 Jan 2013)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:M/C:C/I:C/A:C");
@@ -56,8 +56,7 @@ if(description)
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_symantec_prdts_detect.nasl");
-  script_require_keys("Symantec/Endpoint/Protection",
-                      "Symantec/SEP/SmallBusiness");
+  script_mandatory_keys("Symantec_or_Norton/Products/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

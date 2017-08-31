@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-039.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-039.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Microsoft Windows On-Screen Keyboard Privilege Escalation Vulnerability (2975685)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804472");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-2781");
   script_bugtraq_id(68397);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-09 08:30:57 +0530 (Wed, 09 Jul 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft Windows On-Screen Keyboard Privilege Escalation Vulnerability (2975685)");
@@ -83,7 +83,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-039";
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2973201");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2973906");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-039");
-  script_summary("Check for the vulnerable 'Win32k.sys' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

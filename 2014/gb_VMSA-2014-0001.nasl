@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2014-0001.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_VMSA-2014-0001.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # VMSA-2014-0001: VMware Workstation, Player, Fusion, ESXi, ESX and vCloud Director address several security issues
 #
@@ -78,15 +78,14 @@ if (description)
  script_cve_id("CVE-2014-1207", "CVE-2014-1208", "CVE-2014-1211");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6750 $");
  script_name("VMSA-2014-0001 VMware Workstation, Player, Fusion, ESXi, ESX and vCloud Director address several security issues");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0001.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-20 10:04:01 +0100 (Mon, 20 Jan 2014)");
- script_summary("Checks for installed patches.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

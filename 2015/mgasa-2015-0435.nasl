@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0435.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: mgasa-2015-0435.nasl 6563 2017-07-06 12:23:47Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131108");
-script_version("$Revision: 6132 $");
+script_version("$Revision: 6563 $");
 script_tag(name:"creation_date", value:"2015-11-08 13:02:05 +0200 (Sun, 08 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:23:47 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0435");
 script_tag(name: "insight", value: "This kernel update is based on the upstream 4.1.12 longterm kernel and fixes atleast the following security issue: Moein Ghasemzadeh discovered that the USB WhiteHEAT serial driver contained hardcoded attributes about the USB devices. An attacker could construct a fake WhiteHEAT USB device that, when inserted, causes a denial of service (system crash) (CVE-2015-5257). It also fixes various upstream bugs, for more info see the referenced changelogs. Other fixes in this update: * improve ath10k (QCA99X0, QCA988X, QCA6174) support (mga#16915) * silence a harmless warning on 32bit non-dt hardware (mga#17010) * fix regression with AlpsPS/2 ALPS DualPoint TouchPad of a Dell Latitude D600 (mga#17034) * kernel-firmware-nonfee: - Add firmware for mwlwifi - add firmware for QCA99X0 hw2.0, QCA988X hw2.0, QCA6174 hw2.1/3.0 (ath10k) - brcmfmac: firmware refresh for BCM43602 PCIE devices * iwlwifi-agn-ucode: - Add firmware for Intel Bluetooth 7265 (D1) - Update firmware for Intel Bluetooth 7265 (C0/D0) - Update firmware for Intel Bluetooth 7260 (B3/B4/B5/B6)"); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"4.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0435");
 script_copyright("Eero Volotinen");

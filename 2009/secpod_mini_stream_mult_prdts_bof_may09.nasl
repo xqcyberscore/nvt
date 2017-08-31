@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mini_stream_mult_prdts_bof_may09.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_mini_stream_mult_prdts_bof_may09.nasl 6517 2017-07-04 13:34:20Z cfischer $
 #
 # Mini-Stream Multiple Products Stack Overflow Vulnerability
 #
@@ -49,8 +49,8 @@ Stack Overflow Vulnerability.";
 if(description)
 {
   script_id(900646);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 6517 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-05-26 15:05:11 +0200 (Tue, 26 May 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -71,8 +71,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
   script_dependencies("secpod_mini_stream_prdts_detect.nasl");
-  script_require_keys("MiniStream/RmToMp3/Conv/Ver",
-                      "MiniStream/AsxToMp3/Conv/Ver", "MiniStream/Ripper/Ver");
+  script_mandatory_keys("MiniStream/Products/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

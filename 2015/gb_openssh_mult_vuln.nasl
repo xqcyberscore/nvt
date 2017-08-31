@@ -1,6 +1,6 @@
 ###############################################################################
 #OpenVAS Vulnerability Test
-# $Id: gb_openssh_mult_vuln.nasl 4336 2016-10-24 15:48:20Z mime $
+# $Id: gb_openssh_mult_vuln.nasl 6497 2017-06-30 09:58:54Z teissa $
 #
 # OpenSSH Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806052");
-  script_version("$Revision: 4336 $");
+  script_version("$Revision: 6497 $");
   script_cve_id("CVE-2015-6564", "CVE-2015-6563", "CVE-2015-5600");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:48:20 +0200 (Mon, 24 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-15 10:17:32 +0530 (Tue, 15 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSH Multiple Vulnerabilities");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Aug/54");
   script_xref(name : "URL" , value : "http://openwall.com/lists/oss-security/2015/07/23/4");
 
-  script_summary("Check for the vulnerable version of OpenSSH");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

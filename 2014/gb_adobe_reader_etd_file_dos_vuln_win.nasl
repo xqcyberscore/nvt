@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_etd_file_dos_vuln_win.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_adobe_reader_etd_file_dos_vuln_win.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Adobe Reader '.ETD File' Denial of Service Vulnerability (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804384";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2004-1153");
   script_bugtraq_id(11934);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-10 15:10:46 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader '.ETD File' Denial of Service Vulnerability (Windows)");
 
@@ -75,7 +75,6 @@ http://get.adobe.com/reader";
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/18478");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2004-12/0147.html");
-  script_summary("Check for the vulnerable version of Adobe Reader on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Denial of Service");

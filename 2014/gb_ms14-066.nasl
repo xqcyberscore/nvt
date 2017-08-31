@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-066.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-066.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # MS Windows Secure Channel Remote Code Execution Vulnerability (2992611)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804881");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-6321");
   script_bugtraq_id(70954);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-12 12:39:54 +0530 (Wed, 12 Nov 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("MS Windows Secure Channel Remote Code Execution Vulnerability (2992611)");
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2992611");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-066");
 
-  script_summary("Check for the vulnerable 'Schannel.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

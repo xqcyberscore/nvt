@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powerpoint_code_exec_vuln.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: gb_ms_powerpoint_code_exec_vuln.nasl 6523 2017-07-04 15:46:12Z cfischer $
 #
 # Microsoft PowerPoint File Parsing Remote Code Execution Vulnerability (967340)
 #
@@ -46,8 +46,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(800382);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6523 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:46:12 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-04-07 07:29:53 +0200 (Tue, 07 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -69,8 +69,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_ms_office_detection_900025.nasl",
                       "secpod_office_products_version_900032.nasl");
-  script_require_keys("MS/Office/Ver", "SMB/Office/PowerPnt/Version");
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("MS/Office/Ver", "SMB/Office/PowerPnt/Version");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

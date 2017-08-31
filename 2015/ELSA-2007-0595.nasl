@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-0595.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: ELSA-2007-0595.nasl 6561 2017-07-06 12:03:14Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122676");
-script_version("$Revision: 6345 $");
+script_version("$Revision: 6561 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:50:56 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:03:14 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-0595");
 script_tag(name: "insight", value: "ELSA-2007-0595 -  Moderate: kernel security and bug fix update - [2.6.18-8.1.8.0.1.el5] -Fix bonding primary=ethX (Bert Barbe) [IT 101532] [ORA 5136660] -Add entropy module option to e1000 (John Sobecki) [ORA 6045759] -Add entropy module option to bnx2 (John Sobecki) [ORA 6045759] [2.6.18-8.1.8.el5] - [ppc64] Fix FP corruption in signal return path (Konrad Rzeszutek ) [245580] [2.6.18-8.1.7.el5] - [ide] Serverworks data corruptor (Alan Cox ) [242994]"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"2.1");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

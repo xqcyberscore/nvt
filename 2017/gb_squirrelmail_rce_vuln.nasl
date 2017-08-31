@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squirrelmail_rce_vuln.nasl 6264 2017-06-01 12:53:37Z cfischer $
+# $Id: gb_squirrelmail_rce_vuln.nasl 6726 2017-07-14 10:39:17Z cfischer $
 #
 # SquirrelMail Remote Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:squirrelmail:squirrelmail';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106785");
-  script_version("$Revision: 6264 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-01 14:53:37 +0200 (Thu, 01 Jun 2017) $");
+  script_version("$Revision: 6726 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-14 12:39:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-04-21 17:09:27 +0200 (Fri, 21 Apr 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -44,7 +44,7 @@ if (description)
 
   script_name("SquirrelMail Remote Code Execution Vulnerability");
 
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -64,7 +64,7 @@ arbitrary shell commands on the remote server.");
 
   script_tag(name: "affected", value: "SquirrelMail 1.4.22 and prior as well as the trunk version.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 01st June, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 14th July, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://www.wearesegment.com/research/Squirrelmail-Remote-Code-Execution.html");

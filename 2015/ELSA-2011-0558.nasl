@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-0558.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: ELSA-2011-0558.nasl 6556 2017-07-06 11:54:54Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122164");
-script_version("$Revision: 6183 $");
+script_version("$Revision: 6556 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:14:07 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:54 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-0558");
 script_tag(name: "insight", value: "ELSA-2011-0558 -  perl security and bug fix update - [5.10.1-119]- 692862 - lc launders tainted flag, CVE-2011-1487- make SOURCE1 executable, because it missed +x in brew- Resolves: rhbz#692862[5.10.1-118]- Correct perl-5.10.1-rt77352.patch- Related: rhbz#640720[5.10.1-117]- 671352 CGI-3.51 security update- Resolves: rhbz#671352[5.10.1-116]- require Digest::SHA 640716- remove removal of NDBM 640729- remove unsupported option fork from prove's documentation 609492- Thread desctructor leaks 640720- update threads to 1.82 (bugfixes releases) 626330- remove unused patches from cvs- Resolves: rhbz#640729, rhbz#640716, rhbz#609492, rhbz#640720, rhbz#626330"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

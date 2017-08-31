@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_useruid_cmd_exe_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_typo3_useruid_cmd_exe_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # TYPO3 userUid Command Execution Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2006-6690");
   script_bugtraq_id(21680);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-09 17:58:28 +0530 (Thu, 09 Jan 2014)");
   script_name("TYPO3 userUid Command Execution Vulnerability");
 
@@ -75,7 +75,6 @@ http://typo3.org/";
   script_tag(name : "affected" , value : tag_affected);
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/31061");
-  script_summary("Check for the vulnerable version of TYPO3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

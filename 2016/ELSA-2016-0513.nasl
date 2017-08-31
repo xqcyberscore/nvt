@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0513.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: ELSA-2016-0513.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122914");
-script_version("$Revision: 5745 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-03-31 08:06:16 +0300 (Thu, 31 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0513");
 script_tag(name: "insight", value: "ELSA-2016-0513 -  java-1.8.0-openjdk security update - [1:1.8.0.77-0.b03]- Remove what remains of the SunEC sources in the remove-intree-libraries script.- Resolves: rhbz#1320664[1:1.8.0.77-0.b03]- Update to u77b03.- Drop 8146566 which is applied upstream.- Replace s390 Java options patch with general version from IcedTea.- Apply s390 patches unconditionally to avoid arch-specific patch failures.- Remove fragment of s390 size_t patch that unnecessarily removes a cast, breaking ppc64le.- Remove aarch64-specific suffix as update/build version are now the same as for other archs.- Only use z format specifier on s390, not s390x.- Adjust tarball generation script to allow ecc_impl.h to be included.- Correct spelling mistakes in tarball generation script.- Synchronise minor changes from Fedora.- Use a simple backport for PR2462/8074839.- Don't backport the crc check for pack.gz. It's not tested well upstream.- Resolves: rhbz#1320664"); 
 script_tag(name : "solution", value : "update software");
@@ -41,7 +41,7 @@ script_tag(name:"cvss_base", value:"9.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

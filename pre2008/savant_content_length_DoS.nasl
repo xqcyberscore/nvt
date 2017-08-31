@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: savant_content_length_DoS.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: savant_content_length_DoS.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: HTTP negative Content-Length DoS
 #
 # Authors:
@@ -49,8 +49,8 @@ tag_solution = "Upgrade your web server";
 if(description)
 {
  script_id(11174);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2002-1828");
  script_bugtraq_id(5707, 6255);
@@ -69,20 +69,18 @@ if(description)
  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
  family = "Denial of Service";
  script_family(family);
- script_dependencies("find_service.nasl", "httpver.nasl");
- script_require_ports("Services/www",80);
+ script_dependencies("find_service.nasl", "http_version.nasl");
+ script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-#
-
 include("http_func.inc");
 
 port = get_http_port(default:80);
-
-if (! get_port_state(port)) exit(0);
 
 if(http_is_dead(port:port))exit(0);
 

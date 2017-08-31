@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.nasl 5939 2017-04-11 16:02:44Z mime $
+# $Id: host_details.nasl 6893 2017-08-10 13:46:00Z cfischer $
 #
 # Host Details
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103997");
-  script_version("$Revision: 5939 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 18:02:44 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 6893 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-10 15:46:00 +0200 (Thu, 10 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-16 12:21:12 +0100 (Wed, 16 Mar 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,15 +36,14 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Service detection");
   script_category(ACT_END);
-  script_dependencies("gb_wmi_get-dns_name.nasl", "gb_nist_win_oval_sys_char_generator.nasl",
-                      "host_scan_end.nasl", "gb_tls_version.nasl", "find_service_nmap.nasl");
+  script_dependencies("gb_wmi_get-dns_name.nasl", "host_scan_end.nasl", "gb_tls_version.nasl");
 
   script_tag(name:"summary", value:"This scripts aggregates the OS detection information gathered by several
   NVTs and store it in a structured and unified way.");
 
   script_tag(name:"qod_type", value:"remote_probe");
 
-  script_timeout(3600); # we see some timeouts from this NVT. Reason is currently unknown. so use a higher timeout for the moment,
+  script_timeout(3600); # we see some timeouts from this NVT. Reason is currently unknown so use a higher timeout for the moment...
 
   exit(0);
 }

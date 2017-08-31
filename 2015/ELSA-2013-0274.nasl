@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0274.nasl 6391 2017-06-21 09:59:48Z teissa $
+# $Id: ELSA-2013-0274.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123721");
-script_version("$Revision: 6391 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:07:39 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0274");
 script_tag(name: "insight", value: "ELSA-2013-0274 -  java-1.6.0-openjdk security update - [ 1:1.6.0.0-1.35.1.11.8.0.1.el5_9]- Add oracle-enterprise.patch[1:1.6.0.0-1.35.1.11.8]- Rebuild with updated source tarball- Resolves: rhbz#911522[1:1.6.0.0-1.34.1.11.8]- Updated to icedtea6 1.11.8- Removed patch9 7201064.patch- Removed patch10 8005615.patch- Removed not-applied patch 6664509.patch- Removed mauve as deadly outdated and run on QA - jtreg kept, useless, but valid- Rewritten java-1.6.0-openjdk-java-access-bridge-security.patch- Resolves: rhbz#911522"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

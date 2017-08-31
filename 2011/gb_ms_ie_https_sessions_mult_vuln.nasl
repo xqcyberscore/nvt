@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_https_sessions_mult_vuln.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: gb_ms_ie_https_sessions_mult_vuln.nasl 6526 2017-07-05 05:43:52Z cfischer $
 #
 # Microsoft Explorer HTTPS Sessions Multiple Vulnerabilities (Windows)
 #
@@ -47,8 +47,8 @@ multiple vulnerabilities.";
 if(description)
 {
   script_id(802140);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6526 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:43:52 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_cve_id("CVE-2008-7295");
   script_tag(name:"cvss_base", value:"5.8");
@@ -62,7 +62,7 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_ms_ie_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
+  script_mandatory_keys("MS/IE/Version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

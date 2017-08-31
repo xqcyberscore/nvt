@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_40760.nasl 5933 2017-04-11 10:42:30Z cfi $
+# $Id: gb_nginx_40760.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # nginx Remote Source Code Disclosure and Denial of Service Vulnerabilities
 #
@@ -38,8 +38,8 @@ be affected.";
 if (description)
 {
  script_id(100676);
- script_version("$Revision: 5933 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-06-14 14:19:59 +0200 (Mon, 14 Jun 2010)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -55,9 +55,8 @@ if (description)
  script_category(ACT_MIXED_ATTACK);
  script_family("Denial of Service");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl","os_detection.nasl","nginx_detect.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl", "nginx_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("nginx/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -69,7 +68,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:8000);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if(!banner || "nginx" >!< banner)exit(0);

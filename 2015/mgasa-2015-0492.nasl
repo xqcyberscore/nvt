@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0492.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0492.nasl 6600 2017-07-07 09:58:31Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131166");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6600 $");
 script_tag(name:"creation_date", value:"2015-12-29 11:15:48 +0200 (Tue, 29 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0492");
 script_tag(name: "insight", value: "Updated thunderbird packages fix security vulnerabilities: Several flaws were found in the processing of malformed web content. A web page containing malicious content could cause Thunderbird to crash or, potentially, execute arbitrary code with the privileges of the user running Thunderbird (CVE-2015-7201, CVE-2015-7205, CVE-2015-7210, CVE-2015-7212, CVE-2015-7213, CVE-2015-7222). A flaw was found in the way Thunderbird handled content using the 'data:' and 'view-source:' URIs. An attacker could use this flaw to bypass the same-origin policy and read data from cross-site URLs and local files (CVE-2015-7214)."); 
 script_tag(name : "solution", value : "update software");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0492");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0492");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

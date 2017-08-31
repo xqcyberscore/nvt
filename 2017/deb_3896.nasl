@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3896.nasl 6418 2017-06-23 10:18:41Z teissa $
+# $Id: deb_3896.nasl 6906 2017-08-11 13:21:18Z cfischer $
 # Auto-generated from advisory DSA 3896-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703896);
-    script_version("$Revision: 6418 $");
+    script_version("$Revision: 6906 $");
     script_cve_id("CVE-2017-3167", "CVE-2017-3169", "CVE-2017-7659", "CVE-2017-7668", "CVE-2017-7679");
     script_name("Debian Security Advisory DSA 3896-1 (apache2 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-23 12:18:41 +0200 (Fri, 23 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-08-11 15:21:18 +0200 (Fri, 11 Aug 2017) $");
     script_tag(name: "creation_date", value: "2017-06-22 00:00:00 +0200 (Thu, 22 Jun 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"7.5");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "apache2 on Debian Linux");
         script_tag(name: "insight",   value: "The Apache HTTP Server Project's goal is to build a secure, efficient and
 extensible HTTP server as standards-compliant open source software. The

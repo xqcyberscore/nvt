@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803715");
-  script_version("$Revision: 6074 $");
+  script_version("$Revision: 6698 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-06-11 13:49:12 +0530 (Tue, 11 Jun 2013)");
   script_name("ASUS RT56U Router Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/25998");
@@ -40,10 +40,9 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 80);
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
   script_mandatory_keys("RT-N56U/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"insight", value:"The flaws are due to insufficient (or rather, a complete lack
   thereof) input sensitization leads to the injection of shell commands. It is

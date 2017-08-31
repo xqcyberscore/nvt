@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_jxr_bof_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_xnview_jxr_bof_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # XnView JXR File Handling Buffer Overflow Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2013-3938");
   script_bugtraq_id(66187);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-26 13:19:16 +0530 (Wed, 26 Mar 2014)");
   script_name("XnView JXR File Handling Buffer Overflow Vulnerability");
 
@@ -77,7 +77,6 @@ features, remove the product or replace the product by another one.";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56172");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of XnView on Windows");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_family("Buffer overflow");

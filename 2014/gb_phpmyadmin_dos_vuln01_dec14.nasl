@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_dos_vuln01_dec14.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_phpmyadmin_dos_vuln01_dec14.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # phpMyAdmin Denial-of-Service Vulnerability -01 Dec14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805307");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-9218");
   script_bugtraq_id(71434);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-26 15:10:42 +0530 (Fri, 26 Dec 2014)");
   script_name("phpMyAdmin Denial-of-Service Vulnerability -01 Dec14");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/99140");
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2014-17.php");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of phpMyAdmin");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl");

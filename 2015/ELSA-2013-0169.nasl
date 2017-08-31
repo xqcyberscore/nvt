@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0169.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: ELSA-2013-0169.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123747");
-script_version("$Revision: 6254 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:08:01 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0169");
 script_tag(name: "insight", value: "ELSA-2013-0169 -  vino security update - [2.28.1-8]- Remove spurious 'e' from glib2-devel requirement[2.28.1-7]- Bump version number[2.28.1-6]- Bump version number[2.28.1-5]- Add reachability.patch Remove UI about whether the is only reachable locally or not. Fix for CVE-2011-1164 - Bug #553477[2.28.1-5]- Add upnp.patch Fix for CVE-2011-1165 - Bug #678846[2.28.1-5]- Add clipboard-leak.patch Fix for CVE-2012-4429 - Bug #857250[2.28.1-5]- Add vino-2.8.1-sanity-check-fb-update.patch Fix for CVE-2011-0904 and CVE-2011-0904 - Bugs #694456, #694455[2.28.1-4]- Translation updates. Related: rhbz 575682"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"5.1");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

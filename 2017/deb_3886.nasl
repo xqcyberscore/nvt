@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3886.nasl 6380 2017-06-20 11:55:30Z teissa $
+# $Id: deb_3886.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3886-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703886);
-    script_version("$Revision: 6380 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-0605", "CVE-2017-1000364", "CVE-2017-7487", "CVE-2017-7645", "CVE-2017-7895", "CVE-2017-8064", "CVE-2017-8890", "CVE-2017-8924", "CVE-2017-8925", "CVE-2017-9074", "CVE-2017-9075", "CVE-2017-9076", "CVE-2017-9077", "CVE-2017-9242");
     script_name("Debian Security Advisory DSA 3886-1 (linux - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-20 13:55:30 +0200 (Tue, 20 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-06-19 00:00:00 +0200 (Mon, 19 Jun 2017)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "linux on Debian Linux");
         script_tag(name: "insight",   value: "The Linux kernel is the core of the Linux operating system.");
     script_tag(name: "solution",  value: "For the oldstable distribution (jessie), these problems have been fixed

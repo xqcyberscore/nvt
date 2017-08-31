@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 6410 2017-06-23 08:17:07Z cfischer $
+# $Id: smb_nt.inc 6451 2017-06-28 08:36:16Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6410 $
+# $Revision: 6451 $
 #
 ###############################################################################
 
@@ -96,6 +96,35 @@ function kb_smb_transport() {
     if( ! get_port_state( port ) ) exit( 0 );
     return port;
   }
+}
+
+# Provides a mapping between a windows build number and version
+# Accepts:
+# string - a string containing the build number like: Windows 10 Pro 10586
+# win_name - an exact name of the Windows release, currently only accepting: win10
+function get_version_from_build( string, win_name ) {
+
+  local_var string, win_name;
+
+  if( ! string ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#string#-#get_version_from_build" );
+    return;
+  }
+
+  if( ! win_name ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#win_name#-#get_version_from_build" );
+    return;
+  }
+
+  if( win_name == "win10" ) {
+    # https://en.wikipedia.org/wiki/Windows_10_version_history for the version <> build mapping
+    if( "10240" >< string ) return "1507";
+    if( "10586" >< string ) return "1511";
+    if( "14393" >< string ) return "1607";
+    if( "15063" >< string ) return "1703";
+  }
+
+  return;
 }
 
 # accepts hexadecimal string and converts it into decimal
@@ -1483,13 +1512,13 @@ function smb_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version, 
   # raw string contains NTLMSSP: sign, type1 msgtype, flags
   ntlmssp = raw_string( 0x4e, 0x54, 0x4c, 0x4d, 0x53, 0x53,
                         0x50, 0x00, 0x03, 0x00, 0x00, 0x00 ) +
-			lm_resp_length + lm_resp_length + lm_resp_offset +
-			ntlm_resp_length + ntlm_resp_length + ntlm_resp_offset +
-			wsdomainlen + wsdomainlen + wsdomainoffset +
-		        usernamelen + usernamelen + usernameoffset +
-			wsnamelen + wsnamelen + wsnameoffset +
-		        seckeylength + seckeylength + seckeyoffset +
-			flag_str;
+            lm_resp_length + lm_resp_length + lm_resp_offset +
+            ntlm_resp_length + ntlm_resp_length + ntlm_resp_offset +
+            wsdomainlen + wsdomainlen + wsdomainoffset +
+            usernamelen + usernamelen + usernameoffset +
+            wsnamelen + wsnamelen + wsnameoffset +
+            seckeylength + seckeylength + seckeyoffset +
+            flag_str;
 
   #adding NT LM Challenge response
   ntlmssp += lm + nt;
@@ -3657,7 +3686,7 @@ function registry_close_NTLMSSP( soc, uid, tid, pipe, reply ) {
       magic += raw_string( ord( reply[84+i] ) );
     }
   }
-        
+
   req = raw_string( 0x00, 0x00, 0x00, 0x78, 0xFF, 0x53, 0x4D, 0x42,
                     0x25, 0x00, 0x00, 0x00, 0x00, 0x08 );
 
@@ -3949,7 +3978,7 @@ function registry2_close( soc, uid, tid, pipe, reply ) {
 
     magic = raw_string( ord( reply[84] ) );
     for( i = 1; i < 20; i++ ) {
-      if( strlen( reply ) > ( 84 + i ) ) {          
+      if( strlen( reply ) > ( 84 + i ) ) {
         magic += raw_string( ord( reply[84+i] ) );
       }
     }
@@ -5162,7 +5191,7 @@ function registry2_get_item_sz( soc, uid, tid, pipe, item, reply ) {
   local_var soc, uid, tid, pipe, item, reply;
   local_var item_len, item_len_lo, item_len_hi, uc2, len, len_lo, len_hi;
   local_var bcc, bcc_lo, bcc_hi, y, y_lo, y_hi, z, z_lo, z_hi, req;
-  local_var ioctl_req, dcerpc_req, dcerpc_req1, dcerpc_req2, req_l; 
+  local_var ioctl_req, dcerpc_req, dcerpc_req1, dcerpc_req2, req_l;
   local_var magic, i, x, x_lo, x_hi, rrs_req, len_rrs, len_rrs_lo, len_rrs_hi;
   local_var sig, r, status, status2, r_head, orig_sign, server_resp, serv_sign;
 
@@ -5910,7 +5939,7 @@ function registry_get_dword( key, item, type ) {
   # Query KB ("proxy") first.
   kb_proxy_key = "SMB//registry_get_dword//Registry//" + type + "//" + key + "//" + item;
   kb_proxy = get_kb_item( kb_proxy_key );
-  if( ! isnull( kb_proxy ) || kb_proxy ) 
+  if( ! isnull( kb_proxy ) || kb_proxy )
     return kb_proxy;
 
   # Value has not been previousle written to KB, fetch it.

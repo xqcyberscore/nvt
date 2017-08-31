@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: unknown_services.nasl 6294 2017-06-08 18:11:49Z cfischer $
+# $Id: unknown_services.nasl 6849 2017-08-04 07:21:15Z cfischer $
 #
 # Report banner of unknown services
 #
@@ -27,21 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11154");
-  script_version("$Revision: 6294 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-08 20:11:49 +0200 (Thu, 08 Jun 2017) $");
+  script_version("$Revision: 6849 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:21:15 +0200 (Fri, 04 Aug 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Report banner of unknown services");
-  script_category(ACT_END);
+  # nb: This category is intended. It allows us to have this NVT scheduled after every Detection-NVT
+  # from ACT_GATHER_INFO has finished its job.
+  script_category(ACT_MIXED_ATTACK);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("Service detection");
   script_require_ports("Services/unknown");
 
-  script_tag(name:"summary", value:"This plugin reports the banner from unknown services so that
-  the OpenVAS team can take them into account.");
+  script_tag(name:"summary", value:"This plugin reports the banner from unknown/unidentified services
+  so that the OpenVAS team can take them into account.
 
-  script_tag(name:"qod_type", value:"remote_banner"); 
+  If you know this service, please send the reported banner to openvas-plugins@wald.intevation.org.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
@@ -55,9 +59,11 @@ function unknown_banner_report( port ) {
 
   if( ! port ) return;
 
-  foreach method( make_list( "spontaneous", "get_http", "help" ) ) {
+  foreach method( make_list( "spontaneous", "get_httpHex", "get_http", "helpHex", "help", "xmlHex", "xml", "jsonHex", "json", "sipHex", "sip", "binHex", "bin" ) ) {
     banner = get_kb_item( "FindService/tcp/" + port + "/" + method );
-    if( banner ) {
+    # Later evaluated methods in the foreach loop might have
+    # more data so only return here when having enough data.
+    if( banner && strlen( banner ) >= 3 ) {
       return( make_list( method, banner ) );
     }
   }
@@ -80,7 +86,13 @@ banner = unknown_banner_report( port:port );
 if( ! banner ) exit( 0 );
 
 if( strlen( banner[1] ) >= 3 ) {
-  hexbanner = hexdump( ddata:banner[1] );
+
+  if( "Hex" >< banner[0] ) {
+    hexbanner = hexdump( ddata:hex2raw( s:banner[1] ) );
+  } else {
+    hexbanner = hexdump( ddata:banner[1] );
+  }
+
   report = 'An unknown service is running on this port. If you know this service, please ';
   report += 'send the following banner to openvas-plugins@wald.intevation.org:\n\n';
   report += 'Method: ' + banner[0] + '\n\n' + hexbanner;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_os_detect.nasl 5073 2017-01-24 10:27:20Z cfi $
+# $Id: gb_greenbone_os_detect.nasl 6781 2017-07-21 08:31:34Z cfischer $
 #
 # Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103220");
-  script_version("$Revision: 5073 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:27:20 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 6781 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 10:31:34 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-08-23 15:25:10 +0200 (Tue, 23 Aug 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -98,16 +98,19 @@ function check_ssh() {
   local_var port, vers, version, uname, concluded, soc, banner;
 
   ports = get_kb_list( "Services/ssh" );
-  if( ! ports) ports = make_list( 22 );
+  if( ! ports ) ports = make_list( 22 );
 
   foreach port ( ports ) {
 
     if( get_kb_item( "greenbone/OS" ) ) {
-      uname = get_kb_item( "ssh/login/uname" );
+      uname = get_kb_item( "greenbone/OS/uname" );
       if( uname ) {
         version = eregmatch( pattern:'Welcome to the Greenbone OS ([^ ]+) ', string:uname );
-        if( ! isnull( version[1] ) ) {
+        if( ! isnull( version[1] ) && version[1] =~ "^([0-9.-]+)$" ) {
           _set_kb_entrys_and_report( version:version[1], concluded:version[0], port:port, source:"SSH login" );
+        } else {
+          # GOS 4+ doesn't expose the version in the initial login banner
+          _set_kb_entrys_and_report( version:"unknown", concluded:"Welcome to the Greenbone OS", port:port, source:"SSH login" );
         }
       }
     }
@@ -129,6 +132,8 @@ function check_ssh() {
           version = eregmatch( pattern:"Greenbone OS ([0-9.-]+)", string:banner );
           if( ! isnull( version[1] ) ) {
             _set_kb_entrys_and_report( version:version[1], concluded:version[0], port:port, source:"SSH banner" );
+          } else {
+            _set_kb_entrys_and_report( version:"unknown", concluded:"Greenbone OS", port:port, source:"SSH banner" );
           }
         }
       }
@@ -157,10 +162,10 @@ function _set_kb_entrys_and_report( version, concluded, port, source ) {
   exit( 0 );
 }
 
-
-check_ssh();
 if( ! get_kb_item( "Settings/disable_cgi_scanning" ) ) {
   check_http();
 }
+
+check_ssh();
 
 exit( 0 );

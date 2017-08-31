@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bisonware_bisonftp_server_dir_trav_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_bisonware_bisonftp_server_dir_trav_vuln.nasl 6486 2017-06-29 09:59:06Z teissa $
 #
 # BisonWare BisonFTP Server Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:bisonware:bison_ftp_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805753");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6486 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-29 12:41:58 +0530 (Tue, 29 Sep 2015)");
   script_name("BisonWare BisonFTP Server Directory Traversal Vulnerability");
 
@@ -65,7 +65,6 @@ if (description)
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/38341");
 
-  script_summary("Determine if BisonWare BisonFTP Server is prone to directory traversal vulnerability.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("FTP");

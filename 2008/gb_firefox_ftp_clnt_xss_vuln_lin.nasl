@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_ftp_clnt_xss_vuln_lin.nasl 5657 2017-03-21 11:08:08Z cfi $
+# $Id: gb_firefox_ftp_clnt_xss_vuln_lin.nasl 6539 2017-07-05 12:02:14Z cfischer $
 #
 # Firefox Web Browser FTP Client XSS Vulnerability (Linux)
 #
@@ -38,8 +38,8 @@ tag_summary = "The host is installed with Mozilla Firefox browser and is prone
 if(description)
 {
   script_id(800043);
-  script_version("$Revision: 5657 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 6539 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 15:11:55 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -52,7 +52,7 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_firefox_detect_lin.nasl");
-  script_mandatory_keys("login/SSH/success","Firefox/Linux/Ver");
+  script_mandatory_keys("Firefox/Linux/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

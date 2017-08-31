@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netdecision_traffic_grapher_srv_info_disc_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_netdecision_traffic_grapher_srv_info_disc_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # Netmechanica NetDecision Traffic Grapher Server Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802704");
-  script_version("$Revision: 6018 $");
+  script_version("$Revision: 6697 $");
   script_cve_id("CVE-2012-1466");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-03-09 13:50:32 +0530 (Fri, 09 Mar 2012)");
   script_name("Netmechanica NetDecision Traffic Grapher Server Information Disclosure Vulnerability");
 
@@ -42,10 +42,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_require_ports("Services/www", 8087);
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 8087);
   script_mandatory_keys("NetDecision-HTTP-Server/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain sensitive information.
 
@@ -78,15 +77,15 @@ banner = "";
 ## Get Port
 port = get_http_port(default:8087);
 
-## Open the socket
-soc = http_open_socket(port);
-if(!soc){
-  exit(0);
-}
-
 ## Confirm the application
 banner = get_http_banner(port: port);
 if(!banner || "Server: NetDecision-HTTP-Server" >!< banner){
+  exit(0);
+}
+
+## Open the socket
+soc = http_open_socket(port);
+if(!soc){
   exit(0);
 }
 

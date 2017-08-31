@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_detect_macosx.nasl 6445 2017-06-27 12:31:06Z santu $
+# $Id: gb_mozilla_prdts_detect_macosx.nasl 6487 2017-06-29 12:50:11Z cfischer $
 #
 # Mozilla Products Version Detection (Mac OS X)
 #
@@ -33,35 +33,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802179";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6445 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802179");
+  script_version("$Revision: 6487 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 14:31:06 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 14:50:11 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Mozilla Products Version Detection (Mac OS X)");
 
-  tag_summary =
-"Detection of installed version of Mozilla Firefox on Windows.
+  tag_summary = "Detection of installed version of Mozilla Firefox on Max OS X.
 
 The script logs in via ssh, searches for folder Mozilla products '.app' and
 queries the related 'info.plist' file for string 'CFBundleShortVersionString'
 via command line option 'defaults read'.";
 
-
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Detection of installed version of Mozilla Product on Max OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("gather-package-list.nasl");
   script_family("Product detection");
-  script_mandatory_keys("login/SSH/success");
+  script_mandatory_keys("ssh/login/osx_name");
   exit(0);
 }
 
@@ -128,6 +123,7 @@ if(!isnull(ffVer) && "does not exist" >!< ffVer)
     if(esrVer)
     {
       set_kb_item(name: "Mozilla/Firefox-ESR/MacOSX/Version", value:ffVer);
+      replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
 
       ## Build CPE
       cpe = build_cpe(value:ffVer, exp:"^([0-9.]+)([a-zA-Z0-9]+)?", base:"cpe:/a:mozilla:firefox_esr:");
@@ -139,7 +135,7 @@ if(!isnull(ffVer) && "does not exist" >!< ffVer)
     else
     {
       set_kb_item(name: "Mozilla/Firefox/MacOSX/Version", value:ffVer);
-      replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE ); 
+      replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
       ## Build CPE
       cpe = build_cpe(value:ffVer, exp:"^([0-9.]+)([a-zA-Z0-9]+)?", base:"cpe:/a:mozilla:firefox:");
       if(isnull(cpe))
@@ -237,6 +233,7 @@ if(!isnull(tbVer) && "does not exist" >!< tbVer)
     else
     {
       set_kb_item(name: "ThunderBird/MacOSX/Version", value:tbVer);
+      replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
 
       ## build cpe
       cpe = build_cpe(value:tbVer, exp:"^([0-9.]+)([a-zA-Z0-9]+)?", base:"cpe:/a:mozilla:thunderbird:");

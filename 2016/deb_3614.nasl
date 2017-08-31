@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3614.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: deb_3614.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3614-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703614);
-    script_version("$Revision: 5513 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2016-3092");
     script_name("Debian Security Advisory DSA 3614-1 (tomcat7 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-07-02 00:00:00 +0200 (Sat, 02 Jul 2016)");
     script_tag(name:"cvss_base", value:"7.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "tomcat7 on Debian Linux");
     script_tag(name: "insight",   value: "Apache Tomcat implements the Java Servlet
 and the JavaServer Pages (JSP) specifications from Sun Microsystems, and provides a

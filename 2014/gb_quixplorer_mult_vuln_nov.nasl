@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quixplorer_mult_vuln_nov.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_quixplorer_mult_vuln_nov.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Quixplorer Multiple Vulnerabilities - Nov14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804876");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2013-1641", "CVE-2013-1642");
   script_bugtraq_id(63964, 63962);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-04 17:05:21 +0530 (Tue, 04 Nov 2014)");
   script_name("Quixplorer Multiple Vulnerabilities - Nov14");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55725");
   script_xref(name : "URL" , value : "https://www3.trustwave.com/spiderlabs/advisories/TWSL2013-030.txt");
 
-  script_summary("Check if Quixplorer is vulnerable to cross site scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

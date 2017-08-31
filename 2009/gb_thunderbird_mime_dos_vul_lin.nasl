@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_mime_dos_vul_lin.nasl 4892 2016-12-30 15:39:07Z teissa $
+# $Id: gb_thunderbird_mime_dos_vul_lin.nasl 6539 2017-07-05 12:02:14Z cfischer $
 #
 # Thunderbird DoS attacks via malformed MIME emails (Linux)
 #
@@ -42,8 +42,8 @@ tag_solution = "Upgrade to Thunderbird version 3.0.4 or later
 if(description)
 {
   script_id(800502);
-  script_version("$Revision: 4892 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 16:39:07 +0100 (Fri, 30 Dec 2016) $");
+  script_version("$Revision: 6539 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-01-15 16:11:17 +0100 (Thu, 15 Jan 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -56,7 +56,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_thunderbird_detect_lin.nasl");
-  script_mandatory_keys("login/SSH/success","Thunderbird/Linux/Ver");
+  script_mandatory_keys("Thunderbird/Linux/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);

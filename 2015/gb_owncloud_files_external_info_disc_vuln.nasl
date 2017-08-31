@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_files_external_info_disc_vuln.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_owncloud_files_external_info_disc_vuln.nasl 6497 2017-06-30 09:58:54Z teissa $
 #
 # ownCloud 'files_external' RSA Key Validation Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805283");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6497 $");
   script_cve_id("CVE-2014-5341");
   script_bugtraq_id(70039);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-02-19 17:25:47 +0530 (Thu, 19 Feb 2015)");
   script_name("ownCloud 'files_external' RSA Key Validation Information Disclosure Vulnerability");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://owncloud.org/security/advisory/?id=oc-sa-2014-019");
 
-  script_summary("Check for the vulnerable version of ownCloud");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

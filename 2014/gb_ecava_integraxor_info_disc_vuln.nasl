@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecava_integraxor_info_disc_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_ecava_integraxor_info_disc_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # Ecava IntegraXor Account Information Disclosure Vulnerability
 #
@@ -29,16 +29,15 @@ CPE = "cpe:/a:ecava:integraxor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804299");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-0786");
   script_bugtraq_id(66554);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-19 17:47:38 +0530 (Mon, 19 May 2014)");
   script_name("Ecava IntegraXor Account Information Disclosure Vulnerability");
 
-  script_summary("Check for the vulnerable version of Ecava IntegraXor on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

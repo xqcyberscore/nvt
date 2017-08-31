@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_sym16_007.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_symantec_messaging_gateway_sym16_007.nasl 6493 2017-06-30 07:00:59Z ckuersteiner $
 #
 # Symantec Messaging Gateway 10.6.x ACE Library Static Link to Vulnerable SSL Version (SYM16-007)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105722");
-  script_version("$Revision: 5732 $");
+  script_version("$Revision: 6493 $");
   script_cve_id("CVE-2014-0160");
   script_bugtraq_id(66690);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 09:00:59 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-05-17 13:54:13 +0200 (Tue, 17 May 2016)");
   script_name("Symantec Messaging Gateway 10.6.x ACE Library Static Link to Vulnerable SSL Version (SYM16-007)");
 
@@ -59,7 +59,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
+if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
 if( version_is_less( version:version, test_version:"10.6.1" ) ) VULN = TRUE;
 

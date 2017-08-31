@@ -38,8 +38,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/fedora-package-announce/2008-July/msg00458.html");
   script_id(860151);
-  script_version("$Revision: 3217 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-03 15:20:33 +0200 (Tue, 03 May 2016) $");
+  script_version("$Revision: 6623 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:10:20 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-02-17 17:01:32 +0100 (Tue, 17 Feb 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,7 +52,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

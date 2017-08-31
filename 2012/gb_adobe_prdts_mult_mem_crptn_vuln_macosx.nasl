@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_mem_crptn_vuln_macosx.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_adobe_prdts_mult_mem_crptn_vuln_macosx.nasl 6477 2017-06-29 07:53:14Z cfischer $
 #
 # Adobe Reader/Acrobat Multiple Memory Corruption Vulnerabilities - MAC OS X
 #
@@ -29,12 +29,12 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.802559";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5963 $");
+  script_version("$Revision: 6477 $");
   script_cve_id("CVE-2011-4370", "CVE-2011-4371", "CVE-2011-4372", "CVE-2011-4373");
   script_bugtraq_id(51348, 51351, 51349, 51350);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:53:14 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2012-01-16 11:41:01 +0530 (Mon, 16 Jan 2012)");
   script_name("Adobe Reader/Acrobat Multiple Memory Corruption Vulnerabilities - MAC OS X");
 
@@ -85,7 +85,7 @@ For updates refer to http://www.adobe.com/";
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
-  script_require_keys("Adobe/Reader/MacOSX/Version", "Adobe/Acrobat/MacOSX/Version");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader/MacOSX/Installed");
   exit(0);
 }
 

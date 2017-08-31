@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dropbear_ssh_52159.nasl 2827 2016-03-10 08:33:09Z benallard $
+# $Id: sw_dropbear_ssh_52159.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Dropbear SSH Server Use-after-free Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:matt_johnston:dropbear_ssh_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105113");
-  script_version("$Revision: 2827 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:33:09 +0100 (Thu, 10 Mar 2016) $");
+  script_version("$Revision: 6692 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-07 12:40:00 +0100 (Fri, 07 Nov 2014)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:C/I:C/A:C");
@@ -40,7 +40,6 @@ if(description)
 
   script_name("Dropbear SSH Server Use-after-free Vulnerability");
 
-  script_summary("Check the version");
 
   script_category(ACT_GATHER_INFO);
 

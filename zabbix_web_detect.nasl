@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: zabbix_web_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
+# $Id: zabbix_web_detect.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # ZABBIX Web Interface Detection
 #
@@ -27,12 +27,12 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100405");
- script_version("$Revision: 5815 $");
+ script_version("$Revision: 6755 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-12-17 19:46:08 +0100 (Thu, 17 Dec 2009)");
- script_tag(name:"qod_type", value:"remote_banner"); 
+ script_tag(name:"qod_type", value:"remote_banner");
  script_name("ZABBIX Web Interface Detection");
 
  script_tag(name: "summary" , value:"Detection of installed version of ZABBIX
@@ -73,7 +73,7 @@ foreach dir( make_list_unique("/", "/zabbix", "/monitoring", cgi_dirs( port:zbPo
      (buf =~"<title>(.*)?Zabbix</title>" && "Zabbix SIA" >< buf))
   {
     zbVer = string("unknown");
-    ### try to get version 
+    ### try to get version
     version = eregmatch(string: buf, pattern: "Zabbix([&nbsp; ]+)([0-9.]+)",icase:TRUE);
     if (!isnull(version[2])){
       zbVer=chomp(version[2]);
@@ -91,7 +91,7 @@ foreach dir( make_list_unique("/", "/zabbix", "/monitoring", cgi_dirs( port:zbPo
     if(!cpe)
       cpe = 'cpe:/a:zabbix:zabbix';
 
-    register_product(cpe:cpe, location:install, port:zbPort);
+    register_product(cpe:cpe, location:install, port:zbPort, service:"www" );
     log_message(data: build_detection_report(app:"Zabbix",
                                              version:zbVer,
                                              install:install,

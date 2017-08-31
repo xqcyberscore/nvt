@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-0200.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: ELSA-2011-0200.nasl 6556 2017-07-06 11:54:54Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122250");
-script_version("$Revision: 6404 $");
+script_version("$Revision: 6556 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:15:28 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:54 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-0200");
 script_tag(name: "insight", value: "ELSA-2011-0200 -  krb5 security update - [1.8.2-3.4]- add upstream patches to fix standalone kpropd exiting if the per-client child process exits with an error, and hang or crash in the KDC when using the LDAP kdb backend (CVE-2010-4022, CVE-2011-0281, CVE-2011-0282, #671101)[1.8.2-3.3]- pull up crypto changes made between 1.8.2 and 1.8.3 to fix upstream #6751, assumed to already be there for the next fix- incorporate candidate patch to fix various issues from MITKRB5-SA-2010-007 (CVE-2010-1323, CVE-2010-1324, CVE-2010-4020, #651962)[1.8.2-3.2]- fix reading of keyUsage extensions when attempting to select pkinit client certs (part of #644825, RT#6775)- fix selection of pkinit client certs when one or more don't include a subjectAltName extension (part of #644825, RT#6774)[1.8.2-3.1]- incorporate candidate patch to fix uninitialized pointer crash in the KDC (CVE-2010-1322, #636336)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

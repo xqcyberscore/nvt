@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871739");
-  script_version("$Revision: 5132 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-30 08:08:27 +0100 (Mon, 30 Jan 2017) $");
+  script_version("$Revision: 6691 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:51:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-01-06 05:44:55 +0100 (Fri, 06 Jan 2017)");
   script_cve_id("CVE-2016-9445", "CVE-2016-9447", "CVE-2016-9809");
   script_tag(name:"cvss_base", value:"6.8");
@@ -70,7 +70,7 @@ Note: This update removes the vulnerable Nintendo NSF plug-in.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

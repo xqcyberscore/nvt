@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_bof_vuln_win.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_adobe_prdts_bof_vuln_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
 #
 # Buffer Overflow Vulnerability in Adobe Acrobat and Reader (Windows)
 #
@@ -29,13 +29,13 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.900320";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5055 $");
+  script_version("$Revision: 6475 $");
   script_cve_id("CVE-2009-0658", "CVE-2009-0927", "CVE-2009-0193", "CVE-2009-0928",
                 "CVE-2009-1061", "CVE-2009-1062");
   script_bugtraq_id(33751, 34169, 34229);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_name("Buffer Overflow Vulnerability in Adobe Acrobat and Reader (Windows)");
 
@@ -85,7 +85,7 @@ http://www.adobe.com/support/downloads/product.jsp?product=10&platform=Windows";
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_require_keys("Adobe/Reader/Win/Ver", "Adobe/Acrobat/Win/Ver");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-1119.nasl 6369 2017-06-19 10:00:04Z teissa $
+# $Id: ELSA-2013-1119.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123589");
-script_version("$Revision: 6369 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:05:55 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-1119");
 script_tag(name: "insight", value: "ELSA-2013-1119 -  389-ds-base security and bug fix update - [1.2.11.15.20]- Resolves: Bug 984970 - Overflow in nsslapd-disk-monitoring-threshold(part 5 limits not displayed correctly). (ticket 47427)[1.2.11.15.19]- Resolves: Bug 984970 - Overflow in nsslapd-disk-monitoring-threshold(part 4). (ticket 47427)- Patch was not added[1.2.11.15.19]- Resolves: Bug 984970 - Overflow in nsslapd-disk-monitoring-threshold(part 4). (ticket 47427)[1.2.11.15.19]- Bump version to 1.2.11.15-19- Resolves: Bug 984970 - Overflow in nsslapd-disk-monitoring-threshold(part 3). (ticket 47427)[1.2.11.15.18]- Bump version to 1.2.11.15-18- Resolves: Bug 984970 - Overflow in nsslapd-disk-monitoring-threshold(part 2). (ticket 47427)- Resolves: Bug 987850 - Disk Monitoring not checking filesystem with logs (ticket 47741)[1.2.11.15-17]- Resolves: Bug 970995 - DS not shutting down when disk monitoring threshold is reached to half. (Ticket 47385)- Resolves: Bug 984970 - Overflow in nsslapd-disk-monitoring-threshold. (ticket 47427)[1.2.11.15-16]- Resolves: Bug 979514 - CVE-2013-2219 ACLs inoperative in some search scenarios. (Ticket 47405)[1.2.11.15-15]- Resolves: Bug 970995 - RHDS not shutting down when disk monitoring threshold is reached to half. (Ticket 47385)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"4.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_swf_info_disc_vuln_win.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_adobe_reader_swf_info_disc_vuln_win.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Adobe Reader 'SWF' Information Disclosure Vulnerability (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804262";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2004-1598");
   script_bugtraq_id(11386);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-16 10:27:12 +0530 (Wed, 16 Apr 2014)");
   script_name("Adobe Reader 'SWF' Information Disclosure Vulnerability (Windows)");
 
@@ -77,7 +77,6 @@ updates refer to http://get.adobe.com/reader";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/12809");
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1011651");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/17694");
-  script_summary("Check for the vulnerable version of Adobe Reader on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-031.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-031.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Microsoft Windows TCP Protocol Denial of Service Vulnerability (2962478)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804636");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-1811");
   script_bugtraq_id(67888);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-11 12:45:39 +0530 (Wed, 11 Jun 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft Windows TCP Protocol Denial of Service Vulnerability (2962478)");
@@ -79,7 +79,6 @@ https://technet.microsoft.com/en-us/library/security/ms14-031";
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms14-031");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2957189");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2961858");
-  script_summary("Check for the vulnerable 'Tcpip.sys' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

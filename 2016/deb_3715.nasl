@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3715.nasl 5220 2017-02-07 11:42:33Z teissa $
+# $Id: deb_3715.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3715-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703715);
-    script_version("$Revision: 5220 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2016-7146", "CVE-2016-7148", "CVE-2016-9119");
     script_name("Debian Security Advisory DSA 3715-1 (moin - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-02-07 12:42:33 +0100 (Tue, 07 Feb 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-11-15 00:00:00 +0100 (Tue, 15 Nov 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "moin on Debian Linux");
         script_tag(name: "insight",   value: "A WikiWikiWeb is a collaborative hypertext environment, with an
 emphasis on easy access to and modification of information. MoinMoin

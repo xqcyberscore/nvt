@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmp_func.inc 5939 2017-04-11 16:02:44Z mime $
+# $Id: snmp_func.inc 6490 2017-06-30 05:39:55Z ckuersteiner $
 #
 # Functions for SNMP
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 5939 $
+# $Revision: 6490 $
 #
 ###############################################################################
 
@@ -257,3 +257,25 @@ function snmp_is_error_message()
   return;
 }
 
+#
+# Get the software and OID from a given pattern
+#
+function snmp_get_sw_oid(pattern)
+{
+  if (!pattern || pattern == "")
+    return;
+
+  if (!list = get_kb_item("SNMP/installed_software"))
+    return;
+
+  split = split(list, sep: "|", keep: FALSE);
+
+  i = 0;
+  while (i < max_index(split)) {
+    if (ereg(pattern: pattern, string: split[i+1])) {
+      result = make_list(split[i], split[i+1]);
+      return result;
+    }
+    i += 2;
+  }
+}

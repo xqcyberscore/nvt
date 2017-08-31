@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0054.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: ELSA-2016-0054.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122857");
-script_version("$Revision: 5513 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-01-25 07:30:42 +0200 (Mon, 25 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0054");
 script_tag(name: "insight", value: "ELSA-2016-0054 -  java-1.7.0-openjdk security update - [1.7.0.95-2.6.4.0.0.1]- Update DISTRO_NAME in specfile[1:1.7.0.95-2.6.4.0]- Bump to 2.6.4 and u95b00.- Backport tarball creation script from OpenJDK 8 RPMs and update fsg.sh to work with it.- Drop 8072932or8074489 patch as applied upstream in u91b01.- Add MD5 checksums for last two version of the java.security file.- Resolves: rhbz#1295768"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

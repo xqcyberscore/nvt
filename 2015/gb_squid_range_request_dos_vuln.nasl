@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_range_request_dos_vuln.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_squid_range_request_dos_vuln.nasl 6497 2017-06-30 09:58:54Z teissa $
 #
 # Squid HTTP Range Request Handling Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806106");
-  script_version("$Revision: 2748 $");
+  script_version("$Revision: 6497 $");
   script_cve_id("CVE-2014-3609");
   script_bugtraq_id(69453);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-08 16:31:16 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid HTTP Range Request Handling Denial of Service Vulnerability");
@@ -65,7 +65,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://www.squid-cache.org/Advisories/SQUID-2014_2.txt");
-  script_summary("Check for the vulnerable version of Squid");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Denial of Service");

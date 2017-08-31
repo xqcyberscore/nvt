@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_cisco_default_ssh_host_key_75418.nasl 2686 2016-02-17 17:41:55Z mime $
+# $Id: gb_multiple_cisco_default_ssh_host_key_75418.nasl 6505 2017-07-03 09:58:27Z teissa $
 #
 # Multiple Cisco Products Default SSH Host Keys Security Bypass Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
  script_cve_id("CVE-2015-4217");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 2686 $");
+ script_version ("$Revision: 6505 $");
 
  script_name("Multiple Cisco Products Default SSH Host Keys Security Bypass Vulnerability");
 
@@ -57,9 +57,8 @@ between any WSAv, ESAv, or SMAv. An exploit could allow the attacker to decrypt 
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 18:41:55 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
  script_tag(name:"creation_date", value:"2015-08-14 13:28:44 +0200 (Fri, 14 Aug 2015)");
- script_summary("Check the remote ssh host keys");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

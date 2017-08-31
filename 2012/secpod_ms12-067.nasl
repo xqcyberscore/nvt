@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-067.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: secpod_ms12-067.nasl 6532 2017-07-05 07:42:05Z cfischer $
 #
 # Microsoft FAST Search Server 2010 for SharePoint RCE Vulnerabilities (2742321)
 #
@@ -39,7 +39,7 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(903042);
-  script_version("$Revision: 6022 $");
+  script_version("$Revision: 6532 $");
   script_cve_id("CVE-2012-1766", "CVE-2012-1767", "CVE-2012-1768", "CVE-2012-1769",
                 "CVE-2012-1770", "CVE-2012-1771", "CVE-2012-1772", "CVE-2012-1773",
                 "CVE-2012-3106", "CVE-2012-3107", "CVE-2012-3108", "CVE-2012-3109",
@@ -48,7 +48,7 @@ if(description)
                     54546, 54504, 54550, 54554, 54506);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-10-10 11:39:34 +0530 (Wed, 10 Oct 2012)");
   script_name("Microsoft FAST Search Server 2010 for SharePoint RCE Vulnerabilities (2742321)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2553402");
@@ -57,9 +57,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("smb_reg_service_pack.nasl",
-                      "gb_ms_fast_search_server_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/SharePoint/Install/Path");
+  script_dependencies("gb_ms_fast_search_server_detect.nasl");
+  script_mandatory_keys("MS/SharePoint/Install/Path");
+  script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -74,11 +74,6 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-## Confirm Windows
-if(!get_kb_item("SMB/WindowsVersion")){
-  exit(0);
-}
 
 ## Variables Initialization
 path = "";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-054.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-054.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Microsoft Windows Task Scheduler Privilege Escalation Vulnerability (2988948)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804902");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-4074");
   script_bugtraq_id(69593);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-10 12:15:20 +0530 (Wed, 10 Sep 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/60983");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-054");
-  script_summary("Check for the version of 'Schedsvc.dll' vulnerable file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

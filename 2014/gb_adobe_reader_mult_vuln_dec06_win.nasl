@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln_dec06_win.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_adobe_reader_mult_vuln_dec06_win.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Adobe Reader Multiple Vulnerabilities Dec06 (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804366";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2006-6027", "CVE-2006-6236");
   script_bugtraq_id(21155, 21338);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-07 19:51:38 +0530 (Mon, 07 Apr 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities Dec06 (Windows)");
 
@@ -78,7 +78,6 @@ http://get.adobe.com/reader";
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/198908");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/30574");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb06-20.html");
-  script_summary("Check for the vulnerable version of Adobe Reader on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

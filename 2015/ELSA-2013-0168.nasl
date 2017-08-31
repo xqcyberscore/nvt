@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0168.nasl 6376 2017-06-20 10:00:24Z teissa $
+# $Id: ELSA-2013-0168.nasl 6558 2017-07-06 11:56:55Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123746");
-script_version("$Revision: 6376 $");
+script_version("$Revision: 6558 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:08:00 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0168");
 script_tag(name: "insight", value: "ELSA-2013-0168 -  kernel security and bug fix update - kernel[2.6.18-348.1.1]- [pci] intel-iommu: reduce max num of domains supported (Don Dutile) [886876 885125]- [fs] gfs2: Fix leak of cached directory hash table (Steven Whitehouse) [886124 831330]- [x86] mm: randomize SHLIB_BASE (Petr Matousek) [804953 804954] {CVE-2012-1568}- [net] be2net: create RSS rings even in multi-channel configs (Ivan Vecera) [884702 878209]- [net] tg3: Avoid dma read error (John Feeney) [885692 877474]- [misc] Fix unsupported hardware message (Prarit Bhargava) [885063 876587]- [net] ipv6: discard overlapping fragment (Jiri Pirko) [874837 874838] {CVE-2012-4444}- [usb] Fix serial port reference counting on hotplug remove (Don Zickus) [885700 845447]- [net] bridge: export its presence and fix bonding igmp reporting (Veaceslav Falico) [884742 843473]- [fs] nfs: move wait for server->active from put_super to kill_sb (Jeff Layton) [884708 839839]- [scsi] libfc: fix indefinite rport restart (Neil Horman) [884740 595184]- [scsi] libfc: Retry a rejected PRLI request (Neil Horman) [884740 595184]- [scsi] libfc: Fix remote port restart problem (Neil Horman) [884740 595184]- [xen] memop: limit guest specified extent order (Laszlo Ersek) [878449 878450] {CVE-2012-5515}- [xen] get bottom of EBDA from the multiboot data structure (Paolo Bonzini) [885062 881885]"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

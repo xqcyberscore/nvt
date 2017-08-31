@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: squid_cve_2009_1211.nasl 4907 2017-01-02 13:16:52Z cfi $
+# $Id: squid_cve_2009_1211.nasl 6891 2017-08-10 12:44:59Z cfischer $
 #
 # Squid information-disclosure vulnerability
 #
@@ -24,13 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:squid-cache:squid';
+CPE = "cpe:/a:squid-cache:squid";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100147");
-  script_version("$Revision: 4907 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 14:16:52 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 6891 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-10 14:44:59 +0200 (Thu, 10 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-04-16 19:20:22 +0200 (Thu, 16 Apr 2009)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -41,6 +41,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2007 David Maciejak");
   script_family("Web application abuses");
   script_dependencies("secpod_squid_detect.nasl");
+  script_require_ports("Services/http_proxy", 3128, "Services/www", 8080);
   script_mandatory_keys("squid_proxy_server/installed");
 
   tag_summary = "According to its version number, the remote version of Squid is prone to an
@@ -58,7 +59,7 @@ if(description)
   script_tag(name:"impact", value:tag_impact);
   script_tag(name:"affected", value:tag_affected);
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mailspect_mult_vuln_06_14.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_mailspect_mult_vuln_06_14.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Mailspect Control Panel Multiple Vulnerabilities
 #
@@ -44,16 +44,15 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105050");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 6663 $");
 
  script_name("Mailspect Control Panel Multiple Vulnerabilities");
 
 
  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Jun/137");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-06-26 11:36:16 +0200 (Thu, 26 Jun 2014)");
- script_summary("Determine if XSS is possible");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

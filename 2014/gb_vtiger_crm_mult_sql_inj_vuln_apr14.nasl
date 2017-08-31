@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_mult_sql_inj_vuln_apr14.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_vtiger_crm_mult_sql_inj_vuln_apr14.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Vtiger CRM Multiple SQL Injection Vulnerabilities April-14
 #
@@ -30,12 +30,12 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.804542";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2013-3213");
   script_bugtraq_id(61563);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-17 18:28:20 +0530 (Thu, 17 Apr 2014)");
   script_name("Vtiger CRM Multiple SQL Injection Vulnerabilities April-14");
 
@@ -83,7 +83,6 @@ NOTE: Ignore this warning, if above mentioned patch is manually applied.
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54336");
   script_xref(name : "URL" , value : "https://www.vtiger.com/blogs/?p=1467");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/27279");
-  script_summary("Check for the vulnerable version of vTiger");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

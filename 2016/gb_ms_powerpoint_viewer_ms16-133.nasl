@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powerpoint_viewer_ms16-133.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_ms_powerpoint_viewer_ms16-133.nasl 6523 2017-07-04 15:46:12Z cfischer $
 #
 # Microsoft Office PowerPoint Viewer Remote Code Execution Vulnerability (3199168)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809720");
-  script_version("$Revision: 5527 $");
+  script_version("$Revision: 6523 $");
   script_cve_id("CVE-2016-7230");
   script_bugtraq_id(94006);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:46:12 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-11-09 14:03:09 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office PowerPoint Viewer Remote Code Execution Vulnerability (3199168)");
@@ -68,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
-  script_require_keys("MS/Office/Ver", "SMB/Office/PPView/Version");
+  script_mandatory_keys("MS/Office/Ver", "SMB/Office/PPView/Version");
   exit(0);
 }
 

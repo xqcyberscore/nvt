@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3882.nasl 6362 2017-06-16 14:56:28Z teissa $
+# $Id: deb_3882.nasl 6682 2017-07-12 09:00:18Z cfischer $
 # Auto-generated from advisory DSA 3882-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703882);
-    script_version("$Revision: 6362 $");
+    script_version("$Revision: 6682 $");
     script_cve_id("CVE-2015-7686", "CVE-2016-6127", "CVE-2017-5361", "CVE-2017-5943", "CVE-2017-5944");
     script_name("Debian Security Advisory DSA 3882-1 (request-tracker4 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-16 16:56:28 +0200 (Fri, 16 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-12 11:00:18 +0200 (Wed, 12 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-06-15 00:00:00 +0200 (Thu, 15 Jun 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"7.8");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "request-tracker4 on Debian Linux");
         script_tag(name: "insight",   value: "Request Tracker (RT) is a ticketing system which
 enables a group of people to intelligently and efficiently manage

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_sandbox_bypass_vuln_aug14_win.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_adobe_reader_sandbox_bypass_vuln_aug14_win.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Adobe Reader Sandbox Bypass Vulnerability - Aug14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804813");
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2014-0546");
   script_bugtraq_id(69193);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-19 12:05:17 +0530 (Tue, 19 Aug 2014)");
   script_name("Adobe Reader Sandbox Bypass Vulnerability - Aug14 (Windows)");
 
@@ -74,7 +74,6 @@ For updates refer to http://get.adobe.com/reader";
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://helpx.adobe.com/security/products/reader/apsb14-19.html");
-  script_summary("Check for the vulnerable version of Adobe Reader on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

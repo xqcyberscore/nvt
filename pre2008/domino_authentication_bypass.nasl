@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: domino_authentication_bypass.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: domino_authentication_bypass.nasl 6703 2017-07-12 13:57:25Z cfischer $
 # Description: Authentication bypassing in Lotus Domino
 #
 # Authors:
@@ -34,8 +34,8 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10953");
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 6703 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:57:25 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2001-1567");
  script_bugtraq_id(4022);
@@ -48,7 +48,6 @@ if(description)
  script_dependencies("gb_lotus_domino_detect.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("dominowww/installed");
- script_exclude_keys("Settings/disable_cgi_scanning");
 
  script_tag(name : "solution" , value : "Upgrade to the latest version of Domino.");
  script_tag(name : "summary" , value : "By creating a specially crafted url, the authentication mechanism of
@@ -65,10 +64,6 @@ if(description)
  exit(0);
 }
 
-
-#
-# The script code starts here
-#
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

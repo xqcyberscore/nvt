@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_mult_vuln.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_advantech_webaccess_mult_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # Advantech WebAccess Multiple Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-0763", "CVE-2014-0764", "CVE-2014-0765", "CVE-2014-0766",
                 "CVE-2014-0767", "CVE-2014-0768", "CVE-2014-0770", "CVE-2014-0771",
                 "CVE-2014-0772", "CVE-2014-0773");
@@ -37,7 +37,7 @@ if(description)
                     66732, 66733, 66750, 66749, 66742);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-16 14:52:28 +0530 (Wed, 16 Apr 2014)");
   script_name("Advantech WebAccess Multiple Vulnerabilities");
 
@@ -87,7 +87,6 @@ For updates refer to http://webaccess.advantech.com";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57873");
   script_xref(name : "URL" , value : "http://ics-cert.us-cert.gov/advisories/ICSA-14-079-03");
-  script_summary("Check for the vulnerable version of Advantech WebAccess");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

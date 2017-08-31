@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_49251.nasl 3112 2016-04-19 08:52:10Z antu123 $
+# $Id: gb_otrs_49251.nasl 6719 2017-07-13 13:53:39Z cfischer $
 #
 # OTRS 'AdminPackageManager.pm' Local File Disclosure Vulnerability
 #
@@ -31,12 +31,12 @@ CPE = "cpe:/a:otrs:otrs";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 3112 $");
+ script_version("$Revision: 6719 $");
  script_cve_id("CVE-2011-2746");
  script_bugtraq_id(49251);
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 10:52:10 +0200 (Tue, 19 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-08-22 16:04:33 +0200 (Mon, 22 Aug 2011)");
  script_name("OTRS 'AdminPackageManager.pm' Local File Disclosure Vulnerability");
 
@@ -82,11 +82,9 @@ tag_solution =
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("secpod_otrs_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("OTRS/installed");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

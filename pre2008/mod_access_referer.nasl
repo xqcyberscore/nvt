@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mod_access_referer.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: mod_access_referer.nasl 6693 2017-07-12 10:10:27Z cfischer $
 # Description: mod_access_referer 1.0.2 NULL pointer dereference
 #
 # Authors:
@@ -39,8 +39,8 @@ has not been updated for a long time.";
 if(description)
 {
  script_id(11543); 
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 6693 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 12:10:27 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2003-1054");
  script_bugtraq_id(7375);
@@ -70,11 +70,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-
-
-if(!get_port_state(port))exit(0);
-
 
 function check(req)
 {

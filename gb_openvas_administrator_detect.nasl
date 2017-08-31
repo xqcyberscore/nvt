@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvas_administrator_detect.nasl 4034 2016-09-12 12:12:26Z cfi $
+# $Id: gb_openvas_administrator_detect.nasl 6820 2017-07-31 11:37:34Z cfischer $
 #
 # OpenVAS Administrator Detection
 #
@@ -27,24 +27,21 @@
 
 if(description)
 {
+  script_oid("1.3.6.1.4.1.25623.1.0.103826");
+  script_version("$Revision: 6820 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-31 13:37:34 +0200 (Mon, 31 Jul 2017) $");
+  script_tag(name:"creation_date", value:"2013-11-08 12:28:10 +0100 (Fri, 08 Nov 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_oid("1.3.6.1.4.1.25623.1.0.103826");
-  script_version ("$Revision: 4034 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-12 14:12:26 +0200 (Mon, 12 Sep 2016) $");
-  script_tag(name:"creation_date", value:"2013-11-08 12:28:10 +0100 (Fri, 08 Nov 2013)");
   script_name("OpenVAS Administrator Detection");
-  script_summary("Checks for the presence of OpenVAS Administrator");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/unknown", 9393);
+  script_dependencies("find_service3.nasl");
+  script_require_ports("Services/openvas-administrator", 9393);
 
-  tag_summary = "The script sends a connection request to the server and attempts to
-  determine if it is a OpenVAS Administrator";
-
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to
+  determine if it is a OpenVAS Administrator");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -55,26 +52,31 @@ include("host_details.inc");
 include("misc_func.inc");
 
 port = get_unknown_port( default:9393 );
+soc = open_sock_tcp( port );
+if( ! soc ) exit( 0 );
 
-soc = open_sock_tcp(port);
-if(!soc)exit(0);
+send( socket:soc, data:'<foo/>\r\n' );
+ret = recv( socket:soc, length:256 );
+close( soc );
 
-send(socket:soc, data:'<foo/>\r\n');
-ret = recv(socket:soc, length:256);
+if( "oap_response" >< ret && "GET_VERSION" >< ret ) {
 
-close(soc);
+  version = "unknown";
 
-if("oap_response" >< ret && "GET_VERSION" >< ret) {
+  replace_kb_item( name:"openvas_administrator/installed", value:TRUE );
+  replace_kb_item( name:"openvas_framework_component/installed", value:TRUE );
+  cpe = "cpe:/a:openvas:openvas_administrator";
+  install = port + "/tcp";
 
-  set_kb_item(name:"openvas_administrator/installed",value:TRUE);
-  cpe = 'cpe:/a:openvas:openvas_administrator';
+  register_service( port:port, proto:"openvas-administrator" );
+  register_product( cpe:cpe, location:install, port:port );
 
-  register_product(cpe:cpe, location:port + '/tcp', port:port);
-
-  log_message(data:'OpenVAS Administrator was detected on this port.\nCPE: ' + cpe + '\n', port:port);
-  exit(0);
-
+  log_message( data:build_detection_report( app:"OpenVAS Administrator",
+                                            version:version,
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:ret ),
+                                            port:port );
 }
 
-exit(0);
-
+exit( 0 );

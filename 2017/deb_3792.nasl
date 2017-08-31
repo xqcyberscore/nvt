@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3792.nasl 6409 2017-06-22 16:09:11Z cfischer $
+# $Id: deb_3792.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3792-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703792);
-    script_version("$Revision: 6409 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-3157");
     script_name("Debian Security Advisory DSA 3792-1 (libreoffice - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-22 18:09:11 +0200 (Thu, 22 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-02-23 00:00:00 +0100 (Thu, 23 Feb 2017)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "libreoffice on Debian Linux");
         script_tag(name: "insight",   value: "LibreOffice is a full-featured office productivity suite that provides
 a near drop-in replacement for Microsoft(R) Office.");

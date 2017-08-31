@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3894.nasl 6418 2017-06-23 10:18:41Z teissa $
+# $Id: deb_3894.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3894-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703894);
-    script_version("$Revision: 6418 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-7771", "CVE-2017-7772", "CVE-2017-7773", "CVE-2017-7774", "CVE-2017-7775", "CVE-2017-7776", "CVE-2017-7777", "CVE-2017-7778");
     script_name("Debian Security Advisory DSA 3894-1 (graphite2 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-23 12:18:41 +0200 (Fri, 23 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-06-22 00:00:00 +0200 (Thu, 22 Jun 2017)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "graphite2 on Debian Linux");
     script_tag(name: "solution",  value: "For the oldstable distribution (jessie), these problems have been fixed
 in version 1.3.10-1~deb8u1.

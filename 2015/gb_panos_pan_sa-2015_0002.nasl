@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2015_0002.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_panos_pan_sa-2015_0002.nasl 6848 2017-08-04 06:15:31Z emoss $
 #
 # Palo Alto PAN-OS PAN-SA-2015-0002
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-0235");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6415 $");
+ script_version ("$Revision: 6848 $");
 
  script_name("Palo Alto PAN-OS PAN-SA-2015-0002");
 
@@ -56,15 +56,15 @@ software enabled by this vulnerability at the time of this advisory. An update
 to PAN-OS will be made available that addresses CVE-2015-0235 in a regularly
 scheduled software maintenance update. (Ref # 74443)");
 
- script_tag(name:"affected" , value:"PAN-OS 6.1.2 and earlier; PAN-OS 6.0.8 and earlier; PAN-OS 5.0.15 and earlier");
- script_tag(name:"solution_type", value: "NoneAvailable");
+ script_tag(name:"affected" , value:"PAN-OS versions prior to PAN-OS 7.0.1");
+ script_tag(name:"solution_type", value: "VendorFix");
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-04 08:15:31 +0200 (Fri, 04 Aug 2017) $");
  script_tag(name:"creation_date", value:"2015-04-23 13:30:05 +0200 (Thu, 23 Apr 2015)");
  script_category(ACT_GATHER_INFO);
- script_family("General");
+ script_family("Palo Alto PAN-OS Local Security Checks");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_palo_alto_panOS_version.nasl");
  script_mandatory_keys("palo_alto_pan_os/version");
@@ -79,14 +79,10 @@ if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 model = get_kb_item( "palo_alto_pan_os/model" );
 
-if( version_is_less_equal( version:version, test_version:"5.0.15" ) ) vuln = TRUE;
-else if( version_in_range( version:version, test_version:"6.0", test_version2:"6.0.8" ) ) vuln = TRUE;
-else if( version_in_range( version:version, test_version:"6.1", test_version2:"6.1.2" ) ) vuln = TRUE;
-
-if( vuln )
+if( version_is_less(version: version, test_version: "7.0.1") )
 {
   report = 'Installed version: ' + version + '\n' +
-           'Fixed version:     Please ask the vendor for a patch or workaround.\n';
+           'Fixed version:     7.0.1\n';
 
   if( model )
     report += 'Model:             ' + model;

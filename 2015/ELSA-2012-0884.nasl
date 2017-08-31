@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-0884.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: ELSA-2012-0884.nasl 6557 2017-07-06 11:55:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123892");
-script_version("$Revision: 6431 $");
+script_version("$Revision: 6557 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:09:56 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:55:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-0884");
 script_tag(name: "insight", value: "ELSA-2012-0884 -  openssh security, bug fix, and enhancement update - [5.3p1-81]- fixes in openssh-5.3p1-required-authentications.patch (#657378)[5.3p1-79]- fix forward on non-localhost ports with IPv6 (#732955)[5.3p1-78]- clear SELinux exec context before exec passwd (#814691)[5.3p1-77]- prevent post-auth resource exhaustion (#809938)[5.3p1-76]- don't escape backslah in a banner (#809619)[5.3p1-75]- fix various issues in openssh-5.3p1-required-authentications.patch (#805901)[5.3p1-74]- fix out-of-memory killer patch (#744236)[5.3p1-73]- remove openssh-4.3p2-no-v6only.patch (#732955)- adjust Linux out-of-memory killer (#744236)- fix sshd init script - check existence of crypto (#797384)- add RequiredAuthentications[12] (#657378)- run privsep slave process as the users SELinux context (#798241)[5.3p1-72]- drop CAVS test driver (#782091)[5.3p1-71]- enable aes-ctr ciphers use the EVP engines from OpenSSL such as the AES-NI (#756929)- add CAVS test driver for the aes-ctr ciphers (#782091)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"3.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

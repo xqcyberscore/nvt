@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_52986.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_wordpress_52986.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # WordPress All-in-One Event Calendar Plugin Multiple Cross Site Scripting Vulnerabilities
 #
@@ -46,7 +46,7 @@ if (description)
  script_oid(SCRIPT_OID);
  script_bugtraq_id(52986);
  script_cve_id("CVE-2012-1835");
- script_version ("$Revision: 5940 $");
+ script_version ("$Revision: 6720 $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_name("WordPress All-in-One Event Calendar Plugin Multiple Cross Site Scripting Vulnerabilities");
@@ -57,7 +57,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.wordpress.org/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/522292");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-04-12 10:32:26 +0200 (Thu, 12 Apr 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -65,7 +65,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("secpod_wordpress_detect_900182.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("wordpress/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -77,10 +76,6 @@ include("version_func.inc");
 include("http_keepalive.inc");
    
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
-if(!can_host_php(port:port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
 url = string(dir, "/wp-content/plugins/all-in-one-event-calendar/app/view/save_successful.php?msg=<script>alert(/openvas-xss-test/);</script>"); 

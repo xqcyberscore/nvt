@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(867564);
-  script_version("$Revision: 2800 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 14:00:56 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 6629 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-12 09:21:06 +0530 (Wed, 12 Mar 2014)");
   script_cve_id("CVE-2014-1610", "CVE-2013-6452", "CVE-2013-6451", "CVE-2013-6454",
                 "CVE-2013-6453", "CVE-2013-6472", "CVE-2014-2242", "CVE-2014-2243",
@@ -65,7 +65,7 @@ Remember to remove the config dir after completing the configuration.
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_smf_comp_xss_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_joomla_smf_comp_xss_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Joomla Component SMF Cross Site Scripting Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6663 $");
   script_bugtraq_id(66945);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-30 14:13:30 +0530 (Wed, 30 Apr 2014)");
   script_name("Joomla Component SMF Cross Site Scripting Vulnerability");
 
@@ -76,7 +76,6 @@ features, remove the product or replace the product by another one.";
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126176");
-  script_summary("Check if Joomla SMF component is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

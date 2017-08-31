@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avtech_device_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_avtech_device_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # AVTECH Device Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809066");
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 6701 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-10-18 11:30:44 +0530 (Tue, 18 Oct 2016)");
   script_name("AVTECH Device Detection");
 
@@ -43,9 +43,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_require_ports("Services/www", 8080);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 8080);
   script_mandatory_keys("Avtech/banner");
 
   exit(0);

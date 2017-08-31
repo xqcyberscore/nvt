@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_multiple_devices_backdoor_10_2013.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_dlink_multiple_devices_backdoor_10_2013.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # D-Link Multiple Devices Backdoor
 #
@@ -44,7 +44,7 @@ tag_vuldetect = "Try to bypass authentication by using 'xmlset_roodkcableoj28840
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 6104 $");
+ script_version ("$Revision: 6698 $");
  script_cve_id("CVE-2013-6026");
  script_bugtraq_id(62990);
  script_tag(name:"cvss_base", value:"10.0");
@@ -56,16 +56,15 @@ if (description)
  script_xref(name:"URL", value:"http://www.devttys0.com/2013/10/reverse-engineering-a-d-link-backdoor/");
  script_xref(name:"URL", value:"http://www.d-link.com/");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-10-14 19:24:10 +0200 (Mon, 14 Oct 2013)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("thttpd-alphanetworks/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("thttpd-alphanetworks/banner");
 
  script_tag(name : "impact" , value : tag_impact);
  script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -79,13 +78,12 @@ if (description)
 
 include("http_func.inc");
    
-port = get_http_port(default:8080);
-if(!get_port_state(port))exit(0);
+port = get_http_port(default:80);
 
 banner = get_http_banner(port:port);
 if(!banner || ("thttpd-alphanetworks" >!< banner && "Alpha_webserv" >!< banner))exit(0);
 
-host = get_host_name();
+host = http_host_name(port:port);
 
 req = 'GET / HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n';

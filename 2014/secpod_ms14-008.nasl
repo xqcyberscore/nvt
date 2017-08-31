@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-008.nasl 2492 2016-01-22 14:46:36Z benallard $
+# $Id: secpod_ms14-008.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Microsoft Forefront Protection For Exchange RCE Vulnerability (2927022)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.903430";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2492 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-0294");
   script_bugtraq_id(65397);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:46:36 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-12 10:41:31 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft Forefront Protection For Exchange RCE Vulnerability (2927022)");
 
@@ -77,7 +77,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-008";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56788");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2927022");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-008");
-  script_summary("Check for the version of 'Microsoft.fss.antispam.dll' file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 SecPod");
   script_family("Windows : Microsoft Bulletins");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3832.nasl 6014 2017-04-24 05:02:04Z teissa $
+# $Id: deb_3832.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3832-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703832);
-    script_version("$Revision: 6014 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-5373", "CVE-2017-5375", "CVE-2017-5376", "CVE-2017-5378", "CVE-2017-5380", "CVE-2017-5383", "CVE-2017-5390", "CVE-2017-5396", "CVE-2017-5398", "CVE-2017-5400", "CVE-2017-5401", "CVE-2017-5402", "CVE-2017-5404", "CVE-2017-5405", "CVE-2017-5407", "CVE-2017-5408", "CVE-2017-5410");
     script_name("Debian Security Advisory DSA 3832-1 (icedove - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-04-24 07:02:04 +0200 (Mon, 24 Apr 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-04-20 00:00:00 +0200 (Thu, 20 Apr 2017)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "icedove on Debian Linux");
         script_tag(name: "insight",   value: "Icedove is an unbranded Thunderbird mail client suitable for free
 distribution. It supports different mail accounts (POP, IMAP, Gmail), has an

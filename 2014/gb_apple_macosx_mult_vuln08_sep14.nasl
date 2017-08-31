@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln08_sep14.nasl 2825 2016-03-10 08:11:16Z benallard $
+# $Id: gb_apple_macosx_mult_vuln08_sep14.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Apple Mac OS X Multiple Vulnerabilities -08 Sep14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804854");
-  script_version("$Revision: 2825 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2013-5139", "CVE-2013-5178");
   script_bugtraq_id(62536, 63343);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:11:16 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-22 18:58:08 +0530 (Mon, 22 Sep 2014)");
 
   script_name("Apple Mac OS X Multiple Vulnerabilities -08 Sep14");
@@ -65,12 +65,11 @@ if(description)
 
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT6150");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55446");
-  script_summary("Check for the vulnerable version of Apple Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/uname", "ssh/login/osx_name", "ssh/login/osx_version");
+  script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
   exit(0);
 }
 

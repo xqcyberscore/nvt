@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oscommerce_34348.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: oscommerce_34348.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # osCommerce 'oscid' Session Fixation Vulnerability
 #
@@ -40,24 +40,21 @@ tag_summary = "osCommerce is prone to a session-fixation vulnerability.
 if (description)
 {
  script_id(100099);
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+ script_version("$Revision: 6704 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-04-05 13:52:05 +0200 (Sun, 05 Apr 2009)");
  script_bugtraq_id(34348);
  script_tag(name:"cvss_base", value:"8.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:P/A:P");
-
  script_name("osCommerce 'oscid' Session Fixation Vulnerability");
-
-
  script_tag(name:"qod_type", value:"remote_analysis");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("oscommerce_detect.nasl");
- script_mandatory_keys("Software/osCommerce");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("Software/osCommerce");
+
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34348");
  exit(0);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: icq_installed.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: icq_installed.nasl 6456 2017-06-28 11:19:33Z cfischer $
 # Description: ICQ is installed
 #
 # Authors:
@@ -29,49 +29,31 @@ tag_solution = "Uninstall this software";
 
 if(description)
 {
- script_id(11425);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
- script_tag(name:"creation_date", value:"2006-03-26 18:10:09 +0200 (Sun, 26 Mar 2006)");
- script_bugtraq_id(1307, 132, 246, 2664, 3226, 3813, 929);
+  script_oid("1.3.6.1.4.1.25623.1.0.11425");
+  script_version("$Revision: 6456 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"creation_date", value:"2006-03-26 18:10:09 +0200 (Sun, 26 Mar 2006)");
+  script_bugtraq_id(1307, 132, 246, 2664, 3226, 3813, 929);
+  script_cve_id("CVE-1999-1418", "CVE-1999-1440", "CVE-2000-0046", "CVE-2000-0564", "CVE-2000-0552", "CVE-2001-0367", "CVE-2002-0028", "CVE-2001-1305");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("ICQ is installed");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2003 Xue Yong Zhi");
+  script_family("Peer-To-Peer File Sharing");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
 
-#TODO: too long bugtraq id
- script_cve_id("CVE-1999-1418", "CVE-1999-1440", "CVE-2000-0046", "CVE-2000-0564", "CVE-2000-0552", "CVE-2001-0367", "CVE-2002-0028", "CVE-2001-1305");
- 
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
 
- name = "ICQ is installed";
-
- script_name(name);
- 
-
-
-
- summary = "Determines if ICQ is installed";
-
- 
- script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
- 
- script_copyright("This script is Copyright (C) 2003 Xue Yong Zhi");
- family = "Peer-To-Peer File Sharing";
- script_family(family);
- 
- script_dependencies("secpod_reg_enum.nasl");
- script_require_keys("SMB/name", "SMB/login", "SMB/password",
-		     "SMB/domain","SMB/transport");
- script_mandatory_keys("SMB/WindowsVersion");
 
- script_require_ports(139, 445);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
-
 include("smb_nt.inc");
-
 
 rootfile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\ICQ", item:"DisplayName");
 if(rootfile)

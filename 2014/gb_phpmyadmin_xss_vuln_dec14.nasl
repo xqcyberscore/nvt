@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_xss_vuln_dec14.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_phpmyadmin_xss_vuln_dec14.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # phpMyAdmin 'url.php' Cross Site Scripting Vulnerability - Dec14
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805306");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-9219");
   script_bugtraq_id(71435);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-22 13:17:25 +0530 (Mon, 22 Dec 2014)");
   script_name("phpMyAdmin 'url.php' Cross Site Scripting Vulnerability - Dec14");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.phpmyadmin.net/home_page/security/PMASA-2014-18.php");
   script_xref(name : "URL" , value : "http://blog.elevenpaths.com/2014/12/phpmyadmin-fixes-xss-detected-by.html?m=1");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check if phpMyAdmin is prone to XSS");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl");

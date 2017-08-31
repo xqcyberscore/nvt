@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_anti_virus_plus_privilege_escalation_vuln_feb15_win.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_k7_anti_virus_plus_privilege_escalation_vuln_feb15_win.nasl 6486 2017-06-29 09:59:06Z teissa $
 #
 # K7 Anti-Virus Plus Privilege Escalation Vulnerability Feb15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:k7computing:anti-virus_plus:";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805455");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6486 $");
   script_cve_id("CVE-2014-9643");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-27 17:11:51 +0530 (Tue, 27 Jan 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("K7 Anti-Virus Plus Privilege Escalation Vulnerability Feb15 (Windows)");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130246/");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of K7 Anti-Virus Plus on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_k7_anti_virus_plus_detect_win.nasl");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_disk_sorter_enterprise_server_login_bof_vuln.nasl 5806 2017-03-31 07:21:48Z teissa $
+# $Id: gb_disk_sorter_enterprise_server_login_bof_vuln.nasl 6586 2017-07-07 06:23:25Z cfischer $
 #
 # Disk Sorter Enterprise Server Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:disksorter:disksorter_enterprise_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810301");
-  script_version("$Revision: 5806 $");
+  script_version("$Revision: 6586 $");
   script_cve_id("CVE-2017-7230");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 09:21:48 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 08:23:25 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-12-02 17:06:55 +0530 (Fri, 02 Dec 2016)");
   script_name("Disk Sorter Enterprise Server Buffer Overflow Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -43,6 +43,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("DiskSorter/Enterprise/Server/installed");
 
+  script_xref(name:"URL", value:"http://www.disksorter.com");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/41666/");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40833/");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40458/");
@@ -65,11 +66,12 @@ if(description)
   script_tag(name:"affected", value:"Disk Sorter Enterprise Server version 9.5.12
   and prior.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  23rd March, 2017. Information regarding this issue will be updated once the
-  solution details are available. For updates refer to http://www.disksorter.com");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
+  since disclosure of this vulnerability. Likely none will be provided anymore. General solution options
+  are to upgrade to a newer release, disable respective features, remove the product or replace the product
+  by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);

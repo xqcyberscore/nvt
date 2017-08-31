@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_53145.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: gb_owncloud_53145.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # ownCloud Multiple Input Validation Vulnerabilities
 #
@@ -53,12 +53,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5977 $");
+ script_version ("$Revision: 6720 $");
  script_bugtraq_id(53145);
  script_cve_id("CVE-2012-2269", "CVE-2012-2270", "CVE-2012-2397", "CVE-2012-2398");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5977 $");
+ script_version ("$Revision: 6720 $");
  script_name("ownCloud Multiple Input Validation Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53145");
@@ -66,7 +66,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.tele-consulting.com/advisories/TC-SA-2012-01.txt");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/522397");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-04-19 12:17:59 +0200 (Thu, 19 Apr 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -74,7 +74,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_owncloud_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("owncloud/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -86,8 +85,6 @@ include("host_details.inc");
 include("http_keepalive.inc");
    
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
 url = string(dir, '/index.php?redirect_url=1"><script>alert(/openvas-xss-test/)</script><l="'); 

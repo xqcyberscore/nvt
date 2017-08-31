@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872629");
-  script_version("$Revision: 6092 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 09:02:40 +0200 (Wed, 10 May 2017) $");
+  script_version("$Revision: 6634 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-05-03 14:19:22 +0530 (Wed, 03 May 2017)");
   script_cve_id("CVE-2017-3265", "CVE-2017-3308", "CVE-2017-3309", "CVE-2017-3450", 
                 "CVE-2017-3453", "CVE-2017-3456", "CVE-2017-3461", "CVE-2017-3462", 
@@ -54,7 +54,7 @@ contains the standard MySQL client programs and generic MySQL files.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

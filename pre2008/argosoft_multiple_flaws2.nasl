@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: argosoft_multiple_flaws2.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: argosoft_multiple_flaws2.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: ArGoSoft Mail Server multiple flaws(2)
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "Upgrade to ArGoSoft 1.8.7.0 or newer";
 if(description)
 {
  script_id(16012);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(12044);
  script_tag(name:"cvss_base", value:"4.3");
@@ -46,9 +46,7 @@ if(description)
  name = "ArGoSoft Mail Server multiple flaws(2)";
  script_name(name);
  
-
  summary = "Gets the version of the remote ArGoSoft server";
- 
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -56,28 +54,23 @@ if(description)
  script_copyright("This script is Copyright (C) 2004 David Maciejak");
  family = "Web application abuses";
  script_family(family);
- script_dependencies("http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-# Check starts here
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-
-
 port = get_http_port(default:80);
 
-if(get_port_state(port))
-{
  res = http_get_cache(item:"/", port:port);
  if( res == NULL ) exit(0);
  if((vers = egrep(pattern:".*ArGoSoft Mail Server.*Version", string:res)))
  {
   if(ereg(pattern:".*Version.*\((0\.|1\.([0-7]\.|8\.([0-6]\.])))\)", string:vers))security_message(port);
  }
-}

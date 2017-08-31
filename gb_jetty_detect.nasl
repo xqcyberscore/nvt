@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetty_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_jetty_detect.nasl 6823 2017-08-01 04:55:14Z ckuersteiner $
 #
 # Jetty Version Detection
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800953");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 6823 $");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-01 06:55:14 +0200 (Tue, 01 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-10-20 14:26:56 +0200 (Tue, 20 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Jetty Version Detection");
@@ -56,14 +56,6 @@ include("http_keepalive.inc");
 
 ## Default port
 jettyPort = get_http_port(default:8080);
-if(!jettyPort){
-  jettyPort = 8080;
-}
-
-## Check the port state
-if(!get_port_state(jettyPort)){
-  exit(0);
-}
 
 ## Get the banner
 banner = get_http_banner(port:jettyPort);
@@ -71,43 +63,47 @@ banner = get_http_banner(port:jettyPort);
 ## confirm the server
 if("Server: Jetty" >< banner)
 {
-  jettyVer = eregmatch(pattern:"Jetty.([0-9.]+)([a-zA-Z]+[0-9]+)?", string:banner);
+  jettyVer = "unknown";
 
-  if(jettyVer[1] != NULL)
+  ver = eregmatch(pattern:"Jetty.([0-9.]+)([a-zA-Z]+[0-9]+)?", string:banner);
+
+  if(ver[1] != NULL)
   {
-    if(jettyVer[2] != NULL)
+    if(ver[2] != NULL)
     {
-      if(jettyVer[2] =~ "^v"){
-        jettyVer[2] = jettyVer[2] -"v";
+      if(ver[2] =~ "^v"){
+        ver[2] = ver[2] -"v";
       }
 
-      if(jettyVer[1] =~ "\.$" ){
-       jettyVer = jettyVer[1] +  jettyVer[2];
+      if(ver[1] =~ "\.$" ){
+       jettyVer = ver[1] +  ver[2];
       }
       else {
-        jettyVer = jettyVer[1] + "." + jettyVer[2];
+        jettyVer = ver[1] + "." + ver[2];
      }
     }
 
   else{
-      jettyVer = jettyVer[1];
+      jettyVer = ver[1];
   }
 
   set_kb_item(name:"www/" + jettyPort + "/Jetty", value:jettyVer);
   set_kb_item(name:"Jetty/installed", value:TRUE);
 
-   cpe = build_cpe(value:jettyVer, exp:"^([0-9.]+)", base:"cpe:/a:mortbay:jetty:");
+   cpe = build_cpe(value:jettyVer, exp:"^([0-9.]+)", base:"cpe:/a:eclipse:jetty:");
    if(!cpe)
-     cpe = 'cpe:/a:mortbay:jetty';
+     cpe = 'cpe:/a:eclipse:jetty';
 
-   register_product(cpe:cpe, location:jettyPort);
+   register_product(cpe:cpe, location: "/", port: jettyPort);
    log_message(data: build_detection_report(app:"Jetty WebServer",
                                             version:jettyVer,
                                             install:"/",
                                             cpe:cpe,
-                                            concluded:jettyVer),
-                                            port:jettyPort);
+                                            concluded:ver[0]),
+               port:jettyPort);
 
-
+   exit(0);
  }
 }
+
+exit(0);

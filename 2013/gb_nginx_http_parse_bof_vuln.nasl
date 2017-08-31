@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_http_parse_bof_vuln.nasl 5839 2017-04-03 10:43:34Z cfi $
+# $Id: gb_nginx_http_parse_bof_vuln.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # Nginx Chunked Transfer Encoding Stack Based Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nginx:nginx";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802052");
-  script_version("$Revision: 5839 $");
+  script_version("$Revision: 6755 $");
   script_cve_id("CVE-2013-2028");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:43:34 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-05-21 11:44:36 +0530 (Tue, 21 May 2013)");
   script_name("Nginx Chunked Transfer Encoding Stack Based Buffer Overflow Vulnerability");
 
@@ -47,9 +47,8 @@ if(description)
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("http_version.nasl", "nginx_detect.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
-  script_mandatory_keys("nginx/installed");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("nginx/installed");
 
   script_tag(name:"impact", value: "Successful exploitation will let the remote unauthenticated attackers
   to cause a buffer overflow, resulting in a denial of service or potentially

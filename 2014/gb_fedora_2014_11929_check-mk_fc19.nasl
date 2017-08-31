@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868373");
-  script_version("$Revision: 2796 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 13:49:17 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 6750 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-11 05:57:08 +0200 (Sat, 11 Oct 2014)");
   script_cve_id("CVE-2014-5338", "CVE-2014-5339", "CVE-2014-5340", "CVE-2014-2330",
                 "CVE-2014-2331", "CVE-2014-2329", "CVE-2014-2332");
@@ -48,12 +48,11 @@ the Nagios host and an automatic inventory of items to be checked on hosts.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "FEDORA", value: "2014-11929");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-October/140304.html");
-  script_summary("Check for the Version of check-mk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_1200_66349.nasl 3532 2016-06-16 09:35:52Z ckuerste $
+# $Id: gb_simatic_s7_1200_66349.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Siemens SIMATIC S7-1200  Denial of Service Vulnerability
 #
@@ -45,7 +45,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103930");
  script_bugtraq_id(66349,66344,66353);
  script_cve_id("CVE-2014-2254","CVE-2014-2256","CVE-2014-2258");
- script_version ("$Revision: 3532 $");
+ script_version ("$Revision: 6759 $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
@@ -56,9 +56,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66344");
  script_xref(name:"URL", value:"http://subscriber.communications.siemens.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-06-16 11:35:52 +0200 (Thu, 16 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-03-31 13:32:29 +0200 (Mon, 31 Mar 2014)");
- script_summary("Check the firmware version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

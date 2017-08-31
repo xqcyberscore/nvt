@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_znc_60199.nasl 4051 2016-09-13 11:43:02Z cfi $
+# $Id: sw_znc_60199.nasl 6534 2017-07-05 09:58:29Z teissa $
 #
 # ZNC WebAdmin Multiple NULL Pointer Dereference Denial of Service Vulnerabilities
 #
@@ -29,15 +29,14 @@ CPE = 'cpe:/a:znc:znc';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111032");
-  script_version("$Revision: 4051 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-13 13:43:02 +0200 (Tue, 13 Sep 2016) $");
+  script_version("$Revision: 6534 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-08-29 12:00:00 +0200 (Sat, 29 Aug 2015)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
   script_cve_id("CVE-2013-2130");
   script_bugtraq_id(60199);
   script_name("ZNC WebAdmin Multiple NULL Pointer Dereference Denial of Service Vulnerabilities");
-  script_summary("Determine if ZNC version is 1.0");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");

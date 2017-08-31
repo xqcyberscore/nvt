@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: yacy_xss.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: yacy_xss.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: YaCy Peer-To-Peer Search Engine XSS
 #
 # Authors:
@@ -44,8 +44,8 @@ tag_solution = "Upgrade to YaCy 0.32 or later.";
 if(description)
 {
   script_id(16058);
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 6702 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
 
   script_cve_id("CVE-2004-2651");
@@ -60,21 +60,20 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 8080);
-  script_dependencies("cross_site_scripting.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/385453");
   exit(0);
 }
 
-#the code
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:8080);
-if ( ! get_port_state(port))exit(0);
 
 if ( get_kb_item("www/" + port + "/generic_xss") ) exit(0);
 

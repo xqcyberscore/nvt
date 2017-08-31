@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_livezilla_password_disc_vuln.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_livezilla_password_disc_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # LiveZilla Password Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:livezilla:livezilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804403");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2013-7033");
   script_bugtraq_id(64378);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-19 15:34:01 +0530 (Wed, 19 Feb 2014)");
   script_name("LiveZilla Password Disclosure Vulnerability");
 
@@ -56,7 +56,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Dec/74");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124444");
-  script_summary("Check if LiveZilla is vulnerable to password disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

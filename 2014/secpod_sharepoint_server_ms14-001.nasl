@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sharepoint_server_ms14-001.nasl 2492 2016-01-22 14:46:36Z benallard $
+# $Id: secpod_sharepoint_server_ms14-001.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Microsoft SharePoint Server Remote Code Execution Vulnerability (2916605)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2492 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-0258", "CVE-2014-0259", "CVE-2014-0260");
   script_bugtraq_id(64726, 64727, 64728);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:46:36 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-15 11:05:47 +0530 (Wed, 15 Jan 2014)");
   script_name("Microsoft SharePoint Server Remote Code Execution Vulnerability (2916605)");
 
@@ -80,7 +80,6 @@ http://technet.microsoft.com/en-us/security/bulletin/ms14-001";
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2837577");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2837625");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-001");
-  script_summary("Check for the vulnerable 'WdsrvWorker.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_copyright("Copyright (C) 2014 SecPod");

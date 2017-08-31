@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868115");
-  script_version("$Revision: 2806 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 16:06:45 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 6629 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-23 05:55:04 +0200 (Sat, 23 Aug 2014)");
   script_cve_id("CVE-2014-0165", "CVE-2014-0166", "CVE-2013-4338", "CVE-2013-4339",
                 "CVE-2013-4340", "CVE-2013-2173", "CVE-2013-2199", "CVE-2013-2200",
@@ -63,7 +63,7 @@ Important information in /usr/share/doc/wordpress-3.9.2/README.fedora
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

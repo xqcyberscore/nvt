@@ -30,10 +30,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2780 $");
+  script_version("$Revision: 6715 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-10 21:04:07 +0530 (Mon, 10 Feb 2014)");
   script_name("Joomla SQL Injection Vulnerability");
 
@@ -72,7 +72,6 @@ For updates refer to http://www.joomla.org";
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31459/");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/joomla-321-sql-injection");
-  script_summary("Check if Joomla is vulnerable to SQL injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-016.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-016.nasl 6538 2017-07-05 11:38:27Z cfischer $
 #
 # Microsoft Groove Remote Code Execution Vulnerability (2494047)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902351);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6538 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-03-09 15:35:07 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2010-3146");
   script_bugtraq_id(42695);
@@ -55,8 +55,7 @@ if(description)
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl", "secpod_office_products_version_900032.nasl");
-  script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion", "SMB/Office/Groove/Version");
+  script_mandatory_keys("SMB/Office/Groove/Version");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

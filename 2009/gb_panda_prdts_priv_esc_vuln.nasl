@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_prdts_priv_esc_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_panda_prdts_priv_esc_vuln.nasl 6516 2017-07-04 12:20:47Z cfischer $
 #
 # Panda Products Privilege Escalation Vulnerability
 #
@@ -44,8 +44,8 @@ tag_summary = "This host is running panda Products and is prone to Privilege
 if(description)
 {
   script_id(801080);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 6516 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-12-14 09:18:47 +0100 (Mon, 14 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -61,8 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Privilege escalation");
   script_dependencies("gb_panda_prdts_detect.nasl");
-  script_require_keys("Panda/InternetSecurity/Ver", "Panda/GlobalProtection/Ver",
-                      "Panda/Antivirus/Ver");
+  script_require_keys("Panda/Products/Installed");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

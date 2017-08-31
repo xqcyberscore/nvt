@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_conn_block.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: apache_conn_block.nasl 6599 2017-07-07 09:50:33Z cfischer $
 # Description: Apache Connection Blocking Denial of Service
 #
 # Authors:
@@ -35,52 +35,38 @@ tag_solution = "Upgrade to Apache 2.0.49 or 1.3.31.";
 
 if(description)
 {
- script_id(12280);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(9921);
- script_cve_id("CVE-2004-0174");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.12280");
+  script_version("$Revision: 6599 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:50:33 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(9921);
+  script_cve_id("CVE-2004-0174");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("Apache Connection Blocking Denial of Service");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004 Scott Shebby");
+  script_family("Denial of Service");
+  script_dependencies("http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("www/apache", "Host/runs_unixoide");
 
- name = "Apache Connection Blocking Denial of Service";
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
 
- script_name(name);
-
-
- summary = "Checks for version of Apache";
-
-
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-
- script_copyright("This script is Copyright (C) 2004 Scott Shebby");
- family = "Denial of Service";
- script_family(family);
- script_dependencies("http_version.nasl", "os_detection.nasl");
- script_require_keys("www/apache");
- script_require_ports("Services/www", 80);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_mandatory_keys("Host/runs_unixoide");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
 include("http_func.inc");
 include("host_details.inc");
 
 port = get_http_port(default:80);
-if(!port) exit(0);
-if(!get_port_state(port))exit(0);
 
 # nb: don't bother checking if platform is known to be unaffected. (george theall)
 if (host_runs("FreeBSD|Linux") == "yes") exit(0);
-
 
 banner = get_http_banner(port: port);
 if(!banner)exit(0);

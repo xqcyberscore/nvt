@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_inotes_xss_vuln_feb17.nasl 5724 2017-03-24 15:54:58Z cfi $
+# $Id: gb_ibm_inotes_xss_vuln_feb17.nasl 6485 2017-06-29 09:21:18Z santu $
 #
 # IBM iNotes Cross-Site Scripting Vulnerability Feb17
 #
@@ -29,22 +29,22 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809890");
-  script_version("$Revision: 5724 $");
-  script_cve_id("CVE-2016-5883");
+  script_version("$Revision: 6485 $");
+  script_cve_id("CVE-2016-5883", "CVE-2016-9990");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:54:58 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:21:18 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-02-27 18:54:59 +0530 (Mon, 27 Feb 2017)");
   script_name("IBM iNotes Cross-Site Scripting Vulnerability Feb17");
 
   script_tag(name:"summary", value:"This host is installed with IBM iNotes and
-  is prone to cross site scripting vulnerability");
+  is prone to multiple cross site scripting vulnerabilities");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help of
   detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw is due to an input validation error 
-  in Web UI.");
+  script_tag(name:"insight", value:"The flaw is due to multiple input validation 
+  error in Web UI.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow users to embed
   arbitrary JavaScript code in the Web UI thus altering the intended functionality
@@ -64,7 +64,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21997010");
-
+  script_xref(name : "URL" , value : "http://www.ibm.com/support/docview.wss?uid=swg21998824");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

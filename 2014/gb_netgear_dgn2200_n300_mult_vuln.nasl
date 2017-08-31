@@ -29,10 +29,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804099";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6699 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:07:37 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-18 11:02:48 +0530 (Tue, 18 Feb 2014)");
   script_name("NetGear DGN2200 N300 Wireless Router Multiple Vulnerabilities");
 
@@ -85,15 +85,14 @@ software package be used in its place.";
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31617");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125184");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Feb/104");
-  script_summary("Check if NetGear DGN2200 N300 Wireless Router is prone to inforamtion disclosure");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("NETGEAR_DGN/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_require_ports("Services/www", 8080);
+  script_mandatory_keys("NETGEAR_DGN/banner");
+
   exit(0);
 }
 
@@ -107,7 +106,6 @@ banner = "";
 
 ## Get http port
 http_port = get_http_port(default:8080);
-if(!get_port_state(http_port))exit(0);
 
 ## Get Banner
 banner = get_http_banner(port:http_port);

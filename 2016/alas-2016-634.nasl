@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-634.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: alas-2016-634.nasl 6574 2017-07-06 13:41:26Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120624");
-script_version("$Revision: 5557 $");
+script_version("$Revision: 6574 $");
 script_tag(name:"creation_date", value:"2016-01-20 07:22:43 +0200 (Wed, 20 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:41:26 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-634");
 script_tag(name: "insight", value: "A missing access control flaw was found in Samba. A remote, authenticated attacker could use this flaw to view the current snapshot on a Samba share, despite not having DIRECTORY_LIST access rights.An access flaw was found in the way Samba verified symbolic links when creating new files on a Samba share. A remote attacker could exploit this flaw to gain access to files outside of Samba&#039;s share path.A memory-read flaw was found in the way the libldb library processed LDB DN records with a null byte. An authenticated, remote attacker could use this flaw to read heap-memory pages from the server.A man-in-the-middle vulnerability was found in the way &quot;connection signing&quot; was implemented by Samba. A remote attacker could use this flaw to downgrade an existing Samba client connection and force the use of plain text."); 
 script_tag(name : "solution", value : "Run yum update samba to update your system.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

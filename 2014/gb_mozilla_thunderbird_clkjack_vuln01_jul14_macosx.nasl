@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804708");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-1539");
   script_bugtraq_id(67967);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-04 10:41:41 +0530 (Fri, 04 Jul 2014)");
   script_name("Mozilla Thunderbird clickjacking Vulnerability-01 July14 (Mac OS X)");
 
@@ -77,7 +77,6 @@ features, remove the product or replace the product by another one.";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/59171");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2014/mfsa2014-50.html");
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2014-310.nasl 4514 2016-11-15 10:04:28Z cfi $
+# $Id: alas-2014-310.nasl 6724 2017-07-14 09:57:17Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120361");
-script_version("$Revision: 4514 $");
+script_version("$Revision: 6724 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:24:36 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:04:28 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2014-310");
 script_tag(name: "insight", value: "A heap-based buffer overflow flaw was found in the way mutt processed certain email headers. A remote attacker could use this flaw to send an email with specially crafted headers that, when processed, could cause mutt to crash or, potentially, execute arbitrary code with the permissions of the user running mutt. (CVE-2014-0467 )"); 
 script_tag(name : "solution", value : "Run yum update mutt to update your system.");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2014-310");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

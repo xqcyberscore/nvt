@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-0348.nasl 6141 2017-05-17 09:03:37Z teissa $
+# $Id: ELSA-2007-0348.nasl 6561 2017-07-06 12:03:14Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122693");
-script_version("$Revision: 6141 $");
+script_version("$Revision: 6561 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:51:12 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:03:14 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-0348");
 script_tag(name: "insight", value: "ELSA-2007-0348 -  Important: php security update - [5.1.6-12.el5] - add security fix for CVE-2007-1864, SOAP redirect handling issue, FTP CRLF injection issue (#235016) [5.1.6-11.el5] - add security fix for CVE-2007-1718 (#235016) [5.1.6-9.el5] - add security fix for CVE-2007-1583 (#235016) - add security fixes for CVE-2007-0455, CVE-2007-1001 (#235036) [5.1.6-7.el5] - add security fix for CVE-2007-1285 (#231597) [5.1.6-6.el5] - add security fixes for: CVE-2007-0906, CVE-2007-0907, CVE-2007-0908, CVE-2007-0909, CVE-2007-0910, CVE-2007-0988 (#229013)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

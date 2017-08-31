@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_safenet_sas_owa_agent_dir_traversal_12_14.nasl 5628 2017-03-20 15:27:40Z cfi $
+# $Id: gb_safenet_sas_owa_agent_dir_traversal_12_14.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # SafeNet SAS OWA Agent Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:safenet-inc:safenet_authentication_service_outlook_web_access_agen
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105152");
-  script_version("$Revision: 5628 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-5359");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-22 16:04:07 +0100 (Mon, 22 Dec 2014)");
   script_name("SafeNet SAS OWA Agent Directory Traversal Vulnerability");
 
@@ -57,7 +57,6 @@ and check whether it is able to read arbitrary files or not.");
 
   script_xref(name : "URL" , value : "http://appcheck-ng.com/safenet-sas-owa-agent-directory-traversal-vulnerability/");
 
-  script_summary("Check for directory traversal");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

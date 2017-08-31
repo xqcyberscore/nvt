@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_mult_vuln_mar14.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_symantec_web_gateway_mult_vuln_mar14.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Symantec Web Gateway Cross-Site Scripting and SQL Injection Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:web_gateway";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2013-5012", "CVE-2013-5013");
   script_bugtraq_id(65404, 65405);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-10 17:35:07 +0530 (Mon, 10 Mar 2014)");
   script_name("Symantec Web Gateway Cross-Site Scripting and SQL Injection Vulnerabilities");
 
@@ -78,7 +78,6 @@ For updates refer to http://www.symantec.com/business/web-gateway";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56895");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125149");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Feb/94");
-  script_summary("Check if Symantec Web Gateway is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

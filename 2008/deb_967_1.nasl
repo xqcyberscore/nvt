@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_967_1.nasl 4053 2016-09-14 05:26:09Z teissa $
+# $Id: deb_967_1.nasl 6616 2017-07-07 12:10:49Z cfischer $
 # Description: Auto-generated from advisory DSA 967-1
 #
 # Authors:
@@ -84,8 +84,8 @@ The old stable distribution (woody) does not contain elog packages.";
 if(description)
 {
  script_id(56252);
- script_version("$Revision: 4053 $");
- script_tag(name:"last_modification", value:"$Date: 2016-09-14 07:26:09 +0200 (Wed, 14 Sep 2016) $");
+ script_version("$Revision: 6616 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:10:49 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-01-17 23:07:13 +0100 (Thu, 17 Jan 2008)");
  script_cve_id("CVE-2006-4439", "CVE-2006-0347", "CVE-2006-0348", "CVE-2006-0597", "CVE-2006-0598", "CVE-2006-0599", "CVE-2006-0600", "CVE-2005-4439");
  script_tag(name:"cvss_base", value:"7.8");
@@ -99,7 +99,7 @@ if(description)
  script_copyright("Copyright (c) 2006 E-Soft Inc. http://www.securityspace.com");
  script_family("Debian Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+ script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name:"qod_type", value:"package");

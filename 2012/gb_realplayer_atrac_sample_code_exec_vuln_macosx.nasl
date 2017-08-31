@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_atrac_sample_code_exec_vuln_macosx.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_realplayer_atrac_sample_code_exec_vuln_macosx.nasl 6521 2017-07-04 14:51:10Z cfischer $
 #
 # RealNetworks RealPlayer Atrac Sample Decoding Remote Code Execution Vulnerability (Mac OS X)
 #
@@ -39,12 +39,12 @@ tag_summary = "This host is installed with RealPlayer which is prone to remote
 if(description)
 {
   script_id(802802);
-  script_version("$Revision: 5940 $");
+  script_version("$Revision: 6521 $");
   script_cve_id("CVE-2012-0928");
   script_bugtraq_id(51890);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:51:10 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-02-21 15:31:43 +0530 (Tue, 21 Feb 2012)");
   script_name(" RealNetworks RealPlayer Atrac Sample Decoding Remote Code Execution Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1026643");
@@ -55,7 +55,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_realplayer_detect_macosx.nasl");
-  script_require_keys("RealPlayer/MacOSX/Version", "ssh/login/uname");
+  script_mandatory_keys("RealPlayer/MacOSX/Version");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

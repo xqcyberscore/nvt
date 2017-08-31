@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-3503.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: ELSA-2016-3503.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122821");
-script_version("$Revision: 5580 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-01-11 11:11:57 +0200 (Mon, 11 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-3503");
 script_tag(name: "insight", value: "ELSA-2016-3503 - Unbreakable Enterprise kernel security update - kernel-uek[2.6.32-400.37.15uek]- ipc/sem.c: fully initialize sem_array before making it visible (Manfred Spraul) [Orabug: 22250043] {CVE-2015-7613}- Initialize msg/shm IPC objects before doing ipc_addid() (Linus Torvalds) [Orabug: 22250043] {CVE-2015-7613}- crypto: add missing crypto module aliases (Mathias Krause) [Orabug: 22249655] {CVE-2013-7421} {CVE-2014-9644}- crypto: include crypto- module prefix in template (Kees Cook) [Orabug: 22249655] {CVE-2013-7421} {CVE-2014-9644}- crypto: prefix module autoloading with 'crypto-' (Kees Cook) [Orabug: 22249655] {CVE-2013-7421} {CVE-2014-9644}[2.6.32-400.37.14uek]- KVM: add arg to ac_interception() missing from 'KVM: x86: work around infinite loop in microcode when #AC is delivered' (Chuck Anderson) [Orabug: 22336493] {CVE-2015-5307}[2.6.32-400.37.13uek]- KVM: svm: unconditionally intercept #DB (Paolo Bonzini) [Orabug: 22336518] {CVE-2015-8104} {CVE-2015-8104}- KVM: x86: work around infinite loop in microcode when #AC is delivered (Eric Northup) [Orabug: 22336493] {CVE-2015-5307} {CVE-2015-5307}"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

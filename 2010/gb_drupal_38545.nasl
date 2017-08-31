@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_38545.nasl 4437 2016-11-08 07:18:47Z teissa $
+# $Id: gb_drupal_38545.nasl 6707 2017-07-12 14:57:13Z cfischer $
 #
 # Drupal Prior to 6.16 and 5.22 Multiple Security Vulnerabilities
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:drupal:drupal";
+
 tag_summary = "Drupal is prone to multiple vulnerabilities, including cross-site
 scripting issues, a phishing issue, and a security-bypass issue.
 
@@ -41,8 +43,8 @@ tag_solution = "Updates are available. Please see the references for details.";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100523");
- script_version("$Revision: 4437 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-08 08:18:47 +0100 (Tue, 08 Nov 2016) $");
+ script_version("$Revision: 6707 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:57:13 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-03-09 22:32:06 +0100 (Tue, 09 Mar 2010)");
  script_bugtraq_id(38545);
  script_tag(name:"cvss_base", value:"4.3");
@@ -59,19 +61,19 @@ if (description)
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("drupal_detect.nasl");
- script_mandatory_keys("drupal/installed");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("drupal/installed");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
+if(!port = get_app_port(cpe:CPE)) exit(0);
 if(vers = get_app_version( cpe:CPE, port:port, version_regex:"^[0-9]\.[0-9]+" ) ) {
 
   if(version_in_range(version:vers, test_version:"5", test_version2:"5.21") ||
@@ -79,7 +81,6 @@ if(vers = get_app_version( cpe:CPE, port:port, version_regex:"^[0-9]\.[0-9]+" ) 
       security_message(port:port);
       exit(0);
   }
-
 }
 
 exit(0);

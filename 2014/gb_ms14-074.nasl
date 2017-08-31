@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-074.nasl 3008 2016-04-07 13:17:01Z antu123 $
+# $Id: gb_ms14-074.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # MS Windows Remote Desktop Protocol Security Feature Bypass Vulnerability (3003743)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805017");
-  script_version("$Revision: 3008 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-6318");
   script_bugtraq_id(70981);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 15:17:01 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-12 13:56:45 +0530 (Wed, 12 Nov 2014)");
   script_name("MS Windows Remote Desktop Protocol Security Feature Bypass Vulnerability (3003743)");
 
@@ -70,7 +70,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/60089");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3003743");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-074");
-  script_summary("Check for the version of 'Lsasrv.dll' vulnerable file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

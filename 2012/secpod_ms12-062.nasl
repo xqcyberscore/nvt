@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-062.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: secpod_ms12-062.nasl 6520 2017-07-04 14:28:49Z cfischer $
 #
 # Microsoft System Center Configuration Manager XSS Vulnerability (2741528)
 #
@@ -42,22 +42,22 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(902688);
-  script_version("$Revision: 5931 $");
+  script_version("$Revision: 6520 $");
   script_cve_id("CVE-2012-2536");
   script_bugtraq_id(55430);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:28:49 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-09-12 09:31:18 +0530 (Wed, 12 Sep 2012)");
   script_name("Microsoft System Center Configuration Manager XSS Vulnerability (2741528)");
-
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_system_center_configmgr_detect_win.nasl");
-  script_require_keys("MS/ConfigMgr/Version", "MS/ConfigMgr/Path",
-                      "MS/SMS/Version", "MS/SMS/Path");
+  script_mandatory_keys("MS/SMS_or_ConfigMgr/Installed");
+  script_require_ports(139, 445);
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

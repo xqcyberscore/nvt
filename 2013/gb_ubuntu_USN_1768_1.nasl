@@ -74,8 +74,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2013-March/002045.html");
   script_id(841367);
-  script_version("$Revision: 2930 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:09:53 +0100 (Thu, 24 Mar 2016) $");
+  script_version("$Revision: 6644 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:01:20 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-03-19 09:49:48 +0530 (Tue, 19 Mar 2013)");
   script_cve_id("CVE-2013-0190", "CVE-2013-0216", "CVE-2013-0217", "CVE-2013-0231",
                 "CVE-2013-0268", "CVE-2013-0290", "CVE-2013-0311", "CVE-2013-0313",
@@ -90,7 +90,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "insight" , value : tag_insight);

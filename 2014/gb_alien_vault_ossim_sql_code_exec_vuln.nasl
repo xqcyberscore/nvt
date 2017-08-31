@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alien_vault_ossim_sql_code_exec_vuln.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_alien_vault_ossim_sql_code_exec_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # AlienVault OSSIM SQL Injection and Remote Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:alienvault:open_source_security_information_management";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804293");
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6735 $");
   script_bugtraq_id(67180);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-12 11:31:19 +0530 (Mon, 12 May 2014)");
   script_name("AlienVault OSSIM SQL Injection and Remote Code Execution Vulnerabilities");
 
@@ -56,7 +56,6 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/126446");
 
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check if AlienVault OSSIM is prone to sql injection");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("gb_ossim_web_detect.nasl");

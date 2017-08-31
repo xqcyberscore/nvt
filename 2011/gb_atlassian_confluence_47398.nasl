@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_confluence_47398.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_atlassian_confluence_47398.nasl 6719 2017-07-13 13:53:39Z cfischer $
 #
 # Atlassian Confluence Multiple Cross Site Scripting Vulnerabilities
 #
@@ -46,8 +46,8 @@ CPE = "cpe:/a:atlassian:confluence";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 3911 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_version("$Revision: 6719 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2011-05-02 15:13:22 +0200 (Mon, 02 May 2011)");
  script_bugtraq_id(47398);
  script_tag(name:"cvss_base", value:"2.6");
@@ -68,7 +68,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("gb_atlassian_confluence_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("atlassian_confluence/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -80,8 +79,6 @@ include("host_details.inc");
 include("version_func.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port)) {
   if(version_is_less(version: vers, test_version: "3.4.6") ||
      version_in_range(version: vers,test_version: "3.4.7",test_version2: "3.4.8")) {

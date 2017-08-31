@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asus_router_multiple_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_asus_router_multiple_vuln.nasl 6600 2017-07-07 09:58:31Z teissa $
 #
 # ASUS Router Multiple Vulnerabilities Aug-2015
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805945");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6600 $");
   script_bugtraq_id(73294);
   script_cve_id("CVE-2015-2676");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-08-05 13:27:24 +0530 (Wed, 05 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ASUS Router Multiple Vulnerabilities Aug-2015");
@@ -68,7 +68,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Mar/42");
 
-  script_summary("Check if ASUS Router is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

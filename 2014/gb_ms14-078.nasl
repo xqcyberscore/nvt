@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-078.nasl 3008 2016-04-07 13:17:01Z antu123 $
+# $Id: gb_ms14-078.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Microsoft Windows IME (Japanese) Privilege Elevation Vulnerability (2992719)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802088");
-  script_version("$Revision: 3008 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-4077");
   script_bugtraq_id(70944);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 15:17:01 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-12 13:07:08 +0530 (Wed, 12 Nov 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows IME (Japanese) Privilege Elevation Vulnerability (2992719)");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2991963");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-078");
   script_xref(name : "URL" , value : "http://blogs.technet.com/b/srd/archive/2014/11/11/assessing-risk-for-the-november-2014-security-updates.aspx");
-  script_summary("Check for the vulnerable 'Imjputyc.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

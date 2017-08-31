@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx200223.nasl 5595 2017-03-16 17:32:19Z mime $
+# $Id: gb_xenserver_ctx200223.nasl 6928 2017-08-16 02:41:07Z ckuersteiner $
 #
-# Citrix XenServer Shellshock Security Update
+# Citrix XenServer Shellshock Security Update (CTX200223)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -33,9 +33,9 @@ if (description)
  script_cve_id("CVE-2014-6271","CVE-2014-6277","CVE-2014-6278","CVE-2014-7169","CVE-2014-7186","CVE-2014-7187");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5595 $");
+ script_version ("$Revision: 6928 $");
 
- script_name("Citrix XenServer Shellshock Security Update");
+ script_name("Citrix XenServer Shellshock Security Update (CTX200223)");
 
  script_xref(name:"URL", value:"http://support.citrix.com/article/CTX200223");
 
@@ -52,9 +52,8 @@ to and including Citrix XenServer 6.2 Service Pack 1.");
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 18:32:19 +0100 (Thu, 16 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-16 04:41:07 +0200 (Wed, 16 Aug 2017) $");
  script_tag(name:"creation_date", value:"2014-12-18 17:37:46 +0100 (Thu, 18 Dec 2014)");
- script_summary("Check the installed hotfixes");
  script_category(ACT_GATHER_INFO);
  script_family("Citrix Xenserver Local Security Checks");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

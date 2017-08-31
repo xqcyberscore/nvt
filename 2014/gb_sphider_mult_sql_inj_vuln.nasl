@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sphider_mult_sql_inj_vuln.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_sphider_mult_sql_inj_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Sphider Multiple Vulnerabilities - Aug14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804737");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-5082", "CVE-2014-5192", "CVE-2014-5193");
   script_bugtraq_id(69019, 68985);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-08-25 13:06:02 +0530 (Mon, 25 Aug 2014)");
   script_name("Sphider Multiple Vulnerabilities - Aug14");
 
@@ -57,7 +57,6 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/34238");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127720");
-  script_summary("Check if Sphider is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

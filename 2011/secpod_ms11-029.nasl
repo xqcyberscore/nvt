@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-029.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-029.nasl 6506 2017-07-03 10:22:51Z cfischer $
 #
 # Microsoft GDI+ Remote Code Execution Vulnerability (2489979)
 #
@@ -26,25 +26,34 @@
 
 tag_impact = "Successful exploitation could allow remote attackers to execute arbitrary code
   via a specially crafted web page.
+
   Impact Level: System";
+
 tag_affected = "Microsoft Windows XP x32 Edition Service Pack 3 and prior
+
   Microsoft Windows XP x64 Edition Service Pack 2 and prior
+
   Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior";
+
 tag_insight = "The flaw is caused by an integer overflow error in the GDI+ library when
   processing malformed data.";
+
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
   http://www.microsoft.com/technet/security/Bulletin/MS11-029.mspx";
+
 tag_summary = "This host is missing a critical security update according to
   Microsoft Bulletin MS11-029.";
 
 if(description)
 {
-  script_id(902365);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902365");
+  script_version("$Revision: 6506 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-03 12:22:51 +0200 (Mon, 03 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_cve_id("CVE-2011-0041");
   script_bugtraq_id(47250);
@@ -58,8 +67,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("smb_reg_service_pack.nasl", "smb_login.nasl");
-  script_require_keys("SMB/login", "SMB/password");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name : "impact" , value : tag_impact);
@@ -67,6 +76,7 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -93,6 +103,8 @@ if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3, winVista:3, win2008:3
 host    = get_host_ip();
 usrname = get_kb_item("SMB/login");
 passwd  = get_kb_item("SMB/password");
+domain  = get_kb_item("SMB/domain");
+if( domain ) usrname = domain + '\\' + usrname;
 
 if(!host || !usrname || !passwd){
   exit(0);

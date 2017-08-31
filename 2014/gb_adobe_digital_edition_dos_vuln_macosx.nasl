@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_edition_dos_vuln_macosx.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_adobe_digital_edition_dos_vuln_macosx.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Adobe Digital Edition Denial of Service Vulnerability (Mac OS X)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804303";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-0494");
   script_bugtraq_id(65091);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-03 15:00:16 +0530 (Mon, 03 Feb 2014)");
   script_name("Adobe Digital Edition Denial of Service Vulnerability (Mac OS X)");
 
@@ -77,7 +77,6 @@ For updates refer to http://www.adobe.com/products/digital-editions/download.htm
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56578/");
   script_xref(name : "URL" , value : "http://helpx.adobe.com/security/products/Digital-Editions/apsb14-03.html");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Adobe Digital Edition on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_adobe_digital_edition_detect_macosx.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_mult_xss_vuln_mar14.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_cms_made_simple_mult_xss_vuln_mar14.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # CMS Made Simple Multiple XSS Vulnerabilities Mar14
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-0334", "CVE-2014-2092");
   script_bugtraq_id(65746, 65898);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-18 13:06:25 +0530 (Tue, 18 Mar 2014)");
   script_name("CMS Made Simple Multiple XSS Vulnerabilities Mar14");
 
@@ -80,7 +80,6 @@ For updates refer to http://www.cmsmadesimple.org";
 
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/526062");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125353/CMSMadeSimple-1.11.10-Cross-Site-Scripting.html");
-  script_summary("Check if cmsmadesimple is vulnerable to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

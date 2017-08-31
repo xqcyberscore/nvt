@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022727.nasl 6359 2017-06-16 13:38:53Z santu $
+# $Id: gb_ms_kb4022727.nasl 6853 2017-08-04 11:45:08Z santu $
 #
 # Microsoft Windows Multiple Vulnerabilites (KB4022727)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811196");
-  script_version("$Revision: 6359 $");
+  script_version("$Revision: 6853 $");
   script_cve_id("CVE-2017-0193", "CVE-2017-8473", "CVE-2017-8474", "CVE-2017-8527", 
                 "CVE-2017-0218", "CVE-2017-0219", "CVE-2017-0282", "CVE-2017-8475", 
                 "CVE-2017-8476", "CVE-2017-8529", "CVE-2017-8530", "CVE-2017-8531", 
@@ -42,7 +42,8 @@ if(description)
                 "CVE-2017-0300", "CVE-2017-8460", "CVE-2017-8492", "CVE-2017-8493", 
                 "CVE-2017-8494", "CVE-2017-8462", "CVE-2017-8464", "CVE-2017-8470", 
                 "CVE-2017-8471", "CVE-2017-8522", "CVE-2017-8523", "CVE-2017-8524", 
-                "CVE-2017-8465", "CVE-2017-8466", "CVE-2017-8468", "CVE-2017-8517");
+                "CVE-2017-8465", "CVE-2017-8466", "CVE-2017-8468", "CVE-2017-8517",
+		        "CVE-2017-8554", "CVE-2017-8575", "CVE-2017-8518");
   script_bugtraq_id(98878, 98852, 98902, 98933, 98897, 98898, 98885, 98853, 98903,
                     98953, 98863, 98819, 98920, 98918, 98854, 98845, 98820, 98914,
                     98856, 98857, 98821, 98824, 98922, 98923, 98862, 98858, 98859,
@@ -52,7 +53,7 @@ if(description)
                     98930, 98843, 98844, 98846, 98895);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-16 15:38:53 +0200 (Fri, 16 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-04 13:45:08 +0200 (Fri, 04 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-06-15 16:09:05 +0530 (Thu, 15 Jun 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilites (KB4022727)");
 
@@ -79,7 +80,9 @@ if(description)
    (UWF) with DISK mode is enabled causing NTFS errors with ID: 55 & ID: 130
    to be logged in the Event Logs.
 
-  - For more info refer to reference link.");
+  - For more info refer to reference link.
+
+  - Microsoft Edge improperly accesses objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to gain the same user rights as the current user. If the current user is logged

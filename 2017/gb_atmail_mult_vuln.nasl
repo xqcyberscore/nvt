@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atmail_mult_vuln.nasl 6354 2017-06-16 08:50:49Z teissa $
+# $Id: gb_atmail_mult_vuln.nasl 6799 2017-07-26 06:46:11Z ckuersteiner $
 #
 # atmail Multiple Vulnerabilities
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:atmail:atmail";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106861");
-  script_version("$Revision: 6354 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-16 10:50:49 +0200 (Fri, 16 Jun 2017) $");
+  script_version("$Revision: 6799 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-26 08:46:11 +0200 (Wed, 26 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-06-09 16:32:29 +0700 (Fri, 09 Jun 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
-  script_cve_id("CVE-2017-9517", "CVE-2017-9518", "CVE-2017-9519");
+  script_cve_id("CVE-2017-9517", "CVE-2017-9518", "CVE-2017-9519", "CVE-2017-11617");
 
   script_tag(name: "qod_type", value: "remote_banner");
 

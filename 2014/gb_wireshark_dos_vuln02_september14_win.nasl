@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln02_september14_win.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wireshark_dos_vuln02_september14_win.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Wireshark DOS Vulnerability-02 Sep14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804912");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-6426", "CVE-2014-6425");
   script_bugtraq_id(69866, 69863);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-24 14:29:16 +0530 (Wed, 24 Sep 2014)");
 
   script_name("Wireshark DOS Vulnerability-02 Sep14 (Windows)");
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2014-15.html");
   script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2014-16.html");
-  script_summary("Check for the vulnerable version of Wireshark on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

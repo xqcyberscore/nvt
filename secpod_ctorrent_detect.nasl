@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ctorrent_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
+# $Id: secpod_ctorrent_detect.nasl 6517 2017-07-04 13:34:20Z cfischer $
 #
 # CTorrent/Enhanced CTorrent Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900556");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5943 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
+  script_version("$Revision: 6517 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("CTorrent/Enhanced CTorrent Version Detection");
@@ -64,18 +64,20 @@ foreach binaryFile (getPath)
   if(ctorrentVer[4] != NULL)
   {
     if("dnh" >< ctorrentVer[3]){
+      replace_kb_item(name:"CTorrent/CTorrent_or_Enhanced/Installed", value:TRUE);
       set_kb_item(name:"Enhanced/CTorrent/Ver", value:ctorrentVer[4]);
 
       ## build cpe and store it as host_detail
       register_and_report_cpe(app:"CTorrent/Enhanced CTorrent", ver:ctorrentVer[4], base:"cpe:/a:rahul:dtorrent:",
                               expr:"^([0-9.]+)", insloc:binaryFile);
-    }
-    else
+    } else {
+      replace_kb_item(name:"CTorrent/CTorrent_or_Enhanced/Installed", value:TRUE);
       set_kb_item(name:"CTorrent/Ver", value:ctorrentVer[4]);
 
       ## build cpe and store it as host_detail
       register_and_report_cpe(app:"CTorrent/Enhanced CTorrent", ver:ctorrentVer[4], base:"cpe:/a:rahul:dtorrent:",
                               expr:"^([0-9.]+)", insloc:binaryFile);
+    }
   }
   ssh_close_connection();
   exit(0);

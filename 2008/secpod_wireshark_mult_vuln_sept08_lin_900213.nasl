@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_mult_vuln_sept08_lin_900213.nasl 3296 2016-05-12 08:01:08Z benallard $
+# $Id: secpod_wireshark_mult_vuln_sept08_lin_900213.nasl 6602 2017-07-07 10:09:52Z cfischer $
 # Description: Wireshark Multiple Vulnerabilities - Sept-08 (Linux)
 #
 # Authors:
@@ -28,8 +28,8 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900213";
 if(description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 3296 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 10:01:08 +0200 (Thu, 12 May 2016) $");
+ script_version("$Revision: 6602 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:09:52 +0200 (Fri, 07 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-09-10 17:51:23 +0200 (Wed, 10 Sep 2008)");
  script_bugtraq_id(31009);
  script_cve_id("CVE-2008-3146", "CVE-2008-3932", "CVE-2008-3933");
@@ -40,12 +40,13 @@ if(description)
  script_tag(name:"qod_type", value:"executable_version");
  script_family("Denial of Service");
  script_name("Wireshark Multiple Vulnerabilities - Sept08 (Linux)");
- script_summary("Check for vulnerable version of Wireshark/Ethereal");
  script_dependencies("gather-package-list.nasl", "gb_wireshark_detect_lin.nasl");
- script_require_keys("ssh/login/uname", "Wireshark/Linux/Ver");
+ script_mandatory_keys("Wireshark/Linux/Ver", "ssh/login/uname");
  script_xref(name:"URL", value:"http://secunia.com/advisories/31674");
  script_xref(name:"URL", value:"http://www.frsirt.com/english/advisories/2008/2493");
  script_xref(name:"URL", value:"http://www.wireshark.org/security/wnpa-sec-2008-05.html");
+
+ script_tag(name:"summary", value:"Check for vulnerable version of Wireshark/Ethereal");
  script_tag(name:"affected", value:"Wireshark versions 1.0.2 and prior on Linux (All).");
  script_tag(name:"solution", value:"Upgrade to wireshark 1.0.3 or later.
 http://www.wireshark.org/download.html");

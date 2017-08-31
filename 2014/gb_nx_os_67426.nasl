@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nx_os_67426.nasl 3306 2016-05-12 16:54:38Z mime $
+# $Id: gb_nx_os_67426.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Cisco NX-OS Software Arbitrary File Read Vulnerability 
 #
@@ -59,7 +59,7 @@ if (description)
  script_cve_id("CVE-2013-6975");
  script_tag(name:"cvss_base", value:"4.6");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:N/A:N");
- script_version ("$Revision: 3306 $");
+ script_version ("$Revision: 6724 $");
 
  script_name("Cisco NX-OS Software Arbitrary File Read Vulnerability");
 
@@ -68,9 +68,8 @@ if (description)
  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCul23419");
  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCul23419");
  
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 18:54:38 +0200 (Thu, 12 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-08-21 11:10:24 +0100 (Thu, 21 Aug 2014)");
- script_summary("Check the NX OS version.");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("CISCO");

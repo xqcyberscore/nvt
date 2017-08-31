@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerio_winroute_firewall_53460.nasl 5785 2017-03-30 09:19:35Z cfi $
+# $Id: gb_kerio_winroute_firewall_53460.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # Kerio WinRoute Firewall Web Server Remote Source Code Disclosure Vulnerability
 #
@@ -41,22 +41,21 @@ if (description)
 {
  script_id(103487);
  script_bugtraq_id(53460);
- script_version ("$Revision: 5785 $");
+ script_version ("$Revision: 6697 $");
  script_name("Kerio WinRoute Firewall Web Server Remote Source Code Disclosure Vulnerability");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53460");
  script_xref(name : "URL" , value : "http://www.kerio.com");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:19:35 +0200 (Thu, 30 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-05-11 13:52:12 +0200 (Fri, 11 May 2012)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("Kerio_WinRoute/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("Kerio_WinRoute/banner");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

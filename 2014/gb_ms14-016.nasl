@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-016.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-016.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Microsoft Windows SAMR Protocol Security Bypass Vulnerability (2934418)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(804245);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-0317");
   script_bugtraq_id(66012);
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-12 08:48:40 +0530 (Wed, 12 Mar 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft Windows SAMR Protocol Security Bypass Vulnerability (2934418)");
@@ -81,7 +81,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-016";
 
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2934418");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-016");
-  script_summary("Check for the vulnerable version of files");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3048.nasl 2768 2016-03-03 09:41:07Z benallard $
+# $Id: deb_3048.nasl 6715 2017-07-13 09:57:40Z teissa $
 # Auto-generated from advisory DSA 3048-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,24 +30,23 @@
 if(description)
 {
     script_id(703048);
-    script_version("$Revision: 2768 $");
+    script_version("$Revision: 6715 $");
     script_cve_id("CVE-2014-7206");
     script_name("Debian Security Advisory DSA 3048-1 (apt - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2016-03-03 10:41:07 +0100 (Thu, 03 Mar 2016) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
     script_tag(name: "creation_date", value:"2014-10-08 00:00:00 +0200 (Wed, 08 Oct 2014)");
     script_tag(name:"cvss_base", value:"3.6");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-3048.html");
 
-    script_summary("Debian Security Advisory DSA 3048-1 (apt - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2014 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "apt on Debian Linux");
         script_tag(name: "insight",   value: "This package provides commandline tools for searching and
 managing as well as querying information about packages

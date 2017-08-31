@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_spreadsheet_mult_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_spreadsheet_mult_xss_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # WordPress Spreadsheet plugin Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804872");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-8363", "CVE-2014-8364");
   script_bugtraq_id(69073, 69089);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-29 15:09:33 +0530 (Wed, 29 Oct 2014)");
 
   script_name("WordPress Spreadsheet plugin Multiple Vulnerabilities");
@@ -69,7 +69,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127770");
 
-  script_summary("Check if WordPress Spreadsheet plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

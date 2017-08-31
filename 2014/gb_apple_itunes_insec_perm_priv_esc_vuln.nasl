@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_insec_perm_priv_esc_vuln.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_apple_itunes_insec_perm_priv_esc_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Apple iTunes Insecure Permissions Privilege Escalation Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804484");
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-1347");
   script_bugtraq_id(67457);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-18 14:45:02 +0530 (Thu, 18 Sep 2014)");
 
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/58444");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2014/May/99");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126720");
-  script_summary("Check for the vulnerable version of Apple iTunes on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

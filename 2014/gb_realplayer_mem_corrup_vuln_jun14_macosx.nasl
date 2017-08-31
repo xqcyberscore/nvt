@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mem_corrup_vuln_jun14_macosx.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_realplayer_mem_corrup_vuln_jun14_macosx.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # RealNetworks RealPlayer '.3gp' Memory Corruption Vulnerability Jun14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:realnetworks:realplayer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804620");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-3444");
   script_bugtraq_id(67434);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-06 19:16:08 +0530 (Fri, 06 Jun 2014)");
   script_name("RealNetworks RealPlayer '.3gp' Memory Corruption Vulnerability Jun14 (Mac OS X)");
 
@@ -76,7 +76,6 @@ features, remove the product or replace the product by another one.";
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126637");
-  script_summary("Check the vulnerable version of RealPlayer on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

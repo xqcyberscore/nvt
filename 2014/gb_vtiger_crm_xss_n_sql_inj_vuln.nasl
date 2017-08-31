@@ -30,12 +30,12 @@ CPE = "cpe:/a:vtiger:vtiger_crm";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2013-5091");
   script_bugtraq_id(62487);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-03 11:00:19 +0530 (Fri, 03 Jan 2014)");
   script_name("vTiger CRM Cross Site Scripting and SQL Injection Vulnerabilities");
 
@@ -85,7 +85,6 @@ For updates refer to http://www.vtiger.com
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/28409");
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23168");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/vtiger-540-cross-site-scripting");
-  script_summary("Check for the vulnerable version of vTiger CRM");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

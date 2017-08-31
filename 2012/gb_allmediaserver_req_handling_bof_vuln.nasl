@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_allmediaserver_req_handling_bof_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: gb_allmediaserver_req_handling_bof_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # ALLMediaServer Request Handling Buffer Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802659");
-  script_version("$Revision: 5912 $");
+  script_version("$Revision: 6697 $");
   script_bugtraq_id(54475);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-07-17 12:12:12 +0530 (Tue, 17 Jul 2012)");
   script_name("ALLMediaServer Request Handling Buffer Overflow Vulnerability");
 
@@ -43,10 +43,9 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_require_ports("Services/www", 888);
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 888);
   script_mandatory_keys("ALLPLAYER-DLNA/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
   code in the context of the application. Failed attacks will cause denial of service conditions.

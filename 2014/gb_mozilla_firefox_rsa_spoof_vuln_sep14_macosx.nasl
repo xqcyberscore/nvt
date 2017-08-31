@@ -1,6 +1,6 @@
 #############################################################################/##
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_rsa_spoof_vuln_sep14_macosx.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_mozilla_firefox_rsa_spoof_vuln_sep14_macosx.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Mozilla Firefox RSA Spoof Vulnerability September14 (Macosx)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804924");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-1568");
   script_bugtraq_id(70116);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-30 09:45:11 +0530 (Tue, 30 Sep 2014)");
 
   script_name("Mozilla Firefox RSA Spoof Vulnerability September14 (Macosx)");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=1069405");
   script_xref(name:"URL", value:"https://www.mozilla.org/security/announce/2014/mfsa2014-73.html");
 
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Macosx.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_django_open_re_vul.nasl 5962 2017-04-18 08:01:50Z teissa $
+# $Id: gb_django_open_re_vul.nasl 6539 2017-07-05 12:02:14Z cfischer $
 #
 # Django django.views.static.serve Function Open Redirection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:django_project:django";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107142");
-  script_version("$Revision: 5962 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 10:01:50 +0200 (Tue, 18 Apr 2017) $");
+  script_version("$Revision: 6539 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-04-07 16:31:00 +0200 (Fri, 07 Apr 2017)");
   script_cve_id("CVE-2017-7234");
 
@@ -60,10 +60,7 @@ if(description)
   script_family("General");
 
   script_dependencies("gb_django_detect_lin.nasl");
-
-  script_require_ports("Services/ssh", 22);
-
-  script_mandatory_keys("login/SSH/success","Django/Linux/Ver");
+  script_mandatory_keys("Django/Linux/Ver");
 
   exit(0);
 

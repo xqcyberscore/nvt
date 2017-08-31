@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-1972.nasl 5782 2017-03-30 09:01:05Z teissa $
+# $Id: ELSA-2014-1972.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122868");
-script_version("$Revision: 5782 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-02-05 14:01:37 +0200 (Fri, 05 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-1972");
 script_tag(name: "insight", value: "ELSA-2014-1972 -  httpd24-httpd security and bug fix update - [2.4.6-22.0.1.el6]- remove enable-tlsv1x-thunks to fit openssl 1.x api- replace index.html with Oracle's index page oracle_index.html- update vstring in specfile[2.4.6-22]- Remove mod_proxy_fcgi fix for heap-based buffer overflow, httpd-2.4.6 is not affected (CVE-2014-3583)[2.4.6-21]- mod_proxy_wstunnel: Fix the use of SSL with the 'wss:' scheme (#1141950)[2.4.6-20]- core: fix bypassing of mod_headers rules via chunked requests (CVE-2013-5704)- mod_cache: fix NULL pointer dereference on empty Content-Type (CVE-2014-3581)- mod_proxy_fcgi: fix heap-based buffer overflow (CVE-2014-3583)[2.4.6-19]- mod_cgid: add security fix for CVE-2014-0231- mod_proxy: add security fix for CVE-2014-0117- mod_deflate: add security fix for CVE-2014-0118- mod_status: add security fix for CVE-2014-0226- mod_cache: add secutiry fix for CVE-2013-4352"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

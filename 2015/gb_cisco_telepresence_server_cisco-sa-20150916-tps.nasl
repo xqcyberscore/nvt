@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telepresence_server_cisco-sa-20150916-tps.nasl 2686 2016-02-17 17:41:55Z mime $
+# $Id: gb_cisco_telepresence_server_cisco-sa-20150916-tps.nasl 6497 2017-06-30 09:58:54Z teissa $
 #
 # Cisco TelePresence Server Denial of Service Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105378");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 2686 $");
+ script_version ("$Revision: 6497 $");
 
  script_name("Cisco TelePresence Server Denial of Service Vulnerability ");
 
@@ -59,9 +59,8 @@ Cisco TelePresence Server on Virtual Machine");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 18:41:55 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-09-21 12:52:46 +0200 (Mon, 21 Sep 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

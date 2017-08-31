@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3650.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: deb_3650.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3650-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703650);
-    script_version("$Revision: 5867 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2016-6313");
     script_name("Debian Security Advisory DSA 3650-1 (libgcrypt20 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-08-17 00:00:00 +0200 (Wed, 17 Aug 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "libgcrypt20 on Debian Linux");
     script_tag(name: "insight",   value: "libgcrypt contains cryptographic
 functions. Many important free ciphers, hash algorithms and public key signing

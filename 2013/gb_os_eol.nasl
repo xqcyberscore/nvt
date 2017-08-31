@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_os_eol.nasl 5464 2017-03-02 08:57:59Z cfi $
+# $Id: gb_os_eol.nasl 6494 2017-06-30 08:10:34Z cfischer $
 #
 # OS End Of Life Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103674");
-  script_version("$Revision: 5464 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-02 09:57:59 +0100 (Thu, 02 Mar 2017) $");
+  script_version("$Revision: 6494 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 10:10:34 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2013-03-05 18:11:24 +0100 (Tue, 05 Mar 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,6 +52,7 @@ if(description)
 
 include("os_eol.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 os_cpe = best_os_cpe();
 if( ! os_cpe ) exit( 0 );
@@ -59,8 +60,10 @@ if( ! os_cpe ) exit( 0 );
 # So we don't need to have each patchlevel in os_eol.inc
 if( "cpe:/o:greenbone:greenbone_os" >< os_cpe ) {
 
-  # 3.0 has patchlevels like 3.0.39
-  if( "cpe:/o:greenbone:greenbone_os:3.0" >< os_cpe ) {
+  # 3.0+ have patchlevels like 3.0.39
+  if( "cpe:/o:greenbone:greenbone_os:4.0" >< os_cpe ) {
+    os_cpe = "cpe:/o:greenbone:greenbone_os:4.0";
+  } else if( "cpe:/o:greenbone:greenbone_os:3.0" >< os_cpe ) {
     os_cpe = "cpe:/o:greenbone:greenbone_os:3.0";
   # 2.2.0 and below has patchlevels like 2.2.0-37
   } else if( "cpe:/o:greenbone:greenbone_os:2.2.0" >< os_cpe ) {
@@ -76,9 +79,20 @@ if( "cpe:/o:greenbone:greenbone_os" >< os_cpe ) {
   }
 }
 
-if( eol_cpes[os_cpe] ) {
-  message = build_eol_message( cpe:os_cpe );
-  security_message( port:0, data:message );
+if( os_reached_eol( cpe:os_cpe ) ) {
+
+  eol_url  = get_eol_url( cpe:os_cpe );
+  eol_date = get_eol_date( cpe:os_cpe );
+  eol_name = get_eol_name( cpe:os_cpe );
+  version  = get_version_from_cpe( cpe:os_cpe );
+
+  report = build_eol_message( name:eol_name,
+                              cpe:os_cpe,
+                              version:version,
+                              eol_date:eol_date,
+                              eol_url:eol_url,
+                              eol_type:"os" );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

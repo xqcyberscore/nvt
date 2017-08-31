@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_db2_8_udb_mult_vuln_win_900215.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_ibm_db2_8_udb_mult_vuln_win_900215.nasl 6531 2017-07-05 06:29:43Z cfischer $
 # Description: IBM DB2 Universal Database Multiple Vulnerabilities - Sept08 (Windows)
 #
 # Authors:
@@ -49,8 +49,8 @@ tag_summary = "The host is running DB2 Database Server, which is prone to multip
 if(description)
 {
  script_id(900215);
- script_version("$Revision: 5370 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 6531 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-05 08:29:43 +0200 (Wed, 05 Jul 2017) $");
  script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
  script_bugtraq_id(31058);
  script_cve_id("CVE-2008-2154", "CVE-2008-3958", "CVE-2008-3960");
@@ -61,12 +61,8 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
  script_family("Denial of Service");
  script_name("IBM DB2 Universal Database Multiple Vulnerabilities - Sept08 (Windows)");
-
-
- script_dependencies("secpod_reg_enum.nasl",
-                     "secpod_ibm_db2_detect_win_900218.nasl");
- script_mandatory_keys("SMB/WindowsVersion", "Win/IBM-db2/Ver");
- script_require_ports(139, 445);
+ script_dependencies("secpod_ibm_db2_detect_win_900218.nasl");
+ script_mandatory_keys("Win/IBM-db2/Ver");
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "affected" , value : tag_affected);
@@ -79,14 +75,14 @@ if(description)
  exit(0);
 }
 
+include("smb_nt.inc");
 
- include("smb_nt.inc");
+ibmVer = get_kb_item("Win/IBM-db2/Ver");
+if(!ibmVer){
+  exit(0);
+}
 
- if(!get_kb_item("SMB/WindowsVersion")){
-        exit(0);
- }
-
- if(egrep(pattern:"^8\.([01](\..*)?|2(\.([0-9]|1[0-6]))?)$",
-	  string:get_kb_item("Win/IBM-db2/Ver"))){
- 	security_message(0);
- }
+if(egrep(pattern:"^8\.([01](\..*)?|2(\.([0-9]|1[0-6]))?)$",
+         string:ibmVer)){
+  security_message(0);
+}

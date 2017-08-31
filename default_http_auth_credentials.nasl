@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_http_auth_credentials.nasl 6283 2017-06-06 10:01:29Z cfischer $
+# $Id: default_http_auth_credentials.nasl 6681 2017-07-12 08:44:32Z cfischer $
 #
 # HTTP Brute Force Logins With Default Credentials
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108041");
-  script_version("$Revision: 6283 $");
+  script_version("$Revision: 6681 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-06 12:01:29 +0200 (Tue, 06 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 10:44:32 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-09-06 14:38:09 +0200 (Tue, 06 Sep 2011)");
   script_name("HTTP Brute Force Logins With Default Credentials");
   script_category(ACT_ATTACK);
@@ -60,6 +60,20 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 include("default_credentials.inc");
 
+function _check_response( res ) {
+
+  local_var res;
+
+  if( res && ! isnull( res ) &&
+      ( res =~ "^HTTP/1\.[01] [0-9]+" ) && # Just to be sure...
+      ( res !~ "^HTTP/1\.[01] 50[0234]" ) &&
+      ( res !~ "^HTTP/1\.[01] 40[0138]" ) &&
+      ( res !~ "^HTTP/1\.[01] 429" ) ) { #Too Many Requests (RFC 6585)
+    return TRUE;
+  }
+  return FALSE;
+}
+
 port = get_http_port( default:80 );
 
 if( ! urls = get_kb_list( "www/" + port + "/content/auth_required" ) ) exit( 0 );
@@ -82,6 +96,7 @@ foreach url( urls ) {
     # to many successfull logins. something is wrong...
     if( c > 10 ) {
       set_kb_item( name:"default_http_auth_credentials/" + port + "/too_many_logins", value:c );
+      set_kb_item( name:"default_http_auth_credentials/" + port + "/no_timeout", value:TRUE );
       exit( 0 );
     }
 
@@ -127,15 +142,17 @@ foreach url( urls ) {
                         "\r\n" );
           res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-          if( res && ! isnull( res ) && ( res !~ "^HTTP/1\.[01] 50[0234]" ) && ( res !~ "^HTTP/1\.[01] 40[0138]" ) ) {
+          if( _check_response( res:res ) ) {
+            statuscode = egrep( pattern:"^HTTP/1\.[01] [0-9]+( |$)", string:res );
             c++;
-            set_kb_item( name:"default_http_auth_credentials/" + port + "/credentials", value:url + "#-#" + user + ":" + pass );
+            set_kb_item( name:"default_http_auth_credentials/" + port + "/credentials", value:url + "#-#" + user + ":" + pass + ":" + chomp( statuscode ) );
           }
         }
       }
-    } else if( res && ! isnull( res ) && ( res !~ "^HTTP/1\.[01] 50[0234]" ) && ( res !~ "^HTTP/1\.[01] 40[0138]" ) ) {
+    } else if( _check_response( res:res ) ) {
+      statuscode = egrep( pattern:"^HTTP/1\.[01] [0-9]+( |$)", string:res );
       c++;
-      set_kb_item( name:"default_http_auth_credentials/" + port + "/credentials", value:url + "#-#" + user + ":" + pass );
+      set_kb_item( name:"default_http_auth_credentials/" + port + "/credentials", value:url + "#-#" + user + ":" + pass + ":" + chomp( statuscode ) );
     }
   }
 }

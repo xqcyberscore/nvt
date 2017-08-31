@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_xss_vuln02_may14.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_owncloud_mult_xss_vuln02_may14.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # ownCloud Multiple Cross Site Scripting Vulnerabilities -02 May14
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804283";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2013-2149");
   script_bugtraq_id(60416);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-06 16:00:55 +0530 (Tue, 06 May 2014)");
   script_name("ownCloud Multiple Cross Site Scripting Vulnerabilities -02 May14");
 
@@ -76,7 +76,6 @@ For updates refer to http://owncloud.org";
 
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2013/q2/514");
   script_xref(name : "URL" , value : "http://owncloud.org/about/security/advisories/oc-sa-2013-028");
-  script_summary("Check the version of ownCloud is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

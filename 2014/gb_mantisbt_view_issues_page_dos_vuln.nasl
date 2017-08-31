@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_view_issues_page_dos_vuln.nasl 5067 2017-01-23 16:23:44Z cfi $
+# $Id: gb_mantisbt_view_issues_page_dos_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # MantisBT 'View Issues' Page Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804650");
-  script_version("$Revision: 5067 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2013-1883");
   script_bugtraq_id(58626);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-23 17:23:44 +0100 (Mon, 23 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-23 15:25:38 +0530 (Mon, 23 Jun 2014)");
   script_name("MantisBT 'View Issues' Page Denial of Service Vulnerability");
 
@@ -72,7 +72,6 @@ For updates refer to http://www.mantisbt.org/download.php";
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/83347");
   script_xref(name : "URL" , value : "http://www.mantisbt.org/bugs/view.php?id=15573");
-  script_summary("Check the version MantisBT is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

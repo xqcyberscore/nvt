@@ -1,6 +1,6 @@
 #############################################################################/##
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_rsa_spoof_vuln_sep14_win.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_mozilla_thunderbird_rsa_spoof_vuln_sep14_win.nasl 6637 2017-07-10 09:58:13Z teissa $
 #
 # Mozilla Thunderbird RSA Spoof Vulnerability September14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804920");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6637 $");
   script_cve_id("CVE-2014-1568");
   script_bugtraq_id(70116);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-29 17:07:36 +0530 (Mon, 29 Sep 2014)");
 
   script_name("Mozilla Thunderbird RSA Spoof Vulnerability September14 (Windows)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=1069405");
   script_xref(name:"URL", value:"https://www.mozilla.org/security/announce/2014/mfsa2014-73.html");
 
-  script_summary("Check for the vulnerable version of Mozilla Thunderbird on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

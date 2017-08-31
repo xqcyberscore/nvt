@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_64670.nasl 3306 2016-05-12 16:54:38Z mime $
+# $Id: gb_cisco_nx_os_64670.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Cisco NX-OS BGP Message Denial of Service Vulnerability
 #
@@ -48,7 +48,7 @@ if (description)
  script_cve_id("CVE-2013-6982");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 3306 $");
+ script_version ("$Revision: 6735 $");
 
  script_name("Cisco NX-OS BGP Message Denial of Service Vulnerability");
 
@@ -56,9 +56,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64670");
  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuj03174");
  
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 18:54:38 +0200 (Thu, 12 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-13 10:35:00 +0100 (Mon, 13 Jan 2014)");
- script_summary("Check the NX OS version.");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("CISCO");

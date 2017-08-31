@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0415.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0415.nasl 6563 2017-07-06 12:23:47Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131105");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6563 $");
 script_tag(name:"creation_date", value:"2015-10-27 12:54:48 +0200 (Tue, 27 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:23:47 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0415");
 script_tag(name: "insight", value: "A vulnerability in the Oracle VM VirtualBox component prior to 4.0.34, 4.1.42, 4.2.34, 4.3.32 and 5.0.8. Easily exploitable vulnerability requiring logon to Operating System. Successful attack of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS). Note: Only Windows guests are impacted, and Windows guests without VirtualBox Guest Additions installed are not affected (CVE-2015-4813). A vulnerability in the Oracle VM VirtualBox component prior to 4.0.34, 4.1.42, 4.2.34, 4.3.32 and 5.0.8. Easily exploitable vulnerability allows successful unauthenticated network attacks. Successful attack of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS). Note: Only VMs with Remote Display feature (RDP) enabled are impacted (CVE-2015-4896). For other fixes in this update, see the referenced changelog."); 
 script_tag(name : "solution", value : "update software");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0415");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0415");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

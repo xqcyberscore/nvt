@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3823.nasl 5926 2017-04-11 07:18:43Z teissa $
+# $Id: deb_3823.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3823-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703823);
-    script_version("$Revision: 5926 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-6964");
     script_name("Debian Security Advisory DSA 3823-1 (eject - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-04-11 09:18:43 +0200 (Tue, 11 Apr 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-03-28 00:00:00 +0200 (Tue, 28 Mar 2017)");
     script_tag(name:"cvss_base", value:"7.2");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "eject on Debian Linux");
         script_tag(name: "insight",   value: "This little program will eject CD-ROMs (assuming your drive supports
 the CDROMEJECT ioctl). It also allows setting the autoeject feature.");

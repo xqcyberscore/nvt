@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3470.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: deb_3470.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3470-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,12 +30,12 @@
 if(description)
 {
     script_id(703470);
-    script_version("$Revision: 5513 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2015-7295", "CVE-2015-7504", "CVE-2015-7512", "CVE-2015-8345",
                   "CVE-2015-8504", "CVE-2015-8558", "CVE-2015-8743", "CVE-2016-1568",
                   "CVE-2016-1714", "CVE-2016-1922");
     script_name("Debian Security Advisory DSA 3470-1 (qemu-kvm - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-02-08 00:00:00 +0100 (Mon, 08 Feb 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,7 +50,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "qemu-kvm on Debian Linux");
     script_tag(name: "insight",   value: "Using KVM, one can run multiple virtual
 PCs, each running unmodified Linux or Windows images. Each virtual machine has

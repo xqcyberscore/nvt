@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pgp_desktop_detect_win.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: gb_pgp_desktop_detect_win.nasl 6515 2017-07-04 11:54:15Z cfischer $
 #
 # Symantec PGP/Encryption Desktop Version Detection (Windows)
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800215");
-  script_version("$Revision: 6040 $");
+  script_version("$Revision: 6515 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-01-06 15:38:06 +0100 (Tue, 06 Jan 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec PGP/Encryption Desktop Version Detection (Windows)");
@@ -112,6 +112,7 @@ foreach key (key_list)
 
       if("PGP Desktop" >< appName)
       {
+        replace_kb_item(name:"PGPDesktop_or_EncryptionDesktop/Win/Installed", value:TRUE);
         set_kb_item(name:"PGPDesktop/Win/Ver", value:deskVer);
 
         ## build cpe and store it as host_detail
@@ -124,6 +125,7 @@ foreach key (key_list)
         ## 64 bit apps on 64 bit platform
         if("x64" >< os_arch)
         {
+          replace_kb_item(name:"PGPDesktop_or_EncryptionDesktop/Win/Installed", value:TRUE);
           set_kb_item(name:"PGPDesktop64/Win/Ver", value:deskVer);
 
           ## build cpe and store it as host_detail
@@ -137,6 +139,7 @@ foreach key (key_list)
       }
       else
       {
+        replace_kb_item(name:"PGPDesktop_or_EncryptionDesktop/Win/Installed", value:TRUE);
         set_kb_item(name:"EncryptionDesktop/Win/Ver", value:deskVer);
 
         ## build cpe and store it as host_detail
@@ -149,7 +152,8 @@ foreach key (key_list)
         ## 64 bit apps on 64 bit platform
         if("x64" >< os_arch)
         {
-          set_kb_item(name:"PGPDesktop64/Win/Ver", value:deskVer);
+          replace_kb_item(name:"PGPDesktop_or_EncryptionDesktop/Win/Installed", value:TRUE);
+          set_kb_item(name:"EncryptionDesktop64/Win/Ver", value:deskVer);
 
           ## build cpe and store it as host_detail
           cpe = build_cpe(value:deskVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:encryption_desktop:x64:");

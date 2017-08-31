@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mobile_pack_info_disc_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_mobile_pack_info_disc_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # WordPress Mobile Pack Plugin Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804838");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-5337");
   script_bugtraq_id(69292);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-09 14:31:29 +0530 (Tue, 09 Sep 2014)");
 
   script_name("WordPress Mobile Pack Plugin Information Disclosure Vulnerability");
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127949");
   script_xref(name : "URL" , value : "http://wordpress.org/plugins/wordpress-mobile-pack/changelog");
-  script_summary("Check if WordPress Mobile Pack plugin is prone to information disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");

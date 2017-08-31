@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_pw_hashing_dos_vuln.nasl 5347 2017-02-19 09:15:55Z cfi $
+# $Id: gb_drupal_pw_hashing_dos_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Drupal Password Hashing Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:drupal:drupal';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105934");
-  script_version("$Revision: 5347 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-02-19 10:15:55 +0100 (Sun, 19 Feb 2017) $");
+  script_version("$Revision: 6663 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name : "creation_date", value : "2014-12-09 16:56:24 +0700 (Tue, 09 Dec 2014)");
   script_tag(name : "cvss_base", value : "5.0");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -53,7 +53,6 @@ if (description)
 
   script_tag(name : "summary", value : "A vulnerability in the password hashing API of Drupal 7 can lead
 to a DoS.");
-  script_summary("Check the version of Drupal");
 
   script_tag(name : "vuldetect", value : "Check the version of Drupal.");
 

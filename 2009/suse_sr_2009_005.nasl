@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: suse_sr_2009_005.nasl 5220 2017-02-07 11:42:33Z teissa $
+# $Id: suse_sr_2009_005.nasl 6668 2017-07-11 13:34:29Z cfischer $
 # Description: Auto-generated from advisory SUSE-SR:2009:005
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "Update all out of date packages.";
 if(description)
 {
  script_id(63469);
- script_version("$Revision: 5220 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-07 12:42:33 +0100 (Tue, 07 Feb 2017) $");
+ script_version("$Revision: 6668 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:34:29 +0200 (Tue, 11 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-03-02 19:11:09 +0100 (Mon, 02 Mar 2009)");
  script_cve_id("CVE-2007-0062", "CVE-2008-5078", "CVE-2008-5138", "CVE-2009-0021", "CVE-2009-0040", "CVE-2009-0049", "CVE-2009-0386", "CVE-2009-0387", "CVE-2009-0397", "CVE-2009-0478", "CVE-2009-0599", "CVE-2009-0600", "CVE-2009-0601");
  script_tag(name:"cvss_base", value:"10.0");
@@ -53,7 +53,7 @@ if(description)
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("SuSE Local Security Checks");
  script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/rpms");
+ script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name:"qod_type", value:"package");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-2020.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: ELSA-2012-2020.nasl 6557 2017-07-06 11:55:33Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123899");
-script_version("$Revision: 6443 $");
+script_version("$Revision: 6557 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:10:01 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:55:33 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-2020");
 script_tag(name: "insight", value: "ELSA-2012-2020 -  Unbreakable Enterprise kernel security and bugfix update - kernel-uek:[2.6.32-300.27.1.el6uek]- net: sock: validate data_len before allocating skb (Jason Wang) [Bugdb: 13966]{CVE-2012-2136}- fcaps: clear the same personality flags as suid when fcaps are used (Eric Paris) [Bugdb: 13966] {CVE-2012-2123}- Revert 'nfs: when attempting to open a directory, fall back on normal lookup (Todd Vierling) [Orabug 14141154][2.6.32-300.26.1.el6uek]- mptsas: do not call __mptsas_probe in kthread (Maxim Uvarov) [Orabug: 14175509]- mm: check if any page in a pageblock is reserved before marking it MIGRATE_RESERVE (Maxim Uvarov) [Orabug: 14073214]- mm: reduce the amount of work done when updating min_free_kbytes (Mel Gorman) [Orabug: 14073214]- vmxnet3: Updated to el6-u2 (Guangyu Sun) [Orabug: 14027961]- xen: expose host uuid via sysfs. (Zhigang Wang)- sched: Fix cgroup movement of waking process (Daisuke Nishimura) [Orabug: 13946210]- sched: Fix cgroup movement of newly created process (Daisuke Nishimura) [Orabug: 13946210]- sched: Fix cgroup movement of forking process (Daisuke Nishimura) [Orabug: 13946210]- x86, boot: Wait for boot cpu to show up if nr_cpus limit is about to hit (Zhenzhong Duan) [Orabug: 13629087]- smp: Use nr_cpus= to set nr_cpu_ids early (Zhenzhong Duan) [Orabug: 13629087]- net: ipv4: relax AF_INET check in bind() (Maxim Uvarov) [Orabug: 14054411]ofa-2.6.32-300.27.1.el6uek:[1.5.1-4.0.58]- Add Patch 158-169"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.2");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

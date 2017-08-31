@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_antiweb_detect.nasl 6375 2017-06-20 09:29:31Z ckuersteiner $
+# $Id: gb_antiweb_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # Anti-Web Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106885");
-  script_version("$Revision: 6375 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-20 11:29:31 +0200 (Tue, 20 Jun 2017) $");
+  script_version("$Revision: 6701 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name: "creation_date", value: "2017-06-20 12:31:58 +0700 (Tue, 20 Jun 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,7 +49,6 @@ its version.");
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Anti-Web/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name: "URL", value: "https://github.com/hoytech/antiweb");
 

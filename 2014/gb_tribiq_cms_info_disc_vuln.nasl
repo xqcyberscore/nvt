@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tribiq_cms_info_disc_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_tribiq_cms_info_disc_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Tribiq CMS Direct Request Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805232");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2011-2727");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-31 15:18:53 +0530 (Wed, 31 Dec 2014)");
   script_name("Tribiq CMS Direct Request Information Disclosure Vulnerability");
 
@@ -59,7 +59,6 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB22857");
-  script_summary("Check if Tribiq CMS is vulnerable to information disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

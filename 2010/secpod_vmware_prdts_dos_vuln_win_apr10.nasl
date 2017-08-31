@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vmware_prdts_dos_vuln_win_apr10.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_vmware_prdts_dos_vuln_win_apr10.nasl 6518 2017-07-04 13:49:06Z cfischer $
 #
 # VMware Authorization Service Denial of Service Vulnerability (Windows) -Apr10
 #
@@ -57,8 +57,8 @@ tag_summary = "The host is installed with VMWare product(s) that are vulnerable 
 if(description)
 {
   script_id(902173);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 6518 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:49:06 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2010-04-29 10:23:16 +0200 (Thu, 29 Apr 2010)");
   script_cve_id("CVE-2009-4811");
   script_tag(name:"cvss_base", value:"5.0");
@@ -75,9 +75,7 @@ if(description)
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_vmware_prdts_detect_win.nasl");
-  script_require_keys("VMware/Win/Installed", "VMware/Player/Win/Ver",
-                      "VMware/Workstation/Win/Ver", "VMware/ACE/Win/Ver",
-                      "VMware/Server/Win/Ver");
+  script_mandatory_keys("VMware/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

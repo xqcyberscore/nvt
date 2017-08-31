@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_bookmarks_sql_inj_vuln.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_owncloud_bookmarks_sql_inj_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # ownCloud 'lib/bookmarks.php' SQL Injection Vulnerability
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804410";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2013-2046");
   script_bugtraq_id(59969);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-03-14 13:14:58 +0530 (Fri, 14 Mar 2014)");
   script_name("ownCloud 'lib/bookmarks.php' SQL Injection Vulnerability");
 
@@ -74,7 +74,6 @@ For updates refer to http://owncloud.org";
 
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2013/q2/324");
   script_xref(name : "URL" , value : "http://owncloud.org/about/security/advisories/oC-SA-2013-019");
-  script_summary("Check the version ownCloud vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

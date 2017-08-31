@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0441.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0441.nasl 6563 2017-07-06 12:23:47Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131128");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6563 $");
 script_tag(name:"creation_date", value:"2015-11-11 09:58:16 +0200 (Wed, 11 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:23:47 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0441");
 script_tag(name: "insight", value: "Federico Scrinzi discovered that LibreOffice incorrectly handled documents inserted into Writer or Calc via links. If a user were tricked into opening a specially crafted document, a remote attacker could possibly obtain the contents of arbitrary files (CVE-2015-4551). It was discovered that LibreOffice incorrectly handled PrinterSetup data stored in ODF files. If a user were tricked into opening a specially crafted ODF document, a remote attacker could cause LibreOffice to crash, and possibly execute arbitrary code.(CVE-2015-5212). It was discovered that LibreOffice incorrectly handled the number of pieces in DOC files. If a user were tricked into opening a specially crafted DOC document, a remote attacker could cause LibreOffice to crash, and possibly execute arbitrary code (CVE-2015-5213). It was discovered that LibreOffice incorrectly handled bookmarks in DOC files. If a user were tricked into opening a specially crafted DOC document, a remote attacker could cause LibreOffice to crash, and possibly execute arbitrary code (CVE-2015-5214). LibreOffice has been updated to version 4.4.6, which fixes these issues as well as several other bugs."); 
 script_tag(name : "solution", value : "update software");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"6.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0441");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0441");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

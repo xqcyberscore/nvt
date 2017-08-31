@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wwh_44152.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_wwh_44152.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # Wiki Web Help Insecure Cookie Authentication Bypass Vulnerability
 #
@@ -40,8 +40,8 @@ CPE = "cpe:/a:wikiwebhelp:wiki_web_help";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-10-19 12:49:22 +0200 (Tue, 19 Oct 2010)");
  script_bugtraq_id(44152);
  script_tag(name:"cvss_base", value:"5.8");
@@ -58,7 +58,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("gb_wwh_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("WWH/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -69,8 +68,6 @@ include("host_details.inc");
 include("version_func.inc");
    
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port)) {
 
   if(version_is_less(version:vers, test_version:"0.3.4")) {

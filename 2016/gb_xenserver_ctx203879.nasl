@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx203879.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_xenserver_ctx203879.nasl 6928 2017-08-16 02:41:07Z ckuersteiner $
 #
-# Citrix XenServer Multiple Security Updates
+# Citrix XenServer Multiple Security Updates (CTX203879)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -33,9 +33,9 @@ if (description)
  script_cve_id("CVE-2015-8554","CVE-2015-8104","CVE-2015-8555");
  script_tag(name:"cvss_base", value:"6.6");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:C/I:C/A:C"); 
- script_version ("$Revision: 5598 $");
+ script_version ("$Revision: 6928 $");
 
- script_name("Citrix XenServer Multiple Security Updates");
+ script_name("Citrix XenServer Multiple Security Updates (CTX203879)");
 
  script_xref(name:"URL", value:"http://support.citrix.com/article/CTX203879");
 
@@ -48,7 +48,7 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-16 04:41:07 +0200 (Wed, 16 Aug 2017) $");
  script_tag(name:"creation_date", value:"2016-01-26 12:17:18 +0100 (Tue, 26 Jan 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("Citrix Xenserver Local Security Checks");

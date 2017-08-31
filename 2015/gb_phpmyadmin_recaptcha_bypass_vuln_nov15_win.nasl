@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_recaptcha_bypass_vuln_nov15_win.nasl 5082 2017-01-24 11:14:23Z cfi $
+# $Id: gb_phpmyadmin_recaptcha_bypass_vuln_nov15_win.nasl 6486 2017-06-29 09:59:06Z teissa $
 #
 # phpMyAdmin Security Bypass Vulnerability Nov15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806548");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 6486 $");
   script_cve_id("CVE-2015-6830");
   script_bugtraq_id(76674);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-24 10:32:31 +0530 (Tue, 24 Nov 2015)");
   script_name("phpMyAdmin Security Bypass Vulnerability Nov15 (Windows)");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2015-4");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of phpMyAdmin");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl", "os_detection.nasl");

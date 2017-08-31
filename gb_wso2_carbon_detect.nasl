@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wso2_carbon_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_wso2_carbon_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # WSO2 Carbon Products Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106178");
- script_version ("$Revision: 5390 $");
- script_tag(name: "last_modification", value: "$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version ("$Revision: 6701 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name: "creation_date", value: "2016-10-10 12:16:07 +0700 (Mon, 10 Oct 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,9 +48,8 @@ products and the version.");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_family("Product detection");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("WSO2_Carbon/banner");
  script_require_ports("Services/www", 9443);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("WSO2_Carbon/banner");
 
  script_xref(name: "URL", value: "http://wso2.com/");
 

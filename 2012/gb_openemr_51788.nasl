@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_51788.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_openemr_51788.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # OpenEMR Local File Include and Command Injection Vulnerabilities
 #
@@ -47,7 +47,7 @@ if (description)
  script_cve_id("CVE-2012-0991","CVE-2012-0992");
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 5988 $");
+ script_version ("$Revision: 6720 $");
 
  script_name("OpenEMR Local File Include and Command Injection Vulnerabilities");
 
@@ -56,7 +56,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.open-emr.org/wiki/index.php/OpenEMR_Patches");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521448");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-02-02 12:55:39 +0100 (Thu, 02 Feb 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -64,7 +64,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_openemr_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("openemr/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -77,8 +76,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if (!can_host_php(port:port)) exit(0);
 
 if(!dir = get_dir_from_kb(port:port,app:"OpenEMR"))exit(0);

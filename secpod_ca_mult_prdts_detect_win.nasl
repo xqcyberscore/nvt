@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ca_mult_prdts_detect_win.nasl 5943 2017-04-12 14:44:26Z antu123 $
+# $Id: secpod_ca_mult_prdts_detect_win.nasl 6517 2017-07-04 13:34:20Z cfischer $
 #
 # CA Multiple Products Version Detection (Windows)
 #
@@ -35,9 +35,9 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900966");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5943 $");
+  script_version("$Revision: 6517 $");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-11-15 12:44:36 +0530 (Tue, 15 Nov 2011)");
   script_name("CA Multiple Products Version Detection (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -75,6 +75,7 @@ if("eTrust EZ Antivirus" >< ezavName)
 {
   ezavVer = registry_get_sz(key:key, item:"ProductVersion");
   if(ezavVer){
+    replace_kb_item(name:"CA/Multiple_Products/Win/Installed", value:TRUE );
     set_kb_item(name:"CA/eTrust-EZ-AV/Win/Ver", value:ezavVer);
 
     ## build cpe and store it as host_detail
@@ -90,6 +91,7 @@ if("Anti-Virus" >< caavName)
 {
   caavVer = registry_get_sz(key:key + "\av", item:"Version");
   if(caavVer){
+    replace_kb_item(name:"CA/Multiple_Products/Win/Installed", value:TRUE );
     set_kb_item(name:"CA/AV/Win/Ver", value:caavVer);
 
     ## build cpe and store it as host_detail
@@ -104,6 +106,7 @@ if("Internet Security Suite" >< caissName)
 {
   caissVer = registry_get_sz(key:key + "\suite", item:"Version");
   if(caissVer){
+    replace_kb_item(name:"CA/Multiple_Products/Win/Installed", value:TRUE );
     set_kb_item(name:"CA/ISS/Win/Ver", value:caissVer);
 
     ## build cpe and store it as host_detail
@@ -116,6 +119,7 @@ if("Internet Security Suite" >< caissName)
 key = "SOFTWARE\CA\HIPSEngine";
 cahipsVer = registry_get_sz(key:key, item:"Version");
 if(cahipsVer){
+  replace_kb_item(name:"CA/Multiple_Products/Win/Installed", value:TRUE );
   set_kb_item(name:"CA/HIPS/Engine/Win/Ver", value:cahipsVer);
   log_message(data:"CA HIPS Engine version " + cahipsVer +
                      " was detected on the host");
@@ -136,6 +140,7 @@ if(registry_key_exists(key:"SOFTWARE\CA\HIPSManagementServer"))
         hipsVer = registry_get_sz(key:key + item, item:"DisplayVersion");
         if(hipsVer != NULL)
         {
+          replace_kb_item(name:"CA/Multiple_Products/Win/Installed", value:TRUE );
           set_kb_item(name:"CA/HIPS/Server/Win/Ver", value:hipsVer);
           log_message(data:"CA HIPS Management Server version " + hipsVer +
                              " was detected on the host");
@@ -161,6 +166,7 @@ if(registry_key_exists(key:key))
       cagsVer = fetch_file_version(sysPath:cagsPath, file_name:"ManagerConsole.exe");
       if(cagsVer)
       {
+        replace_kb_item(name:"CA/Multiple_Products/Win/Installed", value:TRUE );
         set_kb_item(name:"CA/Gateway-Security/Win/Ver", value:cagsVer);
 
         ## build cpe and store it as host_detail

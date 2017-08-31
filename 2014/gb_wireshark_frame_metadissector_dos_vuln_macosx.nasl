@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_frame_metadissector_dos_vuln_macosx.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wireshark_frame_metadissector_dos_vuln_macosx.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # Wireshark 'Frame Metadissector' Denial of Service Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804667");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-4020");
   script_bugtraq_id(68044);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-07 10:17:26 +0530 (Mon, 07 Jul 2014)");
   script_name("Wireshark 'Frame Metadissector' Denial of Service Vulnerability (Mac OS X)");
 
@@ -75,7 +75,6 @@ For updates refer to http://www.wireshark.org/download";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/58832");
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2014-07.html");
-  script_summary("Check for the vulnerable version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

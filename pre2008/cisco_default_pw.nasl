@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cisco_default_pw.nasl 6282 2017-06-06 09:55:28Z ckuersteiner $
+# $Id: cisco_default_pw.nasl 6548 2017-07-06 08:19:53Z cfischer $
 # Description: Cisco default password
 #
 # Authors:
@@ -33,11 +33,11 @@
 # - store the user/password combination in the KB and have another plugin test
 #   for common combinations that lead to 'enable' mode.
 
-if(description) 
+if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.23938");
- script_version("$Revision: 6282 $");
- script_tag(name:"last_modification", value:"$Date: 2017-06-06 11:55:28 +0200 (Tue, 06 Jun 2017) $");
+ script_version("$Revision: 6548 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-06 10:19:53 +0200 (Thu, 06 Jul 2017) $");
  script_tag(name:"creation_date", value:"2007-11-04 00:32:20 +0100 (Sun, 04 Nov 2007)");
  script_cve_id("CVE-1999-0508");
  script_tag(name:"cvss_base", value:"4.6");
@@ -101,16 +101,16 @@ function check_cisco_telnet(login, password, port)
     r = recv(socket: soc, length: 4096);
 
     # TODO: could check for Cisco's prompt here, it is typically
-    # the device name followed by '>'  
+    # the device name followed by '>'
     # But the actual regexp is quite complex, from Net-Telnet-Cisco:
     #  '/(?m:^[\r\b]?[\w.-]+\s?(?:\(config[^\)]*\))?\s?[\$\#>]\s?(?:\(enable\))?\s*$)/')
-  
+
     # Send a 'show ver', most users (regardless of privilege level)
     # should be able to do this
     send(socket: soc, data: string("show ver\r\n"));
     r = recv_until(socket: soc, pattern: "(Cisco (Internetwork Operating System|IOS) Software|assword:|asscode:|ogin:|% Bad password)");
 
-    # TODO: This is probably not generic enough. Some Cisco devices don't 
+    # TODO: This is probably not generic enough. Some Cisco devices don't
     # use IOS but CatOS for example
 
     # TODO: It might want to change the report so it tells which user / passwords
@@ -131,13 +131,13 @@ function check_cisco_telnet(login, password, port)
   }
 }
 
-# Functions modified from the code available from default_accounts.inc
+# Functions modified from the code available from default_account.inc
 # (which is biased to UNIX)
 function check_cisco_account(login, password)
 {
   local_var port, ret, banner, soc, res;
 
-  if ((ssh_port && get_port_state(ssh_port)) && !isnull(login)) { 
+  if ((ssh_port && get_port_state(ssh_port)) && !isnull(login)) {
     # Prefer login through SSH rather than telnet
     soc = open_sock_tcp(ssh_port);
     if (soc) {
@@ -157,7 +157,7 @@ function check_cisco_account(login, password)
       else {
         close(soc);
         return 0;
-      }   
+      }
     }
     else
       ssh_port = 0;
@@ -183,7 +183,7 @@ function check_cisco_account(login, password)
       }
       telnet_checked++;
     }
-  
+
     check_cisco_telnet(login: login, password: password, port: telnet_port);
   }
 
@@ -226,7 +226,7 @@ if (safe_checks() == 0) {
      pass = "";
 
    check_cisco_account(login:user, password:pass);
- }  
+ }
 }
 
 exit(0);

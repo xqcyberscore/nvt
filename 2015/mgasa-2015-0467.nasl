@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0467.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0467.nasl 6563 2017-07-06 12:23:47Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131149");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6563 $");
 script_tag(name:"creation_date", value:"2015-12-10 11:05:52 +0200 (Thu, 10 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:23:47 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0467");
 script_tag(name: "insight", value: "Chromium-browser 47.0.2526.73 fixes several security issues: Use-after-free bugs in AppCache (CVE-2015-6765, CVE-2015-6766, CVE-2015-6767). Cross-origin bypass problems in DOM (CVE-2015-6768, CVE-2015-6770, CVE-2015-6772). A cross-origin bypass problem in core (CVE-2015-6769). Out of bounds access bugs in v8 (CVE-2015-6771, CVE-2015-6764). An out of bounds access in Skia (CVE-2015-6773). A use-after-free bug in the Extensions component (CVE-2015-6774). Type confusion in PDFium (CVE-2015-6775). Out of bounds accesses in PDFium (CVE-2015-6776, CVE-2015-6778). A use-after-free bug in DOM (CVE-2015-6777). A scheme bypass in PDFium (CVE-2015-6779). A use-after-free bug in Infobars (CVE-2015-6780). An integer overflow in Sfntly (CVE-2015-6781). Content spoofing in Omnibox (CVE-2015-6782). An escaping issue in saved pages (CVE-2015-6784). A wildcard matching issue in CSP (CVE-2015-6785). A scheme bypass in CSP (CVE-2015-6786). Various fixes from internal audits, fuzzing and other initiatives (CVE-2015-6787). Multiple vulnerabilities in V8 fixed in the 4.7 branch, up to version 4.7.80.23."); 
 script_tag(name : "solution", value : "update software");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0467");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0467");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

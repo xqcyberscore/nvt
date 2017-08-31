@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln01_september14_macosx.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wireshark_dos_vuln01_september14_macosx.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Wireshark DOS Vulnerability-01 Sep14 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804911");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-6430", "CVE-2014-6428", "CVE-2014-6427", "CVE-2014-6432",
                 "CVE-2014-6431", "CVE-2014-6429", "CVE-2014-6423", "CVE-2014-6424");
   script_bugtraq_id(69857, 69865, 69861, 69859, 69858, 69853, 69860, 69862);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-23 16:50:21 +0530 (Tue, 23 Sep 2014)");
 
   script_name("Wireshark DOS Vulnerability-01 Sep14 (Mac OS X)");
@@ -71,7 +71,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/61590");
-  script_summary("Check for the vulnerable version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_mult_remote_file_disc_vuln.nasl 6257 2017-05-31 14:33:17Z cfi $
+# $Id: gb_oracle_glassfish_mult_remote_file_disc_vuln.nasl 6857 2017-08-07 08:22:56Z teissa $
 #
 # Oracle GlassFish Server Multiple Remote File Disclosure Vulnerabilities
 #
@@ -29,10 +29,11 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808231");
-  script_version("$Revision: 6257 $");
-  script_tag(name:"cvss_base", value:"9.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
+  script_version("$Revision: 6857 $");
+  script_cve_id("CVE-2017-1000030", "CVE-2017-1000029");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-07 10:22:56 +0200 (Mon, 07 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-06-21 11:16:21 +0530 (Tue, 21 Jun 2016)");
   script_name("Oracle GlassFish Server Multiple Remote File Disclosure Vulnerabilities");
 
@@ -60,12 +61,9 @@ if(description)
   script_tag(name:"affected", value:"GlassFish Server Open Source Edition 
   version 3.0.1 (build 22)");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 
-  31st May, 2017. Information regarding this issue will be updated once the
-  solution details are available.For updates refer to
-  http://www.oracle.com");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

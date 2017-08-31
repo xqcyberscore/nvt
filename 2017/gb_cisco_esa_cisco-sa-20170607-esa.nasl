@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20170607-esa.nasl 6292 2017-06-08 06:36:42Z ckuersteiner $
+# $Id: gb_cisco_esa_cisco-sa-20170607-esa.nasl 6479 2017-06-29 07:59:07Z teissa $
 #
 # Cisco Email Security Appliance Message Tracking Cross-Site Scripting Vulnerability
 #
@@ -31,10 +31,10 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106853");
  script_cve_id("CVE-2017-6661");
- script_tag(name: "cvss_base", value: "6.4");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+ script_tag(name:"cvss_base", value:"4.3");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
- script_version("$Revision: 6292 $");
+ script_version("$Revision: 6479 $");
 
  script_name("Cisco Email Security Appliance Message Tracking Cross-Site Scripting Vulnerability");
 
@@ -58,7 +58,7 @@ code in the context of the interface or allow the attacker to access sensitive b
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-06-08 08:36:42 +0200 (Thu, 08 Jun 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-06-29 09:59:07 +0200 (Thu, 29 Jun 2017) $");
  script_tag(name: "creation_date", value: "2017-06-08 10:52:28 +0700 (Thu, 08 Jun 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

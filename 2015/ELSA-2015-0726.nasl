@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-0726.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-0726.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123149");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:59:58 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-0726");
 script_tag(name: "insight", value: "ELSA-2015-0726 -  kernel security and bug fix update - [3.10.0-229.1.2]- Oracle Linux certificates (Alexey Petrenko)[3.10.0-229.1.2]- [infiniband] core: Prevent integer overflow in ib_umem_get address arithmetic (Doug Ledford) [1181177 1179347] {CVE-2014-8159}[3.10.0-229.1.1]- [crypto] testmgr: mark rfc4106(gcm(aes)) as fips_allowed (Jarod Wilson) [1197751 1185400]- [virt] storvsc: ring buffer failures may result in I/O freeze (Vitaly Kuznetsov) [1197749 1171409]- [md] dm-thin: don't allow messages to be sent to a pool target in READ_ONLY or FAIL mode (Mike Snitzer) [1197745 1184592]- [kernel] workqueue: fix subtle pool management issue which can stall whole worker_pool (Eric Sandeen) [1197744 1165535]- [platform] thinkpad_acpi: support new BIOS version string pattern (Benjamin Tissoires) [1197743 1194830]- [x86] ioapic: kcrash: Prevent crash_kexec() from deadlocking on ioapic_lock (Baoquan He) [1197742 1182424]- [net] sctp: fix slab corruption from use after free on INIT collisions (Daniel Borkmann) [1196588 1183959] {CVE-2015-1421}"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-0726");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

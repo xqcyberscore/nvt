@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3189.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: deb_3189.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3189-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703189);
-    script_version("$Revision: 6333 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2014-7933", "CVE-2014-8543", "CVE-2014-8544", "CVE-2014-8547",
                   "CVE-2014-8548", "CVE-2014-9604");
     script_name("Debian Security Advisory DSA 3189-1 (libav - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-03-15 00:00:00 +0100 (Sun, 15 Mar 2015)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "libav on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (wheezy),
 these problems have been fixed in version 6:0.8.17-1.

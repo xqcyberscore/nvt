@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: gather-package-list-docker-container.inc 6381 2017-06-20 12:13:27Z cfischer $
+# $Id: gather-package-list-docker-container.inc 6887 2017-08-10 06:12:10Z cfischer $
 #
 # Functions for OS Detection in Docker Containers
 #
@@ -25,15 +25,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 6381 $
+# $Revision: 6887 $
 #
 ###############################################################################
 
 OS_CPE = make_array(
 
     # OpenSUSE
-    "openSUSELeap42.2", "cpe:/o:opensuse:opensuse:42.2",
-    "openSUSELeap42.1", "cpe:/o:opensuse:opensuse:42.1",
+    "openSUSELeap42.3", "cpe:/o:opensuse_project:leap:42.3",
+    "openSUSELeap42.2", "cpe:/o:opensuse_project:leap:42.2", # Starting with 42.2 the correct one is used by the NVD
+    "openSUSELeap42.1", "cpe:/o:novell:leap:42.1", # NVD is currently using a wrong vendor here
     "openSUSE13.2", "cpe:/o:novell:opensuse:13.2",
     "openSUSE13.1", "cpe:/o:novell:opensuse:13.1",
     "openSUSE12.3", "cpe:/o:novell:opensuse:12.3",
@@ -59,17 +60,18 @@ OS_CPE = make_array(
     "SUSE8.0",  "cpe:/o:novell:suse_linux:8.0",
     "SUSE7.3",  "cpe:/o:novell:suse_linux:7.3",
 
-    "UCS4.1", "cpe:/o:univention:corporate_server:4.1",
-    "UCS4.0", "cpe:/o:univention:corporate_server:4.0",
-    "UCS3.3", "cpe:/o:univention:corporate_server:3.3",
-    "UCS3.2", "cpe:/o:univention:corporate_server:3.2",
-    "UCS3.1", "cpe:/o:univention:corporate_server:3.1",
-    "UCS3.0", "cpe:/o:univention:corporate_server:3.0",
-    "UCS2.4", "cpe:/o:univention:corporate_server:2.4",
-    "UCS2.3", "cpe:/o:univention:corporate_server:2.3",
-    "UCS2.2", "cpe:/o:univention:corporate_server:2.2",
-    "UCS2.1", "cpe:/o:univention:corporate_server:2.1",
-    "UCS2.0", "cpe:/o:univention:corporate_server:2.0",
+    "UCS4.2", "cpe:/o:univention:univention_corporate_server:4.2",
+    "UCS4.1", "cpe:/o:univention:univention_corporate_server:4.1",
+    "UCS4.0", "cpe:/o:univention:univention_corporate_server:4.0",
+    "UCS3.3", "cpe:/o:univention:univention_corporate_server:3.3",
+    "UCS3.2", "cpe:/o:univention:univention_corporate_server:3.2",
+    "UCS3.1", "cpe:/o:univention:univention_corporate_server:3.1",
+    "UCS3.0", "cpe:/o:univention:univention_corporate_server:3.0",
+    "UCS2.4", "cpe:/o:univention:univention_corporate_server:2.4",
+    "UCS2.3", "cpe:/o:univention:univention_corporate_server:2.3",
+    "UCS2.2", "cpe:/o:univention:univention_corporate_server:2.2",
+    "UCS2.1", "cpe:/o:univention:univention_corporate_server:2.1",
+    "UCS2.0", "cpe:/o:univention:univention_corporate_server:2.0",
 
     # Ubuntu
     "UBUNTU17.04",    "cpe:/o:canonical:ubuntu_linux:17.04",
@@ -113,6 +115,7 @@ OS_CPE = make_array(
     "CentOS2", "cpe:/o:centos:centos:2",
 
     # Fedora / Fedora Core
+    "FC26", "cpe:/o:fedoraproject:fedora:26",
     "FC25", "cpe:/o:fedoraproject:fedora:25",
     "FC24", "cpe:/o:fedoraproject:fedora:24",
     "FC23", "cpe:/o:fedoraproject:fedora:23",
@@ -140,7 +143,10 @@ OS_CPE = make_array(
     "FC1",  "cpe:/o:fedoraproject:fedora_core:1",
 
     # Debian
+    "DEB10.0", "cpe:/o:debian:debian_linux:10.0",
+    "DEB9.1", "cpe:/o:debian:debian_linux:9.1",
     "DEB9.0", "cpe:/o:debian:debian_linux:9.0",
+    "DEB8.9", "cpe:/o:debian:debian_linux:8.9",
     "DEB8.8", "cpe:/o:debian:debian_linux:8.8",
     "DEB8.7", "cpe:/o:debian:debian_linux:8.7",
     "DEB8.6", "cpe:/o:debian:debian_linux:8.6",
@@ -500,6 +506,13 @@ function get_container_os( container_id, soc )
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC25");
+    return ret;
+  }
+
+  if("Fedora release 26" >< rls && "(Twenty Six)" >< rls) {
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC26");
     return ret;
   }
 
@@ -1029,137 +1042,31 @@ function get_container_os( container_id, soc )
     return ret;
   }
 
-  if("7.11"><rls) {
+  if( match = eregmatch( pattern:"^7\.([0-9]+)$", string:rls ) ) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.11 (Wheezy)", oskey:"DEB7.11");
-    return ret;
-  }
-  if("7.10"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.10 (Wheezy)", oskey:"DEB7.10");
-    return ret;
-  }
-  if("7.9"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.9 (Wheezy)", oskey:"DEB7.9");
-    return ret;
-  }
-  if("7.8"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.8 (Wheezy)", oskey:"DEB7.8");
-    return ret;
-  }
-  if("7.7"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.7 (Wheezy)", oskey:"DEB7.7");
-    return ret;
-  }
-  if("7.6"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.6 (Wheezy)", oskey:"DEB7.6");
-    return ret;
-  }
-  if("7.5"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.5 (Wheezy)", oskey:"DEB7.5");
-    return ret;
-  }
-  if("7.4"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.4 (Wheezy)", oskey:"DEB7.4");
-    return ret;
-  }
-  if("7.3"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.3 (Wheezy)", oskey:"DEB7.3");
-    return ret;
-  }
-  if("7.2"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.2 (Wheezy)", oskey:"DEB7.2");
-    return ret;
-  }
-  if("7.1"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.1 (Wheezy)", oskey:"DEB7.1");
-    return ret;
-  }
-  if("7.0"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.0 (Wheezy)", oskey:"DEB7.0");
+    ret = register_detected_docker_os(container_id:container_id, os:"Debian 7." + match[1] + " (Wheezy)", oskey:"DEB7." + match[1]);
     return ret;
   }
 
-  if("8.8"><rls) {
+  if( match = eregmatch( pattern:"^8\.([0-9]+)$", string:rls ) ) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.8 (Jessie)", oskey:"DEB8.8");
+    ret = register_detected_docker_os(container_id:container_id, os:"Debian 8." + match[1] + " (Jessie)", oskey:"DEB8." + match[1]);
     return ret;
   }
-  if("8.7"><rls) {
+
+  if( match = eregmatch( pattern:"^9\.([0-9]+)$", string:rls ) ) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.7 (Jessie)", oskey:"DEB8.7");
+    ret = register_detected_docker_os(container_id:container_id, os:"Debian 9." + match[1] + " (Stretch)", oskey:"DEB9." + match[1]);
     return ret;
   }
-  if("8.6"><rls) {
+
+  if("buster/sid"><rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.6 (Jessie)", oskey:"DEB8.6");
-    return ret;
-  }
-  if("8.5"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.5 (Jessie)", oskey:"DEB8.5");
-    return ret;
-  }
-  if("8.4"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.4 (Jessie)", oskey:"DEB8.4");
-    return ret;
-  }
-  if("8.3"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.3 (Jessie)", oskey:"DEB8.3");
-    return ret;
-  }
-  if("8.2"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.2 (Jessie)", oskey:"DEB8.2");
-    return ret;
-  }
-  if("8.1"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.1 (Jessie)", oskey:"DEB8.1");
-    return ret;
-  }
-  if("8.0"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.0 (Jessie)", oskey:"DEB8.0");
-    return ret;
-  }
-  if("9.0"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
-    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"Debian 9.0 (Stretch)", oskey:"DEB9.0");
+    ret = register_detected_docker_os(container_id:container_id, os:"Debian Buster/Sid", oskey:"DEB10.0");
     return ret;
   }
 
@@ -1372,20 +1279,27 @@ function get_container_os( container_id, soc )
   }
 
   # How about SuSe? and openSUSE?
+  # https://en.wikipedia.org/wiki/SUSE_Linux_distributions
+  rls = ssh_cmd(socket:soc, cmd:base_cmd + "cat /etc/os-release");
 
-  rlsopenSuseLeap = ssh_cmd(socket:soc, cmd:base_cmd + "cat /etc/os-release");
-
-  if("openSUSE Leap 42.1" >< rlsopenSuseLeap) {
+  if("openSUSE Leap 42.3" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
-    ret = register_detected_docker_os(container_id:container_id, os:"openSUSE Leap 42.1", oskey:"openSUSELeap42.1");
+    ret = register_detected_docker_os(container_id:container_id, os:"openSUSE Leap 42.3", oskey:"openSUSELeap42.3");
     return ret;
   }
 
-  if("openSUSE Leap 42.2" >< rlsopenSuseLeap) {
+  if("openSUSE Leap 42.2" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE Leap 42.2", oskey:"openSUSELeap42.2");
+    return ret;
+  }
+
+  if("openSUSE Leap 42.1" >< rls) {
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    ret = register_detected_docker_os(container_id:container_id, os:"openSUSE Leap 42.1", oskey:"openSUSELeap42.1");
     return ret;
   }
 

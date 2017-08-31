@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0149.nasl 5782 2017-03-30 09:01:05Z teissa $
+# $Id: mgasa-2016-0149.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131300");
-script_version("$Revision: 5782 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:18:03 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0149");
 script_tag(name: "insight", value: "Updated java-1.8.0-openjdk packages fix security vulnerabilities: Multiple flaws were discovered in the Serialization and Hotspot components in OpenJDK. An untrusted Java application or applet could use these flaws to completely bypass Java sandbox restrictions (CVE-2016-0686, CVE-2016-0687). It was discovered that the RMI server implementation in the JMX component in OpenJDK did not restrict which classes can be deserialized when deserializing authentication credentials. A remote, unauthenticated attacker able to connect to a JMX port could possibly use this flaw to trigger deserialization flaws (CVE-2016-3427). It was discovered that the JAXP component in OpenJDK failed to properly handle Unicode surrogate pairs used as part of the XML attribute values. Specially crafted XML input could cause a Java application to use an excessive amount of memory when parsed (CVE-2016-3425). It was discovered that the GCM (Galois/Counter Mode) implementation in the JCE component in OpenJDK used a non-constant time comparison when comparing GCM authentication tags. A remote attacker could possibly use this flaw to determine the value of the authentication tag (CVE-2016-3426). It was discovered that the Security component in OpenJDK failed to check the digest algorithm strength when generating DSA signatures. The use of a digest weaker than the key strength could lead to the generation of signatures that were weaker than expected (CVE-2016-0695)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0149");
 script_copyright("Eero Volotinen");

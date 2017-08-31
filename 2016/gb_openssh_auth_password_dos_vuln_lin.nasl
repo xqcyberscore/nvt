@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_auth_password_dos_vuln_lin.nasl 5352 2017-02-20 09:34:30Z antu123 $
+# $Id: gb_openssh_auth_password_dos_vuln_lin.nasl 6599 2017-07-07 09:50:33Z cfischer $
 #
 # OpenSSH Denial of Service And User Enumeration Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809154");
-  script_version("$Revision: 5352 $");
+  script_version("$Revision: 6599 $");
   script_cve_id("CVE-2016-6515", "CVE-2016-6210");
   script_bugtraq_id(92212);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 10:34:30 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:50:33 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-08-25 18:35:09 +0530 (Thu, 25 Aug 2016)");
   script_name("OpenSSH Denial of Service And User Enumeration Vulnerabilities (Linux)");
 
@@ -77,7 +77,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("ssh_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("Host/runs_unixoide","openssh/detected");
+  script_mandatory_keys("openssh/detected", "Host/runs_unixoide");
   exit(0);
 }
 

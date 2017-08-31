@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: packeteer_web_login.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: packeteer_web_login.nasl 6522 2017-07-04 15:22:28Z cfischer $
 # Description: Packeteer Web Management Interface Login
 #
 # Authors:
@@ -34,8 +34,8 @@ if (description)
     {
     script_id(80032);
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-    script_version("$Revision: 6065 $");
-    script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+    script_version("$Revision: 6522 $");
+    script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:22:28 +0200 (Tue, 04 Jul 2017) $");
     script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
     script_tag(name:"cvss_base", value:"0.0");
     name="Packeteer Web Management Interface Login";
@@ -50,7 +50,7 @@ if (description)
     script_tag(name:"qod_type", value:"remote_banner");
     script_copyright("This script is Copyright (c) 2006-2007 nnposter");
     script_dependencies("logins.nasl","packeteer_web_detect.nasl");
-    script_require_keys("bluecoat_packetshaper/installed","http/password");
+    script_mandatory_keys("bluecoat_packetshaper/installed","http/password");
     script_require_ports("Services/www",80);
     script_tag(name : "summary" , value : tag_summary);
     exit(0);

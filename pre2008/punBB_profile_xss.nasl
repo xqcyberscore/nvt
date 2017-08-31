@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: punBB_profile_xss.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: punBB_profile_xss.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: PunBB profile.php XSS
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "Update to PunBB version 1.1.4 or later.";
 if(description)
 {
  script_id(15940);
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(11847);
  script_xref(name:"OSVDB", value:"7975");
@@ -51,35 +51,25 @@ if(description)
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  summary = "Checks for PunBB profile.php XSS";
  
- 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
- 
- 
  script_copyright("This script is Copyright (C) 2004 David Maciejak");
  
  family = "Web application abuses";
  script_family(family);
  script_dependencies("punBB_detect.nasl");
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://www.punbb.org/changelogs/1.1.3_to_1.1.4.txt");
  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("http_func.inc");
 
-
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
-
 
 # Test an install.
 install = get_kb_item(string("www/", port, "/punBB"));

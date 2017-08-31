@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telepresence_te_tc_67170.nasl 3329 2016-05-17 14:25:29Z teissa $
+# $Id: gb_telepresence_te_tc_67170.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Cisco TelePresence TC and TE Software Multiple Security Vulnerabilities
 #
@@ -66,16 +66,15 @@ if (description)
  script_cve_id("CVE-2014-2162","CVE-2014-2163","CVE-2014-2164","CVE-2014-2165","CVE-2014-2166","CVE-2014-2167","CVE-2014-2168","CVE-2014-2169","CVE-2014-2170","CVE-2014-2171","CVE-2014-2172","CVE-2014-2173","CVE-2014-2175");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3329 $");
+ script_version ("$Revision: 6663 $");
 
  script_name("Cisco TelePresence TC and TE Software Multiple Security Vulnerabilities");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/67170");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140430-tcte");
  
- script_tag(name:"last_modification", value:"$Date: 2016-05-17 16:25:29 +0200 (Tue, 17 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-05-12 16:46:52 +0200 (Mon, 12 May 2014)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("CISCO");

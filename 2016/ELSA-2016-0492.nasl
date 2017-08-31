@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0492.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: ELSA-2016-0492.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122909");
-script_version("$Revision: 5612 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-03-23 07:08:56 +0200 (Wed, 23 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0492");
 script_tag(name: "insight", value: "ELSA-2016-0492 -  tomcat6 security and bug fix update - [0:6.0.24-94]- Resolves: rhbz#1293289 CVE-2014-7810 tomcat6 security manager bypass via EL expressions[0:6.0.24-93]- Resolves: rhbz#1301646 Resolving NIO connector memory leak"); 
 script_tag(name : "solution", value : "update software");
@@ -41,7 +41,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

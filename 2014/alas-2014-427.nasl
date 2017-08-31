@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2014-427.nasl 4514 2016-11-15 10:04:28Z cfi $
+# $Id: alas-2014-427.nasl 6735 2017-07-17 09:56:49Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120187");
-script_version("$Revision: 4514 $");
+script_version("$Revision: 6735 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:19:29 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:04:28 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2014-427");
 script_tag(name: "insight", value: "A memory leak flaw was found in the way OpenSSL parsed the DTLS Secure Real-time Transport Protocol (SRTP) extension data. A remote attacker could send multiple specially crafted handshake messages to exhaust all available memory of an SSL/TLS or DTLS server.  (CVE-2014-3513 )A memory leak flaw was found in the way an OpenSSL handled failed session ticket integrity checks. A remote attacker could exhaust all available memory of an SSL/TLS or DTLS server by sending a large number of invalid session tickets to that server.  (CVE-2014-3567 )When OpenSSL is configured with no-ssl3 as a build option, servers could accept and complete a SSL 3.0 handshake, and clients could beconfigured to send them.  (CVE-2014-3568 )"); 
 script_tag(name : "solution", value : "Run yum update openssl to update your system.  Note that you may need to run yum clean all first.");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"7.1");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2014-427");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

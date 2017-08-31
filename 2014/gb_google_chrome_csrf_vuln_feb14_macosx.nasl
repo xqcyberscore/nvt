@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_csrf_vuln_feb14_macosx.nasl 2489 2016-01-22 14:42:19Z benallard $
+# $Id: gb_google_chrome_csrf_vuln_feb14_macosx.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Google Chrome Cross-Site Request Forgery (CSRF) Vulnerability (Mac OS X)
 #
@@ -30,11 +30,11 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804317";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2489 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2013-6166");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:42:19 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-17 17:40:48 +0530 (Mon, 17 Feb 2014)");
   script_name("Google Chrome Cross-Site Request Forgery (CSRF) Vulnerability (Mac OS X)");
 
@@ -77,7 +77,6 @@ For updates refer to http://www.google.com/chrome";
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2013/04/03/10");
   script_xref(name : "URL" , value : "https://code.google.com/p/chromium/issues/detail?id=238041");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Google Chrome on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");

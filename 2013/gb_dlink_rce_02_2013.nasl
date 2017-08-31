@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_rce_02_2013.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_dlink_rce_02_2013.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # D-Link DIR-600/DIR 300 Remote Code Execution Vulnerabilities
 #
@@ -49,23 +49,22 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103656";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 6093 $");
+ script_version ("$Revision: 6698 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("D-Link DIR-600/DIR 300 Remote Code Execution Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120052/D-Link-DIR-600-DIR-300-Command-Execution-Bypass-Disclosure.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-02-05 16:00:07 +0100 (Tue, 05 Feb 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("DIR-6_3_00/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("DIR-6_3_00/banner");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
@@ -73,13 +72,12 @@ if (description)
 include("http_func.inc");
 include("http_keepalive.inc");
    
-port = get_http_port(default:8080);
-if(!get_port_state(port))exit(0);
+port = get_http_port(default:80);
 
 banner = get_http_banner(port:port);
 if(!banner || ("DIR-300" >!< banner && "DIR-600" >!< banner))exit(0);
 
-host = get_host_name();
+host = http_host_name(port:port);
 ex = 'cmd=ls -l /;';
 len = strlen(ex);
 

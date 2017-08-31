@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zarafa_webaccess_senddocument_php_12_14.nasl 2823 2016-03-10 07:27:58Z antu123 $
+# $Id: gb_zarafa_webaccess_senddocument_php_12_14.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Zarafa WebAccess Denial of Service Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:zarafa:zarafa";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105138");
- script_version ("$Revision: 2823 $");
+ script_version ("$Revision: 6759 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
@@ -54,16 +54,14 @@ or update to 7.2.0 beta 1 (SVN 47004).");
 
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 08:27:58 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-12-08 13:27:31 +0100 (Mon, 08 Dec 2014)");
- script_summary("Check for the existence of /senddocument.php");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_zarafa_webaccess_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("zarafa_webaccess/installed");
 
  exit(0);

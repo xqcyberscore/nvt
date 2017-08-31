@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3159.nasl 2732 2016-02-26 10:24:03Z benallard $
+# $Id: deb_3159.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3159-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703159);
-    script_version("$Revision: 2732 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2014-8080", "CVE-2014-8090");
     script_name("Debian Security Advisory DSA 3159-1 (ruby1.8 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:24:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-02-10 00:00:00 +0100 (Tue, 10 Feb 2015)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -41,14 +41,13 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3159.html");
 
-    script_summary("Debian Security Advisory DSA 3159-1 (ruby1.8 - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "ruby1.8 on Debian Linux");
     script_tag(name: "insight",   value: "Ruby is the interpreted scripting
 language for quick and easy object-oriented programming. It has many features

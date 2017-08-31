@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jvc_pdts_mult_vuln_may16.nasl 6313 2017-06-12 09:33:47Z teissa $
+# $Id: gb_jvc_pdts_mult_vuln_may16.nasl 6700 2017-07-12 12:16:21Z cfischer $
 #
 # JVC Multiple Products Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808200");
-  script_version("$Revision: 6313 $");
+  script_version("$Revision: 6700 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-12 11:33:47 +0200 (Mon, 12 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-05-20 14:37:04 +0530 (Fri, 20 May 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("JVC Multiple Products Multiple Vulnerabilities");
@@ -69,9 +69,9 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("JVC_API/banner");
   script_require_ports("Services/www", 8080);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("JVC_API/banner");
+
   exit(0);
 }
 
@@ -90,9 +90,7 @@ banner = "";
 jvcPort = 0;
 
 ## Get HTTP Port
-if(!jvcPort = get_http_port(default:8080)){
-  exit(0);
-}
+jvcPort = get_http_port(default:8080);
 
 ## Get banner
 banner = get_http_banner(port:jvcPort);

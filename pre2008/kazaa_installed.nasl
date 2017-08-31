@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: kazaa_installed.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: kazaa_installed.nasl 6456 2017-06-28 11:19:33Z cfischer $
 # Description: Kazaa is installed
 #
 # Authors:
@@ -22,57 +22,40 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote host is using Kazaa - a p2p software, which may not 
-be suitable for a business environment.";
-
-tag_solution = "Uninstall this software";
-
 if(description)
 {
- script_id(11426);
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
- script_tag(name:"creation_date", value:"2006-03-26 18:10:09 +0200 (Sun, 26 Mar 2006)");
- script_bugtraq_id(3135, 4121, 4122, 5317, 6435, 6747);
- script_cve_id("CVE-2002-0314", "CVE-2002-0315");  
- 
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.11426");
+  script_version("$Revision: 6456 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"creation_date", value:"2006-03-26 18:10:09 +0200 (Sun, 26 Mar 2006)");
+  script_bugtraq_id(3135, 4121, 4122, 5317, 6435, 6747);
+  script_cve_id("CVE-2002-0314", "CVE-2002-0315");  
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Kazaa is installed");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2003 Xue Yong Zhi");
+  script_family("Peer-To-Peer File Sharing");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
 
- name = "Kazaa is installed";
+  tag_summary = "The remote host is using Kazaa - a p2p software, which may not 
+  be suitable for a business environment.";
 
- script_name(name);
- 
+  tag_solution = "Uninstall this software";
 
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
 
-
- summary = "Determines if Kazaa is installed";
-
- 
- script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
- 
- script_copyright("This script is Copyright (C) 2003 Xue Yong Zhi");
- family = "Peer-To-Peer File Sharing";
- script_family(family);
- 
- script_dependencies("secpod_reg_enum.nasl");
- script_require_keys("SMB/name", "SMB/login", "SMB/password",
-		     "SMB/domain","SMB/transport");
- script_mandatory_keys("SMB/WindowsVersion");
 
- script_require_ports(139, 445);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
-
 
 include("smb_nt.inc");
 
-
-rootfile = registry_get_sz(key:"SOFTWARE\Kazaa\CloudLoad",
- item:"ExeDir");
+rootfile = registry_get_sz(key:"SOFTWARE\Kazaa\CloudLoad", item:"ExeDir");
 if(rootfile)
 {
  security_message(get_kb_item("SMB/transport"));

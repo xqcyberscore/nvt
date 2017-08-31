@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_fsecure_prdts_sec_bypass_vuln_lin.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_fsecure_prdts_sec_bypass_vuln_lin.nasl 6516 2017-07-04 12:20:47Z cfischer $
 #
 # F-Secure Products Security Bypass Vulnerability (Linux)
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is installed with F-Secure Product and is prone to
 if(description)
 {
   script_id(900363);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 6516 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-06-17 17:54:48 +0200 (Wed, 17 Jun 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -57,8 +57,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Malware");
   script_dependencies("gb_fsecure_prdts_detect_lin.nasl");
-  script_require_keys("F-Sec/AV/LnxSec/Ver", "F-Sec/AV/LnxClntSec/Ver");
-  script_require_keys("F-Sec/AV/LnxSerSec/Ver", "F-Sec/IntGatekeeper/Lnx/Ver");
+  script_mandatory_keys("F-Sec/Products/Lin/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

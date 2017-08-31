@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-013.nasl 4922 2017-01-02 16:28:42Z cfi $
+# $Id: secpod_ms13-013.nasl 6532 2017-07-05 07:42:05Z cfischer $
 #
 # Microsoft FAST Search Server 2010 SharePoint RCE Vulnerabilities (2784242)
 #
@@ -40,12 +40,12 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(902949);
-  script_version("$Revision: 4922 $");
+  script_version("$Revision: 6532 $");
   script_cve_id("CVE-2012-3214", "CVE-2012-3217");
   script_bugtraq_id(55977, 55993);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 17:28:42 +0100 (Mon, 02 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-02-13 11:28:37 +0530 (Wed, 13 Feb 2013)");
   script_name("Microsoft FAST Search Server 2010 SharePoint RCE Vulnerabilities (2784242)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52136/");
@@ -54,9 +54,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("smb_reg_service_pack.nasl",
-                      "gb_ms_fast_search_server_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/SharePoint/Install/Path");
+  script_dependencies("gb_ms_fast_search_server_detect.nasl");
+  script_mandatory_keys("MS/SharePoint/Install/Path");
+  script_require_ports(139, 445);
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
@@ -74,11 +74,6 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-## Confirm Windows
-if(!get_kb_item("SMB/WindowsVersion")){
-  exit(0);
-}
 
 ## Variables Initialization
 path = "";

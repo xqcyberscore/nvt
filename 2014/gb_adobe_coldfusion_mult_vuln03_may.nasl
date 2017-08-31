@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_mult_vuln03_may.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_adobe_coldfusion_mult_vuln03_may.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Adobe ColdFusion Multiple Vulnerabilities-03 May-2014
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2013-0625", "CVE-2013-0629");
   script_bugtraq_id(57164, 57165);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-06 16:22:22 +0530 (Tue, 06 May 2014)");
   script_name("Adobe ColdFusion Multiple Vulnerabilities-03 May-2014");
 
@@ -80,7 +80,6 @@ http://www.adobe.com/support/security/bulletins/apsb13-03.html";
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/24946");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-03.html");
-  script_summary("Check for the vulnerable version of Adobe ColdFusion");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

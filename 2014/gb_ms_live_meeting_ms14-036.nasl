@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_live_meeting_ms14-036.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms_live_meeting_ms14-036.nasl 6750 2017-07-18 09:56:47Z teissa $
 #
 # Microsoft Live Meeting Remote Code Execution Vulnerability (2967487)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_live_meeting";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804598");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6750 $");
   script_cve_id("CVE-2014-1817", "CVE-2014-1818");
   script_bugtraq_id(67897, 67904);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-11 15:48:21 +0530 (Wed, 11 Jun 2014)");
   script_name("Microsoft Live Meeting Remote Code Execution Vulnerability (2967487)");
 
@@ -79,7 +79,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-036";
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2957503");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2957509");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms14-036");
-  script_summary("Check for the vulnerable 'Ogl.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

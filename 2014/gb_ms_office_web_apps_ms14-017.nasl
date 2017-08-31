@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms14-017.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms_office_web_apps_ms14-017.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # Microsoft Office Web Apps Memory Corruption Vulnerability (2949660)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6692 $");
   script_cve_id("CVE-2014-1761");
   script_bugtraq_id(66385);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-09 12:19:57 +0530 (Wed, 09 Apr 2014)");
   script_name("Microsoft Office Web Apps Memory Corruption Vulnerability (2949660)");
 
@@ -79,7 +79,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-017";
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2878221");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2878219");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms14-017");
-  script_summary("Check for the vulnerable 'msoserver.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868552");
-  script_version("$Revision: 2798 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 13:57:39 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 6663 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-12-06 06:48:31 +0100 (Sat, 06 Dec 2014)");
   script_cve_id("CVE-2014-9087");
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,12 +45,11 @@ specifications are building blocks of S/MIME and TLS.
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2014-December/145241.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of libksba");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

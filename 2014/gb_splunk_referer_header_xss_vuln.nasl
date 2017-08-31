@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_referer_header_xss_vuln.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_splunk_referer_header_xss_vuln.nasl 6715 2017-07-13 09:57:40Z teissa $
 #
 # Splunk Referer Header Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:splunk:splunk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804479");
-  script_version("$Revision: 2780 $");
+  script_version("$Revision: 6715 $");
   script_cve_id("CVE-2014-5198");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-08 13:34:59 +0530 (Mon, 08 Sep 2014)");
 
   script_name("Splunk Referer Header Cross-Site Scripting Vulnerability");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.splunk.com/view/SP-CAAAM9H");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1030690");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126813");
-  script_summary("Check for the XSS vulnerability in Splunk");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");

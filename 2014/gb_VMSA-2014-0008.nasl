@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2014-0008.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_VMSA-2014-0008.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # VMSA-2014-0008: VMware vSphere product updates to third party libraries
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2014-0114","CVE-2013-4590","CVE-2013-4322","CVE-2014-0050","CVE-2013-0242","CVE-2013-1914");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6692 $");
  script_name("VMSA-2014-0008: VMware vSphere product updates to third party libraries");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0008.html");
@@ -62,11 +62,10 @@ update 55 in the Oracle Java SE Critical Patch Update Advisory of April 2014");
 VMware vCenter Update Manager 5.5 prior to Update 2
 VMware ESXi 5.5 without patch ESXi550-201409101-SG");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-09-11 11:04:01 +0100 (Thu, 11 Sep 2014)");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
- script_summary("Checks for installed patches.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

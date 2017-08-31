@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrutinizer_54726.nasl 5839 2017-04-03 10:43:34Z cfi $
+# $Id: gb_scrutinizer_54726.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # Scrutinizer Arbitrary File Upload Vulnerability
 #
@@ -34,8 +34,8 @@ if(description)
  script_cve_id("CVE-2012-2627","CVE-2012-2626");
  script_tag(name:"cvss_base", value:"9.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:C");
- script_version ("$Revision: 5839 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:43:34 +0200 (Mon, 03 Apr 2017) $");
+ script_version ("$Revision: 6720 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-08-02 10:24:13 +0200 (Thu, 02 Aug 2012)");
  script_name("Scrutinizer Arbitrary File Upload Vulnerability");
  script_category(ACT_ATTACK);
@@ -43,7 +43,6 @@ if(description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_scrutinizer_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("scrutinizer/installed");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54726");

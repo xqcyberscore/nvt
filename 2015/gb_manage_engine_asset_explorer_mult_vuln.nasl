@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_asset_explorer_mult_vuln.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_manage_engine_asset_explorer_mult_vuln.nasl 6453 2017-06-28 09:59:05Z teissa $
 #
 # Manage Engine Asset Explorer Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:zohocorp:manageengine_assetexplorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805190");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6453 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-27 15:15:40 +0530 (Wed, 27 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Manage Engine Asset Explorer Multiple Vulnerabilities");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.manageengine.com/products/asset-explorer/sp-readme.html");
   script_xref(name:"URL", value:"http://www.247webhost365.co.uk/csrfxss-in-manage-engine-asset-explorer");
 
-  script_summary("Check for the vulnerable version of ManageEngine AssetExplorer");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

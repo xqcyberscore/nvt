@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3809.nasl 5606 2017-03-17 17:09:01Z cfi $
+# $Id: deb_3809.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3809-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703809);
-    script_version("$Revision: 5606 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-3302", "CVE-2017-3313");
     script_name("Debian Security Advisory DSA 3809-1 (mariadb-10.0 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-17 18:09:01 +0100 (Fri, 17 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-03-14 00:00:00 +0100 (Tue, 14 Mar 2017)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "mariadb-10.0 on Debian Linux");
     script_tag(name: "solution",  value: "For the stable distribution (jessie), these problems have been fixed in
 version 10.0.30-0+deb8u1.

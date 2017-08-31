@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: hp_power_manager_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: hp_power_manager_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
 #
 # HP Power Manager Detection
 #
@@ -31,8 +31,8 @@ if (description)
 {
  script_id(100456);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5888 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+ script_version("$Revision: 6701 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-01-20 19:30:24 +0100 (Wed, 20 Jan 2010)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -42,9 +42,9 @@ if (description)
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("GoAhead-Webs/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("GoAhead-Webs/banner");
+
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://h18000.www1.hp.com/products/servers/proliantstorage/power-protection/software/power-manager/index.html");
  exit(0);
@@ -60,7 +60,6 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.100456";
 SCRIPT_DESC = "HP Power Manager Detection";
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if("GoAhead-Webs" >!< banner)exit(0);

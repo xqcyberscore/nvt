@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882067");
-  script_version("$Revision: 2776 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 10:03:22 +0100 (Fri, 04 Mar 2016) $");
+  script_version("$Revision: 6750 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-22 06:02:45 +0200 (Wed, 22 Oct 2014)");
   script_cve_id("CVE-2014-3660");
   script_tag(name:"cvss_base", value:"5.0");
@@ -59,12 +59,11 @@ restarted (log out, then log back in) for this update to take effect.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "CESA", value: "2014:1655");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-October/020701.html");
-  script_summary("Check for the Version of libxml2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

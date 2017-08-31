@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_65771.nasl 2826 2016-03-10 08:19:43Z benallard $
+# $Id: gb_mcafee_epolicy_orchestrator_65771.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # McAfee ePolicy Orchestrator XML External Entity Information Disclosure Vulnerability
 #
@@ -51,15 +51,14 @@ if (description)
  script_cve_id("CVE-2014-2205");
  script_tag(name:"cvss_base", value:"6.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:N/A:N");
- script_version ("$Revision: 2826 $");
+ script_version ("$Revision: 6759 $");
 
  script_name("McAfee ePolicy Orchestrator XML External Entity Information Disclosure Vulnerability");
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65771");
  script_xref(name:"URL", value:"http://www.mcafee.com/us/enterprise/products/system_security_management/epolicy_orchestrator.html");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:19:43 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-03-20 11:41:18 +0100 (Thu, 20 Mar 2014)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-056_900047.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_ms08-056_900047.nasl 6538 2017-07-05 11:38:27Z cfischer $
 # Description: Microsoft Office Information Disclosure Vulnerability (957699)
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_summary = "This host is missing critical security update according to
 if(description)
 {
   script_id(900047);
-  script_version("$Revision: 5370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6538 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-10-15 19:56:48 +0200 (Wed, 15 Oct 2008)");
   script_bugtraq_id(31693);
   script_cve_id("CVE-2008-4020");
@@ -53,7 +53,7 @@ if(description)
   script_name("Microsoft Office nformation Disclosure Vulnerability (957699)");
   script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-056.mspx");
   script_dependencies("secpod_ms_office_detection_900025.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "MS/Office/Ver");
+  script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

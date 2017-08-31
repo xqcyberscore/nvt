@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SquidClamAv_54663.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: gb_SquidClamAv_54663.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # SquidClamav URL Parsing Denial of Service Vulnerability
 #
@@ -45,14 +45,14 @@ if (description)
  script_cve_id("CVE-2012-3501");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5912 $");
+ script_version ("$Revision: 6720 $");
 
  script_name("SquidClamav URL Parsing Denial of Service Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54663");
  script_xref(name : "URL" , value : "http://squidclamav.darold.net/news.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-09-17 12:15:00 +0200 (Mon, 17 Sep 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -60,7 +60,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_SquidClamAv_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("SquidClamAv/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -72,8 +71,6 @@ include("host_details.inc");
 include("http_keepalive.inc");
    
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
                                              
 url = dir + '/clwarn.cgi?url=<openvas-test>'; # Patch (https://github.com/darold/squidclamav/commit/5806d10a31183a0b0d18eccc3a3e04e536e2315b) -> my $url = CGI::escapeHTML($cgi->param('url')) || '';

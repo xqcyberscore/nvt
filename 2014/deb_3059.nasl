@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3059.nasl 2768 2016-03-03 09:41:07Z benallard $
+# $Id: deb_3059.nasl 6692 2017-07-12 09:57:43Z teissa $
 # Auto-generated from advisory DSA 3059-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,24 +30,23 @@
 if(description)
 {
     script_id(703059);
-    script_version("$Revision: 2768 $");
+    script_version("$Revision: 6692 $");
     script_cve_id("CVE-2014-8761", "CVE-2014-8762", "CVE-2014-8763", "CVE-2014-8764");
     script_name("Debian Security Advisory DSA 3059-1 (dokuwiki - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2016-03-03 10:41:07 +0100 (Thu, 03 Mar 2016) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
     script_tag(name: "creation_date", value:"2014-10-29 00:00:00 +0100 (Wed, 29 Oct 2014)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-3059.html");
 
-    script_summary("Debian Security Advisory DSA 3059-1 (dokuwiki - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2014 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "dokuwiki on Debian Linux");
         script_tag(name: "insight",   value: "DokuWiki is a wiki mainly aimed at creating documentation of any kind.
 It is targeted at developer teams, workgroups and small companies. It

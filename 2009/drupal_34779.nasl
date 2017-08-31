@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: drupal_34779.nasl 4428 2016-11-07 12:20:11Z mime $
+# $Id: drupal_34779.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # Drupal HTML Injection and Information Disclosure Vulnerabilities
 #
@@ -43,8 +43,8 @@ CPE = 'cpe:/a:drupal:drupal';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100170");
- script_version("$Revision: 4428 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-07 13:20:11 +0100 (Mon, 07 Nov 2016) $");
+ script_version("$Revision: 6704 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
  script_cve_id("CVE-2009-1576");
  script_bugtraq_id(34779);
@@ -60,7 +60,6 @@ if (description)
  script_dependencies("drupal_detect.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("drupal/installed");
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34779");
  script_xref(name : "URL" , value : "http://drupal.org/node/449078");
@@ -72,7 +71,6 @@ include("version_func.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-
 if( vers = get_app_version( cpe:CPE, port:port, version_regex:"^[0-9]\.[0-9]+" ) ) {
 
   if(version_in_range(version:vers, test_version:"5", test_version2:"5.16") ||

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3247.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: deb_3247.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3247-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703247);
-    script_version("$Revision: 6159 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2015-1855");
     script_name("Debian Security Advisory DSA 3247-1 (ruby2.1 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-05-02 00:00:00 +0200 (Sat, 02 May 2015)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "ruby2.1 on Debian Linux");
         script_tag(name: "insight",   value: "Ruby is the interpreted scripting language for quick and easy
 object-oriented programming. It has many features to process text

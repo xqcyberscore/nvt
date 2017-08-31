@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869944");
-  script_version("$Revision: 3342 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6630 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-09-16 07:38:54 +0200 (Wed, 16 Sep 2015)");
   script_cve_id("CVE-2015-3181", "CVE-2015-3180", "CVE-2015-3178", "CVE-2015-3179",
                 "CVE-2015-3176", "CVE-2015-3177", "CVE-2015-3174", "CVE-2015-3175",
@@ -48,12 +48,11 @@ principles, to help educators create effective online learning communities.
   script_xref(name: "FEDORA", value: "2015-14988");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-September/166380.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of moodle");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

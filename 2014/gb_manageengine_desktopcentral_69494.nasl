@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_desktopcentral_69494.nasl 3900 2016-08-28 10:51:49Z cfi $
+# $Id: gb_manageengine_desktopcentral_69494.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Multiple ManageEngine Products Arbitrary File Upload Vulnerability
 #
@@ -34,11 +34,10 @@ if(description)
   script_cve_id("CVE-2014-5005", "CVE-2014-5006");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version ("$Revision: 3900 $");
+  script_version ("$Revision: 6724 $");
   script_name("Multiple ManageEngine Products  Arbitrary File Upload Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-28 12:51:49 +0200 (Sun, 28 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-09 13:20:38 +0200 (Tue, 09 Sep 2014)");
-  script_summary("Try to upload a file");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

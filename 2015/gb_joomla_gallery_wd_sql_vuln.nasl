@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_gallery_wd_sql_vuln.nasl 3126 2016-04-21 13:03:33Z antu123 $
+# $Id: gb_joomla_gallery_wd_sql_vuln.nasl 6600 2017-07-07 09:58:31Z teissa $
 #
 # Joomla Gallery WD Component Multiple Parameter SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805447");
-  script_version("$Revision: 3126 $");
+  script_version("$Revision: 6600 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-21 15:03:33 +0200 (Thu, 21 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-04-09 11:27:25 +0530 (Thu, 09 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Joomla Gallery WD Component Multiple Parameter SQL Injection Vulnerability");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36560");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/131186");
 
-  script_summary("Check if Joomla Gallery WD component is prone to sql injection vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

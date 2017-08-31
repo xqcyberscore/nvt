@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_prdts_int_overflow_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_foxit_prdts_int_overflow_vuln.nasl 6515 2017-07-04 11:54:15Z cfischer $
 #
 # Foxit Products ICC Parsing Integer Overflow Vulnerability
 #
@@ -41,9 +41,9 @@ tag_summary = "The host is installed with Foxit Products and is prone to integer
 
 if(description)
 {
-  script_id(801752);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801752");
+  script_version("$Revision: 6515 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-03-04 14:32:35 +0100 (Fri, 04 Mar 2011)");
   script_cve_id("CVE-2011-0332");
   script_tag(name:"cvss_base", value:"9.3");
@@ -54,12 +54,10 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of Foxit Reader and Phantom");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
-  script_dependencies("gb_foxit_reader_detect.nasl",
-                      "gb_foxit_phantom_detect.nasl");
-  script_require_keys("Foxit/Reader/Ver", "Foxit/Phantom/Ver");
+  script_dependencies("gb_foxit_reader_detect.nasl", "gb_foxit_phantom_detect.nasl");
+  script_mandatory_keys("Foxit/Phantom_or_Reader/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

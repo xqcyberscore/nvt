@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-0910.nasl 6376 2017-06-20 10:00:24Z teissa $
+# $Id: ELSA-2011-0910.nasl 6556 2017-07-06 11:54:54Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122142");
-script_version("$Revision: 6376 $");
+script_version("$Revision: 6556 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:13:43 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:54 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-0910");
 script_tag(name: "insight", value: "ELSA-2011-0910 -  ruby security update - [1.8.7.299-7.1]- Address CVE-2011-1004 'Symlink race condition by removing directory trees in fileutils module' * ruby-1.8.7-CVE-2011-1004.patch- Address CVE-2011-1005 'Untrusted codes able to modify arbitrary strings' * ruby-1.8.7-CVE-2011-1005.patch- Address CVE-2011-0188 'memory corruption in BigDecimal on 64bit platforms' * ruby-1.8.7-CVE-2011-0188.patch- Resolves: rhbz#709963"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

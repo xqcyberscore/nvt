@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_classloader_vuln.nasl 3422 2016-06-02 16:45:44Z teissa $
+# $Id: gb_apache_struts_classloader_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Apache Struts ClassLoader Manipulation Vulnerabilities
 #
@@ -32,12 +32,11 @@ if(description)
   script_name("Apache Struts ClassLoader Manipulation Vulnerabilities");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 3422 $");
+  script_version("$Revision: 6724 $");
   script_bugtraq_id(65999, 67064);
   script_cve_id("CVE-2014-0094", "CVE-2014-0112");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-02 18:45:44 +0200 (Thu, 02 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-14 13:53:39 +0700 (Wed, 14 May 2014)");
-  script_summary("Apache Struts ClassLoader Manipulation Vulnerabilities");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

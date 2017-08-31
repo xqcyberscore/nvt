@@ -1,6 +1,6 @@
 #################################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_java_jre_actvx_ctrl_mult_bof_vuln.nasl 5369 2017-02-20 14:48:07Z cfi $
+# $Id: secpod_java_jre_actvx_ctrl_mult_bof_vuln.nasl 6530 2017-07-05 06:23:50Z cfischer $
 #
 # Java JRE deploytk.dll ActiveX Control Multiple BOF Vulnerabilities
 #
@@ -48,8 +48,8 @@ tag_summary = "This host is installed with Java JRE Deployment Toolkit ActiveX a
 if(description)
 {
   script_id(900354);
-  script_version("$Revision: 5369 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:48:07 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6530 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 08:23:50 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-05-22 08:49:17 +0200 (Fri, 22 May 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -62,8 +62,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
-  script_dependencies("secpod_reg_enum.nasl", "gb_java_prdts_detect_win.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "Sun/Java/JRE/Win/Ver");
+  script_dependencies("gb_java_prdts_detect_win.nasl");
+  script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

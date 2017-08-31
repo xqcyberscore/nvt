@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_credential_cmd_exec_vuln.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_bash_shellshock_credential_cmd_exec_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # GNU Bash Environment Variable Handling Shell RCE Vulnerability (LSC)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804490");
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-6271");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-26 13:50:37 +0530 (Fri, 26 Sep 2014)");
 
   script_name("GNU Bash Environment Variable Handling Shell RCE Vulnerability (LSC)");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=1141597");
   script_xref(name : "URL" , value : "https://blogs.akamai.com/2014/09/environment-bashing.html");
   script_xref(name : "URL" , value : "https://community.qualys.com/blogs/securitylabs/2014/09/24/");
-  script_summary("Check for RCE vulnerability in GNU Bash");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

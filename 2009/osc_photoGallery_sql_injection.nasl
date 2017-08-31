@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: osc_photoGallery_sql_injection.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: osc_photoGallery_sql_injection.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # osCommerce Photo Gallery SQL-Injection Detection
 #
@@ -49,8 +49,8 @@ tag_summary = "This host is running Photo Gallery for osCommerce which is prone 
 if (description)
 {
  script_id(100000);
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+ script_version("$Revision: 6704 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-02-20 17:40:17 +0100 (Fri, 20 Feb 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -67,9 +67,9 @@ if (description)
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("oscommerce_detect.nasl");
- script_mandatory_keys("Software/osCommerce");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("Software/osCommerce");
+
  exit(0);
 }
 

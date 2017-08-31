@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mozilla_firefox_xul_spoof.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: mozilla_firefox_xul_spoof.nasl 6467 2017-06-28 13:51:19Z cfischer $
 # Description: Mozilla/Firefox user interface spoofing
 #
 # Authors:
@@ -41,8 +41,8 @@ tag_solution = "None at this time";
 if(description)
 {
   script_id(14181);
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 6467 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:51:19 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10796, 10832);
   script_cve_id("CVE-2004-0763", "CVE-2004-0764");
@@ -55,7 +55,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Windows");
   script_dependencies("gb_firefox_detect_win.nasl", "gb_thunderbird_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver", "Thunderbird/Win/Ver");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_xref(name : "URL" , value : "http://www.nd.edu/~jsmith30/xul/test/spoof.html");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_document_location_dos_vuln.nasl 5369 2017-02-20 14:48:07Z cfi $
+# $Id: secpod_firefox_document_location_dos_vuln.nasl 6530 2017-07-05 06:23:50Z cfischer $
 #
 # Mozilla Firefox 'document.location' Denial Of Service Vulnerability
 #
@@ -42,8 +42,8 @@ tag_summary = "The host is installed with Firefox browser on Windows XP and is
 if(description)
 {
   script_id(900831);
-  script_version("$Revision: 5369 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:48:07 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6530 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 08:23:50 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-08-28 14:39:11 +0200 (Fri, 28 Aug 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -58,8 +58,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_firefox_detect_win.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "Firefox/Win/Ver");
-  script_require_ports(139, 445);
+  script_mandatory_keys("Firefox/Win/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

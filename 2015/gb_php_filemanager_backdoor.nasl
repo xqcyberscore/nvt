@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_filemanager_backdoor.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_php_filemanager_backdoor.nasl 6600 2017-07-07 09:58:31Z teissa $
 #
 # PHP File Manager Backdoor Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:revived_wire_media:php_file_manager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106034");
-  script_version("$Revision: 3694 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6600 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name: "creation_date", value: "2015-07-29 10:33:31 +0700 (Wed, 29 Jul 2015)");
   script_tag(name: "cvss_base", value: "6.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -50,7 +50,6 @@ if (description)
   script_mandatory_keys("phpfilemanager/installed");
 
   script_tag(name: "summary", value: "PHP File Manager consists of a default backdoor user.");
-  script_summary("Send a special crafted HTTP POST request and check the response");
 
   script_tag(name: "vuldetect", value: "Send a crafted POST request and check if log in is possible.");
 

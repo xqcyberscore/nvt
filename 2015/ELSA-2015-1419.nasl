@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1419.nasl 6329 2017-06-13 15:39:42Z teissa $
+# $Id: ELSA-2015-1419.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123052");
-script_version("$Revision: 6329 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:58:44 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1419");
 script_tag(name: "insight", value: "ELSA-2015-1419 -  libxml2 security and bug fix update - [2.7.6-20.0.1.el6]- Update doc/redhat.gif in tarball- Add libxml2-oracle-enterprise.patch and update logos in tarball[libxml2-2.7.6-20.el6]- CVE-2015-1819 Enforce the reader to run in constant memory(rhbz#1214163)[libxml2-2.7.6-19.el6]- Stop parsing on entities boundaries errors- Fix missing entities after CVE-2014-3660 fix (rhbz#1149086)[libxml2-2.7.6-18.el6]- CVE-2014-3660 denial of service via recursive entity expansion (rhbz#1149086)- Fix html serialization error and htmlSetMetaEncoding (rhbz#1004513)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

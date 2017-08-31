@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-121.nasl 2646 2016-02-12 08:18:48Z benallard $
+# $Id: gb_ms15-121.nasl 6600 2017-07-07 09:58:31Z teissa $
 #
 # Microsoft Schannel Security Bypass Vulnerability (3081320)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806555");
-  script_version("$Revision: 2646 $");
+  script_version("$Revision: 6600 $");
   script_cve_id("CVE-2015-6112");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:48 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-11-11 08:59:53 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft Schannel Security Bypass Vulnerability (3081320)");
 
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3081320");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-121");
 
-  script_summary("Check for the vulnerable 'schannel.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

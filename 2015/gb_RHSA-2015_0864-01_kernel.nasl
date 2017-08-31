@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871358");
-  script_version("$Revision: 3338 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:25:35 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:50:06 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-04-22 07:21:50 +0200 (Wed, 22 Apr 2015)");
   script_cve_id("CVE-2014-3215", "CVE-2014-3690", "CVE-2014-7825", "CVE-2014-7826",
                 "CVE-2014-8171", "CVE-2014-8884", "CVE-2014-9529", "CVE-2014-9584",
@@ -93,12 +93,11 @@ would cause the system to crash. (CVE-2014-9529, Moderate)
   script_xref(name: "RHSA", value: "2015:0864-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-April/msg00052.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
   exit(0);
 }
 

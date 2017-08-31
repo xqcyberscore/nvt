@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1628.nasl 6357 2017-06-16 10:00:29Z teissa $
+# $Id: ELSA-2015-1628.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123025");
-script_version("$Revision: 6357 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-10-06 09:46:47 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1628");
 script_tag(name: "insight", value: "ELSA-2015-1628 -  mysql55-mysql security update - [5.5.45-1]- Rebase to 5.5.45 Includes fixes for: CVE-2014-6568 CVE-2015-0374 CVE-2015-0381 CVE-2015-0382 CVE-2015-0391 CVE-2015-0411 CVE-2015-0432 CVE-2015-0501 CVE-2015-2568 CVE-2015-0499 CVE-2015-2571 CVE-2015-0433 CVE-2015-0441 CVE-2015-0505 CVE-2015-2573 CVE-2015-2582 CVE-2015-2620 CVE-2015-2643 CVE-2015-2648 CVE-2015-4737 CVE-2015-4752 CVE-2015-4757 Resolves: #1247020"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2505.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: ELSA-2015-2505.nasl 6560 2017-07-06 11:58:38Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122789");
-script_version("$Revision: 6214 $");
+script_version("$Revision: 6560 $");
 script_tag(name:"creation_date", value:"2015-11-27 10:55:18 +0200 (Fri, 27 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2505");
 script_tag(name: "insight", value: "ELSA-2015-2505 -  abrt and libreport security update - abrt[2.1.11-35.0.1]- Drop libreport-rhel and libreport-plugin-rhtsupport requires[2.1.11-35]- make /var/spool/abrt owned by root- remove 'r' from /var/spool/abrt for other users- abrt-action-install-debug-info: use secure temporary directory- stop saving abrt's core files to /var/spool/abrt if DebugLevel < 1- Fixes for: CVE-2015-5273 and CVE-2015-5287- Resolves: #1266853libreport[2.1.11-31.0.1]- Update workflow xml for Oracle [18945470]- Add oracle-enterprise.patch and oracle-enterprise-po.patch- Remove libreport-plugin-rhtsupport and libreport-rhel- Added orabug20390725.patch to remove redhat reference [bug 20390725]- Added Bug20357383.patch to remove redhat reference [bug 20357383][2.1.11-31]- save all files changed by the reporter in the reporting GUI- Fixes CVE-2015-5302- Related: #1266853"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"6.9");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

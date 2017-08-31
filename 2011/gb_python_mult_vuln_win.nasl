@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_mult_vuln_win.nasl 3102 2016-04-18 14:46:07Z benallard $
+# $Id: gb_python_mult_vuln_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
 #
 # Python Multiple Vulnerabilities (Windows)
 #
@@ -45,8 +45,8 @@ tag_summary = "This host is installed with Python and is prone to multiple
 if(description)
 {
   script_id(801797);
-  script_version("$Revision: 3102 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:46:07 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 6519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2011-1521");
   script_tag(name:"cvss_base", value:"6.4");
@@ -56,13 +56,12 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=690560");
   script_xref(name : "URL" , value : "http://openwall.com/lists/oss-security/2011/03/24/5");
 
-  script_summary("Check for vulnerable version of Python");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_name("Python Multiple Vulnerabilities (Windows)");
   script_dependencies("gb_python_detect_win.nasl");
-  script_require_keys("SMB/WindowsVersion","Python/Win/Ver");
+  script_mandatory_keys("Python/Win/Ver");
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "solution" , value : tag_solution);

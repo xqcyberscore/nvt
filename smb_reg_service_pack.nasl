@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_reg_service_pack.nasl 6446 2017-06-27 14:18:53Z cfischer $
+# $Id: smb_reg_service_pack.nasl 6741 2017-07-17 15:53:49Z cfischer $
 #
 # SMB Registry : Windows Build Number and Service Pack Version
 #
@@ -24,7 +24,7 @@
 #  - Enhanced the code to support Windows 10 32/64-bit Service packs.
 #  - Enhanced the code to support Windows Server 2008 64-bit Service packs.
 #  - Enhanced the code to support Windows Vista 64-bit Service packs.
-#  - Enhanced the code to support Windows Server 2016 Service packs. 
+#  - Enhanced the code to support Windows Server 2016 Service packs.
 #
 #  Updated By: Sooraj KS <kssooraj@secpod.com> on 2012-05-09
 #  - Added 64-bit processor architecture check.
@@ -53,10 +53,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10401");
-  script_version("$Revision: 6446 $");
+  script_version("$Revision: 6741 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 16:18:53 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 17:53:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-08-27 12:14:14 +0200 (Wed, 27 Aug 2008)");
   script_name("SMB Registry : Windows Build Number and Service Pack Version");
   script_category(ACT_GATHER_INFO);
@@ -65,8 +65,7 @@ if(description)
   # Don't add a dependency to os_detection.nasl. This will cause a dependency cycle.
   script_dependencies("smb_registry_access.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/transport", "SMB/name", "SMB/login", "SMB/password");
-  script_exclude_keys("SMB/samba");
+  script_mandatory_keys("SMB/registry_access");
 
   script_tag(name:"summary", value:"Detection of installed Windows build number and
   Service Pack version.
@@ -89,15 +88,8 @@ csdVer = 0;
 SP = "";
 SCRIPT_DESC = "SMB Registry : Windows Service Pack version";
 
-lanman = get_kb_item( "SMB/NativeLanManager" );
-samba  = get_kb_item( "SMB/samba" );
-
-if( samba || "samba" >< tolower( lanman ) ) exit( 0 );
-
 access = get_kb_item( "SMB/registry_access");
-if( ! access ) {
-  ## exit( 0 ); presently its workaround for the issue id #0062418
-}
+if( ! access ) exit( 0 );
 
 winVal = registry_get_sz( key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion", item:"CurrentVersion" );
 if( winVal ) set_kb_item( name:"SMB/WindowsVersion", value:winVal );
@@ -113,11 +105,6 @@ if( winName ) {
   if( winVal ) os_str += ' ' + winVal;
   replace_kb_item( name:"Host/OS/smb", value:os_str );
   replace_kb_item( name:"SMB/OS", value:os_str );
-  if( "Windows Embedded" >< os_str ) {
-    register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_embedded", banner_type:"Registry access via SMB", desc:SCRIPT_DESC, runs_key:"windows" );
-  } else {
-    register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows", banner_type:"Registry access via SMB", desc:SCRIPT_DESC, runs_key:"windows" );
-  }
 }
 
 csdVer = registry_get_sz( key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion", item:"CSDVersion" );
@@ -168,7 +155,6 @@ if( csdVer && "NO_Service_Pack" >!< csdVer ) {
   ## Check for Windows Vista
   if( ( winVal == "6.0" ) && ( "Windows Vista" >< winName ) && ( "x86" >< arch ) ) {
     set_kb_item( name:"SMB/WinVista/ServicePack", value:csdVer );
-    
   }
 
   ## Check for Windows Vista 64 bit
@@ -246,13 +232,13 @@ if( csdVer && "NO_Service_Pack" >!< csdVer ) {
   if( ( winVal == "6.3" ) && ( "Windows 10" >< winName ) && ( "64" >< arch ) ) {
     set_kb_item( name:"SMB/Win10x64/ServicePack", value:csdVer );
   }
- 
+
   ## Check for Windows Sever 2016 (has only x64 bit support)
   if( ( winVal == "6.3" ) && ( "Windows Server 2016" >< winName ) && ( "64" >< arch ) ) {
     set_kb_item( name:"SMB/Win2016/ServicePack", value:csdVer );
   }
 
-  #nb: If updating / adding OS detection here also update gb_windows_cpe_detect.nasl and gb_smb_windows_detect.nasl
+  #nb: If updating / adding an OS here also update gb_windows_cpe_detect.nasl and gb_smb_windows_detect.nasl
 }
 
 if( ! isnull( os_str ) && ! isnull( csdVer ) && "NO_Service_Pack" >!< csdVer ) {

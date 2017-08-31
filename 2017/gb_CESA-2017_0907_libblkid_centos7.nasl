@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882691");
-  script_version("$Revision: 5979 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 14:34:57 +0200 (Wed, 19 Apr 2017) $");
+  script_version("$Revision: 6659 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:52:22 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-04-14 06:30:18 +0200 (Fri, 14 Apr 2017)");
   script_cve_id("CVE-2017-2616");
   script_tag(name:"cvss_base", value:"10.0");
@@ -69,7 +69,7 @@ path and returns information only for the relevant mount point.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

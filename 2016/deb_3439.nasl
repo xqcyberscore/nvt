@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3439.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: deb_3439.nasl 6608 2017-07-07 12:05:05Z cfischer $
 # Auto-generated from advisory DSA 3439-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703439);
-    script_version("$Revision: 5527 $");
+    script_version("$Revision: 6608 $");
     script_cve_id("CVE-2016-1231", "CVE-2016-1232");
     script_name("Debian Security Advisory DSA 3439-1 (prosody - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2016-01-10 00:00:00 +0100 (Sun, 10 Jan 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,7 +48,7 @@ if(description)
     script_copyright("Copyright (c) 2016 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "prosody on Debian Linux");
     script_tag(name: "insight",   value: "Prosody IM is a simple-to-use XMPP
 server. It is designed to be easy to extend via plugins, and light on

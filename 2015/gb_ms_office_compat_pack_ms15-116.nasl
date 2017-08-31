@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_compat_pack_ms15-116.nasl 6155 2017-05-18 06:34:14Z cfi $
+# $Id: gb_ms_office_compat_pack_ms15-116.nasl 6497 2017-06-30 09:58:54Z teissa $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3104540)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806162");
-  script_version("$Revision: 6155 $");
+  script_version("$Revision: 6497 $");
   script_cve_id("CVE-2015-6038", "CVE-2015-6092");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 08:34:14 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-11 14:17:20 +0530 (Wed, 11 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3104540)");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3085551");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-116");
 
-  script_summary("Check for the version of 'excelconv.exe' and 'wrdcnv.dll' files");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

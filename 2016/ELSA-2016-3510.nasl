@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-3510.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: ELSA-2016-3510.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122851");
-script_version("$Revision: 5580 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-01-21 07:29:49 +0200 (Thu, 21 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-3510");
 script_tag(name: "insight", value: "ELSA-2016-3510 -  kernel-uek security update - kernel-uek[4.1.12-32.1.2]- KEYS: Fix keyring ref leak in join_session_keyring() (Yevgeny Pats) [Orabug: 22563965] {CVE-2016-0728}[4.1.12-32.1.1]- ocfs2: return non-zero st_blocks for inline data (John Haxby) [Orabug: 22218243] - xen/events/fifo: Consume unprocessed events when a CPU dies (Ross Lagerwall) [Orabug: 22498877] - Revert 'xen/fb: allow xenfb initialization for hvm guests' (Konrad Rzeszutek Wilk) - xen/pciback: Dont allow MSI-X ops if PCI_COMMAND_MEMORY is not set. (Konrad Rzeszutek Wilk) - xen/pciback: For XEN_PCI_OP_disable_msi[ or x] only disable if device has MSI(X) enabled. (Konrad Rzeszutek Wilk) - xen/pciback: Do not install an IRQ handler for MSI interrupts. (Konrad Rzeszutek Wilk) - xen/pciback: Return error on XEN_PCI_OP_enable_msix when device has MSI or MSI-X enabled (Konrad Rzeszutek Wilk) - xen/pciback: Return error on XEN_PCI_OP_enable_msi when device has MSI or MSI-X enabled (Konrad Rzeszutek Wilk) - xen/pciback: Save xen_pci_op commands before processing it (Konrad Rzeszutek Wilk) - xen-scsiback: safely copy requests (David Vrabel) - xen-blkback: read from indirect descriptors only once (Roger Pau Monne) - xen-blkback: only read request operation from shared ring once (Roger Pau Monne) - xen-netback: use RING_COPY_REQUEST() throughout (David Vrabel) - xen-netback: dont use last request to determine minimum Tx credit (David Vrabel) - xen: Add RING_COPY_REQUEST() (David Vrabel)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"7.2");
 script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

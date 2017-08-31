@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_42591.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_phpmyadmin_42591.nasl 6705 2017-07-12 14:25:59Z cfischer $
 #
 # phpMyAdmin Configuration File PHP Code Injection Vulnerability
 #
@@ -45,8 +45,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.phpmyadmin.net/");
  script_xref(name : "URL" , value : "http://www.phpmyadmin.net/home_page/security/PMASA-2010-4.php");
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_version("$Revision: 6705 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2010-08-30 14:30:07 +0200 (Mon, 30 Aug 2010)");
  script_bugtraq_id(42591);
  script_cve_id("CVE-2010-3055");
@@ -61,7 +61,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("phpMyAdmin/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -74,9 +73,6 @@ include("version_func.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-
-if(!get_port_state(port))exit(0);
-
 if( ! infos = get_app_version_and_location( cpe:CPE, port:port ) ) exit( 0 );
 
 vers = infos['version'];

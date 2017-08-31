@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3191837.nasl 6343 2017-06-15 09:48:13Z santu $
+# $Id: gb_ms_kb3191837.nasl 6479 2017-06-29 07:59:07Z teissa $
 #
 # Microsoft Office Multiple Vulnerabilities (KB3191837)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811092");
-  script_version("$Revision: 6343 $");
+  script_version("$Revision: 6479 $");
   script_cve_id("CVE-2017-8527", "CVE-2017-8531", "CVE-2017-0283", "CVE-2017-8532", 
                 "CVE-2017-8533", "CVE-2017-0287", "CVE-2017-0288", "CVE-2017-0289", 
                 "CVE-2017-0286");
   script_bugtraq_id(98933, 98819, 98920, 98820, 98821, 98922, 98923, 98929, 98891);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-15 11:48:13 +0200 (Thu, 15 Jun 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:59:07 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-06-14 10:48:40 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Office Multiple Vulnerabilities (KB3191837)");
 

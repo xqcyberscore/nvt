@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_64719.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_qnap_qts_64719.nasl 6756 2017-07-18 13:31:14Z cfischer $
 #
 # QNAP QTS 'f' Parameter Directory Traversal Vulnerability
 #
@@ -53,23 +53,21 @@ if (description)
  script_cve_id("CVE-2013-7174");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6756 $");
 
  script_name("QNAP QTS 'f' Parameter Directory Traversal Vulnerability");
 
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64719");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-09 18:58:01 +0100 (Thu, 09 Jan 2014)");
- script_summary("Check the firmware version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_qnap_nas_detect.nasl");
  script_require_ports("Services/www", 80, 8080);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("qnap/qts");
 
  script_tag(name : "impact" , value : tag_impact);

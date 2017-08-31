@@ -61,8 +61,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-December/018325.html");
   script_id(881055);
-  script_version("$Revision: 3073 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-15 10:41:17 +0200 (Fri, 15 Apr 2016) $");
+  script_version("$Revision: 6653 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:46:53 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-12-16 11:10:17 +0530 (Fri, 16 Dec 2011)");
   script_xref(name: "CESA", value: "2011:1820");
   script_tag(name:"cvss_base", value:"5.0");
@@ -75,7 +75,7 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

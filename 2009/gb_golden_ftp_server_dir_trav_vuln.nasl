@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_golden_ftp_server_dir_trav_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_golden_ftp_server_dir_trav_vuln.nasl 6515 2017-07-04 11:54:15Z cfischer $
 #
 # Golden FTP Server 'DELE' Command Directory Traversal Vulnerability
 #
@@ -45,8 +45,8 @@ Traversal vulnerability.";
 if(description)
 {
   script_id(801073);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 6515 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-12-05 12:49:16 +0100 (Sat, 05 Dec 2009)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -62,7 +62,7 @@ if(description)
   script_family("FTP");
   script_dependencies("gb_golden_ftp_server_detect.nasl");
   script_require_ports("Services/ftp", 21);
-  script_require_keys("Golden/FTP/Pro/Ver","Golden/FTP/Free/Ver");
+  script_mandatory_keys("Golden/FTP/Free_or_Pro/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

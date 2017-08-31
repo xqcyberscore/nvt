@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6769 $");
   script_bugtraq_id(65526);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-17 13:01:09 +0530 (Mon, 17 Feb 2014)");
   script_name("WordPress DZS Video Gallery 'source' Parameter Cross Site Scripting Vulnerability");
 
@@ -78,7 +78,6 @@ For updates refer to http://digitalzoomstudio.net";
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125179");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/56904");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-dzs-videogallery-cross-site-scripting");
-  script_summary("Check if Wordpress DZS-VideoGallery Plugin is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

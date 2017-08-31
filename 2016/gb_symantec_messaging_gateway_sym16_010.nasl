@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_sym16_010.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_symantec_messaging_gateway_sym16_010.nasl 6493 2017-06-30 07:00:59Z ckuersteiner $
 #
 # Symantec Messaging Gateway Decomposer Engine Multiple Parsing Vulnerabilities
 # 
@@ -29,11 +29,11 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105783");
-  script_version("$Revision: 5650 $");
+  script_version("$Revision: 6493 $");
   script_cve_id("CVE-2016-2207","CVE-2016-2209","CVE-2016-2210","CVE-2016-2211","CVE-2016-3644","CVE-2016-3645","CVE-2016-3646");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-30 09:00:59 +0200 (Fri, 30 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-06-29 15:43:27 +0200 (Wed, 29 Jun 2016)");
   script_name("Symantec Messaging Gateway Decomposer Engine Multiple Parsing Vulnerabilities)");
 
@@ -58,7 +58,7 @@ In the TNEF unpacker, the overflow does not result in any detrimental actions du
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
+if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
 if( version_is_less( version:version, test_version:"10.6.1" ) ) VULN = TRUE;
 
@@ -72,7 +72,7 @@ if( VULN )
 {
   if( patch ) version = version + " Patch " + patch;
   report = report_fixed_ver( installed_version:version, fixed_version:'10.6.1 Patch 4' );
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit(0);
 }
 

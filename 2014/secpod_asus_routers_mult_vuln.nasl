@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_asus_routers_mult_vuln.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: secpod_asus_routers_mult_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # ASUS Router Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_id(903432);
-  script_version("$Revision: 3516 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2015-1437");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-02-26 16:37:32 +0530 (Wed, 26 Feb 2014)");
   script_name("ASUS Router Multiple Vulnerabilities");
 
@@ -82,7 +82,6 @@ information refer to http://www.asus.com/Networking/RTN56U";
 
   script_xref(name : "URL" , value : "https://sintonen.fi/advisories/asus-router-auth-bypass.txt");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/asus-router-authentication-bypass-cross-site-scripting");
-  script_summary("Check if we can able to read the cookie");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 SecPod");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_bonuspressx_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_bonuspressx_xss_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # WordPress Bonuspressx 'ar_submit.php' Cross Site Scripting Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6735 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-05-16 11:57:17 +0530 (Fri, 16 May 2014)");
   script_name("WordPress Bonuspressx 'ar_submit.php' Cross Site Scripting Vulnerability");
 
@@ -74,7 +74,6 @@ For updates refer to http://wordpress.org/plugins";
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126595");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-bonuspressx-cross-site-scripting");
-  script_summary("Check if WordPress Bonuspressx Plugin is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

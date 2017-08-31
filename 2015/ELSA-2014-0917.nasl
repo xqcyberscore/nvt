@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-0917.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-0917.nasl 6559 2017-07-06 11:57:32Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123369");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6559 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:02:52 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:57:32 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-0917");
 script_tag(name: "insight", value: "ELSA-2014-0917 -  nss and nspr security, bug fix, and enhancement update - nspr[4.10.6-1]- Rebase to nspr-4.10.6- Resolves: rhbz#1112135nss[3.16.1-4.0.1.el6_5]- Added nss-vendor.patch to change vendor[3.16.1-4]- Update some patches on account of the rebase- Resolves: Bug 1099619[3.16.1-3]- Backport nss-3.12.6 upstream fix required by Firefox 31- Resolves: Bug 1099619[3.16.1-2]- Remove two unused patches and apply a needed one that was missed- Resolves: Bug 1112136 - Rebase nss in RHEL 6.5.Z to NSS 3.16.1[3.16.1-1]- Update to nss-3.16.1- Resolves: Bug 1112136 - Rebase nss in RHEL 6.5.Z to NSS 3.16.1nss-util[3.15.6-1]- Update to nss-3.16.1- Resolves: rhbz#1112136"); 
 script_tag(name : "solution", value : "update software");
@@ -38,9 +38,8 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-0917");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

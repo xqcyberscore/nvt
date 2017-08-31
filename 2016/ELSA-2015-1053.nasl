@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1053.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: ELSA-2015-1053.nasl 6552 2017-07-06 11:49:41Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122869");
-script_version("$Revision: 5588 $");
+script_version("$Revision: 6552 $");
 script_tag(name:"creation_date", value:"2016-02-05 14:01:38 +0200 (Fri, 05 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1053");
 script_tag(name: "insight", value: "ELSA-2015-1053 -  php55 security and bug fix update - php55[2.0-1]- fix incorrect selinux contexts #1194336php55-php[5.5.21-2.0.1]- add dtrace-utils as build dependency[5.5.21-2]- core: fix use-after-free vulnerability in the process_nested_data function (unserialize) CVE-2015-2787- core: fix NUL byte injection in file name argument of move_uploaded_file() CVE-2015-2348- date: fix use after free vulnerability in unserialize() with DateTimeZone CVE-2015-0273- enchant: fix heap buffer overflow in enchant_broker_request_dict() CVE-2014-9705- ereg: fix heap overflow in regcomp() CVE-2015-2305- opcache: fix use after free CVE-2015-1351- phar: fix use after free in phar_object.c CVE-2015-2301- pgsql: fix NULL pointer dereference CVE-2015-1352- soap: fix type confusion through unserialize #1204868[5.5.21-1]- rebase to PHP 5.5.21[5.5.20-1]- rebase to PHP 5.5.20 #1057089- fix package name in description- php-fpm own session and wsdlcache dir- php-common doesn't provide php-gmp"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: horde_29745.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: horde_29745.nasl 6704 2017-07-12 14:13:36Z cfischer $
 #
 # Horde Turba 'services/obrowser/index.php' HTML Injection
 # Vulnerability
@@ -39,8 +39,8 @@ tag_summary = "Horde Turba is prone to an HTML-injection vulnerability because i
 if (description)
 {
  script_id(100116);
- script_version("$Revision: 4970 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+ script_version("$Revision: 6704 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:13:36 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2009-04-10 19:06:18 +0200 (Fri, 10 Apr 2009)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -49,14 +49,12 @@ if (description)
 
  script_name("Horde Turba 'services/obrowser/index.php' HTML Injection Vulnerability");
 
-
  script_tag(name:"qod_type", value:"remote_banner");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("horde_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("horde/installed");
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/29745");
@@ -67,8 +65,6 @@ include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 
 if(!version = get_kb_item(string("www/", port, "/horde")))exit(0);
 if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);

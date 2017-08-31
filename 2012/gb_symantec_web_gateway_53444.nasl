@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_53444.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_symantec_web_gateway_53444.nasl 6720 2017-07-13 14:25:27Z cfischer $
 #
 # Symantec Web Gateway 'relfile' Parameter Directory Traversal Vulnerability
 #
@@ -48,12 +48,12 @@ if (description)
  script_cve_id("CVE-2012-0298");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
- script_version ("$Revision: 5950 $");
+ script_version ("$Revision: 6720 $");
 
  script_name("Symantec Web Gateway 'relfile' Parameter Directory Traversal Vulnerability");
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
  script_tag(name:"creation_date", value:"2012-05-18 10:03:57 +0200 (Fri, 18 May 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -61,7 +61,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_symantec_web_gateway_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("symantec_web_gateway/installed");
  script_tag(name : "impact" , value : tag_impact);
  script_tag(name : "affected" , value : tag_affected);
@@ -81,9 +80,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
 url = string(dir, "/spywall/releasenotes.php?relfile=../../../../../etc/passwd");

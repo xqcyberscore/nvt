@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_mult_vuln_win.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_sun_java_sys_web_serv_mult_vuln_win.nasl 6483 2017-06-29 08:51:15Z cfischer $
 #
 # Sun Java System Web Server Multiple Vulnerabilities (Windows)
 #
@@ -52,8 +52,8 @@ tag_summary = "This host has Sun Java Web Server running which is prone to
 if(description)
 {
   script_id(800157);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6483 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:51:15 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2010-02-04 12:53:38 +0100 (Thu, 04 Feb 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -69,9 +69,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_dependencies("gb_sun_java_sys_web_serv_detect.nasl","secpod_reg_enum.nasl","gb_sun_java_sys_web_serv_mult_vuln.nasl");
-  script_require_keys("Sun/JavaSysWebServ/Ver", "Sun/JavaSysWebServ/Port",
-                      "SMB/WindowsVersion");
+  script_dependencies("gb_sun_java_sys_web_serv_detect.nasl", "secpod_reg_enum.nasl", "gb_sun_java_sys_web_serv_mult_vuln.nasl");
+  script_mandatory_keys("java_system_web_server/installed", "SMB/WindowsVersion");
+  script_exclude_keys("Sun/JavaSysWebServ/37874");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

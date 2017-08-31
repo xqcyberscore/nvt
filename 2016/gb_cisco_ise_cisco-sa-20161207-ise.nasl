@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20161207-ise.nasl 4710 2016-12-08 09:46:58Z ckuerste $
+# $Id: gb_cisco_ise_cisco-sa-20161207-ise.nasl 6721 2017-07-14 01:48:00Z ckuersteiner $
 #
 # Cisco Identity Services Engine Active Directory Integration Component Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:cisco:identity_services_engine';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106451");
-  script_version("$Revision: 4710 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-12-08 10:46:58 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 6721 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-14 03:48:00 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name: "creation_date", value: "2016-12-08 15:34:12 +0700 (Thu, 08 Dec 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -77,12 +77,12 @@ requests for the same Active Directory domain to fail.");
 include("host_details.inc");
 include("version_func.inc");
 
-if (!version = get_app_version(cpe: CPE, port: port))
+if (!version = get_app_version(cpe: CPE))
   exit(0);
 
 if (version == "1.2.1.199") {
   report = report_fixed_ver(installed_version: version, fixed_version: 'See advisory');
-  security_message(port: port, data: report);
+  security_message(port: 0, data: report);
   exit(0);
 }
 

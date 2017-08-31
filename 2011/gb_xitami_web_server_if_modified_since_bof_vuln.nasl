@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xitami_web_server_if_modified_since_bof_vuln.nasl 5839 2017-04-03 10:43:34Z cfi $
+# $Id: gb_xitami_web_server_if_modified_since_bof_vuln.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # Xitami Web Server If-Modified-Since Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802025");
-  script_version("$Revision: 5839 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:43:34 +0200 (Mon, 03 Apr 2017) $");
+  script_version("$Revision: 6696 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_bugtraq_id(25772);
   script_cve_id("CVE-2007-5067");
@@ -45,9 +45,8 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_require_ports("Services/www", 80);
   script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 80);
   script_mandatory_keys("Xitami/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated

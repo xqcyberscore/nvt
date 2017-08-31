@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3302.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3302.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3302-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703302);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6609 $");
     script_cve_id("CVE-2015-0848", "CVE-2015-4588", "CVE-2015-4695", "CVE-2015-4696");
     script_name("Debian Security Advisory DSA 3302-1 (libwmf - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-07-06 00:00:00 +0200 (Mon, 06 Jul 2015)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,14 +42,13 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3302.html");
 
-    script_summary("Debian Security Advisory DSA 3302-1 (libwmf - security update)");
 
     script_category(ACT_GATHER_INFO);
 
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "libwmf on Debian Linux");
     script_tag(name: "solution",  value: "For the oldstable distribution (wheezy),
 these problems have been fixed in version 0.2.8.4-10.3+deb7u1.

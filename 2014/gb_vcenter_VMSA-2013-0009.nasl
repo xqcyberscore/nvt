@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2013-0009.nasl 2823 2016-03-10 07:27:58Z antu123 $
+# $Id: gb_vcenter_VMSA-2013-0009.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # VMware Security Updates for vCenter Server (VMSA-2013-0009)
 #
@@ -41,15 +41,14 @@ if (description)
  script_cve_id("CVE-2013-0169","CVE-2013-0166");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 2823 $");
+ script_version ("$Revision: 6724 $");
  script_name("VMware Security Updates for vCenter Server (VMSA-2013-0009)");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0009.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 08:27:58 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-09 12:04:01 +0100 (Thu, 09 Jan 2014)");
- script_summary("Check the build number");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("General");

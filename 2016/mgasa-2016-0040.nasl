@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0040.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: mgasa-2016-0040.nasl 6562 2017-07-06 12:22:42Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131202");
-script_version("$Revision: 5675 $");
+script_version("$Revision: 6562 $");
 script_tag(name:"creation_date", value:"2016-02-02 07:44:19 +0200 (Tue, 02 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0040");
 script_tag(name: "insight", value: "A Cross-site scripting (XSS) vulnerability in the OCS discovery provider in ownCloud Server before 8.0.10 allows remote attackers to inject arbitrary web script or HTML via the URL resulting in a reflected Cross-Site-Scripting (CVE-2016-1498). ownCloud Server before 8.0.10 allows remote authenticated users to obtain sensitive information from a directory listing and possibly cause a denial of service (CPU consumption) via the force parameter to index.php/apps/files/ajax/scan.php (CVE-2015-1499). ownCloud Server before 8.0.10, when the file_versions application is enabled, does not properly check the return value of getOwner, which allows remote authenticated users to read the files with names starting with .v and belonging to a sharing user by leveraging an incoming share (CVE-2016-1500)."); 
 script_tag(name : "solution", value : "update software");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0040");
 script_copyright("Eero Volotinen");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3173.nasl 6357 2017-06-16 10:00:29Z teissa $
+# $Id: deb_3173.nasl 6609 2017-07-07 12:05:59Z cfischer $
 # Auto-generated from advisory DSA 3173-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,9 +30,9 @@
 if(description)
 {
     script_id(703173);
-    script_version("$Revision: 6357 $");
+    script_version("$Revision: 6609 $");
     script_name("Debian Security Advisory DSA 3173-1 (libgtk2-perl - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:59 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2015-02-25 00:00:00 +0100 (Wed, 25 Feb 2015)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,7 +46,7 @@ if(description)
     script_copyright("Copyright (c) 2015 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "libgtk2-perl on Debian Linux");
     script_tag(name: "insight",   value: "Gtk2 allows you to write graphical
 user interfaces in a Perlish and object-oriented way, freeing you from the

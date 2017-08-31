@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-057.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-057.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (3000414)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804777");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-4073", "CVE-2014-4121", "CVE-2014-4122");
   script_bugtraq_id(70313, 70351, 70312);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-15 11:15:20 +0530 (Wed, 15 Oct 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name: "URL" , value: "https://support.microsoft.com/kb/3000414");
   script_xref(name: "URL" , value: "https://technet.microsoft.com/library/security/ms14-057");
 
-  script_summary("Check for the version of vulnerable files");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

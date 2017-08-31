@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-653.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: alas-2016-653.nasl 6574 2017-07-06 13:41:26Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120643");
-script_version("$Revision: 5505 $");
+script_version("$Revision: 6574 $");
 script_tag(name:"creation_date", value:"2016-02-17 11:37:59 +0200 (Wed, 17 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:41:26 +0200 (Thu, 06 Jul 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-653");
 script_tag(name: "insight", value: "A stack-based buffer overflow flaw was found in the send_dg() and send_vc() functions, used by getaddrinfo() and other higher-level interfaces of glibc. A remote attacker able to cause an application to call either of these functions could use this flaw to execute arbitrary code with the permissions of the user running the application."); 
 script_tag(name : "solution", value : "Run yum update glibc to update your system.  Note that you may need to run yum clean all first.  Once this update has been applied, reboot your instance to ensure that all processes and daemons that link against glibc are using the updated version.  On new instance launches prior to Amazon Linux AMI 2015.09.2, you should still reboot after cloud-init has automatically applied this update.");
@@ -37,7 +37,7 @@ script_tag(name:"cvss_base", value:"6.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
 script_copyright("Eero Volotinen");

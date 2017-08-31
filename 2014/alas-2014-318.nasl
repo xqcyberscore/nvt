@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2014-318.nasl 4514 2016-11-15 10:04:28Z cfi $
+# $Id: alas-2014-318.nasl 6759 2017-07-19 09:56:33Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120363");
-script_version("$Revision: 4514 $");
+script_version("$Revision: 6759 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:24:38 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:04:28 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2014-318");
 script_tag(name: "insight", value: "A flaw was found in the way the mod_dav_svn module handled OPTIONS requests. A remote attacker with read access to an SVN repository served via HTTP could use this flaw to cause the httpd process that handled such a request to crash.The get_resource function in repos.c in the mod_dav_svn module in Apache Subversion before 1.7.15 and 1.8.x before 1.8.6, when SVNListParentPath is enabled, allows remote attackers to cause a denial of service (crash) via vectors related to the server root and request methods other than GET, as demonstrated by the svn ls http://svn.example.com command."); 
 script_tag(name : "solution", value : "Run yum update subversion to update your system.");
@@ -37,10 +37,9 @@ script_tag(name:"cvss_base", value:"4.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2014-318");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

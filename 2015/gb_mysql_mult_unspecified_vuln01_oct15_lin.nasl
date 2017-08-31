@@ -1,7 +1,7 @@
 
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_mult_unspecified_vuln01_oct15_lin.nasl 5655 2017-03-21 10:44:19Z cfi $
+# $Id: gb_mysql_mult_unspecified_vuln01_oct15_lin.nasl 6453 2017-06-28 09:59:05Z teissa $
 # Oracle MySQL Multiple Unspecified Vulnerabilities-01 Oct15 (Linux)
 #
 # Authors:
@@ -42,20 +42,19 @@ CPE = "cpe:/a:oracle:mysql";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107018");
-  script_version("$Revision: 5655 $");
+  script_version("$Revision: 6453 $");
   script_cve_id("CVE-2015-4913", "CVE-2015-4830", "CVE-2015-4826", "CVE-2015-4815",
                 "CVE-2015-4807", "CVE-2015-4802", "CVE-2015-4792", "CVE-2015-4870",
                 "CVE-2015-4861", "CVE-2015-4858", "CVE-2015-4836");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-07-01 12:46:24 +0530 (Fri, 01 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-01 Oct15 (Linux)");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
-  script_summary("Check the version");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "summary" , value : tag_summary);

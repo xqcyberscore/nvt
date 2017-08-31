@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerox_docushare_url_sql_inj_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_xerox_docushare_url_sql_inj_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # Xerox DocuShare URL SQL Injection Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804556");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6735 $");
   script_bugtraq_id(66922);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-24 15:12:51 +0530 (Thu, 24 Apr 2014)");
   script_name("Xerox DocuShare URL SQL Injection Vulnerability");
 
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126171");
   script_xref(name : "URL" , value : "https://gist.github.com/brandonprry/10745681");
   script_xref(name : "URL" , value : "http://www.xerox.com/download/security/security-bulletin/a72cd-4f7a54ce14460/cert_XRX14-003_V1.0.pdf");
-  script_summary("Check if Xerox DocuShare is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

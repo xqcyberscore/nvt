@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_old_auth_user_enum_vuln.nasl 6057 2017-05-02 14:10:26Z cfi $
+# $Id: gb_oracle_mysql_old_auth_user_enum_vuln.nasl 6788 2017-07-21 19:16:52Z cfischer $
 #
 # MySQL/MariaDB Authentication Error Message User Enumeration Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802046");
-  script_version("$Revision: 6057 $");
+  script_version("$Revision: 6788 $");
   script_bugtraq_id(56766);
   script_cve_id("CVE-2012-5615");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 16:10:26 +0200 (Tue, 02 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-12-07 16:13:41 +0530 (Fri, 07 Dec 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Databases");
   script_dependencies("mysql_version.nasl");
-  script_require_ports("Services/mysql", "Services/mariadb", 3306);
+  script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL_MariaDB/installed");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/51427");

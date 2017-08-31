@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_detect.nasl 5896 2017-04-07 14:47:18Z cfi $
+# $Id: gb_owncloud_detect.nasl 6847 2017-08-03 17:43:18Z cfischer $
 #
 # ownCloud Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103564");
-  script_version("$Revision: 5896 $");
+  script_version("$Revision: 6847 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 16:47:18 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-03 19:43:18 +0200 (Thu, 03 Aug 2017) $");
   script_tag(name:"creation_date", value:"2012-09-12 14:18:24 +0200 (Wed, 12 Sep 2012)");
   script_name("ownCloud Detection");
   script_category(ACT_GATHER_INFO);
@@ -61,7 +61,7 @@ if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", "/oc", "/owncloud", "/ownCloud", "/OwnCloud", "/cloud", cgi_dirs( port:port ) ) ) {
 
-  if( get_kb_item( "nextcloud/install/" + port + "/" + dir ) ) continue; # From gb_nextcloud_detect.nasl to avoid double detection of Nc and oC
+  if( get_kb_item( "nextcloud/install/" + port + "/" + dir ) ) continue; # From gb_nextcloud_detect.nasl to avoid double detection of Nextcloud and ownCloud
 
   install = dir;
   if( dir == "/" ) dir = "";
@@ -70,8 +70,11 @@ foreach dir( make_list_unique( "/", "/oc", "/owncloud", "/ownCloud", "/OwnCloud"
   buf = http_get_cache( item:url, port:port );
 
   # nb: Don't check for 200 as a 400 will be returned when accessing to an untrusted domain
+  # Example responses:
+  # {"installed":"true","maintenance":"false","needsDbUpgrade":"false","version":"10.0.2.1","versionstring":"10.0.2","edition":"Community","productname":"ownCloud"}
+  # {"installed":"true","maintenance":"false","needsDbUpgrade":"false","version":"10.0.2.9","versionstring":"10.0.2 RC1","edition":"Community","productname":"ownCloud"}
   if( "egroupware" >!< tolower( buf ) && # EGroupware is using the very same status.php
-    ( egrep( string:buf, pattern:'"installed":("true"|true),("maintenance":(true|false),)?("needsDbUpgrade":(true|false),)?"version":"([0-9.a]+)","versionstring":"([0-9.a]+)","edition":"(.*)"' ) ||
+    ( egrep( string:buf, pattern:'"installed":("true"|true),("maintenance":("true"|true|"false"|false),)?("needsDbUpgrade":("true"|true|"false"|false),)?"version":"([0-9.a]+)","versionstring":"([0-9. a-zA-Z]+)","edition":"(.*)"' ) ||
       ( "You are accessing the server from an untrusted domain" >< buf && ">ownCloud<" >< buf ))) {
 
     version = "unknown";
@@ -91,8 +94,8 @@ foreach dir( make_list_unique( "/", "/oc", "/owncloud", "/ownCloud", "/OwnCloud"
       }
     }
 
-    ver = eregmatch( string:buf, pattern:'version":"([0-9.a]+)","versionstring":"([0-9.a]+)"', icase:TRUE );
-    if( ! isnull( ver[2] ) ) version = ver[2];
+    ver = eregmatch( string:buf, pattern:'version":"([0-9.a]+)","versionstring":"([0-9. a-zA-Z]+)"', icase:TRUE );
+    if( ! isnull( ver[2] ) ) version = ereg_replace( pattern:" ", replace:"", string:ver[2] );
 
     replace_kb_item( name:"owncloud_or_nextcloud/installed", value:TRUE );
     replace_kb_item( name:"owncloud/installed", value:TRUE );

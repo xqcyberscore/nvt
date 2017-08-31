@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: limewire_remote_unauth_access.nasl 5622 2017-03-20 14:20:52Z cfi $
+# $Id: limewire_remote_unauth_access.nasl 6695 2017-07-12 11:17:53Z cfischer $
 #
 # Lime Wire Multiple Remote Unauthorized Access
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17973");
-  script_version("$Revision: 5622 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 15:20:52 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 6695 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(12802);
   script_cve_id("CVE-2005-0788", "CVE-2005-0789");
@@ -43,7 +43,6 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 6346);
   script_mandatory_keys("limewire/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   tag_summary = "The remote host seems to be running Lime Wire, a P2P file sharing program.
 

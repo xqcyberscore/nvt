@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-051.nasl 3006 2016-04-07 12:32:11Z antu123 $
+# $Id: gb_ms15-051.nasl 6453 2017-06-28 09:59:05Z teissa $
 #
 # MS Windows Kernel-Mode Driver Privilege Elevation Vulnerability (3045171)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805381");
-  script_version("$Revision: 3006 $");
+  script_version("$Revision: 6453 $");
   script_cve_id("CVE-2015-1676", "CVE-2015-1677", "CVE-2015-1678", "CVE-2015-1679",
                 "CVE-2015-1680");
   script_bugtraq_id(74483, 74494, 74495, 74496, 74497);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 14:32:11 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-13 11:36:27 +0530 (Wed, 13 May 2015)");
   script_name("MS Windows Kernel-Mode Driver Privilege Elevation Vulnerability (3045171)");
 
@@ -74,7 +74,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3045171");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-051");
 
-  script_summary("Check for the vulnerable 'Win32k.sys' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

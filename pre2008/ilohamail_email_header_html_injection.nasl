@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ilohamail_email_header_html_injection.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: ilohamail_email_header_html_injection.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: IlohaMail Email Header HTML Injection Vulnerability
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Upgrade to IlohaMail version 0.8.13 or later.";
 
 if (description) {
   script_id(14634);
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 6702 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10668);
   script_tag(name:"cvss_base", value:"4.3");
@@ -59,6 +59,7 @@ if (description) {
 
   script_dependencies("global_settings.nasl", "ilohamail_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -71,8 +72,6 @@ include("http_func.inc");
 host = get_host_name();
 port = get_http_port(default:80);
 if (debug_level) display("debug: searching for IlohaMail Email Header HTML Injection vulnerability on ", host, ":", port, ".\n");
-
-if (!get_port_state(port)) exit(0);
 
 # Check each installed instance, stopping if we find a vulnerable version.
 installs = get_kb_list(string("www/", port, "/ilohamail"));

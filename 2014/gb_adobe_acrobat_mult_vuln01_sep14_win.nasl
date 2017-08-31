@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln01_sep14_win.nasl 3008 2016-04-07 13:17:01Z antu123 $
+# $Id: gb_adobe_acrobat_mult_vuln01_sep14_win.nasl 6724 2017-07-14 09:57:17Z teissa $
 #
 # Adobe Acrobat Multiple Vulnerabilities-01 Sep14 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:acrobat:";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804486");
-  script_version("$Revision: 3008 $");
+  script_version("$Revision: 6724 $");
   script_cve_id("CVE-2014-0560", "CVE-2014-0561", "CVE-2014-0563", "CVE-2014-0565",
                 "CVE-2014-0566", "CVE-2014-0567", "CVE-2014-0568");
   script_bugtraq_id(69823, 69821, 69826, 69824, 69825, 69827, 69828);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 15:17:01 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-09-19 13:51:49 +0530 (Fri, 19 Sep 2014)");
 
   script_name("Adobe Acrobat Multiple Vulnerabilities-01 Sep14 (Windows)");
@@ -76,7 +76,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/60901");
   script_xref(name : "URL" , value : "http://helpx.adobe.com/security/products/reader/apsb14-20.html");
-  script_summary("Check for the vulnerable version of Adobe Acrobat on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

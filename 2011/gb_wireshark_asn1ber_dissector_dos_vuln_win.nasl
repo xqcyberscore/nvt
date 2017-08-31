@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_asn1ber_dissector_dos_vuln_win.nasl 3108 2016-04-19 06:58:41Z benallard $
+# $Id: gb_wireshark_asn1ber_dissector_dos_vuln_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
 #
 # Wireshark ASN.1 BER Dissector Denial of Service Vulnerability (Windows)
 #
@@ -37,8 +37,8 @@ tag_summary = "This host is installed with Wireshark and is prone to denial of
 if(description)
 {
   script_id(801833);
-  script_version("$Revision: 3108 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 08:58:41 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 6519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-01-31 05:37:34 +0100 (Mon, 31 Jan 2011)");
   script_bugtraq_id(45775);
   script_cve_id("CVE-2011-0445");
@@ -55,7 +55,7 @@ if(description)
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_win.nasl");
-  script_require_keys("SMB/WindowsVersion","Wireshark/Win/Ver");
+  script_mandatory_keys("Wireshark/Win/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_maygion_ipcamera_mult_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_maygion_ipcamera_mult_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # MayGion IP Cameras Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803774");
-  script_version("$Revision: 6104 $");
+  script_version("$Revision: 6698 $");
   script_bugtraq_id(60192, 60196);
   script_cve_id("CVE-2013-1604", "CVE-2013-1605");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-10-28 15:46:55 +0530 (Mon, 28 Oct 2013)");
   script_name("MayGion IP Cameras Multiple Vulnerabilities");
 
@@ -63,9 +63,8 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("WebServer_IPCamera_Logo/banner");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("WebServer_IPCamera_Logo/banner");
 
   exit(0);
 }

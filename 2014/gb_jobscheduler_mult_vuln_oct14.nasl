@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jobscheduler_mult_vuln_oct14.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_jobscheduler_mult_vuln_oct14.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # JobScheduler Multiple Vulnerabilities - Oct14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804773");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-5391", "CVE-2014-5392", "CVE-2014-5393");
   script_bugtraq_id(69660, 69664, 69661);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-09 10:33:16 +0530 (Thu, 09 Oct 2014)");
 
   script_name("JobScheduler Multiple Vulnerabilities - Oct14");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.sos-berlin.com/modules/news/article.php?storyid=74");
   script_xref(name : "URL" , value : "http://www.christian-schneider.net/advisories/CVE-2014-5392.txt");
 
-  script_summary("Check if JobScheduler is vulnerable to xxe injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

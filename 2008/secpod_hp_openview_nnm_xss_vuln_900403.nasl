@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_openview_nnm_xss_vuln_900403.nasl 5657 2017-03-21 11:08:08Z cfi $
+# $Id: secpod_hp_openview_nnm_xss_vuln_900403.nasl 6599 2017-07-07 09:50:33Z cfischer $
 #
 # HP OpenView Network Node Manager XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:hp:openview_network_node_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900403");
-  script_version("$Revision: 5657 $");
+  script_version("$Revision: 6599 $");
   script_bugtraq_id(26838,27237);
   script_cve_id("CVE-2007-5000", "CVE-2007-6388");
   script_copyright("Copyright (C) 2008 SecPod");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:50:33 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,7 @@ if(description)
   script_name("HP OpenView Network Node Manager XSS Vulnerability");
   script_dependencies("os_detection.nasl", "secpod_hp_openview_nnm_detect.nasl");
   script_require_ports("Services/www", 7510);
-  script_mandatory_keys("Host/runs_unixoide", "HP/OVNNM/installed");
+  script_mandatory_keys("HP/OVNNM/installed", "Host/runs_unixoide");
 
   script_xref(name:"URL", value:"http://secunia.com/Advisories/32800");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsl_router_mult_auth_bypass_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_dlink_dsl_router_mult_auth_bypass_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # D-Link Dsl Router Multiple Authentication Bypass Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803700");
-  script_version("$Revision: 6104 $");
+  script_version("$Revision: 6698 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-05-21 12:05:19 +0530 (Tue, 21 May 2013)");
   script_name("D-Link Dsl Router Multiple Authentication Bypass Vulnerabilities");
 
@@ -42,10 +42,9 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 80);
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
   script_mandatory_keys("DSL_Router/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to retrieve the
   administrator password and then access the device with full privileges.

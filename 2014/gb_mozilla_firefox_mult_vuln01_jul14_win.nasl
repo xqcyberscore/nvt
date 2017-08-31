@@ -29,14 +29,14 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804702");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-1533", "CVE-2014-1534", "CVE-2014-1536", "CVE-2014-1537",
                 "CVE-2014-1538", "CVE-2014-1540", "CVE-2014-1541", "CVE-2014-1542",
                 "CVE-2014-1543");
   script_bugtraq_id(67965, 67964, 67966, 67971, 67976, 67978, 67979, 67968, 67969);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-01 13:15:10 +0530 (Tue, 01 Jul 2014)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 July14 (Windows)");
 
@@ -84,7 +84,6 @@ For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/59171");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2014/mfsa2014-48.html");
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

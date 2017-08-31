@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_tools_local_prv_esc_vuln_lin.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_vmware_tools_local_prv_esc_vuln_lin.nasl 6539 2017-07-05 12:02:14Z cfischer $
 #
 # VMware Tools Local Privilege Escalation Vulnerability (Linux)
 #
@@ -58,8 +58,8 @@ tag_insight = "An input validation error is present in the Windows-based VMware 
 if(description)
 {
   script_id(800005);
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 6539 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:02:14 +0200 (Wed, 05 Jul 2017) $");
   script_tag(name:"creation_date", value:"2008-09-26 14:12:58 +0200 (Fri, 26 Sep 2008)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
@@ -71,7 +71,7 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Privilege escalation");
   script_dependencies("gb_vmware_prdts_detect_lin.nasl");
-  script_mandatory_keys("login/SSH/success","VMware/Linux/Installed");
+  script_mandatory_keys("VMware/Linux/Installed");
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "affected" , value : tag_affected);
@@ -81,11 +81,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/30556");
   script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2008-0009.html");
-  exit(0);
-}
-
-
-if(!get_kb_item("VMware/Linux/Installed")){
   exit(0);
 }
 

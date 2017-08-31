@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20160817-ise.nasl 3860 2016-08-19 10:28:19Z ckuerste $
+# $Id: gb_cisco_ise_cisco-sa-20160817-ise.nasl 6721 2017-07-14 01:48:00Z ckuersteiner $
 #
 # Cisco Identity Services Engine Admin Dashboard Page Cross-Site Scripting Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:cisco:identity_services_engine';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106193");
-  script_version("$Revision: 3860 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-08-19 12:28:19 +0200 (Fri, 19 Aug 2016) $");
+  script_version("$Revision: 6721 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-07-14 03:48:00 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name: "creation_date", value: "2016-08-19 15:42:28 +0700 (Fri, 19 Aug 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -75,7 +75,7 @@ the context of the affected site or allow the attacker to access sensitive brows
 include("host_details.inc");
 include("version_func.inc");
 
-if (!version = get_app_version(cpe: CPE, port: port))
+if (!version = get_app_version(cpe: CPE))
   exit(0);
 
 if (!patch = get_kb_item("cisco_ise/patch"))
@@ -84,7 +84,7 @@ if (!patch = get_kb_item("cisco_ise/patch"))
 if (version == "1.3.0.876") {
   if (int(patch) <= 7) {
     report = report_fixed_ver(installed_version: version, installed_patch: patch, fixed_version: 'See advisory');
-    security_message(port: port, data: report);
+    security_message(port: 0, data: report);
     exit(0);
   }
 }

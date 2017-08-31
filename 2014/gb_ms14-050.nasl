@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-050.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-050.nasl 6469 2017-06-28 14:24:07Z cfischer $
 #
 # Microsoft SharePoint Server and Foundation Privilege Escalation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804741");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6469 $");
   script_cve_id("CVE-2014-2816");
   script_bugtraq_id(69099);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-28 16:24:07 +0200 (Wed, 28 Jun 2017) $");
   script_tag(name:"creation_date", value:"2014-08-13 17:07:01 +0530 (Wed, 13 Aug 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
   script_name("Microsoft SharePoint Server and Foundation Privilege Escalation Vulnerability");
@@ -74,12 +74,11 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-050";
 
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2880994");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-050");
-  script_summary("Check for the version of vulnerable files");
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
-  script_require_keys("MS/SharePoint/Server/Ver", "MS/SharePoint/Foundation/Ver");
+  script_mandatory_keys("MS/SharePoint/Server_or_Foundation_or_Services/Installed");
   exit(0);
 }
 

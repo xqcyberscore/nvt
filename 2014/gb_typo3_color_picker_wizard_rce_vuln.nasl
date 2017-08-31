@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_color_picker_wizard_rce_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_typo3_color_picker_wizard_rce_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # TYPO3 Color Picker Wizard Remote PHP Code Execution Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804466");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2014-3942");
   script_bugtraq_id(67630);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-07-03 14:22:50 +0530 (Thu, 03 Jul 2014)");
   script_name("TYPO3 Color Picker Wizard Remote PHP Code Execution Vulnerability");
 
@@ -75,7 +75,6 @@ For updates refer to http://typo3.org";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/58901");
   script_xref(name : "URL" , value : "http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2014-001");
-  script_summary("Check for the vulnerable version of TYPO3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

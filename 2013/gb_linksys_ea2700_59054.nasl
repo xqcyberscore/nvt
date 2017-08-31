@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_ea2700_59054.nasl 5842 2017-04-03 13:15:19Z cfi $
+# $Id: gb_linksys_ea2700_59054.nasl 6698 2017-07-12 12:00:17Z cfischer $
 #
 # Cisco Linksys EA2700 Router Multiple Security Vulnerabilities
 #
@@ -43,7 +43,7 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103698");
  script_bugtraq_id(59054);
- script_version ("$Revision: 5842 $");
+ script_version ("$Revision: 6698 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -51,16 +51,16 @@ if (description)
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59054");
  
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-04-16 14:16:54 +0200 (Tue, 16 Apr 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("EA2700/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("EA2700/banner");
+
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }

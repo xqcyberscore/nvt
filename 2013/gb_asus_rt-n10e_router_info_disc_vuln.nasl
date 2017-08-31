@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803769");
-  script_version("$Revision: 6086 $");
+  script_version("$Revision: 6698 $");
   script_cve_id("CVE-2013-3610");
   script_bugtraq_id(62850);
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2013-10-10 13:46:03 +0530 (Thu, 10 Oct 2013)");
   script_name("ASUS RT-N10E Wireless Router Information Disclosure Vulnerability");
 
@@ -57,9 +57,8 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks");
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("RT-N10E/banner");
   script_require_ports("Services/www", 8080);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("RT-N10E/banner");
 
   exit(0);
 }
@@ -73,15 +72,6 @@ banner = "";
 
 ## Get HTTP Port
 port = get_http_port(default:8080);
-if(!port){
-  port = 8080;
-}
-
-
-## Check Port State
-if(!get_port_state(port)){
-  exit(0);
-}
 
 ## Confirm the device from banner
 banner = get_http_banner(port: port);

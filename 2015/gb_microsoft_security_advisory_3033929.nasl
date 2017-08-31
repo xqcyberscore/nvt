@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3033929.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_microsoft_security_advisory_3033929.nasl 6513 2017-07-04 09:59:28Z teissa $
 #
 # MS Windows SHA-2 Code Signing Support Vulnerability (3033929)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805354");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6513 $");
   script_cve_id("CVE-2015-0073", "CVE-2015-0075");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-03-20 17:53:39 +0530 (Fri, 20 Mar 2015)");
   script_name("MS Windows SHA-2 Code Signing Support Vulnerability (3033929)");
 
@@ -62,7 +62,6 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/294871");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/3033929");
-  script_summary("Check for the vulnerable 'Winload.exe' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_vuln.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_cacti_mult_vuln.nasl 6600 2017-07-07 09:58:31Z teissa $
 #
 # Cacti Multiple Vulnerabilities-June15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cacti:cacti";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805664");
-  script_version("$Revision: 2583 $");
+  script_version("$Revision: 6600 $");
   script_cve_id("CVE-2015-4454", "CVE-2015-4342", "CVE-2015-2665", "CVE-2015-2967");
   script_bugtraq_id(75270, 75108, 75669);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-07-20 10:16:48 +0530 (Mon, 20 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cacti Multiple Vulnerabilities-June15");
@@ -70,7 +70,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/75669");
   script_xref(name : "URL" , value : "http://www.fortiguard.com/advisory/FG-VD-15-017/");
 
-  script_summary("Check for the vulnerable version of Cacti");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

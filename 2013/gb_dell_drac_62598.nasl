@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_drac_62598.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_dell_drac_62598.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # Dell iDRAC6 and iDRAC7 'ErrorMsg' Parameter Cross Site Scripting Vulnerability
 #
@@ -60,7 +60,7 @@ if (description)
  script_cve_id("CVE-2013-3589");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 6074 $");
+ script_version ("$Revision: 6755 $");
 
  script_name("Dell iDRAC6 and iDRAC7 'ErrorMsg' Parameter Cross Site Scripting Vulnerability");
 
@@ -68,7 +68,7 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62598");
  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/920038");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-10-14 11:13:22 +0200 (Mon, 14 Oct 2013)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
@@ -76,7 +76,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_dell_drac_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("dell_remote_access_controller/fw_version");
 
  script_tag(name : "impact" , value : tag_impact);

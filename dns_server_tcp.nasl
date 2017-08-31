@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dns_server_tcp.nasl 4944 2017-01-04 17:15:26Z mime $
+# $Id: dns_server_tcp.nasl 6786 2017-07-21 16:20:30Z cfischer $
 #
 # DNS Server Detection (TCP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108018");
-  script_version("$Revision: 4944 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-04 18:15:26 +0100 (Wed, 04 Jan 2017) $");
+  script_version("$Revision: 6786 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-21 18:20:30 +0200 (Fri, 21 Jul 2017) $");
   script_tag(name:"creation_date", value:"2009-03-22 17:08:49 +0100 (Sun, 22 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Service detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service2.nasl");
   script_require_ports("Services/unknown", 53);
 
   script_tag(name:"summary", value:"A DNS Server is running at this Host.

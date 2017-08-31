@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-0025.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: ELSA-2011-0025.nasl 6556 2017-07-06 11:54:54Z cfischer $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122282");
-script_version("$Revision: 6404 $");
+script_version("$Revision: 6556 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:15:56 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:54:54 +0200 (Thu, 06 Jul 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-0025");
 script_tag(name: "insight", value: "ELSA-2011-0025 -  gcc security and bug fix update - [4.1.2-50.el5]- fix up fastjar directory traversal bugs (CVE-2010-0831)[4.1.2-49.el5]- fix ICE in set_uids_in_ptset (#605803)- fix ICE in make_rtl_for_nonlocal_decl (#582682, #508735, #503565, PR c++/33094)- dont build gcjwebplugin (#596097)- fix IPP handling in libgcj (#578382)- document -print-multi-os-directory (#529659, PR other/25507)- fix ICE in output_die with function local types (#527510, PR debug/41063)- speed up locale::locale() ctor if _S_global hasnt been changed (#635708, PR libstdc++/40088)"); 
 script_tag(name : "solution", value : "update software");
@@ -38,7 +38,7 @@ script_tag(name:"cvss_base", value:"5.8");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");

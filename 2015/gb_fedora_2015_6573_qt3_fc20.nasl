@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869333");
-  script_version("$Revision: 3347 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:54:40 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6630 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-05-02 05:42:50 +0200 (Sat, 02 May 2015)");
   script_cve_id("CVE-2015-1860", "CVE-2015-1858", "CVE-2015-1859", "CVE-2015-0295",
                 "CVE-2014-0190");
@@ -52,12 +52,11 @@ well as the README files for Qt 3.
   script_xref(name: "FEDORA", value: "2015-6573");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-May/156937.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of qt3");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/fedora", "ssh/login/rpms");
   exit(0);
 }
 

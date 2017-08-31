@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805081");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6513 $");
   script_cve_id("CVE-2015-2432", "CVE-2015-2458", "CVE-2015-2459", "CVE-2015-2460",
                 "CVE-2015-2461", "CVE-2015-2462", "CVE-2015-2435", "CVE-2015-2455",
                 "CVE-2015-2456", "CVE-2015-2463", "CVE-2015-2464", "CVE-2015-2433",
                 "CVE-2015-2453", "CVE-2015-2454", "CVE-2015-2465");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-08-12 11:28:42 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Graphics Component Remote Code Executioon Vulnerabilities (3078662)");
@@ -72,7 +72,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3078662");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-080");
 
-  script_summary("Check for the vulnerable file 'Atmfd.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

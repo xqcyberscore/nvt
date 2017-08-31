@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882228");
-  script_version("$Revision: 6183 $");
+  script_version("$Revision: 6657 $");
   script_cve_id("CVE-2015-2724", "CVE-2015-2725", "CVE-2015-2731", "CVE-2015-2734",
                 "CVE-2015-2735", "CVE-2015-2736", "CVE-2015-2737", "CVE-2015-2738",
                 "CVE-2015-2739", "CVE-2015-2740", "CVE-2015-2741");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:50:44 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2015-07-21 06:36:22 +0200 (Tue, 21 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for thunderbird CESA-2015:1455 centos6 ");
@@ -81,7 +81,7 @@ to take effect.
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_mandatory_keys("ssh/login/centos", "ssh/login/rpms");
   exit(0);
 }
 

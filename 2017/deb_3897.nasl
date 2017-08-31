@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3897.nasl 6440 2017-06-27 08:41:55Z teissa $
+# $Id: deb_3897.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3897-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703897);
-    script_version("$Revision: 6440 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2015-7943", "CVE-2017-6922");
     script_name("Debian Security Advisory DSA 3897-1 (drupal7 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-27 10:41:55 +0200 (Tue, 27 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-06-24 00:00:00 +0200 (Sat, 24 Jun 2017)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "drupal7 on Debian Linux");
         script_tag(name: "insight",   value: "Drupal is a dynamic web site platform which allows an individual or
 community of users to publish, manage and organize a variety of

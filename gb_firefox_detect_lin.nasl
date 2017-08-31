@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_detect_lin.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_firefox_detect_lin.nasl 6482 2017-06-29 08:31:43Z cfischer $
 #
 # Mozilla Firefox Version Detection (Linux)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800017");
+  script_version("$Revision: 6482 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:31:43 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2008-10-07 14:21:23 +0200 (Tue, 07 Oct 2008)");
   script_name("Mozilla Firefox Version Detection (Linux)");
 
@@ -50,7 +50,6 @@ if(description)
   exit(0);
 }
 
-
 include("ssh_func.inc");
 include("version_func.inc");
 include("cpe.inc");
@@ -60,8 +59,6 @@ include("host_details.inc");
 fox_sock = "";
 foxName = "";
 foxVer = "";
-
-#firPath = "/usr/bin/firefox";
 
 fox_sock = ssh_login_or_reuse_connection();
 if(!fox_sock)
@@ -81,6 +78,8 @@ foreach binary_foxName (foxName)
   if(!isnull(foxVer[1]))
   {
     set_kb_item(name:"Firefox/Linux/Ver", value:foxVer[1]);
+    replace_kb_item(name:"Firefox/Linux_or_Win/installed", value:TRUE);
+    replace_kb_item(name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Linux/Installed", value:TRUE);
 
     ## build cpe and store it as host_detail
     cpe = build_cpe(value:foxVer[1], exp:"^([0-9.a-z]+)", base:"cpe:/a:mozilla:firefox:");

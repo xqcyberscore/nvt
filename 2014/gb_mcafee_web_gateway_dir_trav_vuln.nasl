@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_web_gateway_dir_trav_vuln.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_mcafee_web_gateway_dir_trav_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
 #
 # McAfee Web Gateway Directory Traversal Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mcafee:web_gateway";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6735 $");
   script_cve_id("CVE-2014-2535");
   script_bugtraq_id(66193);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-04-08 13:16:45 +0530 (Tue, 08 Apr 2014)");
   script_name("McAfee Web Gateway Directory Traversal Vulnerability");
 
@@ -74,7 +74,6 @@ For updates refer to http://www.mcafee.com/us/products/web-gateway.aspx";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56958");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/91772");
   script_xref(name : "URL" , value : "https://kc.mcafee.com/corporate/index?page=content&id=SB10063");
-  script_summary("Check for the vulnerable version of McAfee Web Gateway");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openmrs_multiple_vuln.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_openmrs_multiple_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
 #
 # OpenMRS Multiple Security Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805009");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6769 $");
   script_cve_id("CVE-2014-8071", "CVE-2014-8072", "CVE-2014-8073");
   script_bugtraq_id(70664);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-10-29 16:11:01 +0530 (Wed, 29 Oct 2014)");
 
   script_name("OpenMRS Multiple Security Vulnerabilities");
@@ -85,7 +85,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/97690");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/128748");
 
-  script_summary("Check if OpenMRS is vulnerable to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

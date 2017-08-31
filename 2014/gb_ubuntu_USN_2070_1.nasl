@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841679);
-  script_version("$Revision: 2809 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 12:39:38 +0100 (Wed, 09 Mar 2016) $");
+  script_version("$Revision: 6645 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-06 16:06:10 +0530 (Mon, 06 Jan 2014)");
   script_cve_id("CVE-2013-2929", "CVE-2013-2930", "CVE-2013-4345", "CVE-2013-4348",
                 "CVE-2013-4511", "CVE-2013-4513", "CVE-2013-4514", "CVE-2013-4515",
@@ -110,7 +110,7 @@ administrative commands to these devices potentia ...
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

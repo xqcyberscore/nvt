@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_detect_win.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: secpod_adobe_prdts_detect_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
 #
 # Adobe Products Version Detection (Windows)
 #
@@ -40,10 +40,10 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.900319";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 6475 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Products Version Detection (Windows)");
@@ -60,8 +60,10 @@ and gets the version from 'DisplayVersion' string in registry.";
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -152,6 +154,7 @@ foreach key (keylist)
           ## as only Adobe/Acrobat/Win/Ver key is used as mandatory key
           ## for all scripts
           set_kb_item(name:"Adobe/Acrobat/Win/Ver", value:acrobatVer);
+          replace_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
 
           ## Set version for 64 bit Adobe Acrobat on 64 bit OS
           if( "x64" >< osArch && "Wow6432Node" >!< key){
@@ -189,7 +192,7 @@ foreach key (keylist)
           ## as only Adobe/Reader/Win/Ver key is used as mandatory key
           ## for all scripts
           set_kb_item(name:"Adobe/Reader/Win/Ver", value:readerVer);
-
+          replace_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
 
           # set version for 64 bit Adobe Acrobat on 64 bit OS
           if( "x64" >< os64bit && "Wow6432Node" >!< key){

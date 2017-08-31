@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_dos_vuln_may09_win.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_adobe_reader_dos_vuln_may09_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
 #
 # Adobe Reader/Acrobat Denial of Service Vulnerability (May09) (Windows)
 #
@@ -29,12 +29,12 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.800706";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 4865 $");
+  script_version("$Revision: 6475 $");
   script_cve_id("CVE-2009-1492");
   script_bugtraq_id(34736);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-05-11 08:41:11 +0200 (Mon, 11 May 2009)");
   script_name("Adobe Reader/Acrobat Denial of Service Vulnerability (May09)");
 
@@ -81,7 +81,7 @@ For further updates refer, http://www.adobe.com";
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_require_keys("Adobe/Reader/Win/Ver", "Adobe/Acrobat/Win/Ver");
+  script_mandatory_keys("Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed");
   exit(0);
 }
 

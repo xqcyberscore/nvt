@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_mult_vuln_jun17.nasl 6396 2017-06-21 15:28:58Z teissa $
+# $Id: gb_bigtree_mult_vuln_jun17.nasl 6726 2017-07-14 10:39:17Z cfischer $
 #
 # BigTree CMS <= 4.2.18 Multiple CSRF and XSS Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:bigtree:bigtree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108181");
-  script_version("$Revision: 6396 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 17:28:58 +0200 (Wed, 21 Jun 2017) $");
+  script_version("$Revision: 6726 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-14 12:39:17 +0200 (Fri, 14 Jul 2017) $");
   script_tag(name:"creation_date", value:"2017-06-13 08:57:33 +0200 (Tue, 13 Jun 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,7 +56,7 @@ if(description)
 
   script_tag(name:"affected", value:"BigTree CMS versions through 4.2.18.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 13th June, 2017. Information
+  script_tag(name:"solution", value:"No solution or patch is available as of 14th July, 2017. Information
   regarding this issue will be updated once the solution details are available.");
 
   script_tag(name:"qod_type", value:"remote_banner");

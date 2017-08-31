@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841690);
-  script_version("$Revision: 2809 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 12:39:38 +0100 (Wed, 09 Mar 2016) $");
+  script_version("$Revision: 6645 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-01-27 11:22:21 +0530 (Mon, 27 Jan 2014)");
   script_cve_id("CVE-2013-6402", "CVE-2013-6427");
   script_tag(name:"cvss_base", value:"6.8");
@@ -67,7 +67,7 @@ code. (CVE-2013-6427)";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
   exit(0);
 }
 

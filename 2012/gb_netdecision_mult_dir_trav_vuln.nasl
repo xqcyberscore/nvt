@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netdecision_mult_dir_trav_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_netdecision_mult_dir_trav_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
 #
 # NetDecision Multiple Directory Traversal Vulnerabilities
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802618");
   script_bugtraq_id(52327);
-  script_version("$Revision: 5940 $");
+  script_version("$Revision: 6697 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2012-03-09 16:16:16 +0530 (Fri, 09 Mar 2012)");
   script_name("NetDecision Multiple Directory Traversal Vulnerabilities");
 
@@ -44,10 +44,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_require_ports("Services/www", 80, 8087, 8090);
   script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80, 8087, 8090);
   script_mandatory_keys("NetDecision-HTTP-Server/banner");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation may allow an attacker to obtain sensitive
   information, which can lead to launching further attacks.

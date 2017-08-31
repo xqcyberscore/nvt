@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: osCommerce_dirtraversal.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: osCommerce_dirtraversal.nasl 6703 2017-07-12 13:57:25Z cfischer $
 # Description: osCommerce directory traversal
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "Upgrade to a newer version of this software";
 if (description)
 {
  script_id(17595);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 6703 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:57:25 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-2021");
  script_bugtraq_id(10364);
@@ -51,9 +51,9 @@ if (description)
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2005 David Maciejak");
  script_dependencies("oscommerce_detect.nasl");
- script_require_keys("Software/osCommerce");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("Software/osCommerce");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

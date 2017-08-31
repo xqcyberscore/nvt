@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3890.nasl 6407 2017-06-22 10:42:41Z teissa $
+# $Id: deb_3890.nasl 6607 2017-07-07 12:04:25Z cfischer $
 # Auto-generated from advisory DSA 3890-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703890);
-    script_version("$Revision: 6407 $");
+    script_version("$Revision: 6607 $");
     script_cve_id("CVE-2017-9736");
     script_name("Debian Security Advisory DSA 3890-1 (spip - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-06-22 12:42:41 +0200 (Thu, 22 Jun 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
     script_tag(name: "creation_date", value: "2017-06-21 00:00:00 +0200 (Wed, 21 Jun 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"7.5");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 
@@ -47,7 +47,7 @@ if(description)
     script_copyright("Copyright (c) 2017 Greenbone Networks GmbH http://greenbone.net");
     script_family("Debian Local Security Checks");
     script_dependencies("gather-package-list.nasl");
-    script_mandatory_keys("HostDetails/OS/cpe:/o:debian:debian_linux", "login/SSH/success", "ssh/login/packages");
+    script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages");
     script_tag(name: "affected",  value: "spip on Debian Linux");
         script_tag(name: "insight",   value: "SPIP is a publishing system for the Internet in which great importance
 is attached to collaborative working, to multilingual environments,

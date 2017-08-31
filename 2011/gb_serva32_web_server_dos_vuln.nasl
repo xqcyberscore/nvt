@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serva32_web_server_dos_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_serva32_web_server_dos_vuln.nasl 6696 2017-07-12 11:30:15Z cfischer $
 #
 # Serva32 Webserver Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802020");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6696 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
   script_tag(name:"creation_date", value:"2011-05-23 15:31:07 +0200 (Mon, 23 May 2011)");
   script_bugtraq_id(47760);
   script_tag(name:"cvss_base", value:"7.8");
@@ -43,9 +43,8 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_require_ports("Services/www", 80, 8080);
   script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 80, 8080);
   script_mandatory_keys("Serva32/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated attackers to

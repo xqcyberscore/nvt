@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_saia_pcd_1_22.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_saia_pcd_1_22.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Saia PCD < 1.22 Multiple Vulnerabilities
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103895");
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 6663 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -38,9 +38,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.heise.de/security/meldung/Kritische-Schwachstelle-in-hunderten-Industrieanlagen-1854385.html");
  script_xref(name:"URL", value:"http://www.heise.de/security/meldung/Verwundbare-Industrieanlagen-Fernsteuerbares-Gotteshaus-1902245.html");
  
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-01-28 11:22:01 +0100 (Tue, 28 Jan 2014)");
- script_summary("Check the firmware version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("General");

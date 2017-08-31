@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_priv_escal_vuln_jul07_macosx.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_adobe_reader_priv_escal_vuln_jul07_macosx.nasl 6663 2017-07-11 09:58:05Z teissa $
 #
 # Adobe Reader Privilege Escalation Vulnerability - Jul07 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804631");
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6663 $");
   script_cve_id("CVE-2006-3452");
   script_bugtraq_id(18945);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-06-05 12:48:53 +0530 (Thu, 05 Jun 2014)");
   script_name("Adobe Reader Privilege Escalation Vulnerability - Jul07 (Mac OS X)");
 
@@ -76,7 +76,6 @@ For updates refer to http://www.adobe.com";
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1016473");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/27678");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb06-08.html");
-  script_summary("Check for the version of Adobe Reader on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

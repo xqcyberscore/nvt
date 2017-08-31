@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-071.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_ms14-071.nasl 6759 2017-07-19 09:56:33Z teissa $
 #
 # Microsoft Window Audio Service Privilege Escalation Vulnerability (3005607)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804880");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6759 $");
   script_cve_id("CVE-2014-6322");
   script_bugtraq_id(70978);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
   script_tag(name:"creation_date", value:"2014-11-12 10:30:01 +0530 (Wed, 12 Nov 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Window Audio Service Privilege Escalation Vulnerability (3005607)");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/59968");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3005607");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-071");
-  script_summary("Check for the version of 'Audiosrv.dll' vulnerable file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

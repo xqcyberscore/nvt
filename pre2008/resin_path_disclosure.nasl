@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: resin_path_disclosure.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: resin_path_disclosure.nasl 6702 2017-07-12 13:49:41Z cfischer $
 # Description: Resin DOS device path disclosure
 #
 # Authors:
@@ -42,8 +42,8 @@ tag_solution = "Upgrade to a later software version.";
 if(description)
 {
  script_id(11048);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 6702 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2002-2090");
  script_bugtraq_id(5252);
@@ -66,12 +66,9 @@ if(description)
  exit(0);
 }
 
-#
 include("http_func.inc");
 
 port = get_http_port(default:8282);
-
-if(!get_port_state(port)) exit(0);
 
 # Requesting a DOS device may hang some servers
 # According to Peter Gründl's advisory:

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openmediavault_default_login.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_openmediavault_default_login.nasl 6692 2017-07-12 09:57:43Z teissa $
 #
 # OpenMediaVault Default Admin Credentials
 #
@@ -28,13 +28,12 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105089"); 
- script_version("$Revision: 2780 $");
+ script_version("$Revision: 6692 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("OpenMediaVault Default Admin Credentials");
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
  script_tag(name:"creation_date", value:"2014-09-15 12:02:06 +0200 (Mon, 15 Sep 2014)");
- script_summary("Determine if it is possible to login with default credentials.");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");

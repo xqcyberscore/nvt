@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_mobile_management_58402.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_novell_zenworks_mobile_management_58402.nasl 6755 2017-07-18 12:55:56Z cfischer $
 #
 # Novell ZENworks Mobile Management  Local File Include Vulnerability
 #
@@ -51,14 +51,14 @@ if (description)
  script_cve_id("CVE-2013-1081");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6104 $");
+ script_version ("$Revision: 6755 $");
 
  script_name("Novell ZENworks Mobile Management  Local File Include Vulnerability");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/58402");
  script_xref(name:"URL", value:"http://www.novell.com/support/kb/doc.php?id=7011895");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
  script_tag(name:"creation_date", value:"2013-06-10 13:05:34 +0200 (Mon, 10 Jun 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -66,7 +66,6 @@ if (description)
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_novell_zenworks_mobile_management_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("zenworks_mobile_management/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

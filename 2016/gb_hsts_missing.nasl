@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hsts_missing.nasl 5426 2017-02-26 17:47:00Z cfi $
+# $Id: gb_hsts_missing.nasl 6771 2017-07-20 10:38:44Z cfischer $
 #
 # SSL/TLS: HTTP Strict Transport Security (HSTS) Missing
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105879");
-  script_version("$Revision: 5426 $");
+  script_version("$Revision: 6771 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-26 18:47:00 +0100 (Sun, 26 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-07-20 12:38:44 +0200 (Thu, 20 Jul 2017) $");
   script_tag(name:"creation_date", value:"2016-08-22 13:07:41 +0200 (Mon, 22 Aug 2016)");
   script_name("SSL/TLS: HTTP Strict Transport Security (HSTS) Missing");
   script_category(ACT_GATHER_INFO);
@@ -57,7 +57,7 @@ if( ! port = get_kb_item( "hsts/missing/port" ) ) exit( 0 );
 banner = get_kb_item( "www/banner/" + port + "/" );
 
 # Clean-up Banner from dynamic data so we don't report differences on the delta report
-pattern = "(Date: |expires=|Expires: |PHPSESSID=|Last-Modified: |Content-Length: |Set-Cookie: |Etag: |SessionId=)([0-9a-zA-Z\ \:\,\-\;=]+)";
+pattern = '([Dd]ate: |[Ee]xpires=|[Ee]xpires: |PHPSESSID=|[Ll]ast-[Mm]odified: |[Cc]ontent-[Ll]ength: |[Ss]et-[Cc]ookie: |[Ee][Tt]ag: (W/"|")?|[Ss]ession[Ii]d=)([0-9a-zA-Z :,-;=]+)';
 if( eregmatch( pattern:pattern, string:banner ) ) {
   banner = ereg_replace( string:banner, pattern:pattern, replace:"\1***replaced***" );
 }
