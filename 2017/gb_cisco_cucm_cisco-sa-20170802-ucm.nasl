@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20170802-ucm.nasl 6837 2017-08-03 04:09:02Z ckuersteiner $
+# $Id: gb_cisco_cucm_cisco-sa-20170802-ucm.nasl 6950 2017-08-17 12:54:04Z asteins $
 #
 # Cisco Unified Communications Manager SQL Injection Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140275");
  script_cve_id("CVE-2017-6757");
- script_tag(name: "cvss_base", value: "5.5");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
- script_version("$Revision: 6837 $");
+ script_tag(name:"cvss_base", value:"6.5");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+ script_version("$Revision: 6950 $");
 
  script_name("Cisco Unified Communications Manager SQL Injection Vulnerability");
 
@@ -56,7 +56,7 @@ database tables, affecting the integrity of the data.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-08-03 06:09:02 +0200 (Thu, 03 Aug 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-08-17 14:54:04 +0200 (Thu, 17 Aug 2017) $");
  script_tag(name: "creation_date", value: "2017-08-03 10:58:43 +0700 (Thu, 03 Aug 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

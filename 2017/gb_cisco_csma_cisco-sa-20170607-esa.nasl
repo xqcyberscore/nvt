@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_csma_cisco-sa-20170607-esa.nasl 6479 2017-06-29 07:59:07Z teissa $
+# $Id: gb_cisco_csma_cisco-sa-20170607-esa.nasl 6947 2017-08-17 04:21:42Z ckuersteiner $
 #
 # Cisco Content Security Management Appliance Message Tracking Cross-Site Scripting Vulnerability
 #
@@ -8,7 +8,7 @@
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2016 Greenbone Networks GmbH
+# Copyright (c) 2017 Greenbone Networks GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-6661");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 6479 $");
+ script_version("$Revision: 6947 $");
 
  script_name("Cisco Content Security Management Appliance Message Tracking Cross-Site Scripting Vulnerability");
 
@@ -57,11 +57,11 @@ code in the context of the interface or allow the attacker to access sensitive b
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-06-29 09:59:07 +0200 (Thu, 29 Jun 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-08-17 06:21:42 +0200 (Thu, 17 Aug 2017) $");
  script_tag(name: "creation_date", value: "2017-06-08 11:00:35 +0700 (Thu, 08 Jun 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+ script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_dependencies("gb_cisco_csma_version.nasl");
  script_mandatory_keys("cisco_csm/installed");
 

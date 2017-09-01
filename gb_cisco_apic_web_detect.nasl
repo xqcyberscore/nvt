@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_web_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_cisco_apic_web_detect.nasl 6947 2017-08-17 04:21:42Z ckuersteiner $
 #
 # Cisco Application Policy Infrastructure Controller Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105534");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version ("$Revision: 6947 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-17 06:21:42 +0200 (Thu, 17 Aug 2017) $");
  script_tag(name:"creation_date", value:"2016-02-10 12:03:48 +0100 (Wed, 10 Feb 2016)");
  script_name("Cisco Application Policy Infrastructure Controller Detection");
 
@@ -73,6 +73,7 @@ if( ! isnull( version[1] ) )
 {
   vers = version[1];
   cpe += ':' + vers;
+  set_kb_item(name: "cisco/application_policy_infrastructure_controller/version", value: vers);
 }
 
 
@@ -82,7 +83,7 @@ log_message( data: build_detection_report( app:"Cisco Application Policy Infrast
                                            version:vers,
                                            install:"/",
                                            cpe:cpe,
-                                           concluded: version[0] ),
+                                           concluded: version[0], concludedUrl: url),
              port:port );
 
 exit(0);

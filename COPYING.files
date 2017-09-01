@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 31 Aug 2017 08:02:06 +0200
+# Automatically created on:  Fri, 01 Sep 2017 08:41:57 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -30718,6 +30718,7 @@
 2013/gb_ultra_minihttpd_server_bof_vuln.nasl: GPLv2+
 2013/gb_unprotected_arris_2307.nasl: GPLv2+
 2013/gb_unprotected_belkin_2307.nasl: GPLv2+
+2013/gb_unprotected_hp_printers.nasl: GPLv2+
 2013/gb_unprotected_lexmark_printers.nasl: GPLv2+
 2013/gb_vbulletin_auth_bypass_vuln.nasl: GPLv2+
 2013/gb_verax_nms_multiple_vuln.nasl: GPLv2+
@@ -34678,6 +34679,7 @@
 2014/gb_wp_videowhisper_video_present_xss_vuln.nasl: GPLv2+
 2014/gb_wp_w3_total_cache_xss_vuln.nasl: GPLv2+
 2014/gb_xampp_control_panel_xss_vuln.nasl: GPLv2+
+2014/gb_xampp_writeintolocaldisk_vuln_oct14.nasl: GPLv2+
 2014/gb_xenserver_ctx140984.nasl: GPLv2+
 2014/gb_xenserver_ctx200223.nasl: GPLv2+
 2014/gb_xenserver_ctx200288.nasl: GPLv2+
@@ -48073,6 +48075,8 @@
 2017/gb_cisco_aironet_cisco-sa-20170405-ame.nasl: GPLv2+
 2017/gb_cisco_aironet_cisco-sa-20170405-cme.nasl: GPLv2+
 2017/gb_cisco_aironet_cisco-sa-20170503-cme.nasl: GPLv2+
+2017/gb_cisco_apic_cisco-sa-20170816-apic1.nasl: GPLv2+
+2017/gb_cisco_apic_cisco-sa-20170816-apic2.nasl: GPLv2+
 2017/gb_cisco_asa_cisco-sa-20170208-asa.nasl: GPLv2+
 2017/gb_cisco_asa_cisco-sa-20170315-asa.nasl: GPLv2+
 2017/gb_cisco_asa_cisco-sa-20170419-asa-dns.nasl: GPLv2+
@@ -48087,6 +48091,7 @@
 2017/gb_cisco_asr_1000_ios_xe_snmp_high_cpu_dos_vuln.nasl: GPLv2+
 2017/gb_cisco_asr_1000_snmp_high_cpu_dos_vuln.nasl: GPLv2+
 2017/gb_cisco_csma_cisco-sa-20170607-esa.nasl: GPLv2+
+2017/gb_cisco_csma_cisco-sa-20170816-csa.nasl: GPLv2+
 2017/gb_cisco_cucm_cisco-sa-20170118-cucm1.nasl: GPLv2+
 2017/gb_cisco_cucm_cisco-sa-20170118-cucm.nasl: GPLv2+
 2017/gb_cisco_cucm_cisco-sa-20170215-cucm1.nasl: GPLv2+
@@ -48104,6 +48109,7 @@
 2017/gb_cisco_cucm_cisco-sa-20170517-ucm.nasl: GPLv2+
 2017/gb_cisco_cucm_cisco-sa-20170802-ucm1.nasl: GPLv2+
 2017/gb_cisco_cucm_cisco-sa-20170802-ucm.nasl: GPLv2+
+2017/gb_cisco_cucm_cisco-sa-20170816-ucm.nasl: GPLv2+
 2017/gb_cisco_cucmim_cisco-sa-20170310-struts2.nasl: GPLv2+
 2017/gb_cisco_ddr2200_mult_vuln.nasl: GPLv2+
 2017/gb_cisco_esa_cisco-sa-20170118-esa.nasl: GPLv2+
@@ -48111,6 +48117,7 @@
 2017/gb_cisco_esa_cisco-sa-20170215-asyncos.nasl: GPLv2+
 2017/gb_cisco_esa_cisco-sa-20170607-esa1.nasl: GPLv2+
 2017/gb_cisco_esa_cisco-sa-20170607-esa.nasl: GPLv2+
+2017/gb_cisco_esa_cisco-sa-20170816-csa.nasl: GPLv2+
 2017/gb_cisco_firepower_management_center_cisco-sa-20170201-fmc.nasl: GPLv2+
 2017/gb_cisco_firepower_management_center_cisco-sa-20170201-fpw1.nasl: GPLv2+
 2017/gb_cisco_firepower_management_center_cisco-sa-20170215-fpmc.nasl: GPLv2+
@@ -48209,6 +48216,7 @@
 2017/gb_cisco_pis_cisco-sa-20170621-piepnm4.nasl: GPLv2+
 2017/gb_cisco_pis_cisco-sa-20170621-piwf1.nasl: GPLv2+
 2017/gb_cisco_pis_cisco-sa-20170621-piwf.nasl: GPLv2+
+2017/gb_cisco_pis_cisco-sa-20170816-cpi.nasl: GPLv2+
 2017/gb_cisco_prime_collaboration_assurance_mult_vuln_mar17.nasl: GPLv2+
 2017/gb_cisco_prime_dcnm_cisco-sa-20170607-dcnm1.nasl: GPLv2+
 2017/gb_cisco_prime_dcnm_cisco-sa-20170607-dcnm2.nasl: GPLv2+
@@ -48245,6 +48253,7 @@
 2017/gb_cisco_wsa_cisco-sa-20170719-wsa3.nasl: GPLv2+
 2017/gb_cisco_wsa_cisco-sa-20170719-wsa4.nasl: GPLv2+
 2017/gb_cisco_wsa_cisco-sa-20170719-wsa5.nasl: GPLv2+
+2017/gb_cisco_wsa_cisco-sa-20170816-csa.nasl: GPLv2+
 2017/gb_citrix_netscaler_CTX220329.nasl: GPLv2+
 2017/gb_citrix_netscaler_CTX222657.nasl: GPLv2+
 2017/gb_citrix_provisioning_services_mul_vul_17jan.nasl: GPLv2+
@@ -50069,6 +50078,8 @@
 2017/gb_phpmyadmin_mult_vuln04_dec16_win.nasl: GPLv2+
 2017/gb_phpmyadmin_mult_vuln05_dec16_lin.nasl: GPLv2+
 2017/gb_phpmyadmin_mult_vuln05_dec16_win.nasl: GPLv2+
+2017/gb_phpmyadmin_mult_vuln2_apr13_lin.nasl: GPLv2+
+2017/gb_phpmyadmin_mult_vuln2_apr13_win.nasl: GPLv2+
 2017/gb_phpmyadmin_mult_vuln_apr13_lin.nasl: GPLv2+
 2017/gb_phpmyadmin_mult_vuln_apr13_win.nasl: GPLv2+
 2017/gb_phpmyadmin_mult_vuln_aug12_lin.nasl: GPLv2+
@@ -51537,6 +51548,12 @@ gb_honeywell_ip_camera_detect.nasl: GPLv2+
 gb_honeywell_xlweb_bacnet_detect.nasl: GPLv2+
 gb_horde_gollem_detect.nasl: GPLv2+
 gb_horos_detect.nasl: GPLv2+
+gb_host_alive_check1.nasl: GPLv2+
+gb_host_alive_check2.nasl: GPLv2+
+gb_host_alive_check3.nasl: GPLv2+
+gb_host_alive_check4.nasl: GPLv2+
+gb_host_alive_check5.nasl: GPLv2+
+gb_host_alive_check6.nasl: GPLv2+
 gb_hp_comware_platform_detect_snmp.nasl: GPLv2+
 gb_hp_comware_platform_detect_ssh.nasl: GPLv2+
 gb_hp_diagnostics_server_detect.nasl: GPLv2+
@@ -52198,7 +52215,6 @@ gb_ucs_detect.nasl: GPLv2+
 gb_ultraiso_detect.nasl: GPLv2+
 gb_uniform_server_detect.nasl: GPLv2+
 gb_unitrends_detect.nasl: GPLv2+
-gb_unprotected_hp_printers.nasl: GPLv2+
 gb_unrealircd_detect.nasl: GPLv2+
 gb_untangle_web_detect.nasl: GPLv2+
 gb_upnp_detect.nasl: GPLv2+
@@ -52274,7 +52290,6 @@ gb_wpn_xm_server_stack_detect.nasl: GPLv2+
 gb_wso2_carbon_detect.nasl: GPLv2+
 gb_wso2_soa_enab_server_detect.nasl: GPLv2+
 gb_wwh_detect.nasl: GPLv2+
-gb_xampp_writeintolocaldisk_vuln_oct14.nasl: GPLv2+
 gb_xcart_detect.nasl: GPLv2+
 gb_xceedium_xsuite_remote_detect.nasl: GPLv2+
 gb_xemacs_detect_win.nasl: GPLv2+
@@ -52585,6 +52600,7 @@ gsf/PCIDSS/PCIDSS_M10.3.5.nasl: GPLv2+
 gsf/PCIDSS/PCIDSS_M10.3.6.nasl: GPLv2+
 gsf/PCIDSS/PCIDSS_M10.4.1.a.nasl: GPLv2+
 gsf/PCIDSS/PCIDSS_M10.4.nasl: GPLv2+
+gsf/PCIDSS/PCIDSS_M1.1.4.c.nasl: GPLv2+
 gsf/PCIDSS/PCIDSS_M1.1.6.a.nasl: GPLv2+
 gsf/PCIDSS/PCIDSS_M1.1.6.b.nasl: GPLv2+
 gsf/PCIDSS/PCIDSS_M2.1.a.nasl: GPLv2+
@@ -52593,6 +52609,8 @@ gsf/PCIDSS/PCIDSS_M2.2.1.b.nasl: GPLv2+
 gsf/PCIDSS/PCIDSS_M2.2.2.a.nasl: GPLv2+
 gsf/PCIDSS/PCIDSS_M5.1.nasl: GPLv2+
 gsf/PCIDSS/PCIDSS_M5.2.a.nasl: GPLv2+
+gsf/PCIDSS/PCIDSS_M5.3.a.nasl: GPLv2+
+gsf/PCIDSS/PCIDSS_M8.1.4.nasl: GPLv2+
 gsf/PCIDSS/PCIDSS_M8.1.6.a.nasl: GPLv2+
 gsf/PCIDSS/PCIDSS_M8.1.7.nasl: GPLv2+
 gsf/PCIDSS/PCIDSS_M8.2.3.a.nasl: GPLv2+

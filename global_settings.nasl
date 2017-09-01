@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: global_settings.nasl 6905 2017-08-11 11:50:56Z cfischer $
+# $Id: global_settings.nasl 6954 2017-08-17 17:13:11Z cfischer $
 #
 # Global variable settings
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12288");
-  script_version("$Revision: 6905 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-11 13:50:56 +0200 (Fri, 11 Aug 2017) $");
+  script_version("$Revision: 6954 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-17 19:13:11 +0200 (Thu, 17 Aug 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -52,6 +52,7 @@ if(description)
   script_add_preference(name:"Strictly unauthenticated", type:"checkbox", value: "no");
   script_add_preference(name:"Exclude printers from scan", type:"checkbox", value:"yes");
   script_add_preference(name:"Enable SSH Debug", type:"checkbox", value:"no");
+  script_add_preference(name:"Mark host as dead if going offline (failed ICMP ping) during scan", type:"checkbox", value:"no");
 
   script_tag(name:"summary", value:"This plugin configures miscellaneous global variables for OpenVAS scripts.
   It does not perform any security check but may disable or change the behaviour of others.");
@@ -62,6 +63,9 @@ if(description)
 }
 
 include("network_func.inc");
+
+opt = script_get_preference( "Mark host as dead if going offline (failed ICMP ping) during scan" );
+if( opt == "yes" ) set_kb_item( name:"Settings/mark_host_dead_failed_icmp", value:TRUE );
 
 opt = script_get_preference( "Enable CGI scanning" );
 if( opt == "no" ) set_kb_item( name:"Settings/disable_cgi_scanning", value:TRUE );

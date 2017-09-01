@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022750.nasl 6884 2017-08-09 14:32:44Z santu $
+# $Id: gb_ms_kb4022750.nasl 6950 2017-08-17 12:54:04Z asteins $
 #
 # Windows NetBIOS Denial of Service Vulnerability (KB4022750)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811558");
-  script_version("$Revision: 6884 $");
+  script_version("$Revision: 6950 $");
   script_cve_id("CVE-2017-0174");
   script_bugtraq_id(100038);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-09 16:32:44 +0200 (Wed, 09 Aug 2017) $");
+  script_tag(name:"cvss_base", value:"6.1");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-17 14:54:04 +0200 (Thu, 17 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-08-09 08:47:11 +0530 (Wed, 09 Aug 2017)");
   script_name("Windows NetBIOS Denial of Service Vulnerability (KB4022750)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpmyadmin_36658.nasl 6945 2017-08-16 14:22:22Z cfischer $
+# $Id: phpmyadmin_36658.nasl 6948 2017-08-17 07:13:38Z asteins $
 #
 # phpMyAdmin Unspecified SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -43,13 +43,13 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6945 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-16 16:22:22 +0200 (Wed, 16 Aug 2017) $");
+ script_version("$Revision: 6948 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-17 09:13:38 +0200 (Thu, 17 Aug 2017) $");
  script_tag(name:"creation_date", value:"2009-10-20 18:54:22 +0200 (Tue, 20 Oct 2009)");
  script_cve_id("CVE-2009-3696", "CVE-2009-3697");
  script_bugtraq_id(36658);
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+ script_tag(name:"cvss_base", value:"7.5");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
  script_name("phpMyAdmin Unspecified SQL Injection and Cross Site Scripting Vulnerabilities");
 
