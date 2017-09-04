@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882062");
-  script_version("$Revision: 6656 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:49:38 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7000 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-10-17 05:58:44 +0200 (Fri, 17 Oct 2014)");
   script_cve_id("CVE-2014-3513", "CVE-2014-3567", "CVE-2014-3566");
   script_tag(name:"cvss_base", value:"7.1");
@@ -83,7 +83,6 @@ SSL-enabled services) must be restarted or the system rebooted.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "CESA", value: "2014:1652");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-October/020695.html");
-  script_summary("Check for the Version of openssl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

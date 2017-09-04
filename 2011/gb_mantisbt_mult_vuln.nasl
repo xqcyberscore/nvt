@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_vuln.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_mantisbt_mult_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # MantisBT Multiple Vulnerabilities
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is running MantisBT and is prone to multiple
 if(description)
 {
   script_id(801692);
-  script_version("$Revision: 3100 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-08 10:30:18 +0100 (Sat, 08 Jan 2011)");
   script_cve_id("CVE-2010-4348", "CVE-2010-4349", "CVE-2010-4350");
   script_bugtraq_id(45399);
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2010-4983.php");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if MantisBT is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_dependencies("mantis_detect.nasl");

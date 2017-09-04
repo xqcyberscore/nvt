@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_46155.nasl 4336 2016-10-24 15:48:20Z mime $
+# $Id: gb_openssh_46155.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # OpenSSH Legacy Certificate Signing Information Disclosure Vulnerability
 #
@@ -39,8 +39,8 @@ tag_solution = "Updates are available. Please see the references for more inform
 if (description)
 {
  script_id(103064);
- script_version("$Revision: 4336 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:48:20 +0200 (Mon, 24 Oct 2016) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-02-07 12:50:03 +0100 (Mon, 07 Feb 2011)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -54,7 +54,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.openssh.com");
 
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_summary("Determine if installed OpenSSH version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

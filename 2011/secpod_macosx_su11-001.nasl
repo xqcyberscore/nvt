@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_macosx_su11-001.nasl 3113 2016-04-19 09:57:04Z benallard $
+# $Id: secpod_macosx_su11-001.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Mac OS X v10.6.6 Multiple Vulnerabilities (2011-001)
 #
@@ -64,8 +64,8 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(902470);
-  script_version("$Revision: 3113 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 11:57:04 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-26 14:59:42 +0200 (Fri, 26 Aug 2011)");
   script_cve_id("CVE-2011-0172", "CVE-2010-1452", "CVE-2010-2068", "CVE-2011-0173",
                 "CVE-2011-0174", "CVE-2011-0175", "CVE-2011-0176", "CVE-2011-0177",
@@ -94,7 +94,6 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce//2011//Mar/msg00006.html");
 
   script_copyright("Copyright (c) 2011 SecPod");
-  script_summary("Checks for existence of Mac OS X 10.6.6 Update/Mac OS X Security Update 2011-001");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icmp_timestamps.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: gb_icmp_timestamps.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # ICMP Timestamp
 #
@@ -34,8 +34,8 @@ if (description)
 {
  
  script_id(103190);
- script_version("$Revision: 5309 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-07-15 13:32:07 +0200 (Fri, 15 Jul 2011)");
  script_cve_id("CVE-1999-0524");
  script_tag(name:"cvss_base", value:"0.0");
@@ -44,7 +44,6 @@ if (description)
 
  script_name("ICMP Timestamp Detection");
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Checks if the remote host answers to ICMP Timestamp requests");
  script_category(ACT_GATHER_INFO);
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

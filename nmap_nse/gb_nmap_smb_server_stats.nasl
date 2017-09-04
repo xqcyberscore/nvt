@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_smb_server_stats.nasl 3498 2016-06-13 12:33:25Z antu123 $
+# $Id: gb_nmap_smb_server_stats.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Wrapper for Nmap SMB Server Statistics NSE script.
 #
@@ -34,13 +34,12 @@ tag_summary = "This script attempts to get the server's statistics over the SMB 
 if(description)
 {
   script_id(801294);
-  script_version("$Revision: 3498 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:33:25 +0200 (Mon, 13 Jun 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2010-09-23 08:22:30 +0200 (Thu, 23 Sep 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
   script_name("Nmap NSE: SMB Server Statistics");
-  script_summary("Grab the server's statistics over SMB");
   script_category(ACT_GATHER_INFO);
     script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");

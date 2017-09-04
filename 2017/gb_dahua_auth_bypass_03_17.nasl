@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dahua_auth_bypass_03_17.nasl 6917 2017-08-14 07:59:46Z cfischer $
+# $Id: gb_dahua_auth_bypass_03_17.nasl 6990 2017-08-23 08:40:32Z asteins $
 #
 # Dahua Devices Authentication Bypass Vulnerability
 #
@@ -30,11 +30,12 @@ CPE = 'cpe:/a:dahua:nvr';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140185");
- script_version ("$Revision: 6917 $");
- script_cve_id("CVE-2017-6343");
- script_bugtraq_id(96449);
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+ script_version ("$Revision: 6990 $");
+ script_cve_id("CVE-2017-6343", "CVE-2017-7253", "CVE-2017-7927", "CVE-2017-7925",
+               "CVE-2017-6432", "CVE-2017-6341", "CVE-2017-6342");
+ script_bugtraq_id(96449, 96454, 96456, 98312, 98312, 97263);
+ script_tag(name:"cvss_base", value:"10.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
  script_name("Dahua Devices Authentication Bypass Vulnerability");
 
@@ -52,7 +53,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-14 09:59:46 +0200 (Mon, 14 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-23 10:40:32 +0200 (Wed, 23 Aug 2017) $");
  script_tag(name:"creation_date", value:"2017-03-14 14:30:19 +0100 (Tue, 14 Mar 2017)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_ip_office_mgr_tftp_dir_trav.nasl 5651 2017-03-21 10:09:09Z cfi $
+# $Id: gb_avaya_ip_office_mgr_tftp_dir_trav.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Avaya IP Office Manager TFTP Server Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802027");
-  script_version("$Revision: 5651 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-14 13:16:44 +0200 (Thu, 14 Jul 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secpod.org/SECPOD_Exploit-Avaya-IP-Manager-Dir-Trav.py");
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SECPOD_Avaya_IP_Manager_TFTP_Dir_Trav.txt");
 
-  script_summary("Check for the directory traversal attack on Avaya IP Office Manager TFTP Server");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Remote file access");

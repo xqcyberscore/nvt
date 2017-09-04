@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serva32_47760.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: gb_serva32_47760.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Serva32 Directory Traversal and Denial of Service Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103160");
- script_version("$Revision: 6696 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 7024 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-05-12 13:24:44 +0200 (Thu, 12 May 2011)");
  script_bugtraq_id(47760);
  script_tag(name:"cvss_base", value:"7.5");
@@ -38,7 +38,6 @@ if(description)
  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/47760");
  script_xref(name:"URL", value:"http://www.vercot.com/~serva/");
 
- script_summary("Determine if Serva32 is prone to a directory-traversal vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web Servers");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_mult_sec_bypass_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_ibm_db2_mult_sec_bypass_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # IBM DB2 Multiple Security Bypass Vulnerabilities (May-11)
 #
@@ -43,8 +43,8 @@ tag_summary = "The host is running IBM DB2 and is prone to multiple security byp
 if(description)
 {
   script_id(801930);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_cve_id("CVE-2011-1846", "CVE-2011-1847");
   script_bugtraq_id(47525);
@@ -54,7 +54,6 @@ if(description)
 
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of IBM DB2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Databases");

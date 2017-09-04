@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_sam_n_opensso_unspecified_vuln_apr11.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_oracle_sam_n_opensso_unspecified_vuln_apr11.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Oracle Java Access Manager and OpenSSO Unspecified Vulnerability - April11
 #
@@ -45,8 +45,8 @@ tag_summary = "The host is running Access Manager or OpenSSO and is prone to
 if(description)
 {
   script_id(902422);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_cve_id("CVE-2011-0844", "CVE-2011-0847");
   script_bugtraq_id(47490, 47481);
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2011-301950.html");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Java System Access Manager or OpenSSO");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

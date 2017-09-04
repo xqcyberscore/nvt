@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plotsoft_pdfill_pdf_editor_untrusted_search_path_vuln.nasl 3112 2016-04-19 08:52:10Z antu123 $
+# $Id: gb_plotsoft_pdfill_pdf_editor_untrusted_search_path_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # PlotSoft PDFill PDF Editor Untrusted Search Path Vulnerability
 #
@@ -43,8 +43,8 @@ prone to untrusted search path vulnerability.";
 if(description)
 {
   script_id(802177);
-  script_version("$Revision: 3112 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 10:52:10 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_cve_id("CVE-2011-3690");
   script_tag(name:"cvss_base", value:"9.3");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://olex.openlogic.com/wazi/2011/pdfill-pdf-editor-8-0-medium/");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of PlotSoft PDFill PDF Editor");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

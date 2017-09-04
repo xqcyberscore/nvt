@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_objectivity_db_lock_srv_dos_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_objectivity_db_lock_srv_dos_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Objectivity/DB Lock Server Denial of Service Vulnerability
 #
@@ -45,8 +45,8 @@ to denial of service vulnerability.";
 if(description)
 {
   script_id(900270);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-05 04:12:38 +0100 (Sat, 05 Feb 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/15988/");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check Objectivity/DB Lock Server is vulnerable to DoS");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Denial of Service");

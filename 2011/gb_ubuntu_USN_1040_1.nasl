@@ -43,8 +43,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2011-January/001223.html");
   script_id(840560);
-  script_version("$Revision: 6642 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:59:35 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-11 16:07:49 +0100 (Tue, 11 Jan 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -52,7 +52,6 @@ if(description)
   script_cve_id("CVE-2010-4534", "CVE-2010-4535");
   script_name("Ubuntu Update for python-django vulnerabilities USN-1040-1");
 
-  script_summary("Check for the Version of python-django vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tooltalk_rpc_database_server_mult_vuln.nasl 4803 2016-12-19 13:00:35Z mime $
+# $Id: secpod_tooltalk_rpc_database_server_mult_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # CDE ToolTalk RPC Database Server Multiple Vulnerabilities
 #
@@ -48,8 +48,8 @@ tag_summary = "This host is running the CDE ToolTalk Database Server and is
 if(description)
 {
   script_id(902477);
-  script_version("$Revision: 4803 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-19 14:00:35 +0100 (Mon, 19 Dec 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-27 17:29:53 +0200 (Tue, 27 Sep 2011)");
   script_cve_id("CVE-2002-0677", "CVE-2002-0678");
   script_bugtraq_id(5083, 5082);
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.cert.org/advisories/CA-2002-20.html");
 
   script_copyright("Copyright (c) 2011 SecPod,");
-  script_summary("Checks the presence of CDE ToolTalk RPC Database Server");
   script_category(ACT_GATHER_INFO);
   script_family("RPC");
   script_dependencies("secpod_rpc_portmap.nasl");

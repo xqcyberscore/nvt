@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emo_realty_manager_sql_inj_vuln.nasl 3569 2016-06-21 07:43:44Z benallard $
+# $Id: gb_emo_realty_manager_sql_inj_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # EMO Realty Manager 'cat1' Parameter SQL Injection Vulnerability
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802342");
-  script_version("$Revision: 3569 $");
+  script_version("$Revision: 7019 $");
   script_bugtraq_id(40625);
   script_cve_id("CVE-2010-5006");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:43:44 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-09 16:19:55 +0530 (Wed, 09 Nov 2011)");
   script_name("EMO Realty Manager 'cat1' Parameter SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://securityreason.com/securityalert/8505");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/90411/emorealtymanager-sql.txt");
 
-  script_summary("Check if EMO Realty Manager SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

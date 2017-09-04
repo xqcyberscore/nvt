@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_48563.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_phpmyadmin_48563.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # phpMyAdmin Prior to 3.3.10.2 and 3.4.3.1 Multiple Remote Vulnerabilities
 #
@@ -41,8 +41,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_version("$Revision: 7024 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-07-11 14:09:04 +0200 (Mon, 11 Jul 2011)");
  script_bugtraq_id(48563);
  script_cve_id("CVE-2011-2505","CVE-2011-2506","CVE-2011-2507","CVE-2011-2508");
@@ -61,7 +61,6 @@ if (description)
  script_xref(name : "URL" , value : "http://typo3.org/teams/security/security-bulletins/typo3-sa-2011-008/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if phpMyAdmin is prone to a code-execution vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_e107_mult_php_files_info_disc_vuln.nasl 3681 2016-07-08 16:04:27Z cfi $
+# $Id: secpod_e107_mult_php_files_info_disc_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # e107 Multiple PHP Files Information Disclosure Vulnerability
 #
@@ -29,14 +29,13 @@ CPE = "cpe:/a:e107:e107";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902575");
-  script_version("$Revision: 3681 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-08 18:04:27 +0200 (Fri, 08 Jul 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-30 15:58:03 +0200 (Fri, 30 Sep 2011)");
   script_cve_id("CVE-2011-3731");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("e107 Multiple PHP Files Information Disclosure Vulnerability");
-  script_summary("Determine if e107 is vulnerable to Information Disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

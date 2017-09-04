@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_confluence_detect.nasl 2622 2016-02-09 13:03:15Z antu123 $
+# $Id: gb_atlassian_confluence_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Atlassian Confluence Detection
 #
@@ -30,10 +30,10 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103152");
- script_version("$Revision: 2622 $");
+ script_version("$Revision: 7000 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2016-02-09 14:03:15 +0100 (Tue, 09 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-05-02 15:13:22 +0200 (Mon, 02 May 2011)");
  script_name("Atlassian Confluence Detection");
 
@@ -41,7 +41,6 @@ if (description)
 
  The script sends a connection request to the server and attempts to
  extract the version number from the reply.");
- script_summary("Checks for the presence of Atlassian Confluence");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_merak_mail_server_script_inj_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_merak_mail_server_script_inj_vuln.nasl 7016 2017-08-29 03:14:59Z ckuersteiner $
 #
 # Merak Mail Server Web Mail IMG HTML Tag Script Insertion Vulnerability
 #
@@ -24,48 +24,46 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The host is running Merak Mail Server and is prone to script
-  injection vulnerability.
-
-  Vulnerability:
-  Input passed via <IMG> HTML tags in emails are not properly sanitised before
-  being displayed in the users system.";
-
-tag_impact = "Successful exploitation could result in insertion of arbitrary HTML and
-  script code via a specially crafted email in a user's browser session in
-  the context of an affected site.
-  Impact Level: Application";
-tag_affected = "Merak Mail Server 9.3.2 and prior.";
-tag_solution = "Upgrade to Merak Mail Server 9.4.0
-  http://www.icewarp.com";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800097";
-CPE = "cpe:/a:icewarp:merak_mail_server";
+CPE = "cpe:/a:icewarp:mail_server";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800097");
+  script_version("$Revision: 7016 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 05:14:59 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-01-09 13:48:55 +0100 (Fri, 09 Jan 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_cve_id("CVE-2008-5734");
-  script_name("Merak Mail Server Web Mail IMG HTML Tag Script Insertion Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/32770");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/47533");
-  script_xref(name : "URL" , value : "http://blog.vijatov.com/index.php?itemid=11");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_cve_id("CVE-2008-5734");
+
+  script_name("Merak Mail Server Web Mail IMG HTML Tag Script Insertion Vulnerability");
+
+  script_xref(name: "URL", value: "http://secunia.com/advisories/32770");
+  script_xref(name: "URL", value: "http://xforce.iss.net/xforce/xfdb/47533");
+  script_xref(name: "URL", value: "http://blog.vijatov.com/index.php?itemid=11");
+
+  script_tag(name: "qod_type", value: "remote_banner");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_merak_mail_server_detect.nasl");
-  script_require_keys("MerakMailServer/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("gb_icewarp_web_detect.nasl");
+  script_require_keys("icewarp/installed");
+
+  script_tag(name: "impact", value: "Successful exploitation could result in insertion of arbitrary HTML and
+script code via a specially crafted email in a user's browser session in the context of an affected site.
+
+Impact Level: Application");
+
+  script_tag(name: "affected", value: "Merak Mail Server 9.3.2 and prior.");
+
+  script_tag(name: "solution", value: "Upgrade to Merak Mail Server 9.4.0");
+
+  script_tag(name: "summary", value: "The host is running Merak Mail Server and is prone to script injection
+vulnerability. Input passed via <IMG> HTML tags in emails are not properly sanitised before being displayed in
+the users system.");
+
   exit(0);
 }
 
@@ -73,13 +71,16 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
+if (!port = get_app_port(cpe:CPE, service: "www"))
+  exit(0);
 
-merakVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port);
-if(!merakVer){
+if (!merakVer = get_app_version(cpe:CPE, port:port))
+  exit(0);
+
+if (version_is_less(version: merakVer, test_version: "9.4.0")) {
+  report = report_fixed_ver(installed_version: merakVer, fixed_version: "9.4.0");
+  security_message(port: port, data: report);
   exit(0);
 }
 
-if(version_is_less(version:merakVer, test_version:"9.4.0")){
-  security_message(port:port);
-}
+exit(99);

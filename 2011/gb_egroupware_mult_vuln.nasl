@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_egroupware_mult_vuln.nasl 5647 2017-03-21 09:46:08Z cfi $
+# $Id: gb_egroupware_mult_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # eGroupware Multiple Vulnerabilities
 #
@@ -50,8 +50,8 @@ CPE = "cpe:/a:egroupware:egroupware";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5647 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2011-4951","CVE-2011-4950","CVE-2011-4949","CVE-2011-4948");
   script_bugtraq_id(52770);
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/101675/eGroupware1.8.001.20110421-Redirect.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check for directory traversal vulnerability in eGroupware");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

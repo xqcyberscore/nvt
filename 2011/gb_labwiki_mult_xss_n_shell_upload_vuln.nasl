@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_labwiki_mult_xss_n_shell_upload_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_labwiki_mult_xss_n_shell_upload_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # LabWiki Multiple Cross-site Scripting (XSS) and Shell Upload Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802402");
-  script_version("$Revision: 3507 $");
+  script_version("$Revision: 7006 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-10 12:48:30 +0530 (Thu, 10 Nov 2011)");
   script_name("LabWiki Multiple Cross-site Scripting (XSS) and Shell Upload Vulnerabilities");
   script_xref(name : "URL" , value : "https://secunia.com/advisories/46762");
@@ -38,7 +38,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520441");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/fulldisclosure/current/0112.html");
 
-  script_summary("Check if LabWiki is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

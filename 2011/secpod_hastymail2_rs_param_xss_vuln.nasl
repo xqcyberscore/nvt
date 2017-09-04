@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hastymail2_rs_param_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: secpod_hastymail2_rs_param_xss_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Hastymail2 'rs' Parameter Cross Site Scripting Vulnerability
 #
@@ -42,12 +42,12 @@ tag_summary = "The host is running Hastymail2 and is prone to cross-site scripti
 if(description)
 {
   script_id(902590);
-  script_version("$Revision: 3507 $");
+  script_version("$Revision: 7044 $");
   script_cve_id("CVE-2011-4541");
   script_bugtraq_id(50789);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-11-24 12:12:12 +0530 (Thu, 24 Nov 2011)");
   script_name("Hastymail2 'rs' Parameter Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50789");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.dognaedis.com/vulns/pdf/DGS-SEC-2.pdf");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Hastymail2 is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_sandbox_code_exec_vuln_win.nasl 3103 2016-04-18 14:50:34Z benallard $
+# $Id: gb_google_chrome_sandbox_code_exec_vuln_win.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Google Chrome 'Sandbox' Remote Code Execution Vulnerability (Windows)
 #
@@ -46,8 +46,8 @@ execution vulnerability.";
 if(description)
 {
   script_id(801789);
-  script_version("$Revision: 3103 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:50:34 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-23 15:31:07 +0200 (Mon, 23 May 2011)");
   script_cve_id("CVE-2011-2075");
   script_bugtraq_id(47771);
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/demos/VUPEN_Pwning_Chrome.php");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_win.nasl");

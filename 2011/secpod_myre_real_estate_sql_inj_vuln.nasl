@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_myre_real_estate_sql_inj_vuln.nasl 3113 2016-04-19 09:57:04Z benallard $
+# $Id: secpod_myre_real_estate_sql_inj_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # MYRE Real Estate Software URL SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902539");
-  script_version("$Revision: 3113 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 11:57:04 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -37,7 +37,6 @@ if(description)
   script_xref(name : "URL" , value : "http://securityreason.com/wlb_show/WLB-2011070044");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103051/myrerealestate-sql.txt");
 
-  script_summary("Determine if MYRE Real Estate Software is prone to SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

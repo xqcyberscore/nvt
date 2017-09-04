@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_nodebb_detect.nasl 3250 2016-05-07 16:55:03Z cfi $
+# $Id: sw_nodebb_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # NodeBB Forum Version Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111100");
-  script_version("$Revision: 3250 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-07 18:55:03 +0200 (Sat, 07 May 2016) $");
+  script_version("$Revision: 7000 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-05-07 16:00:00 +0200 (Sat, 07 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("NodeBB Forum Version Detection");
-  script_summary("Sets the KB for the version of NodeBB Forum");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 SCHUTZWERK GmbH");
   script_family("Product detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tele_data_contact_management_server_dir_trav_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_tele_data_contact_management_server_dir_trav_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Tele Data Contact Management Server Directory Traversal Vulnerability
 #
@@ -46,9 +46,9 @@ prone to directory traversal vulnerability.";
 if(description)
 {
   script_id(801899);
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 7044 $");
   script_bugtraq_id(48114);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.autosectools.com/Advisory/Tele-Data-Contact-Management-Server-Directory-Traversal-231");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if Tele Data Contact Management Server is vulnerable to Directory Traversal Attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web Servers");

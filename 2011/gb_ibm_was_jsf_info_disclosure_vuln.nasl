@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_jsf_info_disclosure_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_ibm_was_jsf_info_disclosure_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # IBM WebSphere Application Server JSF Application Information Disclosure Vulnerability
 #
@@ -38,12 +38,12 @@ tag_summary = "The host is running IBM WebSphere Application Server and is prone
 if(description)
 {
   script_id(801998);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 7024 $");
   script_cve_id("CVE-2011-1368");
   script_bugtraq_id(50463);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-03 18:00:39 +0530 (Thu, 03 Nov 2011)");
   script_name("IBM WebSphere Application Server JSF Application Information Disclosure Vulnerability");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/70168");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg24030916");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of IBM WebSphere Application Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web Servers");

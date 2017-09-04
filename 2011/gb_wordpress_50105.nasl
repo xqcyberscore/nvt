@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_50105.nasl 5645 2017-03-21 09:32:09Z cfi $
+# $Id: gb_wordpress_50105.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # WordPress teachPress 'root' Multiple Local File Include Vulnerabilities
 #
@@ -44,8 +44,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5645 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:32:09 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7029 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-10-18 13:33:12 +0200 (Tue, 18 Oct 2011)");
  script_bugtraq_id(50105);
  script_tag(name:"cvss_base", value:"5.1");
@@ -54,7 +54,6 @@ if (description)
 
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed teachPress plug-in is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

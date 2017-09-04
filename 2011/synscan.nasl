@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: synscan.nasl 3112 2016-04-19 08:52:10Z antu123 $
+# $Id: synscan.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Wrapper for calling built-in NVT "synscan" which was previously
 # a binary ".nes".
@@ -29,13 +29,12 @@ if (description)
 {
  script_id(11219);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 3112 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 10:52:10 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7029 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-01-14 10:12:23 +0100 (Fri, 14 Jan 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("SYN Scan");
  script_tag(name:"qod_type", value:"general_note");
- script_summary("Performs a TCP SYN scan");
  script_category(ACT_SCANNER);
  script_family("Port scanners");
  script_copyright("Copyright (C) Renaud Deraison <deraison@cvs.nessus.org>");

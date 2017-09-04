@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarftp_45748.nasl 2847 2016-03-14 09:24:03Z cfi $
+# $Id: gb_solarftp_45748.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # SolarFTP 'PASV' Command Remote Buffer Overflow Vulnerability
 #
@@ -27,14 +27,13 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103024");
- script_version("$Revision: 2847 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-14 10:24:03 +0100 (Mon, 14 Mar 2016) $");
+ script_version("$Revision: 7006 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-01-11 12:59:27 +0100 (Tue, 11 Jan 2011)");
  script_bugtraq_id(45748);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("SolarFTP 'PASV' Command Remote Buffer Overflow Vulnerability");
- script_summary("Determine if SolarFTP is prone to a buffer-overflow vulnerability");
  script_category(ACT_DENIAL);
  script_family("FTP");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

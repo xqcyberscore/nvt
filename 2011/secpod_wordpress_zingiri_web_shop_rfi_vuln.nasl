@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_zingiri_web_shop_rfi_vuln.nasl 5648 2017-03-21 09:52:17Z cfi $
+# $Id: secpod_wordpress_zingiri_web_shop_rfi_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # WordPress Zingiri Web Shop Plugin Remote File Inclusion Vulnerability
 #
@@ -48,8 +48,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5648 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-22 10:24:03 +0200 (Thu, 22 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,6 @@ if(description)
 
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check RFI vulnerability in WordPress Zingiri Web Shop Plugin");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

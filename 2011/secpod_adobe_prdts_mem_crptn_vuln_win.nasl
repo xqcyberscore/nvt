@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_mem_crptn_vuln_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: secpod_adobe_prdts_mem_crptn_vuln_win.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Adobe Products Remote Memory Corruption Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.902400";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6475 $");
+  script_version("$Revision: 7015 $");
   script_cve_id("CVE-2011-0609");
   script_bugtraq_id(46860);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-25 15:52:06 +0100 (Fri, 25 Mar 2011)");
   script_name("Adobe Products Remote Memory Corruption Vulnerability (Windows)");
 
@@ -77,7 +77,6 @@ Adobe Reader/Acrobat to 10.0.2, For details refer http://www.adobe.com/";
 
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb11-06.html");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/advisories/apsa11-01.html");
-  script_summary("Check for the version of Adobe Acrobat, Reader and Adobe Flash Player");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

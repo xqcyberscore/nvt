@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_n_appln_server_ultra_serach_comp_unspecified_vuln.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: gb_oracle_database_n_appln_server_ultra_serach_comp_unspecified_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Oracle Database Server and Application Server Ultra Search Component Unspecified Vulnerability
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802524");
-  script_version("$Revision: 3386 $");
+  script_version("$Revision: 7029 $");
   script_cve_id("CVE-2008-0347");
   script_bugtraq_id(27229);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-07 12:29:09 +0530 (Wed, 07 Dec 2011)");
   script_name("Oracle Database Server and Application Server Ultra Search Component Unspecified Vulnerability");
-  script_summary("Check for the version of Oracle Database and Application server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

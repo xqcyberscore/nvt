@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_coldfusion_multiple_fpd_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_adobe_coldfusion_multiple_fpd_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Adobe ColdFusion Multiple Full Path Disclosure Vulnerabilities
 #
@@ -46,8 +46,8 @@ full path disclosure vulnerabilities.";
 if(description)
 {
   script_id(902577);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-30 15:58:03 +0200 (Fri, 30 Sep 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/105344/coldfusion-xssdisclose.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if Adobe ColdFusion is vulnerable to Full Path Disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

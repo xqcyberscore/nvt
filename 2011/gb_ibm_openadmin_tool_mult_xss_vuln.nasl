@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_openadmin_tool_mult_xss_vuln.nasl 3115 2016-04-19 10:09:30Z benallard $
+# $Id: gb_ibm_openadmin_tool_mult_xss_vuln.nasl 7028 2017-08-31 09:47:19Z ckuersteiner $
 #
 # IBM Open Admin Tool 'index.php' Multiple Cross-Site Scripting Vulnerability
 #
@@ -24,68 +24,71 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to execute arbitrary HTML and
-  script code in a user's browser session in the context of an affected site
-  and steal the victim's cookie-based authentication credentials.
-  Impact Level: Application.";
-tag_affected = "IBM OpenAdmin Tool (OAT) version before 2.72";
-
-tag_insight = "The flaws are due to the improper validation of user supplied input
-  via 'host', 'port', 'username', 'userpass' and 'informixserver' parameters
-  in 'index.php'.";
-tag_solution = "Upgrade to IBM OpenAdmin Tool (OAT) version 2.72 or later
-  For updates refer to https://www14.software.ibm.com/webapp/iwm/web/reg/download.do?source=swg-informixfpd&lang=en_US&S_PKG=dl&cp=UTF-8";
-tag_summary = "This host is running IBM Open Admin Tool and is prone to multiple
-  cross-site scripting vulnerabilities.";
+CPE = 'cpe:/a:ibm:openadmin_tool';
 
 if(description)
 {
-  script_id(802159);
-  script_version("$Revision: 3115 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:09:30 +0200 (Tue, 19 Apr 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802159");
+  script_version("$Revision: 7028 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 11:47:19 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-14 16:05:49 +0200 (Wed, 14 Sep 2011)");
+
   script_cve_id("CVE-2011-3390");
   script_bugtraq_id(49364);
+
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+
   script_name("IBM Open Admin Tool 'index.php' Multiple Cross-Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/69488");
-  script_xref(name : "URL" , value : "http://voidroot.blogspot.com/2011/08/xss-in-ibm-open-admin-tool.html");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/104617/ibmopenadmin-xss.txt");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/519468/100/0/threaded");
+
+  script_xref(name: "URL", value: "http://xforce.iss.net/xforce/xfdb/69488");
+  script_xref(name: "URL", value: "http://voidroot.blogspot.com/2011/08/xss-in-ibm-open-admin-tool.html");
+  script_xref(name: "URL", value: "http://packetstormsecurity.org/files/view/104617/ibmopenadmin-xss.txt");
+  script_xref(name: "URL", value: "http://www.securityfocus.com/archive/1/archive/1/519468/100/0/threaded");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of IBM Open Admin Tool");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_dependencies("gb_ibm_openadmin_tool_detect.nasl");
   script_family("Web application abuses");
+  script_dependencies("gb_ibm_openadmin_tool_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_mandatory_keys("ibm_openadmin/installed");
+
+  script_tag(name: "insight", value: "The flaws are due to the improper validation of user supplied input via
+'host', 'port', 'username', 'userpass' and 'informixserver' parameters in 'index.php'.");
+
+  script_tag(name: "solution", value: "Upgrade to IBM OpenAdmin Tool (OAT) version 2.72 or later. For updates
+refer to https://www14.software.ibm.com/webapp/iwm/web/reg/download.do?source=swg-informixfpd&lang=en_US&S_PKG=dl&cp=UTF-8");
+
+  script_tag(name: "summary", value: "This host is running IBM Open Admin Tool and is prone to multiple
+cross-site scripting vulnerabilities.");
+
+  script_tag(name: "impact", value: "Successful exploitation will allow attackers to execute arbitrary HTML and
+script code in a user's browser session in the context of an affected site and steal the victim's cookie-based
+authentication credentials.
+
+Impact Level: Application.");
+
+  script_tag(name: "affected", value: "IBM OpenAdmin Tool (OAT) version before 2.72");
+
   exit(0);
 }
 
-
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
 ## Get HTTP Port
-port = get_http_port(default:8080);
-if(!get_port_state(port)){
+if (!port = get_app_port(cpe: CPE))
   exit(0);
-}
 
-## GET the version from KB
-ver = get_kb_item("www/" + port + "/IBM/Open/Admin/Tool");
-if(!ver){
+if (!ver = get_app_version(cpe: CPE, port: port))
   exit(0);
-}
 
 ## Check the IBM Open Admin Tool less than 2.72
 if(version_is_less(version:ver, test_version:"2.72")){
-  security_message(port);
+  report = report_fixed_ver(installed_version: ver, fixed_version: "2.72");
+  security_message(port: port, data: report);
+  exit(0);
 }
+
+exit(99);

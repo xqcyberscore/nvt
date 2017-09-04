@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mojolicious_dir_trav_vuln.nasl 5645 2017-03-21 09:32:09Z cfi $
+# $Id: gb_mojolicious_dir_trav_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Mojolicious Directory Traversal Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "The host is running Mojolicious and is prone to directory travers
 if(description)
 {
   script_id(801882);
-  script_version("$Revision: 5645 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:32:09 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-18 15:37:30 +0200 (Wed, 18 May 2011)");
   script_bugtraq_id(47402);
   script_cve_id("CVE-2011-1589");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=697229");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if Mojolicious is vulnerable to Directory Traversal Attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_51048.nasl 6942 2017-08-16 12:42:09Z cfischer $
+# $Id: gb_cacti_51048.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Cacti Multiple Input Validation Vulnerabilities
 #
@@ -46,16 +46,15 @@ if (description)
 {
  script_id(103365);
  script_bugtraq_id(51048);
- script_version ("$Revision: 6942 $");
+ script_version ("$Revision: 7024 $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_name("Cacti Multiple Input Validation Vulnerabilities");
  script_cve_id("CVE-2011-5223");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-16 14:42:09 +0200 (Wed, 16 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-12-14 11:24:31 +0100 (Wed, 14 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed Cacti version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

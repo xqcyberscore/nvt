@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rumble_smtp_srv_mail_from_cmd_dos_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_rumble_smtp_srv_mail_from_cmd_dos_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Rumble SMTP Server 'MAIL FROM' Command Denial of Service Vulnerability
 #
@@ -47,8 +47,8 @@ service vulnerability.";
 if(description)
 {
   script_id(802012);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_bugtraq_id(47070);
   script_tag(name:"cvss_base", value:"8.5");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/99827/");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Determine if Rumble SMTP Server is prone to denial of service vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

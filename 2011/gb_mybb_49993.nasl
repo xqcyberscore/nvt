@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_49993.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_mybb_49993.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # MyBB Compromised Source Packages Backdoor Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:mybb:mybb';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103292");
- script_version("$Revision: 3100 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-10-10 15:33:49 +0200 (Mon, 10 Oct 2011)");
  script_bugtraq_id(49993);
  script_tag(name:"cvss_base", value:"7.5");
@@ -42,7 +42,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.mybb.com/");
  script_xref(name : "URL" , value : "http://blog.mybb.com/wp-content/uploads/2011/10/mybb_1604_patches.txt");
 
- script_summary("Determine if MyBB ist installed with a backdoor");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

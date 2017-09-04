@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_49251.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_otrs_49251.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # OTRS 'AdminPackageManager.pm' Local File Disclosure Vulnerability
 #
@@ -31,12 +31,12 @@ CPE = "cpe:/a:otrs:otrs";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6719 $");
+ script_version("$Revision: 7006 $");
  script_cve_id("CVE-2011-2746");
  script_bugtraq_id(49251);
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-08-22 16:04:33 +0200 (Mon, 22 Aug 2011)");
  script_name("OTRS 'AdminPackageManager.pm' Local File Disclosure Vulnerability");
 
@@ -76,7 +76,6 @@ tag_solution =
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/49251");
   script_xref(name : "URL" , value : "http://otrs.org/");
   script_xref(name : "URL" , value : "http://otrs.org/advisory/OSA-2011-03-en/");
-  script_summary("Determine if installed otrs version is vulnerable");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_48890.nasl 3775 2016-07-29 16:30:59Z mime $
+# $Id: gb_ibm_websphere_48890.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # OpenSAML XML Signature Wrapping Security Vulnerability
 #
@@ -36,8 +36,8 @@ tag_solution = "Updates are available. Please see the references for more inform
 if (description)
 {
  script_id(103276);
- script_version("$Revision: 3775 $");
- script_tag(name:"last_modification", value:"$Date: 2016-07-29 18:30:59 +0200 (Fri, 29 Jul 2016) $");
+ script_version("$Revision: 7044 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-09-28 12:51:43 +0200 (Wed, 28 Sep 2011)");
  script_bugtraq_id(48890);
  script_cve_id("CVE-2011-1411");
@@ -51,7 +51,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg27014463");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed IBM Websphere Application Server version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web Servers");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

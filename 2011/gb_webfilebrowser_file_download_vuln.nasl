@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webfilebrowser_file_download_vuln.nasl 5645 2017-03-21 09:32:09Z cfi $
+# $Id: gb_webfilebrowser_file_download_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Web File Browser 'act' Parameter File Download Vulnerability
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802341");
-  script_version("$Revision: 5645 $");
+  script_version("$Revision: 7044 $");
   script_cve_id("CVE-2011-4831");
   script_bugtraq_id(50508);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:32:09 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-11-08 17:09:26 +0530 (Tue, 08 Nov 2011)");
   script_name("Web File Browser 'act' Parameter File Download Vulnerability");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/71131");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18070/");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50508/exploit");
 
-  script_summary("Check for file download vulnerability in Web File Browser");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

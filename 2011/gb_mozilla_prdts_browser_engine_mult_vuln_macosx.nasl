@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_browser_engine_mult_vuln_macosx.nasl 6445 2017-06-27 12:31:06Z santu $
+# $Id: gb_mozilla_prdts_browser_engine_mult_vuln_macosx.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Mozilla Products Browser Engine Multiple Unspecified Vulnerabilities (MAC OS X)
 #
@@ -47,8 +47,8 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird/seamonkey
 if(description)
 {
   script_id(802182);
-  script_version("$Revision: 6445 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 14:31:06 +0200 (Tue, 27 Jun 2017) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_cve_id("CVE-2011-2997");
   script_bugtraq_id(49812);
@@ -58,7 +58,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-36.html");
 
-  script_summary("Check for the version of Mozilla Firefox/Thunderbird/SeaMonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

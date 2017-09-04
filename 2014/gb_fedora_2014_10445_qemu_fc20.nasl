@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868177");
-  script_version("$Revision: 6629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7002 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 09:07:09 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-09-11 05:56:35 +0200 (Thu, 11 Sep 2014)");
   script_cve_id("CVE-2014-3615", "CVE-2014-0222", "CVE-2014-0223", "CVE-2014-3461", "CVE-2014-0182", "CVE-2014-0142", "CVE-2014-0150", "CVE-2013-4544", "CVE-2014-2894");
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Fedora Update for qemu FEDORA-2014-10445");
   script_tag(name: "insight", value: "QEMU is a generic and open source processor emulator which achieves a good
 emulation speed by using dynamic translation. QEMU has two operating modes:

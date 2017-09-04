@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_awstats_totals_sort_parameter_cmd_exec_vuln.nasl 3099 2016-04-18 14:36:59Z benallard $
+# $Id: gb_awstats_totals_sort_parameter_cmd_exec_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # AWStats Totals 'sort' Parameter Remote Command Execution Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801893");
-  script_version("$Revision: 3099 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:36:59 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2008-3922");
   script_bugtraq_id(30856);
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/495770/100/0/threaded");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/101698/awstatstotals_multisort.rb.txt");
 
-  script_summary("Check if AWStats Totals is prone to remote command execution vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

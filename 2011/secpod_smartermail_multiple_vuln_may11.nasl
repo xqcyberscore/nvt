@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_smartermail_multiple_vuln_may11.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_smartermail_multiple_vuln_may11.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # SmarterMail Multiple Vulnerabilities May-11
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:smartertools:smartermail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902432");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-01 11:16:16 +0200 (Wed, 01 Jun 2011)");
   script_cve_id("CVE-2011-2148", "CVE-2011-2149", "CVE-2011-2150", "CVE-2011-2151",
                 "CVE-2011-2152", "CVE-2011-2153", "CVE-2011-2154", "CVE-2011-2155",
@@ -43,7 +43,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/MORO-8GYQR4");
   script_xref(name:"URL", value:"http://xss.cx/examples/smarterstats-60-oscommandinjection-directorytraversal-xml-sqlinjection.html.html");
 
-  script_summary("Verify multiple vulnerabilities in SmarterMail");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

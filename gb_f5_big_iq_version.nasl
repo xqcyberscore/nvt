@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_iq_version.nasl 2662 2016-02-16 06:27:52Z antu123 $
+# $Id: gb_f5_big_iq_version.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # F5 Networks BIG-IQ Detection
 #
@@ -31,14 +31,13 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 2662 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-16 07:27:52 +0100 (Tue, 16 Feb 2016) $");
+ script_version ("$Revision: 7000 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
  script_tag(name:"creation_date", value:"2015-01-12 14:32:58 +0100 (Mon, 12 Jan 2015)");
  script_name("F5 Networks BIG-IQ Detection");
 
  script_tag(name: "summary" , value: "This script performs SSH based detection of F5 Networks BIG-IQ");
 
- script_summary("This script performs SSH based detection of F5 Networks BIG-IQ");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

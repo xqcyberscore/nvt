@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_n_13_news_csrf_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_n_13_news_csrf_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # N-13 News Cross-Site Request Forgery Vulnerability
 #
@@ -45,8 +45,8 @@ Request Forgery vulnerability.";
 if(description)
 {
   script_id(801738);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-08 15:34:31 +0100 (Tue, 08 Feb 2011)");
   script_cve_id("CVE-2011-0642");
   script_tag(name:"cvss_base", value:"4.3");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/16013/");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for version the of N-13 News");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

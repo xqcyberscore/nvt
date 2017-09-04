@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_honeywell_ip_camera_lfi_n_cred_disc_vuln.nasl 6915 2017-08-14 06:26:19Z asteins $
+# $Id: gb_honeywell_ip_camera_lfi_n_cred_disc_vuln.nasl 7009 2017-08-25 12:07:30Z teissa $
 #
 # Honeywell IP-Camera LFI and Credential Disclosure Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:honeywell:honeywell_ip_camera";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807354");
-  script_version("$Revision: 6915 $");
+  script_version("$Revision: 7009 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-14 08:26:19 +0200 (Mon, 14 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 14:07:30 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-08-23 16:18:17 +0530 (Tue, 23 Aug 2016)");
   script_name("Honeywell IP-Camera LFI and Credential Disclosure Vulnerabilities");
 
@@ -56,12 +56,9 @@ if(description)
 
   script_tag(name:"affected", value:"Honeywell IP-Camera type HICC-1100PT.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  14th August, 2017. Information regarding this issue will be updated once solution
-  details are available.
-  For updates refer to http://www.honeywellvideo.com/products/video-systems/cameras/ip");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

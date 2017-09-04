@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axis_ecommerce_49264.nasl 3099 2016-04-18 14:36:59Z benallard $
+# $Id: gb_axis_ecommerce_49264.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Axis Commerce HTML Injection Vulnerability
 #
@@ -38,8 +38,8 @@ Axis Commerce versions 0.8.1 and prior are vulnerable.";
 if (description)
 {
  script_id(103224);
- script_version("$Revision: 3099 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:36:59 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 7044 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-08-24 15:44:33 +0200 (Wed, 24 Aug 2011)");
  script_bugtraq_id(49264);
  script_tag(name:"cvss_base", value:"2.6");
@@ -50,7 +50,6 @@ if (description)
  script_xref(name : "URL" , value : "https://github.com/downloads/axis/axiscommerce/axis-0.8.1.zip");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Axis Commerce is prone to an HTML-injection vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

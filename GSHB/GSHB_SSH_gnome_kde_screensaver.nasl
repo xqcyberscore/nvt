@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_gnome_kde_screensaver.nasl 4486 2016-11-14 07:22:43Z cfi $
+# $Id: GSHB_SSH_gnome_kde_screensaver.nasl 6992 2017-08-23 09:10:48Z emoss $
 #
 # Read the Screensaver-Configuration (enabled and lock) on GNOME and KDE
 #
@@ -31,8 +31,8 @@ tag_summary = "Read the Screensaver-Configuration (enabled and lock) on GNOME an
 if(description)
 {
   script_id(96089);
-  script_version("$Revision: 4486 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 08:22:43 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 6992 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 11:10:48 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2010-06-23 14:20:09 +0200 (Wed, 23 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -98,13 +98,21 @@ if (gnomescreensaver != "none"){
   else screensaverdaemon = "false";
   val1 ="";
   val2 ="";
+  val3 ="";
+  val4 ="";
   Lst = split(gnomescreensaver, keep:0);
   for(i=0; i<max_index(Lst); i++){
     if (Lst[i] == " lock_enabled = true") val1 = "true";
     if (Lst[i] == " idle_activation_enabled = true") val2 = "true";
+    if (Lst[i] == " idle-delay = 9000" ) val3 = "true";
+    if (Lst[i] == " lock-delay = 0" ) val4 = "true";
   }
+  
   if (val1 == "true" && val2 == "true") gnomescreensaver = "true";
   else gnomescreensaver = "false";
+
+  if (val3 == "true" && val4 == "true") set_kb_item(name:"GSHB/gnometimeout",value:"9000");
+  else set_kb_item(name:"GSHB/gnometimeout",value:"0");
 }
 else if (defkdescreensav != "none"){
   val1 ="";
@@ -113,6 +121,12 @@ else if (defkdescreensav != "none"){
   for(i=0; i<max_index(Lst); i++){
     if (Lst[i] == "Enabled=true") val1 = "true";
     if (Lst[i] == "Lock=true") val2 = "true";
+    if ( Lst[i] >< "Timeout" ){
+      time_out = eregmatch(string: Lst[i], pattern:'Timeout=([0-9]+)');
+      if( time_out[1] ){
+        set_kb_item(name:"GSHB/defkdetimeout", value:time_out[1]);
+      }
+    }
   }
   if (val1 == "true" && val2 == "true") defkdescreensav = "true";
   else defkdescreensav = "false";
@@ -130,6 +144,12 @@ else if (defkdescreensav != "none"){
           if (Lst[i] == "Enabled=false") val1 = "false";
           else if (Lst[i] == "Enabled=true") val1 = "true";
           if (Lst[i] == "Lock=true") val2 = "true";
+          if ( Lst[i] >< "Timeout" ){
+            time_out = eregmatch(string: Lst[i], pattern:'Timeout=([0-9]+)');
+            if( time_out[1] ){
+              set_kb_item(name:"GSHB/lstkdetimeout", value:time_out[1]);
+            }
+          }
         }
         if ((val1 != "false" || val1 == "true") && val2 == "true") valtmp += "true";
         else valtmp += "false";

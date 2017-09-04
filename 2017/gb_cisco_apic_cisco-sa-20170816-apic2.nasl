@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_cisco-sa-20170816-apic2.nasl 6947 2017-08-17 04:21:42Z ckuersteiner $
+# $Id: gb_cisco_apic_cisco-sa-20170816-apic2.nasl 7013 2017-08-25 13:17:51Z asteins $
 #
 # Cisco Application Policy Infrastructure Controller Custom Binary Privilege Escalation Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/o:cisco:application_policy_infrastructure_controller_(apic)";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140305");
- script_version("$Revision: 6947 $");
- script_tag(name: "last_modification", value: "$Date: 2017-08-17 06:21:42 +0200 (Thu, 17 Aug 2017) $");
+ script_version("$Revision: 7013 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-08-25 15:17:51 +0200 (Fri, 25 Aug 2017) $");
  script_tag(name: "creation_date", value: "2017-08-17 08:59:24 +0700 (Thu, 17 Aug 2017)");
- script_tag(name: "cvss_base", value: "6.8");
- script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:S/C:C/I:C/A:C");
+ script_tag(name:"cvss_base", value:"7.2");
+ script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
  script_cve_id("CVE-2017-6768");
 

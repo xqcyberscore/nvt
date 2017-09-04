@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icinga_expand_parameter_xss_vuln.nasl 3115 2016-04-19 10:09:30Z benallard $
+# $Id: gb_icinga_expand_parameter_xss_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Icinga 'expand' Parameter Cross-Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:icinga:icinga';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801895");
-  script_version("$Revision: 3115 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:09:30 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2011-2179");
   script_tag(name:"cvss_base", value:"4.3");
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/518218");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/101904/SSCHADV2011-005.txt");
 
-  script_summary("Check if Icinga is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

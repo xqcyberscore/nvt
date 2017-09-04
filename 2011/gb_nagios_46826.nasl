@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_46826.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_nagios_46826.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Nagios 'layer' Parameter Cross-Site Scripting Vulnerabilities
 #
@@ -39,8 +39,8 @@ CPE = "cpe:/a:nagios:nagios";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_version("$Revision: 7024 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-03-11 13:29:22 +0100 (Fri, 11 Mar 2011)");
  script_cve_id("CVE-2011-1523");
  script_bugtraq_id(46826);
@@ -52,7 +52,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.nagios.org/");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed nagios version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

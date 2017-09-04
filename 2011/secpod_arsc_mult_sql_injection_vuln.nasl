@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_arsc_mult_sql_injection_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_arsc_mult_sql_injection_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # A Really Simple Chat Multiple SQL Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902608");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-05 13:15:06 +0200 (Tue, 05 Jul 2011)");
   script_cve_id("CVE-2011-2181");
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,7 +38,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2011/06/02/1");
   script_xref(name : "URL" , value : "http://www.htbridge.ch/advisory/multiple_sql_injections_in_a_really_simple_chat_arsc.html");
 
-  script_summary("Check the version of A Really Simple Chat");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

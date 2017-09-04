@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_efront_xss_n_lfi_vuln.nasl 2860 2016-03-15 14:47:01Z cfi $
+# $Id: gb_efront_xss_n_lfi_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # eFront Cross Site Scripting and Local File Inclusion Vulnerabilities
 #
@@ -29,14 +29,13 @@ CPE = 'cpe:/a:efrontlearning:efront';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802116");
-  script_version("$Revision: 2860 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-15 15:47:01 +0100 (Tue, 15 Mar 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-13 17:31:13 +0200 (Wed, 13 Jul 2011)");
   script_bugtraq_id(47870);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("eFront Cross Site Scripting and Local File Inclusion Vulnerabilities");
-  script_summary("Check if eFront is vulnerable to Cross Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

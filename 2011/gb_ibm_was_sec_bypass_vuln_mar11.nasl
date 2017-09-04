@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_sec_bypass_vuln_mar11.nasl 3775 2016-07-29 16:30:59Z mime $
+# $Id: gb_ibm_was_sec_bypass_vuln_mar11.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # IBM WebSphere Application Server (WAS) Security Bypass Vulnerability - March 2011
 #
@@ -41,8 +41,8 @@ tag_summary = "The host is running IBM WebSphere Application Server and is prone
 if(description)
 {
   script_id(801864);
-  script_version("$Revision: 3775 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-29 18:30:59 +0200 (Fri, 29 Jul 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
   script_cve_id("CVE-2011-1312");
   script_tag(name:"cvss_base", value:"4.0");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg27014463");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of IBM WebSphere Application Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web Servers");

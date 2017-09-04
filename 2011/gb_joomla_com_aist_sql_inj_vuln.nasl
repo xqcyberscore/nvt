@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_aist_sql_inj_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_joomla_com_aist_sql_inj_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Joomla Component 'com_aist' SQL Injection Vulnerability 
 #
@@ -45,8 +45,8 @@ vulnerability.";
 if(description)
 {
   script_id(801787);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-18 15:37:30 +0200 (Wed, 18 May 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/100891/joomlaaist-sql.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Joomla Aist component is vulnerable for SQL Injection attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

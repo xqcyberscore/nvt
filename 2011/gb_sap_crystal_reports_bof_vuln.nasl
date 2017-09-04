@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_crystal_reports_bof_vuln.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: gb_sap_crystal_reports_bof_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # SAP Crystal Reports Print ActiveX Control Buffer Overflow Vulnerability
 #
@@ -51,8 +51,8 @@ heap-based buffer overflow vulnerability.";
 if(description)
 {
   script_id(801767);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_cve_id("CVE-2010-2590");
   script_bugtraq_id(45387);
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id?1024915");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of SAP Crystal Reports");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

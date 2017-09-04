@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synergy_protocol_info_disc_vuln_win.nasl 3104 2016-04-18 14:53:56Z benallard $
+# $Id: gb_synergy_protocol_info_disc_vuln_win.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Synergy Protocol Information Disclosure Vulnerability (Windows)
 #
@@ -46,15 +46,14 @@ disclosure vulnerability.";
 if(description)
 {
   script_id(801872);
-  script_version("$Revision: 3104 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:53:56 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Synergy Protocol Information Disclosure Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/100157/synergy-cleartext.txt");
 
-  script_summary("Check for the version of Synergy");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

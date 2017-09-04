@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_clamav_recursion_dos_vuln_win.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_clamav_recursion_dos_vuln_win.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # ClamAV Recursion Level Handling Denial of Service Vulnerability (Windows)
 #
@@ -38,19 +38,18 @@ tag_summary = "The host is installed with ClamAV and is prone to denial of servi
 if(description)
 {
   script_id(902760);
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 7024 $");
   script_cve_id("CVE-2011-3627");
   script_bugtraq_id(50183);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-22 17:51:52 +0530 (Tue, 22 Nov 2011)");
   script_name("ClamAV Recursion Level Handling Denial of Service Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://www.ubuntu.com/usn/USN-1258-1/");
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=746984");
   script_xref(name : "URL" , value : "http://git.clamav.net/gitweb?p=clamav-devel.git;a=commitdiff;h=3d664817f6ef833a17414a4ecea42004c35cc42f");
 
-  script_summary("Check for the Version of ClamAV");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Denial of Service");

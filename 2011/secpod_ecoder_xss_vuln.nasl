@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ecoder_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: secpod_ecoder_xss_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # ECoder Reflected Cross Site Scripting Vulnerability
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902451");
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("ECoder Reflected Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/101231/ECoder0.4.10-XSS.txt");
 
-  script_summary("Check for ECoder Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");

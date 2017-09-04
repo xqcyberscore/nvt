@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_gis_line_string_dos_vuln.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: gb_mysql_gis_line_string_dos_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # MySQL 'Gis_line_string::init_from_wkb()'DOS Vulnerability
 #
@@ -43,8 +43,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3386 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_cve_id("CVE-2010-3840");
   script_bugtraq_id(43676);
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://bugs.mysql.com/bug.php?id=54568");
   script_xref(name : "URL" , value : "http://dev.mysql.com/doc/refman/5.1/en/news-5-1-51.html");
 
-  script_summary("Check for the version of MySQL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Databases");

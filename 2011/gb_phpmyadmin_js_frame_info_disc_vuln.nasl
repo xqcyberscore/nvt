@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_js_frame_info_disc_vuln.nasl 3102 2016-04-18 14:46:07Z benallard $
+# $Id: gb_phpmyadmin_js_frame_info_disc_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # phpMyAdmin js_frame Parameter Information Disclosure Vulnerability
 #
@@ -43,8 +43,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3102 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:46:07 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-10-18 15:48:35 +0200 (Tue, 18 Oct 2011)");
   script_cve_id("CVE-2011-3646");
   script_tag(name:"cvss_base", value:"5.0");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.phpmyadmin.net/home_page/security/PMASA-2011-15.php");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_summary("Determine the information disclosure vulnerability in phpMyAdmin");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

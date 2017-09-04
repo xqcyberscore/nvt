@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_custom_pages_plugin_dir_trav.nasl 5645 2017-03-21 09:32:09Z cfi $
+# $Id: gb_wordpress_wp_custom_pages_plugin_dir_trav.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # WordPress WP Custom Pages Plugin 'url' Parameter Directory Traversal Vulnerability
 #
@@ -50,8 +50,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5645 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:32:09 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_cve_id("CVE-2011-1669");
   script_tag(name:"cvss_base", value:"5.0");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://wordpress.org/extend/plugins/wp-custom-pages/");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check for directory traversal vulnerability in WordPress WP Custom Pages Plugin");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

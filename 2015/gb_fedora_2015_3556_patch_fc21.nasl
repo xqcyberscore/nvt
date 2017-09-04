@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869119");
-  script_version("$Revision: 6630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7045 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 14:49:31 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-24 06:59:52 +0100 (Tue, 24 Mar 2015)");
   script_cve_id("CVE-2015-1196", "CVE-2014-9637");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for patch FEDORA-2015-3556");
   script_tag(name: "summary", value: "Check the version of patch");

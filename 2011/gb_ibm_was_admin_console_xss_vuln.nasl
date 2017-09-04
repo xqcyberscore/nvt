@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_admin_console_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_ibm_was_admin_console_xss_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # IBM WebSphere Application Server Admin Console Cross-site Scripting Vulnerability
 #
@@ -47,12 +47,12 @@ tag_summary = "The host is running IBM WebSphere Application Server and is prone
 if(description)
 {
   script_id(801999);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 7044 $");
   script_cve_id("CVE-2009-2748");
   script_bugtraq_id(37015);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-11-04 14:37:49 +0530 (Fri, 04 Nov 2011)");
   script_name("IBM WebSphere Application Server Admin Console Cross-site Scripting Vulnerability");
 
@@ -61,7 +61,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.ibm.com/support/docview.wss?uid=swg1PK92057");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of IBM WebSphere Application Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web Servers");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_symantec_im_manager_code_inj_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_symantec_im_manager_code_inj_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Symantec IM Manager 'eval()' Code Injection Vulnerability
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is installed with Symantec IM Manager and is prone to
 if(description)
 {
   script_id(901186);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2010-3719");
   script_bugtraq_id(45946);
@@ -52,7 +52,6 @@ if(description)
 
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Symantec IM Manager");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

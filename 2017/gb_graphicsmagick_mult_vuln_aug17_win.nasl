@@ -1,0 +1,106 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_graphicsmagick_mult_vuln_aug17_win.nasl 6997 2017-08-24 07:18:20Z asteins $
+#
+# GraphicsMagick Multiple Vulnerabilities - Aug17 (Windows)
+#
+# Authors:
+# Adrian Steins <adrian.steins@greenbone.net>
+#
+# Copyright:
+# Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+CPE = "cpe:/a:graphicsmagick:graphicsmagick";
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.112027");
+  script_version("$Revision: 6997 $");
+  script_cve_id("CVE-2017-12935", "CVE-2017-12936", "CVE-2017-12937", "CVE-2017-13063", "CVE-2017-13064", "CVE-2017-13065", "CVE-2017-13066", "CVE-2017-13147", "CVE-2017-13148");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 09:18:20 +0200 (Thu, 24 Aug 2017) $");
+  script_tag(name:"creation_date", value:"2017-08-23 11:38:13 +0200 (Wed, 23 Aug 2017)");
+  script_name("GraphicsMagick Multiple Vulnerabilities - Aug17 (Windows)");
+
+  script_tag(name: "summary", value:"This host is installed with GraphicsMagick
+  and is prone to multiple vulnerabilities.");
+
+  script_tag(name: "vuldetect", value:"Get the installed version with the
+  help of GraphicsMagick detection NVT and check if the version is vulnerable or not.");
+
+  script_tag(name: "insight", value:"GraphicsMagick 1.3.26 and prior is prone to multiple vulnerabilites:
+
+  - Allocation failure vulnerabilites.
+
+  - Heap buffer overflow vulnerabilities.
+
+  - Null pointer dereference vulnerabilities.
+
+  - Memory leak vulnerabilities.
+
+  - Invalid memory read vulnerabilities.");
+
+  script_tag(name: "impact", value:"Successful exploitation will allow attackers to cause a denail of service via a crafted file.
+
+  Impact Level: Application");
+
+  script_tag(name: "affected", value:"GraphicsMagick version 1.3.26 and earlier
+  on Windows");
+
+  script_tag(name: "solution", value: "No solution or patch is available as of 23rd August, 2017. Information
+      regarding this issue will be updated once the solution details are available.");
+
+  script_tag(name:"solution_type", value:"NoneAvailable");
+
+  script_tag(name:"qod_type", value:"registry");
+
+  script_xref(name: "URL", value: "https://sourceforge.net/p/graphicsmagick/bugs/434/");
+  script_xref(name: "URL", value: "https://sourceforge.net/p/graphicsmagick/bugs/436/");
+  script_xref(name: "URL", value: "https://sourceforge.net/p/graphicsmagick/bugs/435/");
+  script_xref(name: "URL", value: "https://sourceforge.net/p/graphicsmagick/bugs/430/");
+  script_xref(name: "URL", value: "https://sourceforge.net/p/graphicsmagick/bugs/446/");
+  script_xref(name: "URL", value: "https://blogs.gentoo.org/ago/2017/08/05/graphicsmagick-invalid-memory-read-in-setimagecolorcallback-image-c/");
+  script_xref(name: "URL", value: "https://blogs.gentoo.org/ago/2017/08/05/graphicsmagick-use-after-free-in-readwmfimage-wmf-c/");
+  script_xref(name: "URL", value: "https://blogs.gentoo.org/ago/2017/08/05/graphicsmagick-heap-based-buffer-overflow-in-readsunimage-sun-c/");
+
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_graphicsmagick_detect_win.nasl");
+  script_mandatory_keys("GraphicsMagick/Win/Ver");
+  exit(0);
+}
+
+include("version_func.inc");
+include("host_details.inc");
+
+## Variable Initialization
+gmVer = "";
+
+## Get the version
+if(!gmVer = get_app_version(cpe:CPE)){
+  exit(0);
+}
+
+## Check the version is 1.3.26 and earlier
+if(version_is_less_equal(version:gmVer, test_version:"1.3.26"))
+{
+  report = report_fixed_ver(installed_version:gmVer, fixed_version:"NoneAvailable");
+  security_message(data:report);
+  exit(0);
+}

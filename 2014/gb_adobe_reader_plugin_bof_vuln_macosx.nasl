@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_plugin_bof_vuln_macosx.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_adobe_reader_plugin_bof_vuln_macosx.nasl 6995 2017-08-23 11:52:03Z teissa $
 #
 # Adobe Reader 'Plug-in' Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804258";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 6995 $");
   script_cve_id("CVE-2005-2470");
   script_bugtraq_id(14603);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-04-15 18:50:55 +0530 (Tue, 15 Apr 2014)");
   script_name("Adobe Reader 'Plug-in' Buffer Overflow Vulnerability (Mac OS X)");
 
@@ -77,7 +77,6 @@ updates refer to http://get.adobe.com/reader";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/16466");
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1014712");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/techdocs/321644.html");
-  script_summary("Check for the vulnerable version of Adobe Reader on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Buffer overflow");

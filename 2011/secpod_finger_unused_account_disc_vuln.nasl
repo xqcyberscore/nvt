@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_finger_unused_account_disc_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_finger_unused_account_disc_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Finger Service Unused Account Disclosure Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is running Finger service and is prone to information
 if(description)
 {
   script_id(902555);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_cve_id("CVE-1999-0197");
   script_tag(name:"cvss_base", value:"10.0");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.iss.net/security_center/reference/vuln/finger-unused-accounts.htm");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if Finger is prone to information disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Finger abuses");

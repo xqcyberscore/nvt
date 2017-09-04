@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hastymail_49492.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_hastymail_49492.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Hastymail2 Multiple Cross Site Scripting Vulnerabilities
 #
@@ -39,8 +39,8 @@ tag_solution = "Updates are available. Please see the references for more inform
 if (description)
 {
  script_id(103244);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-09-08 12:04:18 +0200 (Thu, 08 Sep 2011)");
  script_bugtraq_id(49492);
  script_tag(name:"cvss_base", value:"4.3");
@@ -53,7 +53,6 @@ if (description)
  script_xref(name : "URL" , value : "http://hastymail.svn.sourceforge.net/viewvc/hastymail/trunk/hastymail2/CHANGES?revision=1983");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed Hastymail2 version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

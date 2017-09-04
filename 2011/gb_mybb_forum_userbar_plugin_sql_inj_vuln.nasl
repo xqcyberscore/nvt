@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_forum_userbar_plugin_sql_inj_vuln.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_mybb_forum_userbar_plugin_sql_inj_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # MyBB Userbar Plugin 'userbarsettings.php' SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802038");
-  script_version("$Revision: 3100 $");
+  script_version("$Revision: 7044 $");
   script_cve_id("CVE-2011-4569");
   script_bugtraq_id(50049);
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17962");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/105662");
 
-  script_summary("Check if MyBB Userbar Plugin is vulnerable for SQL Injection attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

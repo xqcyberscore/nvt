@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_moxa_device_manager_bof_vuln.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: secpod_moxa_device_manager_bof_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # MOXA Device Manager MDM Tool Buffer Overflow Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with MOXA Device Manager and is prone to
 if(description)
 {
   script_id(902345);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2010-4741");
   script_tag(name:"cvss_base", value:"9.3");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://reversemode.com/index.php?option=com_content&task=view&id=70&Itemid=1");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Moxa Device Manager");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");

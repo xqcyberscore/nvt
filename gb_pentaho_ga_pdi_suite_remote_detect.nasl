@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pentaho_ga_pdi_suite_remote_detect.nasl 4623 2016-11-25 06:56:52Z cfi $ 
+# $Id: gb_pentaho_ga_pdi_suite_remote_detect.nasl 7000 2017-08-24 11:51:46Z teissa $ 
 #
 # Pentaho Data Integration (PDI) Suite Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808207");
-  script_version("$Revision: 4623 $");
+  script_version("$Revision: 7000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:56:52 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-05-25 15:47:33 +0530 (Wed, 25 May 2016)");
   script_name("Pentaho Data Integration (PDI) Suite Version Detection");
 
@@ -42,7 +42,6 @@ if(description)
   in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the presence of Pentaho Data Integration (PDI) Suite");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

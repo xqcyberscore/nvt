@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_a_v_tronics_inetserv_pop3_dos_vuln.nasl 3112 2016-04-19 08:52:10Z antu123 $
+# $Id: gb_a_v_tronics_inetserv_pop3_dos_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # A-V Tronics InetServ POP3 Denial Of Service Vulnerability
 #
@@ -46,8 +46,8 @@ prone to denial of service vulnerability.";
 if(description)
 {
   script_id(800195);
-  script_version("$Revision: 3112 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 10:52:10 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-27 07:47:27 +0100 (Thu, 27 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");  
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/16038/");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Determine if A-V Tronics InetServ POP3 is prone to DoS vulnerability");
   script_category(ACT_MIXED_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_svg_code_exec_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: gb_mozilla_prdts_svg_code_exec_vuln_win.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Mozilla Products 'SVG' Code Execution Vulnerability (Windows)
 #
@@ -48,8 +48,8 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird/seamonkey
 if(description)
 {
   script_id(802147);
-  script_version("$Revision: 6444 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-09 17:36:48 +0200 (Fri, 09 Sep 2011)");
   script_cve_id("CVE-2011-0084");
   script_bugtraq_id(49213);
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=730519");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-30.html");
 
-  script_summary("Check for the version of Mozilla Firefox/Thunderbird/SeaMonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

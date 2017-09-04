@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vlc_media_player_bof_vuln_feb11_lin.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_vlc_media_player_bof_vuln_feb11_lin.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # VLC Media Player USF and Text Subtitles Decoders BOF Vulnerabilities (Linux)
 #
@@ -39,8 +39,8 @@ tag_summary = "The host is installed with VLC Media Player and is prone to
 if(description)
 {
   script_id(902342);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_cve_id("CVE-2011-0522");
   script_bugtraq_id(46008);
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0225");
 
   script_copyright("Copyright (c) 2011 SecPod");
-  script_summary("Check for the version of VLC Media Player");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_dependencies("secpod_vlc_media_player_detect_lin.nasl");

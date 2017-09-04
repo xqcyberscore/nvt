@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_epm_xxe_n_sql_inj_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_symantec_epm_xxe_n_sql_inj_vuln.nasl 6995 2017-08-23 11:52:03Z teissa $
 #
 # Symantec Endpoint Protection Manager XXE and SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804513");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6995 $");
   script_cve_id("CVE-2013-5014", "CVE-2013-5015");
   script_bugtraq_id(65466, 65467);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-03-20 11:33:41 +0530 (Thu, 20 Mar 2014)");
   script_name("Symantec Endpoint Protection Manager XXE and SQL Injection Vulnerabilities");
 
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31917");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125282");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125366");
-  script_summary("Check if Symantec Endpoint Protection Manager is prone to remote code execution");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

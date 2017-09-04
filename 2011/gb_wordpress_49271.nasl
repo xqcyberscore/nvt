@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_49271.nasl 5647 2017-03-21 09:46:08Z cfi $
+# $Id: gb_wordpress_49271.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # WordPress UnGallery 'zip' Parameter Local File Disclosure Vulnerability
 #
@@ -42,8 +42,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5647 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7044 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-08-23 15:25:10 +0200 (Tue, 23 Aug 2011)");
  script_bugtraq_id(49271);
  script_tag(name:"cvss_base", value:"5.0");
@@ -52,7 +52,6 @@ if (description)
 
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if UnGallery plug-in for WordPress is prone to a local file disclosure vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

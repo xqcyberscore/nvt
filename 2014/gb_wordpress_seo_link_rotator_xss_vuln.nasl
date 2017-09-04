@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2780 $");
+  script_version("$Revision: 7000 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-01-28 12:34:05 +0530 (Tue, 28 Jan 2014)");
   script_name("WordPress Seo Link Rotator 'title' Parameter Cross Site Scripting Vulnerability");
 
@@ -74,7 +74,6 @@ For updates refer to http://www.seolinkrotator.com";
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124959");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-seo-link-rotator-cross-site-scripting");
-  script_summary("Check if Wordpress Seo Link Rotator Plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

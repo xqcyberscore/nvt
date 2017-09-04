@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_v-cms_mult_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_v-cms_mult_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # V-CMS Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902498");
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 7029 $");
   script_cve_id("CVE-2011-4826", "CVE-2011-4827", "CVE-2011-4828");
   script_bugtraq_id(50706);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-23 12:08:49 +0530 (Fri, 23 Dec 2011)");
   script_name("V-CMS Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46861");
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.autosectools.com/Advisory/V-CMS-1.0-Arbitrary-Upload-236");
   script_xref(name : "URL" , value : "http://www.autosectools.com/Advisory/V-CMS-1.0-Reflected-Cross-site-Scripting-234");
 
-  script_summary("Check for V-CMS is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

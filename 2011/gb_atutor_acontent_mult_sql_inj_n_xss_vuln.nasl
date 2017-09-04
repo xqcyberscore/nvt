@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atutor_acontent_mult_sql_inj_n_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_atutor_acontent_mult_sql_inj_n_xss_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Atutor AContent Multiple SQL Injection and XSS Vulnerabilities
 #
@@ -47,8 +47,8 @@ cross site scripting and SQL injection vulnerabilities.";
 if(description)
 {
   script_id(801985);
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-14 16:05:49 +0200 (Wed, 14 Sep 2011)");
   script_bugtraq_id(49066);
   script_tag(name:"cvss_base", value:"7.5");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103759/ZSL-2011-5031.txt");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_summary("Check if Atutor AContent is vulnerable to XSS/SQL Injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

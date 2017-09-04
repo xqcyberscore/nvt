@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_domino_rpc_auth_dos_vuln.nasl 5701 2017-03-23 16:10:36Z mime $
+# $Id: secpod_ibm_lotus_domino_rpc_auth_dos_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # IBM Lotus Domino Notes RPC Authentication Processing Denial of Service Vulnerability
 #
@@ -29,16 +29,15 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.2497");
-  script_version("$Revision: 5701 $");
+  script_version("$Revision: 7015 $");
   script_cve_id("CVE-2011-1393");
   script_bugtraq_id(51167);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-29 10:48:29 +0530 (Thu, 29 Dec 2011)");
   script_name("IBM Lotus Domino Notes RPC Authentication Processing Denial of Service Vulnerability");
 
-  script_summary("Check for the version of IBM Lotus Domino");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Denial of Service");

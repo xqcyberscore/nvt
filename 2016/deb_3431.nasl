@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3431.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3431.nasl 7045 2017-09-01 12:49:31Z asteins $
 # Auto-generated from advisory DSA 3431-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703431);
-    script_version("$Revision: 6608 $");
+    script_version("$Revision: 7045 $");
     script_cve_id("CVE-2015-7944", "CVE-2015-7945");
     script_name("Debian Security Advisory DSA 3431-1 (ganeti - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-09-01 14:49:31 +0200 (Fri, 01 Sep 2017) $");
     script_tag(name:"creation_date", value:"2016-05-06 15:29:26 +0530 (Fri, 06 May 2016)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"5.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

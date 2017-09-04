@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freesshd_remote_dos_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_freesshd_remote_dos_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # FreeSSHd Remote Denial of Service Vulnerability
 #
@@ -45,10 +45,10 @@ vulnerability.";
 if(description)
 {
   script_id(902803);
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 7044 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-12-26 15:15:15 +0530 (Mon, 26 Dec 2011)");
   script_name("FreeSSHd Remote Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "http://www.1337day.com/exploits/17299");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.allinfosec.com/2011/12/25/dos-poc-freesshd-remote-denial-of-service");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if freeSSHd is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Denial of Service");

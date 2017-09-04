@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ca_arcserver_d2d_mult_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_ca_arcserver_d2d_mult_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # CA ARCserver D2D GWT RPC Request Multiple Vulnerabilities
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902462");
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-29 17:55:33 +0200 (Fri, 29 Jul 2011)");
   script_cve_id("CVE-2011-3011");
   script_bugtraq_id(48897);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("CA ARCserver D2D GWT RPC Request Multiple Vulnerabilities");
-  script_summary("Check for Security Bypass vulnerability in CA ARCserver D2D");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web Servers");

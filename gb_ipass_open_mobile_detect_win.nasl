@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipass_open_mobile_detect_win.nasl 3803 2016-08-05 11:06:55Z antu123 $
+# $Id: gb_ipass_open_mobile_detect_win.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Ipass Open Mobile Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808731");
-  script_version("$Revision: 3803 $");
+  script_version("$Revision: 7000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-05 13:06:55 +0200 (Fri, 05 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-07-07 18:14:15 +0530 (Thu, 07 Jul 2016)");
   script_name("Ipass Open Mobile Version Detection (Windows)");
   script_tag(name: "summary" , value: "Detection of installed version of Ipass
@@ -40,7 +40,6 @@ if(description)
   registry and reads the version information from registry.");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Detection of installed version of Ipass Open Mobile");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

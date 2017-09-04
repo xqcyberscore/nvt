@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freebsd_telnetd_51182.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_freebsd_telnetd_51182.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # FreeBSD 'telnetd' Daemon Remote Buffer Overflow Vulnerability
 #
@@ -41,7 +41,7 @@ if (description)
  script_cve_id("CVE-2011-4862");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3117 $");
+ script_version ("$Revision: 7044 $");
 
  script_name("FreeBSD 'telnetd' Daemon Remote Buffer Overflow Vulnerability");
 
@@ -49,10 +49,9 @@ if (description)
  script_xref(name : "URL" , value : "http://www.freebsd.org/");
  script_xref(name : "URL" , value : "http://security.freebsd.org/advisories/FreeBSD-SA-11:08.telnetd.asc");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-12-28 12:32:36 +0100 (Wed, 28 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if remote telnetd is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Buffer overflow");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

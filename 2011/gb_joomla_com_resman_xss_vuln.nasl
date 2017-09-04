@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_resman_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_joomla_com_resman_xss_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Joomla Resman Cross Site Scripting Vulnerability
 #
@@ -47,8 +47,8 @@ site scripting vulnerability.";
 if(description)
 {
   script_id(802123);
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-19 14:57:20 +0200 (Tue, 19 Jul 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityhome.eu/exploits/exploit.php?eid=12197195854e201e79bd8c48.80520413");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Joomla Resman component is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

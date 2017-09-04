@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mahara_xss_n_csrf_vuln.nasl 3113 2016-04-19 09:57:04Z benallard $
+# $Id: secpod_mahara_xss_n_csrf_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Mahara Cross Site Scripting and Cross Site Request Forgery Vulnerabilities
 #
@@ -44,8 +44,8 @@ tag_summary = "This host is running Mahara and is prone to cross site scripting
 if(description)
 {
   script_id(901199);
-  script_version("$Revision: 3113 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 11:57:04 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-01 15:39:52 +0200 (Fri, 01 Apr 2011)");
   script_bugtraq_id(47033);
   script_cve_id("CVE-2011-0439", "CVE-2011-0440");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://mahara.org/interaction/forum/topic.php?id=3208");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Mahara");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_98295_lin.nasl 6726 2017-07-14 10:39:17Z cfischer $
+# $Id: gb_wordpress_98295_lin.nasl 7011 2017-08-25 12:25:12Z asteins $
 #
 # WordPress Password Reset CVE-2017-8295 Security Bypass Vulnerability (Linux)
 #
@@ -31,12 +31,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108155");
-  script_version("$Revision: 6726 $");
+  script_version("$Revision: 7011 $");
   script_cve_id("CVE-2017-8295");
   script_bugtraq_id(98295);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 12:39:17 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 14:25:12 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-05-08 11:00:15 +0200 (Mon, 08 May 2017)");
   script_name("WordPress Password Reset CVE-2017-8295 Security Bypass Vulnerability (Linux)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -64,7 +64,7 @@ if(description)
   script_tag(name:"impact", value:"Attackers can exploit this issue to bypass certain security restrictions to perform unauthorized actions.
   This may aid in further attacks.");
 
-  script_tag(name:"affected", value:"WordPress versions 4.7.5 and prior.");
+  script_tag(name:"affected", value:"WordPress versions 4.7.4 and prior.");
 
   script_tag(name:"solution", value:"No solution or patch is available as of 14th July, 2017. Information
   regarding this issue will be updated once the solution details are available.
@@ -87,7 +87,7 @@ if( host_runs( "Linux" ) != "yes" ) exit( 0 );
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if( version_is_less_equal( version:vers, test_version:"4.7.5" ) ) {
+if( version_is_less_equal( version:vers, test_version:"4.7.4" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"None" );
   security_message( data:report, port:port );
   exit( 0 );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_time_returns_id_param_sql_inj_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_joomla_time_returns_id_param_sql_inj_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Joomla! Time Returns Component 'id' Parameter SQL Injection Vulnerability
 #
@@ -47,8 +47,8 @@ SQL injection vulnerability.";
 if(description)
 {
   script_id(902584);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-10-28 16:17:13 +0200 (Fri, 28 Oct 2011)");
   script_bugtraq_id(50026);
   script_tag(name:"cvss_base", value:"7.5");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/105619/joomlatimereturns-sql.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Joomla! Time Returns component is vulnerable to SQL Injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

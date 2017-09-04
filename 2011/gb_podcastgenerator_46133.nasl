@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_podcastgenerator_46133.nasl 3102 2016-04-18 14:46:07Z benallard $
+# $Id: gb_podcastgenerator_46133.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Podcast Generator Local File Include and Cross Site Scripting Vulnerabilities
 #
@@ -45,8 +45,8 @@ affected.";
 if (description)
 {
  script_id(103062);
- script_version("$Revision: 3102 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:46:07 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 7024 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-02-04 13:23:33 +0100 (Fri, 04 Feb 2011)");
  script_bugtraq_id(46133);
 
@@ -60,7 +60,6 @@ if (description)
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed Podcast Generator is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

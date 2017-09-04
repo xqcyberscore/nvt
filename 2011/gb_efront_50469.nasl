@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_efront_50469.nasl 2860 2016-03-15 14:47:01Z cfi $
+# $Id: gb_efront_50469.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # eFront Multiple Cross Site Scripting Vulnerabilities
 #
@@ -30,13 +30,12 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103324");
  script_bugtraq_id(50469);
- script_version ("$Revision: 2860 $");
+ script_version ("$Revision: 7029 $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_name("eFront Multiple Cross Site Scripting Vulnerabilities");
- script_tag(name:"last_modification", value:"$Date: 2016-03-15 15:47:01 +0100 (Tue, 15 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-11-02 08:00:00 +0100 (Wed, 02 Nov 2011)");
- script_summary("Determine if installed eFront is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

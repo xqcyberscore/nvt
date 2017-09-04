@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_info_discl_vuln.nasl 4953 2017-01-05 10:16:01Z ckuerste $
+# $Id: gb_hp_ilo_info_discl_vuln.nasl 7001 2017-08-25 02:23:41Z ckuersteiner $
 #
 # HP Integrated Lights-Out 3 Information Disclosure Vulnerability 
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:hp:integrated_lights-out";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106493");
-  script_version("$Revision: 4953 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-05 11:16:01 +0100 (Thu, 05 Jan 2017) $");
+  script_version("$Revision: 7001 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-25 04:23:41 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name: "creation_date", value: "2017-01-05 12:42:59 +0700 (Thu, 05 Jan 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -66,8 +66,6 @@ sensitive information via a padding-oracle attack, aka a Vaudenay attack.");
 version v1.88 or subsequent.");
 
   script_xref(name: "URL", value: "https://h20566.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05249760");
-
-  script_summary("Check the version");
 
   exit(0);
 }

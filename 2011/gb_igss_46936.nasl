@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_igss_46936.nasl 3115 2016-04-19 10:09:30Z benallard $
+# $Id: gb_igss_46936.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # 7T Interactive Graphical SCADA System Multiple Security Vulnerabilities
 #
@@ -39,8 +39,8 @@ perform unauthorized actions using directory traversal strings.";
 if (description)
 {
  script_id(103128);
- script_version("$Revision: 3115 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:09:30 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-03-28 13:42:17 +0200 (Mon, 28 Mar 2011)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -64,7 +64,6 @@ if (description)
  script_xref(name : "URL" , value : "http://aluigi.org/adv/igss_8-adv.txt");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed 7T Interactive Graphical SCADA System is vulnerable");
  script_category(ACT_ATTACK);
  script_family("General");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

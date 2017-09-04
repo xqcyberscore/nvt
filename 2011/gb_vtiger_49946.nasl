@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_49946.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_vtiger_49946.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # vtiger CRM 'class.phpmailer.php' Remote Code Execution Vulnerability
 #
@@ -39,8 +39,8 @@ CPE = "cpe:/a:vtiger:vtiger_crm";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-10-06 13:32:57 +0200 (Thu, 06 Oct 2011)");
  script_bugtraq_id(49946);
  script_tag(name:"cvss_base", value:"7.5");
@@ -53,7 +53,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.vtiger.com/");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed vtiger version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

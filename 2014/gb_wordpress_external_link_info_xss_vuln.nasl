@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_external_link_info_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_external_link_info_xss_vuln.nasl 6995 2017-08-23 11:52:03Z teissa $
 #
 # WordPress WP Js External link Info Plugin 'redirect.php' XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6995 $");
   script_bugtraq_id(66999);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-05-08 11:23:17 +0530 (Thu, 08 May 2014)");
   script_name("WordPress WP Js External link Info Plugin 'redirect.php' XSS Vulnerability");
 
@@ -77,7 +77,6 @@ features, remove the product or replace the product by another one.";
 
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2014040145");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126238");
-  script_summary("Check if Wordpress JS External Link Info Plugin is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

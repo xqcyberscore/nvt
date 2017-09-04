@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asus_rt-n56u_49308.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: gb_asus_rt-n56u_49308.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # ASUS RT-N56U Wireless Router 'QIS_wizard.htm' Password Information Disclosure Vulnerability
 #
@@ -38,9 +38,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 if (description)
 {
  script_id(103228);
- script_version("$Revision: 6696 $");
+ script_version("$Revision: 7029 $");
  script_cve_id("CVE-2011-4497");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-08-26 14:51:18 +0200 (Fri, 26 Aug 2011)");
  script_bugtraq_id(49308);
  script_tag(name:"cvss_base", value:"3.3");
@@ -53,7 +53,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.asus.com/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if SUS RT-N56U wireless router is prone to an information-disclosure vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

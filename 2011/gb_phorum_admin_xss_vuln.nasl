@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phorum_admin_xss_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_phorum_admin_xss_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Phorum 'admin.php' Cross-Site Scripting Vulnerability
 #
@@ -46,10 +46,10 @@ vulnerability.";
 if(description)
 {
   script_id(802530);
-  script_version("$Revision: 3570 $");
+  script_version("$Revision: 7044 $");
   script_cve_id("CVE-2011-4561");
   script_bugtraq_id(49920);
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-12-02 17:46:36 +0530 (Fri, 02 Dec 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/519991/100/0/threaded");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Phorum is vulnerable to XSS attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

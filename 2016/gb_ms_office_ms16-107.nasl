@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-107.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_ms_office_ms16-107.nasl 6970 2017-08-21 06:22:17Z asteins $
 #
 # Microsoft Office Suite Remote Code Execution Vulnerabilities (3185852)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807361");
-  script_version("$Revision: 5557 $");
-  script_cve_id("CVE-2016-0141", "CVE-2016-3357");
+  script_version("$Revision: 6970 $");
+  script_cve_id("CVE-2016-0137", "CVE-2016-0141", "CVE-2016-3357");
   script_bugtraq_id(92903, 92786);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-21 08:22:17 +0200 (Mon, 21 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-09-14 11:55:19 +0530 (Wed, 14 Sep 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Suite Remote Code Execution Vulnerabilities (3185852)");

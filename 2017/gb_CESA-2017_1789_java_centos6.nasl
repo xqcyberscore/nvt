@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_1789_java_centos6.nasl 6818 2017-07-31 09:55:16Z santu $
+# $Id: gb_CESA-2017_1789_java_centos6.nasl 6981 2017-08-22 06:39:29Z asteins $
 #
 # CentOS Update for java CESA-2017:1789 centos6 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882754");
-  script_version("$Revision: 6818 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-31 11:55:16 +0200 (Mon, 31 Jul 2017) $");
+  script_version("$Revision: 6981 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-22 08:39:29 +0200 (Tue, 22 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-07-22 07:21:17 +0200 (Sat, 22 Jul 2017)");
   script_cve_id("CVE-2017-10053", "CVE-2017-10067", "CVE-2017-10074", "CVE-2017-10078", 
                 "CVE-2017-10081", "CVE-2017-10087", "CVE-2017-10089", "CVE-2017-10090", 
@@ -36,8 +36,8 @@ if(description)
                 "CVE-2017-10108", "CVE-2017-10109", "CVE-2017-10110", "CVE-2017-10111", 
                 "CVE-2017-10115", "CVE-2017-10116", "CVE-2017-10135", "CVE-2017-10193", 
                 "CVE-2017-10198");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for java CESA-2017:1789 centos6 ");
   script_tag(name: "summary", value: "Check the version of java");

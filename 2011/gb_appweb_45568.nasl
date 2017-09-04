@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_appweb_45568.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: gb_appweb_45568.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Appweb Web Server Cross Site Scripting Vulnerability
 #
@@ -39,8 +39,8 @@ tag_solution = "Updates are available. Please see the reference for more details
 if (description)
 {
  script_id(103001);
- script_version("$Revision: 6696 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-01-03 14:40:34 +0100 (Mon, 03 Jan 2011)");
  script_bugtraq_id(45568);
  script_tag(name:"cvss_base", value:"2.6");
@@ -53,7 +53,6 @@ if (description)
  script_xref(name : "URL" , value : "http://appwebserver.org/downloads/appweb/download.php");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Appweb is prone to a cross-site scripting vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web Servers");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

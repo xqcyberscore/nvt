@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_licensing_admin_console_mult_vuln.nasl 3116 2016-04-19 10:11:19Z benallard $
+# $Id: gb_citrix_licensing_admin_console_mult_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Citrix Licensing Administration Console Security Bypass And Denial Of Service Vulnerabilities
 #
@@ -46,8 +46,8 @@ and is prone to security bypass and denial of service vulnerabilities.";
 if(description)
 {
   script_id(801854);
-  script_version("$Revision: 3116 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:11:19 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-09 16:08:21 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2011-1101");
   script_bugtraq_id(46529);
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0477");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Citrix License Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

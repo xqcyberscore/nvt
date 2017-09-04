@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_com_bfquiztrial_sql_inj_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_joomla_com_com_bfquiztrial_sql_inj_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Joomla 'BF Quiz' Component 'catid' Parameter SQL Injection Vulnerability
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is running Joomla! with BF Quiz component and is
 if(description)
 {
   script_id(802535);
-  script_version("$Revision: 3117 $");
+  script_version("$Revision: 7015 $");
   script_cve_id("CVE-2010-5032");
   script_bugtraq_id(40435);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-06 13:16:11 +0530 (Tue, 06 Dec 2011)");
   script_name("Joomla 'BF Quiz' Component 'catid' Parameter SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/39960");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xenuser.org/documents/security/joomla_com_bfquiz_sqli.txt");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_summary("Check if Joomla BF Quiz component is vulnerable for SQL Injection attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

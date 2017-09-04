@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quicksharehq_ftp_server_dir_trav_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_quicksharehq_ftp_server_dir_trav_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # QuickShare File Share FTP Server Directory Traversal Vulnerability
 #
@@ -45,8 +45,8 @@ prone to directory traversal vulnerability.";
 if(description)
 {
   script_id(800197);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/98137/quicksharefs-traverse.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Try Directory Traversal Attack on QuickShare File Share FTP server");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("FTP");

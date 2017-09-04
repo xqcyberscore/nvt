@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cubecart_mult_xss_n_sql_inj_vuln.nasl 3116 2016-04-19 10:11:19Z benallard $
+# $Id: gb_cubecart_mult_xss_n_sql_inj_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # CubeCart Multiple Cross-Site Scripting and SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802199");
-  script_version("$Revision: 3116 $");
+  script_version("$Revision: 7019 $");
   script_cve_id("CVE-2010-4903");
   script_bugtraq_id(43114);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:11:19 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-04 11:10:29 +0200 (Fri, 04 Nov 2011)");
   script_name("CubeCart Multiple Cross-Site Scripting and SQL Injection Vulnerabilities");
 
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/513572/100/0/threaded");
   script_xref(name : "URL" , value : "http://www.acunetix.com/blog/web-security-zone/articles/sql-injection-xss-cubecart-4-3-3/");
 
-  script_summary("Check if CubeCart is vulnerable for SQL injection attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

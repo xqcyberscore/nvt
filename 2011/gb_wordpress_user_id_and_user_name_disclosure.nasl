@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_user_id_and_user_name_disclosure.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_wordpress_user_id_and_user_name_disclosure.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # WordPress User IDs and User Names Disclosure
 #
@@ -46,15 +46,14 @@ if (description)
 {
  script_xref(name : "URL" , value : "http://www.talsoft.com.ar/index.php/research/security-advisories/wordpress-user-id-and-user-name-disclosure");
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-08-24 15:44:33 +0200 (Wed, 24 Aug 2011)");
  script_tag(name:"cvss_base", value:"5.8");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
  script_name("WordPress User IDs and User Names Disclosure");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if WordPress is prone to User IDs and User Names Disclosure");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

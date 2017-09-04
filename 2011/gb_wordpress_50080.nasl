@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_50080.nasl 5647 2017-03-21 09:46:08Z cfi $
+# $Id: gb_wordpress_50080.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # WordPress Light Post Plugin 'abspath' Parameter Remote File Include Vulnerability
 #
@@ -44,8 +44,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5647 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-10-14 12:50:33 +0200 (Fri, 14 Oct 2011)");
  script_bugtraq_id(50080);
  script_tag(name:"cvss_base", value:"7.5");
@@ -54,7 +54,6 @@ if (description)
 
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Light Post WordPress Plugin is prone to a remote file-include vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

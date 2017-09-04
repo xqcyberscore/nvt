@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_simple_machines_forum_mult_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_simple_machines_forum_mult_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Simple Machines Forum Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:simplemachines:smf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902446");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_cve_id("CVE-2011-1127", "CVE-2011-1128", "CVE-2011-1129",
                 "CVE-2011-1130", "CVE-2011-1131");
@@ -43,7 +43,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2011/02/22/17");
   script_xref(name:"URL", value:"http://www.simplemachines.org/community/index.php?topic=421547.0");
 
-  script_summary("Check for the version of Simple Machines Forum");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_mult_vuln_aug17.nasl 6912 2017-08-14 04:29:29Z ckuersteiner $
+# $Id: gb_symantec_messaging_gateway_mult_vuln_aug17.nasl 7026 2017-08-31 06:13:04Z asteins $
 #
 # Symantec Messaging Gateway Multiple Vulnerabilities Aug17
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140294");
-  script_version("$Revision: 6912 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-14 06:29:29 +0200 (Mon, 14 Aug 2017) $");
+  script_version("$Revision: 7026 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-31 08:13:04 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name: "creation_date", value: "2017-08-14 10:44:09 +0700 (Mon, 14 Aug 2017)");
-  script_tag(name: "cvss_base", value: "6.2");
-  script_tag(name: "cvss_base_vector", value: "AV:A/AC:H/Au:M/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-6327", "CVE-2017-6328");
 

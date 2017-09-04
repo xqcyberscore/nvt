@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cutenews_detect_win_900128.nasl 2815 2016-03-09 14:49:24Z cfi $
+# $Id: secpod_cutenews_detect_win_900128.nasl 7000 2017-08-24 11:51:46Z teissa $
 # Description: CuteNews Version Detection for Windows
 #
 # Authors:
@@ -27,15 +27,14 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.900128");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2815 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-09 15:49:24 +0100 (Wed, 09 Mar 2016) $");
+ script_version("$Revision: 7000 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
  script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
  script_copyright("Copyright (C) 2008 SecPod");
  script_tag(name:"cvss_base", value:"0.0");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_name("CuteNews Version Detection for Windows");
- script_summary("Set File Version of CuteNews in KB");
  script_dependencies("http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quickphp_45626.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_quickphp_45626.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # QuickPHP 'index.php' Remote Source Code Disclosure Vulnerability
 #
@@ -37,8 +37,8 @@ QuickPHP 1.10.0 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103002);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-01-03 14:40:34 +0100 (Mon, 03 Jan 2011)");
  script_bugtraq_id(45626);
  script_tag(name:"cvss_base", value:"5.0");
@@ -49,7 +49,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.zachsaw.co.cc/?pg=quickphp_php_tester_debugger");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if QuickPHP is prone to a remote source-code-disclosure vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

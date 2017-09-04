@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_info_disc_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: gb_mozilla_prdts_mult_info_disc_vuln_win.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Mozilla Products Multiple Information Disclosure Vulnerabilities - (Windows)
 #
@@ -52,11 +52,11 @@ tag_summary = "The host is installed with Mozilla firefox/seamonkey/thunderbird
 if(description)
 {
   script_id(802545);
-  script_version("$Revision: 6444 $");
+  script_version("$Revision: 7029 $");
   script_cve_id("CVE-2010-5074", "CVE-2002-2437", "CVE-2002-2436");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-09 14:17:09 +0530 (Fri, 09 Dec 2011)");
   script_name("Mozilla Products Multiple Information Disclosure Vulnerabilities - (Windows)");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.security-database.com/detail.php?alert=CVE-2002-2437");
   script_xref(name : "URL" , value : "http://vrda.jpcert.or.jp/feed/en/NISTNVD_CVE-2010-5074_AD_1.html");
 
-  script_summary("Check for the version of Mozilla Firefox/SeaMonkey/Thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

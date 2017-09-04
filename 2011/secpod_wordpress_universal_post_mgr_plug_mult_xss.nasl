@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_universal_post_mgr_plug_mult_xss.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: secpod_wordpress_universal_post_mgr_plug_mult_xss.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # WordPress Universal Post Manager Multiple Cross Site Scripting Vulnerabilities
 #
@@ -51,8 +51,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-05-02 12:20:04 +0200 (Mon, 02 May 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.htbridge.ch/advisory/multiple_xss_in_universal_post_manager_wordpress_plugin.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check for WordPress Universal Post Manager plugin XSS Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

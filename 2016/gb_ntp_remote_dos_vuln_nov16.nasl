@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_remote_dos_vuln_nov16.nasl 5143 2017-01-31 09:40:43Z antu123 $
+# $Id: gb_ntp_remote_dos_vuln_nov16.nasl 6959 2017-08-18 07:24:59Z asteins $
 #
 # NTP.org 'ntp' 'decodenetnum' And 'loop counter underrun' DoS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810221");
-  script_version("$Revision: 5143 $");
+  script_version("$Revision: 6959 $");
   script_cve_id("CVE-2015-7855", "CVE-2015-7848");
   script_bugtraq_id(77283, 77275);
-  script_tag(name:"cvss_base", value:"4.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:M/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 10:40:43 +0100 (Tue, 31 Jan 2017) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-11-29 12:32:57 +0530 (Tue, 29 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP.org 'ntp' 'decodenetnum' And 'loop counter underrun' DoS Vulnerabilities");

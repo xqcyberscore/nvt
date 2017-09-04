@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dd_wrt_45598.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_dd_wrt_45598.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # DD-WRT '/Info.live.htm' Multiple Information Disclosure Vulnerabilities
 #
@@ -34,8 +34,8 @@ information, possibly aiding in further attacks.";
 if (description)
 {
  script_id(103012);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7029 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-01-05 15:07:33 +0100 (Wed, 05 Jan 2011)");
  script_bugtraq_id(45598);
 
@@ -48,7 +48,6 @@ if (description)
  script_tag(name:"cvss_base", value:"3.3");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine remote DD-WRT is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

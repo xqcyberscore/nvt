@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_acdsee_fotoslate_mult_bof_vuln.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: secpod_acdsee_fotoslate_mult_bof_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # ACDSee FotoSlate Multiple Buffer Overflow Vulnerabilities
 #
@@ -47,8 +47,8 @@ multiple buffer overflow vulnerabilities.";
 if(description)
 {
   script_id(902732);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_cve_id("CVE-2011-2595");
   script_bugtraq_id(49558);
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/44722");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of ACDSee Fotoslate");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");

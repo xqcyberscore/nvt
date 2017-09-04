@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sunway_force_control_webserver_bof_vuln.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: gb_sunway_force_control_webserver_bof_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Sunway ForceControl WebServer 'httpsvr.exe' Buffer Overflow Vulnerability
 #
@@ -45,8 +45,8 @@ buffer overflow vulnerability.";
 if(description)
 {
   script_id(802156);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-13 07:51:43 +0200 (Tue, 13 Sep 2011)");
   script_cve_id("CVE-2011-2960");
   script_bugtraq_id(48328);
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICSA-11-167-01.pdf");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of Sunway ForceControl httpsvr.exe");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

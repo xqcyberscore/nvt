@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_bi_publisher_jul2017-3236622_03_vuln.nasl 6765 2017-07-20 06:20:42Z santu $
+# $Id: gb_oracle_bi_publisher_jul2017-3236622_03_vuln.nasl 6981 2017-08-22 06:39:29Z asteins $
 #
 # Oracle BI Publisher Multiple Unspecified Vulnerabilities-03 (jul2017-3236622)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:business_intelligence_publisher";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811249");
-  script_version("$Revision: 6765 $");
+  script_version("$Revision: 6981 $");
   script_cve_id("CVE-2017-10156", "CVE-2017-10157");
   script_bugtraq_id(99682, 99694);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 08:20:42 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-22 08:39:29 +0200 (Tue, 22 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-07-19 17:29:23 +0530 (Wed, 19 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle BI Publisher Multiple Unspecified Vulnerabilities-03 (jul2017-3236622)");

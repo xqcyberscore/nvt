@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ffftp_untrusted_search_path_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_ffftp_untrusted_search_path_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # FFFTP Untrusted Search Path Vulnerability (Windows) - Dec 11
 #
@@ -39,12 +39,12 @@ tag_summary = "The host is running FFFTP and is prone to untrusted search path
 if(description)
 {
   script_id(902770);
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 7019 $");
   script_cve_id("CVE-2011-4266");
   script_bugtraq_id(51063);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-15 15:17:47 +0530 (Thu, 15 Dec 2011)");
   script_name("FFFTP Untrusted Search Path Vulnerability (Windows) - Dec 11");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47137/");
@@ -53,7 +53,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2011 SecPod");
-  script_summary("Check the version of FFFTP");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_ffftp_detect.nasl");

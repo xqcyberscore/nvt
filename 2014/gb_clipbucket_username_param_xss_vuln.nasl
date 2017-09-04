@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clipbucket_username_param_xss_vuln.nasl 4130 2016-09-22 09:37:47Z antu123 $
+# $Id: gb_clipbucket_username_param_xss_vuln.nasl 6995 2017-08-23 11:52:03Z teissa $
 #
 # ClipBucket 'Username' Parameter Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:clipbucket_project:clipbucket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804641");
-  script_version("$Revision: 4130 $");
+  script_version("$Revision: 6995 $");
   script_cve_id("CVE-2014-4187");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-22 11:37:47 +0200 (Thu, 22 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-06-18 11:17:33 +0530 (Wed, 18 Jun 2014)");
   script_name("ClipBucket 'Username' Parameter Cross-Site Scripting Vulnerability");
 
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2014/Jun/119");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127098");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/532432/100/0/threaded");
-  script_summary("Check if ClipBucket is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

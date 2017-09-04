@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_finger_redirection_remote_dos_vuln.nasl 3569 2016-06-21 07:43:44Z benallard $
+# $Id: gb_finger_redirection_remote_dos_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Finger Redirection Remote Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802231");
-  script_version("$Revision: 3569 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:43:44 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_cve_id("CVE-1999-0106");
   script_tag(name:"cvss_base", value:"2.1");
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityspace.com/smysecure/catid.html?id=10073");
   script_xref(name : "URL" , value : "http://www.iss.net/security_center/reference/vuln/finger-bomb.htm");
 
-  script_summary("Determine if Finger is prone to denial of service vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Finger abuses");

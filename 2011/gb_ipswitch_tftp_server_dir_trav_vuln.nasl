@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipswitch_tftp_server_dir_trav_vuln.nasl 5645 2017-03-21 09:32:09Z cfi $
+# $Id: gb_ipswitch_tftp_server_dir_trav_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Ipswitch TFTP Server Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802405");
-  script_version("$Revision: 5645 $");
+  script_version("$Revision: 7029 $");
   script_cve_id("CVE-2011-4722");
   script_bugtraq_id(50890);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:32:09 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-06 11:57:11 +0530 (Tue, 06 Dec 2011)");
   script_name("Ipswitch TFTP Server Directory Traversal Vulnerability");
 
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SecPod_Ipswitch_TFTP_Server_Dir_Trav.txt");
   script_xref(name : "URL" , value : "http://secpod.org/exploits/SecPod_Ipswitch_TFTP_Server_Dir_Trav_POC.py");
 
-  script_summary("Check for the directory traversal attack in Ipswitch TFTP Server");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Remote file access");

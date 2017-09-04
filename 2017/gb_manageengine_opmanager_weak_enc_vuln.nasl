@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_weak_enc_vuln.nasl 6860 2017-08-07 10:04:33Z ckuersteiner $
+# $Id: gb_manageengine_opmanager_weak_enc_vuln.nasl 6959 2017-08-18 07:24:59Z asteins $
 #
 # ManageEngine OpManager Weak Encryption Algorithm Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:zohocorp:manageengine_opmanager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140279");
-  script_version("$Revision: 6860 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-07 12:04:33 +0200 (Mon, 07 Aug 2017) $");
+  script_version("$Revision: 6959 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
   script_tag(name: "creation_date", value: "2017-08-07 16:08:23 +0700 (Mon, 07 Aug 2017)");
-  script_tag(name: "cvss_base", value: "4.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2015-9107");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_handler_mult_dos_vuln.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: gb_mysql_handler_mult_dos_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # MySQL Handler Multiple Denial Of Service Vulnerabilities
 #
@@ -43,8 +43,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3386 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-18 07:48:41 +0100 (Tue, 18 Jan 2011)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://dev.mysql.com/doc/refman/5.1/en/news-5-1-49.html");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2010/09/28/10");
 
-  script_summary("Check for the version of MySQL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");

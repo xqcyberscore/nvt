@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_n_appln_server_mult_unspecified_vuln.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: gb_oracle_database_n_appln_server_mult_unspecified_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Oracle Database Server and Application Server Multiple Unspecified Vulnerabilities
 #
@@ -27,16 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802526");
-  script_version("$Revision: 3386 $");
+  script_version("$Revision: 7024 $");
   script_cve_id("CVE-2006-0282", "CVE-2006-0283", "CVE-2006-0285", "CVE-2006-0286",
                 "CVE-2006-0287", "CVE-2006-0290", "CVE-2006-0291");
   script_bugtraq_id(16287);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-07 12:33:26 +0530 (Wed, 07 Dec 2011)");
   script_name("Oracle Database Server and Application Server Multiple Unspecified Vulnerabilities");
-  script_summary("Check for the version of Oracle Database and Application server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drivecrypt_ioctl_priv_esc_vuln_win.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: gb_drivecrypt_ioctl_priv_esc_vuln_win.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # SecurStar DriveCrypt 'DCR.sys' IOCTL Handling Privilege Escalation Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with SecurStar DriveCrypt and is prone to
 if(description)
 {
   script_id(801799);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_cve_id("CVE-2011-0513");
   script_bugtraq_id(45750);
@@ -49,7 +49,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/42881");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/15972/");
 
-  script_summary("Check for the version of DriveCrypt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

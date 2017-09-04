@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_info_disc_vuln_win.nasl 5656 2017-03-21 11:03:12Z cfi $
+# $Id: gb_opera_mult_info_disc_vuln_win.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Opera Multiple Information Disclosure Vulnerabilities (Windows)
 #
@@ -49,16 +49,15 @@ information disclosure vulnerabilities.";
 if(description)
 {
   script_id(802363);
-  script_version("$Revision: 5656 $");
+  script_version("$Revision: 7044 $");
   script_cve_id("CVE-2010-5072", "CVE-2010-5068");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-12-09 16:10:28 +0530 (Fri, 09 Dec 2011)");
   script_name("Opera Multiple Information Disclosure Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://w2spconf.com/2010/papers/p26.pdf");
 
-  script_summary("Check for the version of Opera on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_quantum_ethernet_module_hardcoded_credentials_ftp_51046.nasl 3786 2016-08-02 19:21:54Z cfi $
+# $Id: gb_schneider_quantum_ethernet_module_hardcoded_credentials_ftp_51046.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Schneider Electric Quantum Ethernet Module Hardcoded Credentials Authentication Bypass Vulnerability
 #
@@ -29,13 +29,12 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103366");
   script_bugtraq_id(51046);
-  script_version ("$Revision: 3786 $");
+  script_version ("$Revision: 7029 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Schneider Electric Quantum Ethernet Module Hardcoded Credentials Authentication Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-02 21:21:54 +0200 (Tue, 02 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-14 10:13:05 +0100 (Wed, 14 Dec 2011)");
-  script_summary("Determine if Schneider Electric Quantum Ethernet Module is prone to an authentication-bypass vulnerability.");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

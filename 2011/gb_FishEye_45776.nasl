@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_FishEye_45776.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_FishEye_45776.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Fisheye Multiple Vulnerabilities
 #
@@ -40,8 +40,8 @@ information.";
 if (description)
 {
  script_id(103027);
- script_version("$Revision: 3911 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_version("$Revision: 7044 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-01-13 13:28:59 +0100 (Thu, 13 Jan 2011)");
  script_bugtraq_id(45776);
  script_tag(name:"cvss_base", value:"2.6");
@@ -56,7 +56,6 @@ if (description)
  script_xref(name : "URL" , value : "http://confluence.atlassian.com/display/CRUCIBLE/FishEye+and+Crucible+Security+Advisory+2011-01-12");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed Fisheye version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

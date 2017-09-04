@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cgi_irc_xss_vuln.nasl 3569 2016-06-21 07:43:44Z benallard $
+# $Id: gb_cgi_irc_xss_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # CGI:IRC 'nonjs' Interface Cross Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801859");
-  script_version("$Revision: 3569 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:43:44 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-10 13:33:28 +0100 (Thu, 10 Mar 2011)");
   script_cve_id("CVE-2011-0050");
   script_bugtraq_id(46303);
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/43217");
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0346");
 
-  script_summary("Check if CGI:IRC is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4035056.nasl 6884 2017-08-09 14:32:44Z santu $
+# $Id: gb_ms_kb4035056.nasl 6959 2017-08-18 07:24:59Z asteins $
 #
 # Microsoft Express Compressed Fonts Remote Code Execution Vulnerability (KB4035056)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811601");
-  script_version("$Revision: 6884 $");
+  script_version("$Revision: 6959 $");
   script_cve_id("CVE-2017-8691");
   script_bugtraq_id(100090);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-09 16:32:44 +0200 (Wed, 09 Aug 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-08-09 08:42:50 +0530 (Wed, 09 Aug 2017)");
   script_name("Microsoft Express Compressed Fonts Remote Code Execution Vulnerability (KB4035056)");
 

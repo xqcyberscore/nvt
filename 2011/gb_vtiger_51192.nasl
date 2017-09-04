@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_51192.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_vtiger_51192.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # vtiger CRM 'graph.php ' Script Authentication Bypass Vulnerability
 #
@@ -42,7 +42,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(51192);
- script_version ("$Revision: 3117 $");
+ script_version ("$Revision: 7006 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -52,10 +52,9 @@ if (description)
  script_xref(name : "URL" , value : "http://www.vtiger.com/");
  script_xref(name : "URL" , value : "http://francoisharvey.ca/2011/12/advisory-meds-2011-01-vtigercrm-anonymous-access-to-setting-module/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-12-29 10:36:49 +0100 (Thu, 29 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if vtiger CRM is prone to an authentication-bypass vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

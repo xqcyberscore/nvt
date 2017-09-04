@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_domino_xss_n_bof_vuln.nasl 5701 2017-03-23 16:10:36Z mime $
+# $Id: secpod_ibm_lotus_domino_xss_n_bof_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # IBM Lotus Domino Cross Site Scripting and Buffer Overflow Vulnerabilities
 #
@@ -29,15 +29,14 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902572");
-  script_version("$Revision: 5701 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_bugtraq_id(49701, 49705);
   script_cve_id("CVE-2011-3575", "CVE-2011-3576");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_name("IBM Lotus Domino Cross Site Scripting and Buffer Overflow Vulnerabilities");
-  script_summary("Check for the version of IBM Lotus Domino");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

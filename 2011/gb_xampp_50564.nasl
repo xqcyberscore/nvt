@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xampp_50564.nasl 5085 2017-01-24 11:32:37Z cfi $
+# $Id: gb_xampp_50564.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # XAMPP 'PHP_SELF' Variable Multiple Cross Site Scripting Vulnerabilities
 #
@@ -39,7 +39,7 @@ if (description)
 {
  script_id(103336);
  script_bugtraq_id(50564);
- script_version ("$Revision: 5085 $");
+ script_version ("$Revision: 7024 $");
  script_tag(name:"cvss_base", value:"2.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
  script_name("XAMPP 'PHP_SELF' Variable Multiple Cross Site Scripting Vulnerabilities");
@@ -48,10 +48,9 @@ if (description)
  script_xref(name : "URL" , value : "http://www.apachefriends.org/en/xampp.html");
  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2011-5054.php");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:32:37 +0100 (Tue, 24 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-11-08 09:38:06 +0100 (Tue, 08 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed XAMPP is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

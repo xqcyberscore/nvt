@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_untrusted_search_path_vuln_win.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_mozilla_firefox_untrusted_search_path_vuln_win.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Mozilla Firefox Untrusted Search Path Vulnerability (Windows)
 #
@@ -40,8 +40,8 @@ tag_summary = "The host is installed with Mozilla firefox and is prone to
 if(description)
 {
   script_id(802149);
-  script_version("$Revision: 3100 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-09-09 17:36:48 +0200 (Fri, 09 Sep 2011)");
   script_cve_id("CVE-2011-2980");
   script_bugtraq_id(49217);
@@ -50,7 +50,6 @@ if(description)
   script_name("Mozilla Firefox Untrusted Search Path Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-30.html");
 
-  script_summary("Check for the version of Mozilla Firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

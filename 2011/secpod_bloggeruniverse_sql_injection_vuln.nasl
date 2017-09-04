@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_bloggeruniverse_sql_injection_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_bloggeruniverse_sql_injection_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Bloggeruniverse 'editcomments.php' SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902632");
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-27 17:29:53 +0200 (Tue, 27 Sep 2011)");
   script_cve_id("CVE-2009-5090");
   script_bugtraq_id(33744);
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/48697");
 
   script_copyright("Copyright (c) 2011 SecPod");
-  script_summary("Check if Bloggeruniverse is vulnerable to SQL Injection");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("find_service.nasl");

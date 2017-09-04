@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_loc_prev_escl_vuln_lin.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_vmware_workstation_loc_prev_escl_vuln_lin.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # VMware Workstation 'vmrun' Library Path Privilege Escalation Vulnerability (Linux)
 #
@@ -45,8 +45,8 @@ tag_summary = "The host is installed with VMWare Workstation local privilege
 if(description)
 {
   script_id(801912);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_cve_id("CVE-2011-1126");
   script_bugtraq_id(47094);
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/tags/advisory");
   script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2011-0006.html");
 
-  script_summary("Check for the version of VMware Workstation");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

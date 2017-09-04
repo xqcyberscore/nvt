@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_mult_xss_mult_vuln.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: gb_otrs_mult_xss_mult_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Open Ticket Request System (OTRS) Multiple Cross-site scripting Vulnerabilities
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3386 $");
+  script_version("$Revision: 7044 $");
   script_cve_id("CVE-2011-1518");
   script_bugtraq_id(47323);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_name("Open Ticket Request System (OTRS) Multiple Cross-site scripting Vulnerabilities");
 
@@ -80,7 +80,6 @@ advisory link http://otrs.org/advisory/OSA-2011-01-en";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/44029");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/66698");
   script_xref(name : "URL" , value : "http://otrs.org/advisory/OSA-2011-01-en/");
-  script_summary("Check for the version of Open Ticket Request System (OTRS)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

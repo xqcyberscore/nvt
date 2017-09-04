@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_informix_dynamic_server_code_exec_vuln_lin.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_ibm_informix_dynamic_server_code_exec_vuln_lin.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # IBM Informix Dynamic Server Oninit Remote Code Execution Vulnerability (Linux)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with IBM Informix Dynamic Server and is
 if(description)
 {
   script_id(902548);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-02 09:08:31 +0200 (Tue, 02 Aug 2011)");
   script_cve_id("CVE-2011-1033");
   script_bugtraq_id(46230);
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/65209");
   script_xref(name : "URL" , value : "http://zerodayinitiative.com/advisories/ZDI-11-050/");
 
-  script_summary("Check for the version of IBM Informix Dynamic Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");

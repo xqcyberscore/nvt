@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2247-01_tomcat.nasl 6850 2017-08-04 07:23:54Z santu $
+# $Id: gb_RHSA-2017_2247-01_tomcat.nasl 7026 2017-08-31 06:13:04Z asteins $
 #
 # RedHat Update for tomcat RHSA-2017:2247-01
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871857");
-  script_version("$Revision: 6850 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:23:54 +0200 (Fri, 04 Aug 2017) $");
+  script_version("$Revision: 7026 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 08:13:04 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-08-04 12:46:46 +0530 (Fri, 04 Aug 2017)");
   script_cve_id("CVE-2016-0762", "CVE-2016-5018", "CVE-2016-6794", "CVE-2016-6796", 
                 "CVE-2016-6797"); 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for tomcat RHSA-2017:2247-01");
   script_tag(name: "summary", value: "Check the version of tomcat");

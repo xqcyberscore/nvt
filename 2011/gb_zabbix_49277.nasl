@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_49277.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_zabbix_49277.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # ZABBIX 'popup.php' Information Disclosure Vulnerability
 #
@@ -41,8 +41,8 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_version("$Revision: 7006 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-09-20 13:31:33 +0200 (Tue, 20 Sep 2011)");
  script_bugtraq_id(49277);
  script_cve_id("CVE-2011-3265");
@@ -56,7 +56,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.zabbix.com/index.php");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed Zabbix version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

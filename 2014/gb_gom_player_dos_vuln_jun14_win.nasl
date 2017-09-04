@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gom_player_dos_vuln_jun14_win.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_gom_player_dos_vuln_jun14_win.nasl 6995 2017-08-23 11:52:03Z teissa $
 #
 # GOM Media Player Denial of Service Vulnerability Jun14 (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:gomlab:gom_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804638");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 6995 $");
   script_cve_id("CVE-2014-3216");
   script_bugtraq_id(67385);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-06-13 19:29:01 +0530 (Fri, 13 Jun 2014)");
   script_name("GOM Media Player Denial of Service Vulnerability Jun14 (Windows)");
 
@@ -78,7 +78,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/33335");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126548");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of GOM Media Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_gom_player_detect_win.nasl");

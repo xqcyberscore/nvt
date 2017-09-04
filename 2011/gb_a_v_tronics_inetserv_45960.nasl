@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_a_v_tronics_inetserv_45960.nasl 3112 2016-04-19 08:52:10Z antu123 $
+# $Id: gb_a_v_tronics_inetserv_45960.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # A-V Tronics InetServ SMTP Denial of Service Vulnerability
 #
@@ -38,8 +38,8 @@ mail us at: vuldb@securityfocus.com.";
 if (description)
 {
  script_id(103040);
- script_version("$Revision: 3112 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 10:52:10 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7029 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-01-24 13:11:38 +0100 (Mon, 24 Jan 2011)");
  script_bugtraq_id(45960);
  script_tag(name:"cvss_base", value:"7.5");
@@ -50,7 +50,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.avtronics.net/inetserv.php");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if InetServ is prone to a denial-of-service vulnerability");
  script_category(ACT_MIXED_ATTACK);
  script_family("SMTP problems");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

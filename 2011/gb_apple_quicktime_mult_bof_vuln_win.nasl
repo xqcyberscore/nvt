@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_bof_vuln_win.nasl 3099 2016-04-18 14:36:59Z benallard $
+# $Id: gb_apple_quicktime_mult_bof_vuln_win.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Apple QuickTime Multiple Buffer Overflow Vulnerabilities (Windows)
 #
@@ -48,8 +48,8 @@ tag_summary = "The host is running Apple QuickTime and is prone to multiple buff
 if(description)
 {
   script_id(802133);
-  script_version("$Revision: 3099 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:36:59 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_cve_id("CVE-2011-0245", "CVE-2011-0246", "CVE-2011-0247",
                 "CVE-2011-0248", "CVE-2011-0249", "CVE-2011-0250",
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2011//Aug/msg00000.html");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of Apple QuickTime");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_dependencies("secpod_apple_quicktime_detection_win_900124.nasl");

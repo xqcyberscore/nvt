@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xdataface_dataface_lfi_vuln.nasl 5651 2017-03-21 10:09:09Z cfi $
+# $Id: gb_xdataface_dataface_lfi_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Xataface Dataface '-action' Local File Inclusion Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801950");
-  script_version("$Revision: 5651 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_bugtraq_id(48126);
   script_tag(name:"cvss_base", value:"6.0");
@@ -37,7 +37,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17367/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/102056/dataface-lfi.txt");
 
-  script_summary("Check if Xataface Dataface is vulnerable to local file inclusion");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

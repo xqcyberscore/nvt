@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_home_ftp_server_dir_trav_vun.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_home_ftp_server_dir_trav_vun.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Home FTP Server Multiple Directory Traversal Vulnerabilities
 #
@@ -41,8 +41,8 @@ vulnerabilities.";
 if(description)
 {
   script_id(801599);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-04 14:32:35 +0100 (Fri, 04 Mar 2011)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/16259/");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check for the directory traversal attack in Home Ftp Server");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("FTP");

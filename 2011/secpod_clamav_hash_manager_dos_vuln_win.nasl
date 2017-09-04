@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_clamav_hash_manager_dos_vuln_win.nasl 5451 2017-03-01 08:24:31Z cfi $
+# $Id: secpod_clamav_hash_manager_dos_vuln_win.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # ClamAV Hash Manager Off-By-One Denial of Service Vulnerability (Windows)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host has ClamAV installed and is prone to denial of service
 if(description)
 {
   script_id(902726);
-  script_version("$Revision: 5451 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 09:24:31 +0100 (Wed, 01 Mar 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_cve_id("CVE-2011-2721");
   script_bugtraq_id(48891);
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/68785");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2011/07/26/3");
 
-  script_summary("Check for the Version of ClamAV");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Denial of Service");

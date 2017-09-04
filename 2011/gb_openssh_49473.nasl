@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_49473.nasl 4336 2016-10-24 15:48:20Z mime $
+# $Id: gb_openssh_49473.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # OpenSSH Ciphersuite Specification Information Disclosure Weakness
 #
@@ -38,8 +38,8 @@ tag_solution = "Updates are available. Please see the references for more inform
 if (description)
 {
  script_id(103247);
- script_version("$Revision: 4336 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:48:20 +0200 (Mon, 24 Oct 2016) $");
+ script_version("$Revision: 7024 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-09-09 13:52:42 +0200 (Fri, 09 Sep 2011)");
  script_bugtraq_id(49473);
  script_cve_id("CVE-2001-0572");
@@ -53,7 +53,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.openssh.com");
  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/596827");
 
- script_summary("Determine if installed OpenSSH version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

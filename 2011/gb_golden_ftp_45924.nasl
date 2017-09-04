@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_golden_ftp_45924.nasl 3786 2016-08-02 19:21:54Z cfi $
+# $Id: gb_golden_ftp_45924.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Golden FTP Server Malformed Message Denial Of Service Vulnerability
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103037");
-  script_version("$Revision: 3786 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-02 21:21:54 +0200 (Tue, 02 Aug 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-20 13:02:23 +0100 (Thu, 20 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2006-6576");
   script_bugtraq_id(45924);
   script_name("Golden FTP Server Malformed Message Denial Of Service Vulnerability");
-  script_summary("Determine if installed Golden FTP Server version is vulnerable");
   script_category(ACT_GATHER_INFO);
   script_family("FTP");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

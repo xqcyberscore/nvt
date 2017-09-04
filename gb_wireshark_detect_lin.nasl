@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_detect_lin.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_wireshark_detect_lin.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Wireshark Version Detection (Linux)
 #
@@ -38,13 +38,12 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2836 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 7000 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 15:11:55 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Wireshark Version Detection (Linux)");
-  script_summary("Detection of installed version of Wireshark");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008, 2011 Greenbone Networks GmbH");
   script_family("Product detection");

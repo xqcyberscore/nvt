@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3755.nasl 6607 2017-07-07 12:04:25Z cfischer $
+# $Id: deb_3755.nasl 7026 2017-08-31 06:13:04Z asteins $
 # Auto-generated from advisory DSA 3755-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703755);
-    script_version("$Revision: 6607 $");
+    script_version("$Revision: 7026 $");
     script_cve_id("CVE-2016-8745");
     script_name("Debian Security Advisory DSA 3755-1 (tomcat8 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-08-31 08:13:04 +0200 (Thu, 31 Aug 2017) $");
     script_tag(name: "creation_date", value: "2017-01-08 00:00:00 +0100 (Sun, 08 Jan 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"5.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

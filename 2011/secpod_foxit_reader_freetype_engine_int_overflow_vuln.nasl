@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_foxit_reader_freetype_engine_int_overflow_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_foxit_reader_freetype_engine_int_overflow_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Foxit Reader Freetype Engine Integer Overflow Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "The host is installed with Foxit Reader and is prone to
 if(description)
 {
   script_id(902605);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_cve_id("CVE-2011-1908");
   script_bugtraq_id(48359);
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.foxitsoftware.com/products/reader/security_bulletins.php#freetype");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of Foxit Reader");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");

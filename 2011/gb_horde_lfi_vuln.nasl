@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_lfi_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_horde_lfi_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Horde Products Local File Inclusion Vulnerability
 #
@@ -41,8 +41,8 @@ tag_summary = "The host is running Horde and is prone to local file inclusion
 if(description)
 {
   script_id(801849);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-17 16:08:28 +0100 (Thu, 17 Feb 2011)");
   script_cve_id("CVE-2009-0932");
   script_bugtraq_id(33491);
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/98424/horde-lfi.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Horde is vulnerable to local file inclusion");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

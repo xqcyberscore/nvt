@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_45800.nasl 3775 2016-07-29 16:30:59Z mime $
+# $Id: gb_ibm_was_45800.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # IBM WebSphere Application Server Multiple Vulnerabilities
 #
@@ -35,8 +35,8 @@ information.";
 if (description)
 {
  script_id(103029);
- script_version("$Revision: 3775 $");
- script_tag(name:"last_modification", value:"$Date: 2016-07-29 18:30:59 +0200 (Fri, 29 Jul 2016) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-01-14 14:24:22 +0100 (Fri, 14 Jan 2011)");
  script_bugtraq_id(45800,45802);
  script_cve_id("CVE-2011-0316","CVE-2011-0315");
@@ -47,7 +47,6 @@ if (description)
 
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed WAS version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web Servers");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

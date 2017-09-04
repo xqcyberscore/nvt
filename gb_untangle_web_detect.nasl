@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_untangle_web_detect.nasl 3777 2016-07-30 10:14:39Z cfi $
+# $Id: gb_untangle_web_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Untangle NG Firewall Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105813");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 3777 $");
- script_tag(name:"last_modification", value:"$Date: 2016-07-30 12:14:39 +0200 (Sat, 30 Jul 2016) $");
+ script_version ("$Revision: 7000 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
  script_tag(name:"creation_date", value:"2016-07-18 15:32:04 +0200 (Mon, 18 Jul 2016)");
  script_name("Untangle NG Firewall Detection");
 
@@ -39,7 +39,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of Untangle NG Firewall");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

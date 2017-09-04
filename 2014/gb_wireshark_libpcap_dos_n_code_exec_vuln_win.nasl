@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_libpcap_dos_n_code_exec_vuln_win.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wireshark_libpcap_dos_n_code_exec_vuln_win.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Wireshark 'Libpcap' Denial of Service and Code Execution Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804666");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 7000 $");
   script_cve_id("CVE-2014-4174");
   script_bugtraq_id(66755);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-07-07 10:20:48 +0530 (Mon, 07 Jul 2014)");
   script_name("Wireshark 'Libpcap' Denial of Service and Code Execution Vulnerabilities (Windows)");
 
@@ -76,7 +76,6 @@ For updates refer to http://www.wireshark.org/download";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57801");
   script_xref(name : "URL" , value : "https://www.hkcert.org/my_url/en/alert/14041102");
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2014-05.html");
-  script_summary("Check for the vulnerable version of Wireshark on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

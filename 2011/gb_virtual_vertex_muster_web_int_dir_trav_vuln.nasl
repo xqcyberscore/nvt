@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_virtual_vertex_muster_web_int_dir_trav_vuln.nasl 4620 2016-11-25 06:39:51Z cfi $
+# $Id: gb_virtual_vertex_muster_web_int_dir_trav_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Virtual Vertex Muster Web Interface Directory Traversal Vulnerability
 #
@@ -39,12 +39,12 @@ tag_summary = "The host is running Virtual Vertex Muster and is prone to directo
 if(description)
 {
   script_id(802279);
-  script_version("$Revision: 4620 $");
+  script_version("$Revision: 7029 $");
   script_cve_id("CVE-2011-4714");
   script_bugtraq_id(50841);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:39:51 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-30 13:13:13 +0530 (Wed, 30 Nov 2011)");
   script_name("Virtual Vertex Muster Web Interface Directory Traversal Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46991");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.security-assessment.com/files/documents/advisory/Muster-Arbitrary_File_Download.pdf");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if Virtual Vertex Muster is vulnerable to Directory Traversal Attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

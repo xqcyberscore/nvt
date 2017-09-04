@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_mult_vuln_win_dec11.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: secpod_mozilla_prdts_mult_vuln_win_dec11.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Mozilla Products Multiple Vulnerabilities - Dec 11 (Windows)
 #
@@ -53,13 +53,13 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird/seamonkey 
 if(description)
 {
   script_id(902775);
-  script_version("$Revision: 6444 $");
+  script_version("$Revision: 7019 $");
   script_cve_id("CVE-2011-3660", "CVE-2011-3661", "CVE-2011-3663", "CVE-2011-3665");
   script_bugtraq_id(51133, 51135, 51136, 51134);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2011-12-22 12:14:45 +0530 (Thu, 22 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_name("Mozilla Products Multiple Vulnerabilities - Dec 11 (Windows)");
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47302/");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-58.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Mozilla Firefox/Thunderbird/SeaMonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("General");

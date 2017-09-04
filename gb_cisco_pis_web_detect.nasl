@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_web_detect.nasl 6233 2017-05-29 10:07:04Z ckuerste $
+# $Id: gb_cisco_pis_web_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Cisco Prime Infrastructure Web Interface Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105613");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6233 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-29 12:07:04 +0200 (Mon, 29 May 2017) $");
+ script_version ("$Revision: 7000 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
  script_tag(name:"creation_date", value:"2016-04-20 16:20:47 +0200 (Wed, 20 Apr 2016)");
  script_name("Cisco Prime Infrastructure Web Interface Detection");
 
@@ -39,7 +39,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of Cisco Prime Infrastructure Web Interface");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

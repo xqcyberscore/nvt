@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_browser_engine_dos_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: gb_mozilla_prdts_browser_engine_dos_vuln_win.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Mozilla Products Browser Engine Denial of Service Vulnerabilities (Windows)
 #
@@ -44,18 +44,17 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird and is pro
 if(description)
 {
   script_id(802510);
-  script_version("$Revision: 6444 $");
+  script_version("$Revision: 7024 $");
   script_cve_id("CVE-2011-3654", "CVE-2011-3652");
   script_bugtraq_id(50602, 50600);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-11 13:42:01 +0530 (Fri, 11 Nov 2011)");
   script_name("Mozilla Products Browser Engine Denial of Service Vulnerabilities (Windows)");
 
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-48.html");
 
-  script_summary("Check for the version of Mozilla Firefox/Thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_dos_vuln_win.nasl 6483 2017-06-29 08:51:15Z cfischer $
+# $Id: gb_perl_dos_vuln_win.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Perl Denial of Service Vulnerability (Windows)
 #
@@ -41,8 +41,8 @@ tag_summary = "The host is installed with Perl and is prone to denial of service
 if(description)
 {
   script_id(801790);
-  script_version("$Revision: 6483 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:51:15 +0200 (Thu, 29 Jun 2017) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-23 15:31:07 +0200 (Mon, 23 May 2011)");
   script_cve_id("CVE-2011-0761");
   script_bugtraq_id(47766);
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.toucan-system.com/advisories/tssa-2011-03.txt");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/517916/100/0/threaded");
 
-  script_summary("Check for the version of Perl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

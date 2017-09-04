@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_tagninja_xss_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_wordpress_tagninja_xss_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # WordPress TagNinja Plugin 'id' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801850");
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-17 16:08:28 +0100 (Thu, 17 Feb 2011)");
   script_bugtraq_id(46090);
   script_tag(name:"cvss_base", value:"4.3");
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/43132");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/98049/WordPressTagNinja1.0-xss.txt");
 
-  script_summary("Check if WordPress plugin is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

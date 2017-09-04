@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_macosx_java_10_6_upd_4.nasl 3113 2016-04-19 09:57:04Z benallard $
+# $Id: secpod_macosx_java_10_6_upd_4.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Java for Mac OS X 10.6 Update 4
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(902557);
-  script_version("$Revision: 3113 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 11:57:04 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_cve_id("CVE-2010-4422", "CVE-2010-4447", "CVE-2010-4448", "CVE-2010-4450",
                 "CVE-2010-4454", "CVE-2010-4462", "CVE-2010-4463", "CVE-2010-4465",
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2011/mar/msg00001.html");
 
   script_copyright("Copyright (c) 2011 SecPod");
-  script_summary("Checks for existence of Java for Mac OS X 10.6 Update 4");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_phportfolio_sql_inj_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_phportfolio_sql_inj_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # PHPortfolio 'photo.php' SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902521");
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-01 11:16:16 +0200 (Wed, 01 Jun 2011)");
   script_cve_id("CVE-2008-4348");
   script_bugtraq_id(31143);
@@ -38,7 +38,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/45078");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17316/");
 
-  script_summary("Check if PHPortfolio is vulnerable to SQL Injection attacks");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

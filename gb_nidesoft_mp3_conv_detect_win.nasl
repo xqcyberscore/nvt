@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nidesoft_mp3_conv_detect_win.nasl 4806 2016-12-19 15:45:27Z teissa $
+# $Id: gb_nidesoft_mp3_conv_detect_win.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Nidesoft MP3 converter Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107107");
-  script_version("$Revision: 4806 $");
+  script_version("$Revision: 7000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-19 16:45:27 +0100 (Mon, 19 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-12-19 11:19:11 +0530 (Mon, 19 Dec 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("gb_cisco_webexwrf_detect_win.nasl (Windows)");
@@ -40,7 +40,6 @@ if(description)
 
   The script logs in via smb, searches for Nidesoft MP3 converter in the registry and gets the version from registry.");
 
-  script_summary("Set version of Nidesoft MP3 converter in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

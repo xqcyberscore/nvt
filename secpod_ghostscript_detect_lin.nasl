@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ghostscript_detect_lin.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_ghostscript_detect_lin.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Ghostscript Version Detection (Linux)
 #
@@ -38,13 +38,12 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7000 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-04-28 07:58:48 +0200 (Tue, 28 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Ghostscript Version Detection (Linux)");
-  script_summary("Detection of installed version of Ghostscript");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 secPod");
   script_family("Product detection");

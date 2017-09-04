@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_ScreenSaver_Status.nasl 3313 2016-05-13 07:10:22Z benallard $
+# $Id: GSHB_WMI_ScreenSaver_Status.nasl 6992 2017-08-23 09:10:48Z emoss $
 #
 # Get Screensaver Status for ALL Users (Windows)
 #
@@ -33,8 +33,8 @@ tag_summary = "The script detects if Screensaver is activated and secured.";
 if(description)
 {
   script_id(96058);
-  script_version("$Revision: 3313 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 09:10:22 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 6992 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 11:10:48 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -118,23 +118,32 @@ for(i=1; i<max_index(Lst); i++)
       ScreenSaverIsSecure = wmi_reg_get_sz(wmi_handle:handlereg, hive:0x80000003,
        key:screenkey, key_name:"ScreenSaverIsSecure");
  
+      ScreenSaveTimeOut = wmi_reg_get_sz(wmi_handle:handlereg, hive:0x80000003,
+       key:screenkey, key_name:"ScreenSaveTimeOut");
+            
       DomScreenSaveActive = wmi_reg_get_sz(wmi_handle:handlereg, hive:0x80000003,
        key:domscreenkey, key_name:"ScreenSaveActive");
 
       DomScreenSaverIsSecure = wmi_reg_get_sz(wmi_handle:handlereg, hive:0x80000003,
        key:domscreenkey, key_name:"ScreenSaverIsSecure");
+      
+      DomScreenSaveTimeOut = wmi_reg_get_sz(wmi_handle:handlereg, hive:0x80000003,
+       key:domscreenkey, key_name:"ScreenSaveTimeOut");
 
       if (!ScreenSaveActive) ScreenSaveActive = "none";
       if (!DomScreenSaveActive) DomScreenSaveActive = "none";
       if (!ScreenSaverIsSecure) ScreenSaverIsSecure = "none";
       if (!DomScreenSaverIsSecure) DomScreenSaverIsSecure = "none";
-    
+      if (!ScreenSaveTimeOut) ScreenSaveTimeOut = "none";
+      if (!DomScreenSaveTimeOut) DomScreenSaveTimeOut = "none";
      
       value += desc[0] + "\" + desc[1] +
        ";ScreenSaveActive=" + ScreenSaveActive +
        ";ScreenSaverIsSecure=" + ScreenSaverIsSecure + 
+       ";ScreenSaveTimeOut=" + ScreenSaveTimeOut + 
        ";DomScreenSaveActive=" + DomScreenSaveActive + 
-       ";DomScreenSaverIsSecure=" + DomScreenSaverIsSecure + '\n';
+       ";DomScreenSaverIsSecure=" + DomScreenSaverIsSecure + 
+       ";DomScreenSaveTimeOut=" + DomScreenSaveTimeOut + '\n';
      
     }                             
   }

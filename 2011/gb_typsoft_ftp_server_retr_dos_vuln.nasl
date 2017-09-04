@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typsoft_ftp_server_retr_dos_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_typsoft_ftp_server_retr_dos_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # TYPSoft FTP Server RETR CMD Denial Of Service Vulnerability
 #
@@ -46,8 +46,8 @@ of service vulnerability.";
 if(description)
 {
   script_id(801687);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-01-08 10:30:18 +0100 (Sat, 08 Jan 2011)");
   script_cve_id("CVE-2005-3294");
   script_bugtraq_id(15104);
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploitlabs.com/files/advisories/EXPL-A-2005-016-typsoft-ftpd.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if TYPSoft FTP is prone to denial of service vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("FTP");

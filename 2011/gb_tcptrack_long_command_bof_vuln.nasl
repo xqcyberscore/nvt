@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tcptrack_long_command_bof_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_tcptrack_long_command_bof_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Tcptrack Command Line Parsing Heap Based Buffer Overflow Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with Tcptrack and is prone to heap based
 if(description)
 {
   script_id(801973);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-13 07:51:43 +0200 (Tue, 13 Sep 2011)");
   script_cve_id("CVE-2011-2903");
   script_bugtraq_id(49352);
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.rhythm.cx/~steve/devel/tcptrack/#news");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of Tcptrack");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("gb_tcptrack_detect.nasl");

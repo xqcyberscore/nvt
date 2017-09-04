@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_ymsg_dos_vuln_win.nasl 3102 2016-04-18 14:46:07Z benallard $
+# $Id: gb_pidgin_ymsg_dos_vuln_win.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Pidgin Yahoo Protocol 'YMSG' NULL Pointer Dereference Denial of Service Vulnerability (Windows)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host has installed with Pidgin and is prone to Denial of
 if(description)
 {
   script_id(801764);
-  script_version("$Revision: 3102 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:46:07 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
   script_cve_id("CVE-2011-1091");
   script_bugtraq_id(46837);
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.pidgin.im/news/security/?id=51");
   script_xref(name : "URL" , value : "http://developer.pidgin.im/viewmtn/revision/info/a7c415abba1f5f01f79295337518837f73d99bb7");
 
-  script_summary("Check for the Version of Pidgin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

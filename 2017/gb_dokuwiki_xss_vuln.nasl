@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dokuwiki_xss_vuln.nasl 6868 2017-08-08 09:39:18Z ckuersteiner $
+# $Id: gb_dokuwiki_xss_vuln.nasl 6959 2017-08-18 07:24:59Z asteins $
 #
 # DokuWiki XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:dokuwiki:dokuwiki';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140284");
-  script_version("$Revision: 6868 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-08 11:39:18 +0200 (Tue, 08 Aug 2017) $");
+  script_version("$Revision: 6959 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
   script_tag(name: "creation_date", value: "2017-08-08 14:37:42 +0700 (Tue, 08 Aug 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-12583");
 

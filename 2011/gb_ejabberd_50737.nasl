@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ejabberd_50737.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: gb_ejabberd_50737.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # ejabberd 'mod_pubsub' Module Denial of Service Vulnerability
 #
@@ -38,7 +38,7 @@ if (description)
  script_id(103369);
  script_bugtraq_id(50737);
  script_cve_id("CVE-2011-4320");
- script_version ("$Revision: 3386 $");
+ script_version ("$Revision: 7019 $");
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -49,9 +49,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.process-one.net/en/ejabberd/release_notes/release_note_ejabberd_2.1.9/");
  script_xref(name : "URL" , value : "https://support.process-one.net/browse/EJAB-1498");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-12-20 11:14:21 +0100 (Tue, 20 Dec 2011)");
- script_summary("Determine if installed ejabberd version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Denial of Service");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

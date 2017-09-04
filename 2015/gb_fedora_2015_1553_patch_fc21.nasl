@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868983");
-  script_version("$Revision: 6630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7045 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 14:49:31 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-02-06 05:44:27 +0100 (Fri, 06 Feb 2015)");
   script_cve_id("CVE-2015-1196", "CVE-2014-9637");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_name("Fedora Update for patch FEDORA-2015-1553");
   script_tag(name: "summary", value: "Check the version of patch");
   script_tag(name: "vuldetect", value: "Get the installed version with the help

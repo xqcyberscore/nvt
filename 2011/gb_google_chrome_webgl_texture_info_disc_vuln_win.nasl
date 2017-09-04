@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_webgl_texture_info_disc_vuln_win.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_google_chrome_webgl_texture_info_disc_vuln_win.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Google Chrome WebGL Texture Information Disclosure Vulnerability (Windows)
 #
@@ -43,8 +43,8 @@ information disclosure vulnerability.";
 if(description)
 {
   script_id(802303);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-07 15:43:33 +0200 (Thu, 07 Jul 2011)");
   script_cve_id("CVE-2011-2599");
   script_tag(name:"cvss_base", value:"4.3");
@@ -52,7 +52,6 @@ if(description)
   script_name("Google Chrome WebGL Texture Information Disclosure Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://security-tracker.debian.org/tracker/CVE-2011-2599");
 
-  script_summary("Check for the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868371");
-  script_version("$Revision: 6692 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 7002 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 09:07:09 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-10-09 06:00:59 +0200 (Thu, 09 Oct 2014)");
   script_cve_id("CVE-2014-3640", "CVE-2014-3615", "CVE-2014-0222", "CVE-2014-0223",
                 "CVE-2014-3461", "CVE-2014-0182", "CVE-2014-0142", "CVE-2014-0150",
                 "CVE-2013-4544", "CVE-2014-2894");
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Fedora Update for qemu FEDORA-2014-11641");
   script_tag(name: "summary", value: "Check the version of qemu");
   script_tag(name: "vuldetect", value: "Get the installed version with the help

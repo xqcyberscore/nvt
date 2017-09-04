@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_igss_odbc_server_bof_vuln.nasl 3569 2016-06-21 07:43:44Z benallard $
+# $Id: gb_igss_odbc_server_bof_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Interactive Graphical SCADA System ODBC Server Buffer Overflow Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with Interactive Graphical SCADA System
 if(description)
 {
   script_id(802241);
-  script_version("$Revision: 3569 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:43:44 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_cve_id("CVE-2011-2959");
   script_bugtraq_id(47960);
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/518110");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of IGSS");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

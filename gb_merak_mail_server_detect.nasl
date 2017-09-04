@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_merak_mail_server_detect.nasl 5735 2017-03-27 12:27:20Z cfi $
+# $Id: gb_merak_mail_server_detect.nasl 7016 2017-08-29 03:14:59Z ckuersteiner $
 #
 # Merak Mail Server Web Mail Version Detection
 #
@@ -30,7 +30,10 @@
 tag_summary = "Detection of Merak Mail Server Web Mail.
                      
 The script sends a connection request to the server and attempts to
-extract the version number from the reply.";
+extract the version number from the reply.
+
+This NVT has been replaced by gb_icewarp_web_detect.nasl (1.3.6.1.4.1.25623.1.0.140329) and
+gb_icewarp_mail_detect.nasl (1.3.6.1.4.1.25623.1.0.140330).";
 
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800096";
 
@@ -38,8 +41,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5735 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 14:27:20 +0200 (Mon, 27 Mar 2017) $");
+  script_version("$Revision: 7016 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 05:14:59 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-06-02 09:27:25 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -51,8 +54,13 @@ if(description)
   script_mandatory_keys("IceWarp/banner");
   script_require_ports("Services/www", 80, 32000);
   script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
+
+exit(66);
 
 include("cpe.inc");
 include("http_func.inc");

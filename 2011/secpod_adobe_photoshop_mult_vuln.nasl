@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_photoshop_mult_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_adobe_photoshop_mult_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Adobe Photoshop Multiple Vulnerabilities.
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with Adobe Photoshop and is prone to multi
 if(description)
 {
   script_id(902374);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_cve_id("CVE-2011-2164");
   script_tag(name:"cvss_base", value:"10.0");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name : "URL" , value : "http://blogs.adobe.com/jnack/2011/05/photoshop-12-0-4-update-for-cs5-arrives.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Adobe Photoshop");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

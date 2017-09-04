@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orion_npm_mult_xss_vuln.nasl 3101 2016-04-18 14:43:32Z benallard $
+# $Id: gb_orion_npm_mult_xss_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # SolarWinds Orion NPM Multiple Cross Site Scripting Vulnerabilities
 #
@@ -48,8 +48,8 @@ site scripting vulnerabilities.";
 if(description)
 {
   script_id(801986);
-  script_version("$Revision: 3101 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:43:32 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-09-20 15:38:54 +0200 (Tue, 20 Sep 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.derkeiler.com/Mailing-Lists/Full-Disclosure/2011-09/msg00144.html");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check the version of SolarWinds Orion Network Performance Monitor");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

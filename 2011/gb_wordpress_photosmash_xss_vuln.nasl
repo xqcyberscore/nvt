@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_photosmash_xss_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_wordpress_photosmash_xss_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # PhotoSmash Galleries WordPress Plugin 'action' Parameter XSS Vulnerability
 #
@@ -43,8 +43,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_bugtraq_id(46782);
   script_tag(name:"cvss_base", value:"4.3");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.htbridge.ch/advisory/xss_in_photosmash_wordpress_plugin.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if WordPress plugin is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

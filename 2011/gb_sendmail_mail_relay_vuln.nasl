@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sendmail_mail_relay_vuln.nasl 3748 2016-07-23 11:59:44Z cfi $
+# $Id: gb_sendmail_mail_relay_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # SendMail Mail Relay Vulnerability
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802194");
-  script_version("$Revision: 3748 $");
+  script_version("$Revision: 7006 $");
   script_cve_id("CVE-2002-1278", "CVE-2003-0285");
   script_bugtraq_id(6118, 7580);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-23 13:59:44 +0200 (Sat, 23 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-15 12:51:12 +0530 (Tue, 15 Nov 2011)");
   script_name("SendMail Mail Relay Vulnerability");
-  script_summary("check if SendMail is prone to open mail relay vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("SMTP problems");

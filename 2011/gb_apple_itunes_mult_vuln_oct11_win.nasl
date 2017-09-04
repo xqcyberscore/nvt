@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_oct11_win.nasl 3099 2016-04-18 14:36:59Z benallard $
+# $Id: gb_apple_itunes_mult_vuln_oct11_win.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Apple iTunes Multiple Vulnerabilities - Oct 11
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with Apple iTunes and is prone to multiple
 if(description)
 {
   script_id(802193);
-  script_version("$Revision: 3099 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:36:59 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-10-20 08:43:23 +0200 (Thu, 20 Oct 2011)");
   script_cve_id("CVE-2011-0259", "CVE-2011-0200", "CVE-2011-3252", "CVE-2011-3219",
                 "CVE-2011-0204", "CVE-2011-0215", "CVE-2010-1823", "CVE-2011-0164",
@@ -73,7 +73,6 @@ if(description)
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT4981");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/Security-announce/2011//Oct/msg00000.html");
 
-  script_summary("Check for the version of Apple iTunes");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

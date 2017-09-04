@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_symphony_mult_vuln_win.nasl 3569 2016-06-21 07:43:44Z benallard $
+# $Id: gb_ibm_lotus_symphony_mult_vuln_win.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # IBM Lotus Symphony Multiple Vulnerabilities (Windows)
 #
@@ -46,8 +46,8 @@ tag_summary = "This host is installed with IBM Lotus Symphony and is prone to
 if(description)
 {
   script_id(802227);
-  script_version("$Revision: 3569 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:43:44 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-05 09:04:20 +0200 (Fri, 05 Aug 2011)");
   script_cve_id("CVE-2011-2884", "CVE-2011-2885", "CVE-2011-2886",
                 "CVE-2011-2888", "CVE-2011-2893");
@@ -57,7 +57,6 @@ if(description)
   script_name("IBM Lotus Symphony Multiple Vulnerabilities (Windows)");
 
 
-  script_summary("Check for the version of IBM Lotus Symphony");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");

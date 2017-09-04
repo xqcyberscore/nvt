@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_php_speedy_plugin_title_param_xss.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_wordpress_php_speedy_plugin_title_param_xss.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # WordPress PHP Speedy Plugin 'title' Parameter Cross Site Scripting Vulnerability
 #
@@ -52,8 +52,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-16 15:16:52 +0100 (Wed, 16 Mar 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -61,7 +61,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/43652/");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if WordPress PHP Speedy Plugin is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

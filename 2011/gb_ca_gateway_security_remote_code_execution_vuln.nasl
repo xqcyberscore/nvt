@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_gateway_security_remote_code_execution_vuln.nasl 3949 2016-09-02 13:45:51Z cfi $
+# $Id: gb_ca_gateway_security_remote_code_execution_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # CA Gateway Security Remote Code Execution Vulnerability
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is installed with CA Gateway Security and is prone to
 if(description)
 {
   script_id(802337);
-  script_version("$Revision: 3949 $");
+  script_version("$Revision: 7024 $");
   script_cve_id("CVE-2011-0419");
   script_bugtraq_id(48813);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-02 15:45:51 +0200 (Fri, 02 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-15 12:35:07 +0530 (Tue, 15 Nov 2011)");
   script_name("CA Gateway Security Remote Code Execution Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/45332");
@@ -54,7 +54,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of CA Gateway Security");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_ca_mult_prdts_detect_win.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecava_integraxor_mult_xss_vuln_win.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: gb_ecava_integraxor_mult_xss_vuln_win.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Ecava IntegraXor Multiple Cross-Site Scripting Vulnerabilities (Windows)
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is installed with Ecava IntegraXor and is prone to cros
 if(description)
 {
   script_id(802314);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-05 09:04:20 +0200 (Fri, 05 Aug 2011)");
   script_cve_id("CVE-2011-2958");
   script_bugtraq_id(48958);
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/68896");
   script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICSA-11-147-02.pdf");
 
-  script_summary("Check for the version of Ecava IntegraXor");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web Servers");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avg_av_detect_lin.nasl 2835 2016-03-11 08:45:17Z benallard $
+# $Id: gb_avg_av_detect_lin.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # AVG Anti-Virus Version Detection (Linux)
 #
@@ -34,12 +34,11 @@ if(description)
 {
   script_id(800394);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2835 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:45:17 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 7000 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-04-17 09:00:01 +0200 (Fri, 17 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("AVG Anti-Virus Version Detection (Linux)");
-  script_summary("Set KB for the version of AVG Anti-Virus");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");

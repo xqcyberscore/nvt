@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hastymail2_rs_param_remote_code_inj_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_hastymail2_rs_param_remote_code_inj_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Hastymail 'rs' and 'rsargs[]' Parameters Remote Code Injection Vulnerabilities
 #
@@ -41,12 +41,12 @@ tag_summary = "The host is running Hastymail2 and is prone to remote code
 if(description)
 {
   script_id(902591);
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 7006 $");
   script_cve_id("CVE-2011-4542");
   script_bugtraq_id(50791);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-25 12:12:12 +0530 (Fri, 25 Nov 2011)");
   script_name("Hastymail 'rs' and 'rsargs[]' Parameters Remote Code Injection Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50791");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.dognaedis.com/vulns/pdf/DGS-SEC-3.pdf");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Hastymail2 is vulnerable to remote code injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

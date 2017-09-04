@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_majordomo2_dir_trav_vuln.nasl 5645 2017-03-21 09:32:09Z cfi $
+# $Id: gb_majordomo2_dir_trav_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Majordomo2 Directory Traversal Vulnerability
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801838");
-  script_version("$Revision: 5645 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:32:09 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_bugtraq_id(46127);
   script_cve_id("CVE-2011-0049", "CVE-2011-0063");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Majordomo2 Directory Traversal Vulnerability");
-  script_summary("Determine if Majordomo2 vulnerable to Directory Traversal Attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

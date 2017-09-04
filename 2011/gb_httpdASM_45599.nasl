@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdASM_45599.nasl 5645 2017-03-21 09:32:09Z cfi $
+# $Id: gb_httpdASM_45599.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # httpdASM Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103005");
- script_version("$Revision: 5645 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:32:09 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-01-03 14:40:34 +0100 (Mon, 03 Jan 2011)");
  script_bugtraq_id(45599);
  script_tag(name:"cvss_base", value:"5.0");
@@ -40,7 +40,6 @@ if(description)
  script_xref(name:"URL", value:"http://www.japheth.de/httpdASM.html");
  script_xref(name:"URL", value:"http://www.johnleitch.net/Vulnerabilities/httpdASM.0.92.Directory.Traversal/73");
 
- script_summary("Determine if httpdASM is prone to a directory-traversal vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web Servers");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

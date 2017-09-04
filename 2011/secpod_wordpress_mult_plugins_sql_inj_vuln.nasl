@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_mult_plugins_sql_inj_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_wordpress_mult_plugins_sql_inj_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # WordPress Multiple Plugins SQL Injection Vulnerabilities
 #
@@ -48,11 +48,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 7015 $");
   script_bugtraq_id(49382, 49381);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-17 14:31:04 +0530 (Thu, 17 Nov 2011)");
   script_name("WordPress Multiple Plugins SQL Injection Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/45801");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/104608/wpcrawlratetracker-sql.txt");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_summary("Check if WordPress plugins are prone to SQL injection vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panasonic_fpwin_pro_detect_win.nasl 3984 2016-09-07 06:27:42Z antu123 $
+# $Id: gb_panasonic_fpwin_pro_detect_win.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Panasonic FPWIN Pro Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809028");
-  script_version("$Revision: 3984 $");
+  script_version("$Revision: 7000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-07 08:27:42 +0200 (Wed, 07 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-09-01 13:08:12 +0530 (Thu, 01 Sep 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Panasonic FPWIN Pro Version Detection (Windows)");
@@ -40,7 +40,6 @@ if(description)
   The script logs in via smb, searches for Panasonic FPWIN Pro in the registry
   and gets the version from registry.");
 
-  script_summary("Detection of installed version of Panasonic FPWIN Pro on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

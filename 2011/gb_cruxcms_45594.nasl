@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cruxcms_45594.nasl 5651 2017-03-21 10:09:09Z cfi $
+# $Id: gb_cruxcms_45594.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # CruxCMS Multiple Input Validation Vulnerabilities
 #
@@ -44,8 +44,8 @@ CruxCMS 3.0.0 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103015);
- script_version("$Revision: 5651 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-01-05 15:07:33 +0100 (Wed, 05 Jan 2011)");
  script_bugtraq_id(45594);
  script_tag(name:"cvss_base", value:"7.5");
@@ -58,7 +58,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/515444");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed CruxCMS is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

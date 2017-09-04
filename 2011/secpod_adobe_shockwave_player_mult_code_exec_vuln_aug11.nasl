@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_shockwave_player_mult_code_exec_vuln_aug11.nasl 3949 2016-09-02 13:45:51Z cfi $
+# $Id: secpod_adobe_shockwave_player_mult_code_exec_vuln_aug11.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Adobe Shockwave Player Multiple Remote Code Execution Vulnerabilities - Aug 2011
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is installed with Adobe Shockwave Player and is prone
 if(description)
 {
   script_id(902617);
-  script_version("$Revision: 3949 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-02 15:45:51 +0200 (Fri, 02 Sep 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_cve_id("CVE-2010-4308", "CVE-2010-4309", "CVE-2011-2419", "CVE-2011-2420",
                 "CVE-2011-2421", "CVE-2011-2422", "CVE-2011-2423");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb11-19.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Adobe Shockwave Player");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

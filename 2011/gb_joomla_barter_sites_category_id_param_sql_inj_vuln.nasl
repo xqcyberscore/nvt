@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_barter_sites_category_id_param_sql_inj_vuln.nasl 3569 2016-06-21 07:43:44Z benallard $
+# $Id: gb_joomla_barter_sites_category_id_param_sql_inj_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Joomla! Barter Sites 'com_listing' Component 'category_id' Parameter SQL Injection Vulnerability
 #
@@ -45,9 +45,9 @@ to SQL injection vulnerability.";
 if(description)
 {
   script_id(802268);
-  script_version("$Revision: 3569 $");
+  script_version("$Revision: 7015 $");
   script_cve_id("CVE-2011-4829", "CVE-2011-4830");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:43:44 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-04 12:12:12 +0530 (Fri, 04 Nov 2011)");
   script_bugtraq_id(50021);
   script_tag(name:"cvss_base", value:"7.5");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/105626/joomlabarter-sqlxss.txt");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_summary("Check if Joomla! Barter Sites component is vulnerable to SQL Injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

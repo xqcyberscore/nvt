@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_jul2017-3236622_01_win.nasl 6765 2017-07-20 06:20:42Z santu $
+# $Id: gb_java_jul2017-3236622_01_win.nasl 7013 2017-08-25 13:17:51Z asteins $
 #
 # Oracle Java SE Security Updates (jul2017-3236622) 01 - Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811241");
-  script_version("$Revision: 6765 $");
+  script_version("$Revision: 7013 $");
   script_cve_id("CVE-2017-10198", "CVE-2017-10096", "CVE-2017-10135", "CVE-2017-10110", 
                 "CVE-2017-10115", "CVE-2017-10116", "CVE-2017-10074", "CVE-2017-10053", 
                 "CVE-2017-10087", "CVE-2017-10089", "CVE-2017-10243", "CVE-2017-10102",
@@ -37,9 +37,9 @@ if(description)
                 "CVE-2017-10081", "CVE-2017-10193", "CVE-2017-10067", "CVE-2017-10108" );
   script_bugtraq_id(99818, 99670, 99839, 99643, 99774, 99734, 99731, 99842, 99703, 99659,
                     99827, 99712, 99674, 99719, 99847, 99851, 99853, 99854, 99756, 99846);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 08:20:42 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 15:17:51 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-07-19 11:49:40 +0530 (Wed, 19 Jul 2017)");
   script_name("Oracle Java SE Security Updates (jul2017-3236622) 01 - Windows");
 

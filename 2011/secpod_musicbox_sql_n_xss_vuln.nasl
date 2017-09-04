@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_musicbox_sql_n_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_musicbox_sql_n_xss_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Musicbox SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902461");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -37,7 +37,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103369/musicbox-sqlxss.txt");
 
   script_copyright("Copyright (c) 2011 SecPod");
-  script_summary("Confirm the vulnerability in Musicbox");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("find_service.nasl");

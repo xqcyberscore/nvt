@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_unspecified_vuln_win_may11.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_mozilla_firefox_mult_unspecified_vuln_win_may11.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Mozilla Firefox Multiple Unspecified Vulnerabilities May-11 (Windows)
 #
@@ -40,8 +40,8 @@ tag_summary = "The host is installed with Mozilla Firefox and is prone to multip
 if(description)
 {
   script_id(801886);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-18 15:37:30 +0200 (Wed, 18 May 2011)");
   script_cve_id("CVE-2011-0079");
   script_bugtraq_id(47657);
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-12.html");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of Mozilla Firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_itunes_mult_vuln_macosx.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_itunes_mult_vuln_macosx.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Apple iTunes Multiple Vulnerabilities (Mac OS X)
 #
@@ -37,8 +37,8 @@ tag_summary = "This host has installed apple iTunes and is prone to multiple
 if(description)
 {
   script_id(902718);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-26 14:59:42 +0200 (Fri, 26 Aug 2011)");
   script_cve_id("CVE-2010-1205", "CVE-2010-2249", "CVE-2011-0170");
   script_bugtraq_id(41174);
@@ -50,7 +50,6 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce//2011//Mar/msg00000.html");
 
   script_copyright("Copyright (c) 2011 SecPod");
-  script_summary("Checks for apple iTunes version");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("secpod_itunes_detect_macosx.nasl");

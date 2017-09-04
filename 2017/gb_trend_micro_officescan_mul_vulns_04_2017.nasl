@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_officescan_mul_vulns_04_2017.nasl 6043 2017-04-28 08:00:52Z teissa $
+# $Id: gb_trend_micro_officescan_mul_vulns_04_2017.nasl 7012 2017-08-25 13:16:07Z asteins $
 #
 # Trend Micro OfficeScan Multiple Privilege Escalation and Cross Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:trend_micro:office_scan";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107154");
-  script_version("$Revision: 6043 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 10:00:52 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 7012 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 15:16:07 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-04-26 11:00:00 +0200 (Wed, 26 Apr 2017)");
 
   script_tag(name:"cvss_base", value:"10.0");
@@ -73,7 +73,6 @@ include("version_func.inc");
 if(!Ver = get_app_version(cpe:CPE)){
   exit(0);
 }
-display("Ver: ", Ver, "\n");
 
 if (Ver =~ "^11\.")
 {

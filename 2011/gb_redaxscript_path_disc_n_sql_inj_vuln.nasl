@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redaxscript_path_disc_n_sql_inj_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_redaxscript_path_disc_n_sql_inj_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Redaxscript Path Disclosure and SQL Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801733");
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://securityreason.com/exploitalert/9918");
   script_xref(name : "URL" , value : "http://www.htbridge.ch/advisory/sql_injection_in_redaxscript.html");
 
-  script_summary("Check if Redaxscript is vulnerable to Path Disclosure and SQL Injection attacks");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

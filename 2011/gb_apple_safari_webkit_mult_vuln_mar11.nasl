@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_mar11.nasl 3112 2016-04-19 08:52:10Z antu123 $
+# $Id: gb_apple_safari_webkit_mult_vuln_mar11.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - March 2011
 #
@@ -53,8 +53,8 @@ tag_summary = "The host is installed with Apple Safari web browser and is prone
 if(description)
 {
   script_id(801867);
-  script_version("$Revision: 3112 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 10:52:10 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
   script_bugtraq_id(46808,46811,46814,46816);
   script_cve_id("CVE-2011-0160", "CVE-2011-0161", "CVE-2011-0163",
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2011/mar/msg00004.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Apple Safari");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

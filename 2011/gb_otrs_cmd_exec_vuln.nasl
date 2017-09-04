@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_cmd_exec_vuln.nasl 4590 2016-11-22 08:45:15Z cfi $
+# $Id: gb_otrs_cmd_exec_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Open Ticket Request System (OTRS) Command Execution Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 4590 $");
+  script_version("$Revision: 7024 $");
   script_cve_id("CVE-2011-0456");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-22 09:45:15 +0100 (Tue, 22 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
   script_name("Open Ticket Request System (OTRS) Command Execution Vulnerability");
 
@@ -76,7 +76,6 @@ For updates refer to http://otrs.org/download/";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/38507/");
   script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN73162541/index.html");
   script_xref(name : "URL" , value : "http://jvndb.jvn.jp/en/contents/2011/JVNDB-2011-000019.html");
-  script_summary("Check for the version of Open Ticket Request System (OTRS)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

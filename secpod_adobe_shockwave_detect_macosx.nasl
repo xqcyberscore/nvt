@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_shockwave_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
+# $Id: secpod_adobe_shockwave_detect_macosx.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Adobe Shockwave Player Version Detection (MacOSX)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902619");
-  script_version("$Revision: 6484 $");
+  script_version("$Revision: 7000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_name("Adobe Shockwave Player Version Detection (MacOSX)");
 
@@ -42,7 +42,6 @@ if(description)
   via command line option 'defaults read'.");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the presence of Adobe Shockwave Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Product detection");

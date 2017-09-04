@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_apr11_macosx.nasl 3099 2016-04-18 14:36:59Z benallard $
+# $Id: gb_apple_safari_mult_vuln_apr11_macosx.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Apple Safari Multiple Vulnerabilities - April 2011 (Mac OS X)
 #
@@ -40,8 +40,8 @@ tag_summary = "The host is installed with Apple Safari web browser and is prone
 if(description)
 {
   script_id(802234);
-  script_version("$Revision: 3099 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:36:59 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-08-12 14:44:50 +0200 (Fri, 12 Aug 2011)");
   script_cve_id("CVE-2011-1290", "CVE-2011-1344");
   script_bugtraq_id(46822, 46849);
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT4596");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2011/Apr/msg00002.html");
 
-  script_summary("Check for the version of Apple Safari");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");

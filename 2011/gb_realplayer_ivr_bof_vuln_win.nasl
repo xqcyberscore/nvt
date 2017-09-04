@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_ivr_bof_vuln_win.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_realplayer_ivr_bof_vuln_win.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # RealNetworks RealPlayer IVR File Processing Buffer Overflow Vulnerability (Windows)
 #
@@ -42,8 +42,8 @@ Overflow vulnerability.";
 if(description)
 {
   script_id(801768);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/66209");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id?1025245");
 
-  script_summary("Check for the version of RealPlayer");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

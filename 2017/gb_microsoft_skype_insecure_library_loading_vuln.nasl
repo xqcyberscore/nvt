@@ -29,12 +29,12 @@ CPE = "cpe:/a:skype:skype";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810905");
-  script_version("$Revision: 5893 $");
+  script_version("$Revision: 7011 $");
   script_cve_id("CVE-2017-6517");
   script_bugtraq_id(96969);
   script_tag(name:"cvss_base",value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 15:39:10 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 14:25:12 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-04-05 16:33:26 +0530 (Wed, 05 Apr 2017)");
   script_name("Microsoft Skype Insecure Library Loading Vulnerability");
 
@@ -58,7 +58,7 @@ if(description)
   Windows.");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  5th April, 2017. For updates refer to https://www.skype.com/en");
+  25th August, 2017. For updates refer to https://www.skype.com/en");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"registry");

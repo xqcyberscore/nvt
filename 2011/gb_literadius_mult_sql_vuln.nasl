@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_literadius_mult_sql_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_literadius_mult_sql_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # LiteRadius Multiple SQL Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802121");
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-15 12:23:42 +0200 (Fri, 15 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -36,7 +36,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17528/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103018/literadius-sql.txt");
 
-  script_summary("Determine if LiteRadius is prone to SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

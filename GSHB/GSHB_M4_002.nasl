@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_002.nasl 3312 2016-05-13 07:08:19Z benallard $
+# $Id: GSHB_M4_002.nasl 6992 2017-08-23 09:10:48Z emoss $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.002
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94173);
-  script_version("$Revision: 3312 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 09:08:19 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 6992 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 11:10:48 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -90,7 +90,7 @@ if(OSNAME >!< "none"){
       for(i=0; i<max_index(Lst); i++)
       {
         screenresult = split(Lst[i], sep:";", keep:0);
-        if ((screenresult[1] == "ScreenSaveActive=1" && screenresult[2] == "ScreenSaverIsSecure=1") || (screenresult[3] == "DomScreenSaveActive=1" && screenresult[3] == "DomScreenSaverIsSecure=1")){
+        if ((screenresult[1] == "ScreenSaveActive=1" && screenresult[2] == "ScreenSaverIsSecure=1") || (screenresult[4] == "DomScreenSaveActive=1" && screenresult[5] == "DomScreenSaverIsSecure=1")){
           testval += 0;
         }else{
         testval += 1;

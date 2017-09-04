@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brother_hl_5370DW_48050.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_brother_hl_5370DW_48050.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Brother HL-5370DW Printer 'post/panel.html' Security Bypass Vulnerability
 #
@@ -34,8 +34,8 @@ restrictions.";
 if (description)
 {
  script_id(103173);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7024 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-06-06 13:42:32 +0200 (Mon, 06 Jun 2011)");
  script_bugtraq_id(48050);
  script_tag(name:"cvss_base", value:"5.0");
@@ -46,7 +46,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.brother.com");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Brother HL-5370DW printer is prone to a security-bypass vulnerability.");
  script_category(ACT_ATTACK);
  script_family("General");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

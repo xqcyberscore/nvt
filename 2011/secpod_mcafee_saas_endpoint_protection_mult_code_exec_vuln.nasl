@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mcafee_saas_endpoint_protection_mult_code_exec_vuln.nasl 3113 2016-04-19 09:57:04Z benallard $
+# $Id: secpod_mcafee_saas_endpoint_protection_mult_code_exec_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # McAfee SaaS Endpoint Protection ActiveX Controls Multiple Code Execution Vulnerabilities
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is installed with McAfee SaaS Endpoint Protection and i
 if(description)
 {
   script_id(902562);
-  script_version("$Revision: 3113 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 11:57:04 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-31 10:37:30 +0200 (Wed, 31 Aug 2011)");
   script_cve_id("CVE-2011-3006", "CVE-2011-3007");
   script_bugtraq_id(49087);
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "https://kc.mcafee.com/corporate/index?page=content&id=SB10016");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of McAfee SaaS Endpoint Protection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

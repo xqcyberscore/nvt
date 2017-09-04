@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plex_media_server_mult_vuln.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_plex_media_server_mult_vuln.nasl 6995 2017-08-23 11:52:03Z teissa $
 #
 # Plex Media Server Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:plex:plex_media_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805226");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6995 $");
   script_cve_id("CVE-2014-9181", "CVE-2014-9304");
   script_bugtraq_id(65881);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-12-22 17:44:41 +0530 (Mon, 22 Dec 2014)");
   script_name("Plex Media Server Multiple Vulnerabilities");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57205");
   script_xref(name : "URL" , value : "https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20140228-1_Plex_Media_Server_Authentication_bypass_local_file_disclosure_v10.txt");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Plex Media Server");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

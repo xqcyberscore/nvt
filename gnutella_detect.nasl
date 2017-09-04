@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: gnutella_detect.nasl 4036 2016-09-12 12:42:21Z cfi $
+# $Id: gnutella_detect.nasl 7006 2017-08-25 11:51:20Z teissa $
 # Description: Gnutella servent detection
 #
 # Authors:
@@ -25,13 +25,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10946");
-  script_version("$Revision: 4036 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-12 14:42:21 +0200 (Mon, 12 Sep 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Gnutella servent detection");
-  script_summary("Detect Gnutella servent");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("Peer-To-Peer File Sharing");

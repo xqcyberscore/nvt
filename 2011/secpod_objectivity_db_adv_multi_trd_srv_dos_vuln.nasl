@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_objectivity_db_adv_multi_trd_srv_dos_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_objectivity_db_adv_multi_trd_srv_dos_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Objectivity/DB Advanced Multithreaded Server Denial of Service Vulnerability
 #
@@ -45,8 +45,8 @@ prone to denial of service vulnerability.";
 if(description)
 {
   script_id(900269);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-05 04:12:38 +0100 (Sat, 05 Feb 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/15988/");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check Objectivity/DB Advanced Multithreaded Server is vulnerable to DoS");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Denial of Service");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_register_plus_redux_mult_xss_vuln.nasl 3108 2016-04-19 06:58:41Z benallard $
+# $Id: gb_wordpress_register_plus_redux_mult_xss_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # WordPress Register Plus Redux Plugin Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -54,8 +54,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3108 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 08:58:41 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_bugtraq_id(45179);
   script_tag(name:"cvss_base", value:"4.3");
@@ -67,7 +67,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
-  script_summary("Check if WordPress Register Plus Plugin Redux is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");

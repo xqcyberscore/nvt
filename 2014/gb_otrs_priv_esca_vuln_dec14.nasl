@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_priv_esca_vuln_dec14.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_otrs_priv_esca_vuln_dec14.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # OTRS Help Desk Privilege Escalation Vulnerability - Dec14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805230");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 7000 $");
   script_cve_id("CVE-2014-9324");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-12-24 12:30:49 +0530 (Wed, 24 Dec 2014)");
   script_name("OTRS Help Desk Privilege Escalation Vulnerability - Dec14");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/59875");
   script_xref(name : "URL" , value : "https://www.otrs.com/security-advisory-2014-06-incomplete-access-control");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of OTRS Help Desk");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("secpod_otrs_detect.nasl");

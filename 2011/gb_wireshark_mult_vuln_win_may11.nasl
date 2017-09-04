@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_win_may11.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_wireshark_mult_vuln_win_may11.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Wireshark Denial of Service and Buffer Overflow Vulnerabilities (Windows)
 #
@@ -42,8 +42,8 @@ tag_summary = "The host is installed with Wireshark and is prone to Denial of
 if(description)
 {
   script_id(801786);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_cve_id("CVE-2011-1591", "CVE-2011-1592");
   script_bugtraq_id(47392);
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2011-06.html");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of Wireshark");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_family("General");

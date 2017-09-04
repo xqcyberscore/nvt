@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_daqfactory_netb_datagram_stack_bof.nasl 3569 2016-06-21 07:43:44Z benallard $
+# $Id: gb_daqfactory_netb_datagram_stack_bof.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Azeotech DAQFactory NETB Datagram Parsing Stack Buffer Overflow Vulnerability
 #
@@ -44,8 +44,8 @@ is prone to denial of service vulnerability.";
 if(description)
 {
   script_id(802037);
-  script_version("$Revision: 3569 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:43:44 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-10-07 15:45:35 +0200 (Fri, 07 Oct 2011)");
   script_cve_id("CVE-2011-3492");
   script_tag(name:"cvss_base", value:"10.0");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICS-ALERT-11-256-02.pdf");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check Azeotech DAQFactory is vulnerable to BoF");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

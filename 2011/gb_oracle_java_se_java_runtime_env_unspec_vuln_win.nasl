@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_java_runtime_env_unspec_vuln_win.nasl 6465 2017-06-28 13:17:01Z cfischer $
+# $Id: gb_oracle_java_se_java_runtime_env_unspec_vuln_win.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Oracle Java SE Java Runtime Environment Unspecified Vulnerability - October 2011 (Windows)
 #
@@ -38,19 +38,18 @@ tag_summary = "This host is installed with Oracle Java SE and is prone to
 if(description)
 {
   script_id(802277);
-  script_version("$Revision: 6465 $");
+  script_version("$Revision: 7006 $");
   script_cve_id("CVE-2011-3555");
   script_bugtraq_id(50237);
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:17:01 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-15 14:34:22 +0530 (Tue, 15 Nov 2011)");
   script_name("Oracle Java SE Java Runtime Environment Unspecified Vulnerability - October 2011 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46512");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/70838");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpuoct2011-443431.html");
 
-  script_summary("Check for the version of Sun Java SE JRE/JDK");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

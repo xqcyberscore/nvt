@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weborf_46054.nasl 3108 2016-04-19 06:58:41Z benallard $
+# $Id: gb_weborf_46054.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Weborf 'get_param_value()' Function HTTP Header Handling Denial Of Service Vulnerability
 #
@@ -36,8 +36,8 @@ tag_solution = "Updates are available. Please see the references for details.";
 if (description)
 {
  script_id(103050);
- script_version("$Revision: 3108 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 08:58:41 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-01-31 12:59:22 +0100 (Mon, 31 Jan 2011)");
  script_bugtraq_id(46054);
  script_tag(name:"cvss_base", value:"7.5");
@@ -49,7 +49,6 @@ if (description)
  script_xref(name : "URL" , value : "http://galileo.dmi.unict.it/wiki/weborf/doku.php");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed Weborf version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web Servers");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

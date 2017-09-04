@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx225941.nasl 6928 2017-08-16 02:41:07Z ckuersteiner $
+# $Id: gb_xenserver_ctx225941.nasl 7045 2017-09-01 12:49:31Z asteins $
 #
 # Citrix XenServer Multiple Security Updates (CTX225941)
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:citrix:xenserver";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140303");
-  script_version("$Revision: 6928 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-16 04:41:07 +0200 (Wed, 16 Aug 2017) $");
+  script_version("$Revision: 7045 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-01 14:49:31 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-08-16 09:04:44 +0700 (Wed, 16 Aug 2017)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_cve_id("CVE-2017-12134", "CVE-2017-12135", "CVE-2017-12136", "CVE-2017-12137");
+  script_cve_id("CVE-2017-12134", "CVE-2017-12135", "CVE-2017-12136", "CVE-2017-12137", "CVE-2017-12855");
 
   script_tag(name: "qod_type", value: "package");
 
@@ -61,7 +61,7 @@ if (description)
 
 - CVE-2017-12137: (High) x86: PV privilege escalation via map_grant_ref.
 
-- CVE-2017-XXXXX: (Low) grant_table: possibly premature clearing of GTF_writing / GTF_reading.");
+- CVE-2017-12855: (Low) grant_table: possibly premature clearing of GTF_writing / GTF_reading.");
 
   script_tag(name: "vuldetect", value: "Check the installed hotfixes.");
 

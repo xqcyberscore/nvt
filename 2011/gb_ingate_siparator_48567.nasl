@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ingate_siparator_48567.nasl 3115 2016-04-19 10:09:30Z benallard $
+# $Id: gb_ingate_siparator_48567.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Ingate SIParator SIP Module Remote Denial of Service Vulnerability
 #
@@ -34,8 +34,8 @@ tag_solution = "Updates are available. Please see the references for details.";
 if (description)
 {
  script_id(103209);
- script_version("$Revision: 3115 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:09:30 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-08-17 15:40:19 +0200 (Wed, 17 Aug 2011)");
  script_bugtraq_id(48567);
  script_tag(name:"cvss_base", value:"5.0");
@@ -48,7 +48,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.ingate.com/Relnote.php?ver=492");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if Ingate SIParator version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Denial of Service");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

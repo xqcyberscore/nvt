@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_mult_dos_vuln_jan11.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: gb_mysql_mult_dos_vuln_jan11.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # MySQL Multiple Denial of Service Vulnerabilities
 #
@@ -50,8 +50,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3386 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_cve_id("CVE-2010-3833", "CVE-2010-3834", "CVE-2010-3836",
                 "CVE-2010-3837", "CVE-2010-3838");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://dev.mysql.com/doc/refman/5.0/en/news-5-0-92.html");
   script_xref(name : "URL" , value : "http://dev.mysql.com/doc/refman/5.1/en/news-5-1-51.html");
 
-  script_summary("Check for the version of MySQL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Databases");

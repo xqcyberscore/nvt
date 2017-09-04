@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_unspecified_vuln_win_may11.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: gb_mozilla_prdts_unspecified_vuln_win_may11.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Mozilla Products Unspecified Vulnerability May-11 (Windows)
 #
@@ -44,8 +44,8 @@ tag_summary = "The host is installed with Mozilla Firefox or Thunderbird and is 
 if(description)
 {
   script_id(801887);
-  script_version("$Revision: 6444 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-18 15:37:30 +0200 (Wed, 18 May 2011)");
   script_cve_id("CVE-2011-0081");
   script_bugtraq_id(47653);
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-12.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Mozilla Firefox/Thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

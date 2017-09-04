@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nextgen_gallery_dir_trav_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_wordpress_nextgen_gallery_dir_trav_vuln.nasl 7003 2017-08-25 09:22:10Z asteins $
 #
 # WordPress NextGEN Gallery 'jqueryFileTree.php' Directory Traversal Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6724 $");
+  script_version("$Revision: 7003 $");
   script_bugtraq_id(65637);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 11:22:10 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-03-07 17:46:21 +0530 (Fri, 07 Mar 2014)");
   script_name("WordPress NextGEN Gallery 'jqueryFileTree.php' Directory Traversal Vulnerability");
 
@@ -90,18 +90,13 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
 ## Get HTTP Port
-if(!http_port = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
 ## Get WordPress Location
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:http_port)){
+if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 

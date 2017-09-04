@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eclipse_ide_help_contents_mult_xss_vuln.nasl 4696 2016-12-07 08:50:27Z cfi $
+# $Id: gb_eclipse_ide_help_contents_mult_xss_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Eclipse IDE Help Contents Multiple Cross-site Scripting Vulnerabilities
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801746");
-  script_version("$Revision: 4696 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-07 09:50:27 +0100 (Wed, 07 Dec 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-17 16:08:28 +0100 (Thu, 17 Feb 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2008-7271");
   script_name("Eclipse IDE Help Contents Multiple Cross-site Scripting Vulnerabilities");
-  script_summary("Check if Eclipse IDE is vulnerable to XSS attacks");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

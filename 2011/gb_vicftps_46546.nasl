@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vicftps_46546.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_vicftps_46546.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # VicFTPS 'LIST' Command Remote Denial of Service Vulnerability
 #
@@ -38,8 +38,8 @@ VicFTPS 5.0 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103091);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7044 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-02-25 13:54:37 +0100 (Fri, 25 Feb 2011)");
  script_bugtraq_id(46546);
  script_cve_id("CVE-2008-2031");
@@ -52,7 +52,6 @@ if (description)
  script_xref(name : "URL" , value : "http://vicftps.50webs.com/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if VicFTPS is prone to a remote denial-of-service vulnerability");
  script_category(ACT_DENIAL);
  script_family("FTP");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

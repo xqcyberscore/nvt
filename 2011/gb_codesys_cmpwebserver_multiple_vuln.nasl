@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_codesys_cmpwebserver_multiple_vuln.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: gb_codesys_cmpwebserver_multiple_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # 3S CoDeSys CmpWebServer Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802280");
-  script_version("$Revision: 6696 $");
+  script_version("$Revision: 7024 $");
   script_cve_id("CVE-2011-5007", "CVE-2011-5008", "CVE-2011-5009", "CVE-2011-5058");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-06 12:12:12 +0530 (Tue, 06 Dec 2011)");
   script_name("3S CoDeSys CmpWebServer Multiple Vulnerabilities");
 
@@ -40,7 +40,6 @@ if(description)
   script_xref(name:"URL", value:"http://aluigi.altervista.org/adv/codesys_1-adv.txt");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/107456/codesys-overflow.txt");
 
-  script_summary("Determine if CoDeSys CmpWebServer is vulnerable to Buffer Overflow");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

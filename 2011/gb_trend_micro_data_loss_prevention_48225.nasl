@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_data_loss_prevention_48225.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_trend_micro_data_loss_prevention_48225.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Trend Micro Data Loss Prevention Directory Traversal Vulnerability
 #
@@ -40,8 +40,8 @@ also be affected.";
 if (description)
 {
  script_id(103182);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-06-14 13:57:36 +0200 (Tue, 14 Jun 2011)");
  script_bugtraq_id(48225);
 
@@ -53,7 +53,6 @@ if (description)
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Trend Micro Data Loss Prevention is prone to a directory-traversal vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

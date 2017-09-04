@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_esignal_mult_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_esignal_mult_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # eSignal Multiple Vulnerabilities
 #
@@ -51,8 +51,8 @@ vulnerabilities.";
 if(description)
 {
   script_id(802245);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-16 17:22:17 +0200 (Fri, 16 Sep 2011)");
   script_cve_id("CVE-2011-3494", "CVE-2011-3503");
   script_tag(name:"cvss_base", value:"10.0");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://aluigi.altervista.org/adv/esignal_1-adv.txt");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of eSignal");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");

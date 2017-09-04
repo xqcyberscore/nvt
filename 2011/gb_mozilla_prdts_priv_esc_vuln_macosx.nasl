@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_priv_esc_vuln_macosx.nasl 6445 2017-06-27 12:31:06Z santu $
+# $Id: gb_mozilla_prdts_priv_esc_vuln_macosx.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Mozilla Products Privilege Escalation Vulnerability (MAC OS X)
 #
@@ -44,18 +44,17 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird and is pro
 if(description)
 {
   script_id(802512);
-  script_version("$Revision: 6445 $");
+  script_version("$Revision: 7006 $");
   script_cve_id("CVE-2011-3647");
   script_bugtraq_id(50589);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 14:31:06 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-14 11:44:10 +0530 (Mon, 14 Nov 2011)");
   script_name("Mozilla Products Privilege Escalation Vulnerabily (MAC OS X)");
 
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-46.html");
 
-  script_summary("Check for the version of Mozilla Firefox/Thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Privilege escalation");

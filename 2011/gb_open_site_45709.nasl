@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_site_45709.nasl 5651 2017-03-21 10:09:09Z cfi $
+# $Id: gb_open_site_45709.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # openSite 'db_driver' Parameter Multiple Local File Include Vulnerabilities
 #
@@ -43,8 +43,8 @@ please mail us at: vuldb@securityfocus.com.";
 if (description)
 {
  script_id(103022);
- script_version("$Revision: 5651 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-01-10 13:28:19 +0100 (Mon, 10 Jan 2011)");
  script_bugtraq_id(45709);
  script_tag(name:"cvss_base", value:"5.1");
@@ -56,7 +56,6 @@ if (description)
  script_xref(name : "URL" , value : "http://sourceforge.net/projects/contentone/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed openSite is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

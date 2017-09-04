@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-612.nasl 6575 2017-07-06 13:42:08Z cfischer $
+# $Id: alas-2015-612.nasl 6981 2017-08-22 06:39:29Z asteins $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,17 +24,17 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120602");
-script_version("$Revision: 6575 $");
+script_version("$Revision: 6981 $");
 script_tag(name:"creation_date", value:"2015-11-24 10:37:05 +0200 (Tue, 24 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:42:08 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-08-22 08:39:29 +0200 (Tue, 22 Aug 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-612");
 script_tag(name: "insight", value: "Ganglia-web auth can be bypassed using boolean serialization (CVE-2015-6816 )."); 
 script_tag(name : "solution", value : "Run yum update ganglia to update your system.");
 script_tag(name : "solution_type", value : "VendorFix");
 script_xref(name : "URL" , value : "https://alas.aws.amazon.com/ALAS-2015-612.html");
 script_cve_id("CVE-2015-6816");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"7.5");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln_oct11_win_04.nasl 6465 2017-06-28 13:17:01Z cfischer $
+# $Id: gb_oracle_java_se_mult_vuln_oct11_win_04.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Oracle Java SE Multiple Vulnerabilities - October 2011 (Windows04)
 #
@@ -42,12 +42,12 @@ tag_summary = "This host is installed with Oracle Java SE and is prone to multip
 if(description)
 {
   script_id(802276);
-  script_version("$Revision: 6465 $");
+  script_version("$Revision: 7024 $");
   script_cve_id("CVE-2011-3521", "CVE-2011-3554");
   script_bugtraq_id(50215, 50216);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:17:01 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-15 14:34:22 +0530 (Tue, 15 Nov 2011)");
   script_name("Oracle Java SE Multiple Vulnerabilities - October 2011 (Windows04)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46512");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpuoct2011-443431.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Sun Java SE JRE/JDK");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

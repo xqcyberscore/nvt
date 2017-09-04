@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wing_ftp_server_command_exec_vuln.nasl 5081 2017-01-24 11:05:06Z cfi $
+# $Id: gb_wing_ftp_server_command_exec_vuln.nasl 6995 2017-08-23 11:52:03Z teissa $
 #
 # Wing FTP Server Authenticated Command Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804766");
-  script_version("$Revision: 5081 $");
+  script_version("$Revision: 6995 $");
   script_tag(name:"cvss_base", value:"8.2");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:05:06 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-09-12 11:42:19 +0530 (Fri, 12 Sep 2014)");
 
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/34517");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/128045");
 
-  script_summary("Check if Wing FTP Server is vulnerable to remote code execution");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

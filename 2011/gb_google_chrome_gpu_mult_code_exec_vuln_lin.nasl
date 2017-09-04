@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_gpu_mult_code_exec_vuln_lin.nasl 3103 2016-04-18 14:50:34Z benallard $
+# $Id: gb_google_chrome_gpu_mult_code_exec_vuln_lin.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Google Chrome 'GPU process' Multiple Code Execution Vulnerabilities (Linux)
 #
@@ -38,8 +38,8 @@ tag_summary = "The host is installed Google Chrome and is prone to multiple
 if(description)
 {
   script_id(801777);
-  script_version("$Revision: 3103 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:50:34 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_cve_id("CVE-2011-1301", "CVE-2011-1302");
   script_tag(name:"cvss_base", value:"10.0");
@@ -48,7 +48,6 @@ if(description)
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/2011/04/stable-channel-update.html");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");

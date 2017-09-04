@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_bof_vuln_win.nasl 5085 2017-01-24 11:32:37Z cfi $
+# $Id: secpod_php_bof_vuln_win.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # PHP 'socket_connect()' Buffer Overflow Vulnerability (Windows)
 #
@@ -29,15 +29,14 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902436");
-  script_version("$Revision: 5085 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:32:37 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_cve_id("CVE-2011-1938");
   script_bugtraq_id(47950);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("PHP 'socket_connect()' Buffer Overflow Vulnerability (Windows)");
-  script_summary("Check for the version of PHP");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Buffer overflow");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_uri_remote_code_exec_vuln_oct07_win.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_adobe_reader_uri_remote_code_exec_vuln_oct07_win.nasl 6995 2017-08-23 11:52:03Z teissa $
 #
 # Adobe Reader URI Handler Remote Code Execution Vulnerabilities Oct07 (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804376";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 6995 $");
   script_cve_id("CVE-2007-5020", "CVE-2007-3896");
   script_bugtraq_id(25748, 25945);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-04-10 10:20:46 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader URI Handler Remote Code Execution Vulnerabilities Oct07 (Windows)");
 
@@ -79,7 +79,6 @@ http://get.adobe.com/reader";
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1018822");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/36722");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb07-18.html");
-  script_summary("Check for the vulnerable version of Adobe Reader on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

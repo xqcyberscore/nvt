@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3055.nasl 6610 2017-07-07 12:06:40Z cfischer $
+# $Id: deb_3055.nasl 6995 2017-08-23 11:52:03Z teissa $
 # Auto-generated from advisory DSA 3055-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,17 +30,16 @@
 if(description)
 {
     script_id(703055);
-    script_version("$Revision: 6610 $");
+    script_version("$Revision: 6995 $");
     script_cve_id("CVE-2014-3694", "CVE-2014-3695", "CVE-2014-3696", "CVE-2014-3698");
     script_name("Debian Security Advisory DSA 3055-1 (pidgin - security update)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-07 14:06:40 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
     script_tag(name: "creation_date", value:"2014-10-23 00:00:00 +0200 (Thu, 23 Oct 2014)");
     script_tag(name:"cvss_base", value:"6.4");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-3055.html");
 
-    script_summary("Debian Security Advisory DSA 3055-1 (pidgin - security update)");
 
     script_category(ACT_GATHER_INFO);
 

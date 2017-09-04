@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mem_corr_vuln_win.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_opera_mem_corr_vuln_win.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Opera Browser 'SELECT' HTML Tag Remote Memory Corruption Vulnerability (Windows)
 #
@@ -40,8 +40,8 @@ tag_summary = "The host is installed with Opera browser and is prone to memory
 if(description)
 {
   script_id(801788);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-05-23 15:31:07 +0200 (Mon, 23 May 2011)");
   script_cve_id("CVE-2011-1824");
   script_bugtraq_id(47764);
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/67338");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/517914/100/0/threaded");
 
-  script_summary("Check for the version of Opera");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

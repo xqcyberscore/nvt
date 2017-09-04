@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_mystatus_plugin_statid_sql_inj_vuln.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_mybb_mystatus_plugin_statid_sql_inj_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # MyBB MyStatus Plugin process-mystatus.php 'statid' Parameter SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802040");
-  script_version("$Revision: 3100 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17972");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/105744");
 
-  script_summary("Check if MyBB MyStatus Plugin is vulnerable for SQL Injection attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

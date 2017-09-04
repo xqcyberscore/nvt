@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_jul2017-3236622_03_lin.nasl 6901 2017-08-11 08:28:09Z cfischer $
+# $Id: gb_mysql_jul2017-3236622_03_lin.nasl 7013 2017-08-25 13:17:51Z asteins $
 #
 # Oracle Mysql Security Updates (jul2017-3236622) 03 - Linux
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811435");
-  script_version("$Revision: 6901 $");
+  script_version("$Revision: 7013 $");
   script_cve_id("CVE-2017-3636");
   script_bugtraq_id(99736);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-11 10:28:09 +0200 (Fri, 11 Aug 2017) $");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 15:17:51 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-07-19 11:05:54 +0530 (Wed, 19 Jul 2017)");
   script_name("Oracle Mysql Security Updates (jul2017-3236622) 03 - Linux");
 

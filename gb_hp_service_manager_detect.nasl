@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_service_manager_detect.nasl 3684 2016-07-11 10:04:21Z ckuerste $
+# $Id: gb_hp_service_manager_detect.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # HP Service Manager Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106125");
- script_version ("$Revision: 3684 $");
- script_tag(name: "last_modification", value: "$Date: 2016-07-11 12:04:21 +0200 (Mon, 11 Jul 2016) $");
+ script_version ("$Revision: 7006 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
  script_tag(name: "creation_date", value: "2016-07-11 12:33:22 +0700 (Mon, 11 Jul 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,7 +53,6 @@ and to extract its version.");
 
  script_xref(name: "URL", value: "http://www8.hp.com/us/en/software-solutions/service-desk/index.html");
 
- script_summary("Checks for the presence of HP Service Manager.");
 
  exit(0);
 }

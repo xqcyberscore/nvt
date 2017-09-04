@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_smartftp_client_info_disc_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_smartftp_client_info_disc_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # SmartFTP Client Information Disclosure Vulnerability
 #
@@ -45,8 +45,8 @@ information disclosure vulnerability.";
 if(description)
 {
   script_id(902448);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://cosine-security.blogspot.com/2011/06/windows-cryptography-with-metasploit.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of SmartFTP Client");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("FTP");

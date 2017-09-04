@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sunway_force_control_mult_vuln.nasl 3104 2016-04-18 14:53:56Z benallard $
+# $Id: gb_sunway_force_control_mult_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Sunway ForceControl Multiple Vulnerabilities
 #
@@ -50,9 +50,9 @@ vulnerabilities.";
 if(description)
 {
   script_id(802529);
-  script_version("$Revision: 3104 $");
+  script_version("$Revision: 7044 $");
   script_bugtraq_id(49747);
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:53:56 +0200 (Mon, 18 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-12-02 13:55:52 +0530 (Fri, 02 Dec 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICS-ALERT-11-266-01.pdf");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determining vulnerabilities in Sunway ForceControl");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

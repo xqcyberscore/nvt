@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_aem_remote_detect.nasl 5029 2017-01-18 13:42:10Z cfi $
+# $Id: gb_adobe_aem_remote_detect.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Adobe Experience Manager Remote Version Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807067");
-  script_version("$Revision: 5029 $");
+  script_version("$Revision: 7006 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-18 14:42:10 +0100 (Wed, 18 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-02-11 14:43:49 +0530 (Thu, 11 Feb 2016)");
   script_name("Adobe Experience Manager Remote Version Detection");
-  script_summary("Check the presence of Adobe Experience Manager");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

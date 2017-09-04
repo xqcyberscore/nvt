@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unprotected_hp_printers.nasl 6949 2017-08-17 10:27:54Z cfischer $
+# $Id: gb_unprotected_hp_printers.nasl 6995 2017-08-23 11:52:03Z teissa $
 #
 # Unprotected HP Printer
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103676");
- script_version ("$Revision: 6949 $");
+ script_version ("$Revision: 6995 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -36,9 +36,8 @@ if (description)
 
  script_xref(name : "URL" , value : "http://www.hp.com");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-17 12:27:54 +0200 (Thu, 17 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
  script_tag(name:"creation_date", value:"2013-03-08 11:51:27 +0100 (Fri, 08 Mar 2013)");
- script_summary("Determine if it is possible to login into the remote printer");
  script_category(ACT_ATTACK);
  script_family("General");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

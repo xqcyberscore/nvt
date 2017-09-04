@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_otrs_xss_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_otrs_xss_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Open Ticket Request System (OTRS) 'AgentTicketZoom' Cross-site scripting Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3570 $");
+  script_version("$Revision: 7044 $");
   script_cve_id("CVE-2010-4071");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
   script_name("Open Ticket Request System (OTRS) 'AgentTicketZoom' Cross-site scripting Vulnerability");
 
@@ -75,7 +75,6 @@ refer to http://otrs.org/download/";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/41978");
   script_xref(name : "URL" , value : "http://otrs.org/advisory/OSA-2010-03-en/");
-  script_summary("Check for the version of Open Ticket Request System (OTRS)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");

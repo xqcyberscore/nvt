@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tigervnc_ssl_sec_bypass_vuln_win.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_tigervnc_ssl_sec_bypass_vuln_win.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # TigerVNC SSL Certificate Validation Security Bypass Vulnerability (Windows)
 #
@@ -47,8 +47,8 @@ bypass vulnerability.";
 if(description)
 {
   script_id(801898);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_cve_id("CVE-2011-1775");
   script_bugtraq_id(47738);
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=702470");
   script_xref(name : "URL" , value : "http://www.mail-archive.com/tigervnc-devel@lists.sourceforge.net/msg01345.html");
 
-  script_summary("Check for the version of TigerVNC");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

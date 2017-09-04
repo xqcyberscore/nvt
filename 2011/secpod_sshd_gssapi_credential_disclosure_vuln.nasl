@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sshd_gssapi_credential_disclosure_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_sshd_gssapi_credential_disclosure_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # OpenSSH 'sshd' GSSAPI Credential Disclosure Vulnerability
 #
@@ -40,12 +40,12 @@ tag_summary = "The host is running OpenSSH sshd with GSSAPI enabled and is prone
 if(description)
 {
   script_id(902488);
-  script_version("$Revision: 3570 $");
+  script_version("$Revision: 7029 $");
   script_cve_id("CVE-2005-2798");
   script_bugtraq_id(14729);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-16 12:24:22 +0530 (Wed, 16 Nov 2011)");
   script_name("OpenSSH 'sshd' GSSAPI Credential Disclosure Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/16686");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "https://lists.mindrot.org/pipermail/openssh-unix-announce/2005-September/000083.html");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_summary("Check for the credential disclosure vulnerability OpenSSH");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod ");
   script_family("General");

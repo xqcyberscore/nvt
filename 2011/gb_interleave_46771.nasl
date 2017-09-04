@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interleave_46771.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_interleave_46771.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Interleave 'basicstats.php' Multiple Cross Site Scripting Vulnerabilities
 #
@@ -38,8 +38,8 @@ Interleave 5.5.0.2 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103112);
- script_version("$Revision: 3507 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+ script_version("$Revision: 7006 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-03-08 14:02:18 +0100 (Tue, 08 Mar 2011)");
  script_bugtraq_id(46771);
  script_tag(name:"cvss_base", value:"4.3");
@@ -51,7 +51,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.interleave.nl/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Interleave is prone to multiple cross-site scripting vulnerabilities");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

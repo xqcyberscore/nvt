@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webLogic_server_cpujul2017-3236622_03.nasl 6765 2017-07-20 06:20:42Z santu $
+# $Id: gb_oracle_webLogic_server_cpujul2017-3236622_03.nasl 6971 2017-08-21 07:15:23Z asteins $
 #
 # Oracle WebLogic Server 'Web Container' Component Unspecified Vulnerability (cpujul2017-3236622)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:bea:weblogic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811246");
-  script_version("$Revision: 6765 $");
+  script_version("$Revision: 6971 $");
   script_cve_id("CVE-2017-10123");
   script_bugtraq_id(99650);
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 08:20:42 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-21 09:15:23 +0200 (Mon, 21 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-07-19 13:58:23 +0530 (Wed, 19 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle WebLogic Server 'Web Container' Component Unspecified Vulnerability (cpujul2017-3236622)");

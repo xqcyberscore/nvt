@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_spdy_dos_vuln_lin.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_google_chrome_spdy_dos_vuln_lin.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Google Chrome 'SPDY' Denial of Service vulnerability (Linux)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with Google Chrome and is prone to Denial
 if(description)
 {
   script_id(902358);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-25 15:52:06 +0100 (Fri, 25 Mar 2011)");
   script_cve_id("CVE-2011-1465");
   script_tag(name:"cvss_base", value:"5.0");
@@ -48,7 +48,6 @@ if(description)
   script_name("Google Chrome 'SPDY' Denial Of Service Vulnerability");
 
 
-  script_summary("Check for the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Denial of Service");

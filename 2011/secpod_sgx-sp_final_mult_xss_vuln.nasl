@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sgx-sp_final_mult_xss_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_sgx-sp_final_mult_xss_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # SGX-SP Final 'shop.cgi' Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902532");
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_cve_id("CVE-2010-3926");
   script_bugtraq_id(45752);
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/42857");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/64593");
 
-  script_summary("Check for the version of SGX-SP Final");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

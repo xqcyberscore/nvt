@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mahara_mult_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_mahara_mult_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Mahara Multiple Remote Vulnerabilities
 #
@@ -58,8 +58,8 @@ tag_summary = "This host is running Mahara and is prone to multiple remote
 if(description)
 {
   script_id(801889);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-23 15:31:07 +0200 (Mon, 23 May 2011)");
   script_bugtraq_id(47798);
   script_cve_id("CVE-2011-1402", "CVE-2011-1403", "CVE-2011-1404",
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "https://launchpad.net/mahara/+milestone/1.3.6");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Mahara");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

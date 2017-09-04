@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_winamp_avi_and_it_file_bof_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_winamp_avi_and_it_file_bof_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Winamp AVI And IT Files Parsing Buffer Overflow Vulnerabilities
 #
@@ -42,11 +42,11 @@ tag_summary = "This host is installed with Winamp and is prone to buffer overflo
 if(description)
 {
   script_id(902652);
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 7044 $");
   script_cve_id("CVE-2011-4857", "CVE-2011-3834");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-12-22 12:11:40 +0530 (Thu, 22 Dec 2011)");
   script_name("Winamp AVI And IT Files Parsing Buffer Overflow Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46882");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://forums.winamp.com/showthread.php?t=332010");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Winamp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Buffer overflow");

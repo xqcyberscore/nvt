@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_n_appln_server_pl_sql_cmd_exec_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_oracle_database_n_appln_server_pl_sql_cmd_exec_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Oracle Database Server and Application Server Multiple Unspecified Vulnerabilities
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802525");
-  script_version("$Revision: 3570 $");
+  script_version("$Revision: 7024 $");
   script_cve_id("CVE-2006-0435");
   script_bugtraq_id(16384);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-07 12:32:19 +0530 (Wed, 07 Dec 2011)");
   script_name("Oracle Database Server and Application Server Multiple Unspecified Vulnerabilities");
-  script_summary("Check for the version of Oracle Database and Application server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

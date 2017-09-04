@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_chipmunk_pwngame_mult_sql_inj_vuln.nasl 4620 2016-11-25 06:39:51Z cfi $
+# $Id: secpod_chipmunk_pwngame_mult_sql_inj_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Chipmunk Pwngame Multiple SQL Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902368");
-  script_version("$Revision: 4620 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:39:51 +0100 (Fri, 25 Nov 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-11 15:50:14 +0200 (Wed, 11 May 2011)");
   script_cve_id("CVE-2010-4799");
   script_bugtraq_id(43906);
@@ -38,7 +38,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/41760/");
   script_xref(name : "URL" , value : "http://securityreason.com/exploitalert/9240");
 
-  script_summary("Check if Chipmunk Pwngame is vulnerable to SQL injection attacks");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");

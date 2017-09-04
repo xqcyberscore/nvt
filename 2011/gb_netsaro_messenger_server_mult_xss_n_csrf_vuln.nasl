@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netsaro_messenger_server_mult_xss_n_csrf_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_netsaro_messenger_server_mult_xss_n_csrf_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # NetSaro Enterprise Messenger Multiple XSS and CSRF Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801971");
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -36,7 +36,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.1337day.com/exploits/16809");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17766/");
 
-  script_summary("Check for cross-site scripting vulnerability in NetSaro Enterprise Messenger Server");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "http_version.nasl");

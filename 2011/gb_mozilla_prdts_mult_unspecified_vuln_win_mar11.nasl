@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_unspecified_vuln_win_mar11.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: gb_mozilla_prdts_mult_unspecified_vuln_win_mar11.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Mozilla Products Multiple Unspecified Vulnerabilities March-11 (Windows)
 #
@@ -48,8 +48,8 @@ tag_summary = "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird 
 if(description)
 {
   script_id(801903);
-  script_version("$Revision: 6444 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-10 13:33:28 +0100 (Thu, 10 Mar 2011)");
   script_cve_id("CVE-2011-0053");
   script_tag(name:"cvss_base", value:"10.0");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-08.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Mozilla Firefox/Seamonkey/Thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

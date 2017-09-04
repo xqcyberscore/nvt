@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_powerzip_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
+# $Id: secpod_powerzip_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # PowerZip Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900490");
-  script_version("$Revision: 5871 $");
+  script_version("$Revision: 7000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-03-31 07:06:59 +0200 (Tue, 31 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PowerZip Version Detection");
@@ -48,7 +48,6 @@ path and version from registry.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Set Version of PowerZip in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

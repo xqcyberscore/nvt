@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_rails_mult_xss_vuln.nasl 3931 2016-09-01 10:14:19Z cfi $
+# $Id: secpod_ruby_rails_mult_xss_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Ruby on Rails Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,15 +29,14 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901185");
-  script_version("$Revision: 3931 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-01 12:14:19 +0200 (Thu, 01 Sep 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_cve_id("CVE-2011-0446");
   script_bugtraq_id(46291);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Ruby on Rails Multiple Cross Site Scripting Vulnerabilities");
-  script_summary("Check for the version of Ruby on Rails");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

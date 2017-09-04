@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_notes_mult_bof_vuln_win.nasl 3115 2016-04-19 10:09:30Z benallard $
+# $Id: gb_ibm_lotus_notes_mult_bof_vuln_win.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # IBM Lotus Notes File Viewers Multiple BOF Vulnerabilities (Windows)
 #
@@ -51,8 +51,8 @@ tag_summary = "This host has IBM Lotus Notes installed and is prone to multiple
 if(description)
 {
   script_id(801945);
-  script_version("$Revision: 3115 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:09:30 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2011-1213", "CVE-2011-1214", "CVE-2011-1215", "CVE-2011-1216",
                 "CVE-2011-1217", "CVE-2011-1218", "CVE-2011-1512");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/67621");
   script_xref(name : "URL" , value : "https://www-304.ibm.com/support/docview.wss?uid=swg21500034");
 
-  script_summary("Check for the version of IBM Lotus Notes");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH,");
   script_family("Buffer overflow");

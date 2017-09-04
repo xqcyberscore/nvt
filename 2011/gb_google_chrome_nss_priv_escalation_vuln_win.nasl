@@ -1,6 +1,6 @@
 ######################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_nss_priv_escalation_vuln_win.nasl 3103 2016-04-18 14:50:34Z benallard $
+# $Id: gb_google_chrome_nss_priv_escalation_vuln_win.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Google Chrome Mozilla Network Security Services Privilege Escalation Vulnerability (Windows)
 #
@@ -39,8 +39,8 @@ tag_summary = "The host is installed with Google Chrome and is prone to privileg
 if(description)
 {
   script_id(802338);
-  script_version("$Revision: 3103 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:50:34 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-03 12:22:48 +0100 (Thu, 03 Nov 2011)");
   script_cve_id("CVE-2011-3640");
   script_tag(name:"cvss_base", value:"9.3");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://blog.acrossecurity.com/2011/10/google-chrome-pkcs11txt-file-planting.html");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_win.nasl");

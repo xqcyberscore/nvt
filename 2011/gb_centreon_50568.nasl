@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_50568.nasl 3116 2016-04-19 10:11:19Z benallard $
+# $Id: gb_centreon_50568.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Centreon 'command_name' Parameter Remote Command Execution Vulnerability
 #
@@ -37,7 +37,7 @@ if (description)
 {
  script_id(103338);
  script_bugtraq_id(50568);
- script_version ("$Revision: 3116 $");
+ script_version ("$Revision: 7044 $");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
  script_name("Centreon 'command_name' Parameter Remote Command Execution Vulnerability");
@@ -46,10 +46,9 @@ if (description)
  script_xref(name : "URL" , value : "http://www.centreon.com/");
  script_xref(name : "URL" , value : "https://www.trustwave.com/spiderlabs/advisories/TWSL2011-017.txt");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:11:19 +0200 (Tue, 19 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-11-16 09:31:56 +0100 (Wed, 16 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed Cenreon version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

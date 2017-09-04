@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_feedlist_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: secpod_wordpress_feedlist_xss_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # WordPress FeedList Plugin 'i' Cross-Site Scripting Vulnerability
 #
@@ -51,8 +51,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-03 16:00:43 +0100 (Mon, 03 Jan 2011)");
   script_cve_id("CVE-2010-4637");
   script_tag(name:"cvss_base", value:"4.3");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.johnleitch.net/Vulnerabilities/WordPress.Feed.List.2.61.01.Reflected.Cross-site.Scripting/56");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check the exploit string on WordPress FeedList Plugin");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2010 SecPod");
   script_family("Web application abuses");

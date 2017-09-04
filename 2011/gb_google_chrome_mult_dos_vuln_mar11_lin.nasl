@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_mar11_lin.nasl 3103 2016-04-18 14:50:34Z benallard $
+# $Id: gb_google_chrome_mult_dos_vuln_mar11_lin.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - March 11(Linux)
 #
@@ -61,8 +61,8 @@ tag_summary = "The host is running Google Chrome and is prone to multiple
 if(description)
 {
   script_id(801762);
-  script_version("$Revision: 3103 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:50:34 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-16 15:16:52 +0100 (Wed, 16 Mar 2011)");
   script_cve_id("CVE-2011-1185", "CVE-2011-1186", "CVE-2011-1187", "CVE-2011-1188",
                 "CVE-2011-1189", "CVE-2011-1190", "CVE-2011-1191", "CVE-2011-1192",
@@ -76,7 +76,6 @@ if(description)
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/2011/03/chrome-stable-release.html");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_google_chrome_detect_lin.nasl");

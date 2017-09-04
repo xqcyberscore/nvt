@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_45575.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_openemr_45575.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # OpenEMR Multiple Input Validation Vulnerabilities
 #
@@ -38,8 +38,8 @@ OpenEMR 3.2.0 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103019);
- script_version("$Revision: 6719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-01-07 13:52:38 +0100 (Fri, 07 Jan 2011)");
  script_bugtraq_id(45575);
 
@@ -52,7 +52,6 @@ if (description)
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed OpenEMR version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

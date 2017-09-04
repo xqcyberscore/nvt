@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_sametime_xss_vuln.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_ibm_lotus_sametime_xss_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # IBM Lotus Sametime Server 'stcenter.nsf' Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801901");
-  script_version("$Revision: 6719 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-09 16:08:21 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2011-1106");
   script_tag(name:"cvss_base", value:"4.3");
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/65555");
   script_xref(name : "URL" , value : "http://downloads.securityfocus.com/vulnerabilities/exploits/46481.txt");
 
-  script_summary("Determine if Lotus Sametime Server is prone to a cross-site scripting vulnerability");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

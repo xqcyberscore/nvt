@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_cache_history_info_disc_vuln_lin.nasl 3103 2016-04-18 14:50:34Z benallard $
+# $Id: gb_google_chrome_cache_history_info_disc_vuln_lin.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Google Chrome Cache History Information Disclosure Vulnerabilities (Linux)
 #
@@ -47,11 +47,11 @@ information disclosure vulnerabilities.";
 if(description)
 {
   script_id(802360);
-  script_version("$Revision: 3103 $");
+  script_version("$Revision: 7044 $");
   script_cve_id("CVE-2011-4691", "CVE-2011-4692");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:50:34 +0200 (Mon, 18 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-12-09 12:30:25 +0530 (Fri, 09 Dec 2011)");
   script_name("Google Chrome Cache History Information Disclosure Vulnerabilities (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47127");
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://sip.cs.princeton.edu/pub/webtiming.pdf");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");

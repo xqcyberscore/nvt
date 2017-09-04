@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openoffice_soffice_dir_traversal_vuln_win.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_openoffice_soffice_dir_traversal_vuln_win.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # OpenOffice.org 'soffice' Directory Traversal Vulnerability (Windows)
 #
@@ -38,8 +38,8 @@ tag_summary = "The host has OpenOffice installed and is prone to directory
 if(description)
 {
   script_id(902284);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-05 04:12:38 +0100 (Sat, 05 Feb 2011)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.cs.brown.edu/people/drosenbe/research.html");
   script_xref(name : "URL" , value : "http://www.openoffice.org/security/cves/CVE-2010-3689.html");
 
-  script_summary("Check for the version of OpenOffice");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

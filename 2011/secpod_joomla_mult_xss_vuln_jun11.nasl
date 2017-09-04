@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_mult_xss_vuln_jun11.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: secpod_joomla_mult_xss_vuln_jun11.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Joomla! CMS Multiple Cross Site Scripting Vulnerabilities
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is running Joomla and is prone to multiple cross site
 if(description)
 {
   script_id(902390);
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_bugtraq_id(48471, 48475);
   script_tag(name:"cvss_base", value:"4.3");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2011/Jun/519");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Joomla CMS is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

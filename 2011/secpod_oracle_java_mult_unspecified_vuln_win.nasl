@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_java_mult_unspecified_vuln_win.nasl 6465 2017-06-28 13:17:01Z cfischer $
+# $Id: secpod_oracle_java_mult_unspecified_vuln_win.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Oracle Java SE Multiple Unspecified Vulnerabilities (Windows)
 #
@@ -48,8 +48,8 @@ tag_summary = "This host is installed with Sun Java SE and is prone to multiple
 if(description)
 {
   script_id(902347);
-  script_version("$Revision: 6465 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:17:01 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2010-4422", "CVE-2010-4451", "CVE-2010-4452", "CVE-2010-4470",
                 "CVE-2010-4472", "CVE-2010-4474");
@@ -59,7 +59,6 @@ if(description)
   script_name("Oracle Java SE Multiple Unspecified Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpufeb2011-304611.html");
 
-  script_summary("Check for the version of Sun Java SE JRE/JDK");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

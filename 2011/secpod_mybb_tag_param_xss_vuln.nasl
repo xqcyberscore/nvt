@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mybb_tag_param_xss_vuln.nasl 3113 2016-04-19 09:57:04Z benallard $
+# $Id: secpod_mybb_tag_param_xss_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # MyBB 'tags.php' Cross Site Scripting Vulnerability
 #
@@ -29,15 +29,14 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902804");
-  script_version("$Revision: 3113 $");
+  script_version("$Revision: 7029 $");
   script_bugtraq_id(45388);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 11:57:04 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-27 15:15:15 +0530 (Tue, 27 Dec 2011)");
   script_name("MyBB 'tags.php' Cross Site Scripting Vulnerability");
 
-  script_summary("Check if MyBB is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

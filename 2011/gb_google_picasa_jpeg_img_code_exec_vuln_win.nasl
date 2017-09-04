@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_picasa_jpeg_img_code_exec_vuln_win.nasl 3103 2016-04-18 14:50:34Z benallard $
+# $Id: gb_google_picasa_jpeg_img_code_exec_vuln_win.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Google Picasa JPEG Image Processing Remote Code Execution Vulnerability (Windows)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with google picasa and is prone to remote
 if(description)
 {
   script_id(802313);
-  script_version("$Revision: 3103 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:50:34 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-05 09:04:20 +0200 (Fri, 05 Aug 2011)");
   script_cve_id("CVE-2011-2747");
   script_bugtraq_id(48725);
@@ -49,7 +49,6 @@ if(description)
   script_name("Google Picasa JPEG Image Processing Remote Code Execution Vulnerability (Windows)");
 
 
-  script_summary("Check for the version of Google Picasa");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");

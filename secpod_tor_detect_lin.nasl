@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tor_detect_lin.nasl 2725 2016-02-25 09:29:07Z antu123 $
+# $Id: secpod_tor_detect_lin.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Tor Version Detection (Linux)
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900418");
-  script_version("$Revision: 2725 $");
+  script_version("$Revision: 7000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-25 10:29:07 +0100 (Thu, 25 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2008-12-31 15:14:17 +0100 (Wed, 31 Dec 2008)");
   script_tag(name:"qod_type", value:"executable_version");
 
@@ -46,7 +46,6 @@ if(description)
   The script logs in via ssh, searches for executable 'tor' and
   queries the found executables via command line option '--version'.");
   
-  script_summary("Check for Tor version");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (C) 2009 SecPod");

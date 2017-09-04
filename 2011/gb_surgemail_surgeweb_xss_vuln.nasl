@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_surgemail_surgeweb_xss_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_surgemail_surgeweb_xss_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # SurgeMail SurgeWeb Cross Site Scripting Vulnerability
 #
@@ -41,8 +41,8 @@ tag_summary = "The host is running SurgeMail and is prone to Cross site scriptin
 if(description)
 {
   script_id(801808);
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-18 07:48:41 +0100 (Tue, 18 Jan 2011)");
   script_cve_id("CVE-2010-3201");
   script_bugtraq_id(43679);
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/514115/100/0/threaded");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if Surgemail is prone to XSS Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

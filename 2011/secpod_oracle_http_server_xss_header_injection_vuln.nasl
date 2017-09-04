@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_http_server_xss_header_injection_vuln.nasl 3520 2016-06-15 04:22:26Z ckuerste $
+# $Id: secpod_oracle_http_server_xss_header_injection_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Oracle HTTP Server 'Expect' Header Cross-Site Scripting Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is running Oracle HTTP Server and is prone to cross sit
 if(description)
 {
   script_id(902526);
-  script_version("$Revision: 3520 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 06:22:26 +0200 (Wed, 15 Jun 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.yaboukir.com/wp-content/bugtraq/XSS_Header_Injection_in_OHS_by_Yasser.pdf");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Oracle HTTP Server is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web Servers");

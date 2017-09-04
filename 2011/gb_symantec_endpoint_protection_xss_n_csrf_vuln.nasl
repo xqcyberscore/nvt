@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_protection_xss_n_csrf_vuln.nasl 3112 2016-04-19 08:52:10Z antu123 $
+# $Id: gb_symantec_endpoint_protection_xss_n_csrf_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Symantec Endpoint Protection Manager XSS and CSRF Vulnerabilities
 #
@@ -45,8 +45,8 @@ tag_summary = "This host is installed with Symantec Endpoint Protection Manager
 if(description)
 {
   script_id(802242);
-  script_version("$Revision: 3112 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 10:52:10 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-09-16 17:22:17 +0200 (Fri, 16 Sep 2011)");
   script_cve_id("CVE-2011-0550", "CVE-2011-0551");
   script_bugtraq_id(48231, 49101);
@@ -56,7 +56,6 @@ if(description)
 
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Symantec Endpoint Protection Manager");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");

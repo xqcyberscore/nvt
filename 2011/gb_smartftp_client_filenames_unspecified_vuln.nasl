@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smartftp_client_filenames_unspecified_vuln.nasl 3112 2016-04-19 08:52:10Z antu123 $
+# $Id: gb_smartftp_client_filenames_unspecified_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # SmartFTP Filename Processing Unspecified Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with SmartFTP Client and is prone to
 if(description)
 {
   script_id(801992);
-  script_version("$Revision: 3112 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 10:52:10 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_cve_id("CVE-2010-4871");
   script_tag(name:"cvss_base", value:"10.0");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.smartftp.com/forums/index.php?/topic/16425-smartftp-client-40-change-log/");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of SmartFTP Client");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("FTP");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerabilities Test
-# $Id: gb_alzip_mim_bof_vuln.nasl 5424 2017-02-25 16:52:36Z teissa $
+# $Id: gb_alzip_mim_bof_vuln.nasl 6969 2017-08-21 05:56:59Z asteins $
 #
 # ALZip MIM File Processing Buffer Overflow Vulnerability
 #
@@ -47,11 +47,11 @@ tag_affected = "ALZip version 8.21 and prior.";
 if(description)
 {
   script_id(802120);
-  script_version("$Revision: 5424 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+  script_version("$Revision: 6969 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-21 07:56:59 +0200 (Mon, 21 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-15 12:23:42 +0200 (Fri, 15 Jul 2011)");
   script_cve_id("CVE-2011-1336");
-  script_bugtraq_id("48493");
+  script_bugtraq_id(48493);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("ALZip MIM File Processing Buffer Overflow Vulnerability");

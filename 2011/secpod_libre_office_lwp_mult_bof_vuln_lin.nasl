@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_libre_office_lwp_mult_bof_vuln_lin.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_libre_office_lwp_mult_bof_vuln_lin.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # LibreOffice LWP File Processing Multiple Buffer Overflow Vulnerabilities (Linux)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with LibreOffice and is prone to multiple
 if(description)
 {
   script_id(902700);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_cve_id("CVE-2011-2685");
   script_tag(name:"cvss_base", value:"9.3");
@@ -48,7 +48,6 @@ if(description)
   script_name("LibreOffice LWP File Processing Multiple Buffer Overflow Vulnerabilities (Linux)");
 
 
-  script_summary("Check for the version of Office");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");

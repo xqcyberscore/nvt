@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvas_manager_command_exec_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_openvas_manager_command_exec_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # OpenVAS Manager OMP Request Handling Command Injection Vulnerability
 #
@@ -45,8 +45,8 @@ tag_summary = "This host is installed with OpenVAS Manager and is prone command
 if(description)
 {
   script_id(801920);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_cve_id("CVE-2011-0018");
   script_bugtraq_id(45987);
@@ -61,7 +61,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0208");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of OpenVAS Manager");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

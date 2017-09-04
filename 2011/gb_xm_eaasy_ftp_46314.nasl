@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xm_eaasy_ftp_46314.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_xm_eaasy_ftp_46314.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # XM Easy Personal FTP Server 'TYPE' Command Remote Denial of Service Vulnerability
 #
@@ -37,8 +37,8 @@ also be affected.";
 if (description)
 {
  script_id(103072);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7029 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-02-11 13:54:50 +0100 (Fri, 11 Feb 2011)");
  script_bugtraq_id(46314);
  script_tag(name:"cvss_base", value:"4.0");
@@ -49,7 +49,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.dxm2008.com/data/ftpserversetup.exe");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if XM Easy Personal FTP Server is prone to a remote denial-of-service vulnerability.");
  script_category(ACT_MIXED_ATTACK);
  script_family("FTP");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

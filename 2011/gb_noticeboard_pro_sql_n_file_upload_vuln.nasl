@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_noticeboard_pro_sql_n_file_upload_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_noticeboard_pro_sql_n_file_upload_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # NoticeBoardPro SQL Injection and Arbitrary File Upload Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802114");
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-07 15:43:33 +0200 (Thu, 07 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -36,7 +36,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/44595/");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17296/");
 
-  script_summary("Check for the version of NoticeBoardPro");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

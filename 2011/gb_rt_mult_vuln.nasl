@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rt_mult_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_rt_mult_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # RT (Request Tracker) Multiple Vulnerabilities
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is installed with Request Tracker and is prone to
 if(description)
 {
   script_id(801857);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-09 16:08:21 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2011-1007", "CVE-2011-1008");
   script_tag(name:"cvss_base", value:"4.0");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.bestpractical.com/pipermail/rt-announce/2011-February/000186.html");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Request Tracker");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

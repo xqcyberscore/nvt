@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_wp_stats_dashboard_mult_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: secpod_wordpress_wp_stats_dashboard_mult_xss_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # WordPress WP-Stats-Dashboard Plugin Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -55,8 +55,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-23 07:05:00 +0200 (Tue, 23 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.htbridge.ch/advisory/multiple_xss_in_wp_stats_dashboard.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if WordPress WP-Stats-Dashboard plugin is vulnerable XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

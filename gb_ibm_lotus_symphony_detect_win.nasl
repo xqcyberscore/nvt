@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_symphony_detect_win.nasl 3118 2016-04-19 11:25:06Z antu123 $
+# $Id: gb_ibm_lotus_symphony_detect_win.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # IBM Lotus Symphony Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802226");
-  script_version("$Revision: 3118 $");
+  script_version("$Revision: 7006 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 13:25:06 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("IBM Lotus Symphony Version Detection (Windows)");
@@ -43,7 +43,6 @@ gets the from registry.";
 
 
   script_tag(name : "summary" , value : tag_summary);
-  script_summary("Detection of installed version of IBM Lotus Symphony");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Product detection");

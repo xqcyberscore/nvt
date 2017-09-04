@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftpgetter_pasv_bof_vuln.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: gb_ftpgetter_pasv_bof_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # FTPGetter 'PASV' Command Remote Stack Buffer Overflow Vulnerability
 #
@@ -46,8 +46,8 @@ buffer overflow vulnerability.";
 if(description)
 {
   script_id(801839);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_bugtraq_id(46120);
   script_tag(name:"cvss_base", value:"9.3");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://downloads.securityfocus.com/vulnerabilities/exploits/46120.py");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of FTPGetter");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("FTP");

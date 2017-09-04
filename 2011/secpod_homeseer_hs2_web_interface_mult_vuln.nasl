@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_homeseer_hs2_web_interface_mult_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: secpod_homeseer_hs2_web_interface_mult_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # HomeSeer HS2 Web Interface Multiple Vulnerabilities
 #
@@ -48,12 +48,12 @@ vulnerabilities.";
 if(description)
 {
   script_id(902648);
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 7015 $");
   script_cve_id("CVE-2011-4835", "CVE-2011-4836", "CVE-2011-4837");
   script_bugtraq_id(50978);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-20 15:01:39 +0530 (Tue, 20 Dec 2011)");
   script_name("HomeSeer HS2 Web Interface Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47191/");
@@ -61,7 +61,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/71713");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if HomeSeer HS2 is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

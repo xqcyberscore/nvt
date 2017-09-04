@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_anyfont_plugin_xss_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_anyfont_plugin_xss_vuln.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # WordPress AnyFont plugin 'text' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804685");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 7000 $");
   script_cve_id("CVE-2014-4515");
   script_bugtraq_id(68314);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-07-21 16:02:02 +0530 (Mon, 21 Jul 2014)");
   script_name("WordPress AnyFont plugin 'text' Parameter Cross Site Scripting Vulnerability");
 
@@ -75,7 +75,6 @@ features, remove the product or replace the product by another one.";
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://codevigilant.com/disclosure/wp-plugin-anyfont-a3-cross-site-scripting-xss/");
-  script_summary("Check if WordPress AnyFont Plugin is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

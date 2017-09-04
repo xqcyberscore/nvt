@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_teams_sql_inj_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_joomla_teams_sql_inj_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Joomla 'Teams' Component SQL Injection Vulnerability
 #
@@ -45,11 +45,11 @@ SQL injection vulnerability.";
 if(description)
 {
   script_id(802189);
-  script_version("$Revision: 3117 $");
+  script_version("$Revision: 7006 $");
   script_cve_id("CVE-2010-4941");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-09 13:02:45 +0530 (Wed, 09 Nov 2011)");
   script_name("Joomla 'Teams' Component SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/40933");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/512974/100/0/threaded");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Joomla Teams component is vulnerable for SQL Injection attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

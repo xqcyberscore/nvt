@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_fast_search_server_detect.nasl 5376 2017-02-20 16:41:48Z cfi $
+# $Id: gb_ms_fast_search_server_detect.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Microsoft FAST Search Server Detection
 #
@@ -34,14 +34,13 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802980";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5376 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:41:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2012-10-10 10:36:03 +0530 (Wed, 10 Oct 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft FAST Search Server Detection");
-  script_summary("Detection of installed version of Microsoft FAST Search Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Product detection");

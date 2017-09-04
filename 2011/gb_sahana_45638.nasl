@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sahana_45638.nasl 5621 2017-03-20 13:56:15Z cfi $
+# $Id: gb_sahana_45638.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Sahana Disaster Management System 'sel' Parameter SQL Injection Vulnerability
 #
@@ -39,8 +39,8 @@ may also be vulnerable.";
 if (description)
 {
  script_id(103014);
- script_version("$Revision: 5621 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
+ script_version("$Revision: 7044 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-01-05 15:07:33 +0100 (Wed, 05 Jan 2011)");
  script_bugtraq_id(45638);
  script_tag(name:"cvss_base", value:"7.5");
@@ -51,7 +51,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.sahanafoundation.org/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Sahana is prone to an SQL-injection vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

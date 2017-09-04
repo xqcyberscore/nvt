@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_info_disc_vuln_macosx.nasl 3099 2016-04-18 14:36:59Z benallard $
+# $Id: gb_apple_safari_webkit_info_disc_vuln_macosx.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Apple Safari WebKit Information Disclosure Vulnerability (Mac OS X)
 #
@@ -47,17 +47,16 @@ to information disclosure vulnerability.";
 if(description)
 {
   script_id(802283);
-  script_version("$Revision: 3099 $");
+  script_version("$Revision: 7024 $");
   script_cve_id("CVE-2011-4692");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:36:59 +0200 (Mon, 18 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-09 11:11:11 +0530 (Fri, 09 Dec 2011)");
   script_name("Apple Safari WebKit Information Disclosure Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://oxplot.github.com/visipisi/visipisi.html");
   script_xref(name : "URL" , value : "http://lcamtuf.coredump.cx/cachetime/firefox.html");
 
-  script_summary("Check for the version of Apple Safari");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");

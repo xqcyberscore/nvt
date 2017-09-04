@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_photo_station_mult_vuln.nasl 6923 2017-08-15 10:09:03Z ckuersteiner $
+# $Id: gb_synology_photo_station_mult_vuln.nasl 6981 2017-08-22 06:39:29Z asteins $
 #
 # Synology Photo Station Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:synology:synology_photo_station';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140298");
-  script_version("$Revision: 6923 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-15 12:09:03 +0200 (Tue, 15 Aug 2017) $");
+  script_version("$Revision: 6981 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-22 08:39:29 +0200 (Tue, 22 Aug 2017) $");
   script_tag(name: "creation_date", value: "2017-08-15 13:49:40 +0700 (Tue, 15 Aug 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-11151", "CVE-2017-11152", "CVE-2017-11153", "CVE-2017-11154", "CVE-2017-11155");
 

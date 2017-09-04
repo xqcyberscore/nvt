@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netart_media_iboutique_mult_sql_inj_n_xss_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_netart_media_iboutique_mult_sql_inj_n_xss_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # NetArt Media iBoutique 'page' SQL Injection and XSS Vulnerabilities
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802404");
-  script_version("$Revision: 3117 $");
+  script_version("$Revision: 7029 $");
   script_cve_id("CVE-2010-5020");
   script_bugtraq_id(41014);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-14 13:46:57 +0530 (Mon, 14 Nov 2011)");
   script_name("NetArt Media iBoutique 'page' SQL Injection and XSS Vulnerabilities");
   script_xref(name : "URL" , value : "http://milw0rm.com/exploits/6444");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/31871");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/13945/");
 
-  script_summary("Check NetArt Media iBoutique SQL Injection attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

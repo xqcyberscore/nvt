@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nam_carportal_sql_inj_vuln.nasl 2972 2016-03-29 17:39:08Z cfi $
+# $Id: secpod_nam_carportal_sql_inj_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # NetArt Media Car Portal SQL injection Vulnerability
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902475");
-  script_version("$Revision: 2972 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-29 19:39:08 +0200 (Tue, 29 Mar 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("NetArt Media Car Portal SQL injection Vulnerability");
-  script_summary("Determine the SQL Injection vulnerability in Car Portal");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");

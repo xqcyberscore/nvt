@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln_win7.nasl 6833 2017-08-02 09:59:29Z ckuersteiner $
+# $Id: gb_mantisbt_xss_vuln_win7.nasl 6959 2017-08-18 07:24:59Z asteins $
 #
 # MantisBT Multiple XSS Vulnerabilities (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140266");
-  script_version("$Revision: 6833 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-02 11:59:29 +0200 (Wed, 02 Aug 2017) $");
+  script_version("$Revision: 6959 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
   script_tag(name: "creation_date", value: "2017-08-02 12:48:43 +0700 (Wed, 02 Aug 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-12061", "CVE-2017-12062");
 

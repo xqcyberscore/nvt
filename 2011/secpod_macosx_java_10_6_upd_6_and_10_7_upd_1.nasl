@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_macosx_java_10_6_upd_6_and_10_7_upd_1.nasl 5357 2017-02-20 11:05:23Z cfi $
+# $Id: secpod_macosx_java_10_6_upd_6_and_10_7_upd_1.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Java for Mac OS X 10.6 Update 6 And 10.7 Update 1
 #
@@ -40,8 +40,8 @@ if(description)
 {
   script_id(902630);
   script_tag(name:"creation_date", value:"2011-11-17 11:36:14 +0100 (Thu, 17 Nov 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:05:23 +0100 (Mon, 20 Feb 2017) $");
-  script_version("$Revision: 5357 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_version("$Revision: 7019 $");
   script_cve_id("CVE-2011-3389", "CVE-2011-3521", "CVE-2011-3544", "CVE-2011-3545",
                 "CVE-2011-3546", "CVE-2011-3547", "CVE-2011-3548", "CVE-2011-3549",
                 "CVE-2011-3551", "CVE-2011-3552", "CVE-2011-3553", "CVE-2011-3554",
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/Security-announce//2011/Nov/msg00000.html");
 
   script_copyright("Copyright (c) 2011 SecPod");
-  script_summary("Checks for existence of Java for Mac OS X 10.6 Update 6 Or 10.7 Update 1");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_family("Mac OS X Local Security Checks");

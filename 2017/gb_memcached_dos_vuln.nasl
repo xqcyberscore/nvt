@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_memcached_dos_vuln.nasl 6794 2017-07-24 09:49:28Z ckuersteiner $
+# $Id: gb_memcached_dos_vuln.nasl 6959 2017-08-18 07:24:59Z asteins $
 #
 # Memcached DoS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:memcachedb:memcached";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106981");
-  script_version("$Revision: 6794 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-24 11:49:28 +0200 (Mon, 24 Jul 2017) $");
+  script_version("$Revision: 6959 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
   script_tag(name: "creation_date", value: "2017-07-24 15:46:47 +0700 (Mon, 24 Jul 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-9951");
 

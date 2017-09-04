@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln_mar11_win02.nasl 3108 2016-04-19 06:58:41Z benallard $
+# $Id: gb_wireshark_dos_vuln_mar11_win02.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Wireshark Denial of Service Vulnerability March-11 (Windows)
 #
@@ -38,8 +38,8 @@ tag_summary = "The host is installed with Wireshark and is prone to multiple DoS
 if(description)
 {
   script_id(801761);
-  script_version("$Revision: 3108 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 08:58:41 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-09 16:08:21 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2011-1143");
   script_tag(name:"cvss_base", value:"4.3");
@@ -48,7 +48,6 @@ if(description)
 
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of Wireshark");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_family("Denial of Service");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_proplayer_49046.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_wp_proplayer_49046.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # WordPress ProPlayer Plugin  'playlist-controller.php' Parameter SQL Injection Vulnerability
 #
@@ -41,8 +41,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_version("$Revision: 7024 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-08-11 14:25:35 +0200 (Thu, 11 Aug 2011)");
  script_bugtraq_id(49046);
  script_tag(name:"cvss_base", value:"7.5");
@@ -54,7 +54,6 @@ if (description)
  script_xref(name : "URL" , value : "http://wordpress.org/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if The ProPlayer plugin for WordPress is prone to an SQL-injection vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

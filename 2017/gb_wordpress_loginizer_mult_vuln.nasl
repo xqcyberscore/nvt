@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_loginizer_mult_vuln.nasl 6868 2017-08-08 09:39:18Z ckuersteiner $
+# $Id: gb_wordpress_loginizer_mult_vuln.nasl 6959 2017-08-18 07:24:59Z asteins $
 #
 # WordPress Loginizer Plugin Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140287");
-  script_version("$Revision: 6868 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-08 11:39:18 +0200 (Tue, 08 Aug 2017) $");
+  script_version("$Revision: 6959 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
   script_tag(name: "creation_date", value: "2017-08-08 16:16:18 +0700 (Tue, 08 Aug 2017)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-12650", "CVE-2017-12651");
 

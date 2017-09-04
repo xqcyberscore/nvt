@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_services_ms13-100.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: secpod_ms_office_services_ms13-100.nasl 6995 2017-08-23 11:52:03Z teissa $
 #
 # Microsoft SharePoint Server Excel Services RCE Vulnerability (2904244)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 6995 $");
   script_cve_id("CVE-2013-5059");
   script_bugtraq_id(64081);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-01-09 13:28:58 +0530 (Thu, 09 Jan 2014)");
   script_name("Microsoft SharePoint Server Excel Services RCE Vulnerability (2904244)");
 
@@ -76,7 +76,6 @@ http://technet.microsoft.com/en-us/security/bulletin/ms13-100";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55985");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/MS13-100");
-  script_summary("Check for the vulnerable 'ACEWSTR.DLL' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 SecPod");
   script_family("Windows : Microsoft Bulletins");

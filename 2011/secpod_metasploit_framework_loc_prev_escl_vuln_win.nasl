@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_metasploit_framework_loc_prev_escl_vuln_win.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_metasploit_framework_loc_prev_escl_vuln_win.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Metasploit Framework Local Privilege Escalation Vulnerability
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is installed with Metasploit Framework and is prone to
 if(description)
 {
   script_id(902294);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_bugtraq_id(46300);
   script_tag(name:"cvss_base", value:"6.2");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0371");
   script_xref(name : "URL" , value : "http://blog.metasploit.com/2011/02/metasploit-framework-352-released.html");
 
-  script_summary("Check for the version of Metasploit Framework");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("General");

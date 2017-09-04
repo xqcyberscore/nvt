@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phorum_xss_n_csrf_vuln.nasl 3102 2016-04-18 14:46:07Z benallard $
+# $Id: gb_phorum_xss_n_csrf_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Phorum Cross-Site Scripting and Cross-site request forgery Vulnerabilities
 #
@@ -37,8 +37,8 @@ tag_summary = "This host is running Phorum and is prone to cross-site scripting
 if(description)
 {
   script_id(802160);
-  script_version("$Revision: 3102 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:46:07 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-16 17:22:17 +0200 (Fri, 16 Sep 2011)");
   script_cve_id("CVE-2011-3381", "CVE-2011-3382");
   script_tag(name:"cvss_base", value:"6.8");
@@ -48,7 +48,6 @@ if(description)
   script_xref(name : "URL" , value : "http://jvndb.jvn.jp/en/contents/2011/JVNDB-2011-000068.html");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check version of Phorum");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

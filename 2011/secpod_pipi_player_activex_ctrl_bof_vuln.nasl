@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pipi_player_activex_ctrl_bof_vuln.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: secpod_pipi_player_activex_ctrl_bof_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # PIPI Player PIPIWebPlayer ActiveX Control Buffer Overflow Vulnerability
 #
@@ -48,8 +48,8 @@ overflow vulnerability.";
 if(description)
 {
   script_id(902346);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-04 14:32:35 +0100 (Fri, 04 Mar 2011)");
   script_cve_id("CVE-2011-1065");
   script_bugtraq_id(46468);
@@ -61,7 +61,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.wooyun.org/bugs/wooyun-2010-01383");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of PIPI Player");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");

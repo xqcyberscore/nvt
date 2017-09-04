@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_domattr_modified_mem_crptn_vuln_macosx.nasl 6445 2017-06-27 12:31:06Z santu $
+# $Id: secpod_mozilla_prdts_domattr_modified_mem_crptn_vuln_macosx.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Mozilla Products DOMAttrModified Memory Corruption Vulnerability (MAC OS X)
 #
@@ -49,19 +49,18 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird/seamonkey 
 if(description)
 {
   script_id(902779);
-  script_version("$Revision: 6445 $");
+  script_version("$Revision: 7024 $");
   script_cve_id("CVE-2011-3658");
   script_bugtraq_id(51138);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"creation_date", value:"2011-12-22 11:48:05 +0530 (Thu, 22 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 14:31:06 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_name("Mozilla Products DOMAttrModified Memory Corruption Vulnerability (MAC OS X)");
 
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51138/info");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-55.html");
 
-  script_summary("Check for the version of Mozilla Firefox/Thunderbird/SeaMonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("General");

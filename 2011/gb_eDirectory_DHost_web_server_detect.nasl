@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eDirectory_DHost_web_server_detect.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: gb_eDirectory_DHost_web_server_detect.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # eDirectory DHost Web Server Detection
 #
@@ -30,13 +30,12 @@ if (description)
 {
  script_id(103125);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6696 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-03-23 13:28:27 +0100 (Wed, 23 Mar 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("eDirectory DHost Web Server Detection");
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Checks for the presence of eDirectory DHost Web Server");
  script_category(ACT_GATHER_INFO);
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

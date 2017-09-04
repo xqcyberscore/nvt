@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_49766.nasl 3775 2016-07-29 16:30:59Z mime $
+# $Id: gb_ibm_websphere_49766.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # IBM WebSphere Application Server Cross-Site Request Forgery Vulnerability
 #
@@ -40,8 +40,8 @@ information.";
 if (description)
 {
  script_id(103277);
- script_version("$Revision: 3775 $");
- script_tag(name:"last_modification", value:"$Date: 2016-07-29 18:30:59 +0200 (Fri, 29 Jul 2016) $");
+ script_version("$Revision: 7006 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-09-28 12:51:43 +0200 (Wed, 28 Sep 2011)");
  script_bugtraq_id(49766);
  script_tag(name:"cvss_base", value:"6.8");
@@ -55,7 +55,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www-01.ibm.com/software/websphere/");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed IBM WebSphere Application Server version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web Servers");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

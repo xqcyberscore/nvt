@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ManageEngine_ServiceDesk_Plus_48403.nasl 5646 2017-03-21 09:37:44Z cfi $
+# $Id: gb_ManageEngine_ServiceDesk_Plus_48403.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # ManageEngine ServiceDesk Plus 'FILENAME' Parameter Directory Traversal Vulnerability
 #
@@ -41,8 +41,8 @@ also be affected.";
 if (description)
 {
  script_id(103184);
- script_version("$Revision: 5646 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:37:44 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7029 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-06-29 13:12:40 +0200 (Wed, 29 Jun 2011)");
  script_cve_id("CVE-2011-2757");
  script_bugtraq_id(48403);
@@ -55,7 +55,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/48403");
  script_xref(name : "URL" , value : "http://manageengine.adventnet.com/products/service-desk/");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if ManageEngine ServiceDesk Plus is prone to a directory-traversal vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

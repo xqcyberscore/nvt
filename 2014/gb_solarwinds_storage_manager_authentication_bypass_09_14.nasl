@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_storage_manager_authentication_bypass_09_14.nasl 2827 2016-03-10 08:33:09Z benallard $
+# $Id: gb_solarwinds_storage_manager_authentication_bypass_09_14.nasl 6995 2017-08-23 11:52:03Z teissa $
 #
 # SolarWinds Storage Manager AuthenticationFilter Remote Code Execution Vulnerability
 #
@@ -30,7 +30,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105090");
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
- script_version ("$Revision: 2827 $");
+ script_version ("$Revision: 6995 $");
 
  script_name("SolarWinds Storage Manager AuthenticationFilter Remote Code Execution Vulnerability");
  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-14-299/");
@@ -49,9 +49,8 @@ in the AuthenticationFilter class.");
 
  script_tag(name: "affected" , value:"Storage Manager Server before 5.7.2 is vulnerable;");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:33:09 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
  script_tag(name:"creation_date", value:"2014-09-16 15:55:12 +0200 (Tue, 16 Sep 2014)");
- script_summary("Determine if it is possible to upload a file");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

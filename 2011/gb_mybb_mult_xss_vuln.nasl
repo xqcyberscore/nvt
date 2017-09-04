@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_mult_xss_vuln.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_mybb_mult_xss_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # MyBB Multiple Sross-Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801684");
-  script_version("$Revision: 3100 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-08 10:30:18 +0100 (Sat, 08 Jan 2011)");
   script_cve_id("CVE-2010-4522");
   script_tag(name:"cvss_base", value:"4.3");
@@ -42,7 +42,6 @@ if(description)
   script_xref(name : "URL" , value : "http://blog.mybb.com/2010/12/15/mybb-1-6-1-release-1-4-14-update/");
   script_xref(name : "URL" , value : "http://yehg.net/lab/pr0js/advisories/[mybb1.6]_cross_site_scripting");
 
-  script_summary("Determine if MyBB is prone to cross-site scripting vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

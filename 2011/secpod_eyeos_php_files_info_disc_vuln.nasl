@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_eyeos_php_files_info_disc_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_eyeos_php_files_info_disc_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # eyeOS '.php' Files Information Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902744");
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-30 15:58:03 +0200 (Fri, 30 Sep 2011)");
   script_cve_id("CVE-2011-3737");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,7 +37,6 @@ if(description)
   script_xref(name : "URL" , value : "http://code.google.com/p/inspathx/source/browse/trunk/paths_vuln/eyeOS-2.2.0.0");
   script_xref(name : "URL" , value : "http://securityswebblog.blogspot.com/2011/09/vulnerability-summary-for-cve-2011-3737.html");
 
-  script_summary("Check eyeOS is prone to information disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

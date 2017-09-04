@@ -48,8 +48,8 @@ advisory GLSA 201009-07.";
 if(description)
 {
  script_id(69031);
- script_version("$Revision: 6594 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:18:43 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-03-09 05:54:11 +0100 (Wed, 09 Mar 2011)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -57,7 +57,6 @@ if(description)
  script_name("Gentoo Security Advisory GLSA 201009-07 (libxml2)");
 
 
- script_summary("Gentoo Security Advisory GLSA 201009-07 (libxml2)");
 
  script_category(ACT_GATHER_INFO);
 

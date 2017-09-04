@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_eventum_mult_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_oracle_mysql_eventum_mult_xss_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Oracle MySQL Eventum Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801593");
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-17 16:08:28 +0100 (Thu, 17 Feb 2011)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
   script_name("Oracle MySQL Eventum Multiple Cross Site Scripting Vulnerabilities");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/98423/ZSL-2011-4989.txt");
 
-  script_summary("Check for cross site scripting vulnerability in MySQL Eventum ");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

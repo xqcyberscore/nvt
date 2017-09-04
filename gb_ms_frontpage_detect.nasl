@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_frontpage_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
+# $Id: gb_ms_frontpage_detect.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Microsoft FrontPage Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803891");
-  script_version("$Revision: 5871 $");
+  script_version("$Revision: 7006 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2013-09-11 11:32:12 +0530 (Wed, 11 Sep 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft FrontPage Detection (Windows)");
@@ -47,7 +47,6 @@ the version from 'DisplayVersion' string in registry";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Check for the Microsoft FrontPage installation and set the version in KB for Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Product detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hesk_49008.nasl 3983 2016-09-07 05:46:06Z teissa $
+# $Id: gb_hesk_49008.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # HESK Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_id(103198);
-  script_version("$Revision: 3983 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-07 07:46:06 +0200 (Wed, 07 Sep 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-11 14:25:35 +0200 (Thu, 11 Aug 2011)");
   script_bugtraq_id(49008);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("HESK Multiple Cross Site Scripting Vulnerabilities");
-  script_summary("Determine if HESK is prone to cross-site scripting vulnerabilities");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

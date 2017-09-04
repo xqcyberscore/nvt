@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_safari_mult_vuln_july11.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_apple_safari_mult_vuln_july11.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Apple Safari Multiple Vulnerabilities - July 2011
 #
@@ -37,8 +37,8 @@ tag_summary = "The host is installed with Apple Safari web browser and is prone
 if(description)
 {
   script_id(902543);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_cve_id("CVE-2010-1383", "CVE-2010-1420", "CVE-2011-0214", "CVE-2011-0215",
                 "CVE-2011-0216", "CVE-2011-0217", "CVE-2011-0218", "CVE-2011-0219",
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2011//Jul/msg00002.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Apple Safari");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

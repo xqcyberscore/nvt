@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10795.nasl 6886 2017-08-10 04:29:21Z ckuersteiner $
+# $Id: gb_junos_jsa10795.nasl 6959 2017-08-18 07:24:59Z asteins $
 #
 # Junos MPLS DoS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140290");
-  script_version ("$Revision: 6886 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-10 06:29:21 +0200 (Thu, 10 Aug 2017) $");
+  script_version ("$Revision: 6959 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
   script_tag(name: "creation_date", value: "2017-08-10 11:17:39 +0700 (Thu, 10 Aug 2017)");
-  script_tag(name: "cvss_base", value: "6.1");
-  script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-2347");
 

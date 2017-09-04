@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_49927.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_vtiger_49927.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # vtiger CRM Multiple Cross Site Scripting Vulnerabilities
 #
@@ -41,8 +41,8 @@ CPE = "cpe:/a:vtiger:vtiger_crm";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_version("$Revision: 7044 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-10-06 13:32:57 +0200 (Thu, 06 Oct 2011)");
  script_cve_id("CVE-2011-4670");
  script_bugtraq_id(49927);
@@ -55,7 +55,6 @@ if (description)
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed vtiger is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

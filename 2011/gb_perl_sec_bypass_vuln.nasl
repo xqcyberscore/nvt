@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_sec_bypass_vuln.nasl 6483 2017-06-29 08:51:15Z cfischer $
+# $Id: gb_perl_sec_bypass_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Perl Laundering Security Bypass Vulnerability (Windows)
 #
@@ -39,8 +39,8 @@ tag_summary = "The host is installed with Perl and is prone to security bypass
 if(description)
 {
   script_id(801771);
-  script_version("$Revision: 6483 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:51:15 +0200 (Thu, 29 Jun 2017) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_cve_id("CVE-2011-1487");
   script_bugtraq_id(47124);
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://openwall.com/lists/oss-security/2011/04/04/35");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Perl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

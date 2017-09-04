@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_ovm_tools_file_corruption_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_vmware_ovm_tools_file_corruption_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # VMware Open Virtual Machine Tools File Corruption Vulnerability
 #
@@ -42,8 +42,8 @@ and is prone to file corruption vulnerability.";
 if(description)
 {
   script_id(801917);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-13 15:50:09 +0200 (Wed, 13 Apr 2011)");
   script_cve_id("CVE-2011-1681");
   script_tag(name:"cvss_base", value:"3.3");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://openwall.com/lists/oss-security/2011/03/04/10");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of VMware Open Virtual Machine Tools");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

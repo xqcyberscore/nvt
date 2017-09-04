@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_jhttpd_dir_traversal_vuln.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: secpod_jhttpd_dir_traversal_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # jHTTPd Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902404");
-  script_version("$Revision: 6696 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-01 15:39:52 +0200 (Fri, 01 Apr 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -36,7 +36,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17068/");
 
-  script_summary("Check for directory traversal vulnerability in jHTTPd");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web Servers");

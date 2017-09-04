@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpalbum_multiple_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_phpalbum_multiple_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # phpAlbum.net Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801924");
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -38,7 +38,6 @@ if(description)
   script_xref(name : "URL" , value : "http://securityreason.com/wlb_show/WLB-2011040083");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/100428/phpalbumdotnet-xssxsrfexec.txt");
 
-  script_summary("Check if phpAlbum.net is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

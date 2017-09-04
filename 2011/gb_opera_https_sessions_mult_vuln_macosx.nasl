@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_https_sessions_mult_vuln_macosx.nasl 3101 2016-04-18 14:43:32Z benallard $
+# $Id: gb_opera_https_sessions_mult_vuln_macosx.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Opera 'HTTPS-Session' Multiple Vulnerabilities (Mac OS X)
 #
@@ -47,8 +47,8 @@ vulnerabilities.";
 if(description)
 {
   script_id(802143);
-  script_version("$Revision: 3101 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:43:32 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_cve_id("CVE-2008-7297");
   script_bugtraq_id(49134);
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://scarybeastsecurity.blogspot.com/2008/11/cookie-forcing.html");
   script_xref(name : "URL" , value : "http://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies");
 
-  script_summary("Check for the version of Opera");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

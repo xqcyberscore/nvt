@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_twiki_multiple_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_twiki_multiple_xss_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # TWiki 'TemplateLogin.pm' Multiple XSS Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:twiki:twiki';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902434");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -38,7 +38,6 @@ if(description)
   script_bugtraq_id(47899);
   script_name("TWiki 'TemplateLogin.pm' Multiple XSS Vulnerabilities");
   script_copyright("Copyright (C) 2011 SecPod");
-  script_summary("Check for XSS vulnerability in TWiki");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("gb_twiki_detect.nasl");

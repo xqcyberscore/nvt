@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_backwpup_plugin_code_exec_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_wordpress_backwpup_plugin_code_exec_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # WordPress BackWPup Plugin 'wpabs' Parameter Remote PHP Code Execution Vulnerability
 #
@@ -47,8 +47,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-04-01 15:39:52 +0200 (Fri, 01 Apr 2011)");
   script_tag(name:"cvss_base", value:"9.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:C");
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.senseofsecurity.com.au/advisories/SOS-11-003");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if WordPress BackWPup Plugin is vulnerable to PHP code execution vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

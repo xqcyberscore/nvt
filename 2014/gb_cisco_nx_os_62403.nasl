@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_62403.nasl 3306 2016-05-12 16:54:38Z mime $
+# $Id: gb_cisco_nx_os_62403.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Cisco Open Network Environment Platform Denial of Service Vulnerability
 #
@@ -47,7 +47,7 @@ if (description)
  script_cve_id("CVE-2013-5496");
  script_tag(name:"cvss_base", value:"6.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:C");
- script_version ("$Revision: 3306 $");
+ script_version ("$Revision: 7000 $");
 
  script_name("Cisco Open Network Environment Platform  Denial of Service Vulnerability");
 
@@ -55,9 +55,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62403");
  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCui51551");
  
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 18:54:38 +0200 (Thu, 12 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
  script_tag(name:"creation_date", value:"2014-01-10 12:10:24 +0100 (Fri, 10 Jan 2014)");
- script_summary("Check the NX OS version.");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("CISCO");

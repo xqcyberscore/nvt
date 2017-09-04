@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_Siemens_SIMATIC_51177.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_Siemens_SIMATIC_51177.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Multiple Siemens SIMATIC Products Authentication Bypass Vulnerabilities
 #
@@ -46,7 +46,7 @@ if (description)
  script_cve_id("CVE-2011-4508","CVE-2011-4509");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 3117 $");
+ script_version("$Revision: 7015 $");
 
  script_name("Multiple Siemens SIMATIC Products Authentication Bypass Vulnerabilities");
 
@@ -56,10 +56,9 @@ if (description)
  script_xref(name : "URL" , value : "http://xs-sniper.com/blog/2011/12/20/the-siemens-simatic-remote-authentication-bypass-that-doesnt-exist/");
  script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICSA-11-356-01.pdf");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-12-23 10:42:29 +0100 (Fri, 23 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed Siemens SIMATIC Product is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

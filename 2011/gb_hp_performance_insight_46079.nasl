@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_performance_insight_46079.nasl 3479 2016-06-10 16:37:47Z jan $
+# $Id: gb_hp_performance_insight_46079.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # HP OpenView Performance Insight Server 'doPost()' Remote Arbitrary Code Execution Vulnerability
 #
@@ -40,8 +40,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-11-034/");
  script_xref(name : "URL" , value : "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02695453");
  script_id(103060);
- script_version("$Revision: 3479 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-10 18:37:47 +0200 (Fri, 10 Jun 2016) $");
+ script_version("$Revision: 7044 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-02-03 16:40:04 +0100 (Thu, 03 Feb 2011)");
  script_bugtraq_id(46079);
  script_tag(name:"cvss_base", value:"10.0");
@@ -50,7 +50,6 @@ if (description)
 
  script_name("HP OpenView Performance Insight Server 'doPost()' Remote Arbitrary Code Execution Vulnerability");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if HP OpenView Performance Insight Server is prone to a remote code-execution vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

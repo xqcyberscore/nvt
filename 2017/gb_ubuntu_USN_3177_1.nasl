@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843024");
-  script_version("$Revision: 6648 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:05:27 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7026 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 08:13:04 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-01-24 10:19:27 +0100 (Tue, 24 Jan 2017)");
   script_cve_id("CVE-2016-0762", "CVE-2016-5018", "CVE-2016-5388", "CVE-2016-6794", 
 		"CVE-2016-6796", "CVE-2016-6797", "CVE-2016-6816", "CVE-2016-8735", 
 		"CVE-2016-8745", "CVE-2016-9774", "CVE-2016-9775");
-  script_tag(name:"cvss_base", value:"5.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for tomcat8 USN-3177-1");
   script_tag(name: "summary", value: "Check the version of tomcat8");

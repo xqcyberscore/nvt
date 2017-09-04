@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_chamilo_46173.nasl 3116 2016-04-19 10:11:19Z benallard $
+# $Id: gb_chamilo_46173.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Chamilo Multiple Remote File Disclosure Vulnerabilities
 #
@@ -41,8 +41,8 @@ please mail us at: vuldb@securityfocus.com.";
 if (description)
 {
  script_id(103071);
- script_version("$Revision: 3116 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:11:19 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-02-08 13:20:01 +0100 (Tue, 08 Feb 2011)");
  script_bugtraq_id(46173);
  script_tag(name:"cvss_base", value:"5.0");
@@ -55,7 +55,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.dokeos.com/");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed Chamilo version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

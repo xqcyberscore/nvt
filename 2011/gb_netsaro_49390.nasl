@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netsaro_49390.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_netsaro_49390.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # NetSaro Enterprise Messenger Cross Site Scripting and HTML Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103236");
- script_version("$Revision: 3507 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+ script_version("$Revision: 7024 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-09-01 14:04:12 +0200 (Thu, 01 Sep 2011)");
  script_bugtraq_id(49390);
  script_tag(name:"cvss_base", value:"2.6");
@@ -38,7 +38,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/49390");
  script_xref(name : "URL" , value : "http://www.netsaro.com/");
 
- script_summary("Determine if installed NetSaro Enterprise Messenger is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

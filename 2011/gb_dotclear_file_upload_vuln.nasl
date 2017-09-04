@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotclear_file_upload_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_dotclear_file_upload_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Dotclear Arbitrary File Upload Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802207");
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-17 11:16:31 +0200 (Fri, 17 Jun 2011)");
   script_cve_id("CVE-2011-1584");
   script_tag(name:"cvss_base", value:"6.5");
@@ -38,7 +38,6 @@ if(description)
   script_xref(name : "URL" , value : "http://dev.dotclear.org/2.0/changeset/2:3427");
   script_xref(name : "URL" , value : "http://dotclear.org/blog/post/2011/04/01/Dotclear-2.2.3");
 
-  script_summary("Check for the version of Dotclear");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

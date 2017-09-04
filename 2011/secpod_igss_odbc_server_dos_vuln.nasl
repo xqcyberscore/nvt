@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_igss_odbc_server_dos_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_igss_odbc_server_dos_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # IGSS ODBC Server Multiple Uninitialized Pointer Denial of Service Vulnerability
 #
@@ -43,8 +43,8 @@ tag_summary = "The host is running IGSS ODBC Server and is prone to denial of se
 if(description)
 {
   script_id(900276);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-01 15:39:52 +0200 (Fri, 01 Apr 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -52,7 +52,6 @@ if(description)
 
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if IGSS ODBC Server is prone to denial of service vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Denial of Service");

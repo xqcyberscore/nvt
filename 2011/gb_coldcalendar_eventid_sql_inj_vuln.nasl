@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coldcalendar_eventid_sql_inj_vuln.nasl 3116 2016-04-19 10:11:19Z benallard $
+# $Id: gb_coldcalendar_eventid_sql_inj_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # ColdGen ColdCalendar 'EventID' SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802253");
-  script_version("$Revision: 3116 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:11:19 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_bugtraq_id(43035);
   script_cve_id("CVE-2010-4910");
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/14932/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/93557/coldcalendar-sql.txt");
 
-  script_summary("Check if ColdCalendar is vulnerable to SQL Injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

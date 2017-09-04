@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_lyftenbloggie_mult_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_joomla_lyftenbloggie_mult_xss_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Joomla 'Lyftenbloggie' Component Cross-Site Scripting Vulnerabilities
 #
@@ -47,8 +47,8 @@ Scripting vulnerabilities.";
 if(description)
 {
   script_id(801741);
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-02-15 08:14:35 +0100 (Tue, 15 Feb 2011)");
   script_cve_id("CVE-2010-4718");
   script_bugtraq_id(45468);
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/96761/joomlalyftenbloggie-xss.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Joomla Lyftenbloggie component is vulnerable for XSS attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-033_macosx.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_ms15-033_macosx.nasl 6964 2017-08-18 12:07:12Z asteins $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities-3048019 (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805064");
-  script_version("$Revision: 5351 $");
-  script_cve_id("CVE-2015-1641");
+  script_version("$Revision: 6964 $");
+  script_cve_id("CVE-2015-1641", "CVE-2015-1639");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-18 14:07:12 +0200 (Fri, 18 Aug 2017) $");
   script_tag(name:"creation_date", value:"2015-04-15 11:36:46 +0530 (Wed, 15 Apr 2015)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities-3048019 (Mac OS X)");
 
@@ -61,6 +61,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/2965210");
+  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3051737");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms15-033");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

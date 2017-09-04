@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_foto_sql_inj_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_joomla_com_foto_sql_inj_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Joomla com_foto SQL Injection Vulnerability
 #
@@ -46,8 +46,8 @@ injection vulnerability.";
 if(description)
 {
   script_id(802125);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_bugtraq_id(48685);
   script_tag(name:"cvss_base", value:"7.5");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103077/joomlafoto-sql.txt");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_summary("Check if Joomla foto component is vulnerable to SQL Injection attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

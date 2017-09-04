@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871272");
-  script_version("$Revision: 6688 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:49:31 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 6995 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-10-17 05:58:21 +0200 (Fri, 17 Oct 2014)");
   script_cve_id("CVE-2014-3660");
   script_tag(name:"cvss_base", value:"5.0");
@@ -58,7 +58,6 @@ restarted (log out, then log back in) for this update to take effect.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "RHSA", value: "2014:1655-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-October/msg00033.html");
-  script_summary("Check for the Version of libxml2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

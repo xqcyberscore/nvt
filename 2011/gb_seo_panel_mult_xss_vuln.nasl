@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seo_panel_mult_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_seo_panel_mult_xss_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Seo Panel Multiple Cross-site Scripting (XSS) Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801775");
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-26 15:24:49 +0200 (Tue, 26 Apr 2011)");
   script_cve_id("CVE-2010-4331");
   script_bugtraq_id(45828);
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/16000/");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/515768/100/0/threaded");
 
-  script_summary("Check if Seo Panel is vulnerable to XSS");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ca_internet_security_suite_bof_vuln.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: secpod_ca_internet_security_suite_bof_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # CA Internet Security Suite Plus 'KmxSbx.sys' Buffer Overflow Vulnerability
 #
@@ -46,8 +46,8 @@ is prone to buffer overflow vulnerability.";
 if(description)
 {
   script_id(901177);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-05 04:12:38 +0100 (Sat, 05 Feb 2011)");
   script_cve_id("CVE-2010-4502");
   script_tag(name:"cvss_base", value:"7.2");
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/3070");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of KmxSbx.sys");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");

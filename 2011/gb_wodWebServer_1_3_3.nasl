@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wodWebServer_1_3_3.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: gb_wodWebServer_1_3_3.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # wodWebServer.NET 1.3.3 Directory Traversal
 #
@@ -33,8 +33,8 @@ wodWebServer.NET 1.3.3 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103131);
- script_version("$Revision: 6696 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 7006 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-03-28 13:42:17 +0200 (Mon, 28 Mar 2011)");
  script_bugtraq_id(47050);
  script_tag(name:"cvss_base", value:"5.0");
@@ -44,7 +44,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17053/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed wodWebServer.NET is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

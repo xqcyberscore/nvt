@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_upnp_info.nasl 3498 2016-06-13 12:33:25Z antu123 $
+# $Id: gb_nmap_upnp_info.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Wrapper for Nmap UPnP Info NSE script.
 #
@@ -35,13 +35,12 @@ tag_summary = "This script attempts to extract system information from the UPnP
 if(description)
 {
   script_id(801699);
-  script_version("$Revision: 3498 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:33:25 +0200 (Mon, 13 Jun 2016) $");
+  script_version("$Revision: 7000 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-10 13:49:23 +0100 (Mon, 10 Jan 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("Nmap NSE: UPnP Info");
-  script_summary("Extract system information from the UPnP service");
   script_category(ACT_GATHER_INFO);
     script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");

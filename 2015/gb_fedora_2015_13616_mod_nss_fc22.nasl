@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806547");
-  script_version("$Revision: 6630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7002 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 09:07:09 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2015-11-02 07:58:13 +0100 (Mon, 02 Nov 2015)");
   script_cve_id("CVE-2015-3277");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mod_nss FEDORA-2015-13616");
   script_tag(name: "summary", value: "Check the version of mod_nss");

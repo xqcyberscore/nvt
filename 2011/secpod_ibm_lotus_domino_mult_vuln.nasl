@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_domino_mult_vuln.nasl 5701 2017-03-23 16:10:36Z mime $
+# $Id: secpod_ibm_lotus_domino_mult_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # IBM Lotus Domino Multiple Vulnerabilities
 #
@@ -29,15 +29,14 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902419");
-  script_version("$Revision: 5701 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_cve_id("CVE-2011-0916","CVE-2011-0918", "CVE-2011-0919", "CVE-2011-0920");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("IBM Lotus Domino Multiple Remote Buffer Overflow Vulnerabilities");
 
-  script_summary("Check for the version of IBM Lotus Domino");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_rails_safe_buffer_xss_vuln.nasl 3931 2016-09-01 10:14:19Z cfi $
+# $Id: gb_ruby_rails_safe_buffer_xss_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Ruby on Rails 'Safe Buffer' Cross-Site Scripting Vulnerability
 #
@@ -29,14 +29,13 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802115");
-  script_version("$Revision: 3931 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-01 12:14:19 +0200 (Thu, 01 Sep 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-13 17:31:13 +0200 (Wed, 13 Jul 2011)");
   script_cve_id("CVE-2011-2197");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Ruby on Rails 'Safe Buffer' Cross-Site Scripting Vulnerability");
-  script_summary("Check for the version of Ruby on Rails");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

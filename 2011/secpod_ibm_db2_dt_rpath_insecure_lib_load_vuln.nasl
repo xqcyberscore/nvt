@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_db2_dt_rpath_insecure_lib_load_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_ibm_db2_dt_rpath_insecure_lib_load_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # IBM DB2 'DT_RPATH' Insecure Library Loading Code Execution Vulnerabilities
 #
@@ -44,12 +44,12 @@ loading vulnerabilities.";
 if(description)
 {
   script_id(902489);
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 7024 $");
   script_bugtraq_id(48514);
   script_cve_id("CVE-2011-4061");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-08 15:07:48 +0530 (Tue, 08 Nov 2011)");
   script_name("IBM DB2 'DT_RPATH' Insecure Library Loading Code Execution Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/518659");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.nth-dimension.org.uk/downloads.php?id=83");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of IBM DB2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Databases");

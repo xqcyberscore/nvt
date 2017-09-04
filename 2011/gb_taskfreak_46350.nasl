@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_taskfreak_46350.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_taskfreak_46350.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # TaskFreak! Multiple Cross Site Scripting Vulnerabilities
 #
@@ -42,8 +42,8 @@ please mail us at: vuldb@securityfocus.com.";
 if (description)
 {
  script_id(103078);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7029 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-02-15 13:44:44 +0100 (Tue, 15 Feb 2011)");
  script_bugtraq_id(46350);
 
@@ -56,7 +56,6 @@ if (description)
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed TaskFreak! version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

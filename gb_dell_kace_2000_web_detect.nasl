@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_kace_2000_web_detect.nasl 6878 2017-08-09 05:39:14Z ckuersteiner $
+# $Id: gb_dell_kace_2000_web_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Dell KACE K2000 Detection
 #
@@ -30,14 +30,13 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103317");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6878 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-09 07:39:14 +0200 (Wed, 09 Aug 2017) $");
+ script_version("$Revision: 7000 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-11-11 10:17:05 +0100 (Fri, 11 Nov 2011)");
  script_tag(name:"cvss_base", value:"0.0");
 
  script_name("Dell KACE K2000 Detection");
  
- script_summary("Checks for the presence of Dell KACE K2000");
  script_category(ACT_GATHER_INFO);
  script_tag(name: "qod_type", value: "remote_banner");
  script_family("Product detection");

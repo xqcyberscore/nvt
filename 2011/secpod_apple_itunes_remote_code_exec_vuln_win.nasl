@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_itunes_remote_code_exec_vuln_win.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_apple_itunes_remote_code_exec_vuln_win.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Apple iTunes Remote Code Execution Vulnerability (Windows)
 #
@@ -39,19 +39,18 @@ tag_summary = "This host is installed with Apple iTunes and is prone to remote
 if(description)
 {
   script_id(902638);
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 7044 $");
   script_cve_id("CVE-2008-3434");
   script_bugtraq_id(50672);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-11-28 15:07:07 +0530 (Mon, 28 Nov 2011)");
   script_name("Apple iTunes Remote Code Execution Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5030");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT4981");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2011/Nov/msg00003.html");
 
-  script_summary("Check for the version of Apple iTunes on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("General");

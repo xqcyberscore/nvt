@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nokia_multimedia_player_bof_vuln.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: secpod_nokia_multimedia_player_bof_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Nokia Multimedia Player Playlist Processing Buffer Overflow Vulnerability
 #
@@ -46,8 +46,8 @@ to buffer overflow vulnerability.";
 if(description)
 {
   script_id(902331);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-01 16:46:08 +0100 (Tue, 01 Feb 2011)");
   script_cve_id("CVE-2011-0498");
   script_tag(name:"cvss_base", value:"9.3");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0083");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of Nokia Multimedia Player");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Buffer overflow");

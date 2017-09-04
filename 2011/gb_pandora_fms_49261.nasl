@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pandora_fms_49261.nasl 3102 2016-04-18 14:46:07Z benallard $
+# $Id: gb_pandora_fms_49261.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Pandora FMS 'index.php' Cross Site Scripting Vulnerability
 #
@@ -40,8 +40,8 @@ information.";
 if (description)
 {
  script_id(103238);
- script_version("$Revision: 3102 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:46:07 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-09-02 13:13:57 +0200 (Fri, 02 Sep 2011)");
  script_bugtraq_id(49261);
  script_tag(name:"cvss_base", value:"4.3");
@@ -53,7 +53,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.pandorafms.org/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Pandora FMS is prone to a cross-site scripting vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

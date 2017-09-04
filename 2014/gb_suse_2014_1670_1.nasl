@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850627");
-  script_version("$Revision: 6674 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:45:49 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 6995 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-12-20 05:56:42 +0100 (Sat, 20 Dec 2014)");
   script_cve_id("CVE-2014-9295", "CVE-2014-9296");
   script_tag(name:"cvss_base", value:"7.5");
@@ -52,7 +52,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-12/msg00020.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of ntp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

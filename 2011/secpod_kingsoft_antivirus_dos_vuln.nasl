@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_kingsoft_antivirus_dos_vuln.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: secpod_kingsoft_antivirus_dos_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Kingsoft Antivirus 'KisKrnl.sys' Driver Denial of Service Vulnerability
 #
@@ -46,8 +46,8 @@ denial of service vulnerability.";
 if(description)
 {
   script_id(901176);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-01 16:46:08 +0100 (Tue, 01 Feb 2011)");
   script_cve_id("CVE-2011-0515");
   script_bugtraq_id(45821);
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/15998/");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of Kingsoft Antivirus");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Denial of Service");

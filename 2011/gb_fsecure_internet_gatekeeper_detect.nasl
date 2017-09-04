@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fsecure_internet_gatekeeper_detect.nasl 3479 2016-06-10 16:37:47Z jan $
+# $Id: gb_fsecure_internet_gatekeeper_detect.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # F-Secure Internet Gatekeeper Detection
 #
@@ -31,13 +31,12 @@ if (description)
  
  script_oid("1.3.6.1.4.1.25623.1.0.103081");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 3479 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-10 18:37:47 +0200 (Fri, 10 Jun 2016) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-02-21 13:57:38 +0100 (Mon, 21 Feb 2011)");
  script_tag(name:"cvss_base", value:"0.0");
 
  script_name("F-Secure Internet Gatekeeper Detection");
- script_summary("Checks for the presence of F-Secure Internet Gatekeeper");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");

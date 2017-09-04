@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-650.nasl 6574 2017-07-06 13:41:26Z cfischer $
+# $Id: alas-2016-650.nasl 6971 2017-08-21 07:15:23Z asteins $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,17 +24,17 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120640");
-script_version("$Revision: 6574 $");
+script_version("$Revision: 6971 $");
 script_tag(name:"creation_date", value:"2016-02-11 07:16:48 +0200 (Thu, 11 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:41:26 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-08-21 09:15:23 +0200 (Mon, 21 Aug 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-650");
 script_tag(name: "insight", value: "It was found that the parsing of the NSSCipherSuite option of mod24_nss, which accepts OpenSSL-style cipherstrings, is flawed. If the option is used to disable insecure ciphersuites using the common ! syntax, it will actually enable those insecure ciphersuites. (CVE-2015-5244 )"); 
 script_tag(name : "solution", value : "Run yum update mod24_nss to update your system.");
 script_tag(name : "solution_type", value : "VendorFix");
 script_xref(name : "URL" , value : "https://alas.aws.amazon.com/ALAS-2016-650.html");
 script_cve_id("CVE-2015-5244");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"7.5");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");

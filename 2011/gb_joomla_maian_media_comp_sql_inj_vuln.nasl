@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_maian_media_comp_sql_inj_vuln.nasl 3569 2016-06-21 07:43:44Z benallard $
+# $Id: gb_joomla_maian_media_comp_sql_inj_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Joomla! com_maianmedia Component 'cat' Parameter SQL Injection Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with Joomla! with Maian Media Silver
 if(description)
 {
   script_id(800199);
-  script_version("$Revision: 3569 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:43:44 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-17 16:08:28 +0100 (Thu, 17 Feb 2011)");
   script_cve_id("CVE-2010-4739");
   script_bugtraq_id(44877);
@@ -50,7 +50,6 @@ if(description)
 
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if Joomla! is prone to SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_netsaro_messenger_server_info_disc_vuln_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_netsaro_messenger_server_info_disc_vuln_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # NetSaro Enterprise Messenger Server Source Code Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902472");
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_cve_id("CVE-2011-3694");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,7 +37,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/104454/SERT-VDN-1012.txt");
   script_xref(name : "URL" , value : "http://www.solutionary.com/index/SERT/Vuln-Disclosures/NetSaro-Enterprise-Messenger-Source-Code.html");
 
-  script_summary("Check for source code disclosure vulnerability in NetSaro Enterprise Messenger Server");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_dependencies("find_service.nasl");

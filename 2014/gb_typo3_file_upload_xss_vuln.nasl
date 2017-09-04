@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_file_upload_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_typo3_file_upload_xss_vuln.nasl 6995 2017-08-23 11:52:03Z teissa $
 #
 # TYPO3 File Upload Cross Site Scripting Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803985");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6995 $");
   script_cve_id("CVE-2008-2717", "CVE-2008-2718");
   script_bugtraq_id(29657);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2013-12-24 16:42:36 +0530 (Tue, 24 Dec 2013)");
   script_name("TYPO3 File Upload Cross Site Scripting Vulnerabilities");
 
@@ -61,7 +61,6 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/30619");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/42988");
   script_xref(name:"URL", value:"http://typo3.org/teams/security/security-bulletins/typo3-core/TYPO3-20080611-1");
-  script_summary("Check for the vulnerable version of TYPO3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

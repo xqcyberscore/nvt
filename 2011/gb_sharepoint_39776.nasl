@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_39776.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_sharepoint_39776.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Microsoft SharePoint Server 2007 '_layouts/help.aspx' Cross Site Scripting Vulnerability
 #
@@ -39,8 +39,8 @@ references for details.";
 if (description)
 {
  script_id(103254);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 7044 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-09-14 13:31:57 +0200 (Wed, 14 Sep 2011)");
  script_bugtraq_id(39776);
  script_cve_id("CVE-2010-0817");
@@ -59,7 +59,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/Bulletin/MS10-039.mspx");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Microsoft SharePoint is prone to a cross-site scripting vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

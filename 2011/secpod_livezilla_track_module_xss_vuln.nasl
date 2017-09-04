@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_livezilla_track_module_xss_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_livezilla_track_module_xss_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # LiveZilla 'Track' Module 'server.php' Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:livezilla:livezilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901172");
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-03 16:00:43 +0100 (Mon, 03 Jan 2011)");
   script_cve_id("CVE-2010-4276");
   script_bugtraq_id(45586);
@@ -42,7 +42,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2010/Dec/650");
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/3331");
 
-  script_summary("Check if LiveZilla is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Web application abuses");

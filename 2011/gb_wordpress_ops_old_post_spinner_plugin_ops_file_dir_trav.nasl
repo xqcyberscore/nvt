@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ops_old_post_spinner_plugin_ops_file_dir_trav.nasl 5648 2017-03-21 09:52:17Z cfi $
+# $Id: gb_wordpress_ops_old_post_spinner_plugin_ops_file_dir_trav.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # WordPress OPS Old Post Spinner Plugin 'ops_file' Parameter Directory Traversal Vulnerability
 #
@@ -50,8 +50,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5648 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/99264/sa43502.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check for directory traversal vulnerability in WordPress OPS Old Post Spinner Plugin");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

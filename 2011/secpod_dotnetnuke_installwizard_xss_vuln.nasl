@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dotnetnuke_installwizard_xss_vuln.nasl 2778 2016-03-04 11:04:35Z cfi $
+# $Id: secpod_dotnetnuke_installwizard_xss_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # DotNetNuke 'InstallWizard.aspx' Cross Site Scripting Vulnerability
 #
@@ -29,15 +29,14 @@ CPE = "cpe:/a:dotnetnuke:dotnetnuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902515");
-  script_version("$Revision: 2778 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 12:04:35 +0100 (Fri, 04 Mar 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-11 15:50:14 +0200 (Wed, 11 May 2011)");
   script_cve_id("CVE-2010-4514");
   script_bugtraq_id(45180);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("DotNetNuke 'InstallWizard.aspx' Cross Site Scripting Vulnerability");
-  script_summary("Check if DotNetNuke is vulnerable to Cross-Site Scripting");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

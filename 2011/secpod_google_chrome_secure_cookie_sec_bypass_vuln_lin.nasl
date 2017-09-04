@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_secure_cookie_sec_bypass_vuln_lin.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_google_chrome_secure_cookie_sec_bypass_vuln_lin.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Google Chrome Secure Cookie Security Bypass Vulnerability (Linux)
 #
@@ -42,8 +42,8 @@ tag_summary = "The host is running Google Chrome and is prone to security bypass
 if(description)
 {
   script_id(902615);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-19 15:17:22 +0200 (Fri, 19 Aug 2011)");
   script_cve_id("CVE-2008-7294");
   script_bugtraq_id(49133);
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://michael-coates.blogspot.com/2010/01/cookie-forcing-trust-your-cookies-no.html");
 
   script_copyright("Copyright (c) 2011 SecPod");
-  script_summary("Check the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");

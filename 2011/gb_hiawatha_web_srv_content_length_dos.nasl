@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hiawatha_web_srv_content_length_dos.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: gb_hiawatha_web_srv_content_length_dos.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Hiawatha WebServer 'Content-Length' Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802007");
-  script_version("$Revision: 6696 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-03-16 15:16:52 +0100 (Wed, 16 Mar 2011)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
@@ -37,7 +37,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/16939/");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/99021/DCA-2011-0006.txt");
 
-  script_summary("Check Hiawatha Web Server is vulnerable to DoS");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

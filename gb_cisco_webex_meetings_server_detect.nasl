@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_webex_meetings_server_detect.nasl 4193 2016-09-30 13:08:26Z antu123 $
+# $Id: gb_cisco_webex_meetings_server_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Cisco WebEx Meetings Server Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106191");
- script_version ("$Revision: 4193 $");
- script_tag(name: "last_modification", value: "$Date: 2016-09-30 15:08:26 +0200 (Fri, 30 Sep 2016) $");
+ script_version ("$Revision: 7000 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
  script_tag(name: "creation_date", value: "2016-08-19 11:08:48 +0700 (Fri, 19 Aug 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,7 +53,6 @@ Server and to extract its version");
 
  script_xref(name: "URL", value: "https://www.cisco.com/c/en/us/products/conferencing/webex-meetings-server/index.html");
 
- script_summary("Checks for the presence of Cisco WebEx Meetings Server.");
 
  exit(0);
 }

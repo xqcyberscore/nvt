@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flash_player_mem_crptn_vuln_lin.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_adobe_flash_player_mem_crptn_vuln_lin.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Adobe Flash Player Remote Memory Corruption Vulnerability (Linux)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 if(description)
 {
   script_id(902401);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-25 15:52:06 +0100 (Fri, 25 Mar 2011)");
   script_cve_id("CVE-2011-0609");
   script_bugtraq_id(46860);
@@ -50,7 +50,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb11-06.html");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/advisories/apsa11-01.html");
 
-  script_summary("Check for the version of Adobe Flash Player");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_file_reporter_bof_vuln_win.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_novell_file_reporter_bof_vuln_win.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Novell File Reporter 'NFRAgent.exe' XML Parsing Buffer Overflow Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with Novell File Reporter and is prone to
 if(description)
 {
   script_id(801918);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-13 15:50:09 +0200 (Wed, 13 Apr 2011)");
   script_cve_id("CVE-2011-0994");
   script_bugtraq_id(47144);
@@ -49,7 +49,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-11-116/");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/517321/100/0/threaded");
 
-  script_summary("Check for the version of Novell File Reporter");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

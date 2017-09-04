@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_chasen_bof_vuln_lin.nasl 3116 2016-04-19 10:11:19Z benallard $
+# $Id: gb_chasen_bof_vuln_lin.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # ChaSen Buffer Overflow Vulnerability (Linux)
 #
@@ -38,17 +38,16 @@ tag_summary = "The host is running ChaSen Software and is prone to buffer
 if(description)
 {
   script_id(802344);
-  script_version("$Revision: 3116 $");
+  script_version("$Revision: 7029 $");
   script_cve_id("CVE-2011-4000");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:11:19 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-11 14:20:07 +0530 (Fri, 11 Nov 2011)");
   script_name("ChaSen Buffer Overflow Vulnerability (Linux)");
   script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN16901583/index.html");
   script_xref(name : "URL" , value : "http://jvndb.jvn.jp/en/contents/2011/JVNDB-2011-000099.html");
 
-  script_summary("Check for the vulnerable ChaSen version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

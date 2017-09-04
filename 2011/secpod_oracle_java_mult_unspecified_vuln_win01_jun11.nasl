@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_java_mult_unspecified_vuln_win01_jun11.nasl 6465 2017-06-28 13:17:01Z cfischer $
+# $Id: secpod_oracle_java_mult_unspecified_vuln_win01_jun11.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Oracle Java SE Multiple Unspecified Vulnerabilities 01 - June11 (Windows)
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is installed with Oracle Java SE and is prone to multip
 if(description)
 {
   script_id(902525);
-  script_version("$Revision: 6465 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:17:01 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_cve_id("CVE-2011-0868", "CVE-2011-0869", "CVE-2011-0872", "CVE-2011-0786",
                 "CVE-2011-0788", "CVE-2011-0817", "CVE-2011-0863");
@@ -54,7 +54,6 @@ if(description)
 
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Sun Java SE JRE/JDK");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

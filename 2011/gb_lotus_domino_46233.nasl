@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lotus_domino_46233.nasl 5701 2017-03-23 16:10:36Z mime $
+# $Id: gb_lotus_domino_46233.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # IBM Lotus Domino Server 'diiop' Multiple Remote Code Execution Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103066");
- script_version("$Revision: 5701 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-02-08 13:20:01 +0100 (Tue, 08 Feb 2011)");
  script_bugtraq_id(46233);
  script_tag(name:"cvss_base", value:"10.0");
@@ -43,7 +43,6 @@ if(description)
  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-11-052/");
  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-11-053/");
 
- script_summary("Determine if IBM Lotus Domino version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

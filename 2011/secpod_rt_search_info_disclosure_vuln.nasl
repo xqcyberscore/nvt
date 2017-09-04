@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rt_search_info_disclosure_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_rt_search_info_disclosure_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # RT (Request Tracker) Search Interface Information Disclosure Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with Request Tracker and is prone to
 if(description)
 {
   script_id(902510);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_cve_id("CVE-2011-1687");
   script_bugtraq_id(47383);
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=696795");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Request Tracker");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ca_siteminder_target_param_xss_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_ca_siteminder_target_param_xss_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # CA SiteMinder 'target' Parameter Cross-Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902800");
-  script_version("$Revision: 3570 $");
+  script_version("$Revision: 7006 $");
   script_cve_id("CVE-2011-4054");
   script_bugtraq_id(50962);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-19 16:16:16 +0530 (Mon, 19 Dec 2011)");
   script_name("CA SiteMinder 'target' Parameter Cross-Site Scripting Vulnerability");
 
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/713012");
   script_xref(name : "URL" , value : "https://support.ca.com/irj/portal/anonymous/phpsupcontent?contentID={A7DA8AC2-E9B4-4DDE-B828-098E0955A344}");
 
-  script_summary("Check if CA SiteMinder is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_sep14.nasl 6601 2017-07-07 10:00:10Z cfischer $
+# $Id: gb_apple_macosx_mult_vuln01_sep14.nasl 6995 2017-08-23 11:52:03Z teissa $
 #
 # Apple Mac OS X Multiple Vulnerabilities -01 Sep14
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804846");
-  script_version("$Revision: 6601 $");
+  script_version("$Revision: 6995 $");
   script_cve_id("CVE-2014-0015", "CVE-2014-1317", "CVE-2014-1375", "CVE-2014-1378",
                 "CVE-2014-1355", "CVE-2014-1359", "CVE-2014-1356", "CVE-2014-1357",
                 "CVE-2014-1358", "CVE-2014-1380", "CVE-2014-1381");
@@ -35,7 +35,7 @@ if(description)
                     68274, 68272, 68272);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:00:10 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-09-19 10:06:15 +0530 (Fri, 19 Sep 2014)");
 
   script_name("Apple Mac OS X Multiple Vulnerabilities -01 Sep14");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT6296");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1030505");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2014-06/0172.html");
-  script_summary("Check for the vulnerable version of Apple Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

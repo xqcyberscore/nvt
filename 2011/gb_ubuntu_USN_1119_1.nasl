@@ -88,8 +88,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2011-April/001313.html");
   script_id(840651);
-  script_version("$Revision: 6642 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:59:35 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-10 14:04:15 +0200 (Tue, 10 May 2011)");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
@@ -97,7 +97,6 @@ if(description)
   script_cve_id("CVE-2010-3904", "CVE-2010-3848", "CVE-2010-3849", "CVE-2010-3850", "CVE-2010-3081", "CVE-2010-2954", "CVE-2010-2955", "CVE-2010-2960", "CVE-2010-2962", "CVE-2010-2963", "CVE-2010-3079", "CVE-2010-3080", "CVE-2010-3437", "CVE-2010-3705", "CVE-2010-3861", "CVE-2010-3865", "CVE-2010-3873", "CVE-2010-3875", "CVE-2010-3876", "CVE-2010-3877", "CVE-2010-4072", "CVE-2010-4079", "CVE-2010-4158", "CVE-2010-4164", "CVE-2010-4165", "CVE-2010-4249", "CVE-2010-4342", "CVE-2010-4346", "CVE-2010-4527", "CVE-2010-4529");
   script_name("Ubuntu Update for linux-ti-omap4 USN-1119-1");
 
-  script_summary("Check for the Version of linux-ti-omap4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

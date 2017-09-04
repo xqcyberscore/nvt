@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nhttpd_46880.nasl 5647 2017-03-21 09:46:08Z cfi $
+# $Id: gb_nhttpd_46880.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # nostromo nhttpd Directory Traversal Remote Command Execution Vulnerability
 #
@@ -37,8 +37,8 @@ tag_solution = "Updates are available. Please see the references for details.";
 if (description)
 {
  script_id(103119);
- script_version("$Revision: 5647 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7044 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-03-21 13:19:58 +0100 (Mon, 21 Mar 2011)");
  script_bugtraq_id(46880);
  script_tag(name:"cvss_base", value:"7.5");
@@ -52,7 +52,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/517026");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if nostromo nhttpd is prone to a remote command-execution vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mantis_mult_lfi_n_xss_vuln.nasl 3113 2016-04-19 09:57:04Z benallard $
+# $Id: secpod_mantis_mult_lfi_n_xss_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # MantisBT Multiple Local File Include and Cross Site Scripting Vulnerabilities
 #
@@ -46,8 +46,8 @@ tag_summary = "This host is running MantisBT and is prone to multiple local file
 if(description)
 {
   script_id(902573);
-  script_version("$Revision: 3113 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 11:57:04 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-09-30 15:58:03 +0200 (Fri, 30 Sep 2011)");
   script_bugtraq_id(49448);
   script_cve_id("CVE-2011-3356", "CVE-2011-3357", "CVE-2011-3358", "CVE-2011-3578");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.htbridge.ch/advisory/multiple_vulnerabilities_in_mantisbt.html");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of MantisBT");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_dependencies("mantis_detect.nasl");

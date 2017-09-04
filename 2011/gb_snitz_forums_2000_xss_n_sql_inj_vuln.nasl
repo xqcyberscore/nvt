@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snitz_forums_2000_xss_n_sql_inj_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_snitz_forums_2000_xss_n_sql_inj_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Snitz Forums 2000 'members.asp' SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -49,8 +49,8 @@ tag_summary = "The host is running Snitz and is prone to SQL injection and cross
 if(description)
 {
   script_id(802243);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-14 16:05:49 +0200 (Wed, 14 Sep 2011)");
   script_bugtraq_id(45381);
   script_cve_id("CVE-2010-4826", "CVE-2010-4827");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://forum.snitz.com/forum/topic.asp?TOPIC_ID=69770");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Snitz Forums");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

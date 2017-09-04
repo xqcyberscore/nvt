@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-ApacheOfbiz.nasl 3729 2016-07-19 10:55:00Z cfi $
+# $Id: remote-detect-ApacheOfbiz.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # This script ensure that the Apache Open For Business (Apache OFBiz) is installed and running
 #
@@ -25,12 +25,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101019");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 3729 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-19 12:55:00 +0200 (Tue, 19 Jul 2016) $");
+  script_version("$Revision: 7000 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-04-18 23:46:40 +0200 (Sat, 18 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache Open For Business service detection");
-  script_summary("Detect a running Apache Open For Business automation suite");
   script_category(ACT_GATHER_INFO);
   script_copyright("Christian Eric Edjenguele <christian.edjenguele@owasp.org>");
   script_family("Product detection");

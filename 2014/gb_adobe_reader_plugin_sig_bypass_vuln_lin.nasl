@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_plugin_sig_bypass_vuln_lin.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_adobe_reader_plugin_sig_bypass_vuln_lin.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Adobe Reader Plugin Signature Bypass Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804626");
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 7000 $");
   script_cve_id("CVE-2002-0030");
   script_bugtraq_id(7174);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-06-04 17:27:52 +0530 (Wed, 04 Jun 2014)");
   script_name("Adobe Reader Plugin Signature Bypass Vulnerability (Linux)");
 
@@ -76,7 +76,6 @@ For updates refer to http://www.adobe.com";
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/11610");
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/JSHA-5EZQGZ");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/vulnwatch/2003-q1/0148.html");
-  script_summary("Check for the version of Adobe Reader on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

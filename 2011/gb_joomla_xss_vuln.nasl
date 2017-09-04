@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_xss_vuln.nasl 3569 2016-06-21 07:43:44Z benallard $
+# $Id: gb_joomla_xss_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Joomla! Cross Site Scripting Vulnerability
 #
@@ -40,8 +40,8 @@ tag_summary = "The host is running Joomla! and is prone to Cross site scripting
 if(description)
 {
   script_id(801827);
-  script_version("$Revision: 3569 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:43:44 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-27 07:47:27 +0100 (Thu, 27 Jan 2011)");
   script_cve_id("CVE-2011-0005");
   script_tag(name:"cvss_base", value:"4.3");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://yehg.net/lab/pr0js/advisories/joomla/core/[joomla_1.0.x~15]_cross_site_scripting");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if Joomla! is prone to XSS Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ileys_web_control_sql_injection_vuln.nasl 3115 2016-04-19 10:09:30Z benallard $
+# $Id: gb_ileys_web_control_sql_injection_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Ileys Web Control SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802315");
-  script_version("$Revision: 3115 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:09:30 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-05 09:04:20 +0200 (Fri, 05 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -36,7 +36,6 @@ if(description)
   script_xref(name : "URL" , value : "http://cryptr.org/printthread.php?tid=2278");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103372/ileys-sql.txt");
 
-  script_summary("Check if Ileys Web Control is prone to SQL injection vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

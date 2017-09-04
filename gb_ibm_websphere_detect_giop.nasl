@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_detect_giop.nasl 4024 2016-09-09 12:13:21Z cfi $
+# $Id: gb_ibm_websphere_detect_giop.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # IBM WebSphere Application Server Detection Detection (GIOP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105834");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 4024 $");
- script_tag(name:"last_modification", value:"$Date: 2016-09-09 14:13:21 +0200 (Fri, 09 Sep 2016) $");
+ script_version ("$Revision: 7000 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
  script_tag(name:"creation_date", value:"2016-07-29 15:04:09 +0200 (Fri, 29 Jul 2016)");
  script_name("IBM WebSphere Application Server Detection (GIOP)");
 
@@ -39,7 +39,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of IBM WebSphere Application Server (GIOP)");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

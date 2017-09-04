@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_easy_chat_server_username_bof.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: secpod_easy_chat_server_username_bof.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Easy Chat Server 'username' Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901201");
-  script_version("$Revision: 6696 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-08-25 09:25:35 +0200 (Thu, 25 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,7 +38,6 @@ if(description)
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2011/Aug/109");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/104016");
 
-  script_summary("Check for the vulnerable version of Easy Chat Server");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");

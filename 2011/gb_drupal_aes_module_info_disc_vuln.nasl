@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_aes_module_info_disc_vuln.nasl 3569 2016-06-21 07:43:44Z benallard $
+# $Id: gb_drupal_aes_module_info_disc_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Drupal AES Encryption Module Information Disclosure Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "The host is running Drupal AES Encryption Module and is prone to
 if(description)
 {
   script_id(801842);
-  script_version("$Revision: 3569 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:43:44 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-15 08:14:35 +0100 (Tue, 15 Feb 2011)");
   script_cve_id("CVE-2011-0899");
   script_bugtraq_id(46116);
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/65112");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if AES Encryption Module is vulnerable to Information Disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

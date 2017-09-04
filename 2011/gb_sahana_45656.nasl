@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sahana_45656.nasl 5642 2017-03-21 08:49:30Z cfi $
+# $Id: gb_sahana_45656.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Sahana Agasti Multiple Remote File Include Vulnerabilities
 #
@@ -40,8 +40,8 @@ Sahana Agasti 0.6.4 and prior versions are vulnerable.";
 if (description)
 {
  script_id(103013);
- script_version("$Revision: 5642 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:49:30 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-01-05 15:07:33 +0100 (Wed, 05 Jan 2011)");
  script_bugtraq_id(45656);
  script_tag(name:"cvss_base", value:"5.0");
@@ -53,7 +53,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.sahanafoundation.org/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed Sahana is vulnerabl3e");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

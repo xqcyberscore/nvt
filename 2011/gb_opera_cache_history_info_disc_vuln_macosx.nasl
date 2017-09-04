@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_cache_history_info_disc_vuln_macosx.nasl 3101 2016-04-18 14:43:32Z benallard $
+# $Id: gb_opera_cache_history_info_disc_vuln_macosx.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Opera Cache History Information Disclosure Vulnerability (Mac OS X)
 #
@@ -46,17 +46,16 @@ disclosure vulnerability.";
 if(description)
 {
   script_id(802366);
-  script_version("$Revision: 3101 $");
+  script_version("$Revision: 7015 $");
   script_cve_id("CVE-2011-4690");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:43:32 +0200 (Mon, 18 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-09 16:55:28 +0530 (Fri, 09 Dec 2011)");
   script_name("Opera Cache History Information Disclosure Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47128");
   script_xref(name : "URL" , value : "http://lcamtuf.coredump.cx/cachetime/");
 
-  script_summary("Check for the version of Opera");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

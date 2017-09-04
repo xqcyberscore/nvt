@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_quicktime_detection_win_900124.nasl 2833 2016-03-11 08:36:30Z benallard $
+# $Id: secpod_apple_quicktime_detection_win_900124.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Apple QuickTime Version Detection for Windows
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900124");
-  script_version("$Revision: 2833 $");
+  script_version("$Revision: 7000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:36:30 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Apple QuickTime Version Detection for Windows");
@@ -50,7 +50,6 @@ The script logs in via smb, searches for executable of Apple QuickTime
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Set File Version of Apple QuickTime in KB");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (C) 2008 SecPod");

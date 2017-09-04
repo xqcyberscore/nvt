@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kanboard_mult_vuln.nasl 6928 2017-08-16 02:41:07Z ckuersteiner $
+# $Id: gb_kanboard_mult_vuln.nasl 7026 2017-08-31 06:13:04Z asteins $
 #
 # Kanboard Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:kanboard:kanboard';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140302");
-  script_version("$Revision: 6928 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-16 04:41:07 +0200 (Wed, 16 Aug 2017) $");
+  script_version("$Revision: 7026 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-31 08:13:04 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name: "creation_date", value: "2017-08-16 08:40:15 +0700 (Wed, 16 Aug 2017)");
-  script_tag(name: "cvss_base", value: "5.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-12850", "CVE-2017-12851");
 

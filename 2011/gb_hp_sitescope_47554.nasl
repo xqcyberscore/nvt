@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_sitescope_47554.nasl 6367 2017-06-19 07:11:34Z ckuersteiner $
+# $Id: gb_hp_sitescope_47554.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # HP SiteScope Cross Site Scripting and HTML Injection Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:sitescope";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103149");
- script_version("$Revision: 6367 $");
- script_tag(name:"last_modification", value:"$Date: 2017-06-19 09:11:34 +0200 (Mon, 19 Jun 2017) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-04-29 15:04:36 +0200 (Fri, 29 Apr 2011)");
  script_bugtraq_id(47554);
  script_cve_id("CVE-2011-1726","CVE-2011-1727");
@@ -41,7 +41,6 @@ if (description)
 
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed SiteScope version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

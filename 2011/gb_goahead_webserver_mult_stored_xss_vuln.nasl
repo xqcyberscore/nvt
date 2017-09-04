@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_goahead_webserver_mult_stored_xss_vuln.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: gb_goahead_webserver_mult_stored_xss_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # GoAhead Webserver Multiple Stored Cross Site Scripting Vulnerabilities
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802270");
-  script_version("$Revision: 6696 $");
+  script_version("$Revision: 7019 $");
   script_cve_id("CVE-2011-4273");
   script_bugtraq_id(50039);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"creation_date", value:"2011-11-08 16:16:16 +0530 (Tue, 08 Nov 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_name("GoAhead Webserver Multiple Stored Cross Site Scripting Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/384427");
 
-  script_summary("Check if GoAhead Webserver is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web Servers");

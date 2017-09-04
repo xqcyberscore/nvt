@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pentaho_bi_server_mult_vuln.nasl 4620 2016-11-25 06:39:51Z cfi $
+# $Id: secpod_pentaho_bi_server_mult_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Pentaho BI Server Multiple Vulnerabilities
 #
@@ -45,8 +45,8 @@ tag_summary = "The host is running Pentaho BI Server and is prone to multiple
 if(description)
 {
   script_id(902568);
-  script_version("$Revision: 4620 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:39:51 +0100 (Fri, 25 Nov 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-09-22 10:24:03 +0200 (Thu, 22 Sep 2011)");
   script_cve_id("CVE-2009-5099", "CVE-2009-5100", "CVE-2009-5101");
   script_tag(name:"cvss_base", value:"5.0");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://jira.pentaho.com/browse/BISERVER-2698?page=com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_summary("Check for the Password field with autocomplete enabled in Pentaho BI Server");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web Servers");

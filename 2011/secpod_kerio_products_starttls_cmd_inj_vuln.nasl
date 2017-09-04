@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_kerio_products_starttls_cmd_inj_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_kerio_products_starttls_cmd_inj_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Kerio Products 'STARTTLS' Plaintext Command Injection Vulnerability
 #
@@ -49,8 +49,8 @@ plaintext command injection vulnerability.";
 if(description)
 {
   script_id(901194);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-25 15:52:06 +0100 (Fri, 25 Mar 2011)");
   script_cve_id("CVE-2011-1506");
   script_bugtraq_id(46767);
@@ -61,7 +61,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0610");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Kerio Mail Server/Connect");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

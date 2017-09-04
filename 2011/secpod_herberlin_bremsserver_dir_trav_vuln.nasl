@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_herberlin_bremsserver_dir_trav_vuln.nasl 5647 2017-03-21 09:46:08Z cfi $
+# $Id: secpod_herberlin_bremsserver_dir_trav_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Herberlin Bremsserver Directory Traversal Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902587");
-  script_version("$Revision: 5647 $");
+  script_version("$Revision: 7019 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-18 12:12:12 +0530 (Fri, 18 Nov 2011)");
   script_name("Herberlin Bremsserver Directory Traversal Vulnerability");
 
@@ -38,7 +38,6 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/107070/HerberlinBremsserver3.0-233.py.txt");
   script_xref(name:"URL", value:"http://www.autosectools.com/Advisory/Herberlin-Bremsserver-3.0-Directory-Traversal-233");
 
-  script_summary("Determine if Herberlin Bremsserver is vulnerable to Directory Traversal Attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web Servers");

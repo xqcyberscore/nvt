@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_sitescope_xss_n_session_fixation_vuln.nasl 6367 2017-06-19 07:11:34Z ckuersteiner $
+# $Id: gb_hp_sitescope_xss_n_session_fixation_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # HP SiteScope Cross-Site Scripting and Session Fixation Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:sitescope";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801976");
-  script_version("$Revision: 6367 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-19 09:11:34 +0200 (Mon, 19 Jun 2017) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-09 17:36:48 +0200 (Fri, 09 Sep 2011)");
   script_cve_id("CVE-2011-2400", "CVE-2011-2401");
   script_bugtraq_id(48916, 48913);
@@ -44,7 +44,6 @@ if(description)
   script_xref(name : "URL" , value : "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02940969");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Determine if installed SiteScope version is vulnerable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

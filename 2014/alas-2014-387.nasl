@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2014-387.nasl 6576 2017-07-06 13:43:01Z cfischer $
+# $Id: alas-2014-387.nasl 6995 2017-08-23 11:52:03Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120409");
-script_version("$Revision: 6576 $");
+script_version("$Revision: 6995 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:25:40 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:43:01 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
 script_name("Amazon Linux Local Check: alas-2014-387");
 script_tag(name: "insight", value: "It was discovered that the Hotspot component in OpenJDK did not properly verify bytecode from the class files. An untrusted Java application or applet could possibly use these flaws to bypass Java sandbox restrictions. (CVE-2014-4216 , CVE-2014-4219 )A format string flaw was discovered in the Hotspot component event logger in OpenJDK. An untrusted Java application or applet could use this flaw to crash the Java Virtual Machine or, potentially, execute arbitrary code with the privileges of the Java Virtual Machine. (CVE-2014-2490 )An improper permission check issue was discovered in the Libraries component in OpenJDK. An untrusted Java application or applet could use this flaw to bypass Java sandbox restrictions. (CVE-2014-4262 )Multiple flaws were discovered in the JMX, Libraries, Security, and Serviceability components in OpenJDK. An untrusted Java application or applet could use these flaws to bypass certain Java sandbox restrictions. (CVE-2014-4209 , CVE-2014-4218 , CVE-2014-4252 , CVE-2014-4266 )It was discovered that the RSA algorithm in the Security component in OpenJDK did not sufficiently perform blinding while performing operations that were using private keys. An attacker able to measure timing differences of those operations could possibly leak information about the used keys. (CVE-2014-4244 )The Diffie-Hellman (DH) key exchange algorithm implementation in the Security component in OpenJDK failed to validate public DH parameters properly. This could cause OpenJDK to accept and use weak parameters, allowing an attacker to recover the negotiated key. (CVE-2014-4263 )"); 
 script_tag(name : "solution", value : "Run yum update java-1.6.0-openjdk to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2014-387");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

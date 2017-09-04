@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webcalendar_mult_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_webcalendar_mult_xss_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # WebCalendar Multiple Cross Site Scripting Vulnerabilities
 #
@@ -45,8 +45,8 @@ site scripting vulnerabilities.";
 if(description)
 {
   script_id(802305);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-07 15:43:33 +0200 (Thu, 07 Jul 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/102785/SSCHADV2011-008.txt");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of WebCalendar");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

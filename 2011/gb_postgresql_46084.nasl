@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_46084.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_postgresql_46084.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # PostgreSQL 'intarray' Module 'gettoken()' Buffer Overflow Vulnerability
 #
@@ -42,8 +42,8 @@ CPE = "cpe:/a:postgresql:postgresql";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 3911 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_version("$Revision: 7044 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-02-02 13:26:27 +0100 (Wed, 02 Feb 2011)");
  script_bugtraq_id(46084);
  script_tag(name:"cvss_base", value:"6.5");
@@ -57,7 +57,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.postgresql.org/about/news.1289");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed PostgreSQL version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Databases");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_file_reporter_engine_bof_vuln_win.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: gb_novell_file_reporter_engine_bof_vuln_win.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Novell File Reporter Engine 'RECORD' Processing Buffer Overflow Vulnerability
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is installed with Novell File Reporter engine and is
 if(description)
 {
   script_id(801959);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_cve_id("CVE-2011-2220");
   script_tag(name:"cvss_base", value:"10.0");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-11-227/");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/518632/100/0/threaded");
 
-  script_summary("Check for the version of Novell File Reporter Engine");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

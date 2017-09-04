@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tivoli_dir_server_mult_vuln.nasl 3569 2016-06-21 07:43:44Z benallard $
+# $Id: gb_ibm_tivoli_dir_server_mult_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # IBM Tivoli Directory Server Multiple Vulnerabilities
 #
@@ -48,8 +48,8 @@ tag_summary = "The host is running IBM Tivoli Directory Server and is prone
 if(description)
 {
   script_id(802224);
-  script_version("$Revision: 3569 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:43:44 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_cve_id("CVE-2011-2758", "CVE-2011-2759");
   script_bugtraq_id(48512);
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www-304.ibm.com/support/docview.wss?uid=swg24030320");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_summary("Check for the version of IBM Tivoli Directory Server");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");

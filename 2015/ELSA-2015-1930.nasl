@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1930.nasl 6560 2017-07-06 11:58:38Z cfischer $
+# $Id: ELSA-2015-1930.nasl 6959 2017-08-18 07:24:59Z asteins $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122721");
-script_version("$Revision: 6560 $");
+script_version("$Revision: 6959 $");
 script_tag(name:"creation_date", value:"2015-10-27 12:55:39 +0200 (Tue, 27 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1930");
 script_tag(name: "insight", value: "ELSA-2015-1930 -  ntp security update - [4.2.6p5-5.el6_7.2]- check origin timestamp before accepting KoD RATE packet (CVE-2015-7704)- allow only one step larger than panic threshold with -g (CVE-2015-5300)"); 
 script_tag(name : "solution", value : "update software");
@@ -34,8 +34,8 @@ script_tag(name : "solution_type", value : "VendorFix");
 script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2015-1930");
 script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2015-1930.html");
 script_cve_id("CVE-2015-5300","CVE-2015-7704");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"5.0");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");

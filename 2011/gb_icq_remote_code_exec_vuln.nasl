@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icq_remote_code_exec_vuln.nasl 3115 2016-04-19 10:09:30Z benallard $
+# $Id: gb_icq_remote_code_exec_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # ICQ 7 Instant Messaging Client Remote Code Execution Vulnerability
 #
@@ -45,8 +45,8 @@ vulnerability.";
 if(description)
 {
   script_id(801574);
-  script_version("$Revision: 3115 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:09:30 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/515724");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of ICQ");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");

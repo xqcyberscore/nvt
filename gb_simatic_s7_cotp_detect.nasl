@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_cotp_detect.nasl 6799 2017-07-26 06:46:11Z ckuersteiner $
+# $Id: gb_simatic_s7_cotp_detect.nasl 6962 2017-08-18 09:20:15Z ckuersteiner $
 #
 # Siemens SIMATIC S7 Device Detection (COTP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106099");
- script_version ("$Revision: 6799 $");
- script_tag(name: "last_modification", value: "$Date: 2017-07-26 08:46:11 +0200 (Wed, 26 Jul 2017) $");
+ script_version ("$Revision: 6962 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-08-18 11:20:15 +0200 (Fri, 18 Aug 2017) $");
  script_tag(name: "creation_date", value: "2016-06-17 17:08:52 +0700 (Fri, 17 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -108,8 +108,25 @@ connectionReq = raw_string(0x03, 0x00, 0x00, 0x16, 0x11, 0xe0, 0x00, 0x00,
 
 recv = cotp_send_recv(req: connectionReq);
 
-if (!recv || hexstr(recv[5]) != "d0")
-  exit(0);
+if (!recv || hexstr(recv[5]) != "d0") {
+  # we have to open a new socket
+  close(soc);
+
+  soc = open_sock_tcp(port);
+  if (!soc) 
+    exit();
+
+  # Try an alternative request
+  connectionReq = raw_string(0x03, 0x00, 0x00, 0x16, 0x11, 0xe0, 0x00, 0x00,
+                             0x00, 0x05, 0x00, 0xc1, 0x02, 0x01, 0x00, 0xc2,
+                             0x02, 0x02, 0x00, 0xc0, 0x01, 0x0a);
+  recv = cotp_send_recv(req: connectionReq);
+
+  if (!recv || hexstr(recv[5]) != "d0") {
+    close(soc);
+    exit(0);
+  }
+}
 
 negotiatePdu = raw_string(0x03, 0x00, 0x00, 0x19, 0x02, 0xf0, 0x80, 0x32,
                           0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00,
@@ -138,9 +155,9 @@ if (hexstr(dataPacket[0]) != "ff")
   exit(0);
 
 version = "unknown";
-ver = eregmatch(pattern: '202020202020202020202020202020202020202000c056([a-f0-9]{6})', string: hexstr(recv));
-if (ver[1]) {
-  ver = ver[1];
+
+if (strlen(dataPacket) >= 96) {
+  ver = hexstr(substr(dataPacket, 93, 95));
 
   v1 = ver[0] + ver[1];
   v2 = ver[2] + ver[3];
@@ -157,6 +174,7 @@ readComponentID = raw_string(0x03, 0x00, 0x00, 0x21, 0x02, 0xf0, 0x80, 0x32,
 
 recv = cotp_send_recv(req: readComponentID);
 model = "unknown";
+
 
 if (recv) {
   dataPacket = cotp_extract_packet(data: recv);

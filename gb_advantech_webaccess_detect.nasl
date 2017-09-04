@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_detect.nasl 6000 2017-04-21 11:07:29Z cfi $
+# $Id: gb_advantech_webaccess_detect.nasl 7020 2017-08-30 05:31:10Z ckuersteiner $
 #
 # Advantech WebAccess Version Detection
 #
@@ -27,12 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804429");
-  script_version("$Revision: 6000 $");
+  script_version("$Revision: 7020 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 07:31:10 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-04-16 14:24:35 +0530 (Wed, 16 Apr 2014)");
+
   script_name("Advantech WebAccess Version Detection");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -40,12 +42,9 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "Detection of Advantech WebAccess.
+  script_tag(name:"summary", value:"Detection of Advantech WebAccess.
 
-  The script sends a connection request to the server and attempts to
-  extract the version number from the reply.";
-
-  script_tag(name:"summary", value:tag_summary);
+The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -93,7 +92,7 @@ log_message(data: build_detection_report(app:"Advantech WebAccess",
                                          version:vers,
                                          install:'/broadWeb/',
                                          cpe:cpe,
-                                         concluded: vers),
+                                         concluded: awVer[0]),
                                          port:awPort);
 
 exit(0);

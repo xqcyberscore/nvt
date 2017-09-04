@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_advanced_pdf_editor_detect_win.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_foxit_advanced_pdf_editor_detect_win.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Foxit Advanced PDF Editor Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803303");
-  script_version("$Revision: 2836 $");
+  script_version("$Revision: 7000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2013-02-01 18:35:32 +0530 (Fri, 01 Feb 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Foxit Advanced PDF Editor Version Detection (Windows)");
@@ -47,7 +47,6 @@ registry and gets the version from registry";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Detection of installed version of Foxit AdvancedEditor on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Product detection");

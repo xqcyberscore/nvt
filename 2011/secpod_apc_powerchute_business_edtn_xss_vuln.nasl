@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apc_powerchute_business_edtn_xss_vuln.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: secpod_apc_powerchute_business_edtn_xss_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # APC PowerChute Business Edition Unspecified Cross Site Scripting Vulnerability
 #
@@ -39,20 +39,19 @@ tag_summary = "This host is running APC PowerChute Business Edition and is prone
 if(description)
 {
   script_id(902771);
-  script_version("$Revision: 5375 $");
+  script_version("$Revision: 7044 $");
   script_cve_id("CVE-2011-4263");
   script_bugtraq_id(51022);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"creation_date", value:"2011-12-16 13:03:34 +0530 (Fri, 16 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_name("APC PowerChute Business Edition Unspecified Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47113/");
   script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN61695284/index.html");
   script_xref(name : "URL" , value : "http://jvndb.jvn.jp/en/contents/2011/JVNDB-2011-000100.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of APC PowerChute Business Edition");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

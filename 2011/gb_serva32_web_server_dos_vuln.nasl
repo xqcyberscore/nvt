@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serva32_web_server_dos_vuln.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: gb_serva32_web_server_dos_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Serva32 Webserver Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802020");
-  script_version("$Revision: 6696 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-23 15:31:07 +0200 (Mon, 23 May 2011)");
   script_bugtraq_id(47760);
   script_tag(name:"cvss_base", value:"7.8");
@@ -39,7 +39,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17266");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/101223");
 
-  script_summary("Check Serva32 web server is vulnerable by sending crafted packets");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lotus_domino_46231.nasl 5701 2017-03-23 16:10:36Z mime $
+# $Id: gb_lotus_domino_46231.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # IBM Lotus Domino 'nLDAP.exe' Remote Buffer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103068");
- script_version("$Revision: 5701 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
+ script_version("$Revision: 7044 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-02-08 13:20:01 +0100 (Tue, 08 Feb 2011)");
  script_bugtraq_id(46231);
  script_tag(name:"cvss_base", value:"10.0");
@@ -42,7 +42,6 @@ if(description)
  script_xref(name:"URL", value:"http://www-142.ibm.com/software/sw-lotus/products/product4.nsf/wdocs/dominohomepage");
  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-11-047/");
 
- script_summary("Determine if Lotus Domino version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Buffer overflow");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

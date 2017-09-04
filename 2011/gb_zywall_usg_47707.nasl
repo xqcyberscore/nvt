@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zywall_usg_47707.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_zywall_usg_47707.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Multiple ZyWALL USG Products Remote Security Bypass Vulnerability
 #
@@ -45,8 +45,8 @@ this. Please contact the vendor for more information.";
 if (description)
 {
  script_id(103161);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7024 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-05-12 13:24:44 +0200 (Thu, 12 May 2011)");
  script_bugtraq_id(47707);
  script_tag(name:"cvss_base", value:"2.6");
@@ -59,7 +59,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.zyxel.in");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if ZyWALL USG product is prone to a security-bypass vulnerability.");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

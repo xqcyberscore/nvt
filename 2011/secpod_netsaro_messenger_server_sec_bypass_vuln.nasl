@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_netsaro_messenger_server_sec_bypass_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_netsaro_messenger_server_sec_bypass_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # NetSaro Enterprise Messenger Server Plaintext Password Storage Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902465");
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-19 15:17:22 +0200 (Fri, 19 Aug 2011)");
   script_cve_id("CVE-2011-3692", "CVE-2011-3693");
   script_tag(name:"cvss_base", value:"1.9");
@@ -38,7 +38,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/519284");
   script_xref(name : "URL" , value : "http://www.solutionary.com/index/SERT/Vuln-Disclosures/NetSaro-Enterprise-Messenger-Vuln-Password.html");
 
-  script_summary("Check for security bypass vulnerability in NetSaro Enterprise Messenger Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_dependencies("find_service.nasl");

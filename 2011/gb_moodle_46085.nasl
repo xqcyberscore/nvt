@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_46085.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_moodle_46085.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Moodle 'PHPCOVERAGE_HOME' Cross Site Scripting Vulnerability
 #
@@ -38,8 +38,8 @@ Versions prior to Moodle 2.0.1 are vulnerable.";
 if (description)
 {
  script_id(103056);
- script_version("$Revision: 6719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-02-02 13:26:27 +0100 (Wed, 02 Feb 2011)");
  script_bugtraq_id(46085);
  script_tag(name:"cvss_base", value:"4.3");
@@ -50,7 +50,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.moodle.org");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if oodle is prone to a cross-site scripting vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

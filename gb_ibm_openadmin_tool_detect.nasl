@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_openadmin_tool_detect.nasl 3155 2016-04-22 15:44:43Z cfi $
+# $Id: gb_ibm_openadmin_tool_detect.nasl 7028 2017-08-31 09:47:19Z ckuersteiner $
 #
 # IBM Open Admin Tool Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802158");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 3155 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 17:44:43 +0200 (Fri, 22 Apr 2016) $");
+  script_version("$Revision: 7028 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 11:47:19 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-14 16:05:49 +0200 (Wed, 14 Sep 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("IBM Open Admin Tool Version Detection");
-  script_summary("Set the version of IBM Open Admin Tool in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -75,6 +74,7 @@ if( ">OpenAdmin Tool" >< rcvRes || "> OpenAdmin Tool Community Edition <" >< rcv
   if( ver[1] != NULL ) version = ver[1];
 
   ## Set the KB value
+  set_kb_item(name: "ibm_openadmin/installed", value: TRUE);
   set_kb_item( name:"www/" + port + "/IBM/Open/Admin/Tool", value:version );
 
   ## build cpe and store it as host_detail
@@ -90,7 +90,7 @@ if( ">OpenAdmin Tool" >< rcvRes || "> OpenAdmin Tool Community Edition <" >< rcv
                                             install:install,
                                             cpe:cpe,
                                             concluded:ver[0] ),
-                                            port:port );
+               port:port );
 }
 
 exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cogent_datahub_unicode_bof_vuln.nasl 3116 2016-04-19 10:11:19Z benallard $
+# $Id: gb_cogent_datahub_unicode_bof_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Cogent DataHub Unicode Buffer Overflow Vulnerability
 #
@@ -45,8 +45,8 @@ overflow vulnerability.";
 if(description)
 {
   script_id(802246);
-  script_version("$Revision: 3116 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:11:19 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-22 10:24:03 +0200 (Thu, 22 Sep 2011)");
   script_bugtraq_id(49611);
   script_cve_id("CVE-2011-3493");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICS-ALERT-11-256-03.pdf");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine Cogent DataHub Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blog_cms_48132.nasl 3983 2016-09-07 05:46:06Z teissa $
+# $Id: gb_blog_cms_48132.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # BLOG:CMS Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103178");
-  script_version("$Revision: 3983 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-07 07:46:06 +0200 (Wed, 07 Sep 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-08 13:54:32 +0200 (Wed, 08 Jun 2011)");
   script_bugtraq_id(48132);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("BLOG:CMS Multiple Cross Site Scripting Vulnerabilities");
-  script_summary("Determine if BLOG:CMS is prone to a  cross-site scripting vulnerability");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

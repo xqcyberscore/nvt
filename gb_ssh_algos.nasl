@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_algos.nasl 2828 2016-03-10 10:00:05Z benallard $
+# $Id: gb_ssh_algos.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # SSH Protocol Algorithms Supported
 #
@@ -28,14 +28,13 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105565");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2828 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 11:00:05 +0100 (Thu, 10 Mar 2016) $");
+ script_version("$Revision: 7000 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
  script_tag(name:"creation_date", value:"2016-03-09 08:39:30 +0100 (Wed, 09 Mar 2016)");
  script_tag(name:"cvss_base", value:"0.0");
 
  script_name("SSH Protocol Algorithms Supported");
  script_tag(name:"qod_type", value:"remote_active");
- script_summary("Checks for the supported SSH Algorithms");
  script_category(ACT_GATHER_INFO);
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

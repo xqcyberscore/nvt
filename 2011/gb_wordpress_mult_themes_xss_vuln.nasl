@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_themes_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_wordpress_mult_themes_xss_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # WordPress Multiple Themes 's' Parameter Cross Site Scripting Vulnerabilities
 #
@@ -52,8 +52,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-10-04 16:55:13 +0200 (Tue, 04 Oct 2011)");
   script_bugtraq_id(49865, 49872, 49868, 49867, 49869, 49875, 49873, 49880);
   script_cve_id("CVE-2011-3850", "CVE-2011-3852", "CVE-2011-3854", "CVE-2011-3855",
@@ -73,7 +73,6 @@ if(description)
   script_xref(name : "URL" , value : "https://sitewat.ch/en/Advisories/22");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if WordPress Theme is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

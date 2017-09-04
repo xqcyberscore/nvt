@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_i386_set_ldt_prv_esc_vuln.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_macosx_i386_set_ldt_prv_esc_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Apple Mac OS X 'i386_set_ldt()' Privilege Escalation Vulnerability
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is installed with Mac OS X and is prone to privilege
 if(description)
 {
   script_id(802259);
-  script_version("$Revision: 3100 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-10-20 08:43:23 +0200 (Thu, 20 Oct 2011)");
   script_cve_id("CVE-2011-0182");
   script_bugtraq_id(46997);
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://support.apple.com/kb/DL1367");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2011/Mar/msg00006.html");
 
-  script_summary("Check for the version of Mac OS X / Mac OS X Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

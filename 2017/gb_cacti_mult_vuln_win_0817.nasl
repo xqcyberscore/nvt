@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_vuln_win_0817.nasl 6940 2017-08-16 11:37:04Z asteins $
+# $Id: gb_cacti_mult_vuln_win_0817.nasl 6969 2017-08-21 05:56:59Z asteins $
 #
 # Cacti <= 0.8.8b Multiple Vulnerabilities (Windows)
 #
@@ -30,14 +30,14 @@ CPE = "cpe:/a:cacti:cacti";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108208");
-  script_version("$Revision: 6940 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-16 13:37:04 +0200 (Wed, 16 Aug 2017) $");
+  script_version("$Revision: 6969 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-21 07:56:59 +0200 (Mon, 21 Aug 2017) $");
   script_tag(name: "creation_date", value: "2017-08-16 11:05:37 +0200 (Wed, 16 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2013-1434", "CVE-2013-1435", "CVE-2013-5588", "CVE-2013-5589", "CVE-2014-2327", "CVE-2014-2328", "CVE-2014-2708", "CVE-2014-2709", "CVE-2014-4002", "CVE-2014-5025", "CVE-2014-5026", "CVE-2014-5261", "CVE-2014-5262", "CVE-2017-1000031", "CVE-2017-1000032");
-  script_bugtraq_id("61657", "62001", "62005", "66392", "66387", "66555", "66630", "68257", "68759", "69213");
+  script_bugtraq_id(61657, 62001, 62005, 66392, 66387, 66555, 66630, 68257, 68759, 69213);
 
   script_tag(name: "qod_type", value: "remote_banner");
 
@@ -55,7 +55,7 @@ if (description)
   script_tag(name: "summary", value: "Cacti is prone to multiple vulnerabilities.");
 
   script_tag(name: "insight", value: "Cacti is prone to multiple vulnerabilities:
-      
+
 - Multiple SQL injection vulnerabilities in (1) api_poller.php and (2) utility.php allow remote attackers to execute arbitrary SQL commands via unspecified vectors. (CVE-2013-1434)
 
 - (1) snmp.php and (2) rrd.php allows remote attackers to execute arbitrary commands via shell metacharacters in unspecified vectors. (CVE-2013-1435)

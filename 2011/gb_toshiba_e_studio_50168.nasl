@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_toshiba_e_studio_50168.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_toshiba_e_studio_50168.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Multiple Toshiba e-Studio Devices Security Bypass Vulnerability
 #
@@ -34,8 +34,8 @@ restrictions and gain access in the context of the device.";
 if (description)
 {
  script_id(103301);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 7024 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-10-18 13:33:12 +0200 (Tue, 18 Oct 2011)");
  script_bugtraq_id(50168);
 
@@ -47,7 +47,6 @@ if (description)
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Toshiba e-Studio device is prone to a security-bypass vulnerability.");
  script_category(ACT_ATTACK);
  script_family("General");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

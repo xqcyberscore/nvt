@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_49306.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_phpmyadmin_49306.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # phpMyAdmin Tracking Feature Multiple Cross Site Scripting Vulnerabilities
 #
@@ -42,8 +42,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-08-30 14:29:55 +0200 (Tue, 30 Aug 2011)");
  script_bugtraq_id(49306);
  script_cve_id("CVE-2011-3181");
@@ -57,7 +57,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.phpmyadmin.net/");
  script_xref(name : "URL" , value : "http://www.phpmyadmin.net/home_page/security/PMASA-2011-13.php");
 
- script_summary("Determine if installed phpMyAdmin version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

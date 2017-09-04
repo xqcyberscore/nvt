@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pmwiki_pagelist_order_param_php_code_inj_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_pmwiki_pagelist_order_param_php_code_inj_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # PmWiki Pagelist 'order' Parameter PHP Code Injection Vulnerability
 #
@@ -39,12 +39,12 @@ tag_summary = "The host is running PmWiki and is prone to PHP code injection
 if(description)
 {
   script_id(902592);
-  script_version("$Revision: 3570 $");
+  script_version("$Revision: 7029 $");
   script_cve_id("CVE-2011-4453");
   script_bugtraq_id(50776);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-28 13:13:13 +0530 (Mon, 28 Nov 2011)");
   script_name("PmWiki Pagelist 'order' Parameter PHP Code Injection Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46968");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.pmwiki.org/wiki/PmWiki/ChangeLog#v2235");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if PmWiki is vulnerable to PHP code injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

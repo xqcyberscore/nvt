@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_setseed_50498.nasl 3104 2016-04-18 14:53:56Z benallard $
+# $Id: gb_setseed_50498.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # SetSeed 'loggedInUser' SQL Injection Vulnerability
 #
@@ -39,7 +39,7 @@ if (description)
 {
  script_id(103327);
  script_bugtraq_id(50498);
- script_version ("$Revision: 3104 $");
+ script_version ("$Revision: 7006 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("SetSeed 'loggedInUser' SQL Injection Vulnerability");
@@ -48,10 +48,9 @@ if (description)
  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2011-5053.php");
  script_xref(name : "URL" , value : "http://setseed.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:53:56 +0200 (Mon, 18 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-11-03 08:00:00 +0100 (Thu, 03 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_active");
- script_summary("Determine if installed SetSeed is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

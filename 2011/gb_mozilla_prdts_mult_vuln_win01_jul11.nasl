@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_win01_jul11.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: gb_mozilla_prdts_mult_vuln_win01_jul11.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Mozilla Products Multiple Vulnerabilities July-11 (Windows) - 01
 #
@@ -51,8 +51,8 @@ tag_summary = "The host is installed with Mozilla Firefox, Seamonkey or Thunderb
 if(description)
 {
   script_id(802216);
-  script_version("$Revision: 6444 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-07 15:43:33 +0200 (Thu, 07 Jul 2011)");
   script_cve_id("CVE-2011-2371", "CVE-2011-2373", "CVE-2011-2377");
   script_bugtraq_id(48372, 48373, 48369);
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-22.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Mozilla Firefox/Seamonkey/Thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

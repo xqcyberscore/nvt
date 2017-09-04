@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_php_files_info_disc_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_wordpress_php_files_info_disc_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # WordPress '.php' Files Information Disclosure Vulnerability
 #
@@ -48,8 +48,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-30 15:58:03 +0200 (Fri, 30 Sep 2011)");
   script_cve_id("CVE-2011-3818");
   script_tag(name:"cvss_base", value:"5.0");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://code.google.com/p/inspathx/source/browse/trunk/paths_vuln/wordpress_2.9.2");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_summary("Check WordPress is prone to information disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

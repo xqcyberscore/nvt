@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_random_number_values_info_disc_vuln_01.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_ruby_random_number_values_info_disc_vuln_01.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Ruby Random Number Values Information Disclosure Vulnerability
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is installed with Ruby and is prone to information
 if(description)
 {
   script_id(902560);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_cve_id("CVE-2011-2705");
   script_tag(name:"cvss_base", value:"5.0");
@@ -53,7 +53,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (c) 2011 SecPod");
-  script_summary("Check for the version of Ruby");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_ruby_detect_win.nasl");

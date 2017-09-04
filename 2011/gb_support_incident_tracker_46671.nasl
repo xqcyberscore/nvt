@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_support_incident_tracker_46671.nasl 3104 2016-04-18 14:53:56Z benallard $
+# $Id: gb_support_incident_tracker_46671.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Support Incident Tracker (SiT!) Multiple Cross Site Scripting Vulnerabilities
 #
@@ -40,8 +40,8 @@ also be affected.";
 if (description)
 {
  script_id(103105);
- script_version("$Revision: 3104 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:53:56 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-03-04 13:25:07 +0100 (Fri, 04 Mar 2011)");
  script_bugtraq_id(46671);
 
@@ -54,7 +54,6 @@ if (description)
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Support Incident Tracker (SiT!) is prone to multiple cross-site scripting vulnerabilities");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

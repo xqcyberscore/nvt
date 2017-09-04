@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freefloat_ftp_mkd_cmd_bof_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_freefloat_ftp_mkd_cmd_bof_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Freefloat FTP Server POST Auth 'MKD' Command Buffer Overflow Vulnerability
 #
@@ -45,8 +45,8 @@ overflow vulnerability.";
 if(description)
 {
   script_id(802028);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-19 14:57:20 +0200 (Tue, 19 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.freefloat.com/sv/freefloat-ftp-server/freefloat-ftp-server.php");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine FreeFloat Ftp Server Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

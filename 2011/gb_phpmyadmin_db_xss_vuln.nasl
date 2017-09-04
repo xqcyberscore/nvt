@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_db_xss_vuln.nasl 3102 2016-04-18 14:46:07Z benallard $
+# $Id: gb_phpmyadmin_db_xss_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # phpMyAdmin 'db' Parameter Stored Cross Site Scripting Vulnerability
 #
@@ -42,8 +42,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3102 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:46:07 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://bl0g.yehg.net/2011/01/phpmyadmin-34x-340-beta-2-stored-cross.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if phpMyAdmin is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

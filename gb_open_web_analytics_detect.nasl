@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_web_analytics_detect.nasl 2672 2016-02-17 07:38:35Z antu123 $
+# $Id: gb_open_web_analytics_detect.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Open Web Analytics Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803794");
-  script_version("$Revision: 2672 $");
+  script_version("$Revision: 7006 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 08:38:35 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-01-21 13:04:26 +0530 (Tue, 21 Jan 2014)");
   script_name("Open Web Analytics Version Detection");
 
@@ -39,7 +39,6 @@ if(description)
   The script sends a connection request to the server and attempts to
   extract the version number from the reply.");
 
-  script_summary("Checks for the presence of Open Web Analytics");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Product detection");

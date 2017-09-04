@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mem_corrpt_n_int_underflow_vuln_macosx.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_mozilla_firefox_mem_corrpt_n_int_underflow_vuln_macosx.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Mozilla Firefox Memory Corruption and Integer Underflow Vulnerabilities (MAC OS X)
 #
@@ -41,8 +41,8 @@ tag_summary = "The host is installed with Mozilla Firefox and is prone to memory
 if(description)
 {
   script_id(802181);
-  script_version("$Revision: 3100 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_cve_id("CVE-2011-2996", "CVE-2011-2998");
   script_bugtraq_id(49845, 49809);
@@ -51,7 +51,6 @@ if(description)
   script_name("Mozilla Firefox Memory Corruption and Integer Underflow Vulnerabilities (MAC OS X)");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-36.html");
 
-  script_summary("Check for the version of Mozilla Firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

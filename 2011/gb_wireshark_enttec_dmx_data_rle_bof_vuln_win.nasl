@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_enttec_dmx_data_rle_bof_vuln_win.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: gb_wireshark_enttec_dmx_data_rle_bof_vuln_win.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Wireshark ENTTEC DMX Data RLE Buffer Overflow Vulnerability (Windows)
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is installed with Wireshark and is prone to buffer
 if(description)
 {
   script_id(801828);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-27 07:47:27 +0100 (Thu, 27 Jan 2011)");
   script_cve_id("CVE-2010-4538");
   script_bugtraq_id(45634);
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0079");
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=5539");
 
-  script_summary("Check for the version of Wireshark");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

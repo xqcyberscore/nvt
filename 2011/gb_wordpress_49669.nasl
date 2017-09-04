@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_49669.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_wordpress_49669.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # WordPress Filedownload Local File Disclosure Vulnerability
 #
@@ -41,8 +41,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-09-19 14:00:59 +0200 (Mon, 19 Sep 2011)");
  script_bugtraq_id(49669);
  script_tag(name:"cvss_base", value:"6.8");
@@ -54,7 +54,6 @@ if (description)
  script_xref(name : "URL" , value : "http://wordpress.org/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed WordPress is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

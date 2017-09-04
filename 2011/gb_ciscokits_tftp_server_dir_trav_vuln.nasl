@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ciscokits_tftp_server_dir_trav_vuln.nasl 5648 2017-03-21 09:52:17Z cfi $
+# $Id: gb_ciscokits_tftp_server_dir_trav_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # CiscoKits TFTP Server Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801965");
-  script_version("$Revision: 5648 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_bugtraq_id(49053);
   script_tag(name:"cvss_base", value:"7.8");
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secpod.org/SECPOD_CiscoKits_TFTP_Server_Dir_Trav_POC.py");
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SECPOD_CiscoKits_TFTP_Server_Dir_Trav.txt");
 
-  script_summary("Check for the directory traversal attack on CiscoKits TFTP Server");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_dependencies("tftpd_detect.nasl", "os_detection.nasl");

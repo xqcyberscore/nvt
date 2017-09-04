@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_shibboleth_xml_dos_vuln_win.nasl 3104 2016-04-18 14:53:56Z benallard $
+# $Id: gb_shibboleth_xml_dos_vuln_win.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Shibboleth XML Security Signature Key Parsing Denial of Service Vulnerability (Windows)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with Shibboleth and is prone to denial of
 if(description)
 {
   script_id(802223);
-  script_version("$Revision: 3104 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:53:56 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-15 12:23:42 +0200 (Fri, 15 Jul 2011)");
   script_cve_id("CVE-2011-2516");
   script_bugtraq_id(48611);
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/68420");
   script_xref(name : "URL" , value : "http://shibboleth.internet2.edu/secadv/secadv_20110706.txt");
 
-  script_summary("Check for the version of Shibboleth");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

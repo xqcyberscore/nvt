@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cfingerd_search_cmd_info_disc_vuln.nasl 3569 2016-06-21 07:43:44Z benallard $
+# $Id: gb_cfingerd_search_cmd_info_disc_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Cfingerd 'search' Command Information Disclosure Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is running Cfingerd service and is prone to information
 if(description)
 {
   script_id(802323);
-  script_version("$Revision: 3569 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:43:44 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-12 14:44:50 +0200 (Fri, 12 Aug 2011)");
   script_cve_id("CVE-1999-0259");
   script_tag(name:"cvss_base", value:"5.0");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/1997_2/0328.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if Cfinger is prone to information disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Finger abuses");

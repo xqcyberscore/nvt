@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_luxcal_web_calendar_sql_inj_vuln.nasl 3569 2016-06-21 07:43:44Z benallard $
+# $Id: gb_luxcal_web_calendar_sql_inj_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # LuxCal Web Calendar SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802307");
-  script_version("$Revision: 3569 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:43:44 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-14 13:16:44 +0200 (Thu, 14 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -36,7 +36,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/45152");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17500/");
 
-  script_summary("Check if LuxCal Web Calendar is vulnerable for SQL Injection attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

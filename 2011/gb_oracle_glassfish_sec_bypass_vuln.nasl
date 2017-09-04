@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_sec_bypass_vuln.nasl 4620 2016-11-25 06:39:51Z cfi $
+# $Id: gb_oracle_glassfish_sec_bypass_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Oracle Java GlassFish Server Security Bypass Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801939");
-  script_version("$Revision: 4620 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:39:51 +0100 (Fri, 25 Nov 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_cve_id("CVE-2011-1511");
   script_tag(name:"cvss_base", value:"6.4");
@@ -38,7 +38,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2011/May/296");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/101343/CORE-2010-1118.txt");
 
-  script_summary("Check for security bypass vulnerability in Oracle Java GlassFish Server");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

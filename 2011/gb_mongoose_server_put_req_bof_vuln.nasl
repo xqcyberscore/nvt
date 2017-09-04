@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongoose_server_put_req_bof_vuln.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_mongoose_server_put_req_bof_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Mongoose Web Server Remote Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802139");
-  script_version("$Revision: 3100 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_cve_id("CVE-2011-2900");
   script_bugtraq_id(48980);
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/68991");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2011/08/03/5");
 
-  script_summary("Check if Mongoose Web Serveris vulnerable to BOF");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web Servers");

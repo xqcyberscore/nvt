@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_soliddb_rpc_test_svc_dos_vuln.nasl 3115 2016-04-19 10:09:30Z benallard $
+# $Id: gb_ibm_soliddb_rpc_test_svc_dos_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # IBM solidDB RPC Test Commands Denial of Service Vulnerabilities
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is running IBM solidDB and is prone to multiple denial 
 if(description)
 {
   script_id(801937);
-  script_version("$Revision: 3115 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:09:30 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-18 15:37:30 +0200 (Wed, 18 May 2011)");
   script_cve_id("CVE-2011-1208");
   script_bugtraq_id(47584);
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-11-142/");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check vulnerable version of IBM solidDB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

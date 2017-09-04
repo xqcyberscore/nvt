@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_is_human_plugin_cmd_exec_vuln.nasl 3115 2016-04-19 10:09:30Z benallard $
+# $Id: gb_is_human_plugin_cmd_exec_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # WordPress Is-human Plugin 'passthru()' Function Remote Command Execution Vulnerability
 #
@@ -50,8 +50,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3115 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:09:30 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/101497");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if WordPress Is-human Plugin is vulnerable to command execution vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

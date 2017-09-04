@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_pagespeed_modules_detect.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: sw_pagespeed_modules_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # PageSpeed Modules (mod_pagespeed/ngx_pagespeed) Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111099");
-  script_version("$Revision: 3694 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 7000 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-05-03 17:00:00 +0200 (Tue, 03 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,6 @@ if(description)
 
   script_tag(name:"summary", value:"The script attempts to identify the
   PageSpeed Modules (mod_pagespeed/ngx_pagespeed) from the server banner.");
-  script_summary("The script attempts to identify the PageSpeed Modules");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

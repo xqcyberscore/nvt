@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blue_coat_reporter_49482.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_blue_coat_reporter_49482.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Blue Coat Reporter Directory Traversal Vulnerability
 #
@@ -38,8 +38,8 @@ tag_solution = "Updates are available. Please see the references for details.";
 if (description)
 {
  script_id(103246);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7044 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-09-08 15:23:37 +0200 (Thu, 08 Sep 2011)");
  script_bugtraq_id(49482);
  script_tag(name:"cvss_base", value:"4.3");
@@ -48,7 +48,6 @@ if (description)
 
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed Blue Coat Reporter version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

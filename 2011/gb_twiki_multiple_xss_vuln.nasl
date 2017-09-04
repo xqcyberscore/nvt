@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_multiple_xss_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_twiki_multiple_xss_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # TWiki 'newtopic' Parameter And SlideShowPlugin XSS Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802335");
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-10-12 16:01:32 +0200 (Wed, 12 Oct 2011)");
   script_cve_id("CVE-2011-3010");
   script_bugtraq_id(49746);
@@ -38,7 +38,6 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("TWiki 'newtopic' Parameter And SlideShowPlugin XSS Vulnerabilities");
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check for XSS vulnerability in TWiki");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("gb_twiki_detect.nasl");

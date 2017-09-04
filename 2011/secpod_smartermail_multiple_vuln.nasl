@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_smartermail_multiple_vuln.nasl 2525 2016-01-28 16:36:02Z cfi $
+# $Id: secpod_smartermail_multiple_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # SmarterMail Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:smartertools:smartermail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901196");
-  script_version("$Revision: 2525 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-28 17:36:02 +0100 (Thu, 28 Jan 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-25 15:52:06 +0100 (Fri, 25 Mar 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -41,7 +41,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/16955/");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/99169/smartermail-xsstraversalshell.txt");
 
-  script_summary("Check for the version of SmarterMail");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

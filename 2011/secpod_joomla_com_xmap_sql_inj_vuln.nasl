@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_com_xmap_sql_inj_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_joomla_com_xmap_sql_inj_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Joomla com_xmap SQL Injection Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is running Joomla xmap component and is prone to SQL
 if(description)
 {
   script_id(902397);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_bugtraq_id(48658);
   script_tag(name:"cvss_base", value:"7.5");
@@ -48,7 +48,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103010/joomlaxmap1211-sql.txt");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_summary("Check if Joomla Xmap component is vulnerable to SQL Injection attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");

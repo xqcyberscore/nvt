@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_inventory_sql_inj_vuln.nasl 3591 2016-06-23 17:47:04Z cfi $
+# $Id: gb_php_inventory_sql_inj_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # PHP Inventory 'user' and 'pass' Parameters SQL Injection Vulnerability
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802534");
-  script_version("$Revision: 3591 $");
+  script_version("$Revision: 7044 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-4595", "CVE-2009-4596", "CVE-2009-4597");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-23 19:47:04 +0200 (Thu, 23 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-12-05 15:37:27 +0530 (Mon, 05 Dec 2011)");
   script_name("PHP Inventory 'user' and 'pass' Parameters SQL Injection Vulnerability");
-  script_summary("Determine if PHP Inventory is prone to SQL injection vulnerabliilty");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

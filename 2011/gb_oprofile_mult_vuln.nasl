@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oprofile_mult_vuln.nasl 3112 2016-04-19 08:52:10Z antu123 $
+# $Id: gb_oprofile_mult_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # OProfile Multiple Vulnerabilities
 #
@@ -53,8 +53,8 @@ tag_summary = "This host is installed OProfile and is prone to multiple
 if(description)
 {
   script_id(802108);
-  script_version("$Revision: 3112 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 10:52:10 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-20 15:22:27 +0200 (Mon, 20 Jun 2011)");
   script_cve_id("CVE-2011-1760", "CVE-2011-2471", "CVE-2011-2472", "CVE-2011-2473");
   script_bugtraq_id(47652);
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=624212#19");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of OProfile");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");

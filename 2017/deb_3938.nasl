@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3938.nasl 6920 2017-08-14 10:59:00Z teissa $
+# $Id: deb_3938.nasl 6959 2017-08-18 07:24:59Z asteins $
 #
 # Auto-generated from advisory DSA 3938-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703938");
-  script_version("$Revision: 6920 $");
+  script_version("$Revision: 6959 $");
   script_cve_id("CVE-2017-7890");
   script_name("Debian Security Advisory DSA 3938-1 (libgd2 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-14 12:59:00 +0200 (Mon, 14 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-08-12 00:00:00 +0200 (Sat, 12 Aug 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

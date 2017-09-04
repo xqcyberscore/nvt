@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_vuln_lin_0817.nasl 6940 2017-08-16 11:37:04Z asteins $
+# $Id: gb_cacti_mult_vuln_lin_0817.nasl 6968 2017-08-21 04:31:11Z ckuersteiner $
 #
 # Cacti <= 0.8.8b Multiple Vulnerabilities (Linux)
 #
@@ -30,14 +30,14 @@ CPE = "cpe:/a:cacti:cacti";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108207");
-  script_version("$Revision: 6940 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-16 13:37:04 +0200 (Wed, 16 Aug 2017) $");
+  script_version("$Revision: 6968 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-21 06:31:11 +0200 (Mon, 21 Aug 2017) $");
   script_tag(name: "creation_date", value: "2017-08-16 11:05:37 +0200 (Wed, 16 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2013-1434", "CVE-2013-1435", "CVE-2013-5588", "CVE-2013-5589", "CVE-2014-2327", "CVE-2014-2328", "CVE-2014-2708", "CVE-2014-2709", "CVE-2014-4002", "CVE-2014-5025", "CVE-2014-5026", "CVE-2014-5261", "CVE-2014-5262", "CVE-2017-1000031", "CVE-2017-1000032");
-  script_bugtraq_id("61657", "62001", "62005", "66392", "66387", "66555", "66630", "68257", "68759", "69213");
+  script_bugtraq_id(61657, 62001, 62005, 66392, 66387, 66555, 66630, 68257, 68759, 69213);
 
   script_tag(name: "qod_type", value: "remote_banner_unreliable");
 

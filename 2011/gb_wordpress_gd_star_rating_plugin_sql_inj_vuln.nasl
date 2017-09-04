@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_gd_star_rating_plugin_sql_inj_vuln.nasl 3108 2016-04-19 06:58:41Z benallard $
+# $Id: gb_wordpress_gd_star_rating_plugin_sql_inj_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # WordPress GD Star Rating Plugin 'votes' Parameter SQL Injection Vulnerability
 #
@@ -51,8 +51,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3108 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 08:58:41 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_bugtraq_id(48166);
   script_tag(name:"cvss_base", value:"7.5");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://downloads.securityfocus.com/vulnerabilities/exploits/48166.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if WordPress GD Star Rating plugin is vulnerable to SQL Injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

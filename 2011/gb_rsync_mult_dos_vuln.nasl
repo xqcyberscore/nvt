@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rsync_mult_dos_vuln.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: gb_rsync_mult_dos_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Rsync Multiple Denial of Service Vulnerabilities (Windows)
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is installed with Rsync and is prone to multiple denial
 if(description)
 {
   script_id(801772);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_cve_id("CVE-2011-1097");
   script_tag(name:"cvss_base", value:"5.1");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0792");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of rsync");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

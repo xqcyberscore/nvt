@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_sec_bypass_n_info_disc_vuln_win.nasl 6938 2017-08-16 11:10:00Z santu $
+# $Id: gb_apache_tomcat_sec_bypass_n_info_disc_vuln_win.nasl 7026 2017-08-31 06:13:04Z asteins $
 #
 # Apache Tomcat Security Bypass and Information Disclosure Vulnerabilities (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811298");
-  script_version("$Revision: 6938 $");
+  script_version("$Revision: 7026 $");
   script_cve_id("CVE-2016-6794", "CVE-2016-0762", "CVE-2016-5018", "CVE-2016-6796",
                 "CVE-2016-6797");
   script_bugtraq_id(93940, 93944, 93939, 93942, 93943);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-16 13:10:00 +0200 (Wed, 16 Aug 2017) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 08:13:04 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-08-11 14:49:43 +0530 (Fri, 11 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat Security Bypass and Information Disclosure Vulnerabilities (Windows)");

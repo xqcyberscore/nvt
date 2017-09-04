@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_impress_remote_rce_vuln_macosx.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_libreoffice_impress_remote_rce_vuln_macosx.nasl 6995 2017-08-23 11:52:03Z teissa $
 #
 # LibreOffice Impress Remote Socket Manager RCE Vulnerability Nov14 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804886");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 6995 $");
   script_cve_id("CVE-2014-3693");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-11-19 15:18:35 +0530 (Wed, 19 Nov 2014)");
   script_name("LibreOffice Impress Remote Socket Manager RCE Vulnerability Nov14 (Mac OS X)");
 
@@ -63,7 +63,6 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/62132");
   script_xref(name:"URL", value:"https://www.libreoffice.org/about-us/security/advisories/CVE-2014-3693");
 
-  script_summary("Check for the vulnerable version of LibreOffice on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

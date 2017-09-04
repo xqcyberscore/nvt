@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_cookie_sec_bypass_vuln_win.nasl 3569 2016-06-21 07:43:44Z benallard $
+# $Id: gb_apple_safari_cookie_sec_bypass_vuln_win.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Apple Safari Secure Cookie Security Bypass Vulnerability (Windows)
 #
@@ -48,8 +48,8 @@ to security bypass vulnerability.";
 if(description)
 {
   script_id(802237);
-  script_version("$Revision: 3569 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:43:44 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_cve_id("CVE-2008-7296");
   script_bugtraq_id(49136);
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://michael-coates.blogspot.com/2010/01/cookie-forcing-trust-your-cookies-no.html");
   script_xref(name : "URL" , value : "http://scarybeastsecurity.blogspot.com/2011/02/some-less-obvious-benefits-of-hsts.html");
 
-  script_summary("Check for the version of Apple Safari");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");

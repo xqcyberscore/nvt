@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prime_dcnm_cisco-sa-20170607-dcnm1.nasl 6292 2017-06-08 06:36:42Z ckuersteiner $
+# $Id: gb_cisco_prime_dcnm_cisco-sa-20170607-dcnm1.nasl 7012 2017-08-25 13:16:07Z asteins $
 #
 # Cisco Prime Data Center Network Manager Debug Remote Code Execution Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-6639");
  script_tag(name: "cvss_base", value: "10.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 6292 $");
+ script_version("$Revision: 7012 $");
 
  script_name("Cisco Prime Data Center Network Manager Debug Remote Code Execution Vulnerability");
 
@@ -57,7 +57,7 @@ about the affected software or execute arbitrary code with root privileges on th
  script_tag(name: "qod_type", value: "remote_banner");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-06-08 08:36:42 +0200 (Thu, 08 Jun 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-08-25 15:16:07 +0200 (Fri, 25 Aug 2017) $");
  script_tag(name: "creation_date", value: "2017-06-08 10:09:07 +0700 (Thu, 08 Jun 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -70,8 +70,6 @@ about the affected software or execute arbitrary code with root privileges on th
 
 include("host_details.inc");
 include("version_func.inc");
-
-display(get_app_port(cpe: CPE), "\n");
 
 if (!version = get_app_version(cpe: CPE))
   exit(0);

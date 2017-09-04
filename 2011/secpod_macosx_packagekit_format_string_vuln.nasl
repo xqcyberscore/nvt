@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_macosx_packagekit_format_string_vuln.nasl 3113 2016-04-19 09:57:04Z benallard $
+# $Id: secpod_macosx_packagekit_format_string_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Apple Mac OS X PackageKit Format String Vulnerability
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(902715);
-  script_version("$Revision: 3113 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 11:57:04 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-23 07:05:00 +0200 (Tue, 23 Aug 2011)");
   script_cve_id("CVE-2010-4013");
   script_bugtraq_id(45693);
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce//2011//Jan/msg00000.html");
 
   script_copyright("Copyright (c) 2011 SecPod");
-  script_summary("Checks for Mac OS X/Server version 10.6.6");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");

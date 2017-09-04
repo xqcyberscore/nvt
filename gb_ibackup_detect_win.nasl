@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibackup_detect_win.nasl 2644 2016-02-12 06:47:32Z antu123 $
+# $Id: gb_ibackup_detect_win.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # iBackup Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805201");
-  script_version("$Revision: 2644 $");
+  script_version("$Revision: 7000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 07:47:32 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-12-01 12:55:19 +0530 (Mon, 01 Dec 2014)");
   script_tag(name:"qod_type", value:"registry");
   script_name("iBackup Version Detection (Windows)");
@@ -41,7 +41,6 @@ if(description)
   The script logs in via smb, searches for iBackup in the registry
   and gets the version from file.");
 
-  script_summary("Check for the presence of iBackup");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

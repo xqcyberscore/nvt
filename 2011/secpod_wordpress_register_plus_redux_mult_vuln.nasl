@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_register_plus_redux_mult_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_wordpress_register_plus_redux_mult_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # WordPress Register Plus Redux Plugin Multiple Vulnerabilities
 #
@@ -46,10 +46,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 7019 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-30 15:11:51 +0530 (Fri, 30 Dec 2011)");
   script_name("WordPress Register Plus Redux Plugin Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://websecurity.com.ua/5532/");
@@ -59,7 +59,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2011 SecPod");
-  script_summary("Check if WordPress Register Plus Plugin Redux is vulnerable to Path Disclosure");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");

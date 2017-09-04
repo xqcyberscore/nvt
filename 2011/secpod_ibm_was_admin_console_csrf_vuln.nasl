@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_was_admin_console_csrf_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_ibm_was_admin_console_csrf_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # IBM WebSphere Application Server Multiple CSRF Vulnerabilities
 #
@@ -45,8 +45,8 @@ prone to cross-site request forgery vulnerabilities.";
 if(description)
 {
   script_id(902610);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_cve_id("CVE-2010-3271");
   script_bugtraq_id(48305);
@@ -56,7 +56,6 @@ if(description)
 
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of IBM WebSphere Application Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web Servers");

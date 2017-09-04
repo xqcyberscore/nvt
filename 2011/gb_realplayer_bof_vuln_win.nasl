@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_bof_vuln_win.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_realplayer_bof_vuln_win.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # RealNetworks RealPlayer Buffer Overflow Vulnerability (Windows)
 #
@@ -47,8 +47,8 @@ tag_summary = "This host is installed with RealPlayer which is prone to Buffer
 if(description)
 {
   script_id(801749);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-18 17:42:11 +0100 (Fri, 18 Feb 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0240");
   script_xref(name : "URL" , value : "http://service.real.com/realplayer/security/01272011_player/en/");
 
-  script_summary("Check for the version of RealPlayer");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

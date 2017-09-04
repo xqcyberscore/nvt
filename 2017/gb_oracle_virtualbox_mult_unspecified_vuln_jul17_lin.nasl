@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_unspecified_vuln_jul17_lin.nasl 6765 2017-07-20 06:20:42Z santu $
+# $Id: gb_oracle_virtualbox_mult_unspecified_vuln_jul17_lin.nasl 7013 2017-08-25 13:17:51Z asteins $
 #
 # Oracle Virtualbox Multiple Unspecified Vulnerabilities July17 (Linux)
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811530");
-  script_version("$Revision: 6765 $");
+  script_version("$Revision: 7013 $");
   script_cve_id("CVE-2017-10204", "CVE-2017-10129", "CVE-2017-10210", "CVE-2017-10233", 
                 "CVE-2017-10236", "CVE-2017-10237", "CVE-2017-10238", "CVE-2017-10238",
                 "CVE-2017-10240", "CVE-2017-10241", "CVE-2017-10242", "CVE-2017-10235",
                 "CVE-2017-10209", "CVE-2017-10187");
   script_bugtraq_id(99631, 99638, 99640, 99642, 99645, 99667, 99668, 99683, 99687, 99689,
                     99705, 99709, 99711);
-  script_tag(name:"cvss_base", value:"6.3");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 08:20:42 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 15:17:51 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2017-07-19 11:45:06 +0530 (Wed, 19 Jul 2017)");
   script_name("Oracle Virtualbox Multiple Unspecified Vulnerabilities July17 (Linux)");
 

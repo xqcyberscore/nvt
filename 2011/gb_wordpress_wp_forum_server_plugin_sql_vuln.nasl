@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_forum_server_plugin_sql_vuln.nasl 3108 2016-04-19 06:58:41Z benallard $
+# $Id: gb_wordpress_wp_forum_server_plugin_sql_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # WordPress WP Forum Server 'topic' Parameter SQL Injection Vulnerability
 #
@@ -48,8 +48,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3108 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 08:58:41 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-10 13:33:28 +0100 (Thu, 10 Mar 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.htbridge.ch/advisory/sql_injection_in_wp_forum_server_wordpress_plugin.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if WordPress is vulnerable to SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

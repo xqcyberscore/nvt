@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_ftp_anonymous_logins.nasl 3498 2016-06-13 12:33:25Z antu123 $
+# $Id: gb_nmap_ftp_anonymous_logins.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Wrapper for Nmap FTP Anon NSE script.
 #
@@ -34,13 +34,12 @@ tag_summary = "This script attempts to check if an FTP server allows anonymous l
 if(description)
 {
   script_id(801260);
-  script_version("$Revision: 3498 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:33:25 +0200 (Mon, 13 Jun 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2010-08-30 16:16:51 +0200 (Mon, 30 Aug 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Nmap NSE: FTP Anon");
-  script_summary("Check if the server allows anonymous logins");
   script_category(ACT_GATHER_INFO);
     script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");

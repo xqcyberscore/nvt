@@ -30,7 +30,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804094";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 6995 $");
   script_cve_id("CVE-2014-1477", "CVE-2014-1478", "CVE-2014-1479", "CVE-2014-1480",
                 "CVE-2014-1481", "CVE-2014-1482", "CVE-2014-1483", "CVE-2014-1485",
                 "CVE-2014-1486", "CVE-2014-1487", "CVE-2014-1488", "CVE-2014-1490",
@@ -39,7 +39,7 @@ if(description)
                     65334, 65330, 65321, 65335, 65332);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-02-11 19:41:13 +0530 (Tue, 11 Feb 2014)");
   script_name("SeaMonkey Multiple Vulnerabilities-01 Feb14 (Windows)");
 
@@ -93,7 +93,6 @@ For updates refer to http://www.mozilla.com/en-US/seamonkey";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56767");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2014/mfsa2014-01.html");
-  script_summary("Check for the vulnerable version of SeaMonkey on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

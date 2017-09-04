@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_iwork_9_1_upd.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_macosx_iwork_9_1_upd.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Apple Mac OS X iWork 9.1 Update
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(802146);
-  script_version("$Revision: 3100 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_cve_id("CVE-2010-3785", "CVE-2010-3786", "CVE-2011-1417");
   script_bugtraq_id(44812, 44799, 46832);
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce//2011//Jul/msg00003.html");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Checks for Mac OS X iWork 9.1 Update");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gb_iwork_detect_macosx.nasl");

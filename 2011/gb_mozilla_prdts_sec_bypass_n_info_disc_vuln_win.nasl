@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_sec_bypass_n_info_disc_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: gb_mozilla_prdts_sec_bypass_n_info_disc_vuln_win.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Mozilla Products Information Disclosure and Security Bypass Vulnerabilities (Windows)
 #
@@ -46,8 +46,8 @@ tag_summary = "The host is installed with Mozilla firefox/seamonkey and is prone
 if(description)
 {
   script_id(802152);
-  script_version("$Revision: 6444 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-09 17:36:48 +0200 (Fri, 09 Sep 2011)");
   script_cve_id("CVE-2011-2990", "CVE-2011-2993");
   script_bugtraq_id(49246, 49248);
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/45581");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-29.html");
 
-  script_summary("Check for the version of Mozilla Firefox/SeaMonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

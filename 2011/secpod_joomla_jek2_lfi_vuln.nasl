@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_jek2_lfi_vuln.nasl 5648 2017-03-21 09:52:17Z cfi $
+# $Id: secpod_joomla_jek2_lfi_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Joomla Component JE K2 Story Submit Local File Inclusion Vulnerability
 #
@@ -46,8 +46,8 @@ prone to local file inclusion vulnerability.";
 if(description)
 {
   script_id(902542);
-  script_version("$Revision: 5648 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17556/");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Joomla CMS is vulnerable to local file inclusion");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

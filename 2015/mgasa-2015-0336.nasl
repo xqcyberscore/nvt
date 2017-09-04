@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0336.nasl 6563 2017-07-06 12:23:47Z cfischer $
+# $Id: mgasa-2015-0336.nasl 7026 2017-08-31 06:13:04Z asteins $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,17 +24,17 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130050");
-script_version("$Revision: 6563 $");
+script_version("$Revision: 7026 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:42:02 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:23:47 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-08-31 08:13:04 +0200 (Thu, 31 Aug 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0336");
 script_tag(name: "insight", value: "Updated hplip packages fix security vulnerability: It was reported that the hp-plugin utility, included in the hplip package, downloads a binary driver and verifies it via a key specified by the key's short ID. A man-in-the-middle attacker could use this flaw to generate a key with the expected short ID and trick a user into downloading a malicious binary (CVE-2015-0839)."); 
 script_tag(name : "solution", value : "update software");
 script_tag(name : "solution_type", value : "VendorFix");
 script_xref(name : "URL" , value : "https://advisories.mageia.org/MGASA-2015-0336.html");
 script_cve_id("CVE-2015-0839");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"6.8");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_axis2_services_detect.nasl 3690 2016-07-12 18:36:57Z cfi $
+# $Id: sw_apache_axis2_services_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Apache Axis2 Web Services Detection
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:apache:axis2';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.111008");
- script_version("$Revision: 3690 $");
- script_tag(name:"last_modification", value:"$Date: 2016-07-12 20:36:57 +0200 (Tue, 12 Jul 2016) $");
+ script_version("$Revision: 7000 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
  script_tag(name:"creation_date", value:"2015-03-20 08:00:00 +0100 (Fri, 20 Mar 2015)");
 
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,6 @@ if (description)
 
  script_name("Apache Axis2 Web Services Detection");
 
- script_summary("Checks for the presence of Apache Axis2 Web Services");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");

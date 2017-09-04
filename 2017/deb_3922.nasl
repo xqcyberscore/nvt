@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3922.nasl 6835 2017-08-02 12:55:28Z cfischer $
+# $Id: deb_3922.nasl 7026 2017-08-31 06:13:04Z asteins $
 # Auto-generated from advisory DSA 3922-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703922);
-    script_version("$Revision: 6835 $");
+    script_version("$Revision: 7026 $");
     script_cve_id("CVE-2017-3635", "CVE-2017-3636", "CVE-2017-3641", "CVE-2017-3648", "CVE-2017-3651", "CVE-2017-3652", "CVE-2017-3653");
     script_name("Debian Security Advisory DSA 3922-1 (mysql-5.5 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-08-02 14:55:28 +0200 (Wed, 02 Aug 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-08-31 08:13:04 +0200 (Thu, 31 Aug 2017) $");
     script_tag(name: "creation_date", value: "2017-07-28 00:00:00 +0200 (Fri, 28 Jul 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"4.9");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

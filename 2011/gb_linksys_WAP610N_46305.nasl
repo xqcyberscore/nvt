@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_WAP610N_46305.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_linksys_WAP610N_46305.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Linksys WAP610N Unauthenticated Root Access Security Vulnerability
 #
@@ -38,8 +38,8 @@ other versions may also be affected.";
 if (description)
 {
  script_id(103080);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-02-18 16:40:55 +0100 (Fri, 18 Feb 2011)");
  script_bugtraq_id(46305);
  script_tag(name:"cvss_base", value:"10.0");
@@ -52,7 +52,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securenetwork.it/ricerca/advisory/download/SN-2010-08.txt");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if the remote WAP610N is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Gain a shell remotely");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_link_directory_sql_inj_vuln.nasl 2972 2016-03-29 17:39:08Z cfi $
+# $Id: gb_php_link_directory_sql_inj_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # PHP Link Directory Software 'sbcat_id' Parameter SQL Injection Vulnerability
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801836");
-  script_version("$Revision: 2972 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-29 19:39:08 +0200 (Tue, 29 Mar 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_bugtraq_id(46048);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("PHP Link Directory Software 'sbcat_id' Parameter SQL Injection Vulnerability");
-  script_summary("Determine if PHP link Directory software is prone to SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wptouch_plugin_wptouch_settings_xss.nasl 4590 2016-11-22 08:45:15Z cfi $
+# $Id: gb_wordpress_wptouch_plugin_wptouch_settings_xss.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # WordPress WPtouch Plugin 'wptouch_settings' Parameter Cross Site Scripting Vulnerability
 #
@@ -49,8 +49,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 4590 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-22 09:45:15 +0100 (Tue, 22 Nov 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_bugtraq_id(45139);
   script_cve_id("CVE-2010-4779");
@@ -61,7 +61,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.htbridge.ch/advisory/xss_in_wptouch_wordpress_plugin.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("check for WordPress WPtouch plugin Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

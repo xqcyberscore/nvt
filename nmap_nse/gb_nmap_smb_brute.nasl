@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_smb_brute.nasl 3498 2016-06-13 12:33:25Z antu123 $
+# $Id: gb_nmap_smb_brute.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Wrapper for Nmap SMB Brute NSE script.
 #
@@ -35,13 +35,12 @@ tag_summary = "This script attempts to get SMB login credentials by guessing
 if(description)
 {
   script_id(801268);
-  script_version("$Revision: 3498 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:33:25 +0200 (Mon, 13 Jun 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2010-09-08 13:20:44 +0200 (Wed, 08 Sep 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Nmap NSE: SMB Brute");
-  script_summary("Check for SMB Login Credentials");
   script_category(ACT_ATTACK);
     script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");

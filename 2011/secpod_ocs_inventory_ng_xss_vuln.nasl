@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ocs_inventory_ng_xss_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_ocs_inventory_ng_xss_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # OCS Inventory NG Persistent Cross-site Scripting Vulnerability
 #
@@ -40,12 +40,12 @@ tag_summary = "This host is running OCS Inventory NG and is prone to cross site
 if(description)
 {
   script_id(902749);
-  script_version("$Revision: 3570 $");
+  script_version("$Revision: 7044 $");
   script_cve_id("CVE-2011-4024");
   script_bugtraq_id(50011);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-11-15 16:35:51 +0530 (Tue, 15 Nov 2011)");
   script_name("OCS Inventory NG Persistent Cross-site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46311");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18005/");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of OCS Inventory NG");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

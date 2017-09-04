@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xzeres_442SR_wind_turbine_detect.nasl 2898 2016-03-20 13:17:20Z cfi $
+# $Id: gb_xzeres_442SR_wind_turbine_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # XZERES 442SR Wind Turbine Remote Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807020");
-  script_version("$Revision: 2898 $");
+  script_version("$Revision: 7000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-20 14:17:20 +0100 (Sun, 20 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-01-04 13:19:12 +0530 (Mon, 04 Jan 2016)");
   script_name("XZERES 442SR Wind Turbine Remote Detection");
-  script_summary("Check the presence of XZERES 442SR Wind Turbine");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

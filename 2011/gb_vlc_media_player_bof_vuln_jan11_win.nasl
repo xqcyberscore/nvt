@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_bof_vuln_jan11_win.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_vlc_media_player_bof_vuln_jan11_win.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # VLC Media Player 'CDG decoder' multiple buffer overflow vulnerabilities (Windows)
 #
@@ -41,8 +41,8 @@ tag_summary = "The host is installed with VLC Media Player and is prone multiple
 if(description)
 {
   script_id(801726);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-31 05:37:34 +0100 (Mon, 31 Jan 2011)");
   script_cve_id("CVE-2011-0021");
   script_tag(name:"cvss_base", value:"9.3");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://openwall.com/lists/oss-security/2011/01/20/3");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check for the version of VLC Media Player");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");

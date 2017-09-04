@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2867.nasl 6610 2017-07-07 12:06:40Z cfischer $
+# $Id: deb_2867.nasl 6995 2017-08-23 11:52:03Z teissa $
 # Auto-generated from advisory DSA 2867-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -62,17 +62,16 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(702867);
-    script_version("$Revision: 6610 $");
+    script_version("$Revision: 6995 $");
     script_cve_id("CVE-2014-1471", "CVE-2014-1694");
     script_name("Debian Security Advisory DSA 2867-1 (otrs2 - several vulnerabilities)");
-    script_tag(name: "last_modification", value:"$Date: 2017-07-07 14:06:40 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
     script_tag(name: "creation_date", value:"2014-02-23 00:00:00 +0100 (Sun, 23 Feb 2014)");
     script_tag(name: "cvss_base", value:"7.5");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-2867.html");
 
-    script_summary("Debian Security Advisory DSA 2867-1 (otrs2 - several vulnerabilities)");
 
     script_category(ACT_GATHER_INFO);
 

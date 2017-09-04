@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_atutor_mult_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: secpod_atutor_mult_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Atutor Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902728");
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-09-22 10:24:03 +0200 (Thu, 22 Sep 2011)");
   script_bugtraq_id(49057);
   script_tag(name:"cvss_base", value:"5.0");
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2011-5037.php");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103765/ZSL-2011-5037.txt");
 
-  script_summary("Check if Atutor is vulnerable to Cross Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

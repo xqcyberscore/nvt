@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitweaver_49864.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_bitweaver_49864.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Bitweaver Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -41,8 +41,8 @@ CPE = "cpe:/a:bitweaver:bitweaver";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_version("$Revision: 7024 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-10-05 13:15:09 +0200 (Wed, 05 Oct 2011)");
  script_bugtraq_id(49864);
  script_tag(name:"cvss_base", value:"2.6");
@@ -56,7 +56,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/519921");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed Bitweaver is vuolnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_cgi_info_disc_vuln_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
+# $Id: gb_python_cgi_info_disc_vuln_win.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Python CGIHTTPServer Module Information Disclosure Vulnerability
 #
@@ -46,8 +46,8 @@ tag_summary = "This host is installed with Python and is prone to Information
 if(description)
 {
   script_id(801796);
-  script_version("$Revision: 6519 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2011-1015");
   script_bugtraq_id(46541);
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1025489");
   script_xref(name : "URL" , value : "http://hg.python.org/cpython/rev/c6c4398293bd/");
 
-  script_summary("Check for vulnerable version of Python");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_detect_win.nasl 6516 2017-07-04 12:20:47Z cfischer $
+# $Id: gb_openssl_detect_win.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # OpenSSL Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800257");
-  script_version("$Revision: 6516 $");
+  script_version("$Revision: 7000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("OpenSSL Version Detection (Windows)");
@@ -48,7 +48,6 @@ version from registry";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Set Version of OpenSSL in KB for Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");

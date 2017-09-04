@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongoose_45602.nasl 2523 2016-01-28 12:32:14Z cfi $
+# $Id: gb_mongoose_45602.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Mongoose 'Content-Length' HTTP Header Remote Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103004");
- script_version("$Revision: 2523 $");
- script_tag(name:"last_modification", value:"$Date: 2016-01-28 13:32:14 +0100 (Thu, 28 Jan 2016) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-01-03 14:40:34 +0100 (Mon, 03 Jan 2011)");
  script_bugtraq_id(45602);
  script_tag(name:"cvss_base", value:"5.0");
@@ -39,7 +39,6 @@ if(description)
  script_xref(name:"URL", value:"http://www.johnleitch.net/Vulnerabilities/Mongoose.2.11.Denial.Of.Service/74");
  script_xref(name:"URL", value:"http://mongoose.googlecode.com/files/mongoose-2.11.exe");
 
- script_summary("Determine if Mongoose is prone to a remote denial-of-service vulnerability");
  script_category(ACT_DENIAL);
  script_family("Web Servers");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hastymail2_sec_bypass_vuln.nasl 5659 2017-03-21 11:24:51Z cfi $
+# $Id: gb_hastymail2_sec_bypass_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Hastymail2 Session Cookie Security Bypass Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "The host is running Hastymail2 and is prone to security bypass
 if(description)
 {
   script_id(801577);
-  script_version("$Revision: 5659 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:24:51 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_cve_id("CVE-2009-5051");
   script_tag(name:"cvss_base", value:"5.0");
@@ -48,7 +48,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.hastymail.org/security/");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Hastymail2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

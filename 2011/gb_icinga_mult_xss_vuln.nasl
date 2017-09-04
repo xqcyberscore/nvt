@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icinga_mult_xss_vuln.nasl 3115 2016-04-19 10:09:30Z benallard $
+# $Id: gb_icinga_mult_xss_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Icinga Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:icinga:icinga';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801866");
-  script_version("$Revision: 3115 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:09:30 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-16 15:16:52 +0100 (Wed, 16 Mar 2011)");
   script_bugtraq_id(46788);
   script_tag(name:"cvss_base", value:"4.3");
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.rul3z.de/advisories/SSCHADV2011-001.txt");
   script_xref(name : "URL" , value : "http://www.rul3z.de/advisories/SSCHADV2011-003.txt");
 
-  script_summary("Check if Icinga is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

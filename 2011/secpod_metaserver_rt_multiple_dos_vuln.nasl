@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_metaserver_rt_multiple_dos_vuln.nasl 3113 2016-04-19 09:57:04Z benallard $
+# $Id: secpod_metaserver_rt_multiple_dos_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # MetaServer RT Multiple Remote Denial of Service Vulnerabilities
 #
@@ -45,8 +45,8 @@ denial of service vulnerabilities.";
 if(description)
 {
   script_id(902569);
-  script_version("$Revision: 3113 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 11:57:04 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-22 10:24:03 +0200 (Thu, 22 Sep 2011)");
   script_bugtraq_id(49696);
   script_tag(name:"cvss_base", value:"10.0");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://aluigi.altervista.org/adv/metaserver_1-adv.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if MetaServer RT is prone to denial of service vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Denial of Service");

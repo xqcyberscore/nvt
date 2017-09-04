@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vlc_media_player_mem_crptn_vuln_win.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_vlc_media_player_mem_crptn_vuln_win.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # VLC Media Player AMV and NSV Data Processing Memory Corruption vulnerability (Windows)
 #
@@ -40,8 +40,8 @@ tag_summary = "The host is installed with VLC Media Player and is prone to memor
 if(description)
 {
   script_id(902406);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-01 15:39:52 +0200 (Fri, 01 Apr 2011)");
   script_cve_id("CVE-2010-3275", "CVE-2010-3276");
   script_bugtraq_id(47012);
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0759");
 
   script_copyright("Copyright (c) 2011 SecPod");
-  script_summary("Check for the version of VLC Media Player");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");

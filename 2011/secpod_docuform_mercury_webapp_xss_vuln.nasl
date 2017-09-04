@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_docuform_mercury_webapp_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_docuform_mercury_webapp_xss_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # docuFORM Mercury WebApp Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -47,8 +47,8 @@ to multiple cross-site scripting vulnerabilities.";
 if(description)
 {
   script_id(902414);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-02 12:20:04 +0200 (Mon, 02 May 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/100625/ZSL-2011-5010.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Confirm the cross-site scripting vulnerability in docuFORM Mercury WebApp");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

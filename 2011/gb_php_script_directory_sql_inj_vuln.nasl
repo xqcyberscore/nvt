@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_script_directory_sql_inj_vuln.nasl 3102 2016-04-18 14:46:07Z benallard $
+# $Id: gb_php_script_directory_sql_inj_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # PHP Script Directory Software 'sbcat_id' SQL Injection Vulnerability
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801729");
-  script_version("$Revision: 3102 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:46:07 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("PHP Script Directory Software 'sbcat_id' Parameter SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/16069/");
 
-  script_summary("Determine if PHP Script Directory software is prone to SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

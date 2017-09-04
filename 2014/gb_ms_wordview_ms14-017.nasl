@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_wordview_ms14-017.nasl 2485 2016-01-22 13:30:20Z benallard $
+# $Id: gb_ms_wordview_ms14-017.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Microsoft Office Word Viewer Remote Code Execution Vulnerabilities (2949660)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(804424);
-  script_version("$Revision: 2485 $");
+  script_version("$Revision: 7000 $");
   script_cve_id("CVE-2014-1757", "CVE-2014-1758", "CVE-2014-1761");
   script_bugtraq_id(66385, 66614, 66629);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 14:30:20 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-04-09 09:37:29 +0530 (Wed, 09 Apr 2014)");
   script_name("Microsoft Office Word Viewer Remote Code Execution Vulnerabilities (2949660)");
 
@@ -79,7 +79,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-017";
 
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2878304");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms14-017");
-  script_summary("Check for the vulnerable 'WordViewer.exe' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

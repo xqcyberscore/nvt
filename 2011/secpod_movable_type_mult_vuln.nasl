@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_movable_type_mult_vuln.nasl 4590 2016-11-22 08:45:15Z cfi $
+# $Id: secpod_movable_type_mult_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Movable Type Multiple Vulnerabilities
 #
@@ -44,8 +44,8 @@ CPE = "cpe:/a:sixapart:movable_type";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 4590 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-22 09:45:15 +0100 (Tue, 22 Nov 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-04-01 15:39:52 +0200 (Fri, 01 Apr 2011)");
   script_cve_id("CVE-2010-3921", "CVE-2010-3922", "CVE-2010-4509", "CVE-2010-4511");
   script_bugtraq_id(45380, 45383, 45250, 45253);
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.movabletype.org/documentation/appendices/release-notes/movable-type-504-435-release-notes.html");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Movable Type");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");

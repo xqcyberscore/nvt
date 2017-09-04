@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_justsystems_ichitaro_prdts_dos_vuln.nasl 6515 2017-07-04 11:54:15Z cfischer $
+# $Id: secpod_justsystems_ichitaro_prdts_dos_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # JustSystems Ichitaro Products Denial of Service Vulnerability
 #
@@ -46,8 +46,8 @@ tag_summary = "This host is installed with JustSystems Ichitaro product(s) and i
 if(description)
 {
   script_id(902396);
-  script_version("$Revision: 6515 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_bugtraq_id(48283);
   script_cve_id("CVE-2011-1331");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.symantec.com/connect/blogs/targeted-attacks-2011-using-ichitaro-zero-day-vulnerability");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Ichitaro Product(s)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Denial of Service");

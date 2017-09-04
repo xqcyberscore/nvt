@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ffftp_untrusted_search_path_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_ffftp_untrusted_search_path_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # FFFTP Untrusted Search Path Vulnerability (Windows)
 #
@@ -38,13 +38,13 @@ tag_summary = "The host is running FFFTP and is prone to untrusted search path
 if(description)
 {
   script_id(802505);
-  script_version("$Revision: 3117 $");
+  script_version("$Revision: 7024 $");
   script_cve_id("CVE-2011-3991");
   script_bugtraq_id(50412);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2011-11-08 16:10:17 +0530 (Tue, 08 Nov 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_name("FFFTP Untrusted Search Path Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46649");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/71020");
@@ -53,7 +53,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of FFFTP");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_ffftp_detect.nasl");

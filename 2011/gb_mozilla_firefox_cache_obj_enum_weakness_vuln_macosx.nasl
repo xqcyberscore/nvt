@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_cache_obj_enum_weakness_vuln_macosx.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_mozilla_firefox_cache_obj_enum_weakness_vuln_macosx.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Mozilla Firefox Cache Objects History Enumeration Weakness Vulnerability (MAC OS X)
 #
@@ -45,17 +45,16 @@ objects history enumeration weakness vulnerability.";
 if(description)
 {
   script_id(802548);
-  script_version("$Revision: 3100 $");
+  script_version("$Revision: 7006 $");
   script_cve_id("CVE-2011-4688");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-09 17:53:11 +0530 (Fri, 09 Dec 2011)");
   script_name("Mozilla Firefox Cache Objects History Enumeration Weakness Vulnerability (MAC OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47090");
   script_xref(name : "URL" , value : "http://lcamtuf.coredump.cx/cachetime/");
 
-  script_summary("Check for the version of Mozilla Firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

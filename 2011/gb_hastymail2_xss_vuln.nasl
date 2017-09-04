@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hastymail2_xss_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_hastymail2_xss_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Hastymail2 'background' Attribute Cross-site scripting vulnerability
 #
@@ -40,8 +40,8 @@ tag_summary = "The host is running Hastymail2 and is prone to cross-site scripti
 if(description)
 {
   script_id(801576);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_cve_id("CVE-2010-4646");
   script_tag(name:"cvss_base", value:"4.3");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://openwall.com/lists/oss-security/2011/01/06/14");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Hastymail2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

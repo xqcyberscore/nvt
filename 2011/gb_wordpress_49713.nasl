@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_49713.nasl 5646 2017-03-21 09:37:44Z cfi $
+# $Id: gb_wordpress_49713.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # WordPress Adsense Extreme Plugin 'adsensextreme[lang]' Parameter Remote File Include Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103264");
- script_version("$Revision: 5646 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:37:44 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-09-22 13:43:24 +0200 (Thu, 22 Sep 2011)");
  script_bugtraq_id(49713);
  script_tag(name:"cvss_base", value:"7.5");
@@ -41,7 +41,6 @@ if (description)
  script_xref(name : "URL" , value : "http://wordpress.org/extend/plugins/adsense-extreme/");
  script_xref(name : "URL" , value : "http://wordpress.org/");
 
- script_summary("Determine if installed WordPres is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

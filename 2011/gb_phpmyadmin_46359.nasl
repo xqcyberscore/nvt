@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_46359.nasl 6945 2017-08-16 14:22:22Z cfischer $
+# $Id: gb_phpmyadmin_46359.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # phpMyAdmin Bookmark Security Bypass Vulnerability
 #
@@ -40,8 +40,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6945 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-16 16:22:22 +0200 (Wed, 16 Aug 2017) $");
+ script_version("$Revision: 7006 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-02-15 13:44:44 +0100 (Tue, 15 Feb 2011)");
  script_bugtraq_id(46359);
  script_tag(name:"cvss_base", value:"6.5");
@@ -55,7 +55,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.phpmyadmin.net/home_page/security/PMASA-2011-2.php");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed phpMyAdmin version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

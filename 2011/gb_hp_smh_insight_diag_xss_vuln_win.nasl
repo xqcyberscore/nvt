@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_insight_diag_xss_vuln_win.nasl 6413 2017-06-23 09:16:58Z cfischer $
+# $Id: gb_hp_smh_insight_diag_xss_vuln_win.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # HP SMH Insight Diagnostics Cross Site Scripting Vulnerability - Windows
 #
@@ -40,14 +40,13 @@ tag_summary = "The host is running HP SMH with Insight Diagnostics and is prone
 if(description)
 {
   script_id(800192);
-  script_version("$Revision: 6413 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:16:58 +0200 (Fri, 23 Jun 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-18 07:48:41 +0100 (Tue, 18 Jan 2011)");
   script_cve_id("CVE-2010-4111");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("HP SMH Insight Diagnostics Cross Site Scripting Vulnerability - Windows");
-  script_summary("Check HP SMH Insight Diagnostics Version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

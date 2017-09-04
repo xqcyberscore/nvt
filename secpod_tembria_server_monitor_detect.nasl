@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tembria_server_monitor_detect.nasl 2762 2016-03-03 09:12:30Z cfi $
+# $Id: secpod_tembria_server_monitor_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Tembria Server Monitor Version Detection
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901107");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2762 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-03 10:12:30 +0100 (Thu, 03 Mar 2016) $");
+  script_version("$Revision: 7000 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_name("Tembria Server Monitor Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
-  script_summary("Set the version of Tembria Server Monitor in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Product detection");

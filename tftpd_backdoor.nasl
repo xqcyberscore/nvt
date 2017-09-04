@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: tftpd_backdoor.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: tftpd_backdoor.nasl 7006 2017-08-25 11:51:20Z teissa $
 # Description: TFTP backdoor
 #
 # Authors:
@@ -25,14 +25,13 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.18263");
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 7006 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  
  script_name( "TFTP backdoor");
- script_summary("Retrieve an executable file through TFTP");
  
  script_category(ACT_GATHER_INFO);
  

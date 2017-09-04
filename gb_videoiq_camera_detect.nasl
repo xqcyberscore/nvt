@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_videoiq_camera_detect.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_videoiq_camera_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # VideoIQ Camera Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807357");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 7000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2016-08-23 15:56:59 +0530 (Tue, 23 Aug 2016)");
   script_name("VideoIQ Camera Remote Detection");
 
@@ -41,7 +41,6 @@ if(description)
   VideoIQ Camera.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the presence of VideoIQ Camera.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

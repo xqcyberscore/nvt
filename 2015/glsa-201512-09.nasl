@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
 # Description: Gentoo Linux security check
-# $Id: glsa-201512-09.nasl 6592 2017-07-07 09:16:27Z cfischer $
+# $Id: glsa-201512-09.nasl 6981 2017-08-22 06:39:29Z asteins $
 
 # Authors:
 # Eero Volotinen <eero.volotinen@solinor.com>
@@ -24,17 +24,17 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.121431");
-script_version("$Revision: 6592 $");
+script_version("$Revision: 6981 $");
 script_tag(name:"creation_date", value:"2015-12-31 11:46:02 +0200 (Thu, 31 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:16:27 +0200 (Fri, 07 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-08-22 08:39:29 +0200 (Tue, 22 Aug 2017) $");
 script_name("Gentoo Linux Local Check: https://security.gentoo.org/glsa/201512-09");
 script_tag(name: "insight", value: "Multiple vulnerabilities have been discovered in encfs. Please review the CVE identifiers referenced below for details."); 
 script_tag(name : "solution", value : "update software");
 script_tag(name : "solution_type", value : "VendorFix");
 script_xref(name : "URL" , value : "https://security.gentoo.org/glsa/201512-09");
 script_cve_id("CVE-2014-3462");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"5.0");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");

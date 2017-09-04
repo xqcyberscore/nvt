@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_safari_mult_vuln_macosx.nasl 3104 2016-04-18 14:53:56Z benallard $
+# $Id: gb_safari_mult_vuln_macosx.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Apple MAC OS X v10.6.8 Safari Multiple Vulnerabilities
 #
@@ -48,8 +48,8 @@ tag_summary = "This host is installed with Safari and is prone to multiple
 if(description)
 {
   script_id(802192);
-  script_version("$Revision: 3104 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:53:56 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-10-20 08:43:23 +0200 (Thu, 20 Oct 2011)");
   script_cve_id("CVE-2011-3229", "CVE-2011-3230", "CVE-2011-3231", "CVE-2011-1440",
                 "CVE-2011-2338", "CVE-2011-2339", "CVE-2011-2341", "CVE-2011-2351",
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/Security-announce//2011/Oct/msg00004.html");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Checks for Safari version on MAC OS X");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("macosx_safari_detect.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sshd_challenge_resp_authentication_bof_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_sshd_challenge_resp_authentication_bof_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # OpenSSH 'sshd' Challenge Response Authentication Buffer Overflow Vulnerability
 #
@@ -39,18 +39,17 @@ tag_summary = "The host is running OpenSSH sshd with ChallengeResponseAuthentica
 if(description)
 {
   script_id(802407);
-  script_version("$Revision: 3570 $");
+  script_version("$Revision: 7015 $");
   script_cve_id("CVE-2002-0640");
   script_bugtraq_id(5093);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-12-07 18:20:44 +0530 (Wed, 07 Dec 2011)");
   script_name("OpenSSH 'sshd' Challenge Response Authentication Buffer Overflow Vulnerability");
 
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_summary("Check if ChallengeResponseAuthentication is enabled in OpenSSH");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

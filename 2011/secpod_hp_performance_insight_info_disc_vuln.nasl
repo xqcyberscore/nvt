@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_performance_insight_info_disc_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_hp_performance_insight_info_disc_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # HP Performance Insight Remote Information Disclosure Vulnerability
 #
@@ -46,8 +46,8 @@ tag_summary = "This host is running HP Performance Insight and is prone to
 if(description)
 {
   script_id(902417);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_cve_id("CVE-2011-1536");
   script_tag(name:"cvss_base", value:"5.0");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02790298");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of HP Performance Insight");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

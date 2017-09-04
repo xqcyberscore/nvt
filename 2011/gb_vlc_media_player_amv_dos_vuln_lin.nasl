@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_amv_dos_vuln_lin.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_vlc_media_player_amv_dos_vuln_lin.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # VLC Media Player 'AMV' Denial of Service Vulnerability (Linux)
 #
@@ -44,8 +44,8 @@ of service vulnerability.";
 if(description)
 {
   script_id(802118);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-14 13:16:44 +0200 (Thu, 14 Jul 2011)");
   script_cve_id("CVE-2011-1931");
   script_bugtraq_id(47602);
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=624339");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check for the version of VLC Media Player");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_vlc_media_player_detect_lin.nasl");

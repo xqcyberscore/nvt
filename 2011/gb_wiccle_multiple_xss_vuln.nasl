@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wiccle_multiple_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_wiccle_multiple_xss_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Wiccle Web Builder CMS and iWiccle CMS Community Builder Multiple XSS Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802228");
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-04 10:01:53 +0200 (Thu, 04 Aug 2011)");
   script_bugtraq_id(44295);
   script_tag(name:"cvss_base", value:"4.3");
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SECPOD_Wiccle_Web_Builder_and_iWiccle_CMS_Community_Builder.txt");
   script_xref(name : "URL" , value : "http://www.wiccle.com/news/backstage_news/iwiccle/post/iwiccle_cms_community_builder_130_releas");
 
-  script_summary("Check if Wiccle CMS is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

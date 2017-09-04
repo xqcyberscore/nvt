@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_power_manager_csrf_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_hp_power_manager_csrf_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # HP Power Manager Cross Site Request Forgery (CSRF) and XSS Vulnerability
 #
@@ -56,8 +56,8 @@ request forgery and cross site scripting vulnerability.";
 if(description)
 {
   script_id(801591);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-15 08:14:35 +0100 (Tue, 15 Feb 2011)");
   script_cve_id("CVE-2011-0277", "CVE-2011-0280");
   script_bugtraq_id(46258);
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02711131");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check vulnerable version of HP Power Manager");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");

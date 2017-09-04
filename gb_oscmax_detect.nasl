@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oscmax_detect.nasl 2815 2016-03-09 14:49:24Z cfi $
+# $Id: gb_oscmax_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # osCMax e-commerce/shopping-cart Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805578");
-  script_version("$Revision: 2815 $");
+  script_version("$Revision: 7000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 15:49:24 +0100 (Wed, 09 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2015-06-01 17:44:36 +0530 (Mon, 01 Jun 2015)");
   script_name("osCMax e-commerce/shopping-cart Detection");
-  script_summary("Set version of 'osCMax e-commerce/shopping-cart' in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

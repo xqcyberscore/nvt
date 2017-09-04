@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2237.nasl 6560 2017-07-06 11:58:38Z cfischer $
+# $Id: ELSA-2015-2237.nasl 7026 2017-08-31 06:13:04Z asteins $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122759");
-script_version("$Revision: 6560 $");
+script_version("$Revision: 7026 $");
 script_tag(name:"creation_date", value:"2015-11-24 10:17:31 +0200 (Tue, 24 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-08-31 08:13:04 +0200 (Thu, 31 Aug 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2237");
 script_tag(name: "insight", value: "ELSA-2015-2237 -  rest security update - [0.7.92-3]- Fix tests/proxy-continuousResolves: #1250935[0.7.92-2]- Fix memory error due to implicit declaration of rest_proxy_call_get_urlResolves: #1183982"); 
 script_tag(name : "solution", value : "update software");
@@ -34,8 +34,8 @@ script_tag(name : "solution_type", value : "VendorFix");
 script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2015-2237");
 script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2015-2237.html");
 script_cve_id("CVE-2015-2675");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"5.0");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");

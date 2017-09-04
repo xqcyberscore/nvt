@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ollance_member_login_script_mult_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_ollance_member_login_script_mult_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Ollance Member Login Script Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802302");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-07 15:43:33 +0200 (Thu, 07 Jul 2011)");
   script_bugtraq_id(48529);
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,7 +36,6 @@ if(description)
   script_name("Ollance Member Login script Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17466/");
 
-  script_summary("Determine if Ollance Member Login script is prone to auth bypass");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_48554.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_webid_48554.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # WeBid 'converter.php' Multiple Remote PHP Code Injection Vulnerabilities
 #
@@ -45,8 +45,8 @@ CPE = "cpe:/a:webidsupport:webid";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_version("$Revision: 7029 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-07-06 13:49:20 +0200 (Wed, 06 Jul 2011)");
  script_bugtraq_id(48554);
  script_tag(name:"cvss_base", value:"7.5");
@@ -58,7 +58,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.webidsupport.com");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if WeBid is prone to Remote PHP Code Injection Vulnerabilities");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

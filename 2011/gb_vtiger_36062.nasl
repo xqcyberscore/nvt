@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_36062.nasl 5651 2017-03-21 10:09:09Z cfi $
+# $Id: gb_vtiger_36062.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # vtiger CRM Multiple Input Validation Vulnerabilities
 #
@@ -50,8 +50,8 @@ CPE = "cpe:/a:vtiger:vtiger_crm";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5651 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7019 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-03-07 13:16:38 +0100 (Mon, 07 Mar 2011)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -66,7 +66,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.ush.it/team/ush/hack-vtigercrm_504/vtigercrm_504.txt");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if vtiger is prone to local file-include vulnerabilities");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

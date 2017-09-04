@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_audition_ses_mult_bof_vuln_win.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_adobe_audition_ses_mult_bof_vuln_win.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Adobe Audition '.ses' Multiple Buffer Overflow Vulnerabilities (Windows)
 #
@@ -45,8 +45,8 @@ buffer overflow vulnerabilities.";
 if(description)
 {
   script_id(902373);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_cve_id("CVE-2011-0614", "CVE-2011-0615");
   script_bugtraq_id(47841, 47838);
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.coresecurity.com/content/Adobe-Audition-malformed-SES-file");
   
   script_copyright("Copyright (C) 2011 SecPod");
-  script_summary("Check the version of Adobe Audition");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");

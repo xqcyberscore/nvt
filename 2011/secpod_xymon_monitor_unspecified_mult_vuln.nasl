@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xymon_monitor_unspecified_mult_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_xymon_monitor_unspecified_mult_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Xymon Monitor Unspecified Multiple Cross Site Scripting Vulnerabilities
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is running Xymon Monitor and is prone to unspecified
 if(description)
 {
   script_id(902504);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-02 12:20:04 +0200 (Mon, 02 May 2011)");
   script_cve_id("CVE-2011-1716");
   script_bugtraq_id(47156);
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xymon.svn.sourceforge.net/viewvc/xymon/branches/4.3.2/Changes?revision=6673&view=markup");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Xymon Monitor");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

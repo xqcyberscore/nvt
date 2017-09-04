@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_copyscape_sql_inj_vuln.nasl 3116 2016-04-19 10:11:19Z benallard $
+# $Id: gb_copyscape_sql_inj_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Copyscape SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802122");
-  script_version("$Revision: 3116 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:11:19 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-18 15:23:56 +0200 (Mon, 18 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -36,7 +36,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.copyscape.com/premium.php");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/102970/copyscape-sql.txt");
 
-  script_summary("Determine if Copyscape is prone to SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

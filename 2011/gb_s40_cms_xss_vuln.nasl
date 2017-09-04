@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_s40_cms_xss_vuln.nasl 3104 2016-04-18 14:53:56Z benallard $
+# $Id: gb_s40_cms_xss_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # S40 Content Management System (CMS) Cross-Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801961");
-  script_version("$Revision: 3104 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:53:56 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-04 10:01:53 +0200 (Thu, 04 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -36,7 +36,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secpod.org/blog/?p=209");
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SECPOD_S40_CMS_XSS.txt");
 
-  script_summary("Check if S40 Content Management System (CMS) is prone to XSS vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

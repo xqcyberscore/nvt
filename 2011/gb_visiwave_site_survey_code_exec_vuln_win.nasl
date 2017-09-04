@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_visiwave_site_survey_code_exec_vuln_win.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: gb_visiwave_site_survey_code_exec_vuln_win.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # VisiWave Site Survey Arbitrary Code Execution Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with VisiWave Site Survey and is prone to
 if(description)
 {
   script_id(802101);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_cve_id("CVE-2011-2386");
   script_bugtraq_id(47948);
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.visiwave.com/blog/index.php?/archives/4-Version-2.1.9-Released.html");
   script_xref(name : "URL" , value : "http://www.stratsec.net/Research/Advisories/VisiWave-Site-Survey-Report-Trusted-Pointer-(SS-20");
 
-  script_summary("Check for the version of VisiWave Site Survey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

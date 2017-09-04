@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_subversion_detect.nasl 2833 2016-03-11 08:36:30Z benallard $
+# $Id: secpod_subversion_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Subversion Version Detection
 #
@@ -38,8 +38,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2833 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:36:30 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 7000 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2009-08-20 09:27:17 +0200 (Thu, 20 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -47,7 +47,6 @@ if(description)
   script_family("Product detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
-  script_summary("Detecion of installed version of Subversion");
   script_mandatory_keys("login/SSH/Linux");
   script_dependencies("gather-package-list.nasl");
   script_tag(name : "summary" , value : tag_summary);

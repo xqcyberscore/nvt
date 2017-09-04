@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_extcalender_sql_inj_n_auth_bypass_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_extcalender_sql_inj_n_auth_bypass_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # ExtCalendar2 SQL Injection and Authentcation Bypass Vulnerabilities
 #
@@ -27,16 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902772");
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 7015 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"creation_date", value:"2011-12-19 16:39:11 +0530 (Mon, 19 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_name("ExtCalendar2 SQL Injection and Authentcation Bypass Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17562/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103274/extcalendar2bypass-sql.txt");
 
-  script_summary("Check if ExtCalendar2 is vulnerable to Authentcation Bypass");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");

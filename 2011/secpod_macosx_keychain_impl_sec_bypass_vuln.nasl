@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_macosx_keychain_impl_sec_bypass_vuln.nasl 3113 2016-04-19 09:57:04Z benallard $
+# $Id: secpod_macosx_keychain_impl_sec_bypass_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Apple Mac OS X Keychain Certificate Settings Security Bypass Vulnerability
 #
@@ -45,8 +45,8 @@ bypass vulnerability.";
 if(description)
 {
   script_id(902474);
-  script_version("$Revision: 3113 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 11:57:04 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_cve_id("CVE-2011-3422");
   script_bugtraq_id(49429);
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id?1026002");
 
   script_copyright("Copyright (c) 2011 SecPod");
-  script_summary("Checks for Mac OS X/Server version");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");

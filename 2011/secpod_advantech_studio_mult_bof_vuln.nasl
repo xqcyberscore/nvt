@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_advantech_studio_mult_bof_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_advantech_studio_mult_bof_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # Advantech Studio Multiple Buffer Overflow Vulnerabilities
 #
@@ -46,8 +46,8 @@ tag_summary = "This host is installed with Advantech Studio and is prone multipl
 if(description)
 {
   script_id(902370);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_cve_id("CVE-2011-0340");
   script_bugtraq_id(47596);
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/1116");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of ISSymbol.ocx");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");

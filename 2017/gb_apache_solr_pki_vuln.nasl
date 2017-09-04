@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_pki_vuln.nasl 6782 2017-07-21 08:32:32Z cfischer $
+# $Id: gb_apache_solr_pki_vuln.nasl 7028 2017-08-31 09:47:19Z ckuersteiner $
 #
 # Apache Solr Inter-Node Communication Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:apache:solr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106934");
-  script_version("$Revision: 6782 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-21 10:32:32 +0200 (Fri, 21 Jul 2017) $");
+  script_version("$Revision: 7028 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-31 11:47:19 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name: "creation_date", value: "2017-07-10 14:38:21 +0700 (Mon, 10 Jul 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-7660"); 
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
   script_tag(name: "solution_type", value: "VendorFix");
 
@@ -80,12 +80,12 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_in_range(version: version, test_version: "5.3.0", test_version2: "5.5.4")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "5.5.0");
+  report = report_fixed_ver(installed_version: version, fixed_version: "5.5.5");
   security_message(port: port, data: report);
   exit(0);
 }
 
-if (version_in_range(version: version, test_version: "6.0.0", test_version2: "6.6.0")) {
+if (version_in_range(version: version, test_version: "6.0.0", test_version2: "6.5.1")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "6.6.0");
   security_message(port: port, data: report);
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_cisco-sa-20170816-cpi.nasl 6947 2017-08-17 04:21:42Z ckuersteiner $
+# $Id: gb_cisco_pis_cisco-sa-20170816-cpi.nasl 7026 2017-08-31 06:13:04Z asteins $
 #
 # Cisco Prime Infrastructure HTML Injection Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140307");
  script_cve_id("CVE-2017-6782");
- script_tag(name: "cvss_base", value: "5.5");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
- script_version("$Revision: 6947 $");
+ script_tag(name:"cvss_base", value:"4.9");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
+ script_version("$Revision: 7026 $");
 
  script_name("Cisco Prime Infrastructure HTML Injection Vulnerability");
 
@@ -57,7 +57,7 @@ code.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-08-17 06:21:42 +0200 (Thu, 17 Aug 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-08-31 08:13:04 +0200 (Thu, 31 Aug 2017) $");
  script_tag(name: "creation_date", value: "2017-08-17 10:04:36 +0700 (Thu, 17 Aug 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

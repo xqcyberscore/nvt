@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vaadin_xss_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_vaadin_xss_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Vaadin URI Parameter Cross Site Scripting Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:vaadin:vaadin';
 if(description)
 {
   script_id(902330);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-05 04:12:38 +0100 (Sat, 05 Feb 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -41,7 +41,6 @@ if(description)
 
   script_name("Vaadin URI Parameter Cross Site Scripting Vulnerability");
 
-  script_summary("Check for the version of Vaadin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");

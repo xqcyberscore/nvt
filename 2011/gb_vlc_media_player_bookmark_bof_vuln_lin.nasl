@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_bookmark_bof_vuln_lin.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_vlc_media_player_bookmark_bof_vuln_lin.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # VLC Media Player 'Bookmark Creation' Buffer Overflow Vulnerability (Linux)
 #
@@ -40,8 +40,8 @@ tag_summary = "The host is installed with VLC Media Player and is prone buffer
 if(description)
 {
   script_id(801781);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_cve_id("CVE-2011-1087");
   script_bugtraq_id(38569);
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/38853");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check for the version of VLC Media Player");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_dependencies("secpod_vlc_media_player_detect_lin.nasl");

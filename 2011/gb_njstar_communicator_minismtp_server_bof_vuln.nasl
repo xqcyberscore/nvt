@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_njstar_communicator_minismtp_server_bof_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_njstar_communicator_minismtp_server_bof_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # NJStar Communicator MiniSMTP Server Remote Stack Buffer Overflow Vulnerability
 #
@@ -47,19 +47,18 @@ prone to buffer overflow vulnerability.";
 if(description)
 {
   script_id(802266);
-  script_version("$Revision: 3570 $");
+  script_version("$Revision: 7044 $");
   script_cve_id("CVE-2011-4040");
   script_bugtraq_id(50452);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-11-08 19:46:14 +0530 (Tue, 08 Nov 2011)");
   script_name("NJStar Communicator MiniSMTP Server Remote Stack Buffer Overflow Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46630");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18057");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine NJStar Communicator MiniSMTP Server Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

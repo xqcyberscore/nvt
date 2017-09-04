@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phppgadmin_49914.nasl 3102 2016-04-18 14:46:07Z benallard $
+# $Id: gb_phppgadmin_49914.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # phpPgAdmin Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -40,8 +40,8 @@ information.";
 if (description)
 {
  script_id(103295);
- script_version("$Revision: 3102 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:46:07 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 7006 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
  script_tag(name:"creation_date", value:"2011-10-12 15:33:11 +0200 (Wed, 12 Oct 2011)");
  script_bugtraq_id(49914);
  script_cve_id("CVE-2011-3598");
@@ -56,7 +56,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/46248");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed phpPgAdmin version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

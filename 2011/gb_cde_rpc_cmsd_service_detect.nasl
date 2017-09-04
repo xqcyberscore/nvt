@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cde_rpc_cmsd_service_detect.nasl 4803 2016-12-19 13:00:35Z mime $
+# $Id: gb_cde_rpc_cmsd_service_detect.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Calendar Manager Service rpc.cmsd Service Detection
 #
@@ -46,8 +46,8 @@ tag_summary = "This script detects the running 'rpc.cmsd' service on the host.";
 if(description)
 {
   script_id(802163);
-  script_version("$Revision: 4803 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-19 14:00:35 +0100 (Mon, 19 Dec 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-09-22 10:24:03 +0200 (Thu, 22 Sep 2011)");
   script_cve_id("CVE-1999-0696", "CVE-1999-0320");
   script_tag(name:"cvss_base", value:"10.0");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www1.itrc.hp.com/service/cki/docDisplay.do?docId=HPSBUX9908-102");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Checks the presence of a RPC service 'rpc.cmsd'");
   script_category(ACT_GATHER_INFO);
   script_family("RPC");
   script_dependencies("secpod_rpc_portmap.nasl");

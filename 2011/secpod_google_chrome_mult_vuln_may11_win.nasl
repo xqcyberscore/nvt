@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_may11_win.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_google_chrome_mult_vuln_may11_win.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities May11 (Windows)
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 if(description)
 {
   script_id(902382);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_cve_id("CVE-2011-1801", "CVE-2011-1804", "CVE-2011-1806", "CVE-2011-1807");
   script_tag(name:"cvss_base", value:"10.0");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://trac.webkit.org/changeset/86862");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/2011/05/stable-channel-update_24.html");
 
-  script_summary("Check for the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Denial of Service");

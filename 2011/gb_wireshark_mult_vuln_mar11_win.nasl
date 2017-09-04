@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_mar11_win.nasl 3108 2016-04-19 06:58:41Z benallard $
+# $Id: gb_wireshark_mult_vuln_mar11_win.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Wireshark Multiple Vulnerabilities - March-11 (Windows)
 #
@@ -42,8 +42,8 @@ tag_summary = "The host is installed with Wireshark and is prone to multiple
 if(description)
 {
   script_id(801755);
-  script_version("$Revision: 3108 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 08:58:41 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-09 16:08:21 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2011-0713", "CVE-2011-1139");
   script_bugtraq_id(46416);
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.wireshark.org/docs/relnotes/wireshark-1.2.15.html");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of Wireshark");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_wireshark_detect_win.nasl");

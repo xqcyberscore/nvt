@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_wddm_unspecified_vuln_macosx.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_oracle_virtualbox_wddm_unspecified_vuln_macosx.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Oracle VM VirtualBox Graphics Driver(WDDM) Unspecified Vulnerability (Mac OS X)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804434";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 7000 $");
   script_cve_id("CVE-2014-2441");
   script_bugtraq_id(66868);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-04-18 12:52:15 +0530 (Fri, 18 Apr 2014)");
   script_name("Oracle VM VirtualBox Graphics Driver(WDDM) Unspecified Vulnerability (Mac OS X)");
 
@@ -79,7 +79,6 @@ For updates refer to https://www.virtualbox.org";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57937");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2014-1972952.html");
-  script_summary("Check for the vulnerable version of Oracle VM VirtualBox on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_authentication_bypass_vuln.nasl 3112 2016-04-19 08:52:10Z antu123 $
+# $Id: gb_ssh_authentication_bypass_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # SSH SSH-1 Protocol Authentication Bypass Vulnerability
 #
@@ -41,8 +41,8 @@ tag_summary = "The host is running SSH and is prone to authentication
 if(description)
 {
   script_id(801993);
-  script_version("$Revision: 3112 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 10:52:10 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_cve_id("CVE-2001-1473");
   script_tag(name:"cvss_base", value:"7.5");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/6603");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the Version of SSH-1 Protocol");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");

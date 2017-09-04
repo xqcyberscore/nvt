@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_splunk_multiple_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_splunk_multiple_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # Splunk Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902801");
-  script_version("$Revision: 3570 $");
+  script_version("$Revision: 7044 $");
   script_cve_id("CVE-2011-4642", "CVE-2011-4643", "CVE-2011-4644", "CVE-2011-4778");
   script_bugtraq_id(51061);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-12-22 11:11:11 +0530 (Thu, 22 Dec 2011)");
   script_name("Splunk Multiple Vulnerabilities");
 
@@ -42,7 +42,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18245");
   script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=24805");
 
-  script_summary("Check if Splunk is vulnerable to remote code execution");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

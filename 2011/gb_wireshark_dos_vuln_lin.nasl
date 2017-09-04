@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln_lin.nasl 3017 2016-04-08 15:35:07Z cfi $
+# $Id: gb_wireshark_dos_vuln_lin.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Wireshark Denial of Service Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:wireshark:wireshark';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801743");
-  script_version("$Revision: 3017 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-08 17:35:07 +0200 (Fri, 08 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-02-15 08:14:35 +0100 (Tue, 15 Feb 2011)");
   script_cve_id("CVE-2011-0538");
   script_bugtraq_id(46167);
@@ -38,7 +38,6 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("Wireshark Denial of Service Vulnerability (Linux)");
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of Wireshark");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_lin.nasl");

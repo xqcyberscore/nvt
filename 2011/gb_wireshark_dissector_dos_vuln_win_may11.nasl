@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dissector_dos_vuln_win_may11.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_wireshark_dissector_dos_vuln_win_may11.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Wireshark X.509if Dissector Denial of Service Vulnerability (Windows)
 #
@@ -39,8 +39,8 @@ tag_summary = "The host is installed with Wireshark and is prone to denial of
 if(description)
 {
   script_id(801785);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_cve_id("CVE-2011-1590");
   script_bugtraq_id(47392);
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/1022");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of Wireshark");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_family("Denial of Service");

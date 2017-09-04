@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wowza_streaming_engine_detect.nasl 3988 2016-09-07 10:44:51Z ckuerste $
+# $Id: gb_wowza_streaming_engine_detect.nasl 7012 2017-08-25 13:16:07Z asteins $
 #
 # Wowza Streaming Engine Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106224");
- script_version ("$Revision: 3988 $");
- script_tag(name: "last_modification", value: "$Date: 2016-09-07 12:44:51 +0200 (Wed, 07 Sep 2016) $");
+ script_version ("$Revision: 7012 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-08-25 15:16:07 +0200 (Fri, 25 Aug 2017) $");
  script_tag(name: "creation_date", value: "2016-09-07 11:27:17 +0700 (Wed, 07 Sep 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -68,7 +68,7 @@ if ("Server: Wowza Streaming Engine" >< banner) {
   build = "unknown";
 
   ver = eregmatch(pattern: "Wowza Streaming Engine ([0-9.]+)( build([0-9]+))?", string: banner);
-  display(ver, "\n");
+
   if (!isnull(ver[1])) {
     version = ver[1];
     set_kb_item(name: "wowza_streaming_engine/version", value: version);

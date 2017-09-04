@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_manageengine_servicedesk_plus_mult_xss_vuln.nasl 3113 2016-04-19 09:57:04Z benallard $
+# $Id: secpod_manageengine_servicedesk_plus_mult_xss_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # ManageEngine ServiceDesk Plus Multiple Stored XSS Vulnerabilities
 #
@@ -50,8 +50,8 @@ tag_summary = "This host is running ManageEngine ServiceDesk Plus and is prone t
 if(description)
 {
   script_id(902469);
-  script_version("$Revision: 3113 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 11:57:04 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-26 14:59:42 +0200 (Fri, 26 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/104365/ZSL-2011-5039.txt");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check the version of ManageEngine ServiceDesk Plus");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bluesoft_classifieds_script_sql_inj_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_bluesoft_classifieds_script_sql_inj_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # BlueSoft Classifieds Script SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801955");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-07-19 14:57:20 +0200 (Tue, 19 Jul 2011)");
   script_bugtraq_id(48703);
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,7 +36,6 @@ if(description)
   script_name("BlueSoft Classifieds Script SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103123/bluesoftclassifieds-sql.txt");
 
-  script_summary("Check if BlueSoft Classifieds Script is vulnerable for SQL Injection attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

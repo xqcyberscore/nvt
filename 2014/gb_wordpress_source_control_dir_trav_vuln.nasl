@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_source_control_dir_trav_vuln.nasl 5628 2017-03-20 15:27:40Z cfi $
+# $Id: gb_wordpress_source_control_dir_trav_vuln.nasl 6995 2017-08-23 11:52:03Z teissa $
 #
 # WordPress Content Source Control Plugin Directory Traversal Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804904");
-  script_version("$Revision: 5628 $");
+  script_version("$Revision: 6995 $");
   script_cve_id("CVE-2014-5368");
   script_bugtraq_id(69278);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
   script_tag(name:"creation_date", value:"2014-09-19 10:28:34 +0530 (Fri, 19 Sep 2014)");
   script_name("WordPress Content Source Control Plugin Directory Traversal Vulnerability");
 
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2014/q3/407");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/95374");
-  script_summary("Check if Content Source Control plugin is prone to directory traversal");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");

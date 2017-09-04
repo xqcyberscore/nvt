@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_indusoft_web_studio_dir_trav_vuln.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: secpod_indusoft_web_studio_dir_trav_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # InduSoft Web Studio Directory Traversal Vulnerability
 #
@@ -39,12 +39,12 @@ tag_summary = "This host is installed with Indusoft Web Studio and is prone to
 if(description)
 {
   script_id(902371);
-  script_version("$Revision: 5375 $");
+  script_version("$Revision: 7015 $");
   script_cve_id("CVE-2011-1900");
   script_bugtraq_id(47842);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_name("InduSoft Web Studio Directory Traversal Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/42883");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.indusoft.com/hotfixes/hotfixes.php");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Indusoft Web Studio");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

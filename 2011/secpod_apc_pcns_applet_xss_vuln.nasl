@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apc_pcns_applet_xss_vuln.nasl 4620 2016-11-25 06:39:51Z cfi $
+# $Id: secpod_apc_pcns_applet_xss_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # APC PowerChute Network Shutdown 'security/applet' Cross Site Scripting Vulnerability
 #
@@ -48,8 +48,8 @@ prone to cross site scripting vulnerability.";
 if(description)
 {
   script_id(902578);
-  script_version("$Revision: 4620 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:39:51 +0100 (Fri, 25 Nov 2016) $");
+  script_version("$Revision: 7044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-09-30 15:58:03 +0200 (Fri, 30 Sep 2011)");
   script_bugtraq_id(33924);
   script_tag(name:"cvss_base", value:"4.3");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://nam-en.apc.com/app/answers/detail/a_id/9539");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if APC PowerChute Network Shutdown is vulnerable to Cross Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

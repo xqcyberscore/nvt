@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_orangehrm_lfi_vuln.nasl 5646 2017-03-21 09:37:44Z cfi $
+# $Id: secpod_orangehrm_lfi_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # OrangeHRM 'PluginController.php' Local File Inclusion Vulnerability
 #
@@ -46,8 +46,8 @@ inclusion vulnerability.";
 if(description)
 {
   script_id(902367);
-  script_version("$Revision: 5646 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:37:44 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-05-11 15:50:14 +0200 (Wed, 11 May 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/100823/OrangeHRM2.6.3-lfi.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check for local file inclusion vulnerability in OrangeHRM");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_dependencies("gb_orangehrm_detect.nasl", "os_detection.nasl");

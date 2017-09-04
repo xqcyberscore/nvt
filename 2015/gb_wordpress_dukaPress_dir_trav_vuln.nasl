@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_dukaPress_dir_trav_vuln.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: gb_wordpress_dukaPress_dir_trav_vuln.nasl 7003 2017-08-25 09:22:10Z asteins $
 #
 # Wordpress DukaPress 'src' Parameter Directory Traversal Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805122");
-  script_version("$Revision: 6214 $");
+  script_version("$Revision: 7003 $");
   script_cve_id("CVE-2014-8799");
   script_bugtraq_id(71294);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 11:22:10 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2015-01-09 15:07:11 +0530 (Fri, 09 Jan 2015)");
   script_name("Wordpress DukaPress 'src' Parameter Directory Traversal Vulnerability");
 
@@ -78,11 +78,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
 
 ## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){

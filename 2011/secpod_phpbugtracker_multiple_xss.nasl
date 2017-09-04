@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_phpbugtracker_multiple_xss.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: secpod_phpbugtracker_multiple_xss.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # phpBugTracker Multiple Reflected Cross Site Scripting Vulnerabilities
 #
@@ -49,8 +49,8 @@ reflected cross-site scripting vulnerabilities.";
 if(description)
 {
   script_id(900275);
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-25 15:52:06 +0100 (Fri, 25 Mar 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/98572/ZSL-2011-4996.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check for phpBugTracker Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");

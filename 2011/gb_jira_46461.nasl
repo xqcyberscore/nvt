@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jira_46461.nasl 3762 2016-07-26 10:18:57Z ckuerste $
+# $Id: gb_jira_46461.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Atlassian JIRA Unspecified URI Redirection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:atlassian:jira';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103085");
- script_version("$Revision: 3762 $");
- script_tag(name: "last_modification", value: "$Date: 2016-07-26 12:18:57 +0200 (Tue, 26 Jul 2016) $");
+ script_version("$Revision: 7015 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
  script_tag(name: "creation_date", value: "2011-02-22 13:26:53 +0100 (Tue, 22 Feb 2011)");
  script_tag(name: "cvss_base", value: "4.3");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -68,7 +68,6 @@ also possible.");
  script_xref(name: "URL" , value: "http://www.atlassian.com/software/jira/");
  script_xref(name: "URL" , value: "http://confluence.atlassian.com/display/JIRA/JIRA+Security+Advisory+2011-02-21");
 
- script_summary("Determine if installed Atlassian JIRA is vulnerable");
 
  exit(0);
 }

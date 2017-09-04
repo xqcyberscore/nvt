@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_performance_insight_49096.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_hp_performance_insight_49096.nasl 7044 2017-09-01 11:50:59Z teissa $
 #
 # HP OpenView Performance Insight Security Bypass and HTML Injection Vulnerabilities
 #
@@ -42,8 +42,8 @@ tag_solution = "Vendor updates are available. Please see the references for deta
 if (description)
 {
  script_id(103200);
- script_version("$Revision: 3507 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+ script_version("$Revision: 7044 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-08-16 15:29:48 +0200 (Tue, 16 Aug 2011)");
  script_bugtraq_id(49096);
  script_cve_id("CVE-2011-2406", "CVE-2011-2407", "CVE-2011-2410");
@@ -54,7 +54,6 @@ if (description)
 
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if HP OpenView Performance Insight is prone to a HTML-injection vulnerability");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

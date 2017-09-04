@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_50710.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: gb_nginx_50710.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # nginx DNS Resolver Remote Heap Buffer Overflow Vulnerability
 #
@@ -31,13 +31,12 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103344");
   script_bugtraq_id(50710);
   script_cve_id("CVE-2011-4315");
-  script_version ("$Revision: 3386 $");
+  script_version ("$Revision: 7015 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("nginx DNS Resolver Remote Heap Buffer Overflow Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-21 11:12:32 +0100 (Mon, 21 Nov 2011)");
-  script_summary("Determine if installed nginx version is vulnerable");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

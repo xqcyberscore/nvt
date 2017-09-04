@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_n_sjas_web_container_dos_vuln.nasl 3101 2016-04-18 14:43:32Z benallard $
+# $Id: gb_oracle_glassfish_n_sjas_web_container_dos_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
 #
 # Oracle GlassFish/System Application Server Web Container DOS Vulnerability
 #
@@ -44,8 +44,8 @@ tag_summary = "The host is running GlassFish/System Application Server and is
 if(description)
 {
   script_id(801997);
-  script_version("$Revision: 3101 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:43:32 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-03 12:22:48 +0100 (Thu, 03 Nov 2011)");
   script_cve_id("CVE-2011-3559");
   script_bugtraq_id(50204);
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id?1026222");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Oracle Java GlassFish/System Application Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

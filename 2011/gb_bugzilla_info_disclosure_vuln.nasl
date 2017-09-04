@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugzilla_info_disclosure_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_bugzilla_info_disclosure_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
 #
 # Bugzilla Informaton Disclosure Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is running Bugzilla and is prone to information
 if(description)
 {
   script_id(801570);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-01-20 07:52:11 +0100 (Thu, 20 Jan 2011)");
   script_cve_id("CVE-2010-2756");
   script_bugtraq_id(42275);
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.mozilla.org/show_bug.cgi?id=417048");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine the informaton disclosure vulnerability in Bugzilla");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

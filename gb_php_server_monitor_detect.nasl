@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_server_monitor_detect.nasl 2897 2016-03-19 14:24:00Z cfi $
+# $Id: gb_php_server_monitor_detect.nasl 7006 2017-08-25 11:51:20Z teissa $
 #
 # PHP Server Monitor Version Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806527");
-  script_version("$Revision: 2897 $");
+  script_version("$Revision: 7006 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-19 15:24:00 +0100 (Sat, 19 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
   script_tag(name:"creation_date", value:"2015-11-02 18:23:47 +0530 (Mon, 02 Nov 2015)");
   script_name("PHP Server Monitor Version Detection");
-  script_summary("Set the version of PHP Server Monitor in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

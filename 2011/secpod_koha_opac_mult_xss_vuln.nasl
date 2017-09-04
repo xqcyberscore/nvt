@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_koha_opac_mult_xss_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_koha_opac_mult_xss_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # Koha Library Software OPAC Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902640");
-  script_version("$Revision: 3570 $");
+  script_version("$Revision: 7024 $");
   script_bugtraq_id(48895);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-11-30 11:26:06 +0530 (Wed, 30 Nov 2011)");
   script_name("Koha Library Software OPAC Multiple Cross Site Scripting Vulnerabilities");
-  script_summary("Check if Koha Library Software is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_servicedesk_plus_mult_xss_vuln.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_manageengine_servicedesk_plus_mult_xss_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
 #
 # ManageEngine ServiceDesk Plus Multiple XSS Vulnerabilities
 #
@@ -55,8 +55,8 @@ to multiple cross site scripting vulnerabilities.";
 if(description)
 {
   script_id(801962);
-  script_version("$Revision: 3100 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-08-04 10:01:53 +0200 (Thu, 04 Aug 2011)");
   script_bugtraq_id(48928);
   script_tag(name:"cvss_base", value:"4.3");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17586/");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check the version of ManageEngine ServiceDesk Plus");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

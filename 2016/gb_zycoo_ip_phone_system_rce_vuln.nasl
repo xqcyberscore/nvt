@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zycoo_ip_phone_system_rce_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
+# $Id: gb_zycoo_ip_phone_system_rce_vuln.nasl 7027 2017-08-31 06:40:43Z asteins $
 #
 # ZYCOO IP Phone System Remote Code Execution Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:zycoo:ip_phone_system';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106214");
-  script_version("$Revision: 6166 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
+  script_version("$Revision: 7027 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-08-31 08:40:43 +0200 (Thu, 31 Aug 2017) $");
   script_tag(name: "creation_date", value: "2016-08-29 16:16:40 +0700 (Mon, 29 Aug 2016)");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
 
   script_tag(name: "qod_type", value: "exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("ZYCOO IP Phone System Remote Code Execution Vulnerability");
 
@@ -57,7 +57,7 @@ to remote command execution.");
   script_tag(name: "impact", value: "An unauthenticated attacker can execute arbitrary OS commands which may
 lead to a complete compromise of the device.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 19th May, 2017. Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40269/");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_sinema_server_detect.nasl 3945 2016-09-02 10:23:52Z ckuerste $
+# $Id: gb_siemens_sinema_server_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
 #
 # Siemens SINEMA Server Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106220");
- script_version ("$Revision: 3945 $");
- script_tag(name: "last_modification", value: "$Date: 2016-09-02 12:23:52 +0200 (Fri, 02 Sep 2016) $");
+ script_version ("$Revision: 7000 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
  script_tag(name: "creation_date", value: "2016-09-02 14:19:12 +0700 (Fri, 02 Sep 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,7 +53,6 @@ and to extract its version");
 
  script_xref(name: "URL", value: "");
 
- script_summary("Checks for the presence of Siemens SINEMA Server.");
 
  exit(0);
 }

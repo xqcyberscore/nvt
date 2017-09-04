@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_layer_xss_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_nagios_layer_xss_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
 #
 # Nagios 'layer' Cross-Site Scripting Vulnerability
 #
@@ -48,8 +48,8 @@ CPE = "cpe:/a:nagios:nagios";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
   script_tag(name:"creation_date", value:"2011-03-16 15:16:52 +0100 (Wed, 16 Mar 2011)");
   script_bugtraq_id(46826);
   script_cve_id("CVE-2011-1523");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/99164/SSCHADV2011-002.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Nagios is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
