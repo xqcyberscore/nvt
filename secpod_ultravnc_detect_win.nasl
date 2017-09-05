@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ultravnc_detect_win.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_ultravnc_detect_win.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # UltraVNC Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900470");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 7052 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("UltraVNC Version Detection (Windows)");
@@ -44,7 +44,6 @@ gets the version from registry.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Detection of installed version of UltraVNC");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

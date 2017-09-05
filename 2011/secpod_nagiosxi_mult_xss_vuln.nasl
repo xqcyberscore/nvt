@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nagiosxi_mult_xss_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_nagiosxi_mult_xss_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Nagios XI Multiple Cross Site Scripting Vulnerabilities
 #
@@ -41,11 +41,11 @@ tag_summary = "This host is running Nagios XI and is prone to multiple cross-sit
 if(description)
 {
   script_id(902599);
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 7052 $");
   script_bugtraq_id(51069);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-12-16 10:10:10 +0530 (Fri, 16 Dec 2011)");
   script_name("Nagios XI Multiple Cross Site Scripting Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51069");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/107872/0A29-11-3.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Nagios XI is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

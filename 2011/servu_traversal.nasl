@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: servu_traversal.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: servu_traversal.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Serv-U FTP Server Jail Break
 #
@@ -35,7 +35,7 @@ launch further attacks.";
 if (description)
 {
  script_id(103354);
- script_version ("$Revision: 3570 $");
+ script_version ("$Revision: 7052 $");
  script_bugtraq_id(50875);
  script_cve_id("CVE-2011-4800");
  script_tag(name:"cvss_base", value:"9.0");
@@ -44,10 +44,9 @@ if (description)
  script_name("Serv-U FTP Server Jail Break");
 
 
- script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-12-02 11:28:44 +0100 (Fri, 02 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed Serv-U is vulnerable");
  script_category(ACT_ATTACK);
  script_family("FTP");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_accellion_fta_rce_vuln.nasl 6505 2017-07-03 09:58:27Z teissa $
+# $Id: gb_accellion_fta_rce_vuln.nasl 7046 2017-09-04 05:19:39Z asteins $
 #
 # Accellion FTA Remote Command Execution Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/h:accellion:secure_file_transfer_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106032");
-  script_version("$Revision: 6505 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
+  script_version("$Revision: 7046 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-04 07:19:39 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name: "creation_date", value: "2015-08-05 10:57:09 +0700 (Wed, 05 Aug 2015)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name: "qod_type", value: "remote_vul");
 

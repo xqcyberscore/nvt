@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_49685.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_wordpress_49685.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # WordPress AllWebMenus Plugin 'abspath' Parameter Remote File Include Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103287");
- script_version("$Revision: 6719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_version("$Revision: 7052 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-10-06 13:32:57 +0200 (Thu, 06 Oct 2011)");
  script_bugtraq_id(49685);
  script_cve_id("CVE-2011-3981");
@@ -42,7 +42,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/49685");
  script_xref(name : "URL" , value : "http://wordpress.org/");
 
- script_summary("Determine if installed Wordpress is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

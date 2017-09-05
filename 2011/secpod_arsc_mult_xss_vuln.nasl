@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_arsc_mult_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_arsc_mult_xss_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # A Really Simple Chat Multiple XSS Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902607");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-05 13:15:06 +0200 (Tue, 05 Jul 2011)");
   script_cve_id("CVE-2011-2180", "CVE-2011-2470");
   script_tag(name:"cvss_base", value:"4.3");
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2011/06/02/1");
   script_xref(name : "URL" , value : "http://www.htbridge.ch/advisory/xss_in_a_really_simple_chat_arsc.html");
 
-  script_summary("Determine if A Really Simple Chat is prone to XSS Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

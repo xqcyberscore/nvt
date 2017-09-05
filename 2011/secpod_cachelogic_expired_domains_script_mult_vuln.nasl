@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cachelogic_expired_domains_script_mult_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: secpod_cachelogic_expired_domains_script_mult_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Cachelogic Expired Domains Script Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902449");
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -37,7 +37,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17428/");
   script_xref(name : "URL" , value : "http://itsecuritysolutions.org/2011-03-24_Cachelogic_Expired_Domains_Script_1.0_multiple_security_vulnerabilities/");
 
-  script_summary("Check Cachelogic Expired Domains Script is vulnerable to XSS attacks");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");

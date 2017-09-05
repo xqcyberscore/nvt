@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vlc_media_player_detect_lin.nasl 2636 2016-02-11 13:26:05Z antu123 $
+# $Id: secpod_vlc_media_player_detect_lin.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # VLC Media Player Version Detection (Linux)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900529");
-  script_version("$Revision: 2636 $");
+  script_version("$Revision: 7052 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-11 14:26:05 +0100 (Thu, 11 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:19:12 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VLC Media Player Version Detection (Linux)");
@@ -44,7 +44,6 @@ if(description)
   This script logs in via shh, extracts the version from the binary file
   and set it in KB.");
 
-  script_summary("Set KB for the version of VLC Media Player");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_dependencies("gather-package-list.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_for_ie_edge_aug17.nasl 6971 2017-08-21 07:15:23Z asteins $
+# $Id: gb_flash_player_for_ie_edge_aug17.nasl 7051 2017-09-04 11:38:56Z cfischer $
 #
 # Microsoft IE And Microsoft Edge Multiple Flash Player Vulnerabilities (4034662)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811614");
-  script_version("$Revision: 6971 $");
+  script_version("$Revision: 7051 $");
   script_cve_id("CVE-2017-3085", "CVE-2017-3106" );
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-21 09:15:23 +0200 (Mon, 21 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:38:56 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-09 10:42:50 +0530 (Wed, 09 Aug 2017)");
-  script_name("Microsoft IE And Microsoft Edge Multiple Flash Player Vulnerabilities ()");
+  script_name("Microsoft IE And Microsoft Edge Multiple Flash Player Vulnerabilities (4034662)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4034662");
@@ -57,7 +57,7 @@ if(description)
   script_tag(name: "affected" , value:"
   Windows 10 Version 1511 for x32/x64 Edition,
 
-  Windows 10 Version 1607 for x32/x64 Edition, 
+  Windows 10 Version 1607 for x32/x64 Edition,
 
   Windows 10 Version 1703 for x32/x64 Edition,
 

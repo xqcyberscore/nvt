@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netapp_storagegrid_webscale_detect.nasl 7023 2017-08-30 09:58:39Z ckuersteiner $
+# $Id: gb_netapp_storagegrid_webscale_detect.nasl 7049 2017-09-04 09:35:49Z ckuersteiner $
 #
 # NetApp StorageGRID Webscale Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140337");
-  script_version("$Revision: 7023 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-30 11:58:39 +0200 (Wed, 30 Aug 2017) $");
+  script_version("$Revision: 7049 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-04 11:35:49 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-08-30 16:31:32 +0700 (Wed, 30 Aug 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,6 +47,7 @@ extract its version.");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
+  script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("StorageGRID/banner");
   script_exclude_keys("Settings/disable_cgi_scanning");
 

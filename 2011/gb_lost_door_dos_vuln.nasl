@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lost_door_dos_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_lost_door_dos_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Lost Door J-Revolution Denial of Service Vulnerability
 #
@@ -45,8 +45,8 @@ denial of service vulnerability.";
 if(description)
 {
   script_id(801943);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://donofjsr.blogspot.com/2011/03/lostdoor-j-revolution-v6.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check Lost Door J-Revolution is vulnerable by sending crafted pacakets");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

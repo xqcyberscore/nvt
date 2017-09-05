@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 04 Sep 2017 10:14:25 +0200
+# Automatically created on:  Tue, 05 Sep 2017 07:51:32 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47676,6 +47676,9 @@
 2017/deb_3957.nasl: GPLv2+
 2017/deb_3958.nasl: GPLv2+
 2017/deb_3959.nasl: GPLv2+
+2017/deb_3960.nasl: GPLv2+
+2017/deb_3961.nasl: GPLv2+
+2017/deb_3962.nasl: GPLv2+
 2017/gb_accellion_fta_multi_vuln.nasl: GPLv2+
 2017/gb_acti_mult_vuln.nasl: GPLv2+
 2017/gb_adobe_acrobat_apsb17-01_macosx.nasl: GPLv2+
@@ -48402,6 +48405,7 @@
 2017/gb_exponent_cms_mult_sqli_rce.nasl: GPLv2+
 2017/gb_extremeparr_priv_esc_vuln.nasl: GPLv2+
 2017/gb_eyesofnetwork_logout_sqli.nasl: GPLv2+
+2017/gb_eyesofnetwork_mult_vuln.nasl: GPLv2+
 2017/gb_f5_big_ip_47284724.nasl: GPLv2+
 2017/gb_f5_big_ip_K01276005.nasl: GPLv2+
 2017/gb_f5_big_ip_K04450715.nasl: GPLv2+
@@ -50561,6 +50565,7 @@
 2017/gb_solarwinds_lem_mult_vuln.nasl: GPLv2+
 2017/gb_solarwinds_lem_priv_esc_vuln.nasl: GPLv2+
 2017/gb_sophos_xg_path_trav_vuln.nasl: GPLv2+
+2017/gb_soplanning_mult_vuln.nasl: GPLv2+
 2017/gb_splunk_enterprise_dos_vuln.nasl: GPLv2+
 2017/gb_splunk_enterprise_http_inj_vuln.nasl: GPLv2+
 2017/gb_splunk_enterprise_info_disc_vuln.nasl: GPLv2+
@@ -52096,6 +52101,7 @@ gb_navicopa_server_detect.nasl: GPLv2+
 gb_navis_webaccess_detect.nasl: GPLv2+
 gb_nbox_remote_detect.nasl: GPLv2+
 gb_nessus_web_server_detect.nasl: GPLv2+
+gb_netapp_data_ontap_ntp_detect.nasl: GPLv2+
 gb_netapp_storagegrid_webscale_detect.nasl: GPLv2+
 gb_netcharts_server_detect.nasl: GPLv2+
 gb_netgain_em_detect.nasl: GPLv2+
@@ -52378,6 +52384,7 @@ gb_sophos_utm_remote_detect.nasl: GPLv2+
 gb_sophos_web_appliance_detect.nasl: GPLv2+
 gb_sophos_xg_detect.nasl: GPLv2+
 gb_sophos_xg_detect_userportal.nasl: GPLv2+
+gb_soplanning_detect.nasl: GPLv2+
 gb_south_river_webdrive_detect.nasl: GPLv2+
 gb_speedport_detect.nasl: GPLv2+
 gb_sphere_ftp_server_detect.nasl: GPLv2+

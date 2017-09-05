@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_photoshop_gif_mem_corruption_vuln.nasl 3949 2016-09-02 13:45:51Z cfi $
+# $Id: secpod_adobe_photoshop_gif_mem_corruption_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Adobe Photoshop '.GIF' File Processing Memory Corruption Vulnerability
 #
@@ -43,8 +43,8 @@ tag_summary = "This host is installed with Adobe Photoshop and is prone to
 if(description)
 {
   script_id(902618);
-  script_version("$Revision: 3949 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-02 15:45:51 +0200 (Fri, 02 Sep 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_cve_id("CVE-2011-2131");
   script_bugtraq_id(49106);
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb11-22.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Adobe Photoshop");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

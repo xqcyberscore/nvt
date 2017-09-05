@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_bytes_repr_len_dos_vuln_win.nasl 3108 2016-04-19 06:58:41Z benallard $
+# $Id: gb_wireshark_bytes_repr_len_dos_vuln_win.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Wireshark 'bytes_repr_len' Function Denial of Service Vulnerability (Windows)
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with Wireshark and is prone to denial of
 if(description)
 {
   script_id(802201);
-  script_version("$Revision: 3108 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 08:58:41 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:43:58 +0200 (Mon, 13 Jun 2011)");
   script_cve_id("CVE-2011-1956");
   script_tag(name:"cvss_base", value:"4.3");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/67789");
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=5837");
 
-  script_summary("Check for the version of Wireshark");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

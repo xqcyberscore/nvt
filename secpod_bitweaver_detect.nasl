@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_bitweaver_detect.nasl 2762 2016-03-03 09:12:30Z cfi $
+# $Id: secpod_bitweaver_detect.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Bitweaver Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900355");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2762 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-03 10:12:30 +0100 (Thu, 03 Mar 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-05-26 15:05:11 +0200 (Tue, 26 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Bitweaver Version Detection");
-  script_summary("Set KB for the Version of Bitweaver");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

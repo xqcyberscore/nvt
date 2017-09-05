@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_onefs_ntp_detect.nasl 5823 2017-03-31 13:57:56Z mime $
+# $Id: gb_emc_isilon_onefs_ntp_detect.nasl 7049 2017-09-04 09:35:49Z ckuersteiner $
 #
 # EMC Isilon OneFS Devices Detection (NTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140232");
-  script_version("$Revision: 5823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 15:57:56 +0200 (Fri, 31 Mar 2017) $");
+  script_version("$Revision: 7049 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 11:35:49 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-03-31 13:50:07 +0200 (Fri, 31 Mar 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,6 @@ This script performs NTP based detection of EMC Isilon OneFS devices.");
   script_dependencies("ntp_open.nasl");
   script_require_udp_ports("Services/udp/ntp", 123);
   script_mandatory_keys("Host/OS/ntp");
-  script_require_udp_ports(123);
 
   exit(0);
 }
@@ -75,11 +74,11 @@ if( "Isilon OneFS" >< os )
   if (!cpe)
     cpe = 'cpe:/o:emc:isilon_onefs';
 
-  register_product(cpe: cpe, port: "123", proto:"udp", service: "ntp");
+  register_product(cpe: cpe, port: 123, proto:"udp", service: "ntp");
 
   log_message(data: build_detection_report(app: "EMC Isilon OneFS", version: version, install: "123/udp",
                                            cpe: cpe, concluded: os),
-              port: "123", proto: 'udp');
+              port: 123, proto: 'udp');
   exit(0);
 }
 

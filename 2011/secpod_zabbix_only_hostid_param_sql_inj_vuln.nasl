@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_zabbix_only_hostid_param_sql_inj_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_zabbix_only_hostid_param_sql_inj_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Zabbix 'only_hostid' Parameter SQL Injection Vulnerability
 #
@@ -42,12 +42,12 @@ CPE = "cpe:/a:zabbix:zabbix";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 7052 $");
   script_cve_id("CVE-2011-4674");
   script_bugtraq_id(50803);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-12-15 11:10:21 +0530 (Thu, 15 Dec 2011)");
   script_name("Zabbix 'only_hostid' Parameter SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/45502/");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.zabbix.com/browse/ZBX-4385");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Zabbix is vulnerable to SQL Injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");

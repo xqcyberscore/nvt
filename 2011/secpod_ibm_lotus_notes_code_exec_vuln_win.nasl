@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_notes_code_exec_vuln_win.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_ibm_lotus_notes_code_exec_vuln_win.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # IBM Lotus Notes 'cai' URI and iCal Remote Code Execution Vulnerabilities (Windows)
 #
@@ -42,8 +42,8 @@ tag_summary = "This host has IBM Lotus Notes installed and is prone to remote co
 if(description)
 {
   script_id(902298);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-03-25 15:52:06 +0100 (Fri, 25 Mar 2011)");
   script_cve_id("CVE-2011-0912");
   script_tag(name:"cvss_base", value:"9.3");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0295");
   script_xref(name : "URL" , value : "https://www-304.ibm.com/support/docview.wss?uid=swg21461514");
 
-  script_summary("Check for the version of IBM Lotus Notes");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("General");

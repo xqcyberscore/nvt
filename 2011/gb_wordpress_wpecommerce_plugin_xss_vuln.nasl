@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wpecommerce_plugin_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_wordpress_wpecommerce_plugin_xss_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # WordPress WP e-Commerce Plugin 'cart_messages' Parameter Cross-site Scripting Vulnerability
 #
@@ -52,8 +52,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-08-12 14:44:50 +0200 (Fri, 12 Aug 2011)");
   script_bugtraq_id(49009);
   script_tag(name:"cvss_base", value:"4.3");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103724/wpecommerce-xss.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if WordPress WP e-Commerce plugin is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

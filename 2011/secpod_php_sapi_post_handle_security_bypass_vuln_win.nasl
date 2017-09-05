@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_sapi_post_handle_security_bypass_vuln_win.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_php_sapi_post_handle_security_bypass_vuln_win.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # PHP SAPI_POST_HANDLER_FUNC() Security Bypass Vulnerability (Windows)
 #
@@ -29,15 +29,14 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902606");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_cve_id("CVE-2011-2202");
   script_bugtraq_id(48259);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
   script_name("PHP SAPI_POST_HANDLER_FUNC() Security Bypass Vulnerability (Windows)");
-  script_summary("Check for the version of PHP");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

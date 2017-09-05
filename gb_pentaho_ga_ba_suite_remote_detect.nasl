@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pentaho_ga_ba_suite_remote_detect.nasl 4624 2016-11-25 07:00:59Z cfi $ 
+# $Id: gb_pentaho_ga_ba_suite_remote_detect.nasl 7052 2017-09-04 11:50:51Z teissa $ 
 #
 # Pentaho Business Analytics Suite Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808205");
-  script_version("$Revision: 4624 $");
+  script_version("$Revision: 7052 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 08:00:59 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-05-24 17:56:31 +0530 (Tue, 24 May 2016)");
   script_name("Pentaho Business Analytics Suite Version Detection");
 
@@ -42,7 +42,6 @@ if(description)
   result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the presence of Pentaho Business Analytics Suite");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

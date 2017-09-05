@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orion_nta_detect.nasl 6000 2017-04-21 11:07:29Z cfi $
+# $Id: gb_orion_nta_detect.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # SolarWinds Orion Netflow Traffic Analyzer Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105959");
-  script_version("$Revision: 6000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-06 15:12:25 +0700 (Fri, 06 Mar 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -47,7 +47,6 @@ if (description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name: "summary", value: "Checks for the presence of SolarWinds Orion Netflow Traffic Analyzer.");
-  script_summary("Checks for the presence of SolarWinds Orion Netflow Traffic Analyzer");
   script_xref(name: "URL" , value: "http://www.solarwinds.com/products/orion/");
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fsecure_internet_gatekeeper_46381.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_fsecure_internet_gatekeeper_46381.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # F-Secure Internet Gatekeeper Log File Information Disclosure Vulnerability
 #
@@ -35,8 +35,8 @@ tag_solution = "Updates are available. Please see the references for more inform
 if (description)
 {
  script_id(103082);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7052 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-02-21 13:57:38 +0100 (Mon, 21 Feb 2011)");
  script_bugtraq_id(46381);
  script_cve_id("CVE-2011-0453");
@@ -49,7 +49,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.f-secure.com/en_EMEA/support/security-advisory/fsc-2011-1.html");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed F-Secure Internet Gatekeeper is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

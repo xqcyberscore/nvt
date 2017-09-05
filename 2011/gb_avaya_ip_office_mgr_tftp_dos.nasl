@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_ip_office_mgr_tftp_dos.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_avaya_ip_office_mgr_tftp_dos.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Avaya IP Office Manager TFTP Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802011");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_bugtraq_id(47021);
   script_tag(name:"cvss_base", value:"7.8");
@@ -38,7 +38,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/43819");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17045/");
 
-  script_summary("Determine if Avaya IP Office Manager TFTP is prone to denial of service vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

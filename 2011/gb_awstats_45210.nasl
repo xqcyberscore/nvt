@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_awstats_45210.nasl 3099 2016-04-18 14:36:59Z benallard $
+# $Id: gb_awstats_45210.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # AWStats Unspecified 'LoadPlugin' Directory Traversal Vulnerability
 #
@@ -37,8 +37,8 @@ tag_solution = "Updates are available. Please see the references for more inform
 if (description)
 {
  script_id(103041);
- script_version("$Revision: 3099 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:36:59 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 7052 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-01-25 13:20:03 +0100 (Tue, 25 Jan 2011)");
  script_bugtraq_id(45210);
  script_tag(name:"cvss_base", value:"6.4");
@@ -49,7 +49,6 @@ if (description)
 
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed AWStats version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

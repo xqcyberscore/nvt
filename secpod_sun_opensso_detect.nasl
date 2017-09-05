@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_opensso_detect.nasl 6938 2017-08-16 11:10:00Z santu $
+# $Id: secpod_sun_opensso_detect.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Sun/Oracle OpenSSO Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900817");
-  script_version("$Revision: 6938 $");
+  script_version("$Revision: 7052 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-16 13:10:00 +0200 (Wed, 16 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-08-26 14:01:08 +0200 (Wed, 26 Aug 2009)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Sun/Oracle OpenSSO Version Detection");
@@ -42,7 +42,6 @@ if(description)
   The script sends a connection request to the server and attempts to
   extract the version number from the reply.");
 
-  script_summary("Check the presence of OpenSSO");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mbedthis_webapp_http_trace_method_xss_vuln.nasl 4620 2016-11-25 06:39:51Z cfi $
+# $Id: gb_mbedthis_webapp_http_trace_method_xss_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Mbedthis AppWeb HTTP TRACE Method Cross-Site Scripting Vulnerability
 #
@@ -40,12 +40,12 @@ tag_summary = "The host is running Mbedthis AppWeb Server and is prone to cross
 if(description)
 {
   script_id(802350);
-  script_version("$Revision: 4620 $");
+  script_version("$Revision: 7052 $");
   script_cve_id("CVE-2007-3008");
   script_bugtraq_id(24456);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:39:51 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-12-02 14:47:36 +0530 (Fri, 02 Dec 2011)");
   script_name("Mbedthis AppWeb HTTP TRACE Method Cross-Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/25636");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.appwebserver.org/forum/viewtopic.php?t=996");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Mbedthis AppWeb HTTP TRACE Method is enabled");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

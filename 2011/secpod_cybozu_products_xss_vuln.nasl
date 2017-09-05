@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cybozu_products_xss_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_cybozu_products_xss_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Cybozu Products Images Cross-Site Scripting Vulnerability
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is running Cybozu Office or Cybozu Garoon and is prone
 if(description)
 {
   script_id(902535);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-05 13:15:06 +0200 (Tue, 05 Jul 2011)");
   script_cve_id("CVE-2011-1333");
   script_bugtraq_id(48446);
@@ -53,7 +53,6 @@ if(description)
 
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Cybozu Products");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

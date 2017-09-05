@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_Read_Apache_htaccessfiles.nasl 4486 2016-11-14 07:22:43Z cfi $
+# $Id: GSHB_Read_Apache_htaccessfiles.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Reading Apache htaccess Files (win)
 #
@@ -32,15 +32,14 @@ tag_summary = "Reading Apache htaccess Files
 if(description)
 {
   script_id(96021);
-  script_version("$Revision: 4486 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 08:22:43 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");  
   script_name("Reading Apache htaccess Files (win)");
 
-  script_summary("Reading Apache htaccess Files (win)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

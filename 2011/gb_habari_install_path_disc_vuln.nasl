@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_habari_install_path_disc_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_habari_install_path_disc_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Habari Installation Path Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802320");
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -36,7 +36,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secpod.org/blog/?p=265");
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SECPOD_Habari_Info_Disc_Vuln.txt");
 
-  script_summary("Check if Habari is prone to path disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

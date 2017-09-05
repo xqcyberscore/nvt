@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vmware_vfabric_tc_server_security_bypass_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_vmware_vfabric_tc_server_security_bypass_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # VMware vFabric tc Server JMX Authentication Security Bypass Vulnerability
 #
@@ -40,8 +40,8 @@ tag_summary = "The host is running VMware vFabric tc Server and is prone to
 if(description)
 {
   script_id(902565);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-08-31 13:40:07 +0200 (Wed, 31 Aug 2011)");
   script_bugtraq_id(49122);
   script_cve_id("CVE-2011-0527");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.springsource.com/security/cve-2011-0527");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of VMware vFabric tc Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web Servers");

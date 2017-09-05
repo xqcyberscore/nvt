@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_wmi_accessible_shares.nasl 5486 2017-03-04 18:08:45Z cfi $
+# $Id: gb_ms_wmi_accessible_shares.nasl 7051 2017-09-04 11:38:56Z cfischer $
 #
 # Get Windows shares over WMI
 #
@@ -10,7 +10,7 @@
 # Copyright:
 # Copyright (c) 2014 Greenbone Networks GmbH, http://www.greenbone.net
 #
-# Set in an Workgroup Environment under Windows Vista and greater, 
+# Set in an Workgroup Environment under Windows Vista and greater,
 # with enabled UAC this DWORD to access WMI:
 # HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\system\LocalAccountTokenFilterPolicy to 1
 #
@@ -32,8 +32,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96199");
-  script_version("$Revision: 5486 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-04 19:08:45 +0100 (Sat, 04 Mar 2017) $");
+  script_version("$Revision: 7051 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:38:56 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-03-12 09:32:24 +0200 (Wed, 12 Mar 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,8 +41,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2014 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("toolcheck.nasl", "smb_login.nasl", "os_detection.nasl");
-  script_mandatory_keys("Tools/Present/wmi", "SMB/password", "SMB/login", "Host/runs_windows");
+  script_dependencies("gb_wmi_access.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("WMI/access_successful");
 
   script_tag(name:"summary", value:"Get Windows Shares over WMI");
 
@@ -53,46 +54,24 @@ if(description)
 
 include("host_details.inc");
 
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
-
 host    = get_host_ip();
-usrname = get_kb_item("SMB/login");
-domain  = get_kb_item("SMB/domain");
-if (domain){
-  usrname = domain + '\\' + usrname;
-}
-passwd  = get_kb_item("SMB/password");
+usrname = get_kb_item( "SMB/login" );
+passwd  = get_kb_item( "SMB/password" );
+if( ! host || ! usrname || ! passwd ) exit( 0 );
+domain  = get_kb_item( "SMB/domain" );
+if( domain ) usrname = domain + '\\' + usrname;
 
-if(!host || !usrname || !passwd){
-    exit(0);
-}
-
-samba = get_kb_item("SMB/samba");
-
-if(samba){
-  exit(0);
-}
-
-handle = wmi_connect(host:host, username:usrname, password:passwd);
-
-if(!handle){
-  exit(0);
-}
+handle = wmi_connect( host:host, username:usrname, password:passwd );
+if( ! handle ) exit( 0 );
 
 query = "select Name, Path from Win32_share";
+sharelist = wmi_query( wmi_handle:handle, query:query );
+wmi_close( wmi_handle:handle );
 
-sharelist = wmi_query(wmi_handle:handle, query:query);
-
-if (!sharelist){
-  wmi_close(wmi_handle:handle);
-  exit(0);
+if( sharelist ) {
+  set_kb_item( name:"WMI/Accessible_Shares", value:sharelist );
+  report = 'The following shares were found\n' + sharelist;
+  log_message( data:report );
 }
 
-set_kb_item(name:"WMI/Accessible_Shares", value:sharelist);
-
-report = 'The following shares were found\n' + sharelist;
-log_message(port:port, data:report);
-
-wmi_close(wmi_handle:handle);
-exit(0);
-
+exit( 0 );

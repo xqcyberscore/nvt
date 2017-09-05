@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_jan11_lin.nasl 3103 2016-04-18 14:50:34Z benallard $
+# $Id: gb_google_chrome_mult_vuln_jan11_lin.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities - Jan11 (Linux)
 #
@@ -59,8 +59,8 @@ tag_summary = "The host is running Google Chrome and is prone to multiple
 if(description)
 {
   script_id(801826);
-  script_version("$Revision: 3103 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:50:34 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-01-27 07:47:27 +0100 (Thu, 27 Jan 2011)");
   script_cve_id("CVE-2011-0470", "CVE-2011-0471", "CVE-2011-0472", "CVE-2011-0473",
                 "CVE-2011-0474", "CVE-2011-0475", "CVE-2011-0476", "CVE-2011-0477",
@@ -73,7 +73,6 @@ if(description)
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/2011/01/chrome-stable-release.html");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");

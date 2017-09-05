@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clipbucket_detect.nasl 4130 2016-09-22 09:37:47Z antu123 $
+# $Id: gb_clipbucket_detect.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # ClipBucket Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809038");
-  script_version("$Revision: 4130 $");
+  script_version("$Revision: 7052 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-22 11:37:47 +0200 (Thu, 22 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-09-08 11:15:03 +0530 (Thu, 08 Sep 2016)");
   script_name("ClipBucket Remote Version Detection");
   script_tag(name : "summary" , value : "Detection of installed version of
@@ -40,7 +40,6 @@ if(description)
   response.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check the presence of ClipBucket");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

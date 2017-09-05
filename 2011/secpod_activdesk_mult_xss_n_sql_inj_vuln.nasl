@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_activdesk_mult_xss_n_sql_inj_vuln.nasl 3200 2016-04-29 13:26:41Z antu123 $
+# $Id: secpod_activdesk_mult_xss_n_sql_inj_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # ActivDesk Multiple Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902530");
-  script_version("$Revision: 3200 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-29 15:26:41 +0200 (Fri, 29 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_cve_id("CVE-2011-1563","CVE-2011-1564");
  script_bugtraq_id(46937);
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17443/");
   script_xref(name : "URL" , value : "http://itsecuritysolutions.org/2011-06-24-ActivDesk-3.0-multiple-security-vulnerabilities/");
 
-  script_summary("Determine ActivDesk Cross Site Scripting and SQL Injection Vulnerabilities");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plantvisor_49601.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_plantvisor_49601.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # PlantVisor Enhanced Unspecified Directory Traversal Vulnerability
 #
@@ -38,8 +38,8 @@ be affected.";
 if (description)
 {
  script_id(103252);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 7052 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-09-14 13:31:57 +0200 (Wed, 14 Sep 2011)");
  script_bugtraq_id(49601);
  script_tag(name:"cvss_base", value:"5.0");
@@ -52,7 +52,6 @@ if (description)
  script_xref(name : "URL" , value : "http://aluigi.altervista.org/adv/plantvisor_1-adv.txt");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if PlantVisor is prone to a directory-traversal vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

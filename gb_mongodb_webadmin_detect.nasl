@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_webadmin_detect.nasl 2835 2016-03-11 08:45:17Z benallard $
+# $Id: gb_mongodb_webadmin_detect.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # MongoDB Web Admin Detection
 #
@@ -31,8 +31,8 @@ if (description)
  
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2835 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:45:17 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 7052 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
  script_tag(name:"creation_date", value:"2010-08-06 15:09:20 +0200 (Fri, 06 Aug 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("MongoDB Web Admin Detection");
@@ -40,7 +40,6 @@ if (description)
  tag_summary =
 "The script sends a connection request to the server and attempts to
 extract the version number from the reply.";
- script_summary("Checks for the presence of MongoDB Web Admin");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");

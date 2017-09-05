@@ -84,8 +84,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2011-November/001471.html");
   script_id(840804);
-  script_version("$Revision: 6642 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:59:35 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-11-11 09:59:23 +0530 (Fri, 11 Nov 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -95,7 +95,6 @@ if(description)
                 "CVE-2011-2928", "CVE-2011-3188", "CVE-2011-3191");
   script_name("Ubuntu Update for linux USN-1253-1");
 
-  script_summary("Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

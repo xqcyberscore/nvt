@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tivoli_dir_server_ber_ldap_dos_vuln.nasl 3115 2016-04-19 10:09:30Z benallard $
+# $Id: gb_ibm_tivoli_dir_server_ber_ldap_dos_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # IBM Tivoli Directory Server LDAP BER Denial of Service Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "The host is running IBM Tivoli Directory Server and is prone
 if(description)
 {
   script_id(801823);
-  script_version("$Revision: 3115 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:09:30 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_cve_id("CVE-2010-4216");
   script_bugtraq_id(44604);
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2863");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of IBM Tivoli Directory Server");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");

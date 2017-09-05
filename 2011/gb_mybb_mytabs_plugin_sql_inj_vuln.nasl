@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_mytabs_plugin_sql_inj_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_mybb_mytabs_plugin_sql_inj_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # MyBB MyTabs Plugin 'tab' Parameter SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802031");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-08-04 10:01:53 +0200 (Thu, 04 Aug 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17595/");
   script_xref(name : "URL" , value : "http://community.mybb.com/archive/index.php/thread-88505-12.html");
 
-  script_summary("Check if MyBB MyTabs Plugin is vulnerable for SQL Injection attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

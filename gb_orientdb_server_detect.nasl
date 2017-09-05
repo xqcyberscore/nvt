@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808753");
-  script_version("$Revision: 6701 $");
+  script_version("$Revision: 7052 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-08-08 15:37:50 +0530 (Mon, 08 Aug 2016)");
   script_name("OrientDB Server Version Detection");
   script_tag(name : "summary" , value : "Detection of installed version
@@ -40,7 +40,6 @@ if(description)
   OrientDB Server from the response.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the presence of OrientDB Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

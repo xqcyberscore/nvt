@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_itunes_code_exec_vuln_macosx.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_itunes_code_exec_vuln_macosx.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Apple iTunes Arbitrary Code Execution Vulnerability (Mac OS X)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host has installed apple iTunes and is prone to arbitrary co
 if(description)
 {
   script_id(902720);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_cve_id("CVE-2011-1290", "CVE-2011-1344");
   script_bugtraq_id(46849, 46822);
@@ -50,7 +50,6 @@ if(description)
 
 
   script_copyright("Copyright (c) 2011 SecPod");
-  script_summary("Check for apple iTunes version");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("secpod_itunes_detect_macosx.nasl");

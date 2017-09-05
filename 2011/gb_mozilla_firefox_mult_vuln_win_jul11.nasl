@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_win_jul11.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_mozilla_firefox_mult_vuln_win_jul11.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Mozilla Firefox Multiple Vulnerabilities July-11 (Windows)
 #
@@ -47,8 +47,8 @@ tag_summary = "The host is installed with Mozilla Firefox and is prone to multip
 if(description)
 {
   script_id(802212);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-07 15:43:33 +0200 (Thu, 07 Jul 2011)");
   script_cve_id("CVE-2011-2598", "CVE-2011-2367", "CVE-2011-2368", "CVE-2011-2369");
   script_bugtraq_id(48319, 48371, 48375, 48379);
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://blog.mozilla.com/security/2011/06/16/webgl-graphics-memory-stealing-issue/");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of Mozilla Firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

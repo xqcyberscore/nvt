@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_load_subscript_sec_bypass_vuln_macosx.nasl 6445 2017-06-27 12:31:06Z santu $
+# $Id: gb_mozilla_prdts_load_subscript_sec_bypass_vuln_macosx.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Mozilla Firefox and SeaMonkey 'loadSubScript()' Security Bypass Vulnerability (MAC OS X)
 #
@@ -43,8 +43,8 @@ tag_summary = "The host is installed with Mozilla firefox/seamonkey and is prone
 if(description)
 {
   script_id(802187);
-  script_version("$Revision: 6445 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 14:31:06 +0200 (Tue, 27 Jun 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_cve_id("CVE-2011-3004");
   script_bugtraq_id(49852);
@@ -54,7 +54,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-43.html");
 
-  script_summary("Check for the version of Mozilla Firefox/SeaMonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

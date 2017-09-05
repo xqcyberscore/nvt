@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_su10-007.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_macosx_su10-007.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Mac OS X v10.6.4 Multiple Vulnerabilities (2010-007)
 #
@@ -68,8 +68,8 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(802144);
-  script_version("$Revision: 3100 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_cve_id("CVE-2010-1828", "CVE-2010-1829", "CVE-2010-1830", "CVE-2009-0796",
                 "CVE-2010-0408", "CVE-2010-0434", "CVE-2010-1842", "CVE-2010-1831",
@@ -129,7 +129,6 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce//2011//Apr/msg00004.html");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Checks for existence of Mac OS X Security Update 2010-007");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");

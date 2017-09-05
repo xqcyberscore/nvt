@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_joomnik_comp_album_param_sql_inj_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_joomla_joomnik_comp_album_param_sql_inj_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Joomla! com_joomnik Component 'album' Parameter SQL Injection Vulnerability
 #
@@ -47,8 +47,8 @@ and is prone to SQL injection vulnerability.";
 if(description)
 {
   script_id(802022);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://extensions.joomla.org/extensions/photos-a-images/photo-gallery/251");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_summary("Determine if Joomla! Joomnik Gallery Component is prone to SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

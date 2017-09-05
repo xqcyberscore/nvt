@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tor_policy_summarize_dos_win.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_tor_policy_summarize_dos_win.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Tor Directory Authority 'policy_summarize' Denial of Service Vulnerability (Windows)
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is installed with Tor and is prone to buffer overflow
 if(description)
 {
   script_id(802300);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-20 15:22:27 +0200 (Mon, 20 Jun 2011)");
   script_cve_id("CVE-2011-1924");
   script_bugtraq_id(46618);
@@ -51,7 +51,6 @@ if(description)
   script_name("Tor Directory Authority 'policy_summarize' Denial of Service Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/43548");
 
-  script_summary("Check for the version of Tor");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

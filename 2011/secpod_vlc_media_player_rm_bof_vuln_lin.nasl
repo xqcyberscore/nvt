@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vlc_media_player_rm_bof_vuln_lin.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_vlc_media_player_rm_bof_vuln_lin.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # VLC Media Player '.RM' File BOF Vulnerability (Linux)
 #
@@ -40,8 +40,8 @@ tag_summary = "The host is installed with VLC Media Player and is prone to
 if(description)
 {
   script_id(902706);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-29 17:55:33 +0200 (Fri, 29 Jul 2011)");
   script_cve_id("CVE-2011-2587");
   script_bugtraq_id(48664);
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.videolan.org/security/sa1105.html");
 
   script_copyright("Copyright (c) 2011 SecPod");
-  script_summary("Check for the version of VLC Media Player");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_dependencies("secpod_vlc_media_player_detect_lin.nasl");

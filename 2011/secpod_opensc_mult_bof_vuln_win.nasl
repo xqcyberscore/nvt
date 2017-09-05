@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opensc_mult_bof_vuln_win.nasl 3129 2016-04-22 09:14:04Z cfi $
+# $Id: secpod_opensc_mult_bof_vuln_win.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # OpenSC Smart Card Serial Number Multiple Buffer Overflow Vulnerabilities (Windows)
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901175");
-  script_version("$Revision: 3129 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 11:14:04 +0200 (Fri, 22 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-02-01 16:46:08 +0100 (Tue, 01 Feb 2011)");
   script_cve_id("CVE-2010-4523");
   script_bugtraq_id(45435);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_name("OpenSC Smart Card Serial Number Multiple Buffer Overflow Vulnerabilities (Windows)");
-  script_summary("Check for the version of OpenSC");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");

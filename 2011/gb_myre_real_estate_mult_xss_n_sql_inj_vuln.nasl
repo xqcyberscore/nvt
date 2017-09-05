@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_myre_real_estate_mult_xss_n_sql_inj_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_myre_real_estate_mult_xss_n_sql_inj_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # MYRE Real Estate Software Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802157");
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-09-09 17:36:48 +0200 (Fri, 09 Sep 2011)");
   script_bugtraq_id(49540);
   script_cve_id("CVE-2011-3393", "CVE-2011-3394");
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17811");
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SECPOD_MRS_SQL_XSS_Vuln.txt");
 
-  script_summary("Check if MYRE Real Estate Software is prone to XSS and SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

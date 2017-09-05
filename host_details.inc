@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 6925 2017-08-15 12:08:40Z asteins $
+# $Id: host_details.inc 7050 2017-09-04 09:50:25Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6925 $
+# $Revision: 7050 $
 #
 ###############################################################################
 
@@ -1246,7 +1246,7 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       "erver: BBC " >< banner || # OV Communication Broker runs on various different OS variants
       egrep( pattern:"^220 ([0-9a-zA-Z._\-]+) ESMTP$", string:banner ) || # E.g. 220 hostname ESMTP
       egrep( pattern:"ESMTP Exim ([0-9._]+) ", string:banner ) || # e.g. 220 host ESMTP Exim 4.84_2 Tue, 01 Aug 2017 13:01:18 +0200
-      egrep( pattern:"^X-Powered-By: PHP/([0-9.]+)$", string:banner ) ||
+      egrep( pattern:"^X-Powered-By: PHP/([0-9.]+)(-[0-9]+)?$", string:banner ) || # e.g. X-Powered-By: PHP/7.0.19 or X-Powered-By: PHP/7.0.19-1
       egrep( pattern:"^Server: CUPS/([0-9.]+) IPP/([0-9.]+)$", string:banner ) || # Handled at the bottom of sw_http_os_detection.nasl
       egrep( pattern:"^Server: squid/([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: squid/([0-9.]+)\.STABLE([0-9.]+)$", string:banner ) || # e.g. Server: squid/2.7.STABLE5

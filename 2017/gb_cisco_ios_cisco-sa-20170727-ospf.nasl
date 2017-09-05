@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20170727-ospf.nasl 6959 2017-08-18 07:24:59Z asteins $
+# $Id: gb_cisco_ios_cisco-sa-20170727-ospf.nasl 7046 2017-09-04 05:19:39Z asteins $
 #
 # Cisco IOS Software OSPF LSA Manipulation Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106995");
  script_cve_id("CVE-2017-6770");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 6959 $");
+ script_tag(name:"cvss_base", value:"4.3");
+ script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:P/A:P");
+ script_version("$Revision: 7046 $");
 
  script_name("Cisco IOS Software OSPF LSA Manipulation Vulnerability");
 
@@ -62,7 +62,7 @@ table and propagate the crafted OSPF LSA type 1 update throughout the OSPF AS do
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-09-04 07:19:39 +0200 (Mon, 04 Sep 2017) $");
  script_tag(name: "creation_date", value: "2017-07-28 08:38:44 +0700 (Fri, 28 Jul 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

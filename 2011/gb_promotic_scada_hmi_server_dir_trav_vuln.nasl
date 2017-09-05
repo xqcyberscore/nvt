@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_promotic_scada_hmi_server_dir_trav_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_promotic_scada_hmi_server_dir_trav_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # PROMOTIC SCADA/HMI Webserver Directory Traversal Vulnerability
 #
@@ -45,8 +45,8 @@ directory traversal vulnerability.";
 if(description)
 {
   script_id(802041);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-10-20 08:43:23 +0200 (Thu, 20 Oct 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://aluigi.altervista.org/adv/promotic_1-adv.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if PROMOTIC SCADA/HMI Webserver is vulnerable to Directory Traversal Attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web Servers");

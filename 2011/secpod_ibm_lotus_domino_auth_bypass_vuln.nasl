@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_domino_auth_bypass_vuln.nasl 5701 2017-03-23 16:10:36Z mime $
+# $Id: secpod_ibm_lotus_domino_auth_bypass_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # IBM Lotus Domino Cookie File Authentication Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902420");
-  script_version("$Revision: 5701 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_cve_id("CVE-2011-1519", "CVE-2011-1520");
   script_tag(name:"cvss_base", value:"10.0");
@@ -42,7 +42,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-11-110/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/517119/100/0/threaded");
 
-  script_summary("Check for the version of IBM Lotus Domino");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

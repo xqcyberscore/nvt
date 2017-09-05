@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_kingview_activex_bof_vuln.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: secpod_kingview_activex_bof_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # WellinTech KingView 'KVWebSvr.dll' ActiveX Control Heap Buffer Overflow Vulnerability
 #
@@ -46,8 +46,8 @@ tag_summary = "This host is installed with KingView and is prone to buffer
 if(description)
 {
   script_id(902724);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_cve_id("CVE-2011-3142");
   script_bugtraq_id(46757);
@@ -57,7 +57,6 @@ if(description)
 
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of KingView");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");

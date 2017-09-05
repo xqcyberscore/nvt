@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_50803.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: gb_zabbix_50803.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # ZABBIX 'only_hostid' Parameter SQL Injection Vulnerability
 #
@@ -48,7 +48,7 @@ if (description)
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_version ("$Revision: 3386 $");
+ script_version ("$Revision: 7052 $");
 
  script_name("ZABBIX 'only_hostid' Parameter SQL Injection Vulnerability");
 
@@ -56,9 +56,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.zabbix.com/index.php");
  script_xref(name : "URL" , value : "https://support.zabbix.com/browse/ZBX-4385");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-11-30 11:34:16 +0100 (Wed, 30 Nov 2011)");
- script_summary("Determine if installed Zabbix version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libcloud_ssl_cert_sec_bypass_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_libcloud_ssl_cert_sec_bypass_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Libcloud SSL Certificates Security Bypass Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with Libcloud and is prone to security
 if(description)
 {
   script_id(802164);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-09-22 10:24:03 +0200 (Thu, 22 Sep 2011)");
   script_cve_id("CVE-2010-4340");
   script_tag(name:"cvss_base", value:"4.3");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name : "URL" , value : "http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=598463");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of Libcloud");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

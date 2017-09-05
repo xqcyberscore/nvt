@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_win_feb11.nasl 4590 2016-11-22 08:45:15Z cfi $
+# $Id: gb_opera_mult_vuln_win_feb11.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Opera Browser Multiple Vulnerabilities Feb-11 (Windows)
 #
@@ -47,8 +47,8 @@ tag_summary = "The host is installed with Opera browser and is prone to multiple
 if(description)
 {
   script_id(801728);
-  script_version("$Revision: 4590 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-22 09:45:15 +0100 (Tue, 22 Nov 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_cve_id("CVE-2011-0450", "CVE-2011-0682", "CVE-2011-0681", "CVE-2011-0683",
                 "CVE-2011-0684", "CVE-2011-0685", "CVE-2011-0687", "CVE-2011-0686");
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/windows/1101/");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Opera");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

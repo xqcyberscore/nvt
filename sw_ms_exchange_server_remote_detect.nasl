@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ms_exchange_server_remote_detect.nasl 2880 2016-03-17 12:18:39Z cfi $
+# $Id: sw_ms_exchange_server_remote_detect.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Microsoft Exchange Server Remote Detection
 #
@@ -28,14 +28,13 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111085");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2880 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-17 13:18:39 +0100 (Thu, 17 Mar 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-02-04 15:00:00 +0100 (Thu, 04 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Microsoft Exchange Server Remote Detection");
  
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
-  script_summary("Checks for the presence of Microsoft Exchange Server");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection"); 
   script_dependencies("smtpserver_detect.nasl");

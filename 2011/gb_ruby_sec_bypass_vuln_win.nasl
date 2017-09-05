@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_sec_bypass_vuln_win.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_ruby_sec_bypass_vuln_win.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Ruby "#to_s" Security Bypass Vulnerability
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is installed with Ruby and is prone to security bypass
 if(description)
 {
   script_id(801760);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-03-09 16:08:21 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2011-1005");
   script_bugtraq_id(46458);
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=678920");
   script_xref(name : "URL" , value : "http://www.ruby-lang.org/en/news/2011/02/18/exception-methods-can-bypass-safe/");
 
-  script_summary("Check for the version of Ruby");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");

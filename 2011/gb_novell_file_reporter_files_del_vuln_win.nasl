@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_file_reporter_files_del_vuln_win.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_novell_file_reporter_files_del_vuln_win.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Novell File Reporter 'SRS' Tag Arbitrary File Deletion Vulnerability
 #
@@ -47,8 +47,8 @@ arbitrary file deletion vulnerability.";
 if(description)
 {
   script_id(801960);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_cve_id("CVE-2011-2750");
   script_tag(name:"cvss_base", value:"5.0");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://aluigi.org/adv/nfr_2-adv.txt");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/518632/100/0/threaded");
 
-  script_summary("Check for the version of Novell File Reporter");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

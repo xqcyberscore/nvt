@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerabilities Test
-# $Id: gb_xnview_code_exec_vuln_win.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_xnview_code_exec_vuln_win.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # XnView File Search Path Executable File Injection Vulnerability (Windows)
 #
@@ -41,8 +41,8 @@ tag_solution = "Update to XnView version 1.98.1 or later.
 if(description)
 {
   script_id(802309);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-15 12:23:42 +0200 (Fri, 15 Jul 2011)");
   script_cve_id("CVE-2011-1338");
   script_bugtraq_id(48562);
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/45127");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/68369");
 
-  script_summary("Check for the version of XnView");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_GlassFish_prev_escl_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_oracle_GlassFish_prev_escl_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Oracle Java GlassFish Server Privilege Escalation Vulnerability
 #
@@ -44,8 +44,8 @@ tag_summary = "The host is running GlassFish Server and is prone to privilege
 if(description)
 {
   script_id(902286);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_cve_id("CVE-2010-4438");
   script_bugtraq_id(45890);
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0155");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Oracle Java GlassFish Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

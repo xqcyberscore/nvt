@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mult_components_sql_inj_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_joomla_mult_components_sql_inj_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Joomla Multiple Components SQL Injection Vulnerabilities
 #
@@ -44,13 +44,13 @@ tag_summary = "This host is running Joomla with multiple components and is
 if(description)
 {
   script_id(802196);
-  script_version("$Revision: 3117 $");
+  script_version("$Revision: 7052 $");
   script_cve_id("CVE-2010-4927", "CVE-2010-4928", "CVE-2010-4929", "CVE-2010-4937",
                 "CVE-2010-4945", "CVE-2010-4902", "CVE-2010-4865", "CVE-2010-4902");
   script_bugtraq_id(43319, 33254, 43415, 42334, 42986, 43605,42986);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-11-03 15:42:01 +0200 (Thu, 03 Nov 2011)");
   script_name("Joomla Multiple Components SQL Injection Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/40932");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/105704/joomlasgicatalog-sql.txt");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_summary("Check if Joomla components are vulnerable for SQL injection attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lexmark_markvision_enterprise_detect.nasl 2662 2016-02-16 06:27:52Z antu123 $
+# $Id: gb_lexmark_markvision_enterprise_detect.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Lexmark MarkVision Enterprise Detection
 #
@@ -31,8 +31,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 2662 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-16 07:27:52 +0100 (Tue, 16 Feb 2016) $");
+ script_version ("$Revision: 7052 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
  script_tag(name:"creation_date", value:"2015-01-16 13:40:56 +0100 (Fri, 16 Jan 2015)");
  script_name("Lexmark MarkVision Enterprise Detection");
 
@@ -40,7 +40,6 @@ if (description)
 request to the server and attempts to extract the version number
 from the reply.");
 
- script_summary("Checks for the presence of Lexmark MarkVision Enterprise");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

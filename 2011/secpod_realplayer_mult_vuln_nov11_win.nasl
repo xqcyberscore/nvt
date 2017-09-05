@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realplayer_mult_vuln_nov11_win.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_realplayer_mult_vuln_nov11_win.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities Nov - 11 (Windows)
 #
@@ -48,7 +48,7 @@ tag_summary = "This host is installed with RealPlayer which is prone to multiple
 if(description)
 {
   script_id(902762);
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 7052 $");
   script_bugtraq_id(50741);
   script_cve_id("CVE-2011-4253", "CVE-2011-4252", "CVE-2011-4251", "CVE-2011-4250",
                 "CVE-2011-4249", "CVE-2011-4248", "CVE-2011-4247", "CVE-2011-4246",
@@ -57,13 +57,12 @@ if(description)
                 "CVE-2011-4258", "CVE-2011-4257", "CVE-2011-4256");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-11-29 13:58:17 +0530 (Tue, 29 Nov 2011)");
   script_name("RealNetworks RealPlayer Multiple Vulnerabilities Nov - 11 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46954/");
   script_xref(name : "URL" , value : "http://service.real.com/realplayer/security/11182011_player/en/");
 
-  script_summary("Check for the version of RealPlayer");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");

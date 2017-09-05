@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: slident.nasl 4048 2016-09-13 10:36:49Z cfi $
+# $Id: slident.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Detect slident and or fake identd
 #
@@ -28,13 +28,12 @@ if(description)
 {
   script_id(18373);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4048 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-13 12:36:49 +0200 (Tue, 13 Sep 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Detect slident and or fake identd");
   script_family("General");
-  script_summary("Detect identd servers that return random tokens");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2005 Michel Arboi");

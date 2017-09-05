@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oscss_detect.nasl 2730 2016-02-26 07:30:39Z cfi $
+# $Id: secpod_oscss_detect.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # osCSS Version Detection
 #
@@ -27,12 +27,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901135");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2730 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 08:30:39 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("osCSS Version Detection");
-  script_summary("Check for osCSS version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Product detection");

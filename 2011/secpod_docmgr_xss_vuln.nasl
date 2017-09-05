@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_docmgr_xss_vuln.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: secpod_docmgr_xss_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # DocMGR Cross Site Scripting Vulnerability
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902391");
-  script_version("$Revision: 3516 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("DocMGR Cross Site Scripting Vulnerability");
-  script_summary("Check if DocMGR is vulnerable to Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");

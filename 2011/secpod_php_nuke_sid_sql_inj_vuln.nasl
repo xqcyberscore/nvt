@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_nuke_sid_sql_inj_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_php_nuke_sid_sql_inj_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # PHP-Nuke 'sid' Parameter SQL Injection Vulnerability
 #
@@ -29,13 +29,12 @@ CPE = "cpe:/a:phpnuke:php-nuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902612");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
   script_name("PHP-Nuke 'sid' Parameter SQL Injection Vulnerability");
-  script_summary("Determine if PHP-Nuke is prone to SQL injection vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

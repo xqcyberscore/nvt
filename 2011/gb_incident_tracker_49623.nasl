@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_incident_tracker_49623.nasl 3115 2016-04-19 10:09:30Z benallard $
+# $Id: gb_incident_tracker_49623.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Support Incident Tracker (SiT!) Multiple Input Validation Vulnerabilities
 #
@@ -44,8 +44,8 @@ tag_solution = "Updates are available. Please see the references for more detail
 if (description)
 {
  script_id(103257);
- script_version("$Revision: 3115 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:09:30 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 7052 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-09-15 12:51:05 +0200 (Thu, 15 Sep 2011)");
  script_bugtraq_id(49623);
  script_tag(name:"cvss_base", value:"7.5");
@@ -60,7 +60,6 @@ if (description)
  script_xref(name : "URL" , value : "http://sitracker.org/wiki/ReleaseNotes365");
 
  script_tag(name:"qod_type", value:"remote_active");
- script_summary("Determine if installed Support Incident Tracker is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

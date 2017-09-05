@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_lighttpd_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
+# $Id: sw_lighttpd_detect.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Lighttpd Server Detection
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111079");
-  script_version("$Revision: 6701 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-01-27 11:00:00 +0100 (Wed, 27 Jan 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_name("Lighttpd Server Detection");
 
-  script_summary("Checks for the presence of a Lighttpd Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
   script_family("Product detection");

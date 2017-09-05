@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_loc_prev_escl_vuln_lin.nasl 3101 2016-04-18 14:43:32Z benallard $
+# $Id: gb_oracle_virtualbox_loc_prev_escl_vuln_lin.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Oracle VM VirtualBox Extensions Local Privilege Escalation Vulnerability (Linux)
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is installed with Oracle VirtualBox and is prone to den
 if(description)
 {
   script_id(801582);
-  script_version("$Revision: 3101 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:43:32 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-01-31 05:37:34 +0100 (Mon, 31 Jan 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/42985");
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0152");
 
-  script_summary("Check for the version of Oracle VirtualBox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");

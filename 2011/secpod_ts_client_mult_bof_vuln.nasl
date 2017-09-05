@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ts_client_mult_bof_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_ts_client_mult_bof_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Terminal Server Client RDP File Processing BOF Vulnerabilities
 #
@@ -46,8 +46,8 @@ to multiple buffer overflow vulnerabilities.";
 if(description)
 {
   script_id(902297);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2011-0900", "CVE-2011-0901");
   script_bugtraq_id(46099);
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/16095/");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of Terminal Server Client");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");

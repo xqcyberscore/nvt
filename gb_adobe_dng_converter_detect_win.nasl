@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_dng_converter_detect_win.nasl 6506 2017-07-03 10:22:51Z cfischer $
+# $Id: gb_adobe_dng_converter_detect_win.nasl 7051 2017-09-04 11:38:56Z cfischer $
 #
 # Adobe DNG Converter Detection (Windows)
 #
@@ -27,13 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809761");
-  script_version("$Revision: 6506 $");
+  script_version("$Revision: 7051 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 12:22:51 +0200 (Mon, 03 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:38:56 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-12-15 15:01:50 +0530 (Thu, 15 Dec 2016)");
   script_name("Adobe DNG Converter Detection (Windows)");
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("gb_wmi_access.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("WMI/access_successful");
+
+  script_tag(name:"summary", value:"Detection of installed version of
   Adobe DNG Converter.
 
   The script runs a wmi query for 'Adobe DNG Converter.exe' and extracts the
@@ -41,85 +48,52 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
-  script_require_ports(139, 445);
   exit(0);
 }
 
-
-include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-host = "";
-query = "";
-usrname = "";
-passwd = "";
-version = "";
-info = "";
-location = "";
-
-## Get host
 host    = get_host_ip();
-
-usrname = get_kb_item("SMB/login");
-passwd  = get_kb_item("SMB/password");
-domain  = get_kb_item("SMB/domain");
+usrname = get_kb_item( "SMB/login" );
+passwd  = get_kb_item( "SMB/password" );
+if( ! host || ! usrname || ! passwd ) exit( 0 );
+domain  = get_kb_item( "SMB/domain" );
 if( domain ) usrname = domain + '\\' + usrname;
 
-if(!host || !usrname || !passwd){
-  exit(0);
-}
+handle = wmi_connect( host:host, username:usrname, password:passwd );
+if( ! handle ) exit( 0 );
 
-## Get the handle to execute wmi query
-handle = wmi_connect(host:host, username:usrname, password:passwd);
-
-if(!handle){
-  exit(0);
-}
-
-## WMI query to grep the file version
 query = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) +'Adobe DNG Converter' +raw_string(0x22) +
-        ' AND Extension ='+ raw_string(0x22) +'exe' + raw_string(0x22);
+        + raw_string(0x22) + 'Adobe DNG Converter' + raw_string(0x22) +
+        ' AND Extension =' + raw_string(0x22) + 'exe' + raw_string(0x22);
+fileVer = wmi_query( wmi_handle:handle, query:query );
+wmi_close( wmi_handle:handle );
+if( ! fileVer ) exit( 0 );
 
-fileVer = wmi_query(wmi_handle:handle, query:query);
-if(!fileVer){
-  exit(0);
-}
+foreach ver( split( fileVer ) ) {
+  if( ver =~ "adobe dng converter.exe" ) {
+    info =  eregmatch( pattern:"(.*)\adobe\\adobe dng converter.exe.?([0-9.]+)", string:ver );
+    if( info ) {
+      version  = info[2];
+      location = info[1];
 
-foreach ver (split(fileVer))
-{
-  if(ver =~ "adobe dng converter.exe")
-  {
-    info =  eregmatch(pattern:"(.*)\adobe\\adobe dng converter.exe.?([0-9.]+)", string:ver);
-    if(info)
-    {
-      version = info[2];
-      location = info [1];
-
-      set_kb_item(name: "Adobe/DNG/Converter/Win/Version", value:version);
+      set_kb_item( name:"Adobe/DNG/Converter/Win/Version", value:version );
 
       ##Only 32-bit app is available
       ##Update CPE once available in NVD
-      cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:adobe:dng_converter:");
-      if(isnull(cpe))
+      cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:adobe:dng_converter:" );
+      if( isnull( cpe ) )
         cpe = "cpe:/a:adobe:dng_converter";
 
-      ## Register Product and Build Report
-      register_product(cpe:cpe, location:location);
-      log_message(data: build_detection_report(app: "Adobe DNG Converter",
-                                               version: version,
-                                               install: location,
-                                               cpe: cpe,
-                                               concluded: version));
+      register_product( cpe:cpe, location:location );
+      log_message( data:build_detection_report( app:"Adobe DNG Converter",
+                                                version:version,
+                                                install:location,
+                                                cpe:cpe,
+                                                concluded:version ) );
     }
   }
 }
-exit(0);
+
+exit( 0 );

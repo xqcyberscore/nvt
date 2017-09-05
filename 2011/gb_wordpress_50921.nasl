@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_50921.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_wordpress_50921.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # WordPress Pretty Link Plugin 'pretty-bar.php' Cross Site Scripting Vulnerability
 #
@@ -44,7 +44,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(50921);
- script_version ("$Revision: 6719 $");
+ script_version ("$Revision: 7052 $");
  script_tag(name:"cvss_base", value:"2.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
  script_name("WordPress Pretty Link Plugin 'pretty-bar.php' Cross Site Scripting Vulnerability");
@@ -53,10 +53,9 @@ if (description)
  script_xref(name : "URL" , value : "http://wordpress.org/");
  script_xref(name : "URL" , value : "http://www.wordpress.org/extend/plugins/pretty-link/changelog/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-12-07 10:18:02 +0100 (Wed, 07 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed Wordpress is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

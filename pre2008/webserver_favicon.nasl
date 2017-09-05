@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webserver_favicon.nasl 4988 2017-01-11 15:37:25Z cfi $
+# $Id: webserver_favicon.nasl 7050 2017-09-04 09:50:25Z cfischer $
 #
 # Identify software/infrastructure via favicon.ico
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20108");
-  script_version("$Revision: 4988 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-11 16:37:25 +0100 (Wed, 11 Jan 2017) $");
+  script_version("$Revision: 7050 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 11:50:25 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -193,7 +193,7 @@ server["82d746eb54b78b5449fbd583fc046ab2"]="perl-doc-html (5.10.0)";
 server["90c244c893a963e3bb193d6043a347bd"]="phpgroupware (0.9.16.012) ";
 server["4b30eec86e9910e663b5a9209e9593b6"]="phpldapadmin (1.1.0.5)";
 server["02dd7453848213a7b5277556bcc46307"]="phpmyadmin (2.11.8.1) - pmd ";
-server["d037ef2f629a22ddadcf438e6be7a325"]="phpmyadmin (2.11.8.1)";
+server["d037ef2f629a22ddadcf438e6be7a325"]="phpmyadmin (2.11.8.1 - 4.2.x)";
 server["8190ead2eb45952151ab5065d0e56381"]="pootle (1.1.0)";
 server["ba84999dfc070065f37a082ab0e36017"]="prewikka (0.9.14)";
 server["0f45c2c79ebe90d6491ddb111e810a56"]="python-cherrypy (2.3.0-3.0.2)";
@@ -400,8 +400,11 @@ server["c126f7e761813946fea2e90ff7ddb838"]="Zenoss Core x";
 #Additional favicons
 server["5a77e47fa23554a4166d2303580b0733"]="Sawmill";
 server["a4eb4e0aa80740db8d7d951b6d63b2a2"]="ownCloud";
+server["531b63a51234bb06c9d77f219eb25553"]="phpmyadmin (4.6.x)";
 
-function check_md5( ) {
+function check_md5( res ) {
+
+  local_var res, md5, file;
 
   if( ! res || isnull( res ) ) return;
   md5 = hexstr( MD5( res ) );
@@ -431,7 +434,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
-  check_md5( );
+  check_md5( res:res );
 
   # Check if a favicon is referenced via a <link rel= tag
   res = http_get_cache( item:dir + "/", port:port );
@@ -445,7 +448,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
       req = http_get( item:url, port:port );
       res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
-      check_md5( );
+      check_md5( res:res );
     }
   }
 }

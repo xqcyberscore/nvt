@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_ssh_version.nasl 6251 2017-05-30 15:22:59Z teissa $
+# $Id: gb_cisco_wlc_ssh_version.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Cisco Wireless LAN Controller Detection (SSH)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105429");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6251 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-30 17:22:59 +0200 (Tue, 30 May 2017) $");
+ script_version ("$Revision: 7052 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
  script_tag(name:"creation_date", value:"2015-10-30 14:08:04 +0100 (Fri, 30 Oct 2015)");
  script_name("Cisco Wireless LAN Controller Detection (SSH)");
 
@@ -39,7 +39,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_summary("Checks for the presence of Cisco Wireless LAN Controller");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dolphin_php_info_disc_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_dolphin_php_info_disc_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Dolphin '.php' Files Information Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902735");
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-09-30 15:58:03 +0200 (Fri, 30 Sep 2011)");
   script_cve_id("CVE-2011-3728");
   script_tag(name:"cvss_base", value:"5.0");
@@ -36,7 +36,6 @@ if(description)
   script_name("Dolphin '.php' Files Information Disclosure Vulnerability");
   script_xref(name : "URL" , value : "http://code.google.com/p/inspathx/source/browse/trunk/paths_vuln/Dolphin-7.0.4");
 
-  script_summary("Check Dolphin is prone to path disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

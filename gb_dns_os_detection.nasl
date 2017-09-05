@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dns_os_detection.nasl 5172 2017-02-02 14:36:49Z cfi $
+# $Id: gb_dns_os_detection.nasl 7050 2017-09-04 09:50:25Z cfischer $
 #
 # DNS Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108014");
-  script_version("$Revision: 5172 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-02 15:36:49 +0100 (Thu, 02 Feb 2017) $");
+  script_version("$Revision: 7050 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 11:50:25 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-11-03 14:13:48 +0100 (Thu, 03 Nov 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -60,17 +60,16 @@ foreach proto( make_list( "udp", "tcp" ) ) {
   foreach key( keys( banners ) ) {
 
     kb_key = "DNS/" + proto + "/version_request/";
-    port = int( key - kb_key );
+    port   = int( key - kb_key );
     banner = banners[key];
 
     if( "Microsoft" >< banner || "Windows" >< banner ) {
       if( "Windows 2008 DNS Server Ready" >< banner ) {
         register_and_report_os( os:"Microsoft Windows 2008 Server", cpe:"cpe:/o:microsoft:windows_2008", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-        continue;
       } else {
         register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-        continue;
       }
+      continue;
     }
 
     if( "FreeBSD" >< banner ) {
@@ -126,15 +125,14 @@ foreach proto( make_list( "udp", "tcp" ) ) {
     if( "-Debian" >< banner || ( "PowerDNS Authoritative Server" >< banner && "debian.org)" >< banner ) ) {
       if( "+deb8" >< banner ) {
         register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
+      } else if( "9.10.3-P4-Debian" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       } else {
         register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        continue;
       }
+      continue;
     }
-
     register_unknown_os_banner( banner:banner, banner_type_name:BANNER_TYPE, banner_type_short:"dns_banner", port:port, proto:proto );
-
   }
 }
 

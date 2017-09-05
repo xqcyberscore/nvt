@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_authenex_asas_server_sql_inj_vuln.nasl 4620 2016-11-25 06:39:51Z cfi $
+# $Id: secpod_authenex_asas_server_sql_inj_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # ASAS Server End User Self Service (EUSS) SQL Injection Vulnerability
 #
@@ -45,8 +45,8 @@ if(description)
 {
   script_id(902476);
   script_cve_id("CVE-2011-4801");
-  script_version("$Revision: 4620 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:39:51 +0100 (Fri, 25 Nov 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,7 +54,6 @@ if(description)
 
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Authenex ASAS");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

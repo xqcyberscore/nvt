@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_39259.nasl 6719 2017-07-13 13:53:39Z cfischer $
+# $Id: gb_joomla_39259.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Joomla! 'com_xobbix' Component 'prodid' Parameter SQL Injection Vulnerability
 #
@@ -39,17 +39,16 @@ if (description)
  script_id(103355);
  script_bugtraq_id(39259);
  script_cve_id("CVE-2010-5053");
- script_version ("$Revision: 6719 $");
+ script_version ("$Revision: 7052 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Joomla! 'com_xobbix' Component 'prodid' Parameter SQL Injection Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/39259");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 15:53:39 +0200 (Thu, 13 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-12-05 12:01:34 +0100 (Mon, 05 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed Joomla is vuolnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

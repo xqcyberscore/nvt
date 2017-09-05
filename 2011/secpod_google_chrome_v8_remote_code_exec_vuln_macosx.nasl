@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_v8_remote_code_exec_vuln_macosx.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_google_chrome_v8_remote_code_exec_vuln_macosx.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Google Chrome V8 Remote Code Execution Vulnerability (Mac OS X)
 #
@@ -38,18 +38,17 @@ tag_summary = "The host is installed with Google Chrome and is prone to remote
 if(description)
 {
   script_id(902637);
-  script_version("$Revision: 3570 $");
+  script_version("$Revision: 7052 $");
   script_cve_id("CVE-2011-3900");
   script_bugtraq_id(50701);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-11-21 17:55:43 +0530 (Mon, 21 Nov 2011)");
   script_name("Google Chrome V8 Remote Code Execution Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46889/");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/2011/11/stable-channel-update_16.html");
 
-  script_summary("Check the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("General");

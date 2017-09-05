@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sdp_downloader_http_header_bof_vuln.nasl 3112 2016-04-19 08:52:10Z antu123 $
+# $Id: gb_sdp_downloader_http_header_bof_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # SDP Downloader HTTP Header Handling Buffer Overflow Vulnerability
 #
@@ -47,8 +47,8 @@ buffer overflow vulnerability.";
 if(description)
 {
   script_id(801834);
-  script_version("$Revision: 3112 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 10:52:10 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0253");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of SDP Downloader");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");

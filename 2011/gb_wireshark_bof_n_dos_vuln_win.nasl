@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_bof_n_dos_vuln_win.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_wireshark_bof_n_dos_vuln_win.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Wireshark Heap Based BOF and Denial of Service Vulnerabilities (Windows)
 #
@@ -42,8 +42,8 @@ tag_summary = "The host is installed with Wireshark and is prone to heap based
 if(description)
 {
   script_id(802502);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-11-08 11:40:17 +0200 (Tue, 08 Nov 2011)");
   script_cve_id("CVE-2011-4102", "CVE-2011-4101");
   script_bugtraq_id(50486, 50481);
@@ -53,7 +53,6 @@ if(description)
 
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_summary("Check the version of Wireshark");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_wireshark_detect_win.nasl");

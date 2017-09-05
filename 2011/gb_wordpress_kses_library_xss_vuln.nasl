@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_kses_library_xss_vuln.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: gb_wordpress_kses_library_xss_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # WordPress KSES Library Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801807");
-  script_version("$Revision: 3516 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-01-12 13:59:47 +0100 (Wed, 12 Jan 2011)");
   script_cve_id("CVE-2010-4536");
   script_tag(name:"cvss_base", value:"4.3");
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/3335");
   script_xref(name : "URL" , value : "http://core.trac.wordpress.org/changeset/17172/branches/3.0");
 
-  script_summary("Determine if WordPress is prone to XSS Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

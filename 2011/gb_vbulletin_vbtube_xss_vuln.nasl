@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_vbtube_xss_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_vbulletin_vbtube_xss_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # vBulletin vBTube Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -45,9 +45,9 @@ cross site scripting vulnerabilities.";
 if(description)
 {
   script_id(802209);
-  script_version("$Revision: 3117 $");
+  script_version("$Revision: 7052 $");
   script_bugtraq_id(48280);
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-17 11:16:31 +0200 (Fri, 17 Jun 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/102238/vbtube129-xss.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if vBulletin vBTube is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");

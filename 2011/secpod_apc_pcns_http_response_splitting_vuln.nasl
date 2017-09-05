@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apc_pcns_http_response_splitting_vuln.nasl 4620 2016-11-25 06:39:51Z cfi $
+# $Id: secpod_apc_pcns_http_response_splitting_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # APC PowerChute Network Shutdown HTTP Response Splitting Vulnerability
 #
@@ -49,8 +49,8 @@ to HTTP response splitting vulnerability.";
 if(description)
 {
   script_id(902579);
-  script_version("$Revision: 4620 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:39:51 +0100 (Fri, 25 Nov 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-09-30 15:58:03 +0200 (Fri, 30 Sep 2011)");
   script_bugtraq_id(33924);
   script_tag(name:"cvss_base", value:"4.3");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://nam-en.apc.com/app/answers/detail/a_id/9539");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine if APC PowerChute Network Shutdown is vulnerable to HTTP Response Splitting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");

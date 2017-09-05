@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_appln_server_mult_unspecified_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_oracle_appln_server_mult_unspecified_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Oracle Application Server Multiple Unspecified Vulnerabilities
 #
@@ -27,16 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802532");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 7052 $");
   script_cve_id("CVE-2006-0284");
   script_bugtraq_id(16287);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-12-07 13:11:01 +0530 (Wed, 07 Dec 2011)");
   script_name("Oracle Application Server Multiple Unspecified Vulnerabilities");
 
-  script_summary("Check for the version of Oracle Application Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web Servers");

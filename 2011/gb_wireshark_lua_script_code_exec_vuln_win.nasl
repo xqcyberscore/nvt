@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_lua_script_code_exec_vuln_win.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_wireshark_lua_script_code_exec_vuln_win.nasl 7052 2017-09-04 11:50:51Z teissa $
 #
 # Wireshark Lua Script File Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with Wireshark and is prone to code
 if(description)
 {
   script_id(802249);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 7052 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-10-04 16:55:13 +0200 (Tue, 04 Oct 2011)");
   script_bugtraq_id(49528);
   script_cve_id("CVE-2011-3360");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2011-15.html");
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=6136");
 
-  script_summary("Check for the version of Wireshark");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");
