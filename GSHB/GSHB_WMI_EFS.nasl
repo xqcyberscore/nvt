@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_EFS.nasl 4486 2016-11-14 07:22:43Z cfi $
+# $Id: GSHB_WMI_EFS.nasl 7061 2017-09-05 11:50:40Z teissa $
 #
 # Get EFS Encrypted Files, Dirs and EFS-Encryption AlgorithmID (win)
 #
@@ -33,8 +33,8 @@ tag_summary = "GGet EFS Encrypted Files, Dirs and EFS-Encryption AlgorithmID (wi
 if(description)
 {
   script_id(96043);
-  script_version("$Revision: 4486 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 08:22:43 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 7061 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-01-13 14:14:12 +0100 (Wed, 13 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,6 @@ if(description)
   script_name("Get EFS Encrypted Files, Dirs and EFS-Encryption AlgorithmID (win)");
 
 
-  script_summary("Get EFS Encrypted Files, Dirs and EFS-Encryption AlgorithmID (win)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

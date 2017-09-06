@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_EventLogPolSet.nasl 3469 2016-06-09 20:35:10Z jan $
+# $Id: GSHB_WMI_EventLogPolSet.nasl 7061 2017-09-05 11:50:40Z teissa $
 #
 # Read all EventLog Config Policy(ELCP) Settings (Windows)
 #
@@ -33,15 +33,14 @@ tag_summary = "The script read all, Vista and above, EventLog Config Policy Sett
 if(description)
 {
   script_id(96050);
-  script_version("$Revision: 3469 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-09 22:35:10 +0200 (Thu, 09 Jun 2016) $");
+  script_version("$Revision: 7061 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");  
   script_name("Read all EventLog Config Policy(ELCP) Settings (Windows)");
 
-  script_summary("Read all EventLog Config Policy(ELCP) Settings (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

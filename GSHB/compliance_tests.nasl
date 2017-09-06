@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: compliance_tests.nasl 6880 2017-08-09 06:15:11Z emoss $
+# $Id: compliance_tests.nasl 7061 2017-09-05 11:50:40Z teissa $
 #
 # Compliance Tests
 #
@@ -29,13 +29,12 @@ tag_summary = "This script controls various compliance tests like IT-Grundschutz
 if(description)
 {
   script_id(95888);
-  script_version("$Revision: 6880 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-09 08:15:11 +0200 (Wed, 09 Aug 2017) $");
+  script_version("$Revision: 7061 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Compliance Tests");
-  script_summary("Compliance Tests");
   script_category(ACT_SETTINGS);
   script_tag(name:"qod_type", value:"general_note");
   script_copyright("Copyright (c) 2009-2015 Greenbone Networks GmbH");

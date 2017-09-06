@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB.nasl 6387 2017-06-21 09:03:11Z emoss $
+# $Id: GSHB.nasl 7061 2017-09-05 11:50:40Z teissa $
 #
 # IT-Grundschutz, 14. Ergänzungslieferung
 #
@@ -131,13 +131,12 @@ depend = make_list("M4_001", "M4_002", "M4_003", "M4_004", "M4_005", "M4_007",
 if(description)
 {
   script_id(94171);
-  script_version("$Revision: 6387 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:03:11 +0200 (Wed, 21 Jun 2017) $");
+  script_version("$Revision: 7061 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("IT-Grundschutz");
-  script_summary("Grundschutzhandbuch");
   script_category(ACT_END);
   script_tag(name:"qod_type", value:"remote_active");
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");

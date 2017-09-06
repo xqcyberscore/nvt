@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_TELNET_BruteForce.nasl 4486 2016-11-14 07:22:43Z cfi $
+# $Id: GSHB_SSH_TELNET_BruteForce.nasl 7061 2017-09-05 11:50:40Z teissa $
 #
 # SSH and Telnet BruteForce attack
 #
@@ -30,8 +30,8 @@ tag_summary = "SSH and Telnet BruteForce attack.";
 if(description)
 {
   script_id(96104);
-  script_version("$Revision: 4486 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 08:22:43 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 7061 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-09-28 12:16:21 +0200 (Tue, 28 Sep 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,6 @@ if(description)
   script_add_preference(name:"BruteForce Attacke with Default-Usern and -Passwords", type:"checkbox", value:"no");
   
 
-  script_summary("SSH and Telnet BruteForce attack");
   script_category(ACT_ATTACK);
   script_timeout(2400);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");

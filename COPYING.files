@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 05 Sep 2017 07:51:32 +0200
+# Automatically created on:  Wed, 06 Sep 2017 07:57:08 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -52101,7 +52101,10 @@ gb_navicopa_server_detect.nasl: GPLv2+
 gb_navis_webaccess_detect.nasl: GPLv2+
 gb_nbox_remote_detect.nasl: GPLv2+
 gb_nessus_web_server_detect.nasl: GPLv2+
+gb_netapp_data_ontap_http_detect.nasl: GPLv2+
 gb_netapp_data_ontap_ntp_detect.nasl: GPLv2+
+gb_netapp_data_ontap_snmp_detect.nasl: GPLv2+
+gb_netapp_oncommand_unified_manager_detect.nasl: GPLv2+
 gb_netapp_storagegrid_webscale_detect.nasl: GPLv2+
 gb_netcharts_server_detect.nasl: GPLv2+
 gb_netgain_em_detect.nasl: GPLv2+
@@ -52892,6 +52895,13 @@ gsf/gb_ibm_websphere_portal_information_disclose_vuln_swg21677032.nasl: GPLv2+
 gsf/gb_ibm_websphere_portal_xss_vuln_swg21638984.nasl: GPLv2+
 gsf/gb_ibm_websphere_portal_xss_vuln_swg22004979.nasl: GPLv2+
 gsf/gb-lsc-agent.nasl: GPLv2+
+gsf/gb_netapp_data_ontap_auth_bypass_vuln.nasl: GPLv2+
+gsf/gb_netapp_data_ontap_dos_vuln1.nasl: GPLv2+
+gsf/gb_netapp_data_ontap_dos_vuln.nasl: GPLv2+
+gsf/gb_netapp_data_ontap_heap_overfl_vuln.nasl: GPLv2+
+gsf/gb_netapp_data_ontap_info_discl_vuln.nasl: GPLv2+
+gsf/gb_netapp_data_ontap_mult_vuln.nasl: GPLv2+
+gsf/gb_netapp_oncommand_um_cookie_vuln.nasl: GPLv2+
 gsf/gb_netapp_storagegrid_NTAP-20170825-0001.nasl: GPLv2+
 gsf/gb_oracle_webcenter_content_mult_xss_vuln.nasl: GPLv2+
 gsf/gb_panos_pan_sa-2017_0023.nasl: GPLv2+

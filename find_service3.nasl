@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service3.nasl 6820 2017-07-31 11:37:34Z cfischer $
+# $Id: find_service3.nasl 7060 2017-09-05 11:27:14Z cfischer $
 #
 # Service Detection with '<xml/>' Request
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108198");
-  script_version("$Revision: 6820 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-31 13:37:34 +0200 (Mon, 31 Jul 2017) $");
+  script_version("$Revision: 7060 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:27:14 +0200 (Tue, 05 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-07-20 14:08:04 +0200 (Thu, 20 Jul 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -86,8 +86,8 @@ if( "oap_response" >< r && "GET_VERSION" >< r ) {
 }
 
 if( "omp_response" >< r && "GET_VERSION" >< r ) {
-  register_service( port:port, proto:"openvas-manager", message:"An OpenVAS Administrator service seems to be running on this port." );
-  log_message( port:port, data:"An OpenVAS Administrator service seems to be running on this port." );
+  register_service( port:port, proto:"openvas-manager", message:"An OpenVAS Manager service seems to be running on this port." );
+  log_message( port:port, data:"An OpenVAS Manager service seems to be running on this port." );
   exit( 0 );
 }
 

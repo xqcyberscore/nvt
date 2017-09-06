@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_gnome_kde_screensaver.nasl 6992 2017-08-23 09:10:48Z emoss $
+# $Id: GSHB_SSH_gnome_kde_screensaver.nasl 7061 2017-09-05 11:50:40Z teissa $
 #
 # Read the Screensaver-Configuration (enabled and lock) on GNOME and KDE
 #
@@ -31,8 +31,8 @@ tag_summary = "Read the Screensaver-Configuration (enabled and lock) on GNOME an
 if(description)
 {
   script_id(96089);
-  script_version("$Revision: 6992 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-23 11:10:48 +0200 (Wed, 23 Aug 2017) $");
+  script_version("$Revision: 7061 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-06-23 14:20:09 +0200 (Wed, 23 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,6 @@ if(description)
   script_name("Read the Screensaver-Configuration (enabled and lock) on GNOME and KDE");
 
 
-  script_summary("Read the Screensaver-Configuration (enabled and lock) on GNOME and KDE");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

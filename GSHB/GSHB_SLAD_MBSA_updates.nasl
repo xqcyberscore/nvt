@@ -36,14 +36,13 @@ a password to log in.";
 
 if (description) {
   script_id(96063);
-  script_version("$Revision: 3313 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 09:10:22 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 7061 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-03-09 16:24:41 +0100 (Tue, 09 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");  
   script_name("SLAD Microsoft Baseline Security Analyzer Updates run");
   
-  script_summary("Connects to SLAD to run programs remotely");
   
   script_category(ACT_GATHER_INFO);
   

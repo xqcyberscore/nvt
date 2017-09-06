@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_sendmail.nasl 4486 2016-11-14 07:22:43Z cfi $
+# $Id: GSHB_SSH_sendmail.nasl 7061 2017-09-05 11:50:40Z teissa $
 #
 # Check Sendmail Configuration over SSH
 #
@@ -29,15 +29,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96099");
-  script_version("$Revision: 4486 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 08:22:43 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 7061 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-05-03 15:59:29 +0200 (Mon, 03 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Check Sendmail Configuration over SSH");
 
-  script_summary("Check Sendmail Configuration over SSH");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

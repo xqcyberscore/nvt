@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 7050 2017-09-04 09:50:25Z cfischer $
+# $Id: host_details.inc 7062 2017-09-05 16:35:06Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7050 $
+# $Revision: 7062 $
 #
 ###############################################################################
 
@@ -1073,7 +1073,7 @@ function get_version_from_cpe( cpe ) {
         tokens[5 + token_val] != "-" && tokens[5 + token_val] != "" ) {
 
       if( tokens[4 + token_val] != "-" && tokens[4 + token_val] != "" )
-        app_versions = tokens[4 + token_val] + "." + tokens[5 + token_val]; # handle cpe:/a:foo3:bar3:1.2.3:RC2
+        app_versions = tokens[4 + token_val] + "" + tokens[5 + token_val]; # handle cpe:/a:foo3:bar3:1.2.3:RC2
       else
         app_versions = tokens[5 + token_val]; # handle cpe:/a:foo10:bar10:-:sp2
 
@@ -1240,6 +1240,7 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       banner == "Server: Apache-Coyote/1.1" ||
       banner == "Server: HASP LM" || # Is running under windows and linux
       banner == "Server: Mbedthis-Appweb" || # Is running under various OS variants
+      banner == "Server: GoAhead-Webs" || # Is running under various OS variants
       banner == "+OK POP3 ready" ||
       banner == "220 FTP server ready" ||
       banner == "Server: NessusWWW" || # Nessus could be running on Windows, Linux/Unix or MacOS
@@ -1255,7 +1256,8 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       egrep( pattern:"^Server: Apache/([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: lighttpd/([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: HASP LM/([0-9.]+)$", string:banner ) || # Is running under windows and linux
-      egrep( pattern:"^Server: Server: Mbedthis-Appweb/([0-9.]+)$", string:banner ) || # Is running under various OS variants
+      egrep( pattern:"^Server: Mbedthis-Appweb/([0-9.]+)$", string:banner ) || # Is running under various OS variants
+      egrep( pattern:"^Server: GoAhead-Webs/([0-9.]+)$", string:banner ) || # Is running under various OS variants
       egrep( pattern:"^Server: Allegro-Software-RomPager/([0-9.]+)$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
       egrep( pattern:"^SSH-2\.0-RomSShell_([0-9]+)$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
       egrep( pattern:"^([0-9.]+)$", string:banner ) || # Bind9 and MySQL. Both are often only sending e.g. 9.4.2
