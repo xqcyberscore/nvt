@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
 # Description: Gentoo Linux security check
-# $Id: glsa-201502-01.nasl 6592 2017-07-07 09:16:27Z cfischer $
+# $Id: glsa-201502-01.nasl 7066 2017-09-06 10:29:37Z asteins $
 
 # Authors:
 # Eero Volotinen <eero.volotinen@solinor.com>
@@ -24,17 +24,17 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.121340");
-script_version("$Revision: 6592 $");
+script_version("$Revision: 7066 $");
 script_tag(name:"creation_date", value:"2015-09-29 11:28:27 +0300 (Tue, 29 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:16:27 +0200 (Fri, 07 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-09-06 12:29:37 +0200 (Wed, 06 Sep 2017) $");
 script_name("Gentoo Linux Local Check: https://security.gentoo.org/glsa/201502-01");
 script_tag(name: "insight", value: "An issue has been found in mpg123 when decoding specifically crafted MP3 file, that causes a heap-based buffer overflow."); 
 script_tag(name : "solution", value : "update software");
 script_tag(name : "solution_type", value : "VendorFix");
 script_xref(name : "URL" , value : "https://security.gentoo.org/glsa/201502-01");
 script_cve_id("CVE-2014-9497");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"5.0");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");

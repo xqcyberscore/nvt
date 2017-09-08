@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap_mac.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: nmap_mac.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # Nmap MAC Scan.
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103585");
-  script_version("$Revision: 5309 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 7076 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2012-10-11 15:52:11 +0100 (Thu, 11 Oct 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Nmap MAC Scan");
-  script_summary("Gathers MAC address from remote host");
   script_category(ACT_SETTINGS);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("toolcheck.nasl", "ping_host.nasl","global_settings.nasl");

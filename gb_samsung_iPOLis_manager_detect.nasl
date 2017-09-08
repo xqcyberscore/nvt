@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_iPOLis_manager_detect.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_samsung_iPOLis_manager_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # Samsung iPOLiS Device Manager Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805481");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 7076 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-20 15:38:22 +0530 (Fri, 20 Mar 2015)");
   script_name("Samsung iPOLiS Device Manager Version Detection (Windows)");
 
@@ -41,7 +41,6 @@ if(description)
   the registry and reads the version information from registry.");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Detection of installed version of iPOLiS Device Manager");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: barracuda_web_application_firewall_detect.nasl 3756 2016-07-25 08:59:05Z ckuerste $
+# $Id: barracuda_web_application_firewall_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # Barracuda Web Application Firewall Detection
 #
@@ -27,8 +27,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100419");
- script_version("$Revision: 3756 $");
- script_tag(name:"last_modification", value:"$Date: 2016-07-25 10:59:05 +0200 (Mon, 25 Jul 2016) $");
+ script_version("$Revision: 7076 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
  script_tag(name:"creation_date", value:"2010-01-04 18:09:12 +0100 (Mon, 04 Jan 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,7 +52,6 @@ Application Firewall and to extract its version.");
 
  script_xref(name : "URL" , value : "https://www.barracuda.com/products/webapplicationfirewall");
 
- script_summary("Checks for the presence of Barracuda Web Application Firewall");
 
  exit(0);
 }

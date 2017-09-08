@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ossim_web_detect.nasl 5403 2017-02-23 10:50:31Z ckuerste $
+# $Id: gb_ossim_web_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # AlienVault OSSIM/USM Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100543");
-  script_version("$Revision: 5403 $");
+  script_version("$Revision: 7076 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 11:50:31 +0100 (Thu, 23 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-03-19 11:14:17 +0100 (Fri, 19 Mar 2010)");
   script_name("AlienVault OSSIM Detection");
 
@@ -45,7 +45,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.alienvault.com");
 
-  script_summary("Checks for the presence of AlienVault OSSIM");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Product detection");

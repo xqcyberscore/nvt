@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_344.nasl 6422 2017-06-23 14:42:44Z teissa $
+# $Id: GSHB_M4_344.nasl 7067 2017-09-06 11:50:33Z teissa $
 #
 # IT-Grundschutz, 15. EL, Maﬂnahme 4.344
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_id(94248);
-  script_version("$Revision: 6422 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 16:42:44 +0200 (Fri, 23 Jun 2017) $");
+  script_version("$Revision: 7067 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-06 13:50:33 +0200 (Wed, 06 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
   script_name("IT-Grundschutz M4.344: ‹berwachung von Windows-Systemen ab Windows Vista und Windows Server 2008");
   script_xref(name : "URL" , value : " http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04344.html");
-  script_summary  ("IT-Grundschutz M4.344: ‹berwachung von Windows-Systemen ab Windows Vista und Windows Server 2008");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

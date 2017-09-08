@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_detect.nasl 6933 2017-08-16 08:22:25Z asteins $
+# $Id: gb_openemr_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # OpenEMR Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103018");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6933 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-16 10:22:25 +0200 (Wed, 16 Aug 2017) $");
+  script_version("$Revision: 7076 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-01-07 13:52:38 +0100 (Fri, 07 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OpenEMR Detection");
-  script_summary("Checks for the presence of OpenEMR");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

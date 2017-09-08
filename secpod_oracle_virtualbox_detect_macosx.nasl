@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_virtualbox_detect_macosx.nasl 2833 2016-03-11 08:36:30Z benallard $
+# $Id: secpod_oracle_virtualbox_detect_macosx.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # Oracle VM VirtualBox Version Detection (Mac OS X)
 #
@@ -31,10 +31,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902788";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2833 $");
+  script_version("$Revision: 7076 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:36:30 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2012-01-25 11:25:41 +0530 (Wed, 25 Jan 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Oracle VM VirtualBox Version Detection (Mac OS X)");
@@ -49,7 +49,6 @@ via command line option 'defaults read'.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Detection of installed version of Oracle VM VirtualBox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 SecPod");
   script_family("Product detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: version_func.inc 6738 2017-07-17 10:53:33Z cfischer $
+# $Id: version_func.inc 7078 2017-09-07 16:56:41Z cfischer $
 #
 # Helper functions for SSH-based target host access
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6738 $
+# $Revision: 7078 $
 #
 ###############################################################################
 
@@ -233,8 +233,12 @@ function version_test( version, test_version, less, icase, debug ) {
 
   # set / use a standard separator for the version and test_version parameter
   ver_sep = "."; # Set Standard Separator
-  version = ereg_replace( pattern:"( |\-)", string:version, replace:"." );
-  test_version = ereg_replace( pattern:"( |\-)", string:test_version, replace:"." );
+
+  # Replace commonly used version separators (e.g. 1.0 rc1, or 1.0-rc1) with the standard separator.
+  # nb: The "\.\." replacement is a fallback for NVTs passing doubled dots to the version comparsion functions.
+  # Such a doubled point would e.g. report "1.0..99" to be a lower version then 1.0.1
+  version = ereg_replace( pattern:"( |\-|\.\.)", string:version, replace:"." );
+  test_version = ereg_replace( pattern:"( |\-|\.\.)", string:test_version, replace:"." );
 
   if( debug ) display('DEBUG: version: ' + version + ' and test_version: ' + test_version + ' after applying standard separator\n');
 

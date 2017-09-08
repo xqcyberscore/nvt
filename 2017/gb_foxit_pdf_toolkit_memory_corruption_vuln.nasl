@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_pdf_toolkit_memory_corruption_vuln.nasl 5141 2017-01-31 07:40:05Z antu123 $
+# $Id: gb_foxit_pdf_toolkit_memory_corruption_vuln.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # Foxit PDF Toolkit PDF File Parsing Memory Corruption Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:foxitsoftware:foxit_pdf_toolkit";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810521");
-  script_version("$Revision: 5141 $");
+  script_version("$Revision: 7076 $");
   script_cve_id("CVE-2017-5364");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 08:40:05 +0100 (Tue, 31 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-01-25 15:52:27 +0530 (Wed, 25 Jan 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Foxit PDF Toolkit PDF File Parsing Memory Corruption Vulnerability");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.foxitsoftware.com/support/security-bulletins.php");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Foxit PDF Toolkit");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_foxit_pdf_toolkit_detect.nasl");

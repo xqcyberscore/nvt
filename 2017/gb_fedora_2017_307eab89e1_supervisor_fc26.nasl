@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_307eab89e1_supervisor_fc26.nasl 6956 2017-08-18 06:02:43Z santu $
+# $Id: gb_fedora_2017_307eab89e1_supervisor_fc26.nasl 7064 2017-09-06 05:47:54Z asteins $
 #
 # Fedora Update for supervisor FEDORA-2017-307eab89e1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873229");
-  script_version("$Revision: 6956 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-18 08:02:43 +0200 (Fri, 18 Aug 2017) $");
+  script_version("$Revision: 7064 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-06 07:47:54 +0200 (Wed, 06 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-08 07:37:21 +0200 (Tue, 08 Aug 2017)");
   script_cve_id("CVE-2017-11610");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for supervisor FEDORA-2017-307eab89e1");
   script_tag(name: "summary", value: "Check the version of supervisor");

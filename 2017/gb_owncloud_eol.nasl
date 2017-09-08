@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_eol.nasl 6494 2017-06-30 08:10:34Z cfischer $
+# $Id: gb_owncloud_eol.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # ownCloud End Of Life Detection
 #
@@ -32,11 +32,10 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.140157");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 6494 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 10:10:34 +0200 (Fri, 30 Jun 2017) $");
+  script_version("$Revision: 7076 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-02-14 13:48:20 +0100 (Tue, 14 Feb 2017)");
   script_name("ownCloud End Of Life Detection");
-  script_summary("Determine if the ownCloud version on the remote host has reached the end of life");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

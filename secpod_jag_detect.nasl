@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_jag_detect.nasl 2729 2016-02-26 07:20:51Z cfi $
+# $Id: secpod_jag_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # JAG (Just Another Guestbook) Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900744");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2729 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 08:20:51 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 7076 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-02-26 10:13:54 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("JAG (Just Another Guestbook) Version Detection");
-  script_summary("Set the version of JAG in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Product detection");

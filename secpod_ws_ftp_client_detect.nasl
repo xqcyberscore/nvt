@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ws_ftp_client_detect.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_ws_ftp_client_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # Iswitch WS-FTP Client Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902170");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 7076 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Iswitch WS-FTP Client Version Detection");
@@ -44,7 +44,6 @@ and gets the version from registry.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Detection of installed version of WS-FTP Client");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Product detection");

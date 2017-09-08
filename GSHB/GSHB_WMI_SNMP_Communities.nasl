@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_SNMP_Communities.nasl 3313 2016-05-13 07:10:22Z benallard $
+# $Id: GSHB_WMI_SNMP_Communities.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # List Valid SNMP Communities (Windows)
 #
@@ -33,15 +33,14 @@ tag_summary = "The script List Valid SNMP Communities (Windows).";
 if(description)
 {
   script_id(96037);
-  script_version("$Revision: 3313 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 09:10:22 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 7076 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");  
   script_name("List Valid SNMP Communities (Windows)");
 
-  script_summary("List Valid SNMP Communities (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

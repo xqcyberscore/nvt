@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_froxlor_info_discl.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: gb_froxlor_info_discl.nasl 7074 2017-09-07 09:48:02Z ckuersteiner $
 #
 # Froxlor Information Disclosure Vulnerability
 #
@@ -30,11 +30,13 @@ CPE = 'cpe:/a:froxlor:froxlor';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106036");
-  script_version("$Revision: 6211 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+  script_version("$Revision: 7074 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-07 11:48:02 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name: "creation_date", value: "2015-08-03 13:44:55 +0700 (Mon, 03 Aug 2015)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+
+  script_cve_id("CVE-2015-5959");
 
   script_tag(name: "qod_type", value: "remote_vul");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_059.nasl 3402 2016-05-30 13:43:48Z antu123 $
+# $Id: GSHB_M5_059.nasl 7067 2017-09-06 11:50:33Z teissa $
 #
 # IT-Grundschutz, 11. EL, Maﬂnahme 5.059
 #
@@ -41,14 +41,13 @@ tag_summary = "IT-Grundschutz M5.059: Schutz vor DNS-Spoofing.
 if(description)
 {
   script_id(895059);
-  script_version("$Revision: 3402 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-30 15:43:48 +0200 (Mon, 30 May 2016) $");
+  script_version("$Revision: 7067 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-06 13:50:33 +0200 (Wed, 06 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-04-09 13:42:26 +0200 (Fri, 09 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("IT-Grundschutz M5.059: Schutz vor DNS-Spoofing");
   script_xref(name : "URL", value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05059.html");
-  script_summary("IT-Grundschutz M5.059: Schutz vor DNS-Spoofing.");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"package");
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");

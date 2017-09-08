@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mqtt_no_auth.nasl 5331 2017-02-17 17:13:18Z mime $
+# $Id: gb_mqtt_no_auth.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # MQTT Broker Does Not Require Authentication
 #
@@ -28,13 +28,12 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140167");
- script_version("$Revision: 5331 $");
+ script_version("$Revision: 7076 $");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
  script_name("MQTT Broker Does Not Require Authentication");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 18:13:18 +0100 (Fri, 17 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
  script_tag(name:"creation_date", value:"2017-02-17 16:32:23 +0100 (Fri, 17 Feb 2017)");
- script_summary("Determine if the remote MQTT accepts Connections without authentication.");
  script_category(ACT_ATTACK);
  script_family("General");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");

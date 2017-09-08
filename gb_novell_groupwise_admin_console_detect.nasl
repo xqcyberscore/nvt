@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_groupwise_admin_console_detect.nasl 2672 2016-02-17 07:38:35Z antu123 $
+# $Id: gb_novell_groupwise_admin_console_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # GroupWise Administration Console Detection
 #
@@ -31,15 +31,14 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 2672 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 08:38:35 +0100 (Wed, 17 Feb 2016) $");
+ script_version ("$Revision: 7076 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
  script_tag(name:"creation_date", value:"2014-09-03 15:08:39 +0200 (Wed, 03 Sep 2014)");
  script_name("GroupWise Administration Console Detection");
 
  script_tag(name: "summary" , value: "The script sends a connection
 request to the server and attempts to detect the GroupWise Administration Console.");
 
- script_summary("Checks for the presence of GroupWise Administration Console");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

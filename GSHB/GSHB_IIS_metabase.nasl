@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_IIS_metabase.nasl 5336 2017-02-18 15:08:15Z cfi $
+# $Id: GSHB_IIS_metabase.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # Check the IIS Metabase for AspEnableParentPaths (Windows)
 #
@@ -32,15 +32,14 @@ tag_summary = "Check the IIS Metabase for AspEnableParentPaths
 if(description)
 {
   script_id(96009);
-  script_version("$Revision: 5336 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 16:08:15 +0100 (Sat, 18 Feb 2017) $");
+  script_version("$Revision: 7076 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
   script_name("IIS Metabase");
 
-  script_summary("Check the IIS Metabase for AspEnableParentPaths");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

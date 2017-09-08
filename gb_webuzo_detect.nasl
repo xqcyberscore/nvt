@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webuzo_detect.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_webuzo_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # Webuzo Detection
 #
@@ -30,11 +30,11 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103830";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 2836 $");
+ script_version ("$Revision: 7076 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
  script_tag(name:"creation_date", value:"2013-11-13 18:05:10 +0100 (Wed, 13 Nov 2013)");
  script_name("Webuzo Detection");
 
@@ -45,7 +45,6 @@ extract the version number from the reply.";
 
   script_tag(name : "summary" , value : tag_summary);
 
- script_summary("Checks for the presence of Webuzo");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

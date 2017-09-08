@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moinmoin_wiki_detect.nasl 4174 2016-09-28 15:22:32Z cfi $
+# $Id: gb_moinmoin_wiki_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # MoinMoin Wiki Version Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800170");
-  script_version("$Revision: 4174 $");
+  script_version("$Revision: 7076 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-28 17:22:32 +0200 (Wed, 28 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-03-05 10:09:57 +0100 (Fri, 05 Mar 2010)");
   script_name("MoinMoin Wiki Version Detection");
-  script_summary("Set version of MoinMoin Wiki in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Product detection");

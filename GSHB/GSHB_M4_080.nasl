@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_080.nasl 4454 2016-11-09 10:55:48Z cfi $
+# $Id: GSHB_M4_080.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 4.080
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_id(94208);
-  script_version("$Revision: 4454 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 11:55:48 +0100 (Wed, 09 Nov 2016) $");
+  script_version("$Revision: 7076 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IT-Grundschutz M4.080: Sichere Zugriffsmechanismen bei Fernadministration");
   script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04080.html");
-  script_summary  ("IT-Grundschutz M4.080: Sichere Zugriffsmechanismen bei Fernadministration.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pandora_fms_detect.nasl 3405 2016-05-30 18:11:00Z cfi $
+# $Id: gb_pandora_fms_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # Pandora FMS Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100926");
-  script_version("$Revision: 3405 $");
+  script_version("$Revision: 7076 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-30 20:11:00 +0200 (Mon, 30 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-12-01 14:30:53 +0100 (Wed, 01 Dec 2010)");
   script_name("Pandora FMS Detection");
-  script_summary("Checks for the presence of Pandora FMS");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");

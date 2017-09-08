@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_security_network_protection_swg21974242.nasl 5103 2017-01-25 11:55:05Z antu123 $
+# $Id: gb_ibm_security_network_protection_swg21974242.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # IBM Security Network Protection Information Disclosure Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:ibm:security_network_protection";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140117");
- script_version ("$Revision: 5103 $");
+ script_version ("$Revision: 7076 $");
  script_name("IBM Security Network Protection Information Disclosure Vulnerability");
  script_cve_id("CVE-2016-0201");
  script_tag(name:"cvss_base", value:"4.3");
@@ -49,9 +49,8 @@ IBM Security Network Protection 5.3.2");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:55:05 +0100 (Wed, 25 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
  script_tag(name:"creation_date", value:"2017-01-10 09:29:08 +0100 (Tue, 10 Jan 2017)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");

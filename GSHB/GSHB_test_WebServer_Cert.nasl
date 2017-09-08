@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_test_WebServer_Cert.nasl 4486 2016-11-14 07:22:43Z cfi $
+# $Id: GSHB_test_WebServer_Cert.nasl 7067 2017-09-06 11:50:33Z teissa $
 #
 # Test Webserver SSL Certificate
 #
@@ -31,8 +31,8 @@ tag_summary = "This plugin uses openssl to verify TLS/SSL Certificates.";
 if(description)
 {
   script_id(96057);
-  script_version("$Revision: 4486 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 08:22:43 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 7067 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-06 13:50:33 +0200 (Wed, 06 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,6 @@ if(description)
   script_name("Test Webserver SSL Certificate");
 
 
-  script_summary("Test Webserver SSL Certificate");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

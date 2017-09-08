@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_agent_detect.nasl 3802 2016-08-05 08:11:42Z antu123 $
+# $Id: gb_mcafee_agent_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # McAfee Agent Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805293");
-  script_version("$Revision: 3802 $");
+  script_version("$Revision: 7076 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-05 10:11:42 +0200 (Fri, 05 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-02 14:04:22 +0530 (Mon, 02 Mar 2015)");
   script_name("McAfee Agent Version Detection (Windows)");
 
@@ -40,7 +40,6 @@ if(description)
   The script logs in via smb, searches for string 'McAfee' in the registry
   and reads the version information from registry.");
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Detection of installed version of McAfee Agent");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

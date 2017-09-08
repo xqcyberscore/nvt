@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_049.nasl 3402 2016-05-30 13:43:48Z antu123 $
+# $Id: GSHB_M4_049.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # IT-Grundschutz, 11. EL, Maßnahme 4.049
 #
@@ -42,14 +42,13 @@ tag_summary = "IT-Grundschutz M4.049: Absicherung des Boot-Vorgangs für ein NT b
 if(description)
 {
   script_id(894049);
-  script_version("$Revision: 3402 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-30 15:43:48 +0200 (Mon, 30 May 2016) $");
+  script_version("$Revision: 7076 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-01-14 14:29:35 +0100 (Thu, 14 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("IT-Grundschutz M4.049: Absicherung des Boot-Vorgangs für ein NT basiertes Windows-System (Windows)");
   script_xref(name : "URL", value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04049.html");
-  script_summary("IT-Grundschutz M4.049: Absicherung des Boot-Vorgangs für ein NT basiertes Windows-System (Windows).");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");

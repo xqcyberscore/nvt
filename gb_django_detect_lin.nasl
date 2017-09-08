@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_django_detect_lin.nasl 5904 2017-04-10 06:18:08Z teissa $
+# $Id: gb_django_detect_lin.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # Django Version Detection (Linux)
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_id(800923);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5904 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 08:18:08 +0200 (Mon, 10 Apr 2017) $");
+ script_version("$Revision: 7076 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-08-11 07:36:16 +0200 (Tue, 11 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Django Version Detection (Linux)");
-  script_summary("Set Version of Django in KB");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");

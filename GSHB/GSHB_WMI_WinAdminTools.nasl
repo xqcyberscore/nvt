@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_WinAdminTools.nasl 4486 2016-11-14 07:22:43Z cfi $
+# $Id: GSHB_WMI_WinAdminTools.nasl 7067 2017-09-06 11:50:33Z teissa $
 #
 # Find Windows Admin Tools over WMI if IIS installed(win)
 #
@@ -41,8 +41,8 @@ tag_summary = "If IIS installed, find Windows Admin Tools over WMI:
 if(description)
 {
   script_id(96016);
-  script_version("$Revision: 4486 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 08:22:43 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 7067 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-06 13:50:33 +0200 (Wed, 06 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,6 @@ if(description)
   script_name("Find Windows Admin Tools over WMI if IIS installed (win)");
 
 
-  script_summary("Find Windows Admin Tools over WMI if IIS installed(win)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

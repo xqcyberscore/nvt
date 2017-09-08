@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trane_tracer_sc_detect.nasl 4893 2016-12-30 15:49:57Z cfi $
+# $Id: gb_trane_tracer_sc_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # Trane Tracer SC Devices Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106272");
- script_version ("$Revision: 4893 $");
- script_tag(name: "last_modification", value: "$Date: 2016-12-30 16:49:57 +0100 (Fri, 30 Dec 2016) $");
+ script_version ("$Revision: 7076 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
  script_tag(name: "creation_date", value: "2016-09-20 16:39:00 +0700 (Tue, 20 Sep 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,7 +51,6 @@ Tries to detect Trane Tracer SC devices over the BACnet protocol.");
 
  script_xref(name: "URL", value: "https://www.trane.com/commercial/north-america/us/en/controls/building-Management/tracer-sc.html");
 
- script_summary("Detection of Trane Tracer SC Devices");
 
  exit(0);
 }

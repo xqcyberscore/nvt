@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_Loginscreen.nasl 4486 2016-11-14 07:22:43Z cfi $
+# $Id: GSHB_WMI_Loginscreen.nasl 7067 2017-09-06 11:50:33Z teissa $
 #
 # Last username (Windows)
 #
@@ -33,15 +33,14 @@ tag_summary = "The script detects if Last Login Username an Loginwarning is disp
 if(description)
 {
   script_id(96005);
-  script_version("$Revision: 4486 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 08:22:43 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 7067 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-06 13:50:33 +0200 (Wed, 06 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-12-01 10:53:45 +0100 (Wed, 01 Dec 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");  
   script_name("Last Username (Windows)");
 
-  script_summary("Check if Last Login Username and Loginwarning Displayed.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

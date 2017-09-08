@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_123.nasl 6387 2017-06-21 09:03:11Z emoss $
+# $Id: GSHB_M5_123.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # IT-Grundschutz, 15. EL, Maﬂnahme 5.123
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_id(95073);
-  script_version("$Revision: 6387 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:03:11 +0200 (Wed, 21 Jun 2017) $");
+  script_version("$Revision: 7076 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
   script_name("IT-Grundschutz M5.123: Absicherung der Netzkommunikation unter Windows");
   script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05123.html");
-  script_summary  ("IT-Grundschutz M5.123: Absicherung der Netzkommunikation unter Windows.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

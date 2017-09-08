@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_nas_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_qnap_nas_detect.nasl 7077 2017-09-07 13:41:54Z santu $
 #
 # QNAP NAS Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_oid("1.3.6.1.4.1.25623.1.0.103875");
- script_version ("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version ("$Revision: 7077 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-07 15:41:54 +0200 (Thu, 07 Sep 2017) $");
  script_tag(name:"creation_date", value:"2014-01-09 18:50:23 +0100 (Thu, 09 Jan 2014)");
  script_name("QNAP NAS Detection");
 
@@ -106,6 +106,12 @@ foreach url ( urls )
     cpe_model = tolower(str_replace(string:model, find:" ", replace:"_"));
   }
 
+  ##model and ##displaymodel are two different values
+  displaymodel =  eregmatch( pattern:"<displayModelName><!\[CDATA\[([^]]+)\]\]></displayModelName>", string: buf);
+  if ( ! isnull( displaymodel[1] ) ) {
+    displaymodel = displaymodel[1];
+  }
+
   cpe = 'cpe:/h:qnap';
  
   if ( cpe_model )
@@ -121,10 +127,11 @@ foreach url ( urls )
   set_kb_item(name:"qnap/version", value:vers);
   set_kb_item(name:"qnap/build", value:build);
   set_kb_item(name:"qnap/port", value:port);
+  set_kb_item(name:"qnap/dismodel", value:displaymodel);
 
-  register_product(cpe:cpe, location:'/', nvt:SCRIPT_OID, port:port);
+  register_product(cpe:cpe, location:'/', port:port);
 
-  log_message(data: build_detection_report(app:"'QNAP " + model + "'", version:vers, install:'/', cpe:cpe, concluded: version[0]),
+  log_message(data: build_detection_report(app:"'QNAP " + model + "'", version:vers, install:'/', cpe:cpe, concluded: vers),
               port:port);
 
   exit(0);

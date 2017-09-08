@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nakid_cms_detect.nasl 2900 2016-03-21 09:59:24Z cfi $
+# $Id: secpod_nakid_cms_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # Nakid CMS Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902083");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2900 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-21 10:59:24 +0100 (Mon, 21 Mar 2016) $");
+  script_version("$Revision: 7076 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-06-25 16:56:31 +0200 (Fri, 25 Jun 2010)");
   script_name("Nakid CMS Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
-  script_summary("Set the version of Nakid CMS in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 SecPod");
   script_family("Product detection");

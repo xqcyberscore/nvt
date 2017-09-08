@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_147.nasl 6604 2017-07-07 10:31:59Z cfischer $
+# $Id: GSHB_M5_147.nasl 7067 2017-09-06 11:50:33Z teissa $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 5.147
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95076");
-  script_version("$Revision: 6604 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:31:59 +0200 (Fri, 07 Jul 2017) $");
+  script_version("$Revision: 7067 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-06 13:50:33 +0200 (Wed, 06 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("IT-Grundschutz M5.147: Absicherung der Kommunikation mit Verzeichnisdiensten");
-  script_summary("IT-Grundschutz M5.147: Absicherung der Kommunikation mit Verzeichnisdiensten.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

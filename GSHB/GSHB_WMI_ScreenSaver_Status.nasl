@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_ScreenSaver_Status.nasl 6992 2017-08-23 09:10:48Z emoss $
+# $Id: GSHB_WMI_ScreenSaver_Status.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # Get Screensaver Status for ALL Users (Windows)
 #
@@ -33,8 +33,8 @@ tag_summary = "The script detects if Screensaver is activated and secured.";
 if(description)
 {
   script_id(96058);
-  script_version("$Revision: 6992 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-23 11:10:48 +0200 (Wed, 23 Aug 2017) $");
+  script_version("$Revision: 7076 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,7 +44,6 @@ if(description)
   Summary:
   " + tag_summary;
 
-  script_summary("Check for Get Screensaver Status for ALL Users.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

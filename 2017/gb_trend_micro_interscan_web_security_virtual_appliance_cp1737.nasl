@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_cp1737.nasl 5441 2017-02-28 08:41:33Z cfi $
+# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_cp1737.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # Trend Micro InterScan Web Security Virtual Appliance 6.5 Multiple Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-9269","CVE-2016-9314","CVE-2016-9315","CVE-2016-9316");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 5441 $");
+ script_version ("$Revision: 7076 $");
 
  script_name("Trend Micro InterScan Web Security Virtual Appliance 6.5 Multiple Vulnerabilities");
 
@@ -58,9 +58,8 @@ Stored Cross Site Scripting (XSS) vulnerabilities");
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-28 09:41:33 +0100 (Tue, 28 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
  script_tag(name:"creation_date", value:"2017-02-16 14:19:46 +0100 (Thu, 16 Feb 2017)");
- script_summary("Check the version/build");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");

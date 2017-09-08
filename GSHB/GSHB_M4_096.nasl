@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_096.nasl 3312 2016-05-13 07:08:19Z benallard $
+# $Id: GSHB_M4_096.nasl 7067 2017-09-06 11:50:33Z teissa $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 4.096
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_id(94211);
-  script_version("$Revision: 3312 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 09:08:19 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 7067 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-06 13:50:33 +0200 (Wed, 06 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_active");
   script_name("IT-Grundschutz M4.096: Abschaltung von DNS");
   script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04096.html");
-  script_summary  ("IT-Grundschutz M4.096: Abschaltung von DNS.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_natterchat_detect.nasl 2654 2016-02-12 13:11:04Z cfi $
+# $Id: secpod_natterchat_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # NatterChat Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901003");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2654 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 14:11:04 +0100 (Fri, 12 Feb 2016) $");
+  script_version("$Revision: 7076 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-08-27 13:43:20 +0200 (Thu, 27 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("NatterChat Version Detection");
-  script_summary("Set KB for the version of NatterChat");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_IPSec_Policy.nasl 3313 2016-05-13 07:10:22Z benallard $
+# $Id: GSHB_WMI_IPSec_Policy.nasl 7067 2017-09-06 11:50:33Z teissa $
 #
 # Check over WMI if IPSec Policy used for Windows (Windows)
 #
@@ -30,15 +30,14 @@ tag_summary = "The script detects over WMI if IPSec Policy used under Windows
 if(description)
 {
   script_id(96042);
-  script_version("$Revision: 3313 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 09:10:22 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 7067 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-06 13:50:33 +0200 (Wed, 06 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-11-09 14:03:22 +0100 (Mon, 09 Nov 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");  
   script_name("Check over WMI if IPSec Policy used for Windows (Windows)");
 
-  script_summary("Check over WMI if IPSec Policy used for Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

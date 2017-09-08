@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_pid_vuln.nasl 7014 2017-08-28 10:15:39Z ckuersteiner $
+# $Id: gb_nagios_pid_vuln.nasl 7064 2017-09-06 05:47:54Z asteins $
 #
 # Nagios Privilege Escalation Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:nagios:nagios';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140321");
-  script_version("$Revision: 7014 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-28 12:15:39 +0200 (Mon, 28 Aug 2017) $");
+  script_version("$Revision: 7064 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-06 07:47:54 +0200 (Wed, 06 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-08-22 15:57:32 +0700 (Tue, 22 Aug 2017)");
-  script_tag(name: "cvss_base", value: "4.6");
-  script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:S/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"6.3");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:C/A:C");
 
   script_cve_id("CVE-2017-12847");
 

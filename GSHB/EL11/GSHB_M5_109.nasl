@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_109.nasl 3402 2016-05-30 13:43:48Z antu123 $
+# $Id: GSHB_M5_109.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # IT-Grundschutz, 11. EL, Maﬂnahme 5.109
 #
@@ -41,14 +41,13 @@ tag_summary = "IT-Grundschutz M5.109: Einsatz eines E-Mail-Scanners auf dem Mail
 if(description)
 {
   script_id(895109);
-  script_version("$Revision: 3402 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-30 15:43:48 +0200 (Mon, 30 May 2016) $");
+  script_version("$Revision: 7076 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-02-03 16:11:07 +0100 (Wed, 03 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("IT-Grundschutz M5.109: Einsatz eines E-Mail-Scanners auf dem Mailserver");
   script_xref(name : "URL", value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04109.html");
-  script_summary("IT-Grundschutz M5.109: Einsatz eines E-Mail-Scanners auf dem Mailserver.");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_app");
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");

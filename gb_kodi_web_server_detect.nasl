@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodi_web_server_detect.nasl 5289 2017-02-14 01:15:35Z ckuerste $
+# $Id: gb_kodi_web_server_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # Kodi Web Server Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808282");
-  script_version("$Revision: 5289 $");
+  script_version("$Revision: 7076 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-14 02:15:35 +0100 (Tue, 14 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-08-08 18:13:32 +0530 (Mon, 08 Aug 2016)");
   script_name("Kodi Web Server Remote Detection");
   script_tag(name: "summary" , value: "Detection of installed version of
@@ -40,7 +40,6 @@ if(description)
   Kodi Web Server from the response, and sets the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the presence of Kodi Web Server in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

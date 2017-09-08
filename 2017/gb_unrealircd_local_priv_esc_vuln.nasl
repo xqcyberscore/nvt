@@ -29,12 +29,12 @@ CPE = "cpe:/a:unrealircd:unrealircd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811317");
-  script_version("$Revision: 7034 $");
+  script_version("$Revision: 7066 $");
   script_cve_id("CVE-2017-13649");
   script_bugtraq_id(100507);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 15:44:04 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-06 12:29:37 +0200 (Wed, 06 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-31 14:02:54 +0530 (Thu, 31 Aug 2017)");
   script_name("UnrealIRCd Local Privilege Escalation Vulnerability");
 

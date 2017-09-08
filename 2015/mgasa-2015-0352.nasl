@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0352.nasl 6563 2017-07-06 12:23:47Z cfischer $
+# $Id: mgasa-2015-0352.nasl 7064 2017-09-06 05:47:54Z asteins $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,17 +24,17 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130035");
-script_version("$Revision: 6563 $");
+script_version("$Revision: 7064 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:41:50 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:23:47 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-09-06 07:47:54 +0200 (Wed, 06 Sep 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0352");
 script_tag(name: "insight", value: "Updated util-linux packages fix security vulnerability: The chfn and chsh commands in util-linux's login-utils are vulnerable to a file name collision due to incorrect mkstemp usage. If the chfn and chsh binaries are both setuid-root they eventually call mkostemp in such a way that an attacker could repeatedly call them and eventually be able to overwrite certain files in /etc (CVE-2015-5224)."); 
 script_tag(name : "solution", value : "update software");
 script_tag(name : "solution_type", value : "VendorFix");
 script_xref(name : "URL" , value : "https://advisories.mageia.org/MGASA-2015-0352.html");
 script_cve_id("CVE-2015-5224");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"7.5");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");

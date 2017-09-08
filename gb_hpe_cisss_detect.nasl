@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_cisss_detect.nasl 4110 2016-09-19 11:33:29Z antu123 $
+# $Id: gb_hpe_cisss_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
 #
 # HPE Converged Infrastructure Solution Sizer Suite (CISSS) Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809188");
-  script_version("$Revision: 4110 $");
+  script_version("$Revision: 7076 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-19 13:33:29 +0200 (Mon, 19 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-09-02 14:36:53 +0530 (Fri, 02 Sep 2016)");
   script_name("HPE Converged Infrastructure Solution Sizer Suite (CISSS) Version Detection (Windows)");
 
@@ -43,7 +43,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_summary("Detection of installed version of HPE Converged Infrastructure Solution Sizer Suite");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
