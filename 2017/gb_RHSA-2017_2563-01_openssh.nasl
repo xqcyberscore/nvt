@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2563-01_openssh.nasl 7075 2017-09-07 11:09:13Z santu $
+# $Id: gb_RHSA-2017_2563-01_openssh.nasl 7080 2017-09-08 05:49:48Z asteins $
 #
 # RedHat Update for openssh RHSA-2017:2563-01
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811729");
-  script_version("$Revision: 7075 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:09:13 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 7080 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-08 07:49:48 +0200 (Fri, 08 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-01 06:52:40 +0200 (Fri, 01 Sep 2017)");
   script_cve_id("CVE-2016-6210");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for openssh RHSA-2017:2563-01");
   script_tag(name: "summary", value: "Check the version of openssh");

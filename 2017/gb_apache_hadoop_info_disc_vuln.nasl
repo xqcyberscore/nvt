@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_info_disc_vuln.nasl 7028 2017-08-31 09:47:19Z ckuersteiner $
+# $Id: gb_apache_hadoop_info_disc_vuln.nasl 7085 2017-09-08 15:01:13Z cfischer $
 #
 # Apache Hadoop Information Disclosure Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:apache:hadoop";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140342");
-  script_version("$Revision: 7028 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-31 11:47:19 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 7085 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-08 17:01:13 +0200 (Fri, 08 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-08-31 16:46:30 +0700 (Thu, 31 Aug 2017)");
-  script_tag(name: "cvss_base", value: "4.6");
-  script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:S/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-5001");
 

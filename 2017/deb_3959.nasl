@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3959.nasl 7031 2017-08-31 12:19:29Z teissa $
+# $Id: deb_3959.nasl 7085 2017-09-08 15:01:13Z cfischer $
 #
 # Auto-generated from advisory DSA 3959-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703959");
-  script_version("$Revision: 7031 $");
+  script_version("$Revision: 7085 $");
   script_cve_id("CVE-2017-0379");
   script_name("Debian Security Advisory DSA 3959-1 (libgcrypt20 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 14:19:29 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-08 17:01:13 +0200 (Fri, 08 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-29 00:00:00 +0200 (Tue, 29 Aug 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

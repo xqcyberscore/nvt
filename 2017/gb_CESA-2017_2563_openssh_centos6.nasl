@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_2563_openssh_centos6.nasl 7075 2017-09-07 11:09:13Z santu $
+# $Id: gb_CESA-2017_2563_openssh_centos6.nasl 7080 2017-09-08 05:49:48Z asteins $
 #
 # CentOS Update for openssh CESA-2017:2563 centos6 
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882763");
-  script_version("$Revision: 7075 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:09:13 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 7080 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-08 07:49:48 +0200 (Fri, 08 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-01 06:53:41 +0200 (Fri, 01 Sep 2017)");
   script_cve_id("CVE-2016-6210");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for openssh CESA-2017:2563 centos6 ");
   script_tag(name: "summary", value: "Check the version of openssh");

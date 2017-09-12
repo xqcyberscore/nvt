@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_registry_access.nasl 6745 2017-07-17 20:24:19Z cfischer $
+# $Id: smb_registry_access.nasl 7084 2017-09-08 12:27:28Z cfischer $
 #
 # Check for SMB accessible registry
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10400");
-  script_version("$Revision: 6745 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 22:24:19 +0200 (Mon, 17 Jul 2017) $");
+  script_version("$Revision: 7084 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-08 14:27:28 +0200 (Fri, 08 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-09-10 10:22:48 +0200 (Wed, 10 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -116,6 +116,16 @@ message = "It was not possible to connect to the PIPE\winreg on the remote host.
           '\n\nPlease either configure:\n\n' +
           "1. the NVT 'Windows Services Start' (OID: 1.3.6.1.4.1.25623.1.0.804786) to start this service automatically." + '\n' +
           "2. the 'Startup Type' of the 'Remote Registry' service on the target host to 'Automatic'.";
+startErrors = get_kb_list( "RemoteRegistry/Win/Service/Manual/Failed" );
+if( startErrors ) {
+  message += '\n3. check the below error which might provide additional info.';
+  message += '\n\nThe scanner tried to start the \'Remote Registry\' service but received the following errors:\n';
+  foreach startError ( startErrors ) {
+    # Clean-up the logs from the wmiexec.py before reporting it to the end user
+    startError = ereg_replace( string:startError, pattern:"^Impacket.*dialect used", replace:"" );
+    message += startError + '\n';
+  }
+}
 
 r = smbntcreatex( soc:soc, uid:uid, tid:tid, name:"\winreg" );
 if( ! r ) {

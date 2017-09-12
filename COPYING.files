@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 08 Sep 2017 07:47:11 +0200
+# Automatically created on:  Mon, 11 Sep 2017 11:33:43 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47683,6 +47683,7 @@
 2017/deb_3964.nasl: GPLv2+
 2017/deb_3965.nasl: GPLv2+
 2017/deb_3966.nasl: GPLv2+
+2017/gb_a2billing_rce.nasl: GPLv2+
 2017/gb_accellion_fta_multi_vuln.nasl: GPLv2+
 2017/gb_acti_mult_vuln.nasl: GPLv2+
 2017/gb_adobe_acrobat_apsb17-01_macosx.nasl: GPLv2+
@@ -50174,6 +50175,7 @@
 2017/gb_ntp_mult_vuln.nasl: GPLv2+
 2017/gb_ntp_rand_no_gen_weakness_brute_force_vuln.nasl: GPLv2+
 2017/gb_nuxeo_platform_dir_trav_vuln.nasl: GPLv2+
+2017/gb_oilrig_malware_detection.nasl: GPLv2+
 2017/gb_openemr_mult_vuln_0817.nasl: GPLv2+
 2017/gb_openemr_xss_vuln.nasl: GPLv2+
 2017/gb_openldap_ber_get_next_dos_vuln.nasl: GPLv2+
@@ -50798,6 +50800,7 @@
 2017/gb_trueconf_mult_vuln.nasl: GPLv2+
 2017/gb_tuleap_cmd_inj_vuln.nasl: GPLv2+
 2017/gb_typo3_extbase_90832.nasl: GPLv2+
+2017/gb_typo3_frontend_auth_bypass.nasl: GPLv2+
 2017/gb_ubnt_cmd_inj_vuln.nasl: GPLv2+
 2017/gb_ubnt_open_redirect_vuln.nasl: GPLv2+
 2017/gb_ubnt_xss_vuln.nasl: GPLv2+
@@ -51359,6 +51362,7 @@ gb_3com_officeconnect_vpn_firewall_detect.nasl: GPLv2+
 gb_4images_detect.nasl: GPLv2+
 gb_7zip_detect_lin.nasl: GPLv2+
 gb_7zip_detect_win.nasl: GPLv2+
+gb_a2billing_detect.nasl: GPLv2+
 gb_aastra_opencom_detect.nasl: GPLv2+
 gb_accellion_fta_detect.nasl: GPLv2+
 gb_achievo_detect.nasl: GPLv2+
@@ -52721,6 +52725,7 @@ gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170906-snmp.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170906-cat.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170906-ios-udp.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170906-cms.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_vcs_cisco-sa-20170816-vcs.nasl: GPLv2+
 gsf/gb_advantech_webaccess_mult_vuln_aug.nasl: GPLv2+
 gsf/gb_CISCO_CSCdi22941.nasl: GPLv2+
 gsf/gb_CISCO_CSCdi34061.nasl: GPLv2+

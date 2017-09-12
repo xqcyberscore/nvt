@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_3com_officeconnect_vpn_firewall_detect.nasl 6755 2017-07-18 12:55:56Z cfischer $
+# $Id: gb_3com_officeconnect_vpn_firewall_detect.nasl 7083 2017-09-08 11:53:47Z teissa $
 #
 # 3Com OfficeConnect VPN Firewall Detection
 #
@@ -35,14 +35,13 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103710";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 6755 $");
+ script_version ("$Revision: 7083 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-08 13:53:47 +0200 (Fri, 08 Sep 2017) $");
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"creation_date", value:"2013-05-14 10:41:56 +0200 (Tue, 14 May 2013)");
  script_name("3Com OfficeConnect VPN Firewall Detection");
- script_summary("Checks for the presence of 3Com OfficeConnect VPN Firewall");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

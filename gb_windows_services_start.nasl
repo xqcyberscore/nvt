@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_services_start.nasl 6744 2017-07-17 18:03:32Z cfischer $
+# $Id: gb_windows_services_start.nasl 7084 2017-09-08 12:27:28Z cfischer $
 #
 # Windows Services Start
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804786");
-  script_version("$Revision: 6744 $");
+  script_version("$Revision: 7084 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 20:03:32 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-08 14:27:28 +0200 (Fri, 08 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-11-04 16:38:25 +0530 (Tue, 04 Nov 2014)");
   script_name("Windows Services Start");
   script_category(ACT_GATHER_INFO);
@@ -67,34 +67,34 @@ function run_command( command, password, username ) {
 
   local_var command, password, username, serQueryRes, serStat;
 
-  ## Run the Command and get the Response
   serQueryRes = win_cmd_exec( cmd:command, password:password, username:username );
 
   if( "Access is denied" >< serQueryRes ) {
-    error_message( data:"SC Command Error: Access is denied." );
-  }
-  else if( "The specified service does not exist" >< serQueryRes ) {
-    error_message( data:"SC Command Error: The specified service does not exist." );
-  }
-  else if( "The service cannot be started" >< serQueryRes && "it is disabled" >< serQueryRes ) {
-    error_message( data:"SC Command Error: Unable to start the service, maybe it is set to 'Disabled'." );
-  }
-  else if( "OpenService FAILED" >< serQueryRes && "specified service does not exist" >< serQueryRes ) {
-    error_message( data:"SC Command Error: The specified service does not exist." );
-  }
-  else if( "StartService FAILED" >< serQueryRes ) {
-    error_message( data:"SC Command Error: Failed to start the service." );
-  }
-  else if( "An instance of the service is already running" >< serQueryRes ) {
-    error_message( data:"SC Command Error: An instance of the service is already running." );
-  }
-  else {
-    ## Confirm the "sc query" Response
+    set_kb_item( name:service + "/Win/Service/Manual/Failed", value:chomp( serQueryRes ) );
+    return;
+  } else if( "The specified service does not exist" >< serQueryRes ) {
+    set_kb_item( name:service + "/Win/Service/Manual/Failed", value:chomp( serQueryRes ) );
+    return;
+  } else if( "The service cannot be started" >< serQueryRes && "it is disabled" >< serQueryRes ) {
+    set_kb_item( name:service + "/Win/Service/Manual/Failed", value:chomp( serQueryRes ) );
+    return;
+  } else if( "OpenService FAILED" >< serQueryRes && "specified service does not exist" >< serQueryRes ) {
+    set_kb_item( name:service + "/Win/Service/Manual/Failed", value:chomp( serQueryRes ) );
+    return;
+  } else if( "StartService FAILED" >< serQueryRes ) {
+    set_kb_item( name:service + "/Win/Service/Manual/Failed", value:chomp( serQueryRes ) );
+    return;
+  } else if( "An instance of the service is already running" >< serQueryRes ) {
+    set_kb_item( name:service + "/Win/Service/Manual/Failed", value:chomp( serQueryRes ) );
+    return;
+  } else {
     if( "SERVICE_NAME" >< serQueryRes && "STATE" >< serQueryRes && "SERVICE_EXIT_CODE" >< serQueryRes ) {
-      ## Get the state of the service
       serStat = eregmatch( pattern:"STATE.*: [0-9]  ([a-zA-Z_]+)", string:serQueryRes );
       return serStat[1];
     }
+    if( isnull( serQueryRes ) ) serQueryRes = "win_cmd_exec failed for unknown reasons. Please check the scanners logfiles for more info.";
+    set_kb_item( name:service + "/Win/Service/Manual/Failed", value:chomp( serQueryRes ) );
+    return;
   }
 }
 
@@ -118,24 +118,20 @@ service_list = make_list( "RemoteRegistry" );
 
 foreach service( service_list ) {
 
-  ## To get the status of the service
   cmd = "cmd /c sc query " + service;
   serQueryStat = run_command( command:cmd, password:password, username:username );
 
-  ## Check wheather it is in stopped state
   if( "STOPPED" >< serQueryStat ) {
-    ## To start the service
+
     cmd = "cmd /c sc start " + service;
     serQueryStat = run_command( command:cmd, password:password, username:username );
 
-    ## Confirm wheather it is started or not
     if( "START_PENDING" >< serQueryStat ) {
-      ## To get the status of the service
+
       cmd = "cmd /c sc query " + service;
       serQueryStat = run_command( command:cmd, password:password, username:username );
 
       if( "RUNNING" >< serQueryStat ) {
-        ## set the kb if the service started
         set_kb_item( name:service + "/Win/Service/Manual/Start", value:TRUE );
       }
     }

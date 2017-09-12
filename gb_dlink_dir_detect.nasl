@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_detect.nasl 5293 2017-02-14 10:12:42Z ckuerste $
+# $Id: gb_dlink_dir_detect.nasl 7083 2017-09-08 11:53:47Z teissa $
 #
 # Dlink DIR Devices Detection
 #
@@ -38,11 +38,10 @@ if (description)
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5293 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-14 11:12:42 +0100 (Tue, 14 Feb 2017) $");
+ script_version ("$Revision: 7083 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-08 13:53:47 +0200 (Fri, 08 Sep 2017) $");
  script_tag(name:"creation_date", value:"2013-04-08 13:52:56 +0200 (Mon, 08 Apr 2013)");
  script_name("Dlink DIR Devices Detection");
- script_summary("Checks for the presence of Dlink DIR Devices");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("Product detection");

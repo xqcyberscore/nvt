@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eyesofnetwork_mult_vuln.nasl 7049 2017-09-04 09:35:49Z ckuersteiner $
+# $Id: gb_eyesofnetwork_mult_vuln.nasl 7085 2017-09-08 15:01:13Z cfischer $
 #
 # Eyes Of Network (EON) Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:eyes_of_network:eyes_of_network";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140346");
-  script_version("$Revision: 7049 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-04 11:35:49 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 7085 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-08 17:01:13 +0200 (Fri, 08 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-09-04 13:33:34 +0700 (Mon, 04 Sep 2017)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-14118", "CVE-2017-14119");
 
