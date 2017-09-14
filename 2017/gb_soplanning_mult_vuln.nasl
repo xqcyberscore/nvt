@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_soplanning_mult_vuln.nasl 7053 2017-09-04 12:20:53Z asteins $
+# $Id: gb_soplanning_mult_vuln.nasl 7109 2017-09-12 09:53:39Z asteins $
 #
-# Simple Online Planning < 1.33 Multiple Vulnerabilites
+# Simple Online Planning < 1.33 Multiple Vulnerabilities
 #
 # Authors:
 # Adrian Steins <adrian.steins@greenbone.net>
@@ -29,18 +29,18 @@ CPE = "cpe:/a:soplanning:soplanning";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112035");
-  script_version("$Revision: 7053 $");
+  script_version("$Revision: 7109 $");
   script_cve_id("CVE-2014-8673", "CVE-2014-8674", "CVE-2014-8675", "CVE-2014-8676", "CVE-2014-8677");
   script_bugtraq_id(75726);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 14:20:53 +0200 (Mon, 04 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-12 11:53:39 +0200 (Tue, 12 Sep 2017) $");
   script_tag(name:"creation_date", value: "2017-09-04 12:34:59 +0200 (Mon, 04 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("Simple Online Planning < 1.33 Multiple Vulnerabilites");
+  script_name("Simple Online Planning < 1.33 Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is running Simple Online Planning and is
-  prone to multiple vulnerabilites.");
+  prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check if the version is vulnerable or not.");

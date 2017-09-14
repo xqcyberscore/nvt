@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zycoo_ip_phone_system_detect.nasl 3903 2016-08-29 10:38:36Z ckuerste $
+# $Id: gb_zycoo_ip_phone_system_detect.nasl 7119 2017-09-13 15:12:25Z cfischer $
 #
 # ZYCOO IP Phone System Detection 
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106213");
- script_version ("$Revision: 3903 $");
- script_tag(name: "last_modification", value: "$Date: 2016-08-29 12:38:36 +0200 (Mon, 29 Aug 2016) $");
+ script_version ("$Revision: 7119 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-09-13 17:12:25 +0200 (Wed, 13 Sep 2017) $");
  script_tag(name: "creation_date", value: "2016-08-29 14:37:34 +0700 (Mon, 29 Aug 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -81,7 +81,7 @@ if ("ZYCOO IP Phone System" >< res) {
     set_kb_item(name: "zycoo_ipphonesystem/version", value: version);
   }
 
-  set_kb_item(name: "zycoo_ipphonessystem/detected", value: TRUE);
+  set_kb_item(name: "zycoo_ipphonesystem/detected", value: TRUE);
 
   cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:zycoo:ip_phone_system:");
   if (!cpe)

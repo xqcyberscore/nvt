@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mssqlserver_detect.nasl 6734 2017-07-15 16:47:32Z cfischer $
+# $Id: mssqlserver_detect.nasl 7113 2017-09-13 06:03:30Z cfischer $
 #
 # Microsoft SQL TCP/IP listener is running
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10144");
-  script_version("$Revision: 6734 $");
+  script_version("$Revision: 7113 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-15 18:47:32 +0200 (Sat, 15 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Microsoft SQL TCP/IP listener is running");
   script_category(ACT_GATHER_INFO);
@@ -128,7 +128,7 @@ if( version =~ "^1\.0" ) {
 } else if( version =~ "^14\.0" ) {
   releaseName = "2017";
 } else {
-  releaseName = "unkown release name";
+  releaseName = "unknown release name";
 }
 
 install = port + "/tcp";

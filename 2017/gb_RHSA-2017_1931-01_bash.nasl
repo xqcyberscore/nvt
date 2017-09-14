@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_1931-01_bash.nasl 6850 2017-08-04 07:23:54Z santu $
+# $Id: gb_RHSA-2017_1931-01_bash.nasl 7101 2017-09-12 06:15:03Z asteins $
 #
 # RedHat Update for bash RHSA-2017:1931-01
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871874");
-  script_version("$Revision: 6850 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:23:54 +0200 (Fri, 04 Aug 2017) $");
+  script_version("$Revision: 7101 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-12 08:15:03 +0200 (Tue, 12 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-04 12:46:12 +0530 (Fri, 04 Aug 2017)");
   script_cve_id("CVE-2016-0634", "CVE-2016-7543", "CVE-2016-9401");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for bash RHSA-2017:1931-01");
   script_tag(name: "summary", value: "Check the version of bash");

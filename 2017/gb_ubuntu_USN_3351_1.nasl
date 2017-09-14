@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3351_1.nasl 6797 2017-07-25 06:01:21Z santu $
+# $Id: gb_ubuntu_USN_3351_1.nasl 7088 2017-09-11 05:01:45Z asteins $
 #
 # Ubuntu Update for evince USN-3351-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843241");
-  script_version("$Revision: 6797 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-25 08:01:21 +0200 (Tue, 25 Jul 2017) $");
+  script_version("$Revision: 7088 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-11 07:01:45 +0200 (Mon, 11 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-07-14 07:21:38 +0200 (Fri, 14 Jul 2017)");
   script_cve_id("CVE-2017-1000083");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for evince USN-3351-1");
   script_tag(name: "summary", value: "Check the version of evince");

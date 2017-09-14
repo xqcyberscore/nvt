@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_mult_dos_vuln_aug17_win.nasl 6938 2017-08-16 11:10:00Z santu $
+# $Id: gb_clamav_mult_dos_vuln_aug17_win.nasl 7093 2017-09-11 07:58:34Z asteins $
 #
 # ClamAV Multiple Denial of Service Vulnerabilities Aug17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811575");
-  script_version("$Revision: 6938 $");
+  script_version("$Revision: 7093 $");
   script_cve_id("CVE-2017-6418", "CVE-2017-6419", "CVE-2017-6420", "CVE-2017-11423");
   script_bugtraq_id(100154);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-16 13:10:00 +0200 (Wed, 16 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-11 09:58:34 +0200 (Mon, 11 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-08 14:13:11 +0530 (Tue, 08 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ClamAV Multiple Denial of Service Vulnerabilities Aug17 (Windows)");
@@ -68,7 +68,7 @@ if(description)
   script_tag(name:"affected", value:"ClamAV version 0.99.2 on Windows");
 
   script_tag(name:"solution", value:"No solution or patch is available as 
-  of 8th August, 2017. Information regarding this issue will be updated once the 
+  of 11th September, 2017. Information regarding this issue will be updated once the 
   solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

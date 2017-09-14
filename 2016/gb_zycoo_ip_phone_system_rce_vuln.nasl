@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zycoo_ip_phone_system_rce_vuln.nasl 7027 2017-08-31 06:40:43Z asteins $
+# $Id: gb_zycoo_ip_phone_system_rce_vuln.nasl 7119 2017-09-13 15:12:25Z cfischer $
 #
 # ZYCOO IP Phone System Remote Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:zycoo:ip_phone_system';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106214");
-  script_version("$Revision: 7027 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-31 08:40:43 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 7119 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-13 17:12:25 +0200 (Wed, 13 Sep 2017) $");
   script_tag(name: "creation_date", value: "2016-08-29 16:16:40 +0700 (Mon, 29 Aug 2016)");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
@@ -47,7 +47,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_zycoo_ip_phone_system_detect.nasl");
-  script_mandatory_keys("zycoo_ipphonessystem/detected");
+  script_mandatory_keys("zycoo_ipphonesystem/detected");
 
   script_tag(name: "summary", value: "ZYCOO IP Phone System is prone to a remote command execution vulnerability");
 

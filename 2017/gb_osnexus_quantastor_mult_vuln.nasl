@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_osnexus_quantastor_mult_vuln.nasl 7018 2017-08-29 09:44:50Z ckuersteiner $
+# $Id: gb_osnexus_quantastor_mult_vuln.nasl 7101 2017-09-12 06:15:03Z asteins $
 #
 # OSNEXUS QuantaStor Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:osnexus:quantastor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140333");
-  script_version("$Revision: 7018 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-29 11:44:50 +0200 (Tue, 29 Aug 2017) $");
+  script_version("$Revision: 7101 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-12 08:15:03 +0200 (Tue, 12 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-08-29 13:36:20 +0700 (Tue, 29 Aug 2017)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-9978", "CVE-2017-9979");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_sitescope_detect.nasl 6367 2017-06-19 07:11:34Z ckuersteiner $
+# $Id: gb_hp_sitescope_detect.nasl 7113 2017-09-13 06:03:30Z cfischer $
 #
 # HP SiteScope Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805284");
-  script_version("$Revision: 6367 $");
+  script_version("$Revision: 7113 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-19 09:11:34 +0200 (Mon, 19 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-02-23 10:54:54 +0530 (Mon, 23 Feb 2015)");
   script_name("HP SiteScope Version Detection");
 
@@ -79,7 +79,7 @@ if(!banner = get_http_banner(port:hpPort)){
 ## Confirm the server from banner
 if("Server: SiteScope" >< banner || banner =~ "Location: .*SiteScope")
 {
-  ## version set to unkown
+  ## version set to unknown
   version = "unknown";
 
   ## set the directory

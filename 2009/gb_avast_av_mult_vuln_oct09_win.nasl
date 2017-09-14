@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_av_mult_vuln_oct09_win.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_avast_av_mult_vuln_oct09_win.nasl 7113 2017-09-13 06:03:30Z cfischer $
 #
 # avast! Multiple Vulnerabilities - Oct09 (Windows)
 #
@@ -26,15 +26,18 @@
 
 tag_impact = "Successful exploitation will let the local attackers to cause a Denial of
   Service or gain escalated privileges on the victim's system.
+
   Impact Level: System/Application";
 tag_affected = "avast! Home and Professional version prior to 4.8.1356 on Windows";
 tag_insight = "- A boundary error exists in the 'aswMon2' kernel driver when processing
     IOCTLs. This can be exploited to cause a stack-based buffer overflow
     via a specially crafted 0xB2C80018 IOCTL.
+
   - An error in the 'AavmKer4.sys' kernel driver that can be exploited to
     corrupt memory via a specially crafted 0xB2D6000C or 0xB2D60034 IOCTL.
+
   - An unspecified error exists in the ashWsFtr.dll library which can be
-    exploited to cause unknow impact.";
+    exploited to cause unknown impact.";
 tag_solution = "Upgrade to avast! version 4.8.1356 or later
   http://www.avast.com/eng/download.html";
 tag_summary = "This host is installed with avast! AntiVirus and is prone to multiple
@@ -43,8 +46,8 @@ tag_summary = "This host is installed with avast! AntiVirus and is prone to mult
 if(description)
 {
   script_id(801111);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 7113 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-10-08 08:22:29 +0200 (Thu, 08 Oct 2009)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");

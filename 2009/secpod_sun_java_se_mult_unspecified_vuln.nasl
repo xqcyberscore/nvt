@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_se_mult_unspecified_vuln.nasl 6466 2017-06-28 13:28:20Z cfischer $
+# $Id: secpod_sun_java_se_mult_unspecified_vuln.nasl 7113 2017-09-13 06:03:30Z cfischer $
 #
 # Sun Java SE Multiple Unspecified Vulnerabilities
 #
@@ -34,7 +34,8 @@ tag_solution = "Upgrade to Java SE version 5 Update 20
   NOTE: Ignore this warning if above mentioned patch is already applied.
   *****";
 
-tag_impact = "Impact is unknow.
+tag_impact = "Impact is unknown.
+
   Impact Level: System/Application";
 tag_affected = "Sun Java SE version 5.0 before Update 20";
 tag_insight = "Refer to the SunSolve bugId 6406003/6429594/6444262 for more information.";
@@ -44,8 +45,8 @@ tag_summary = "This host is installed with Sun Java SE and is prone to multiple
 if(description)
 {
   script_id(900819);
-  script_version("$Revision: 6466 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:28:20 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 7113 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-08-24 07:49:31 +0200 (Mon, 24 Aug 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

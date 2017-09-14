@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_NIS.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_SSH_NIS.nasl 7113 2017-09-13 06:03:30Z cfischer $
 #
 # Test System if NIS Server ore Client installed
 #
@@ -31,8 +31,8 @@ tag_summary = "Test System if NIS Server ore Client installed.";
 if(description)
 {
   script_id(96102);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 7113 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-05-07 15:05:51 +0200 (Fri, 07 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -157,7 +157,7 @@ if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHU
     ypbind = ssh_cmd(socket:sock, cmd:"rpcinfo -u localhost ypbind");
     if ("is not available" >< ypbind || "ist nicht verfügbar" >< ypbind) ypbind = "no";
     if ("ready and waiting" >< ypbind || "ist bereit und wartet" >< ypbind) ypbind = "yes";
-    else ypbind = "unknow";
+    else ypbind = "unknown";
   }
   
   ypserv = ssh_cmd(socket:sock, cmd:"ps -C ypserv");
@@ -169,7 +169,7 @@ if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHU
     ypserv = ssh_cmd(socket:sock, cmd:"rpcinfo -u localhost ypserv");
     if ("is not available" >< ypserv || "ist nicht verfügbar" >< ypserv) ypserv = "no";
     if ("ready and waiting" >< ypserv || "ist bereit und wartet" >< ypserv) ypserv = "yes";
-    else ypserv = "unknow";
+    else ypserv = "unknown";
   }
 }  
 else{

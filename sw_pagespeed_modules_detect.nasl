@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_pagespeed_modules_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: sw_pagespeed_modules_detect.nasl 7113 2017-09-13 06:03:30Z cfischer $
 #
 # PageSpeed Modules (mod_pagespeed/ngx_pagespeed) Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111099");
-  script_version("$Revision: 7000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_version("$Revision: 7113 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-05-03 17:00:00 +0200 (Tue, 03 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,7 +58,7 @@ banner = get_http_banner( port:port );
 
 if( "x-mod-pagespeed" >< tolower( banner ) ) {
 
-  version = "unkown";
+  version = "unknown";
 
   set_kb_item( name:"mod_pagespeed/installed", value:TRUE );
 
@@ -81,7 +81,7 @@ if( "x-mod-pagespeed" >< tolower( banner ) ) {
 
 if( "x-page-speed" >< tolower( banner ) ) {
 
-  version = "unkown";
+  version = "unknown";
 
   set_kb_item( name:"ngx_pagespeed/installed", value:TRUE );
 

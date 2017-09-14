@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_unspesified_vuln_lin.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_ibm_db2_unspesified_vuln_lin.nasl 7113 2017-09-13 06:03:30Z cfischer $
 #
 # IBM DB2 Unspecified Vulnerability (Linux)
 #
@@ -24,7 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Unknow impact.
+tag_impact = "Unknown impact.
+
   Impact Level: System/Application.";
 tag_affected = "IBM DB2 version 9.1 prior to Fixpak 8";
 tag_insight = "An unspecified error in the handling of 'SET SESSION AUTHORIZATION'
@@ -38,8 +39,8 @@ tag_summary = "The host is installed with IBM DB2 and is prone to unspecified
 if(description)
 {
   script_id(801003);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 7113 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-10-06 07:21:15 +0200 (Tue, 06 Oct 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

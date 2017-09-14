@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3916.nasl 6802 2017-07-26 09:11:20Z cfischer $
+# $Id: deb_3916.nasl 7088 2017-09-11 05:01:45Z asteins $
 # Auto-generated from advisory DSA 3916-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703916);
-    script_version("$Revision: 6802 $");
+    script_version("$Revision: 7088 $");
     script_cve_id("CVE-2017-1000083");
     script_name("Debian Security Advisory DSA 3916-1 (atril - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-26 11:11:20 +0200 (Wed, 26 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-09-11 07:01:45 +0200 (Mon, 11 Sep 2017) $");
     script_tag(name: "creation_date", value: "2017-07-21 00:00:00 +0200 (Fri, 21 Jul 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"6.8");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

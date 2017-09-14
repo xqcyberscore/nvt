@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_97eb475d93_cvs_fc25.nasl 7032 2017-08-31 12:58:05Z santu $
+# $Id: gb_fedora_2017_97eb475d93_cvs_fc25.nasl 7101 2017-09-12 06:15:03Z asteins $
 #
 # Fedora Update for cvs FEDORA-2017-97eb475d93
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873318");
-  script_version("$Revision: 7032 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 14:58:05 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 7101 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-12 08:15:03 +0200 (Tue, 12 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-30 07:38:54 +0200 (Wed, 30 Aug 2017)");
   script_cve_id("CVE-2017-12836");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for cvs FEDORA-2017-97eb475d93");
   script_tag(name: "summary", value: "Check the version of cvs");

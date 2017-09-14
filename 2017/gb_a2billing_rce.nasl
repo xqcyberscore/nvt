@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_a2billing_rce.nasl 7082 2017-09-08 11:38:12Z teissa $
+# $Id: gb_a2billing_rce.nasl 7091 2017-09-11 06:23:07Z cfischer $
 #
 # A2billing Backup File Download / Remote Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:a2billing:a2billing";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107237");
-  script_version("$Revision: 7082 $");
+  script_version("$Revision: 7091 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name:"last_modification", value:"$Date");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-11 08:23:07 +0200 (Mon, 11 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-08 20:31:53 +0530 (Fri, 08 Sep 2017)");
   script_name("A2billing Backup File Download / Remote Code Execution Vulnerabilities");
 

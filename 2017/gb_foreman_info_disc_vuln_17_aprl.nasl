@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foreman_info_disc_vuln_17_aprl.nasl 5929 2017-04-11 07:52:32Z teissa $
+# $Id: gb_foreman_info_disc_vuln_17_aprl.nasl 7107 2017-09-12 09:26:09Z teissa $
 #
 # Foreman CVE-2017-2672 Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:theforeman:foreman';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107147");
-  script_version("$Revision: 5929 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 09:52:32 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 7107 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-12 11:26:09 +0200 (Tue, 12 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-04-11 07:35:49 +0200 (Tue, 11 Apr 2017)");
   script_cve_id("CVE-2017-2672");
 
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name: "affected", value: "Foreman 1.4 and later are vulnerable");
 
-  script_tag(name: "solution", value: "A patch is availabe. Visit https://github.com/theforeman/foreman/commit/02489389f1a4443e1f437b86aa7ce245f1437020 for more information.");
+  script_tag(name: "solution", value: "A patch is available. Visit https://github.com/theforeman/foreman/commit/02489389f1a4443e1f437b86aa7ce245f1437020 for more information.");
 
   script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/97526");
   script_tag(name:"solution_type", value:"VendorFix");

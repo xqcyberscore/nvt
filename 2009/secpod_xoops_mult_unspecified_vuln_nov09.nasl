@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xoops_mult_unspecified_vuln_nov09.nasl 5952 2017-04-13 12:34:17Z cfi $
+# $Id: secpod_xoops_mult_unspecified_vuln_nov09.nasl 7113 2017-09-13 06:03:30Z cfischer $
 #
 # XOOPS Multiple Unspecified Vulnerabilities - Nov09
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:xoops:xoops";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900893");
-  script_version("$Revision: 5952 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 14:34:17 +0200 (Thu, 13 Apr 2017) $");
+  script_version("$Revision: 7113 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-11-20 06:52:52 +0100 (Fri, 20 Nov 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3174");
   script_xref(name:"URL", value:"http://www.xoops.org/modules/news/article.php?storyid=5064");
 
-  tag_impact = "Unknow impact
+  tag_impact = "Unknown impact
 
   Impact Level: Application";
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_reflection_secureit_unix_mult_vuln_lin.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_reflection_secureit_unix_mult_vuln_lin.nasl 7113 2017-09-13 06:03:30Z cfischer $
 #
 # Reflection for Secure IT Multiple Vulnerabilities (Linux)
 #
@@ -29,7 +29,7 @@ tag_impact = "Attacker can get admin privileges.
   Impact level: Application/System";
 
 tag_affected = "Reflections for Secure IT version prior to 7.0 SP1 on Linux.";
-tag_insight = "Unknow Vector.";
+tag_insight = "Unknown Vector.";
 tag_solution = "Apply the security update SP1.
   http://www.attachmate.com/Evals/Evaluate.htm";
 tag_summary = "This host is installed with Reflections for Secure IT and is prone
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with Reflections for Secure IT and is pron
 if(description)
 {
   script_id(800228);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 7113 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-02-06 13:48:17 +0100 (Fri, 06 Feb 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 6849 2017-08-04 07:21:15Z cfischer $
+# $Id: misc_func.inc 7113 2017-09-13 06:03:30Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6849 $
+# $Revision: 7113 $
 #
 ###############################################################################
 
@@ -879,8 +879,7 @@ function get_unknown_port( default, nodefault ) {
 
   local_var default, _port, port;
 
-  if( ! nodefault )
-    if( ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_unkown_port" );
+  if( ! nodefault && ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_unknown_port" );
 
   port = get_kb_item( "Services/unknown" );
   if( port ) {
@@ -915,7 +914,7 @@ function get_unknown_port_list( default ) {
 
   __port_list = make_list();
 
-  if( ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_unkown_port_list" );
+  if( ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_unknown_port_list" );
 
   port_list = get_kb_list( "Services/unknown" );
   if( port_list ) {

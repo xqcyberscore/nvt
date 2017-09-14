@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_netweaver_detect.nasl 6219 2017-05-26 10:01:30Z teissa $
+# $Id: gb_sap_netweaver_detect.nasl 7121 2017-09-13 16:15:08Z teissa $
 #
 # SAP NetWeaver Application Server Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105302");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6219 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-26 12:01:30 +0200 (Fri, 26 May 2017) $");
+ script_version ("$Revision: 7121 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-13 18:15:08 +0200 (Wed, 13 Sep 2017) $");
  script_tag(name:"creation_date", value:"2015-06-22 11:54:01 +0200 (Mon, 22 Jun 2015)");
  script_name("SAP NetWeaver Application Server Detection");
 
@@ -59,12 +59,19 @@ port = get_http_port( default:443 );
 
 req = http_get(item: "/irj/portal", port: port);
 buf =  http_keepalive_send_recv(port: port, data: req, bodyonly: false);
-if ("TITLE>SAP NetWeaver Application Server" >!< buf && "server: SAP NetWeaver Application Server" >!< buf &&
-    ("<title>Application Server Error" >!< buf && "SAP AG" >!< buf))
+
+if ("TITLE>SAP NetWeaver Application Server" >!< buf && "server: SAP NetWeaver Application Server" >!< buf && ("<title>Application Server Error" >!< buf && "SAP AG" >!< buf && "<title>SAP&#x20;NetWeaver&#x20;Portal</title>" >!< buf))
+
   exit(0);
+
 version = 'unknown';
 
 vers = eregmatch(pattern: 'com.sap.portal.design.portaldesigndata/themes/portal/.*v=([0-9.]+).*/>', string: buf);
+
+#add check for new sap netweaver versions.
+
+if (isnull(vers)) vers = eregmatch(pattern: 'com.sap.portal.theming.webdav.themeswebdavlistener/Portal/.*v=([0-9.]+).*/>', string: buf);
+
 if (! isnull(vers)) version = vers[1];
 
 set_kb_item(name: "sap_netweaver/version", value: version);

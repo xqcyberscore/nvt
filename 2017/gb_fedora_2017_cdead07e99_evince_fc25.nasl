@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_cdead07e99_evince_fc25.nasl 6754 2017-07-18 11:33:56Z santu $
+# $Id: gb_fedora_2017_cdead07e99_evince_fc25.nasl 7088 2017-09-11 05:01:45Z asteins $
 #
 # Fedora Update for evince FEDORA-2017-cdead07e99
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872880");
-  script_version("$Revision: 6754 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 13:33:56 +0200 (Tue, 18 Jul 2017) $");
+  script_version("$Revision: 7088 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-11 07:01:45 +0200 (Mon, 11 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-07-16 07:37:45 +0200 (Sun, 16 Jul 2017)");
   script_cve_id("CVE-2017-1000083");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for evince FEDORA-2017-cdead07e99");
   script_tag(name: "summary", value: "Check the version of evince");

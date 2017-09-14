@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dokuwiki_xss_vuln.nasl 6959 2017-08-18 07:24:59Z asteins $
+# $Id: gb_dokuwiki_xss_vuln.nasl 7093 2017-09-11 07:58:34Z asteins $
 #
 # DokuWiki XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:dokuwiki:dokuwiki';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140284");
-  script_version("$Revision: 6959 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
+  script_version("$Revision: 7093 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-11 09:58:34 +0200 (Mon, 11 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-08-08 14:37:42 +0700 (Tue, 08 Aug 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -58,10 +58,10 @@ if (description)
 
   script_tag(name: "affected", value: "DokuWiki version 2017-02-19b and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 8th August, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update to version 2017-02-19e or later.");
 
   script_xref(name: "URL", value: "https://github.com/splitbrain/dokuwiki/issues/2061");
+  script_xref(name: "URL", value: "https://www.dokuwiki.org/changes");
 
   exit(0);
 }
@@ -76,7 +76,7 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less_equal(version: version, test_version: "2017-02-19b")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+  report = report_fixed_ver(installed_version: version, fixed_version: "2017-02-19e");
   security_message(port: port, data: report);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_018.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_M4_018.nasl 7113 2017-09-13 06:03:30Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.018
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94185);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 7113 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -109,7 +109,7 @@ else{
         rcSconf = split(rcSconf, sep:":", keep:0);
         result = string("nicht erfüllt");
         desc = string('Folgender Eintrag wurde für den Single-User-Modus in\nder Datei /etc/init/rcS.conf gefunden:\n' + rcSconf[1]);
-      }else if(rcSconf =~ "unknow:.*"){
+      }else if(rcSconf =~ "unknown:.*"){
         rcSconf = split(rcSconf, sep:":", keep:0);
         result = string("nicht erfüllt");
         desc = string('Es konnte nicht korrekt ermittel werden, ob eine Shell\noder sulogin genutzt wird. Folgender Eintrag wurde für\nden Single-User-Modus in der Datei /etc/init/rcS.conf\ngefunden:\n' + rcSconf[1] + ":" + rcSconf[2] );
@@ -127,7 +127,7 @@ else{
       rcSsulogin = split(rcSsulogin, sep:":", keep:0);
       result = string("nicht erfüllt");
       desc = string('Folgender Eintrag wurde für den Single-User-Modus in\nder Datei /etc/event.d/rcS-sulogin gefunden:\n' + rcSsulogin[1]);
-    }else if(rcSsulogin =~ "unknow:.*"){
+    }else if(rcSsulogin =~ "unknown:.*"){
       rcSsulogin = split(rcSsulogin, sep:":", keep:0);
       result = string("nicht erfüllt");
       desc = string('Es konnte nicht korrekt ermittel werden, ob eine Shell\noder sulogin genutzt wird.\nFolgender Eintrag wurde\nfür den Single-User-Modus in der Datei\n/etc/event.d/rcS-sulogin gefunden:\n' + rcSsulogin[1] + ":" + rcSsulogin[2] );

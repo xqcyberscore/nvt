@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_detect.nasl 6287 2017-06-06 14:28:01Z cfischer $
+# $Id: gb_apache_hadoop_detect.nasl 7113 2017-09-13 06:03:30Z cfischer $
 #
 # Apache Hadoop Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810317");
-  script_version("$Revision: 6287 $");
+  script_version("$Revision: 7113 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-06 16:28:01 +0200 (Tue, 06 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-12-23 11:51:30 +0530 (Fri, 23 Dec 2016)");
   script_name("Apache Hadoop Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -79,7 +79,7 @@ foreach url( keys( urls ) ) {
 
     conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
     install = "/";
-    version = "unkown";
+    version = "unknown";
     extra = "";
     secureModeDisabled = FALSE;
 

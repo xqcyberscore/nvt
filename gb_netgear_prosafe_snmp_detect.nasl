@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_prosafe_snmp_detect.nasl 6770 2017-07-20 10:01:28Z cfischer $
+# $Id: gb_netgear_prosafe_snmp_detect.nasl 7113 2017-09-13 06:03:30Z cfischer $
 #
 # NETGEAR ProSafe Devices Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108163");
-  script_version("$Revision: 6770 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 12:01:28 +0200 (Thu, 20 Jul 2017) $");
+  script_version("$Revision: 7113 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-05-18 10:24:16 +0200 (Thu, 18 May 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,11 +61,11 @@ if( ! sysdesc ) exit( 0 );
 
 if( "ProSafe" >< sysdesc ) {
 
-  model = "unknown";
+  model   = "unknown";
   version = "unknown";
-  build = "unkown";
-  hwapp = "NETGRAR Prosafe";
-  osapp = "NETGEAR Prosafe Firmware";
+  build   = "unknown";
+  hwapp   = "NETGRAR Prosafe";
+  osapp   = "NETGEAR Prosafe Firmware";
 
   # Netgear ProSafe VPN Firewall FVS318v3
   if( "Netgear ProSafe VPN Firewall" >< sysdesc ) {

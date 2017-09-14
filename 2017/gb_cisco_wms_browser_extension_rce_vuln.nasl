@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wms_browser_extension_rce_vuln.nasl 6851 2017-08-04 07:31:24Z asteins $
+# $Id: gb_cisco_wms_browser_extension_rce_vuln.nasl 7122 2017-09-13 17:06:48Z cfischer $
 #
 # Cisco WebEx Meetings Server Browser Extension Remote Code Execution Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = 'cpe:/a:cisco:webex_meetings_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811240");
-  script_version("$Revision: 6851 $");
+  script_version("$Revision: 7122 $");
   script_cve_id("CVE-2017-6753");
   script_bugtraq_id(99614);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:31:24 +0200 (Fri, 04 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-13 19:06:48 +0200 (Wed, 13 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-07-18 12:06:48 +0530 (Tue, 18 Jul 2017)");
   script_name("Cisco WebEx Meetings Server Browser Extension Remote Code Execution Vulnerability");
 
@@ -63,11 +63,11 @@ if (description)
   Patch 1, 2.8 Base and 2.8 prior to 2.8 Patch 3");
 
   script_tag(name: "solution" , value:"Upgrade to Cisco WebEx Meetings Server
-  version 2.7MR2 Patch 9 or 2.8 Patch 3 or later. For updates refer to
+  version 2.6MR3 Patch 5, 2.7MR2 Patch 9 or 2.8 Patch 3 or later. For updates refer to
   http://www.cisco.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_xref(name : "URL" , value : "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170717-webex");
   script_category(ACT_GATHER_INFO);
@@ -75,6 +75,7 @@ if (description)
   script_family("CISCO");
   script_dependencies("gb_cisco_webex_meetings_server_detect.nasl");
   script_mandatory_keys("cisco/webex/detected");
+
   exit(0);
 }
 
@@ -99,13 +100,18 @@ if(!vers = get_app_version(cpe:CPE, port:ciscoPort)){
 
 ## Check for vulnerable version
 ## 2.8 Patch 3 == 2.8.1.39
-if(vers =~ "^(2\.8)" && version_is_less(version:vers, test_version:"2.8.1.39")){
+if(vers =~ "^2\.8" && version_is_less(version:vers, test_version:"2.8.1.39")){
   fix = "2.8 Patch 3";
 }
 
 ## 2.7MR2 Patch 9 == 2.7.1.2103
-else if(version_is_less(version:vers, test_version:"2.7.1.2103")){
+else if(vers =~ "^2\.7" && version_is_less(version:vers, test_version:"2.7.1.2103")){
   fix = "2.7MR2 Patch 9";
+}
+
+## 2.6MR3 Patch 5 == 2.6.1.3120
+else if(version_is_less(version:vers, test_version:"2.6.1.3120")){
+  fix = "2.6MR3 Patch 5";
 }
 
 if(fix)

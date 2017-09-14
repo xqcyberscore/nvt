@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: drupal_detect.nasl 6319 2017-06-13 07:06:12Z cfischer $
+# $Id: drupal_detect.nasl 7113 2017-09-13 06:03:30Z cfischer $
 #
 # Drupal Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100169");
-  script_version("$Revision: 6319 $");
+  script_version("$Revision: 7113 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-13 09:06:12 +0200 (Tue, 13 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_name("Drupal Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -80,7 +80,7 @@ foreach dir( make_list_unique( "/", "/drupal", "/cms", cgi_dirs( port:port ) ) )
       "/misc/drupal.js?" >< res2 ) {
 
     if( dir == "" ) rootInstalled = TRUE;
-    version = "unkown";
+    version = "unknown";
 
     if( egrep( pattern:"Access denied for user", string:res, icase:TRUE ) ) brokenDr++;
     if( brokenDr > 1 ) break;
