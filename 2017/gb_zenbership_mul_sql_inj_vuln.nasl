@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zenbership_mul_sql_inj_vuln.nasl 6855 2017-08-04 13:23:41Z cfischer $
+# $Id: gb_zenbership_mul_sql_inj_vuln.nasl 7127 2017-09-14 08:36:48Z cfischer $
 #
 # Zenbership 1.0.8 CMS - Multiple SQL Injection Vulnerabilities
 #
@@ -29,9 +29,9 @@ CPE = 'cpe:/a:castlamp:zenbership';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107222");
-  script_version("$Revision: 6855 $");
+  script_version("$Revision: 7127 $");
   script_cve_id("CVE-2017-9759");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 15:23:41 +0200 (Fri, 04 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-14 10:36:48 +0200 (Thu, 14 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-06-19 11:59:56 +0200 (Mon, 19 Jun 2017)");
 
 
@@ -54,7 +54,7 @@ request.");
   script_tag(name: "affected", value: "Zenbership - Content Management System (Web-Application) 1.0.8");
 
   script_tag(name: "solution", value: "No solution or patch is available as of
-  04th August, 2017. Information regarding this issue will be updated once the
+  14th September, 2017. Information regarding this issue will be updated once the
   solution details are available. For updates refer to https://www.zenbership.com/");
 
   script_xref(name: "URL" , value: "http://seclists.org/fulldisclosure/2017/Jun/16");

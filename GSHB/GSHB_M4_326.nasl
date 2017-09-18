@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_326.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: GSHB_M4_326.nasl 7152 2017-09-15 14:36:54Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.326
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94235);
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 7152 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 16:36:54 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,7 +57,7 @@ name = 'IT-Grundschutz M4.326: Sicherstellung der NTFS-Eigenschaften auf einem S
 samba = get_kb_item("SMB/samba");
 NTFSADS = get_kb_item("GSHB/SAMBA/NTFSADS");
 ACL = get_kb_item("GSHB/SAMBA/ACL");
-ACLSUP = get_kb_item("GSHB/SAMBA/ACLSUP");
+ACLSUPP = get_kb_item("GSHB/SAMBA/ACLSUPP");
 VER = get_kb_item("GSHB/SAMBA/VER");
 log = get_kb_item("GSHB/SAMBA/log");
 
@@ -65,19 +65,19 @@ if(!samba){
     result = string("nicht zutreffend");
     desc = string('Auf dem System läuft kein Samba-Dateiserver.');
 }else{
-  if(ACL >< "error" && ACLSUP >< "error" && NTFSADS >< "error"){
+  if(ACL >< "error" && ACLSUPP >< "error" && NTFSADS >< "error"){
     result = string("Fehler");
     if (!log) desc = string("Beim Testen des Systems trat ein Fehler auf.");
     if (log) desc = string("Beim Testen des Systems trat ein Fehler auf:\n" + log); 
-  }else if(ACL != "no" && ACLSUP != "no" && NTFSADS != "no"){
+  }else if(ACL != "no" && ACLSUPP != "no" && NTFSADS != "no"){
     result = string("erfüllt");
     desc = string('NTFS Access Control Lists und NTFS Alternate Data\nStreams wurde richtig konfiguriert. Bitte prüfen Sie\nob bei den aufgeführten Mountpoints noch welche\nfehlen. Wenn ja, aktivieren Sie auch dort den\nACL Support.\n' + ACL);
-  }else if(ACL == "no" || ACLSUP == "no" || NTFSADS == "no"){
+  }else if(ACL == "no" || ACLSUPP == "no" || NTFSADS == "no"){
     result = string("nicht erfüllt");
-    if (ACLSUP == "no")desc = string('Der Konfigurationsparameter -nt acl support- in der\nKonfigurationsdatei smb.conf steht nicht auf -yes-.\n \n');
+    if (ACLSUPP == "no")desc = string('Der Konfigurationsparameter -nt acl support- in der\nKonfigurationsdatei smb.conf steht nicht auf -yes-.\n \n');
     if (ACL == "no")desc += string('Es wurde in /etc/fstab keine Unterstützung für ACL\ngefunden. Sie müssen die ACL-Unterstützung explizit\naktivieren.\n \n');
     if (NTFSADS == "no")desc += string('Sie setzen Samba Version ' + VER + ' ein.\nSamba 3.0.x bietet keine Möglichkeit NTFS ADS\nabzubilden. Samba 3.2.x und höher kann NTFS ADS direkt\nber POSIX Extended Attributes (xattr) abbilden.');        
-  }else if(ACL == "none" || ACLSUP == "none" || NTFSADS == "none"){
+  }else if(ACL == "none" || ACLSUPP == "none" || NTFSADS == "none"){
     result = string("Fehler");
     desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.');
   }

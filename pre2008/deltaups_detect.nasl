@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deltaups_detect.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: deltaups_detect.nasl 7146 2017-09-15 12:38:49Z cfischer $
 # Description: Delta UPS Daemon Detection
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10876");
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 7146 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:38:49 +0200 (Fri, 15 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -55,8 +55,11 @@ if(description)
 
 # Check starts here
 
-function check(req)
+function check(req, port)
 {
+
+ local_var port;
+
  soc = open_sock_tcp(port);
  if(soc)
  {
@@ -86,7 +89,7 @@ if(get_port_state(port))
  for (i = 0; cginameandpath[i]; i = i + 1)
  {
   url = cginameandpath[i];
-  if(check(req:url))exit(0);
+  if(check(req:url, port:port))exit(0);
  }
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_dir_trav_vuln.nasl 7028 2017-08-31 09:47:19Z ckuersteiner $
+# $Id: gb_apache_solr_dir_trav_vuln.nasl 7125 2017-09-14 08:26:29Z cfischer $
 #
 # Apache Solr Path Traversal Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:apache:solr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140341");
-  script_version("$Revision: 7028 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-31 11:47:19 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 7125 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-14 10:26:29 +0200 (Thu, 14 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-08-31 15:14:14 +0700 (Thu, 31 Aug 2017)");
-  script_tag(name: "cvss_base", value: "5.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:H/Au:N/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-3163"); 
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_concrete5_mult_vuln.nasl 7092 2017-09-11 06:44:39Z asteins $
+# $Id: gb_concrete5_mult_vuln.nasl 7125 2017-09-14 08:26:29Z cfischer $
 #
 # Concrete5 <= 5.7.3.1 Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:concrete5:concrete5';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112039");
-  script_version("$Revision: 7092 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-11 08:44:39 +0200 (Mon, 11 Sep 2017) $");
+  script_version("$Revision: 7125 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-14 10:26:29 +0200 (Thu, 14 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-11 08:49:26 +0200 (Mon, 11 Sep 2017)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2015-4721", "CVE-2015-4724");
   script_bugtraq_id(96891);
   script_name("Concrete5 <= 5.7.3.1 Multiple Vulnerabilities");

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_dos_9_17_lin.nasl 7099 2017-09-12 05:30:51Z mwiegand $
+# $Id: gb_apache_struts_dos_9_17_lin.nasl 7127 2017-09-14 08:36:48Z cfischer $
 #
-# Apache Struts CVE-2017-9793 Denial of Service Vulnerability (Linux)
+# Apache Struts Multiple Denial of Service Vulnerabilities (Linux)
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -29,24 +29,27 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107239");
-  script_version("$Revision: 7099 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-12 07:30:51 +0200 (Tue, 12 Sep 2017) $");
+  script_version("$Revision: 7127 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-14 10:36:48 +0200 (Thu, 14 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-11 14:24:03 +0200 (Mon, 11 Sep 2017)");
-  script_cve_id("CVE-2017-9793");
+  script_cve_id("CVE-2017-9793", "CVE-2017-9804");
   script_bugtraq_id(100611);
 
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_name(" Apache Struts CVE-2017-9793 Denial of Service Vulnerability (Linux)");
-  script_tag(name: "summary", value: "Apache Struts is prone to a denial-of-service vulnerability.");
+  script_name("Apache Struts Multiple Denial of Service Vulnerabilities (Linux)");
+  script_tag(name: "summary", value: "Apache Struts is prone to two denial-of-service vulnerabilities.");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "impact" , value: "An attacker can exploit this issue to cause a denial-of-service condition, denying service to legitimate users.");
   script_tag(name: "affected", value: "Apache Struts 2.3.7 through 2.3.33, and 2.5 through  2.5.12 are vulnerable");
   script_tag(name: "solution", value: "Updates are available. Apache Struts 2.3.x users should update to Apache Struts 2.3.34, Apache Struts 2.5.x users should update to Apache Struts 2.5.13.");
 
   script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/100611");
+  script_xref(name: "URL" , value: "https://struts.apache.org/docs/s2-050.html");
+  script_xref(name: "URL" , value: "https://struts.apache.org/docs/s2-051.html");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

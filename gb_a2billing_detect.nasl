@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_a2billing_detect.nasl 7082 2017-09-08 11:38:12Z teissa $
+# $Id: gb_a2billing_detect.nasl 7139 2017-09-15 09:13:13Z ckuersteiner $
 #
 #  A2billing Detection
 #
@@ -28,15 +28,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107236");
-  script_version("$Revision: 7082 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-08 13:38:12 +0200 (Fri, 08 Sep 2017) $");
+  script_version("$Revision: 7139 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-15 11:13:13 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-09-08 16:22:38 +0700 (Fri, 08 Sep 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_name("WPJobBoard Detection");
+  script_name("A2billing Detection");
 
   script_tag(name: "summary" , value: "Detection of A2billing.
 
@@ -49,7 +49,7 @@ extract its version.");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
 
-  script_require_ports("Services/www", 80, 81);
+  script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name: "URL", value: "http://www.asterisk2billing.org/");
@@ -63,33 +63,39 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default: 443);
-url = "/a2billing/admin/Public/index.php";
 
-res = http_get_cache(port: port, item: url);
+foreach dir (make_list_unique("/", "/admin", "/admin/Public", "/Public", "/a2billing", "/a2billing/Public",
+                              "/a2billing/admin/Public/", cgi_dirs(port: port))) {
+  install = dir;
+  if (dir == "/")
+    dir = "";
 
-if ( '<title>..:: A2Billing Portal ::..</title>' >< res )
-{
-  version = "unknown";
-  ver = eregmatch( pattern: 'A2Billing v([0-9.]+) is a <a href="http://www.star2billing.com/solutions/voip-billing/" target="_blank">voip billing software</a> licensed ', string: res);
+  url = dir + "/index.php";
 
-  if ( ! isnull( ver[1] ) )
-  {
-    version = ver[1];
-    set_kb_item(name: "a2billing/version", value: version);
-  }
+  res = http_get_cache(port: port, item: url);
 
-  set_kb_item(name: "a2billing/installed", value: TRUE);
+  if ( '<title>..:: A2Billing Portal ::..</title>' >< res ) {
+    version = "unknown";
+    ver = eregmatch( pattern: 'A2Billing v([0-9.]+) is a <a href="', string: res);
 
-  cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:a2billing:a2billing:");
+    if (!isnull(ver[1])) {
+      version = ver[1];
+      set_kb_item(name: "a2billing/version", value: version);
+    }
 
-  if (!cpe)
-    cpe = 'cpe:/a:a2billing:a2billing';
+    set_kb_item(name: "a2billing/installed", value: TRUE);
 
-  register_product(cpe: cpe, location: "/", port: port);
+    cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:a2billing:a2billing:");
+    if (!cpe)
+      cpe = 'cpe:/a:a2billing:a2billing';
 
-  log_message(data: build_detection_report(app: "A2billing", version: version, install: "/",
+    register_product(cpe: cpe, location: install, port: port);
+
+    log_message(data: build_detection_report(app: "A2billing", version: version, install: install,
                                            cpe: cpe, concluded: ver[0]),
-              port: port);
+                port: port);
+    exit(0);
+  }
 }
 
 exit(0);

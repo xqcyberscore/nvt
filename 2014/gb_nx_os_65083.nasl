@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nx_os_65083.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_nx_os_65083.nasl 7140 2017-09-15 09:41:22Z cfischer $
 #
 # Cisco NX-OS Software TACACS+ Server Local Privilege Escalation Vulnerability
 #
@@ -45,7 +45,7 @@ if (description)
  script_cve_id("CVE-2014-0676");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 6759 $");
+ script_version ("$Revision: 7140 $");
 
  script_name("Cisco NX-OS Software TACACS+ Server Local Privilege Escalation Vulnerability");
 
@@ -53,7 +53,7 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65083");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityNotice/CVE-2014-0676");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
  script_tag(name:"creation_date", value:"2014-01-23 12:43:53 +0100 (Thu, 23 Jan 2014)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
@@ -82,7 +82,7 @@ if ( nx_model !~ "^7" )exit(99);
 
 if ( nx_ver  == "6.1(4)" )
 {
-  security_message(port:port, data:'Installed Version: ' + nx_ver + '\nFixed Version:     NA');
+  security_message(port:0, data:'Installed Version: ' + nx_ver + '\nFixed Version:     NA');
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_password_exposure_vuln.nasl 7065 2017-09-06 06:14:07Z asteins $
+# $Id: gb_apache_hadoop_password_exposure_vuln.nasl 7125 2017-09-14 08:26:29Z cfischer $
 #
 # Apache Hadoop Password Exposure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:hadoop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112036");
-  script_version("$Revision: 7065 $");
+  script_version("$Revision: 7125 $");
   script_cve_id("CVE-2016-3086");
-  script_tag(name:"cvss_base", value:"2.1");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-06 08:14:07 +0200 (Wed, 06 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-14 10:26:29 +0200 (Thu, 14 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-06-27 20:31:53 +0530 (Tue, 27 Jun 2017)");
   script_name("Apache Hadoop Password Exposure Vulnerability");
 

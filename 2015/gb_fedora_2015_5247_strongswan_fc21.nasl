@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869878");
-  script_version("$Revision: 6630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:34:32 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7149 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 15:03:35 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-08-20 06:42:06 +0200 (Thu, 20 Aug 2015)");
   script_cve_id("CVE-2014-9221", "CVE-2015-3991");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for strongswan FEDORA-2015-5247");
   script_tag(name: "summary", value: "Check the version of strongswan");

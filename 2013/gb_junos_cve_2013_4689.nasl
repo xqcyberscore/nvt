@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_4689.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_junos_cve_2013_4689.nasl 7140 2017-09-15 09:41:22Z cfischer $
 #
 # Junos CSRF Protection bypass vulnerability in J-Web
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103951");
-  script_version ("$Revision: 6104 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_version ("$Revision: 7140 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2013-11-15 14:20:14 +0700 (Fri, 15 Nov 2013)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -94,43 +94,43 @@ if (revcomp(a:build2check, b:"20130831") >= 0) {
 }
 
 if (revcomp(a:version, b:"10.4R13") < 0) {
-  security_message(port:port, data:desc);
+  security_message(port:0, data:desc);
   exit(0);
 }
 
 if (version =~ "^11") {
   if (revcomp(a:version, b:"11.4R7") < 0) {
-    security_message(port:port, data:desc);
+    security_message(port:0, data:desc);
     exit(0);
   }
 }
 
 if (version =~ "^12") {
   if (revcomp(a:version, b:"12.1R6") < 0) {
-    security_message(port:port, data:desc);
+    security_message(port:0, data:desc);
     exit(0);
   } else if ((revcomp(a:version, b:"12.1X44-D15") < 0) &&
              (revcomp(a:version, b:"12.1X44") >= 0)) {
-      security_message(port:port, data:desc);
+      security_message(port:0, data:desc);
       exit(0);
   } else if ((revcomp(a:version, b:"12.1X45-D10") < 0) &&
              (revcomp(a:version, b:"12.1X45") >= 0)) {
-      security_message(port:port, data:desc);
+      security_message(port:0, data:desc);
       exit(0);
   } else if ((revcomp(a:version, b:"12.2R3") < 0) &&
              (revcomp(a:version, b:"12.2") >= 0)) {
-      security_message(port:port, data:desc);
+      security_message(port:0, data:desc);
       exit(0);
   } else if ((revcomp(a:version, b:"12.3R2") < 0) &&
              (revcomp(a:version, b:"12.3") >= 0)) {
-      security_message(port:port, data:desc);
+      security_message(port:0, data:desc);
       exit(0);
   }
 }
 
 if (version =~ "^13") {
   if (revcomp(a:version, b:"13.1R3") < 0) {
-    security_message(port:port, data:desc);
+    security_message(port:0, data:desc);
     exit(0);
   }
 }

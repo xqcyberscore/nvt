@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-MS04-011.nasl 5486 2017-03-04 18:08:45Z cfi $
+# $Id: remote-MS04-011.nasl 7144 2017-09-15 12:14:43Z cfischer $
 #
 # Microsoft Security Bulletin MS04-011
 # http://www.microsoft.com/technet/security/bulletin/ms04-011.mspx
@@ -96,8 +96,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101011");
-  script_version("$Revision: 5486 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-04 19:08:45 +0100 (Sat, 04 Mar 2017) $");
+  script_version("$Revision: 7144 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:14:43 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-03-15 22:32:35 +0100 (Sun, 15 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
@@ -198,7 +198,7 @@ if(microsoft_ds)
 	vulnerable = TRUE;
 	
 	# connect to the remote host
-	conn = RemoteConnect(prt:microsoft-ds);
+	conn = RemoteConnect(prt:microsoft_ds);
 	if(!conn)
 		RemoteClose();
 	else

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_4685.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_junos_cve_2013_4685.nasl 7140 2017-09-15 09:41:22Z cfischer $
 #
 # Junos Buffer Overflow when Processing HTTP Messages 
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103961");
-  script_version ("$Revision: 6093 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_version ("$Revision: 7140 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2013-12-09 22:07:11 +0700 (Mon, 09 Dec 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -92,31 +92,31 @@ if (revcomp(a:build2check, b:"20130620") >= 0) {
 }
 
 if (revcomp(a:version, b:"10.4R15") < 0) {
-  security_message(port:port, data:desc);
+  security_message(port:0, data:desc);
   exit(0);
 } 
 
 if (version =~ "10.4S") {
   if (revcomp(a:version, b:"10.4S14") < 0) {
-    security_message(port:port, data:desc);
+    security_message(port:0, data:desc);
     exit(0);
   }
 }
 
 if (version =~ "^11") {
   if (revcomp(a:version, b:"11.4R7") < 0) {
-    security_message(port:port, data:desc);
+    security_message(port:0, data:desc);
     exit(0);
   }
 }
 
 if (version =~ "^12") {
   if (revcomp(a:version, b:"12.1R6") < 0) {
-    security_message(port:port, data:desc);
+    security_message(port:0, data:desc);
     exit(0);
   } else if ((revcomp(a:version, b:"12.1X44-D15") < 0) &&
              (revcomp(a:version, b:"12.1X") >= 0)) {
-    security_message(port:port, data:desc);
+    security_message(port:0, data:desc);
     exit(0);
   }
 } 

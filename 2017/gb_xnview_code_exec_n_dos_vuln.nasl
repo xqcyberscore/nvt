@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_code_exec_n_dos_vuln.nasl 6896 2017-08-11 06:56:45Z asteins $
+# $Id: gb_xnview_code_exec_n_dos_vuln.nasl 7127 2017-09-14 08:36:48Z cfischer $
 #
 # XnView Arbitrary Code Execution and Denial of Service Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811402");
-  script_version("$Revision: 6896 $");
+  script_version("$Revision: 7127 $");
   script_cve_id("CVE-2017-9914", "CVE-2017-9912", "CVE-2017-9910", "CVE-2017-9911",
                 "CVE-2017-9908", "CVE-2017-9909", "CVE-2017-9906", "CVE-2017-9907", 
                 "CVE-2017-9905", "CVE-2017-9903", "CVE-2017-9904", "CVE-2017-9901", 
@@ -51,7 +51,7 @@ if(description)
                 "CVE-2017-10737");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-11 08:56:45 +0200 (Fri, 11 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-14 10:36:48 +0200 (Thu, 14 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-07 19:41:51 +0530 (Mon, 07 Aug 2017)");
   script_name("XnView Arbitrary Code Execution and Denial of Service Vulnerability");
 
@@ -84,7 +84,7 @@ if(description)
   script_tag(name: "affected" , value:"XnView Version 2.40");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  3rd August 2017, Information regarding this issue will be updated once the
+  14th September, 2017. Information regarding this issue will be updated once the
   solution details are available.
   For updates refer to http://www.xnview.com/en/");
 

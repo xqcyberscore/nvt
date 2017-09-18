@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_SAMBA_ntfs_ACL_ADS.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_SSH_SAMBA_ntfs_ACL_ADS.nasl 7152 2017-09-15 14:36:54Z cfischer $
 #
 # Check if NTFS Access Control Lists and NTFS Alternate Data Streams supported
 #
@@ -31,8 +31,8 @@ tag_summary = "Check if NTFS Access Control Lists and NTFS Alternate Data Stream
 if(description)
 {
   script_id(96090);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 7152 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 16:36:54 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-05-12 13:28:00 +0200 (Wed, 12 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,7 +63,7 @@ if(!sock) {
     log_message(port:port, data:error);
     set_kb_item(name: "GSHB/SAMBA/NTFSADS", value:"error");
     set_kb_item(name: "GSHB/SAMBA/ACL", value:"error");
-    set_kb_item(name: "GSHB/SAMBA/ACLSUP", value:"error");
+    set_kb_item(name: "GSHB/SAMBA/ACLSUPP", value:"error");
     set_kb_item(name: "GSHB/SAMBA/VER", value:"error");
     set_kb_item(name: "GSHB/SAMBA/log", value:error);
     exit(0);

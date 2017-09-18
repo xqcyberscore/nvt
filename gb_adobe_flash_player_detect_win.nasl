@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_detect_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_flash_player_detect_win.nasl 7153 2017-09-15 15:03:32Z cfischer $
 #
 # Adobe Flash Player/Flash CS/AIR/Flex Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800029");
-  script_version("$Revision: 6475 $");
+  script_version("$Revision: 7153 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 17:03:32 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-10-16 18:25:33 +0200 (Thu, 16 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Flash Player/Flash CS/AIR/Flex Version Detection (Windows)");
@@ -71,6 +71,7 @@ airFlag = 0;
 csFlag = 0;
 os_arch = "";
 checkduplicate = "";
+checkduplicate_path = "";
 
 ## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");

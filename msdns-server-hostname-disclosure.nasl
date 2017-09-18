@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: msdns-server-hostname-disclosure.nasl 5041 2017-01-19 14:36:42Z cfi $
+# $Id: msdns-server-hostname-disclosure.nasl 7153 2017-09-15 15:03:32Z cfischer $
 #
 # Microsoft DNS server internal hostname disclosure detection
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100950");
-  script_version("$Revision: 5041 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-19 15:36:42 +0100 (Thu, 19 Jan 2017) $");
+  script_version("$Revision: 7153 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 17:03:32 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-07-10 19:42:14 +0200 (Fri, 10 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -73,7 +73,10 @@ function packet_construct( _dns_zone ) {
   return _dns_query;
 }
 
-function packet_parse( _dns_query, _dns_response ) {
+function packet_parse( _dns_query, _dns_response, port ) {
+
+  local_var port;
+
   # for a valid SOA response:
   # TXID 2
   # Flags 2 - 2 is server failure, 3 is no such name and 5 is refused
@@ -119,7 +122,7 @@ function packet_parse( _dns_query, _dns_response ) {
       if( "localhost" >!< _hostname ) {
         _data = 'Microsoft DNS server seems to be running on this port.\n\n' +
                 "Internal hostname disclosed (" + _dns_query + "/SOA/IN): " + _hostname;
-        log_message( proto:udp, port:port, data:_data );
+        log_message( proto:"udp", port:port, data:_data );
         set_kb_item(name:"DNS/udp/" + port + "/hostname", value:_hostname );
         exit( 0 );
       }
@@ -141,7 +144,7 @@ foreach dns_zone( make_list( "0.in-addr.arpa", "255.in-addr.arpa" ) ) {
   send( socket:soc, data:req );
   res = recv( socket:soc, length:4096 );
   close( soc );
-  packet_parse( _dns_query:dns_zone, _dns_response:res );
+  packet_parse( _dns_query:dns_zone, _dns_response:res, port:port );
 }
 
 exit( 99 );

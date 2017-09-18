@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_code_rce_vuln.nasl 6310 2017-06-12 07:57:38Z cfischer $
+# $Id: gb_zabbix_code_rce_vuln.nasl 7142 2017-09-15 11:03:00Z cfischer $
 #
 # Zabbix Server Active Proxy Trapper Remote Code Execution Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106835");
-  script_version("$Revision: 6310 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-12 09:57:38 +0200 (Mon, 12 Jun 2017) $");
+  script_version("$Revision: 7142 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-15 13:03:00 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-05-29 11:13:22 +0700 (Mon, 29 May 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-2824");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
   script_tag(name: "solution_type", value: "Mitigation");
 

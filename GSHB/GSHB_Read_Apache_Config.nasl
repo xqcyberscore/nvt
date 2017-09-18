@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_Read_Apache_Config.nasl 4238 2016-10-07 12:58:03Z cfi $
+# $Id: GSHB_Read_Apache_Config.nasl 7152 2017-09-15 14:36:54Z cfischer $
 #
 # Reading Apache Config (win)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96020");
-  script_version("$Revision: 4238 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 14:58:03 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 7152 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 16:36:54 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -164,7 +164,7 @@ for(j=0; j<max_index(IncludesSplit); j++)
            if (LMISAPIInc >!< '')LMISAPI = LMISAPI + LMISAPIInc + '|';
 
            LMPERLInc = egrep(pattern:'^ *LoadModule *perl_module *modules/libperl.so', string:val01);
-           if (LMPERLInc >!< '')LMPERL = LMPERL + ALMPERLInc + '|';
+           if (LMPERLInc >!< '')LMPERL = LMPERL + LMPERLInc + '|';
 
            LMPHPInc = egrep(pattern:'^ *LoadModule *perl_module *modules/mod_php.so', string:val01);
            if (LMPHPInc >!< '')LMPHP = LMPHP + LMPHPInc + '|';

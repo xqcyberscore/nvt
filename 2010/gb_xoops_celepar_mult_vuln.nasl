@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xoops_celepar_mult_vuln.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_xoops_celepar_mult_vuln.nasl 7144 2017-09-15 12:14:43Z cfischer $
 #
 # Xoops Celepar Multiple Vulnerabilities
 #
@@ -55,8 +55,8 @@ tag_summary = "This host is running Xoops Celepar and is prone to multiple
 if(description)
 {
   script_id(801153);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 7144 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:14:43 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -106,7 +106,7 @@ sndReq = http_get(item:string(celeparVer[2], "/modules/qas/index.php"),
 rcvRes = http_send_recv(port:xoopsPort, data:sndReq);
 
 ## Confirm QAS module is installed
-if("200 OK" >< rcvRes && "_MI_QAS_POR"  >< rcvRes)
+if(rcvRes =~ "^HTTP/1\.[01] 200" && "_MI_QAS_POR"  >< rcvRes)
 {
   ## Send an exploit to QAS module and receive the response
   sndReq = http_get(item:string(celeparVer[2], "/modules/qas/categoria.php?" +
@@ -116,7 +116,7 @@ if("200 OK" >< rcvRes && "_MI_QAS_POR"  >< rcvRes)
   rcvRes = http_send_recv(port:xoopsPort, data:sndReq);
 
   ## Check the response for XSS
-  if(recRes =~ "HTTP/1\.. 200" && "OpenVAS-XSS-Exploit" >< rcvRes)
+  if(rcvRes =~ "^HTTP/1\.[01] 200" && "OpenVAS-XSS-Exploit" >< rcvRes)
   {
     security_message(xoopsPort);
     exit(0);
@@ -129,7 +129,7 @@ sndReq = http_get(item:string(celeparVer[2], "/modules/quiz/login.php"),
 rcvRes = http_send_recv(port:xoopsPort, data:sndReq);
 
 ## Confirm Quiz module is installed
-if("200 OK" >< rcvRes && "Quiz:"  >< rcvRes)
+if(rcvRes =~ "^HTTP/1\.[01] 200" && "Quiz:"  >< rcvRes)
 {
   ## Send an exploit to Quiz module and receive the response
   sndReq = http_get(item:string(celeparVer[2], "/module/quiz/" +
@@ -139,7 +139,7 @@ if("200 OK" >< rcvRes && "Quiz:"  >< rcvRes)
   rcvRes = http_send_recv(port:xoopsPort, data:sndReq);
 
   ## Check the response for XSS
-  if(recRes =~ "HTTP/1\.. 200" && "OpenVAS-XSS-Exploit" >< rcvRes)
+  if(rcvRes =~ "^HTTP/1\.[01] 200" && "OpenVAS-XSS-Exploit" >< rcvRes)
   {
     security_message(xoopsPort);
     exit(0);

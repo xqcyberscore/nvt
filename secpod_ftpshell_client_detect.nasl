@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ftpshell_client_detect.nasl 5453 2017-03-01 09:55:35Z cfi $
+# $Id: secpod_ftpshell_client_detect.nasl 7140 2017-09-15 09:41:22Z cfischer $
 #
 # FTPShell Client Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900961");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5453 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 10:55:35 +0100 (Wed, 01 Mar 2017) $");
+  script_version("$Revision: 7140 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-10-01 12:15:29 +0200 (Thu, 01 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("FTPShell Client Version Detection");
@@ -127,7 +127,7 @@ foreach key (key_list)
               cpe = build_cpe(value:fcVer, exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:ftpshell:ftpshell:");
               if(isnull(cpe))
               cpe = "cpe:/a:ftpshell:ftpshell";
-              if("x64" >< os_arch && "x86" >!< fpPath)
+              if("x64" >< os_arch && "x86" >!< fcPath)
               {
                  set_kb_item(name:"FTPShell/Client64/Win/Ver", value:fcVer);
                  cpe = build_cpe(value:fcVer, exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:ftpshell:ftpshell:x64:");

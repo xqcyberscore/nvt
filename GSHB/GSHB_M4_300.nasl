@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_300.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_M4_300.nasl 7152 2017-09-15 14:36:54Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.300
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94229);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 7152 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 16:36:54 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -69,7 +69,7 @@ if(Printer >< "False"){
       result = string("nicht erfüllt");
       desc = string('Das Zielsystem ist ein Drucker oder Printserver mit\nIPP. Anscheindend wurde TLS/SSL nicht konfiguriert,\nso dasss keine verschlüsselte Datenübertragung statt-\nfinden konnte. Sie sollten TLS/SSL aktivieren.');
 
-    }else if(cert >!< "error"){
+    }else if(IPPCert >!< "error"){
       result = string("erfüllt");
       desc = string('Das Zielsystem ist ein Drucker oder Printserver mit\nIPP. Folgende TLS/SSL-Zertifikatsdaten sind\nhinterlegt:\n' + IPPCert);
     }else{

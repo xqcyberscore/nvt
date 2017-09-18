@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir850l_mul_vuln_09_17.nasl 7116 2017-09-13 09:13:25Z teissa $
+# $Id: gb_dlink_dir850l_mul_vuln_09_17.nasl 7130 2017-09-14 14:01:24Z teissa $
 #
 # D-Link 850L XSS / Backdoor / Code Execution Vulnerabilities
 #
@@ -27,8 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107242");
-  script_version("$Revision: 7116 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 11:13:25 +0200 (Wed, 13 Sep 2017) $");
+  script_cve_id("CVE-2017-14413", "CVE-2017-14414", "CVE-2017-14415", "CVE-2017-14416", "CVE-2017-14417", "CVE-2017-14418", "CVE-2017-14419", "CVE-2017-14420", "CVE-2017-14421", "CVE-2017-14422", "CVE-2017-14423", "CVE-2017-14424", "CVE-2017-14425", "CVE-2017-14426", "CVE-2017-14427", "CVE-2017-14428", "CVE-2017-14429", "CVE-2017-14430");
+
+  script_version("$Revision: 7130 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-14 16:01:24 +0200 (Thu, 14 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-12 17:47:21 +0200 (Tue, 12 Sep 2017)");
 
   script_tag(name:"cvss_base", value:"10.0");
@@ -45,7 +47,7 @@ if(description)
   script_tag(name: "impact" , value: "Remote attacker can execute xss attacks, gain admin password, forge firmware and many other attacks.");
   script_tag(name: "affected", value: "DLink Dir 850 L Rev A1 and B1");
 
-  script_tag(name: "solution", value: "No solution is available until 12 September 2017, it is recommended to stop using this product immediately.");
+  script_tag(name: "solution", value: "No solution or patch is available as of 12th September,2017. It is recommended to stop using this product immediately.");
 
   script_xref(name: "URL" , value: "https://packetstormsecurity.com/files/144056/dlink850l-xssexecxsrf.txt");
   script_xref(name: "URL" , value: "http://securityaffairs.co/wordpress/62937/hacking/d-link-dir-850l-zero-day.html");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cve_2015_4184.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: gb_cisco_esa_cve_2015_4184.nasl 7140 2017-09-15 09:41:22Z cfischer $
 #
 # Cisco Email Security Appliance Anti-Spam Scanner Bypass Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-4184");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 6132 $");
+ script_version ("$Revision: 7140 $");
 
  script_name("Cisco Email Security Appliance Anti-Spam Scanner Bypass Vulnerability");
 
@@ -52,7 +52,7 @@ DNS Sender Policy Framework (SPF) text record. An exploit could allow the attack
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
  script_tag(name:"creation_date", value:"2015-11-10 11:01:51 +0100 (Tue, 10 Nov 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -69,6 +69,7 @@ if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 if( version == '7.6.1-gpl-022' || version == '8.5.6-074' || version == '3.3.1-09' )
 {
+  fix = "See Vendor advisory.";
   report = 'Installed version: ' + version + '\n' +
            'Fixed version:     ' + fix + '\n';
 

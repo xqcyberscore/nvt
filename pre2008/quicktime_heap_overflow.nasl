@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: quicktime_heap_overflow.nasl 4915 2017-01-02 14:25:03Z cfi $
+# $Id: quicktime_heap_overflow.nasl 7146 2017-09-15 12:38:49Z cfischer $
 #
 # Quicktime player/plug-in Heap overflow
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12226");
-  script_version("$Revision: 4915 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:25:03 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 7146 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:38:49 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10257);
   script_tag(name:"cvss_base", value:"5.1");
@@ -64,4 +64,4 @@ if(description)
 
 
 version = get_kb_item("SMB/Registry/HKLM/SOFTWARE/Apple Computer, Inc./Quicktime/Version");
-if ( version && version < 0x06100000 ) security_message(port);
+if ( version && version < 0x06100000 ) security_message(port:0);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: securecrt_remote_overflow.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: securecrt_remote_overflow.nasl 7146 2017-09-15 12:38:49Z cfischer $
 # Description: SecureCRT SSH1 protocol version string overflow
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Upgrade to SecureCRT 3.2.2, 3.3.4, 3.4.6, 4.1 or newer";
 if(description)
 {
  script_id(15822);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 7146 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:38:49 +0200 (Fri, 15 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2002-1059");
  script_bugtraq_id(5287);
@@ -66,4 +66,4 @@ if ( ! version ) version = get_kb_item("SMB/Registry/HKLM/SOFTWARE/VanDyke/Secur
 if ( ! version ) exit(0);
 
 if (egrep(pattern:"(2\.|3\.([01]|2[^.]|2\.1[^0-9]|3[^.]|3\.[1-3][^0-9]|4[^.]|4\.[1-5][^0-9])|4\.0 beta [12])", string:version))
-  security_message(port);
+  security_message(port:0);

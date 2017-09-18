@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4039038.nasl 7118 2017-09-13 15:08:32Z santu $
+# $Id: gb_ms_kb4039038.nasl 7124 2017-09-14 08:23:27Z cfischer $
 #
 # Microsoft Windows Information Disclosure Vulnerability (KB4039038)
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811666");
-  script_version("$Revision: 7118 $");
+  script_version("$Revision: 7124 $");
   script_cve_id("CVE-2017-8710");
   script_bugtraq_id(100793);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 17:08:32 +0200 (Wed, 13 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-14 10:23:27 +0200 (Thu, 14 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-13 09:16:59 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Windows Information Disclosure Vulnerability (KB4039038)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4039038");
 
-  script_tag(name:"vuldeteca", value:"Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"The flaw exists due to error in the Microsoft
@@ -51,12 +51,12 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2");
+  script_tag(name:"affected", value:"Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://support.microsoft.com/en-us/help/4039038");
 
   script_tag(name:"solution_type", value:"VendorFix");

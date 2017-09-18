@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_123.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: GSHB_M5_123.nasl 7152 2017-09-15 14:36:54Z cfischer $
 #
 # IT-Grundschutz, 15. EL, Maﬂnahme 5.123
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(95073);
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 7152 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 16:36:54 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,6 +60,7 @@ CPSGENERAL = get_kb_item("WMI/cps/GENERAL");
 log = get_kb_item("WMI/cps/GENERAL/log");
 OSVER = get_kb_item("WMI/WMI_OSVER");
 OSNAME = get_kb_item("WMI/WMI_OSNAME");
+OSTYPE = get_kb_item("WMI/WMI_OSTYPE");
 WMIOSLOG = get_kb_item("WMI/WMI_OS/log");
 disablepasswordchange = get_kb_item("WMI/cps/disablepasswordchange");
 maximumComppasswordage = get_kb_item("WMI/cps/maximumComppasswordage");

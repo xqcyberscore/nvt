@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_0149.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_junos_cve_2013_0149.nasl 7140 2017-09-15 09:41:22Z cfischer $
 #
 # Junos OSPF Protocol Vulnerabiltiy 
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103959");
-  script_version ("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version ("$Revision: 7140 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2013-11-29 12:26:17 +0700 (Fri, 29 Nov 2013)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
@@ -95,47 +95,47 @@ if (revcomp(a:build2check, b:"20130725") >= 0) {
 }
 
 if (revcomp(a:version, b:"10.4R15") < 0) {
-  security_message(port:port, data:desc);
+  security_message(port:0, data:desc);
   exit(0);
 }
 
 if (version =~ "^11") {
   if (revcomp(a:version, b:"11.4R8") < 0) {
-    security_message(port:port, data:desc);
+    security_message(port:0, data:desc);
     exit(0);
   }
 }
 
 if (version =~ "^12") {
   if (revcomp(a:version, b:"12.1R7") < 0) {
-    security_message(port:port, data:desc);
+    security_message(port:0, data:desc);
     exit(0);
   } else if ((revcomp(a:version, b:"12.1X44-D15") < 0) &&
              (revcomp(a:version, b:"12.1X44") >= 0)) {
-      security_message(port:port, data:desc);
+      security_message(port:0, data:desc);
       exit(0);
   } else if ((revcomp(a:version, b:"12.1X45-D10") < 0) &&
              (revcomp(a:version, b:"12.1X45") >= 0)) {
-      security_message(port:port, data:desc);
+      security_message(port:0, data:desc);
       exit(0);
   } else if ((revcomp(a:version, b:"12.2R5") < 0) &&
              (revcomp(a:version, b:"12.2") >= 0)) {
-      security_message(port:port, data:desc);
+      security_message(port:0, data:desc);
       exit(0);
   } else if ((revcomp(a:version, b:"12.3R3") < 0) &&
              (revcomp(a:version, b:"12.3") >= 0)) {
-      security_message(port:port, data:desc);
+      security_message(port:0, data:desc);
       exit(0);
   }
 }
 
 if (version =~ "^13") {
   if (revcomp(a:version, b:"13.1R3") < 0) {
-    security_message(port:port, data:desc);
+    security_message(port:0, data:desc);
     exit(0);
   } else if ((revcomp(a:version, b:"13.2X50-D10") < 0) &&
              (revcomp(a:version, b:"13.2X50") >= 0)) {
-      security_message(port:port, data:desc);
+      security_message(port:0, data:desc);
       exit(0);
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linux_kernel_igmp_dos_vuln.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_linux_kernel_igmp_dos_vuln.nasl 7141 2017-09-15 09:58:49Z cfischer $
 #
 # Linux Kernel IGMP Remote Denial Of Service Vulnerability
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is running Linux and prone to remote denial of service
 if(description)
 {
   script_id(802295);
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 7141 $");
   script_bugtraq_id(51343);
   script_cve_id("CVE-2012-0207");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:58:49 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2012-01-19 14:14:14 +0530 (Thu, 19 Jan 2012)");
   script_name("Linux Kernel IGMP Remote Denial Of Service Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47472");
@@ -120,5 +120,5 @@ alive = end_denial();
 
 ## Confirm Host is Still Alive and Responding
 if(! alive) {
-  security_message(port);
+  security_message(port:0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tftpd_dir_trav.nasl 5636 2017-03-21 06:37:19Z cfi $
+# $Id: tftpd_dir_trav.nasl 7153 2017-09-15 15:03:32Z cfischer $
 #
 # TFTP directory traversal
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18262");
-  script_version("$Revision: 5636 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 07:37:19 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7153 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 17:03:32 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -62,6 +62,7 @@ include('dump.inc');
 
 if( islocalhost() ) exit( 0 ); # ?
 if( TARGET_IS_IPV6() ) exit( 0 );
+nb = 0;
 
 function tftp_grab( port, file ) {
 
@@ -106,7 +107,7 @@ function report_and_exit( file, content, port ) {
   if( report_verbosity < 1 ) {
     security_message(port: port, proto: "udp");
   } else {
-    report = 'It was possible to retrieve the file ' + file + ' through tftp. Here is what we could grab : \n' + f ;
+    report = 'It was possible to retrieve the file ' + file + ' through tftp. Here is what we could grab : \n' + content;
     security_message( port:port, proto:"udp", data:report );
   }
   exit( 0 );
@@ -115,8 +116,6 @@ function report_and_exit( file, content, port ) {
 port = get_kb_item('Services/udp/tftp');
 if( ! port ) port = 69;
 if( ! get_udp_port_state( port ) ) exit( 0 );
-
-nb = 0;
 
 foreach file( make_list( '/etc/passwd', '../../../../../etc/passwd' ) ) {
 

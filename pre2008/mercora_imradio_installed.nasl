@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mercora_imradio_installed.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: mercora_imradio_installed.nasl 7146 2017-09-15 12:38:49Z cfischer $
 # Description: Mercora IMRadio Detection
 #
 # Authors:
@@ -29,8 +29,8 @@ business environment.";
 
 if (description) {
   script_id(19585);
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 7146 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:38:49 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,4 +63,4 @@ if (!get_kb_item("SMB/Registry/Enumerated")) exit(1);
 
 # Look in the registry for evidence of Mercora.
 key = "SMB/Registry/HKLM/SOFTWARE/Microsoft/Windows/CurrentVersion/Uninstall/Mercora/DisplayName";
-if (get_kb_item(key)) log_message(port);
+if (get_kb_item(key)) log_message(port:0);

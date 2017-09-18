@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_backup_detect_win.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_comodo_backup_detect_win.nasl 7140 2017-09-15 09:41:22Z cfischer $
 #
 # Comodo BackUp Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805342");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 7140 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-06 11:25:59 +0530 (Fri, 06 Mar 2015)");
   script_name("Comodo BackUp Version Detection (Windows)");
 
@@ -117,7 +117,7 @@ foreach key (key_list)
           cpe = "cpe:/a:comodo:backup";
 
         ## Register again for 64 bit apps on 64 bit platform
-        if("x64" >< osArch)
+        if("x64" >< os_arch)
         {
           set_kb_item(name:"Comodo/BackUp64/Win/Ver", value:cisVer);
 

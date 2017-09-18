@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ghost_72325.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: gb_wordpress_ghost_72325.nasl 7146 2017-09-15 12:38:49Z cfischer $
 #
 # GNU glibc Remote Heap Buffer Overflow Vulnerability (Wordpress)
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-0235");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6431 $");
+ script_version ("$Revision: 7146 $");
 
  script_name("GNU glibc Remote Heap Buffer Overflow Vulnerability (Wordpress)");
 
@@ -52,7 +52,7 @@ vulnerability.");
 
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:38:49 +0200 (Fri, 15 Sep 2017) $");
  script_tag(name:"creation_date", value:"2015-01-31 15:37:56 +0100 (Sat, 31 Jan 2015)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_analysis");
@@ -68,9 +68,9 @@ vulnerability.");
 include("http_func.inc");
 include("host_details.inc");
 
-function _test( boom  )
-{
-  local_var soc, len, req, recv;
+function _test( boom, port, dir ) {
+
+  local_var soc, len, req, recv, port, dir;
 
   soc = open_sock_tcp( port );
   if( ! soc ) return FALSE;
@@ -111,18 +111,17 @@ function _test( boom  )
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-
 if( dir == "/" ) dir = "";
 
 host = get_host_name();
 
 boom = this_host();
-buf = _test( boom:boom );
+buf = _test( boom:boom, port:port, dir:dir );
 
 if( "methodResponse" >!< buf ) exit( 0 );
 
 boom = crap( data:"0", length:2500 );
-buf = _test( boom:boom );
+buf = _test( boom:boom, port:port, dir:dir );
 
 if( buf == 'ECONNRESET' || "500 Internal Server Error" >< buf )
 {

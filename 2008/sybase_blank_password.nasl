@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sybase_blank_password.nasl 5119 2017-01-27 10:12:40Z mime $
+# $Id: sybase_blank_password.nasl 7150 2017-09-15 13:20:49Z cfischer $
 # Description: Sybase SQL Blank Password
 #
 # Authors:
@@ -40,8 +40,8 @@ CPE = 'cpe:/a:sybase:adaptive_server_enterprise';
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.80018");
- script_version("$Revision: 5119 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-27 11:12:40 +0100 (Fri, 27 Jan 2017) $");
+ script_version("$Revision: 7150 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-15 15:20:49 +0200 (Fri, 15 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 19:51:47 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -97,7 +97,7 @@ if(soc)
   ## build cpe and store it as host_detail
   cpe = build_cpe(value:strver, exp:"^([0-9.]+)", base:"cpe:/a:sybase:adaptive_server_enterprise:");
   if(!isnull(cpe))
-    register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+    register_host_detail(name:"App", value:cpe, desc:"Sybase SQL Blank Password");
 
   }
 }

@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_enum_services.nasl 6536 2017-07-05 10:40:38Z cfischer $
+# $Id: smb_enum_services.nasl 7155 2017-09-16 18:15:09Z cfischer $
 #
 # SMB Enumerate Services
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102016");
-  script_version("$Revision: 6536 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 12:40:38 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 7155 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-16 20:15:09 +0200 (Sat, 16 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-02-10 12:17:39 +0100 (Wed, 10 Feb 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -193,7 +193,6 @@ function svcopenscmanager( soc, name, uid, tid, pipe ) {
   tot_len_lo = tot_len % 256;
   tot_len_hi = tot_len / 256;
 
-  if( odd ) len = len + 1;
   bcc = 66 + len + add;
   bcc_lo = bcc % 256;
   bcc_hi = bcc / 256;

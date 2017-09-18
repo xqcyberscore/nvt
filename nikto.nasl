@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nikto.nasl 4685 2016-12-06 09:14:19Z cfi $
+# $Id: nikto.nasl 7155 2017-09-16 18:15:09Z cfischer $
 #
 # Nikto (NASL wrapper)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14260");
-  script_version("$Revision: 4685 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 10:14:19 +0100 (Tue, 06 Dec 2016) $");
+  script_version("$Revision: 7155 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-16 20:15:09 +0200 (Sat, 16 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -120,7 +120,7 @@ argv[i++] = "-p"; argv[i++] = port;
 encaps = get_port_transport(port);
 if (encaps > ENCAPS_IP) argv[i++] = "-ssl";
 
-if (idx && idx != "X")
+if (ids && ids != "X")
 {
   argv[i++] = "-evasion";
   argv[i++] = ids[0];

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: aix_maintenance_level.nasl 4237 2016-10-07 12:35:31Z cfi $
+# $Id: aix_maintenance_level.nasl 7146 2017-09-15 12:38:49Z cfischer $
 #
 # AIX maintenance level
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14611");
-  script_version("$Revision: 4237 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 14:35:31 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 7146 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:38:49 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");
@@ -74,7 +74,7 @@ Maintenance level "+level+" is installed, last is "+level4330+".
 You should install this patch for your system to be up-to-date.
 
 Solution: http://www-912.ibm.com/eserver/support/fixes/";
- security_message(port:port, data:str);
+ security_message(port:0, data:str);
   exit(0);
 }
 
@@ -86,7 +86,7 @@ Maintenance level "+level+" is installed, last is "+level5100+".
 You should install this patch for your system to be up-to-date.
 
 Solution: http://www-912.ibm.com/eserver/support/fixes/";
- security_message(port:port, data:str);
+ security_message(port:0, data:str);
   exit(0);
 }
 
@@ -98,7 +98,7 @@ Maintenance level "+level+" is installed, last is "+level5200+".
 You should install this patch for your system to be up-to-date.
 
 Solution: http://www-912.ibm.com/eserver/support/fixes/";
- security_message(port:port, data:str);
+ security_message(port:0, data:str);
   exit(0);
 }
 
@@ -110,6 +110,6 @@ Maintenance level "+level+" is installed, last is "+level5300+".
 You should install this patch for your system to be up-to-date.
 
 Solution: http://www-912.ibm.com/eserver/support/fixes/";
- security_message(port:port, data:str);
+ security_message(port:0, data:str);
   exit(0);
 }

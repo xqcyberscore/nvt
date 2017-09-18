@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ike-scan.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: ike-scan.nasl 7153 2017-09-15 15:03:32Z cfischer $
 # Description: ike-scan (NASL wrapper)
 #
 # Authors:
@@ -50,8 +50,8 @@ if (description)
 {
 	script_id(80000);
 	script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6063 $");
-	script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 7153 $");
+	script_tag(name:"last_modification", value:"$Date: 2017-09-15 17:03:32 +0200 (Fri, 15 Sep 2017) $");
 	script_tag(name:"creation_date", value:"2008-08-31 23:34:05 +0200 (Sun, 31 Aug 2008)");
 	name = "ike-scan (NASL wrapper)";
 	script_name(name);
@@ -126,6 +126,7 @@ diffiehellmangroupname["2"] = "MODP-1024";
 diffiehellmangroupname["3"] = "EC2N-155";
 diffiehellmangroupname["4"] = "EC2N-185";
 diffiehellmangroupname["5"] = "MODP-1536";
+lockfilename = "";
 
 function on_exit()
 {
@@ -222,6 +223,7 @@ fwrite(data:string(start), file:lockfilename);
 
 # Not sure how much value there is in supporting IKE v2
 #ike2flag = script_get_preference("Use IKE v2");
+ike2flag = NULL;
 sourceportnumber = script_get_preference("Source port number");
 destinationportnumber = script_get_preference("Destination port number");
 if (islocalhost() && (sourceportnumber == destinationportnumber)) {

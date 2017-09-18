@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_332.nasl 7067 2017-09-06 11:50:33Z teissa $
+# $Id: GSHB_M4_332.nasl 7152 2017-09-15 14:36:54Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 4.332
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94239);
-  script_version("$Revision: 7067 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-06 13:50:33 +0200 (Wed, 06 Sep 2017) $");
+  script_version("$Revision: 7152 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 16:36:54 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,6 +53,13 @@ Stand: 14. Erg‰nzungslieferung (14. EL).
 include("itg.inc");
 
 name = 'IT-Grundschutz M4.332: Sichere Konfiguration der Zugriffssteuerung bei einem Samba-Server\n';
+
+samba = get_kb_item("SMB/samba");
+NTFSADS = get_kb_item("GSHB/SAMBA/NTFSADS");
+ACL = get_kb_item("GSHB/SAMBA/ACL");
+ACLSUPP = get_kb_item("GSHB/SAMBA/ACLSUPP");
+VER = get_kb_item("GSHB/SAMBA/VER");
+log = get_kb_item("GSHB/SAMBA/log");
 
 if(!samba){
     result = string("nicht zutreffend");

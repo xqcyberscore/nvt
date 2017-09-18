@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_rpcinfo.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_nmap_rpcinfo.nasl 7148 2017-09-15 13:01:14Z cfischer $
 #
 # Wrapper for Nmap RPC Info NSE script.
 #
@@ -35,8 +35,8 @@ tag_summary = "This script attempts to connect portmapper and fetches a list of
 if(description)
 {
   script_id(801686);
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_version("$Revision: 7148 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 15:01:14 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-01-06 14:34:14 +0100 (Thu, 06 Jan 2011)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -74,18 +74,18 @@ if(res)
     error = eregmatch(string:line, pattern:"^nmap: (.*)$");
     if (error) {
       msg = string('Nmap command failed with following error message:\n', line);
-      log_message(data : msg, port:port);
+      log_message(data : msg, port:0);
     }
   }
 
   if("rpcinfo" >< result) {
     msg = string('Result found by Nmap Security Scanner (rpcinfo.nse) ',
                 'http://nmap.org:\n\n', result);
-    security_message(data : msg, port:port);
+    security_message(data : msg, port:0);
   }
 }
 else
 {
   msg = string('Nmap command failed entirely:\n');
-  log_message(data : msg, port:port);
+  log_message(data : msg, port:0);
 }

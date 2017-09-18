@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_a2billing_rce.nasl 7091 2017-09-11 06:23:07Z cfischer $
+# $Id: gb_a2billing_rce.nasl 7139 2017-09-15 09:13:13Z ckuersteiner $
 #
 # A2billing Backup File Download / Remote Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:a2billing:a2billing";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107237");
-  script_version("$Revision: 7091 $");
+  script_version("$Revision: 7139 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-09-11 08:23:07 +0200 (Mon, 11 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:13:13 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-08 20:31:53 +0530 (Fri, 08 Sep 2017)");
   script_name("A2billing Backup File Download / Remote Code Execution Vulnerabilities");
 
@@ -47,7 +47,8 @@ if(description)
 
   script_tag(name:"affected", value:"All versions of A2Billing");
 
-  script_tag(name:"solution", value:"Until the time when this script was written, no solution was available. Check the vendor for more information at : http://www.asterisk2billing.org/");
+  script_tag(name:"solution", value:"No Solution or patch is available as of 15th September, 2017. Information
+regarding this issue will be updated once the solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
@@ -55,7 +56,7 @@ if(description)
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42616/");
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("gb_a2billing_detect.nasl");
   script_mandatory_keys("a2billing/installed");
@@ -68,29 +69,31 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-if(!port = get_app_port(cpe:CPE)){
+if (!port = get_app_port(cpe:CPE))
   exit(0);
-}
-if (!get_kb_item("a2billing/installed")) exit(0);
+
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
+
+if (dir == "/")
+  dir = "";
 
 rand = rand_str(length: 20, charset: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
-url = "/a2billing/admin/Public/A2B_entity_backup.php?form_action=add&path=" + rand + ".sql";
+url = dir + "/A2B_entity_backup.php?form_action=add&path=" + rand + ".sql";
 
 req = http_get(port: port, item: url);
 res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+display(res, "\n");
 
 sleep(5);
 
-url = "/a2billing/admin/Public/" + rand + ".sql";
-req = http_get(port: port, item: url);
-res = http_keepalive_send_recv(port: port, data: req, bodyonly:FALSE);
+url = dir + "/" + rand + ".sql";
 
-if ("MySQL dump" >!< res && "Current Database: `a2billing`" >!< res && "USE `a2billing`;" >!< res) exit(0);
-
-report = "It was possible to execute SQL Dump remotely, the sql dump can be accessed at : " + get_host_ip() + url;
-security_message(data:report, port:port);
-
-exit(0);
-
+if (http_vuln_check(port: port, url: url, pattern: "MySQL dump", check_header: TRUE)) {
+  report = "It was possible to execute SQL Dump remotely, the sql dump can be accessed at " +
+           report_vuln_url(port: port, url: url, url_only: TRUE) + ".\n\nPlease remove this file.";
+  security_message(port: port, data: report);
+  exit(0);
+}
 
 exit(99);

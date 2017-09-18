@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tivoli_dir_server_detect.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: gb_ibm_tivoli_dir_server_detect.nasl 7133 2017-09-14 14:31:13Z cfischer $
 #
 # IBM Tivoli Directory Server Version Detection
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801812");
-  script_version("$Revision: 5190 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 7133 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-14 16:31:13 +0200 (Thu, 14 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -107,7 +107,7 @@ if("International Business Machines" >< result && "ibmdirectoryversion1" >< resu
     ## build cpe and store it as host_detail
     cpe = build_cpe(value:tdsVer, exp:"^([0-9.]+)", base:"cpe:/a:ibm:tivoli_directory_server:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
   }
 }

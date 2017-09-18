@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_tftp_44712.nasl 5652 2017-03-21 10:14:46Z cfi $
+# $Id: gb_quick_tftp_44712.nasl 7133 2017-09-14 14:31:13Z cfischer $
 #
 # Quick Tftp Server Pro Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100899");
- script_version("$Revision: 5652 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7133 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-14 16:31:13 +0200 (Thu, 14 Sep 2017) $");
  script_tag(name:"creation_date", value:"2010-11-09 13:58:26 +0100 (Tue, 09 Nov 2010)");
  script_bugtraq_id(44712);
  script_tag(name:"cvss_base", value:"5.0");
@@ -73,7 +73,7 @@ foreach file(keys(files)) {
   if (isnull(get)) exit(0);
 
   if (egrep(pattern:file, string:get, icase:TRUE)) {
-    security_message(port:port, proto:udp);
+    security_message(port:port, proto:"udp");
     exit(0);
   }
 }

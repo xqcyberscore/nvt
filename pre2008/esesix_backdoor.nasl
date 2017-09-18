@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esesix_backdoor.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: esesix_backdoor.nasl 7146 2017-09-15 12:38:49Z cfischer $
 # Description: eSeSIX Thintune Thin Client Multiple Vulnerabilities
 #
 # Authors:
@@ -36,8 +36,8 @@ password ('jstwo') allowing complete access to the system.";
 if(description)
 {
  script_id(13839);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 7146 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:38:49 +0200 (Fri, 15 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-2048", "CVE-2004-2049", "CVE-2004-2050", "CVE-2004-2051");
  script_bugtraq_id(10794);
@@ -70,7 +70,7 @@ if(get_port_state(port))
  if(soc)
  {
   res = recv_line(socket:soc, length: 1024);
-  if ("JSRAFV-1" >< recs)
+  if ("JSRAFV-1" >< res)
   {
    req = "jstwo\n";
    send(socket:soc, data:req);

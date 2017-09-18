@@ -54,8 +54,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902269);
-  script_version("$Revision: 5437 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 18:18:48 +0100 (Mon, 27 Feb 2017) $");
+  script_version("$Revision: 7146 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:38:49 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-10-22 15:51:55 +0200 (Fri, 22 Oct 2010)");
   script_cve_id("CVE-2010-0020", "CVE-2010-0021", "CVE-2010-0022", "CVE-2010-0231");
   script_tag(name:"cvss_base", value:"10.0");
@@ -100,6 +100,8 @@ if(!get_port_state(port)){
 }
 
 i = 0;
+complet_key = "";
+
 while(i < 5000)
 {
   ## open socket
@@ -136,7 +138,7 @@ while(i < 5000)
       key_found = hexstr(response);
 
       ##  match the duplicate key
-      if(key_found  ><  complet_key)
+      if(key_found >< complet_key)
       {
         security_message(port:port);
         exit(0);

@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900662");
-  script_version("$Revision: 6125 $");
+  script_version("$Revision: 7140 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Pidgin Version Detection (Windows)");
@@ -128,7 +128,7 @@ foreach key (key_list)
       if(isnull(cpe))
         cpe = "cpe:/a:pidgin:pidgin";
 
-      register_product(cpe: cpe, location: pidginPath, nvt: SCRIPT_OID);
+      register_product(cpe: cpe, location: pidginPath);
 
       log_message(data: build_detection_report(app: "Pidgin",
                                             version: pidginVer,

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iis_webdav_lock_memory_leak.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: iis_webdav_lock_memory_leak.nasl 7146 2017-09-15 12:38:49Z cfischer $
 # Description: IIS 5.0 WebDav Memory Leakage
 #
 # Authors:
@@ -47,8 +47,8 @@ if(description)
  script_id(10732);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 7146 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:38:49 +0200 (Fri, 15 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2736);
  script_cve_id("CVE-2001-0337");
@@ -147,7 +147,7 @@ security_message(port:port, data:report);
 }
 else
 { 
-if (("Service Pack 1" >< SP) || ("Beta2" >< System) || ("Beta3" >< System) || ("RC1" >< System) || ("Build 2128" >< System))
+if (("Service Pack 1" >< SP) || ("Beta2" >< SP) || ("Beta3" >< SP) || ("RC1" >< SP) || ("Build 2128" >< SP))
  {
 report="
 IIS 5 is online but the Service Pack 2 doesn't seem to be installed.

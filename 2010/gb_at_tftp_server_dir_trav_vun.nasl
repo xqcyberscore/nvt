@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_at_tftp_server_dir_trav_vun.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_at_tftp_server_dir_trav_vun.nasl 7133 2017-09-14 14:31:13Z cfischer $
 #
 # AT TFTP Server Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801543");
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 7133 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-14 16:31:13 +0200 (Thu, 14 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-11-23 14:41:37 +0100 (Tue, 23 Nov 2010)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -92,7 +92,7 @@ result = recv(socket:soc, length:1000);
 ## Check the contents of boot.ini fille
 if("[boot loader]" >< result && "\WINDOWS" >< result)
 {
-  security_message(port:port,proto:udp);
+  security_message(port:port,proto:"udp");
 
   ## send Acknowledgement to the server
   send(socket:soc, data:raw_ack);

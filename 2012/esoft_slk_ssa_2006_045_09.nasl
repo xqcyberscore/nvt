@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2006_045_09.nasl 6598 2017-07-07 09:36:44Z cfischer $
+# $Id: esoft_slk_ssa_2006_045_09.nasl 7141 2017-09-15 09:58:49Z cfischer $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -37,15 +37,11 @@ if(description)
 {
  script_id(56293);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:36:44 +0200 (Fri, 07 Jul 2017) $");
- if(NASL_LEVEL>=2191) {
-     script_cve_id("CVE-2005-3191", "CVE-2005-3192", "CVE-2005-3193", "CVE-2005-3624", "CVE-2005-3625", "CVE-2005-3626", "CVE-2005-3627", "CVE-2005-3628", "CVE-2006-0301");
- } else {
-     script_cve_id("CVE-2005-3191", "CVE-2005-3192", "CVE-2005-3193", "CVE-2005-3624", "CVE-2005-3625", "CVE-2005-3626", "CVE-2005-3627", "CVE-2005-3628");
- }
+ script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:58:49 +0200 (Fri, 15 Sep 2017) $");
+ script_cve_id("CVE-2005-3191", "CVE-2005-3192", "CVE-2005-3193", "CVE-2005-3624", "CVE-2005-3625", "CVE-2005-3626", "CVE-2005-3627", "CVE-2005-3628", "CVE-2006-0301");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 6598 $");
+ script_version("$Revision: 7141 $");
  name = "Slackware Advisory SSA:2006-045-09 xpdf ";
  script_name(name);
 

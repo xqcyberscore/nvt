@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_TFTPUtil_GUI_39872.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_TFTPUtil_GUI_39872.nasl 7133 2017-09-14 14:31:13Z cfischer $
 #
 # TFTPUtil GUI Long Transport Mode Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100618");
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 7133 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-14 16:31:13 +0200 (Thu, 14 Sep 2017) $");
  script_tag(name:"creation_date", value:"2010-05-04 12:32:13 +0200 (Tue, 04 May 2010)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -83,7 +83,7 @@ if(!soc)exit(0);
 send(socket:soc, data:stuff);
 
 if(!tftp_alive(port:port)) {
-  security_message(port:port,proto:udp);
+  security_message(port:port,proto:"udp");
   exit(0);
 }  
 

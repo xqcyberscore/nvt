@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: checkpoint-vpn1-pat-information-disclosure.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: checkpoint-vpn1-pat-information-disclosure.nasl 7144 2017-09-15 12:14:43Z cfischer $
 # Description: Checkpoint VPN-1 PAT information disclosure
 #
 # Authors:
@@ -47,8 +47,8 @@ where this vulnerability is reported.";
 if (description)
 {
 	script_id(80096);
-	script_version("$Revision: 5309 $");
-	script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+	script_version("$Revision: 7144 $");
+	script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:14:43 +0200 (Fri, 15 Sep 2017) $");
 	script_tag(name:"creation_date", value:"2008-11-05 16:59:22 +0100 (Wed, 05 Nov 2008)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -102,7 +102,7 @@ function packet_parse(_icmp, _ip_dst, _ttl)
 		_data = "Internal IP disclosed: " + _ip_dst2 + " (ttl: "+_ttl+")
 ";
 		set_kb_item(name:"Checkpoint/Manager/ipaddress", value:_ip_dst2);
-                register_host_detail(name:"App", value:"cpe:/a:checkpoint:vpn-1", nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+                register_host_detail(name:"App", value:"cpe:/a:checkpoint:vpn-1", desc:SCRIPT_DESC);
 
 	}
 	return _data;
@@ -126,7 +126,7 @@ reportout="";
 for (ttl = 1; ttl <= 50; ttl ++)
 {
 	requestpacket = packet_construct(_ip_src:sourceipaddress, _ip_ttl:ttl);
-	responsepacket = send_packet(requestpacket, pcap_active:true, pcap_filter:packetfilter, pcap_timeout:1);
+	responsepacket = send_packet(requestpacket, pcap_active:TRUE, pcap_filter:packetfilter, pcap_timeout:1);
 	if (responsepacket)
 	{
 		reportdata=packet_parse(_icmp:responsepacket, _ip_dst:destinationipaddress, _ttl:ttl);

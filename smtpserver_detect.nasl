@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smtpserver_detect.nasl 6299 2017-06-09 16:20:11Z cfischer $
+# $Id: smtpserver_detect.nasl 7133 2017-09-14 14:31:13Z cfischer $
 # Description: SMTP Server type and version
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10263");
-  script_version("$Revision: 6299 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-09 18:20:11 +0200 (Fri, 09 Jun 2017) $");
+  script_version("$Revision: 7133 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-14 16:31:13 +0200 (Thu, 14 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -164,11 +164,8 @@ Solution : enter a correct hostname");
   if (guess) {
    data=string(data, "\n\n\nThis is probably: ",guess);
   }
-  if (cpelog) {
-   data = string(data, "\n\n\n", cpelog);
-  }
+
   log_message(port:port, data:data);
   close(soc);
  }
-
 }

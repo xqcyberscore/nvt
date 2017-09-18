@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_rce_vuln_win.nasl 7022 2017-08-30 08:57:06Z santu $
+# $Id: gb_foxit_reader_mult_rce_vuln_win.nasl 7125 2017-09-14 08:26:29Z cfischer $
 #
 # Foxit Reader Multiple Remote Code Execution Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811585");
-  script_version("$Revision: 7022 $");
+  script_version("$Revision: 7125 $");
   script_cve_id("CVE-2017-10952", "CVE-2017-10951");
   script_bugtraq_id(100412, 100409);
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 10:57:06 +0200 (Wed, 30 Aug 2017) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-14 10:26:29 +0200 (Thu, 14 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-21 13:07:23 +0530 (Mon, 21 Aug 2017)");
   script_name("Foxit Reader Multiple Remote Code Execution Vulnerabilities (Windows)");
 

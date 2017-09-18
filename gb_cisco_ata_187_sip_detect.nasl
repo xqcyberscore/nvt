@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ata_187_sip_detect.nasl 4880 2016-12-29 19:37:33Z cfi $
+# $Id: gb_cisco_ata_187_sip_detect.nasl 7133 2017-09-14 14:31:13Z cfischer $
 #
 # Cisco ATA 187 Detection (SIP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140085");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 4880 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-29 20:37:33 +0100 (Thu, 29 Dec 2016) $");
+ script_version ("$Revision: 7133 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-14 16:31:13 +0200 (Thu, 14 Sep 2017) $");
  script_tag(name:"creation_date", value:"2016-12-01 14:02:18 +0100 (Thu, 01 Dec 2016)");
  script_name("Cisco ATA 187 Detection (SIP)");
 
@@ -73,7 +73,7 @@ if( ! isnull( v[1] ) )
 
 register_product( cpe:cpe, location:"/", port:port, service:"sip", proto:proto );
 
-report = build_detection_report( app:"Cisco ATA 187", version:vers, install:"/", cpe:cpe, concluded:v[0], concludedUrl:url );
+report = build_detection_report( app:"Cisco ATA 187", version:vers, install:"/", cpe:cpe, concluded:v[0] );
 
 log_message( port:port, data:report, proto:proto );
 exit( 0 );

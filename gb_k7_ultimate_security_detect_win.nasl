@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_ultimate_security_detect_win.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: gb_k7_ultimate_security_detect_win.nasl 7140 2017-09-15 09:41:22Z cfischer $
 #
 # K7 Ultimate Security Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805462");
-  script_version("$Revision: 6040 $");
+  script_version("$Revision: 7140 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-01-02 11:26:06 +0530 (Fri, 02 Jan 2015)");
   script_name("K7 Ultimate Security Version Detection (Windows)");
 
@@ -113,7 +113,7 @@ foreach key (key_list)
       if("64" >< os_arch && "Wow6432Node" >!< key)
       {
         set_kb_item(name:"K7/UltimateSecurity64/Win/Ver", value:k7usecVer);
-        cpe = build_cpe(value:k7antivirVer, exp:"^([0-9.]+)", base:"cpe:/a:k7computing:ultimate_security:x64:");
+        cpe = build_cpe(value:k7usecVer, exp:"^([0-9.]+)", base:"cpe:/a:k7computing:ultimate_security:x64:");
 
         if(isnull(cpe))
           cpe = "cpe:/a:k7computing:ultimate_security:x64";

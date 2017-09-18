@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_cpe_ok.nasl 4926 2017-01-03 08:49:00Z cfi $
+# $Id: gb_policy_cpe_ok.nasl 7150 2017-09-15 13:20:49Z cfischer $
 #
 # CPE-based Policy Check OK
 #
@@ -31,9 +31,9 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103963");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4926 $");
+  script_version("$Revision: 7150 $");
   script_name("CPE-based Policy Check OK");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-03 09:49:00 +0100 (Tue, 03 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 15:20:49 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-01-06 11:42:20 +0700 (Mon, 06 Jan 2014)");
   script_category(ACT_END);
   script_family("Policy");
@@ -73,7 +73,7 @@ if (checkfor == "present") {
 }
 
 if (report) {
-  log_message(port:port, data:report);
+  log_message(port:0, data:report);
 }
 
 exit(0);

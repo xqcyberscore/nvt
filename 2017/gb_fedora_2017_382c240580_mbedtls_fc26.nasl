@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_382c240580_mbedtls_fc26.nasl 7075 2017-09-07 11:09:13Z santu $
+# $Id: gb_fedora_2017_382c240580_mbedtls_fc26.nasl 7149 2017-09-15 13:03:35Z cfischer $
 #
 # Fedora Update for mbedtls FEDORA-2017-382c240580
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873339");
-  script_version("$Revision: 7075 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:09:13 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 7149 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 15:03:35 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-04 07:27:32 +0200 (Mon, 04 Sep 2017)");
   script_cve_id("CVE-2017-14032");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mbedtls FEDORA-2017-382c240580");
   script_tag(name: "summary", value: "Check the version of mbedtls");

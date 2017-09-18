@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_333.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: GSHB_M4_333.nasl 7152 2017-09-15 14:36:54Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.333
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94240);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 7152 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 16:36:54 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,7 +63,7 @@ SSHUNAME = get_kb_item("ssh/login/uname");
 passwd = get_kb_item("GSHB/nsswitch/passwd");
 group = get_kb_item("GSHB/nsswitch/group");
 
-if (SAMBA || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHUNAME))){
+if (samba || (SSHUNAME && ("command not found" >!< SSHUNAME && "CYGWIN" >!< SSHUNAME))){
   rpms = get_kb_item("ssh/login/packages");
   if (rpms){
     pkg1 = "winbind";

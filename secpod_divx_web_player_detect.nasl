@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_divx_web_player_detect.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: secpod_divx_web_player_detect.nasl 7140 2017-09-15 09:41:22Z cfischer $
 #
 # DivX Web Player Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(900534);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 7140 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("DivX Web Player Version Detection");
@@ -95,8 +95,8 @@ if(divVer != NULL){
            " running at location " + path + " was detected on the host");
     
   ## build cpe and store it as host_detail
-  cpe = build_cpe(value:Ver, exp:"", base:"");
+  cpe = build_cpe(value:divVer, exp:"^([0-9.]+)", base:"cpe:/a:divx:divx_web_player:");
   if(!isnull(cpe))
-     register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+     register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_005.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_M4_005.nasl 7152 2017-09-15 14:36:54Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 4.005
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94176);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 7152 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 16:36:54 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,6 +57,7 @@ name = 'IT-Grundschutz M4.005: Protokollierung der TK-Administrationsarbeiten\n'
 
 gshbm =  "IT-Grundschutz M4.005: ";
 OSVER = get_kb_item("WMI/WMI_OSVER");
+OSNAME = get_kb_item("WMI/WMI_OSNAME");
 eventlog = get_kb_item("WMI/EventLogService");
 log = get_kb_item("WMI/EventLogService/log");
 

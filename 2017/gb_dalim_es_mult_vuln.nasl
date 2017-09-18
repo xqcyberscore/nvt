@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dalim_es_mult_vuln.nasl 6903 2017-08-11 09:29:17Z ckuersteiner $
+# $Id: gb_dalim_es_mult_vuln.nasl 7127 2017-09-14 08:36:48Z cfischer $
 #
 # DALIM ES Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:dalim:es_core";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140293");
-  script_version("$Revision: 6903 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-11 11:29:17 +0200 (Fri, 11 Aug 2017) $");
+  script_version("$Revision: 7127 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-14 10:36:48 +0200 (Thu, 14 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-08-11 16:04:25 +0700 (Fri, 11 Aug 2017)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -63,7 +63,7 @@ if (description)
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 11th August, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 14th September, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5428.php");

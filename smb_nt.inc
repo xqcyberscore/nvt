@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 6451 2017-06-28 08:36:16Z cfischer $
+# $Id: smb_nt.inc 7137 2017-09-15 06:47:28Z santu $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6451 $
+# $Revision: 7137 $
 #
 ###############################################################################
 
@@ -3752,7 +3752,7 @@ function registry2_close_NTLMSSP( soc, uid, tid, pipe, reply ) {
   # sign_key, isSignActive, seq_number, multiplex_id, g_mlo and g_mhi are global_vars!!!
 
   local_var soc, uid, tid, pipe, reply;
-  local_var ioctl_req, dcerpc_req1, dcerpc_req2, magic, i, x, x_lo, x_hi;
+  local_var ioctl_req, dcerpc_req1, dcerpc_req2, magic, i;
   local_var rrs_req, len_rrs, len_rss_lo, len_rrs_hi, dcerpc_req, req;
   local_var req_l, len_lo, len_hi, sig, r, status, status2;
   local_var r_head, orig_sign, server_resp, serv_sign;
@@ -3797,10 +3797,6 @@ function registry2_close_NTLMSSP( soc, uid, tid, pipe, reply ) {
       magic += raw_string( ord( reply[140+i] ) );
     }
   }
-
-  x = strlen( key ) + strlen( key ) + 2; # TBD: Where is key coming from???
-  x_lo = x % 256;
-  x_hi = x / 256;
 
   # Remote Registry Service Req
   rrs_req = magic ;
@@ -4040,7 +4036,7 @@ function registry2_enum_key( soc, uid, tid, pipe, reply ) {
   # sign_key, isSignActive, seq_number, multiplex_id, g_mlo and g_mhi are global_vars!!!
 
   local_var soc, uid, tid, pipe, reply;
-  local_var list, magic, i, j, req, ioctl_req, dcerpc_req1, dcerpc_req2, x, x_lo, x_hi;
+  local_var list, magic, i, j, req, ioctl_req, dcerpc_req1, dcerpc_req2;
   local_var rrs_req, len_rrs, len_rrs_lo, len_rrs_hi, dcerpc_req, req_l, len_lo, len_hi;
   local_var sig, r, status, status2, r_head, orig_sign, server_resp, serv_sign, len, name;
 
@@ -4089,10 +4085,6 @@ function registry2_enum_key( soc, uid, tid, pipe, reply ) {
     dcerpc_req1 = raw_string( 0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00 );
     dcerpc_req2 = raw_string( 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00,
                               0x00, 0x00, 0x00, 0x00, 0x09, 0x00 );
-
-    x = strlen( key ) + strlen( key ) + 2;  # TBD: Where is key coming from???
-    x_lo = x % 256;
-    x_hi = x / 256;
 
     # Remote Registry Service Req
     rrs_req = magic + raw_string( j % 256, j / 256, 0x00, 0x00,  # key ID

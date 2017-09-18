@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 6875 2017-08-08 13:59:06Z cfischer $
+# $Id: os_detection.nasl 7153 2017-09-15 15:03:32Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,15 +28,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 6875 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-08 15:59:06 +0200 (Tue, 08 Aug 2017) $");
+  script_version("$Revision: 7153 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 17:03:32 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("OS Detection Consolidation and Reporting");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
-  script_family("Service detection");
+  script_family("Product detection");
   # Keep order the same as in host_details.inc. Also add OS register NVTs there if adding here.
   # Keep in sync with os_detection.nasl as well.
   script_dependencies("gb_greenbone_os_detect.nasl", "gb_ami_megarac_sp_web_detect.nasl",
@@ -84,6 +84,7 @@ if(description)
 include("host_details.inc");
 
 found_best = FALSE;
+found_os = "";
 
 # Check CPE entries
 foreach oid( OS_CPE_SRC ) {

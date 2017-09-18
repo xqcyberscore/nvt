@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_debut_dos_vuln.nasl 6919 2017-08-14 09:55:24Z ckuersteiner $
+# $Id: gb_debut_dos_vuln.nasl 7127 2017-09-14 08:36:48Z cfischer $
 #
 # Debut Embedded Server DoS Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140295");
-  script_version("$Revision: 6919 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-14 11:55:24 +0200 (Mon, 14 Aug 2017) $");
+  script_version("$Revision: 7127 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-14 10:36:48 +0200 (Thu, 14 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-08-14 12:10:48 +0700 (Mon, 14 Aug 2017)");
   script_tag(name: "cvss_base", value: "7.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -57,7 +57,7 @@ which allows a remote attacker to hang the printer by sending a large amount of 
 
   script_tag(name: "affected", value: "Debut embedded httpd 1.20 (Brother/HP printer http admin)");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 14th August, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 14th September, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://gist.github.com/tipilu/53f142466507b2ef4c8ceb08d22d1278");

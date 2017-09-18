@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_64670.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_cisco_nx_os_64670.nasl 7140 2017-09-15 09:41:22Z cfischer $
 #
 # Cisco NX-OS BGP Message Denial of Service Vulnerability
 #
@@ -48,7 +48,7 @@ if (description)
  script_cve_id("CVE-2013-6982");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 6735 $");
+ script_version ("$Revision: 7140 $");
 
  script_name("Cisco NX-OS BGP Message Denial of Service Vulnerability");
 
@@ -56,7 +56,7 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64670");
  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuj03174");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
  script_tag(name:"creation_date", value:"2014-01-13 10:35:00 +0100 (Mon, 13 Jan 2014)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
@@ -85,7 +85,7 @@ if ( nx_model !~ "^7" )exit(99);
 
 if ( nx_ver  == "6.2(2)S27" )
 {
-  security_message(port:port, data:'Installed Version: ' + nx_ver + '\nFixed Version:     7.0(0)ZD(0.132)');
+  security_message(port:0, data:'Installed Version: ' + nx_ver + '\nFixed Version:     7.0(0)ZD(0.132)');
   exit(0);
 }
 

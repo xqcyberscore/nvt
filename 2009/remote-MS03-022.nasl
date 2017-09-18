@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-MS03-022.nasl 4692 2016-12-06 15:44:12Z cfi $
+# $Id: remote-MS03-022.nasl 7144 2017-09-15 12:14:43Z cfischer $
 #
 # Microsoft Security Bulletin MS03-022
 # Vulnerability in ISAPI Extension for Windows Media Services Could Cause Code Execution
@@ -37,8 +37,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101016");
-  script_version("$Revision: 4692 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 16:44:12 +0100 (Tue, 06 Dec 2016) $");
+  script_version("$Revision: 7144 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:14:43 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-03-16 23:15:41 +0100 (Mon, 16 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -116,7 +116,7 @@ if( reply ) {
     send( socket:soc, data:mpclient );
     #send( socket:soc, data:remote_exe );
 
-    response = recv(socket:sock, length:4096);
+    response = recv(socket:soc, length:4096);
     if( ( egrep( pattern:"HTTP/1.[01] 500", string:response ) ) && ( 'The remote procedure call failed. ' >< response ) ) {
       security_message( port:port );
     }

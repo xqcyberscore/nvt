@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811316");
-  script_version("$Revision: 7034 $");
+  script_version("$Revision: 7125 $");
   script_cve_id("CVE-2015-5209");
   script_bugtraq_id(82550);
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 15:44:04 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-14 10:26:29 +0200 (Thu, 14 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-31 13:48:08 +0530 (Thu, 31 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Struts 'top' Object Access Security Bypass Vulnerability (Linux)");

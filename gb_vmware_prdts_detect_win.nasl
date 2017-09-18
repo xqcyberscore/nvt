@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_detect_win.nasl 6588 2017-07-07 08:21:40Z santu $
+# $Id: gb_vmware_prdts_detect_win.nasl 7140 2017-09-15 09:41:22Z cfischer $
 #
 # VMware products version detection (Windows)
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800000");
-  script_version("$Revision: 6588 $");
+  script_version("$Revision: 7140 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 10:21:40 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-09-25 10:10:31 +0200 (Thu, 25 Sep 2008)");
   script_tag(name:"qod_type", value:"registry"); 
   script_name("VMWare products version detection (Windows)");
@@ -166,7 +166,7 @@ if(vmVer != NULL)
 {
   vmware = split(vmVer, sep:".", keep:0);
   vmwareVer = vmware[0] + "." + vmware[1] + "." + vmware[2];
-  if(buildflag != Null)
+  if(buildflag != NULL)
   {
     vmwareBuild = vmware[3];
     if (!(vmwareBuild =~ "[0-9]+")){

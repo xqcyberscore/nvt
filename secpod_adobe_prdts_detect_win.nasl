@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_detect_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: secpod_adobe_prdts_detect_win.nasl 7136 2017-09-15 06:14:28Z santu $
 #
 # Adobe Products Version Detection (Windows)
 #
@@ -40,10 +40,10 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.900319";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6475 $");
+  script_version("$Revision: 7136 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 08:14:28 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Products Version Detection (Windows)");
@@ -195,7 +195,7 @@ foreach key (keylist)
           replace_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
 
           # set version for 64 bit Adobe Acrobat on 64 bit OS
-          if( "x64" >< os64bit && "Wow6432Node" >!< key){
+          if( "x64" >< osArch && "Wow6432Node" >!< key){
             set_kb_item(name:"Adobe/Reader64/Win/Ver", value:readerVer);
           }
           else
@@ -267,7 +267,7 @@ foreach key (adkeylist)
 
 
           ## set version for 64 bit Adobe Audition on 64 bit OS
-          if( "x64" >< os64bit && "Wow6432Node" >!< key){
+          if( "x64" >< osArch && "Wow6432Node" >!< key){
             set_kb_item(name:"Adobe/Audition64/Win/Ver", value:audVer);
           }
 

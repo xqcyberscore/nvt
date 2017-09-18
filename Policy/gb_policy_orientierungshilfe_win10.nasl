@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_orientierungshilfe_win10.nasl 6019 2017-04-24 18:55:07Z cfi $
+# $Id: gb_policy_orientierungshilfe_win10.nasl 7150 2017-09-15 13:20:49Z cfischer $
 #
 # AKIF Orientierungshilfe Windows 10: Ueberpruefungen
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108078");
-  script_version("$Revision: 6019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 20:55:07 +0200 (Mon, 24 Apr 2017) $");
+  script_version("$Revision: 7150 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 15:20:49 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-02-10 10:55:08 +0100 (Fri, 10 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,10 +57,11 @@ if(description)
 
 include("smb_nt.inc");
 
-function check_policy( check_desc, check_num, check_type, reg_key, reg_name, reg_type, reg_value, service_name, startup_type ) {
+function check_policy( check_desc, check_num, check_type, reg_key, reg_name, reg_type, reg_value, service_name, startup_type, wmi_username, wmi_password ) {
 
   local_var check_desc, check_num, check_type, reg_key, reg_name, reg_type, reg_value, service_name;
   local_var startup_type, response, current_value, text_response, serQueryRes, cmd, extra;
+  local_var wmi_username, wmi_password;
 
   if( "Registry" >< check_type ) {
 
@@ -214,7 +215,9 @@ for( i = 0 ; i < max; i++ ) {
   if( ( i == max - 1 ) || ( policy_lines[ i + 1 ] == "" ) ) {
     # there are (at least) two types if servicing branches: LTSB and CB (Current Branch). each registry-entry has a flag LTSB and / or CB
     if( ( ltsb_version && "LTSB" >< servicing_branch ) || ( ! ltsb_version && "CB" >< servicing_branch ) || ( ! servicing_branch ) ) {
-      status = check_policy( check_desc:check_desc, check_num:check_num, check_type:check_type, reg_key:reg_key, reg_name:reg_name, reg_type:reg_type, reg_value:reg_value, service_name:service_name, startup_type:startup_type );
+      status = check_policy( check_desc:check_desc, check_num:check_num, check_type:check_type, reg_key:reg_key,
+                             reg_name:reg_name, reg_type:reg_type, reg_value:reg_value, service_name:service_name,
+                             startup_type:startup_type, wmi_username:wmi_username, wmi_password:wmi_password );
       if( status[0] == "passed" ) {
         policy_pass += status[1] + "#-#";
       } else if( status[0] == "failed" ) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nx_os_CSCuw13560.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_nx_os_CSCuw13560.nasl 7140 2017-09-15 09:41:22Z cfischer $
 #
 # Cisco NX-OS Nexus 9000 (N9K) Series Switch Reserved VLAN Tag Vulnerability
 #
@@ -32,12 +32,12 @@ if (description)
  script_cve_id("CVE-2015-6295");
  script_tag(name:"cvss_base", value:"4.8");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:P");
- script_version ("$Revision: 6125 $");
+ script_version ("$Revision: 7140 $");
 
  script_name("Cisco NX-OS Software TACACS+ Server Local Privilege Escalation Vulnerability");
 
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=40990");
- script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
  script_tag(name:"creation_date", value:"2015-09-21 11:41:15 +0200 (Mon, 21 Sep 2015)");
 
  script_tag(name: "qod_type", value: "remote_banner");
@@ -68,7 +68,7 @@ if ( ! nx_ver   = get_kb_item( "cisco_nx_os/version" ) ) exit( 0 );
 
 if ( nx_ver  == "6.1(2)I3(4)" || nx_ver == "7.0(3)I1(1)" )
 {
-  security_message( port:port, data:'Installed Version: ' + nx_ver + '\nFixed Version:     NA' );
+  security_message( port:0, data:'Installed Version: ' + nx_ver + '\nFixed Version:     NA' );
   exit( 0 );
 }
 

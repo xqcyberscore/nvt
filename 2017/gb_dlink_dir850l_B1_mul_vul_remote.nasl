@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir850l_B1_mul_vul_remote.nasl 7115 2017-09-13 08:54:58Z teissa $
+# $Id: gb_dlink_dir850l_B1_mul_vul_remote.nasl 7139 2017-09-15 09:13:13Z ckuersteiner $
 #
 # D-Link 850L Firmware B1 Admin Password Disclosure Vulnerability (remote)
 #
@@ -27,14 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107243");
-  script_version("$Revision: 7115 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 10:54:58 +0200 (Wed, 13 Sep 2017) $");
+  script_version("$Revision: 7139 $");
+  script_cve_id("CVE-2017-14417", "CVE-2017-14418");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:13:13 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-12 17:47:21 +0200 (Tue, 12 Sep 2017)");
 
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_analysis");
   script_name("D-Link 850L Firmware B1 Admin Password Disclosure Vulnerability (remote)");
 
   script_tag(name: "summary", value: "D-Link 850L Firmware B1 is vulnerable to Admin Disclosure Vulnerability.");
@@ -46,13 +47,13 @@ gain control of the device. This webpage is used to register the device to the m
   script_tag(name: "impact" , value: "Remote attacker can retrieve the admin password and gain full access.");
   script_tag(name: "affected", value: "DLink Dir 850 L Rev B1");
 
-  script_tag(name: "solution", value: "No solution is available until 12 September 2017, it is recommended to stop using this product immediately.");
+  script_tag(name: "solution", value: "No solution or patch is available as of 12th September,2017. it is recommended to stop using this product immediately.");
 
   script_xref(name: "URL" , value: "https://packetstormsecurity.com/files/144056/dlink850l-xssexecxsrf.txt");
   script_xref(name: "URL" , value: "http://securityaffairs.co/wordpress/62937/hacking/d-link-dir-850l-zero-day.html");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
 
   script_family("Web application abuses");

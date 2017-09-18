@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_019.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_M5_019.nasl 7152 2017-09-15 14:36:54Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 5.019
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(95056);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 7152 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 16:36:54 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -167,16 +167,16 @@ else{
       queuedir = ereg_replace(string:queuedir, pattern:'\n', replace:"", icase:0);
       desc += string('Der Ordner -' + queuedir + '- hat nicht die in der\nMaﬂnahme 5.019 geforderten Berechtigungen.\n' + lsqueuedir + '\n');
     }
-    if (lsfoward == "none" && lsfoward == "not found") valcheck += "OK";
+    if (lsforward == "none" && lsforward == "not found") valcheck += "OK";
     else{
-      Lst = split(lsfoward, keep:0);
+      Lst = split(lsforward, keep:0);
       for (i=0; i<Lst; i++){
         if (Lst[i] =~"......... . .* .* .* ..-..-.. .* .*/root/.*"  || Lst[i] =~"......... . .* .* .* ..-..-.. .* .*/bin/.*"){
           valcheck += "FAIL";
           lsforwardcheck += Lst[i] + '\n';
         }
       if (lsforwardcheck) desc += string('Privilegierte Benutzer wie bin oder root sollten keine .forward\nDatei besitzen.\n' + lsforwardcheck + '\n');
-      desc += string('F¸r normale Benutzer sollte die .forward-Datei nur von dem\nBesitzer beschreibbar sein und muss sich in einem Verzeichnis\nbefinden, das dem Besitzer gehˆrt. Bitte Pr¸fen Sie folgende\nErgebnisse:\n' + lsfoward + '\n');
+      desc += string('F¸r normale Benutzer sollte die .forward-Datei nur von dem\nBesitzer beschreibbar sein und muss sich in einem Verzeichnis\nbefinden, das dem Besitzer gehˆrt. Bitte Pr¸fen Sie folgende\nErgebnisse:\n' + lsforward + '\n');
       }
     }
     if (mlocalp != "none"){

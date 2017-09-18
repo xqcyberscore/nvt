@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: snmpwalk_portscan.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: snmpwalk_portscan.nasl 7152 2017-09-15 14:36:54Z cfischer $
 # Description: snmpwalk 'scanner'
 #
 # Authors:
@@ -29,8 +29,8 @@ if(description)
  script_id(14274);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_version("$Revision: 6056 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+ script_version("$Revision: 7152 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-15 16:36:54 +0200 (Fri, 15 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "snmpwalk 'scanner'";
@@ -65,9 +65,9 @@ global_var	snmp_layer, argv, snmp_port, snmp_comm;
 seen_tcp_ports = make_list(0);	# Do not want to see this!
 seen_udp_ports = make_list(0);	# Do not want to see this!
 
-function make_argv(obj)
+function make_argv(obj, ip)
 {
- local_var	i, p;
+ local_var	i, p, ip;
 
  i = 0;
  argv = NULL;
@@ -144,7 +144,7 @@ foreach o (
             "udp.udpTable.udpEntry.udpLocalPort." + ip))
 {
  scanner_status(current: 0, total: i++);
- make_argv(obj: o);
+ make_argv(obj: o, ip: ip);
  buf = pread(cmd: "snmpwalk", argv: argv);
  proto = substr(o, 0, 2);
  if (buf)
@@ -167,7 +167,7 @@ foreach o (
        close(soc);
       }
       else
-       display("snmpwalk_portscan(", get_host_ip(), "): TCP port ",  port, " is closed in fact\n");
+       display("snmpwalk_portscan(", ip, "): TCP port ",  port, " is closed in fact\n");
      }
      else
       scanner_add_port(proto: proto, port: port);
@@ -198,5 +198,5 @@ if (udp_scanned) set_kb_item(name: "Host/udp_scanned", value: TRUE);
 
 exit(0);
 
-# make_argv(obj: "host.hrSWInstalled.hrSWInstalledTable.hrSWInstalledEntry.hrSWInstalledName");
+# make_argv(obj: "host.hrSWInstalled.hrSWInstalledTable.hrSWInstalledEntry.hrSWInstalledName", ip: ip);
 

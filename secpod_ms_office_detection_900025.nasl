@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_detection_900025.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: secpod_ms_office_detection_900025.nasl 7153 2017-09-15 15:03:32Z cfischer $
 #
 # Microsoft Office Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900025");
-  script_version("$Revision: 7052 $");
+  script_version("$Revision: 7153 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-15 17:03:32 +0200 (Fri, 15 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Office Version Detection");
@@ -69,9 +69,8 @@ TMP_OFFICE_LIST = make_list( "^(9\..*)",  "cpe:/a:microsoft:office:2000:",
                              "^(14\..*)", "cpe:/a:microsoft:office:2010:",
                              "^(15\..*)", "cpe:/a:microsoft:office:2013:",
                              "^(16\..*)", "cpe:/a:microsoft:office:2016:");
-
 MAX = max_index(TMP_OFFICE_LIST);
-
+checkdupOffc = "";
 
 if(!registry_key_exists(key:"SOFTWARE\Microsoft\Office"))
 {
@@ -167,7 +166,7 @@ foreach key (key_list)
             }
 
             ## Set version for 64 bit app on 64 bit OS
-            if( "x64" >< osArch && "Wow6432Node" >!< key && "32-bit" >!< MSOffName)
+            if( "x64" >< os_arch && "Wow6432Node" >!< key && "32-bit" >!< MSOffName)
             {
               set_kb_item(name:"MS/Office64/Ver", value:MSOffVer);
               replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE ); 
