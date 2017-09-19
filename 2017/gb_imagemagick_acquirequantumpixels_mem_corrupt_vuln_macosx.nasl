@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_acquirequantumpixels_mem_corrupt_vuln_macosx.nasl 5430 2017-02-27 10:10:01Z cfi $
+# $Id: gb_imagemagick_acquirequantumpixels_mem_corrupt_vuln_macosx.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # ImageMagick 'AcquireQuantumPixels' Memory Corruption Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810559");
-  script_version("$Revision: 5430 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-8677");
   script_bugtraq_id(93598);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 11:10:01 +0100 (Mon, 27 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-02-21 09:24:08 +0530 (Tue, 21 Feb 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick 'AcquireQuantumPixels' Memory Corruption Vulnerability (Mac OS X)");
@@ -45,7 +45,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to a memory corruption 
+  script_tag(name: "insight" , value:"The flaw exists due to a memory corruption 
   error in 'AcquireQuantumPixels' function in MagickCore/quantum.c script.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allows

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_quicktime_mult_vuln_900121.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: secpod_apple_quicktime_mult_vuln_900121.nasl 7174 2017-09-18 11:48:08Z asteins $
 # Description: Apple QuickTime Movie/PICT/QTVR Multiple Remote Vulnerabilities
 #
 # Authors:
@@ -33,7 +33,7 @@ tag_solution = "Upgrade to version 7.5.5
 
 tag_affected = "Apple QuickTime versions prior to 7.5.5 on Windows (all)";
 
-tag_insight = "The flaws exists due to,
+tag_insight = "The flaws exist due to,
         - an uninitialized memory access inn the Indeo v5 codec and lack of
           proper bounds checking within QuickTimeInternetExtras.qtx file.
         - improper handling of panorama atoms in QTVR movie files.
@@ -55,8 +55,8 @@ tag_summary = "This host has Apple QuickTime installed, which prone to multiple
 if(description)
 {
  script_id(900121);
- script_version("$Revision: 5375 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 7174 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
  script_bugtraq_id(31086);
  script_cve_id("CVE-2008-3615","CVE-2008-3635","CVE-2008-3624","CVE-2008-3625",

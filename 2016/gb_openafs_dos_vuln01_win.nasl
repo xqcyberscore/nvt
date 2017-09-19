@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_dos_vuln01_win.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_openafs_dos_vuln01_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # OpenAFS Denial of Service Vulnerability-01 (Windows)
 #
@@ -29,11 +29,11 @@ CPE= "cpe:/a:openafs:openafs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808077");
-  script_version("$Revision: 5568 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2015-3285");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 19:35:27 +0530 (Wed, 08 Jun 2016)");
   script_name("OpenAFS Denial of Service Vulnerability-01 (Windows)");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value: "Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value: "The flaw exist due to the kernel handling
+  script_tag(name: "insight" , value: "The flaw exists due to the kernel handling
   of the FS command for OSD uses a pointer to the wrong in-kernel memory
   when returning the result of the RPC.");
 

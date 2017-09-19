@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_meeting_server_xss_vuln.nasl 4650 2016-11-30 13:18:14Z antu123 $
+# $Id: gb_cisco_meeting_server_xss_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Cisco Meeting Server Cross-Site Scripting Vulnerability (cisco-sa-20160714-ms)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:cisco:meeting_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809734");
-  script_version("$Revision: 4650 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-1451");
   script_bugtraq_id(91784);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-30 14:18:14 +0100 (Wed, 30 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-11-26 19:19:29 +0530 (Sat, 26 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco Meeting Server Cross-Site Scripting Vulnerability (cisco-sa-20160714-ms)");
@@ -46,7 +46,7 @@ if (description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help of
   detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to an error in validation of
+  script_tag(name:"insight", value:"The flaw exists due to an error in validation of
   certain parameters that are passed to an affected device via an HTTP request.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow

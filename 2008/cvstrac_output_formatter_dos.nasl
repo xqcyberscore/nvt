@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cvstrac_output_formatter_dos.nasl 3854 2016-08-18 13:15:25Z teissa $
+# $Id: cvstrac_output_formatter_dos.nasl 7176 2017-09-18 12:01:01Z cfischer $
 # Description: CVSTrac text output formatter DoS
 #
 # Authors:
@@ -40,8 +40,8 @@ depending on the pages requested.";
 if(description)
 {
  script_id(80015);
- script_version("$Revision: 3854 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-18 15:15:25 +0200 (Thu, 18 Aug 2016) $");
+ script_version("$Revision: 7176 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 19:51:47 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -54,14 +54,8 @@ if(description)
  name = "CVSTrac text output formatter DoS";
 
  script_name(name);
- 
-
-
- 
- 
  script_category(ACT_GATHER_INFO);
- 
- 
+  
  script_copyright("This script is Copyright (C) 2007 David Maciejak");
  family = "Web application abuses";
  script_family(family);
@@ -73,11 +67,6 @@ if(description)
  exit(0);
 }
 
-#
-# The script code starts here
-#
-
-include("global_settings.inc");
 include("http_func.inc");
 
 port = get_http_port(default:80);

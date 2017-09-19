@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_virii.nasl 6487 2017-06-29 12:50:11Z cfischer $
+# $Id: smb_virii.nasl 7172 2017-09-18 11:07:34Z cfischer $
 #
 # The remote host is infected by a virus
 #
@@ -79,8 +79,8 @@ tag_solution = "See the URLs which will appear in the report";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80043");
-  script_version("$Revision: 6487 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 14:50:11 +0200 (Thu, 29 Jun 2017) $");
+  script_version("$Revision: 7172 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:07:34 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
@@ -102,7 +102,6 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("secpod_reg.inc");
 include("secpod_smb_func.inc");
 
 local_var nname, url, key, item, exp;

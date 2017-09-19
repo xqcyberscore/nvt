@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: webadmin.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: webadmin.nasl 7175 2017-09-18 11:55:15Z cfischer $
 # Description: webadmin.dll detection
 #
 # Authors:
@@ -47,24 +47,16 @@ tag_solution = "Upgrade to the latest version if necessary";
 if(description)
 {
  script_id(11771);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 7175 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(7438, 7439, 8024);
  script_cve_id("CVE-2003-0471");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-
  script_name( "webadmin.dll detection");
- 
-
- summary = "Checks for the presence of webadmin.dll";
- 
- 
  script_category(ACT_GATHER_INFO);
- 
- 
  script_copyright("This script is Copyright (C) 2003 Michel Arboi");
  family = "Web application abuses";
  script_family(family);
@@ -75,10 +67,8 @@ if(description)
  exit(0);
 }
 
-#
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
 res = is_cgi_installed_ka(port:port, item:"webadmin.dll");

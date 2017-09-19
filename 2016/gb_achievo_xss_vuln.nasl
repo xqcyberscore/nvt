@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_achievo_xss_vuln.nasl 5886 2017-04-07 07:52:03Z teissa $
+# $Id: gb_achievo_xss_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Achievo Cross Site Scripting vulnerability-Mar16
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:achievo:achievo";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807623");
-  script_version("$Revision: 5886 $");
+  script_version("$Revision: 7174 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 09:52:03 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:56 +0530 (Wed, 06 Apr 2016)");
   script_name("Achievo Cross Site Scripting vulnerability-Mar16");
 
@@ -43,7 +43,7 @@ if (description)
   script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and check
   whether it is possible to read a cookie or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to an improper sanitization
+  script_tag(name: "insight" , value:"The flaw exists due to an improper sanitization
   of input to 'index.php' page.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote

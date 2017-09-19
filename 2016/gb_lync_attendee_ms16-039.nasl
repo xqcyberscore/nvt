@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_attendee_ms16-039.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: gb_lync_attendee_ms16-039.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Lync Attendee Remote Code Execution Vulnerability (3148522)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807803");
-  script_version("$Revision: 5612 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-0145");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-04-13 12:50:12 +0530 (Wed, 13 Apr 2016)");
   script_name("Microsoft Lync Attendee Remote Code Execution Vulnerability (3148522)");
 
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaws exists due to error in font library
+  script_tag(name:"insight", value:"The flaws exist due to error in font library
   while handling specially crafted embedded fonts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an

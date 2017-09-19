@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apoll_7_0_sql_injection.nasl 5768 2017-03-29 13:37:01Z cfi $
+# $Id: apoll_7_0_sql_injection.nasl 7170 2017-09-18 10:35:33Z cfischer $
 #
 # Dragan Mitic Apoll 'admin/index.php' SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100022");
- script_version("$Revision: 5768 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:37:01 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7170 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 12:35:33 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
  script_bugtraq_id(32079);
  script_cve_id("CVE-2008-6272");
@@ -71,7 +71,7 @@ foreach dir( make_list_unique( "/apoll", "/poll", cgi_dirs( port:port ) ) ) {
 
   req = string(
     "POST ", url, " HTTP/1.0\r\n", 
-    "Referer: ","http://", host, filename, "\r\n",
+    "Referer: ","http://", host, url, "\r\n",
     "Host: ", host, "\r\n", 
     "Content-Type: application/x-www-form-urlencoded\r\n", 
     "Content-Length: ", strlen(variables), 

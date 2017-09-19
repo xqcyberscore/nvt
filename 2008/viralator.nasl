@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: viralator.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: viralator.nasl 7176 2017-09-18 12:01:01Z cfischer $
 # Description: viralator
 #
 # Authors:
@@ -37,8 +37,8 @@ Solutions : Upgrade this script to version 0.9pre2 or newer";
 if(description)
 {
  script_id(80093);;
- script_version("$Revision: 4557 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+ script_version("$Revision: 7176 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -68,7 +68,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
 res = is_cgi_installed_ka(item:"viralator.cgi", port:port);

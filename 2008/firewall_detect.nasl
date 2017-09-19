@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: firewall_detect.nasl 4237 2016-10-07 12:35:31Z cfi $
+# $Id: firewall_detect.nasl 7176 2017-09-18 12:01:01Z cfischer $
 #
 # Firewall Enabled
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80059");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4237 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 14:35:31 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 7176 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Firewall Enabled");
@@ -56,8 +56,6 @@ if(description)
 
   exit(0);
 }
-
-include("global_settings.inc");
 
 if ( ! get_kb_item("Host/scanners/openvas_tcp_scanner") ) exit(0); # This plugin only works if openvas_tcp_scanner has run
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_unspecified_vuln01_july16.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_oracle_glassfish_unspecified_vuln01_july16.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Oracle GlassFish Server Unspecified Vulnerability -01 July16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808705");
-  script_version("$Revision: 5527 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-3608");
   script_bugtraq_id(92031);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-07-22 12:15:22 +0530 (Fri, 22 Jul 2016)");
   script_name("Oracle GlassFish Server Unspecified Vulnerability -01 July16");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to an unspecified error in
+  script_tag(name:"insight", value:"The flaw exists due to an unspecified error in
   the Administration sub-component.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote

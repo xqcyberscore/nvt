@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_qcp_dos_vuln_win.nasl 6257 2017-05-31 14:33:17Z cfi $
+# $Id: gb_realplayer_qcp_dos_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # RealNetworks RealPlayer 'QCP' Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:realnetworks:realplayer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809399");
-  script_version("$Revision: 6257 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-9018");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-11-03 11:05:43 +0530 (Thu, 03 Nov 2016)");
   script_name("RealNetworks RealPlayer 'QCP' Denial of Service Vulnerability (Windows)");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name : "vuldetect" , value : "Get the installed version with the
   help of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name : "insight" , value : "The flaw exist due to an improper handling
+  script_tag(name : "insight" , value : "The flaw exists due to an improper handling
   of a repeating VRAT chunk in qcpfformat.dll.");
 
   script_tag(name : "impact" , value : "Successful exploitation will allow remote

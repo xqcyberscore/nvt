@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-032.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_ms16-032.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Windows Secondary Logon Privilege Elevation Vulnerability (3143141)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807309");
-  script_version("$Revision: 5580 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-0099");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-03-09 09:19:37 +0530 (Wed, 09 Mar 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Secondary Logon Privilege Elevation Vulnerability (3143141)");
@@ -42,7 +42,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and 
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist in Windows when the 
+  script_tag(name: "insight" , value:"The flaw exists in Windows when the 
   Secondary Logon Service fails to properly manage request handles in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an

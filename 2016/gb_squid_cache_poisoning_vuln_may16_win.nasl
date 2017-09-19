@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_cache_poisoning_vuln_may16_win.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: gb_squid_cache_poisoning_vuln_may16_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Squid Cache Poisoning Vulnerability May16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808040");
-  script_version("$Revision: 5612 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-4554");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-05-18 11:31:11 +0530 (Wed, 18 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Squid Cache Poisoning Vulnerability May16 (Windows)");
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to an incorrect input
+  script_tag(name:"insight", value:"The flaw exists due to an incorrect input
   validation in HTTP Request processing.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_info_disclosure_vuln_dec13_macosx.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_apple_safari_info_disclosure_vuln_dec13_macosx.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Apple Safari Information Disclosure Vulnerability Dec13 (Mac OS X)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6079 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2013-7127");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2013-12-19 20:34:20 +0530 (Thu, 19 Dec 2013)");
   script_name("Apple Safari Information Disclosure Vulnerability Dec13 (Mac OS X)");
 
@@ -47,7 +47,7 @@ disclosure vulnerability.";
 is vulnerable or not.";
 
   tag_insight =
-"The flaw exist in the 'Reopen All Windows from Last Session' feature that
+"The flaw exists in the 'Reopen All Windows from Last Session' feature that
 stores user ID and password information in the LastSession.plist file";
 
   tag_impact =

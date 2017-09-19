@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_mult_vuln_july08_lin_900011.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: secpod_wireshark_mult_vuln_july08_lin_900011.nasl 7174 2017-09-18 11:48:08Z asteins $
 # Description: Wireshark Multiple Vulnerabilities - July08 (Linux)
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
  script_id(900011);
- script_version("$Revision: 4557 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+ script_version("$Revision: 7174 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_bugtraq_id(28485);
  script_cve_id("CVE-2008-1561", "CVE-2008-1562", "CVE-2008-1563");
@@ -44,7 +44,7 @@ if(description)
 http://www.wireshark.org/download.html");
  script_tag(name:"summary", value: "The host is running Wireshark/Ethereal, which is prone to multiple
 vulnerabilities.");
- script_tag(name:"insight", value:"The flaws exists due to errors in GSM SMS dissector, PANA and KISMET
+ script_tag(name:"insight", value:"The flaws exist due to errors in GSM SMS dissector, PANA and KISMET
 dissectors, RTMPT dissector, RMI dissector, and in syslog dissector.");
  script_tag(name:"affected", value:"Wireshark versions prior to 1.0.1 on Linux (All).
  

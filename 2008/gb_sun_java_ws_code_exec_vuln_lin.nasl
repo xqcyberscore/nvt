@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_ws_code_exec_vuln_lin.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_sun_java_ws_code_exec_vuln_lin.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Sun Java Web Start Remote Command Execution Vulnerability (Linux)
 #
@@ -28,7 +28,7 @@ tag_impact = "Successful exploitation allows remote code execution on the
   client machines.
   Impact Level: Application";
 tag_affected = "Sun J2SE 6.0 Update 10 and earlier.";
-tag_insight = "The flaw exist due to weakness in the BasicService showDocument method
+tag_insight = "The flaw exists due to weakness in the BasicService showDocument method
   which does not validate the inputs appropriately. This can be exploited
   using a specially crafted Java Web Start application via file:\\ URL
   argument to the showDocument method.";
@@ -43,8 +43,8 @@ tag_summary = "This host is running Sun Java Web Start and is prone to Remote
 if(description)
 {
   script_id(800127);
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 7174 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-11-05 13:21:04 +0100 (Wed, 05 Nov 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

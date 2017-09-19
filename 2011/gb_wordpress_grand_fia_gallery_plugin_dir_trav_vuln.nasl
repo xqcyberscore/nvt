@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_grand_fia_gallery_plugin_dir_trav_vuln.nasl 5840 2017-04-03 12:02:24Z cfi $
+# $Id: gb_wordpress_grand_fia_gallery_plugin_dir_trav_vuln.nasl 7161 2017-09-18 07:43:57Z cfischer $
 #
 # WordPress GRAND Flash Album Gallery Plugin Multiple Vulnerabilities
 #
@@ -51,8 +51,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802015");
-  script_version("$Revision: 5840 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
+  script_version("$Revision: 7161 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:43:57 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -82,7 +82,7 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 host = http_host_name( port:port );
 

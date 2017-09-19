@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Include File
-# $Id: secpod_reg.inc 6680 2017-07-12 08:37:02Z cfischer $
+# $Id: secpod_reg.inc 7173 2017-09-18 11:29:22Z cfischer $
 #
 # Retrieving Windows Registry Related Queries
 #
@@ -41,11 +41,9 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6680 $
+# $Revision: 7173 $
 #
 ##############################################################################
-
-include("global_settings.inc" );
 
 #-----------------------------------------------------------------------------
 # hotfix_check_sp() : This function is to check whether the OS is installed

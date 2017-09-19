@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tapatalk_detect.nasl 4480 2016-11-11 12:50:37Z cfi $
+# $Id: sw_tapatalk_detect.nasl 7166 2017-09-18 09:14:09Z cfischer $
 #
 # Tapatalk Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111039");
-  script_version("$Revision: 4480 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-11 13:50:37 +0100 (Fri, 11 Nov 2016) $");
+  script_version("$Revision: 7166 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-09-27 14:00:00 +0200 (Sun, 27 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,8 +60,8 @@ cpes = make_list_unique( "cpe:/a:phpbb:phpbb",
                          "cpe:/a:vbulletin:vbulletin",
                          "cpe:/a:xenforo:xenforo",
                          "cpe:/a:woltlab:burning_board" );
+installed = FALSE;
 
-##Iterate possible paths
 foreach cpe( cpes ) {
 
   if ( ! port = get_app_port( cpe:cpe ) ) continue;

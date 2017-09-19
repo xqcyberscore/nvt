@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_mult_xss_vuln.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_apache_solr_mult_xss_vuln.nasl 7160 2017-09-18 07:39:22Z cfischer $
 #
 # Apache Solr Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:solr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806880");
-  script_version("$Revision: 5759 $");
+  script_version("$Revision: 7160 $");
   script_cve_id("CVE-2015-8797", "CVE-2015-8796");
   script_bugtraq_id(83243);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:39:22 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-03-01 14:45:34 +0530 (Tue, 01 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Apache Solr Multiple Cross-Site Scripting Vulnerabilities");
@@ -77,10 +77,9 @@ if(description)
   exit(0);
 }
 
-
-include("http_keepalive.inc");
 include("host_details.inc");
 include("http_func.inc");
+include("http_keepalive.inc");
 
 # Variable Initialization
 url = "";

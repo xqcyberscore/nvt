@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_convert_to_pdf_info_disc_vuln_win.nasl 5098 2017-01-25 09:14:20Z antu123 $
+# $Id: gb_foxit_phantompdf_convert_to_pdf_info_disc_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Foxit PhantomPDF 'ConvertToPDF plugin' Information Disclosure Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809874");
-  script_version("$Revision: 5098 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2017-5556");
   script_bugtraq_id(95353);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 10:14:20 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-01-24 12:33:27 +0530 (Tue, 24 Jan 2017)");
   script_name("Foxit PhantomPDF 'ConvertToPDF plugin' Information Disclosure Vulnerability (Windows)");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist as the ConvertToPDF plugin
+  script_tag(name: "insight" , value:"The flaw exists as the ConvertToPDF plugin
   does not properly handle a crafted JPEG image."); 
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote

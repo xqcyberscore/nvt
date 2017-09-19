@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_dos_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_apple_safari_webkit_dos_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Apple Safari 'webkit' Denial Of Service Vulnerability
 #
@@ -31,7 +31,7 @@ Impact Level: Application";
 
 tag_affected = "Apple Safari version (Safari.exe) 4.531.9.1";
 
-tag_insight = "The flaw exist due to error in 'WebKit.dll' file in webkit
+tag_insight = "The flaw exists due to error in 'WebKit.dll' file in webkit
 when processing 'JavaScript' that writes sequences in an infinite loop.";
 
 tag_solution = "No solution or patch was made available for at least one year
@@ -45,8 +45,8 @@ prone to to Denial of Service vulnerabilities.";
 if(description)
 {
   script_id(801332);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 7174 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-05-13 09:36:55 +0200 (Thu, 13 May 2010)");
   script_cve_id("CVE-2010-1728");
   script_tag(name:"cvss_base", value:"9.3");

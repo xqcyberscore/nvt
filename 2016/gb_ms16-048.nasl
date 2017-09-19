@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-048.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_ms16-048.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Windows CSRSS Feature Bypass Vulnerability (3148528)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807790");
-  script_version("$Revision: 5588 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-0151");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-04-13 08:06:29 +0530 (Wed, 13 Apr 2016)");
   script_name("Microsoft Windows CSRSS Feature Bypass Vulnerability (3148528)");
 
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaw exist in Microsoft Windows when the
+  script_tag(name:"insight", value:"The flaw exists in Microsoft Windows when the
   Client-Server Run-time Subsystem (CSRSS) fails to properly manage process
   tokens in memory");
 

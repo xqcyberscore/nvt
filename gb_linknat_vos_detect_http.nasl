@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linknat_vos_detect_http.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: gb_linknat_vos_detect_http.nasl 7166 2017-09-18 09:14:09Z cfischer $
 #
 # Linknat VOS SoftSwitch Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106086");
- script_version ("$Revision: 7076 $");
- script_tag(name: "last_modification", value: "$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+ script_version ("$Revision: 7166 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name: "creation_date", value: "2016-05-26 11:12:13 +0700 (Thu, 26 May 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -96,7 +96,7 @@ if ("Welcome to Web Self-Service System" >< res && "GatewayPasswordModification"
       cpe = "cpe:/a:linknat:vos";
   }
 
-  register_product(cpe: cpe, location: "/", port: port, service: www);
+  register_product(cpe: cpe, location: "/", port: port, service: "www");
 
   log_message(data: build_detection_report(app: "Linknat SoftSwitch " + model,
                                            version: version,

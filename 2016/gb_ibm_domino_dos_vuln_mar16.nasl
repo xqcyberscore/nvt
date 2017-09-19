@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_dos_vuln_mar16.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_ibm_domino_dos_vuln_mar16.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # IBM Domino Denial of Service Vulnerability - Mar16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807619");
-  script_version("$Revision: 5850 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2014-0822");
   script_bugtraq_id(65427);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-03-21 19:13:44 +0530 (Mon, 21 Mar 2016)");
   script_name("IBM Domino Denial of Service Vulnerability - Mar16");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help of
   detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to an unspecified
+  script_tag(name:"insight", value:"The flaw exists due to an unspecified
   error in IMAP server.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker

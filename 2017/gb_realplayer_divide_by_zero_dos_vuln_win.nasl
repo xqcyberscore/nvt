@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_divide_by_zero_dos_vuln_win.nasl 6766 2017-07-20 06:44:05Z cfischer $
+# $Id: gb_realplayer_divide_by_zero_dos_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # RealNetworks RealPlayer 'Divide-By-Zero' Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:realnetworks:realplayer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811079");
-  script_version("$Revision: 6766 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2017-9302");
   script_bugtraq_id(98754);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 08:44:05 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-06-05 17:09:15 +0530 (Mon, 05 Jun 2017)");
   script_name("RealNetworks RealPlayer 'Divide-By-Zero' Denial of Service Vulnerability (Windows)");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name : "vuldetect" , value : "Get the installed version with the
   help of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name : "insight" , value : "The flaw exist due to an improper handling
+  script_tag(name : "insight" , value : "The flaw exists due to an improper handling
   of a crafted mp4 file.");
 
   script_tag(name : "impact" , value : "Successful exploitation will allow remote

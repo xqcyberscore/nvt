@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seagate_blackarmor_nas_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
+# $Id: gb_seagate_blackarmor_nas_detect.nasl 7161 2017-09-18 07:43:57Z cfischer $
 #
 # Seagate Blackarmor NAS Detection
 #
@@ -28,10 +28,10 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103753");
- script_version ("$Revision: 5815 $");
+ script_version ("$Revision: 7161 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:43:57 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"creation_date", value:"2013-08-08 17:20:17 +0200 (Thu, 08 Aug 2013)");
  script_name("Seagate Blackarmor NAS Detection");
@@ -67,7 +67,7 @@ if("<title>Seagate NAS" >!< buf || "p_user" >!< buf)exit(0);
 set_kb_item(name:"seagate_nas/installed",value:TRUE);
 cpe = 'cpe:/h:seagate:blackarmor_nas';
 
-register_product(cpe:cpe, location:'/', nvt:SCRIPT_OID, port:port);
+register_product(cpe:cpe, location:'/', port:port);
 
 log_message(data:'The remote host is a Seagate NAS.\nCPE: ' + cpe, port:port);
 exit(0);

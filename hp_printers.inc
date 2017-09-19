@@ -1,11 +1,12 @@
 ###############################################################################
-# $Id: hp_printers.inc 4108 2016-09-19 10:34:25Z cfi $
+# OpenVAS Include File
+# $Id: hp_printers.inc 7158 2017-09-18 06:38:57Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2013 Greenbone Networks GmbH
+# Copyright (C) 2013 Greenbone Networks GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -21,12 +22,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 4108 $
+# $Revision: 7158 $
 #
 ###############################################################################
 
+global_var hp_detect_urls;
 hp_detect_urls = make_array();
-
 hp_detect_urls['/info_deviceStatus.html']              = '<title>HP (LaserJet [^ ]+) Series'; # HP LaserJet P2015 a.o.
 hp_detect_urls['/hp/device/']                          = '<title> HP Color i(LaserJet [^\n ]+)'; # HP Color LaserJet 2840 a.o.
 hp_detect_urls['/info_deviceStatus.html?tab=Status']   = '<title>HP Color (LaserJet [^& ]+)'; # HP Color LaserJet CP2025n a.o.
@@ -37,24 +38,25 @@ hp_detect_urls['/index.htm?cat=info&page=printerInfo'] =  string("((Officejet Pr
 # Detection string from dont_print_on_printers.nasl. TDB: Include here?
 # if( "<title>Hewlett Packard</title>" >< banner || egrep( pattern:"<title>.*LaserJet.*</title>", string:banner, icase:TRUE ) || "HP Officejet" >< banner || "server: hp-chai" >< tolower( banner ) || ( "Server: Virata-EmWeb/" >< banner && ( "HP" >< banner || "printer" >< banner ) ) ) {
 
-function check_hp_default_login(model) {
+function check_hp_default_login( model, port ) {
 
-  HP = hp_login_details(model:model);
-  if(!HP)return FALSE;
+  local_var model, port, HP, host, req, buf;
 
-  if(HP['no_default_auth']) {
-    if(HP['req_type'] == "GET") {
-      if(HP['req_auth'] == "BASIC") {
+  HP = hp_login_details( model:model );
+  if( ! HP ) return FALSE;
 
-        req = string("GET ", HP['login_url']," HTTP/1.1\r\n",
-                     "Host: ", get_host_name(),"\r\n");
+  if( HP['no_default_auth'] ) {
+    if( HP['req_type'] == "GET" ) {
+      if( HP['req_auth'] == "BASIC" ) {
 
-        buf = http_send_recv(port:port, data:req + '\r\n', bodyonly:FALSE);
-        hp_error_exit(buf:buf);
+        host = http_host_name( port:port );
+        req = string( "GET ", HP['login_url']," HTTP/1.1\r\n",
+                      "Host: ", host, "\r\n" );
+        buf = http_send_recv( port:port, data:req + '\r\n', bodyonly:FALSE );
+        hp_error_exit( buf:buf );
 
-        if(HP['http_status'] >< buf) {
-
-          if(eregmatch(pattern:HP['login_success'], string:buf)) {
+        if( HP['http_status'] >< buf ) {
+          if( eregmatch( pattern:HP['login_success'], string:buf ) ) {
             return 2;
           }
         }
@@ -63,9 +65,9 @@ function check_hp_default_login(model) {
   }
 }
 
-function hp_login_details(model) {
+function hp_login_details( model ) {
 
-  global_var cookie;
+  local_var model, hp_printer;
 
   hp_printer = make_array();
 
@@ -96,7 +98,6 @@ function hp_login_details(model) {
     hp_printer['login_success'] = 'label for="IPAddr1">';
 
     return hp_printer;
-
   }
 
   else if(model == "LaserJet 2840") {
@@ -110,7 +111,6 @@ function hp_login_details(model) {
     hp_printer['login_success'] = 'This table contains the Network IP heading';
 
     return hp_printer;
-
   }
 
   else if(model == "LaserJet 5100"   ||
@@ -143,7 +143,6 @@ function hp_login_details(model) {
     hp_printer['login_success'] = 'This table displays the TCP/IP configuration items';
 
     return hp_printer;
-
   }
 
   else if(model == "LaserJet 4250"    ||
@@ -166,7 +165,6 @@ function hp_login_details(model) {
     hp_printer['login_success'] = 'This table displays the TCP/IP configuration items';
 
     return hp_printer;
-
   }
 
   else if(model == "psc 2500") {
@@ -180,7 +178,6 @@ function hp_login_details(model) {
     hp_printer['login_success'] = 'This table is used to display the network protocol links/tabs';
 
     return hp_printer;
-
   }
 
   else if(model == "Officejet Pro K5400"  ||
@@ -198,7 +195,6 @@ function hp_login_details(model) {
     hp_printer['login_success'] = 'id="alt_dnsserver1"';
 
     return hp_printer;
-
   }
 
   else if(model == "Officejet 4500") {
@@ -212,7 +208,6 @@ function hp_login_details(model) {
     hp_printer['login_success'] = 'id="alt_dnsserver1"';
 
     return hp_printer;
-
   }
 
   else if(model == "Officejet Pro 8600") {
@@ -226,15 +221,13 @@ function hp_login_details(model) {
     hp_printer['login_success'] = '<?hp te.includeSubPage';
 
     return hp_printer;
-
   }
-
 }
 
-function hp_error_exit(buf) {
+function hp_error_exit( buf ) {
 
-  if(!buf || ereg(pattern:"HTTP/1.(0|1) (404|401|500)", string: buf))exit(0);
+  local_var buf;
 
+  if( ! buf || ereg( pattern:"HTTP/1.(0|1) (404|401|500)", string:buf ) ) exit( 0 );
   return TRUE;
-
 }

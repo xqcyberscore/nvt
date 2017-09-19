@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-048.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms10-048.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Windows Kernel Mode Drivers Privilege Elevation Vulnerabilities (2160329)
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_id(902094);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 7174 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-08-11 15:08:29 +0200 (Wed, 11 Aug 2010)");
   script_cve_id("CVE-2010-1887", "CVE-2010-1894", "CVE-2010-1895",
                 "CVE-2010-1896", "CVE-2010-1897");
@@ -56,7 +56,7 @@ if(description)
   Microsoft Windows 2K3 Service Pack 2 and prior.
   Microsoft Windows Vista Service Pack 1/2 and prior.
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
-  script_tag(name : "insight" , value : "The flaws exists in the kernel-mode device driver due to:
+  script_tag(name : "insight" , value : "The flaws exist in the kernel-mode device driver due to:
   - Improper validation of an argument passed to a system call.
   - An error in handling certain exceptions.
   - Improper allocation of memory when making a copy from user mode.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_attendee_ms15-128.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_lync_attendee_ms15-128.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Lync Attendee Remote Code Execution Vulnerabilities (3104503)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806182");
-  script_version("$Revision: 6415 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2015-6106", "CVE-2015-6107", "CVE-2015-6108");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-12-09 16:39:14 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft Lync Attendee Remote Code Execution Vulnerabilities (3104503)");
 
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaws exists due to improper handling
+  script_tag(name:"insight", value:"The flaws exist due to improper handling
   of JavaScript content.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a

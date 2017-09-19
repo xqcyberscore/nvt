@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_arbitrary_code_exec_vuln_june16.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_apache_struts_arbitrary_code_exec_vuln_june16.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Apache Struts Arbitrary Code Execution Vulnerability June16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808080");
-  script_version("$Revision: 5527 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-3082");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-06-09 16:55:12 +0530 (Thu, 09 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Struts Arbitrary Code Execution Vulnerability June16");
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help of
   detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist as XSLTResult allows for the
+  script_tag(name:"insight", value:"The flaw exists as XSLTResult allows for the
   location of a stylesheet being passed as a request parameter.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

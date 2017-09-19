@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_json_user_enum_vuln.nasl 5898 2017-04-07 16:25:26Z mime $
+# $Id: gb_wordpress_json_user_enum_vuln.nasl 7160 2017-09-18 07:39:22Z cfischer $
 #
 # WordPress 'json' User Enumeration Vulnerability
 #
@@ -31,12 +31,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809892");
-  script_version("$Revision: 5898 $");
+  script_version("$Revision: 7160 $");
   script_cve_id("CVE-2017-5487");
   script_bugtraq_id(95391);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 18:25:26 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:39:22 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-03-03 17:16:53 +0530 (Fri, 03 Mar 2017)");
   script_name("WordPress 'json' User Enumeration Vulnerability");
  
@@ -84,8 +84,8 @@ if(description)
 exit(66);
 
 include("host_details.inc");
-include("http_keepalive.inc");
 include("http_func.inc");
+include("http_keepalive.inc");
 
 ## Get Port
 

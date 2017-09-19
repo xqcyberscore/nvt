@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_csrf_n_dire_trav_vuln_win.nasl 5813 2017-03-31 09:01:08Z teissa $
+# $Id: gb_wordpress_csrf_n_dire_trav_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # WordPress Core Ajax handlers CSRF and Directory Traversal Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809156");
-  script_version("$Revision: 5813 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-6896", "CVE-2016-6897", "CVE-2016-10148");
   script_bugtraq_id(92573, 92572);
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-08-26 14:01:02 +0530 (Fri, 26 Aug 2016)");
   script_name("WordPress Core Ajax handlers CSRF and Directory Traversal Vulnerabilities (Windows)");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to improper capability
+  script_tag(name:"insight", value:"The flaw exists due to improper capability
   check in 'wp_ajax_update_plugin' and 'wp_ajax_delete_plugin' functions
   which are used in 'ajax-actions.php' script.");
 

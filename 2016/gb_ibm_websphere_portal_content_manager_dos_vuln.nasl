@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_portal_content_manager_dos_vuln.nasl 4846 2016-12-23 08:09:40Z antu123 $
+# $Id: gb_ibm_websphere_portal_content_manager_dos_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # IBM WebSphere Portal Content Manager Denial Of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:ibm:websphere_portal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810315");
-  script_version("$Revision: 4846 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-5954");
   script_bugtraq_id(93017);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-23 09:09:40 +0100 (Fri, 23 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-12-20 15:28:21 +0530 (Tue, 20 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM WebSphere Portal Content Manager Denial Of Service Vulnerability");
@@ -45,7 +45,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight", value:"The flaw exist due to an error in content
+  script_tag(name: "insight", value:"The flaw exists due to an error in content
   manager which allow uploading temporary files to application without proper
   validation.");
 

@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-016.nasl 5752 2017-03-29 04:01:01Z teissa $
+# $Id: gb_ms17-016.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Windows IIS Privilege Escalation Vulnerability (4013074)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810815");
-  script_version("$Revision: 5752 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2017-0055");
   script_bugtraq_id(96622);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 12:27:08 +0530 (Wed, 15 Mar 2017)");
   script_name("Microsoft Windows IIS Privilege Escalation Vulnerability (4013074)");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to Microsoft IIS Server
+  script_tag(name:"insight", value:"The flaw exists due to Microsoft IIS Server
   fails to properly sanitize a specially crafted request.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an

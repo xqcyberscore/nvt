@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_svn_entries_http.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_svn_entries_http.nasl 7165 2017-09-18 08:57:44Z cfischer $
 #
 # Apache Subversion Module Metadata Accessible
 #
@@ -30,9 +30,9 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105099");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 7165 $");
   script_name("Apache Subversion Module Metadata Accessible");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-10-28 14:27:24 +0100 (Tue, 28 Oct 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -62,7 +62,7 @@ port = get_http_port( default:80 );
 
 report = 'It was possible to retrieve the contents of ".svn/entries" using the following URLs : \n\n';
 x = 0;
-VULN = false;
+VULN = FALSE;
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 

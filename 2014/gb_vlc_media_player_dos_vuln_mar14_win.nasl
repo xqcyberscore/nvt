@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_dos_vuln_mar14_win.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_vlc_media_player_dos_vuln_mar14_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # VLC Media Player Denial of Service Vulnerability Mar14 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6715 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2013-7340");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-03-25 13:19:16 +0530 (Tue, 25 Mar 2014)");
   script_name("VLC Media Player Denial of Service Vulnerability Mar14 (Windows)");
 
@@ -46,7 +46,7 @@ service vulnerability.";
 is vulnerable or not.";
 
   tag_insight =
-"The flaw exist due to some unspecified error.";
+"The flaw exists due to some unspecified error.";
 
   tag_impact =
 "Successful exploitation will allow attackers to cause a denial of service

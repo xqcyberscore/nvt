@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_silverlight_multiple_memory_leak_vuln.nasl 6532 2017-07-05 07:42:05Z cfischer $
+# $Id: gb_ms_silverlight_multiple_memory_leak_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Silverlight Multiple Memory Leak Vulnerabilities
 #
@@ -27,7 +27,7 @@
 tag_impact = "Successful exploitation will allow attacker to cause denial of service.
   Impact Level: Application";
 tag_affected = "Microsoft Silverlight version 4 before 4.0.60310.0";
-tag_insight = "The flaws exists due to:
+tag_insight = "The flaws exist due to:
   - An error in handling of 'popup' control and a custom 'DependencyProperty'
     property.
   - An error in the 'DataGrid' control implementation, which allows remote
@@ -42,8 +42,8 @@ tag_summary = "This host is installed with Microsoft Silverlight and is prone to
 if(description)
 {
   script_id(801935);
-  script_version("$Revision: 6532 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 7174 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_cve_id("CVE-2011-1844", "CVE-2011-1845");
   script_tag(name:"cvss_base", value:"7.8");

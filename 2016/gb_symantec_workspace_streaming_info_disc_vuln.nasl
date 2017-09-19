@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_workspace_streaming_info_disc_vuln.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_symantec_workspace_streaming_info_disc_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Symantec Workspace Streaming Information Disclosure Vulnerability
 # 
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:workspace_streaming";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808586");
-  script_version("$Revision: 5568 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2014-1649");
   script_bugtraq_id(67189);
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-07-18 17:09:19 +0530 (Mon, 18 Jul 2016)");
   script_name("Symantec Workspace Streaming Information Disclosure Vulnerability");
 
@@ -45,7 +45,7 @@ if(description)
   script_tag(name: "vuldetect" , value: "Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value: "The flaw exist due to symantec workspace
+  script_tag(name: "insight" , value: "The flaw exists due to symantec workspace
   streaming server does not properly handle incoming HTTPS XMLRPC requests.");
 
   script_tag(name: "impact" , value: "Successful exploitation allows remote

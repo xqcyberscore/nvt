@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_kernel_memory_leak_vuln_win.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_openafs_kernel_memory_leak_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # OpenAFS Kernel Memory Leak Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE= "cpe:/a:openafs:openafs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808078");
-  script_version("$Revision: 5598 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2015-3284");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 19:45:07 +0530 (Wed, 08 Jun 2016)");
   script_name("OpenAFS Kernel Memory Leak Vulnerability (Windows)");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value: "Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value: "The flaw exist due to improper handling
+  script_tag(name: "insight" , value: "The flaw exists due to improper handling
   of kernel's pioctl calls .");
 
   script_tag(name: "impact" , value: "Successful exploitation will allows local

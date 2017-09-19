@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_dos_vuln_jun14_macosx.nasl 6995 2017-08-23 11:52:03Z teissa $
+# $Id: gb_vlc_media_player_dos_vuln_jun14_macosx.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # VLC Media Player Denial of Service Vulnerability -01 June14 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804614");
-  script_version("$Revision: 6995 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2014-3441");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-06-04 11:10:43 +0530 (Wed, 04 Jun 2014)");
   script_name("VLC Media Player Denial of Service Vulnerability -01 June14 (Mac OS X)");
 
@@ -46,7 +46,7 @@ service vulnerability.";
 is vulnerable or not.";
 
   tag_insight =
-"The flaw exist as user-supplied input is not properly sanitized when handling
+"The flaw exists as user-supplied input is not properly sanitized when handling
 a specially crafted WAV file.";
 
   tag_impact =

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln04_jan16_macosx.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_wireshark_dos_vuln04_jan16_macosx.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Wireshark Denial-of-Service Vulnerability January16 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806950");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2015-3182");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-01-11 11:59:19 +0530 (Mon, 11 Jan 2016)");
   script_name("Wireshark Denial-of-Service Vulnerability January16 (Mac OS X)");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value: "Get the installed version with the
   help of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value: "The flaw exist due to
+  script_tag(name: "insight" , value: "The flaw exists due to
   - 'epan/dissectors/packet-dec-dnart.c' script in the
   DECnet NSP/RT dissector mishandles a certain strdup return value.");
 

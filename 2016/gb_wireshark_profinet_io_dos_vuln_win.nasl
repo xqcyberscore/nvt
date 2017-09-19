@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_profinet_io_dos_vuln_win.nasl 4573 2016-11-18 13:29:14Z antu123 $
+# $Id: gb_wireshark_profinet_io_dos_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Wireshark 'Profinet I/O dissector' Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809811");
-  script_version("$Revision: 4573 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-9372");
   script_bugtraq_id(94368);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:29:14 +0100 (Fri, 18 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-11-18 12:50:21 +0530 (Fri, 18 Nov 2016)");
   script_name("Wireshark 'Profinet I/O dissector' Denial of Service Vulnerability (Windows)");
   
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the
   help of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to the Profinet I/O dissector
+  script_tag(name:"insight", value:"The flaw exists due to the Profinet I/O dissector
   could loop excessively, triggered by network traffic or a capture file.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

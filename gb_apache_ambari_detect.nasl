@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_detect.nasl 6135 2017-05-16 11:33:09Z cfi $
+# $Id: gb_apache_ambari_detect.nasl 7166 2017-09-18 09:14:09Z cfischer $
 #
 # Apache Ambari Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808648");
-  script_version("$Revision: 6135 $");
+  script_version("$Revision: 7166 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 13:33:09 +0200 (Tue, 16 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-08-09 18:35:29 +0530 (Tue, 09 Aug 2016)");
   script_name("Apache Ambari Detection");
   script_category(ACT_GATHER_INFO);
@@ -67,7 +67,7 @@ if( rcvRes =~ "HTTP/1\.[0-1] 200" && "Ambari" >< rcvRes && rcvRes =~ "Licensed u
 
   version = "unknown";
   install = "/";
-  conclUrl = report_vuln_url( port:ort, url:url, url_only:TRUE );
+  conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
 
   # Ambari has three digits version codes but the App.version contains something like 2.5.0.3 where .3 doesn't match the actual version (internal version number?)
   vers = eregmatch( pattern:"App.version = '([0-9]\.[0-9]\.[0-9])(\.[0-9.])?';", string:rcvRes );

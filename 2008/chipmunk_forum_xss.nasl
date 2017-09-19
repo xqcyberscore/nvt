@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: chipmunk_forum_xss.nasl 3854 2016-08-18 13:15:25Z teissa $
+# $Id: chipmunk_forum_xss.nasl 7176 2017-09-18 12:01:01Z cfischer $
 # Description: Chipmunk Forum <= 1.3 Cross-Site Scripting Vulnerability
 #
 # Authors:
@@ -25,8 +25,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.200004");
-  script_version("$Revision: 3854 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-18 15:15:25 +0200 (Thu, 18 Aug 2016) $");
+  script_version("$Revision: 7176 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
 
   script_tag(name:"cvss_base", value:"4.3");
@@ -56,7 +56,6 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("url_func.inc");
 
 port = get_http_port(default:80);

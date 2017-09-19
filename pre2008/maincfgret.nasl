@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: maincfgret.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: maincfgret.nasl 7175 2017-09-18 11:55:15Z cfischer $
 # Description: Whatsup Gold vulnerable CGI
 #
 # Authors:
@@ -36,26 +36,17 @@ tag_solution = "upgrade to Whatsup Gold 8.03 HF 1 if needed";
 if(description)
 {
  script_id(15564);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 7175 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id ( 11043 );
  script_cve_id("CVE-2004-0798");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- 
  name = "Whatsup Gold vulnerable CGI";
  script_name(name);
- 
-
-
- summary = "Checks for the presence of /_maincfgret.cgi";
- 
- 
  script_category(ACT_GATHER_INFO);
- 
- 
  script_copyright("This script is Copyright (C) 2004 Michel Arboi");
  family = "Web application abuses";
  script_family(family);
@@ -66,10 +57,8 @@ if(description)
  exit(0);
 }
 
-#
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
 

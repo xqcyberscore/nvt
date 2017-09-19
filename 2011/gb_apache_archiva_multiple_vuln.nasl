@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_archiva_multiple_vuln.nasl 6195 2017-05-23 10:02:52Z ckuerste $
+# $Id: gb_apache_archiva_multiple_vuln.nasl 7170 2017-09-18 10:35:33Z cfischer $
 #
 # Apache Archiva Multiple Vulnerabilities
 #
@@ -24,13 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ################################################################################
 
-cpe = "cpe:/a:apache:archiva";
+CPE = "cpe:/a:apache:archiva";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801942");
-  script_version("$Revision: 6195 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 12:02:52 +0200 (Tue, 23 May 2017) $");
+  script_version("$Revision: 7170 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 12:35:33 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

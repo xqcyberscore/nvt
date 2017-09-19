@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_unspecified_vuln05_oct14.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_java_unspecified_vuln05_oct14.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Oracle Java SE JRE Unspecified Vulnerability-05 Oct 2014 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804866");
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2014-6504");
   script_bugtraq_id(70564);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-10-20 14:00:18 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Oracle Java SE JRE Unspecified Vulnerability-05 Oct 2014 (Windows)");
@@ -45,7 +45,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version of Oracle Java
   SE JRE with the help of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to an error related to C2
+  script_tag(name: "insight" , value:"The flaw exists due to an error related to C2
   optimizations and range checks in the Hotspot subcomponent.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow attackers

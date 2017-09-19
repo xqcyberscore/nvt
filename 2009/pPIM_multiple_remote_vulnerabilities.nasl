@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: pPIM_multiple_remote_vulnerabilities.nasl 5771 2017-03-29 15:14:22Z cfi $
+# $Id: pPIM_multiple_remote_vulnerabilities.nasl 7170 2017-09-18 10:35:33Z cfischer $
 #
 # pPIM Multiple Remote Vulnerabilities
 #
@@ -48,8 +48,8 @@ tag_solution = "Uninstall pPIM.";
 if (description)
 {
  script_id(100005);
- script_version("$Revision: 5771 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 17:14:22 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7170 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 12:35:33 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2009-03-02 16:07:07 +0100 (Mon, 02 Mar 2009)");
  script_tag(name:"cvss_base", value:"8.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:C/A:C");
@@ -97,7 +97,7 @@ foreach dir( make_list_unique( "/ppim", cgi_dirs( port:port ) ) ) {
 
     if( egrep(pattern: "Location:.login\.php\?login=1", string: buf) ) {
 
-      url = string(d, "/upload.php?login=1");
+      url = string(dir, "/upload.php?login=1");
       req = http_get(item:url, port:port);
       buf = http_keepalive_send_recv(port:port, data:req, bodyonly:0);
       if( buf == NULL )continue;

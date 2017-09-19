@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: arcserve_backup_detect.nasl 4919 2017-01-02 15:22:45Z cfi $
+# $Id: arcserve_backup_detect.nasl 7159 2017-09-18 07:27:42Z cfischer $
 #
 # CA ARCServe Backup Detect
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102017");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4919 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 16:22:45 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 7159 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:27:42 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-04-02 10:10:27 +0200 (Fri, 02 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("CA ARCServe Backup Detect");
@@ -47,6 +47,8 @@ if(description)
 
   exit(0);
 }
+
+include("global_settings.inc"); # For report_verbosity
 
 port = 1900;
 if( ! get_port_state( port ) ) exit( 0 );

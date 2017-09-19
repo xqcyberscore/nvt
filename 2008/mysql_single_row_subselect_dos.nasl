@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mysql_single_row_subselect_dos.nasl 4489 2016-11-14 08:23:54Z teissa $
+# $Id: mysql_single_row_subselect_dos.nasl 7176 2017-09-18 12:01:01Z cfischer $
 # Description: MySQL Single Row Subselect Remote DoS
 #
 # Authors:
@@ -40,8 +40,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 4489 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
+ script_version("$Revision: 7176 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"2.1");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
@@ -77,7 +77,6 @@ if(description)
 # here the code
 #
 
-include("global_settings.inc");
 include("misc_func.inc");
 include("host_details.inc");
 

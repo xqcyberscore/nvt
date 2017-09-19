@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-139.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_ms16-139.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Windows Kernel Elevation of Privilege Vulnerability (3199720)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809467");
-  script_version("$Revision: 5568 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-7216");
   script_bugtraq_id(94048);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-11-09 10:39:43 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Kernel Elevation of Privilege Vulnerability (3199720)");
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist in the way that the Windows
+  script_tag(name: "insight" , value:"The flaw exists in the way that the Windows
   Kernel API enforces permissions.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker

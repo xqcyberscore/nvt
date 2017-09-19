@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_dos_vuln02_win.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_openafs_dos_vuln02_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # OpenAFS Denial of Service Vulnerability-02 (Windows)
 #
@@ -29,12 +29,12 @@ CPE= "cpe:/a:openafs:openafs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808079");
-  script_version("$Revision: 5580 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2014-4044");
   script_bugtraq_id(68003);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-06-09 11:27:44 +0530 (Thu, 09 Jun 2016)");
   script_name("OpenAFS Denial of Service Vulnerability-02 (Windows)");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name: "vuldetect" , value: "Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value: "The flaw exist as the code does not
+  script_tag(name: "insight" , value: "The flaw exists as the code does not
   properly zero fields in the host structure in the OpenAFS fileserver.");
 
   script_tag(name: "impact" , value: "Successful exploitation will allow remote

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_storage_resource_monitor_detect.nasl 4886 2016-12-30 12:19:10Z antu123 $
+# $Id: gb_solarwinds_storage_resource_monitor_detect.nasl 7166 2017-09-18 09:14:09Z cfischer $
 #
 # SolarWinds Storage Resource Monitor Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809426");
-  script_version("$Revision: 4886 $");
+  script_version("$Revision: 7166 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 13:19:10 +0100 (Fri, 30 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-10-03 15:20:26 +0530 (Mon, 03 Oct 2016)");
   script_name("SolarWinds Storage Resource Monitor Remote Version Detection");
   script_tag(name : "summary" , value : "Detection of installed version of
@@ -104,7 +104,7 @@ if(buf =~ "HTTP/1\.. 200" && "SolarWinds - Storage Manager" ><  buf)
   }
 
   ## Set the KB
-  set_kb_item(name:"www/" + Storage_Manager + "/", value:version);
+  set_kb_item(name:"www/" + port + "/Storage_Manager", value:version);
   set_kb_item(name:"storage_manager/Installed", value:TRUE);
 
   ## build cpe and store it as host_detail

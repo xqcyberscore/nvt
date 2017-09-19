@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brickcom_network_cameras_mult_vuln.nasl 6700 2017-07-12 12:16:21Z cfischer $
+# $Id: gb_brickcom_network_cameras_mult_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Brickcom Network Cameras Multiple Vulnerabilities
 #
@@ -28,10 +28,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808159");
-  script_version("$Revision: 6700 $");
+  script_version("$Revision: 7174 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-06-10 17:32:08 +0530 (Fri, 10 Jun 2016)");
   script_name("Brickcom Network Cameras Multiple Vulnerabilities");
 
@@ -41,7 +41,7 @@ if (description)
   script_tag(name:"vuldetect", value:"Send a crafted HTTP POST request and check
   whether it is able to login or not.");
 
-  script_tag(name:"insight", value:"The flaws exists due to,
+  script_tag(name:"insight", value:"The flaws exist due to,
   - 'syslog.dump', 'configfile.dump' files are accessible without 
     authenication.
   - Credentials and other sensitive information are stored in plain text.

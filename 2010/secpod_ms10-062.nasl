@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-062.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms10-062.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # MPEG-4 Codec Remote Code Execution Vulnerability (975558)
 #
@@ -26,8 +26,8 @@
 if(description)
 {
   script_id(900250);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 7174 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-09-15 17:01:07 +0200 (Wed, 15 Sep 2010)");
   script_bugtraq_id(43039);
   script_cve_id("CVE-2010-0818");
@@ -47,7 +47,7 @@ if(description)
   script_tag(name : "impact" , value : "Successful exploitation could allow attackers to execute arbitrary code
   with elevated privileges on vulnerable systems.
   Impact Level: System");
-  script_tag(name : "insight" , value : "The flaws exists in MPEG-4 codec included with Windows Media codecs, which
+  script_tag(name : "insight" , value : "The flaws exist in MPEG-4 codec included with Windows Media codecs, which
   does not properly handle specially crafted media files that use MPEG-4 video
   encoding.");
   script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and

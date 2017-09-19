@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ospf_detect.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: ospf_detect.nasl 7175 2017-09-18 11:55:15Z cfischer $
 #
 # OSPF detection
 #
@@ -40,8 +40,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11906");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 7175 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OSPF detection");
@@ -69,8 +69,6 @@ if(description)
 }
 
 ##include("dump.inc");
-
-include('global_settings.inc');
 
 if ( islocalhost() ) exit(0);
 if ( ! islocalnet() ) exit(0);

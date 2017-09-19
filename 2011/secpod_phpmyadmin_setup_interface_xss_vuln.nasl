@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_phpmyadmin_setup_interface_xss_vuln.nasl 5840 2017-04-03 12:02:24Z cfi $
+# $Id: secpod_phpmyadmin_setup_interface_xss_vuln.nasl 7161 2017-09-18 07:43:57Z cfischer $
 #
 # phpMyAdmin Setup Interface Cross Site Scripting Vulnerability
 #
@@ -43,12 +43,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902585");
-  script_version("$Revision: 5840 $");
+  script_version("$Revision: 7161 $");
   script_cve_id("CVE-2011-4064");
   script_bugtraq_id(50175);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:43:57 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-11-22 17:17:17 +0530 (Tue, 22 Nov 2011)");
   script_name("phpMyAdmin Setup Interface Cross Site Scripting Vulnerability");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -76,7 +76,7 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 host = http_host_name( port:port );
 

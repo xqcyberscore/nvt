@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-060_900050.nasl 5344 2017-02-18 17:43:17Z cfi $
+# $Id: secpod_ms08-060_900050.nasl 7173 2017-09-18 11:29:22Z cfischer $
 # Description: Active Directory Could Allow Remote Code Execution Vulnerability (957280)
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(900050);
-  script_version("$Revision: 5344 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:43:17 +0100 (Sat, 18 Feb 2017) $");
+  script_version("$Revision: 7173 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:29:22 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-10-15 19:56:48 +0200 (Wed, 15 Oct 2008)");
   script_bugtraq_id(31609);
   script_cve_id("CVE-2008-4023");
@@ -103,5 +103,5 @@ if(!ntdsVer){
 # Grep Snarpcsv.exe version < 5.0.2195.7178
 if(ereg(pattern:"^5\.0\.2195\.([0-6]?[0-9]?[0-9]?[0-9]|70[0-9][0-9]|" +
                 "71([0-6][0-9]|7[0-7]))$", string:ntdsVer)){
-   security_message(ldapPort);
+   security_message(port:0);
 }

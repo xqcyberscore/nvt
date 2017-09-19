@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_typo3_detect.nasl 7166 2017-09-18 09:14:09Z cfischer $
 #
 # TYPO3 Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803979");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 7166 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2013-12-16 18:17:29 +0530 (Mon, 16 Dec 2013)");
   script_name("TYPO3 Detection");
   script_category(ACT_GATHER_INFO);
@@ -64,10 +64,10 @@ include("http_keepalive.inc");
 include("gvr_apps_auth_func.inc");
 
 port = get_http_port( default:80 );
-
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-##Iterate possible paths
+rootInstalled = FALSE;
+
 foreach dir ( make_list_unique( "/", "/cms", "/typo", "/typo3", cgi_dirs( port:port ) ) ) {
 
   if( rootInstalled ) break;

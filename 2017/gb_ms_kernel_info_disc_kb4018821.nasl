@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kernel_info_disc_kb4018821.nasl 6231 2017-05-29 09:29:50Z teissa $
+# $Id: gb_ms_kernel_info_disc_kb4018821.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Windows Kernel Information Disclosure Vulnerability (KB4018821)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811119");
-  script_version("$Revision: 6231 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2017-0220"); 
   script_bugtraq_id(98111);
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:29:50 +0200 (Mon, 29 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-05-10 12:57:18 +0530 (Wed, 10 May 2017)");
   script_name("Microsoft Windows Kernel Information Disclosure Vulnerability (KB4018821)");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist as the windows kernel
+  script_tag(name: "insight" , value:"The flaw exists as the windows kernel
   improperly handles objects in memory.");
 
   script_tag(name:"impact", value:"An attacker who successfully exploited the

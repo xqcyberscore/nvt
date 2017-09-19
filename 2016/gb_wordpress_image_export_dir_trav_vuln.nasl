@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_image_export_dir_trav_vuln.nasl 5831 2017-04-03 07:39:50Z teissa $
+# $Id: gb_wordpress_image_export_dir_trav_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Wordpress Image Export Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807625");
-  script_version("$Revision: 5831 $");
+  script_version("$Revision: 7174 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:39:50 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:31 +0530 (Fri, 01 Apr 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress Image Export Directory Traversal Vulnerability");
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
   and check whether it is able to read arbitrary files or not");
 
-  script_tag(name:"insight", value:"The flaw exist due to an improper sanitization
+  script_tag(name:"insight", value:"The flaw exists due to an improper sanitization
   of input to 'file' parameter in 'download.php' file.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers

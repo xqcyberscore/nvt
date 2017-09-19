@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_preauth_ssrf_vuln.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_vbulletin_preauth_ssrf_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # vBulletin Preauth Server Side Request Forgery (SSRF) Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809158");
-  script_version("$Revision: 5534 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-6483");
   script_bugtraq_id(92350);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-08-29 14:43:57 +0530 (Mon, 29 Aug 2016)");
   script_name("vBulletin Preauth Server Side Request Forgery (SSRF) Vulnerability");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to a codebase accepts HTTP
+  script_tag(name:"insight", value:"The flaw exists due to a codebase accepts HTTP
   redirects from the target server specified in a user-provided link.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow

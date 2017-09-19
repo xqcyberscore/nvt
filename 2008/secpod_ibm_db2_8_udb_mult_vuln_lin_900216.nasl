@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_db2_8_udb_mult_vuln_lin_900216.nasl 6602 2017-07-07 10:09:52Z cfischer $
+# $Id: secpod_ibm_db2_8_udb_mult_vuln_lin_900216.nasl 7174 2017-09-18 11:48:08Z asteins $
 # Description: IBM DB2 Universal Database Multiple Vulnerabilities - Sept08 (Linux)
 #
 # Authors:
@@ -36,7 +36,7 @@ tag_solution = "Update to Fixpak 17 or later.
 
 tag_affected = "IBM DB2 version 8 prior to Fixpak 17 on Linux (All).";
 
-tag_insight = "The flaws exists due to unspecified errors in processing of
+tag_insight = "The flaws exist due to unspecified errors in processing of
         - CONNECT/ATTACH requests, 
         - DB2FMP process and DB2JDS service.";
 
@@ -49,8 +49,8 @@ tag_summary = "The host is running DB2 Database Server, which is prone to multip
 if(description)
 {
  script_id(900216);
- script_version("$Revision: 6602 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:09:52 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 7174 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
  script_bugtraq_id(31058);
  script_cve_id("CVE-2008-2154", "CVE-2008-3958", "CVE-2008-3960");

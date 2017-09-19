@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: icmp_domain_name.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: icmp_domain_name.nasl 7176 2017-09-18 12:01:01Z cfischer $
 # Description: ICMP domain name request
 #
 # Authors:
@@ -43,8 +43,8 @@ if(description)
 {
  script_id(80066);;
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5309 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 7176 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name( "ICMP domain name request");
@@ -61,9 +61,6 @@ if(description)
  exit(0);
 }
 
-
-
-include('global_settings.inc');
 if ( TARGET_IS_IPV6())  exit(0);
 
 max = 2;

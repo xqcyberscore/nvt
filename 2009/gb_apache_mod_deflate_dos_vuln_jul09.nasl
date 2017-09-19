@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_deflate_dos_vuln_jul09.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_apache_mod_deflate_dos_vuln_jul09.nasl 7176 2017-09-18 12:01:01Z cfischer $
 #
 # Apache 'mod_deflate' Denial Of Service Vulnerability - July09
 #
@@ -43,8 +43,8 @@ tag_summary = "This host is running Apache HTTP Server and is prone to Denial of
 if(description)
 {
   script_id(800837);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 7176 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-07-15 13:05:34 +0200 (Wed, 15 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -74,7 +74,6 @@ if(description)
 
 include("http_func.inc");
 include("version_func.inc");
-include("global_settings.inc");
 
 httpdPort = get_http_port(default:80);
 if(!httpdPort){

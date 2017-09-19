@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_sep_mult_vuln_jan14.nasl 6463 2017-06-28 12:38:50Z cfischer $
+# $Id: gb_symantec_sep_mult_vuln_jan14.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities Jan-14
 #
@@ -30,13 +30,13 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804199";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6463 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2013-5009", "CVE-2013-5010", "CVE-2013-5011");
   script_bugtraq_id(64128, 64129, 64130);
   script_tag(name:"cvss_base", value:"7.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:C/A:C");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 14:38:50 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-01-27 16:29:04 +0530 (Mon, 27 Jan 2014)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities Jan-14");
 
@@ -49,7 +49,7 @@ multiple vulnerabilities.";
 version is vulnerable or not.";
 
   tag_insight =
-"The flaw exist due to,
+"The flaw exists due to,
  - application not properly verifying the authentication of authorised users.
  - an unspecified error in Application/Device Control (ADC) component.
  - an unquoted search path.";

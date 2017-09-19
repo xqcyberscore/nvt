@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: defaultnavcheck.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: defaultnavcheck.nasl 7165 2017-09-18 08:57:44Z cfischer $
 # Description: DefaultNav checker
 #
 # Authors:
@@ -33,8 +33,8 @@ if(description)
 {
 	script_id(12247);
 	script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6053 $");
-	script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 7165 $");
+	script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
 	script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
     script_tag(name:"cvss_base", value:"0.0");
  	name = "DefaultNav checker";
@@ -53,15 +53,16 @@ if(description)
 	script_dependencies("find_service.nasl");
 	script_require_ports("Services/www", 80);
  script_tag(name : "summary" , value : tag_summary);
+
+script_tag(name:"deprecated", value:TRUE);
+
 	exit(0);
 }
 
-# start script
 include("http_func.inc");
 include("http_keepalive.inc");
 
-
-exit(0); # Broken
+exit(66); # Broken
 
 port = get_http_port(default:80);
 
@@ -94,7 +95,7 @@ for (i=0; dirs[i]; i++)
 
 	if ( res == NULL ) exit(0);
        
-        if(ereg(pattern:"HTTP/1.[01] 200", string:res) && res!=customres)
+        if(ereg(pattern:"HTTP/1.[01] 200", string:res) )
         {
 	    report = report + string("specifically, the request for ", nsfName, dirs[i], "/ is\n");
             report = report + string("capable of remotely compromising the integrity of the\n");

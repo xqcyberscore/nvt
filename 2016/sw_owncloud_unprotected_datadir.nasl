@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_owncloud_unprotected_datadir.nasl 6619 2017-07-08 12:39:02Z cfischer $
+# $Id: sw_owncloud_unprotected_datadir.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # ownCloud/Nextcloud Unprotected Data Directory
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111107");
-  script_version("$Revision: 6619 $");
+  script_version("$Revision: 7174 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-08 14:39:02 +0200 (Sat, 08 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-07-02 13:00:00 +0200 (Sat, 02 Jul 2016)");
   script_name("ownCloud/Nextcloud Unprotected Data Directory");
   script_category(ACT_GATHER_INFO);
@@ -48,7 +48,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Try to access common existing files to
   check if the protection of the data directory is not working.");
 
-  script_tag(name:"insight", value:"The flaw exist due to a missing protection
+  script_tag(name:"insight", value:"The flaw exists due to a missing protection
   of the data directory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an

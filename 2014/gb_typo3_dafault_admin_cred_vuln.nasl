@@ -29,10 +29,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804223");
-  script_version("$Revision: 5843 $");
+  script_version("$Revision: 7165 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:42:51 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-01-10 13:11:49 +0530 (Fri, 10 Jan 2014)");
   script_name("TYPO3 Default Admin Credentials");
 
@@ -123,7 +123,7 @@ function get_typo3_login(cinstall, tport, chost)
 
         if(page)
         {
-          security_message(typoPort);
+          security_message(port:tport);
           exit(0);
         }
       }

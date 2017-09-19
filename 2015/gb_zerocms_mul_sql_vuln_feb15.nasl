@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zerocms_mul_sql_vuln_feb15.nasl 5789 2017-03-30 11:42:46Z cfi $
+# $Id: gb_zerocms_mul_sql_vuln_feb15.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # ZeroCMS Multiple SQL Injection Vulnerabilities - Feb 2015
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805331");
-  script_version("$Revision: 5789 $");
+  script_version("$Revision: 7174 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-02-03 10:44:23 +0530 (Tue, 03 Feb 2015)");
   script_name("ZeroCMS Multiple SQL Injection Vulnerabilities - Feb 2015");
 
@@ -40,7 +40,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
   and check whether it is able execute sql query or not.");
 
-  script_tag(name:"insight", value:"The flaw exist as input passed via
+  script_tag(name:"insight", value:"The flaw exists as input passed via
   - 'article_id' parameter used in 'zero_view_article.php' script is
      not properly sanitised before being used.
   - 'user_id' parameter used in 'zero_user_transact.php' script is

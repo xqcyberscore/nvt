@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mediawiki_xss_vuln.nasl 6284 2017-06-06 11:43:39Z cfischer $
+# $Id: secpod_mediawiki_xss_vuln.nasl 7170 2017-09-18 10:35:33Z cfischer $
 #
 # MediaWiki Cross-Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902380");
-  script_version("$Revision: 6284 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-06 13:43:39 +0200 (Tue, 06 Jun 2017) $");
+  script_version("$Revision: 7170 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 12:35:33 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_cve_id("CVE-2011-1765");
   script_bugtraq_id(47722);
@@ -91,9 +91,9 @@ req = http_get( item:url, port:port );
 res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 if( res !~ "^HTTP/1\.[01] 200" ) exit( 99 );
 
-if( "Invalid file extension found in PATH_INFO or QUERY_STRING." >!< rcvRes &&
-    "<body onload=alert('document.cookie')>.shtml" >< rcvRes &&
-    "Status: 403 Forbidden" >!< rcvRes ) {
+if( "Invalid file extension found in PATH_INFO or QUERY_STRING." >!< res &&
+    "<body onload=alert('document.cookie')>.shtml" >< res &&
+    "Status: 403 Forbidden" >!< res ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, report:report );
   exit( 0 );

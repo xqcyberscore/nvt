@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_drac_default_login.nasl 5842 2017-04-03 13:15:19Z cfi $
+# $Id: gb_dell_drac_default_login.nasl 7161 2017-09-18 07:43:57Z cfischer $
 #
 # Dell Remote Access Controller Default Login
 #
@@ -41,8 +41,8 @@ if (description)
  script_tag(name : "summary" , value : tag_summary);
  
  script_oid("1.3.6.1.4.1.25623.1.0.103681");
- script_version ("$Revision: 5842 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
+ script_version ("$Revision: 7161 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:43:57 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2013-03-18 17:03:03 +0100 (Mon, 18 Mar 2013)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -61,7 +61,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
+if(!port = get_app_port(cpe:CPE))exit(0);
 
 version = get_kb_item("dell_remote_access_controller/version");
 if(!version)exit(0);

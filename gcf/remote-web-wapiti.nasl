@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-web-wapiti.nasl 6841 2017-08-03 11:59:21Z emoss $
+# $Id: remote-web-wapiti.nasl 7159 2017-09-18 07:27:42Z cfischer $
 #
 # Assess web security with wapiti
 #
@@ -36,8 +36,8 @@ if(description)
 {
  script_id(80110);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6841 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-03 13:59:21 +0200 (Thu, 03 Aug 2017) $");
+ script_version("$Revision: 7159 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:27:42 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2010-03-24 21:54:49 +0100 (Wed, 24 Mar 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "wapiti (NASL wrapper)";
@@ -62,6 +62,7 @@ if(description)
 }
 
 include("http_func.inc");
+include("global_settings.inc"); # For report_verbosity
 
 cmdext = "wapiti";
 

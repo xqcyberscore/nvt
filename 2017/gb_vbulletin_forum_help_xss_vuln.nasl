@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_forum_help_xss_vuln.nasl 7034 2017-08-31 13:44:04Z santu $
+# $Id: gb_vbulletin_forum_help_xss_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # vBulletin Forum 'forum/help' Page Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811314");
-  script_version("$Revision: 7034 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2014-9469");
   script_bugtraq_id(72592);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 15:44:04 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-31 12:28:37 +0530 (Thu, 31 Aug 2017)");
   script_name("vBulletin Forum 'forum/help' Page Cross Site Scripting Vulnerability");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to the programming code
+  script_tag(name:"insight", value:"The flaw exists due to the programming code
   flaw occurs at 'forum/help' page. Add 'hash symbol' first. Then add script at
   the end of it.");
 

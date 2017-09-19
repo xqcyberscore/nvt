@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wisegiga_nas_detect.nasl 7143 2017-09-15 11:37:02Z santu $
+# $Id: gb_wisegiga_nas_detect.nasl 7157 2017-09-18 06:32:56Z ckuersteiner $
 #
 # WiseGiga NAS Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811320");
-  script_version("$Revision: 7143 $");
+  script_version("$Revision: 7157 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 13:37:02 +0200 (Fri, 15 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 08:32:56 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-12 13:01:23 +0530 (Tue, 12 Sep 2017)");
   script_name("WiseGiga NAS Detection");
 
@@ -56,40 +56,29 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-##Variable Initialization
-banner = "";
-netPort = "";
-location = "";
-version ="";
-cpe = "";
-
 netPort = get_http_port(default:80);
-if(!netPort){
-  exit(0);
-}
 
 ## Send and Receive the response
-sndReq = http_get(item:"/", port:netPort);
-rcvRes = http_keepalive_send_recv(port:netPort, data:sndReq);
+rcvRes = http_get_cache(port: netPort, item: "/");
 
 ##Confirm Application
-if(">::: Welcome to WISEGIGA :::<" >< rcvRes &&  "wisegiga.net<" >< rcvRes)
-{
-  version = "Unknown";
+if("<title>WISEGIGA</title>" >< rcvRes && "/webfolder/</a><br" >< rcvRes) {
+  version = "unknown";
 
   ##Set kb
   set_kb_item(name:"WiseGiga_NAS/detected", value: TRUE);
 
   ## build cpe and store it as host_detail
-  cpe = "cpe:/h:wisegiga";
+  cpe = "cpe:/h:wisegiga:nas";
 
   register_product(cpe:cpe, location:"/", port:netPort);
 
   log_message(data: build_detection_report(app: "WiseGiga NAS Device",
                                            version: version,
                                            install: "/",
-                                           cpe: cpe,
-                                           concluded: version),
-                                           port: netPort);
+                                           cpe: cpe),
+              port: netPort);
   exit(0);
 }
+
+exit(0);

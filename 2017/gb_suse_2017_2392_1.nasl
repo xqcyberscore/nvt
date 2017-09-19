@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2392_1.nasl 7145 2017-09-15 12:32:31Z santu $
+# $Id: gb_suse_2017_2392_1.nasl 7156 2017-09-18 05:28:25Z cfischer $
 #
 # SuSE Update for postgresql94 openSUSE-SU-2017:2392-1 (postgresql94)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851614");
-  script_version("$Revision: 7145 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:32:31 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 7156 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 07:28:25 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-09 07:21:17 +0200 (Sat, 09 Sep 2017)");
   script_cve_id("CVE-2017-7546", "CVE-2017-7547", "CVE-2017-7548");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for postgresql94 openSUSE-SU-2017:2392-1 (postgresql94)");
   script_tag(name: "summary", value: "Check the version of postgresql94");

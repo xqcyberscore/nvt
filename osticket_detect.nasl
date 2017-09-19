@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: osticket_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: osticket_detect.nasl 7169 2017-09-18 10:02:22Z ckuersteiner $
 #
 # osTicket Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.13858");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 7169 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 12:02:22 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("osTicket Detection");
@@ -57,20 +57,26 @@ include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 
-if( ! can_host_php( port:port ) ) exit( 0 );
+#if( ! can_host_php( port:port ) ) exit( 0 );
 
-foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
+foreach dir( make_list_unique( "/", "/osticket", "/osTicket", cgi_dirs( port:port ) ) ) {
 
   install = dir;
   if( dir == "/" ) dir = "";
 
-  # Get osTicket's open.php.
   url = dir + "/open.php";
-  req = http_get( item:url, port:port );
-  res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+  res = http_get_cache(port: port, item: url);
+#display(res, "\n");
+
+  # Get osTicket's open.php.
+#  url = dir + "/open.php";
+#  req = http_get( item:url, port:port );
+#  res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
   # Make sure the page is from osTicket.
-  if( egrep( pattern:'alt="osTicket', string:res, icase:TRUE ) ) {
+  if( (egrep( pattern:'alt="osTicket', string:res, icase:TRUE )) || (res =~ '(P|p)owered by osTicket')) {
+    version = "unknown";
+    # For older versions
     pat = "alt=.osTicket STS v(.+) *$";
     matches = egrep( pattern:pat, string:res );
     foreach match( split( matches ) ) {
@@ -106,30 +112,29 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
             ver = "1.2.7";
           } else if ( "404 Not Found" >< res ) {
             ver = "1.2.5";
-          } else {
-            ver = "unknown";
           }
         }
       }
-
-      tmp_version = ver + " under " + install;
-      set_kb_item( name:"www/" + port + "/osticket", value:tmp_version );
-      set_kb_item( name:"osticket/installed", value:TRUE );
-
-      ## build cpe and store it as host_detail
-      cpe = build_cpe( value:ver, exp:"^([0-9.]+)", base:"cpe:/a:osticket:osticket:");
-      if( isnull( cpe ) )
-        cpe = 'cpe:/a:osticket:osticket';
-
-      register_product( cpe:cpe, location:install, port:port );
-
-      log_message( data:build_detection_report( app:"osTicket",
-                                                version:ver,
-                                                install:install,
-                                                cpe:cpe,
-                                                concluded:ver ),
-                                                port:port );
     }
+
+    tmp_version = ver + " under " + install;
+    set_kb_item( name:"www/" + port + "/osticket", value:tmp_version );
+    set_kb_item( name:"osticket/installed", value:TRUE );
+
+    ## build cpe and store it as host_detail
+    cpe = build_cpe( value:ver, exp:"^([0-9.]+)", base:"cpe:/a:osticket:osticket:");
+    if( isnull( cpe ) )
+      cpe = 'cpe:/a:osticket:osticket';
+
+    register_product( cpe:cpe, location:install, port:port );
+
+    log_message( data:build_detection_report( app:"osTicket",
+                                              version:ver,
+                                              install:install,
+                                              cpe:cpe,
+                                              concluded:ver ),
+                 port:port );
+    exit(0);
   }
 }
 

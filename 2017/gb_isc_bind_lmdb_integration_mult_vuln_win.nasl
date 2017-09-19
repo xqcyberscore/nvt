@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_lmdb_integration_mult_vuln_win.nasl 6485 2017-06-29 09:21:18Z santu $
+# $Id: gb_isc_bind_lmdb_integration_mult_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # ISC BIND LMDB Integration Multiple Vulnerabilities (Windows) 
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810957");
-  script_version("$Revision: 6485 $");
+  script_version("$Revision: 7174 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:21:18 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-06-21 17:50:15 +0530 (Wed, 21 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ISC BIND LMDB Integration Multiple Vulnerabilities (Windows)");
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to BIND's use of LMDB.");
+  script_tag(name: "insight" , value:"The flaw exists due to BIND's use of LMDB.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause some issues regarding zone operations and an unexpected

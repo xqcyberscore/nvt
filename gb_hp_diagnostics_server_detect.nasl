@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_diagnostics_server_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_hp_diagnostics_server_detect.nasl 7161 2017-09-18 07:43:57Z cfischer $
 #
 # HP Diagnostics Server Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802389");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6032 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_version("$Revision: 7161 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:43:57 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2012-02-02 10:43:19 +0530 (Thu, 02 Feb 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("HP Diagnostics Server Version Detection");
@@ -85,7 +85,7 @@ if (">HP Diagnostics" >< rcvRes && "Hewlett-Packard Development" >< rcvRes)
   if(isnull(cpe))
     cpe = 'cpe:/a:hp:diagnostics_server';
 
-  register_product(cpe:cpe, location:"/", nvt:SCRIPT_OID, port:hpdsPort);
+  register_product(cpe:cpe, location:"/", port:hpdsPort);
 
   log_message(data:'Detected HP Diagnostics Server version: ' + hpdiagVer +
      '\nLocation: /' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_core_ftp_le_client_remote_buffer_overflow_vuln.nasl 5684 2017-03-23 08:51:50Z teissa $
+# $Id: gb_core_ftp_le_client_remote_buffer_overflow_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Core FTP LE Client 'SSH/SFTP' Remote Buffer Overflow Vulnerability
 # 
@@ -29,10 +29,10 @@ CPE = "cpe:/a:coreftp:core_ftp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810305");
-  script_version("$Revision: 5684 $");
+  script_version("$Revision: 7174 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 09:51:50 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-12-08 12:40:39 +0530 (Thu, 08 Dec 2016)");
   script_name("Core FTP LE Client 'SSH/SFTP' Remote Buffer Overflow Vulnerability");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist when core ftp client
+  script_tag(name:"insight", value:"The flaw exists when core ftp client
   does not handle long string of junk from the malicious FTP server
   using SSH/SFTP protocol.");
 

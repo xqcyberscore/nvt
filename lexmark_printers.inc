@@ -1,11 +1,12 @@
 ###############################################################################
-# $Id: lexmark_printers.inc 4108 2016-09-19 10:34:25Z cfi $
+# OpenVAS Include File
+# $Id: lexmark_printers.inc 7158 2017-09-18 06:38:57Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2013 Greenbone Networks GmbH
+# Copyright (C) 2013 Greenbone Networks GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -21,33 +22,34 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 4108 $
+# $Revision: 7158 $
 #
 ###############################################################################
 
+global_var lexmark_detect_urls;
 lexmark_detect_urls = make_array();
-
 lexmark_detect_urls['<title>Lexmark ([^<]+)</title>'] = '/';
 lexmark_detect_urls['<title>Lexmark&#032;([^<]+)</title>'] = '/';
 
-function check_lexmark_default_login(model) {
+function check_lexmark_default_login( model, port ) {
 
-  lex = lexmark_login_details(model:model);
-  if(!lex)return FALSE;
+  local_var model, port, lex, host, req, buf;
 
-  if(lex['no_default_auth']) {
-    if(lex['req_type'] == "GET") {
-      if(lex['req_auth'] == "BASIC") {
+  lex = lexmark_login_details( model:model );
+  if( ! lex ) return FALSE;
 
-        req = string("GET ", lex['login_url']," HTTP/1.1\r\n",
-                     "Host: ", get_host_name(),"\r\n");
+  if( lex['no_default_auth'] ) {
+    if( lex['req_type'] == "GET" ) {
+      if( lex['req_auth'] == "BASIC" ) {
 
-        buf = http_send_recv(port:port, data:req + '\r\n', bodyonly:FALSE);
-        lexmark_error_exit(buf:buf);
+        host = http_host_name( port:port );
+        req = string( "GET ", lex['login_url']," HTTP/1.1\r\n",
+                      "Host: ", host, "\r\n" );
+        buf = http_send_recv( port:port, data:req + '\r\n', bodyonly:FALSE );
+        lexmark_error_exit( buf:buf );
 
-        if(ereg(pattern:lex['http_status'], string:buf)) {
-
-          if(eregmatch(pattern:lex['login_success'], string:buf)) {
+        if( ereg( pattern:lex['http_status'], string:buf ) ) {
+          if( eregmatch( pattern:lex['login_success'], string:buf ) ) {
             return 2;
           }
         }
@@ -56,7 +58,9 @@ function check_lexmark_default_login(model) {
   }
 }
 
-function lexmark_login_details(model) {
+function lexmark_login_details( model ) {
+
+  local_var model, lexmark_printer;
 
   lexmark_printer = make_array();
 
@@ -74,7 +78,6 @@ function lexmark_login_details(model) {
     lexmark_printer['login_success'] = 'NAME="vac.255.GENPASSWORD"';
 
     return lexmark_printer;
-
   }
 
   else if(model == "T630" ||
@@ -92,7 +95,6 @@ function lexmark_login_details(model) {
     lexmark_printer['login_success'] = 'NAME="GENPASSWORD"';
 
     return lexmark_printer;
-
   }
 
   else if(model == "X954"    ||
@@ -125,7 +127,6 @@ function lexmark_login_details(model) {
     lexmark_printer['login_success'] = 'select name="auth_type" id="auth_type"';
 
     return lexmark_printer;
-
   }
 
   else if(model == "E260dn"         ||
@@ -154,7 +155,6 @@ function lexmark_login_details(model) {
     lexmark_printer['login_success'] = 'NAME="vac.255.GENPASSWORD"';
 
     return lexmark_printer;
-
   }
 
   else if(model == "C935"  ||
@@ -171,7 +171,6 @@ function lexmark_login_details(model) {
     lexmark_printer['login_success'] = 'NAME="vac.255.GENPASSWORD"';
 
     return lexmark_printer;
-
   }
 
   else if(model == "T656") {
@@ -185,15 +184,13 @@ function lexmark_login_details(model) {
     lexmark_printer['login_success'] = 'id="useFallbackPassword"';
 
     return lexmark_printer;
-
   }
-
 }
 
-function lexmark_error_exit(buf) {
+function lexmark_error_exit( buf ) {
 
-  if(!buf || ereg(pattern:"HTTP/1.(0|1) (404|401|500)", string: buf))exit(0);
+  local_var buf;
 
+  if( ! buf || ereg( pattern:"HTTP/1.(0|1) (404|401|500)", string:buf ) ) exit( 0 );
   return TRUE;
-
 }

@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: network_func.inc 5390 2017-02-21 18:39:27Z mime $
+# OpenVAS Include File
+# $Id: network_func.inc 7162 2017-09-18 08:27:48Z cfischer $
 #
 # Methods for handling some network operations
 #
@@ -29,17 +29,25 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5390 $
+# $Revision: 7162 $
 #
 ###############################################################################
 
 # test if address is on a LAN, reserved or not routable address
 function is_private_addr( addr ) {
 
+  local_var addr, a, all_addr_private, all_addr_public, network_type;
+  all_addr_private = FALSE;
+  all_addr_public  = FALSE;
+
+  network_type = get_kb_item( "global_settings/network_type" );
+  if( network_type ) {
+    if( "LAN" >< network_type ) all_addr_private = TRUE;
+    else if( "Internet" >< network_type ) all_addr_public = TRUE;
+  }
+
   if( all_addr_private ) return TRUE;
   if( all_addr_public ) return FALSE;
-
-  local_var addr, a;
 
   if( ! addr ) {
     a = get_host_ip();
@@ -183,7 +191,7 @@ function ntohl( n ) {
   if( ! n ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#n#-#ntohl" );
 
   if( strlen( n ) != 4 ) {
-    if( debug_level ) display( 'ntohl: invalid parameter\n' );
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#ntohl: invalid parameter / length (should be 4)" );
     return;
   }
   return( ord( n[0] ) << 24 ) | ( ord( n[1] ) << 16 ) | ( ord( n[2] ) << 8) | ord( n[3] );

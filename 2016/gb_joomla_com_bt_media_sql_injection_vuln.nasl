@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808089");
-  script_version("$Revision: 6264 $");
+  script_version("$Revision: 7174 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-01 14:53:37 +0200 (Thu, 01 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-06-22 14:45:59 +0530 (Wed, 22 Jun 2016)");
   script_name("Joomla BT Media Component SQL Injection Vulnerability");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
   and check whether it is able to execute sql query or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to an insufficient
+  script_tag(name:"insight", value:"The flaw exists due to an insufficient
   validation of user supplied input via 'categories' parameter to
   'index.php' script.");
 

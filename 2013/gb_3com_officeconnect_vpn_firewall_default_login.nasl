@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_3com_officeconnect_vpn_firewall_default_login.nasl 6755 2017-07-18 12:55:56Z cfischer $
+# $Id: gb_3com_officeconnect_vpn_firewall_default_login.nasl 7161 2017-09-18 07:43:57Z cfischer $
 #
 # 3Com OfficeConnect VPN Firewall Default Password Security Bypass Vulnerability
 #
@@ -40,12 +40,12 @@ CPE = "cpe:/o:hp:3com_officeconnect_vpn_firewall";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103711");
- script_version ("$Revision: 6755 $");
+ script_version ("$Revision: 7161 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("3Com OfficeConnect VPN Firewall Default Password Security Bypass Vulnerability");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:43:57 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2013-05-14 11:24:55 +0200 (Tue, 14 May 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -63,7 +63,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
+if(!port = get_app_port(cpe:CPE))exit(0);
 host = http_host_name(port:port);
 
 req = string("POST /cgi-bin/admin?page=x HTTP/1.1\r\n",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_98295_lin.nasl 7093 2017-09-11 07:58:34Z asteins $
+# $Id: gb_wordpress_98295_lin.nasl 7177 2017-09-18 12:14:18Z asteins $
 #
 # WordPress Password Reset CVE-2017-8295 Security Bypass Vulnerability (Linux)
 #
@@ -31,12 +31,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108155");
-  script_version("$Revision: 7093 $");
+  script_version("$Revision: 7177 $");
   script_cve_id("CVE-2017-8295");
   script_bugtraq_id(98295);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-11 09:58:34 +0200 (Mon, 11 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:14:18 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-05-08 11:00:15 +0200 (Mon, 08 May 2017)");
   script_name("WordPress Password Reset CVE-2017-8295 Security Bypass Vulnerability (Linux)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect NVT and
   check if the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaws exists becasue WordPress relies on the Host HTTP header for a password-reset e-mail message,
+  script_tag(name:"insight", value:"The flaws exist because WordPress relies on the Host HTTP header for a password-reset e-mail message,
   which makes it easier for user-assisted remote attackers to reset arbitrary passwords by making a crafted wp-login.php?action=lostpassword
   request and then arranging for this e-mail to bounce or be resent, leading to transmission of the reset key to a mailbox on an
   attacker-controlled SMTP server. This is related to problematic use of the SERVER_NAME variable in wp-includes/pluggable.php in

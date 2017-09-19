@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realplayer_swf_bof_vuln_900015.nasl 6382 2017-06-20 15:08:09Z cfischer $
+# $Id: secpod_realplayer_swf_bof_vuln_900015.nasl 7174 2017-09-18 11:48:08Z asteins $
 # Description: RealPlayer SWF Frame Handling Buffer Overflow Vulnerability (Windows)
 #
 # Authors:
@@ -32,7 +32,7 @@ tag_solution = "Upgrade to the latest version available,
 
 tag_affected = "RealPlayer Version 10, 10.5 and 11 on Windows (All).";
 
-tag_insight = "The flaw exist due to a design error in handling/parsing of frames
+tag_insight = "The flaw exists due to a design error in handling/parsing of frames
         in Shockwave Flash (SWF) files.";
 
 
@@ -43,8 +43,8 @@ tag_summary = "This Remote host is running with RealPlayer, which is prone to
 if(description)
 {
  script_id(900015);
- script_version("$Revision: 6382 $");
- script_tag(name:"last_modification", value:"$Date: 2017-06-20 17:08:09 +0200 (Tue, 20 Jun 2017) $");
+ script_version("$Revision: 7174 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_bugtraq_id(30370);
  script_cve_id("CVE-2007-5400");

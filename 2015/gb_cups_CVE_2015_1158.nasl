@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cups_CVE_2015_1158.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: gb_cups_CVE_2015_1158.nasl 7165 2017-09-18 08:57:44Z cfischer $
 #
 # CUPS < 2.0.3 Multiple Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
  script_bugtraq_id(75098, 75106);
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 6183 $");
+ script_version("$Revision: 7165 $");
 
  script_name("CUPS < 2.0.3 Multiple Vulnerabilities");
 
@@ -77,7 +77,7 @@ to a privilege escalation due to a memory management error.");
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2015-06-15 15:24:12 +0200 (Mon, 15 Jun 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -109,8 +109,8 @@ url = "/help/?QUERY=%3Ca%20href=%22%20%3E%3Cscript%3Ealert%28document.cooki" +
 if(http_vuln_check(port:cupsPort, url:url, pattern:"script>alert\(document.cookie\)</script>",
                    extra_check: make_list(">Online Help", "CUPS"), check_header:TRUE))
 {
-  report = report_vuln_url( port:http_port, url:url );
-  security_message(port:http_port, data:report);
+  report = report_vuln_url( port:cupsPort, url:url );
+  security_message(port:cupsPort, data:report);
   exit(0);
 }
 exit(0);

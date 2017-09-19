@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_integration_bus_xxe_vuln.nasl 5704 2017-03-24 04:55:53Z antu123 $
+# $Id: gb_ibm_integration_bus_xxe_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # IBM Integration Bus XXE Privilege Escalation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:integration_bus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810802");
-  script_version("$Revision: 5704 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-9706");
   script_bugtraq_id(96274);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 05:55:53 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-03-13 16:01:06 +0530 (Mon, 13 Mar 2017)");
   script_name("IBM Integration Bus XXE Privilege Escalation Vulnerability");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to an XML External Entity
+  script_tag(name:"insight", value:"The flaw exists due to an XML External Entity
   Injection (XXE) error when processing XML data.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xuezhuli_filesharing_path_trav_vuln.nasl 6500 2017-07-03 07:48:34Z teissa $
+# $Id: gb_xuezhuli_filesharing_path_trav_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # XuezhuLi FileSharing 'filename' Parameter Path Traversal Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:xuezhuLi:xuezhuli_filesharing";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808176");
-  script_version("$Revision: 6500 $");
+  script_version("$Revision: 7174 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 09:48:34 +0200 (Mon, 03 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-06-27 12:52:04 +0530 (Mon, 27 Jun 2016)");
   script_name("XuezhuLi FileSharing 'filename' Parameter Path Traversal Vulnerability");
 
@@ -43,7 +43,7 @@ if (description)
   script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and
   check whether it is able read password information.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to an improper
+  script_tag(name: "insight" , value:"The flaw exists due to an improper
   validation of user supplied input to 'file_name' parameter in 'download.php'
   and 'viewing.php' scripts.");
 

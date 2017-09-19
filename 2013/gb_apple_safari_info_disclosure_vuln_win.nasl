@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_info_disclosure_vuln_win.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_apple_safari_info_disclosure_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Apple Safari 'Webkit' Information Disclosure Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2013-5130");
   script_bugtraq_id(63289);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2013-11-06 11:11:36 +0530 (Wed, 06 Nov 2013)");
   script_name("Apple Safari 'Webkit' Information Disclosure Vulnerability (Windows)");
 
@@ -47,7 +47,7 @@ disclosure vulnerability.";
 is vulnerable or not.";
 
   tag_insight =
-"The flaw exist due to unspecified vulnerability in the apple safari webkit";
+"The flaw exists due to unspecified vulnerability in the apple safari webkit";
 
   tag_impact =
 "Successful exploitation will allow attackers to obtain browsing information

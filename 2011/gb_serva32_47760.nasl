@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serva32_47760.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_serva32_47760.nasl 7170 2017-09-18 10:35:33Z cfischer $
 #
 # Serva32 Directory Traversal and Denial of Service Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103160");
- script_version("$Revision: 7024 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+ script_version("$Revision: 7170 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 12:35:33 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-05-12 13:24:44 +0200 (Thu, 12 May 2011)");
  script_bugtraq_id(47760);
  script_tag(name:"cvss_base", value:"7.5");
@@ -76,7 +76,7 @@ foreach file(keys(files)) {
   url = "/..%5C/..%5C/..%5C/..%5C/..%5C/..%5C/..%5C/..%5C/" + files[file];
 
   if(http_vuln_check(port:port, url:url, pattern:file)) {
-    report = report_vuln_url(port:port, url:exp);
+    report = report_vuln_url(port:port, url:url);
     security_message(port:port, data:report);
     exit(0);
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_ms15-123.nasl 6473 2017-06-29 06:07:30Z cfischer $
+# $Id: gb_lync_ms15-123.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Lync Information Disclosure Vulnerability (3105872)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806155");
-  script_version("$Revision: 6473 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2015-6061");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:07:30 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-11-11 10:03:45 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft Lync Information Disclosure Vulnerability (3105872)");
 
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaws exists due to improper handling
+  script_tag(name:"insight", value:"The flaws exist due to improper handling
   of JavaScript content.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a

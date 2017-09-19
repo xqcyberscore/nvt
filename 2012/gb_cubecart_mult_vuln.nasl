@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cubecart_mult_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
+# $Id: gb_cubecart_mult_vuln.nasl 7161 2017-09-18 07:43:57Z cfischer $
 #
 # CubeCart Multiple Vulnerabilities
 #
@@ -41,9 +41,9 @@ CPE = "cpe:/a:cubecart:cubecart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803090");
-  script_version("$Revision: 5841 $");
+  script_version("$Revision: 7161 $");
   script_bugtraq_id(57031);
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:43:57 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2012-12-25 15:26:41 +0530 (Tue, 25 Dec 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -80,7 +80,7 @@ ccReq = "";
 ccRes = "";
 
 if(!ccPort = get_app_port(cpe:CPE))exit(0);
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port: ccPort))exit(0);
+if(!dir = get_app_location(cpe:CPE, port: ccPort))exit(0);
 
 host = http_host_name(port:ccPort);
 

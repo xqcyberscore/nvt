@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_vse_security_bypass_vuln_june16.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: gb_mcafee_vse_security_bypass_vuln_june16.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # McAfee VirusScan Enterprise Security Bypass Vulnerability- June 16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:virusscan_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808083");
-  script_version("$Revision: 5689 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-4534");
   script_tag(name:"cvss_base", value:"3.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-06-16 16:28:59 +0530 (Thu, 16 Jun 2016)");
   script_name("McAfee VirusScan Enterprise Security Bypass Vulnerability- June 16");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist in antivirus engine which
+  script_tag(name:"insight", value:"The flaw exists in antivirus engine which
   disable engine without knowing the correct management password .");
 
   script_tag(name:"impact", value:"Successful exploitation will allow local

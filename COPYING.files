@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 18 Sep 2017 09:08:15 +0200
+# Automatically created on:  Tue, 19 Sep 2017 08:34:48 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -51397,9 +51397,11 @@
 2017/gb_zoneminder_info_disc_vuln.nasl: GPLv2+
 2017/gb_zoneminder_mult_vuln.nasl: GPLv2+
 2017/gb_zoneminder_xss_vuln.nasl: GPLv2+
+2017/hikvision/gb_hikvision_ip_cameras_mult_vuln.nasl: GPLv2+
 2017/microsoft/gb_dotnet_framework_kb4040972_n_kb4040971.nasl: GPLv2+
 2017/microsoft/gb_dotnet_framework_kb4040973.nasl: GPLv2+
 2017/microsoft/gb_dotnet_framework_kb4041086.nasl: GPLv2+
+2017/osticket/gb_os_ticket_sql_inj_vuln.nasl: GPLv2+
 2017/phpmyadmin/gb_phpmyadmin_cve-2011-4107_lin.nasl: GPLv2+
 2017/phpmyadmin/gb_phpmyadmin_cve-2011-4107_win.nasl: GPLv2+
 2017/phpmyadmin/gb_phpmyadmin_cve-2011-4634_lin.nasl: GPLv2+
@@ -52899,6 +52901,7 @@ gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170906-ios-udp.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170906-cms.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170913-cmsturn.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_vcs_cisco-sa-20170816-vcs.nasl: GPLv2+
+gsf/2017/emc/gb_emc_data_protection_advisor_pw_vuln.nasl: GPLv2+
 gsf/2017/sap/gb_sap_netweaver_xml_xss_vuln.nasl: GPLv2+
 gsf/2017/sap/gb_sap_netweaver_xss_vuln_09_17.nasl: GPLv2+
 gsf/gb_advantech_webaccess_mult_vuln_aug.nasl: GPLv2+

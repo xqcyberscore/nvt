@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update_16-2016-06_macosx.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_google_chrome_stable-channel-update_16-2016-06_macosx.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update_16-2016-06)-MAC OS X
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808234");
-  script_version("$Revision: 5759 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-1704" );
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-06-21 13:31:03 +0530 (Tue, 21 Jun 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update_16-2016-06)-MAC OS X");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaws exists due to there is a hidden
+  script_tag(name: "insight" , value:"The flaws exist due to there is a hidden
   prototype, and 'documentWrapper->GetPrototype()' actually returns itself, or
   fallbacked attributes are data-type properties.");
 

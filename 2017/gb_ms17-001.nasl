@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-001.nasl 5132 2017-01-30 07:08:27Z antu123 $
+# $Id: gb_ms17-001.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Edge Privilege Elevation Vulnerability (3214288)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810268");
-  script_version("$Revision: 5132 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2017-0002");
   script_bugtraq_id(95284);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-30 08:08:27 +0100 (Mon, 30 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-01-11 08:29:24 +0530 (Wed, 11 Jan 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Edge Privilege Elevation Vulnerability (3214288)");
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist when Microsoft Edge does 
+  script_tag(name: "insight" , value:"The flaw exists when Microsoft Edge does 
   not properly enforce cross-domain policies with 'about:blank', which could 
   allow an attacker to access information from one domain and inject it into 
   another domain.");

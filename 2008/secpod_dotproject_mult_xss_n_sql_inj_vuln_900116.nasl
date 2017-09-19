@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dotproject_mult_xss_n_sql_inj_vuln_900116.nasl 4489 2016-11-14 08:23:54Z teissa $
+# $Id: secpod_dotproject_mult_xss_n_sql_inj_vuln_900116.nasl 7174 2017-09-18 11:48:08Z asteins $
 # Description: dotProject Multiple XSS and SQL Injection Vulnerabilities
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.900116");
- script_version("$Revision: 4489 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
+ script_version("$Revision: 7174 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-09-02 16:25:07 +0200 (Tue, 02 Sep 2008)");
  script_cve_id("CVE-2008-3886");
  script_bugtraq_id(30924);
@@ -44,7 +44,7 @@ if(description)
  script_tag(name : "affected" , value : "dotProject version 2.1.2 and prior on all platform.");
  script_tag(name : "summary" , value : "The host is running dotProject, which is prone to multiple Cross
  Site Scripting and SQL injection vulnerabilities.");
- script_tag(name : "insight" , value : "The flaws exists due to,
+ script_tag(name : "insight" , value : "The flaws exist due to,
  - improper sanitisation of input value passed to inactive, date,
  calendar, callback and day_view, public, dialog and ticketsmith
  parameters in index.php before being returned to the user.

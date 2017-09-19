@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: calendar_express_flaws.nasl 5781 2017-03-30 08:15:57Z cfi $
+# $Id: calendar_express_flaws.nasl 7175 2017-09-18 11:55:15Z cfischer $
 # Description: Calendar Express Multiple Flaws
 #
 # Authors:
@@ -44,8 +44,8 @@ tag_solution = "Upgrade to the latest version of this software.";
 if(description)
 {
  script_id(19749);
- script_version("$Revision: 5781 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 10:15:57 +0200 (Thu, 30 Mar 2017) $");
+ script_version("$Revision: 7175 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_cve_id("CVE-2007-3627");
  script_bugtraq_id(14504, 14505);
@@ -66,7 +66,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
 if ( ! can_host_php(port:port) ) exit(0);

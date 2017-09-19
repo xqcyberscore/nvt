@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_code_exec_n_dos_vuln.nasl 7127 2017-09-14 08:36:48Z cfischer $
+# $Id: gb_xnview_code_exec_n_dos_vuln.nasl 7179 2017-09-18 15:40:14Z asteins $
 #
-# XnView Arbitrary Code Execution and Denial of Service Vulnerability
+# XnView Multiple Vulnerabilities
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -29,37 +29,41 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811402");
-  script_version("$Revision: 7127 $");
+  script_version("$Revision: 7179 $");
   script_cve_id("CVE-2017-9914", "CVE-2017-9912", "CVE-2017-9910", "CVE-2017-9911",
-                "CVE-2017-9908", "CVE-2017-9909", "CVE-2017-9906", "CVE-2017-9907", 
-                "CVE-2017-9905", "CVE-2017-9903", "CVE-2017-9904", "CVE-2017-9901", 
-                "CVE-2017-9902", "CVE-2017-9900", "CVE-2017-9898", "CVE-2017-9899", 
-                "CVE-2017-9897", "CVE-2017-9896", "CVE-2017-9895", "CVE-2017-9894", 
-                "CVE-2017-9893", "CVE-2017-9529", "CVE-2017-8781", "CVE-2017-8381", 
-                "CVE-2017-8282", "CVE-2017-10782", "CVE-2017-10783", "CVE-2017-10781", 
-                "CVE-2017-10779", "CVE-2017-10780", "CVE-2017-10777", "CVE-2017-10778", 
-                "CVE-2017-10776", "CVE-2017-10774", "CVE-2017-10775", "CVE-2017-10772", 
-                "CVE-2017-10773", "CVE-2017-10770", "CVE-2017-10771", "CVE-2017-10769", 
-                "CVE-2017-10767", "CVE-2017-10768", "CVE-2017-10765", "CVE-2017-10766", 
-                "CVE-2017-10763", "CVE-2017-10764", "CVE-2017-10762", "CVE-2017-10760", 
-                "CVE-2017-10761", "CVE-2017-10758", "CVE-2017-10759", "CVE-2017-10757", 
-                "CVE-2017-10755", "CVE-2017-10756", "CVE-2017-10753", "CVE-2017-10754", 
-                "CVE-2017-10751", "CVE-2017-10752", "CVE-2017-10750", "CVE-2017-10748", 
-                "CVE-2017-10749", "CVE-2017-10747", "CVE-2017-10745", "CVE-2017-10746", 
-                "CVE-2017-10743", "CVE-2017-10744", "CVE-2017-10741", "CVE-2017-10742", 
-                "CVE-2017-10740", "CVE-2017-10738", "CVE-2017-10739", "CVE-2017-10736", 
-                "CVE-2017-10737");
+                "CVE-2017-9908", "CVE-2017-9909", "CVE-2017-9906", "CVE-2017-9907",
+                "CVE-2017-9905", "CVE-2017-9903", "CVE-2017-9904", "CVE-2017-9901",
+                "CVE-2017-9902", "CVE-2017-9900", "CVE-2017-9898", "CVE-2017-9899",
+                "CVE-2017-9897", "CVE-2017-9896", "CVE-2017-9895", "CVE-2017-9894",
+                "CVE-2017-9893", "CVE-2017-9529", "CVE-2017-8781", "CVE-2017-8381",
+                "CVE-2017-8282", "CVE-2017-10782", "CVE-2017-10783", "CVE-2017-10781",
+                "CVE-2017-10779", "CVE-2017-10780", "CVE-2017-10777", "CVE-2017-10778",
+                "CVE-2017-10776", "CVE-2017-10774", "CVE-2017-10775", "CVE-2017-10772",
+                "CVE-2017-10773", "CVE-2017-10770", "CVE-2017-10771", "CVE-2017-10769",
+                "CVE-2017-10767", "CVE-2017-10768", "CVE-2017-10765", "CVE-2017-10766",
+                "CVE-2017-10763", "CVE-2017-10764", "CVE-2017-10762", "CVE-2017-10760",
+                "CVE-2017-10761", "CVE-2017-10758", "CVE-2017-10759", "CVE-2017-10757",
+                "CVE-2017-10755", "CVE-2017-10756", "CVE-2017-10753", "CVE-2017-10754",
+                "CVE-2017-10751", "CVE-2017-10752", "CVE-2017-10750", "CVE-2017-10748",
+                "CVE-2017-10749", "CVE-2017-10747", "CVE-2017-10745", "CVE-2017-10746",
+                "CVE-2017-10743", "CVE-2017-10744", "CVE-2017-10741", "CVE-2017-10742",
+                "CVE-2017-10740", "CVE-2017-10738", "CVE-2017-10739", "CVE-2017-10736",
+                "CVE-2017-10737", "CVE-2017-14284", "CVE-2017-14285", "CVE-2017-14282",
+                "CVE-2017-14283", "CVE-2017-14280", "CVE-2017-14281", "CVE-2017-14278",
+                "CVE-2017-14279", "CVE-2017-14277", "CVE-2017-14275", "CVE-2017-14276",
+                "CVE-2017-14273", "CVE-2017-14274", "CVE-2017-14271", "CVE-2017-14272",
+                "CVE-2017-14270");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-14 10:36:48 +0200 (Thu, 14 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 17:40:14 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-07 19:41:51 +0530 (Mon, 07 Aug 2017)");
-  script_name("XnView Arbitrary Code Execution and Denial of Service Vulnerability");
+  script_name("XnView Multiple Vulnerabilities");
 
   script_tag(name: "summary" , value:"This host is installed with XnView and is
-  prone to arbitrary code execution and denial of service vulnerability.");
+  prone to multiple vulnerabilities.");
 
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  of the detection NVT and check if the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to,
 
@@ -84,7 +88,7 @@ if(description)
   script_tag(name: "affected" , value:"XnView Version 2.40");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  14th September, 2017. Information regarding this issue will be updated once the
+  18th September, 2017. Information regarding this issue will be updated once the
   solution details are available.
   For updates refer to http://www.xnview.com/en/");
 
@@ -116,7 +120,7 @@ if(!xnVer = get_app_version(cpe:CPE)){
 ## Check version
 if(version_is_equal(version:xnVer, test_version:"2.40"))
 {
-  report = report_fixed_ver(installed_version:xnVer, fixed_version:"Noneavailable");
+  report = report_fixed_ver(installed_version:xnVer, fixed_version:"NoneAvailable");
   security_message(data:report);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webdir_search.nasl 5956 2017-04-14 09:02:12Z teissa $
+# $Id: gb_webdir_search.nasl 7170 2017-09-18 10:35:33Z cfischer $
 #
 # Search for specified webdirs
 #
@@ -29,8 +29,8 @@ if (description)
 {
  
  script_oid("1.3.6.1.4.1.25623.1.0.103437");
- script_version("$Revision: 5956 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
+ script_version("$Revision: 7170 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 12:35:33 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2012-02-27 16:32:37 +0100 (Mon, 27 Feb 2012)");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"cvss_base", value:"0.0");
@@ -68,9 +68,9 @@ if(get_kb_item("www/no404/" + port)) {
   exit(0);
 }  
 
-function check_response(resp) {
+function check_response(resp, codes) {
 
-  local_var resp,code;
+  local_var resp,code, codes;
 
   foreach code (codes) {
 
@@ -79,11 +79,8 @@ function check_response(resp) {
         return TRUE;
       }
     }  
-
   }
-
   return FALSE;
-
 }  
 
 search_dirs   = script_get_preference("Search for dir(s)");
@@ -105,7 +102,7 @@ foreach dir (dirs) {
  buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
  if( buf == NULL || buf =~ "HTTP/1\.[0|1] 404")continue;
 
- if(check_response(resp:buf)) {
+ if(check_response(resp:buf, codes:codes)) {
    report += 'Found dir ' + dir + '\n';
  }  
 

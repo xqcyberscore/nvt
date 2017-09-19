@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_management_console_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_sap_management_console_detect.nasl 7161 2017-09-18 07:43:57Z cfischer $
 #
 # SAP Management Console Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103829");
- script_version ("$Revision: 5877 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+ script_version ("$Revision: 7161 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:43:57 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2013-11-13 12:08:59 +0100 (Wed, 13 Nov 2013)");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"cvss_base", value:"0.0");
@@ -98,7 +98,7 @@ if(!isnull(version[1])) {
 }
 
 cpe = 'cpe:/a:sap:netweaver';
-register_product(cpe:cpe, location:port + '/tcp', nvt:SCRIPT_OID, port:port);
+register_product(cpe:cpe, location:port + '/tcp', port:port);
 
 log_message(data: 'Detected SAP Management Console.\nCPE: ' + cpe + '\nConcluded: ' + version[0] + '\n', port:port);
 exit(0);

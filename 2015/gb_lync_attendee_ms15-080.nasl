@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_attendee_ms15-080.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: gb_lync_attendee_ms15-080.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Lync Attendee Remote Code Execution Vulnerabilities (3078662)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805086");
-  script_version("$Revision: 6229 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2015-2431", "CVE-2015-2435", "CVE-2015-2455", "CVE-2015-2456",
                 "CVE-2015-2463", "CVE-2015-2464");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-08-12 13:06:46 +0530 (Wed, 12 Aug 2015)");
   script_name("Microsoft Lync Attendee Remote Code Execution Vulnerabilities (3078662)");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaws exists due to improper handling of
+  script_tag(name:"insight", value:"The flaws exist due to improper handling of
   TrueType fonts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-028.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-028.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Visio Remote Code Execution Vulnerabilities (980094)
 #
@@ -27,7 +27,7 @@ tag_impact = "Successful exploitation could allow users to execute arbitrary cod
   specially crafted Visio file.
   Impact Level: System";
 tag_affected = "Microsoft Office Visio 2002/2003/2007 on Windows";
-tag_insight = "The flaws exists due to the way that Microsoft Office Visio calculates
+tag_insight = "The flaws exist due to the way that Microsoft Office Visio calculates
   'indexes' and validates 'attributes' when handling specially crafted Visio
   files.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
@@ -39,8 +39,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902039);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7174 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-04-14 17:51:53 +0200 (Wed, 14 Apr 2010)");
   script_cve_id("CVE-2010-0254", "CVE-2010-0256");
   script_bugtraq_id(39300, 39302);

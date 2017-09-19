@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_standard_manageability_priv_esc_vuln.nasl 6185 2017-05-22 11:17:57Z teissa $
+# $Id: gb_intel_standard_manageability_priv_esc_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Intel Standard Manageability Privilege Escalation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:intel:intel_standard_manageability";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810997");
-  script_version("$Revision: 6185 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2017-5689");
   script_bugtraq_id(98269);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-22 13:17:57 +0200 (Mon, 22 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-05-05 15:39:37 +0530 (Fri, 05 May 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Intel Standard Manageability Privilege Escalation Vulnerability");
@@ -45,7 +45,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Send a crafted data via HTTP GET request
   and check if we are able to access the manageability features of this product.");
 
-  script_tag(name: "insight", value:"The flaw exist due to mishandling of input
+  script_tag(name: "insight", value:"The flaw exists due to mishandling of input
   in an unknown function.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow an 

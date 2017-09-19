@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_unsafe_deserialization_code_exec_vuln_win.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_apache_activemq_unsafe_deserialization_code_exec_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Apache ActiveMQ Unsafe deserialization Code Execution Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809055");
-  script_version("$Revision: 5650 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2015-5254");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-10-04 19:50:32 +0530 (Tue, 04 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache ActiveMQ Unsafe deserialization Code Execution Vulnerability (Windows)");
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help of
   detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to not restricting the 
+  script_tag(name:"insight", value:"The flaw exists due to not restricting the 
   classes that can be serialized in the broker.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

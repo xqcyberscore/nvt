@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: bugbear_b.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: bugbear_b.nasl 7165 2017-09-18 08:57:44Z cfischer $
 # Description: Bugbear.B web backdoor
 #
 # Authors:
@@ -38,8 +38,8 @@ ftp://ftp.f-secure.com/anti-virus/tools/f-bugbr.zip";
 if (description)
 {
  script_id(11707);
- script_version("$Revision: 6056 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+ script_version("$Revision: 7165 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -64,12 +64,9 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:81);
-if(!port)exit(0);
 
-if(!get_port_state(port))exit(0);
-url = string(d, '/%NETHOOD%/');
+url = string('/%NETHOOD%/');
 req = http_get(item:url, port:port);
 buf = http_keepalive_send_recv(port:port, data:req);
 if( buf == NULL ) exit(0);
 if(ereg(pattern:"^HTTP/[0-9]\.[0-9] 200 ", string:buf) && "Microsoft Windows Network" >< buf) security_message(port);
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_7cc0e6a5f5_gd_fc26.nasl 7075 2017-09-07 11:09:13Z santu $
+# $Id: gb_fedora_2017_7cc0e6a5f5_gd_fc26.nasl 7156 2017-09-18 05:28:25Z cfischer $
 #
 # Fedora Update for gd FEDORA-2017-7cc0e6a5f5
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873340");
-  script_version("$Revision: 7075 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:09:13 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 7156 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 07:28:25 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-04 07:27:34 +0200 (Mon, 04 Sep 2017)");
   script_cve_id("CVE-2017-6362", "CVE-2017-7890");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for gd FEDORA-2017-7cc0e6a5f5");
   script_tag(name: "summary", value: "Check the version of gd");

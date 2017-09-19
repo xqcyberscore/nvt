@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: nav_installed.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: nav_installed.nasl 7172 2017-09-18 11:07:34Z cfischer $
 # Description: Norton Anti Virus Check
 #
 # Authors:
@@ -32,8 +32,8 @@ tag_solution = "Make sure NAV is installed, running and using the latest VDEFS."
 if(description)
 {
  script_id(80038);
- script_version("$Revision: 5370 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 7172 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:07:34 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"6.9");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,6 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("secpod_reg.inc");
 include("secpod_smb_func.inc");
 
 if(!get_kb_item("SMB/WindowsVersion")){

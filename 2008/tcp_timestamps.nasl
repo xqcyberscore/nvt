@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tcp_timestamps.nasl 5740 2017-03-28 03:23:03Z ckuerste $
+# $Id: tcp_timestamps.nasl 7176 2017-09-18 12:01:01Z cfischer $
 #
 # TCP timestamps
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80091");
-  script_version("$Revision: 5740 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-28 05:23:03 +0200 (Tue, 28 Mar 2017) $");
+  script_version("$Revision: 7176 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
@@ -75,7 +75,6 @@ if(description)
   exit(0);
 }
 
-include("global_settings.inc");
 include("network_func.inc");
 include("misc_func.inc");
 include("dump.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_stuxnet_unspecified_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: gb_ms_windows_stuxnet_unspecified_vuln.nasl 7172 2017-09-18 11:07:34Z cfischer $
 #
 # Microsoft Windows 32-bit Platforms Unspecified vulnerabilities
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is prone to multiple unspecified vulnerabilities.";
 if(description)
 {
   script_id(801527);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7172 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:07:34 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-10-18 15:37:53 +0200 (Mon, 18 Oct 2010)");
   script_cve_id("CVE-2010-3888", "CVE-2010-3889");
   script_tag(name:"cvss_base", value:"7.2");
@@ -68,9 +68,7 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
-include("secpod_reg.inc");
 include("secpod_smb_func.inc");
 
 if(!get_kb_item("SMB/WindowsVersion")){

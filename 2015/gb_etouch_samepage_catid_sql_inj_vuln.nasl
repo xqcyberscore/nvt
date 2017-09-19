@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_etouch_samepage_catid_sql_inj_vuln.nasl 5824 2017-03-31 14:27:55Z cfi $
+# $Id: gb_etouch_samepage_catid_sql_inj_vuln.nasl 7165 2017-09-18 08:57:44Z cfischer $
 #
 # eTouch SamePage 'catId' Parameter SQL Injection Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805152");
-  script_version("$Revision: 5824 $");
+  script_version("$Revision: 7165 $");
   script_cve_id("CVE-2015-2070");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 16:27:55 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-16 16:36:52 +0530 (Mon, 16 Mar 2015)");
   script_name("eTouch SamePage 'catId' Parameter SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -77,6 +77,7 @@ include("http_keepalive.inc");
 http_port = "";
 sndReq = "";
 rcvRes = "";
+wait_extra_sec = 5;
 
 http_port = get_http_port(default:18080);
 

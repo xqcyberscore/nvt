@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpgroupware_detect.nasl 6712 2017-07-13 08:58:17Z cfischer $
+# $Id: phpgroupware_detect.nasl 7166 2017-09-18 09:14:09Z cfischer $
 #
 # phpgroupware Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100092");
-  script_version("$Revision: 6712 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 10:58:17 +0200 (Thu, 13 Jul 2017) $");
+  script_version("$Revision: 7166 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-03-30 14:26:52 +0200 (Mon, 30 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,6 +57,8 @@ include("host_details.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
+
+rootInstalled = FALSE;
 
 foreach dir( make_list_unique( "/phpgroupware", "/phpgw", cgi_dirs( port:port ) ) ) {
 

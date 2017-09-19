@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ece_flag.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: ece_flag.nasl 7175 2017-09-18 11:55:15Z cfischer $
 # Description: Firewall ECE-bit bypass
 #
 # Authors:
@@ -38,8 +38,8 @@ contact your firewall vendor for a patch.";
 if (description)
 {
  script_id(12118);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 7175 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2293);
  script_tag(name:"cvss_base", value:"7.5");
@@ -59,17 +59,9 @@ if (description)
  exit(0);
 }
 
-
-
-
-
-include('global_settings.inc');
-
 if ( islocalnet() || islocalhost() ) exit(0);
 if(TARGET_IS_IPV6())exit(0);
 
-
-# start script
 sport= (rand() % 64511) + 1024;
 ipid = 1234;
 myack = 0xFF67;

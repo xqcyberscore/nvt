@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: bblog_sql_inject.nasl 5780 2017-03-30 07:37:12Z cfi $
+# $Id: bblog_sql_inject.nasl 7165 2017-09-18 08:57:44Z cfischer $
 # Description: bBlog SQL injection flaw
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "Upgrade to version 0.7.4 or newer.";
 if(description)
 {
  script_id(15466);
- script_version("$Revision: 5780 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 09:37:12 +0200 (Thu, 30 Mar 2017) $");
+ script_version("$Revision: 7165 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-1570");
  script_bugtraq_id(11303);
@@ -72,7 +72,7 @@ foreach dir( make_list_unique( "/bblog", cgi_dirs( port:port ) ) ) {
   url = string(dir,"/index.php");
   r = http_get_cache(item:url, port:port);
   if( r == NULL ) continue;
-  if(egrep(pattern:"www\.bBlog\.com target=.*bBlog 0\.([0-6]\.|7\.[0-3][^0-9]).*&copy; 2003 ", string:r)) security_message( port:por );
+  if(egrep(pattern:"www\.bBlog\.com target=.*bBlog 0\.([0-6]\.|7\.[0-3][^0-9]).*&copy; 2003 ", string:r)) security_message( port:port );
 }
 
 exit( 99 );

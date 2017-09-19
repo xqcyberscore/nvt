@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810730");
-  script_version("$Revision: 5852 $");
+  script_version("$Revision: 7160 $");
   script_cve_id("CVE-2016-6816");
   script_bugtraq_id(94461);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:32:11 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:39:22 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-04-04 14:36:33 +0530 (Tue, 04 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_active");
   script_name("Apache Tomcat HTTP Request Line Information Disclosure Vulnerability");
@@ -85,8 +85,8 @@ if(description)
 
 
 include("host_details.inc");
-include("http_keepalive.inc");
 include("http_func.inc");
+include("http_keepalive.inc");
 
 ## Variable Initialization
 tomPort = "";

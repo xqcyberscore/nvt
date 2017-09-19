@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_nsid_request_dos_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_isc_bind_nsid_request_dos_vuln_lin.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # ISC BIND NSID Request Denial of Service Vulnerability (Linux) 
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809461");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-2848");
   script_bugtraq_id(93814);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-10-24 18:23:32 +0530 (Mon, 24 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND NSID Request Denial of Service Vulnerability (Linux)");
@@ -45,7 +45,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to mishandling of 
+  script_tag(name: "insight" , value:"The flaw exists due to mishandling of 
   packets with malformed options. A remote attacker could use this flaw to make 
   named exit unexpectedly with an assertion failure via a specially crafted DNS 
   packet.");

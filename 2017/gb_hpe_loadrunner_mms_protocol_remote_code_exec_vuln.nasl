@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_loadrunner_mms_protocol_remote_code_exec_vuln.nasl 5268 2017-02-10 15:51:43Z teissa $
+# $Id: gb_hpe_loadrunner_mms_protocol_remote_code_exec_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # HPE LoadRunner MMS Protocol Remote Code Execution Vulnerability
 # 
@@ -29,11 +29,11 @@ CPE = "cpe:/a:hp:loadrunner";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810328");
-  script_version("$Revision: 5268 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-8512");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 16:51:43 +0100 (Fri, 10 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-01-10 12:29:27 +0530 (Tue, 10 Jan 2017)");
   script_name("HPE LoadRunner MMS Protocol Remote Code Execution Vulnerability");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to an unspecified buffer 
+  script_tag(name:"insight", value:"The flaw exists due to an unspecified buffer 
   overflow condition in the MMS protocol due to improper validation of 
   user-supplied input.");
 

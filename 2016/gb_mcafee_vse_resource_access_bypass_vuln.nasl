@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_vse_resource_access_bypass_vuln.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_mcafee_vse_resource_access_bypass_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # McAfee VirusScan Enterprise Resource Access Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:virusscan_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809974");
-  script_version("$Revision: 5850 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-3984");
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-05-10 14:30:14 +0530 (Tue, 10 May 2016)");
   script_name("McAfee VirusScan Enterprise Resource Access Bypass Vulnerability");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist as the McAfee VirusScan
+  script_tag(name:"insight", value:"The flaw exists as the McAfee VirusScan
   Console (mcconsol.exe) does not properly check the password.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow local

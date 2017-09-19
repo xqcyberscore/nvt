@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_security_scan_plus_priv_esca_vuln.nasl 5693 2017-03-23 12:15:24Z antu123 $
+# $Id: gb_mcafee_security_scan_plus_priv_esca_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # McAfee Security Scan Plus Privilege Escalation Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:intel:mcafee_security_scan_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810824");
-  script_version("$Revision: 5693 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-8008");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 13:15:24 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-03-22 11:37:02 +0530 (Wed, 22 Mar 2017)");
   script_name("McAfee Security Scan Plus Privilege Escalation Vulnerability (Windows)");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to McUICnt.exe, an
+  script_tag(name: "insight" , value:"The flaw exists due to McUICnt.exe, an
   executable file used in McAfee Security Scan Plus, used to load Version.DLL
   from the current user directory.");
 

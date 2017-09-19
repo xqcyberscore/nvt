@@ -33,8 +33,8 @@ if(description)
 {
  script_id(80109);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6617 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 15:14:20 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 7159 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:27:42 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2009-10-18 22:12:25 +0200 (Sun, 18 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("w3af (NASL wrapper)");
@@ -57,6 +57,7 @@ if(description)
 }
 
 include("http_func.inc");
+include("global_settings.inc"); # For report_verbosity
 
 cmdw3af = "w3af_console";
 

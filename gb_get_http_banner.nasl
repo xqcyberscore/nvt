@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_get_http_banner.nasl 7056 2017-09-05 04:41:55Z ckuersteiner $
+# $Id: gb_get_http_banner.nasl 7157 2017-09-18 06:32:56Z ckuersteiner $
 #
 # HTTP Banner
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140170");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7056 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-05 06:41:55 +0200 (Tue, 05 Sep 2017) $");
+ script_version ("$Revision: 7157 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 08:32:56 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
  script_name("HTTP Banner");
 
@@ -365,5 +365,6 @@ set_mandatory_key( key:"libsoup", regex:"Server: (soup-transcode-proxy )?libsoup
 set_mandatory_key( key:"spidercontrol-scada", regex:"Server: SCADA.*(powered by SpiderControl TM)");
 set_mandatory_key( key:"StorageGRID", regex:"Server: StorageGRID");
 set_mandatory_key( key:"NetApp", regex: "Server: NetApp");
+set_mandatory_key( key:"App-webs", regex: "Server: App-webs/");
 
 exit( 0 );

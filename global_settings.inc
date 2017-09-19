@@ -1,6 +1,8 @@
-# OpenVAS Vulnerability Test
-# $Id: global_settings.inc 10964 2011-05-18 20:50:52Z jan $
-# Description: Methods for handling global settings
+###############################################################################
+# OpenVAS Include File
+# $Id: global_settings.inc 7162 2017-09-18 08:27:48Z cfischer $
+#
+# Methods for handling global settings
 #
 # Authors:
 # Anonymous
@@ -21,25 +23,15 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+# $Revision: 7162 $
+#
+###############################################################################
 
-global_var	report_verbosity, log_verbosity, debug_level;
+global_var report_verbosity, log_verbosity, debug_level;
 
 report_verbosity = 1;
 debug_level = 0;
 log_verbosity = 1;
-all_addr_private = 0;
-all_addr_public = 0;
-
-
-__gs_opt = get_kb_item("global_settings/network_type");
-if (__gs_opt)
-{
-  if ("LAN" >< __gs_opt) all_addr_private = 1;
-  else if ("Internet" >< __gs_opt) all_addr_public = 1;
-}
-
-
-
 
 __gs_opt = get_kb_item("global_settings/report_verbosity");
 if (__gs_opt)
@@ -68,7 +60,7 @@ if (__gs_opt)
 # with old NASL2 interpreters
 function debug_print(level, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
 {
- local_var	msg, i, l;
+ local_var msg, i, l;
 
  if (isnull(level)) level = 1;
  if (debug_level < level) return;
@@ -84,7 +76,7 @@ function debug_print(level, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
 # with old NASL2 interpreters
 function log_print(level, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
 {
- local_var	msg, i, l;
+ local_var msg, i, l;
 
  if (isnull(level)) level = 1;
  if (debug_level <= 0 || log_verbosity < level) return;

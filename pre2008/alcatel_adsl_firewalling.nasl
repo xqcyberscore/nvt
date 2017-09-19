@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: alcatel_adsl_firewalling.nasl 4904 2017-01-02 12:45:48Z cfi $
+# $Id: alcatel_adsl_firewalling.nasl 7175 2017-09-18 11:55:15Z cfischer $
 #
 # Alcatel ADSL modem with firewalling off
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10760");
-  script_version("$Revision: 4904 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 13:45:48 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 7175 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2001-1424", "CVE-2001-1425");
   script_bugtraq_id(2568);
@@ -64,8 +64,6 @@ if(description)
 
   exit(0);
 }
-
-include('global_settings.inc');
 
 if( ! ereg( pattern:"^10\.0\.0\..*", string:get_host_ip() ) ) exit( 0 );
 

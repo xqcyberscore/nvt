@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ibs_mappro_dir_trav_vuln.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: gb_wordpress_ibs_mappro_dir_trav_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Wordpress IBS Mappro Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808201");
-  script_version("$Revision: 5712 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2015-5472");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-05-20 16:09:30 +0530 (Fri, 20 May 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress IBS Mappro Directory Traversal Vulnerability");
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
   and check whether it is able to read arbitrary files or not");
 
-  script_tag(name:"insight", value:"The flaw exist due to an improper sanitization
+  script_tag(name:"insight", value:"The flaw exists due to an improper sanitization
   of input to 'file' parameter in 'lib/download.php' file.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers

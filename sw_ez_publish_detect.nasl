@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ez_publish_detect.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: sw_ez_publish_detect.nasl 7166 2017-09-18 09:14:09Z cfischer $
 #
 # eZ Publish Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111024");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 7166 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-07-25 12:00:00 +0200 (Sat, 25 Jul 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,12 +57,11 @@ include("host_details.inc");
 include("cpe.inc");
 
 port = get_http_port( default:80 );
-
 if( !can_host_php( port:port ) ) exit( 0 );
 
-##Iterate possible paths
-foreach dir ( make_list_unique( "/", "/cms", "/admin", "/siteadmin", "/site_admin", "/backend", cgi_dirs(port:port) ) )
-{
+rootInstalled = FALSE;
+
+foreach dir( make_list_unique( "/", "/cms", "/admin", "/siteadmin", "/site_admin", "/backend", cgi_dirs( port:port ) ) ) {
 
   if( rootInstalled ) break;
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_iprint_client_printer_url_mult_bof_vuln_win.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_novell_iprint_client_printer_url_mult_bof_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Novell iPrint Client 'printer-url' Multiple BOF Vulnerabilities (Windows)
 #
@@ -28,7 +28,7 @@ tag_impact = "Successful exploitation could allow attackers to execute arbitrary
   the context of the browser.
   Impact Level: Application";
 tag_affected = "Novell iPrint Client version prior to 5.64 on windows.";
-tag_insight = "The flaws exists within the 'nipplib' component which is used by both the
+tag_insight = "The flaws exist within the 'nipplib' component which is used by both the
   ActiveX and Netscape compatible browser plugins. When handling the various
   parameters from the user specified printer-url the process blindly copies
   user supplied data into a fixed-length buffer on the heap.";
@@ -40,8 +40,8 @@ tag_summary = "The host is installed with Novell iPrint Client and is prone to
 if(description)
 {
   script_id(801951);
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_version("$Revision: 7174 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_cve_id("CVE-2011-1699", "CVE-2011-1700", "CVE-2011-1701", "CVE-2011-1702",
                 "CVE-2011-1703", "CVE-2011-1704", "CVE-2011-1705", "CVE-2011-1706",

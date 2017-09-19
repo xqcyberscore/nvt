@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-094.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_ms16-094.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Windows Secure Boot Security Feature Bypass Vulnerability(3177404)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808196");
-  script_version("$Revision: 5580 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-3287");
   script_bugtraq_id(91604);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-07-13 12:13:04 +0530 (Wed, 13 Jul 2016)");
   script_name("Microsoft Windows Secure Boot Security Feature Bypass Vulnerability(3177404)");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to Windows Secure Boot
+  script_tag(name:"insight", value:"The flaw exists due to Windows Secure Boot
   improperly applies an affected policy.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an

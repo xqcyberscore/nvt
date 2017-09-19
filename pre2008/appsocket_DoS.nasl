@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: appsocket_DoS.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: appsocket_DoS.nasl 7175 2017-09-18 11:55:15Z cfischer $
 # Description: AppSocket DoS
 #
 # Authors:
@@ -33,8 +33,8 @@ tag_solution = "Change your settings or firewall your printer";
 if(description)
 {
  script_id(11090);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 7175 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -56,9 +56,6 @@ if(description)
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
-
-
-include('global_settings.inc');
 
 function test_app_socket(port)
 {

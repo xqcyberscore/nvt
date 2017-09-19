@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_20214ad330_rubygems_fc26.nasl 7145 2017-09-15 12:32:31Z santu $
+# $Id: gb_fedora_2017_20214ad330_rubygems_fc26.nasl 7156 2017-09-18 05:28:25Z cfischer $
 #
 # Fedora Update for rubygems FEDORA-2017-20214ad330
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873354");
-  script_version("$Revision: 7145 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:32:31 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 7156 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 07:28:25 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-10 07:31:02 +0200 (Sun, 10 Sep 2017)");
   script_cve_id("CVE-2017-0901", "CVE-2017-0900", "CVE-2017-0902", "CVE-2017-0899");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for rubygems FEDORA-2017-20214ad330");
   script_tag(name: "summary", value: "Check the version of rubygems");

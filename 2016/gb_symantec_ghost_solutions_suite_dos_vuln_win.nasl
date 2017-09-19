@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_ghost_solutions_suite_dos_vuln_win.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: gb_symantec_ghost_solutions_suite_dos_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Symantec Ghost Solutions Suite Denial of Service Vulnerability (Windows)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:symantec:ghost_solutions_suite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808573");
-  script_version("$Revision: 5712 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2015-5689");
   script_bugtraq_id(76498);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-07-11 15:36:44 +0530 (Mon, 11 Jul 2016)");
   script_name("Symantec Ghost Solutions Suite Denial of Service Vulnerability (Windows)");
 
@@ -45,7 +45,7 @@ if(description)
   script_tag(name: "vuldetect" , value: "Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value: "The flaw exist as the ghostexp.exe in
+  script_tag(name: "insight" , value: "The flaw exists as the ghostexp.exe in
   Ghost Explorer Utility performs improper sign-extend operations before array
   -element accesses.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-140.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_ms16-140.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Boot Manager Security Feature Bypass Vulnerability (3193479)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809802");
-  script_version("$Revision: 5759 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-7247");
   script_bugtraq_id(94058);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-11-09 08:16:52 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Boot Manager Security Feature Bypass Vulnerability (3193479)");
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to windows secure boot
+  script_tag(name: "insight" , value:"The flaw exists due to windows secure boot
   improperly loads a boot policy that is affected by the vulnerability.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an

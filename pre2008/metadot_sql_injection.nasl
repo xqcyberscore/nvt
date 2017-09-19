@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: metadot_sql_injection.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: metadot_sql_injection.nasl 7165 2017-09-18 08:57:44Z cfischer $
 #
 # Multiple MetaDot Vulnerabilities
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12024");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 7165 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9439);
   script_tag(name:"cvss_base", value:"7.5");
@@ -65,7 +65,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
 
-  url = string(path, "/metadot/index.pl?isa=Session&op=auto_login&new_user=&key='[foo]");
+  url = string(dir, "/metadot/index.pl?isa=Session&op=auto_login&new_user=&key='[foo]");
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req );
 

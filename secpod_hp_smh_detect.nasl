@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_smh_detect.nasl 5074 2017-01-24 10:40:16Z cfi $
+# $Id: secpod_hp_smh_detect.nasl 7160 2017-09-18 07:39:22Z cfischer $
 #
 # HP System Management Homepage (SMH) Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900657");
-  script_version("$Revision: 5074 $");
+  script_version("$Revision: 7160 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:40:16 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:39:22 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_name("HP System Management Homepage (SMH) Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -50,9 +50,9 @@ if(description)
   exit(0);
 }
 
-include("http_keepalive.inc");
 include("host_details.inc");
 include("http_func.inc");
+include("http_keepalive.inc");
 include("cpe.inc");
 
 port = get_http_port( default:2301 );

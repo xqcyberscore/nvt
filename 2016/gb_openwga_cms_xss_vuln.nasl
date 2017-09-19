@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openwga_cms_xss_vuln.nasl 6102 2017-05-11 08:34:20Z teissa $
+# $Id: gb_openwga_cms_xss_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # OpenWGA Content Manager Cross-site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:OpenWGA_CMS:openwga";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807687");
-  script_version("$Revision: 6102 $");
+  script_version("$Revision: 7174 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 10:34:20 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-05-03 16:40:17 +0530 (Tue, 03 May 2016)");
   script_name("OpenWGA Content Manager Cross-site Scripting Vulnerability");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Send a crafted request via HTTP GET and
   check whether its able to read cookie value.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to the input passed
+  script_tag(name: "insight" , value:"The flaw exists due to the input passed
   via the User-Agent HTTP header is not properly sanitized before being returned
   to the user.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spip_detect.nasl 5820 2017-03-31 11:20:49Z cfi $
+# $Id: gb_spip_detect.nasl 7161 2017-09-18 07:43:57Z cfischer $
 #
 # SPIP Detection
 #
@@ -31,9 +31,9 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103776");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5820 $");
+ script_version ("$Revision: 7161 $");
  script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:43:57 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2013-08-29 11:47:51 +0200 (Thu, 29 Aug 2013)");
  script_name("SPIP Detection");
 
@@ -84,7 +84,7 @@ foreach dir( make_list_unique( "/spip", cgi_dirs( port:port ) ) ) {
     if(isnull(cpe))
       cpe = 'cpe:/a:spip:spip';
 
-    register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+    register_product(cpe:cpe, location:install, port:port);
 
     log_message(data: build_detection_report(app:"SPIP", version:vers, install:install, cpe:cpe, concluded: version[0]),
                 port:port);

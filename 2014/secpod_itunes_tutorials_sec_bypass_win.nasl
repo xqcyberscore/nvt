@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_itunes_tutorials_sec_bypass_win.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: secpod_itunes_tutorials_sec_bypass_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Apple iTunes Tutorials Window Security Bypass Vulnerability (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804232";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2014-1242");
   script_bugtraq_id(65088);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-01-30 16:54:49 +0530 (Thu, 30 Jan 2014)");
   script_name("Apple iTunes Tutorials Window Security Bypass Vulnerability (Windows)");
 
@@ -48,7 +48,7 @@ vulnerability.";
 or not.";
 
   tag_insight =
-"The flaw exist due to iTunes Tutorials window, which uses a non-secure HTTP
+"The flaw exists due to iTunes Tutorials window, which uses a non-secure HTTP
 connection to retrieve content.";
 
   tag_impact =

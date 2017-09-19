@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_mult_vuln_july08_win_900010.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_wireshark_mult_vuln_july08_win_900010.nasl 7174 2017-09-18 11:48:08Z asteins $
 # Description: Wireshark Multiple Vulnerabilities - July08 (Windows)
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
  script_id(900010);
- script_version("$Revision: 5370 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 7174 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_bugtraq_id(28485);
  script_cve_id("CVE-2008-1561", "CVE-2008-1562", "CVE-2008-1563");
@@ -41,7 +41,7 @@ if(description)
  script_dependencies("secpod_reg_enum.nasl");
  script_mandatory_keys("SMB/WindowsVersion");
  script_require_ports(139, 445);
- script_tag(name:"insight", value: "The flaws exists due to errors in GSM SMS dissector, PANA and KISMET
+ script_tag(name:"insight", value: "The flaws exist due to errors in GSM SMS dissector, PANA and KISMET
 dissectors, RTMPT dissector, RMI dissector, and in syslog dissector.");
  script_tag(name:"solution", value: "Upgrade to wireshark to 1.0.1 or later.
 http://www.wireshark.org/download.html");

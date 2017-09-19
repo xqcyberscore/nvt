@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xoops_detect.nasl 5952 2017-04-13 12:34:17Z cfi $
+# $Id: secpod_xoops_detect.nasl 7166 2017-09-18 09:14:09Z cfischer $
 #
 # XOOPS Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900892");
-  script_version("$Revision: 5952 $");
+  script_version("$Revision: 7166 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 14:34:17 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-11-20 06:52:52 +0100 (Fri, 20 Nov 2009)");
   script_name("XOOPS Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -57,6 +57,8 @@ include("host_details.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
+
+rootInstalled = FALSE;
 
 foreach dir( make_list_unique( "/", "/xoops", cgi_dirs( port:port ) ) ) {
 

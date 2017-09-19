@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: eftp_directory_traversal.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: eftp_directory_traversal.nasl 7164 2017-09-18 08:41:02Z cfischer $
 #
 # EFTP tells if a given file exists
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10933");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 7164 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:41:02 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3333);
   script_cve_id("CVE-2001-1109");
@@ -68,8 +68,8 @@ if(description)
   exit(0);
 }
 
+include("global_settings.inc");
 include("ftp_func.inc");
-include('global_settings.inc');
 
 cmd[0] = "SIZE";
 cmd[1] = "MDTM";

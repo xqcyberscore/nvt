@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_registration_module_xss_vuln.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_adobe_connect_registration_module_xss_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Adobe Connect 'registration module' Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:connect";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809471");
-  script_version("$Revision: 5527 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-7851");
   script_bugtraq_id(94152);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-11-15 13:01:25 +0530 (Tue, 15 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe Connect 'registration module' Cross-Site Scripting Vulnerability");
@@ -45,7 +45,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist as adobe connect does
+  script_tag(name: "insight" , value:"The flaw exists as adobe connect does
   not adequately validate user inputs in the events registration module.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

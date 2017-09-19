@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cesarftp_mkd_command_buffer_overflow.nasl 4987 2017-01-11 13:38:47Z cfi $
+# $Id: cesarftp_mkd_command_buffer_overflow.nasl 7164 2017-09-18 08:41:02Z cfischer $
 #
 # CesarFTP MKD Command Buffer Overflow
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.200058");
-  script_version("$Revision: 4987 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-11 14:38:47 +0100 (Wed, 11 Jan 2017) $");
+  script_version("$Revision: 7164 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:41:02 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -81,8 +81,8 @@ if(description)
   exit(0);
 }
 
-include("ftp_func.inc");
 include("global_settings.inc");
+include("ftp_func.inc");
 
 port = get_ftp_port( default:21 );
 

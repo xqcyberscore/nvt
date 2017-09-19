@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: goaheadwebserver_source_disclosure.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: goaheadwebserver_source_disclosure.nasl 7176 2017-09-18 12:01:01Z cfischer $
 # Description: GoAhead WebServer Script Source Code Disclosure
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "Upgrade to GoAhead WebServer 2.1.8 or a newer release.";
 
 if (description) {
  script_id(2000099); 
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 7176 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -71,7 +71,6 @@ if (description) {
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 function GetFileExt(file) {
  ret = split(file, sep: '.');

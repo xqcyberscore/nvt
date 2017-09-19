@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_windows_ie_n_egde_type_confusion_rce_vuln.nasl 6257 2017-05-31 14:33:17Z cfi $
+# $Id: gb_microsoft_windows_ie_n_egde_type_confusion_rce_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Edge and Internet Explorer Type Confusion Remote Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810577");
-  script_version("$Revision: 6257 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2017-0037");
   script_bugtraq_id(96088);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-03-01 14:28:21 +0530 (Wed, 01 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Edge and Internet Explorer Type Confusion Remote Code Execution Vulnerability");
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to a type confusion 
+  script_tag(name: "insight" , value:"The flaw exists due to a type confusion 
   issue in the 'Layout::MultiColumnBoxBuilder::HandleColumnBreakOnColumnSpanningElement' 
   function in mshtml.dll.");
 

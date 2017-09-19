@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_onenote_ms16-070.nasl 6412 2017-06-23 09:05:07Z cfischer $
+# $Id: gb_ms_onenote_ms16-070.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft OneNote Remote Code Execution Vulnerability (3114862)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:microsoft:onenote";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808229");
-  script_version("$Revision: 6412 $");
+  script_version("$Revision: 7174 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:05:07 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-06-16 11:22:43 +0530 (Thu, 16 Jun 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft OneNote Remote Code Execution Vulnerability (3114862)");
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaws exists when a user opens a specially 
+  script_tag(name:"insight", value:"The flaws exist when a user opens a specially 
   crafted Office file.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

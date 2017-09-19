@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-147.nasl 4770 2016-12-14 13:44:16Z antu123 $
+# $Id: gb_ms16-147.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Uniscribe Remote Code Execution Vulnerability (3204063)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809832");
-  script_version("$Revision: 4770 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-7274");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-14 14:44:16 +0100 (Wed, 14 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-12-14 09:12:25 +0530 (Wed, 14 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Uniscribe Remote Code Execution Vulnerability (3204063)");
@@ -42,7 +42,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to the way Windows
+  script_tag(name: "insight" , value:"The flaw exists due to the way Windows
   Uniscribe handles objects in the memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker

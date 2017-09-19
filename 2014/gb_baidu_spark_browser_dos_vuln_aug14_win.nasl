@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_baidu_spark_browser_dos_vuln_aug14_win.nasl 6995 2017-08-23 11:52:03Z teissa $
+# $Id: gb_baidu_spark_browser_dos_vuln_aug14_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Baidu Spark Browser Denial of Service Vulnerability -01 August14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:baidu:spark_browser";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804901");
-  script_version("$Revision: 6995 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2014-5349");
   script_bugtraq_id(68288);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-08-26 10:44:09 +0530 (Tue, 26 Aug 2014)");
   script_name("Baidu Spark Browser Denial of Service Vulnerability -01 August14 (Windows)");
 
@@ -47,7 +47,7 @@ service vulnerability.";
 is vulnerable or not.";
 
   tag_insight =
-"The flaw exist in the window.print JavaScript function when exceptional
+"The flaw exists in the window.print JavaScript function when exceptional
 conditions are not handled properly.";
 
   tag_impact =

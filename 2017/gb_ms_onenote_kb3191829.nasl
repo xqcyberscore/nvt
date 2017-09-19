@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:onenote";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810855");
-  script_version("$Revision: 6412 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2017-0197");
   script_bugtraq_id(97411);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:05:07 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-04-12 15:58:01 +0530 (Wed, 12 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft OneNote DLL Loading RCE Vulnerability Vulnerability (KB3191829)");
@@ -45,7 +45,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaws exists when Office improperly
+  script_tag(name:"insight", value:"The flaws exist when Office improperly
   validates input before loading dynamic link library (DLL) files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

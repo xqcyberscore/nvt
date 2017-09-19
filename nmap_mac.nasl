@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap_mac.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: nmap_mac.nasl 7172 2017-09-18 11:07:34Z cfischer $
 #
 # Nmap MAC Scan.
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103585");
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 7172 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:07:34 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2012-10-11 15:52:11 +0100 (Thu, 11 Oct 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -48,7 +48,6 @@ if(description)
 }
 
 include("host_details.inc");
-include("network_func.inc");
 
 if(!islocalnet())exit(0);
 

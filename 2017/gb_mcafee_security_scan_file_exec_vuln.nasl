@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_security_scan_file_exec_vuln.nasl 5806 2017-03-31 07:21:48Z teissa $
+# $Id: gb_mcafee_security_scan_file_exec_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # McAfee Security Scan Plus File Execution Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:intel:mcafee_security_scan_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810826");
-  script_version("$Revision: 5806 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2015-8991");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 09:21:48 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-03-22 11:57:02 +0530 (Wed, 22 Mar 2017)");
   script_name("McAfee Security Scan Plus File Execution Vulnerability (Windows)");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist only within installers and
+  script_tag(name: "insight" , value:"The flaw exists only within installers and
   uninstallers, and may manifest only during installation or uninstallation
   operations.");
 

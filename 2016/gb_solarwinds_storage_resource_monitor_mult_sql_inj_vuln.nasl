@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_storage_resource_monitor_mult_sql_inj_vuln.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_solarwinds_storage_resource_monitor_mult_sql_inj_vuln.nasl 7165 2017-09-18 08:57:44Z cfischer $
 #
 # SolarWinds Storage Resource Monitor Multiple SQL injection vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:solarwinds:storage_resource_monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809427");
-  script_version("$Revision: 5836 $");
+  script_version("$Revision: 7165 $");
   script_cve_id("CVE-2016-4350");
   script_bugtraq_id(89557);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-10-03 15:36:59 +0530 (Mon, 03 Oct 2016)");
   script_name("SolarWinds Storage Resource Monitor Multiple SQL injection vulnerabilities");
 
@@ -124,7 +124,7 @@ if(buf =~ "HTTP/1\.. 200" && "SolarWinds - Storage Manager" ><  buf)
                    extra_check:make_list(">Enterprise Report<", ">Storage Manager<")))
   { 
     report = report_vuln_url(port:srmport, url:url);
-    security_message(port:srmort, data:report);
+    security_message(port:srmport, data:report);
     exit(0);
   }
 }

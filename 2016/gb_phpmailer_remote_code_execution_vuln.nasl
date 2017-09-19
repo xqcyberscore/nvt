@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmailer_remote_code_execution_vuln.nasl 5132 2017-01-30 07:08:27Z antu123 $
+# $Id: gb_phpmailer_remote_code_execution_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # PHPMailer Remote Code Execution Vulnerability.
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmailer:phpmailer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809842");
-  script_version("$Revision: 5132 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-10033");
   script_bugtraq_id(95108);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-30 08:08:27 +0100 (Mon, 30 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-12-27 16:29:41 +0530 (Tue, 27 Dec 2016)");
   script_name("PHPMailer Remote Code Execution Vulnerability.");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to, PHPMailer uses the
+  script_tag(name:"insight", value:"The flaw exists due to, PHPMailer uses the
   Sender variable to build the params string, The validation is done using the 
   RFC 3696 specification, which can allow emails to contain spaces when it has
   double quote.");

@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808059");
-  script_version("$Revision: 5673 $");
+  script_version("$Revision: 7174 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 10:06:34 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-05-24 13:11:01 +0530 (Tue, 24 May 2016)");
   script_name("Joomla Easy Youtube Gallery SQL Injection Vulnerability");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
   and check whether it is able to execute sql query or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to insufficient
+  script_tag(name:"insight", value:"The flaw exists due to insufficient
   validation of user supplied input via 'mycategory' parameter to 
   'index.php' script.");
 

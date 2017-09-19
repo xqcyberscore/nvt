@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_dir_trav_sym16_016.nasl 6493 2017-06-30 07:00:59Z ckuersteiner $
+# $Id: gb_symantec_messaging_gateway_dir_trav_sym16_016.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Symantec Messaging Gateway Directory Traversal Vulnerability (SYM16-016)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807891");
-  script_version("$Revision: 6493 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-5312");
   script_bugtraq_id(93148);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 09:00:59 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-09-30 10:38:42 +0530 (Fri, 30 Sep 2016)");
   script_name("Symantec Messaging Gateway Directory Traversal Vulnerability (SYM16-016)");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request
   and check whether it is able to read files.");
 
-  script_tag(name:"insight", value:"The flaw exist due to error in the charting
+  script_tag(name:"insight", value:"The flaw exists due to error in the charting
   component in the Symantec Messaging Gateway which does not properly sanitize user
   input submitted for charting requests.");
 

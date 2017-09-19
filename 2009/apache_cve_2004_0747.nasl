@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apache_cve_2004_0747.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: apache_cve_2004_0747.nasl 7176 2017-09-18 12:01:01Z cfischer $
 #
 # Apache Web Server Configuration File Environment Variable Local
 # Buffer Overflow Vulnerability
@@ -42,8 +42,8 @@ tag_solution = "The vendor has released an upgrade. Please see
 if(description)
 {
   script_id(100172);
-  script_version("$Revision: 4574 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+  script_version("$Revision: 7176 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -67,7 +67,6 @@ if(description)
 
 include("http_func.inc");
 include("version_func.inc");
-include("global_settings.inc");
 
 httpdPort = get_http_port(default:80);
 if(!httpdPort){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_kb3191843.nasl 6169 2017-05-19 08:26:16Z antu123 $
+# $Id: gb_ms_word_kb3191843.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Office Word Remote Code Execution Vulnerability (KB3191843)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810777");
-  script_version("$Revision: 6169 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2017-0254");
   script_bugtraq_id(98101);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 10:26:16 +0200 (Fri, 19 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-05-10 11:01:32 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Remote Code Execution Vulnerability (KB3191843)");
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaw exist as Office software
+  script_tag(name:"insight", value:"The flaw exists as Office software
   fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote

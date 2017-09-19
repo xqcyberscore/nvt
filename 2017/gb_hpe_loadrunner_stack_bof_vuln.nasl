@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_loadrunner_stack_bof_vuln.nasl 5183 2017-02-03 08:14:57Z antu123 $
+# $Id: gb_hpe_loadrunner_stack_bof_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # HPE LoadRunner 'magentproc.exe' Stack Buffer Overflow Vulnerability
 # 
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:loadrunner";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810529");
-  script_version("$Revision: 5183 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2013-4800");
   script_bugtraq_id(61446);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 09:14:57 +0100 (Fri, 03 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-02-03 13:26:14 +0530 (Fri, 03 Feb 2017)");
   script_name("HPE LoadRunner 'magentproc.exe' Stack Buffer Overflow Vulnerability");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to an insufficient 
+  script_tag(name:"insight", value:"The flaw exists due to an insufficient 
   validation of a length value in SSL communication with the 'magentproc.exe'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an

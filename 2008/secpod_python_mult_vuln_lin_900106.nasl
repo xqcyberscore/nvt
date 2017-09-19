@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_python_mult_vuln_lin_900106.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: secpod_python_mult_vuln_lin_900106.nasl 7174 2017-09-18 11:48:08Z asteins $
 # Description: Python Multiple Vulnerabilities (Linux)
 #
 # Authors:
@@ -32,7 +32,7 @@ tag_solution = "Fix is available in the SVN repository,
 
 tag_affected = "Python 2.5.2 and prior on Linux (All).";
 
-tag_insight = "The flaws exists due to integer overflow in,
+tag_insight = "The flaws exist due to integer overflow in,
         - hashlib module, which can lead to an unreliable cryptographic digest 
           results.
         - the processing of unicode strings.
@@ -51,9 +51,9 @@ tag_summary = "The host is installed Python, which is prone to multiple vulnerab
 if(description)
 {
  script_id(900106);
- script_version("$Revision: 4557 $");
+ script_version("$Revision: 7174 $");
  script_tag(name:"deprecated", value:TRUE);
- script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_bugtraq_id(30491);
  script_cve_id("CVE-2008-2315", "CVE-2008-2316", "CVE-2008-3142",

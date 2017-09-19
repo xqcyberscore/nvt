@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glass_fish_dir_trav_vuln.nasl 6812 2017-07-31 06:15:43Z cfischer $
+# $Id: gb_oracle_glass_fish_dir_trav_vuln.nasl 7160 2017-09-18 07:39:22Z cfischer $
 #
 # Oracle Glass Fish Server Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806848");
-  script_version("$Revision: 6812 $");
+  script_version("$Revision: 7160 $");
   script_cve_id("CVE-2017-1000028");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-31 08:15:43 +0200 (Mon, 31 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:39:22 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-01-27 14:43:03 +0530 (Wed, 27 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Oracle Glass Fish Server Directory Traversal Vulnerability");
@@ -72,9 +72,9 @@ if(description)
   exit(0);
 }
 
-include("http_keepalive.inc");
 include("host_details.inc");
 include("http_func.inc");
+include("http_keepalive.inc");
 
 # Variable Initialization
 url = "";

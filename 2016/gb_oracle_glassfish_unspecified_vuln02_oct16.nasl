@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_unspecified_vuln02_oct16.nasl 5185 2017-02-03 09:39:41Z teissa $
+# $Id: gb_oracle_glassfish_unspecified_vuln02_oct16.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Oracle GlassFish Server Multiple Unspecified Vulnerabilities-02 Oct16
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809710");
-  script_version("$Revision: 5185 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-5519", "CVE-2016-5528", "CVE-2017-3250", "CVE-2017-3249",
                 "CVE-2017-3247");
   script_bugtraq_id(93698, 95478, 95480, 95484, 95483);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 10:39:41 +0100 (Fri, 03 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-10-21 15:53:33 +0530 (Fri, 21 Oct 2016)");
   script_name("Oracle GlassFish Server Multiple Unspecified Vulnerabilities-02 Oct16");
 
@@ -45,7 +45,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to,
+  script_tag(name:"insight", value:"The flaw exists due to,
   - An unspecified error in 'Java Server Faces' sub-component.
   - Multiple unspecified errors in 'Security' sub-component.
   - An unspecified error in 'Core' sub-component.");

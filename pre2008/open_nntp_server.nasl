@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: open_nntp_server.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: open_nntp_server.nasl 7172 2017-09-18 11:07:34Z cfischer $
 # Description: Open News server
 #
 # Authors:
@@ -42,8 +42,8 @@ to read and/or post 'politically incorrects' articles.
 if(description)
 {
  script_id(17204);
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 7172 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:07:34 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -66,11 +66,6 @@ if(description)
  script_tag(name : "solution" , value : tag_solution);
  exit(0);
 }
-
-#
-
-include('global_settings.inc');
-include('network_func.inc');
 
 # Unusable server
 if (! get_kb_item('nntp/'+port+'/ready') ||

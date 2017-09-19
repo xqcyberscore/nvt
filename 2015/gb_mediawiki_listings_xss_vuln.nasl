@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_listings_xss_vuln.nasl 6709 2017-07-12 15:16:14Z cfischer $
+# $Id: gb_mediawiki_listings_xss_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # MediaWiki Listings extension Cross-site scripting Vulnerability - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805326");
-  script_version("$Revision: 6709 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2014-9477");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 17:16:14 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-01-23 12:37:41 +0530 (Fri, 23 Jan 2015)");
   script_name("MediaWiki Listings extension Cross-site scripting Vulnerability - Jan15");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted HTTP POST request
   and check whether it is able to read cookie or not.");
 
-  script_tag(name:"insight", value:"The flaw exist as input passed via
+  script_tag(name:"insight", value:"The flaw exists as input passed via
   'name' or 'url' POST parameter to the 'Extension:Listings' script is
   not validated before returning it to users.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-100.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_ms16-100.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Windows Secure Boot Security Feature Bypass Vulnerability (3179577)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808646");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-3320");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-08-10 08:58:21 +0530 (Wed, 10 Aug 2016)");
   script_name("Microsoft Windows Secure Boot Security Feature Bypass Vulnerability (3179577)");
 
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to an improper loading of 
+  script_tag(name:"insight", value:"The flaw exists due to an improper loading of 
   boot managers by Windows Secure Boot.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker

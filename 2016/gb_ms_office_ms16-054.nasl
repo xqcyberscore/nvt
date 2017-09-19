@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-054.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_ms_office_ms16-054.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Office Multiple Remote Code Execution Vulnerabilities (3155544)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807820");
-  script_version("$Revision: 5732 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-0126", "CVE-2016-0140", "CVE-2016-0183", "CVE-2016-0198");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-05-11 11:36:04 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft Office Multiple Remote Code Execution Vulnerabilities (3155544)");
 
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaws exists due to,
+  script_tag(name:"insight", value:"The flaws exist due to,
   - Multiple memory corruption errors.
   - An error as windows font library improperly handles specially crafted embedded
   fonts.");

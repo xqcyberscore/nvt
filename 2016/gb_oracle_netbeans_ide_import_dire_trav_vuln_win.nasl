@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_netbeans_ide_import_dire_trav_vuln_win.nasl 4573 2016-11-18 13:29:14Z antu123 $
+# $Id: gb_oracle_netbeans_ide_import_dire_trav_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Oracle NetBeans IDE Import Directory Traversal Vulnerability (Windows)
 # 
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:netbeans";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809473");
-  script_version("$Revision: 4573 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-5537");
   script_bugtraq_id(93686);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:29:14 +0100 (Fri, 18 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-11-16 11:36:06 +0530 (Wed, 16 Nov 2016)");
   script_name("Oracle NetBeans IDE Import Directory Traversal Vulnerability (Windows)");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to an improper validation
+  script_tag(name:"insight", value:"The flaw exists due to an improper validation
   of '../' characters in an archive entry of a ZIP file imported as a project.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows local

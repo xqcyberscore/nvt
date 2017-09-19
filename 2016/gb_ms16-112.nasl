@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-112.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_ms16-112.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Windows Lock Screen Elevation of Privilege Vulnerability (3178469) 
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809308");
-  script_version("$Revision: 5534 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-3302");
   script_bugtraq_id(92853);
   script_tag(name:"cvss_base", value:"6.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-09-14 07:48:12 +0530 (Wed, 14 Sep 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Lock Screen Elevation of Privilege Vulnerability (3178469)");
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to when windows improperly
+  script_tag(name: "insight" , value:"The flaw exists due to when windows improperly
   allows web content to load from the Windows lock screen.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker

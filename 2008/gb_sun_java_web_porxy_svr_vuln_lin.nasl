@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_web_porxy_svr_vuln_lin.nasl 6602 2017-07-07 10:09:52Z cfischer $
+# $Id: gb_sun_java_web_porxy_svr_vuln_lin.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Sun Java System Web Proxy Server Two Vulnerabilities (Linux)
 #
@@ -33,7 +33,7 @@ tag_impact = "Successful exploitation could allow execution of arbitrary code in
   of the server, and failed attacks may cause denial-of-service condition.
   Impact Level: Application";
 tag_affected = "Sun Java System Web Proxy Server versions prior to 4.0.8 on all running platform.";
-tag_insight = "The flaw exist due to a boundary error in the FTP subsystem and in processing
+tag_insight = "The flaw exists due to a boundary error in the FTP subsystem and in processing
   HTTP headers. This issue resides within the code responsible for handling HTTP
   GET requests.";
 tag_summary = "This host has Sun Java Web Proxy Server running, which is prone
@@ -42,8 +42,8 @@ tag_summary = "This host has Sun Java Web Proxy Server running, which is prone
 if(description)
 {
   script_id(800026);
-  script_version("$Revision: 6602 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:09:52 +0200 (Fri, 07 Jul 2017) $");
+  script_version("$Revision: 7174 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-10-16 18:25:33 +0200 (Thu, 16 Oct 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netvault_backup_integer_overflow_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
+# $Id: gb_netvault_backup_integer_overflow_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Dell Netvault Backup Integer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:dell:netvault_backup";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805653");
-  script_version("$Revision: 5933 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2015-4067");
   script_bugtraq_id(74841);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-06-17 14:20:46 +0530 (Wed, 17 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Dell Netvault Backup Integer Overflow Vulnerability");
@@ -45,7 +45,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to a vulnerability in
+  script_tag(name: "insight" , value:"The flaw exists due to a vulnerability in
   libnv6 module in netvault backup.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

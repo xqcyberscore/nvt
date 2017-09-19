@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ftpglob.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: ftpglob.nasl 7164 2017-09-18 08:41:02Z cfischer $
 # Description: FTPD glob Heap Corruption
 #
 # Authors:
@@ -37,8 +37,8 @@ typically root.";
 if (description)
 {
  	script_id(10821);
- 	script_version("$Revision: 6063 $");
- 	script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ 	script_version("$Revision: 7164 $");
+ 	script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:41:02 +0200 (Mon, 18 Sep 2017) $");
  	script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
     script_xref(name:"IAVA", value:"2001-b-0004");
  	script_bugtraq_id(2550, 3581);
@@ -62,13 +62,8 @@ if (description)
  	exit(0);
 }
 
-
-#
-# Script code starts here 
-#
-
-include("ftp_func.inc");
 include("global_settings.inc");
+include("ftp_func.inc");
 include("host_details.inc");
 
 port = get_kb_item("Services/ftp");

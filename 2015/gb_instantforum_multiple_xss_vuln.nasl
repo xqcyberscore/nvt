@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_instantforum_multiple_xss_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
+# $Id: gb_instantforum_multiple_xss_vuln.nasl 7160 2017-09-18 07:39:22Z cfischer $
 #
 # InstantASP InstantForum.NET Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805291");
-  script_version("$Revision: 5819 $");
+  script_version("$Revision: 7160 $");
   script_cve_id("CVE-2014-9468");
   script_bugtraq_id(72660);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:39:22 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-02-26 11:32:25 +0530 (Thu, 26 Feb 2015)");
   script_name("InstantASP InstantForum.NET Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -74,8 +74,8 @@ if(description)
   exit(0);
 }
 
-include("http_keepalive.inc");
 include("http_func.inc");
+include("http_keepalive.inc");
 
 ## Variable Initialization
 http_port = "";

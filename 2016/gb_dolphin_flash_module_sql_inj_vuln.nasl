@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolphin_flash_module_sql_inj_vuln.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_dolphin_flash_module_sql_inj_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Dolphin flash Modules SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:boonex:dolphin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807369");
-  script_version("$Revision: 5588 $");
+  script_version("$Revision: 7174 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-09-27 12:16:59 +0530 (Tue, 27 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_active");
   script_name("Dolphin flash Modules SQL Injection Vulnerability");
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to execute SQL query or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to an insufficient
+  script_tag(name: "insight" , value:"The flaw exists due to an insufficient
   validation of user supplied input via 'user id' parameter to 'XML.php'
   script.");
 

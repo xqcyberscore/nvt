@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dm_filemanager_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_dm_filemanager_detect.nasl 7170 2017-09-18 10:35:33Z cfischer $
 #
 # DM FileManager Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800818");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 7170 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 12:35:33 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-07-03 15:23:01 +0200 (Fri, 03 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("DM FileManager Version Detection");
@@ -48,15 +48,12 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## start script
 port = get_http_port( default:80 );
-
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir1( make_list_unique( "/dm-filemanager", "/dmf", "/", cgi_dirs( port:port ) ) ) {
@@ -86,6 +83,8 @@ foreach dir1( make_list_unique( "/dm-filemanager", "/dmf", "/", cgi_dirs( port:p
 
     foreach dir2( make_list( "/dm-albums", "/albums" ) ) {
 
+      install2 = dir1 + dir2;
+
       sndReq2 = http_get( item:dir1 + dir2 + "/readme.txt", port:port );
       rcvRes2 = http_keepalive_send_recv( data:sndReq2, port:port );
 
@@ -96,7 +95,7 @@ foreach dir1( make_list_unique( "/dm-filemanager", "/dmf", "/", cgi_dirs( port:p
         ver2 = eregmatch( pattern:"Stable tag: ([0-9.]+)", string:rcvRes2 );
         if( ver2[1] != NULL ) version2 = ver2[1];
 
-        tmp_version1 = version2 + " under " + install2;
+        tmp_version2 = version2 + " under " + install2;
         set_kb_item( name:"www/" + port + "/DM-Albums", value:tmp_version2 );
 
         ## build cpe and store it as host_detail

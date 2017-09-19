@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms15-128.nasl 6505 2017-07-03 09:58:27Z teissa $
+# $Id: gb_dotnet_framework_ms15-128.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerabilities (3104503)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806647");
-  script_version("$Revision: 6505 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2015-6108");
   script_bugtraq_id(78499);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-12-09 13:05:49 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerabilities (3104503)");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaws exists due to an error in
+  script_tag(name:"insight", value:"The flaws exist due to an error in
   Windows font library which improperly handles specially crafted embedded
   fonts.");
 

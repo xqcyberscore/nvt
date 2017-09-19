@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rockmongo_xss_n_dir_trav_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_rockmongo_xss_n_dir_trav_vuln.nasl 7165 2017-09-18 08:57:44Z cfischer $
 #
 # RockMongo Cross Site Scripting and Directory Traversal Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:rockmongo:rockmongo';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804176");
-  script_version("$Revision: 6086 $");
+  script_version("$Revision: 7165 $");
   script_cve_id("CVE-2013-5108", "CVE-2013-5107");
   script_bugtraq_id(63969, 63975);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2013-12-24 09:13:23 +0530 (Tue, 24 Dec 2013)");
   script_name("RockMongo Cross Site Scripting and Directory Traversal Vulnerabilities");
 
@@ -87,7 +87,7 @@ url = dir + '/index.php?action=login.index&host=0&username="><img+src%3D1'+
       '+onerror%3Dalert(document.cookie)>';
 
 ## Try attack and check the response to confirm vulnerability
-if(http_vuln_check(port:rmPort, url:url, check_header:TRUE,
+if(http_vuln_check(port:port, url:url, check_header:TRUE,
   pattern:"onerror=alert\(document.cookie\)>",
   extra_check:">RockMongo<"))
 {

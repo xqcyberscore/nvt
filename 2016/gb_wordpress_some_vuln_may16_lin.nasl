@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_some_vuln_may16_lin.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_wordpress_some_vuln_may16_lin.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # WordPress Same Origin Method Execution Vulnerability May16 (Linux)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808049");
-  script_version("$Revision: 5534 $");
+  script_version("$Revision: 7174 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-05-19 10:40:58 +0530 (Thu, 19 May 2016)");
   script_name("WordPress Same Origin Method Execution Vulnerability May16 (Linux)");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to an error in wordpress
+  script_tag(name:"insight", value:"The flaw exists due to an error in wordpress
   Plupload library used for uploading files.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow

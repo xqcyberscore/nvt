@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ewave_servlet_upload.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: ewave_servlet_upload.nasl 7175 2017-09-18 11:55:15Z cfischer $
 # Description: Unify eWave ServletExec 3.0C file upload
 #
 # Authors:
@@ -33,8 +33,8 @@ tag_solution = "Remove it";
 if(description)
 {
  script_id(10570);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 7175 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1876);
  script_tag(name:"cvss_base", value:"10.0");
@@ -43,16 +43,6 @@ if(description)
  script_cve_id("CVE-2000-1024");
  name = "Unify eWave ServletExec 3.0C file upload";
  script_name(name);
- 
-
-
- 
-
-
- summary = "Unify eWave ServletExec 3.0C file upload";
- 
- 
-
  script_category(ACT_GATHER_INFO);
  
  script_copyright("This script is Copyright (C) 2000 Matt Moore");
@@ -65,11 +55,8 @@ if(description)
  exit(0);
 }
 
-# Check starts here
-
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
 res = is_cgi_installed_ka(item:"/servlet/openvas." + string(rand(),rand(), rand()), port:port);

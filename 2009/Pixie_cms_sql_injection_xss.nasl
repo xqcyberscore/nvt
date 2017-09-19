@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: Pixie_cms_sql_injection_xss.nasl 5768 2017-03-29 13:37:01Z cfi $
+# $Id: Pixie_cms_sql_injection_xss.nasl 7170 2017-09-18 10:35:33Z cfischer $
 #
 # Pixie CMS SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -39,8 +39,8 @@ tag_summary = "Pixie CMS is prone to an SQL-injection vulnerability and a cross-
 if (description)
 {
  script_id(100066);
- script_version("$Revision: 5768 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:37:01 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7170 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 12:35:33 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2009-03-20 13:11:29 +0100 (Fri, 20 Mar 2009)");
  script_cve_id("CVE-2009-1066");
  script_bugtraq_id(34189);
@@ -76,7 +76,7 @@ foreach dir( make_list_unique( "/cms", cgi_dirs( port:port ) ) ) {
 
  if ( buf =~ "HTTP/1\.. 200" &&
      (egrep(pattern: "Pixie Powered", string: buf) || (egrep( pattern:"Set-Cookie: bb2_screener_", string: buf))) &&
-      egrep(pattern:".*<script>alert\(document\.cookie\)</script>.*", string: buf, icase: true) )
+      egrep(pattern:".*<script>alert\(document\.cookie\)</script>.*", string: buf, icase: TRUE) )
  { 
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );

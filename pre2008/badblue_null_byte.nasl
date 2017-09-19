@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: badblue_null_byte.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: badblue_null_byte.nasl 7175 2017-09-18 11:55:15Z cfischer $
 # Description: BadBlue invalid null byte vulnerability
 #
 # Authors:
@@ -35,8 +35,8 @@ tag_solution = "upgrade your software or protect it with a filtering reverse pro
 if(description)
 {
  script_id(11064);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 7175 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(5226);
  script_tag(name:"cvss_base", value:"5.0");
@@ -45,12 +45,7 @@ if(description)
  script_cve_id("CVE-2002-1021");
  name = "BadBlue invalid null byte vulnerability";
  script_name(name);
- 
-
- summary = "Read BadBlue protected configuration file";
- 
  script_category(ACT_ATTACK);
- 
  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
  family = "Web Servers";
  script_family(family);
@@ -62,11 +57,8 @@ if(description)
  exit(0);
 }
 
-########
-
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
 if ( ! port ) exit(0);

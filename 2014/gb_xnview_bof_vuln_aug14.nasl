@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_bof_vuln_aug14.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_xnview_bof_vuln_aug14.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # XnView JPEG-LS Image Processing Buffer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804822");
-  script_version("$Revision: 6759 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2012-4988");
   script_bugtraq_id(55787);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-08-26 10:14:25 +0530 (Tue, 26 Aug 2014)");
   script_name("XnView JPEG-LS Image Processing Buffer Overflow Vulnerability");
 
@@ -47,7 +47,7 @@ vulnerability.";
 is vulnerable or not.";
 
   tag_insight =
-"The flaw exist due to improper bounds checking when processing JPEG-LS
+"The flaw exists due to improper bounds checking when processing JPEG-LS
 (lossless compression) images.";
 
   tag_impact =

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bamboo_remote_code_exec_vuln.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_atlassian_bamboo_remote_code_exec_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Atlassian Bamboo Remote Code Execution Vulnerability Feb16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:atlassian:bamboo";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807275");
-  script_version("$Revision: 5598 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2015-8360");
   script_bugtraq_id(83111);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-02-19 10:03:11 +0530 (Fri, 19 Feb 2016)");
   script_name("Atlassian Bamboo Remote Code Execution Vulnerability Feb16");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to  error in a resource
+  script_tag(name: "insight" , value:"The flaw exists due to  error in a resource
   that deserialised arbitrary user input without restriction.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote

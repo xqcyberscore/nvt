@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 7113 2017-09-13 06:03:30Z cfischer $
+# $Id: misc_func.inc 7163 2017-09-18 08:36:09Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,9 +26,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7113 $
+# $Revision: 7163 $
 #
 ###############################################################################
+
+# Enables debugging output for a few functions below
+local_var _misc_func_debug;
+_misc_func_debug = 0;
 
 # This function is deprecated.
 function get_unknown_svc() {
@@ -60,7 +64,7 @@ function register_service( port, proto, ipproto, message ) {
 
   if( ! ipproto) ipproto = "tcp";
   if( ! service_is_unknown( port:port, ipproto:ipproto ) ) {
-    if( debug_level ) display(get_host_ip(), ": service is already known on port ", ipproto, ":", port, "\n");
+    if( _misc_func_debug ) display(get_host_ip(), ": service is already known on port ", ipproto, ":", port, "\n");
     #return(0);
   }
 
@@ -78,7 +82,7 @@ function register_service( port, proto, ipproto, message ) {
    register_service_as_host_detail( port:port, proto:ipproto, service:proto, message:message );
 
   }
-  if( debug_level ) display(get_host_ip(), ": register_service: port=", port, ", proto=", proto, "\n");
+  if( _misc_func_debug ) display(get_host_ip(), ": register_service: port=", port, ", proto=", proto, "\n");
 }
 
 function register_service_as_host_detail( port, proto, service, message )
@@ -527,7 +531,7 @@ function hex2raw( s ) {
   s = chomp( s );  # remove trailing blanks, CR, LF...
   l = strlen( s );
   if( l % 2 ) {
-    if( debug_level ) display( "hex2raw: odd string: ", s, "\n" );
+    if( _misc_func_debug ) display( "hex2raw: odd string: ", s, "\n" );
     l --;
   }
   s = tolower( s );

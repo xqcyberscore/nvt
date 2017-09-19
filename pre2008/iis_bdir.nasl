@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iis_bdir.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: iis_bdir.nasl 7175 2017-09-18 11:55:15Z cfischer $
 # Description: Check for bdir.htr files
 #
 # Authors:
@@ -40,9 +40,9 @@ the files are not world-readable.";
 if(description)
 {
   script_id(10577);
-  script_version("$Revision: 6056 $");
+  script_version("$Revision: 7175 $");
   script_bugtraq_id(2280);
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -59,14 +59,8 @@ if(description)
   exit(0);
 }
 
-
-
-#
-# The script code starts here
-
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
 

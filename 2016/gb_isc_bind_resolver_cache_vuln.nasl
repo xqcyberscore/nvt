@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_resolver_cache_vuln.nasl 4446 2016-11-08 13:55:32Z cfi $
+# $Id: gb_isc_bind_resolver_cache_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # ISC BIND Resolver Cache Vulnerability - Jan16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807217");
-  script_version("$Revision: 4446 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2012-1033");
   script_bugtraq_id(51898);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-08 14:55:32 +0100 (Tue, 08 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-01-28 12:39:11 +0530 (Thu, 28 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND Resolver Cache Vulnerability - Jan16");
@@ -45,7 +45,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to the resolver
+  script_tag(name: "insight" , value:"The flaw exists due to the resolver
   overwrites cached server names and TTL values in NS records during the
   processing of a response to an A record query.");
 

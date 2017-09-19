@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-153.nasl 4855 2016-12-27 10:54:25Z antu123 $
+# $Id: gb_ms16-153.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # MS Windows Common Log File System Driver Information Disclosure Vulnerability (3207328)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810310");
-  script_version("$Revision: 4855 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-7295");
   script_bugtraq_id(94787);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-27 11:54:25 +0100 (Tue, 27 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-12-14 09:20:01 +0530 (Wed, 14 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Common Log File System Driver Information Disclosure Vulnerability (3207328)");
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to the Windows
+  script_tag(name: "insight" , value:"The flaw exists due to the Windows
   Common Log File System (CLFS) driver improperly handles objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_windows_gdi32dll_info_disclose_vuln.nasl 6257 2017-05-31 14:33:17Z cfi $
+# $Id: gb_microsoft_windows_gdi32dll_info_disclose_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Graphics Component 'gdi32.dll' Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809889");
-  script_version("$Revision: 6257 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2017-0038");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-02-21 17:10:32 +0530 (Tue, 21 Feb 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Graphics Component 'gdi32.dll' Information Disclosure Vulnerability");
@@ -42,7 +42,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to multiple bugs related
+  script_tag(name: "insight" , value:"The flaw exists due to multiple bugs related
   to the handling of DIBs (Device Independent Bitmaps) embedded in EMF records.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker

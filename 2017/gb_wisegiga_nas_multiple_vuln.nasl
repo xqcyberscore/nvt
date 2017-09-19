@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wisegiga_nas_multiple_vuln.nasl 7143 2017-09-15 11:37:02Z santu $
+# $Id: gb_wisegiga_nas_multiple_vuln.nasl 7157 2017-09-18 06:32:56Z ckuersteiner $
 #
 # WiseGiga NAS Multiple Vulnerabilities
 #
@@ -24,15 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/h:wisegiga";
+CPE = "cpe:/h:wisegiga:nas";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811336");
-  script_version("$Revision: 7143 $");
+  script_version("$Revision: 7157 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 13:37:02 +0200 (Fri, 15 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 08:32:56 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-12 13:20:40 +0530 (Tue, 12 Sep 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("WiseGiga NAS Multiple Vulnerabilities");
@@ -40,7 +40,7 @@ if(description)
   script_tag(name: "summary" , value:"The host is running WiseGiga NAS device(s)
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET with
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP POST with
   default credentials and check whether it is able to login or not.");
 
   script_tag(name: "insight" , value:"
@@ -97,11 +97,6 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-netPort = "";
-rcvRes = "";
-req = "";
-
 ## get the port
 if(!netPort = get_app_port(cpe:CPE)){
   exit(0);
@@ -121,10 +116,12 @@ rcvRes = http_send_recv( port:netPort, data:req );
 
 ## confirm exploit
 if(rcvRes =~ "HTTP/1.. 200" && "location.href='main.php';" >< rcvRes && 
-   "mysql" >< rcvRes && '<script language="JavaScript">' >< rcvRes &&
+   '<script language="JavaScript">' >< rcvRes &&
    "Set-Cookie: PASSWORD=guest" >< rcvRes && "Set-Cookie: org_name=guest" >< rcvRes)
 {
-  report = report_vuln_url(port:netPort, url:url);
+  report = "It was possible to log in with the default username/password: 'guest/guest09#$'";
   security_message( port:netPort, data:report);
   exit(0);
 }
+
+exit(0);

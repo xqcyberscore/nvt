@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_cal_nd_addrbook_info_disclosure_vuln_lin.nasl 6262 2017-06-01 11:47:33Z santu $
+# $Id: gb_nextcloud_cal_nd_addrbook_info_disclosure_vuln_lin.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # nextCloud 'Calender and Addressbook' Information Disclosure Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811135");
-  script_version("$Revision: 6262 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2017-0895");
   script_bugtraq_id(98432);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-01 13:47:33 +0200 (Thu, 01 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-05-30 17:45:47 +0530 (Tue, 30 May 2017)");
   script_name("nextCloud 'Calender and Addressbook' Information Disclosure Vulnerability (Linux)");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version with the
   help of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to some unspecified
+  script_tag(name: "insight" , value:"The flaw exists due to some unspecified
   logical error.");
 
   script_tag(name: "impact" , value:"Successful exploitation will disclose the

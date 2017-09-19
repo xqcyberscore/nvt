@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_slider_revolution_08_14.nasl 6756 2017-07-18 13:31:14Z cfischer $
+# $Id: gb_wordpress_slider_revolution_08_14.nasl 7165 2017-09-18 08:57:44Z cfischer $
 #
 # Wordpress Slider Revolution Arbitrary File Download Vulnerability 
 #
@@ -40,14 +40,14 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105070");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6756 $");
+ script_version ("$Revision: 7165 $");
 
  script_name("Wordpress Slider Revolution Arbitrary File Download Vulnerability");
 
 
  script_xref(name:"URL", value:"http://h3ck3rcyb3ra3na.wordpress.com/2014/08/15/wordpress-slider-revolution-responsive-4-1-4-arbitrary-file-download-0day/");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2014-08-21 11:02:57 +0200 (Thu, 21 Aug 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -79,7 +79,7 @@ buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( "DB_NAME" >< buf && "DB_USER" >< buf && "DB_PASSWORD" >< buf )
 {
-  security_message( port:port, expert_info:expert_info );
+  security_message( port:port );
   exit( 0 );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: digital_scribe_37292.nasl 5253 2017-02-09 16:35:48Z mime $
+# $Id: digital_scribe_37292.nasl 7176 2017-09-18 12:01:01Z cfischer $
 #
 # Digital Scribe Multiple SQL Injection Vulnerabilities
 #
@@ -39,8 +39,8 @@ affected.";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100398");
- script_version("$Revision: 5253 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-09 17:35:48 +0100 (Thu, 09 Feb 2017) $");
+ script_version("$Revision: 7176 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2009-12-15 19:11:56 +0100 (Tue, 15 Dec 2009)");
  script_bugtraq_id(37292);
  script_tag(name:"cvss_base", value:"7.5");
@@ -65,7 +65,6 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
 

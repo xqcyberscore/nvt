@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openmeetings_swf_xss_vuln.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_apache_openmeetings_swf_xss_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Apache OpenMeetings 'SWF panel' Cross-site Scripting Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:apache:openmeetings";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808658");
-  script_version("$Revision: 5534 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-3089");
   script_bugtraq_id(92442);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-08-23 15:09:03 +0530 (Tue, 23 Aug 2016)");
   script_name("Apache OpenMeetings 'SWF panel' Cross-site Scripting Vulnerability");
 
@@ -45,7 +45,7 @@ if (description)
   script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and
   check whether it is possible to read a cookie or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to an improper
+  script_tag(name: "insight" , value:"The flaw exists due to an improper
   sanitization of input to 'swf'query parameter in swf panel.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote

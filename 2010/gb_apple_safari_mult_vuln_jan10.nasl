@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_jan10.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_apple_safari_mult_vuln_jan10.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Apple Safari Multiple Vulnerabilities
 #
@@ -29,7 +29,7 @@ tag_impact = "Successful exploitation will let the attacker execute arbitrary co
   attacks.
   Impact Level: Application";
 tag_affected = "Apple Safari version 4.0.4(5.31.21.10) and prior on Windows.";
-tag_insight = "The flaws exists due to error in 'HREF' attribute of a stylesheet 'LINK'
+tag_insight = "The flaws exist due to error in 'HREF' attribute of a stylesheet 'LINK'
   element, when reading the 'document.styleSheets[0].href' property value.";
 tag_solution = "No solution or patch was made available for at least one year
 since disclosure of this vulnerability. Likely none will be provided anymore.
@@ -41,8 +41,8 @@ tag_summary = "This host is installed with Apple Safari Web Browser and is prone
 if(description)
 {
   script_id(800430);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 7174 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-01-20 08:21:11 +0100 (Wed, 20 Jan 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

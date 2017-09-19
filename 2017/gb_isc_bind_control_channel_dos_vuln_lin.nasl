@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_control_channel_dos_vuln_lin.nasl 6223 2017-05-26 12:27:08Z antu123 $
+# $Id: gb_isc_bind_control_channel_dos_vuln_lin.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # ISC BIND Control Channel Denial of Service Vulnerability (Linux) 
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810977");
-  script_version("$Revision: 6223 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2017-3138");
   script_bugtraq_id(97657);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-26 14:27:08 +0200 (Fri, 26 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-05-23 11:40:43 +0530 (Tue, 23 May 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND Control Channel Denial of Service Vulnerability (Linux)");
@@ -45,7 +45,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to a feature in named
+  script_tag(name: "insight" , value:"The flaw exists due to a feature in named
   which allows operators to issue commands to a running server by communicating 
   with the server process over a control channel, using a utility program such 
   as rndc.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_usvn_login_param_xss_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_usvn_login_param_xss_vuln.nasl 7165 2017-09-18 08:57:44Z cfischer $
 #
 # User Friendly SVN 'login' Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804725");
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 7165 $");
   script_cve_id("CVE-2014-4719");
   script_bugtraq_id(68155);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-07-29 17:06:00 +0530 (Tue, 29 Jul 2014)");
   script_name("User Friendly SVN 'login' Cross Site Scripting Vulnerability");
 
@@ -114,7 +114,7 @@ foreach dir (make_list_unique("/", "/usvn", "/usvn/public", cgi_dirs(port:http_p
 
     ## Confirm exploit worked by checking the response
     ## Extra check is not possible
-    if(ircvRes =~ "HTTP/1\.. 200" && '<script>alert("Cross Site Scripting Atack");</script>' >< rcvRes
+    if(rcvRes =~ "HTTP/1\.. 200" && '<script>alert("Cross Site Scripting Atack");</script>' >< rcvRes
     && '>USVN<' >< rcvRes)
     {
       security_message(port:http_port);

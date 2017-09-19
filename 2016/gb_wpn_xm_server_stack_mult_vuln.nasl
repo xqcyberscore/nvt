@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wpn_xm_server_stack_mult_vuln.nasl 6013 2017-04-24 05:01:46Z teissa $
+# $Id: gb_wpn_xm_server_stack_mult_vuln.nasl 7160 2017-09-18 07:39:22Z cfischer $
 #
 # WPN-XM Server Stack Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wpnxm_server_stack:wpnxm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807912");
-  script_version("$Revision: 6013 $");
+  script_version("$Revision: 7160 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 07:01:46 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:39:22 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-04-19 15:22:01 +0530 (Tue, 19 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("WPN-XM Server Stack Multiple Vulnerabilities");
@@ -75,9 +75,9 @@ if(description)
   exit(0);
 }
 
-include("http_keepalive.inc");
 include("host_details.inc");
 include("http_func.inc");
+include("http_keepalive.inc");
 
 # Variable Initialization
 url = "";

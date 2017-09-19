@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cobalt_overflow_cgi.nasl 3854 2016-08-18 13:15:25Z teissa $
+# $Id: cobalt_overflow_cgi.nasl 7176 2017-09-18 12:01:01Z cfischer $
 # Description: overflow.cgi detection
 #
 # Authors:
@@ -37,23 +37,15 @@ tag_solution = "get a newer software from Cobalt";
 if(description)
 {
  script_id(80051);;
- script_version("$Revision: 3854 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-18 15:15:25 +0200 (Thu, 18 Aug 2016) $");
+ script_version("$Revision: 7176 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- 
  name = "overflow.cgi detection";
  script_name(name);
- 
-
-
-
- 
  script_category(ACT_GATHER_INFO);
- 
- 
  script_copyright("This script is Copyright (C) 2002 Renaud Deraison");
  family = "Web application abuses";
  script_family(family);
@@ -66,7 +58,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
 

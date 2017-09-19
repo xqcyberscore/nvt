@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_dos_vuln.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_f5_big_ip_dos_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # F5 BIG-IP Denial of Service Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/h:f5:big-ip";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808180");
-  script_version("$Revision: 5588 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-4545");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-07-04 10:59:05 +0530 (Mon, 04 Jul 2016)");
   script_tag(name:"qod_type", value:"package");
   script_name("F5 BIG-IP Denial of Service Vulnerability");
@@ -45,7 +45,7 @@ if (description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist when virtual servers with
+  script_tag(name:"insight", value:"The flaw exists when virtual servers with
   Secure Sockets Layer (SSL) profiles enabled send SSL alert during the
   handshake may produce unnecessary logging and resource consumption.");
  

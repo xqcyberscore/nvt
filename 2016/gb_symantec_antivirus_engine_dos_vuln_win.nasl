@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_antivirus_engine_dos_vuln_win.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_symantec_antivirus_engine_dos_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Symantec Antivirus Engine Denial of Service Vulnerability (Windows)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:symantec:anti-virus_engine";
 if(description)
 {   
   script_oid("1.3.6.1.4.1.25623.1.0.808534");
-  script_version("$Revision: 5836 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-2208");
   script_bugtraq_id(90653 );
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-07-04 14:15:06 +0530 (Mon, 04 Jul 2016)");
   script_name("Symantec Antivirus Engine Denial of Service Vulnerability (Windows)");
 
@@ -45,7 +45,7 @@ if(description)
   script_tag(name: "vuldetect" , value: "Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value: "The flaw exist due to an error in the
+  script_tag(name: "insight" , value: "The flaw exists due to an error in the
   kernel component via a malformed PE header file.");
 
   script_tag(name: "impact" , value: "Successful exploitation will allows remote

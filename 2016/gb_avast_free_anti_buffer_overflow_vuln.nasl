@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_free_anti_buffer_overflow_vuln.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_avast_free_anti_buffer_overflow_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Avast Free Antivirus Heap-Based Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:avast:avast_antivirus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808058");
-  script_version("$Revision: 5534 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2015-8620");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 18:38:44 +0530 (Fri, 03 Jun 2016)");
   script_name("Avast Free Antivirus Heap-Based Buffer Overflow Vulnerability");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist in avast virtualization
+  script_tag(name:"insight", value:"The flaw exists in avast virtualization
   driver (aswSnx.sys) that handles 'Sandbox' and 'DeepScreen' functionality
   improperly.");
 

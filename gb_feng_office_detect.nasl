@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_feng_office_detect.nasl 4813 2016-12-20 10:19:02Z cfi $
+# $Id: gb_feng_office_detect.nasl 7166 2017-09-18 09:14:09Z cfischer $
 #
 # Feng Office Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108026");
-  script_version("$Revision: 4813 $");
+  script_version("$Revision: 7166 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-20 11:19:02 +0100 (Tue, 20 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-12-20 12:00:00 +0100 (Tue, 20 Dec 2016)");
   script_name("Feng Office Detection");
   script_category(ACT_GATHER_INFO);
@@ -59,8 +59,9 @@ include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
-
 if( ! can_host_php( port:port ) ) exit( 0 );
+
+rootInstalled = FALSE;
 
 foreach dir( make_list_unique( "/", "/feng_community", "/fengoffice", "/feng", "/office", cgi_dirs( port:port ) ) ) {
 

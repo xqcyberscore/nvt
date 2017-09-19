@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-134.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_ms16-134.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Windows Common Log File System Driver Elevation of Privilege Vulnerability (3193706)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809801");
-  script_version("$Revision: 5568 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-0026", "CVE-2016-3332", "CVE-2016-3333", "CVE-2016-3334",
 		"CVE-2016-3335", "CVE-2016-3338", "CVE-2016-3340", "CVE-2016-3342",
 		"CVE-2016-3343", "CVE-2016-7184");
   script_bugtraq_id(93998, 94008, 94009, 94012, 94011, 94014, 94010, 94013, 94007, 94015);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-11-09 08:58:28 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Common Log File System Driver Elevation of Privilege Vulnerability (3193706)");
@@ -45,7 +45,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to windows common log file
+  script_tag(name: "insight" , value:"The flaw exists due to windows common log file
   system (CLFS) driver improperly handles objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an

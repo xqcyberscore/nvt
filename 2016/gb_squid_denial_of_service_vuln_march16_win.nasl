@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_denial_of_service_vuln_march16_win.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: gb_squid_denial_of_service_vuln_march16_win.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Squid 'http.cc' Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807450");
-  script_version("$Revision: 5612 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-2572");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-03-03 11:34:15 +0530 (Thu, 03 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Squid 'http.cc' Denial of Service Vulnerability (Windows)");
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exist due to an error in 'http.cc'
+  script_tag(name:"insight", value:"The flaw exists due to an error in 'http.cc'
   script relies on the HTTP status code after a response-parsing failure.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote

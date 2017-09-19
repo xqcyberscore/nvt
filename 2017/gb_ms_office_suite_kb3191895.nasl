@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_suite_kb3191895.nasl 6096 2017-05-10 15:16:10Z antu123 $
+# $Id: gb_ms_office_suite_kb3191895.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Office Suite Remote Code Execution Vulnerability (KB3191895)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810783");
-  script_version("$Revision: 6096 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2017-0281");
   script_bugtraq_id(98101);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 17:16:10 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-05-10 12:08:09 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Suite Remote Code Execution Vulnerability (KB3191895)");
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaw exist in Microsoft Office software
+  script_tag(name:"insight", value:"The flaw exists in Microsoft Office software
   when the software fails to properly handle objects in memory."); 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

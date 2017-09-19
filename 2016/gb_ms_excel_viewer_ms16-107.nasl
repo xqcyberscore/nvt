@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_viewer_ms16-107.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_ms_excel_viewer_ms16-107.nasl 7174 2017-09-18 11:48:08Z asteins $
 #
 # Microsoft Windows Excel Viewer Remote Code Execution Vulnerabilities (3185852)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807364");
-  script_version("$Revision: 5568 $");
+  script_version("$Revision: 7174 $");
   script_cve_id("CVE-2016-3358", "CVE-2016-3359", "CVE-2016-3362", "CVE-2016-3363",
                 "CVE-2016-3365", "CVE-2016-3381");
   script_bugtraq_id(92791, 92795, 92799, 92801);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-09-14 13:11:18 +0530 (Wed, 14 Sep 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Excel Viewer Remote Code Execution Vulnerabilities (3185852)");
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaws exists as the Office software fails
+  script_tag(name:"insight", value:"The flaws exist as the Office software fails
   to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a

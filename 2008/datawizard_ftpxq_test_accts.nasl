@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: datawizard_ftpxq_test_accts.nasl 3854 2016-08-18 13:15:25Z teissa $
+# $Id: datawizard_ftpxq_test_accts.nasl 7164 2017-09-18 08:41:02Z cfischer $
 # Description: Tries to read a file via FTPXQ.
 #
 # Authors:
@@ -36,8 +36,8 @@ if (description)
 {
 	# set script identifiers
 	script_id(80053);;
-	script_version("$Revision: 3854 $");
-	script_tag(name:"last_modification", value:"$Date: 2016-08-18 15:15:25 +0200 (Thu, 18 Aug 2016) $");
+	script_version("$Revision: 7164 $");
+	script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:41:02 +0200 (Mon, 18 Sep 2017) $");
 	script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
     script_tag(name:"cvss_base", value:"6.4");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -66,8 +66,8 @@ if (description)
 
 }
 
-include("ftp_func.inc");
 include("global_settings.inc");
+include("ftp_func.inc");
 
 #
 #	Verify we can talk to the FTP server, if not exit
