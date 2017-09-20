@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20161005-ftmc1.nasl 6034 2017-04-27 05:46:15Z teissa $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20161005-ftmc1.nasl 7180 2017-09-19 03:11:15Z ckuersteiner $
 #
 # Cisco Firepower Management Center Console Authentication Bypass Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6434");
  script_tag(name:"cvss_base", value:"4.6");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6034 $");
+ script_version ("$Revision: 7180 $");
 
  script_name("Cisco Firepower Management Center Console Authentication Bypass Vulnerability");
 
@@ -41,8 +41,8 @@ if (description)
 
  script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"No solution or patch is available as 
-of 27th April, 2017. Information regarding this issue will be updated once the solution details are available.");
+ script_tag(name: "solution" , value:"No solution or patch is available as of 19th September, 2017. Information
+regarding this issue will be updated once the solution details are available.");
 
  script_tag(name: "summary" , value:"A vulnerability in the web console of Cisco Firepower Management Center
 could allow an authenticated, local attacker to bypass authentication and access sensitive information.");
@@ -58,7 +58,7 @@ local shell.");
 
  script_tag(name:"solution_type", value:"NoneAvailable");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 07:46:15 +0200 (Thu, 27 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-19 05:11:15 +0200 (Tue, 19 Sep 2017) $");
  script_tag(name:"creation_date", value:"2016-10-06 11:03:55 +0700 (Thu, 06 Oct 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

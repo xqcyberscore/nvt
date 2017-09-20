@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 7062 2017-09-05 16:35:06Z cfischer $
+# $Id: host_details.inc 7189 2017-09-19 11:23:49Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7062 $
+# $Revision: 7189 $
 #
 ###############################################################################
 
@@ -783,6 +783,11 @@ function get_app_full( cpe, port ) {
 function get_app_port_from_cpe_prefix( cpe )
 {
   local_var cpe, port, data, entry, _cpe;
+
+  if( ! cpe ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_port_from_cpe_prefix" );
+    return;
+  }
 
   data = get_kb_list( "get_app/ports/" + cpe + '*' );
   if( ! data )

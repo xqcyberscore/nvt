@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_services_start.nasl 7084 2017-09-08 12:27:28Z cfischer $
+# $Id: gb_windows_services_start.nasl 7186 2017-09-19 07:32:35Z cfischer $
 #
 # Windows Services Start
 #
@@ -24,13 +24,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+# kb: Keep above the description part as it is used there
+include("gos_funcs.inc");
+include("version_func.inc");
+gos_version = get_local_gos_version();
+if( ! strlen( gos_version ) > 0 ||
+    version_is_less( version:gos_version, test_version:"4.2.4" ) ) {
+  old_routine = TRUE;
+}
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804786");
-  script_version("$Revision: 7084 $");
+  script_version("$Revision: 7186 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-08 14:27:28 +0200 (Fri, 08 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-19 09:32:35 +0200 (Tue, 19 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-11-04 16:38:25 +0530 (Tue, 04 Nov 2014)");
   script_name("Windows Services Start");
   script_category(ACT_GATHER_INFO);
@@ -42,14 +51,21 @@ if(description)
   script_mandatory_keys("SMB/login", "SMB/password", "Tools/Present/wmi");
   script_exclude_keys("SMB/samba");
 
-  script_add_preference(name:"Automatically enable the Remote Registry service (please see NOTE)", type:"checkbox", value:"no");
+  tag_summary = "This routine starts not running (but required) windows services before launching an
+  authenticated scan.";
 
-  script_tag(name:"summary", value:"This routine starts not running (but required) windows services before launching an
-  authenticated scan.
+  if( old_routine ) {
 
-  NOTE: This plugin is using the 'win_cmd_exec' command from openvas-smb which is deploying a
-  service 'winexesvc.exe' to the target system. Because of this the plugin is disabled by default
-  to avoid modifications on the target system. Please see the script preferences on how to enable this.");
+    script_add_preference(name:"Automatically enable the Remote Registry service (please see NOTE)", type:"checkbox", value:"no");
+
+    tag_summary += "
+
+    NOTE: This plugin is using the 'win_cmd_exec' command from openvas-smb which is deploying a
+    service 'winexesvc.exe' to the target system. Because of this the plugin is disabled by default
+    to avoid modifications on the target system. Please see the script preferences on how to enable this.";
+  }
+
+  script_tag(name:"summary", value:tag_summary);
 
   script_tag(name:"qod_type", value:"registry");
 
@@ -58,8 +74,10 @@ if(description)
 
 include("smb_nt.inc");
 
-autostart_service = script_get_preference( "Automatically enable the Remote Registry service (please see NOTE)" );
-if( autostart_service == "no" ) exit( 0 );
+if( old_routine ) {
+  autostart_service = script_get_preference( "Automatically enable the Remote Registry service (please see NOTE)" );
+  if( autostart_service == "no" ) exit( 0 );
+}
 
 if( ! defined_func( "win_cmd_exec" ) ) exit( 0 );
 

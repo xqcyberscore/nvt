@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 19 Sep 2017 08:34:48 +0200
+# Automatically created on:  Wed, 20 Sep 2017 09:52:30 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -49813,6 +49813,7 @@
 2017/gb_mcafee_epolicy_orchestrator_dir_trav_vuln.nasl: GPLv2+
 2017/gb_mcafee_epolicy_orchestrator_sql_inj_vuln.nasl: GPLv2+
 2017/gb_mcafee_epolicy_orchestrator_xss_vuln.nasl: GPLv2+
+2017/gb_mcafee_livesafe_mitm_vuln.nasl: GPLv2+
 2017/gb_mcafee_security_scan_file_exec_vuln.nasl: GPLv2+
 2017/gb_mcafee_security_scan_plus_arbitrary_cmd_exec_vuln.nasl: GPLv2+
 2017/gb_mcafee_security_scan_plus_priv_esca_vuln.nasl: GPLv2+
@@ -51401,6 +51402,8 @@
 2017/microsoft/gb_dotnet_framework_kb4040972_n_kb4040971.nasl: GPLv2+
 2017/microsoft/gb_dotnet_framework_kb4040973.nasl: GPLv2+
 2017/microsoft/gb_dotnet_framework_kb4041086.nasl: GPLv2+
+2017/nagios/gb_nagios_priv_esc_vuln.nasl: GPLv2+
+2017/noontec/gb_terramaster_tos_rce_vuln.nasl: GPLv2+
 2017/osticket/gb_os_ticket_sql_inj_vuln.nasl: GPLv2+
 2017/phpmyadmin/gb_phpmyadmin_cve-2011-4107_lin.nasl: GPLv2+
 2017/phpmyadmin/gb_phpmyadmin_cve-2011-4107_win.nasl: GPLv2+

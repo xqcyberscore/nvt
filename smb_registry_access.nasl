@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_registry_access.nasl 7084 2017-09-08 12:27:28Z cfischer $
+# $Id: smb_registry_access.nasl 7186 2017-09-19 07:32:35Z cfischer $
 #
 # Check for SMB accessible registry
 #
@@ -24,11 +24,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
+# kb: Keep above the description part as it is used there
+include("gos_funcs.inc");
+include("version_func.inc");
+gos_version = get_local_gos_version();
+if( ! strlen( gos_version ) > 0 ||
+    version_is_less( version:gos_version, test_version:"4.2.4" ) ) {
+  old_routine = TRUE;
+}
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10400");
-  script_version("$Revision: 7084 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-08 14:27:28 +0200 (Fri, 08 Sep 2017) $");
+  script_version("$Revision: 7186 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-19 09:32:35 +0200 (Tue, 19 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-09-10 10:22:48 +0200 (Wed, 10 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -43,6 +52,7 @@ if(description)
   script_exclude_keys("SMB/samba");
 
   script_xref(name:"URL", value:"http://docs.greenbone.net/GSM-Manual/gos-3.1/en/scanning.html#requirements-on-target-systems-with-windows");
+  script_xref(name:"URL", value:"http://docs.greenbone.net/GSM-Manual/gos-4/en/vulnerabilitymanagement.html#requirements-on-target-systems-with-windows");
 
   script_tag(name:"summary", value:"This routine checks if the registry can be accessed remotely via SMB using the login/password
   credentials. If the access is failing a warning is shown.");
@@ -57,7 +67,6 @@ include("host_details.inc");
 
 lanman = get_kb_item( "SMB/NativeLanManager" );
 samba  = get_kb_item( "SMB/samba" );
-
 if( samba || "samba" >< tolower( lanman ) ) exit( 0 );
 
 port = kb_smb_transport();
@@ -69,7 +78,7 @@ if( ! name ) exit( 0 );
 
 login = kb_smb_login();
 pass  = kb_smb_password();
-dom = kb_smb_domain();
+dom   = kb_smb_domain();
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
@@ -110,15 +119,19 @@ if( ! tid ) {
   exit( 0 );
 }
 
-message = "It was not possible to connect to the PIPE\winreg on the remote host. If you intend to use OpenVAS to " +
-          "perform registry-based checks, the registry checks will not work because the 'Remote " +
-          "Registry' service is not running or has been disabled on the remote host." +
-          '\n\nPlease either configure:\n\n' +
-          "1. the NVT 'Windows Services Start' (OID: 1.3.6.1.4.1.25623.1.0.804786) to start this service automatically." + '\n' +
-          "2. the 'Startup Type' of the 'Remote Registry' service on the target host to 'Automatic'.";
+message = 'It was not possible to connect to the PIPE\\winreg on the remote host. If you intend to use OpenVAS to ' +
+          'perform registry-based checks, the registry checks will not work because the \'Remote ' +
+          'Registry\' service is not running or has been disabled on the remote host.' +
+          '\n\nPlease either:\n' +
+          '\n- configure the \'Startup Type\' of the \'Remote Registry\' service on the target host to \'Automatic\'.';
+
+if( old_routine ) {
+  message += '\n- configure the NVT \'Windows Services Start\' (OID: 1.3.6.1.4.1.25623.1.0.804786) to start this service automatically.';
+}
+
 startErrors = get_kb_list( "RemoteRegistry/Win/Service/Manual/Failed" );
 if( startErrors ) {
-  message += '\n3. check the below error which might provide additional info.';
+  message += '\n- check the below error which might provide additional info.';
   message += '\n\nThe scanner tried to start the \'Remote Registry\' service but received the following errors:\n';
   foreach startError ( startErrors ) {
     # Clean-up the logs from the wmiexec.py before reporting it to the end user

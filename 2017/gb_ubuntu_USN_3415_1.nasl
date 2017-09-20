@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3415_1.nasl 7145 2017-09-15 12:32:31Z santu $
+# $Id: gb_ubuntu_USN_3415_1.nasl 7188 2017-09-19 10:29:47Z asteins $
 #
 # Ubuntu Update for tcpdump USN-3415-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843302");
-  script_version("$Revision: 7145 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:32:31 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 7188 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-19 12:29:47 +0200 (Tue, 19 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-14 07:16:21 +0200 (Thu, 14 Sep 2017)");
   script_cve_id("CVE-2017-11543", "CVE-2017-13011", "CVE-2017-12989", 
                   "CVE-2017-12990", "CVE-2017-12995", "CVE-2017-12997", "CVE-2017-11108", 
@@ -53,8 +53,8 @@ if(description)
                   "CVE-2017-13050", "CVE-2017-13051", "CVE-2017-13052", "CVE-2017-13053", 
                   "CVE-2017-13054", "CVE-2017-13055", "CVE-2017-13687", "CVE-2017-13688", 
                 "CVE-2017-13689", "CVE-2017-13690", "CVE-2017-13725"); 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for tcpdump USN-3415-1");
   script_tag(name: "summary", value: "Check the version of tcpdump");

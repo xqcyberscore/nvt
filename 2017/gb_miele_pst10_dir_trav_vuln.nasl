@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_miele_pst10_dir_trav_vuln.nasl 5756 2017-03-29 06:43:44Z cfi $
+# $Id: gb_miele_pst10_dir_trav_vuln.nasl 7180 2017-09-19 03:11:15Z ckuersteiner $
 #
 # Miele Professional PG 8528 Directory Traversal Vulnerability
 #
@@ -27,11 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108109");
-  script_version("$Revision: 5756 $");
+  script_version("$Revision: 7180 $");
   script_cve_id("CVE-2017-7240");
+  script_bugtraq_id(97080);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 08:43:44 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-19 05:11:15 +0200 (Tue, 19 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-03-29 07:49:40 +0200 (Wed, 29 Mar 2017)");
   script_name("Miele Professional PG 8528 Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -43,6 +44,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Mar/63");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/41718/");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-17-138-01");
 
   script_tag(name:"summary", value:"This host is running a Miele Professional PG 8528
   and is prone to a directory traversal vulnerability.");
@@ -55,11 +57,10 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 29th March, 2017. Information
-  regarding this issue will be updated once the solution details are available.");
+  script_tag(name:"solution", value: "See the advisory for a solution.");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }

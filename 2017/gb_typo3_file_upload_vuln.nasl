@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_file_upload_vuln.nasl 7100 2017-09-12 06:00:00Z asteins $
+# $Id: gb_typo3_file_upload_vuln.nasl 7188 2017-09-19 10:29:47Z asteins $
 #
 # TYPO3 Unrestricted File Upload Vulnerability
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112040");
-  script_version("$Revision: 7100 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-12 08:00:00 +0200 (Tue, 12 Sep 2017) $");
+  script_version("$Revision: 7188 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-19 12:29:47 +0200 (Tue, 19 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-12 07:56:49 +0200 (Tue, 12 Sep 2017)");
 
   script_cve_id("CVE-2017-14251");
   script_bugtraq_id(100620);
 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("TYPO3 Unrestricted File Upload Vulnerability");

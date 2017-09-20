@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_code_exec_n_dos_vuln.nasl 7179 2017-09-18 15:40:14Z asteins $
+# $Id: gb_xnview_code_exec_n_dos_vuln.nasl 7184 2017-09-19 06:10:08Z asteins $
 #
 # XnView Multiple Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811402");
-  script_version("$Revision: 7179 $");
+  script_version("$Revision: 7184 $");
   script_cve_id("CVE-2017-9914", "CVE-2017-9912", "CVE-2017-9910", "CVE-2017-9911",
                 "CVE-2017-9908", "CVE-2017-9909", "CVE-2017-9906", "CVE-2017-9907",
                 "CVE-2017-9905", "CVE-2017-9903", "CVE-2017-9904", "CVE-2017-9901",
@@ -52,10 +52,10 @@ if(description)
                 "CVE-2017-14283", "CVE-2017-14280", "CVE-2017-14281", "CVE-2017-14278",
                 "CVE-2017-14279", "CVE-2017-14277", "CVE-2017-14275", "CVE-2017-14276",
                 "CVE-2017-14273", "CVE-2017-14274", "CVE-2017-14271", "CVE-2017-14272",
-                "CVE-2017-14270");
+                "CVE-2017-14270", "CVE-2017-14541", "CVE-2017-14538", "CVE-2017-9913");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 17:40:14 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-19 08:10:08 +0200 (Tue, 19 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-07 19:41:51 +0530 (Mon, 07 Aug 2017)");
   script_name("XnView Multiple Vulnerabilities");
 

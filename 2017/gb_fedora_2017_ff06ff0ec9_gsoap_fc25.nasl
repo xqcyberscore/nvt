@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_ff06ff0ec9_gsoap_fc25.nasl 6959 2017-08-18 07:24:59Z asteins $
+# $Id: gb_fedora_2017_ff06ff0ec9_gsoap_fc25.nasl 7188 2017-09-19 10:29:47Z asteins $
 #
 # Fedora Update for gsoap FEDORA-2017-ff06ff0ec9
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873241");
-  script_version("$Revision: 6959 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
+  script_version("$Revision: 7188 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-19 12:29:47 +0200 (Tue, 19 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-12 07:49:47 +0200 (Sat, 12 Aug 2017)");
   script_cve_id("CVE-2017-9765");
-  script_tag(name:"cvss_base", value:"5.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for gsoap FEDORA-2017-ff06ff0ec9");
   script_tag(name: "summary", value: "Check the version of gsoap");

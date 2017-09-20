@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avtech_devices_mult_vuln.nasl 6025 2017-04-25 14:47:21Z teissa $
+# $Id: gb_avtech_devices_mult_vuln.nasl 7180 2017-09-19 03:11:15Z ckuersteiner $
 #
 # AVTECH Devices Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/o:avtech:avtech_device";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809067");
-  script_version("$Revision: 6025 $");
+  script_version("$Revision: 7180 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 16:47:21 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-19 05:11:15 +0200 (Tue, 19 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-10-18 11:30:44 +0530 (Tue, 18 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("AVTECH Devices Multiple Vulnerabilities");
@@ -75,7 +75,7 @@ if(description)
   http://www.search-lab.hu/media/vulnerability_matrix.txt.");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  25th April, 2017, Information regarding this issue will be provided once 
+  19th September, 2017, Information regarding this issue will be provided once 
   the solution details are available.
   For updates refer to http://www.avtech.com.");
 

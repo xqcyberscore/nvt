@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap.nasl 6839 2017-08-03 07:56:46Z cfischer $
+# $Id: nmap.nasl 7190 2017-09-19 15:19:13Z cfischer $
 #
 # Nmap (NASL wrapper)
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14259");
-  script_version("$Revision: 6839 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-03 09:56:46 +0200 (Thu, 03 Aug 2017) $");
+  script_version("$Revision: 7190 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-19 17:19:13 +0200 (Tue, 19 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -410,7 +410,7 @@ a potential security risk");
                            replace: "\2 V\1");
         log_message(port: port, proto: proto, data: "Nmap has identified this service as " + ver);
         set_kb_item(name: 'Nmap/'+proto+'/'+port+'/version', value: ver);
-        if (string !~ "\?$")
+        if (svc !~ "\?$")
          set_kb_item(name: 'Nmap/'+proto+'/'+port+'/svc', value: svc);
          #mandatory_key for external_svc_ident.nasl
          replace_kb_item( name:"external_svc_ident/available", value:TRUE );

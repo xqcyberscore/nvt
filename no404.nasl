@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: no404.nasl 5129 2017-01-28 15:34:30Z cfi $
+# $Id: no404.nasl 7190 2017-09-19 15:19:13Z cfischer $
 #
 # No 404 check
 #
@@ -29,8 +29,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10386");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5129 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-28 16:34:30 +0100 (Sat, 28 Jan 2017) $");
+  script_version("$Revision: 7190 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-19 17:19:13 +0200 (Tue, 19 Sep 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("No 404 check");
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"insight", value:"This web server is [mis]configured in that it does not return
   '404 Not Found' error codes when a non-existent file is requested, perhaps returning a site map,
   search page or authentication page instead.
- 
+
   OpenVAS enabled some counter measures for that, however they might be insufficient. If a great
   number of security holes are produced for this port, they might not all be accurate");
 
@@ -138,9 +138,9 @@ basename + ".cfm",
 "/scripts" + basename + ".php7",
 "/scripts" + basename + ".cfm" );
 
-function my_exit() {
+function my_exit(then) {
 
-  local_var now;
+  local_var now, then;
 
   now = unixtime();
   if( now - then > 60 ) {
@@ -210,7 +210,7 @@ foreach badurl( badurls ) {
         log_message( port:port );
 
         if( debug_level ) display( 'no404 - 200: Using string: ' + not_found + '\n' );
-        my_exit();
+        my_exit(then:then);
       } else {
         # try to match the title
         title = egrep( pattern:"<title", string:ret, icase:TRUE );
@@ -220,7 +220,7 @@ foreach badurl( badurls ) {
             if( debug_level ) display( 'no404 - using string from title tag: ' + title + '\n' );
             set_kb_item( name:found, value:title );
             log_message( port:port );
-            my_exit();
+            my_exit(then:then);
           }
         }
 
@@ -232,7 +232,7 @@ foreach badurl( badurls ) {
             if( debug_level ) display( 'no404 - using string from body tag: ' + body + '\n' );
             set_kb_item( name:found, value:body );
             log_message( port:port );
-            my_exit();
+            my_exit(then:then);
           }
         }
 
@@ -244,7 +244,7 @@ foreach badurl( badurls ) {
 
         log_message( port:port, data:msg );
         set_kb_item( name:found, value:"HTTP" );
-        my_exit();
+        my_exit(then:then);
       }
     }
 
@@ -254,11 +254,11 @@ foreach badurl( badurls ) {
 
       log_message( port:port, data:msg );
       set_kb_item( name:found, value:"HTTP" );
-      my_exit(); # TODO: This is currently exiting on the first request on the root dir if that is always redirecting to e.g. /folder/
+      my_exit(then:then); # TODO: This is currently exiting on the first request on the root dir if that is always redirecting to e.g. /folder/
     }
   } else {
     if( debug_level ) display( 'no404 - An error occurred when trying to request: ' + badurl + '\n' );
   }
 }
 
-my_exit();
+my_exit(then:then);

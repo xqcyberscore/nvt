@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_wmi_everyone_file-shares.nasl 6815 2017-07-31 09:16:46Z cfischer $
+# $Id: gb_ms_wmi_everyone_file-shares.nasl 7186 2017-09-19 07:32:35Z cfischer $
 #
 # Get Windows File-Shares, shared for Everyone
 #
@@ -29,11 +29,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+# kb: Keep above the description part as it is used there
+include("gos_funcs.inc");
+include("version_func.inc");
+gos_version = get_local_gos_version();
+if( ! strlen( gos_version ) > 0 ||
+    version_is_less( version:gos_version, test_version:"4.2.4" ) ) {
+  old_routine = TRUE;
+}
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96198");
-  script_version("$Revision: 6815 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-31 11:16:46 +0200 (Mon, 31 Jul 2017) $");
+  script_version("$Revision: 7186 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-19 09:32:35 +0200 (Tue, 19 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:13:18 +0200 (Tue, 08 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,13 +53,19 @@ if(description)
   script_mandatory_keys("WMI/Accessible_Shares", "SMB/password", "SMB/login", "Tools/Present/wmi");
   script_dependencies("toolcheck.nasl", "smb_login.nasl", "2014/gb_ms_wmi_accessible_shares.nasl");
 
-  script_add_preference(name:"Run routine (please see NOTE)", type:"checkbox", value:"no");
+  tag_summary = "Get Windows File-Shares, shared for Everyone.";
 
-  script_tag(name:"summary", value:"Get Windows File-Shares, shared for Everyone
+  if( old_routine ) {
+    script_add_preference(name:"Run routine (please see NOTE)", type:"checkbox", value:"no");
 
-  NOTE: This plugin is using the 'win_cmd_exec' command from openvas-smb which is deploying a
-  service 'winexesvc.exe' to the target system. Because of this the plugin is disabled by default
-  to avoid modifications on the target system. Please see the script preferences on how to enable this.");
+    tag_summary += "
+
+    NOTE: This plugin is using the 'win_cmd_exec' command from openvas-smb which is deploying a
+    service 'winexesvc.exe' to the target system. Because of this the plugin is disabled by default
+    to avoid modifications on the target system. Please see the script preferences on how to enable this.";
+  }
+
+  script_tag(name:"summary", value:tag_summary);
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -60,8 +75,10 @@ if(description)
 
 include("smb_nt.inc");
 
-run_script = script_get_preference( "Run routine (please see NOTE)" );
-if( run_script == "no" ) exit( 0 );
+if( old_routine ) {
+  run_script = script_get_preference( "Run routine (please see NOTE)" );
+  if( run_script == "no" ) exit( 0 );
+}
 
 samba = get_kb_item( "SMB/samba" );
 if( samba ) exit( 0 );
@@ -86,7 +103,6 @@ if (domain){
 }
 
 handle = wmi_connect(host:host, username:wmiusrname, password:passwd);
-
 if(!handle){
   exit(0);
 }
@@ -94,12 +110,10 @@ if(!handle){
 query = "select Name from Win32_SystemAccount where SID='S-1-1-0'";
 
 EveryonesName = wmi_query(wmi_handle:handle, query:query);
-
 if (!EveryonesName){
   wmi_close(wmi_handle:handle);
   exit(0);
 }
-
 
 se = split(EveryonesName,keep:0);
 se = split(se[1],sep:'|',keep:0);
@@ -130,9 +144,11 @@ for(a=1 ;a<max_index(sl); a++){
     result = result + RES;
   }
 }
-if(result) report = 'The following File-Shares are shared for Everyone:\n' + result;
-if(report) log_message(port:port, data:report);
+
+if( result ) {
+  report = 'The following File-Shares are shared for Everyone:\n' + result;
+  log_message(port:0, data:report);
+}
 
 wmi_close(wmi_handle:handle);
 exit(0);
-

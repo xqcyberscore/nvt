@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emby_media_dir_trav_lin.nasl 6133 2017-05-16 10:00:54Z ckuerste $
+# $Id: gb_emby_media_dir_trav_lin.nasl 7180 2017-09-19 03:11:15Z ckuersteiner $
 #
 # Emby Media Server Directory Traversal Vulnerability (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:emby:media";
 
 if (description)
 {
- script_version ("$Revision: 6133 $");
+ script_version ("$Revision: 7180 $");
  script_oid("1.3.6.1.4.1.25623.1.0.107099");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -38,7 +38,7 @@ if (description)
 
  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/41948/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-16 12:00:54 +0200 (Tue, 16 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-19 05:11:15 +0200 (Tue, 19 Sep 2017) $");
  script_tag(name:"creation_date", value:"2017-05-03 11:37:14 +0530 (Wed, 03 May 2017)");
  
  script_tag(name: "vuldetect", value: "Send a crafted HTTP GET request and checks the response.");
@@ -51,9 +51,11 @@ on the target system.
  script_tag(name: "insight", value: "Input passed via the swagger-ui object in SwaggerService.cs is not properly
 verified before being used to load resources.");
 
- script_tag(name: "solution", value: "No solution or patch is available as of 04th May, 2017. Information regarding this issue will be updated once the solution details are available.");
+ script_tag(name: "solution", value: "Emby has been notified in March 2017 about the vulnerability, shortly
+after they have released a new version that addresses this vulnerabilities. They however have not provided any
+version information or release notes that reflect this. Therefore update to the latest available version.");
 
- script_tag(name: "solution_type", value: "NoneAvailable");
+ script_tag(name: "solution_type", value: "VendorFix");
 
  script_tag(name: "affected", value: "Emby Media Server 3.2.5 and prior.");
  script_category(ACT_ATTACK);

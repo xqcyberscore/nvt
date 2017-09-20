@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hikvision_ip_cameras_mult_vuln.nasl 7157 2017-09-18 06:32:56Z ckuersteiner $
+# $Id: gb_hikvision_ip_cameras_mult_vuln.nasl 7182 2017-09-19 05:44:15Z asteins $
 #
 # Hikvision IP Cameras Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140373");
-  script_version("$Revision: 7157 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-18 08:32:56 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 7182 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-19 07:44:15 +0200 (Tue, 19 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-09-18 11:41:11 +0700 (Mon, 18 Sep 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name: "cvss_base", value: "7.5");
+  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-7921", "CVE-2017-7923");
 

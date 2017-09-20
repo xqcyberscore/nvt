@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssl_funcs.inc 6664 2017-07-11 10:20:11Z cfischer $
+# $Id: ssl_funcs.inc 7190 2017-09-19 15:19:13Z cfischer $
 #
 # Implementation of common ssl functions
 #
@@ -25,7 +25,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6664 $
+# $Revision: 7190 $
 #
 ###############################################################################
 
@@ -562,6 +562,8 @@ global_var SSLv3_ALERT_INAPPROPRIATE_FALLBACK, SSLv3_ALERT_RECORD_OVERFLOW, SSLv
 global_var version_string, version_kb_string_mapping, SSL_v2, SSL_v3, TLS_10, TLS_11, TLS_12;
 global_var elliptic_curves, ec_point_formats, sslv3_tls_raw_ciphers, compression_methods;
 global_var application_layer_protocol_negotiation, npn_alpn_name_mapping, npn_alpn_protocol_list;
+
+global_var alpn_prot; # Passed globally by gb_tls_npn_alpn_detect.nasl
 
 function get_cert_from_port( port, extensions )
 {
