@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_data_protector_mult_code_exec_vuln.nasl 6435 2017-06-27 06:17:04Z cfischer $
+# $Id: secpod_hp_data_protector_mult_code_exec_vuln.nasl 7203 2017-09-20 13:01:39Z cfischer $
 #
 # HP (OpenView Storage) Data Protector Multiple Remote Code Execution Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902454");
-  script_version("$Revision: 6435 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 08:17:04 +0200 (Tue, 27 Jun 2017) $");
+  script_version("$Revision: 7203 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-20 15:01:39 +0200 (Wed, 20 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -88,7 +88,7 @@ if(description)
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-get_app_location( cpe:CPE, port:port ); # To have a reference to the Detection NVT within the GSA
+get_app_location( cpe:CPE, port:port, nofork:TRUE ); # To have a reference to the Detection NVT within the GSA
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );

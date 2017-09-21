@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_diskstation_xss_vuln.nasl 6207 2017-05-24 09:04:07Z teissa $
+# $Id: gb_synology_diskstation_xss_vuln.nasl 7201 2017-09-20 09:46:33Z santu $
 #
 # Synology DiskStation Manager Cross-Site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/o:synology:dsm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805391");
-  script_version("$Revision: 6207 $");
+  script_version("$Revision: 7201 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-20 11:46:33 +0200 (Wed, 20 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-05-28 13:19:38 +0530 (Thu, 28 May 2015)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Synology DiskStation Manager Cross-Site Scripting Vulnerability");
@@ -95,7 +95,8 @@ url = '/webapi/entry.cgi?compound=%5B{"api"%3a"<img+src%3dx+onload%3dalert'
 
 ## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-   pattern:"alert\(document.cookie\)"))
+   pattern:"<img src=x onload=alert\(document.cookie\)>",
+   extra_check:make_list('SYNO.Core.System.Utilization', '"has_fail":true', '"code":119')))
 {
   report = report_vuln_url( port:http_port, url:url );
    security_message(port:http_port, data:report);

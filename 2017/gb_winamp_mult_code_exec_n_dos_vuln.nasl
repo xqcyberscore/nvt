@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winamp_mult_code_exec_n_dos_vuln.nasl 6853 2017-08-04 11:45:08Z santu $
+# $Id: gb_winamp_mult_code_exec_n_dos_vuln.nasl 7198 2017-09-20 08:10:07Z jschulte $
 #
 # Winamp '.flv' File Processing Denial of Service And Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nullsoft:winamp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811547");
-  script_version("$Revision: 6853 $");
+  script_version("$Revision: 7198 $");
   script_cve_id("CVE-2017-10725", "CVE-2017-10726", "CVE-2017-10727", "CVE-2017-10728");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 13:45:08 +0200 (Fri, 04 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-20 10:10:07 +0200 (Wed, 20 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-02 16:51:17 +0530 (Wed, 02 Aug 2017)");
   script_name("Winamp '.flv' File Processing Denial of Service And Code Execution Vulnerabilities");
 
@@ -54,7 +54,7 @@ if(description)
   script_tag(name: "affected" , value:"Winamp version 5.666 Build 3516(x86).");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  2nd August 2017, Information regarding this issue will be updated once the 
+  20th September 2017, Information regarding this issue will be updated once the 
   solution details are available.");
 
   script_xref(name : "URL" , value : "https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-10725");

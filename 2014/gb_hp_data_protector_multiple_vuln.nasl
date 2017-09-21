@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_multiple_vuln.nasl 6435 2017-06-27 06:17:04Z cfischer $
+# $Id: gb_hp_data_protector_multiple_vuln.nasl 7203 2017-09-20 13:01:39Z cfischer $
 #
 # HP (OpenView Storage) Data Protector Multiple Vulnerabilities
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804402");
-  script_version("$Revision: 6435 $");
+  script_version("$Revision: 7203 $");
   script_cve_id("CVE-2013-2344", "CVE-2013-2345", "CVE-2013-2346", "CVE-2013-2347",
                 "CVE-2013-2348", "CVE-2013-2349", "CVE-2013-2350", "CVE-2013-6195",
                 "CVE-2011-0923", "CVE-2014-2623");
   script_bugtraq_id(64647, 64647, 64647, 64647, 64647, 64647, 64647, 64647, 46234);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 08:17:04 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-20 15:01:39 +0200 (Wed, 20 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-02-18 16:03:46 +0530 (Tue, 18 Feb 2014)");
   script_name("HP (OpenView Storage) Data Protector Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -108,7 +108,7 @@ if(description)
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-get_app_location( cpe:CPE, port:port ); # To have a reference to the Detection NVT within the GSA
+get_app_location( cpe:CPE, port:port, nofork:TRUE ); # To have a reference to the Detection NVT within the GSA
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );

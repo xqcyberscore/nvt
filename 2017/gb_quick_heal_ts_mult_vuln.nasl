@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_heal_ts_mult_vuln.nasl 6943 2017-08-16 13:35:11Z asteins $
+# $Id: gb_quick_heal_ts_mult_vuln.nasl 7198 2017-09-20 08:10:07Z jschulte $
 #
 # Quick Heal Total Security Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:quick_heal:total_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811551");
-  script_version("$Revision: 6943 $");
+  script_version("$Revision: 7198 $");
   script_cve_id("CVE-2017-8773", "CVE-2017-8774", "CVE-2017-8775", "CVE-2017-8776");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-16 15:35:11 +0200 (Wed, 16 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-20 10:10:07 +0200 (Wed, 20 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-02 12:24:09 +0530 (Wed, 02 Aug 2017)");
   script_name("Quick Heal Total Security Multiple Vulnerabilities");
 
@@ -64,12 +64,10 @@ if(description)
   script_tag(name: "affected" , value:"Quick Heal Total Security 10.1.0.316
   and prior.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  3rd August 2017, Information regarding this issue will be updated once the
-  solution details are available.
-  For updates refer to http://www.quickheal.co.in.");
+  script_tag(name: "solution" , value:"The vendor has release multiple patches to fix the vulnerabilities.
+  For instructions and more information please refer to http://www.quickheal.com/quick-heal-antivirus-updates-download");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
   script_xref(name : "URL" , value : "http://payatu.com/quick-heal-antivirus-protection-mechanism-failure-vulnerability");

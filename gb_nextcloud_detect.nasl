@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_detect.nasl 6847 2017-08-03 17:43:18Z cfischer $
+# $Id: gb_nextcloud_detect.nasl 7205 2017-09-20 14:23:50Z cfischer $
 #
 # Nextcloud Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809413");
-  script_version("$Revision: 6847 $");
+  script_version("$Revision: 7205 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-03 19:43:18 +0200 (Thu, 03 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-20 16:23:50 +0200 (Wed, 20 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-09-27 12:37:02 +0530 (Tue, 27 Sep 2016)");
   script_name("Nextcloud Detection");
   script_category(ACT_GATHER_INFO);
@@ -72,8 +72,10 @@ foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/Nextcloud", "/cloud",
   # {"installed":true,"maintenance":false,"needsDbUpgrade":false,"version":"12.0.0.29","versionstring":"12.0.0","edition":"","productname":"Nextcloud"}
   # {"installed":true,"maintenance":false,"needsDbUpgrade":false,"version":"12.0.1.3","versionstring":"12.0.1 RC4","edition":"","productname":"Nextcloud"}
   if( "egroupware" >!< tolower( buf ) && # EGroupware is using the very same status.php
+      '"productname":"ownCloud"' >!< buf && # Don't detect ownCloud as Nextcloud
     ( egrep( string:buf, pattern:'"installed":("true"|true),("maintenance":("true"|true|"false"|false),)?("needsDbUpgrade":("true"|true|"false"|false),)?"version":"([0-9.]+)","versionstring":"([0-9. a-zA-Z]+)","edition":"(.*)"' ) ||
-      ( "You are accessing the server from an untrusted domain" >< buf && ">Nextcloud<" >< buf ))) {
+      ( "You are accessing the server from an untrusted domain" >< buf && ">Nextcloud<" >< buf ) || 
+      '"productname":"Nextcloud"' >< buf ) ) { # Last fallback if the syntax of the status has changed
 
     version = "unknown";
     extra = NULL;

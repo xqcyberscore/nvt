@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_antiweb_dir_trav_vuln.nasl 6903 2017-08-11 09:29:17Z ckuersteiner $
+# $Id: gb_antiweb_dir_trav_vuln.nasl 7191 2017-09-20 04:14:22Z ckuersteiner $
 #
 # Anti-Web Directory Traversal Vulnerability 
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:anti-web:anti-web";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106886");
-  script_version("$Revision: 6903 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-11 11:29:17 +0200 (Fri, 11 Aug 2017) $");
+  script_version("$Revision: 7191 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-20 06:14:22 +0200 (Wed, 20 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-06-20 13:53:33 +0700 (Tue, 20 Jun 2017)");
   script_tag(name: "cvss_base", value: "6.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -56,7 +56,7 @@ unauthenticated attacker can read arbitrary files.");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP POST request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 20th June, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 20th September, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://misteralfa-hack.blogspot.cl/2017/05/apps-industrial-ot-over-server-anti-web.html");

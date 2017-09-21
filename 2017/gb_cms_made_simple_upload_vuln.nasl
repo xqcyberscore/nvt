@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_upload_vuln.nasl 6923 2017-08-15 10:09:03Z ckuersteiner $
+# $Id: gb_cms_made_simple_upload_vuln.nasl 7197 2017-09-20 08:09:47Z jschulte $
 #
 # CMS Made Simple Upload Vulnerabililty 
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140299");
-  script_version("$Revision: 6923 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-15 12:09:03 +0200 (Tue, 15 Aug 2017) $");
+  script_version("$Revision: 7197 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-20 10:09:47 +0200 (Wed, 20 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-08-15 14:22:16 +0700 (Tue, 15 Aug 2017)");
   script_tag(name: "cvss_base", value: "4.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:P/A:N");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("CMS Made Simple Upload Vulnerabililty");
 
@@ -58,11 +58,10 @@ file via a FileManager action to admin/moduleinterface.php.");
 
   script_tag(name: "affected", value: "CMS Made Simple version 2.2.2 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 15th August, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update to version 2.2.3");
 
   script_xref(name: "URL", value: "http://www.yuesec.com/img/cccccve/CMSMadeSimple/upl0advul123/images/upload_vulnerability_yuesec.html");
-
+  script_xref(name: "URL", value: "https://www.cmsmadesimple.org/2017/08/Announcing-CMSMS-2.2.3-Happy-Adventure");
   exit(0);
 }
 
@@ -76,7 +75,7 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less_equal(version: version, test_version: "2.2.2")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+  report = report_fixed_ver(installed_version: version, fixed_version: "2.2.3");
   security_message(port: port, data: report);
   exit(0);
 }

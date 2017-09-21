@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netscape_fasttrack_server_auth_bof_vuln.nasl 6813 2017-07-31 08:25:50Z santu $
+# $Id: gb_netscape_fasttrack_server_auth_bof_vuln.nasl 7197 2017-09-20 08:09:47Z jschulte $
 #
 # Netscape FastTrack Server Authentication Buffer Overflow Vulnerability  
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:netscape:fasttrack_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811546");
-  script_version("$Revision: 6813 $");
+  script_version("$Revision: 7197 $");
   script_cve_id("CVE-1999-0853");
   script_bugtraq_id(847);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-31 10:25:50 +0200 (Mon, 31 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-20 10:09:47 +0200 (Wed, 20 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-07-28 15:05:05 +0530 (Fri, 28 Jul 2017)");
   script_name("Netscape FastTrack Server Authentication Buffer Overflow Vulnerability");
 
@@ -56,8 +56,8 @@ if(description)
   script_tag(name: "affected" , value:"Netscape FastTrack Server 3.01");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  28th July, 2017. Information regarding this issue will be updated once
-  the solution details are available.");
+  20th September, 2017. The product is end-of-life and the vulnerability was disclose in 1999.
+  A fix is unlikely.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_banner");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_registry_access.nasl 7186 2017-09-19 07:32:35Z cfischer $
+# $Id: smb_registry_access.nasl 7192 2017-09-20 05:47:24Z cfischer $
 #
 # Check for SMB accessible registry
 #
@@ -36,8 +36,8 @@ if( ! strlen( gos_version ) > 0 ||
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10400");
-  script_version("$Revision: 7186 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-19 09:32:35 +0200 (Tue, 19 Sep 2017) $");
+  script_version("$Revision: 7192 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-20 07:47:24 +0200 (Wed, 20 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-09-10 10:22:48 +0200 (Wed, 10 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -135,7 +135,7 @@ if( startErrors ) {
   message += '\n\nThe scanner tried to start the \'Remote Registry\' service but received the following errors:\n';
   foreach startError ( startErrors ) {
     # Clean-up the logs from the wmiexec.py before reporting it to the end user
-    startError = ereg_replace( string:startError, pattern:"^Impacket.*dialect used", replace:"" );
+    startError = ereg_replace( string:startError, pattern:".*Impacket.*Core Security Technologies", replace:"" );
     message += startError + '\n';
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_vuln_feb15.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_mantisbt_mult_vuln_feb15.nasl 7202 2017-09-20 12:47:53Z santu $
 #
 # MantisBT Multiple Vulnerabilities - Feb15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805267");
-  script_version("$Revision: 6415 $");
-  script_cve_id("CVE-2014-9573", "CVE-2014-9572", "CVE-2014-9571");
+  script_version("$Revision: 7202 $");
+  script_cve_id("CVE-2014-9573", "CVE-2014-9572", "CVE-2014-9571", "CVE-2014-9624");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-20 14:47:53 +0200 (Wed, 20 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-02-03 17:35:43 +0530 (Tue, 03 Feb 2015)");
   script_name("MantisBT Multiple Vulnerabilities - Feb15");
 
@@ -48,6 +48,8 @@ if(description)
   'admin_password' HTTP GET parameters to '/install.php' script.
   - Insufficient access restrictions to the installation script 'install.php'
   when HTTP GET 'install' parameter is set to '4'.
+  - One can get an unlimited amount of 'samples' with different perturbations
+    for the same challenge.
   - Insufficient filtration of the 'MANTIS_MANAGE_USERS_COOKIE' HTTP COOKIE in
   '/manage_user_page.php' script.");
 
@@ -75,6 +77,7 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/100211");
   script_xref(name:"URL", value:"https://www.htbridge.com/advisory/HTB23243");
   script_xref(name:"URL", value:"https://www.mantisbt.org/bugs/view.php?id=17937");
+  script_xref(name:"URL", value:"https://www.mantisbt.org/bugs/view.php?id=17984");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_xss_vuln.nasl 6433 2017-06-26 14:58:57Z teissa $
+# $Id: gb_cms_made_simple_xss_vuln.nasl 7193 2017-09-20 07:15:33Z asteins $
 #
 # CMS Made Simple Multiple XSS Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106697");
-  script_version("$Revision: 6433 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-26 16:58:57 +0200 (Mon, 26 Jun 2017) $");
+  script_version("$Revision: 7193 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-20 09:15:33 +0200 (Wed, 20 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-03-28 11:42:33 +0700 (Tue, 28 Mar 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -68,7 +68,7 @@ generation, via the description parameter in an addgroup action. (CVE-2017-9668)
 
   script_tag(name: "affected", value: "CMS Made Simple version 2.1.6.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 23rd June, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 20th September, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://www.03i0.com/index.php/archives/113/");

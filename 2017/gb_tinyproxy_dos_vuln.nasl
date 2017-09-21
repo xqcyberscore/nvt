@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tinyproxy_dos_vuln.nasl 6873 2017-08-08 12:35:26Z teissa $
+# $Id: gb_tinyproxy_dos_vuln.nasl 7198 2017-09-20 08:10:07Z jschulte $
 #
 # Tinyproxy DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:banu:tinyproxy";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140255");
-  script_version("$Revision: 6873 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-08 14:35:26 +0200 (Tue, 08 Aug 2017) $");
+  script_version("$Revision: 7198 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-20 10:10:07 +0200 (Wed, 20 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-07-31 11:31:40 +0700 (Mon, 31 Jul 2017)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
@@ -57,7 +57,7 @@ to this non-root account for tinyproxy.pid modification before a root script exe
 
   script_tag(name: "vuldetect", value: "Check the version.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 31th July, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 20th September, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://github.com/tinyproxy/tinyproxy/issues/106");

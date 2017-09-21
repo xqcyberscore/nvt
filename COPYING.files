@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 20 Sep 2017 09:52:30 +0200
+# Automatically created on:  Thu, 21 Sep 2017 08:35:41 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47469,6 +47469,7 @@
 2016/sw_vbulletin_forumrunner_sqli.nasl: GPLv2+
 2016/sw_wordpress_kento_post_viewer_counter_plugin_mult_vuln.nasl: GPLv2+
 2017/adobe/gb_adobe_coldfusion_info_disclose_nd_rce_vuln.nasl: GPLv2+
+2017/apache/gb_apache_optionsbleed.nasl: GPLv2+
 2017/citrix/gb_xenserver_ctx227185.nasl: GPLv2+
 2017/deb_3750.nasl: GPLv2+
 2017/deb_3751.nasl: GPLv2+
@@ -47691,6 +47692,9 @@
 2017/deb_3970.nasl: GPLv2+
 2017/deb_3971.nasl: GPLv2+
 2017/deb_3972.nasl: GPLv2+
+2017/digium/gb_asterisk_rtp_info_leak_vuln.nasl: GPLv2+
+2017/drupal/gb_drupal_core_mult_vuln_SA-CORE-2015-001_lin.nasl: GPLv2+
+2017/drupal/gb_drupal_core_mult_vuln_SA-CORE-2015-001_win.nasl: GPLv2+
 2017/gb_a2billing_rce.nasl: GPLv2+
 2017/gb_accellion_fta_multi_vuln.nasl: GPLv2+
 2017/gb_acti_mult_vuln.nasl: GPLv2+
@@ -47987,6 +47991,8 @@
 2017/gb_cacti_xss_vuln_win2.nasl: GPLv2+
 2017/gb_cacti_xss_vuln_win.nasl: GPLv2+
 2017/gb_cambium_epmp1000_mult_vuln.nasl: GPLv2+
+2017/gb_ccleaner_ccleaner_exe_backdoor_vuln.nasl: GPLv2+
+2017/gb_ccleaner_cloud_ccleaner_exe_backdoor_vuln.nasl: GPLv2+
 2017/gb_centreon_comments_xss_vuln.nasl: GPLv2+
 2017/gb_CESA-2016_2872_sudo_centos7.nasl: GPLv2+
 2017/gb_CESA-2017_0001_ipa-admintools_centos7.nasl: GPLv2+
@@ -48382,6 +48388,7 @@
 2017/gb_dlink_dir850l_mul_vuln_09_17.nasl: GPLv2+
 2017/gb_dlink_dir_850_mult_vuln.nasl: GPLv2+
 2017/gb_dlink_dir_hnap_bo_vuln.nasl: GPLv2+
+2017/gb_dlxspot_mult_vuln.nasl: GPLv2+
 2017/gb_dnaLIMS_96823.nasl: GPLv2+
 2017/gb_docker_95361.nasl: GPLv2+
 2017/gb_docker_minergate_cli_detect.nasl: GPLv2+
@@ -51399,9 +51406,16 @@
 2017/gb_zoneminder_mult_vuln.nasl: GPLv2+
 2017/gb_zoneminder_xss_vuln.nasl: GPLv2+
 2017/hikvision/gb_hikvision_ip_cameras_mult_vuln.nasl: GPLv2+
+2017/ibm/gb_ibm_db2_dos_vuln_sep17.nasl: GPLv2+
+2017/ibm/gb_ibm_db2_log_information_disclosure_vuln.nasl: GPLv2+
+2017/ibm/gb_ibm_db2_multiple_privilege_escalation_vuln.nasl: GPLv2+
+2017/intel/gb_intel_amt_unspecified_priv_esc_vuln.nasl: GPLv2+
+2017/intel/gb_intel_standard_manageability_unspecified_priv_esc_vuln.nasl: GPLv2+
 2017/microsoft/gb_dotnet_framework_kb4040972_n_kb4040971.nasl: GPLv2+
 2017/microsoft/gb_dotnet_framework_kb4040973.nasl: GPLv2+
 2017/microsoft/gb_dotnet_framework_kb4041086.nasl: GPLv2+
+2017/microsoft/gb_ms_office_outlook_dos_vuln_macosx.nasl: GPLv2+
+2017/microsoft/gb_ms_outlook_dos_vuln.nasl: GPLv2+
 2017/nagios/gb_nagios_priv_esc_vuln.nasl: GPLv2+
 2017/noontec/gb_terramaster_tos_rce_vuln.nasl: GPLv2+
 2017/osticket/gb_os_ticket_sql_inj_vuln.nasl: GPLv2+
@@ -51415,6 +51429,7 @@
 2017/phpmyadmin/gb_phpmyadmin_mult_vuln_jul11_win.nasl: GPLv2+
 2017/phpmyadmin/gb_phpmyadmin_mult_vuln_oct12_lin.nasl: GPLv2+
 2017/phpmyadmin/gb_phpmyadmin_mult_vuln_oct12_win.nasl: GPLv2+
+2017/qnap/gb_qnap_qts_media_library_com_inj_vuln.nasl: GPLv2+
 404.inc: GPLv2+
 aas_detect.nasl: GPLv2+
 adaptbb_detect.nasl: GPLv2+
@@ -51714,6 +51729,8 @@ gb_cambium_snmp_get_info.nasl: GPLv2+
 gb_candid_remote_detect.nasl: GPLv2+
 gb_canon_printers_detect.nasl: GPLv2+
 gb_ca_uim_detect.nasl: GPLv2+
+gb_ccleaner_cloud_agent_detect_win.nasl: GPLv2+
+gb_ccleaner_detect_win.nasl: GPLv2+
 gb_ccproxy_detect.nasl: GPLv2+
 gb_cgit_detect.nasl: GPLv2+
 gb_chamilo_detect.nasl: GPLv2+
@@ -51870,6 +51887,7 @@ gb_django_detect_lin.nasl: GPLv2+
 gb_dlink_dap_detect.nasl: GPLv2+
 gb_dlink_dir_detect.nasl: GPLv2+
 gb_dlink_dns_detect.nasl: GPLv2+
+gb_dlxspot_web_detect.nasl: GPLv2+
 gb_dm_filemanager_detect.nasl: GPLv2+
 gb_dnaLIMS_detect.nasl: GPLv2+
 gb_dns_os_detection.nasl: GPLv2+
@@ -52905,6 +52923,11 @@ gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170906-cms.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170913-cmsturn.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_vcs_cisco-sa-20170816-vcs.nasl: GPLv2+
 gsf/2017/emc/gb_emc_data_protection_advisor_pw_vuln.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K43945001.nasl: GPLv2+
+gsf/2017/fortinet/gb_fortinet_fortios_config_rev_comments_xss_vuln.nasl: GPLv2+
+gsf/2017/fortinet/gb_fortinet_fortios_firtiview_app_filter_xss_vuln.nasl: GPLv2+
+gsf/2017/fortinet/gb_fortinet_fortios_mult_xss_vuln.nasl: GPLv2+
+gsf/2017/fortinet/gb_fortinet_fortios_user_groups_xss_vuln.nasl: GPLv2+
 gsf/2017/sap/gb_sap_netweaver_xml_xss_vuln.nasl: GPLv2+
 gsf/2017/sap/gb_sap_netweaver_xss_vuln_09_17.nasl: GPLv2+
 gsf/gb_advantech_webaccess_mult_vuln_aug.nasl: GPLv2+

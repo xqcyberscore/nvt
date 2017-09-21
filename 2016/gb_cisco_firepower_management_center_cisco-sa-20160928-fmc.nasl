@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20160928-fmc.nasl 6166 2017-05-19 05:29:49Z ckuerste $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20160928-fmc.nasl 7191 2017-09-20 04:14:22Z ckuersteiner $
 #
 # Cisco Firepower Management Center Software Cross-Site Request Forgery Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6417");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P"); 
- script_version ("$Revision: 6166 $");
+ script_version ("$Revision: 7191 $");
 
  script_name("Cisco Firepower Management Center Software Cross-Site Request Forgery Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
  
  script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"No solution or patch is available as of 19th May, 2017. Information
+ script_tag(name: "solution" , value:"No solution or patch is available as of 20th September, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
  script_tag(name: "summary" , value:"A cross-site request forgery (CSRF) vulnerability for Cisco Firepower
@@ -56,7 +56,7 @@ to the affected device via the web browser with the privileges of the user.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"NoneAvailable");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-20 06:14:22 +0200 (Wed, 20 Sep 2017) $");
  script_tag(name:"creation_date", value:"2016-09-29 14:22:04 +0700 (Thu, 29 Sep 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
