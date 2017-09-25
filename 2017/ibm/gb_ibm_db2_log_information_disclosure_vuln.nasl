@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_log_information_disclosure_vuln.nasl 7202 2017-09-20 12:47:53Z santu $
+# $Id: gb_ibm_db2_log_information_disclosure_vuln.nasl 7243 2017-09-25 05:48:36Z cfischer $
 #
 # IBM DB2 'db2diag.log' Information Disclosure Vulnerability 
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811694");
-  script_version("$Revision: 7202 $");
+  script_version("$Revision: 7243 $");
   script_cve_id("CVE-2017-1434");
   script_bugtraq_id(100693);
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 14:47:53 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-25 07:48:36 +0200 (Mon, 25 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-14 13:39:29 +0530 (Thu, 14 Sep 2017)");
   script_name("IBM DB2 'db2diag.log' Information Disclosure Vulnerability");
 

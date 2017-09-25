@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_technicolor_tc7200_snmp_detect.nasl 7143 2017-09-15 11:37:02Z santu $
+# $Id: gb_technicolor_tc7200_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Technicolor TC7200 Modem/Router Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811655");
-  script_version("$Revision: 7143 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 13:37:02 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 7236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-08 12:12:54 +0530 (Fri, 08 Sep 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,20 +39,23 @@ if(description)
   script_family("Product detection");
   script_dependencies("gb_snmp_sysdesc.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
-  script_mandatory_keys("SNMP/sysdesc");
+  script_mandatory_keys("SNMP/sysdesc/available");
+
   script_tag(name:"summary", value:"Detection of Technicolor Modem/Router.
   This script performs SNMP based detection of Technicolor Modem/Router.");
+
   script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
 include("cpe.inc");
 include("host_details.inc");
+include("snmp_func.inc");
 
-snmpPort = get_kb_item("Services/udp/snmp");
-if(!snmpPort) snmpPort = 161;
-
-sysdesc = get_kb_item("SNMP/sysdesc");
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 # Check for Technicolor
 if("VENDOR: Technicolor" >< sysdesc && "TC7200" >< sysdesc)
@@ -80,17 +83,20 @@ if("VENDOR: Technicolor" >< sysdesc && "TC7200" >< sysdesc)
     oscpe = "cpe:/o:technicolor:tc7200_firmware";
 
   hwcpe = "cpe:/h:technicolor:tc7200_firmware:" + tolower(version);
-  register_product( cpe:hwcpe, port:snmpPort, service:"snmp", proto:"udp" );
+  register_product( cpe:hwcpe, port:port, location:port + "/udp", service:"snmp", proto:"udp" );
+  register_product( cpe:oscpe, port:port, location:port + "/udp", service:"snmp", proto:"udp" );
 
-  register_and_report_os(cpe:oscpe, banner_type:"SNMP sysdesc", proto:"udp",
+  register_and_report_os(cpe:oscpe, banner_type:"SNMP sysdesc", port:port, proto:"udp",
                          banner:sysdesc, desc:"Technicolor TC7200 Modem/Router Detection (SNMP)",
                          runs_key:"unixoide");
 
   log_message(data: build_detection_report(app:"Technicolor TC7200",
                                            version:version,
-                                           install:snmpPort + "/udp",
+                                           install:port + "/udp",
                                            cpe:oscpe,
-                                           concluded:sysdesc));
+                                           concluded:sysdesc),
+                                           port:port,
+                                           proto:"udp");
   exit(0);
 }
 exit(0);

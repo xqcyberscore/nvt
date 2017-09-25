@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_detect.nasl 5040 2017-01-19 14:01:58Z cfi $
+# $Id: gb_ibm_websphere_mq_detect.nasl 7233 2017-09-22 12:05:13Z santu $
 #
 # IBM WebSphere MQ Version Detection (Windows)
 #
@@ -27,19 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805546");
-  script_version("$Revision: 5040 $");
+  script_version("$Revision: 7233 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-19 15:01:58 +0100 (Thu, 19 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 14:05:13 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-05-06 11:01:01 +0530 (Wed, 06 May 2015)");
   script_name("IBM WebSphere MQ Version Detection (Windows)");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
-  script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
-  script_require_ports(139, 445);
-
   script_tag(name:"summary", value:"Detection of installed version of
   IBM WebSphere MQ.
 
@@ -47,7 +40,12 @@ if(description)
   in the registry and gets the version from registry.");
 
   script_tag(name:"qod_type", value:"registry");
-
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
+  script_require_ports(139, 445);
   exit(0);
 }
 
@@ -89,8 +87,9 @@ foreach key( key_list ) {
   {
     ##Get application name
     mqName = registry_get_sz(key:key, item:"ProgramFolder");
+
     #### Confirm Application
-    if("IBM WebSphere MQ" >< mqName)
+    if("IBM WebSphere MQ" >< mqName || "IBM MQ" >< mqName)
     {
       mqVer = registry_get_sz(key:key, item:"BuildDate");
       mqVer = eregmatch(pattern:"version ([0-9.]+)", string:mqVer);

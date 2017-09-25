@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zhone_znid_gpon_snmp_detect.nasl 5492 2017-03-06 09:35:43Z cfi $
+# $Id: gb_zhone_znid_gpon_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # ZHONE ZNID GPON Device Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108089");
-  script_version("$Revision: 5492 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 10:35:43 +0100 (Mon, 06 Mar 2017) $");
+  script_version("$Revision: 7236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-10-15 11:45:06 +0200 (Thu, 15 Oct 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,9 +37,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "gb_snmp_sysdesc.nasl");
+  script_dependencies("gb_snmp_sysdesc.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
-  script_mandatory_keys("SNMP/sysdesc");
+  script_mandatory_keys("SNMP/sysdesc/available");
 
   script_tag(name:"summary", value:"The script performs SNMP based detection of ZHONE ZNID GPON devices");
 
@@ -49,11 +49,12 @@ if(description)
 }
 
 include("host_details.inc");
+include("snmp_func.inc");
 
-port = get_kb_item( "Services/udp/snmp" );
-if( ! port ) port = 161;
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
-if( ! sysdesc = get_kb_item( "SNMP/sysdesc" ) ) exit( 0 );
 if( "ZNID-GPON" >!< sysdesc || "Zhone Indoor Network Interface" >!< sysdesc ) exit( 0 );
 
 replace_kb_item( name:"zhone/installed", value:TRUE );

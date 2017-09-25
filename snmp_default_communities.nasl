@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmp_default_communities.nasl 6512 2017-07-04 07:36:40Z ckuersteiner $
+# $Id: snmp_default_communities.nasl 7241 2017-09-22 18:08:58Z cfischer $
 #
 # Default community names of the SNMP Agent
 #
@@ -65,8 +65,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103914");
-  script_version("$Revision: 6512 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 09:36:40 +0200 (Tue, 04 Jul 2017) $");
+  script_version("$Revision: 7241 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 20:08:58 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -76,6 +76,7 @@ if(description)
   script_copyright("This script is Copyright (C) 1999 SecuriTeam");
   script_family("SNMP");
   script_dependencies("gb_open_udp_ports.nasl");
+  script_require_udp_ports(161);
 
   script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to
   login with default communities. Successful logins are storen in the KB.");
@@ -85,170 +86,172 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
+
+#nb: Don't use UDP/PORTS or get_snmp_port() as the check below is quite unreliable against other non-snmp UDP services
 port = 161;
 if (!get_udp_port_state(port))
   exit(0);
 
 # Roughly from https://github.com/fuzzdb-project/fuzzdb/blob/master/wordlists-misc/wordlist-common-snmp-community-strings.txt
-comm = make_list("private",
-                 "public",
-                 "0",
-                 "0392a0",
-                 "1234",
-                 "2read",
-                 "4changes",
-                 "Admin",
-                 "ANYCOM",                    # for 3COM NetBuilder
-                 "C0de",
-                 "CISCO",
-                 "Cisco router",              # for Cisco equipment
-                 "CR52401",
-                 "EyesOfNetwork",             # Eyes of Network (EON)
-                 "IBM",
-                 "ILMI",
-                 "Intermec",
-                 "NoGaH$@!",                  # Avaya
-                 "OrigEquipMfr",              # Brocade
-                 "PRIVATE",
-                 "PUBLIC",
-                 "Private",
-                 "Public",
-                 "SECRET",
-                 "SECURITY",
-                 "SNMP",
-                 "SNMP_trap",
-                 "SUN",
-                 "SWITCH",
-                 "SYSTEM",
-                 "Secret",
-                 "Secret C0de",               # Brocade
-                 "Security",
-                 "s!a@m#n$p%c",
-                 "Switch",
-                 "System",
-                 "TENmanUFactOryPOWER",
-                 "TEST",
-                 "access",
-                 "adm",
-                 "admin",
-                 "agent",
-                 "agent_steal",
-                 "all",
-                 "all private",               # Solaris 2.5.1 and 2.6
-                 "all public",
-                 "apc",                       # for APC Web/SNMP Management Card AP9606
-                 "bintec",
-                 "blue",                      # HP JetDirect equipement
-                 "cable-d",
-                 "cable-docsis",              # for Cisco equipment
-                 "canon_admin",
-                 "cascade",                   # for Lucent equipment
-                 "c",                         # for Cisco equipment
-                 "cc",                        # for Cisco equipment
-                 "cisco",
-                 "comcomcom",                 # for 3COM AirConnect AP
-                 "community",
-                 "core",                      # Cisco Aironet
-                 "debug",
-                 "default",
-                 "field",
-                 "field-service",
-                 "freekevin",
-                 "fubar",
-                 "guest",
-                 "hello",
-                 "hp_admin",
-                 "ibm",
-                 "ilmi",
-                 "intermec",
-                 "internal",                  # HP JetDirect equipement
-                 "l2",
-                 "l3",
-                 "manager",
-                 "mngt",
-                 "monitor",
-                 "netman",
-                 "network",
-                 "none",
-                 "openview",
-                 "pass",
-                 "password",
-                 "pr1v4t3",
-                 "proxy",                     # Cisco Aironet
-                 "publ1c",
-                 "read",
-                 "read-only",
-                 "read-write",
-                 "readwrite",
-                 "regional",                  # Cisco Aironet
-                 "rmon",
-                 "rmon_admin",
-                 "ro",
-                 "root",
-                 "router",
-                 "rw",
-                 "rwa",
-                 "scotty",
-                 "secret",                    # for Cisco equipment
-                 "security",
-                 "seri",
-                 "snmp",
-                 "snmpd",                     # HP SNMP agent
-                 "snmptrap",
-                 "solaris",
-                 "sun",
-                 "superuser",
-                 "switch",
-                 "system",
-                 "tech",
-                 "test",
-                 "tivoli",
-                 "trap",
-                 "world",
-                 "write",                     # for Cisco equipment
-                 "xyzzy",
-                 "yellow"                     # HP JetDirect equipement
-                 );
+communities = make_list(
+"private",
+"public",
+"0",
+"0392a0",
+"1234",
+"2read",
+"4changes",
+"Admin",
+"ANYCOM", # for 3COM NetBuilder
+"C0de",
+"CISCO",
+"Cisco router", # for Cisco equipment
+"CR52401",
+"EyesOfNetwork", # Eyes of Network (EON)
+"IBM",
+"ILMI",
+"Intermec",
+"NoGaH$@!", # Avaya
+"OrigEquipMfr", # Brocade
+"PRIVATE",
+"PUBLIC",
+"Private",
+"Public",
+"SECRET",
+"SECURITY",
+"SNMP",
+"SNMP_trap",
+"SUN",
+"SWITCH",
+"SYSTEM",
+"Secret",
+"Secret C0de", # Brocade
+"Security",
+"s!a@m#n$p%c", # 2012/secpod_samsung_printer_snmp_auth_bypass_vuln.nasl
+"Switch",
+"System",
+"TENmanUFactOryPOWER",
+"TEST",
+"access",
+"adm",
+"admin",
+"agent",
+"agent_steal",
+"all",
+"all private", # Solaris 2.5.1 and 2.6
+"all public",
+"apc", # for APC Web/SNMP Management Card AP9606
+"bintec",
+"blue", # HP JetDirect equipement
+"cable-d",
+"cable-docsis", # for Cisco equipment
+"canon_admin",
+"cascade", # for Lucent equipment
+"c", # for Cisco equipment
+"cc", # for Cisco equipment
+"cisco",
+"comcomcom", # for 3COM AirConnect AP
+"community",
+"core", # Cisco Aironet
+"debug",
+"default",
+"field",
+"field-service",
+"freekevin",
+"fubar",
+"guest",
+"hello",
+"hp_admin",
+"ibm",
+"ilmi",
+"intermec",
+"internal", # HP JetDirect equipement
+"l2",
+"l3",
+"manager",
+"mngt",
+"monitor",
+"netman",
+"network",
+"none",
+"openview",
+"pass",
+"password",
+"pr1v4t3",
+"proxy", # Cisco Aironet
+"publ1c",
+"read",
+"read-only",
+"read-write",
+"readwrite",
+"regional", # Cisco Aironet
+"rmon",
+"rmon_admin",
+"rmonmgmtuicommunity", #2016/gb_cisco_sg220_cisco-sa-20160831-sps3.nasl
+"ro",
+"root",
+"router",
+"rw",
+"rwa",
+"scotty",
+"secret", # for Cisco equipment
+"security",
+"seri",
+"snmp",
+"snmpd", # HP SNMP agent
+"snmptrap",
+"solaris",
+"sun",
+"superuser",
+"switch",
+"system",
+"tech",
+"test",
+"tivoli",
+"trap",
+"world",
+"write", # for Cisco equipment
+"xyzzy",
+"yellow" # HP JetDirect equipement
+);
 
-
-# Add router name
+# Add device/host name
 name = get_host_name();
-if (name !~ "^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$") {
-  # We have a name, not an IP
+if( name !~ "^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$" && ":" >!< name ) {
+  # We have a name, not an IP/IPv6
   names[0] = name;
-  dot = strstr(name, '.');
-  if (dot) {
+  dot = strstr( name, '.' );
+  if( dot ) {
     name = name - dot; # Use short name
     names[1] = name;
   }
 
-  foreach n (names) {
-   j = max_index(comm);
-   for (i = 0; i < j && n != comm[i]; i ++)
-     ;
-
-   if (i == j)
-     comm[j] = n;  # The name is not already in the list
+  foreach name( names ) {
+    if( ! in_array( search:name, array:communities ) ) {
+      communities = make_list( communities, name ); # The name is not already in the list
+    }
   }
 }
 
-report="";
-count=0;
+report = "";
+count = 0;
 
-# We don't use the SNMP functions from snmp_func.inc since they are to slow for brute forcing
-for (i=0; comm[i]; i++) {
-  community = comm[i];
+# We don't use the SNMP functions from snmp_func.inc since they are too slow for brute forcing
+for( i = 0; communities[i]; i++ ) {
+
+  community = communities[i];
 
   SNMP_BASE = 31;
-  COMMUNITY_SIZE = strlen(community);
+  COMMUNITY_SIZE = strlen( community );
 
   sz = COMMUNITY_SIZE % 256;
 
   len = SNMP_BASE + COMMUNITY_SIZE;
   len_hi = len / 256;
   len_lo = len % 256;
-  sendata = raw_string(0x30, 0x82, len_hi, len_lo,
-                       0x02, 0x01, 0x00, 0x04, sz);
+  sendata = raw_string( 0x30, 0x82, len_hi, len_lo,
+                        0x02, 0x01, 0x00, 0x04, sz );
 
   sendata = sendata + community +
             raw_string( 0xA1, 0x18, 0x02, 0x01, 0x01,
@@ -256,31 +259,29 @@ for (i=0; comm[i]; i++) {
                         0x00, 0x30, 0x0D, 0x30, 0x82,
                         0x00, 0x09, 0x06, 0x05, 0x2B,
                         0x06, 0x01, 0x02, 0x01, 0x05,
-                        0x00);
+                        0x00 );
 
 
   dstport = port;
-  soc[i] = open_sock_udp(dstport);
-  send(socket:soc[i], data:sendata);
-  usleep(10000); # Cisco don't like to receive too many packets
-                 # at the same time
+  soc[i] = open_sock_udp( dstport );
+  send( socket:soc[i], data:sendata );
+  usleep( 10000 ); # Cisco don't like to receive too many packets at the same time
 }
 
+for( j = 0; communities[j]; j++ ) {
 
-for (j=0; comm[j]; j++) {
-  result = recv(socket:soc[j], length:200, timeout:1);
-  close(soc[j]);
+  result = recv( socket:soc[j], length:200, timeout:1 );
+  close( soc[j] );
 
-  if (result) {
+  if( result ) {
     count++;
-    set_kb_item(name: "SNMP/community", value: comm[j]);
-    set_kb_item(name: "SNMP/detected_community", value: comm[j]);
-    set_kb_item(name: "SNMP/port", value:port);
+    set_kb_item( name:"SNMP/" + port + "/v12c/detected_community", value:communities[j] );
+    replace_kb_item( name:"SNMP/v12c/detected_community", value:TRUE );
   }
 }
 
-if (count > 4) {
-  set_kb_item(name:"SNMP/all_communities", value:TRUE);
+if( count > 4 ) {
+  set_kb_item( name:"SNMP/" + port + "/v12c/all_communities", value:TRUE );
 }
 
 exit( 0 );

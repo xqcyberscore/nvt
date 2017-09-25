@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 6548 2017-07-06 08:19:53Z cfischer $
+# $Id: ssh_func.inc 7221 2017-09-21 13:05:11Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6548 $
+# $Revision: 7221 $
 #
 ###############################################################################
 
@@ -64,7 +64,7 @@ function ssh_hex2raw(s)
 
  s = chomp(s);  # remove trailing blanks, CR, LF...
  l = strlen(s);
- if (l % 2) display("ssh_hex2raw: odd string: ", s, "\n");
+ #if (l % 2 ) display("ssh_hex2raw: odd string: ", s, "\n");
  for(i=0;i<l;i+=2)
  {
   if(ord(s[i]) >= ord("0") && ord(s[i]) <= ord("9"))

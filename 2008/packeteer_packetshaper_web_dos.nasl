@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: packeteer_packetshaper_web_dos.nasl 4489 2016-11-14 08:23:54Z teissa $
+# $Id: packeteer_packetshaper_web_dos.nasl 7236 2017-09-22 14:59:19Z cfischer $
 # Description: Packeteer PacketShaper Web Denial of Service
 #
 # Authors:
@@ -39,8 +39,8 @@ even read-only access is sufficient.";
 if (description)
     {
     script_id(80030);
-    script_version("$Revision: 4489 $");
-    script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
+    script_version("$Revision: 7236 $");
+    script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
     script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -77,7 +77,7 @@ if (description)
 
 include("http_func.inc");
 include("misc_func.inc");
-
+include("snmp_func.inc");
 
 if (!get_kb_item("bluecoat_packetshaper/installed")) exit(0);
 
@@ -95,7 +95,7 @@ return req;
 function get_version_snmp ()
 {
 local_var sys,match,ver;
-sys=get_kb_item("SNMP/sysdesc");
+sys=get_snmp_sysdesc(port:161);
 if (!sys) return;
 match=eregmatch(pattern:"^Packeteer PacketShaper ([A-Za-z0-9.]+)",string:sys);
 ver=match[1];

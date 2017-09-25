@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thomson_cablehome_gateway_info_disc_vuln.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_thomson_cablehome_gateway_info_disc_vuln.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Thomson CableHome Gateway(DWG849) Information Exposure
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805739");
-  script_version("$Revision: 6125 $");
+  script_version("$Revision: 7236 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-09-22 15:38:14 +0530 (Tue, 22 Sep 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Thomson CableHome Gateway(DWG849) Information Exposure");
@@ -63,25 +63,27 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("snmp_detect.nasl", "gb_snmp_sysdesc.nasl");
+  script_dependencies("gb_snmp_sysdesc.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
+  script_mandatory_keys("SNMP/sysdesc/available");
+
   exit(0);
 }
 
-snmp_port = get_kb_item("Services/udp/snmp");
-if(!snmp_port)snmp_port = 161;
+include("snmp_func.inc");
 
-if (!get_udp_port_state(snmp_port))
-  exit(0);
-
-soc = open_sock_udp(snmp_port);
-if(!soc) {
-  exit(0);
-}
-sysdesc = get_kb_item("SNMP/sysdesc");
+snmp_port = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:snmp_port);
+if(!sysdesc) exit(0);
 
 if( sysdesc =~ "Thomson CableHome Gateway" )
 {
+
+  soc = open_sock_udp(snmp_port);
+  if(!soc) {
+    exit(0);
+  }
+
   req = raw_string(0x30, 0x81, 0x84, 0x02, 0x01, 0x01, 0x04, 0x07,
                    0x70, 0x72, 0x69, 0x76, 0x61, 0x74, 0x65, 0xa0,
                    0x76, 0x02, 0x04, 0x78, 0x55, 0x6d, 0x35, 0x02,

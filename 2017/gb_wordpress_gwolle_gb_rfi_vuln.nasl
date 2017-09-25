@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_gwolle_gb_rfi_vuln.nasl 7108 2017-09-12 09:33:19Z asteins $
+# $Id: gb_wordpress_gwolle_gb_rfi_vuln.nasl 7243 2017-09-25 05:48:36Z cfischer $
 #
 # WordPress Gwolle Guestbook Plugin Remote File Inclusion Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112042");
-  script_version("$Revision: 7108 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-12 11:33:19 +0200 (Tue, 12 Sep 2017) $");
+  script_version("$Revision: 7243 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-25 07:48:36 +0200 (Mon, 25 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-09-12 11:05:31 +0200 (Tue, 12 Sep 2017)");
-  script_tag(name:"cvss_base", value:"7.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2015-8351");
 

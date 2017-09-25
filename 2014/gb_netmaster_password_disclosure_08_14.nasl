@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netmaster_password_disclosure_08_14.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_netmaster_password_disclosure_08_14.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Netmaster Wireless Cable Modem Password Disclosure
 #
@@ -31,17 +31,18 @@ if (description)
  script_cve_id("CVE-2014-4862");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6750 $");
+ script_version ("$Revision: 7236 $");
 
  script_name("Netmaster Wireless Cable Modem Password Disclosure");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name:"creation_date", value:"2014-08-25 12:47:34 +0100 (Mon, 25 Aug 2014)");
  script_category(ACT_ATTACK);
  script_family("General");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_snmp_sysdesc.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);
+ script_mandatory_keys("SNMP/sysdesc/available");
 
  script_tag(name : "impact" , value : "Attackers can exploit this issue to bypass the authentication
  mechanism and gain access to the vulnerable device.");
@@ -70,6 +71,7 @@ if (description)
 }
 
 include("dump.inc");
+include("snmp_func.inc");
 
 function parse_result(data) {
 
@@ -98,13 +100,10 @@ function parse_result(data) {
 
 }
 
-sysdesc = get_kb_item("SNMP/sysdesc");
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 if( "VENDOR: TEKNOTEL" >!< sysdesc )  exit( 0 );
-
-port = get_kb_item("Services/udp/snmp");
-if( ! port ) port = 161;
-
-if( ! get_udp_port_state( port ) ) exit( 0 );
 
 community = "public";
 

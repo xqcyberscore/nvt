@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_dos_vuln_sep17.nasl 7202 2017-09-20 12:47:53Z santu $
+# $Id: gb_ibm_db2_dos_vuln_sep17.nasl 7207 2017-09-21 05:30:08Z asteins $
 #
 # IBM DB2 Denial of Service Vulnerability Sep17
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811695");
-  script_version("$Revision: 7202 $");
+  script_version("$Revision: 7207 $");
   script_cve_id("CVE-2017-1519");
   script_bugtraq_id(100688);
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 14:47:53 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-21 07:30:08 +0200 (Thu, 21 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-14 13:42:29 +0530 (Thu, 14 Sep 2017)");
   script_name("IBM DB2 Denial of Service Vulnerability Sep17");
 

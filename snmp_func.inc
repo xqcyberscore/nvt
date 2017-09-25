@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: snmp_func.inc 6490 2017-06-30 05:39:55Z ckuersteiner $
+# OpenVAS Include File
+# $Id: snmp_func.inc 7239 2017-09-22 16:10:31Z cfischer $
 #
 # Functions for SNMP
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 6490 $
+# $Revision: 7239 $
 #
 ###############################################################################
 
@@ -35,77 +35,99 @@ valid_snmpv3_errors = make_list( "Unknown user name",
                                  "Session abort failure",
                                  "Unknown security model in message",
                                  "MIB not initialized",
-                                 "Authentication failure (incorrect password, community or key)");
+                                 "Authentication failure (incorrect password, community or key)" );
 
-global_var snmp_error, v3_creds, valid_snmpv3_errors, last_snmp_error;
+global_var snmp_error, v3_creds, valid_snmpv3_errors, last_snmp_error, _snmp_func_debug;
+_snmp_func_debug = FALSE;
 
-function check_snmpv1( port, community )
-{
-  if( ! port ) return;
-  if( ! community ) return;
+function check_snmpv1( port, community ) {
+
+  local_var port, community, oid, protocol, ret;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#check_snmpv1" );
+    return;
+  }
+
+  if( ! community ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#community#-#check_snmpv1" );
+    return;
+  }
 
   oid = '1.3.6.1.2.1.1.1.0';
   protocol = 'udp';
 
-  ret = snmpv1_get( port:port, oid:oid, protocol:protocol, community: community );
+  ret = snmpv1_get( port:port, oid:oid, protocol:protocol, community:community );
   if( ret[0] < 0 ) return;
 
   if( ret[0] == 0 && ! isnull( ret[1] ) ) return TRUE;
 
   return;
-
 }
 
-function check_snmpv2( port, community )
-{
-  if( ! port ) return;
-  if( ! community ) return;
+function check_snmpv2( port, community ) {
+
+  local_var port, community, oid, protocol, ret;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#check_snmpv2" );
+    return;
+  }
+
+  if( ! community ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#community#-#check_snmpv2" );
+    return;
+  }
 
   oid = '1.3.6.1.2.1.1.1.0';
   protocol = 'udp';
 
-  ret = snmpv2c_get( port:port, oid:oid, protocol:protocol, community: community );
+  ret = snmpv2c_get( port:port, oid:oid, protocol:protocol, community:community );
   if( int( ret[0] ) < 0 ) return;
 
   if( ret[0] == 0 && ! isnull( ret[1] ) ) return TRUE;
 
   return;
-
 }
 
-function check_snmpv3( port )
-{
-  if( ! port ) return;
+function check_snmpv3( port ) {
+
+  # nb: v3_creds is a global var
+  local_var port, oid, protocol, snmpv3_username, snmpv3_password;
+  local_var snmpv3_authalgo, snmpv3_privpass, snmpv3_privalgo, ret;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#check_snmpv3" );
+    return;
+  }
 
   oid = '1.3.6.1.2.1.1.1.0';
   protocol = 'udp';
 
-  snmpv3_username = get_kb_item("SNMP/V3/username");
-  if (!snmpv3_username || (strlen(snmpv3_username) == 0)) {
+  snmpv3_username = get_kb_item( "SNMP/v3/username" );
+  if( ! snmpv3_username || ( strlen( snmpv3_username ) == 0 ) ) {
     # Set some credentials to test for SNMPv3
     snmpv3_username = 'openvas';
     snmpv3_password = 'openvaspass';
     snmpv3_authalgo = 'md5';
     snmpv3_privpass = 'openvaspass';
     snmpv3_privalgo = 'des';
-  }
-  else {
-    snmpv3_password = get_kb_item("SNMP/V3/password");
-    snmpv3_authalgo = get_kb_item("SNMP/V3/auth_algorithm");
-    if (!snmpv3_privpass = get_kb_item("SNMP/V3/privacy_password"))
+  } else {
+    snmpv3_password = get_kb_item( "SNMP/v3/password" );
+    snmpv3_authalgo = get_kb_item( "SNMP/v3/auth_algorithm" );
+    if( ! snmpv3_privpass = get_kb_item( "SNMP/v3/privacy_password" ) )
       snmpv3_privalgo = NULL;
     else
-      snmpv3_privalgo = get_kb_item("SNMP/V3/privacy_algorithm");
+      snmpv3_privalgo = get_kb_item( "SNMP/v3/privacy_algorithm" );
 
     v3_creds = TRUE;
   }
 
-  ret = snmpv3_get( port:port, protocol:protocol, username: snmpv3_username, oid:oid,
-                   authpass: snmpv3_password, authproto: snmpv3_authalgo, privpass: snmpv3_privpass,
-                   privproto: snmpv3_privalgo );
+  ret = snmpv3_get( port:port, protocol:protocol, username:snmpv3_username, oid:oid,
+                    authpass:snmpv3_password, authproto:snmpv3_authalgo, privpass:snmpv3_privpass,
+                    privproto:snmpv3_privalgo );
 
-  if( ret[0] == -1 )
-  {
+  if( ret[0] == -1 ) {
     snmp_error = ret[1];
     if( in_array( array:valid_snmpv3_errors, search:snmp_error ) )
       return 2;
@@ -123,105 +145,130 @@ function snmp_get( port, oid, version, community ) {
   local_var port, oid, version, community, ret;
   local_var v3_username, v3_password, v3_authalgo, v3_privpass, v3_privalgo;
 
-  if (!defined_func("snmpv3_get"))
-    return;
+  if( ! defined_func( "snmpv3_get" ) ) return;
 
-  if (!port) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#snmp_get" );
-    return;
-  }
-
-  if (!oid) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#oid#-#snmp_get" );
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#snmp_get" );
     return;
   }
 
-  if (!version)
-    version = get_kb_item("SNMP/prefered_version");
+  if( ! oid ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#oid#-#snmp_get" );
+    return;
+  }
 
+  if( ! version ) version = get_kb_item( "SNMP/" + port + "/prefered_version" );
   if( ! version ) return;
 
-  if (version == 3) {
-    if( get_kb_item( "SNMP/V3/working" ) ) {
-      v3_username = get_kb_item("SNMP/V3/username");
-      v3_password = get_kb_item("SNMP/V3/password");
-      v3_authalgo = get_kb_item("SNMP/V3/auth_algorithm");
-      v3_privpass = get_kb_item("SNMP/V3/privacy_password");
-      v3_privalgo = get_kb_item("SNMP/V3/privacy_algorithm");
+  if( version == 3 ) {
 
-      if (v3_username && v3_username != "") {
-        if (!v3_privpass)
-          v3_privalgo = NULL;
+    if( get_kb_item( "SNMP/" + port + "/v3/working" ) ) {
 
-        ret = snmpv3_get(port: port, protocol: "udp", username: v3_username, oid: oid,
-                         authpass: v3_password, authproto: v3_authalgo, privpass: v3_privpass,
-                         privproto: v3_privalgo );
+      v3_username = get_kb_item( "SNMP/v3/username" );
+      v3_password = get_kb_item( "SNMP/v3/password" );
+      v3_authalgo = get_kb_item( "SNMP/v3/auth_algorithm" );
+      v3_privpass = get_kb_item( "SNMP/v3/privacy_password" );
+      v3_privalgo = get_kb_item( "SNMP/v3/privacy_algorithm" );
 
-        if (ret[0] != 0 || snmp_is_error_message( ret[1] ) ) {
+      if( v3_username && v3_username != "" ) {
+
+        if( ! v3_privpass ) v3_privalgo = NULL;
+
+        ret = snmpv3_get( port:port, protocol:"udp", username:v3_username, oid:oid,
+                          authpass:v3_password, authproto:v3_authalgo, privpass:v3_privpass,
+                          privproto:v3_privalgo );
+
+        if( ret[0] != 0 || snmp_is_error_message( ret[1] ) ) {
           last_snmp_error = ret[1];
+          if( _snmp_func_debug ) display("SNMP debug: Received error in snmpv3_get " + last_snmp_error );
           return;
         }
 
-        if (ret[0] == 0 && ! snmp_is_error_message( ret[1] ))
+        if( ret[0] == 0 && ! snmp_is_error_message( ret[1] ) )
           return snmp_clean_ret( ret[1] );
       }
     }
   }
 
-  if (version == 2) {
-    if( get_kb_item( "SNMP/V2/working" ) ) {
-      if (!community)
-        community = get_community( version:2 );
-      if (community && community != "") {
-        ret = snmpv2c_get(port: port, oid: oid, protocol: "udp", community: community);
+  if( version == 2 ) {
 
-        if (ret[0] != 0 || snmp_is_error_message( ret[1] ) ) {
+    if( get_kb_item( "SNMP/" + port + "/v2c/working" ) ) {
+
+      if( ! community ) community = snmp_get_community( port:port, version:2 );
+
+      if( community && community != "" ) {
+
+        ret = snmpv2c_get( port:port, oid:oid, protocol:"udp", community:community );
+
+        if( ret[0] != 0 || snmp_is_error_message( ret[1] ) ) {
           last_snmp_error = ret[1];
+          if( _snmp_func_debug ) display("SNMP debug: Received error in snmpv2c_get " + last_snmp_error );
           return;
         }
 
-        if (ret[0] == 0 && ! snmp_is_error_message( ret[1] ) )
+        if( ret[0] == 0 && ! snmp_is_error_message( ret[1] ) )
           return snmp_clean_ret( ret[1] );
       }
     }
   }
 
-  if (version == 1) {
-    if( get_kb_item( "SNMP/V1/working" ) ) {
-      if (!community)
-        community = get_community( version:1 );
-      if (community && community != "") {
-        ret = snmpv1_get(port: port, oid: oid, protocol: "udp", community: community);
-        if (ret[0] != 0 || snmp_is_error_message( ret[1] ) ) {
+  if( version == 1 ) {
+
+    if( get_kb_item( "SNMP/" + port + "/v1/working" ) ) {
+
+      if( ! community ) community = snmp_get_community( port:port, version:1 );
+
+      if( community && community != "" ) {
+
+        ret = snmpv1_get( port:port, oid:oid, protocol:"udp", community:community ) ;
+
+        if( ret[0] != 0 || snmp_is_error_message( ret[1] ) ) {
           last_snmp_error = ret[1];
+          if( _snmp_func_debug ) display("SNMP debug: Received error in snmpv1_get " + last_snmp_error );
           return;
         }
-        if (ret[0] == 0 && ! snmp_is_error_message( ret[1] ) )
+        if( ret[0] == 0 && ! snmp_is_error_message( ret[1] ) )
           return snmp_clean_ret( ret[1] );
       }
     }
   }
-
   return;
 }
 
-function snmp_clean_ret()
-{
+function snmp_clean_ret() {
+
+  local_var arg;
+
   arg = _FCT_ANON_ARGS[0];
-  if( ! arg ) return;
+
+  if( ! arg ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#_FCT_ANON_ARGS[0]#-#snmp_clean_ret" );
+    return;
+  }
 
   return ereg_replace( pattern:'^"(.*)"$', string:arg, replace:"\1" );
 }
 
-function get_community( version )
-{
-  if( ! version ) return;
+function snmp_get_community( port, version ) {
+
+  local_var port, version, ckey, clist;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#snmp_get_community" );
+    return;
+  }
+
+  if( ! version ) version = get_kb_item( "SNMP/" + port + "/prefered_version" );
+  if( ! version ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#couldn't determine SNMP version in snmp_get_community()" );
+    return;
+  }
 
   if( version  == 1 )
-    ckey = 'SNMP/community';
-  else if (version  == 2 )
-    ckey = "SNMP/V2/community";
-  else 
+    ckey = "SNMP/" + port + "/v1/community";
+  else if( version  == 2 )
+    ckey = "SNMP/" + port + "/v2c/community";
+  else
     return;
 
   clist = get_kb_list( ckey );
@@ -231,51 +278,83 @@ function get_community( version )
   clist = make_list( clist );
 
   return clist[ 0 ];
-
 }
 
-function snmp_is_error_message()
-{
+function snmp_is_error_message() {
+
   local_var message, errors, error;
 
   message = _FCT_ANON_ARGS[0];
 
-  if( ! message )
+  if( ! message ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#_FCT_ANON_ARGS[0]#-#snmp_is_error_message" );
     return;
+  }
 
-  errors = make_list(
-                     "No Such Object available on this agent at this OID",
-                     "No Such Instance"
-                     );
+  errors = make_list( "No Such Object available on this agent at this OID",
+                      "No Such Instance" );
 
-  foreach error ( errors )
-  {
+  foreach error( errors ) {
     if( error >< message )
       return TRUE;
   }
-
   return;
 }
 
-#
 # Get the software and OID from a given pattern
-#
-function snmp_get_sw_oid(pattern)
-{
-  if (!pattern || pattern == "")
+function snmp_get_sw_oid( pattern, port ) {
+
+  local_var pattern, port, list, split, i, result;
+
+  if( ! pattern || pattern == "" ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pattern#-#snmp_get_sw_oid" );
+    return;
+  }
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#snmp_get_sw_oid" );
+    return;
+  }
+
+  if( ! list = get_kb_item( "SNMP/" + port + "/installed_software" ) )
     return;
 
-  if (!list = get_kb_item("SNMP/installed_software"))
-    return;
-
-  split = split(list, sep: "|", keep: FALSE);
+  split = split( list, sep:"|", keep:FALSE );
 
   i = 0;
-  while (i < max_index(split)) {
-    if (ereg(pattern: pattern, string: split[i+1])) {
-      result = make_list(split[i], split[i+1]);
+  while( i < max_index( split ) ) {
+    if( ereg( pattern:pattern, string:split[i+1] ) ) {
+      result = make_array( "oid", split[i],
+                           "package", split[i+1] );
       return result;
     }
     i += 2;
   }
+}
+
+function get_snmp_port( default ) {
+
+  local_var default, port;
+
+  port = get_kb_item( "Services/udp/snmp" );
+  if( port ) default = port;
+
+  if( ! get_udp_port_state( default ) ) exit( 0 );
+
+  return default;
+}
+
+function get_snmp_sysdesc( port ) {
+
+  local_var port, sysdesc;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_snmp_sysdesc" );
+    return;
+  }
+
+  sysdesc = get_kb_item( "SNMP/" + port + "/sysdesc" );
+  if( ! sysdesc ) return;
+
+  return sysdesc;
 }

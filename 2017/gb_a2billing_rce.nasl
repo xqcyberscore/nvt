@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_a2billing_rce.nasl 7139 2017-09-15 09:13:13Z ckuersteiner $
+# $Id: gb_a2billing_rce.nasl 7221 2017-09-21 13:05:11Z cfischer $
 #
 # A2billing Backup File Download / Remote Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:a2billing:a2billing";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107237");
-  script_version("$Revision: 7139 $");
+  script_version("$Revision: 7221 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:13:13 +0200 (Fri, 15 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-21 15:05:11 +0200 (Thu, 21 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-08 20:31:53 +0530 (Fri, 08 Sep 2017)");
   script_name("A2billing Backup File Download / Remote Code Execution Vulnerabilities");
 
@@ -83,8 +83,6 @@ url = dir + "/A2B_entity_backup.php?form_action=add&path=" + rand + ".sql";
 
 req = http_get(port: port, item: url);
 res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-display(res, "\n");
-
 sleep(5);
 
 url = dir + "/" + rand + ".sql";

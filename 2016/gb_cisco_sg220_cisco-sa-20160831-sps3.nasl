@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sg220_cisco-sa-20160831-sps3.nasl 5466 2017-03-02 10:28:27Z ckuerste $
+# $Id: gb_cisco_sg220_cisco-sa-20160831-sps3.nasl 7241 2017-09-22 18:08:58Z cfischer $
 #
 # Cisco Small Business 220 Series Smart Plus Switches SNMP Unauthorized Access Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106241");
-  script_version("$Revision: 5466 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-02 11:28:27 +0100 (Thu, 02 Mar 2017) $");
+  script_version("$Revision: 7241 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-22 20:08:58 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name: "creation_date", value: "2016-09-13 10:45:09 +0700 (Tue, 13 Sep 2016)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,6 +46,7 @@ if (description)
   script_family("CISCO");
   script_dependencies("snmp_detect.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
+  script_mandatory_keys("SNMP/detected");
 
   script_tag(name: "summary", value: "A vulnerability in the implementation of SNMP functionality in Cisco
 Small Business 220 Series Smart Plus (Sx220) Switches could allow an unauthenticated, remote attacker to
@@ -73,17 +74,14 @@ firmware release 1.0.0.17, 1.0.0.18, or 1.0.0.19");
 
 include("snmp_func.inc");
 
-port = get_kb_item("Services/udp/snmp");
-if (!port)
-  port = 161;
+port = get_snmp_port( default:161 );
 
 community = "rmonmgmtuicommunity";
 
-## TODO: use snmp_get() when snmp functions are enabled again
 if (res = snmp_get(port: port, oid: '1.3.6.1.2.1.1.1.0', version: 2, community: community)) {
   report = "Result of the system description query with the community 'rmonmgmtuicommunity':\n\n" + res + "\n";
   security_message(port: port, data: report, proto: "udp");
   exit(0);
 }
 
-exit(0);
+exit(99);

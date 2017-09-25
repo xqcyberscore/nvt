@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_kb4040980.nasl 7118 2017-09-13 15:08:32Z santu $
+# $Id: gb_dotnet_framework_kb4040980.nasl 7222 2017-09-21 13:42:47Z cfischer $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (KB4040980)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811322");
-  script_version("$Revision: 7118 $");
+  script_version("$Revision: 7222 $");
   script_cve_id("CVE-2017-8759");
   script_bugtraq_id(100742);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 17:08:32 +0200 (Wed, 13 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-21 15:42:47 +0200 (Thu, 21 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-13 14:11:50 +0530 (Wed, 13 Sep 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (KB4040980)");
@@ -78,9 +78,8 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 ## Variables Initialization
-dotPath = "";
+dotpath = "";
 dllVer = "";
-brkVer = "";
 
 ## Check for OS and Service Pack
 if(hotfix_check_sp( win7:2, win7x64:2, win2008r2:2 ) <= 0){
@@ -106,7 +105,7 @@ foreach item (registry_enum_keys(key:key))
       ##.NET Framework 3.5.1 for Windows Server 2012: September 12, 2017
       if(version_in_range(version:dllVer, test_version:"2.0.50727.8000", test_version2:"2.0.50727.8769"))
       {
-        report = 'File checked:     ' + dotPath + "\system.dll" + '\n' +
+        report = 'File checked:     ' + dotpath + "\system.dll" + '\n' +
                  'File version:     ' + dllVer  + '\n' +
                  'Vulnerable range: 2.0.50727.8000 - 2.0.50727.8769' + '\n' ;
         security_message(data:report);

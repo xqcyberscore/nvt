@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_tz_snmp_detect.nasl 5208 2017-02-06 10:00:07Z ckuerste $
+# $Id: gb_dell_sonicwall_tz_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Dell SonicWALL TZ Detection
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106569");
-  script_version("$Revision: 5208 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-06 11:00:07 +0100 (Mon, 06 Feb 2017) $");
+  script_version("$Revision: 7236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-02-06 14:03:54 +0700 (Mon, 06 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,21 +48,18 @@ This script performs SNMP based detection of Dell SonicWALL TZ devices.");
   script_family("Product detection");
   script_dependencies("gb_snmp_sysdesc.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
-  script_mandatory_keys("SNMP/sysdesc");
+  script_mandatory_keys("SNMP/sysdesc/available");
 
   exit(0);
 }
 
 include("cpe.inc");
 include("host_details.inc");
+include("snmp_func.inc");
 
-port = get_kb_item("Services/udp/snmp");
-if (!port)
-  port = 161;
-
-sysdesc = get_kb_item("SNMP/sysdesc");
-if (!sysdesc)
-  exit(0);
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 if ("SonicWALL TZ" >< sysdesc) {
   version = "unknown";
@@ -87,7 +84,7 @@ if ("SonicWALL TZ" >< sysdesc) {
   if (!cpe)
     cpe = 'cpe:/a:dell:sonicwall_totalsecure_tz_' + model + "_firmware";
 
-  register_product(cpe: cpe, port: port, service: "snmp");
+  register_product(cpe: cpe, port: port, location: port + "/udp", service: "snmp", proto: "udp");
 
   log_message(data: build_detection_report(app: "Dell SonicWALL TZ " + model, version: version,
                                            install: port + "/udp", cpe: cpe, concluded: sysdesc),

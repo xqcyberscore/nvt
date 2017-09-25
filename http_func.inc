@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_func.inc 6722 2017-07-14 08:54:37Z cfischer $
+# $Id: http_func.inc 7221 2017-09-21 13:05:11Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6722 $
+# $Revision: 7221 $
 #
 ###############################################################################
 
@@ -367,7 +367,7 @@ function http_recv_body( socket, headers, length ) {
       n = recv( socket:socket, length:max );
       x += n;
       if( strlen( x ) > 1048576 ) {
-        display( "http_recv_body: read stopped after 1 MB!\n" );
+        #display( "http_recv_body: read stopped after 1 MB!\n" );
         break;
       }
     }

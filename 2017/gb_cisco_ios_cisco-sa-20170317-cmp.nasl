@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20170317-cmp.nasl 6166 2017-05-19 05:29:49Z ckuerste $
+# $Id: gb_cisco_ios_cisco-sa-20170317-cmp.nasl 7206 2017-09-21 03:12:53Z ckuersteiner $
 #
 # Cisco IOS Software Cluster Management Protocol Remote Code Execution Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-3881");
  script_tag(name: "cvss_base", value: "10.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 6166 $");
+ script_version("$Revision: 7206 $");
 
  script_name("Cisco IOS Software Cluster Management Protocol Remote Code Execution Vulnerability");
 
@@ -64,7 +64,7 @@ control of the device or cause a reload of the affected device.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-09-21 05:12:53 +0200 (Thu, 21 Sep 2017) $");
  script_tag(name: "creation_date", value: "2017-03-20 09:25:26 +0700 (Mon, 20 Mar 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -232,7 +232,6 @@ affected = make_list(
 		'12.2(35)SE1',
 		'12.2(35)SE2',
 		'12.2(35)SE3',
-		'12.2(35)SE4',
 		'12.2(35)SE5',
 		'12.2(37)EY',
 		'12.2(37)SE',
@@ -355,6 +354,7 @@ affected = make_list(
 		'15.0(1)XO1',
 		'15.0(2)EB',
 		'15.0(2)EC',
+		'15.0(2)ED',
 		'15.0(2)EJ',
 		'15.0(2)EJ1',
 		'15.0(2)EX',
@@ -399,6 +399,8 @@ affected = make_list(
 		'15.0(2)SQD1',
 		'15.0(2)SQD2',
 		'15.0(2)SQD3',
+		'15.0(2)SQD4',
+		'15.0(2)SQD5',
 		'15.0(2)XO',
 		'15.0(2a)EX5',
 		'15.0(2a)SE9',
@@ -415,6 +417,7 @@ affected = make_list(
 		'15.1(2)SG7',
 		'15.1(2)SG7a',
 		'15.1(2)SG8',
+		'15.1(2)SG9',
 		'15.2(1)E',
 		'15.2(1)E1',
 		'15.2(1)E2',
@@ -427,33 +430,45 @@ affected = make_list(
 		'15.2(2)E4',
 		'15.2(2)E5',
 		'15.2(2)E5a',
+		'15.2(2)E5b',
+		'15.2(2)E6',
 		'15.2(2)EB',
 		'15.2(2)EB1',
 		'15.2(2)EB2',
 		'15.2(2a)E1',
+		'15.2(2a)E2',
 		'15.2(3)E',
 		'15.2(3)E1',
 		'15.2(3)E2',
 		'15.2(3)E3',
+		'15.2(3)E4',
+		'15.2(3)E5',
+		'15.2(3)EX',
 		'15.2(3a)E',
+		'15.2(3a)E1',
 		'15.2(3m)E2',
 		'15.2(3m)E3',
+		'15.2(3m)E6',
+		'15.2(3m)E8',
 		'15.2(4)E',
 		'15.2(4)E1',
 		'15.2(4)E2',
 		'15.2(4)E3',
-		'15.2(4)E4',
+		'15.2(4)EC',
 		'15.2(4)EC1',
+		'15.2(4)EC2',
 		'15.2(4m)E1',
 		'15.2(4m)E3',
+		'15.2(4n)E2',
+		'15.2(4o)E2',
+		'15.2(4p)E1',
 		'15.2(5)E',
 		'15.2(5)E1',
 		'15.2(5)EX',
 		'15.2(5a)E',
 		'15.2(5a)E1',
 		'15.2(5b)E',
-		'15.2(5c)E',
-		'15.3(3)S9' );
+		'15.2(5c)E' );
 
 foreach af ( affected )
 {

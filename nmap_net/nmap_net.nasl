@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap_net.nasl 6315 2017-06-12 10:34:26Z cfischer $
+# $Id: nmap_net.nasl 7221 2017-09-21 13:05:11Z cfischer $
 #
 # Launch Nmap for Network Scanning (nmap_net system)
 #
@@ -34,8 +34,8 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.104000";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6315 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-12 12:34:26 +0200 (Mon, 12 Jun 2017) $");
+  script_version("$Revision: 7221 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-21 15:05:11 +0200 (Thu, 21 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-05-31 15:59:37 +0200 (Tue, 31 May 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -99,7 +99,7 @@ include("misc_func.inc");
 include("host_details.inc");
 
 if (!defined_func("plugin_run_nmap")) {
-    display("Error: advanced nmap wrapper unavailable. Neither nmap_net nor related NSE wrappers will run.\n");
+    # display("Error: advanced nmap wrapper unavailable. Neither nmap_net nor related NSE wrappers will run.\n");
     exit(2);
 }
 
@@ -167,7 +167,7 @@ function report_detected_versions() {
             port = tokens[2];
 
             service = get_kb_item(string("Known/", proto, '/', port));
-            display('Service (Known/', proto, '/', port, '): ', service, '\n');
+            # display('Service (Known/', proto, '/', port, '): ', service, '\n');
 
             report = string('nmap thinks ', service, ' ', versions[ver], ' is running on this port');
 
@@ -285,7 +285,7 @@ if (phase == 1) {
 
 } else {
     # There we are in deep trouble...
-    display("Error: network wide scanning unavailable/disabled. Neither nmap_net nor related NSE wrappers will run.\n");
+    # display("Error: network wide scanning unavailable/disabled. Neither nmap_net nor related NSE wrappers will run.\n");
 }
 
 exit(0);

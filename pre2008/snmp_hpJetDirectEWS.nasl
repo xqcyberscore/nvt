@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmp_hpJetDirectEWS.nasl 5485 2017-03-04 15:41:55Z cfi $
+# $Id: snmp_hpJetDirectEWS.nasl 7239 2017-09-22 16:10:31Z cfischer $
 #
 # Discover HP JetDirect EWS Password via SNMP
 #
@@ -29,20 +29,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11317");
-  script_version("$Revision: 5485 $");
+  script_version("$Revision: 7239 $");
   script_bugtraq_id(5331, 7001);
   script_cve_id("CVE-2002-1048");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-04 16:41:55 +0100 (Sat, 04 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Discover HP JetDirect EWS Password via SNMP");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 Digital Defense, Inc.");
   script_family("SNMP");
-  script_dependencies("snmp_default_communities.nasl", "gb_hp_printer_detect.nasl");
+  script_dependencies("snmp_detect.nasl", "gb_hp_printer_detect.nasl");
   script_require_ports(80);
-  script_mandatory_keys("SNMP/community", "hp_printer/installed");
+  script_require_udp_ports("Services/udp/snmp", 161);
+  script_mandatory_keys("SNMP/detected", "hp_printer/installed");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/313714/2003-03-01/2003-03-07/0");
   script_xref(name:"URL", value:"http://www.iss.net/security_center/static/9693.php");
@@ -69,6 +70,7 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("snmp_func.inc");
 
 #--------------------------------------------------------------------#
 # Forges an SNMP GET packet                                          #
@@ -127,11 +129,9 @@ password = string("");
 equal_sign = raw_string( 0x3D );
 nothing = raw_string( 0x00 );
 
-community = get_kb_item( "SNMP/community" );
+snmpport = get_snmp_port( default:161 );
+community = snmp_get_community( port:snmpport );
 if( ! community ) exit( 0 );
-
-snmpport = get_kb_item( "SNMP/port" );
-if( ! snmpport ) snmpport = 161;
 
 httpport = 80;
 if( ! get_port_state( httpport ) ) exit( 0 );

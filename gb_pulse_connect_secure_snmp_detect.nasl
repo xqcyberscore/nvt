@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pulse_connect_secure_snmp_detect.nasl 7143 2017-09-15 11:37:02Z santu $
+# $Id: gb_pulse_connect_secure_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Pulse Connect Secure Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811737");
-  script_version("$Revision: 7143 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 13:37:02 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 7236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-11 19:06:34 +0530 (Mon, 11 Sep 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -45,19 +45,17 @@ if(description)
   script_family("Product detection");
   script_dependencies("gb_snmp_sysdesc.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
-  script_mandatory_keys("SNMP/sysdesc");
+  script_mandatory_keys("SNMP/sysdesc/available");
+
   exit(0);
 }
 
 include("cpe.inc");
 include("host_details.inc");
+include("snmp_func.inc");
 
-## Get port
-snmpPort = get_kb_item("Services/udp/snmp");
-if(!snmpPort) snmpPort = 161;
-
-## Get snmp response
-sysdesc = get_kb_item("SNMP/sysdesc");
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
 if(!sysdesc) exit(0);
 
 # Check for Pulse Connect Secure
@@ -98,15 +96,15 @@ if("Pulse Connect Secure" >< sysdesc && "Pulse Secure" >< sysdesc)
     cpe = "cpe:/a:juniper:pulse_connect_secure";
   }
 
-  ## Register Product
-  register_product(cpe:cpe, port:snmpPort, service:"snmp", proto:"udp");
+  register_product(cpe:cpe, port:port, location:port + "/udp", service:"snmp", proto:"udp");
 
-  ## Log the details
   log_message(data: build_detection_report(app:"Pulse Connect Secure",
                                            version:version,
-                                           install:snmpPort + "/udp",
+                                           install:port + "/udp",
                                            cpe:cpe,
-                                           concluded:sysdesc));
+                                           concluded:sysdesc),
+                                           port:port,
+                                           proto:"udp");
   exit(0);
 }
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cambium_snmp_get_info.nasl 5939 2017-04-11 16:02:44Z mime $
+# $Id: gb_cambium_snmp_get_info.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Cambium Device Get SNMP Information Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140247");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5939 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-11 18:02:44 +0200 (Tue, 11 Apr 2017) $");
+ script_version ("$Revision: 7236 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name:"creation_date", value:"2017-04-11 17:39:31 +0200 (Tue, 11 Apr 2017)");
  script_name("Cambium Device Get SNMP Information Detection");
 
@@ -43,26 +43,20 @@ if (description)
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_dependencies("gb_snmp_sysdesc.nasl");
- script_mandatory_keys("SNMP/sysdesc");
  script_require_udp_ports("Services/udp/snmp", 161);
+ script_mandatory_keys("SNMP/sysdesc/available");
+
  exit(0);
 }
-
-
 
 include("snmp_func.inc");
 include("misc_func.inc");
 
 if( ! defined_func( "snmpv3_get" ) ) exit( 0 );
 
-port = get_kb_item( "Services/udp/snmp" );
-if( ! port )
-  port = 161;
-
-if( ! get_udp_port_state( port ) ) exit( 0 );
-
-sysdesc = get_kb_item( "SNMP/sysdesc" );
-
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 if( "Cambium" >!< sysdesc ) exit( 0 );
 
 check_oids = make_array( "snmpSystemName",                 "1.3.6.1.4.1.17713.21.3.5.3.0",

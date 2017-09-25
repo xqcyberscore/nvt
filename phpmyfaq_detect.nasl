@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpmyfaq_detect.nasl 5739 2017-03-27 14:48:05Z cfi $
+# $Id: phpmyfaq_detect.nasl 7218 2017-09-21 10:07:18Z ckuersteiner $
 #
 # phpMyFAQ Detection
 #
@@ -27,27 +27,33 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running phpMyFAQ, an open source FAQ system using PHP
-  and available for many databases.";
-
 if(description)
 {
- script_id(100106);
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5739 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:48:05 +0200 (Mon, 27 Mar 2017) $");
- script_tag(name:"creation_date", value:"2009-04-05 20:39:41 +0200 (Sun, 05 Apr 2009)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("phpMyFAQ Detection");
- script_category(ACT_GATHER_INFO);
+ script_oid("1.3.6.1.4.1.25623.1.0.100106");
+ script_version("$Revision: 7218 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-09-21 12:07:18 +0200 (Thu, 21 Sep 2017) $");
+ script_tag(name: "creation_date", value: "2009-04-05 20:39:41 +0200 (Sun, 05 Apr 2009)");
+ script_tag(name: "cvss_base", value: "0.0");
+ script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+
  script_tag(name:"qod_type", value:"remote_banner");
- script_family("Service detection");
+
+ script_name("phpMyFAQ Detection");
+
+ script_tag(name: "summary", value: "Detection of phpMyFAQ.
+
+The script sends a connection request to the server and attempts to detect phpMyFAQ and to extract its version.");
+
+ script_category(ACT_GATHER_INFO);
+
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+ script_family("Product detection");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.phpmyfaq.de");
+
+ script_xref(name: "URL" , value: "http://www.phpmyfaq.de");
+
  exit(0);
 }
 
@@ -56,51 +62,44 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100106";
-SCRIPT_DESC = "phpMyFAQ Detection";
-
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
 foreach dir( make_list_unique( "/faq", "/phpmyfaq", cgi_dirs( port:port ) ) ) {
-
  install = dir;
  if( dir == "/" ) dir = "";
+
  url = dir + "/index.php";
  buf = http_get_cache( item:url, port:port );
- if( buf == NULL ) continue;
 
- if(egrep(pattern: "powered by phpMyFAQ", string: buf, icase: TRUE))
- {
-    vers = string("unknown");
+ if(egrep(pattern: "powered by phpMyFAQ", string: buf, icase: TRUE)) {
+    vers = "unknown";
 
     ### try to get version
-    version = eregmatch(string: buf, pattern: "phpMyFAQ ([0-9.]+).?"+
-                        "([a-zA-Z0-9]+)?",icase:TRUE);
-    if(!isnull(version[1]))
-    {
-       if(!isnull(version[2])){
-         vers=version[1] + "." + version[2];
+    version = eregmatch(string: buf, pattern: "phpMyFAQ ([0-9.]+).?([a-zA-Z0-9]+)?", icase:TRUE);
+    if(!isnull(version[1])) {
+       if(!isnull(version[2])) {
+         vers = version[1] + "." + version[2];
        } else {
-         vers=version[1];
+         vers = version[1];
        }
     }
 
     tmp_version = string(vers," under ",install);
     set_kb_item(name: string("www/", port, "/phpmyfaq"), value: tmp_version);
+    set_kb_item(name: "phpmyfaq/installed", value: TRUE);
    
     ## build cpe and store it as host_detail
-    cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:phpmyfaq:phpmyfaq:");
-    if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+    cpe = build_cpe(value: tmp_version, exp: "^([0-9.]+)", base: "cpe:/a:phpmyfaq:phpmyfaq:");
+    if(!cpe)
+      cpe = 'cpe:/a:phpmyfaq:phpmyfaq';
 
-    info = string("phpMyFAQ Version '");
-    info += string(vers);
-    info += string("' was detected on the remote host in the following directory(s):\n\n");
-    info += string(install, "\n");
+    register_product(cpe: cpe, location: install, port: port);
 
-    log_message(port:port,data:info);
+    log_message(data: build_detection_report(app: "phpMyFAQ", version: vers, install: install, cpe: cpe,
+                                             concluded: version[0]),
+                port: port);
+    exit(0);
   }
 }
 

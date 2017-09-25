@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 6909 2017-08-11 13:38:48Z asteins $
+# $Id: products_eol.inc 7217 2017-09-21 10:02:58Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6909 $
+# $Revision: 7217 $
 #
 ###############################################################################
 
@@ -54,7 +54,7 @@ eol_cpes[ 'cpe:/a:apache:tomcat' ]           = make_array(
 
 # https://en.wikipedia.org/wiki/Apache_HTTP_Server#Development
 eol_cpes[ 'cpe:/a:apache:http_server' ]      = make_array(
-                                                           'versions',      '2.0:2013-07-10;1.3:2010-02-03',
+                                                           'versions',      '2.2:2017-12-31;2.0:2013-07-10;1.3:2010-02-03',
                                                            'version_regex', '^([0-9]+\\.[0-9]+)'
                                                          );
 
@@ -115,6 +115,11 @@ eol_cpes[ 'cpe:/a:mysql:mysql' ]             = make_array(
 # No EOL versions yet
 eol_cpes[ 'cpe:/a:oracle:mysql' ]            = make_array(
                                                            'versions',      '',
+                                                           'version_regex', '^([0-9]+\\.[0-9]+)'
+                                                         );
+
+eol_cpes[ 'cpe:/a:joomla:joomla' ]           = make_array(
+                                                           'versions', '1.0:2009-07-22;1.5:2012-09-01;1.6:2011-08-01;1.7:2012-02-01;2.5:2014-12-31;3.0:2013-05-01;3.1:2013-12-01;3.2:2014-10-01;3.3:2015-02-24;3.4:2016-03-21;3.5:2016-07-12;3.6:2017-04-25;3.7:2017-09-19',
                                                            'version_regex', '^([0-9]+\\.[0-9]+)'
                                                          );
 

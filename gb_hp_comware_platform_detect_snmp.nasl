@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_comware_platform_detect_snmp.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_hp_comware_platform_detect_snmp.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # HP Comware Devices Detect (SNMP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105797");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5877 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+ script_version("$Revision: 7236 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name:"creation_date", value:"2016-07-06 11:05:47 +0200 (Wed, 06 Jul 2016)");
  script_name("HP Comware Devices Detect (SNMP)");
 
@@ -41,10 +41,18 @@ if (description)
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_snmp_sysdesc.nasl");
- script_mandatory_keys("SNMP/sysdesc");
+ script_require_udp_ports("Services/udp/snmp", 161);
+ script_mandatory_keys("SNMP/sysdesc/available");
+
+ exit(0);
 }
 
 include("host_details.inc");
+include("snmp_func.inc");
+
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 # 1.
 # HP Comware Platform Software, Software Version 7.1.045, Release 3108P02
@@ -59,10 +67,6 @@ include("host_details.inc");
 #
 # 3.
 # HP Comware Software. HP 12508 Product Version 12500-CMW710-R7328P01. Copyright (c) 2010-2014 Hewlett-Packard Development Company, L.P.
-
-sysdesc = get_kb_item("SNMP/sysdesc");
-if( ! sysdesc ) exit( 0 );
-
 if( sysdesc !~ 'Comware (Platform )?Software' || ( "Hewlett-Packard Development" >!<  sysdesc && "Hewlett Packard Enterprise Development" >!< sysdesc && "HP Firewall" >!< sysdesc ) ) exit( 0 );
 
 set_kb_item( name:"hp/comware_device", value:TRUE );
@@ -154,15 +158,15 @@ else if( sysdesc =~ 'HP Comware Software' )
 
 }
 
-register_product( cpe:cpe );
+register_product( cpe:cpe, location:port + "/udp", proto:"udp", service:"snmp", port:port );
 report = 'The remote host is a HP Comware Device\nCPE: ' + cpe + '\n';
 
 if( vers ) report += 'Version:  ' + vers + '\n';
 if( rls )  report += 'Release:  ' + rls + '\n';
 if( mod )  report += 'Model:    ' + mod + '\n';
-           report += 'Concluded from SNMP SysDescription\n';
+           report += 'Concluded from SNMP SysDescription: ' + sysdesc + '\n';
 
-log_message( port:0, data:report );
+log_message( port:port, data:report, proto:"udp" );
 
 exit( 0 );
 

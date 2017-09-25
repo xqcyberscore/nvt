@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 7137 2017-09-15 06:47:28Z santu $
+# $Id: smb_nt.inc 7230 2017-09-22 07:50:10Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7137 $
+# $Revision: 7230 $
 #
 ###############################################################################
 
@@ -6464,6 +6464,7 @@ function OpenAndX2_NTLMSSP( socket, uid, tid, file ) {
   req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
 
+  # TBD: name doesn't exist in this scope, namelen, name_hi and name_lo are unused
   namelen = strlen( name ) + 1;
   name_hi = namelen / 256;
   name_lo = namelen % 256;
@@ -6504,7 +6505,6 @@ function OpenAndX2_NTLMSSP( socket, uid, tid, file ) {
     status2 = ord( r[13] );
   }
 
-  if( always_return_blob ) return r;
   if( strlen( r ) < 10 ) return FALSE;
 
   multiplex_id += 1;
@@ -6518,7 +6518,7 @@ function OpenAndX2_NTLMSSP( socket, uid, tid, file ) {
     orig_sign = substr( r, 48, 63 );
     server_resp = get_smb2_signature( buf:r, key:sign_key );
     if( isnull( server_resp ) ) return FALSE;
-    if( strlen(server_resp) < 64 ) return FALSE;
+    if( strlen( server_resp ) < 64 ) return FALSE;
 
     serv_sign = substr( server_resp, 48, 63 );
     if( orig_sign != serv_sign ) {
@@ -6646,6 +6646,7 @@ function ReadAndX2_NTLMSSP( socket, uid, tid, fid, count, off ) {
   req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
 
+  # TBD: name doesn't exist in this scope, namelen, name_hi and name_lo are unused
   namelen = strlen( name ) + 1;
   name_hi = namelen / 256;
   name_lo = namelen % 256;
@@ -6682,8 +6683,6 @@ function ReadAndX2_NTLMSSP( socket, uid, tid, fid, count, off ) {
     status = ord( r[12] );
     status2 = ord( r[13] );
   }
-
-  if( always_return_blob ) return r;
 
   multiplex_id += 1;
   if( isSignActive ) {
@@ -6992,7 +6991,7 @@ function smb1_close_request( soc, uid, tid, fid ) {
       len = strlen( r );
       server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
       if( isnull( server_resp ) ) return FALSE;
-      if( ( strlen(server_resp ) < 24 ) || ( len < 24 ) ) {
+      if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
         return FALSE;
       }
 

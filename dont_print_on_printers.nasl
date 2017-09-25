@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dont_print_on_printers.nasl 6315 2017-06-12 10:34:26Z cfischer $
+# $Id: dont_print_on_printers.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Do not print on AppSocket and socketAPI printers
 #
@@ -29,15 +29,15 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6315 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-12 12:34:26 +0200 (Mon, 12 Jun 2017) $");
+  script_version("$Revision: 7236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Do not print on AppSocket and socketAPI printers");
   script_category(ACT_SETTINGS);
   script_copyright("This script is Copyright (C) 2004 by Laurent Facq");
   script_family("Settings");
-  script_dependencies("gb_snmp_sysdesc.nasl","nmap_mac.nasl");
+  script_dependencies("gb_snmp_sysdesc.nasl", "nmap_mac.nasl");
 
   script_add_preference(name:"Exclude PJL printer ports from scan", type:"entry", value:"9100,9101,9102,9103,9112,9113,9114,9115,9116");
 
@@ -60,6 +60,7 @@ include("sharp_printers.inc");
 include("kyocera_printers.inc");
 include("lexmark_printers.inc");
 include("xerox_printers.inc");
+include("snmp_func.inc");
 
 function check_pjl_port_list( list ) {
 
@@ -120,8 +121,9 @@ if( strlen( pjl_ports ) > 0 ) {
   pjl_ports_list = make_list( 9100, 9101, 9102, 9103, 9112, 9113, 9114, 9115, 9116 );
 }
 
-# First try SNMP
-if( sysdesc = get_kb_item( "SNMP/sysdesc" ) ) {
+# First try SNMP on default 161
+port = 161;
+if( sysdesc = get_snmp_sysdesc( port:port ) ) {
 
   # xerox
   if( "Xerox WorkCentre" >< sysdesc ||

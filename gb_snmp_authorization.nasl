@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS
-# $Id: gb_snmp_authorization.nasl 5505 2017-03-07 10:00:18Z teissa $
-# Description: Set information for SNMP authorization in KB.
+# $Id: gb_snmp_authorization.nasl 7235 2017-09-22 13:15:52Z cfischer $
+#
+# Set information for SNMP authorization in KB.
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -21,68 +23,68 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105076");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5505 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
- script_tag(name:"creation_date", value:"2014-09-02 10:42:27 +0200 (Tue, 02 Sep 2014)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("SNMP Authorization");
+  script_oid("1.3.6.1.4.1.25623.1.0.105076");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 7235 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 15:15:52 +0200 (Fri, 22 Sep 2017) $");
+  script_tag(name:"creation_date", value:"2014-09-02 10:42:27 +0200 (Tue, 02 Sep 2014)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("SNMP Authorization");
 
-script_tag(name:"summary", value:"This script allows users to enter the information
-required to authorize and login via SNMP.
+  script_tag(name:"summary", value:"This script allows users to enter the information
+  required to authorize and login via SNMP.
 
-These data are used by tests that require authentication.");
+  These data are used by tests that require authentication.");
 
- script_category(ACT_SETTINGS);
+  script_category(ACT_SETTINGS);
+  script_copyright("Copyright 2014 Greenbone Networks GmbH");
+  script_family("Credentials");
+
+  script_add_preference(name:"SNMP Community:", type:"password", value:"");
+
+  if( defined_func( "snmpv3_get" ) ) {
+    script_add_preference(name:"SNMPv3 Username:", type:"entry", value:"");
+    script_add_preference(name:"SNMPv3 Password:", type:"password", value:"");
+    script_add_preference(name:"SNMPv3 Authentication Algorithm:", type:"radio", value:"md5;sha1");
+    script_add_preference(name:"SNMPv3 Privacy Password:", type:"password", value:"");
+    script_add_preference(name:"SNMPv3 Privacy Algorithm:", type:"radio", value:"aes;des");
+  }
+
   script_tag(name:"qod_type", value:"remote_banner");
- script_copyright("Copyright 2014 Greenbone Networks GmbH");
- script_family("Credentials");
 
- script_add_preference(name:"SNMP Community:", type:"password", value:"");
-
- if (defined_func("snmpv3_get"))
- {
-   script_add_preference(name: "SNMPv3 Username:", type: "entry", value:"");
-   script_add_preference(name: "SNMPv3 Password:", type: "password", value:"");
-   script_add_preference(name: "SNMPv3 Authentication Algorithm:", type: "radio", value: "md5;sha1");
-   script_add_preference(name: "SNMPv3 Privacy Password:", type: "password", value: "");
-   script_add_preference(name: "SNMPv3 Privacy Algorithm:", type: "radio", value: "aes;des");
- }
-
- exit(0);
+  exit( 0 );
 }
 
 snmp_community = script_get_preference( "SNMP Community:" );
-if (snmp_community && snmp_community != "(null)") {
-  set_kb_item(name: "SNMP/V2/community", value: snmp_community);
-  set_kb_item(name: "SNMP/community", value: snmp_community);
+if( snmp_community && snmp_community != "(null)" ) {
+  set_kb_item( name:"SNMP/v12c/provided_community", value:snmp_community );
 }
 
-if (defined_func("snmpv3_get")) {
-  snmpv3_username = script_get_preference("SNMPv3 Username:");
-  if (snmpv3_username && snmpv3_username != "(null)")
-    set_kb_item( name:"SNMP/V3/username", value:snmpv3_username );
+if( defined_func( "snmpv3_get" ) ) {
 
-  snmpv3_password = script_get_preference("SNMPv3 Password:");
-  if (snmpv3_password && snmpv3_password != "(null)")
-    set_kb_item( name:"SNMP/V3/password", value:snmpv3_password );
+  snmpv3_username = script_get_preference( "SNMPv3 Username:" );
+  if( snmpv3_username && snmpv3_username != "(null)" )
+    set_kb_item( name:"SNMP/v3/username", value:snmpv3_username );
+
+  snmpv3_password = script_get_preference( "SNMPv3 Password:" );
+  if( snmpv3_password && snmpv3_password != "(null)" )
+    set_kb_item( name:"SNMP/v3/password", value:snmpv3_password );
 
   snmpv3_auth_algo = script_get_preference("SNMPv3 Authentication Algorithm:");
-  if (snmpv3_auth_algo && snmpv3_auth_algo != "(null)")
-    set_kb_item( name:"SNMP/V3/auth_algorithm", value:snmpv3_auth_algo );
+  if( snmpv3_auth_algo && snmpv3_auth_algo != "(null)" )
+    set_kb_item( name:"SNMP/v3/auth_algorithm", value:snmpv3_auth_algo );
 
   snmpv3_priv_password = script_get_preference("SNMPv3 Privacy Password:");
-  if (snmpv3_priv_password && snmpv3_priv_password != "(null)")
-    set_kb_item( name:"SNMP/V3/privacy_password", value:snmpv3_priv_password );
+  if( snmpv3_priv_password && snmpv3_priv_password != "(null)" )
+    set_kb_item( name:"SNMP/v3/privacy_password", value:snmpv3_priv_password );
 
   snmpv3_priv_algo = script_get_preference("SNMPv3 Privacy Algorithm:");
-  if (snmpv3_priv_algo && snmpv3_priv_algo != "(null)")
-    set_kb_item( name:"SNMP/V3/privacy_algorithm", value:snmpv3_priv_algo );
+  if( snmpv3_priv_algo && snmpv3_priv_algo != "(null)" )
+    set_kb_item( name:"SNMP/v3/privacy_algorithm", value:snmpv3_priv_algo );
 }
 
 exit( 0 );
-

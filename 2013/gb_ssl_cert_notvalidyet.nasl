@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_cert_notvalidyet.nasl 4765 2016-12-14 10:43:39Z cfi $
+# $Id: gb_ssl_cert_notvalidyet.nasl 7242 2017-09-23 14:58:39Z cfischer $
 #
 # SSL/TLS: Certificate Not Valid Yet
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103956");
-  script_version("$Revision: 4765 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-14 11:43:39 +0100 (Wed, 14 Dec 2016) $");
+  script_version("$Revision: 7242 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-23 16:58:39 +0200 (Sat, 23 Sep 2017) $");
   script_tag(name:"creation_date", value:"2013-11-27 14:44:54 +0700 (Wed, 27 Nov 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,8 @@ if(description)
 
   script_tag(name:"summary", value:"The remote server's SSL/TLS certificate is not valid yet.");
 
-  script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"solution_type", value:"Mitigation");
+  script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
@@ -60,6 +61,7 @@ include("byte_func.inc");
 
 # The current time
 now = isotime_now();
+if( strlen( now ) <= 0 ) exit( 0 ); # isotime_now: "If the current time is not available an empty string is returned."
 
 # List of keys which are not valid yet
 notvalid_keys = make_array();

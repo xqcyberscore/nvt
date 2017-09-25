@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_get_http_banner.nasl 7157 2017-09-18 06:32:56Z ckuersteiner $
+# $Id: gb_get_http_banner.nasl 7218 2017-09-21 10:07:18Z ckuersteiner $
 #
 # HTTP Banner
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140170");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7157 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 08:32:56 +0200 (Mon, 18 Sep 2017) $");
+ script_version ("$Revision: 7218 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-21 12:07:18 +0200 (Thu, 21 Sep 2017) $");
  script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
  script_name("HTTP Banner");
 
@@ -366,5 +366,6 @@ set_mandatory_key( key:"spidercontrol-scada", regex:"Server: SCADA.*(powered by 
 set_mandatory_key( key:"StorageGRID", regex:"Server: StorageGRID");
 set_mandatory_key( key:"NetApp", regex: "Server: NetApp");
 set_mandatory_key( key:"App-webs", regex: "Server: App-webs/");
+set_mandatory_key( key:"Kannel", regex: "Server: Kannel/");
 
 exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_snmp_version.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_junos_snmp_version.nasl 7239 2017-09-22 16:10:31Z cfischer $
 #
 # JunOS SNMP Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103809");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 7239 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2013-10-14 14:24:09 +0200 (Mon, 14 Oct 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("gb_snmp_sysdesc.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
-  script_mandatory_keys("SNMP/sysdesc");
+  script_mandatory_keys("SNMP/sysdesc/available");
 
   script_tag(name:"summary", value:"This script performs SNMP based detection of JunOS.");
 
@@ -51,6 +51,7 @@ if(description)
 include("dump.inc");
 include("host_details.inc");
 include("cpe.inc");
+include("snmp_func.inc");
 
 function parse_result(data) {
 
@@ -82,16 +83,12 @@ function parse_result(data) {
 
 SCRIPT_DESC = "Junos SNMP Detection";
 
-port = get_kb_item("Services/udp/snmp");
-if(!port)port = 161;
-
-if(!(get_udp_port_state(port)))exit(0);
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 # Example:
 #Juniper Networks, Inc. m320 internet router, kernel JUNOS 10.1R3.7 #0: 2010-07-10 05:44:37 UTC builder@queth.juniper.net:/volume/build/junos/10.1/release/10.1R3.7/obj-i386/bsd/sys/compile/JUNIPER Build date: 2010-07-10 05:00:11 UTC Copyright (c) 1996
-sysdesc = get_kb_item("SNMP/sysdesc");
-if(!sysdesc)exit(0);
-
 if("JUNOS" >!< sysdesc)exit(0);
 
 junos_version = eregmatch(pattern:"JUNOS ([0-9.]+[A-Z][^ ,]+)", string:sysdesc);
@@ -102,7 +99,7 @@ cpe = 'cpe:/o:juniper:junos:' + junos_ver;
 
 register_and_report_os( os:"JunOS", cpe:cpe, banner_type:"SNMP sysdesc", banner:sysdesc, port:port, proto:"udp", desc:SCRIPT_DESC, runs_key:"unixoide" );
 
-register_product(cpe: cpe, location: 'snmp', port: port);
+register_product(cpe: cpe, location: port + "/udp", port: port, proto: "udp", service: "snmp");
 
 set_kb_item(name:"Junos/Version", value:junos_ver);
 set_kb_item(name:"Host/OS/SNMP", value:"JUNOS");
@@ -116,9 +113,9 @@ report_ver = junos_ver;
 
 if(!isnull(build[1])) report_ver += ', Build: ' + build[1];
 
-log_message(data:'The remote host is running Junos ' + report_ver + '\nCPE: '+ cpe + '\nConcluded: ' + sysdesc + '\n', port:0);
+log_message(data:'The remote host is running Junos ' + report_ver + '\nCPE: '+ cpe + '\nConcluded: ' + sysdesc + '\n', port:port, proto:"udp");
 
-community = get_kb_item("SNMP/community");
+community = snmp_get_community( port:port );
 if(!community)community = "public";
 
 SNMP_BASE = 38;
@@ -150,7 +147,7 @@ for (i=0; i<3; i++) {
   if(!res = parse_result(data:result))continue;
 
   set_kb_item(name:"Junos/model", value: res);
-  log_message(data:'The remote host is a Junos ' + res + '\n', port:0);
+  log_message(data:'The remote host is a Junos ' + res + '\n', port:port, proto:"udp");
   exit(0);
 
 }

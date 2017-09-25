@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_gcm_61816.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_ibm_gcm_61816.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # IBM 1754 GCM16 and GCM32 Global Console Managers Multiple Command Execution Vulnerabilities
 #
@@ -53,32 +53,13 @@ if (description)
  script_cve_id("CVE-2013-0526");
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 6115 $");
+ script_version ("$Revision: 7236 $");
 
  script_name("IBM 1754 GCM16 and GCM32 Global Console Managers Multiple Command Execution Vulnerabilities");
 
- desc = "
-Summary:
-" + tag_summary + "
-
-Vulnerability Detection:
-" + tag_vuldetect + "
-
-Vulnerability Insight:
-" + tag_insight + "
-
-Impact:
-" + tag_impact + "
-
-Affected Software/OS:
-" + tag_affected + "
-
-Solution:
-" + tag_solution;
-
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61816");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name:"creation_date", value:"2013-08-19 15:12:16 +0200 (Mon, 19 Aug 2013)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
@@ -86,7 +67,7 @@ Solution:
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_snmp_sysdesc.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);
- script_mandatory_keys("SNMP/sysdesc");
+ script_mandatory_keys("SNMP/sysdesc/available");
 
  script_tag(name : "impact" , value : tag_impact);
  script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -99,9 +80,11 @@ Solution:
 }
 
 include("version_func.inc");
+include("snmp_func.inc");
 
-if(!sysdesc = get_kb_item("SNMP/sysdesc"))exit(0);
-
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 if(!egrep(pattern:"^GCM(16|32)", string:sysdesc))exit(0);
 
 version = eregmatch(pattern:"GCM(16|32) ([0-9.]+)", string: sysdesc);
@@ -110,11 +93,8 @@ if(isnull(version[2]))exit(0);
 vers = version[2];
 
 if(version_is_less(version:vers, test_version:"1.18.0.22011")) {
-
-  security_message(port:443);
+  security_message(port:0);
   exit(0);
-
 }
 
 exit(99);
-

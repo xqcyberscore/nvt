@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_snmp_detect.nasl 6490 2017-06-30 05:39:55Z ckuersteiner $
+# $Id: gb_symantec_messaging_gateway_snmp_detect.nasl 7239 2017-09-22 16:10:31Z cfischer $
 #
 # Symantec Messaging Gateway Detection (SNMP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105718");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6490 $");
- script_tag(name:"last_modification", value:"$Date: 2017-06-30 07:39:55 +0200 (Fri, 30 Jun 2017) $");
+ script_version ("$Revision: 7239 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name:"creation_date", value:"2016-05-17 12:13:39 +0200 (Tue, 17 May 2016)");
  script_name("Symantec Messaging Gateway Detection (SNMP)");
 
@@ -40,22 +40,27 @@ if (description)
  script_tag(name:"qod_type", value:"remote_banner");
 
  script_category(ACT_GATHER_INFO);
- script_family("Service detection");
+ script_family("Product detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_snmp_get_installed_sw.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);
- script_mandatory_keys("SNMP/installed_software");
+ script_mandatory_keys("SNMP/installed_software/available");
+
  exit(0);
 }
 
 include("snmp_func.inc");
 
-if (!release = snmp_get_sw_oid(pattern: "sms-appliance-release"))
+port = get_snmp_port(default: 161);
+
+if (!infos = snmp_get_sw_oid(pattern: "sms-appliance-release", port: port))
   exit(0);
+
+package = infos['package'];
 
 replace_kb_item(name: "smg/installed", value: TRUE);
 
-vers = eregmatch(pattern: 'sms-appliance-release-([0-9+][^ $\r\n"]+)', string: release[1]);
+vers = eregmatch(pattern: 'sms-appliance-release-([0-9+][^ $\r\n"]+)', string: package);
 if (!isnull(vers[1])) {
   version = vers[1];
   if ("-" >< version) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_catalyst_4500_detect.nasl 4940 2017-01-04 14:04:37Z cfi $
+# $Id: gb_cisco_catalyst_4500_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Cisco Catalyst 4500 Detection (SNMP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105379");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 4940 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-04 15:04:37 +0100 (Wed, 04 Jan 2017) $");
+ script_version ("$Revision: 7236 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name:"creation_date", value:"2015-09-21 13:29:25 +0200 (Mon, 21 Sep 2015)");
  script_name("Cisco Catalyst 4500 Detection");
 
@@ -44,19 +44,17 @@ if (description)
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_snmp_sysdesc.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);
- script_mandatory_keys("SNMP/sysdesc");
+ script_mandatory_keys("SNMP/sysdesc/available");
+
  exit(0);
 }
 
 include("host_details.inc");
+include("snmp_func.inc");
 
-port = get_kb_item("Services/udp/snmp");
-if( ! port ) port = 161;
-
-if( ! ( get_udp_port_state( port ) ) ) exit( 0 );
-
-sysdesc = get_kb_item("SNMP/sysdesc");
-if( ! sysdesc ) exit( 0 );
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 # Cisco IOS Software, Catalyst 4500 L3 Switch Software (cat4500-ENTSERVICESK9-M), Version 15.0(2)SG7, RELEASE SOFTWARE (fc2)
 # Cisco IOS Software, Catalyst 4500 L3 Switch Software (cat4500-ENTSERVICES-M), Version 12.2(31)SGA4, RELEASE SOFTWARE (fc1)
@@ -83,14 +81,13 @@ if( ! isnull( version[1] ) )
   cpe += ':' + vers;
 }
 
-register_product( cpe:cpe, location:"SNMP", port:port );
+register_product( cpe:cpe, location:port + "/udp", port:port, proto:"udp", service:"snmp" );
 
 log_message( data: build_detection_report( app:"Cisco Catalyst 4500",
                                            version:vers,
-                                           install:"SNMP",
+                                           install:port + "/snmp",
                                            cpe:cpe,
-                                           concluded: version[0] ),
-             port:port );
+                                           concluded:sysdesc ),
+             port:port, proto:"udp" );
 
 exit(0);
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_switch_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_huawei_switch_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Huawei Switch Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106156");
- script_version ("$Revision: 6032 $");
- script_tag(name: "last_modification", value: "$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version ("$Revision: 7236 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name: "creation_date", value: "2016-07-29 09:30:37 +0700 (Fri, 29 Jul 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,26 +48,20 @@ This script performs SNMP based detection of Huawei Switches.");
  script_family("Product detection");
  script_dependencies("gb_snmp_sysdesc.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);
- script_mandatory_keys("SNMP/sysdesc");
+ script_mandatory_keys("SNMP/sysdesc/available");
 
  script_xref(name: "URL", value: "http://e.huawei.com/en/products/enterprise-networking/switches");
-
 
  exit(0);
 }
 
 include("cpe.inc");
 include("host_details.inc");
+include("snmp_func.inc");
 
-if (!port = get_kb_item("Services/udp/snmp"))
-  port = 161;
-
-if (!get_udp_port_state(port))
-  exit(0);
-
-sysdesc = get_kb_item("SNMP/sysdesc");
-if (!sysdesc)
-  exit(0);
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 if ("Huawei Versatile Routing Platform Software" >< sysdesc) {
   mo = eregmatch(pattern: "Quidway (S[0-9]+([A-Z-]+)?)", string: sysdesc);
@@ -95,10 +89,10 @@ if ("Huawei Versatile Routing Platform Software" >< sysdesc) {
   if (!cpe)
     cpe = "cpe:/h:huawei:" + tolower(model);
 
-  register_product(cpe: cpe, location: port + "/udp", port: port, service: "snmp");
+  register_product(cpe: cpe, location: port + "/udp", port: port, service: "snmp", proto: "udp");
 
   log_message(data: build_detection_report(app: "Huawei Switch " + model, version: version,
-                                           install: port + "/udp", cpe: cpe, concluded: vers[0]),
+                                           install: port + "/udp", cpe: cpe, concluded: sysdesc),
               port: port, proto: "udp");
   exit(0);
 }

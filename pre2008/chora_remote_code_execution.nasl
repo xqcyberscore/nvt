@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: chora_remote_code_execution.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: chora_remote_code_execution.nasl 7221 2017-09-21 13:05:11Z cfischer $
 # Description: Chora Remote Code Execution Vulnerability
 #
 # Authors:
@@ -31,13 +31,13 @@ tag_solution = "Upgrade to Chora version 1.2.2 or later.";
 
 if (description) {
   script_id(12281);
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 7221 $");
   script_bugtraq_id(10531);
   script_xref(name:"GLSA", value:"GLSA 200406-09");
   script_xref(name:"OSVDB", value:"7005");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-21 15:05:11 +0200 (Thu, 21 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   name = "Chora Remote Code Execution Vulnerability";
   script_name(name);
@@ -110,7 +110,7 @@ function find_cvsfile(basedir, cvsdir) {
         dirs = eregmatch(string:m, pattern:pat);
         if (!isnull(dirs)) {
           file = find_cvsfile(basedir:basedir, cvsdir:string(cvsdir, "/", dirs[1]));
-          display("file=>>", file, "<<\n");
+          if (debug_level) display("file=>>", file, "<<\n");
           if (!isnull(file)) return(file);
         }
       }
@@ -164,7 +164,7 @@ foreach entry (entries) {
         }
       }
       else {
-        if (log_verbosity > 1) display("Could not determine whether Chora on ", host, ":", port, " is vulnerable to remote code execution!\n");
+        if (debug_level) display("Could not determine whether Chora on ", host, ":", port, " is vulnerable to remote code execution!\n");
       }
     }
   }

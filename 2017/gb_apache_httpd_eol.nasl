@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_httpd_eol.nasl 6494 2017-06-30 08:10:34Z cfischer $
+# $Id: gb_apache_httpd_eol.nasl 7217 2017-09-21 10:02:58Z cfischer $
 #
 # Apache Web Server End Of Life Detection (Linux)
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108085");
-  script_version("$Revision: 6494 $");
+  script_version("$Revision: 7217 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 10:10:34 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-21 12:02:58 +0200 (Thu, 21 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-02-27 11:48:20 +0100 (Mon, 27 Feb 2017)");
   script_name("Apache Web Server End Of Life Detection (Linux)");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -45,6 +45,7 @@ if(description)
 
   script_xref(name:"URL", value:"https://archive.apache.org/dist/httpd/Announcement1.3.html");
   script_xref(name:"URL", value:"https://archive.apache.org/dist/httpd/Announcement2.0.html");
+  script_xref(name:"URL", value:"https://www.apache.org/dist/httpd/Announcement2.2.html");
   script_xref(name:"URL", value:"https://en.wikipedia.org/wiki/Apache_HTTP_Server#Versions");
 
   tag_summary = "The Apache Web Server version on the remote host has reached the end of life and should

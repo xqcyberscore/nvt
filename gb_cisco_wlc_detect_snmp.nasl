@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_detect_snmp.nasl 6239 2017-05-30 01:48:49Z ckuerste $
+# $Id: gb_cisco_wlc_detect_snmp.nasl 7239 2017-09-22 16:10:31Z cfischer $
 #
 # Cisco Wireless LAN Controller Detection (SNMP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105382");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6239 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-30 03:48:49 +0200 (Tue, 30 May 2017) $");
+ script_version ("$Revision: 7239 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name:"creation_date", value:"2015-09-22 14:49:34 +0200 (Tue, 22 Sep 2015)");
  script_name("Cisco Wireless LAN Controller Detection (SNMP)");
 
@@ -44,14 +44,16 @@ if (description)
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gb_snmp_sysdesc.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);
- script_mandatory_keys("SNMP/sysdesc");
+ script_mandatory_keys("SNMP/sysdesc/available");
+
  exit(0);
 }
 
-port = get_kb_item("Services/udp/snmp");
-if( ! port ) port = 161;
+include("snmp_func.inc");
 
-sysdesc = get_kb_item( "SNMP/sysdesc" );
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 if( "Cisco Controller" >!< sysdesc ) exit( 0 );
 
@@ -59,8 +61,8 @@ set_kb_item( name:"cisco_wlc/detected", value:TRUE );
 
 if( defined_func( "snmpv2c_get" ) )
 {
-  community = get_kb_item( "SNMP/community" );
-  if( ! community)community = "public";
+  community = snmp_get_community( port:port );
+  if( ! community) community = "public";
 
   version = snmpv2c_get( port:port, protocol:'udp', community:community, oid:'1.3.6.1.2.1.47.1.1.1.1.10.1' );
   if( version[0] == 0 )

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_cert_in_chain_soonexpired.nasl 6883 2017-08-09 09:44:10Z cfischer $
+# $Id: gb_ssl_cert_in_chain_soonexpired.nasl 7242 2017-09-23 14:58:39Z cfischer $
 #
 # SSL/TLS: Certificate In Chain Will Soon Expire
 #
@@ -31,10 +31,10 @@ lookahead = 60;
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105891");
-  script_version("$Revision: 6883 $");
+  script_version("$Revision: 7242 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-09 11:44:10 +0200 (Wed, 09 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-23 16:58:39 +0200 (Sat, 23 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-09-16 11:11:32 +0200 (Fri, 16 Sep 2016)");
   script_name("SSL/TLS: Certificate In Chain Will Soon Expire");
   script_category(ACT_GATHER_INFO);
@@ -51,7 +51,8 @@ if(description)
 
   script_tag(name:"summary", value:"A certificate in the chain of the remote server will soon expire.");
 
-  script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"solution_type", value:"Mitigation");
+  script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
@@ -93,7 +94,10 @@ function check_validity( port, now ) {
 if( ! port = get_ssl_port() )
   exit(0);
 
-future = isotime_add( isotime_now(), days:lookahead );
+now = isotime_now();
+if( strlen( now ) <= 0 ) exit( 0 ); # isotime_now: "If the current time is not available an empty string is returned."
+future = isotime_add( now, days:lookahead );
+if( isnull( future ) ) exit( 0 ); # isotime_add: "or NULL if the provided ISO time string is not valid or the result would overflow (i.e. year > 9999).
 
 if( ret = check_validity( port: port, now:future ) ) {
   foreach a ( ret ) {

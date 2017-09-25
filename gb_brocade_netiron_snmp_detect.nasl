@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brocade_netiron_snmp_detect.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_brocade_netiron_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Brocade NetIron OS Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140058");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 7236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-11-14 17:35:01 +0100 (Mon, 14 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_snmp_sysdesc.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
-  script_mandatory_keys("SNMP/sysdesc");
+  script_mandatory_keys("SNMP/sysdesc/available");
 
   script_tag(name:"summary", value:"This script performs SNMP based detection of Brocade NetIron OS");
 
@@ -49,20 +49,16 @@ if(description)
 }
 
 include("host_details.inc");
+include("snmp_func.inc");
 
-port = get_kb_item("Services/udp/snmp");
-if( ! port ) port = 161;
-
-if( ! ( get_udp_port_state( port ) ) ) exit( 0 );
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 # Brocade NetIron MLX (System Mode: MLX), IronWare Version V5.6.0hT163 Compiled on Apr 27 2016 at 07:33:38 labeled as V5.6.00h
 # Brocade NetIron CES, IronWare Version V5.6.0fT183 Compiled on Mar 27 2015 at 02:13:25 labeled as V5.6.00fb
 # Brocade NetIron XMR (System Mode: XMR), IronWare Version V5.5.0dT163 Compiled on Oct  3 2013 at 13:31:00 labeled as V5.5.00d
 # Brocade NetIron CER, Extended route scalability, IronWare Version V5.6.0bT183 Compiled on Jan 19 2014 at 11:42:28 labeled as V5.6.00b
-
-sysdesc = get_kb_item("SNMP/sysdesc");
-if( ! sysdesc ) exit( 0 );
-
 if( "Brocade NetIron" >!< sysdesc || "IronWare" >!< sysdesc ) exit( 0 );
 
 set_kb_item( name:'brocade_netiron/installed', value:TRUE );
@@ -81,7 +77,7 @@ if( ! isnull( version[1] ) )
 if( ! isnull( version[2] ) )
   set_kb_item( name:'brocade_netiron/os/build', value:version[2] ); # build?
 
-register_product( cpe:cpe, location:'161/udp', port:port, service:'snmp' );
+register_product( cpe:cpe, location:port + "/udp", port:port, proto:"udp", service:"snmp" );
 
 register_and_report_os( os:"Brocade NetIron OS " + vers, cpe:cpe, banner_type:"SNMP sysdesc", banner:sysdesc, port:port, proto:"udp", desc:"Brocade NetIron OS Detection (SNMP)", runs_key:"unixoide" );
 
@@ -89,7 +85,7 @@ m = eregmatch( pattern:'^Brocade NetIron ([^ ,]+)', string:sysdesc );
 if( ! isnull( m[1] ) )
   set_kb_item( name:"brocade_netiron/typ", value:m[1] );
 
-report = build_detection_report( app:"Brocade NetIron OS", version:vers, install:"161/udp", cpe:cpe, concluded:sysdesc );
+report = build_detection_report( app:"Brocade NetIron OS", version:vers, install:port + "/udp", cpe:cpe, concluded:sysdesc );
 log_message( port:port, data:report, proto:'udp');
 
 exit( 0 );

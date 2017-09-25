@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_get_installed_sw.nasl 6493 2017-06-30 07:00:59Z ckuersteiner $
+# $Id: gb_snmp_get_installed_sw.nasl 7238 2017-09-22 15:12:48Z cfischer $
 #
 # SNMP Read Installed Software Packages
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106913");
-  script_version("$Revision: 6493 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-30 09:00:59 +0200 (Fri, 30 Jun 2017) $");
+  script_version("$Revision: 7238 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-22 17:12:48 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-06-29 15:32:58 +0700 (Thu, 29 Jun 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,7 +47,7 @@ SNMP and saves them in the KB.");
   script_family("Product detection");
   script_dependencies("gb_snmp_sysdesc.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
-  script_mandatory_keys("SNMP/sysdesc");
+  script_mandatory_keys("SNMP/sysdesc/available");
 
   exit(0);
 }
@@ -57,15 +57,9 @@ include("snmp_func.inc");
 if (!defined_func("snmpv3_get"))
   exit(0);
 
-port = get_kb_item("Services/udp/snmp");
-if (!port)
-  port = 161;
-
-if (!get_udp_port_state(port))
-  exit(0);
-
-if (!sysdesc = get_kb_item("SNMP/sysdesc"))
-  exit(0);
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 if ("Linux" >!< sysdesc)
   exit(0);
@@ -82,7 +76,9 @@ for (i=1; i <= 800; i++) {
   sw += oid + '|' + res + '|';
 }
 
-if (sw)
-  set_kb_item(name: "SNMP/installed_software", value: sw);
+if (sw) {
+  replace_kb_item(name: "SNMP/installed_software/available", value: TRUE);
+  set_kb_item(name: "SNMP/" + port + "/installed_software", value: sw);
+}
 
 exit(0);

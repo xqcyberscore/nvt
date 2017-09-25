@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sg3xx_snmp_detect.nasl 4940 2017-01-04 14:04:37Z cfi $
+# $Id: gb_cisco_sg3xx_snmp_detect.nasl 7239 2017-09-22 16:10:31Z cfischer $
 #
 # Cisco Small Business 300 Series Managed Switch SNMP Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105587");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 4940 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-04 15:04:37 +0100 (Wed, 04 Jan 2017) $");
+ script_version ("$Revision: 7239 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name:"creation_date", value:"2013-10-14 14:24:09 +0200 (Mon, 14 Oct 2013)");
  script_name('Cisco Small Business 300 Series Managed Switch SNMP Detection');
  script_category(ACT_GATHER_INFO);
@@ -39,7 +39,8 @@ if (description)
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_snmp_sysdesc.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);
- script_mandatory_keys("SNMP/sysdesc");
+ script_mandatory_keys("SNMP/sysdesc/available");
+
  script_tag(name : "summary" , value : "This script performs SNMP based detection of Cisco Small Business 300 Series Managed Switch.");
 
  script_tag(name:"qod_type", value:"remote_banner");
@@ -49,6 +50,7 @@ if (description)
 
 include("dump.inc");
 include("host_details.inc");
+include("snmp_func.inc");
 
 function parse_result( data )
 {
@@ -74,13 +76,9 @@ function parse_result( data )
   return tmp;
 }
 
-port = get_kb_item( "Services/udp/snmp" );
-if( ! port ) port = 161;
-
-if( ! get_udp_port_state( port ) ) exit(0);
-
-sysdesc = get_kb_item( "SNMP/sysdesc" );
-if( ! sysdesc ) exit( 0 );
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 if( sysdesc !~ '^S(G|F)3[0-9]+.*Managed Switch$' ) exit(0);
 
@@ -96,7 +94,7 @@ if( ! isnull( mod[1] ) )
   set_kb_item( name:'cisco/300_series_managed_switch/model', value:model );
 }
 
-community = get_kb_item( "SNMP/community" );
+community = snmp_get_community( port:port );
 if( ! community) community = "public";
 
 SNMP_BASE = 42;
@@ -133,7 +131,7 @@ for( i=1; i < 3; i++ )
   }
 }
 
-register_product( cpe:cpe, location:'snmp' );
+register_product( cpe:cpe, location:port + "/udp", service:"snmp", proto:"udp" );
 
 report = 'The remote Host is a Cisco Small Business 300 Series Managed Switch\n' +
          'Version: ' + version + '\n' + 
@@ -141,7 +139,6 @@ report = 'The remote Host is a Cisco Small Business 300 Series Managed Switch\n'
 
 if( model ) report += '\nModel:   ' + model + '\n';
 
-log_message( port:0, data:report );
+log_message( port:port, proto:"udp", data:report );
 
 exit( 0 );
-

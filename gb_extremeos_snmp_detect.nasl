@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_extremeos_snmp_detect.nasl 4642 2016-11-29 07:17:44Z ckuerste $
+# $Id: gb_extremeos_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Extreme ExtremeXOS Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106413");
-  script_version("$Revision: 4642 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-29 08:17:44 +0100 (Tue, 29 Nov 2016) $");
+  script_version("$Revision: 7236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-11-25 11:50:20 +0700 (Fri, 25 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,17 +44,19 @@ if(description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_snmp_sysdesc.nasl");
-  script_mandatory_keys("SNMP/sysdesc");
+  script_require_udp_ports("Services/udp/snmp", 161);
+  script_mandatory_keys("SNMP/sysdesc/available");
 
   exit(0);
 }
 
 include("cpe.inc");
 include("host_details.inc");
+include("snmp_func.inc");
 
-sysdesc = get_kb_item("SNMP/sysdesc");
-if (!sysdesc)
-  exit(0);
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 if ("ExtremeXOS" >< sysdesc) {
   version = "unknown";
@@ -84,10 +86,10 @@ if ("ExtremeXOS" >< sysdesc) {
   if (!cpe)
     cpe = 'cpe:/a:extreme:extremexos';
 
-  register_product(cpe: cpe);
+  register_product(cpe: cpe, port: port, proto: "udp", location: port + "/udp", service: "snmp" );
 
   log_message(data: build_detection_report(app: "Extreme ExtremeXOS " + model, version: version, cpe: cpe,
-                                           install: "161/udp", concluded: vers[0], extra: "Patch: " + patch),
+                                           install: port + "/udp", concluded: sysdesc, extra: "Patch: " + patch),
               port: port, proto: 'udp');
   exit(0);
 }

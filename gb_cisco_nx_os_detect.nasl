@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_detect.nasl 6239 2017-05-30 01:48:49Z ckuerste $
+# $Id: gb_cisco_nx_os_detect.nasl 7239 2017-09-22 16:10:31Z cfischer $
 #
 # Cisco NX-OS Detection (SNMP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103799");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6239 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-30 03:48:49 +0200 (Tue, 30 May 2017) $");
+ script_version ("$Revision: 7239 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name:"creation_date", value:"2013-10-09 16:24:09 +0200 (Wed, 09 Oct 2013)");
  script_name("Cisco NX-OS Detection (SNMP)");
  script_category(ACT_GATHER_INFO);
@@ -39,7 +39,8 @@ if (description)
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_snmp_sysdesc.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);
- script_mandatory_keys("SNMP/sysdesc");
+ script_mandatory_keys("SNMP/sysdesc/available");
+
  script_tag(name : "summary" , value : "This script performs SNMP based detection of Cisco NX-OS.");
 
  script_tag(name:"qod_type", value:"remote_banner");
@@ -48,6 +49,7 @@ if (description)
 }
 
 include("dump.inc");
+include("snmp_func.inc");
 
 function parse_result(data) {
 
@@ -87,17 +89,13 @@ function map_model( mod )
   if( mod == "n2000" )  return "2000";
 }
 
-port = get_kb_item("Services/udp/snmp");
-if(!port)port = 161;
-
-if(!(get_udp_port_state(port)))exit(0);
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 # Example:
 # Cisco NX-OS(tm) n7000, Software (n7000-s1-dk9), Version 5.2(3a), RELEASE SOFTWARE Copyright (c) 2002-2011 by Cisco Systems, Inc. Compiled 12/15/2011 12:00:00;
 # Cisco NX-OS(tm) ucs, Software (ucs-6100-k9-system), Version 5.0(3)N2(2.04b), RELEASE SOFTWARE Copyright (c) 2002-2012 by Cisco Systems, Inc. Compiled 10/21/2012 11:00:00
-sysdesc = get_kb_item("SNMP/sysdesc");
-if(!sysdesc)exit(0);
-
 if("Cisco NX-OS" >!< sysdesc)exit(0);
 
 set_kb_item( name:"cisco/nx_os/detected", value:TRUE );
@@ -113,7 +111,7 @@ model = "unknown";
 device = "unknown";
 source = "snmp";
 
-community = get_kb_item("SNMP/community");
+community = snmp_get_community( port:port );
 if(!community)community = "public";
 
 SNMP_BASE = 40;

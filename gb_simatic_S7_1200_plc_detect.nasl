@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_S7_1200_plc_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_simatic_S7_1200_plc_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Siemens SIMATIC S7-1200 PLC Detection
 #
@@ -30,14 +30,14 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103583");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version ("$Revision: 7236 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name:"creation_date", value:"2012-10-10 11:28:02 +0200 (Wed, 10 Oct 2012)");
  script_name("Siemens SIMATIC S7-1200 PLC Detection");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl","gb_snmp_sysdesc.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "gb_snmp_sysdesc.nasl");
  script_require_ports("Services/www", 80);
  script_require_udp_ports("Services/udp/snmp", 161);
  script_exclude_keys("Settings/disable_cgi_scanning");
@@ -70,7 +70,7 @@ function report_simatic_version(vers,install,concluded,port) {
    if(isnull(cpe))
      cpe = 'cpe:/h:siemens:simatic_s7-1200_plc';
 
-   register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+   register_product(cpe:cpe, location:install, port:port);
 
    log_message(data: build_detection_report(app:"Siemens SIMATIC S7-1200 PLC", version:vers, install:port, cpe:cpe, concluded: concluded),
                port:port);
@@ -84,7 +84,7 @@ port = 161;
 
 if(get_port_state(port)) {
 
-  sysdesc = get_kb_item("SNMP/sysdesc");
+  sysdesc = get_kb_item("SNMP/" + port + "/sysdesc");
 
   if("SIMATIC S7, CPU-1200" >< sysdesc) {
 
@@ -93,7 +93,7 @@ if(get_port_state(port)) {
     if(!isnull(sp[5])) {
       version = eregmatch(pattern:"V\.([0-9.]+)", string: sp[5]);
       if(!isnull(version[1])) {
-        report_simatic_version(vers:version[1],install:"/",concluded:sysdesc,port:port);
+        report_simatic_version(vers:version[1], install:port + "/udp", concluded:sysdesc, port:port);
         exit(0);
       }  
     }  
@@ -103,7 +103,6 @@ if(get_port_state(port)) {
 }
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 url = '/Portal/Portal.mwsl?PriNav=Ident';
 req = http_get(item:url, port:port);

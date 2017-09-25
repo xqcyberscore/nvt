@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_080.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: GSHB_M4_080.nasl 7239 2017-09-22 16:10:31Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.080
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94208);
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 7239 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,22 +53,17 @@ Stand: 14. Ergänzungslieferung (14. EL).
 include("itg.inc");
 
 name = 'IT-Grundschutz M4.080: Sichere Zugriffsmechanismen bei Fernadministration\n';
-
 gshbm =  "IT-Grundschutz M4.080: ";
 
 OSVER = get_kb_item("WMI/WMI_OSVER");
 log = get_kb_item("WMI/WMI_OS/log");
 TFTP = get_kb_item("Services/udp/tftp");
 FTP = get_kb_item("Ports/tcp/21");
-community = get_kb_item("SNMP/community");
+communities = get_kb_list("SNMP/*/v12c/detected_community");
 WMIOSLOG = get_kb_item("WMI/WMI_OS/log");
 
-if (community)
-{
-  SNMPHOLE = get_kb_item("SentData/1.3.6.1.4.1.25623.1.0.103914/ALARM");
-  SNMPHOLE = ereg_replace(pattern:'^\nSNMP Agent responded as expected with community name: ',replace:'', string:SNMPHOLE);
-  SNMPHOLE = ereg_replace(pattern:'\nSNMP Agent responded as expected with community name: ',replace:', ', string:SNMPHOLE);
-}
+# avoid report if snmp_default_communities.nasl had an issue and is reporting too many communities
+all_communities = get_kb_list("SNMP/*/v12c/all_communities");
 
 if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System."){
   result = string("nicht zutreffend");
@@ -77,14 +72,19 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
   result = string("Fehler");
   if(!log) desc = string("Beim Testen des Systems trat ein Fehler auf.");
   if(log) desc = string("Beim Testen des Systems trat ein Fehler auf:\n" + log);
-}else if(!TFTP && !community && !FTP ){
+}else if(!TFTP && (!communities || all_communities) && !FTP ){
   result = string("erfüllt");
   desc = string("Das System entspricht der Maßnahme M4.080.");
 }else{
   result = string("nicht erfüllt");
-  if (TFTP == 69)desc = string("Auf dem System läuft ein TFTP-Server.\nÜberprüfen Sie bitte ob dies notwendig ist.\n");
-  if (FTP == 1)desc = desc + string('Auf dem System läuft ein FTP-Server.\nÜberprüfen Sie bitte ob dies notwendig ist.\n');
-  if (community)desc = desc + string('Auf dem System existieren folgende standardmäßig\nvoreingestellten Community-Namen:\n' + SNMPHOLE);
+  if (TFTP == 69)desc += string("Auf dem System läuft ein TFTP-Server.\nÜberprüfen Sie bitte ob dies notwendig ist.\n");
+  if (FTP == 1)desc += string('Auf dem System läuft ein FTP-Server.\nÜberprüfen Sie bitte ob dies notwendig ist.\n');
+  if (communities && !all_communities) {
+    desc += string('Auf dem System existieren folgende standardmäßig\nvoreingestellten Community-Namen:\n');
+    foreach community( communities ) {
+      desc += community + '\n';
+    }
+  }
 }
 
 set_kb_item(name:"GSHB/M4_080/result", value:result);

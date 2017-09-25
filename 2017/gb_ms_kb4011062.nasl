@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011062.nasl 7118 2017-09-13 15:08:32Z santu $
+# $Id: gb_ms_kb4011062.nasl 7243 2017-09-25 05:48:36Z cfischer $
 #
 # Microsoft Excel 2007 Service Pack 3 Remote Code Execution Vulnerability (KB4011062)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811754");
-  script_version("$Revision: 7118 $");
+  script_version("$Revision: 7243 $");
   script_cve_id("CVE-2017-8631");
   script_bugtraq_id(100751);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 17:08:32 +0200 (Wed, 13 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-25 07:48:36 +0200 (Mon, 25 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-13 11:19:30 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Excel 2007 Service Pack 3 Remote Code Execution Vulnerability (KB4011062)");
 

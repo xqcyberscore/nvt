@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_rtp_info_leak_vuln.nasl 7194 2017-09-20 07:40:57Z ckuersteiner $
+# $Id: gb_asterisk_rtp_info_leak_vuln.nasl 7243 2017-09-25 05:48:36Z cfischer $
 #
 # Asterisk RTP/RTCP Information Leak Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140380");
-  script_version("$Revision: 7194 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-20 09:40:57 +0200 (Wed, 20 Sep 2017) $");
+  script_version("$Revision: 7243 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-25 07:48:36 +0200 (Mon, 25 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-09-20 14:43:21 +0700 (Wed, 20 Sep 2017)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-14099");
 

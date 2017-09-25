@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_meinberg_lantime_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_meinberg_lantime_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Meinberg LANTIME Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106109");
- script_version ("$Revision: 6065 $");
- script_tag(name: "last_modification", value: "$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version ("$Revision: 7236 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name: "creation_date", value: "2016-06-24 14:37:30 +0700 (Fri, 24 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,25 +48,20 @@ This script performs SNMP based detection of Meinberg NTP Timeserver LANTIME.");
  script_family("Product detection");
  script_dependencies("gb_snmp_sysdesc.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);
- script_mandatory_keys("SNMP/sysdesc");
+ script_mandatory_keys("SNMP/sysdesc/available");
 
  script_xref(name: "URL", value: "https://www.meinbergglobal.com/english/products/ntp-time-server.htm");
-
 
  exit(0);
 }
 
 include("cpe.inc");
 include("host_details.inc");
+include("snmp_func.inc");
 
-if(!port = get_kb_item("Services/udp/snmp"))
-  port = 161;
-
-if (!get_udp_port_state(port))
-  exit(0);
-
-if (!sysdesc = get_kb_item("SNMP/sysdesc"))
-  exit(0);
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 if ("Meinberg LANTIME" >< sysdesc) {
   mo = eregmatch(pattern: "LANTIME ([A-Z0-9//]+)", string: sysdesc);
@@ -91,10 +86,10 @@ if ("Meinberg LANTIME" >< sysdesc) {
   if (isnull(cpe))
     cpe = "cpe:/a:meinberg:lantime_" + tolower(cpe_model[0]);
 
-  register_product(cpe: cpe, location: "snmp", port: port);
+  register_product(cpe: cpe, location: port + "/udp", port: port, proto: "udp", service: "snmp");
 
   log_message(data: build_detection_report(app: "Meinberg LANTIME " + model, version: version,
-                                           install: "snmp",cpe: cpe, concluded: sysdesc),
+                                           install: port + "/udp", cpe: cpe, concluded: sysdesc),
               port: port, proto: 'udp');
 }
 

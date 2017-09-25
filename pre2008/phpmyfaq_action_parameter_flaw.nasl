@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phpmyfaq_action_parameter_flaw.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: phpmyfaq_action_parameter_flaw.nasl 7218 2017-09-21 10:07:18Z ckuersteiner $
 # Description: phpMyFAQ action parameter arbitrary file disclosure vulnerability
 #
 # Authors:
@@ -23,75 +23,63 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote web server contains a PHP script that permits information
-disclosure of local files.
-
-Description :
-
-The version of phpMyFAQ on the remote host contains a flaw that may lead
-to an unauthorized information disclosure.  The problem is that user
-input passed to the 'action' parameter is not properly verified before
-being used to include files, which could allow an remote attacker to
-view any accessible file on the system, resulting in a loss of
-confidentiality.";
-
-tag_solution = "Upgrade to phpMyFAQ 1.3.13 or newer.";
-
-# Ref: Stefan Esser <s.esser@e-matters.de>
+CPE = 'cpe:/a:phpmyfaq:phpmyfaq';
 
 if(description)
 {
- script_id(14258);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.14258");
+ script_version("$Revision: 7218 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-21 12:07:18 +0200 (Thu, 21 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_cve_id("CVE-2004-2255");
- script_bugtraq_id(10374);
- script_xref(name:"OSVDB", value:"6300");
- 
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
- name = "phpMyFAQ action parameter arbitrary file disclosure vulnerability";
- script_name(name);
- 
+ script_cve_id("CVE-2004-2255");
+ script_bugtraq_id(10374);
 
- summary = "Check the version of phpMyFAQ";
- 
+ script_name("phpMyFAQ action parameter arbitrary file disclosure vulnerability");
  
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  
  script_copyright("This script is Copyright (C) 2004 David Maciejak");
- family = "Web application abuses";
- script_family(family);
+ script_family("Web application abuses");
  script_dependencies("phpmyfaq_detect.nasl");
+ script_mandatory_keys("phpmyfaq/installed");
  script_require_ports("Services/www", 80);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://security.e-matters.de/advisories/052004.html");
- script_xref(name : "URL" , value : "http://www.phpmyfaq.de/advisory_2004-05-18.php");
+
+ script_tag(name: "solution", value: "Upgrade to phpMyFAQ 1.3.13 or newer.");
+
+ script_tag(name: "summary", value: "The remote web server contains a PHP script that permits information
+disclosure of local files.
+
+The version of phpMyFAQ on the remote host contains a flaw that may lead to an unauthorized information
+disclosure.  The problem is that user input passed to the 'action' parameter is not properly verified before
+being used to include files, which could allow an remote attacker to view any accessible file on the system,
+resulting in a loss of confidentiality.");
+
+ script_xref(name: "URL", value: "http://security.e-matters.de/advisories/052004.html");
+ script_xref(name: "URL", value: "http://www.phpmyfaq.de/advisory_2004-05-18.php");
+ script_xref(name: "OSVDB", value: "6300");
+
  exit(0);
 }
 
 # Check starts here
 
-include("http_func.inc");
-include("http_keepalive.inc");
+include("host_details.inc");
+include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))
-	exit(0);
-if ( ! can_host_php(port:port) ) 
-	exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-# Test an install.
-install = get_kb_item(string("www/", port, "/phpmyfaq"));
-if (isnull(install)) exit(0);
-matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");
-if (!isnull(matches)) {
-  ver = matches[1];
-
-  if (ver =~ "(0\.|1\.([0-2]\.|3\.([0-9]($|[^0-9])|1[0-2])))") security_message(port);
+if (version_is_less(version: version, test_version: "1.3.13")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.3.13");
+  security_message(port: port, data: report);
+  exit(0);
 }
+
+exit(99);

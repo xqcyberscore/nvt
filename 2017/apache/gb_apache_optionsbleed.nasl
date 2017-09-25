@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_optionsbleed.nasl 7204 2017-09-20 13:09:54Z cfischer $
+# $Id: gb_apache_optionsbleed.nasl 7210 2017-09-21 06:40:59Z cfischer $
 #
 # Apache HTTP Server OPTIONS Memory Leak Vulnerability (Optionsbleed)
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112048");
-  script_version("$Revision: 7204 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 15:09:54 +0200 (Wed, 20 Sep 2017) $");
+  script_version("$Revision: 7210 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-21 08:40:59 +0200 (Thu, 21 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-20 12:53:35 +0200 (Wed, 20 Sep 2017)"); 
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -106,7 +106,8 @@ foreach dir(make_list_unique("/", cgi_dirs(port:port)))
 
   for(i = 0; i <= 100; i++)
   {
-    res = http_keepalive_send_recv(port:port, data:req);
+    res = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+    if(res =~ "^HTTP/1\.[01] 405" ) break; # We don't need to continue in this inner loop if the OPTIONS method is disabled.
     if(allow = egrep(string:res, pattern:"^Allow: .*" ))
     {
       # Examples:
@@ -118,7 +119,7 @@ foreach dir(make_list_unique("/", cgi_dirs(port:port)))
       {
         report = "The remote service might leak data/memory via the 'Allow' header.";
         report += '\n\nRequest:\n' + req + '\nResponse:\n' + res;
-        security_message(port:port, data: report);
+        security_message(port:port, data:report);
         exit(0);
       }
     }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_onefs_snmp_detect.nasl 5823 2017-03-31 13:57:56Z mime $
+# $Id: gb_emc_isilon_onefs_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # EMC Isilon OneFS Devices Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106552");
-  script_version("$Revision: 5823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 15:57:56 +0200 (Fri, 31 Mar 2017) $");
+  script_version("$Revision: 7236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-01-30 15:26:27 +0700 (Mon, 30 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,21 +47,18 @@ This script performs SNMP based detection of EMC Isilon OneFS devices.");
   script_family("Product detection");
   script_dependencies("gb_snmp_sysdesc.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
-  script_mandatory_keys("SNMP/sysdesc");
+  script_mandatory_keys("SNMP/sysdesc/available");
 
   exit(0);
 }
 
 include("cpe.inc");
 include("host_details.inc");
+include("snmp_func.inc");
 
-port = get_kb_item("Services/udp/snmp");
-if (!port)
-  port = 161;
-
-sysdesc = get_kb_item("SNMP/sysdesc");
-if (!sysdesc)
-  exit(0);
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 if ("Isilon OneFS" >< sysdesc) {
   version = "unknown";
@@ -78,9 +75,9 @@ if ("Isilon OneFS" >< sysdesc) {
   if (!cpe)
     cpe = 'cpe:/o:emc:isilon_onefs';
 
-  register_product(cpe: cpe, port: port, service: "snmp");
+  register_product(cpe: cpe, port: port, location: port + "/udp", service: "snmp", proto: "udp");
 
-  log_message(data: build_detection_report(app: "EMC Isilon OneFS", version: version, install: "161/udp",
+  log_message(data: build_detection_report(app: "EMC Isilon OneFS", version: version, install: port + "/udp",
                                            cpe: cpe, concluded: sysdesc),
               port: port, proto: 'udp');
   exit(0);

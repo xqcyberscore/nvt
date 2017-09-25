@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_priv_esc_vuln.nasl 6433 2017-06-26 14:58:57Z teissa $
+# $Id: gb_otrs_priv_esc_vuln.nasl 7228 2017-09-22 06:50:28Z ckuersteiner $
 #
 # OTRS Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:otrs:otrs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106863");
-  script_version("$Revision: 6433 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-26 16:58:57 +0200 (Mon, 26 Jun 2017) $");
+  script_version("$Revision: 7228 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-22 08:50:28 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-06-12 10:56:38 +0700 (Mon, 12 Jun 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -82,13 +82,13 @@ if (version_is_less(version: version, test_version: "3.3.17")) {
   exit(0);
 }
 
-if (version_in_range(version: version, test_version: "4.0.0", test_version2: "4.0.24")) {
+if (version_in_range(version: version, test_version: "4.0.0", test_version2: "4.0.23")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "4.0.24");
   security_message(port: port, data: report);
   exit(0);
 }
 
-if (version_in_range(version: version, test_version: "5.0.0", test_version2: "5.0.20")) {
+if (version_in_range(version: version, test_version: "5.0.0", test_version2: "5.0.19")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "5.0.20");
   security_message(port: port, data: report);
   exit(0);

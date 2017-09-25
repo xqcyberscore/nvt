@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_data_domain_detect_snmp.nasl 5158 2017-02-01 14:53:04Z mime $
+# $Id: gb_emc_data_domain_detect_snmp.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # EMC Data Domain Detection (SNMP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140142");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5158 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-01 15:53:04 +0100 (Wed, 01 Feb 2017) $");
+ script_version ("$Revision: 7236 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name:"creation_date", value:"2017-02-01 12:25:05 +0100 (Wed, 01 Feb 2017)");
  script_name("EMC Data Domain Detection (SNMP)");
 
@@ -43,13 +43,18 @@ if (description)
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_dependencies("gb_snmp_sysdesc.nasl");
- script_mandatory_keys("SNMP/sysdesc");
+ script_require_udp_ports("Services/udp/snmp", 161);
+ script_mandatory_keys("SNMP/sysdesc/available");
+
  exit(0);
 }
 
 include("host_details.inc");
+include("snmp_func.inc");
 
-if( ! sysdesc = get_kb_item( "SNMP/sysdesc" ) ) exit( 0 );
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 if("Data Domain OS" >!< sysdesc ) exit( 0 );
 

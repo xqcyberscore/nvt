@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_detect_snmp.nasl 6239 2017-05-30 01:48:49Z ckuerste $
+# $Id: gb_cisco_ios_xr_detect_snmp.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Cisco IOS XR Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105079");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6239 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-30 03:48:49 +0200 (Tue, 30 May 2017) $");
+ script_version ("$Revision: 7236 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name:"creation_date", value:"2014-09-04 09:48:32 +0200 (Thu, 04 Sep 2014)");
  script_name("Cisco IOS XR Detection");
 
@@ -42,28 +42,25 @@ if (description)
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_snmp_sysdesc.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);
- script_mandatory_keys("SNMP/sysdesc");
+ script_mandatory_keys("SNMP/sysdesc/available");
+
  script_tag(name:"qod_type", value:"remote_banner");
 
-exit(0);
+ exit(0);
 }
 
 include("host_details.inc");
+include("snmp_func.inc");
 
 source = "snmp";
 
-port = get_kb_item("Services/udp/snmp");
-if( ! port ) port = 161;
-
-if( ! ( get_udp_port_state( port ) ) ) exit( 0 );
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 # Cisco IOS XR Software (Cisco 12816/PRP), Version 4.3.2[Default] Copyright (c) 2014 by Cisco Systems, Inc.
 # Cisco IOS XR Software (Cisco ASR9K Series), Version 5.1.1[Default]  Copyright (c) 2014 by Cisco Systems, Inc. 
 # Cisco IOS XR Software (Cisco 12404/PRP), Version 3.6.0[00] Copyright (c) 2007 by Cisco Systems, Inc. 
-
-sysdesc = get_kb_item("SNMP/sysdesc");
-if( ! sysdesc ) exit( 0 );
-
 if( "Cisco IOS XR" >!< sysdesc )exit( 0 );
 
 replace_kb_item( name:"cisco_ios_xr/detected", value:TRUE );
@@ -91,7 +88,7 @@ if( type[1] )
 
 report += version[1] + '\nCPE: '+ cpe + '\nConcluded: ' + sysdesc + '\n';
 
-log_message(data:report, port:0, proto:'udp');
+log_message(data:report, port:port, proto:'udp');
 
 exit( 0 );
 

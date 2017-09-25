@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_sysdesc.nasl 5509 2017-03-07 17:29:23Z mime $
+# $Id: gb_snmp_sysdesc.nasl 7239 2017-09-22 16:10:31Z cfischer $
 #
 # Get SysDescription via SNMP
 #
@@ -28,17 +28,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103416");
-  script_version("$Revision: 5509 $");
+  script_version("$Revision: 7239 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-07 18:29:23 +0100 (Tue, 07 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2012-02-14 10:07:41 +0100 (Tue, 14 Feb 2012)");
   script_name("Get SysDescription via SNMP");
   script_category(ACT_SETTINGS);
   script_family("SNMP");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("snmp_default_communities.nasl");
+  script_dependencies("snmp_detect.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
+  script_mandatory_keys("SNMP/detected");
 
   script_tag(name:"summary", value:"This NVT get the SysDesc via SNMP and store the result in the KB.");
 
@@ -75,19 +76,19 @@ function parse_result( data ) {
   return tmp;
 }
 
-port = get_kb_item( "Services/udp/snmp" );
-if( ! port ) port = 161;
-if( ! get_udp_port_state( port ) ) exit( 0 );
+port = get_snmp_port( default:161 );
 
 if( defined_func( "snmpv3_get" ) ) {
+
   if( ! res = snmp_get( port:port, oid:'1.3.6.1.2.1.1.1.0' ) ) exit( 0 );
 
-  set_kb_item( name:"SNMP/sysdesc", value:res );
+  set_kb_item( name:"SNMP/" + port + "/sysdesc", value:res );
+  replace_kb_item( name:"SNMP/sysdesc/available", value:TRUE );
   exit( 0 );
 
 } else {
 
-  community = get_kb_item( "SNMP/community" );
+  community = snmp_get_community( port:port );
   if( ! community ) community = "public";
 
   soc = open_sock_udp( port );
@@ -122,7 +123,8 @@ if( defined_func( "snmpv3_get" ) ) {
     if( isnull( result ) || ord( result[0] ) != 48 ) continue;
 
     if( res = parse_result( data:result ) ) {
-      set_kb_item( name:"SNMP/sysdesc", value:res );
+      set_kb_item( name:"SNMP/" + port + "/sysdesc", value:res );
+      replace_kb_item( name:"SNMP/sysdesc/available", value:TRUE );
       close( soc );
       exit( 0 );
     }

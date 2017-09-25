@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_esx_snmp_detect.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_vmware_esx_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # VMware ESX detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103417");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 7236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2012-02-14 10:38:50 +0100 (Tue, 14 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("gb_snmp_sysdesc.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
-  script_mandatory_keys("SNMP/sysdesc");
+  script_mandatory_keys("SNMP/sysdesc/available");
 
   script_xref(name:"URL", value:"http://www.vmware.com/");
 
@@ -55,12 +55,10 @@ include("host_details.inc");
 
 SCRIPT_DESC = "VMware ESX detection (SNMP)";
 
-port = get_kb_item("Services/udp/snmp");
-if(!port)port = 161;
+include("snmp_func.inc");
 
-if(!(get_udp_port_state(port)))exit(0);
-
-sysdesc = get_kb_item("SNMP/sysdesc");
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
 if(!sysdesc || "vmware" >!< tolower(sysdesc))exit(0);
 
 version = eregmatch(pattern:"(VMware ESX ?(Server)?) ([0-9.]+)",string:sysdesc);
@@ -97,7 +95,7 @@ if(!isnull(version[1]) && !isnull(version[3])) {
   result_txt += sysdesc;
   result_txt += '\n';
 
-  log_message(port:port, data:result_txt);
+  log_message(port:port, data:result_txt, proto:"udp");
 
   exit(0);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webserver_favicon.nasl 7050 2017-09-04 09:50:25Z cfischer $
+# $Id: webserver_favicon.nasl 7208 2017-09-21 06:03:49Z cfischer $
 #
 # Identify software/infrastructure via favicon.ico
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20108");
-  script_version("$Revision: 7050 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 11:50:25 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 7208 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-21 08:03:49 +0200 (Thu, 21 Sep 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,6 +62,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
+
+global_var found, foundList, server;
 
 # Known favicons list:
 # Google Web Server, should not be seen outside Google, and servers as
@@ -401,10 +403,11 @@ server["c126f7e761813946fea2e90ff7ddb838"]="Zenoss Core x";
 server["5a77e47fa23554a4166d2303580b0733"]="Sawmill";
 server["a4eb4e0aa80740db8d7d951b6d63b2a2"]="ownCloud";
 server["531b63a51234bb06c9d77f219eb25553"]="phpmyadmin (4.6.x)";
+server["ef9c0362bf20a086bb7c2e8ea346b9f0"]="Roundcube Webmail 1.0.0+, Skins Classic and Larry";
 
-function check_md5( res ) {
+function check_md5( res, port, url ) {
 
-  local_var res, md5, file;
+  local_var res, port, url, md5, file;
 
   if( ! res || isnull( res ) ) return;
   md5 = hexstr( MD5( res ) );
@@ -434,7 +437,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
-  check_md5( res:res );
+  check_md5( res:res, port:port, url:url );
 
   # Check if a favicon is referenced via a <link rel= tag
   res = http_get_cache( item:dir + "/", port:port );
@@ -445,10 +448,16 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
     if( file[1] ) {
       url = file[1];
+
+      # Some webpages have a href like <link rel="shortcut icon" href="skins/larry/images/favicon.ico"/>
+      # This means we need to add the current dir here
+      # TODO: Maybe move this to webmirror.nasl as it can handle all cases like ../skins/ and ./../skins?
+      if( url[0] != "/" || ( url[0] == "." && url[1] == "/" ) )
+        url = dir + "/" + url;
+
       req = http_get( item:url, port:port );
       res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
-
-      check_md5( res:res );
+      check_md5( res:res, port:port, url:url );
     }
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_sma_detection.nasl 5224 2017-02-07 15:23:20Z teissa $
+# $Id: gb_dell_sonicwall_sma_detection.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Dell SonicWALL Secure Mobile Access / Secure Remote Access Detection
 #
@@ -29,8 +29,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.107118");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5224 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-07 16:23:20 +0100 (Tue, 07 Feb 2017) $");
+  script_version("$Revision: 7236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value: "2017-01-09 13:26:09 +0700 (Mon, 09 Jan 2017)");
   script_name("Dell SonicWALL SMA / SRA Detection");
   script_category(ACT_GATHER_INFO);
@@ -38,7 +38,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_snmp_sysdesc.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
-  script_mandatory_keys("SNMP/sysdesc");
+  script_mandatory_keys("SNMP/sysdesc/available");
 
   script_tag(name:"summary", value:"This script performs SNMP based detection of Dell SonicWALL Secure Mobile Access (SMA)
   and Secure Remote Access (SRA).");
@@ -51,13 +51,11 @@ if(description)
 include("dump.inc");
 include("host_details.inc");
 include("cpe.inc");
+include("snmp_func.inc");
 
-port = get_kb_item( "Services/udp/snmp" );
-if( ! port ) port = 161;
-if( ! get_udp_port_state( port ) ) exit(0);
-
-sysdesc = get_kb_item( "SNMP/sysdesc" );
-if( ! sysdesc ) exit( 0 );
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 if( sysdesc !~ 'Dell SonicWALL S[R|M]A' ) exit(0);
 Pro = eregmatch( pattern: 'Dell SonicWALL ([A-Z]+)', string:sysdesc );
@@ -65,8 +63,8 @@ if ( ! isnull( Pro[1] ) )
 {
     Product = Pro[1];
 }
-set_kb_item(name:"sonicwall/" + tolower(Product) + "/detected", value:TRUE);
 
+set_kb_item(name:"sonicwall/" + tolower(Product) + "/detected", value:TRUE);
 
 ## Check for Virtual Appliance (No Serie in the SNMP banner)
 
@@ -105,13 +103,12 @@ else if (Product == "SRA")
 if ( ! isnull(serie))       set_kb_item( name:'sonicwall/' + tolower(Product) + '/serie', value:serie );
 if ( ! isnull(vers)) set_kb_item( name:'sonicwall/' + tolower(Product) + '/version', value:vers );
 
-
-register_product( cpe:cpe, location:"/", port:port, proto:"udp", service:"snmp" );
+register_product( cpe:cpe, location:port + "/udp", port:port, proto:"udp", service:"snmp" );
 log_message( data:build_detection_report( app:"Dell SonicWALL " + Product,
                                           version:vers,
                                           install:port + "/udp",
                                           cpe:cpe,
-                                          concluded:version[0] ),
+                                          concluded:sysdesc ),
                                           port:port,
                                           proto:"udp" );
 

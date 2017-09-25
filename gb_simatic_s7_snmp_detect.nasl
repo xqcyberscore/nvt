@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_snmp_detect.nasl 6160 2017-05-18 09:39:36Z ckuerste $
+# $Id: gb_simatic_s7_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Siemens SIMATIC S7 Device Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106097");
- script_version ("$Revision: 6160 $");
- script_tag(name: "last_modification", value: "$Date: 2017-05-18 11:39:36 +0200 (Thu, 18 May 2017) $");
+ script_version ("$Revision: 7236 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name: "creation_date", value: "2016-06-15 15:54:49 +0700 (Wed, 15 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,21 +47,16 @@ devices.");
  script_family("Product detection");
  script_dependencies("gb_snmp_sysdesc.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);
-
+ script_mandatory_keys("SNMP/sysdesc/available");
 
  exit(0);
 }
 
-port = get_kb_item("Services/udp/snmp");
-if (!port)
-  port = 161;
+include("snmp_func.inc");
 
-if (!get_udp_port_state(port))
-  exit(0);
-
-sysdesc = get_kb_item("SNMP/sysdesc");
-if (!sysdesc)
-  exit(0);
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 if (egrep(string: sysdesc, pattern: "Siemens, SIMATIC( S7,)|(, S7)")) {
   mo = eregmatch(pattern: "SIMATIC( S7)?, (S7-|CPU-|IM|CPU)([^,]+)", string: sysdesc);

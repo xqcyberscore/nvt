@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arubaos_detect.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_arubaos_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # ArubaOS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105244");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 7236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-04-07 13:29:41 +0200 (Tue, 07 Apr 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_snmp_sysdesc.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
-  script_mandatory_keys("SNMP/sysdesc");
+  script_mandatory_keys("SNMP/sysdesc/available");
 
   script_tag(name:"summary", value:"This script performs SNMP based detection of ArubaOS");
 
@@ -49,18 +49,15 @@ if(description)
 }
 
 include("host_details.inc");
+include("snmp_func.inc");
 
-port = get_kb_item("Services/udp/snmp");
-if( ! port ) port = 161;
-
-if( ! ( get_udp_port_state( port ) ) ) exit( 0 );
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 # ArubaOS (MODEL: Aruba3400), Version 6.3.1.1 (40563)
 # ArubaOS (MODEL: Aruba200-US), Version 5.0.4.16 (43995)
 # ArubaOS Version 6.1.2.3-2.1.0.0
-sysdesc = get_kb_item("SNMP/sysdesc");
-if( ! sysdesc )exit( 0 );
-
 if( "ArubaOS" >!< sysdesc ) exit( 0 );
 
 set_kb_item( name:"ArubaOS/installed", value:TRUE );
@@ -95,9 +92,9 @@ if( ! isnull( mod[1] ) )
   set_kb_item( name:"ArubaOS/model", value:model );
 }
 
-register_product( cpe:cpe, location:'snmp' );
+register_product( cpe:cpe, port:port, proto:"udp", location:port + "/udp", service:"snmp" );
 register_and_report_os( os:"ArubaOS", cpe:cpe, banner_type:"SNMP sysdesc", banner:sysdesc, port:port, proto:"udp", desc:"ArubaOS Detection", runs_key:"unixoide" );
 
-log_message( data:'The remote host is running ArubaOS ' + rep_vers + '\nCPE: '+ cpe + '\nModel: ' + model + '\nConcluded: ' + sysdesc + '\n', port:0 );
+log_message( data:'The remote host is running ArubaOS ' + rep_vers + '\nCPE: '+ cpe + '\nModel: ' + model + '\nConcluded: ' + sysdesc + '\n', port:port, proto:"udp" );
 exit( 0 );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zxv10_w300_hardcoded_credentials_2014.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_zxv10_w300_hardcoded_credentials_2014.nasl 7239 2017-09-22 16:10:31Z cfischer $
 #
 # ZTE ZXV10 W300 Wireless Router Hardcoded Credentials Security Bypass Vulnerability
 #
@@ -59,21 +59,23 @@ if (description)
  script_cve_id("CVE-2014-0329");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6692 $");
+ script_version ("$Revision: 7239 $");
 
  script_name("ZTE ZXV10 W300 Wireless Router Hardcoded Credentials Security Bypass Vulnerability");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65310");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name:"creation_date", value:"2014-02-10 13:47:33 +0100 (Mon, 10 Feb 2014)");
  script_tag(name:"qod_type", value:"exploit");
  script_tag(name:"solution_type", value:"NoneAvailable");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_snmp_sysdesc.nasl","telnetserver_detect_type_nd_version.nasl");
+ script_dependencies("gb_snmp_sysdesc.nasl", "telnetserver_detect_type_nd_version.nasl");
  script_require_ports("Services/telnet", 23);
+ script_require_udp_ports("Services/udp/snmp", 161);
+
  script_tag(name : "impact" , value : tag_impact);
  script_tag(name : "vuldetect" , value : tag_vuldetect);
  script_tag(name : "insight" , value : tag_insight);
@@ -83,18 +85,16 @@ if (description)
  exit(0);
 }
 
-
 include("telnet_func.inc");
 include("dump.inc");
+include("snmp_func.inc");
 
-snmp_port = get_kb_item("Services/udp/snmp");
-if( ! snmp_port) snmp_port = 161;
-if( ! get_udp_port_state( snmp_port ) ) exit( 0 );
+snmp_port = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:snmp_port);
 
 telnet_port = 23;
 if( ! get_port_state( telnet_port ) ) exit( 0 );
 
-sysdesc = get_kb_item("SNMP/sysdesc");
 if( sysdesc =~ "(ZXV|N12E|SpeedSurf|RTA|DG-)" ) device = TRUE;
 
 if( ! device )
@@ -105,7 +105,7 @@ if( ! device )
 
 if( ! device ) exit( 0 );
 
-community = get_kb_item("SNMP/community");
+community = snmp_get_community( port:snmp_port );
 if( ! community ) community = "public";
 
 SNMP_BASE = 38;

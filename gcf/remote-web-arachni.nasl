@@ -33,8 +33,8 @@ if(description)
 {
  script_id(110001);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6995 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+ script_version("$Revision: 7221 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-21 15:05:11 +0200 (Thu, 21 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-02-02 13:26:27 +0100 (Wed, 02 Feb 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("arachni (NASL wrapper)");
@@ -79,7 +79,7 @@ include("http_func.inc");
 if (! defined_func("pread"))
 {
   set_kb_item(name: "/tmp/UnableToRun/40001", value: TRUE);
-  display("Script #40001 (arachni_wrapper) cannot run\n");
+  #display("Script #40001 (arachni_wrapper) cannot run\n");
   exit(0);
 }
 

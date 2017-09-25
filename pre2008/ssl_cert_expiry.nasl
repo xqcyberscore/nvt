@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssl_cert_expiry.nasl 4801 2016-12-19 10:56:54Z cfi $
+# $Id: ssl_cert_expiry.nasl 7242 2017-09-23 14:58:39Z cfischer $
 #
 # SSL/TLS: Certificate Expiry
 #
@@ -33,8 +33,8 @@ lookahead = 60;
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15901");
-  script_version("$Revision: 4801 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-19 11:56:54 +0100 (Mon, 19 Dec 2016) $");
+  script_version("$Revision: 7242 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-23 16:58:39 +0200 (Sat, 23 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -62,8 +62,8 @@ if(description)
 
   This NVT has been replaced by NVT 'SSL/TLS: Certificate Expired' (OID: 1.3.6.1.4.1.25623.1.0.103955).");
 
-  script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"Mitigation");
+  script_tag(name:"qod_type", value:"remote_vul");
 
   script_tag(name:"deprecated", value:TRUE);
 
@@ -129,7 +129,9 @@ if (defined_func("cert_open") && ! isnull( cert )) {
                 valid_end, ".", level:0);
 
   now = isotime_now();
+  if( strlen( now ) <= 0 ) exit( 0 ); # isotime_now: "If the current time is not available an empty string is returned."
   future = isotime_add(now, days:lookahead);
+  if( isnull( future ) ) exit( 0 ); # isotime_add: "or NULL if the provided ISO time string is not valid or the result would overflow (i.e. year > 9999).
 
   if (valid_start > now) {
     log_message(data:string("The SSL certificate of the remote service ",
@@ -150,6 +152,7 @@ if (defined_func("cert_open") && ! isnull( cert )) {
                   port:port);
   } else {
     future = isotime_add(now, years:15);
+    if( isnull( future ) ) exit( 0 ); # isotime_add: "or NULL if the provided ISO time string is not valid or the result would overflow (i.e. year > 9999).
     if (valid_end > future) {
         log_message(data:string("The SSL certificate of the remote service ",
                                   "is valid for more than 15 years from now ",

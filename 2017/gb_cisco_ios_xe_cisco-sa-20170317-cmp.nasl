@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170317-cmp.nasl 6166 2017-05-19 05:29:49Z ckuerste $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170317-cmp.nasl 7206 2017-09-21 03:12:53Z ckuersteiner $
 #
 # Cisco IOS XE Software Cluster Management Protocol Remote Code Execution Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-3881");
  script_tag(name: "cvss_base", value: "10.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 6166 $");
+ script_version("$Revision: 7206 $");
 
  script_name("Cisco IOS XE Software Cluster Management Protocol Remote Code Execution Vulnerability");
 
@@ -64,7 +64,7 @@ control of the device or cause a reload of the affected device.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-09-21 05:12:53 +0200 (Thu, 21 Sep 2017) $");
  script_tag(name: "creation_date", value: "2017-03-20 11:02:32 +0700 (Mon, 20 Mar 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -104,6 +104,7 @@ affected = make_list(
 		'3.2.0XO',
 		'3.2.10SG',
 		'3.2.11SG',
+		'3.2.1SG',
 		'3.2.2SG',
 		'3.2.3SG',
 		'3.2.4SG',
@@ -143,16 +144,17 @@ affected = make_list(
 		'3.5.3SQ',
 		'3.5.4SQ',
 		'3.5.5SQ',
+		'3.5.7SQ',
 		'3.6.0E',
 		'3.6.1E',
 		'3.6.2E',
+		'3.6.2aE',
 		'3.6.3E',
 		'3.6.4E',
 		'3.6.5E',
 		'3.6.5aE',
 		'3.6.5bE',
 		'3.6.6E',
-		'3.6.7E',
 		'3.7.0E',
 		'3.7.1E',
 		'3.7.2E',
@@ -162,9 +164,9 @@ affected = make_list(
 		'3.8.0E',
 		'3.8.0EX',
 		'3.8.1E',
+		'3.8.1S',
 		'3.8.2E',
 		'3.8.3E',
-		'3.8.4E',
 		'3.9.0E',
 		'3.9.1E');
 

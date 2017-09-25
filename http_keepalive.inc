@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_keepalive.inc 7159 2017-09-18 07:27:42Z cfischer $
+# $Id: http_keepalive.inc 7229 2017-09-22 07:34:58Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7159 $
+# $Revision: 7229 $
 #
 ###############################################################################
 
@@ -38,7 +38,7 @@ __ka_enabled = -1;
 __ka_last_request = "";
 
 # Enables debugging output for a few functions below
-local_var _http_ka_debug;
+global_var _http_ka_debug;
 _http_ka_debug = 0;
 
 # Based on the last headers we received, we determine if we need
@@ -307,7 +307,11 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
   }
 
   id = stridx( data, '\r\n\r\n' );
-  data = str_replace( string:data, find:"Connection: Close", replace:"Connection: Keep-Alive", count:1 );
+  # Old behavior: data = str_replace( string:data, find:"Connection: Close", replace:"Connection: Keep-Alive", count:1 );
+  # https://tools.ietf.org/html/rfc7230#section-6.1 -> Connection options are case-insensitive.
+  # Some NVTs devs might add a "Connection: close" to the header data passed to this function so doing an ereg_replace instead
+  # nb: Be aware that this ereg_replace is also replacing any occurance of "Connection: Close" somewhere in the body of the request data.
+  data = ereg_replace( string:data, pattern:"Connection: Close", replace:"Connection: Keep-Alive", icase:TRUE );
   __ka_last_request = data;
   n = send( socket:__ka_socket, data:data );
   lendata = strlen( data );
@@ -751,7 +755,7 @@ function http_get_req( port, url, add_headers, accept_header, user_agent ) {
   host = http_host_name( port:port );
   if( ! accept_header ) accept_header = 'image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*';
 
-  if ( ! user_agent ) 
+  if ( ! user_agent )
     user_agent = OPENVAS_HTTP_USER_AGENT;
   else
     x_header = TRUE;

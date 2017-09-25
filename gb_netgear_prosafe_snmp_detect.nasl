@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_prosafe_snmp_detect.nasl 7113 2017-09-13 06:03:30Z cfischer $
+# $Id: gb_netgear_prosafe_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # NETGEAR ProSafe Devices Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108163");
-  script_version("$Revision: 7113 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
+  script_version("$Revision: 7236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-05-18 10:24:16 +0200 (Thu, 18 May 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("gb_snmp_sysdesc.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
-  script_mandatory_keys("SNMP/sysdesc");
+  script_mandatory_keys("SNMP/sysdesc/available");
 
   script_tag(name:"summary", value:"Detection of NETGEAR ProSafe devices.
 
@@ -52,12 +52,11 @@ if(description)
 
 include("cpe.inc");
 include("host_details.inc");
+include("snmp_func.inc");
 
-port = get_kb_item( "Services/udp/snmp" );
-if( ! port ) port = 161;
-
-sysdesc = get_kb_item( "SNMP/sysdesc" );
-if( ! sysdesc ) exit( 0 );
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 if( "ProSafe" >< sysdesc ) {
 
@@ -111,8 +110,8 @@ if( "ProSafe" >< sysdesc ) {
 
   hwcpe = "cpe:/h:netgear:" + tolower( model );
 
-  register_product( cpe:oscpe, port:port, service:"snmp", proto:"udp" );
-  register_product( cpe:hwcpe, port:port, service:"snmp", proto:"udp" );
+  register_product( cpe:oscpe, port:port, location:port + "/udp", service:"snmp", proto:"udp" );
+  register_product( cpe:hwcpe, port:port, location:port + "/udp", service:"snmp", proto:"udp" );
 
   set_kb_item( name:"Host/OS/SNMP", value:"NETGEAR Prosafe Firmware" );
   set_kb_item( name:"Host/OS/SNMP/Confidence", value:100 );

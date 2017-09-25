@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_westermo_weos_detect.nasl 4081 2016-09-16 10:16:48Z ckuerste $
+# $Id: gb_westermo_weos_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Westermo WeOS Detection 
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106196");
- script_version ("$Revision: 4081 $");
- script_tag(name: "last_modification", value: "$Date: 2016-09-16 12:16:48 +0200 (Fri, 16 Sep 2016) $");
+ script_version ("$Revision: 7236 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name: "creation_date", value: "2016-08-24 11:10:05 +0700 (Wed, 24 Aug 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,6 +48,7 @@ This script performs SNMP based detection of Westermo WeOS.");
  script_family("Product detection");
  script_dependencies("gb_snmp_sysdesc.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);
+ script_mandatory_keys("SNMP/sysdesc/available");
 
  script_xref(name: "URL", value: "http://www.westermo.com");
 
@@ -56,17 +57,11 @@ This script performs SNMP based detection of Westermo WeOS.");
 
 include("cpe.inc");
 include("host_details.inc");
+include("snmp_func.inc");
 
-port = get_kb_item("Services/udp/snmp");
-if (!port)
-  port = 161;
-
-if (!get_udp_port_state(port))
-  exit(0);
-
-sysdesc = get_kb_item("SNMP/sysdesc");
-if (!sysdesc)
-  exit(0);
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 if (egrep(string: sysdesc, pattern: "^Westermo.*, primary:.*, backup:.*, bootloader:")) {
   model = "unknown";
@@ -90,10 +85,10 @@ if (egrep(string: sysdesc, pattern: "^Westermo.*, primary:.*, backup:.*, bootloa
   if (!cpe)
     cpe = 'cpe:/o:westermo:weos';
 
-  register_product(cpe: cpe, location: "snmp", port: port);
+  register_product(cpe: cpe, location: port + "/udp", port: port, proto: "udp", service: "snmp");
 
   log_message(data: build_detection_report(app: "Westermo WeOS on model " + model, version: version,
-                                           install: "snmp", cpe: cpe, concluded: vers[0]),
+                                           install: port + "/udp", cpe: cpe, concluded: sysdesc),
               port: port, proto: "udp");
 
   exit(0);

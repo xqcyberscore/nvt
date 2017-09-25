@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 7163 2017-09-18 08:36:09Z cfischer $
+# $Id: misc_func.inc 7229 2017-09-22 07:34:58Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,12 +26,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7163 $
+# $Revision: 7229 $
 #
 ###############################################################################
 
 # Enables debugging output for a few functions below
-local_var _misc_func_debug;
+global_var _misc_func_debug;
 _misc_func_debug = 0;
 
 # This function is deprecated.

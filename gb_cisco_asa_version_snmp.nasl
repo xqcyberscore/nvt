@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_version_snmp.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_cisco_asa_version_snmp.nasl 7236 2017-09-22 14:59:19Z cfischer $
 #
 # Cisco ASA Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106513");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 7236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-01-12 15:23:14 +0700 (Thu, 12 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,7 +47,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("gb_snmp_sysdesc.nasl");
   script_require_udp_ports("Services/udp/snmp", 161);
-  script_mandatory_keys("SNMP/sysdesc");
+  script_mandatory_keys("SNMP/sysdesc/available");
 
   exit(0);
 }
@@ -56,13 +56,9 @@ include("cpe.inc");
 include("host_details.inc");
 include("snmp_func.inc");
 
-port = get_kb_item("Services/udp/snmp");
-if (!port)
-  port = 161;
-
-sysdesc = get_kb_item("SNMP/sysdesc");
-if (!sysdesc)
-  exit(0);
+port    = get_snmp_port(default:161);
+sysdesc = get_snmp_sysdesc(port:port);
+if(!sysdesc) exit(0);
 
 if ("Cisco Adaptive Security Appliance" >< sysdesc) {
   version = "unknown";
@@ -93,7 +89,7 @@ if ("Cisco Adaptive Security Appliance" >< sysdesc) {
   if (!cpe2)
     cpe2 = 'cpe:/o:cisco:adaptive_security_appliance_software';
 
-  register_product(cpe: cpe);
+  register_product(cpe: cpe, location:port + "/udp", proto:"udp", service:"snmp" );
   register_and_report_os(os: "Cisco ASA", cpe: cpe2, banner_type: "SNMP sysdesc", banner: sysdesc, port: port,
                          proto: "udp", desc: "Cisco ASA Detection (SNMP)", runs_key: "unixoide");
 

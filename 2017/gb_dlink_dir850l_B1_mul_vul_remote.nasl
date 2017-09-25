@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir850l_B1_mul_vul_remote.nasl 7139 2017-09-15 09:13:13Z ckuersteiner $
+# $Id: gb_dlink_dir850l_B1_mul_vul_remote.nasl 7243 2017-09-25 05:48:36Z cfischer $
 #
 # D-Link 850L Firmware B1 Admin Password Disclosure Vulnerability (remote)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107243");
-  script_version("$Revision: 7139 $");
+  script_version("$Revision: 7243 $");
   script_cve_id("CVE-2017-14417", "CVE-2017-14418");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:13:13 +0200 (Fri, 15 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-25 07:48:36 +0200 (Mon, 25 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-12 17:47:21 +0200 (Tue, 12 Sep 2017)");
 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("D-Link 850L Firmware B1 Admin Password Disclosure Vulnerability (remote)");

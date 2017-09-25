@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_saia_pcd_1_22.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_saia_pcd_1_22.nasl 7228 2017-09-22 06:50:28Z ckuersteiner $
 #
 # Saia PCD < 1.22 Multiple Vulnerabilities
 #
@@ -25,10 +25,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/h:saia_burgess_controls";
+
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103895");
- script_version ("$Revision: 6663 $");
+ script_version ("$Revision: 7228 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -38,15 +40,14 @@ if (description)
  script_xref(name:"URL", value:"http://www.heise.de/security/meldung/Kritische-Schwachstelle-in-hunderten-Industrieanlagen-1854385.html");
  script_xref(name:"URL", value:"http://www.heise.de/security/meldung/Verwundbare-Industrieanlagen-Fernsteuerbares-Gotteshaus-1902245.html");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-22 08:50:28 +0200 (Fri, 22 Sep 2017) $");
  script_tag(name:"creation_date", value:"2014-01-28 11:22:01 +0100 (Tue, 28 Jan 2014)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("General");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("Saia_PCD/banner");
- script_require_ports("Services/www", 80);
+ script_dependencies("gb_saia_pcd_web_detect.nasl");
+ script_mandatory_keys("saia_pcd/detected", "saia_pcd/version");
 
  script_tag(name:"impact", value:"Exploiting these issue could allow an attacker to compromise the
  application, access or modify data.");
@@ -59,23 +60,19 @@ if (description)
  exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port (default:80);
+if (!port = get_app_port_from_cpe_prefix(cpe: CPE))
+  exit(0);
 
-banner = get_http_banner (port:port);
-if( "Server: Saia PCD" >!< banner ) exit (0);
+version = get_kb_item("saia_pcd/version");
+if (!version)
+  exit(0);
 
-fix = '1.22';
-version = eregmatch (pattern:'Server: Saia PCD[^/]+/([0-9.]+)', string:banner);
-if( isnull (version[1]) ) exit (0);
-
-if( version_is_less (version:version[1], test_version:fix) )
-{
-    report = 'Installed Firmware: ' + version[1] + '\nFixed Firmware:     ' + fix + '.x';
-    security_message (port:port, data:report);
+if (version_is_less (version: version, test_version: "1.22") ) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "1.22");
+    security_message (port: port, data: report);
     exit(0);
 }
 

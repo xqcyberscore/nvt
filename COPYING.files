@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 21 Sep 2017 08:35:41 +0200
+# Automatically created on:  Mon, 25 Sep 2017 08:48:13 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47469,7 +47469,9 @@
 2016/sw_vbulletin_forumrunner_sqli.nasl: GPLv2+
 2016/sw_wordpress_kento_post_viewer_counter_plugin_mult_vuln.nasl: GPLv2+
 2017/adobe/gb_adobe_coldfusion_info_disclose_nd_rce_vuln.nasl: GPLv2+
+2017/afterlogic/gb_afterlogic_aurora_webmail_xss_vuln.nasl: GPLv2+
 2017/apache/gb_apache_optionsbleed.nasl: GPLv2+
+2017/apple/gb_apple_safari_spoofing_n_xss_vuln_HT208116.nasl: GPLv2+
 2017/citrix/gb_xenserver_ctx227185.nasl: GPLv2+
 2017/deb_3750.nasl: GPLv2+
 2017/deb_3751.nasl: GPLv2+
@@ -47692,6 +47694,14 @@
 2017/deb_3970.nasl: GPLv2+
 2017/deb_3971.nasl: GPLv2+
 2017/deb_3972.nasl: GPLv2+
+2017/deb_3973.nasl: GPLv2+
+2017/deb_3974.nasl: GPLv2+
+2017/deb_3975.nasl: GPLv2+
+2017/deb_3976.nasl: GPLv2+
+2017/deb_3977.nasl: GPLv2+
+2017/deb_3978.nasl: GPLv2+
+2017/deb_3979.nasl: GPLv2+
+2017/deb_3980.nasl: GPLv2+
 2017/digium/gb_asterisk_rtp_info_leak_vuln.nasl: GPLv2+
 2017/drupal/gb_drupal_core_mult_vuln_SA-CORE-2015-001_lin.nasl: GPLv2+
 2017/drupal/gb_drupal_core_mult_vuln_SA-CORE-2015-001_win.nasl: GPLv2+
@@ -48137,6 +48147,8 @@
 2017/gb_CESA-2017_2681_kernel_centos6.nasl: GPLv2+
 2017/gb_CESA-2017_2685_bluez_centos6.nasl: GPLv2+
 2017/gb_CESA-2017_2685_bluez_centos7.nasl: GPLv2+
+2017/gb_CESA-2017_2728_postgresql_centos7.nasl: GPLv2+
+2017/gb_CESA-2017_2771_emacs_centos7.nasl: GPLv2+
 2017/gb_chef_manage_rce_vuln.nasl: GPLv2+
 2017/gb_chip_default_ssh_credentials.nasl: GPLv2+
 2017/gb_cisco_acs_cisco-sa-20170215-acs1.nasl: GPLv2+
@@ -48697,6 +48709,7 @@
 2017/gb_fedora_2017_273b67d5ee_kernel_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_278f46fcd6_golang_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_28387b61fd_php-horde-Horde-Image_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_292c77b3c1_FlightGear_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_294c23bb1d_phpMyAdmin_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_299525e757_php-horde-Horde-Image_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_29d909f5ec_systemd_fc25.nasl: GPLv2+
@@ -48762,6 +48775,30 @@
 2017/gb_fedora_2017_3886afeb06_freetype_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_3893b6e15b_mingw-wavpack_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_392b319bb5_kernel_fc24.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_autotrace_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_converseen_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_drawtiming_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_emacs_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_gtatool_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_imageinfo_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_ImageMagick_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_inkscape_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_k3d_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_kxstitch_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_perl-Image-SubImageFind_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_pfstools_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_php-pecl-imagick_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_psiconv_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_q_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_ripright_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_rss-glx_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_rubygem-rmagick_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_synfig_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_synfigstudio_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_techne_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_vdr-scraper2vdr_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_vips_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_3a568adb31_WindowMaker_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_3a9ec92dd6_kernel_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_3abea58794_mbedtls_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_3ac2e9b354_GraphicsMagick_fc25.nasl: GPLv2+
@@ -48831,6 +48868,7 @@
 2017/gb_fedora_2017_4c57da6642_libmtp_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_4cb58f0bda_java-1.8.0-openjdk-aarch32_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_4cc8d795e0_moodle_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_4d4914a260_mingw-libzip_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_4de07172f4_postgresql_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_4ede204115_python-dbusmock_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_4f4eef4791_kdelibs3_fc25.nasl: GPLv2+
@@ -48910,13 +48948,16 @@
 2017/gb_fedora_2017_63789c8c29_tomcat_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_6382ea8d57_percona-xtrabackup_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_63aca509fb_zabbix_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_63ff51c0dc_libwpd_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_642a0eca75_samba_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_6554692044_kernel_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_6558bc25bc_sscg_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_661dddc462_groovy18_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_66593c367e_qbittorrent_fc24.nasl: GPLv2+
+2017/gb_fedora_2017_6679a0a2e1_freexl_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_6681f94e10_moodle_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_6694f5cd3a_bitlbee_fc24.nasl: GPLv2+
+2017/gb_fedora_2017_66adafeb3b_lightdm_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_66fd940572_libpng15_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_674d306f51_icecat_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_6764d16965_kernel_fc26.nasl: GPLv2+
@@ -48959,6 +49000,7 @@
 2017/gb_fedora_2017_72323a442f_ntp_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_72a971ccf0_libsndfile_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_72f0c1ea9c_systemd_fc24.nasl: GPLv2+
+2017/gb_fedora_2017_7369ea045c_kernel_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_73d6a0dfbb_webkitgtk4_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_73f71456d7_kernel_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_7462231059_kernel_fc25.nasl: GPLv2+
@@ -48978,8 +49020,10 @@
 2017/gb_fedora_2017_7591a8e2c9_globus-xio-udt-driver_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_7591a8e2c9_myproxy_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_75c571778e_irssi_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_769793738f_jasper_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_76ce091a43_chicken_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_77ab791c90_ark_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_77e8bc720a_mimedefang_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_7803508155_python-cjson_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_783e8fa63e_w3m_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_787bc0d5b4_kernel_fc24.nasl: GPLv2+
@@ -49023,6 +49067,7 @@
 2017/gb_fedora_2017_7fc53a671f_deluge_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_801e01d1ed_mariadb_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_80763c8c03_collectd_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_80c4677540_LibRaw_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_81522ac6d8_nodejs_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_81fbd592d4_kernel_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_82265ed89e_thunderbird_fc25.nasl: GPLv2+
@@ -49040,6 +49085,7 @@
 2017/gb_fedora_2017_84ed105d3e_xen_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_85744f8aa9_kernel_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_85eb9f7a36_supervisor_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_8614a6e905_python-django_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_866fc566e0_torbrowser-launcher_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_86cfcbbae8_libstaroffice_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_8722576148_ettercap_fc25.nasl: GPLv2+
@@ -49067,6 +49113,31 @@
 2017/gb_fedora_2017_8eac23007d_xrdp_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_8f018a3d39_golang_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_8f23f564ad_bind99_fc24.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_autotrace_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_converseen_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_dmtx-utils_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_drawtiming_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_emacs_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_gtatool_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_imageinfo_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_ImageMagick_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_inkscape_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_k3d_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_kxstitch_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_perl-Image-SubImageFind_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_pfstools_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_php-pecl-imagick_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_psiconv_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_q_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_ripright_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_rss-glx_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_rubygem-rmagick_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_synfig_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_synfigstudio_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_techne_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_vdr-scraper2vdr_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_vips_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_8f27031c8f_WindowMaker_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_8f4fba5afa_varnish_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_8ff992386d_systemd_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_8fffbae8af_xrdp_fc25.nasl: GPLv2+
@@ -49128,6 +49199,7 @@
 2017/gb_fedora_2017_9ed1b89530_mbedtls_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_9fa2cefa7a_mingw-poppler_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_9fbcf033f8_java-1.8.0-openjdk-aarch32_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_a00a087fd4_tomcat_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_a05e2b8545_cups-filters_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_a05e2b8545_qpdf_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_a11f853361_kdepim4_fc25.nasl: GPLv2+
@@ -49158,6 +49230,7 @@
 2017/gb_fedora_2017_aab5f759f5_cryptlib_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_aaf92c483c_php-pear-PHP-CodeSniffer_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_ab04a91edd_gtk-vnc_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_ab0def38cd_tomcat_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_ab3acddd21_libtiff_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_ab4f51572f_wavpack_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_ab55648aa7_php-PHPMailer_fc26.nasl: GPLv2+
@@ -49183,6 +49256,7 @@
 2017/gb_fedora_2017_b0918e3905_moodle_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_b0a2770a9b_knot_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_b0ec173bd1_libsoup_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_b10e1a9166_rawtherapee_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_b11b460865_util-linux_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_b154ff2892_mercurial_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_b1abcbe695_webkitgtk4_fc24.nasl: GPLv2+
@@ -49196,6 +49270,7 @@
 2017/gb_fedora_2017_b59943dcae_qbittorrent_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_b674dc22ad_php_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_b72cafa5b4_texlive_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_b7e6e4cfc1_freexl_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_b7f1197c23_xen_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_b812362f61_php-horde-Horde-Core_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_b83c0eeab0_xstream_fc25.nasl: GPLv2+
@@ -49216,6 +49291,7 @@
 2017/gb_fedora_2017_bb1ecba1bc_kf5-messagelib_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_bb459964ce_firefox_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_bb4c07b01a_file_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_bb5d87e9de_mingw-libzip_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_bbb664e0a0_mingw-poppler_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_bbe2ee70cd_qt5-qtwebkit_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_bcab179007_drupal7-views_fc24.nasl: GPLv2+
@@ -49256,6 +49332,7 @@
 2017/gb_fedora_2017_c3dc97e1e1_php-PHPMailer_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_c419dfe8c7_thunderbird_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_c535f23493_torbrowser-launcher_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_c5d7fd07c5_LibRaw_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_c629f16f6c_subversion_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_c6f424c3ff_proftpd_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_c708c044e3_chromium_fc25.nasl: GPLv2+
@@ -49266,12 +49343,14 @@
 2017/gb_fedora_2017_c8448d0cad_roundcubemail_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_c85c0e5637_ghostscript_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_c87bbae385_drupal7-metatag_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_c89d94d812_mpg123_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_c9828b259c_lynx_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_c98c2e8e7a_libwmf_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_c9d71f0860_xen_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_c9d8011d69_mingw-libsoup_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_ca3f01bd37_php-pear-PHP-CodeSniffer_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_ca6f3b5770_php-horde-Horde-Form_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_caa564d86f_FlightGear_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_cb88734094_ansible_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_cbd5501d31_pdns_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_cc029be02d_tnef_fc25.nasl: GPLv2+
@@ -49309,6 +49388,7 @@
 2017/gb_fedora_2017_d2bab54ac9_GraphicsMagick_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_d2e7217e2a_irssi_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_d317f6fb61_webkitgtk4_fc24.nasl: GPLv2+
+2017/gb_fedora_2017_d361de1a65_libwmf_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_d39099ea6a_webkitgtk4_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_d3bc944153_pius_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_d3d38a53f9_knot_fc26.nasl: GPLv2+
@@ -49320,6 +49400,7 @@
 2017/gb_fedora_2017_d5fb74cd2e_zoneminder_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_d62c8f91e4_cxf_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_d7739ff31b_potrace_fc25.nasl: GPLv2+
+2017/gb_fedora_2017_d793fef58f_lightdm_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_d7bc1b3056_kernel_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_d875ae8299_kernel_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_d90fac5c8f_jasper_fc24.nasl: GPLv2+
@@ -49348,10 +49429,13 @@
 2017/gb_fedora_2017_df53d02da7_knot-resolver_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_e02ec160d8_wordpress_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_e0a9e51dd5_graphite2_fc24.nasl: GPLv2+
+2017/gb_fedora_2017_e136d63c99_ruby_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_e15e37b689_proftpd_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_e2480c7f50_erlang_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_e2a3e6fa12_php-horde-Horde-Crypt_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_e2d6d0067f_oniguruma_fc24.nasl: GPLv2+
+2017/gb_fedora_2017_e399a9008c_xen_fc26.nasl: GPLv2+
+2017/gb_fedora_2017_e4609f71f6_cyrus-imapd_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_e4638a345c_tomcat_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_e4e6928969_seamonkey_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_e58a762c3f_qpdf_fc26.nasl: GPLv2+
@@ -49363,6 +49447,7 @@
 2017/gb_fedora_2017_e6a9108cce_onionshare_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_e6aaef4475_knot-resolver_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_e75602d3ed_kernel_fc24.nasl: GPLv2+
+2017/gb_fedora_2017_e7ae1ed967_gdm_fc26.nasl: GPLv2+
 2017/gb_fedora_2017_e7f9c23746_flac_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_e8460ebed6_icoutils_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_e853b4144f_openssl_fc24.nasl: GPLv2+
@@ -49380,6 +49465,7 @@
 2017/gb_fedora_2017_ed31e1f941_remmina_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_ed4c9b605b_php-horde-Horde-Crypt_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_ed6b6a1d7a_ming_fc24.nasl: GPLv2+
+2017/gb_fedora_2017_ed735463e3_xen_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_edce28f24b_bind99_fc24.nasl: GPLv2+
 2017/gb_fedora_2017_ede53aa845_roundcubemail_fc25.nasl: GPLv2+
 2017/gb_fedora_2017_ee04231942_mingw-librsvg2_fc26.nasl: GPLv2+
@@ -50371,6 +50457,7 @@
 2017/gb_oracle_webLogic_server_cpujul2017-3236622_02.nasl: GPLv2+
 2017/gb_oracle_webLogic_server_cpujul2017-3236622_03.nasl: GPLv2+
 2017/gb_osnexus_quantastor_mult_vuln.nasl: GPLv2+
+2017/gb_otrs_code_inject_priv_esc_vuln.nasl: GPLv2+
 2017/gb_otrs_priv_esc_vuln.nasl: GPLv2+
 2017/gb_owncloud_eol.nasl: GPLv2+
 2017/gb_owncloud_mult_vuln_feb17_lin.nasl: GPLv2+
@@ -50702,6 +50789,8 @@
 2017/gb_RHSA-2017_2679-01_kernel.nasl: GPLv2+
 2017/gb_RHSA-2017_2681-01_kernel.nasl: GPLv2+
 2017/gb_RHSA-2017_2685-01_bluez.nasl: GPLv2+
+2017/gb_RHSA-2017_2728-01_postgresql.nasl: GPLv2+
+2017/gb_RHSA-2017_2771-01_emacs.nasl: GPLv2+
 2017/gb_riverbed_steelhead_file_read_vuln.nasl: GPLv2+
 2017/gb_roundcube_96817.nasl: GPLv2+
 2017/gb_roundcube_98673_98671.nasl: GPLv2+
@@ -50909,11 +50998,19 @@
 2017/gb_suse_2017_2332_1.nasl: GPLv2+
 2017/gb_suse_2017_2335_1.nasl: GPLv2+
 2017/gb_suse_2017_2337_1.nasl: GPLv2+
+2017/gb_suse_2017_2370_1.nasl: GPLv2+
+2017/gb_suse_2017_2384_1.nasl: GPLv2+
 2017/gb_suse_2017_2391_1.nasl: GPLv2+
 2017/gb_suse_2017_2392_1.nasl: GPLv2+
 2017/gb_suse_2017_2393_1.nasl: GPLv2+
 2017/gb_suse_2017_2394_1.nasl: GPLv2+
 2017/gb_suse_2017_2398_1.nasl: GPLv2+
+2017/gb_suse_2017_2491_1.nasl: GPLv2+
+2017/gb_suse_2017_2494_1.nasl: GPLv2+
+2017/gb_suse_2017_2495_1.nasl: GPLv2+
+2017/gb_suse_2017_2502_1.nasl: GPLv2+
+2017/gb_suse_2017_2513_1.nasl: GPLv2+
+2017/gb_suse_2017_2514_1.nasl: GPLv2+
 2017/gb_symantec_messaging_gateway_mult_vuln_aug17.nasl: GPLv2+
 2017/gb_symantec_messaging_gateway_rar_file_parser_dos_vuln.nasl: GPLv2+
 2017/gb_symantec_messaging_gateway_rce_vuln.nasl: GPLv2+
@@ -51182,6 +51279,7 @@
 2017/gb_ubuntu_USN_3344_2.nasl: GPLv2+
 2017/gb_ubuntu_USN_3345_1.nasl: GPLv2+
 2017/gb_ubuntu_USN_3346_1.nasl: GPLv2+
+2017/gb_ubuntu_USN_3346_2.nasl: GPLv2+
 2017/gb_ubuntu_USN_3347_1.nasl: GPLv2+
 2017/gb_ubuntu_USN_3348_1.nasl: GPLv2+
 2017/gb_ubuntu_USN_3349_1.nasl: GPLv2+
@@ -51247,8 +51345,19 @@
 2017/gb_ubuntu_USN_3406_1.nasl: GPLv2+
 2017/gb_ubuntu_USN_3411_1.nasl: GPLv2+
 2017/gb_ubuntu_USN_3412_1.nasl: GPLv2+
+2017/gb_ubuntu_USN_3413_1.nasl: GPLv2+
 2017/gb_ubuntu_USN_3414_1.nasl: GPLv2+
+2017/gb_ubuntu_USN_3414_2.nasl: GPLv2+
 2017/gb_ubuntu_USN_3415_1.nasl: GPLv2+
+2017/gb_ubuntu_USN_3416_1.nasl: GPLv2+
+2017/gb_ubuntu_USN_3417_1.nasl: GPLv2+
+2017/gb_ubuntu_USN_3419_1.nasl: GPLv2+
+2017/gb_ubuntu_USN_3419_2.nasl: GPLv2+
+2017/gb_ubuntu_USN_3420_1.nasl: GPLv2+
+2017/gb_ubuntu_USN_3420_2.nasl: GPLv2+
+2017/gb_ubuntu_USN_3422_1.nasl: GPLv2+
+2017/gb_ubuntu_USN_3424_1.nasl: GPLv2+
+2017/gb_ubuntu_USN_3425_1.nasl: GPLv2+
 2017/gb_unitrends_mult_vulns_04_17.nasl: GPLv2+
 2017/gb_unrealircd_authentication_spoofing_vuln.nasl: GPLv2+
 2017/gb_unrealircd_local_priv_esc_vuln.nasl: GPLv2+
@@ -51411,11 +51520,18 @@
 2017/ibm/gb_ibm_db2_multiple_privilege_escalation_vuln.nasl: GPLv2+
 2017/intel/gb_intel_amt_unspecified_priv_esc_vuln.nasl: GPLv2+
 2017/intel/gb_intel_standard_manageability_unspecified_priv_esc_vuln.nasl: GPLv2+
+2017/joomla/gb_joomla_eol.nasl: GPLv2+
+2017/joomla/gb_joomla_info_disc_vuln.nasl: GPLv2+
+2017/joomla/gb_joomla_ldap_info_disc_vuln.nasl: GPLv2+
+2017/joomla/gb_joomla_open_redirect_vuln.nasl: GPLv2+
+2017/kannel/gb_kannel_priv_esc_vuln.nasl: GPLv2+
 2017/microsoft/gb_dotnet_framework_kb4040972_n_kb4040971.nasl: GPLv2+
 2017/microsoft/gb_dotnet_framework_kb4040973.nasl: GPLv2+
 2017/microsoft/gb_dotnet_framework_kb4041086.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4025869.nasl: GPLv2+
 2017/microsoft/gb_ms_office_outlook_dos_vuln_macosx.nasl: GPLv2+
 2017/microsoft/gb_ms_outlook_dos_vuln.nasl: GPLv2+
+2017/microsoft/gb_ms_outlook_kb4011110.nasl: GPLv2+
 2017/nagios/gb_nagios_priv_esc_vuln.nasl: GPLv2+
 2017/noontec/gb_terramaster_tos_rce_vuln.nasl: GPLv2+
 2017/osticket/gb_os_ticket_sql_inj_vuln.nasl: GPLv2+
@@ -51429,7 +51545,17 @@
 2017/phpmyadmin/gb_phpmyadmin_mult_vuln_jul11_win.nasl: GPLv2+
 2017/phpmyadmin/gb_phpmyadmin_mult_vuln_oct12_lin.nasl: GPLv2+
 2017/phpmyadmin/gb_phpmyadmin_mult_vuln_oct12_win.nasl: GPLv2+
+2017/phpmyfaq/gb_phpmyfaq_xss_vuln.nasl: GPLv2+
 2017/qnap/gb_qnap_qts_media_library_com_inj_vuln.nasl: GPLv2+
+2017/wordpress/gb_wordpress_mult_vuln_sep17_lin.nasl: GPLv2+
+2017/wordpress/gb_wordpress_mult_vuln_sep17_win.nasl: GPLv2+
+2017/wso2/gb_wso2_api_manager_xss_vuln.nasl: GPLv2+
+2017/wso2/gb_wso2_business_process_server_xss_vuln.nasl: GPLv2+
+2017/wso2/gb_wso2_complex_event_processor_xss_vuln.nasl: GPLv2+
+2017/wso2/gb_wso2_data_analytics_xss_vuln.nasl: GPLv2+
+2017/wso2/gb_wso2_governance_registry_xss_vuln.nasl: GPLv2+
+2017/wso2/gb_wso2_identity_server_xss_vuln.nasl: GPLv2+
+2017/wso2/gb_wso2_storage_server_xss_vuln.nasl: GPLv2+
 404.inc: GPLv2+
 aas_detect.nasl: GPLv2+
 adaptbb_detect.nasl: GPLv2+
@@ -51590,6 +51716,7 @@ gb_aerohive_hiveos_detect.nasl: GPLv2+
 gb_aeromail_detect.nasl: GPLv2+
 gb_aerospike_telnet_detect.nasl: GPLv2+
 gb_aerospike_xdr_detect.nasl: GPLv2+
+gb_afterlogic_aurora_webmail_detect.nasl: GPLv2+
 gb_agfeo_smarthome_detect.nasl: GPLv2+
 gb_aimp_detect.nasl: GPLv2+
 gb_AjaXplorer_detect.nasl: GPLv2+
@@ -52143,6 +52270,7 @@ gb_ibm_urbancode_deploy_detect.nasl: GPLv2+
 gb_ibm_websphere_datapower_xc10_detect.nasl: GPLv2+
 gb_ibm_websphere_detect_giop.nasl: GPLv2+
 gb_ibm_websphere_detect.nasl: GPLv2+
+gb_ibm_websphere_mq_detect_lin.nasl: GPLv2+
 gb_ibm_websphere_mq_detect.nasl: GPLv2+
 gb_ibm_websphere_portal_detect.nasl: GPLv2+
 gb_icewarp_mail_detect.nasl: GPLv2+
@@ -52194,6 +52322,7 @@ gb_k7_ultimate_security_detect_win.nasl: GPLv2+
 gb_kallithea_detect.nasl: GPLv2+
 gb_kaltura_community_edition_detect.nasl: GPLv2+
 gb_kamailio_detect.nasl: GPLv2+
+gb_kannel_detect.nasl: GPLv2+
 gb_kaseya_vsa_detect.nasl: GPLv2+
 gb_kaspersky_av_detect.nasl: GPLv2+
 gb_kaspersky_total_security_detect.nasl: GPLv2+
@@ -52561,6 +52690,7 @@ gb_rsa_archer_detect.nasl: GPLv2+
 gb_rsa_auth_agent_detect_win.nasl: GPLv2+
 gb_ruby_rails_detect.nasl: GPLv2+
 gb_safenet_sas_owa_agent_detect.nasl: GPLv2+
+gb_saia_pcd_web_detect.nasl: GPLv2+
 gb_samba_detect.nasl: GPLv2+
 gb_samsung_iPOLis_manager_detect.nasl: GPLv2+
 gb_sap_management_console_detect.nasl: GPLv2+
@@ -52912,6 +53042,7 @@ gos_funcs.inc: GPLv2+
 gravity_board_x_detect.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_cucm_cisco-sa-20170906-ucm.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_esa_cisco-sa-20170906-esa.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_esa_cisco-sa-20170920-esa.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_firepower_management_center_cisco-sa-20170906-firepower-1.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_firepower_management_center_cisco-sa-20170906-firepower-2.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170906-ios-udp.nasl: GPLv2+
@@ -52921,6 +53052,7 @@ gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170906-cat.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170906-ios-udp.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170906-cms.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170913-cmsturn.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ucs_central_cisco-sa-20170920-ucs.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_vcs_cisco-sa-20170816-vcs.nasl: GPLv2+
 gsf/2017/emc/gb_emc_data_protection_advisor_pw_vuln.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K43945001.nasl: GPLv2+
@@ -52928,6 +53060,10 @@ gsf/2017/fortinet/gb_fortinet_fortios_config_rev_comments_xss_vuln.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortinet_fortios_firtiview_app_filter_xss_vuln.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortinet_fortios_mult_xss_vuln.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortinet_fortios_user_groups_xss_vuln.nasl: GPLv2+
+gsf/2017/gb_winexesvc_service_delete.nasl: GPLv2+
+gsf/2017/ibm/gb_ibm_websphere_mq_local_secu_bypass_vuln.nasl: GPLv2+
+gsf/2017/ibm/gb_ibm_websphere_portal_xss_vuln_swg22008028.nasl: GPLv2+
+gsf/2017/saia/gb_saia_pcd_info_descl_vuln.nasl: GPLv2+
 gsf/2017/sap/gb_sap_netweaver_xml_xss_vuln.nasl: GPLv2+
 gsf/2017/sap/gb_sap_netweaver_xss_vuln_09_17.nasl: GPLv2+
 gsf/gb_advantech_webaccess_mult_vuln_aug.nasl: GPLv2+

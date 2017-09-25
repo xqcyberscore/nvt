@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_cert_chain_expired.nasl 6883 2017-08-09 09:44:10Z cfischer $
+# $Id: gb_ssl_cert_chain_expired.nasl 7242 2017-09-23 14:58:39Z cfischer $
 #
 # SSL/TLS: Certificate In Chain Expired
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106237");
-  script_version("$Revision: 6883 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-09 11:44:10 +0200 (Wed, 09 Aug 2017) $");
+  script_version("$Revision: 7242 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-23 16:58:39 +0200 (Sat, 23 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-09-09 11:33:30 +0700 (Fri, 09 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"solution", value:"Sign your server certificate with a valid CA certificate.");
 
   script_tag(name:"solution_type", value:"Mitigation");
-  script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
@@ -93,6 +93,7 @@ if (!port = get_ssl_port())
   exit(0);
 
 now = isotime_now();
+if( strlen( now ) <= 0 ) exit( 0 ); # isotime_now: "If the current time is not available an empty string is returned."
 
 if (ret = check_validity(port: port, now: now)) {
   foreach a (ret) {

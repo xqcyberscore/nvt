@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_heap_buf_ov_vuln_win.nasl 7106 2017-09-12 08:33:30Z teissa $
+# $Id: gb_imagemagick_heap_buf_ov_vuln_win.nasl 7223 2017-09-21 14:06:29Z cfischer $
 #
 # ImageMagick CVE-2017-14224 Heap Buffer Overflow Vulnerability
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107241");
-  script_version("$Revision: 7106 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-12 10:33:30 +0200 (Tue, 12 Sep 2017) $");
+  script_version("$Revision: 7223 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-21 16:06:29 +0200 (Thu, 21 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-12 14:49:44 +0200 (Tue, 12 Sep 2017)");
   script_cve_id("CVE-2017-14224");
   script_bugtraq_id(100702);
 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_name(" ImageMagick CVE-2017-14224 Heap Buffer Overflow Vulnerability");
