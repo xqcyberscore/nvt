@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: gb_fingertec_devices_telnet_default_cred.nasl 5609 2017-03-20 08:08:00Z teissa $
+# $Id: gb_fingertec_devices_telnet_default_cred.nasl 7252 2017-09-25 15:28:16Z cfischer $
 #
 # FingerTec Devices Telnet Default Credentials Vulnerability
 #
@@ -26,18 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807525");
-  script_version("$Revision: 5609 $");
+  script_version("$Revision: 7252 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 09:08:00 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-25 17:28:16 +0200 (Mon, 25 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-03-16 15:57:40 +0530 (Wed, 16 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("FingerTec Devices Telnet Default Credentials Vulnerability");
-  
-  script_tag(name:"summary" , value:"This host is installed with FingerTec 
+
+  script_tag(name:"summary" , value:"This host is installed with FingerTec
   device and is prone to default credentials vulnerability.");
 
-  script_tag(name:"vuldetect" , value:"Check if it is possible to do telnet 
+  script_tag(name:"vuldetect" , value:"Check if it is possible to do telnet
   login into the FingerTec device.");
 
   script_tag(name:"insight" , value:"The flaw is due to default user:passwords
@@ -80,7 +80,7 @@ if(!banner = get_telnet_banner(port:fingport)) exit(0);
 ##Confirm application
 if("ZEM" >!< banner) exit(0);
 
-soc = open_sock_tcp(port);
+soc = open_sock_tcp(fingport);
 if(!soc) exit(0);
 
 ##Making credentials set
@@ -97,20 +97,20 @@ creds = make_array("root", "founder88",
                    "admin","1234");
 
 ##Try to login with default credentials
-foreach cred ( keys( creds ) ) 
+foreach cred ( keys( creds ) )
 {
   recv = recv( socket:soc, length:2048 );
-  if ("login:" >< recv) 
+  if ("login:" >< recv)
   {
     send(socket:soc, data: cred + '\r\n');
     recv = recv(socket:soc, length:128);
-    if("Password:" >< recv) 
+    if("Password:" >< recv)
     {
       send(socket:soc, data: creds[cred] + '\r\n');
       recv = recv(socket:soc, length:1024);
 
       ##Confirm exploit
-      if(recv =~ "BusyBox v([0-9.]+)") 
+      if(recv =~ "BusyBox v([0-9.]+)")
       {
         report += "\n\n" + cred + ":" + creds[cred] + "\n";
         security_message(port:fingport, data:report);

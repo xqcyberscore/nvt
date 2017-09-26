@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmp_default_communities.nasl 7241 2017-09-22 18:08:58Z cfischer $
+# $Id: snmp_default_communities.nasl 7244 2017-09-25 06:35:19Z cfischer $
 #
 # Default community names of the SNMP Agent
 #
@@ -65,8 +65,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103914");
-  script_version("$Revision: 7241 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 20:08:58 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 7244 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-25 08:35:19 +0200 (Mon, 25 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -93,22 +93,27 @@ port = 161;
 if (!get_udp_port_state(port))
   exit(0);
 
-# Roughly from https://github.com/fuzzdb-project/fuzzdb/blob/master/wordlists-misc/wordlist-common-snmp-community-strings.txt
 communities = make_list(
-"private",
+"Cisco router", # for Cisco equipment
+"EyesOfNetwork", # Eyes of Network (EON)
+"Secret C0de", # Brocade
+"cable-docsis", # for Cisco equipment
+"cascade", # for Lucent equipment
+"comcomcom", # for 3COM AirConnect AP
+"rmonmgmtuicommunity", #2016/gb_cisco_sg220_cisco-sa-20160831-sps3.nasl
+# From https://github.com/fuzzdb-project/fuzzdb/blob/master/wordlists-misc/wordlist-common-snmp-community-strings.txt
 "public",
+"private",
 "0",
 "0392a0",
 "1234",
 "2read",
 "4changes",
-"Admin",
 "ANYCOM", # for 3COM NetBuilder
+"Admin",
 "C0de",
 "CISCO",
-"Cisco router", # for Cisco equipment
 "CR52401",
-"EyesOfNetwork", # Eyes of Network (EON)
 "IBM",
 "ILMI",
 "Intermec",
@@ -126,7 +131,6 @@ communities = make_list(
 "SWITCH",
 "SYSTEM",
 "Secret",
-"Secret C0de", # Brocade
 "Security",
 "s!a@m#n$p%c", # 2012/secpod_samsung_printer_snmp_auth_bypass_vuln.nasl
 "Switch",
@@ -144,18 +148,17 @@ communities = make_list(
 "apc", # for APC Web/SNMP Management Card AP9606
 "bintec",
 "blue", # HP JetDirect equipement
-"cable-d",
-"cable-docsis", # for Cisco equipment
-"canon_admin",
-"cascade", # for Lucent equipment
 "c", # for Cisco equipment
+"cable-d",
+"canon_admin",
 "cc", # for Cisco equipment
 "cisco",
-"comcomcom", # for 3COM AirConnect AP
 "community",
 "core", # Cisco Aironet
 "debug",
 "default",
+"dilbert",
+"enable",
 "field",
 "field-service",
 "freekevin",
@@ -185,15 +188,17 @@ communities = make_list(
 "read-only",
 "read-write",
 "readwrite",
+"red",
 "regional", # Cisco Aironet
 "rmon",
 "rmon_admin",
-"rmonmgmtuicommunity", #2016/gb_cisco_sg220_cisco-sa-20160831-sps3.nasl
 "ro",
 "root",
 "router",
 "rw",
 "rwa",
+"san-fran",
+"sanfran",
 "scotty",
 "secret", # for Cisco equipment
 "security",
@@ -208,12 +213,18 @@ communities = make_list(
 "system",
 "tech",
 "test",
+"test2",
+"tiv0li",
 "tivoli",
 "trap",
 "world",
 "write", # for Cisco equipment
 "xyzzy",
-"yellow" # HP JetDirect equipement
+"yellow", # HP JetDirect equipement
+# From http://www.phenoelit.org/dpl/dpl.html
+"volition",
+"MiniAP",
+"snmp-Trap"
 );
 
 # Add device/host name

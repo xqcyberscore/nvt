@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 25 Sep 2017 08:48:13 +0200
+# Automatically created on:  Tue, 26 Sep 2017 08:35:34 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47702,6 +47702,9 @@
 2017/deb_3978.nasl: GPLv2+
 2017/deb_3979.nasl: GPLv2+
 2017/deb_3980.nasl: GPLv2+
+2017/deb_3981.nasl: GPLv2+
+2017/deb_3982.nasl: GPLv2+
+2017/deb_3983.nasl: GPLv2+
 2017/digium/gb_asterisk_rtp_info_leak_vuln.nasl: GPLv2+
 2017/drupal/gb_drupal_core_mult_vuln_SA-CORE-2015-001_lin.nasl: GPLv2+
 2017/drupal/gb_drupal_core_mult_vuln_SA-CORE-2015-001_win.nasl: GPLv2+
@@ -48409,6 +48412,7 @@
 2017/gb_dokuwiki_xss_vuln02.nasl: GPLv2+
 2017/gb_dokuwiki_xss_vuln.nasl: GPLv2+
 2017/gb_dolibarr_404_mult_vuln.nasl: GPLv2+
+2017/gb_dolibarr_600_mult_vuln.nasl: GPLv2+
 2017/gb_dolibarr_CVE-2017-9435.nasl: GPLv2+
 2017/gb_dolibarr_rce_vuln.nasl: GPLv2+
 2017/gb_dotcms_rce_vuln.nasl: GPLv2+
@@ -50808,6 +50812,7 @@
 2017/gb_schneider_electric_modicon_m340_dos_vuln.nasl: GPLv2+
 2017/gb_schneider_electric_modicon_m340_vuln.nasl: GPLv2+
 2017/gb_schneider_homelynk_cmd_inj_vuln.nasl: GPLv2+
+2017/gb_scrumworkpro_rce.nasl: GPLv2+
 2017/gb_sendio_lfi_vuln.nasl: GPLv2+
 2017/gb_SenNet_telnet_5000.nasl: GPLv2+
 2017/gb_sepsb_rar_file_parser_dos_vuln_win.nasl: GPLv2+
@@ -51469,6 +51474,7 @@
 2017/gb_wordpress_community_events_sql_vuln.nasl: GPLv2+
 2017/gb_wordpress_download_manager_redirect_vuln.nasl: GPLv2+
 2017/gb_wordpress_download_manager_xss_vuln.nasl: GPLv2+
+2017/gb_wordpress_fastest_cache_csrf_vuln.nasl: GPLv2+
 2017/gb_wordpress_google_analyticator_csrf_vuln.nasl: GPLv2+
 2017/gb_wordpress_gwolle_gb_rfi_vuln.nasl: GPLv2+
 2017/gb_wordpress_json_user_enum_vuln.nasl: GPLv2+
@@ -52703,6 +52709,7 @@ gb_schneider_homelynk_controller_detect.nasl: GPLv2+
 gb_schneider_modbus_detect.nasl: GPLv2+
 gb_schneider_modicon_m340_detect.nasl: GPLv2+
 gb_screenos_version.nasl: GPLv2+
+gb_scrumworkspro_detect.nasl: GPLv2+
 gb_scrutinizer_detect.nasl: GPLv2+
 gb_seagate_blackarmor_nas_detect.nasl: GPLv2+
 gb_seamonkey_detect_lin.nasl: GPLv2+
@@ -52744,6 +52751,7 @@ gb_snews_detect.nasl: GPLv2+
 gb_snipegallery_detect.nasl: GPLv2+
 gb_snmp_authorization.nasl: GPLv2+
 gb_snmp_get_installed_sw.nasl: GPLv2+
+gb_snmp_get_mac.nasl: GPLv2+
 gb_snmp_os_detection.nasl: GPLv2+
 gb_snmp_sysdesc.nasl: GPLv2+
 gb_snom_detect.nasl: GPLv2+

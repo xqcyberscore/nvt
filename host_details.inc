@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 7189 2017-09-19 11:23:49Z cfischer $
+# $Id: host_details.inc 7259 2017-09-26 06:10:22Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7189 $
+# $Revision: 7259 $
 #
 ###############################################################################
 
@@ -92,6 +92,8 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.96200",  # gb_ssh_junos_get_version.nasl
     "1.3.6.1.4.1.25623.1.0.105263", # gb_palo_alto_panOS_version.nasl
     "1.3.6.1.4.1.25623.1.0.105266", # gb_screenos_version.nasl
+    "1.3.6.1.4.1.25623.1.0.106413", # gb_extremeos_snmp_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.105261", # gb_palo_alto_webgui_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106513", # gb_cisco_asa_version_snmp.nasl
     "1.3.6.1.4.1.25623.1.0.105222", # gb_cisco_asa_version.nasl
     "1.3.6.1.4.1.25623.1.0.106494", # gb_arista_eos_snmp_detect.nasl
@@ -154,6 +156,8 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.96200",  # gb_ssh_junos_get_version.nasl
     "1.3.6.1.4.1.25623.1.0.105263", # gb_palo_alto_panOS_version.nasl
     "1.3.6.1.4.1.25623.1.0.105266", # gb_screenos_version.nasl
+    "1.3.6.1.4.1.25623.1.0.106413", # gb_extremeos_snmp_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.105261", # gb_palo_alto_webgui_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106513", # gb_cisco_asa_version_snmp.nasl
     "1.3.6.1.4.1.25623.1.0.105222", # gb_cisco_asa_version.nasl
     "1.3.6.1.4.1.25623.1.0.106494", # gb_arista_eos_snmp_detect.nasl
@@ -350,7 +354,7 @@ function host_runs() {
   #nb: update this to include possible cpes and txt from ssh_detect.nasl, gb_ssh_os_detection.nasl, gather-package-list.nasl and and other *_os_detection.nasl
   if( "linux" >< tolower( ospattern ) )
     ospattern = '(' + ospattern + '|apc:aos|ubuntu|debian|bsd|opensuse|fedora|suse|redhat|red hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|' +
-                'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen)';
+                'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen|panos|pan-os)';
 
   if( eregmatch( pattern:ospattern, string:best_os, icase:TRUE ) )
     return "yes";

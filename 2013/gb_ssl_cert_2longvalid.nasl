@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_cert_2longvalid.nasl 7242 2017-09-23 14:58:39Z cfischer $
+# $Id: gb_ssl_cert_2longvalid.nasl 7248 2017-09-25 08:18:05Z cfischer $
 #
 # SSL/TLS: Certificate Too Long Valid
 #
@@ -32,8 +32,8 @@ max_valid_years = 15;
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103958");
-  script_version("$Revision: 7242 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-23 16:58:39 +0200 (Sat, 23 Sep 2017) $");
+  script_version("$Revision: 7248 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-25 10:18:05 +0200 (Mon, 25 Sep 2017) $");
   script_tag(name:"creation_date", value:"2013-11-28 11:39:30 +0700 (Thu, 28 Nov 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,34 +63,32 @@ include("misc_func.inc");
 include("ssl_funcs.inc");
 include("byte_func.inc");
 
-# The current time
-now = isotime_now();
-if( strlen( now ) <= 0 ) exit( 0 ); # isotime_now: "If the current time is not available an empty string is returned."
-
-# The current time plus the years which are reasonable
-far_future = isotime_add( now, years:max_valid_years );
-if( isnull( far_future ) ) exit( 0 ); # isotime_add: "or NULL if the provided ISO time string is not valid or the result would overflow (i.e. year > 9999).
-
-# List of keys with problematic expiration dates
-problematic_keys = make_array();
-
 ssls = get_kb_list( "HostDetails/SSLInfo/*" );
 
 if( ! isnull( ssls ) ) {
 
-  check_for = "too_long_valid";
+  # The current time
+  now = isotime_now();
+  if( strlen( now ) <= 0 ) exit( 0 ); # isotime_now: "If the current time is not available an empty string is returned."
+
+  # The current time plus the years which are reasonable
+  far_future = isotime_add( now, years:max_valid_years );
+  if( isnull( far_future ) ) exit( 0 ); # isotime_add: "or NULL if the provided ISO time string is not valid or the result would overflow (i.e. year > 9999).
+
+  # Contains the list of keys with problematic expiration dates
+  problematic_keys = make_array();
 
   foreach key( keys( ssls ) ) {
 
-    tmp = split( key, sep:"/", keep:FALSE );
-    port = tmp[2];
+    tmp   = split( key, sep:"/", keep:FALSE );
+    port  = tmp[2];
     vhost = tmp[3];
 
     fprlist = get_kb_item( key );
     if( ! fprlist ) continue;
 
     result = check_cert_validity( fprlist:fprlist, port:port, vhost:vhost,
-                                  check_for:check_for, now:now, timeframe:far_future );
+                                  check_for:"too_long_valid", now:now, timeframe:far_future );
     if( result ) {
       problematic_keys[port] = result;
     }
@@ -103,7 +101,6 @@ if( ! isnull( ssls ) ) {
     report += cert_summary( key:problematic_keys[port] );
     log_message( data:report, port:port );
   }
-
   exit( 0 );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_untangle_rce_07_15.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_untangle_rce_07_15.nasl 7252 2017-09-25 15:28:16Z cfischer $
 #
 # Untangle NG Firewall Remote Command Execution Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:untangle:ng-firewall";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105812");
- script_version ("$Revision: 5588 $");
+ script_version ("$Revision: 7252 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -46,7 +46,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-25 17:28:16 +0200 (Mon, 25 Sep 2017) $");
  script_tag(name:"creation_date", value:"2016-07-18 15:16:18 +0200 (Mon, 18 Jul 2016)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -66,7 +66,7 @@ include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 
-function check( i )
+function check( i, zip )
 {
   bound = '---------------------------OpenVAS_' + rand();
 
@@ -121,7 +121,7 @@ zip = 'UEsDBBQAAAAIAPZw8kggohT+hAAAALkAAAAJABwAY3VzdG9tLnB5VVQJAAOQxoxXPsaMV3V4C
 zip = base64_decode( str:zip );
 
 for( i = 1; i < 35; i++ )
-  check( i:i );
+  check( i:i, zip:zip );
 
 exit( 99 );
 

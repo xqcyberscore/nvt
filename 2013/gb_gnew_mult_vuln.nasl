@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnew_mult_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_gnew_mult_vuln.nasl 7252 2017-09-25 15:28:16Z cfischer $
 #
 # Gnew Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804110");
-  script_version("$Revision: 6115 $");
+  script_version("$Revision: 7252 $");
   script_cve_id("CVE-2013-5639","CVE-2013-5640", "CVE-2013-7349", "CVE-2013-7368");
   script_bugtraq_id(62817,62818);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-25 17:28:16 +0200 (Mon, 25 Sep 2017) $");
   script_tag(name:"creation_date", value:"2013-10-17 14:49:54 +0530 (Thu, 17 Oct 2013)");
   script_name("Gnew Multiple Vulnerabilities");
 
@@ -116,7 +116,8 @@ foreach dir (make_list_unique("/", "/gnew", "/cms", cgi_dirs(port:gnPort)))
     postdata = "send=1&user_name=username&user_email=a%40b.com&friend_email=c@d.com&news_id=-1'" +
                "<script>alert(document.cookie);</script>";
 
-    req = string("POST ", dir, "/news/send.php HTTP/1.1\r\n",
+    url = dir + "/news/send.php";
+    req = string("POST ", url, " HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: ", strlen(postdata), "\r\n\r\n",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arkeia_west_dig_rce.nasl 5616 2017-03-20 13:32:41Z cfi $
+# $Id: gb_arkeia_west_dig_rce.nasl 7254 2017-09-25 15:54:28Z cfischer $
 #
 # Western Digital Arkeia "ARKFS_EXEC_CMD" <= v11.0.12 Remote Code Execution
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:arkeia:western_digital_arkeia";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107041");
-  script_version("$Revision: 5616 $");
+  script_version("$Revision: 7254 $");
   script_cve_id("CVE-2015-7709");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:32:41 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-25 17:54:28 +0200 (Mon, 25 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-08-16 13:16:06 +0200 (Tue, 16 Aug 2016)");
   script_name("Western Digital Arkeia Remote Code Execution");
   script_category(ACT_ATTACK);
@@ -74,7 +74,7 @@ include("dump.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-function arkeiad_recv( )
+function arkeiad_recv( soc )
 {
     r = recv( socket:soc, length: 8 );
 
@@ -93,7 +93,6 @@ if( ! get_port_state ( port ) ) exit( 0 );
 soc = open_sock_tcp( port );
 if ( ! soc ) exit ( 0 );
 
-
 req = raw_string( 0x00, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70 )
 	+ crap ( data: raw_string(0) , length: 12)
 	+ raw_string ( 0xc0, 0xa8, 0x02, 0x8a )
@@ -108,8 +107,8 @@ req = raw_string( 0x00, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70 )
 	+ raw_string (0x34, 0x2e, 0x33, 0x2e, 0x30, 0x2d, 0x31) #"4.3.0-1"
 	+ crap (data: raw_string(0), length: 11);
 
-send( socket:soc, data: req);
-res = arkeiad_recv();
+send( socket:soc, data:req );
+res = arkeiad_recv( soc:soc );
 
 if( raw_string(0x00, 0x60, 0x00, 0x04)  >!< res ) exit(0);
 
@@ -117,7 +116,7 @@ req2 = raw_string( 0x00, 0x73, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0x32)
           + crap ( data: raw_string ( 0 ), length: 11 );
 
 send( socket:soc, data: req2);
-res2 = arkeiad_recv();
+res2 = arkeiad_recv( soc:soc );
 
 if ( raw_string(0x00, 0x60, 0x00, 0x04)  >!< res2 ) exit(0);
 
@@ -128,7 +127,7 @@ req3 = raw_string ( 0x00, 0x61, 0x00, 0x04, 0x00, 0x01, 0x00, 0x1a,
 
 send( socket:soc, data: req3);
 
-res3 = arkeiad_recv();
+res3 = arkeiad_recv( soc:soc );
 
 if ( raw_string( 0x00, 0x43, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00 ) >!< res3 ) exit(0);
 
@@ -138,7 +137,7 @@ req4 = raw_string ( 0x00, 0x62, 0x00, 0x01, 0x00, 0x02, 0x00, 0x1b,
            + crap ( data : raw_string ( 0 ), length: 11 );
 
 send( socket: soc, data: req4);
-res4 = arkeiad_recv();
+res4 = arkeiad_recv( soc:soc );
 
 if (raw_string( 0x00, 0x43, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00 ) >!< res4 ) exit(0);
 

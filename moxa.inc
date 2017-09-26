@@ -1,6 +1,6 @@
 ###############################################################################
 # Functions for Moxa
-# $Id: moxa.inc 5834 2017-04-03 08:55:47Z ckuerste $
+# $Id: moxa.inc 7254 2017-09-25 15:54:28Z cfischer $
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -23,7 +23,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 5834 $
+# $Revision: 7254 $
 #
 ###############################################################################
 
@@ -132,11 +132,7 @@ moxa_models = make_array("105100801051", "NPort 5110",
                          "502300805523", "NPort W2250Plus-EU",
                          "502300805623", "NPort W2250Plus-JP");
 
-
-
-#
 # Return the Moxa model based on the device ID received on 4800/udp
-#
 function moxa_get_model(data)
 {
   foreach mo (keys(moxa_models)) {
@@ -146,9 +142,8 @@ function moxa_get_model(data)
   return "unknown";
 }
 
-#
+
 # Send and receive for Moxa management protocol on 4800/udp
-#
 function moxa_send_recv(socket, data)
 {
   send(socket: socket, data: data);
@@ -158,5 +153,5 @@ function moxa_send_recv(socket, data)
  
   len = getword(blob: recv, pos: 2);
  
-  return recv(socket: soc, length: len);
+  return recv(socket: socket, length: len);
 }

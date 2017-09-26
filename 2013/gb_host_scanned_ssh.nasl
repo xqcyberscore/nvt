@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_host_scanned_ssh.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_host_scanned_ssh.nasl 7254 2017-09-25 15:54:28Z cfischer $
 #
 # Leave information on scanned hosts
 #
@@ -56,10 +56,10 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.103625";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6086 $");
+ script_version("$Revision: 7254 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-25 17:54:28 +0200 (Mon, 25 Sep 2017) $");
  script_tag(name:"creation_date", value:"2012-12-14 10:37:58 +0100 (Fri, 14 Dec 2012)");
  script_name("Leave information on scanned hosts");
  script_category(ACT_END);
@@ -308,7 +308,7 @@ if("yes" >< filelog) {
   file_exist = ssh_cmd(socket:soc, cmd:"ls -l '" + path + "'");
 
   if(file_exist =~ "^l[^s]") { # don't work on existing symlinks. 
-     log_message(port:port, data:"File '" + path  +  "' is a symbolic link and this is not allowed. Can not continue.");
+     log_message(port:0, data:"File '" + path  +  "' is a symbolic link and this is not allowed. Can not continue.");
      ssh_close_connection();
      exit(1);
    }
@@ -321,7 +321,7 @@ if("yes" >< filelog) {
 
       if(file_security_token >!< current_content) {
         # no security_token or not created by this nvt
-        log_message(port:port, data:"Security Token '" +
+        log_message(port:0, data:"Security Token '" +
           file_security_token  + "' not found in existing file '" +
           path + "'. Can not continue."); 
         ssh_close_connection();

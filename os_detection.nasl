@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 7153 2017-09-15 15:03:32Z cfischer $
+# $Id: os_detection.nasl 7259 2017-09-26 06:10:22Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 7153 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 17:03:32 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 7259 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:10:22 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,6 +49,7 @@ if(description)
                       "gb_cisco_csma_version.nasl", "gb_cisco_ip_phone_detect.nasl",
                       "gb_cisco_ios_xr_version.nasl", "gb_ssh_junos_get_version.nasl",
                       "gb_palo_alto_panOS_version.nasl", "gb_screenos_version.nasl",
+                      "gb_extremeos_snmp_detect.nasl", "gb_palo_alto_webgui_detect.nasl",
                       "gb_cisco_asa_version_snmp.nasl", "gb_cisco_asa_version.nasl",
                       "gb_arista_eos_snmp_detect.nasl", "gb_xenserver_version.nasl",
                       "gb_cisco_ios_xe_version.nasl", "gb_mcafee_email_gateway_version.nasl",

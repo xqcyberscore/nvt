@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCul02601.nasl 6505 2017-07-03 09:58:27Z teissa $
+# $Id: gb_cisco_asa_CSCul02601.nasl 7254 2017-09-25 15:54:28Z cfischer $
 #
 # Cisco ASA SNMP DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106029");
-  script_version("$Revision: 6505 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
+  script_version("$Revision: 7254 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-09-25 17:54:28 +0200 (Mon, 25 Sep 2017) $");
   script_tag(name : "creation_date", value : "2015-07-15 12:04:27 +0700 (Wed, 15 Jul 2015)");
   script_tag(name : "cvss_base", value : "6.8");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:S/C:N/I:N/A:C");
@@ -80,13 +80,13 @@ compver = ereg_replace(string:version, pattern:"\(([0-9.]+)\)", replace:".\1");
 
 if ((revcomp(a:compver, b:"8.4.7") <= 0) &&
     (revcomp(a:compver, b:"8.4") >= 0)) {
-  security_message(port: 0, data:report);
+  security_message(port: 0);
   exit(0);
 }
 
 if ((revcomp(a:compver, b:"8.6.1.2") <= 0) &&
     (revcomp(a:compver, b:"8.6") >= 0)) {
-  security_message(port: 0, data:report);
+  security_message(port: 0);
   exit(0);
 }
 

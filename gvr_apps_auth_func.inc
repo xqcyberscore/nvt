@@ -24,7 +24,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# $Revision: 186 $
+# $Revision: 7252 $
 
 
 #To get TYPO3 session cookie
@@ -58,14 +58,14 @@ function get_typo3_login_cookie(cinstall, tport, chost)
     {
       cCookie = tcookie[1] + ' showRefMsg=false; ' + PHPSESSID[1] + " typo3-login-cookiecheck=true";
 
-      req = string("POST ",url," HTTP/1.0\r\n",
-                   "Host: " + chost + "\r\n",
-                   "User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:14.0) Gecko/20100101 Firefox/14.0.1\r\n",
-                   "Referer: http://" + chost + "/typo3/alt_menu.php \r\n",
+      req = string("POST ", url, " HTTP/1.1\r\n",
+                   "Host: ", chost, "\r\n",
+                   "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                   "Referer: http://", chost, "/typo3/alt_menu.php\r\n",
                    "Connection: keep-alive\r\n",
-                   "Cookie: ",cCookie,"\r\n",
+                   "Cookie: ", cCookie, "\r\n",
                    "Content-Type: application/x-www-form-urlencoded\r\n",
-                   "Content-Length: ",strlen(payload), "\r\n\r\n",
+                   "Content-Length: ", strlen(payload), "\r\n\r\n",
                    payload);
 
       buf = http_keepalive_send_recv(port:tport, data:req);
@@ -90,13 +90,13 @@ function get_typo3_login_cookie(cinstall, tport, chost)
 #TYPO3 install path, port, cookie and host need to be sent as parameter
 function get_typo3_logout(loc, lport, lhost, lcookie)
 {
-  lurl = install + "/typo3/logout.php";
-  lreq = string("GET ",lurl," HTTP/1.0\r\n",
-                "Host: " + lhost + "\r\n",
-                "User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:14.0) Gecko/20100101 Firefox/14.0.1\r\n",
-                "Referer: http://" + lhost + "/typo3/alt_menu.php \r\n",
+  lurl = loc + "/typo3/logout.php";
+  lreq = string("GET ", lurl, " HTTP/1.1\r\n",
+                "Host: ", lhost, "\r\n",
+                "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                "Referer: http://", lhost, "/typo3/alt_menu.php\r\n",
                 "Connection: keep-alive\r\n",
-                "Cookie: ",lcookie,"\r\n",
+                "Cookie: ", lcookie, "\r\n",
                 "Content-Type: application/x-www-form-urlencoded\r\n\r\n");
   lres = http_send_recv(port:lport, data:lreq, bodyonly:FALSE);
 }

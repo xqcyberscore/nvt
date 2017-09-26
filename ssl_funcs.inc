@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssl_funcs.inc 7190 2017-09-19 15:19:13Z cfischer $
+# $Id: ssl_funcs.inc 7252 2017-09-25 15:28:16Z cfischer $
 #
 # Implementation of common ssl functions
 #
@@ -25,7 +25,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7190 $
+# $Revision: 7252 $
 #
 ###############################################################################
 
@@ -1214,7 +1214,7 @@ function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_fall
   if( version == TLS_12 && ! in_array( search:"signature_algorithms", array:extensions ) )
     extensions = make_list( extensions, "signature_algorithms" );
 
-  hde = add_ssl_extension( extensions:extensions );
+  hde = add_ssl_extension( extensions:extensions, alpn_protocol:alpn_protocol );
   hde_len = data_len( data:hde );
 
   hello_data += hde_len + hde;
@@ -1229,9 +1229,9 @@ function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_fall
   return hello;
 }
 
-function add_ssl_extension( extensions )
+function add_ssl_extension( extensions, alpn_protocol )
 {
-  local_var extension, e, ret, alpn, alpn_ret;
+  local_var extension, e, ret, alpn, alpn_ret, alpn_protocol;
 
   if( ! extensions ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#extensions#-#add_ssl_extension" );

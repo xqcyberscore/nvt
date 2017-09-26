@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_extremeos_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_extremeos_snmp_detect.nasl 7244 2017-09-25 06:35:19Z cfischer $
 #
 # Extreme ExtremeXOS Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106413");
-  script_version("$Revision: 7236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 7244 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-25 08:35:19 +0200 (Mon, 25 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-11-25 11:50:20 +0700 (Fri, 25 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -86,7 +86,12 @@ if ("ExtremeXOS" >< sysdesc) {
   if (!cpe)
     cpe = 'cpe:/a:extreme:extremexos';
 
+  os_cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/o:extremenetworks:exos:");
+  if (!os_cpe)
+    os_cpe = 'cpe:/o:extremenetworks:exos';
+
   register_product(cpe: cpe, port: port, proto: "udp", location: port + "/udp", service: "snmp" );
+  register_and_report_os(os: "Extreme Networks ExtremeXOS", cpe: os_cpe, banner_type: "SNMP sysdesc", banner: sysdesc, port: port, proto: "udp", desc: "Extreme ExtremeXOS Detection (SNMP)", runs_key: "unixoide");
 
   log_message(data: build_detection_report(app: "Extreme ExtremeXOS " + model, version: version, cpe: cpe,
                                            install: port + "/udp", concluded: sysdesc, extra: "Patch: " + patch),

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 6916 2017-08-14 06:41:53Z cfischer $
+# $Id: gather-package-list.nasl 7253 2017-09-25 15:36:26Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 6916 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-14 08:41:53 +0200 (Mon, 14 Aug 2017) $");
+  script_version("$Revision: 7253 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-25 17:36:26 +0200 (Mon, 25 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -597,7 +597,7 @@ if( "Sourcefire Linux OS" >< uname )
     set_kb_item( name:"sourcefire_linux_os/version", value:version[1] );
   }
 
-  build = eregmatch( pattern:'\\(build ([^)]+)\\)', string:buf );
+  build = eregmatch( pattern:'\\(build ([^)]+)\\)', string:uname );
 
   if( ! isnull( build[1] ) ) set_kb_item( name:"sourcefire_linux_os/build", value:build[1] );
 

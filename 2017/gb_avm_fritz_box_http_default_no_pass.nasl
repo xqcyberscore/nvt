@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_http_default_no_pass.nasl 4988 2017-01-11 15:37:25Z cfi $
+# $Id: gb_avm_fritz_box_http_default_no_pass.nasl 7255 2017-09-25 15:59:40Z cfischer $
 #
 # AVM FRITZ!Box Default / no Password (HTTP)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:avm:fritzbox';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108042");
-  script_version("$Revision: 4988 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-11 16:37:25 +0100 (Wed, 11 Jan 2017) $");
+  script_version("$Revision: 7255 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-25 17:59:40 +0200 (Mon, 25 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-01-10 15:00:00 +0100 (Tue, 10 Jan 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -84,9 +84,9 @@ function create_response( challenge, credential ) {
   return response;
 }
 
-function do_webcm_post_req( port, posturl, sid ) {
+function do_webcm_post_req( port, posturl, sid, dir ) {
 
-  local_var port, posturl, sid, time, postdata, req, res;
+  local_var port, posturl, sid, dir, time, postdata, req, res;
 
   time = unixtime();
   postdata = "sid=" + sid[1] + "&getpage=..%2Fhtml%2Flogincheck.html&errorpage=..%2Fhtml%2Findex.html" +
@@ -125,7 +125,7 @@ if( res =~ "HTTP/1\.. 200" && ( '<form method="POST" action="../cgi-bin/webcm"' 
   sid = eregmatch( pattern:'sid" value="([a-z0-9]+)" id="uiPostSid', string:res );
   if( ! isnull( sid[1] ) ) {
 
-    res = do_webcm_post_req( port:port, posturl:posturl, sid:sid[1] );
+    res = do_webcm_post_req( port:port, posturl:posturl, sid:sid[1], dir:dir );
 
     # With password reminder but no password set yet
     if( res =~ "HTTP/1\.. 200" && '<label for="uiViewUsePassword">' >< res && '<label for="uiViewPasswordConfirm">' >< res && '<label for="uiShowReminder">' >< res ) {
@@ -148,7 +148,7 @@ if( res =~ "HTTP/1\.. 200" && ( '<form method="POST" action="../cgi-bin/webcm"' 
     sid = eregmatch( pattern:'sid" value="([a-z0-9]+)" id="uiPostSid', string:res );
     if( ! isnull( sid[1] ) ) {
 
-      res = do_webcm_post_req( port:port, posturl:posturl, sid:sid[1] );
+      res = do_webcm_post_req( port:port, posturl:posturl, sid:sid[1], dir:dir );
 
       # The response contains a challenge if a password is set. This is needed later.
       challenge = eregmatch( pattern:'var challenge = "([a-z0-9]+)";', string:res );

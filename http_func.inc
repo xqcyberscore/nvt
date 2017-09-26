@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_func.inc 7221 2017-09-21 13:05:11Z cfischer $
+# $Id: http_func.inc 7256 2017-09-26 05:24:20Z asteins $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7221 $
+# $Revision: 7256 $
 #
 ###############################################################################
 
@@ -818,4 +818,47 @@ function get_cookie_from_header( buf, pattern )
 
   if( match = eregmatch( pattern:pattern, string:buf ) )
     return match[ max_index( match ) -1 ];
+}
+
+function create_exploit_req( cgiArray, ex ) {
+
+  local_var cgiArray, ex, pseudocount, rrayval, tmpf, data, param, z, url, i, urls;
+
+  urls = make_array();
+
+  pseudocount = 0;
+  foreach rrayval( cgiArray ) {
+    if( pseudocount >= 2 ) {
+      if( "]" >< rrayval ) {
+        pseudocount--;
+        tmpf = ereg_replace( pattern:"\[|\]", string:rrayval, replace:"" );
+        data[pseudocount] = tmpf;
+      } else {
+        param[pseudocount] = rrayval;
+      }
+    } else {
+      param[pseudocount] = rrayval;
+    }
+    pseudocount++;
+  }
+
+  for( z = 2; z < max_index( param ); z++ ) {
+    url = string( param[0], "?" );
+    for( i = 2; i < max_index( param ); i++ ) {
+      if( z == i ) {
+        url += param[i] + "=" + ex;
+      } else {
+        if( data[i] ) {
+          url += param[i] + "=" + data[i];
+        } else {
+          url += param[i] + "=";
+        }
+      }
+      if( param[i + 1] ) {
+        url += "&";
+      }
+    }
+    urls = make_list( urls, url + "&" );
+  }
+  return urls;
 }

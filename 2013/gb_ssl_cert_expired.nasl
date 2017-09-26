@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_cert_expired.nasl 7242 2017-09-23 14:58:39Z cfischer $
+# $Id: gb_ssl_cert_expired.nasl 7248 2017-09-25 08:18:05Z cfischer $
 #
 # SSL/TLS: Certificate Expired
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103955");
-  script_version("$Revision: 7242 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-23 16:58:39 +0200 (Sat, 23 Sep 2017) $");
+  script_version("$Revision: 7248 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-25 10:18:05 +0200 (Mon, 25 Sep 2017) $");
   script_tag(name:"creation_date", value:"2013-11-25 12:37:04 +0700 (Mon, 25 Nov 2013)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -59,30 +59,28 @@ include("misc_func.inc");
 include("ssl_funcs.inc");
 include("byte_func.inc");
 
-# The current time
-now = isotime_now();
-if( strlen( now ) <= 0 ) exit( 0 ); # isotime_now: "If the current time is not available an empty string is returned."
-
-# List of keys which expired
-expired_keys = make_array();
-
 ssls = get_kb_list( "HostDetails/SSLInfo/*" );
 
 if( ! isnull( ssls ) ) {
 
-  check_for = "expired";
+  # The current time
+  now = isotime_now();
+  if( strlen( now ) <= 0 ) exit( 0 ); # isotime_now: "If the current time is not available an empty string is returned."
+
+  # Contains the list of keys which have expired
+  expired_keys = make_array();
 
   foreach key( keys( ssls ) ) {
 
-    tmp = split( key, sep:"/", keep:FALSE );
-    port = tmp[2];
+    tmp   = split( key, sep:"/", keep:FALSE );
+    port  = tmp[2];
     vhost = tmp[3];
 
     fprlist = get_kb_item( key );
     if( ! fprlist ) continue;
 
     result = check_cert_validity( fprlist:fprlist, port:port, vhost:vhost,
-                                  check_for:check_for, now:now, timeframe:0 );
+                                  check_for:"expired", now:now, timeframe:0 );
     if( result ) {
       expired_keys[port] = result;
     }
@@ -94,7 +92,6 @@ if( ! isnull( ssls ) ) {
     report += cert_summary( key:expired_keys[port] );
     security_message( data:report, port:port );
   }
-
   exit( 0 );
 }
 

