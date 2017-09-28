@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102015");
-  script_version("$Revision: 5364 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:26:07 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7293 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-11-16 11:47:06 +0100 (Mon, 16 Nov 2009)");
   script_cve_id("CVE-2003-0715", "CVE-2003-0528", "CVE-2003-0605");
   script_bugtraq_id(8458, 8460);
@@ -62,7 +62,6 @@ if(description)
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
-include("secpod_smb_func.inc");
 
 if(hotfix_check_sp(xp:3, win2k:5, win2003:2) <= 0){
   exit(0);

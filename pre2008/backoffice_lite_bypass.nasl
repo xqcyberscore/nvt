@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: backoffice_lite_bypass.nasl 5992 2017-04-20 14:42:07Z cfi $
+# $Id: backoffice_lite_bypass.nasl 7275 2017-09-26 11:46:31Z cfischer $
 #
 # Comersus BackOffice Lite Administrative Bypass
 #
@@ -31,12 +31,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16227");
-  script_version("$Revision: 5992 $");
+  script_version("$Revision: 7275 $");
   script_cve_id("CVE-2005-0301");
   script_bugtraq_id(12362);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 16:42:07 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Comersus BackOffice Lite Administrative Bypass");
   script_category(ACT_GATHER_INFO);
@@ -74,7 +74,8 @@ foreach dir( make_list_unique( "/comersus/backofficeLite", "/comersus", cgi_dirs
 
   if( dir == "/" ) dir = "";
 
-  req = http_get( item:dir + "/comersus_backoffice_install10.asp", port:port );
+  url = dir + "/comersus_backoffice_install10.asp";
+  req = http_get( item:url, port:port );
   r = http_keepalive_send_recv( port:port, data:req );
   if( isnull(  r ) ) continue;
   if( 'Installation complete' >< r && 'Final Step' >< r && 'Installation Wizard' >< r ) {

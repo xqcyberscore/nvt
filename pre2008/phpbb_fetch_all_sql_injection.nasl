@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phpbb_fetch_all_sql_injection.nasl 5795 2017-03-30 14:04:00Z cfi $
+# $Id: phpbb_fetch_all_sql_injection.nasl 7273 2017-09-26 11:17:25Z cfischer $
 # Description: phpBB Fetch All < 2.0.12
 #
 # Authors:
@@ -44,8 +44,8 @@ tag_solution = "Upgrade to phpBB Fetch All 2.0.12 or later";
 if(description)
 {
  script_id(14226);
- script_version("$Revision: 5795 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 16:04:00 +0200 (Thu, 30 Mar 2017) $");
+ script_version("$Revision: 7273 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(10868, 10893);
  script_xref(name:"OSVDB", value:"8353");
@@ -78,6 +78,6 @@ location = matches[2];
 res = http_get_cache(item:location + "/index.php", port:port);
 if ( ! res ) exit(0);
 
-if ( ereg(pattern:"Fetch by phpBB Fetch All ([01]\..*|2\.0\.([0-9]|1[01])[^0-9])", string:version))
+if ( ereg(pattern:"Fetch by phpBB Fetch All ([01]\..*|2\.0\.([0-9]|1[01])[^0-9])", string:res))
 	security_message(port);
 

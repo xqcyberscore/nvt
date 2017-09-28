@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ftp_anonymous.nasl 4987 2017-01-11 13:38:47Z cfi $
+# $Id: secpod_ftp_anonymous.nasl 7297 2017-09-27 09:54:01Z cfischer $
 #
 # Check for Anonymous FTP Login
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900600");
-  script_version("$Revision: 4987 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-11 14:38:47 +0100 (Wed, 11 Jan 2017) $");
+  script_version("$Revision: 7297 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-03-12 10:50:11 +0100 (Thu, 12 Mar 2009)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -121,7 +121,7 @@ foreach user( make_list( "anonymous", "ftp" ) ) {
       }
     }
 
-    replace_kb_item( name:"ftp/" + port + "/anonymous", value:TRUE );
+    replace_kb_item( name:"ftp/" + ftpPort + "/anonymous", value:TRUE );
     if( ! get_kb_item( "ftp/login" ) ) {
       set_kb_item( name:"ftp/login", value:user );
       set_kb_item( name:"ftp/password", value:passwd );

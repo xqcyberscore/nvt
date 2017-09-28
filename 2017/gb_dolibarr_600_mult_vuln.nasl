@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_600_mult_vuln.nasl 7247 2017-09-25 07:45:19Z jschulte $ 
+# $Id: gb_dolibarr_600_mult_vuln.nasl 7284 2017-09-27 06:26:15Z jschulte $ 
 #
 # Dolibarr Version 6.0.0 is vulnerable to different attacks, like XSS or arbitrary code execution
 # 
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113000"); 
-  script_version("$Revision: 7247 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-25 09:45:19 +0200 (Mon, 25 Sep 2017) $");
+  script_version("$Revision: 7284 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:26:15 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-19 08:36:42 +0200 (Tue, 19 Sep 2017)"); 
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");        
@@ -42,7 +42,7 @@ if(description)
 
   script_name("Dolibarr CRM Version 6.0.0 multiple vulnerabilities");
 
-  script_category(ACT_ATTACK); 
+  script_category(ACT_GATHER_INFO); 
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH"); 
   script_family("Web application abuses");
@@ -73,22 +73,21 @@ if(description)
   script_xref(name:"URL", value:"https://github.com/Dolibarr/dolibarr/commit/d26b2a694de30f95e46ea54ea72cc54f0d38e548");
   script_xref(name:"URL", value:"https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/");
 
-  exit(0);
+  exit( 0 );
 }
 
 CPE = "cpe:/a:dolibarr:dolibarr";
 
-include("host_details.inc");
-include("version_func.inc");
+include( "host_details.inc" );
+include( "version_func.inc" );
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-version = get_app_version( cpe: CPE, port: port );
-
-if( version_is_equal( version:version, test_version:"6.0.0"))
+if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
+if( !version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
+if( version_is_equal( version: version, test_version: "6.0.0" ) )
 {
-  report = report_fixed_ver( installed_version: version, fixed_version: "6.0.1");
-  security_message(port: port, data:report);
-  exit(0);
+  report = report_fixed_ver( installed_version: version, fixed_version: "6.0.1" );
+  security_message( port: port, data: report );
+  exit( 0 );
 }
 
 exit( 99 );

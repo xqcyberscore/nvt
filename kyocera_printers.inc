@@ -1,5 +1,6 @@
 ###############################################################################
-# $Id: kyocera_printers.inc 4108 2016-09-19 10:34:25Z cfi $
+# OpenVAS Include File
+# $Id: kyocera_printers.inc 7288 2017-09-27 07:21:24Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -21,20 +22,27 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 4108 $
+# $Revision: 7288 $
 #
 ###############################################################################
 
-global_var last_user, last_pass;
+global_var ky_last_user, ky_last_pass;
 
-ky_detect_urls = make_array();
+function get_ky_detect_urls() {
 
-ky_detect_urls['var ModelName="([^"]+)"'] = '/';
-ky_detect_urls['HeaderStatusPC."([^"]+)"'] = '/startwlm/Start_Wlm.htm';
-ky_detect_urls['PtrVal\\[0\\] = "([^"]+)";'] = '/eng/start/about.htm';
-ky_detect_urls['PtrVal\\[0\\] = "([^"]+)"'] = '/start/about.htm';
-ky_detect_urls['sVal\\[0\\] = "([^"]+)";'] = '/eng/status/statprn.htm';
-ky_detect_urls['sVal\\[0\\] = "([^"]+)"'] = '/eng/status/statprn1.htm';
+  local_var ky_detect_urls;
+
+  ky_detect_urls = make_array();
+
+  ky_detect_urls['var ModelName="([^"]+)"'] = '/';
+  ky_detect_urls['HeaderStatusPC."([^"]+)"'] = '/startwlm/Start_Wlm.htm';
+  ky_detect_urls['PtrVal\\[0\\] = "([^"]+)";'] = '/eng/start/about.htm';
+  ky_detect_urls['PtrVal\\[0\\] = "([^"]+)"'] = '/start/about.htm';
+  ky_detect_urls['sVal\\[0\\] = "([^"]+)";'] = '/eng/status/statprn.htm';
+  ky_detect_urls['sVal\\[0\\] = "([^"]+)"'] = '/eng/status/statprn1.htm';
+
+  return ky_detect_urls;
+}
 
 function ky_default_logins() {
 
@@ -56,7 +64,7 @@ function ky_default_logins() {
 }
 
 
-function check_ky_default_login(model) {
+function check_ky_default_login( model, port ) {
 
   ky = ky_login_details(model:model);
   if(!ky)return FALSE;
@@ -86,7 +94,7 @@ function check_ky_default_login(model) {
        req = string("POST " , ky['login_url'], " HTTP/1.1\r\n",
                     "Host: ", get_host_name(),"\r\n",
                     "DNT: 1\r\n",
-                    "User-Agent: Mozilla/5.0 (X11; Linux x86_64;rv:17.0) Gecko/17.0 Firefox/17.0 OpenVAS\r\n",
+                    "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                     "Content-Type: application/x-www-form-urlencoded\r\n",
                     "Content-Length: ",len,"\r\n",
                     "Connection: close\r\n",
@@ -120,8 +128,8 @@ function check_ky_default_login(model) {
 
     if(ereg(pattern:ky['http_status'], string:buf)) {
       if(eregmatch(pattern:ky['login_success'], string:buf)) {
-        last_user = username;
-        last_pass = password;
+        ky_last_user = username;
+        ky_last_pass = password;
         return 1;
       }
     }

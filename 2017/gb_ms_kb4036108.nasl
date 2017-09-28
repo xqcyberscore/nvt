@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4036108.nasl 7131 2017-09-14 14:03:44Z santu $
+# $Id: gb_ms_kb4036108.nasl 7260 2017-09-26 06:48:48Z asteins $
 #
 # Microsoft Exchange Server Multiple Vulnerabilities (KB4036108) 
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811761");
-  script_version("$Revision: 7131 $");
+  script_version("$Revision: 7260 $");
   script_cve_id("CVE-2017-11761", "CVE-2017-8758");
   script_bugtraq_id(100731, 100723);
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-14 16:03:44 +0200 (Thu, 14 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-14 10:51:52 +0530 (Thu, 14 Sep 2017)");
   script_name("Microsoft Exchange Server Multiple Vulnerabilities (KB4036108)");
 

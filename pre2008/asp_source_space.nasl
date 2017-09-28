@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: asp_source_space.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: asp_source_space.nasl 7275 2017-09-26 11:46:31Z cfischer $
 # Description: ASP source using %20 trick
 #
 # Authors:
@@ -45,8 +45,8 @@ tag_solution = "install all the latest security patches";
 if(description)
 {
  script_id(11071);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 7275 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2975);
  script_tag(name:"cvss_base", value:"5.0");
@@ -82,7 +82,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-function check(file)
+function check(file, port)
 {
   req = http_get(item:string(file, "%20"), port:port);
   r   = http_keepalive_send_recv(port:port, data:req);
@@ -103,8 +103,8 @@ function check(file)
 port = get_http_port(default:80);
 if ( ! can_host_asp(port:port) ) exit(0);
 
-if(check(file:"/default.asp"))exit(0);
+if(check(file:"/default.asp", port:port))exit(0);
 files = get_kb_list(string("www/", port, "/content/extensions/asp"));
 if(isnull(files))exit(0);
 files = make_list(files);
-check(file:files[0]); 
+check(file:files[0], port:port); 

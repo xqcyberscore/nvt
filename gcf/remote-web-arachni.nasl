@@ -33,8 +33,8 @@ if(description)
 {
  script_id(110001);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7221 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-21 15:05:11 +0200 (Thu, 21 Sep 2017) $");
+ script_version("$Revision: 7277 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-02-02 13:26:27 +0100 (Wed, 02 Feb 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("arachni (NASL wrapper)");
@@ -101,7 +101,7 @@ else
     text += 'OpenVAS was unable to execute Arachni and to perform the scan you
 requested.\nPlease make sure that Arachni is installed and that arachni is
 available in the PATH variable defined for your environment.';
-    log_message(port: port, data: text);
+    log_message(port: 0, data: text);
     exit(0);
 }
 

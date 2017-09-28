@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_os_ticket_sql_inj_vuln.nasl 7169 2017-09-18 10:02:22Z ckuersteiner $
+# $Id: gb_os_ticket_sql_inj_vuln.nasl 7260 2017-09-26 06:48:48Z asteins $
 #
 # osTicket SQL Injection Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:osticket:osticket";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140374");
-  script_version("$Revision: 7169 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-18 12:02:22 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 7260 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-09-18 16:34:35 +0700 (Mon, 18 Sep 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-14396");
 

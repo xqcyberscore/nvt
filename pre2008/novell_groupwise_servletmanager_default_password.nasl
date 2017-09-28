@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: novell_groupwise_servletmanager_default_password.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: novell_groupwise_servletmanager_default_password.nasl 7273 2017-09-26 11:17:25Z cfischer $
 # Description: Novell Groupwise Servlet Manager default password
 #
 # Authors:
@@ -43,8 +43,8 @@ servlet.ServletManager.initArgs=datamethod=POST,user=servlet,password=manager,bg
 if(description)
 {
     script_id(12122);
-    script_version("$Revision: 6053 $");
-    script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+    script_version("$Revision: 7273 $");
+    script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
     script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
     script_bugtraq_id(3697);
     script_tag(name:"cvss_base", value:"7.5");
@@ -100,12 +100,8 @@ port = get_http_port(default:443);
 
 req = string("GET /servlet/ServletManager HTTP/1.1\r\nHost: ", get_host_name(), "\r\nAuthorization: Basic c2VydmxldDptYW5hZ2Vy\r\n\r\n");
 
-if(debug==1) display(req);
-
 buf = http_keepalive_send_recv(port:port, data:req);
 if ( buf == NULL ) exit(0);
-
-if(debug == 1) display(buf);
 
 pat1 = "ServletManager"; 
 pat2 = "Servlet information";

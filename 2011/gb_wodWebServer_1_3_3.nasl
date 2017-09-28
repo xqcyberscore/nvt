@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wodWebServer_1_3_3.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_wodWebServer_1_3_3.nasl 7276 2017-09-26 11:59:52Z cfischer $
 #
 # wodWebServer.NET 1.3.3 Directory Traversal
 #
@@ -33,8 +33,8 @@ wodWebServer.NET 1.3.3 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103131);
- script_version("$Revision: 7006 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+ script_version("$Revision: 7276 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-03-28 13:42:17 +0200 (Mon, 28 Mar 2011)");
  script_bugtraq_id(47050);
  script_tag(name:"cvss_base", value:"5.0");
@@ -67,13 +67,11 @@ files =  make_array("\[extensions\]","windows%5C/win.ini","\[boot loader\]","boo
 
 foreach file (keys(files)) {
 
-  url = string(dir,"/..%5C/..%5C/..%5C/..%5C/..%5C/..%5C/..%5C/..%5C/",files[file]); 
+  url = string("/..%5C/..%5C/..%5C/..%5C/..%5C/..%5C/..%5C/..%5C/",files[file]); 
 
   if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
     security_message(port:port);
     exit(0);
-
   }
 }
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sybase_easerver_47987.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_sybase_easerver_47987.nasl 7277 2017-09-26 12:45:58Z cfischer $
 #
 # Sybase EAServer Directory Traversal Vulnerability
 #
@@ -42,7 +42,7 @@ if (description)
  script_cve_id("CVE-2011-2474");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6697 $");
+ script_version ("$Revision: 7277 $");
 
  script_name("Sybase EAServer Directory Traversal Vulnerability");
 
@@ -51,7 +51,7 @@ if (description)
  script_xref(name : "URL" , value : "http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=912");
  script_xref(name : "URL" , value : "http://www.sybase.com/detail?id=1093216");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2012-04-25 14:01:37 +0200 (Wed, 25 Apr 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -73,14 +73,11 @@ port = get_http_port(default:80);
 banner = get_http_banner(port:port);
 if("EAServer" >!< banner)exit(0);
 
-url = string(dir, "/.\\..\\.\\..\\.\\..\\.\\boot.ini"); 
+url = string("/.\\..\\.\\..\\.\\..\\.\\boot.ini"); 
 
 if(http_vuln_check(port:port, url:url,pattern:"\[boot loader\]")) {
-     
   security_message(port:port);
   exit(0);
-
 }
 
 exit(0);
-

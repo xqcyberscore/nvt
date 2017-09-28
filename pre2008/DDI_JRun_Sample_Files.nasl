@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: DDI_JRun_Sample_Files.nasl 6702 2017-07-12 13:49:41Z cfischer $
+# $Id: DDI_JRun_Sample_Files.nasl 7275 2017-09-26 11:46:31Z cfischer $
 # Description: JRun Sample Files
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "Sample files should never be left on production
 if(description)
 {
     script_id(10996);
-    script_version("$Revision: 6702 $");
-    script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
+    script_version("$Revision: 7275 $");
+    script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
     script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
     script_bugtraq_id(1386);
     script_tag(name:"cvss_base", value:"6.4");
@@ -75,17 +75,15 @@ file[1] = "/docs/servlets/index.html";  res[1] = "JRun Servlet Engine";
 file[2] = "/jsp/index.html";            res[2] = "JRun Scripting Examples";
 file[3] = "/webl/index.html";           res[3] = "What is WebL";
 
-function check_page(req, pat)
+function check_page(req, pat, port)
 {
     str = http_get(item:req, port:port);
     r = http_keepalive_send_recv(data:str, port:port);
     if( r == NULL ) exit(0);
-    if(pat >< r)
-            {
-                security_message(port:port);
-                close(soc);
-                exit(0);
-            }
+    if(pat >< r) {
+      security_message(port:port);
+      exit(0);
+    }
     return(0);
 }
 
@@ -95,5 +93,5 @@ for(i=0;file[i];i=i+1)
 {
     req = file[i];
     pat = res[i];
-    check_page(req:req, pat:pat);
+    check_page(req:req, pat:pat, port:port);
 }

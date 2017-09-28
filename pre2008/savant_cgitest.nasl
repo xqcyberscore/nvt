@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: savant_cgitest.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: savant_cgitest.nasl 7273 2017-09-26 11:17:25Z cfischer $
 #
 # Savant cgitest.exe buffer overflow
 #
@@ -34,8 +34,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11173");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 7273 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-2146");
   script_bugtraq_id(5706);
@@ -81,7 +81,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     if( ! soc ) exit( 0 );
 
     len = 256; # 136 should be enough
-    req = string( "POST ", p, " HTTP/1.0\r\n",
+    req = string( "POST ", url, " HTTP/1.0\r\n",
                   "Host: ", host,
                   "\r\nContent-Length: ", len,
                   "\r\n\r\n", crap( len ), "\r\n" );

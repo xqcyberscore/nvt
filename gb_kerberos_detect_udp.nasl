@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerberos_detect_udp.nasl 4822 2016-12-21 07:19:58Z cfi $
+# $Id: gb_kerberos_detect_udp.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # Kerberos Detection (UDP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108027");
-  script_version("$Revision: 4822 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 08:19:58 +0100 (Wed, 21 Dec 2016) $");
+  script_version("$Revision: 7287 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2013-12-12 11:31:47 +0100 (Thu, 12 Dec 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -48,7 +48,6 @@ if(description)
   exit(0);
 }
 
-include("byte_func.inc");
 include("misc_func.inc");
 
 function parse_resp( res, byte ) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_Antivir.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_WMI_Antivir.nasl 7279 2017-09-26 13:40:36Z cfischer $
 #
 # WMI AntiVirus Test
 #
@@ -33,8 +33,8 @@ tag_summary = "Tests WMI AntiVirus Status.";
 if(description)
 {
   script_id(96011);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 7279 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:40:36 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -110,7 +110,7 @@ if(OSVER == '5.1' || (OSVER == '5.2' && OSNAME >< 'Microsoft(R) Windows(R) XP Pr
 
 
  }else{ #Windows XP SP0 and SP1
-      Antivir = "Windows XP <= SP1";
+      AntiVir = "Windows XP <= SP1";
  }
 
 }
@@ -136,7 +136,7 @@ if((OSVER == '6.0' || OSVER == '6.1' || OSVER == '6.2') && OSTYPE =='1'){ #Windo
 }
 
 if((OSVER == '5.2' || OSVER == '6.0' || OSVER == '6.1' || OSVER == '6.2') && OSTYPE > 1){ #Windows Server 2000, 2003, 2008, 2008 R2 and Server 2012
-    Antivir = "Server";
+    AntiVir = "Server";
 }
 
 if((AntiVir >!< "Server" || AntiVir >!< "Windows XP <= SP1") && !AntiVir_Name) Antivir = "None";

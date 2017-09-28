@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pidgin_ssl_sec_bypass_vuln_lin_900022.nasl 4522 2016-11-15 14:52:19Z teissa $
+# $Id: secpod_pidgin_ssl_sec_bypass_vuln_lin_900022.nasl 7277 2017-09-26 12:45:58Z cfischer $
 # Description: Pidgin NSS plugin SSL Certificate Validation Security Bypass Vulnerability (Linux)
 #
 # Authors:
@@ -41,8 +41,8 @@ tag_insight = "The application fails to properly validate SSL (Secure Sockets La
 if(description)
 {
  script_id(900022);
- script_version("$Revision: 4522 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-15 15:52:19 +0100 (Tue, 15 Nov 2016) $");
+ script_version("$Revision: 7277 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_cve_id("CVE-2008-3532");
  script_bugtraq_id(30553);
@@ -89,7 +89,7 @@ if(description)
 	exit(0);
  }
 
- pidginVer = ssh_cmd(socket:sock, cmd:"pidgin --version", timeout:timeout);
+ pidginVer = ssh_cmd(socket:sock, cmd:"pidgin --version");
  ssh_close_connection();
 
  if(!pidginVer){

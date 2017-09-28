@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xine-lib_mult_vuln_aug08_900041.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: secpod_xine-lib_mult_vuln_aug08_900041.nasl 7277 2017-09-26 12:45:58Z cfischer $
 # Description: xine-lib Multiple Vulnerabilities (Aug-08)
 #
 # Authors:
@@ -45,8 +45,8 @@ vulnerabilities.";
 if(description)
 {
  script_id(900041);
- script_version("$Revision: 4557 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+ script_version("$Revision: 7277 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-08-27 11:53:45 +0200 (Wed, 27 Aug 2008)");
  script_copyright("Copyright (C) 2008 SecPod");
  script_tag(name:"cvss_base", value:"5.1");
@@ -93,7 +93,7 @@ if(description)
  	exit(0);
  }
 
- xineVer = ssh_cmd(socket:sock, cmd:"xine-config --version", timeout:timeout);
+ xineVer = ssh_cmd(socket:sock, cmd:"xine-config --version");
  ssh_close_connection();
 
  if(!xineVer){

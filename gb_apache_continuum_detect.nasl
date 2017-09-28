@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_continuum_detect.nasl 4425 2016-11-07 10:45:45Z ckuerste $
+# $Id: gb_apache_continuum_detect.nasl 7268 2017-09-26 08:43:43Z cfischer $
 #
 # Apache Continuum Detection
 #
@@ -29,8 +29,8 @@ if (description)
  
  script_oid("1.3.6.1.4.1.25623.1.0.103073");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 4425 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-07 11:45:45 +0100 (Mon, 07 Nov 2016) $");
+ script_version("$Revision: 7268 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 10:43:43 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-02-11 13:54:50 +0100 (Fri, 11 Feb 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Apache Continuum Detection");
@@ -100,7 +100,7 @@ if("Continuum - About" >< buf && "<h3>About Continuum</h3>" >< buf)
   if (!cpe)
     cpe = 'cpe:/a:apache:continuum';
 
-  register_product(cpe: cpe, location: location, port: port);
+  register_product(cpe: cpe, location: install, port: port);
 
   log_message(data: build_detection_report(app: "Apache Continuum", version: version + " Build: " + build,
                                            install: install, cpe: cpe, concluded: vers[0]),

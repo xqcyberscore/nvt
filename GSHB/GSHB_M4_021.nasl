@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_021.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_M4_021.nasl 7261 2017-09-26 07:06:36Z emoss $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.021
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94191);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 7261 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 09:06:36 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -84,7 +84,7 @@ if(OSNAME >!< "none"){
 }
 #################
 if (result != "nicht zutreffend" && result != "Fehler"){
-  if(ttynonconsole >< "none" || SSHDPermitRootLogin >< "none" || syslogsuenab >< "none" || nfsexports >< "none" || securetty == "nocat" || sshdconfig == "nocat" || logindefs == "nocat" || nfsexports == "nocat"){
+  if(ttynonconsole >< "none" || SSHDPermitRootLogin >< "none" || syslogsuenab >< "none" || nfsexports >< "none" || ttynonconsole == "nocat" || SSHDPermitRootLogin == "nocat" || syslogsuenab == "nocat" || nfsexports == "nocat"){
     if(ttynonconsole >< "none" && uname !~ "SunOS.*"){
       result_tty = string("Fehler");
       desc = string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass die Datei /etc/securetty nicht gefunden werden\nkonnte.\n');
@@ -102,7 +102,7 @@ if (result != "nicht zutreffend" && result != "Fehler"){
       desc += string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass die Datei /etc/exports nicht gefunden werden\nkonnte.\n');
     }
  
-    if(securetty == "nocat" || sshdconfig == "nocat" || logindefs == "nocat" || nfsexports == "nocat"){
+    if(ttynonconsole == "nocat" || SSHDPermitRootLogin == "nocat" || syslogsuenab == "nocat" || nfsexports == "nocat"){
       result_tty = string("Fehler");
       result_nfs = string("Fehler");
       result_sshd = string("Fehler");

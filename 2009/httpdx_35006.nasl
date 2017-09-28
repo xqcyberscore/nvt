@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: httpdx_35006.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: httpdx_35006.nasl 7297 2017-09-27 09:54:01Z cfischer $
 #
 # httpdx Multiple Commands Remote Buffer Overflow Vulnerabilities
 #
@@ -39,8 +39,8 @@ tag_summary = "The 'httpdx' program is prone to multiple remote buffer-overflow
 if(description)
 {
   script_id(100210);
-  script_version("$Revision: 4970 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+  script_version("$Revision: 7297 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-05-24 11:22:37 +0200 (Sun, 24 May 2009)");
   script_bugtraq_id(35006);
   script_tag(name:"cvss_base", value:"9.3");
@@ -67,7 +67,7 @@ if(!ftpPort){
   ftpPort = 21;
 }
 
-if(get_kb_item('ftp/'+port+'/broken'))exit(0);
+if(get_kb_item('ftp/'+ftpPort+'/broken'))exit(0);
 
 if(!get_port_state(ftpPort)){
   exit(0);

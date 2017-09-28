@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 26 Sep 2017 08:35:34 +0200
+# Automatically created on:  Thu, 28 Sep 2017 08:07:02 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47471,6 +47471,9 @@
 2017/adobe/gb_adobe_coldfusion_info_disclose_nd_rce_vuln.nasl: GPLv2+
 2017/afterlogic/gb_afterlogic_aurora_webmail_xss_vuln.nasl: GPLv2+
 2017/apache/gb_apache_optionsbleed.nasl: GPLv2+
+2017/apple/gb_apple_icloud_HT208142.nasl: GPLv2+
+2017/apple/gb_apple_macosx_mult_vuln_HT208144.nasl: GPLv2+
+2017/apple/gb_apple_macosx_server_rce_n_dos_vuln.nasl: GPLv2+
 2017/apple/gb_apple_safari_spoofing_n_xss_vuln_HT208116.nasl: GPLv2+
 2017/citrix/gb_xenserver_ctx227185.nasl: GPLv2+
 2017/deb_3750.nasl: GPLv2+
@@ -49559,6 +49562,7 @@
 2017/gb_flash_player_ms17-003.nasl: GPLv2+
 2017/gb_flash_player_ms17-005.nasl: GPLv2+
 2017/gb_flash_player_ms17-023.nasl: GPLv2+
+2017/gb_flir_systems_camera_mult_vuln.nasl: GPLv2+
 2017/gb_foreman_info_disc_vuln_17_aprl.nasl: GPLv2+
 2017/gb_forti_80581.nasl: GPLv2+
 2017/gb_fortianalyzer_FG-IR-17-014.nasl: GPLv2+
@@ -49572,6 +49576,7 @@
 2017/gb_foxit_phantompdf_arbitrary_write_rce_vuln_win.nasl: GPLv2+
 2017/gb_foxit_phantompdf_convert_to_pdf_info_disc_vuln_win.nasl: GPLv2+
 2017/gb_foxit_phantompdf_convert_to_pdf_mult_vuln_win.nasl: GPLv2+
+2017/gb_foxit_reader_arbit_code_dos_vuln.nasl: GPLv2+
 2017/gb_foxit_reader_arbitrary_write_rce_vuln_win.nasl: GPLv2+
 2017/gb_foxit_reader_convert_to_pdf_info_disc_vuln_win.nasl: GPLv2+
 2017/gb_foxit_reader_convert_to_pdf_mult_vuln_win.nasl: GPLv2+
@@ -49649,6 +49654,8 @@
 2017/gb_hp_printer_rce_vuln.nasl: GPLv2+
 2017/gb_hp_sitescope_mult_vuln.nasl: GPLv2+
 2017/gb_hp_sitescope_privilege_esc_vuln.nasl: GPLv2+
+2017/gb_http_default_command_injection.nasl: GPLv2+
+2017/gb_http_default_dir_trav.nasl: GPLv2+
 2017/gb_http_dir_trav.nasl: GPLv2+
 2017/gb_huawei_quidway_priv_esc_vuln.nasl: GPLv2+
 2017/gb_humax_gateway_file_dwnld_vuln.nasl: GPLv2+
@@ -49830,6 +49837,9 @@
 2017/gb_junos_jsa10797.nasl: GPLv2+
 2017/gb_junos_jsa1079.nasl: GPLv2+
 2017/gb_junos_space_JSA10770.nasl: GPLv2+
+2017/gb_kallithea_csrf_vuln.nasl: GPLv2+
+2017/gb_kallithea_mult_remote_vuln.nasl: GPLv2+
+2017/gb_kallithea_mult_xss_vuln.nasl: GPLv2+
 2017/gb_kaltura_xss_vuln.nasl: GPLv2+
 2017/gb_kanboard_mult_vuln.nasl: GPLv2+
 2017/gb_kaseya_vsa_info_disc_vuln.nasl: GPLv2+
@@ -49861,6 +49871,8 @@
 2017/gb_lync_ms17-014_macosx.nasl: GPLv2+
 2017/gb_magento_90724.nasl: GPLv2+
 2017/gb_magento_file_upload_vuln.nasl: GPLv2+
+2017/gb_magento_xss_vuln.nasl: GPLv2+
+2017/gb_mako_web_server_mult_vuln.nasl: GPLv2+
 2017/gb_manageengine_admanager_plus_mul_vul_win.nasl: GPLv2+
 2017/gb_manageengine_appli_manager_mult_vuln.nasl: GPLv2+
 2017/gb_manageengine_desktop_central_priv_vuln.nasl: GPLv2+
@@ -50610,6 +50622,7 @@
 2017/gb_puppet_enterprise_dos_vuln.nasl: GPLv2+
 2017/gb_puppet_enterprise_mult_vuln.nasl: GPLv2+
 2017/gb_putty_dll_hijacking_vuln_win.nasl: GPLv2+
+2017/gb_pydio_before_607_mult_vuln.nasl: GPLv2+
 2017/gb_qnap_nas_heap_overflow_vuln.nasl: GPLv2+
 2017/gb_qnap_nas_transcode_server_com_exec_vuln.nasl: GPLv2+
 2017/gb_qnap_qts_20170213.nasl: GPLv2+
@@ -51424,6 +51437,7 @@
 2017/gb_vsphere_data_protection_mult_vuln.nasl: GPLv2+
 2017/gb_vtscada_mult_vuln.nasl: GPLv2+
 2017/gb_watchguard_fireware_mult_vuln.nasl: GPLv2+
+2017/gb_wd_mycloud_dropbox_rce.nasl: GPLv2+
 2017/gb_wd_mycloud_rce2.nasl: GPLv2+
 2017/gb_wd_mycloud_rce_95201.nasl: GPLv2+
 2017/gb_weblate_info_disc_vuln.nasl: GPLv2+
@@ -51520,6 +51534,9 @@
 2017/gb_zoneminder_info_disc_vuln.nasl: GPLv2+
 2017/gb_zoneminder_mult_vuln.nasl: GPLv2+
 2017/gb_zoneminder_xss_vuln.nasl: GPLv2+
+2017/google/gb_google_chrome_stable-channel-update-for-desktop_21-2017-09_lin.nasl: GPLv2+
+2017/google/gb_google_chrome_stable-channel-update-for-desktop_21-2017-09_macosx.nasl: GPLv2+
+2017/google/gb_google_chrome_stable-channel-update-for-desktop_21-2017-09_win.nasl: GPLv2+
 2017/hikvision/gb_hikvision_ip_cameras_mult_vuln.nasl: GPLv2+
 2017/ibm/gb_ibm_db2_dos_vuln_sep17.nasl: GPLv2+
 2017/ibm/gb_ibm_db2_log_information_disclosure_vuln.nasl: GPLv2+
@@ -51530,6 +51547,7 @@
 2017/joomla/gb_joomla_info_disc_vuln.nasl: GPLv2+
 2017/joomla/gb_joomla_ldap_info_disc_vuln.nasl: GPLv2+
 2017/joomla/gb_joomla_open_redirect_vuln.nasl: GPLv2+
+2017/kaltura/gb_kaltura_mult_vuln.nasl: GPLv2+
 2017/kannel/gb_kannel_priv_esc_vuln.nasl: GPLv2+
 2017/microsoft/gb_dotnet_framework_kb4040972_n_kb4040971.nasl: GPLv2+
 2017/microsoft/gb_dotnet_framework_kb4040973.nasl: GPLv2+
@@ -51553,6 +51571,20 @@
 2017/phpmyadmin/gb_phpmyadmin_mult_vuln_oct12_win.nasl: GPLv2+
 2017/phpmyfaq/gb_phpmyfaq_xss_vuln.nasl: GPLv2+
 2017/qnap/gb_qnap_qts_media_library_com_inj_vuln.nasl: GPLv2+
+2017/samba/gb_samba_smb123_mitm_vuln.nasl: GPLv2+
+2017/samba/gb_samba_smb1_memory_leak_vuln.nasl: GPLv2+
+2017/samba/gb_samba_smb3_mitm_vuln.nasl: GPLv2+
+2017/sugarcrm/gb_sugarcrm_mult_vuln_jun17.nasl: GPLv2+
+2017/sugarcrm/gb_sugarcrm_mult_vuln_sep17.nasl: GPLv2+
+2017/sugarcrm/gb_sugarcrm_php_saml_vuln.nasl: GPLv2+
+2017/symantec/gb_symantec_encryption_desktop_dos_vuln_win.nasl: GPLv2+
+2017/vmware/gb_vmware_esxi_guest_rpc_null_pointer_deref_vuln.nasl: GPLv2+
+2017/vmware/gb_vmware_esxi_svga_device_code_exec_vuln.nasl: GPLv2+
+2017/vmware/gb_vmware_fusion_guest_rpc_null_pointer_deref_vuln_macosx.nasl: GPLv2+
+2017/vmware/gb_vmware_fusion_svga_device_code_exec_vuln_macosx.nasl: GPLv2+
+2017/vmware/gb_vmware_vcenter_server_stored_xss_vuln.nasl: GPLv2+
+2017/vmware/gb_vmware_workstation_svga_device_code_exec_vuln_lin.nasl: GPLv2+
+2017/vmware/gb_vmware_workstation_svga_device_code_exec_vuln_win.nasl: GPLv2+
 2017/wordpress/gb_wordpress_mult_vuln_sep17_lin.nasl: GPLv2+
 2017/wordpress/gb_wordpress_mult_vuln_sep17_win.nasl: GPLv2+
 2017/wso2/gb_wso2_api_manager_xss_vuln.nasl: GPLv2+
@@ -52119,6 +52151,7 @@ gb_flexera_installanywhere_detect_lin.nasl: GPLv2+
 gb_flexera_installanywhere_detect_macosx.nasl: GPLv2+
 gb_flexera_installanywhere_detect_win.nasl: GPLv2+
 gb_flexera_installshield_detect_win.nasl: GPLv2+
+gb_flir_systems_detect.nasl: GPLv2+
 gb_flock_detect_lin.nasl: GPLv2+
 gb_flock_detect_win.nasl: GPLv2+
 gb_fog_server_detect.nasl: GPLv2+
@@ -52373,6 +52406,7 @@ gb_lussumo_vanilla_detect.nasl: GPLv2+
 gb_lxcenter_kloxo_detect.nasl: GPLv2+
 gb_magic_iso_maker_detect.nasl: GPLv2+
 gb_maildrop_detect.nasl: GPLv2+
+gb_mako_web_server_detect.nasl: GPLv2+
 gb_malwarebytes_anti_exploit_detect_win.nasl: GPLv2+
 gb_malwarebytes_anti_malware_detect_win.nasl: GPLv2+
 gb_manageengine_admanager_plus_detection.nasl: GPLv2+
@@ -52651,6 +52685,7 @@ gb_projectsend_remote_detect.nasl: GPLv2+
 gb_prtg_network_monitor_detect.nasl: GPLv2+
 gb_pulse_connect_secure_snmp_detect.nasl: GPLv2+
 gb_puppet_enterprise_detect.nasl: GPLv2+
+gb_pydio_detect.nasl: GPLv2+
 gb_pyftpdlib_detect.nasl: GPLv2+
 gb_Python_detection.nasl: GPLv2+
 gb_python_detect_macosx.nasl: GPLv2+
@@ -53056,8 +53091,23 @@ gsf/2017/cisco/gb_cisco_firepower_management_center_cisco-sa-20170906-firepower-
 gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170906-ios-udp.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170906-isr.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170906-snmp.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170927-cip.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170927-dhcp.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170927-ike.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170927-nat.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170927-pnp.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170927-profinet.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170927-rbip-dos.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170927-vpls.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170906-cat.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170906-ios-udp.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170927-cc.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170927-ike.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170927-ios-xe.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170927-lisp.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170927-ngwc.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170927-privesc.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170927-restapi.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170906-cms.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170913-cmsturn.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ucs_central_cisco-sa-20170920-ucs.nasl: GPLv2+

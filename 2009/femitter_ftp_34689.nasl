@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: femitter_ftp_34689.nasl 4824 2016-12-21 08:49:38Z teissa $
+# $Id: femitter_ftp_34689.nasl 7297 2017-09-27 09:54:01Z cfischer $
 #
 # Acritum Femitter Server Remote File Disclosure Vulnerability
 #
@@ -37,8 +37,8 @@ tag_summary = "Acritum Femitter FTP Server is prone to a remote file-disclosure
 if(description)
 {
   script_id(100165);
-  script_version("$Revision: 4824 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 09:49:38 +0100 (Wed, 21 Dec 2016) $");
+  script_version("$Revision: 7297 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-04-26 20:59:36 +0200 (Sun, 26 Apr 2009)");
   script_bugtraq_id(34689);
   script_tag(name:"cvss_base", value:"5.0");
@@ -62,7 +62,7 @@ if(!ftpPort){
   ftpPort = 21;
 }
 
-if(get_kb_item('ftp/'+port+'/broken'))exit(0);
+if(get_kb_item('ftp/'+ftpPort+'/broken'))exit(0);
 
 if(!get_port_state(ftpPort)){
   exit(0);
@@ -105,7 +105,7 @@ if(login_details)
    info += result;
    info += string("\n");
 
-   security_message(port:port,data:info);
+   security_message(port:ftpPort,data:info);
    ftp_close(socket:soc1);
    close(soc1);
    exit(0);

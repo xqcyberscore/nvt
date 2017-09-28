@@ -1,6 +1,6 @@
 ###############################################################################
 # Openvas Vulnerability Test
-# $Id: gb_xoops_celepar_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_xoops_celepar_detect.nasl 7270 2017-09-26 09:49:58Z cfischer $
 #
 # Xoops Celepar Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801152");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6032 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_version("$Revision: 7270 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_name("Xoops Celepar Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
@@ -48,27 +48,21 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get HTTP port
 xoopsPort = get_http_port(default:80);
-
 if(!can_host_php(port:xoopsPort)) exit(0);
 
-## Check for the Xoops Celepar
 foreach dir (make_list_unique("/xoopscelepar", "/" , cgi_dirs(port:xoopsPort))) {
 
   install = dir;
   if(dir == "/") dir = "";
 
-  ## Send and receive the response
   rcvRes = http_get_cache(item: dir + "/index.php", port:xoopsPort);
 
-  ## Confirm it's Xoops application installed
   if("200 OK" >< rcvRes && ">XOOPS Site" >< rcvRes) {
 
     version = "unknown";
@@ -76,7 +70,6 @@ foreach dir (make_list_unique("/xoopscelepar", "/" , cgi_dirs(port:xoopsPort))) 
     celeparVer = eregmatch(pattern:">Powered by XOOPS ([0-9.]+)",
                            string:rcvRes);
 
-    ## Set the kb item
     if(celeparVer[1] != NULL) {
       version = celeparVer[1];
     }
@@ -86,7 +79,7 @@ foreach dir (make_list_unique("/xoopscelepar", "/" , cgi_dirs(port:xoopsPort))) 
                 value:tmp_version);
 
     ## build cpe and store it as host_detail
-    cpe = build_cpe(value:ver, exp:"^([0-9.]+)", base:"cpe:/a:alexandre_amaral:xoops_celepar:");
+    cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:alexandre_amaral:xoops_celepar:");
     if(!cpe)
       cpe = 'cpe:/a:alexandre_amaral:xoops_celepar';
 

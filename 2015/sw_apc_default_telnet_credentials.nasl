@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apc_default_telnet_credentials.nasl 6497 2017-06-30 09:58:54Z teissa $
+# $Id: sw_apc_default_telnet_credentials.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # APC Network Management Card Telnet Default Credentials
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111051"); 
-  script_version("$Revision: 6497 $");
+  script_version("$Revision: 7287 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("APC Network Management Card Telnet Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-11-12 15:00:00 +0100 (Thu, 12 Nov 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -57,9 +57,7 @@ include("telnet_func.inc");
 vuln = 0;
 report = 'It was possible to login using the following credentials:';
 
-port = get_kb_item("Services/telnet");
-if( ! port ) port = 23;
-if( ! get_port_state( port ) ) exit( 0 );
+port = get_telnet_port( default:23 );
 
 # Only the two most common passwords as the device is locking out
 # an IP after three wrong logins. The readonly:apc user is also

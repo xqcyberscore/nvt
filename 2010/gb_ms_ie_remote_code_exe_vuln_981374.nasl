@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_remote_code_exe_vuln_981374.nasl 6527 2017-07-05 05:56:34Z cfischer $
+# $Id: gb_ms_ie_remote_code_exe_vuln_981374.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # MS Internet Explorer Remote Code Execution Vulnerability (981374)
 #
@@ -42,9 +42,9 @@ tag_summary = "The host is installed with Internet Explorer and is prone to Remo
 if(description)
 {
   script_id(800176);
-  script_version("$Revision: 6527 $");
+  script_version("$Revision: 7287 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-03-10 15:48:25 +0100 (Wed, 10 Mar 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -75,7 +75,6 @@ exit(66); ## This NVT is deprecated as addressed in secpod_ms10-018.nasl.
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
-include("secpod_smb_func.inc");
 
 if(hotfix_check_sp(win2k:5, xp:4, win2003:3) <= 0){
   exit(0);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phplistpro_remote_file_include.nasl 5779 2017-03-30 06:57:12Z cfi $
+# $Id: phplistpro_remote_file_include.nasl 7277 2017-09-26 12:45:58Z cfischer $
 # Description: phpListPro returnpath Remote File Include Vulnerabilities
 #
 # Authors:
@@ -48,8 +48,8 @@ enabled.";
 if(description)
 {
   script_id(80077);
-  script_version("$Revision: 5779 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:57:12 +0200 (Thu, 30 Mar 2017) $");
+  script_version("$Revision: 7277 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -105,7 +105,6 @@ foreach dir( make_list_unique( "/phplistpro", "/toplist", "/topsite", cgi_dirs( 
         "\n",
         content
       );
-    else report = desc;
 
     security_message(port:port, data:report);
     exit(0);

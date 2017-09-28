@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4039038.nasl 7124 2017-09-14 08:23:27Z cfischer $
+# $Id: gb_ms_kb4039038.nasl 7260 2017-09-26 06:48:48Z asteins $
 #
 # Microsoft Windows Information Disclosure Vulnerability (KB4039038)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811666");
-  script_version("$Revision: 7124 $");
+  script_version("$Revision: 7260 $");
   script_cve_id("CVE-2017-8710");
   script_bugtraq_id(100793);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-14 10:23:27 +0200 (Thu, 14 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-13 09:16:59 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Windows Information Disclosure Vulnerability (KB4039038)");
 

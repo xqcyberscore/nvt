@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sgi_rpc_passwd.nasl 4803 2016-12-19 13:00:35Z mime $
+# $Id: sgi_rpc_passwd.nasl 7277 2017-09-26 12:45:58Z cfischer $
 # Description: irix rpc.passwd overflow
 #
 # Authors:
@@ -35,8 +35,8 @@ it, or see SGI advisory #20020601-01-P";
 if(description)
 {
  script_id(80034);
- script_version("$Revision: 4803 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-19 14:00:35 +0100 (Mon, 19 Dec 2016) $");
+ script_version("$Revision: 7277 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
  script_bugtraq_id(4939);
  script_cve_id("CVE-2002-0357");
@@ -73,7 +73,7 @@ n = get_kb_item("rpc/yppasswd/sun_overflow");
 if(n)exit(0);
 
 
-function ping(len)
+function ping(len, soc)
 {
  crp = crap(len-4);
     
@@ -112,13 +112,13 @@ if(port)
     # argument. The remote process will die immediately,
     # and hopefully painlessly.
     #
-    p1 = ping(len:80);
+    p1 = ping(len:80, soc:soc);
     if(p1)
     {
-     p2 = ping(len:4000);
+     p2 = ping(len:4000, soc:soc);
      if(!p2)
      {
-      p3 = ping(len:80);
+      p3 = ping(len:80, soc:soc);
       if(!p3)security_message(port:port, protocol:"udp");
      }
      }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_clamav_invalid_mem_access_dos_vuln_900117.nasl 4489 2016-11-14 08:23:54Z teissa $
+# $Id: secpod_clamav_invalid_mem_access_dos_vuln_900117.nasl 7277 2017-09-26 12:45:58Z cfischer $
 # Description: ClamAV Invalid Memory Access Denial Of Service Vulnerability 
 #
 # Authors:
@@ -44,8 +44,8 @@ tag_summary = "The host is running Clam AntiVirus, which is prone to denial of
 if(description)
 {
  script_id(900117);
- script_version("$Revision: 4489 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
+ script_version("$Revision: 7277 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-09-05 16:50:44 +0200 (Fri, 05 Sep 2008)");
  script_bugtraq_id(30994);
  script_cve_id("CVE-2008-1389");
@@ -94,7 +94,7 @@ if(description)
         exit(0);
  }
 
- clamVer = ssh_cmd(socket:sock, cmd:"clamav-config --version", timeout:timeout);
+ clamVer = ssh_cmd(socket:sock, cmd:"clamav-config --version");
  ssh_close_connection();
 
  if(!clamVer){
@@ -102,5 +102,5 @@ if(description)
  }
 
  if(egrep(pattern:"^0\.([0-8]?[0-9]|9[0-3])($|[^0-9])", string:clamVer)){
-        security_message(port);
+        security_message(port:0);
  }

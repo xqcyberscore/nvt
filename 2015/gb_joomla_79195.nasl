@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_79195.nasl 6243 2017-05-30 09:04:14Z teissa $
+# $Id: gb_joomla_79195.nasl 7277 2017-09-26 12:45:58Z cfischer $
 #
 # Joomla! Core Remote Code Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-8562", "CVE-2015-8563", "CVE-2015-8564", "CVE-2015-8565");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6243 $");
+ script_version ("$Revision: 7277 $");
 
  script_name("Joomla! Core Remote Code Execution Vulnerability");
 
@@ -52,7 +52,7 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2015-12-16 15:35:12 +0100 (Wed, 16 Dec 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -86,6 +86,7 @@ agent += '\xf0\xfd\xfd\xfd';
 injection = make_list( "User-Agent:","X-Forwarded-For:" );
 
 host = http_host_name( port:port );
+cookie = NULL;
 
 foreach inj ( injection )
 {

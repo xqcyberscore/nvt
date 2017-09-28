@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xine-lib_mult_code_exe_dos_vuln_900111.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: secpod_xine-lib_mult_code_exe_dos_vuln_900111.nasl 7277 2017-09-26 12:45:58Z cfischer $
 # Description: xine-lib Multiple Vulnerabilities
 #
 # Authors:
@@ -51,8 +51,8 @@ tag_summary = "The host is installed with xine-lib, which prone to multiple
 if(description)
 {
  script_id(900111);
- script_version("$Revision: 4557 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+ script_version("$Revision: 7277 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_cve_id("CVE-2008-5235");
  script_bugtraq_id(30698);
@@ -100,7 +100,7 @@ if(description)
  	exit(0);
  }
 
- xineVer = ssh_cmd(socket:sock, cmd:"xine-config --version", timeout:timeout);
+ xineVer = ssh_cmd(socket:sock, cmd:"xine-config --version");
  ssh_close_connection();
 
  if(!xineVer){

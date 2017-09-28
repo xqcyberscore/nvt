@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tcp_timestamps.nasl 7176 2017-09-18 12:01:01Z cfischer $
+# $Id: tcp_timestamps.nasl 7277 2017-09-26 12:45:58Z cfischer $
 #
 # TCP timestamps
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80091");
-  script_version("$Revision: 7176 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 7277 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
@@ -84,7 +84,7 @@ if( islocalhost() ) exit( 0 );
 
 debug = FALSE;
 
-function test( seq ) {
+function test( seq, saddr, daddr, dport ) {
 
   local_var ip, tcp, options, filter, ms, r, sport, seq, tsval;
 
@@ -162,7 +162,7 @@ dport = get_host_open_tcp_port();
 daddr = get_host_ip();
 saddr = this_host();
 
-v1 = test( seq:1 );
+v1 = test( seq:1, daddr:daddr, saddr:saddr, dport:dport );
 
 if( isnull( v1 ) ) exit( 0 );
 
@@ -175,7 +175,7 @@ if( ! delay || int( delay ) < 1 ) {
 
 sleep( delay );
 
-v2 = test( seq:2 );
+v2 = test( seq:2, daddr:daddr, saddr:saddr, dport:dport );
 if( isnull( v2 ) ) exit( 1 ); # ???
 
 dms = v2[0] - v1[0];

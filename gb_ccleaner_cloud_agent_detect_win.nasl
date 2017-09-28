@@ -1,6 +1,6 @@
 ####################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ccleaner_cloud_agent_detect_win.nasl 7202 2017-09-20 12:47:53Z santu $
+# $Id: gb_ccleaner_cloud_agent_detect_win.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # CCleaner Cloud Agent Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811778");
-  script_version("$Revision: 7202 $");
+  script_version("$Revision: 7287 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 14:47:53 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-19 12:52:53 +0530 (Tue, 19 Sep 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("CCleaner Cloud Agent Detection (Windows)");
@@ -51,7 +51,6 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 

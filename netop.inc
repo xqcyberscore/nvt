@@ -36,23 +36,23 @@ include("misc_func.inc");
 
 local_var port;
 local_var addr;
-local_var proto_nam;
+global_var proto_nam;
 
 
 ############## HELO packets in NetOps native format ################
 
-local_var helo_pkt_udp;
-local_var helo_pkt_gen;
-local_var quit_pkt_stream;
+global_var helo_pkt_udp;
+global_var helo_pkt_gen;
+global_var quit_pkt_stream;
 
 ############## Received reply in NetOps native format ##################
 
-local_var banner_pkt; 
+global_var banner_pkt; 
 
 ############## General derived strings ##################
 
 local_var netop_kb_key;
-local_var netop_kb_val;
+global_var netop_kb_val;
 
 local_var netop_svcidstr;
 local_var netop_prod_typ;

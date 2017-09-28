@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_portal_detect.nasl 3890 2016-08-26 07:19:50Z ckuerste $
+# $Id: gb_ibm_websphere_portal_detect.nasl 7268 2017-09-26 08:43:43Z cfischer $
 #
 # IBM WebSphere Portal Detection 
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106198");
- script_version ("$Revision: 3890 $");
- script_tag(name: "last_modification", value: "$Date: 2016-08-26 09:19:50 +0200 (Fri, 26 Aug 2016) $");
+ script_version ("$Revision: 7268 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-09-26 10:43:43 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name: "creation_date", value: "2016-08-24 14:38:56 +0700 (Wed, 24 Aug 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -122,7 +122,7 @@ if ("IBM WebSphere Portal" >< res) {
 
   register_product(cpe: cpe, location: "/", port: port);
 
-  log_message(data: build_detection_report(app: "IBM WebSphere Portal", version: version, install: install,
+  log_message(data: build_detection_report(app: "IBM WebSphere Portal", version: version, install: "/",
                                            cpe: cpe, concluded: concl),
               port: port);
   exit(0);

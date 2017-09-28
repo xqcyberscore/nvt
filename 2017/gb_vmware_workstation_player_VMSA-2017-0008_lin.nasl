@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_player_VMSA-2017-0008_lin.nasl 6368 2017-06-19 09:45:18Z teissa $
+# $Id: gb_vmware_workstation_player_VMSA-2017-0008_lin.nasl 7292 2017-09-27 08:38:54Z santu $
 #
 # VMware Workstation VMSA-2017-0008.2 Multiple Security Vulnerabilities (Linux)
 #
@@ -29,10 +29,11 @@ CPE = "cpe:/a:vmware:player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107209");
-  script_version("$Revision: 6368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-19 11:45:18 +0200 (Mon, 19 Jun 2017) $");
+  script_version("$Revision: 7292 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:38:54 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-05-29 18:50:37 +0200 (Mon, 29 May 2017)");
-  script_cve_id("CVE-2017-4912", "CVE-2017-4908", "CVE-2017-4909", "CVE-2017-4910", "CVE-2017-4911", "CVE-2017-4913" );
+  script_cve_id("CVE-2017-4912", "CVE-2017-4908", "CVE-2017-4909", "CVE-2017-4910", 
+                "CVE-2017-4911", "CVE-2017-4913", "CVE-2017-4925");
 
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -41,15 +42,22 @@ if(description)
   script_name("VMware Workstation VMSA-2017-0008.2 Multiple Security Vulnerabilities (Linux)");
   script_tag(name: "summary", value: "VMware Workstation updates resolve multiple security vulnerabilities");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight" , value:"The flaw is due to  multiple heap buffer-overflow vulnerabilities in JPEG2000 and TrueType Font (TTF) parsers in the TPView.dll.");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  of detect NVT and check if the version is vulnerable or not.");
 
-  script_tag(name: "impact" , value: "Successfully exploiting this issue allows attackers to execute arbitrary code in the context of the affected application. Failed exploits will result in denial-of-service conditions.");
+  script_tag(name: "insight" , value:"The flaw is due to  multiple heap 
+  buffer-overflow vulnerabilities in JPEG2000 and TrueType Font (TTF) parsers in 
+  the TPView.dll and a NULL pointer dereference vulnerability.");
+
+  script_tag(name: "impact" , value: "Successfully exploiting this issue allows 
+  attackers to execute arbitrary code in the context of the affected application. 
+  Failed exploits will result in denial-of-service conditions.");
 
   script_tag(name: "affected", value: "VMware Workstation 12.x versions prior to 12.5.3 ");
   script_tag(name: "solution", value: "Update to Workstation 12.5.3.");
 
   script_xref(name: "URL" , value: "http://www.vmware.com/security/advisories/VMSA-2017-0008.html");
+  script_xref(name: "URL" , value: "https://www.vmware.com/security/advisories/VMSA-2017-0015.html");  
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

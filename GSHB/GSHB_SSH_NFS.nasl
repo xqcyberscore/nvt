@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_NFS.nasl 7067 2017-09-06 11:50:33Z teissa $
+# $Id: GSHB_SSH_NFS.nasl 7280 2017-09-26 13:46:20Z cfischer $
 #
 # Check security mechanisms for NFS
 #
@@ -31,8 +31,8 @@ tag_summary = "This plugin uses ssh to Check security mechanisms for NFS.";
 if(description)
 {
   script_id(96092);
-  script_version("$Revision: 7067 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-06 13:50:33 +0200 (Wed, 06 Sep 2017) $");
+  script_version("$Revision: 7280 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:46:20 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-05-21 15:05:08 +0200 (Fri, 21 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -127,7 +127,7 @@ else{
 
 if (mountd == "Absolute path to 'rpcinfo' is '/usr/sbin/rpcinfo', so running it may require superuser privileges (eg. root)."){
   mountd = ssh_cmd(socket:sock, cmd:"ps ax | grep mountd");
-  if (nfs =~ '.*mountd.*') mountd = "true";
+  if (mountd =~ '.*mountd.*') mountd = "true";
   else mountd = "false";
 }
 else{

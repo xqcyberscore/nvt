@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_audemat_fmb80_default_telnet_credentials.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_audemat_fmb80_default_telnet_credentials.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # Audemat FMB80 RDS Encoder Default root Credentials
 #
@@ -39,7 +39,7 @@ tag_solution = 'Change/Set the password.';
 if (description)
 {
  script_oid(SCRIPT_OID); 
- script_version("$Revision: 6724 $");
+ script_version("$Revision: 7287 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Audemat FMB80 RDS Encoder Default root Credentials");
@@ -47,7 +47,7 @@ if (description)
 
  script_xref(name:"URL" , value:"http://dariusfreamon.wordpress.com/2014/01/28/audemat-fmb80-rds-encoder-default-root-credentials/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
  script_tag(name:"creation_date", value:"2014-01-29 15:02:06 +0200 (Wed, 29 Jan 2014)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -67,9 +67,7 @@ if (description)
 
 include("telnet_func.inc");
 
-port = get_kb_item("Services/telnet");
-if( ! port ) port = 23;
-if( ! get_port_state( port ) ) exit( 0 );
+port = get_telnet_port( default:23 );
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );

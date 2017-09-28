@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: nntp_func.inc 4682 2016-12-06 08:14:23Z cfi $
+# OpenVAS Include File
+# $Id: nntp_func.inc 7296 2017-09-27 09:24:22Z cfischer $
 #
 # Functions for nntp
 #
@@ -23,9 +23,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 4682 $
+# $Revision: 7296 $
 #
 ###############################################################################
+
+global_var _nntp_func_debug;
+_nntp_func_debug = FALSE;
 
 # NNTP protocol is defined by RFC 977
 # NNTP message format is defined by RFC 1036 (obsoletes 850); see also RFC 822.
@@ -40,7 +43,7 @@ function nntp_auth(socket, username, password)
  send(socket:socket, data: string("AUTHINFO PASS ", password, "\r\n"));
  buff = recv_line(socket:socket, length:2048);
  if ("502 " >< buff) { 
-  debug_print(string("Bad username/password for NNTP server"));
+  if( _nntp_func_debug ) display("Bad username/password for NNTP server");
   return (0);
  }
  return (1);
@@ -64,7 +67,7 @@ function nntp_post(socket, message)
 
   if (! socket) { return (0); }
   send(socket: socket, data:string("POST\r\n"));
-  buff = recv_line(socket:s, length: 2048);
+  buff = recv_line(socket:socket, length: 2048);
 
   # 340 = Go ahead; 440 = posting prohibited
   if ("340 " >< buff) {

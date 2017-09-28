@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle_tnslsnr_version.nasl 4462 2016-11-09 16:19:24Z mime $
+# $Id: oracle_tnslsnr_version.nasl 7278 2017-09-26 13:20:44Z cfischer $
 #
 # Oracle Version Detection
 #
@@ -34,10 +34,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10658");
-  script_version("$Revision: 4462 $");
+  script_version("$Revision: 7278 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 17:19:24 +0100 (Wed, 09 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name( "Oracle Version Detection");
 
@@ -143,10 +143,10 @@ function extract_version(socket)
   tot_len = unpack_short(buf:header, offset:0);
   remaining = tot_len - 8;
   if( remaining < 0 ) return 0;
-  rest = recv(socket:sock, length:remaining, timeout:5);
+  rest = recv(socket:socket, length:remaining, timeout:5);
 
   # next packet should be of type data and the data contains the version string
-  header = recv(socket:sock, length:8, timeout:5);
+  header = recv(socket:socket, length:8, timeout:5);
   tot_len = unpack_short(buf:header, offset:0);
 
   if ( strlen(header) < 5 )
@@ -161,8 +161,8 @@ function extract_version(socket)
   # first 2 bytes of the data are flags, the rest is the version string.
   remaining = tot_len - 8;
   if( remaining < 0 ) return 0;
-  flags = recv(socket:sock, length:2, timeout:5);
-  version = recv(socket:sock, length:remaining - 2, timeout:5);
+  flags = recv(socket:socket, length:2, timeout:5);
+  version = recv(socket:socket, length:remaining - 2, timeout:5);
   return version;
 }
 

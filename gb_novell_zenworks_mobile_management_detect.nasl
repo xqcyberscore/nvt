@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_mobile_management_detect.nasl 7083 2017-09-08 11:53:47Z teissa $
+# $Id: gb_novell_zenworks_mobile_management_detect.nasl 7270 2017-09-26 09:49:58Z cfischer $
 #
 # Novell ZENworks Mobile Management Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103733");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7083 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-08 13:53:47 +0200 (Fri, 08 Sep 2017) $");
+ script_version ("$Revision: 7270 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2013-06-10 12:53:22 +0200 (Mon, 10 Jun 2013)");
  script_name("Novell ZENworks Mobile Management Detection");
 
@@ -81,7 +81,7 @@ if("<title>ZENworks Mobile Management" >< buf && ( "DUSAP.php" >< buf || "loginU
   if(isnull(cpe))
     cpe = 'cpe:/a:novell:zenworks_mobile_management';
 
-  register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+  register_product(cpe:cpe, location:install, port:port);
 
   log_message(data: build_detection_report(app:"ZENworks Mobile Management", version:vers, install:install, cpe:cpe, concluded: version[0]),
               port:port);

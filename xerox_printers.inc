@@ -1,5 +1,6 @@
 ###############################################################################
-# $Id: xerox_printers.inc 4108 2016-09-19 10:34:25Z cfi $
+# OpenVAS Include File
+# $Id: xerox_printers.inc 7288 2017-09-27 07:21:24Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -21,23 +22,32 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 4108 $
+# $Revision: 7288 $
 #
 ###############################################################################
 
-xerox_detect_urls = make_array();
+global_var xerox_cookie, xerox_last_user, xerox_last_pass;
 
-# URL                                   # Regex
-xerox_detect_urls['/header.php']      = 'id="productName">XEROX ((WorkCentre|Phaser|ColorQube) [^<]+)</div>'; # WorkCentre 6400 a.o.
-xerox_detect_urls['/sitemap.php']     = '<div id="productName">XEROX<sup>&reg; </sup>([^<]+)<sup>'; # WorkCentre 6655 a.o.
-xerox_detect_urls['/hdstat.htm']      = '(WorkCentre [^ \r\n]+)';                                   # WorkCentre 7120 a.o.
-xerox_detect_urls['/headhome.htm']    = '<title>((Xerox )?(WorkCentre|Phaser) [^ <\r\n]+)';         # WorkCentre 6605dn a.o.
-xerox_detect_urls['/tabsFrame.dhtml'] = '(WorkCentre [^ <]+)';                                      # WorkCentre M20i a.o.
-xerox_detect_urls['/hdjobq.htm']      = '((WorkCentre|ApeosPort-IV) [^ \r\n]+)';                    # WorkCentre M118 a.o
-xerox_detect_urls['/home.html']       = '((WorkCentre|Phaser|ColorQube) [^ \n\r<]+)';               # Phaser 3435 a.o
+function get_xerox_detect_urls() {
 
-# Detection string from dont_print_on_printers.nasl. TDB: Include here?
-# if( banner && "Server: Xerox_MicroServer/Xerox" >< banner || "Server: EWS-NIC" >< banner || "<title>DocuPrint" >< banner || "<title>Phaser" >< banner || ( "XEROX WORKCENTRE" >< banner && "Xerox Corporation. All Rights Reserved." >< banner ) || ( "DocuCentre" >< banner && "Fuji Xerox Co., Ltd." >< banner ) ) {
+  local_var xerox_detect_urls;
+
+  xerox_detect_urls = make_array();
+
+  # URL                                   # Regex
+  xerox_detect_urls['/header.php']      = 'id="productName">XEROX ((WorkCentre|Phaser|ColorQube) [^<]+)</div>'; # WorkCentre 6400 a.o.
+  xerox_detect_urls['/sitemap.php']     = '<div id="productName">XEROX<sup>&reg; </sup>([^<]+)<sup>'; # WorkCentre 6655 a.o.
+  xerox_detect_urls['/hdstat.htm']      = '(WorkCentre [^ \r\n]+)';                                   # WorkCentre 7120 a.o.
+  xerox_detect_urls['/headhome.htm']    = '<title>((Xerox )?(WorkCentre|Phaser) [^ <\r\n]+)';         # WorkCentre 6605dn a.o.
+  xerox_detect_urls['/tabsFrame.dhtml'] = '(WorkCentre [^ <]+)';                                      # WorkCentre M20i a.o.
+  xerox_detect_urls['/hdjobq.htm']      = '((WorkCentre|ApeosPort-IV) [^ \r\n]+)';                    # WorkCentre M118 a.o
+  xerox_detect_urls['/home.html']       = '((WorkCentre|Phaser|ColorQube) [^ \n\r<]+)';               # Phaser 3435 a.o
+
+  # Detection string from dont_print_on_printers.nasl. TDB: Include here?
+  # if( banner && "Server: Xerox_MicroServer/Xerox" >< banner || "Server: EWS-NIC" >< banner || "<title>DocuPrint" >< banner || "<title>Phaser" >< banner || ( "XEROX WORKCENTRE" >< banner && "Xerox Corporation. All Rights Reserved." >< banner ) || ( "DocuCentre" >< banner && "Fuji Xerox Co., Ltd." >< banner ) ) {
+
+  return xerox_detect_urls;
+}
 
 function xerox_default_logins() {
 
@@ -53,12 +63,11 @@ function xerox_default_logins() {
                    "savelogs:crash");
 }
 
-function check_xerox_default_login(model) {
+function check_xerox_default_login( model, port ) {
 
-  local_var userame, password, xerox;
-  global_var last_user, last_pass;
+  local_var model, port, userame, password, xerox;
 
-  xerox = xerox_login_details(model:model);
+  xerox = xerox_login_details( model:model, port:port );
   if(!xerox) return FALSE;
 
   logins = xerox_default_logins();
@@ -82,7 +91,7 @@ function check_xerox_default_login(model) {
       if(xerox['login_url_success']) {
         req = string(xerox['req_type_success'], " ", xerox['login_url_success'], " HTTP/1.1\r\n",
                      "Host: ", get_host_name(),"\r\n",
-                     "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/17.0 Firefox/17.0\r\n\r\n");
+                     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n\r\n");
 
         buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
         xerox_error_exit(buf:buf);
@@ -96,11 +105,11 @@ function check_xerox_default_login(model) {
       req = string("POST " , xerox['login_url'], " HTTP/1.1\r\n",
                    "Host: ", get_host_name(),"\r\n",
                    "DNT: 1\r\n",
-                   "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/17.0 Firefox/17.0\r\n",
+                   "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                    "Content-Type: application/x-www-form-urlencoded\r\n",
                    "Content-Length: ",len,"\r\n");
 
-      if(cookie) req +=  string("Cookie: ",cookie,"\r\n");
+      if(xerox_cookie) req +=  string("Cookie: ", xerox_cookie, "\r\n");
 
       req += string("\r\n",login_data,"\r\n");
 
@@ -121,7 +130,7 @@ function check_xerox_default_login(model) {
 
         if("HTTP/1.1 401" >!< c_buf && "HTTP/1.1 302" >!< c_buf) return 2; # setup without auth
 
-        if(cookie) req += string("Cookie: ",cookie,"\r\n");
+        if(xerox_cookie) req += string("Cookie: ", xerox_cookie, "\r\n");
 
         req += string("Authorization: Basic ",userpass64,"\r\n\r\n");
 
@@ -139,17 +148,17 @@ function check_xerox_default_login(model) {
         req = string(xerox['req_type_success'], " ", xerox['login_url_success'], " HTTP/1.1\r\n",
                     "Host: ", get_host_name(),"\r\n");
 
-        if(cookie) req +=  string("Cookie: ",cookie,"\r\n");
+        if(xerox_cookie) req +=  string("Cookie: ", xerox_cookie, "\r\n");
 
-        req += string("User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/17.0 Firefox/17.0\r\n\r\n");
+        req += string("User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n\r\n");
 
         buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
         xerox_error_exit(buf:buf);
       }
 
       if(eregmatch(pattern:xerox['login_success'], string:buf)) {
-        last_user = username;
-        last_pass = password;
+        xerox_last_user = username;
+        xerox_last_pass = password;
         return 1;
       }
 
@@ -160,9 +169,9 @@ function check_xerox_default_login(model) {
 
 }
 
-function xerox_login_details(model) {
+function xerox_login_details( model, port ) {
 
-  global_var cookie;
+  local_var model, port;
 
   xerox = make_array();
 
@@ -190,7 +199,7 @@ function xerox_login_details(model) {
      model == "ColorQube 9303"    ||
      model == "Phaser 6700DT") {
 
-    if(!cookie) set_cookie(url:'/header.php');
+    if(!xeorx_cookie) xerox_set_cookie( url:"/header.php", port:port );
 
     xerox['req_type'] = "POST";
     xerox['login_url'] = '/userpost/xerox.set';
@@ -399,9 +408,9 @@ function build_xerox_cpe(model) {
 
 }
 
-function set_cookie(url) {
+function xerox_set_cookie( url, port ) {
 
-  global_var cookie;
+  local_var url, port;
 
   req = http_get(item:url, port:port);
   buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
@@ -410,7 +419,7 @@ function set_cookie(url) {
 
   co = eregmatch(pattern:"Set-Cookie: ([^; ]+)", string:buf);
   if(!isnull(co[1])) {
-    cookie = co[1];
+    xerox_cookie = co[1];
     return TRUE;
   }
 

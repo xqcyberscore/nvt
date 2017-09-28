@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kernel_sctp_prot_violation_dos_vuln.nasl 4218 2016-10-05 14:20:48Z teissa $
+# $Id: gb_kernel_sctp_prot_violation_dos_vuln.nasl 7277 2017-09-26 12:45:58Z cfischer $
 #
 # Linux Kernel Stream Control Transmission Protocol Violation Vulnerability
 #
@@ -46,8 +46,8 @@ tag_summary = "This host has Linux Kernel Stream Control Transmission Protocol
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800036");
-  script_version("$Revision: 4218 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 16:20:48 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 7277 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-10-22 15:17:54 +0200 (Wed, 22 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -87,7 +87,7 @@ kernelVer = get_bin_version(full_prog_name:"uname", version_argv:"-r",
 if(kernelVer)
 {
   if(version_is_less(version:kernelVer[0], test_version:"2.6.27")){
-    security_message(port);
+    security_message(port:0);
   }
 }
 ssh_close_connection();

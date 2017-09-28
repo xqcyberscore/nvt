@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011134.nasl 7131 2017-09-14 14:03:44Z santu $
+# $Id: gb_ms_kb4011134.nasl 7260 2017-09-26 06:48:48Z asteins $
 #
 # Microsoft Office Word Viewer Multiple Vulnerabilities (KB4011134)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811697");
-  script_version("$Revision: 7131 $");
+  script_version("$Revision: 7260 $");
   script_cve_id("CVE-2017-8676", "CVE-2017-8682", "CVE-2017-8695");
   script_bugtraq_id(100755, 100772, 100773);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-14 16:03:44 +0200 (Thu, 14 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-14 16:41:31 +0530 (Thu, 14 Sep 2017)");
   script_name("Microsoft Office Word Viewer Multiple Vulnerabilities (KB4011134)");
 

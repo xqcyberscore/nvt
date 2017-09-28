@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: ftp_func.inc 5233 2017-02-08 12:44:12Z cfi $
+# OpenVAS Include File
+# $Id: ftp_func.inc 7296 2017-09-27 09:24:22Z cfischer $
 #
 # Methods for handling FTP
 #
@@ -23,9 +23,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5233 $
+# $Revision: 7296 $
 #
 ###############################################################################
+
+global_var _ftp_func_debug;
+_ftp_func_debug = FALSE;
 
 function ftp_close( socket ) {
 
@@ -163,12 +166,12 @@ function ftp_recv_line( socket, retry ) {
 
   r = recv_line( socket:socket, length:65535 );
   n = 0;
-  if( log_verbosity > 1 ) t1 = unixtime();
+  if( _ftp_func_debug ) t1 = unixtime();
   while( strlen( r ) == 0 && n ++ < retry )
     r = recv_line( socket:socket, length:65535 );
-    if( log_verbosity > 0 ) {
+    if( _ftp_func_debug ) {
       t2 = unixtime();
-      if( n > 0 && t2 - t1 > 1 ) log_print( 'ftp_recv_line: retried ', n, ' time( s ) = ', t2-t1, 's. Increase read timeout!\n' );
+      if( n > 0 && t2 - t1 > 1 ) display( 'ftp_recv_line: retried ', n, ' time( s ) = ', t2-t1, 's. Increase read timeout!\n' );
     }
     if( strlen( r ) < 4 )
       return r;

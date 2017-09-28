@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaltura_community_edition_detect.nasl 4140 2016-09-23 10:14:01Z ckuerste $
+# $Id: gb_kaltura_community_edition_detect.nasl 7269 2017-09-26 09:45:31Z ckuersteiner $
 #
 # Kaltura Video Platform Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807499");
-  script_version("$Revision: 4140 $");
+  script_version("$Revision: 7269 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-23 12:14:01 +0200 (Fri, 23 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:45:31 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-03-18 12:26:14 +0530 (Fri, 18 Mar 2016)");
   script_name("Kaltura Video Platform Detection");
   script_category(ACT_GATHER_INFO);
@@ -108,6 +108,7 @@ foreach dir( make_list_unique("/", "/Kaltura", "/kvd", cgi_dirs( port:port ) ) )
                                               cpe:cpe,
                                               concluded:ver[0] ),
                                               port:port );
+    exit(0);
   }
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asus_rt-n56u_49308.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_asus_rt-n56u_49308.nasl 7276 2017-09-26 11:59:52Z cfischer $
 #
 # ASUS RT-N56U Wireless Router 'QIS_wizard.htm' Password Information Disclosure Vulnerability
 #
@@ -38,9 +38,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 if (description)
 {
  script_id(103228);
- script_version("$Revision: 7029 $");
+ script_version("$Revision: 7276 $");
  script_cve_id("CVE-2011-4497");
- script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-08-26 14:51:18 +0200 (Fri, 26 Aug 2011)");
  script_bugtraq_id(49308);
  script_tag(name:"cvss_base", value:"3.3");
@@ -73,7 +73,7 @@ port = get_http_port(default:80);
 banner = get_http_banner(port:port);
 if(!banner || 'Basic realm="RT-N56U"' >!< banner)exit(0);
 
-url = string(dir, "/QIS_wizard.htm?flag=detect."); 
+url = string("/QIS_wizard.htm?flag=detect."); 
 
 if(http_vuln_check(port:port, url:url,pattern:"<title>ASUS Wireless Router RT-N56U - Quickly Internet Setup")) {
      

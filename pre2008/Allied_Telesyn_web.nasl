@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: Allied_Telesyn_web.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: Allied_Telesyn_web.nasl 7275 2017-09-26 11:46:31Z cfischer $
 # Description: Allied Telesyn Router/Switch Web interface found with default password
 #
 # Authors:
@@ -35,8 +35,8 @@ tag_solution = "Connect to this Router/Switch and change the default password.";
 if(description)
 {
     script_id(18413);
-    script_version("$Revision: 6063 $");
-    script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+    script_version("$Revision: 7275 $");
+    script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
     script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
     script_tag(name:"cvss_base", value:"4.6");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -74,10 +74,13 @@ banner = get_http_banner (port:port);
 if (!banner || ("Server: ATR-HTTP-Server" >!< banner))
   exit(0);
 
-res = http_get_cache(item:"/", port:port);
+url = "/";
+res = http_get_cache(item:url, port:port);
 if ( res == NULL ) exit(0);
 if ( egrep ( pattern:"^HTTP/.* 401 .*", string:res ) )
 {
+ # nb: Just for the request below
+ req = http_get(item:url, port:port);
  req -= string("\r\n\r\n");
 #  Credentials manager:friend
  req += string("\r\nAuthorization: Basic bWFuYWdlcjpmcmllbmQ=\r\n\r\n");

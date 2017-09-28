@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_license_server_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_citrix_license_server_detect.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # Citrix License Server Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801853");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 7287 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-03-09 16:08:21 +0100 (Wed, 09 Mar 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Citrix License Server Version Detection");
@@ -57,9 +57,7 @@ version from 'Version' string from the registry.";
   exit(0);
 }
 
-
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 

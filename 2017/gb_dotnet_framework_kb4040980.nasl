@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_kb4040980.nasl 7222 2017-09-21 13:42:47Z cfischer $
+# $Id: gb_dotnet_framework_kb4040980.nasl 7260 2017-09-26 06:48:48Z asteins $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (KB4040980)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811322");
-  script_version("$Revision: 7222 $");
+  script_version("$Revision: 7260 $");
   script_cve_id("CVE-2017-8759");
   script_bugtraq_id(100742);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-21 15:42:47 +0200 (Thu, 21 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-13 14:11:50 +0530 (Wed, 13 Sep 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (KB4040980)");

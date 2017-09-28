@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ldu_801.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: ldu_801.nasl 7287 2017-09-27 06:56:51Z cfischer $
 # Description: Land Down Under <= 801 Multiple Vulnerabilities
 #
 # Authors:
@@ -39,8 +39,8 @@ tag_solution = "Unknown at this time.";
 if(description)
 {
  script_id(19603);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 7287 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_cve_id("CVE-2005-2788", "CVE-2005-2884");
  script_bugtraq_id(14685, 14746, 14820);
@@ -60,6 +60,8 @@ if(description)
  script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");
  script_dependencies("ldu_detection.nasl");
  script_require_ports("Services/www", 80);
+ script_mandatory_keys("ldu/installed");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://securityfocus.com/archive/1/409511");
@@ -69,10 +71,8 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("url_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port)) exit(0);
 
 # Test an install.

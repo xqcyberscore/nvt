@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sendcard_sql.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: sendcard_sql.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # Sendcard SQL injection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19748");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 7287 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2404");
   script_bugtraq_id(14351);
@@ -62,7 +62,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("url_func.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );

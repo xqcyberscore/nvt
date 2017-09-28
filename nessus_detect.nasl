@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: nessus_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: nessus_detect.nasl 7270 2017-09-26 09:49:58Z cfischer $
 # Description: A Nessus Daemon is running
 #
 # Authors:
@@ -39,8 +39,8 @@ default port nessus is listening on.";
 if(description)
 {
  script_id(10147);
- script_version("$Revision: 7076 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+ script_version("$Revision: 7270 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -85,7 +85,7 @@ function probe(port)
   }
   
   
-
+  # TODO: max below is undeclared
   for(count=0; p[count] ; count=count+1)
   {
    soc = open_sock_tcp(port);

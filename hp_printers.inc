@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: hp_printers.inc 7158 2017-09-18 06:38:57Z cfischer $
+# $Id: hp_printers.inc 7288 2017-09-27 07:21:24Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,21 +22,26 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7158 $
+# $Revision: 7288 $
 #
 ###############################################################################
 
-global_var hp_detect_urls;
-hp_detect_urls = make_array();
-hp_detect_urls['/info_deviceStatus.html']              = '<title>HP (LaserJet [^ ]+) Series'; # HP LaserJet P2015 a.o.
-hp_detect_urls['/hp/device/']                          = '<title> HP Color i(LaserJet [^\n ]+)'; # HP Color LaserJet 2840 a.o.
-hp_detect_urls['/info_deviceStatus.html?tab=Status']   = '<title>HP Color (LaserJet [^& ]+)'; # HP Color LaserJet CP2025n a.o.
-hp_detect_urls['/info_deviceStatus.html?']             = '<title>HP (LaserJet [^&]+)'; # HP LaserJet 400 M401n a.o.
-hp_detect_urls['/index_top.htm']                       =  string("(HP (LaserJet [^\n ]+)|HP Color (LaserJet [^\n ]+)|(DesignJet [^ ]+)|(psc [^ ]+) series)"); # LaserJet 3600 a.o.
-hp_detect_urls['/index.htm?cat=info&page=printerInfo'] =  string("((Officejet Pro [^& ]+)|(Officejet [^\n ]+))"); # K5400 a.o.
+function get_hp_detect_urls() {
 
-# Detection string from dont_print_on_printers.nasl. TDB: Include here?
-# if( "<title>Hewlett Packard</title>" >< banner || egrep( pattern:"<title>.*LaserJet.*</title>", string:banner, icase:TRUE ) || "HP Officejet" >< banner || "server: hp-chai" >< tolower( banner ) || ( "Server: Virata-EmWeb/" >< banner && ( "HP" >< banner || "printer" >< banner ) ) ) {
+  local_var hp_detect_urls;
+  hp_detect_urls = make_array();
+  hp_detect_urls['/info_deviceStatus.html']              = '<title>HP (LaserJet [^ ]+) Series'; # HP LaserJet P2015 a.o.
+  hp_detect_urls['/hp/device/']                          = '<title> HP Color i(LaserJet [^\n ]+)'; # HP Color LaserJet 2840 a.o.
+  hp_detect_urls['/info_deviceStatus.html?tab=Status']   = '<title>HP Color (LaserJet [^& ]+)'; # HP Color LaserJet CP2025n a.o.
+  hp_detect_urls['/info_deviceStatus.html?']             = '<title>HP (LaserJet [^&]+)'; # HP LaserJet 400 M401n a.o.
+  hp_detect_urls['/index_top.htm']                       =  string("(HP (LaserJet [^\n ]+)|HP Color (LaserJet [^\n ]+)|(DesignJet [^ ]+)|(psc [^ ]+) series)"); # LaserJet 3600 a.o.
+  hp_detect_urls['/index.htm?cat=info&page=printerInfo'] =  string("((Officejet Pro [^& ]+)|(Officejet [^\n ]+))"); # K5400 a.o.
+
+  # Detection string from dont_print_on_printers.nasl. TDB: Include here?
+  # if( "<title>Hewlett Packard</title>" >< banner || egrep( pattern:"<title>.*LaserJet.*</title>", string:banner, icase:TRUE ) || "HP Officejet" >< banner || "server: hp-chai" >< tolower( banner ) || ( "Server: Virata-EmWeb/" >< banner && ( "HP" >< banner || "printer" >< banner ) ) ) {
+
+  return hp_detect_urls;
+}
 
 function check_hp_default_login( model, port ) {
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrumworkspro_detect.nasl 7251 2017-09-25 13:33:30Z teissa $
+# $Id: gb_scrumworkspro_detect.nasl 7274 2017-09-26 11:24:40Z teissa $
 #
 # Scrumworks Pro Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107246");
-  script_version("$Revision: 7251 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-25 15:33:30 +0200 (Mon, 25 Sep 2017) $");
+  script_version("$Revision: 7274 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-26 13:24:40 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-09-25 16:22:38 +0700 (Mon, 25 Sep 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,34 +63,37 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 8080);
 
-foreach dir (make_list_unique("/", "/scrumworks/login", cgi_dirs(port: port))) {
-  install = dir;
-  if (dir == "/")
-    dir = "";
+res = http_get_cache(port: port, item: "/scrumworks/login");
 
-  res = http_get_cache(port: port, item: dir);
+if ( '<title>Welcome to ScrumWorks' >< res && 'scrumworkspro' >< res ) {
 
-  if ( '<title>Welcome to ScrumWorks' >< res && 'scrumworkspro' >< res ) {
+    install = "/scrumworks/login";
+
     version = "unknown";
-    ver = eregmatch( pattern: 'Welcome to ScrumWorks ([0-9.]+)', string: res);
-
-    if (!isnull(ver[1])) {
-      version = ver[1];
+    ver = eregmatch( pattern: 'ScrumWorks version ([0-9.]+) [(]([0-9-]+ [0-9:]+ r[0-9]+)[)]', string: res);
+    if (!isnull(ver[1]))
+    {
+       version = ver[1];
+    }
+    if (!isnull(ver[2]))
+    {
+       build = ver[2];
+       set_kb_item(name: "scrumworkspro/build", value: build);
     }
 
     set_kb_item(name: "scrumworkspro/installed", value: TRUE);
 
     cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:collabnet:scrumworkspro:");
+
     if (!cpe)
-      cpe = 'cpe:/a:collabnet:scrumworkspro';
+    cpe = 'cpe:/a:collabnet:scrumworkspro';
 
     register_product(cpe: cpe, location: install, port: port);
 
-    log_message(data: build_detection_report(app: "ScrupworkPro", version: version, install: install,
+     log_message(data: build_detection_report(app: "ScrumworksPro", version: version, install: install,
                                            cpe: cpe, concluded: ver[0]),
                 port: port);
-    exit(0);
-  }
+     exit(0);
 }
 
 exit(0);

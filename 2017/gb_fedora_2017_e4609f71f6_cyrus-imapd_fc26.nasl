@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_e4609f71f6_cyrus-imapd_fc26.nasl 7227 2017-09-22 06:36:11Z santu $
+# $Id: gb_fedora_2017_e4609f71f6_cyrus-imapd_fc26.nasl 7260 2017-09-26 06:48:48Z asteins $
 #
 # Fedora Update for cyrus-imapd FEDORA-2017-e4609f71f6
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873375");
-  script_version("$Revision: 7227 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 08:36:11 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 7260 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-16 07:45:04 +0200 (Sat, 16 Sep 2017)");
   script_cve_id("CVE-2017-14230");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for cyrus-imapd FEDORA-2017-e4609f71f6");
   script_tag(name: "summary", value: "Check the version of cyrus-imapd");

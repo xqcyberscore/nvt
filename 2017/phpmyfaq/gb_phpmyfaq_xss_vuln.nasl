@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyfaq_xss_vuln.nasl 7218 2017-09-21 10:07:18Z ckuersteiner $
+# $Id: gb_phpmyfaq_xss_vuln.nasl 7269 2017-09-26 09:45:31Z ckuersteiner $
 #
 # phpMyFAQ XSS Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = 'cpe:/a:phpmyfaq:phpmyfaq';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140387");
-  script_version("$Revision: 7218 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-21 12:07:18 +0200 (Thu, 21 Sep 2017) $");
+  script_version("$Revision: 7269 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-26 11:45:31 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-09-21 16:15:51 +0700 (Thu, 21 Sep 2017)");
   script_tag(name: "cvss_base", value: "6.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
-  script_cve_id("CVE-2017-14618");
+  script_cve_id("CVE-2017-14618", "CVE-2017-14619");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
@@ -53,7 +53,8 @@ if (description)
 
   script_tag(name: "summary", value: "Cross-site scripting (XSS) vulnerability in inc/PMF/Faq.php in phpMyFAQ
 allows remote attackers to inject arbitrary web script or HTML via the Questions field in an 'Add New FAQ'
-action.");
+action. And cross-site scripting (XSS) vulnerability in phpMyFAQ allows remote attackers to inject arbitrary web
+script or HTML via the 'Title of your FAQ' field in the Configuration Module.");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 

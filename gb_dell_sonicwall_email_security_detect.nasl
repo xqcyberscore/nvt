@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_email_security_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: gb_dell_sonicwall_email_security_detect.nasl 7268 2017-09-26 08:43:43Z cfischer $
 #
 # Dell SonicWall EMail Security Detection
 #
@@ -25,16 +25,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103929";   
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103929");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 7076 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+ script_version ("$Revision: 7268 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 10:43:43 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2014-03-28 12:48:51 +0100 (Fri, 28 Mar 2014)");
  script_name("Dell SonicWall EMail Security Detection");
 
@@ -73,7 +71,7 @@ function _report( version, port )
 
   if( ! ar ) 
   {  
-    register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+    register_product(cpe:cpe, location:port + "/tcp", port:port);
     set_kb_item(name: "sonicwall_email_security/port", value: port);
     ar = TRUE;
   }  

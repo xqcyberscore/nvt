@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_cotp_detect.nasl 6962 2017-08-18 09:20:15Z ckuersteiner $
+# $Id: gb_simatic_s7_cotp_detect.nasl 7270 2017-09-26 09:49:58Z cfischer $
 #
 # Siemens SIMATIC S7 Device Detection (COTP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106099");
- script_version ("$Revision: 6962 $");
- script_tag(name: "last_modification", value: "$Date: 2017-08-18 11:20:15 +0200 (Fri, 18 Aug 2017) $");
+ script_version ("$Revision: 7270 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name: "creation_date", value: "2016-06-17 17:08:52 +0700 (Fri, 17 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,9 +55,9 @@ based detection of Siemens SIMATIC S7 devices.");
 include("http_func.inc");     # for hex2dec
 include("byte_func.inc");
 
-function cotp_send_recv( req )
+function cotp_send_recv( req, soc )
 {
-  local_var req;
+  local_var req, soc;
  
   send(socket: soc, data:req);
   recv = recv(socket: soc, length: 6, min: 6);
@@ -106,7 +106,7 @@ connectionReq = raw_string(0x03, 0x00, 0x00, 0x16, 0x11, 0xe0, 0x00, 0x00,
                            0x00, 0x02, 0x00, 0xc1, 0x02, 0x01, 0x00, 0xc2,
                            0x02, 0x01, 0x02, 0xc0, 0x01, 0x0a);
 
-recv = cotp_send_recv(req: connectionReq);
+recv = cotp_send_recv(req: connectionReq, soc: soc);
 
 if (!recv || hexstr(recv[5]) != "d0") {
   # we have to open a new socket
@@ -120,7 +120,7 @@ if (!recv || hexstr(recv[5]) != "d0") {
   connectionReq = raw_string(0x03, 0x00, 0x00, 0x16, 0x11, 0xe0, 0x00, 0x00,
                              0x00, 0x05, 0x00, 0xc1, 0x02, 0x01, 0x00, 0xc2,
                              0x02, 0x02, 0x00, 0xc0, 0x01, 0x0a);
-  recv = cotp_send_recv(req: connectionReq);
+  recv = cotp_send_recv(req: connectionReq, soc: soc);
 
   if (!recv || hexstr(recv[5]) != "d0") {
     close(soc);
@@ -133,7 +133,7 @@ negotiatePdu = raw_string(0x03, 0x00, 0x00, 0x19, 0x02, 0xf0, 0x80, 0x32,
                           0x00, 0xf0, 0x00, 0x00, 0x01, 0x00, 0x01, 0x01,
                           0xe0);
 
-recv = cotp_send_recv(req: negotiatePdu);
+recv = cotp_send_recv(req: negotiatePdu, soc: soc);
 
 if (!recv)
   exit(0);
@@ -144,7 +144,7 @@ readModuleID = raw_string(0x03, 0x00, 0x00, 0x21, 0x02, 0xf0, 0x80, 0x32,
                           0x00, 0xff, 0x09, 0x00, 0x04, 0x00, 0x11, 0x00,
                           0x01);
 
-recv = cotp_send_recv(req: readModuleID);
+recv = cotp_send_recv(req: readModuleID, soc: soc);
 
 if (!recv)
   exit(0);
@@ -172,7 +172,7 @@ readComponentID = raw_string(0x03, 0x00, 0x00, 0x21, 0x02, 0xf0, 0x80, 0x32,
                              0x00, 0xff, 0x09, 0x00, 0x04, 0x00, 0x1c, 0x00,
                              0x01);
 
-recv = cotp_send_recv(req: readComponentID);
+recv = cotp_send_recv(req: readComponentID, soc: soc);
 model = "unknown";
 
 

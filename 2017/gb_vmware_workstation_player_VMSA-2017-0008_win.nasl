@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_player_VMSA-2017-0008_win.nasl 6853 2017-08-04 11:45:08Z santu $
+# $Id: gb_vmware_workstation_player_VMSA-2017-0008_win.nasl 7292 2017-09-27 08:38:54Z santu $
 #
 # VMware Workstation VMSA-2017-0008.2 Multiple Security Vulnerabilities (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:vmware:player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107208");
-  script_version("$Revision: 6853 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 13:45:08 +0200 (Fri, 04 Aug 2017) $");
+  script_version("$Revision: 7292 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:38:54 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-05-29 18:50:37 +0200 (Mon, 29 May 2017)");
   script_cve_id("CVE-2017-4912", "CVE-2017-4908", "CVE-2017-4909", "CVE-2017-4910",
                 "CVE-2017-4911", "CVE-2017-4913", "CVE-2017-4900", "CVE-2017-4899",
-                "CVE-2017-4898");
-  script_bugtraq_id(97921, 96771, 97920, 96770, 97916, 96772, 97913, 97912, 97911);
+                "CVE-2017-4898", "CVE-2017-4925");
+  script_bugtraq_id(97921, 96771, 97920, 96770, 97916, 96772, 97913, 97912, 97911, 99997);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"registry");
@@ -52,7 +52,8 @@ if(description)
   the TPView.dll. Also there exists a DLL loading vulnerability that occurs due to
   the 'vmware-vmx' process loading DLLs from a path defined in the local
   environment-variable. Also a security vulnerability and a NULL pointer dereference
-  vulnerability exists in the SVGA driver.");
+  vulnerability exists in the SVGA driver. Also a NULL pointer dereference 
+  vulnerability.");
 
   script_tag(name: "impact" , value: "Successfully exploiting this issue allows
   attackers to execute arbitrary code in the context of the affected application.
@@ -65,6 +66,7 @@ if(description)
 
   script_xref(name: "URL" , value: "http://www.vmware.com/security/advisories/VMSA-2017-0008.html");
   script_xref(name: "URL" , value: "https://www.vmware.com/security/advisories/VMSA-2017-0003.html");
+  script_xref(name: "URL" , value: "https://www.vmware.com/security/advisories/VMSA-2017-0015.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

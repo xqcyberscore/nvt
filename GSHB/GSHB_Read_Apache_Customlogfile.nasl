@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_Read_Apache_Customlogfile.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_Read_Apache_Customlogfile.nasl 7293 2017-09-27 08:49:48Z cfischer $
 #
 # Reading Apache Logiles (win)
 #
@@ -29,8 +29,8 @@ tag_summary = "Reading Apache CustomLogfiles";
 if(description)
 {
   script_id(96022);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 7293 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,11 +47,8 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("GSHB_read_file.inc");
-
 
 #if( !get_kb_item("GSHB/Apache/CustomLog") ) {
 #    security_message(data:"GSHB/Apache/CustomLog: No Entry");#

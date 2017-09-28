@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4038799.nasl 7118 2017-09-13 15:08:32Z santu $
+# $Id: gb_ms_kb4038799.nasl 7260 2017-09-26 06:48:48Z asteins $
 #
 # Microsoft Windows Server 2012 Multiple Vulnerabilities (KB4038799)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811823");
-  script_version("$Revision: 7118 $");
+  script_version("$Revision: 7260 $");
   script_cve_id("CVE-2017-0161", "CVE-2017-8719", "CVE-2017-8720", "CVE-2017-8728", 
                 "CVE-2017-8733", "CVE-2017-8675", "CVE-2017-8676", "CVE-2017-8737", 
                 "CVE-2017-8741", "CVE-2017-8678", "CVE-2017-8679", "CVE-2017-8680", 
@@ -40,9 +40,9 @@ if(description)
                     100720, 100722, 100770, 100727, 100772, 100781, 100782, 100730, 
                     100736, 100756, 100762, 100773, 100783, 100790, 100791, 100792, 
                     100796, 100767, 100765);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 17:08:32 +0200 (Wed, 13 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-13 12:55:59 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Windows Server 2012 Multiple Vulnerabilities (KB4038799)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kallithea_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: gb_kallithea_detect.nasl 7303 2017-09-27 13:00:09Z asteins $
 #
 # Kallithea Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806612");
-  script_version("$Revision: 7076 $");
+  script_version("$Revision: 7303 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 15:00:09 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-11-06 12:02:52 +0530 (Fri, 06 Nov 2015)");
   script_name("Kallithea Remote Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -57,45 +57,46 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-##Get HTTP Port
-port = get_http_port( default:5000 );
+port = get_http_port(default:5000);
 
-##Iterate over possible paths
-foreach dir( make_list_unique( "/", "/kallithea", cgi_dirs( port:port ) ) ) {
+foreach dir(make_list_unique("/", "/kallithea", "/repos/kallithea", cgi_dirs(port:port))) {
 
   install = dir;
-  if( dir == "/" ) dir = "";
+  if(dir == "/") dir = "";
 
-  rcvRes = http_get_cache( item: dir + "/", port:port );
+  rcvRes = http_get_cache(item: dir + "/", port:port);
 
-  ## Confirm the application
-  if( rcvRes =~ 'kallithea-scm.*>Kallithea<' && 'kallithea.css' >< rcvRes &&
-                'Dashboard' >< rcvRes ) {
+  if(rcvRes =~ 'kallithea-scm.*>Kallithea<' && 'kallithea.css' >< rcvRes &&
+      'kallithea-logo' >< rcvRes) {
 
     version = "unknown";
 
-    ## Grep for the version
-    ver = eregmatch( pattern:'target.*>Kallithea</a> ([0-9.]+)', string:rcvRes );
-    if( ver[1] ) version = ver[1];
+    # try getting the version from the footer first
+    if(ver = eregmatch( pattern:'target.*>Kallithea</a> ([0-9.]+)', string:rcvRes)) {
+      version = ver[1];
+    }
 
-    ## Set the KB value
-    set_kb_item( name:"www/" + port + "/Kallithea", value:version );
-    set_kb_item( name:"Kallithea/Installed", value:TRUE );
+    # get the version from the appended .css-paramter instead
+    if(version == "unknown") {
+      ver = eregmatch( pattern:"kallithea\.css\?ver\=([0-9.]+)", string:rcvRes);
+      version = ver[1];
+    }
 
-    ## build cpe and store it as host_detail
-    cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:kallithea:kallithea:" );
-    if( ! cpe )
+    set_kb_item(name:"www/" + port + "/Kallithea", value:version);
+    set_kb_item(name:"Kallithea/Installed", value:TRUE );
+
+    cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:kallithea:kallithea:");
+    if(!cpe)
       cpe = "cpe:/a:kallithea:kallithea";
 
-    register_product( cpe:cpe, location:install, port:port );
+    register_product(cpe:cpe, location:install, port:port);
 
-    log_message( data:build_detection_report( app:"Kallithea",
+    log_message(data:build_detection_report(app:"Kallithea",
                                               version:version,
                                               install:install,
                                               cpe:cpe,
-                                              concluded:ver[0] ),
-                                              port:port );
+                                              concluded:ver[0]),
+                                              port:port);
+    exit(0);
   }
 }
-
-exit( 0 );

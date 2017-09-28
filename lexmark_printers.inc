@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: lexmark_printers.inc 7158 2017-09-18 06:38:57Z cfischer $
+# $Id: lexmark_printers.inc 7288 2017-09-27 07:21:24Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,14 +22,20 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7158 $
+# $Revision: 7288 $
 #
 ###############################################################################
 
-global_var lexmark_detect_urls;
-lexmark_detect_urls = make_array();
-lexmark_detect_urls['<title>Lexmark ([^<]+)</title>'] = '/';
-lexmark_detect_urls['<title>Lexmark&#032;([^<]+)</title>'] = '/';
+function get_lexmark_detect_urls() {
+
+  local_var lexmark_detect_urls;
+
+  lexmark_detect_urls = make_array();
+  lexmark_detect_urls['<title>Lexmark ([^<]+)</title>'] = '/';
+  lexmark_detect_urls['<title>Lexmark&#032;([^<]+)</title>'] = '/';
+
+  return lexmark_detect_urls;
+}
 
 function check_lexmark_default_login( model, port ) {
 

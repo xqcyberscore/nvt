@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_cisco_ios_compliance.nasl 4982 2017-01-11 08:57:53Z ckuerste $
+# $Id: policy_cisco_ios_compliance.nasl 7275 2017-09-26 11:46:31Z cfischer $
 #
 # Cisco IOS Compliance Check
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106431");
-  script_version("$Revision: 4982 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-11 09:57:53 +0100 (Wed, 11 Jan 2017) $");
+  script_version("$Revision: 7275 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-01-11 10:55:08 +0700 (Wed, 11 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -215,7 +215,5 @@ if (comp_pass)
   set_kb_item(name: "policy/cisco_ios_compliance/passed", value: comp_pass);
 if (comp_fail)
   set_kb_item(name: "policy/cisco_ios_compliance/failed", value: comp_fail);
-if (comp_error)
-  set_kb_item(name: "policy/cisco_ios_compliance/error", value: comp_error);
 
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ftp_writeable_directories.nasl 4987 2017-01-11 13:38:47Z cfi $
+# $Id: ftp_writeable_directories.nasl 7297 2017-09-27 09:54:01Z cfischer $
 #
 # FTP Writeable Directories
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19782");
-  script_version("$Revision: 4987 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-11 14:38:47 +0100 (Wed, 11 Jan 2017) $");
+  script_version("$Revision: 7297 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -70,6 +70,18 @@ global_var WriteableDirs;
 global_var Mode;
 global_var Saved_in_KB;
 
+MODE_WRITE 		= 1;
+MODE_CHECK_PERM 	= 2;
+
+if( safe_checks() ) {
+  Mode = MODE_CHECK_PERM;
+} else  {
+  Mode = MODE_WRITE;
+}
+
+login = "anonymous";
+pwd   = "openvas@example.org";
+
 function crawl_dir( socket, directory, level ) {
 
   local_var port, soc2, r, dirs, array, dir, sep, str, alreadyadded;
@@ -91,12 +103,12 @@ function crawl_dir( socket, directory, level ) {
   alreadyadded = 0;
   if( Mode == MODE_WRITE ) {
     str = "OpenVAS" + rand_str(length:8);
-    send( socket:soc, data:'MKD ' + directory + sep + str  + '\r\n' );
-    r = ftp_recv_line( socket:soc );
+    send( socket:socket, data:'MKD ' + directory + sep + str  + '\r\n' );
+    r = ftp_recv_line( socket:socket );
     if( r[0] == '2' ) {
       WriteableDirs[directory] = 1;
-      send( socket:soc, data:'RMD ' + directory + sep + str + '\r\n' );
-      r = ftp_recv_line( socket:soc );
+      send( socket:socket, data:'RMD ' + directory + sep + str + '\r\n' );
+      r = ftp_recv_line( socket:socket );
       if( ! Saved_in_KB ) {
         set_kb_item(name:"ftp/writeable_dir", value:directory);
         Saved_in_KB++;
@@ -146,18 +158,6 @@ function crawl_dir( socket, directory, level ) {
 
 port = get_ftp_port( default:21 );
 if( ! get_kb_item( "ftp/" + port + "/anonymous" ) ) exit( 0 );
-
-MODE_WRITE 		= 1;
-MODE_CHECK_PERM 	= 2;
-
-if( safe_checks() ) {
-  Mode = MODE_CHECK_PERM;
-} else  {
-  Mode = MODE_WRITE;
-}
-
-login = "anonymous";
-pwd   = "openvas@example.org";
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );

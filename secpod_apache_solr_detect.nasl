@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_solr_detect.nasl 7028 2017-08-31 09:47:19Z ckuersteiner $
+# $Id: secpod_apache_solr_detect.nasl 7278 2017-09-26 13:20:44Z cfischer $
 #
 # Apache Solr Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903506");
-  script_version("$Revision: 7028 $");
+  script_version("$Revision: 7278 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 11:47:19 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2014-01-29 13:13:35 +0530 (Wed, 29 Jan 2014)");
   script_name("Apache Solr Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -110,7 +110,7 @@ foreach dir( make_list_unique( "/", "/solr", "/apachesolr", cgi_dirs( port:solrP
     if( ! cpe )
       cpe = "cpe:/a:apache:solr";
 
-    register_product( cpe:cpe, location:location, port:solrPort );
+    register_product( cpe:cpe, location:install, port:solrPort );
 
     log_message( data: build_detection_report( app:"Apache Solr",
                                                version:version,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_install_manager_detect_win.nasl 7153 2017-09-15 15:03:32Z cfischer $
+# $Id: gb_ibm_install_manager_detect_win.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # IBM Installation Manager Version Detection (Windows)
 #
@@ -32,10 +32,10 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.801010";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 7153 $");
+  script_version("$Revision: 7287 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 17:03:32 +0200 (Fri, 15 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-10-12 07:28:01 +0200 (Mon, 12 Oct 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("IBM Installation Manager Version Detection (Windows)");
@@ -59,9 +59,7 @@ registry and gets the version from 'version' string in registry.";
   exit(0);
 }
 
-
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 

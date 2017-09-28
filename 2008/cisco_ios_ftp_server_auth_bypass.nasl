@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cisco_ios_ftp_server_auth_bypass.nasl 4987 2017-01-11 13:38:47Z cfi $
+# $Id: cisco_ios_ftp_server_auth_bypass.nasl 7297 2017-09-27 09:54:01Z cfischer $
 # Description: Cisco IOS FTP Server Authentication Bypass Vulnerability
 #
 # Authors:
@@ -36,8 +36,8 @@ or upgrade to a newer release (see cisco-sa-20070509-iosftp).";
 
 if (description) {
  script_id(9999996);
- script_version("$Revision: 4987 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-11 14:38:47 +0100 (Wed, 11 Jan 2017) $");
+ script_version("$Revision: 7297 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -61,15 +61,16 @@ script_tag(name : "summary" , value : tag_summary);
 
 include("ftp_func.inc");
 
-port = get_ftp_port( default:21 );
+function start_passive(port, soc) {
 
-function start_passive() {
-	pasv = ftp_pasv(socket:soc);
-	if (!pasv) return NULL; 
-	soc2 = open_sock_tcp(pasv, transport:get_port_transport(port));
-        if (!soc2) return NULL;	
-	return;
+  pasv = ftp_pasv(socket:soc);
+  if (!pasv) return NULL; 
+  soc2 = open_sock_tcp(pasv, transport:get_port_transport(port));
+  if (!soc2) return NULL;	
+  return;
 }
+
+port = get_ftp_port( default:21 );
 
 banner = get_ftp_banner(port:port);
 if ("IOS-FTP server" >!< banner) exit(0);
@@ -79,7 +80,7 @@ if ("IOS-FTP server" >!< banner) exit(0);
 soc = open_sock_tcp(port);
 if (soc && 
    (ftp_authenticate(socket:soc, user:"blah", pass:"blah"))) {
-	if (start_passive()) {
+	if (start_passive(port:port, soc:soc)) {
 		send(socket:soc, data:'LIST\r\n');
 		recv_listing = ftp_recv_listing(socket:soc2);
 		ftp_close(socket:soc2); 
@@ -96,7 +97,7 @@ if (strlen(recv_listing)) {
 		send(socket:soc, data:'CWD nvram:\r\n');
 		recv = ftp_recv_line(socket:soc, retry:1);
 		if ("250" >< recv &&   
-		   (start_passive())) {
+		   (start_passive(port:port, soc:soc))) {
 			send(socket:soc, data:'RETR startup-config\r\n');
         		recv_config = ftp_recv_data(socket:soc2, line:500);
         		ftp_close(socket:soc2);

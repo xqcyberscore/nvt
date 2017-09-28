@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-net-hub-3com.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: remote-net-hub-3com.nasl 7277 2017-09-26 12:45:58Z cfischer $
 #
 # 3com hub test NVT
 # replaces 3com_hub C plugin
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80103");
-  script_version("$Revision: 5309 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 7277 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-08-10 06:09:48 +0200 (Mon, 10 Aug 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -89,7 +89,7 @@ if( ! interface ) {
   exit( 0 );
 }
 
-function spoofping( srcaddr ) {
+function spoofping( srcaddr, dstaddr ) {
 
   n = 3;  # Number of tries
   seq = 0;
@@ -136,7 +136,7 @@ if( ( thisaddr == fakeip ) || ( dstaddr == fakeip ) ) {
   exit (0);
 }
 
-if( spoofping( srcaddr:fakeip ) ) {
+if( spoofping( srcaddr:fakeip, dstaddr:dstaddr ) ) {
   exit( 0 );
 } else {
   # macof -i <interface> -n <nrpackets>

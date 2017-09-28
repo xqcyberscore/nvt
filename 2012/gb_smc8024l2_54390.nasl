@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smc8024l2_54390.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_smc8024l2_54390.nasl 7277 2017-09-26 12:45:58Z cfischer $
 #
 # SMC Networks SMC8024L2 Switch Web Interface Authentication Bypass Vulnerability
 #
@@ -39,14 +39,14 @@ if (description)
  script_cve_id("CVE-2012-2974");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5963 $");
+ script_version ("$Revision: 7277 $");
 
  script_name("SMC Networks SMC8024L2 Switch Web Interface Authentication Bypass Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54390");
  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/377915");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2012-07-12 10:05:05 +0200 (Thu, 12 Jul 2012)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_GATHER_INFO);
@@ -65,21 +65,16 @@ include("http_keepalive.inc");
 include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-url = string(dir, "/index.html");
+url = string("/index.html");
 
 if(http_vuln_check(port:port, url:url,pattern:"<title>SMC Networks Web Interface")) {
 
   url = '/status/status_ov.html';
-
-  if(http_vuln_check(port:port, url:url,pattern:"<title>Status Overview",extra_check:make_list("macAddress","opVersion","systemName"))) {
-     
+  if(http_vuln_check(port:port, url:url, pattern:"<title>Status Overview",extra_check:make_list("macAddress","opVersion","systemName"))) {
     security_message(port:port);
     exit(0);
-
   }  
-
 }
 
 exit(0);

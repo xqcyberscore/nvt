@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nortel_annex_default_pass.nasl 4903 2017-01-02 12:13:57Z cfi $
+# $Id: nortel_annex_default_pass.nasl 7273 2017-09-26 11:17:25Z cfischer $
 #
 # Nortel/Bay Networks/Xylogics Annex default password
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11201");
-  script_version("$Revision: 4903 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 13:13:57 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 7273 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -67,8 +67,11 @@ if(description)
 include('telnet_func.inc');
 
 function myrecv( socket, pattern ) {
+
+  local_var socket, pattern;
+
   while( 1 ) {
-    r = recv_line( socket:soc, length:1024 );
+    r = recv_line( socket:socket, length:1024 );
     if( strlen( r ) == 0 ) return( 0 );
     if( ereg( pattern:pattern, string:r ) ) return( r );
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_foxit_wac_server_detect.nasl 5478 2017-03-03 13:48:45Z cfi $
+# $Id: secpod_foxit_wac_server_detect.nasl 7293 2017-09-27 08:49:48Z cfischer $
 #
 # Foxit WAC Server Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900923");
-  script_version("$Revision: 5478 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-03 14:48:45 +0100 (Fri, 03 Mar 2017) $");
+  script_version("$Revision: 7293 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-08-27 13:43:20 +0200 (Thu, 27 Aug 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -48,7 +48,6 @@ if(description)
 }
 
 include("ssh_func.inc");
-include("telnet_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 

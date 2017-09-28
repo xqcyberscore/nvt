@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_filecopa_ftp_server_detect.nasl 4777 2016-12-15 14:28:45Z cfi $
+# $Id: gb_filecopa_ftp_server_detect.nasl 7297 2017-09-27 09:54:01Z cfischer $
 #
 # FileCopa FTP Server Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801124");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4777 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-15 15:28:45 +0100 (Thu, 15 Dec 2016) $");
+  script_version("$Revision: 7297 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-10-22 15:34:45 +0200 (Thu, 22 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("FileCopa FTP Server Version Detection");
@@ -74,7 +74,7 @@ if("FileCOPA FTP Server" >< banner)
   if (!cpe)
     cpe = 'cpe:/a:filecopa-ftpserver:ftp_server';
 
-  register_product(cpe: cpe, location: filecopePort + '/tcp', port: port);
+  register_product(cpe: cpe, location: port + '/tcp', port: port);
 
   log_message(data: build_detection_report(app: "FileCOPA FTP Server", version: version, install: port,
                                            cpe: cpe, concluded: filecopeVer[0]),

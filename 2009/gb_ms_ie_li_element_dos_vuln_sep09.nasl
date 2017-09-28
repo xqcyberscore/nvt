@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_li_element_dos_vuln_sep09.nasl 6527 2017-07-05 05:56:34Z cfischer $
+# $Id: gb_ms_ie_li_element_dos_vuln_sep09.nasl 7293 2017-09-27 08:49:48Z cfischer $
 #
 # Microsoft Internet Explorer 'li' Element DoS Vulnerability - Sep09
 #
@@ -39,8 +39,8 @@ tag_summary = "This host has Internet Explorer installed and is prone to Denial
 if(description)
 {
   script_id(800872);
-  script_version("$Revision: 6527 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 7293 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-09-02 11:50:45 +0200 (Wed, 02 Sep 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -66,9 +66,7 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 
 # Check for XP SP3
 SP = get_kb_item("SMB/WinXP/ServicePack");

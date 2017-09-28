@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_os_detection.nasl 6877 2017-08-09 05:27:00Z cfischer $
+# $Id: gb_nmap_os_detection.nasl 7270 2017-09-26 09:49:58Z cfischer $
 #
 # Nmap OS Identification (NASL wrapper)
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108021");
-  script_version("$Revision: 6877 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-09 07:27:00 +0200 (Wed, 09 Aug 2017) $");
+  script_version("$Revision: 7270 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-11-21 12:08:04 +0100 (Mon, 21 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -201,6 +201,7 @@ if( ! safe ) {
 }
 
 argv[i++] = "-p";
+portList = NULL;
 
 foreach port( openPorts ) {
 

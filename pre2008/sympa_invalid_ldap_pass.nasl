@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sympa_invalid_ldap_pass.nasl 5820 2017-03-31 11:20:49Z cfi $
+# $Id: sympa_invalid_ldap_pass.nasl 7273 2017-09-26 11:17:25Z cfischer $
 # Description: Sympa invalid LDAP password DoS
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14299");
-  script_version("$Revision: 5820 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
+  script_version("$Revision: 7273 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -65,7 +65,7 @@ port = get_http_port(default:80);
 
 foreach dir (make_list_unique("/", "/wws", "/wwsympa", cgi_dirs(port:port))) {
   if(dir == "/") dir = "";
-  r = http_get_cache(item:string(url, "/home"), port:port);
+  r = http_get_cache(item:string(dir, "/home"), port:port);
   if ( r == NULL ) continue;
 
   #We need to match this

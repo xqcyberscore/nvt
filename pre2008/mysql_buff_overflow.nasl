@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mysql_buff_overflow.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: mysql_buff_overflow.nasl 7275 2017-09-26 11:46:31Z cfischer $
 # Description: MySQL buffer overflow
 #
 # Authors:
@@ -37,55 +37,37 @@ tag_solution = "Upgrade to the latest version of MySQL 4.0.21 or newer";
 
 #  Ref: Lukasz Wojtow
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.14319";
 CPE = "cpe:/a:mysql:mysql";
 
 if(description)
 {
- script_oid(SCRIPT_OID);
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.14319");
+ script_version("$Revision: 7275 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-0836");
  script_bugtraq_id(10981);
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-
- 
- name = "MySQL buffer overflow";
- script_name(name);
- 
-
-	
-
-
- summary = "Checks for the remote MySQL version";
- 
+ script_name("MySQL buffer overflow");
  script_category(ACT_GATHER_INFO);
- 
- 
  script_copyright("This script is Copyright (C) 2004 David Maciejak");
- family = "Gain a shell remotely";
- script_family(family);
+ script_family("Gain a shell remotely");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
  script_dependencies("find_service.nasl", "mysql_version.nasl");
  script_require_ports("Services/mysql", 3306);
- script_require_keys("MySQL/installed");
+ script_mandatory_keys("MySQL/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("misc_func.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!ver = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!port = get_app_port(cpe:CPE ))exit(0);
+if(!ver = get_app_version(cpe:CPE, port:port))exit(0);
 
 if(ereg(pattern:"([0-3]\.[0-9]\.[0-9]|4\.0\.([0-9]|1[0-9]|20)[^0-9])",
-  	  string:r))security_message(port);	  
+  	  string:ver))security_message(port);	  
 

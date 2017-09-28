@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_kb4040973.nasl 7143 2017-09-15 11:37:02Z santu $
+# $Id: gb_dotnet_framework_kb4040973.nasl 7260 2017-09-26 06:48:48Z asteins $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (KB4040973)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811827");
-  script_version("$Revision: 7143 $");
+  script_version("$Revision: 7260 $");
   script_cve_id("CVE-2017-8759");
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 13:37:02 +0200 (Fri, 15 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-14 10:52:54 +0530 (Thu, 14 Sep 2017)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (KB4040973)");
 

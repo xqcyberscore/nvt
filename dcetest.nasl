@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dcetest.nasl 6829 2017-08-01 12:56:19Z cfischer $
+# $Id: dcetest.nasl 7268 2017-09-26 08:43:43Z cfischer $
 #
 # DCE/RPC and MSRPC Services Enumeration
 #
@@ -40,8 +40,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108044");
-  script_version("$Revision: 6829 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-01 14:56:19 +0200 (Tue, 01 Aug 2017) $");
+  script_version("$Revision: 7268 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 10:43:43 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,6 +71,12 @@ if(description)
 
 include("misc_func.inc");
 include("host_details.inc");
+
+# nb: Some of the enumerated tcp/udp ports might expose several services
+# Those lists are used for handling a list of already registered so we don't
+# register those services multiple times on the same port.
+udp_services_list = make_list();
+tcp_services_list = make_list();
 
 # Ref : http://www.hsc.fr/ressources/articles/win_net_srv/index.html.en by Jean-Baptiste Marchand
 rpc_svc_pipes["1ff70682-0a51-30e8-076d-740be8cee98b"] = "atsvc";
@@ -753,12 +759,6 @@ register_service( port:port, proto:"epmap", message:"A DCE endpoint resolution s
 
 # Assume Windows if such an endpoint is detected
 register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:"DCE/RPC and MSRPC Services Enumeration", port:port, desc:"DCE/RPC and MSRPC Services Enumeration", runs_key:"windows" );
-
-# nb: Some of the enumerated tcp/udp ports might expose several services
-# Those lists are used for handling a list of already registered so we don't
-# register those services multiple times on the same port.
-udp_services_list = make_list();
-tcp_services_list = make_list();
 
 for( x = 0; x < 4096; x++ ) {
 

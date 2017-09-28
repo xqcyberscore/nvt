@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_security_scan_plus_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
+# $Id: gb_mcafee_security_scan_plus_detect.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # Intel Security McAfee Security Scan Plus Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810823");
-  script_version("$Revision: 5871 $");
+  script_version("$Revision: 7287 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-03-22 11:19:49 +0530 (Wed, 22 Mar 2017)");
   script_name("Intel Security McAfee Security Scan Plus Version Detection (Windows)");
 
@@ -50,9 +50,7 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 

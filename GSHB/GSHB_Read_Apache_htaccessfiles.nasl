@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_Read_Apache_htaccessfiles.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: GSHB_Read_Apache_htaccessfiles.nasl 7293 2017-09-27 08:49:48Z cfischer $
 #
 # Reading Apache htaccess Files (win)
 #
@@ -32,8 +32,8 @@ tag_summary = "Reading Apache htaccess Files
 if(description)
 {
   script_id(96021);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 7293 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,9 +50,7 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("GSHB_read_file.inc");
 
 htaccessList = get_kb_item("WMI/Apache/htaccessList");

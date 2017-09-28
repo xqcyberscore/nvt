@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_mult_vuln_SA-CORE-2015-001_lin.nasl 7202 2017-09-20 12:47:53Z santu $ 
+# $Id: gb_drupal_core_mult_vuln_SA-CORE-2015-001_lin.nasl 7260 2017-09-26 06:48:48Z asteins $ 
 #
 # Drupal Core Multiple Vulnerabilities (SA-CORE-2015-001) (Linux)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811831");
-  script_version("$Revision: 7202 $");
+  script_version("$Revision: 7260 $");
   script_cve_id("CVE-2015-2750", "CVE-2015-2749", "CVE-2015-2559");
   script_bugtraq_id(73219, 73403, 73219);
-  script_tag(name:"cvss_base", value:"6.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 14:47:53 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-19 14:05:10 +0530 (Tue, 19 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Core Multiple Vulnerabilities (SA-CORE-2015-001) (Linux)");

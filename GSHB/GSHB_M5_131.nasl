@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_131.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: GSHB_M5_131.nasl 7261 2017-09-26 07:06:36Z emoss $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 5.131
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(95074);
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 7261 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 09:06:36 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -110,7 +110,8 @@ for(i=0; i<max_index(SNMPCommunitiesSP); i++)
     DefCom = "true";
     set_kb_item(name:"GSHB/M5_131/DefCom" + i, value:DefCom);
 
-    set_kb_item(name:"GSHB/M5_131/ExistComm" + i, value:ExistComm);
+    ExistComm += SNMPCommunitiesSP[i] + '\n' ;
+    # set_kb_item(name:"GSHB/M5_131/ExistComm" + i, value:ExistComm);
   }
   else DefCom = "false";
   if (DefCom == "true" && DefaultCommunity == "true")

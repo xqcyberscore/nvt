@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zhm_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_novell_zhm_detect.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # Novell ZENworks Handheld Management Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801644");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 7287 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-11-30 12:42:12 +0100 (Tue, 30 Nov 2010)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Novell ZENworks Handheld Management Version Detection");
@@ -57,9 +57,7 @@ in the registry and gets the version from the registry.";
   exit(0);
 }
 
-
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 

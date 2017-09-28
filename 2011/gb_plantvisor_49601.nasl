@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plantvisor_49601.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_plantvisor_49601.nasl 7276 2017-09-26 11:59:52Z cfischer $
 #
 # PlantVisor Enhanced Unspecified Directory Traversal Vulnerability
 #
@@ -38,8 +38,8 @@ be affected.";
 if (description)
 {
  script_id(103252);
- script_version("$Revision: 7052 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+ script_version("$Revision: 7276 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-09-14 13:31:57 +0200 (Wed, 14 Sep 2011)");
  script_bugtraq_id(49601);
  script_tag(name:"cvss_base", value:"5.0");
@@ -71,14 +71,11 @@ if(!get_port_state(port))exit(0);
 banner = get_http_banner(port:port);
 if( ! banner || "Server: CarelDataServer" >!< banner )exit(0);
 
-   
-url = string(dir, "/..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5cboot.ini"); 
+url = string("/..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5cboot.ini"); 
 
 if(http_vuln_check(port:port, url:url,pattern:"\[boot loader\]")) {
-     
   security_message(port:port);
   exit(0);
-
 }
 
 exit(0);

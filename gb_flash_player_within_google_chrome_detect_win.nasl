@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_within_google_chrome_detect_win.nasl 6506 2017-07-03 10:22:51Z cfischer $
+# $Id: gb_flash_player_within_google_chrome_detect_win.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # Adobe Flash Player Within Google Chrome Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810612");
-  script_version("$Revision: 6506 $");
+  script_version("$Revision: 7287 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 12:22:51 +0200 (Mon, 03 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-03-13 12:06:29 +0530 (Mon, 13 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Flash Player Within Google Chrome Detection (Windows)");
@@ -52,10 +52,8 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
 
 ## Variable Initialization
 host = "";

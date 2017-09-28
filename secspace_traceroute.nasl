@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secspace_traceroute.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: secspace_traceroute.nasl 7278 2017-09-26 13:20:44Z cfischer $
 #
 # traceroute
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(51662);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 7278 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-07-08 19:27:45 +0200 (Thu, 08 Jul 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Traceroute");
@@ -72,7 +72,7 @@ function get_filter(ipsrc,port,sport,ipdst) {
 
 }
 
-function read_packet(packet) {
+function read_packet(packet, ipdst, ipid, sport) {
 
   local_var ip_hl, get_ip_elementip_dst, port, packet, _code, _type;
 
@@ -183,8 +183,8 @@ while(TRUE) {
 
      while(response) {
 
-       if(!read_packet(packet:response)) {
-         response = pcap_next(pcap_filter:filter, timeout:1);
+       if(!read_packet(packet:response, ipdst:ipdst, ipid:ipid, sport:sport)) {
+         response = pcap_next(pcap_filter:filter, timeout:1); # TBD: filter is undefined here. Is this pcapfil from above?
        } else {
          break;
        }

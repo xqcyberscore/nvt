@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_adobe_xxe_38197.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: sw_adobe_xxe_38197.nasl 7293 2017-09-27 08:49:48Z cfischer $
 #
 # Adobe BlazeDS XML and XML External Entity Injection Vulnerabilities
 #
@@ -30,13 +30,13 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105211");
- script_version ("$Revision: 6229 $");
+ script_version ("$Revision: 7293 $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
  script_name("Adobe BlazeDS XML and XML External Entity Injection Vulnerabilities");
  script_bugtraq_id(38197);
  script_cve_id("CVE-2009-3960");
- script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
  script_tag(name:"creation_date", value:"2015-02-11 14:56:42 +0100 (Wed, 11 Feb 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -72,7 +72,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 include("host_details.inc");
-include("url_func.inc");
 
 port = get_http_port( default:80 );
 

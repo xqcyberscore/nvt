@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-MSdotNET-version.nasl 5992 2017-04-20 14:42:07Z cfi $
+# $Id: remote-detect-MSdotNET-version.nasl 7278 2017-09-26 13:20:44Z cfischer $
 #
 # Microsoft dotNET version grabber
 #
@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101007");
-  script_version("$Revision: 5992 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 16:42:07 +0200 (Thu, 20 Apr 2017) $");
+  script_version("$Revision: 7278 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-03-15 21:21:09 +0100 (Sun, 15 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -88,7 +88,7 @@ if(('Version Information' >< response) && dotNet_header){
   if(!isnull(cpe))
     register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 		
-  if(aspNET_header >< response){
+  if(aspNet_header >< response){
     report +=  " and " + aspNet_header[0];
 
     # save informations into the kb

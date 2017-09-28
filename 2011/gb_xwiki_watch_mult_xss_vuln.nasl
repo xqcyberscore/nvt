@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xwiki_watch_mult_xss_vuln.nasl 5840 2017-04-03 12:02:24Z cfi $
+# $Id: gb_xwiki_watch_mult_xss_vuln.nasl 7276 2017-09-26 11:59:52Z cfischer $
 #
 # XWiki Watch Multiple Cross Site Scripting Vulnerabilities
 #
@@ -52,8 +52,8 @@ site scripting vulnerabilities.";
 if(description)
 {
   script_id(801564);
-  script_version("$Revision: 5840 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
+  script_version("$Revision: 7276 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-01-08 10:30:18 +0100 (Sat, 08 Jan 2011)");
   script_cve_id("CVE-2010-4640");
   script_bugtraq_id(44606);
@@ -97,7 +97,7 @@ if("XWiki - Main - WebHome" >!< rcvRes &&
 
 ## Try an exploit
 filename = "/xwiki/bin/register/XWiki/Register";
-host = http_host_name( port:port );
+host = http_host_name( port:xwport );
 
 authVariables ="template=XWiki.XWikiUserTemplate&register=1&register_first_name" +
                "=dingdong&register_last_name=%3Cscript%3Ealert%281111%29%3C%2Fscr" +

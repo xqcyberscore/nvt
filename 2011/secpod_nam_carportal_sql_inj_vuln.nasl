@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nam_carportal_sql_inj_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: secpod_nam_carportal_sql_inj_vuln.nasl 7276 2017-09-26 11:59:52Z cfischer $
 #
 # NetArt Media Car Portal SQL injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902475");
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 7276 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -100,7 +100,7 @@ foreach dir( make_list_unique( "/autoportal1", "/carportal", "/", cgi_dirs( port
 
     ## Check the Response and confirm the exploit
     if( "Location: DEALERS/index.php" >< rcvRes ) {
-      report = report_vuln_url( port:port, url:url );
+      report = report_vuln_url( port:port, url:filename );
       security_message( port:port, data:report );
       exit( 0 );
     }

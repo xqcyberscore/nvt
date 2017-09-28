@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grandstream_hardcoded_telnet_account.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_grandstream_hardcoded_telnet_account.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # Grandstream Devices Backdoor in Telnet Protocol
 #
@@ -35,7 +35,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103737";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 6086 $");
+ script_version ("$Revision: 7287 $");
  script_cve_id("CVE-2013-3542","CVE-2013-3962","CVE-2013-3963");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,14 +44,14 @@ if (description)
 
  script_xref(name:"URL", value: "http://seclists.org/fulldisclosure/2013/Jun/84");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
  script_tag(name:"creation_date", value:"2013-06-11 14:29:08 +0200 (Tue, 11 Jun 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("telnetserver_detect_type_nd_version.nasl");
- script_require_ports(23);
+ script_require_ports("Services/telnet", 23);
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -59,8 +59,7 @@ if (description)
 
 include("telnet_func.inc");
 
-port = 23;
-if(!get_port_state(port))exit(0);
+port = get_telnet_port( default:23 );
 
 soc = open_sock_tcp(port);
 if(!soc)exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_nuke_mult_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: secpod_php_nuke_mult_vuln.nasl 7276 2017-09-26 11:59:52Z cfischer $
 #
 # PHP-Nuke Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpnuke:php-nuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902600");
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 7276 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_cve_id("CVE-2011-1480", "CVE-2011-1481", "CVE-2011-1482");
   script_bugtraq_id(47000, 47001, 47002);
@@ -100,7 +100,7 @@ res = http_keepalive_send_recv( port:port, data:req );
 
 ## Confirm the exploit
 if( res =~ "HTTP/1\.. 200" && "onerror=alert(/OpenVAS-XSS-TEST/)">< res ) {
-  report = report_vuln_url( port:port, url:url );
+  report = report_vuln_url( port:port, url:filename );
   security_message( port:port, data:report );
   exit( 0 );
 }

@@ -1,5 +1,6 @@
 ###############################################################################
-# $Id: sharp_printers.inc 4108 2016-09-19 10:34:25Z cfi $
+# OpenVAS Include File
+# $Id: sharp_printers.inc 7288 2017-09-27 07:21:24Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -21,28 +22,36 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 4108 $
+# $Revision: 7288 $
 #
 ###############################################################################
 
-sharp_detect_urls = make_array();
+global_var sharp_cookie, sharp_last_user, sharp_last_pass;
 
-# URL                                   # Regex
-sharp_detect_urls['/'] = '<title>(MX-M260N|AR-M155|AR-M450U|AR-M550U|MX-M700N|MX-M620N|AR-M351U|AR-M451U|MX-M550N|AR-M700U|AR-M276|MX-M310N|AR-168D|AR-M236|MX-M450U|AR-M237|MX-M350N|MX-M550U|AR-M160|AL-2051|AL-2061|MX-B201D)</title>';
-sharp_detect_urls['/login.html?/main.html'] = '<title>.* - ([^<]+)</title>';
-sharp_detect_urls['/link.html'] = '>(AR-M350|im3511|im4512)<';
+function get_sharp_detect_urls() {
+
+  local_var sharp_detect_urls;
+
+  sharp_detect_urls = make_array();
+
+  # URL                                   # Regex
+  sharp_detect_urls['/'] = '<title>(MX-M260N|AR-M155|AR-M450U|AR-M550U|MX-M700N|MX-M620N|AR-M351U|AR-M451U|MX-M550N|AR-M700U|AR-M276|MX-M310N|AR-168D|AR-M236|MX-M450U|AR-M237|MX-M350N|MX-M550U|AR-M160|AL-2051|AL-2061|MX-B201D)</title>';
+  sharp_detect_urls['/login.html?/main.html'] = '<title>.* - ([^<]+)</title>';
+  sharp_detect_urls['/link.html'] = '>(AR-M350|im3511|im4512)<';
+
+  return sharp_detect_urls;
+}
 
 function sharp_default_logins() {
 
   return make_list("admin:Sharp","admin:1234","Administrator:admin","administrator:admin","admin:admin","admin:00000");
 }
 
-function check_sharp_default_login(model) {
+function check_sharp_default_login( model, port ) {
 
-  local_var userame, password, sharp;
-  global_var last_user, last_pass;
+  local_var model, port, userame, password, sharp;
 
-  sharp = sharp_login_details(model:model);
+  sharp = sharp_login_details( model:model, port:port );
   if(!sharp) return FALSE;
 
   logins = sharp_default_logins();
@@ -66,7 +75,7 @@ function check_sharp_default_login(model) {
       if(sharp['login_url_success']) {
         req = string(sharp['req_type_success'], " ", sharp['login_url_success'], " HTTP/1.1\r\n",
                      "Host: ", get_host_name(),"\r\n",
-                     "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/17.0 Firefox/17.0\r\n\r\n");
+                     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n\r\n");
 
         buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
         sharp_error_exit(buf:buf);
@@ -80,11 +89,11 @@ function check_sharp_default_login(model) {
       req = string("POST " , sharp['login_url'], " HTTP/1.1\r\n",
                    "Host: ", get_host_name(),"\r\n",
                    "DNT: 1\r\n",
-                   "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/17.0 Firefox/17.0\r\n",
+                   "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                    "Content-Type: application/x-www-form-urlencoded\r\n",
                    "Content-Length: ",len,"\r\n");
 
-      if(cookie) req +=  string("Cookie: ",cookie,"\r\n");
+      if(sharp_cookie) req +=  string("Cookie: ", sharp_cookie, "\r\n");
 
       req += string("\r\n",login_data,"\r\n");
 
@@ -124,7 +133,7 @@ function check_sharp_default_login(model) {
         req = string(sharp['req_type_success'], " ", sharp['login_url_success'], " HTTP/1.1\r\n",
                     "Host: ", get_host_name(),"\r\n");
 
-        if(cookie) req +=  string("Cookie: ",cookie,"\r\n");
+        if(sharp_cookie) req +=  string("Cookie: ", sharp_cookie, "\r\n");
 
         req += string("User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/17.0 OpenVAS\r\n\r\n");
 
@@ -134,8 +143,8 @@ function check_sharp_default_login(model) {
       }
 
       if(eregmatch(pattern:sharp['login_success'], string:buf)) {
-        last_user = username;
-        last_pass = password;
+        sharp_last_user = username;
+        sharp_last_pass = password;
         return 1;
       }
 
@@ -146,9 +155,9 @@ function check_sharp_default_login(model) {
 
 }
 
-function sharp_login_details(model) {
+function sharp_login_details( model, port ) {
 
-  global_var cookie;
+  local_var model, port;
 
   sharp = make_array();
 
@@ -185,7 +194,7 @@ function sharp_login_details(model) {
      model == "MX-M503N"  ||
      model == "MX-B402SC") {
 
-    if(!cookie) sharp_set_cookie(url:'/main.html');
+    if(!sharp_cookie) sharp_set_cookie( url:'/main.html', port:port );
 
     sharp['req_type'] = "POST";
     sharp['login_url'] = '/login.html?/main.html';
@@ -253,9 +262,9 @@ function build_sharp_cpe(model) {
 
 }
 
-function sharp_set_cookie(url) {
+function sharp_set_cookie( url, port ) {
 
-  global_var cookie;
+  local_var url, port;
 
   req = http_get(item:url, port:port);
   buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
@@ -264,7 +273,7 @@ function sharp_set_cookie(url) {
 
   co = eregmatch(pattern:"Set-Cookie: ([^; ]+)", string:buf);
   if(!isnull(co[1])) {
-    cookie = co[1];
+    sharp_cookie = co[1];
     return TRUE;
   }
 
@@ -274,13 +283,13 @@ function sharp_set_cookie(url) {
 
 function update_cookie(buf) {
 
-  global_var cookie;
+  local_var buf;
 
   if("Set-Cookie:" >!< buf) return FALSE;
 
   co = eregmatch(pattern:"Set-Cookie: ([^; ]+)", string:buf);
   if(!isnull(co[1])) {
-    cookie = co[1];
+    sharp_cookie = co[1];
     return TRUE;
   }
 

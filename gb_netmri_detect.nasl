@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netmri_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_netmri_detect.nasl 7270 2017-09-26 09:49:58Z cfischer $
 #
 # NetMRI Detection
 #
@@ -39,8 +39,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version ("$Revision: 7270 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2012-09-25 12:05:19 +0200 (Tue, 25 Sep 2012)");
  script_name("NetMRI Detection");
  script_category(ACT_GATHER_INFO);
@@ -53,7 +53,6 @@ if (description)
  exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
@@ -61,12 +60,11 @@ include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:443);
-if(!get_port_state(port))exit(0);
 
 soc = open_sock_tcp(port, transport:get_port_transport(port));
 if(!soc)exit(0);
 
-host = get_host_name();
+host = http_host_name(port:port);
 
 req = string("POST /netmri/config/userAdmin/login.tdf HTTP/1.1\r\n",
              "Host: ",host,"\r\n",
@@ -109,7 +107,7 @@ if("<title>NetMRI Login" >< data || "<title>Network Automation Login" >< data)
     if(isnull(cpe))
       cpe = 'cpe:/a:infoblox:netmri';
 
-    register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+    register_product(cpe:cpe, location:"/", nvt:SCRIPT_OID, port:port);
 
     log_message(data: build_detection_report(app:"NetMRI", version:vers, install:"/", cpe:cpe, concluded: version[0]),
                 port:port);

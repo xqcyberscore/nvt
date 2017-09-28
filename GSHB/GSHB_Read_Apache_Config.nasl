@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_Read_Apache_Config.nasl 7152 2017-09-15 14:36:54Z cfischer $
+# $Id: GSHB_Read_Apache_Config.nasl 7293 2017-09-27 08:49:48Z cfischer $
 #
 # Reading Apache Config (win)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96020");
-  script_version("$Revision: 7152 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 16:36:54 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 7293 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,7 +47,6 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("GSHB_read_file.inc");
 
 OSVER = get_kb_item("WMI/WMI_OSVER");

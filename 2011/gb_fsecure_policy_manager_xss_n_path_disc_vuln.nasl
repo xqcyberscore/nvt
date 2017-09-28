@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fsecure_policy_manager_xss_n_path_disc_vuln.nasl 5829 2017-04-03 07:00:29Z cfi $
+# $Id: gb_fsecure_policy_manager_xss_n_path_disc_vuln.nasl 7276 2017-09-26 11:59:52Z cfischer $
 #
 # F-Secure Policy Manager 'WebReporting' Module XSS And Path Disclosure Vulnerabilities
 #
@@ -55,8 +55,8 @@ tag_summary = "This host is running F-Secure Policy Manager and is prone to cros
 if(description)
 {
   script_id(801852);
-  script_version("$Revision: 5829 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:00:29 +0200 (Mon, 03 Apr 2017) $");
+  script_version("$Revision: 7276 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-03-04 14:32:35 +0100 (Fri, 04 Mar 2011)");
   script_cve_id("CVE-2011-1102", "CVE-2011-1103");
   script_bugtraq_id(46547);
@@ -87,8 +87,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:8081);
-
-res = http_get_cache(item:string(dir,"/"),  port:port);
+res = http_get_cache(item:"/",  port:port);
 
 ## Confirm the application
 if(">F-Secure Policy Manager Web Reporting<" >< res)

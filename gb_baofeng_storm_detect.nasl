@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_baofeng_storm_detect.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: gb_baofeng_storm_detect.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # BaoFeng Storm Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(800913);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 7287 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-08-05 14:14:14 +0200 (Wed, 05 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("BaoFeng Storm Version Detection");
@@ -47,9 +47,7 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 

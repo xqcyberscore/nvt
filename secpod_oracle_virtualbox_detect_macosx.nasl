@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_virtualbox_detect_macosx.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: secpod_oracle_virtualbox_detect_macosx.nasl 7278 2017-09-26 13:20:44Z cfischer $
 #
 # Oracle VM VirtualBox Version Detection (Mac OS X)
 #
@@ -31,10 +31,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902788";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 7076 $");
+  script_version("$Revision: 7278 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2012-01-25 11:25:41 +0530 (Wed, 25 Jan 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Oracle VM VirtualBox Version Detection (Mac OS X)");
@@ -82,7 +82,7 @@ if(isnull(ver) || "does not exist" >< ver){
 }
 
 ## build cpe and store it as host_detail
-if(version_is_less(version:version, test_version:"3.2.0"))
+if(version_is_less(version:ver, test_version:"3.2.0"))
 {
   cpe = build_cpe(value:ver, exp:"^([0-9.]+)", base:"cpe:/a:sun:virtualbox:");
   if(!(cpe))

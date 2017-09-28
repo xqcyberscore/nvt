@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_control_manager_cmdprocessor_bof_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_trendmicro_control_manager_cmdprocessor_bof_vuln.nasl 7277 2017-09-26 12:45:58Z cfischer $
 #
 # Trend Micro Control Manager 'CmdProcessor.exe' Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802876");
-  script_version("$Revision: 5988 $");
+  script_version("$Revision: 7277 $");
   script_cve_id("CVE-2011-5001");
   script_bugtraq_id(50965);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2012-07-02 17:04:06 +0530 (Mon, 02 Jul 2012)");
   script_name("Trend Micro Control Manager 'CmdProcessor.exe' Buffer Overflow Vulnerability");
 
@@ -102,7 +102,7 @@ tmcmport = get_http_port(default:443);
 
 ## Application Confirmation
 ## Construct basic GET request
-req = http_get(item:"/WebApp/Login.aspx", port:port);
+req = http_get(item:"/WebApp/Login.aspx", port:tmcmport);
 res = http_keepalive_send_recv(port: tmcmport, data: req);
 
 if(res && ">Control Manager" >< res && "Trend Micro Incorporated" >< res)

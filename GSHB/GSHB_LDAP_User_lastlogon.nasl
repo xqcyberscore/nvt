@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_LDAP_User_lastlogon.nasl 7067 2017-09-06 11:50:33Z teissa $
+# $Id: GSHB_LDAP_User_lastlogon.nasl 7279 2017-09-26 13:40:36Z cfischer $
 #
 # Search in LDAP the lastLogonTimestamp of Users.
 #
@@ -33,8 +33,8 @@ tag_summary = "This script search in LDAP the lastLogonTimestamp of Users.";
 if(description)
 {
   script_id(96170);
-  script_version("$Revision: 7067 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-06 13:50:33 +0200 (Wed, 06 Sep 2017) $");
+  script_version("$Revision: 7279 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:40:36 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2012-08-10 09:43:28 +0200 (Fri, 10 Aug 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -116,7 +116,7 @@ for(e=0; e<max_index(split_dom); e++){
   else bindloop = bindloop + "," + bind;
 }
 
-function argd(bind,CN,DN,passwd)
+function argd(bind,CN,passwd)
 {
   d = 0;
   argd[d++] = "ldapsearch";
@@ -135,7 +135,7 @@ function argd(bind,CN,DN,passwd)
 
 if (!DomFunkMod || DomFunkMod == "none" || int(DomFunkMod) < 3){
 
-  arg = argd(bind:bind,CN:CN,DN:DN,passwd:passwd);
+  arg = argd(bind:bind,CN:CN,passwd:passwd);
   res = pread(cmd:"ldapsearch", argv: arg, nice: 5);
 
   if ("ldap_bind: Invalid credentials (49)" >< res){
@@ -152,7 +152,7 @@ if (!DomFunkMod || DomFunkMod == "none" || int(DomFunkMod) < 3){
   if(DomFunkMod && DomFunkMod != "none")set_kb_item(name:"GSHB/LDAP/DomFunkMod", value:DomFunkMod);
 }
 
-function args(bind,CN,DN,passwd)
+function args(bind,CN,passwd)
 {
   i = 0;
   argv[i++] = "ldapsearch";
@@ -170,7 +170,7 @@ function args(bind,CN,DN,passwd)
   return(argv);
 }
 
-arg = args(bind:bind,CN:CN,DN:DN,passwd:passwd);
+arg = args(bind:bind,CN:CN,passwd:passwd);
 res = pread(cmd:"ldapsearch", argv: arg, nice: 5);
 
 if ("ldap_bind: Invalid credentials (49)" >< res){

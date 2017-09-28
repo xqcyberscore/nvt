@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_buffy_44577.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_buffy_44577.nasl 7297 2017-09-27 09:54:01Z cfischer $
 #
 # Buffy 'comb' Command Directory Traversal Vulnerability
 #
@@ -37,8 +37,8 @@ Buffy 1.3 is vulnerable; prior versions may also be affected.";
 if (description)
 {
  script_id(100886);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_version("$Revision: 7297 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
  script_tag(name:"creation_date", value:"2010-11-02 13:46:58 +0100 (Tue, 02 Nov 2010)");
  script_bugtraq_id(44577);
  script_tag(name:"cvss_base", value:"5.0");
@@ -92,7 +92,7 @@ if(login_details)
   ftpPort2 = ftp_get_pasv_port(socket:soc1);
   if(ftpPort2)
   {
-    soc2 = open_sock_tcp(ftpPort2, transport:get_port_transport(ftpPort));
+    soc2 = open_sock_tcp(ftpPort2, transport:get_port_transport(port));
     if(soc2) {
       file = "../../../../../../../../../../../../../../../../boot.ini";
       attackreq = string("RETR ", file);

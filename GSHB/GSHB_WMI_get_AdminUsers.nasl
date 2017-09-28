@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_get_AdminUsers.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_WMI_get_AdminUsers.nasl 7279 2017-09-26 13:40:36Z cfischer $
 #
 # Get all Windows Admin Users and Groups over WMI (win)
 #
@@ -35,8 +35,8 @@ tag_summary = "Get all Windows non System Services
 if(description)
 {
   script_id(96030);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 7279 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:40:36 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -85,6 +85,7 @@ if(!handle){
 LOCUSRGRP = wmi_user_groupuser(handle:handle);
 LOCUSRGRP = tolower(LOCUSRGRP);
 LOCUSRGRP = split(LOCUSRGRP, sep:'\n', keep:0);
+LOCUSRS = "";
 
 for(i=1; i<max_index(LOCUSRGRP); i++)
   {

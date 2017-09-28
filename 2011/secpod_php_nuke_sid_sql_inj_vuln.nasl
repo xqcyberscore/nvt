@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_nuke_sid_sql_inj_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: secpod_php_nuke_sid_sql_inj_vuln.nasl 7276 2017-09-26 11:59:52Z cfischer $
 #
 # PHP-Nuke 'sid' Parameter SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpnuke:php-nuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902612");
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 7276 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
@@ -74,11 +74,10 @@ include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-
 if( dir == "/" ) dir = "";
 
-## Construct attack request
-req = http_get( item: dir + "/article.php?sid=sid=24%27", port:port);
+url = dir + "/article.php?sid=sid=24%27";
+req = http_get( item:url, port:port);
 res = http_keepalive_send_recv( port:port, data:req );
 
 if( "mysql_fetch_row()" >< res && "MySQL result" >< res ) {

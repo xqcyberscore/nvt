@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: record_route.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: record_route.nasl 7273 2017-09-26 11:17:25Z cfischer $
 # Description: Record route
 #
 # Authors:
@@ -33,8 +33,8 @@ if(description)
 {
  script_id(12264);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6056 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+ script_version("$Revision: 7273 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "Record route";
@@ -115,7 +115,7 @@ for (i = 0; i < 8; i ++)
 ip = forge_ip_packet(ip_hl: 15, ip_v: 4, ip_tos: 0, ip_id: rand() % 65536,
 	ip_off: 0, ip_ttl : 0x40, ip_p: IPPROTO_ICMP, ip_src : srcaddr, 
 	data: rr, ip_len: 38+36);
-icmp = forge_icmp_packet(ip: ip, icmp_type:8, icmp_code:0, icmp_seq: seq, 
+icmp = forge_icmp_packet(ip: ip, icmp_type:8, icmp_code:0, icmp_seq: 0, 
 	icmp_id: rand() % 65536, data: d);
 r = NULL;
 for (i = 0; i < n && ! r; i ++)

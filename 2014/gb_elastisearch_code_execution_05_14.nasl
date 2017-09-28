@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastisearch_code_execution_05_14.nasl 6756 2017-07-18 13:31:14Z cfischer $
+# $Id: gb_elastisearch_code_execution_05_14.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # Elastisearch Remote Code Execution Vulnerability
 #
@@ -43,14 +43,14 @@ if (description)
  script_cve_id("CVE-2014-3120");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6756 $");
+ script_version ("$Revision: 7287 $");
 
  script_name("Elastisearch Remote Code Execution Vulnerability");
 
 
  script_xref(name:"URL", value:"http://bouk.co/blog/elasticsearch-rce/");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
  script_tag(name:"creation_date", value:"2014-05-22 15:28:00 +0200 (Thu, 22 May 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -73,7 +73,6 @@ if (description)
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("url_func.inc");
 
 port = get_http_port( default:9200 );
 
@@ -105,5 +104,5 @@ foreach file ( keys( files ) )
   }  
 
 }
-exit( 99 );
 
+exit( 99 );

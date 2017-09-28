@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_syncrify_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
+# $Id: gb_syncrify_detect.nasl 7270 2017-09-26 09:49:58Z cfischer $
 #
 # Syncrify Detection
 #
@@ -32,8 +32,8 @@ if (description)
  
  script_id(100819);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6701 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 7270 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2010-09-22 16:24:51 +0200 (Wed, 22 Sep 2010)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -61,21 +61,16 @@ port = get_http_port(default:5800);
 banner = get_http_banner(port:port);
 if(!banner || "Server: Apache-Coyote" >!< banner)exit(0);
 
-url = string(dir, "/app?operation=about");
+url = string("/app?operation=about");
 req = http_get(item:url, port:port);
 buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 if( buf == NULL )continue;
 
 if("Syncrify" >< buf && "Synametrics Technologies" && "Fast incremental backup" >< buf)
 {
-    if(strlen(dir)>0) {
-       install=dir;
-    } else {
-       install=string("/");
-    }
+    install = "/";
 
     vers = string("unknown");
-    ### try to get version 
     version = eregmatch(string: buf, pattern: "Version: ([0-9.]+) - build ([0-9]+)",icase:TRUE);
 
     if ( !isnull(version[1]) ) {

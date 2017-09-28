@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: smb_nativelanman.nasl 6895 2017-08-11 06:54:34Z cfischer $
+# $Id: smb_nativelanman.nasl 7281 2017-09-26 14:10:31Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 6895 $");
+  script_version("$Revision: 7281 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-11 08:54:34 +0200 (Fri, 11 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 16:10:31 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -88,6 +88,7 @@ close( soc );
 s = hexstr( ret ); # convert response packet to a "string" hex
 l = strlen( s );
 c = 0; # counter
+out = NULL;
 
 # according to www.snia.org/tech_activities/CIFS/CIFS-TR-1p00_FINAL.pdf
 # domain, server & os info are the last 3 strings in the packet

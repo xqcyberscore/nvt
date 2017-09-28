@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ident_process_owner.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: ident_process_owner.nasl 7275 2017-09-26 11:46:31Z cfischer $
 #
 # Identd scan
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14674");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 7275 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,11 +57,11 @@ include('global_settings.inc');
 #if (get_kb_item("Host/ident_scanned")) exit(0);
 
 ports = get_all_tcp_ports_list();
-
 if( isnull( ports ) ) exit( 0 );
 
-# Should we only use the first found identd?
+identd_n = 0;
 
+# Should we only use the first found identd?
 list = get_kb_list( "Services/auth" );
 if( ! isnull( list ) )
   list = make_list( 113, list );
@@ -107,7 +107,7 @@ for( i = 1; i <= 6 && ! isnull( ports ); i ++ ) {
         if( id ) {
           ids = split( id, sep: ':' );
           if( "USERID" >< ids[1] && strlen( ids[3] ) < 30 ) {
-            identd_n ++;
+            identd_n++;
             set_kb_item( name:"Ident/tcp/" + port, value:ids[3] );
             log_message( port:port, data:'identd reveals that this service is running as user ' + ids[3] );
           }

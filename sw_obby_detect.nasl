@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_obby_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: sw_obby_detect.nasl 7278 2017-09-26 13:20:44Z cfischer $
 #
 # obby Service Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111045");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5877 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_version("$Revision: 7278 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-11-05 09:00:00 +0100 (Thu, 05 Nov 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("obby Service Detection");
@@ -66,8 +66,9 @@ if( get_port_state( port ) ) {
 
     if( banner = egrep( string: buf, pattern: "obby_welcome" ) ) {
 
+      version = "unknown";
       register_service(port:port, proto:"obby");
-      set_kb_item( name:"obby/" + port + "/version", value: "unknown" );
+      set_kb_item( name:"obby/" + port + "/version", value: version );
       set_kb_item( name:"obby/" + port + "/installed", value: TRUE );
 
       cpe = 'cpe:/a:ubuntu_developers:obby';

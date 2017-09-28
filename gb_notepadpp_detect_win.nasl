@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_notepadpp_detect_win.nasl 7022 2017-08-30 08:57:06Z santu $
+# $Id: gb_notepadpp_detect_win.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # Notepad++ Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805317");
-  script_version("$Revision: 7022 $");
+  script_version("$Revision: 7287 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 10:57:06 +0200 (Wed, 30 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-01-09 13:19:25 +0530 (Fri, 09 Jan 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Notepad++ Version Detection (Windows)");
@@ -50,12 +50,9 @@ if (description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
-include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
 
 ## Variable Initialization
 os_arch = "";

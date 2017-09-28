@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cmsqlite_sql_inj_n_dir_trav_vuln.nasl 5794 2017-03-30 13:52:29Z cfi $
+# $Id: gb_cmsqlite_sql_inj_n_dir_trav_vuln.nasl 7273 2017-09-26 11:17:25Z cfischer $
 #
 # CMSQlite 'index.php' SQL Injection and Directory Traversal Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800789");
-  script_version("$Revision: 5794 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:52:29 +0200 (Thu, 30 Mar 2017) $");
+  script_version("$Revision: 7273 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-06-09 08:34:53 +0200 (Wed, 09 Jun 2010)");
   script_cve_id("CVE-2010-2095", "CVE-2010-2096");
   script_tag(name:"cvss_base", value:"7.5");
@@ -76,7 +76,7 @@ if (!can_host_php(port:cmsPort)) exit(0);
 foreach path (make_list_unique("/", "/cmsqlite", "/cmsqlite10", cgi_dirs(port:cmsPort)))
 {
 
-  if(dir == "/") dir = "";
+  if(path == "/") path = "";
 
   rcvRes = http_get_cache(item:string(path, "/index.php"), port:cmsPort);
 

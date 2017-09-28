@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharp_printers_default_credentials.nasl 6865 2017-08-08 06:46:40Z cfischer $
+# $Id: gb_sharp_printers_default_credentials.nasl 7272 2017-09-26 10:49:03Z cfischer $
 #
 # Sharp Printer Default Account Authentication Bypass Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103780");
-  script_version("$Revision: 6865 $");
+  script_version("$Revision: 7272 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-08 08:46:40 +0200 (Tue, 08 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 12:49:03 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2013-09-03 11:51:27 +0100 (Tue, 03 Sep 2013)");
   script_name("Sharp Printer Default Account Authentication Bypass Vulnerability");
   script_category(ACT_ATTACK);
@@ -56,21 +56,21 @@ if(description)
   exit(0);
 }
 
-include("sharp_printers.inc");
 include("http_func.inc");
 include("misc_func.inc"); # For base64() in check_sharp_default_login
+include("sharp_printers.inc");
 
 port = get_http_port( default:80 );
 
 model = get_kb_item( "sharp_model" );
 if( ! model ) exit( 0 );
 
-ret = check_sharp_default_login( model:model );
+ret = check_sharp_default_login( model:model, port:port );
 
 if( ret ) {
 
   if( ret == 1 ) {
-    message = 'It was possible to login into the remote Sharp ' + model + ' with user "' + last_user + '" and password "' + last_pass + '"\n';
+    message = 'It was possible to login into the remote Sharp ' + model + ' with user "' + sharp_last_user + '" and password "' + sharp_last_pass + '"\n';
   }
   else if( ret == 2 ) {
     message = 'The remote Sharp ' + model + ' is not protected by a username and password.\n';

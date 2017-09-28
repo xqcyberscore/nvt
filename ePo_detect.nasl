@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ePo_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: ePo_detect.nasl 7268 2017-09-26 08:43:43Z cfischer $
 #
 # ePo Agent Detection
 #
@@ -29,14 +29,12 @@ tag_summary = "Detection of ePo Agent
 The script sends a connection request to the server and attempts to
 extract some information from the reply.";
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.100329";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.100329");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5877 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+ script_version("$Revision: 7268 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 10:43:43 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2009-10-30 14:42:19 +0100 (Fri, 30 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -59,13 +57,7 @@ include("misc_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-
-SCRIPT_DESC = "ePo Agent Detection";
-
-## start script
 port = get_http_port(default:8081);
-
-if(!get_port_state(port))exit(0);
 
  url = string("/");
  req = http_get(item:url, port:port);
@@ -164,7 +156,7 @@ if(!get_port_state(port))exit(0);
     if(isnull(cpe))
             cpe = 'cpe:/a:mcafee:agent';
 
-    register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+    register_product(cpe:cpe, location:port + "/tcp", port:port);
 
     log_message(data: build_detection_report(app:"ePo Agent", version:vers, install:port + '/tcp', cpe:cpe, port:port, concluded: version[0], extra:extra),
                 port:port);

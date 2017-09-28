@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cmscout_xss_vuln.nasl 5843 2017-04-03 13:42:51Z cfi $
+# $Id: gb_cmscout_xss_vuln.nasl 7273 2017-09-26 11:17:25Z cfischer $
 #
 # CMScout Cross-Site Scripting Vulnerability
 #
@@ -45,8 +45,8 @@ Scripting Vulnerability.";
 if(description)
 {
   script_id(800791);
-  script_version("$Revision: 5843 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:42:51 +0200 (Mon, 03 Apr 2017) $");
+  script_version("$Revision: 7273 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-06-09 08:34:53 +0200 (Wed, 09 Jun 2010)");
   script_cve_id("CVE-2010-2154");
   script_bugtraq_id(40442);
@@ -89,7 +89,7 @@ cmsVer = eregmatch(pattern:"^(.+) under (/.*)$", string:cmsVer);
 if(cmsVer[2] != NULL)
 {
   filename = string(cmsVer[2] + "/index.php?page=search&menuid=5");
-  host = http_host_name(port:port);
+  host = http_host_name(port:cmsPort);
   authVariables = "search=OpenVAS+XSS+Testing&content=1&Submit=Search";
 
   ## Construct XSS Request

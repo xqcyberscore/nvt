@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 7230 2017-09-22 07:50:10Z cfischer $
+# $Id: smb_nt.inc 7288 2017-09-27 07:21:24Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7230 $
+# $Revision: 7288 $
 #
 ###############################################################################
 
@@ -6465,9 +6465,9 @@ function OpenAndX2_NTLMSSP( socket, uid, tid, file ) {
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
 
   # TBD: name doesn't exist in this scope, namelen, name_hi and name_lo are unused
-  namelen = strlen( name ) + 1;
-  name_hi = namelen / 256;
-  name_lo = namelen % 256;
+  #namelen = strlen( name ) + 1;
+  #name_hi = namelen / 256;
+  #name_lo = namelen % 256;
 
   req += raw_string( 0x39, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00,
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -6647,9 +6647,9 @@ function ReadAndX2_NTLMSSP( socket, uid, tid, fid, count, off ) {
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
 
   # TBD: name doesn't exist in this scope, namelen, name_hi and name_lo are unused
-  namelen = strlen( name ) + 1;
-  name_hi = namelen / 256;
-  name_lo = namelen % 256;
+  #namelen = strlen( name ) + 1;
+  #name_hi = namelen / 256;
+  #name_lo = namelen % 256;
 
   req += raw_string( 0x31, 0x00, 0x50, 0x00, cnt_lo_lo, cnt_lo_hi, cnt_hi_lo, cnt_hi_hi,
                      off_lo_lo, off_lo_lo_lo, off_lo_lo_hi, off_lo_hi,

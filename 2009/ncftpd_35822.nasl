@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ncftpd_35822.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: ncftpd_35822.nasl 7297 2017-09-27 09:54:01Z cfischer $
 #
 # NcFTPD Symbolic Link Information Disclosure Vulnerability
 #
@@ -37,8 +37,8 @@ if (description)
  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/52067");
  script_xref(name : "URL" , value : "http://www.ncftpd.com/ncftpd/");
  script_id(100250);
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+ script_version("$Revision: 7297 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
  script_tag(name:"creation_date", value:"2009-07-28 21:43:08 +0200 (Tue, 28 Jul 2009)");
  script_bugtraq_id(35822);
  script_tag(name:"cvss_base", value:"4.0");
@@ -63,7 +63,7 @@ if(!ftpPort){
   ftpPort = 21;
 }
 
-if(get_kb_item('ftp/'+port+'/broken'))exit(0);
+if(get_kb_item('ftp/'+ftpPort+'/broken'))exit(0);
 if(!get_kb_item("ftp/ncftpd"))exit(0);
 
 user = get_kb_item("ftp/login");

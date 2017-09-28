@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln_jul09.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: gb_wordpress_mult_vuln_jul09.nasl 7290 2017-09-27 07:38:44Z cfischer $
 #
 # WordPress Multiple Vulnerabilities - July09
 #
@@ -24,35 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to view the content of plugins
-  configuration pages, inject malicious scripting code, or gain knowledge of
-  sensitive username information.
-  Impact Level: Application";
-tag_affected = "WordPress version prior to 2.8.1 on all running platform.";
-tag_insight = "- Error in 'wp-settings.php' which may disclose the sensitive information via
-    a direct request.
-  - username of a post's author is placed in an HTML comment, which allows
-    remote attackers to obtain sensitive information by reading the HTML source.
-  - Error occur when user attampt for failed login or password request depending
-    on whether the user account exists, and it can be exploited by enumerate
-    valid usernames.
-  - wp-admin/admin.php does not require administrative authentication
-    to access the configuration of a plugin, which allows attackers to specify a
-    configuration file in the page parameter via collapsing-archives/options.txt,
-    related-ways-to-take-action/options.php, wp-security-scan/securityscan.php,
-    akismet/readme.txt and wp-ids/ids-admin.php.";
-tag_solution = "Update to Version 2.8.1
-  http://wordpress.org/download/";
-tag_summary = "The host is running WordPress and is prone to Multiple Vulnerabilities.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800657";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 4970 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800657");
+  script_version("$Revision: 7290 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 09:38:44 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-07-18 09:37:41 +0200 (Sat, 18 Jul 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -60,44 +38,74 @@ if(description)
                 "CVE-2009-2335", "CVE-2009-2334");
   script_bugtraq_id(35581, 35584);
   script_name("WordPress Multiple Vulnerabilities - July09");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/1833");
-  script_xref(name : "URL" , value : "http://securitytracker.com/alerts/2009/Jul/1022528.html");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/504795/100/0/threaded");
-
-  script_tag(name:"qod_type", value:"remote_active");
-  script_category(ACT_MIXED_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("wordpress/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("wordpress/installed");
+
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/1833");
+  script_xref(name:"URL", value:"http://securitytracker.com/alerts/2009/Jul/1022528.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/504795/100/0/threaded");
+
+  tag_impact = "Successful exploitation will allow attackers to view the content of plugins
+  configuration pages, inject malicious scripting code, or gain knowledge of
+  sensitive username information.
+
+  Impact Level: Application";
+
+  tag_affected = "WordPress version prior to 2.8.1 on all running platform.";
+
+  tag_insight = "- Error in 'wp-settings.php' which may disclose the sensitive information via
+    a direct request.
+
+  - username of a post's author is placed in an HTML comment, which allows
+    remote attackers to obtain sensitive information by reading the HTML source.
+
+  - Error occur when user attampt for failed login or password request depending
+    on whether the user account exists, and it can be exploited by enumerate
+    valid usernames.
+
+  - wp-admin/admin.php does not require administrative authentication
+    to access the configuration of a plugin, which allows attackers to specify a
+    configuration file in the page parameter via collapsing-archives/options.txt,
+    related-ways-to-take-action/options.php, wp-security-scan/securityscan.php,
+    akismet/readme.txt and wp-ids/ids-admin.php.";
+
+  tag_solution = "Update to Version 2.8.1
+
+  http://wordpress.org/download/";
+
+  tag_summary = "The host is running WordPress and is prone to Multiple Vulnerabilities.";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"insight", value:tag_insight);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_active");
+
   exit(0);
 }
-
 
 include("http_func.inc");
-include("version_func.inc");
+include("http_keepalive.inc");
 include("host_details.inc");
 
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-wpmuPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID);
-if(!wpmuPort){
-  exit(0);
+url = dir + "/wp-settings.php";
+req = http_get( item:url, port:port );
+res = http_keepalive_send_recv( port:port, data:req );
+
+if( "ABSPATHwp-include" >< res && "include_path" >< res ) {
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:wpmuPort))exit(0);
-
-sndReq = http_get(item:string(dir, "/wp-settings.php"), port:wpmuPort);
-rcvRes = http_send_recv(port:wpmuPort, data:sndReq);
-if("ABSPATHwp-include" >< rcvRes && "include_path" >< rcvRes)
-{
-  security_message(port:wpmuPort);
-  exit(0);
-}
-
-exit(0);
+exit( 99 );

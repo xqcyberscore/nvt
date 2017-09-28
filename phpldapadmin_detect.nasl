@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpldapadmin_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
+# $Id: phpldapadmin_detect.nasl 7278 2017-09-26 13:20:44Z cfischer $
 #
 # phpLDAPadmin Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100395");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5815 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
+ script_version("$Revision: 7278 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2009-12-15 19:11:56 +0100 (Tue, 15 Dec 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("phpLDAPadmin Detection");
@@ -61,7 +61,7 @@ if(!can_host_php(port:port))exit(0);
 
 foreach dir( make_list_unique( "/", "/phpldapadmin", "/ldapadmin", "/ldap", "/phpldapadmin/htdocs", "/ldapadmin/htdocs", cgi_dirs( port:port ) ) ) {
 
- rep_dir = dir;
+ install = dir;
  if (dir == "/") dir = "";
 
  url = string(dir, "/index.php");
@@ -87,10 +87,10 @@ foreach dir( make_list_unique( "/", "/phpldapadmin", "/ldapadmin", "/ldap", "/ph
     if(isnull(cpe)) 
       cpe = 'cpe:/a:phpldapadmin:phpldapadmin';
 
-    register_product(cpe:cpe, location:rep_dir, port:port);
+    register_product(cpe:cpe, location:install, port:port);
     log_message(data: build_detection_report(app:"phpLDAPadmin",
                                      version:vers,
-                                     install:rep_dir,
+                                     install:install,
                                      cpe:cpe,
                                      concluded: version[0]),
                 port: port);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: atutor_password_reminder_sql.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: atutor_password_reminder_sql.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # ATutor password reminder SQL injection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19765");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 7287 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -70,10 +70,8 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
-include("url_func.inc");
 
 postdata = string( "form_password_reminder=true&",
                    "form_email=%27", SCRIPT_NAME, "&",
@@ -89,7 +87,6 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   if( dir == "/" ) dir = "";
   url = dir + "/password_reminder.php";
 
-  # Make sure the affected script exists.
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 

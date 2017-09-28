@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iball_baton_150m_wireless_router_auth_bypass_vuln.nasl 7040 2017-09-01 09:20:53Z santu $
+# $Id: gb_iball_baton_150m_wireless_router_auth_bypass_vuln.nasl 7292 2017-09-27 08:38:54Z santu $
 #
 # iBall Baton 150M Wireless Router Authentication Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:iball:baton_150m_wireless-n_router";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811313");
-  script_version("$Revision: 7040 $");
-  script_cve_id("CVE-2017-6558");
+  script_version("$Revision: 7292 $");
+  script_cve_id("CVE-2017-6558", "CVE-2017-14244");
   script_bugtraq_id(96822);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 11:20:53 +0200 (Fri, 01 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:38:54 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-08-31 12:06:39 +0530 (Thu, 31 Aug 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("iBall Baton 150M Wireless Router Authentication Bypass Vulnerability");
@@ -45,18 +45,25 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to get specific information or not.");
 
-  script_tag(name: "insight" , value:"The flaw exists as iball Baton 150M Router
-  login page is insecurely developed and any attacker could bypass the admin
-  authentication just by tweaking the password.cgi file.");
+  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  
+  - iball Baton 150M Router login page is insecurely developed and any attacker 
+    could bypass the admin authentication just by tweaking the password.cgi file.
+ 
+  - iBall ADSL2+ Home Router does not properly authenticate when pages are 
+    accessed through cgi version.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to gain access to bypass authentication mechanism and perform
-  unauthorized actions. This may lead to further attacks. 
+  unauthorized actions and can access sensitive information and perform actions 
+  such as reset router, downloading backup configuration, upload backup etc.
+  This may lead to further attacks. 
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"iBall Baton 150M Wireless-N ADSI.2+ Router
-  1.2.6 build 110401");
+  script_tag(name: "affected" , value:"
+  iBall Baton 150M Wireless-N ADSI.2+ Router 1.2.6 build 110401.
+  iBall ADSL2+ Home Router WRA150N Firmware version FW_iB-LR7011A_1.0.2");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
   31th Aug, 2017. Information regarding this issue will be updated once solution
@@ -65,6 +72,7 @@ if(description)
   script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/42591");
+  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/42740");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2017/Mar/22");
 
   script_category(ACT_ATTACK);

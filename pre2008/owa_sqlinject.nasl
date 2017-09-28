@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: owa_sqlinject.nasl 6005 2017-04-21 13:14:30Z cfi $
+# $Id: owa_sqlinject.nasl 7273 2017-09-26 11:17:25Z cfischer $
 #
 # Outlook Web Access URL Injection
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17636");
-  script_version("$Revision: 6005 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 15:14:30 +0200 (Fri, 21 Apr 2017) $");
+  script_version("$Revision: 7273 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -75,7 +75,7 @@ include("http_keepalive.inc");
 port = get_http_port( default:80 );
 if( ! can_host_asp( port:port ) ) exit( 0 );
 
-req = http_get(item:string(url, "/exchweb/bin/auth/owalogon.asp?url=http://12345678910"), port:port);
+req = http_get(item:string("/exchweb/bin/auth/owalogon.asp?url=http://12345678910"), port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 
 if ( res == NULL ) exit(0);

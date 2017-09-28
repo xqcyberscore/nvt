@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_necko_dns_info_disc_vuln_lin.nasl 6482 2017-06-29 08:31:43Z cfischer $
+# $Id: gb_mozilla_prdts_necko_dns_info_disc_vuln_lin.nasl 7273 2017-09-26 11:17:25Z cfischer $
 #
 # Mozilla Products Necko DNS Information Disclosure Vulnerability (Linux)
 #
@@ -45,8 +45,8 @@ tag_summary = "The host is installed with Thundebird/Seamonkey and is prone to
 if(description)
 {
   script_id(800456);
-  script_version("$Revision: 6482 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:31:43 +0200 (Thu, 29 Jun 2017) $");
+  script_version("$Revision: 7273 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-02-04 12:53:38 +0100 (Thu, 04 Feb 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -89,6 +89,11 @@ if(!isnull(fpVer))
 # Seamonkey Check
 seaVer = get_kb_item("Seamonkey/Linux/Ver");
 if(!seaVer){
+  exit(0);
+}
+
+sock = ssh_login_or_reuse_connection();
+if(!sock){
   exit(0);
 }
 

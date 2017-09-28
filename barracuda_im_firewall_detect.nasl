@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: barracuda_im_firewall_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
+# $Id: barracuda_im_firewall_detect.nasl 7268 2017-09-26 08:43:43Z cfischer $
 #
 # Barracuda IM Firewall Detection
 #
@@ -32,8 +32,8 @@ if (description)
 {
  script_id(100392);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6701 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 7268 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 10:43:43 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2009-12-11 12:55:06 +0100 (Fri, 11 Dec 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -66,7 +66,7 @@ port = get_http_port(default:80);
 banner = get_http_banner(port: port);
 if("Server: BarracudaHTTP" >!< banner)exit(0);
 
- url = string(dir, "/cgi-mod/index.cgi");
+ url = string("/cgi-mod/index.cgi");
  req = http_get(item:url, port:port);
  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
  if( buf == NULL )continue;

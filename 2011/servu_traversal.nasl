@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: servu_traversal.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: servu_traversal.nasl 7297 2017-09-27 09:54:01Z cfischer $
 #
 # Serv-U FTP Server Jail Break
 #
@@ -35,7 +35,7 @@ launch further attacks.";
 if (description)
 {
  script_id(103354);
- script_version ("$Revision: 7052 $");
+ script_version ("$Revision: 7297 $");
  script_bugtraq_id(50875);
  script_cve_id("CVE-2011-4800");
  script_tag(name:"cvss_base", value:"9.0");
@@ -44,7 +44,7 @@ if (description)
  script_name("Serv-U FTP Server Jail Break");
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-12-02 11:28:44 +0100 (Fri, 02 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);
@@ -102,7 +102,7 @@ if(login_details)
   ftpPort2 = ftp_get_pasv_port(socket:soc1);
   if(ftpPort2)
   {
-    soc2 = open_sock_tcp(ftpPort2, transport:get_port_transport(ftpPort));
+    soc2 = open_sock_tcp(ftpPort2, transport:get_port_transport(port));
     if(soc2) {
       send(socket:soc1, data:string("RETR ..:\\:..\\..:\\..:\\..:\\..:\\..:\\..:\\..:\\boot.ini", "\r\n"));
       attackres = ftp_recv_data(socket:soc2);

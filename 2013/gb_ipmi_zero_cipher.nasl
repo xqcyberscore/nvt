@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_zero_cipher.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_ipmi_zero_cipher.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # IPMI Cipher Zero Authentication Bypass Vulnerability
 #
@@ -41,7 +41,7 @@ tag_vuldetect = "Send a request with a zero cipher and check if this request was
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 6074 $");
+ script_version ("$Revision: 7287 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("IPMI Cipher Zero Authentication Bypass Vulnerability");
@@ -49,7 +49,7 @@ if (description)
 
  script_xref(name:"URL", value:"http://fish2.com/ipmi/cipherzero.html");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
  script_tag(name:"creation_date", value:"2013-11-27 15:03:17 +0100 (Wed, 27 Nov 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -68,7 +68,6 @@ if (description)
  exit(0);
 }
 
-include("byte_func.inc");
 include("misc_func.inc");
 
 port = get_kb_item("Services/udp/ipmi");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_mult_vuln_kb4036586.nasl 7131 2017-09-14 14:03:44Z santu $
+# $Id: gb_ms_ie_mult_vuln_kb4036586.nasl 7292 2017-09-27 08:38:54Z santu $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (KB4036586)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811760");
-  script_version("$Revision: 7131 $");
+  script_version("$Revision: 7292 $");
   script_cve_id("CVE-2017-8529", "CVE-2017-8733", "CVE-2017-8736", "CVE-2017-8741",
                 "CVE-2017-8747", "CVE-2017-8748", "CVE-2017-8749", "CVE-2017-8750");
   script_bugtraq_id(100737, 98953, 100764, 100743, 100766, 100770, 100771, 100765);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-14 16:03:44 +0200 (Thu, 14 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:38:54 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-13 16:28:36 +0530 (Wed, 13 Sep 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (KB4036586)");
@@ -149,7 +149,7 @@ else if(hotfix_check_sp(win2012:1) > 0)
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1, win7:2, win7x64:2, win2008r2:2) > 0)
 {
   ## Check for Mshtml.dll version
-  if(version_in_range(version:iedllVer, test_version:"11.0", test_version2:"11.0.9600.18792"))
+  if(version_is_less(version:iedllVer, test_version:"11.0.9600.18792"))
   {
      Vulnerable_range = "Less than 11.0.9600.18792";
      VULN = TRUE ;

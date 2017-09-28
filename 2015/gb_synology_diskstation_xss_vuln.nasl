@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_diskstation_xss_vuln.nasl 7201 2017-09-20 09:46:33Z santu $
+# $Id: gb_synology_diskstation_xss_vuln.nasl 7292 2017-09-27 08:38:54Z santu $
 #
 # Synology DiskStation Manager Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/o:synology:dsm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805391");
-  script_version("$Revision: 7201 $");
+  script_version("$Revision: 7292 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 11:46:33 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:38:54 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-05-28 13:19:38 +0530 (Thu, 28 May 2015)");
-  script_tag(name:"qod_type", value:"remote_analysis");
+  script_tag(name:"qod", value:"50"); # Prone to false positives and doesn't match existing qod_types
   script_name("Synology DiskStation Manager Cross-Site Scripting Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with Synology

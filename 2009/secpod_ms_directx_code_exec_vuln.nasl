@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_directx_code_exec_vuln.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: secpod_ms_directx_code_exec_vuln.nasl 7293 2017-09-27 08:49:48Z cfischer $
 #
 # Vulnerability in Microsoft DirectShow Could Allow Remote Code Execution
 #
@@ -46,9 +46,9 @@ tag_summary = "This host is installed with Microsoft DirectShow and is prone to
 if(description)
 {
   script_id(900097);
-  script_version("$Revision: 5363 $");
+  script_version("$Revision: 7293 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -77,7 +77,6 @@ exit(66); ## This NVT is deprecated as addressed in secpod_ms09-028.nasl.
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
-include("secpod_smb_func.inc");
 
 # OS with Hotfix Check
 if(hotfix_check_sp(win2k:5, xp:4, win2003:3) <= 0){

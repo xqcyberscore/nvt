@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ethernetip_detect.nasl 6295 2017-06-09 06:04:52Z ckuersteiner $
+# $Id: gb_ethernetip_detect.nasl 7268 2017-09-26 08:43:43Z cfischer $
 #
 # EtherNet/IP Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106850");
- script_version ("$Revision: 6295 $");
- script_tag(name: "last_modification", value: "$Date: 2017-06-09 08:04:52 +0200 (Fri, 09 Jun 2017) $");
+ script_version ("$Revision: 7268 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-09-26 10:43:43 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name: "creation_date", value: "2017-06-09 12:24:29 +0700 (Fri, 09 Jun 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,7 +59,7 @@ include("byte_func.inc");
 include("ethernetip.inc");
 include("misc_func.inc");
 
-function queryEthernetIP(proto) {
+function queryEthernetIP(proto, soc) {
   query = raw_string(0x63, 0x00,                    # ENCAP_CMD_LISTIDENTITY
                      0x00, 0x00,                    # encap length
                      0x00, 0x00, 0x00, 0x00,        # session id
@@ -111,7 +111,7 @@ if (get_port_state(port)) {
   soc = open_sock_tcp(port);
 
   if (soc) {
-    queryEthernetIP(proto: "tcp");
+    queryEthernetIP(proto: "tcp", soc: soc);
     close(soc);
   }
 }
@@ -121,7 +121,7 @@ if (get_udp_port_state(port)) {
   soc = open_sock_udp(port);
 
   if (soc) {
-    queryEthernetIP(proto: "udp");
+    queryEthernetIP(proto: "udp", soc: soc);
     close(soc);
   }
 }

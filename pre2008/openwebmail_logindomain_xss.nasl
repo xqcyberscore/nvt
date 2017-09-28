@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: openwebmail_logindomain_xss.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: openwebmail_logindomain_xss.nasl 7273 2017-09-26 11:17:25Z cfischer $
 # Description: Open WebMail Logindomain Parameter Cross-Site Scripting Vulnerability
 #
 # Authors:
@@ -35,8 +35,8 @@ tag_solution = "Upgrade to Open WebMail version 2.50 20040212 or later.";
 
 if (description) {
   script_id(16463);
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 7273 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -71,21 +71,19 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 
 # We test whether the hole exists by trying to echo magic (urlencoded
 # as alt_magic for http) and checking whether we get it back.
 magic = "logindomain xss vulnerability";
 alt_magic = str_replace(string:magic, find:" ", replace:"%20");
 
-
 # Test an install.
 install = get_kb_item(string("www/", port, "/openwebmail"));
 if (isnull(install)) exit(0);
 matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");
-if (!isnull(matches)) {
+if (!isnull(matches[1])) {
   url = string(
-    dir, 
+    matches[1], 
     "/openwebmail.pl?logindomain=%22%20/%3E%3Cscript%3Ewindow.alert('",
     alt_magic,
     "')%3C/script%3E"

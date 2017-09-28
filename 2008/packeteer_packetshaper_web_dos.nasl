@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: packeteer_packetshaper_web_dos.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: packeteer_packetshaper_web_dos.nasl 7293 2017-09-27 08:49:48Z cfischer $
 # Description: Packeteer PacketShaper Web Denial of Service
 #
 # Authors:
@@ -39,8 +39,8 @@ even read-only access is sufficient.";
 if (description)
     {
     script_id(80030);
-    script_version("$Revision: 7236 $");
-    script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+    script_version("$Revision: 7293 $");
+    script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
     script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -62,8 +62,8 @@ if (description)
 
     script_copyright("This script is Copyright (c) 2006-2007 nnposter");
     script_dependencies("packeteer_web_version.nasl");
-    script_require_keys("bluecoat_packetshaper/installed");
     script_require_ports("Services/www",80);
+    script_mandatory_keys("bluecoat_packetshaper/installed");
     script_tag(name : "summary" , value : tag_summary);
     script_tag(name : "solution" , value : tag_solution);
     script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/470835/30/0/threaded");
@@ -77,7 +77,7 @@ if (description)
 
 include("http_func.inc");
 include("misc_func.inc");
-include("snmp_func.inc");
+#include("snmp_func.inc"); # get_version_snmp() is commented out below...
 
 if (!get_kb_item("bluecoat_packetshaper/installed")) exit(0);
 

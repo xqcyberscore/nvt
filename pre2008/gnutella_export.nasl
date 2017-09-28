@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: gnutella_export.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: gnutella_export.nasl 7275 2017-09-26 11:46:31Z cfischer $
 # Description: Misconfigured Gnutella
 #
 # Authors:
@@ -33,8 +33,8 @@ tag_solution = "disable this Gnutella servent or configure it correctly";
 if(description)
 {
  script_id(11716);
- script_version("$Revision: 6056 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+ script_version("$Revision: 7275 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -70,7 +70,7 @@ function gnutella_read_data(socket, message)
   for (i = 22; i >= 19; i --)
     len = len * 256 + ord(message[i]);
   if (len > 0)
-    r2 = recv(socket: soc, length: len);
+    r2 = recv(socket: socket, length: len);
   return r2;
 }
 
@@ -93,7 +93,7 @@ function gnutella_search(socket, search)
 # We just read and drop them, until we get our answer.
   while (1)
   {
-    r1 = recv(socket: soc, length: 23);
+    r1 = recv(socket: socket, length: 23);
     if (strlen(r1) < 23)
       return;
     r2 = gnutella_read_data(socket: socket, message: r1);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_open_redirect_vuln.nasl 7213 2017-09-21 08:24:00Z asteins $
+# $Id: gb_joomla_open_redirect_vuln.nasl 7260 2017-09-26 06:48:48Z asteins $
 #
 # Joomla! Open Redirect Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112051");
-  script_version("$Revision: 7213 $");
+  script_version("$Revision: 7260 $");
   script_cve_id("CVE-2015-5608");
   script_bugtraq_id(76496);
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-21 10:24:00 +0200 (Thu, 21 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-21 10:36:22 +0200 (Thu, 21 Sep 2017)");
   script_name("Joomla! Open Redirect Vulnerability");
 

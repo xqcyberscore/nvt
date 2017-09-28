@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cisco_vpn_client_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: cisco_vpn_client_detect.nasl 7281 2017-09-26 14:10:31Z cfischer $
 # Description: Cisco VPN Client Version Detection
 #
 # Authors:
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80037");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 7281 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 16:10:31 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Cisco VPN Client Version Detection");
@@ -104,7 +104,7 @@ if(isnull(cpe))
 ## 64 bit apps on 64 bit platform
 ## Even 64 bit installer creates the key in Wow6432Node
 ## 32 bit app cannot be installed on 64 bit
-if("x64" >< osArch && "Wow6432Node" >< key)
+if("x64" >< osArch && "Wow6432Node" >< vpnKey)
 {
   set_kb_item(name:"SMB/CiscoVPNClient64/Version", value:vpnVer);
 

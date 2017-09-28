@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edir_ncp_mem_crptn_vuln_lin.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_novell_edir_ncp_mem_crptn_vuln_lin.nasl 7277 2017-09-26 12:45:58Z cfischer $
 #
 # Novell eDirectory NCP Memory Corruption Vulnerability - (Linux)
 #
@@ -47,8 +47,8 @@ tag_summary = "This host is running Novell eDirectory and is prone to Memory
 if(description)
 {
   script_id(800138);
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 7277 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-11-21 14:18:03 +0100 (Fri, 21 Nov 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -66,6 +66,8 @@ if(description)
   script_family("General");
   script_mandatory_keys("login/SSH/success");
   script_dependencies("ssh_authorization.nasl");
+  script_require_ports(8028, 8030);
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -87,6 +89,11 @@ if(!get_port_state(port))
   if(!get_port_state(port)){
     exit(0);
   }
+}
+
+sock = ssh_login_or_reuse_connection();
+if(!sock){
+  exit(0);
 }
 
 eDirVer = get_bin_version(full_prog_name:"ndsd", version_argv:"--version",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20160914-wsa.nasl 6034 2017-04-27 05:46:15Z teissa $
+# $Id: gb_cisco_wsa_cisco-sa-20160914-wsa.nasl 7295 2017-09-27 09:02:50Z teissa $
 #
 # Cisco Web Security Appliance HTTP Load Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:cisco:web_security_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106255");
-  script_version("$Revision: 6034 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-27 07:46:15 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 7295 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-27 11:02:50 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name: "creation_date", value: "2016-09-16 12:38:55 +0700 (Fri, 16 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "package");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("Cisco Web Security Appliance HTTP Load Denial of Service Vulnerability");
 
@@ -63,8 +63,7 @@ targeted device.");
 downloads for the same HTTP data. This could cause a DoS condition due to heavy traffic on the connection to the
 server.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of
-27th April, 2017. Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name: "URL", value: "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160914-wsa");
 
@@ -126,7 +125,7 @@ foreach af ( affected )
 {
   if( version == af )
   {
-    report = report_fixed_ver(  installed_version:version, fixed_version: "See advisory" );
+    report = report_fixed_ver(  installed_version:version, fixed_version: "None Available" );
     security_message( port:0, data:report );
     exit( 0 );
   }

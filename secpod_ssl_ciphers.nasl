@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ssl_ciphers.nasl 5219 2017-02-07 11:33:59Z mime $
+# $Id: secpod_ssl_ciphers.nasl 7278 2017-09-26 13:20:44Z cfischer $
 #
 # SSL/TLS: Check Supported Cipher Suites
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900234");
-  script_version("$Revision: 5219 $");
+  script_version("$Revision: 7278 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-07 12:33:59 +0100 (Tue, 07 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-04-13 17:43:57 +0200 (Tue, 13 Apr 2010)");
   script_name("SSL/TLS: Check Supported Cipher Suites");
   script_category(ACT_GATHER_INFO);
@@ -55,8 +55,8 @@ if(description)
 }
 
 include("misc_func.inc");
-include("secpod_ssl_ciphers.inc");
 include("ssl_funcs.inc");
+include("secpod_ssl_ciphers.inc");
 include("byte_func.inc");
 
 sslPort = get_ssl_port();

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_EventLogPolSet.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_WMI_EventLogPolSet.nasl 7279 2017-09-26 13:40:36Z cfischer $
 #
 # Read all EventLog Config Policy(ELCP) Settings (Windows)
 #
@@ -33,8 +33,8 @@ tag_summary = "The script read all, Vista and above, EventLog Config Policy Sett
 if(description)
 {
   script_id(96050);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 7279 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:40:36 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,7 +71,6 @@ if(!OSVER || OSVER >< "none"){
 
 if (OSVER < '6.0'){
     set_kb_item(name:"WMI/ELCP/GENERAL", value:"prevista");
-    wmi_close(wmi_handle:handlereg);
     exit(0);
 }
 

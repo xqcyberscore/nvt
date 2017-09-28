@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arkeia_virtual_appliance_detect_617.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_arkeia_virtual_appliance_detect_617.nasl 7268 2017-09-26 08:43:43Z cfischer $
 #
 # Arkeia Arkaiad Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107040");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 7268 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 10:43:43 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2016-08-11 13:16:06 +0200 (Thu, 11 Aug 2016)");
   script_name("Arkeia Arkaiad Detection");
   script_category(ACT_GATHER_INFO);
@@ -66,7 +66,7 @@ function parse_result( data )
   return tmp;
 }
 
-function arkeiad_recv( )
+function arkeiad_recv( soc )
 {
     r = recv( socket:soc, length: 8 );
 
@@ -103,8 +103,8 @@ req = raw_string(
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00 );
 
-send( socket:soc, data: req);
-res = arkeiad_recv();
+send( socket:soc, data:req );
+res = arkeiad_recv( soc:soc );
 
 if( raw_string(0x00, 0x60, 0x00, 0x04)  >!< res ) exit(0);
 
@@ -113,9 +113,8 @@ req = raw_string(
 0x32, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00 );
 
-send( socket:soc, data: req);
-res2 = arkeiad_recv();
-
+send( socket:soc, data:req );
+res2 = arkeiad_recv( soc:soc );
 
 if ( raw_string(0x00, 0x60, 0x00, 0x04)  >!< res2 ) exit(0);
 
@@ -127,8 +126,8 @@ req = raw_string (
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00 );
 
-send( socket:soc, data: req);
-res3 = arkeiad_recv();
+send( socket:soc, data:req );
+res3 = arkeiad_recv( soc:soc );
 
 if ( raw_string( 0x00, 0x43, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00 ) >!< res3 ) exit(0);
 
@@ -140,8 +139,8 @@ req = raw_string (
 0x00, 0x32, 0x38, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
 
-send( socket: soc, data: req);
-res4 = arkeiad_recv();
+send( socket: soc, data:req );
+res4 = arkeiad_recv( soc:soc );
 
 if (raw_string( 0x00, 0x43, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00 ) >!< res4 ) exit(0);
 
@@ -151,10 +150,10 @@ req = raw_string (
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00 );
 
-send( socket: soc, data: req);
+send( socket: soc, data:req );
 while( TRUE )
 {
-        x = arkeiad_recv();
+        x = arkeiad_recv( soc:soc );
 
         if( ! x  ) break;
         res5 += x;

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_slash.nasl 7175 2017-09-18 11:55:15Z cfischer $
+# $Id: apache_slash.nasl 7275 2017-09-26 11:46:31Z cfischer $
 # Description: Check for Apache Multiple / vulnerability
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "Upgrade to the most recent version of Apache at www.apache.org";
 if(description)
 {
   script_id(10440);
-  script_version("$Revision: 7175 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 7275 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1284);
   script_tag(name:"cvss_base", value:"5.0");
@@ -60,7 +60,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-function find_index(k) {
+function find_index(k, port) {
 
     if(k < 16)k = 17;
     for (q=k-16; q<k; q=q+1) {
@@ -78,16 +78,11 @@ a vulnerability on Apache/Win32 based webservers. ";
 "Solution: Upgrade to the most recent version of Apache at www.apache.org";
 
                 security_message(port:port, data:my_warning);
-                http_close_socket(soc);
                 exit(0);
             }
-         
     }
     exit(0);
 }
-
-
-
 
 port = get_http_port(default:80);
 
@@ -110,7 +105,7 @@ if(get_port_state(port)) {
 	    incoming = http_keepalive_send_recv(port:port, data:buf);
 	    if(incoming == NULL)exit(0);
             if ("Forbidden" >< incoming) {
-                  find_index(k:i);
+                  find_index(k:i, port:port);
             }
         
     }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpthumb_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_phpthumb_detect.nasl 7270 2017-09-26 09:49:58Z cfischer $
 #
 # phpThumb Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801232");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5499 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_version("$Revision: 7270 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-07-26 16:14:51 +0200 (Mon, 26 Jul 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("phpThumb Version Detection");
@@ -48,20 +48,20 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get http port
 port = get_http_port( default:80 );
 
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/demo/demo", "/phpThumb/demo", cgi_dirs( port:port ) ) ) {
 
-  ## Send and Receive the response
+  install = dir;
+  if( dir == "/" ) dir = "";
+
   req = http_get( item: dir + "/phpThumb.demo.demo.php", port:port );
   res = http_keepalive_send_recv( port:port, data:req );
 

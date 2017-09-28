@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: opennms_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: opennms_detect.nasl 7278 2017-09-26 13:20:44Z cfischer $
 #
 # OpenNMS Version Detection
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806530");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 7278 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2015-11-04 17:27:57 +0530 (Wed, 04 Nov 2015)");
   script_name("OpenNMS Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8980);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -56,10 +56,8 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-##Get HTTP Port
 port = get_http_port( default:8980 );
 
-##Iterate over possible paths
 foreach dir( make_list_unique( "/", "/opennms", cgi_dirs( port:port ) ) ) {
 
   install = dir;
@@ -68,8 +66,8 @@ foreach dir( make_list_unique( "/", "/opennms", cgi_dirs( port:port ) ) ) {
   rcvRes = http_get_cache( item: dir + "/login.jsp", port:port );
 
   ## confirm the application
-  if( "OpenNMS Group, Inc." >< buf && "http://www.opennms.com/" >< buf
-      && ">Login" >< buf ) {
+  if( "OpenNMS Group, Inc." >< rcvRes && "http://www.opennms.com/" >< rcvRes
+      && ">Login" >< rcvRes ) {
 
     version = "unknown";
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_mariadb_os_detection.nasl 6881 2017-08-09 06:55:24Z cfischer $
+# $Id: gb_mysql_mariadb_os_detection.nasl 7270 2017-09-26 09:49:58Z cfischer $
 #
 # MySQL/MariaDB Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108192");
-  script_version("$Revision: 6881 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-09 08:55:24 +0200 (Wed, 09 Aug 2017) $");
+  script_version("$Revision: 7270 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-07-17 09:13:48 +0100 (Mon, 17 Jul 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -87,7 +87,7 @@ if( "+deb" >< banner || "~jessie" >< banner || "~wheezy" >< banner || "~stretch"
   } else if( "+deb9" >< banner || "~stretch" >< banner || "~bpo9" >< banner ) {
     register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
-    register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
   exit( 0 );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_attendee_kb4025866_n_kb4025867.nasl 7118 2017-09-13 15:08:32Z santu $
+# $Id: gb_lync_attendee_kb4025866_n_kb4025867.nasl 7260 2017-09-26 06:48:48Z asteins $
 #
 # Microsoft Lync Attendee Multiple Remote Code Execution Vulnerabilities (KB4025866 and KB4025867)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811327");
-  script_version("$Revision: 7118 $");
+  script_version("$Revision: 7260 $");
   script_cve_id("CVE-2017-8676", "CVE-2017-8695", "CVE-2017-8696");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 17:08:32 +0200 (Wed, 13 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-13 15:57:23 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Lync Attendee Multiple Remote Code Execution Vulnerabilities (KB4025866 and KB4025867)");
 

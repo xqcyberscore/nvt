@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openvpn_client_code_exec_vuln_900024.nasl 4522 2016-11-15 14:52:19Z teissa $
+# $Id: secpod_openvpn_client_code_exec_vuln_900024.nasl 7277 2017-09-26 12:45:58Z cfischer $
 # Description: OpenVPN Client Remote Code Execution Vulnerability
 #
 # Authors:
@@ -49,8 +49,8 @@ tag_insight = "Application fails to properly validate the specially crafted inpu
 if(description)
 {
  script_id(900024);
- script_version("$Revision: 4522 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-15 15:52:19 +0100 (Tue, 15 Nov 2016) $");
+ script_version("$Revision: 7277 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_bugtraq_id(30532);
  script_cve_id("CVE-2008-3459");
@@ -101,7 +101,7 @@ if(description)
         exit(0);
  }
  
- vpnVer = ssh_cmd(socket:sock, cmd:"openvpn --version", timeout:timeout);
+ vpnVer = ssh_cmd(socket:sock, cmd:"openvpn --version");
  ssh_close_connection();
  
  if(!vpnVer){

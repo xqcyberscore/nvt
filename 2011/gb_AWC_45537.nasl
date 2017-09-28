@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_AWC_45537.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_AWC_45537.nasl 7276 2017-09-26 11:59:52Z cfischer $
 #
 # Mitel Audio and Web Conferencing (AWC) Remote Arbitrary Shell Command Injection Vulnerability
 #
@@ -37,8 +37,8 @@ confirmed this. Please see the references for details.";
 if (description)
 {
  script_id(103010);
- script_version("$Revision: 7006 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+ script_version("$Revision: 7276 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-01-04 15:14:45 +0100 (Tue, 04 Jan 2011)");
  script_bugtraq_id(45537);
  script_tag(name:"cvss_base", value:"7.5");
@@ -65,16 +65,11 @@ include("http_func.inc");
 include("http_keepalive.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-   
-url = string(dir, "/awcuser/cgi-bin/vcs?xsl=/vcs/vcs_home.xsl%26id%26"); 
+url = string("/awcuser/cgi-bin/vcs?xsl=/vcs/vcs_home.xsl%26id%26");
 
 if(http_vuln_check(port:port, url:url,pattern:"uid=[0-9]+.*gid=[0-9]+.*")) {
-     
   security_message(port:port);
   exit(0);
-
 }
 
 exit(0);
-

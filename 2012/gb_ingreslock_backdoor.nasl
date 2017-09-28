@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ingreslock_backdoor.nasl 4718 2016-12-08 13:32:01Z cfi $
+# $Id: gb_ingreslock_backdoor.nasl 7293 2017-09-27 08:49:48Z cfischer $
 #
 # Possible Backdoor: Ingreslock
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103549");
-  script_version("$Revision: 4718 $");
+  script_version("$Revision: 7293 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 14:32:01 +0100 (Thu, 08 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2012-08-22 16:21:38 +0200 (Wed, 22 Aug 2012)");
   script_name("Possible Backdoor: Ingreslock");
   script_category(ACT_ATTACK);
@@ -54,7 +54,6 @@ if(description)
   exit(0);
 }
 
-include("telnet_func.inc");
 include("misc_func.inc");
 
 ports = get_kb_list( "TCP/PORTS" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_maxthon_detect.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: gb_maxthon_detect.nasl 7281 2017-09-26 14:10:31Z cfischer $
 #
 # Maxthon Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(800895);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 7281 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 16:10:31 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-09-08 18:25:53 +0200 (Tue, 08 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Maxthon Version Detection");
@@ -76,7 +76,7 @@ foreach item (make_list("Maxthon", "Maxthon2", "Maxthon3"))
       if("Mx3Uninstall.exe" >< maxthonPath)
       maxthonPath = maxthonPath - "Mx3Uninstall.exe" + "Maxthon.exe";
 
-      hare = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:maxthonPath);
+      share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:maxthonPath);
       mfile = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:maxthonPath);
       maxthonVer = GetVer(file:mfile, share:share);
     }

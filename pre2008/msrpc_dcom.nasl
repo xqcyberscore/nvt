@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: msrpc_dcom.nasl 5341 2017-02-18 16:59:12Z cfi $
+# $Id: msrpc_dcom.nasl 7287 2017-09-27 06:56:51Z cfischer $
 #
 # Microsoft RPC Interface Buffer Overrun (823980)
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11808");
-  script_version("$Revision: 5341 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 17:59:12 +0100 (Sat, 18 Feb 2017) $");
+  script_version("$Revision: 7287 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(8205);
   script_cve_id("CVE-2003-0352");
@@ -72,7 +72,6 @@ if(description)
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
-include("secpod_smb_func.inc");
 
 if(hotfix_check_sp(xp:3, win2k:5, win2003:2) <= 0){
   exit(0);

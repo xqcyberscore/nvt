@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_calibre_45532.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_calibre_45532.nasl 7276 2017-09-26 11:59:52Z cfischer $
 #
 # Calibre Cross Site Scripting and Directory Traversal Vulnerabilities
 #
@@ -41,8 +41,8 @@ Calibre 0.7.34 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103011);
- script_version("$Revision: 7029 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+ script_version("$Revision: 7276 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-01-04 15:14:45 +0100 (Tue, 04 Jan 2011)");
  script_bugtraq_id(45532);
  script_tag(name:"cvss_base", value:"4.3");
@@ -69,19 +69,16 @@ include("host_details.inc");
 include("http_keepalive.inc");
    
 port = get_http_port(default:8080);
-if(!get_port_state(port))exit(0);
 
 files = traversal_files();
 
 foreach file (keys(files)) {
 
-  url = string(dir, "/static/",crap(data:"../",length:3*9),files[file],".");  
-
+  url = string("/static/",crap(data:"../",length:3*9),files[file],".");  
   if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
     security_message(port:port);
     exit(0);
-
   }
 }
+
 exit(0);

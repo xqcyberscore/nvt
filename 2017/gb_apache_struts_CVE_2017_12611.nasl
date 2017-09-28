@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_CVE_2017_12611.nasl 7256 2017-09-26 05:24:20Z asteins $
+# $Id: gb_apache_struts_CVE_2017_12611.nasl 7298 2017-09-27 11:54:10Z cfischer $
 #
 # Apache Struts 'CVE-2017-12611' Remote Code Execution Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108243");
-  script_version("$Revision: 7256 $");
+  script_version("$Revision: 7298 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 07:24:20 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 13:54:10 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-11 12:00:00 +0200 (Mon, 11 Sep 2017)");
   script_cve_id("CVE-2017-12611");
   script_name("Apache Struts 'CVE-2017-12611' Remote Code Execution Vulnerability");
@@ -69,6 +69,9 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 include("host_details.inc");
 include("url_func.inc");
+
+# nb: We also don't want to run if optimize_test is set to "no"
+if( get_kb_item( "Settings/disable_cgi_scanning" ) || get_kb_item( "Settings/disable_generic_webapp_scanning" ) ) exit( 0 );
 
 port = get_http_port( default:80 );
 

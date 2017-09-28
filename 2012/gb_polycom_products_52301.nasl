@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_polycom_products_52301.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_polycom_products_52301.nasl 7277 2017-09-26 12:45:58Z cfischer $
 #
 # Polycom Products Directory Traversal and Command Injection Vulnerabilities
 #
@@ -40,14 +40,14 @@ if (description)
 {
  script_id(103442);
  script_bugtraq_id(52301);
- script_version ("$Revision: 6697 $");
+ script_version ("$Revision: 7277 $");
 
  script_name("Polycom Products Directory Traversal and Command Injection Vulnerabilities");
 
 
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2012-03-06 10:45:23 +0100 (Tue, 06 Mar 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -75,14 +75,11 @@ port = get_http_port(default:80);
 banner = get_http_banner(port:port);
 if(!banner || "Server: lighttpd" >!< banner)exit(0);
 
-url = string(dir, "/a_getlog.cgi?name=../../../etc/passwd"); 
+url = string("/a_getlog.cgi?name=../../../etc/passwd"); 
 
 if(http_vuln_check(port:port, url:url,pattern:"root:.*:0:[01]:.*")) {
-     
   security_message(port:port);
   exit(0);
-
 }
 
 exit(0);
-

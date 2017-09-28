@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_mult_vuln_lin.nasl 6483 2017-06-29 08:51:15Z cfischer $
+# $Id: gb_sun_java_sys_web_serv_mult_vuln_lin.nasl 7273 2017-09-26 11:17:25Z cfischer $
 #
 # Sun Java System Web Server Multiple Vulnerabilities (Linux)
 #
@@ -54,8 +54,8 @@ tag_summary = "This host has Sun Java Web Server running which is prone to
 if(description)
 {
   script_id(800156);
-  script_version("$Revision: 6483 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:51:15 +0200 (Thu, 29 Jun 2017) $");
+  script_version("$Revision: 7273 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-02-04 12:53:38 +0100 (Thu, 04 Feb 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -100,8 +100,8 @@ if( get_kb_item("Sun/JavaSysWebServ/Ver") != "7.0"){
   exit(0);
 }
 
-sock = ssh_login_or_reuse_connection();
-if(!sock){
+jswsSock = ssh_login_or_reuse_connection();
+if(!jswsSock){
   exit(0);
 }
 

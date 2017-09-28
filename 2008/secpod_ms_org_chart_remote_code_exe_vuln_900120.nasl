@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_org_chart_remote_code_exe_vuln_900120.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_ms_org_chart_remote_code_exe_vuln_900120.nasl 7293 2017-09-27 08:49:48Z cfischer $
 # Description: Microsoft Organization Chart Remote Code Execution Vulnerability
 #
 # Authors:
@@ -49,8 +49,8 @@ tag_summary = "The host has Microsoft Organization Chart, which is prone to a
 if(description)
 {
  script_id(900120);
- script_version("$Revision: 5370 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 7293 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
  script_tag(name:"creation_date", value:"2008-09-10 17:51:23 +0200 (Wed, 10 Sep 2008)");
  script_cve_id("CVE-2008-3956");
  script_bugtraq_id(31059);
@@ -77,9 +77,7 @@ if(description)
  exit(0);
 }
 
-
- include("smb_nt.inc");
- include("secpod_smb_func.inc");
+include("smb_nt.inc");
 
  if(!get_kb_item("SMB/WindowsVersion")){
         exit(0);

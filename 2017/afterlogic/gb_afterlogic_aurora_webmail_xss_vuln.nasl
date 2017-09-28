@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_afterlogic_aurora_webmail_xss_vuln.nasl 7218 2017-09-21 10:07:18Z ckuersteiner $
+# $Id: gb_afterlogic_aurora_webmail_xss_vuln.nasl 7260 2017-09-26 06:48:48Z asteins $
 #
 # AfterLogic Aurora/Webmail XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:afterlogic:aurora';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140384");
-  script_version("$Revision: 7218 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-21 12:07:18 +0200 (Thu, 21 Sep 2017) $");
+  script_version("$Revision: 7260 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name: "creation_date", value: "2017-09-21 12:49:43 +0700 (Thu, 21 Sep 2017)");
-  script_tag(name: "cvss_base", value: "5.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-14597");
 

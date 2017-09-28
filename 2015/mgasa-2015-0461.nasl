@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0461.nasl 6563 2017-07-06 12:23:47Z cfischer $
+# $Id: mgasa-2015-0461.nasl 7260 2017-09-26 06:48:48Z asteins $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,17 +24,17 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131143");
-script_version("$Revision: 6563 $");
+script_version("$Revision: 7260 $");
 script_tag(name:"creation_date", value:"2015-12-02 11:02:37 +0200 (Wed, 02 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:23:47 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0461");
 script_tag(name: "insight", value: "Updated lightdm corrects a possible denial of service attack (CVE-2015-8316)."); 
 script_tag(name : "solution", value : "update software");
 script_tag(name : "solution_type", value : "VendorFix");
 script_xref(name : "URL" , value : "https://advisories.mageia.org/MGASA-2015-0461.html");
 script_cve_id("CVE-2015-8316");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"4.3");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");

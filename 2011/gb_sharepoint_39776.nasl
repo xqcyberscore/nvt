@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_39776.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_sharepoint_39776.nasl 7276 2017-09-26 11:59:52Z cfischer $
 #
 # Microsoft SharePoint Server 2007 '_layouts/help.aspx' Cross Site Scripting Vulnerability
 #
@@ -39,8 +39,8 @@ references for details.";
 if (description)
 {
  script_id(103254);
- script_version("$Revision: 7044 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+ script_version("$Revision: 7276 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
  script_tag(name:"creation_date", value:"2011-09-14 13:31:57 +0200 (Wed, 14 Sep 2011)");
  script_bugtraq_id(39776);
  script_cve_id("CVE-2010-0817");
@@ -74,22 +74,16 @@ include("http_func.inc");
 include("http_keepalive.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if(!can_host_asp(port:port))exit(0);
 
 banner = get_http_banner(port:port);
 if(!banner || "sharepoint" >!< tolower(banner))exit(0);
 
-url = string(dir,"/_layouts/help.aspx?cid0=MS.WSS.manifest.xml%00%3Cscript%3Ealert%28%27OpenVAS-XSS-Test%27%29%3C/script%3E&tid=X"); 
+url = string("/_layouts/help.aspx?cid0=MS.WSS.manifest.xml%00%3Cscript%3Ealert%28%27OpenVAS-XSS-Test%27%29%3C/script%3E&tid=X"); 
 
 if(http_vuln_check(port:port, url:url,pattern:"<script>alert\('OpenVAS-XSS-Test'\)</script><br/>",check_header:TRUE)) {
-     
   security_message(port:port);
   exit(0);
-
 }
 
-
 exit(0);
-

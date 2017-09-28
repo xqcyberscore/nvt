@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weborf_webserver_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_weborf_webserver_detect.nasl 7270 2017-09-26 09:49:58Z cfischer $
 #
 # Weborf Webserver Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(801223);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+ script_version("$Revision: 7270 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Weborf Webserver Version Detection");
@@ -73,7 +73,7 @@ if("Server: Weborf" >< banner)
   ver = eregmatch(pattern:"Weborf/([0-9.]+)",string:banner);
 
   if(!ver[0]) {
-    url = string(dir, "/lhlkjlkjkj-",rand(),".html");
+    url = string("/lhlkjlkjkj-",rand(),".html");
     req = http_get(item:url, port:port);
     buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_IIS_Compromised.nasl 6695 2017-07-12 11:17:53Z cfischer $
+# $Id: DDI_IIS_Compromised.nasl 7275 2017-09-26 11:46:31Z cfischer $
 #
 # IIS Possible Compromise
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11003");
-  script_version("$Revision: 6695 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 7275 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
@@ -65,8 +65,6 @@ function check(url, arg, pat)
 {
     local_var str, r;
     
-    if(debug)display("check(", url, ",", arg, ",", pat, ")\n");
-    
     str = http_get(item:string(url, arg), port:port);
     
     r = http_keepalive_send_recv(port:port, data:str);
@@ -80,7 +78,6 @@ function check(url, arg, pat)
 
     if (egrep(string:r, pattern:pat))
     {
-    	if(debug)display("found '", pat, "' for ", url, " [", arg, "]\n");
     	return(TRUE);
     }
 
@@ -96,7 +93,6 @@ function headcheck(req)
     if(r == NULL)exit(0);
     if(ereg(pattern:"^HTTP/1\.[01] (2|502) ", string:r))
 	{
-            if (debug) display("HEAD FOUND: ", req, "\n");
             return(TRUE);
         }
     return(FALSE);  
@@ -115,7 +111,6 @@ function dllcheck(req)
                 
     if ("procedure could not be found" >< r)
     {
-    	if (debug) display("DLL FOUND: ", url, "\n");
     	return(TRUE);
     }
      
@@ -171,8 +166,6 @@ function initialize_dirs () {
   _dir_idx = 0;
 
   foreach d( make_list_unique( "/scripts", "/msadc", cgi_dirs( port:port ) ) ) {
-    if(debug)display("adding discovered directory: ", d, "\n");
-    
     add_dir_list(dir:d);
     _dir_idx = _dir_idx + 1;
   }

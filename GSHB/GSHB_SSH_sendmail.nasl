@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_sendmail.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_SSH_sendmail.nasl 7279 2017-09-26 13:40:36Z cfischer $
 #
 # Check Sendmail Configuration over SSH
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96099");
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 7279 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:40:36 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2010-05-03 15:59:29 +0200 (Mon, 03 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -77,7 +77,7 @@ else{
 
   lssendmailcnf = ssh_cmd(socket:sock, cmd:"ls -l /etc/mail/sendmail.cf");
   lssendmailcnfdir = ssh_cmd(socket:sock, cmd:"ls -ld /etc/mail");
-  if (sendmailcnf =~ ".*Datei oder Verzeichnis nicht gefunden.*" ||  sendmailcnf =~ ".*No such file or directory.*"){
+  if (lssendmailcnf =~ ".*Datei oder Verzeichnis nicht gefunden.*" || lssendmailcnf =~ ".*No such file or directory.*"){
     loc_sendmailcnf = ssh_cmd(socket:sock, cmd:"locate sendmail.cnf");
     if (!loc_sendmailcnf) loc_sendmailcnf = "not found";
     else if ("locate:" >< loc_sendmailcnf) loc_sendmailcnf = ssh_cmd(socket:sock, cmd:"mlocate sendmail.cnf");

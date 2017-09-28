@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dont_print_on_printers.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: dont_print_on_printers.nasl 7297 2017-09-27 09:54:01Z cfischer $
 #
 # Do not print on AppSocket and socketAPI printers
 #
@@ -29,8 +29,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 7297 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Do not print on AppSocket and socketAPI printers");
@@ -61,6 +61,8 @@ include("kyocera_printers.inc");
 include("lexmark_printers.inc");
 include("xerox_printers.inc");
 include("snmp_func.inc");
+
+pjl_ports_list = make_list();
 
 function check_pjl_port_list( list ) {
 
@@ -111,7 +113,6 @@ if( strlen( pjl_ports ) > 0 ) {
   } else {
     pjl_report = pjl_ports;
     ports = split( pjl_ports, sep:",", keep:FALSE );
-    pjl_ports_list = make_list();
     foreach port( ports ) {
       pjl_ports_list = make_list( pjl_ports_list, port );
     }
@@ -298,20 +299,22 @@ foreach port( ports ) {
     }
 
     # HP, see also gb_hp_printer_detect.nasl
-    foreach url( keys( hp_detect_urls ) ) {
+    urls = get_hp_detect_urls();
+    foreach url( keys( urls ) ) {
 
       buf = http_get_cache( item:url, port:port );
 
-      if( eregmatch( pattern:hp_detect_urls[url], string:buf, icase:TRUE ) ) {
+      if( eregmatch( pattern:urls[url], string:buf, icase:TRUE ) ) {
         is_printer = TRUE;
         break;
       }
     }
 
     # Kyocera, see also gb_kyocera_printers_detect.nasl
-    foreach url( keys( ky_detect_urls ) ) {
+    urls = get_ky_detect_urls();
+    foreach url( keys( urls ) ) {
 
-      buf = http_get_cache( item:ky_detect_urls[url], port:port );
+      buf = http_get_cache( item:urls[url], port:port );
 
       if( eregmatch( pattern:url, string:buf, icase:TRUE ) ) {
         is_printer = TRUE;
@@ -320,9 +323,10 @@ foreach port( ports ) {
     }
 
     # Lexmark, see also gb_lexmark_printers_detect.nasl
-    foreach url( keys( lexmark_detect_urls ) ) {
+    urls = get_lexmark_detect_urls();
+    foreach url( keys( urls ) ) {
 
-      buf = http_get_cache( item:lexmark_detect_urls[url], port:port );
+      buf = http_get_cache( item:urls[url], port:port );
 
       if( eregmatch( pattern:url, string:buf, icase:TRUE ) ) {
         is_printer = TRUE;
@@ -331,11 +335,12 @@ foreach port( ports ) {
     }
 
     # Xerox, see also gb_xerox_printer_detect.nasl
-    foreach url( keys( xerox_detect_urls ) ) {
+    urls = get_xerox_detect_urls();
+    foreach url( keys( urls ) ) {
 
       buf = http_get_cache( item:url, port:port );
 
-      if( eregmatch( pattern:xerox_detect_urls[url], string:buf, icase:TRUE ) ) {
+      if( eregmatch( pattern:urls[url], string:buf, icase:TRUE ) ) {
         is_printer = TRUE;
         break;
       }

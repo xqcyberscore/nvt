@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: openwebmail_detect.nasl 5737 2017-03-27 14:18:12Z cfi $
+# $Id: openwebmail_detect.nasl 7278 2017-09-26 13:20:44Z cfischer $
 # Description: Open WebMail Detection
 #
 # Authors:
@@ -33,8 +33,8 @@ if(description)
 {
   script_id(14221);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5737 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:18:12 +0200 (Mon, 27 Mar 2017) $");
+  script_version("$Revision: 7278 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Open WebMail Detection");
@@ -63,6 +63,8 @@ port = get_http_port(default:80);
 #     the directory if its referenced elsewhere on the target.
 
 installs = 0;
+rel = NULL;
+
 foreach dir( make_list_unique( "/", "/cgi-bin/openwebmail", "/openwebmail-cgi", cgi_dirs( port:port ) ) ) {
 
   url = string(dir, "/openwebmail.pl");
