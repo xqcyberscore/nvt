@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netbios_name_get.nasl 5555 2017-03-13 08:59:20Z cfi $
+# $Id: netbios_name_get.nasl 7316 2017-09-28 12:43:44Z cfischer $
 #
 # Using NetBIOS to retrieve information from a Windows host
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10150");
-  script_version("$Revision: 5555 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 09:59:20 +0100 (Mon, 13 Mar 2017) $");
+  script_version("$Revision: 7316 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-28 14:43:44 +0200 (Thu, 28 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -135,6 +135,7 @@ if( strlen( result ) > 56 ) {
   hole_data = result;
   location = 0;
   location = location + 56;
+  name_list = make_list();
 
   num_of_names = ord( hole_data[location] );
   if( num_of_names > 0 ) {
@@ -168,7 +169,7 @@ if( strlen( result ) > 56 ) {
           hostname_found = TRUE;
         }
 
-        name += " = This is the computer name";
+        name_list = make_list( name_list, name + " = This is the computer name." );
 
       } else if( ord( hole_data[subloc] ) == 0 ) {
 
@@ -187,7 +188,7 @@ if( strlen( result ) > 56 ) {
         # Ugh, we can get multiple usernames with TS or Citrix
         # Also, the entry is the same for the local workstation or user name
         username = name;
-        name += " = This is the current logged in user or registered workstation name.";
+        name_list = make_list( name_list, name + " = This is the current logged in user or registered workstation name." );
       }
 
       if( ord( hole_data[subloc] ) == 27 ) {
@@ -198,17 +199,17 @@ if( strlen( result ) > 56 ) {
       }
 
       if( hole_data[subloc] == raw_string( 1 ) ) {
-        name += " = Computer name that is registered for the messenger service on a computer that is a WINS client.";
+        name_list = make_list( name_list, name + " = Computer name that is registered for the messenger service on a computer that is a WINS client." );
         messenger_found = TRUE;
         messenger = name;
       }
 
       if( hole_data[subloc] == raw_string( 190 ) ) {
-        name += " = A unique name that is registered when the Network Monitor agent is started on the computer";
+        name_list = make_list( name_list, name + " = A unique name that is registered when the Network Monitor agent is started on the computer." );
       }
 
       if( hole_data[subloc] == raw_string( 31 ) ) {
-        name += " = A unique name that is registered for Network dynamic data exchange (DDE) when the NetDDE service is started on the computer.";
+        name_list = make_list( name_list, name + " = A unique name that is registered for Network dynamic data exchange (DDE) when the NetDDE service is started on the computer." );
       }
     }
 
@@ -222,23 +223,23 @@ if( strlen( result ) > 56 ) {
           set_kb_item( name:"SMB/workgroup", value:chomp( name ) );
           group_found = TRUE;
         }
-        name += " = Workgroup / Domain name";
+        name_list = make_list( name_list, name + " = Workgroup / Domain name" );
       }
 
       if( hole_data[subloc] == raw_string( 30 ) ) {
-        name += " = Workgroup / Domain name (part of the Browser elections)";
+        name_list = make_list( name_list, name + " = Workgroup / Domain name (part of the Browser elections)" );
       }
 
       if( hole_data[subloc] == raw_string( 27 ) ) {
-        name += " = Workgroup / Domain name (elected Master Browser)";
+        name_list = make_list( name_list, name + " = Workgroup / Domain name (elected Master Browser)" );
       }
 
       if( hole_data[subloc] == raw_string( 28 ) ) {
-        name += " = Workgroup / Domain name (Domain Controller)";
+        name_list = make_list( name_list, name + " = Workgroup / Domain name (Domain Controller)" );
       }
 
       if( hole_data[subloc] == raw_string( 191 ) ) {
-        name += " = A group name that is registered when the Network Monitor agent is started on the computer.";
+        name_list = make_list( name_list, name + " = A group name that is registered when the Network Monitor agent is started on the computer." );
       }
     }
 
@@ -254,32 +255,36 @@ if( strlen( result ) > 56 ) {
           hostname_found = TRUE;
         }
 
-        if( "~" >!< name ) name += " = This is the computer name registered for workstation services by a WINS client.";
+        if( "~" >!< name ) {
+          name_list = make_list( name_list, name + " = This is the computer name registered for workstation services by a WINS client." );
+        } else {
+          name_list = make_list( name_list, name );
+        }
       }
 
       # Set the current logged in user based on the last entry
       if( hole_data[subloc] == raw_string( 3 ) ) {
         # Ugh, we can get multiple usernames with TS or Citrix
         username = name;
-        name += " = This is the current logged in user registered for this workstation.";
+        name_list = make_list( name_list, name + " = This is the current logged in user registered for this workstation." );
       }
 
       if( hole_data[subloc] == raw_string( 1 ) ) {
-        name += " = Computer name that is registered for the messenger service on a computer that is a WINS client.";
+        name_list = make_list( name_list, name + " = Computer name that is registered for the messenger service on a computer that is a WINS client." );
         messenger_found = TRUE;
         messenger = name;
       }
 
       if( hole_data[subloc] == raw_string( 190 ) ) {
-        name += " = A unique name that is registered when the Network Monitor agent is started on the computer";
+        name_list = make_list( name_list, name + " = A unique name that is registered when the Network Monitor agent is started on the computer." );
       }
 
       if( hole_data[subloc] == raw_string( 31 ) ) {
-        name += " = A unique name that is registered for Network dynamic data exchange (DDE) when the NetDDE service is started on the computer.";
+        name_list = make_list( name_list, name + " = A unique name that is registered for Network dynamic data exchange (DDE) when the NetDDE service is started on the computer." );
       }
 
       if( hole_data[subloc] == raw_string( 32 ) ) {
-        name += " = Computer name";
+        name_list = make_list( name_list, name + " = Computer name" );
       }
     }
 
@@ -295,26 +300,31 @@ if( strlen( result ) > 56 ) {
           set_kb_item( name:"SMB/workgroup", value:chomp( name ) );
           group_found = TRUE;
         }
-        name += " = Workgroup / Domain name";
+        name_list = make_list( name_list, name + " = Workgroup / Domain name" );
       }
 
       if( hole_data[subloc] == raw_string( 30 ) ) {
-        name += " = Workgroup / Domain name (part of the Browser elections)";
+        name_list = make_list( name_list, name + " = Workgroup / Domain name (part of the Browser elections)" );
       }
 
       if( hole_data[subloc] == raw_string( 27 ) ) {
-        name += " = Workgroup / Domain name (elected Master Browser)";
+        name_list = make_list( name_list, name + " = Workgroup / Domain name (elected Master Browser)" );
       }
 
       if( hole_data[subloc] == raw_string( 28 ) ) {
-        name += " = Workgroup / Domain name (Domain Controller)";
+        name_list = make_list( name_list, name + " = Workgroup / Domain name (Domain Controller)" );
       }
 
       if( hole_data[subloc] == raw_string( 191 ) ) {
-        name += " = A group name that is registered when the Network Monitor agent is started on the computer.";
+        name_list = make_list( name_list, name + " = A group name that is registered when the Network Monitor agent is started on the computer." );
       }
     }
-    hole_answer += " " + name +  string("\n");
+  }
+
+  # Sort to not report changes on delta reports if just the order is different
+  name_list = sort( name_list );
+  foreach name( name_list ) {
+    hole_answer += " " + name + '\n';
   }
 
   location += num_of_names * 18;
@@ -329,13 +339,13 @@ if( strlen( result ) > 56 ) {
 
   if( adapter_name == "00:00:00:00:00:00" ) {
     replace_kb_item( name:"SMB/samba", value:TRUE );
-    hole_answer += string("\n. This SMB server seems to be a SAMBA server (this is not a security risk, this is for your information). This can be told because this server claims to have a null MAC address" );
+    hole_answer += string( "\nThis SMB server seems to be a SAMBA server (this is not a security risk, this is for your information). This can be told because this server claims to have a null MAC address." );
   } else {
-    hole_answer += string( "The remote host has the following MAC address on its adapter :\n" );
-    hole_answer += "   " + adapter_name;
+    hole_answer += string( "\nThe remote host has the following MAC address on its adapter :\n" );
+    hole_answer += " " + adapter_name;
     register_host_detail( name:"MAC", value:adapter_name, desc:SCRIPT_DESC );
   }
-  hole_answer += string( "\n\nIf you do not want to allow everyone to find the NetBios name\nof your computer, you should filter incoming traffic to this port." );
+  hole_answer += string( "\n\nIf you do not want to allow everyone to find the NetBIOS name of your computer, you should filter incoming traffic to this port." );
   log_message( port:dsport, data:hole_answer, protocol:"udp" );
 }
 

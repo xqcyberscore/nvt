@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmp_default_communities.nasl 7244 2017-09-25 06:35:19Z cfischer $
+# $Id: snmp_default_communities.nasl 7310 2017-09-28 09:57:57Z cfischer $
 #
 # Default community names of the SNMP Agent
 #
@@ -65,8 +65,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103914");
-  script_version("$Revision: 7244 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-25 08:35:19 +0200 (Mon, 25 Sep 2017) $");
+  script_version("$Revision: 7310 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-28 11:57:57 +0200 (Thu, 28 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -96,11 +96,27 @@ if (!get_udp_port_state(port))
 communities = make_list(
 "Cisco router", # for Cisco equipment
 "EyesOfNetwork", # Eyes of Network (EON)
-"Secret C0de", # Brocade
 "cable-docsis", # for Cisco equipment
 "cascade", # for Lucent equipment
 "comcomcom", # for 3COM AirConnect AP
-"rmonmgmtuicommunity", #2016/gb_cisco_sg220_cisco-sa-20160831-sps3.nasl
+"rmonmgmtuicommunity", # 2016/gb_cisco_sg220_cisco-sa-20160831-sps3.nasl
+"ROUTERmate", # CVE-1999-0792
+"tellmeyoursecrets", # BID 7081
+"SmartScanServer", # Default from CVE-2016-6267
+"wheel", # https://blogs.cisco.com/security/talos/rockwell-snmp-vuln
+# From https://lkhill.com/brocade-vdx-snmp-changes/ and http://h20564.www2.hpe.com/hpsc/doc/public/display?docId=mmr_kc-0127107
+"ConvergedNetwork",
+"secret c0de", # Advisories are showing differences between lower/uppercase and quotes/no quotes for these four communities:
+'"secret c0de"',
+"Secret C0de", # Brocade
+'"Secret C0de"',
+"common",
+"FibreChannel",
+# CVE-2002-1229, https://marc.info/?l=bugtraq&m=103470243012971&w=2
+"diag",
+"manuf",
+"danger",
+"xxyyzz",
 # From https://github.com/fuzzdb-project/fuzzdb/blob/master/wordlists-misc/wordlist-common-snmp-community-strings.txt
 "public",
 "private",
@@ -141,9 +157,11 @@ communities = make_list(
 "adm",
 "admin",
 "agent",
-"agent_steal",
+"agent_steal", # CVE-2001-1210
 "all",
+# Advisories are showing differences between lower/uppercase and quotes/no quotes for these two communities:
 "all private", # Solaris 2.5.1 and 2.6
+'"all private"', # Solaris 2.5.1 and 2.6
 "all public",
 "apc", # for APC Web/SNMP Management Card AP9606
 "bintec",
@@ -161,8 +179,8 @@ communities = make_list(
 "enable",
 "field",
 "field-service",
-"freekevin",
-"fubar",
+"freekevin", # CVE-2001-1210
+"fubar", # CVE-2001-1210
 "guest",
 "hello",
 "hp_admin",
@@ -219,7 +237,7 @@ communities = make_list(
 "trap",
 "world",
 "write", # for Cisco equipment
-"xyzzy",
+"xyzzy", # CVE-2001-1210
 "yellow", # HP JetDirect equipement
 # From http://www.phenoelit.org/dpl/dpl.html
 "volition",

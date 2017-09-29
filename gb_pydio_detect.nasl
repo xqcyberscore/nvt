@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pydio_detect.nasl 7305 2017-09-27 14:29:13Z cfischer $
+# $Id: gb_pydio_detect.nasl 7314 2017-09-28 12:04:32Z jschulte $
 #
 # Pydio Detection
 #
@@ -31,14 +31,14 @@ if( description )
 {
  script_oid("1.3.6.1.4.1.25623.1.0.113003");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7305 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-27 16:29:13 +0200 (Wed, 27 Sep 2017) $");
+ script_version("$Revision: 7314 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-28 14:04:32 +0200 (Thu, 28 Sep 2017) $");
  script_tag(name:"creation_date", value:"2017-09-27 12:06:59 +0200 (Wed, 27 Sep 2017)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Pydio Detection");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
- script_family("Service detection");
+ script_family("Product detection");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
@@ -69,7 +69,7 @@ foreach dir( make_list_unique( "/pydio", cgi_dirs( port: port ) ) ) {
 
  if( egrep( pattern: '"ajxpVersion"', string: buf ) )
  {
-    vers = string("unknown");
+    version_number = string("unknown");
     version = eregmatch( string: buf, pattern: '"ajxpVersion":"([0-9.]+)"', icase: TRUE );
 
     if ( !isnull( version[1] ) ) {
@@ -89,8 +89,8 @@ foreach dir( make_list_unique( "/pydio", cgi_dirs( port: port ) ) ) {
                                               version: version_number,
                                               install: install,
                                               cpe: cpe,
-                                              concludedUrl: conclUrl,
-                                              concluded: version[1] ),
+                                              concludedUrl: url,
+                                              concluded: version[0] ),
                                               port: port );
     exit( 0 );
   }

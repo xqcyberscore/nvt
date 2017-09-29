@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kallithea_csrf_vuln.nasl 7303 2017-09-27 13:00:09Z asteins $
+# $Id: gb_kallithea_csrf_vuln.nasl 7317 2017-09-28 13:04:25Z asteins $
 #
 # Kallithea < 0.2 CSRF Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:kallithea:kallithea";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112059");
-  script_version("$Revision: 7303 $");
+  script_version("$Revision: 7317 $");
   script_cve_id("CVE-2015-0276");
   script_bugtraq_id(74052);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 15:00:09 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-28 15:04:25 +0200 (Thu, 28 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-27 15:07:24 +0200 (Wed, 27 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Kallithea < 0.2 CSRF Vulnerability");
@@ -94,3 +94,4 @@ if(version_is_less(version:ver, test_version:"0.2"))
   security_message(port:port, data:report);
   exit(0);
 }
+exit(99);

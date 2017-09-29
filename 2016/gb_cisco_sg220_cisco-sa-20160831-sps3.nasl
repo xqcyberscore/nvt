@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sg220_cisco-sa-20160831-sps3.nasl 7241 2017-09-22 18:08:58Z cfischer $
+# $Id: gb_cisco_sg220_cisco-sa-20160831-sps3.nasl 7310 2017-09-28 09:57:57Z cfischer $
 #
 # Cisco Small Business 220 Series Smart Plus Switches SNMP Unauthorized Access Vulnerability
 #
@@ -28,12 +28,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106241");
-  script_version("$Revision: 7241 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-22 20:08:58 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 7310 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-09-28 11:57:57 +0200 (Thu, 28 Sep 2017) $");
   script_tag(name: "creation_date", value: "2016-09-13 10:45:09 +0700 (Tue, 13 Sep 2016)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
-
+  script_cve_id("CVE-2016-1473");
   script_tag(name: "qod_type", value: "remote_banner");
 
   script_tag(name: "solution_type", value: "VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_encryption_desktop_dos_vuln_win.nasl 7292 2017-09-27 08:38:54Z santu $
+# $Id: gb_symantec_encryption_desktop_dos_vuln_win.nasl 7318 2017-09-29 05:31:27Z asteins $
 #
 # Symantec Encryption Desktop Denial-of-Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:encryption_desktop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811786");
-  script_version("$Revision: 7292 $");
+  script_version("$Revision: 7318 $");
   script_cve_id("CVE-2017-6330");
   script_bugtraq_id(100552);
-  script_tag(name:"cvss_base", value:"5.5");
-  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:38:54 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-29 07:31:27 +0200 (Fri, 29 Sep 2017) $");
   script_tag(name:"creation_date", value:"2017-09-22 11:53:27 +0530 (Fri, 22 Sep 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec Encryption Desktop Denial-of-Service Vulnerability (Windows)");
