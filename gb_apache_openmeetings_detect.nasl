@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openmeetings_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_apache_openmeetings_detect.nasl 7389 2017-10-10 06:30:57Z asteins $
 #
 # Apache OpenMeetings Detection
 #
@@ -27,16 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808657");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 7389 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-10 08:30:57 +0200 (Tue, 10 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-08-23 14:59:46 +0530 (Tue, 23 Aug 2016)");
   script_name("Apache OpenMeetings Detection");
-  script_tag(name:"summary", value:"Detection of Installed version of
-  Apache OpenMeetings application.
+  script_tag(name:"summary", value:"Detection of Installed version of Apache OpenMeetings application.
 
-  This script sends HTTP GET request and try to ensure the presence of Apache
+  This script sends HTTP GET requests and tries to confirm the presence of Apache
   OpenMeetings from the response.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -54,46 +53,59 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-dir = "";
-openPort = 0;
-rcvRes = "";
+port = get_http_port(default:5080);
 
-##Get HTTP Port
-if(!openPort = get_http_port(default:5080)){
-  exit(0);
-}
-
-##Iterate over possible paths
-foreach dir(make_list_unique("/", "/openmeetings", "/apache/openmeetings",  cgi_dirs(port:openPort))) 
+foreach dir(make_list_unique("/", "/openmeetings", "/apache/openmeetings",  cgi_dirs(port:port)))
 {
   install = dir;
   if(dir == "/") dir = "";
 
-  ## Send and receive response
-  sndReq = http_get(item: dir + "/signin", port:openPort);
-  rcvRes = http_send_recv(port:openPort, data:sndReq);
+  req = http_get(item: dir + "/signin", port:port);
+  res = http_send_recv(port:port, data:req);
 
-  ##Confirm application
-  if('>OpenMeetings<' >< rcvRes && '>Username or mail address<' >< rcvRes && 
-     '>Password<' >< rcvRes ) 
+  if('org-apache-openmeetings-web-pages-auth-SignInPage-0' >< res && 'Username or mail address<' >< res && '>Password<' >< res)
   {
     version = "unknown";
+    found = FALSE;
 
-    ## Set the KB value
     set_kb_item(name:"Apache/Openmeetings/Installed", value:TRUE);
 
-    ## build cpe and store it as host_detail
-    cpe = "cpe:/a:apache:openmeetings:";
+    req = http_get(item: dir + "/services/info/version", port:port);
+    res = http_keepalive_send_recv(port:port, data:req);
 
-    register_product(cpe:cpe, location:install, port:openPort);
+    if(ver = eregmatch(pattern:'"version":"(.+)","revision"', string:res)){
+      found = TRUE;
+      conclUrl = report_vuln_url(port:port, url:dir + "/services/info/version", url_only:TRUE);
+    }
 
-    log_message( data:build_detection_report( app:"Apache Openmeetings",
-                                              version:version,
-                                              install:install,
-                                              cpe:cpe,
-                                              concluded:version),
-                                              port:openPort);
+    if(!found){
+      req = http_get(item: dir + "/docs/project-summary.html", port:port);
+      res = http_keepalive_send_recv(port:port, data:req);
+
+      if(limit = eregmatch(pattern:"<td>Version</td>(.*)<td>Type</td>", string:res)){
+        if(ver = eregmatch(pattern:"<td>(.+)</td>", string:limit[1])){
+          found = TRUE;
+          conclUrl = report_vuln_url(port:port, url:dir + "/docs/project-summary.html", url_only:TRUE);
+        }
+      }
+    }
+
+    if(found){
+      version = ver[1];
+      set_kb_item(name:"Apache/Openmeetings/version", value:version);
+    }
+
+    cpe = build_cpe(value:version, exp:"([0-9.]+)", base:"cpe:/a:apache:openmeetings:");
+    register_product(cpe:cpe, location:install, port:port);
+
+    log_message(data:build_detection_report(app:"Apache OpenMeetings",
+                                             version:version,
+                                             install:install,
+                                             cpe:cpe,
+                                             concluded:ver[0],
+                                             concludedUrl:conclUrl),
+                                             port:port);
+    exit(0);
   }
 }
 exit(0);

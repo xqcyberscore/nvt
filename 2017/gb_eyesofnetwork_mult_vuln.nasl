@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eyesofnetwork_mult_vuln.nasl 7085 2017-09-08 15:01:13Z cfischer $
+# $Id: gb_eyesofnetwork_mult_vuln.nasl 7339 2017-10-04 11:56:30Z asteins $
 #
 # Eyes Of Network (EON) Multiple Vulnerabilities
 #
@@ -30,13 +30,14 @@ CPE = "cpe:/a:eyes_of_network:eyes_of_network";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140346");
-  script_version("$Revision: 7085 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-08 17:01:13 +0200 (Fri, 08 Sep 2017) $");
+  script_version("$Revision: 7339 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-04 13:56:30 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-09-04 13:33:34 +0700 (Mon, 04 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
-  script_cve_id("CVE-2017-14118", "CVE-2017-14119");
+  script_cve_id("CVE-2017-13780", "CVE-2017-14118", "CVE-2017-14119", "CVE-2017-14753",
+      "CVE-2017-14983", "CVE-2017-14984", "CVE-2017-14985");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
@@ -53,7 +54,10 @@ if (description)
 
   script_tag(name: "summary", value: "Eyes Of Network (EON) is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "Eyes Of Network (EON) is prone to multiple vulnerabilities:
+  script_tag(name: "insight", value: "Eyes Of Network (EON) is prone to the following vulnerabilities:
+
+- The EyesOfNetwork web interface (aka eonweb) allows directory traversal attacks for reading arbitrary files
+via the module/admin_conf/download.php file parameter. (CVE-2017-13780)
 
 - In the EyesOfNetwork web interface (aka eonweb), module\tool_all\tools\interface.php does not properly restrict
 exec calls, which allows remote attackers to execute arbitrary commands via shell metacharacters in the host_list
@@ -61,7 +65,9 @@ parameter to module/tool_all/select_tool.php. (CVE-2017-14118)
 
 - In the EyesOfNetwork web interface (aka eonweb), module\tool_all\tools\snmpwalk.php does not properly restrict
 popen calls, which allows remote attackers to execute arbitrary commands via shell metacharacters in a
-parameter. (CVE-2017-14119)");
+parameter. (CVE-2017-14119)
+
+- Multiple cross-site scripting (XSS) vulnerabilities. (CVE-2017-14753, CVE-2017-14983, CVE-2017-14984, CVE-2017-14985)");
 
   script_tag(name: "vuldetect", value: "Check the version.");
 

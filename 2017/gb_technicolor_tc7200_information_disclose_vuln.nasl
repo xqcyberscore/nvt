@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_technicolor_tc7200_information_disclose_vuln.nasl 7154 2017-09-15 15:30:54Z cfischer $
+# $Id: gb_technicolor_tc7200_information_disclose_vuln.nasl 7351 2017-10-05 13:10:02Z cfischer $
 #
 # Technicolor TC7200 Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/o:technicolor:tc7200_firmware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811656");
-  script_version("$Revision: 7154 $");
+  script_version("$Revision: 7351 $");
   script_cve_id("CVE-2014-1677");
   script_bugtraq_id(65774);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 17:30:54 +0200 (Fri, 15 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-05 15:10:02 +0200 (Thu, 05 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-08 17:01:34 +0530 (Fri, 08 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Technicolor TC7200 Information Disclosure Vulnerability");
@@ -57,8 +57,8 @@ if(description)
   script_tag(name:"affected" , value:"Technicolor TC7200 with firmware
   STD6.01.12.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as on
-  8th Sep, 2017. Solution details will be updates once the updates are made
+  script_tag(name:"solution", value:"No solution or patch is available as of
+  5th October, 2017. Solution details will be updated once the updates are made
   available. For updates refer http://www.technicolor.com/.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

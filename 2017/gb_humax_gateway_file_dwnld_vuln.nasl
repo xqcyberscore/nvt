@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_humax_gateway_file_dwnld_vuln.nasl 6722 2017-07-14 08:54:37Z cfischer $
+# $Id: gb_humax_gateway_file_dwnld_vuln.nasl 7340 2017-10-04 12:29:09Z cfischer $
 #
 # HUMAX Gateway Backup File Download Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:humaxdigital";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106917");
-  script_version("$Revision: 6722 $");
+  script_version("$Revision: 7340 $");
   script_cve_id("CVE-2017-7316", "CVE-2017-7317", "CVE-2017-7315");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-14 10:54:37 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-04 14:29:09 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-07-03 11:22:04 +0700 (Mon, 03 Jul 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -56,7 +56,7 @@ This file contains sensitive information which may lead to further attacks.");
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
 
   script_tag(name: "solution", value: "No solution or patch is available as of
-  7th July 2017. Information regarding this issue will be updated once the
+  4th October, 2017. Information regarding this issue will be updated once the
   solution details are available.");
 
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42284/");

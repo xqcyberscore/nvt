@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 7253 2017-09-25 15:36:26Z cfischer $
+# $Id: gather-package-list.nasl 7379 2017-10-07 13:11:26Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 7253 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-25 17:36:26 +0200 (Mon, 25 Sep 2017) $");
+  script_version("$Revision: 7379 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-07 15:11:26 +0200 (Sat, 07 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -107,6 +107,7 @@ OS_CPE = make_array(
     "SUSE7.3",  "cpe:/o:novell:suse_linux:7.3",
 
     # SLES, https://en.wikipedia.org/wiki/SUSE_Linux_Enterprise_Server#Version_history
+    "SLES12.0SP3", "cpe:/o:suse:linux_enterprise_server:12:SP3",
     "SLES12.0SP2", "cpe:/o:suse:linux_enterprise_server:12:SP2",
     "SLES12.0SP1", "cpe:/o:suse:linux_enterprise_server:12:SP1",
     "SLES12.0SP0", "cpe:/o:suse:linux_enterprise_server:12:SP0",
@@ -215,6 +216,7 @@ OS_CPE = make_array(
 
     # Debian
     "DEB10.0", "cpe:/o:debian:debian_linux:10.0",
+    "DEB9.2", "cpe:/o:debian:debian_linux:9.2",
     "DEB9.1", "cpe:/o:debian:debian_linux:9.1",
     "DEB9.0", "cpe:/o:debian:debian_linux:9.0",
     "DEB8.9", "cpe:/o:debian:debian_linux:8.9",

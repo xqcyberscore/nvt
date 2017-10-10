@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rhinosoft_serv-u_dir_trav_and_dos_vuln_900149.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_rhinosoft_serv-u_dir_trav_and_dos_vuln_900149.nasl 7332 2017-09-29 14:16:56Z cfischer $
 # Description: Serv-U File Renaming Directory Traversal and 'STOU' DoS Vulnerabilities
 #
 # Authors:
@@ -45,8 +45,8 @@ tag_summary = "The host is running Serv-U FTP Server, which is prone to Director
 if(description)
 {
   script_id(900149);
-  script_version("$Revision: 5370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7332 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-10-14 16:57:31 +0200 (Tue, 14 Oct 2008)");
   script_bugtraq_id(31563);
   script_copyright("Copyright (C) 2008 SecPod");
@@ -106,6 +106,12 @@ if(!servPath){
 
 share = ereg_replace(pattern:"([A-Z]):.*",replace:"\1$",string:servPath);
 file = ereg_replace(pattern:"[A-Z]:(.*)",replace:"\1",string:servPath);
+
+name   =  kb_smb_name();
+login  =  kb_smb_login();
+pass   =  kb_smb_password();
+domain =  kb_smb_domain();
+port   =  kb_smb_transport();
 
 soc = open_sock_tcp(port);
 if(!soc){

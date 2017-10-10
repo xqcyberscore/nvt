@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3419_2.nasl 7227 2017-09-22 06:36:11Z santu $
+# $Id: gb_ubuntu_USN_3419_2.nasl 7335 2017-10-02 11:53:53Z teissa $
 #
 # Ubuntu Update for linux-hwe USN-3419-2
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843307");
-  script_version("$Revision: 7227 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 08:36:11 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 7335 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-02 13:53:53 +0200 (Mon, 02 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-19 07:42:01 +0200 (Tue, 19 Sep 2017)");
   script_cve_id("CVE-2017-1000251", "CVE-2017-7541");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"8.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-hwe USN-3419-2");
   script_tag(name: "summary", value: "Check the version of linux-hwe");

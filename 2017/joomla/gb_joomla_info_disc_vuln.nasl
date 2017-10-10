@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_info_disc_vuln.nasl 7211 2017-09-21 07:23:37Z asteins $
+# $Id: gb_joomla_info_disc_vuln.nasl 7335 2017-10-02 11:53:53Z teissa $
 #
 # Joomla! < 3.8.0 Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112050");
-  script_version("$Revision: 7211 $");
+  script_version("$Revision: 7335 $");
   script_cve_id("CVE-2017-14595");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-21 09:23:37 +0200 (Thu, 21 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-02 13:53:53 +0200 (Mon, 02 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-21 08:36:22 +0200 (Thu, 21 Sep 2017)");
   script_name("Joomla! < 3.8.0 Information Disclosure Vulnerability");
 

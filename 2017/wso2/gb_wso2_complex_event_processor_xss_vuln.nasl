@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wso2_complex_event_processor_xss_vuln.nasl 7232 2017-09-22 09:33:51Z ckuersteiner $
+# $Id: gb_wso2_complex_event_processor_xss_vuln.nasl 7336 2017-10-04 05:42:02Z asteins $
 #
 # WSO2 Complex Event Processor XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wso2:carbon_complex_event_processor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140393");
-  script_version("$Revision: 7232 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-22 11:33:51 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 7336 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-09-22 15:30:59 +0700 (Fri, 22 Sep 2017)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-14651");
 

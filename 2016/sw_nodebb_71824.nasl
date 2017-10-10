@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_nodebb_71824.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: sw_nodebb_71824.nasl 7336 2017-10-04 05:42:02Z asteins $
 #
 # NodeBB 'markdown' Plugin Stored Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nodebb:nodebb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111101");
-  script_version("$Revision: 5568 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_version("$Revision: 7336 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-05-07 16:00:00 +0200 (Sat, 07 May 2016)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2015-3296", "CVE-2015-3295");
   script_bugtraq_id(71824);
   script_name("NodeBB 'markdown' Plugin Stored Cross Site Scripting Vulnerability");

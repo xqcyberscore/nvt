@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_forum_help_xss_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_vbulletin_forum_help_xss_vuln.nasl 7346 2017-10-05 06:46:33Z cfischer $
 #
 # vBulletin Forum 'forum/help' Page Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811314");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 7346 $");
   script_cve_id("CVE-2014-9469");
   script_bugtraq_id(72592);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-05 08:46:33 +0200 (Thu, 05 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-31 12:28:37 +0530 (Thu, 31 Aug 2017)");
   script_name("vBulletin Forum 'forum/help' Page Cross Site Scripting Vulnerability");
 
@@ -59,8 +59,8 @@ if(description)
   script_tag(name:"affected", value:"VBulletin versions 5.1.3, 5.0.5, 4.2.2, 3.8.7,
   3.6.7, 3.6.0 and 3.5.4.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 31st
-  Aug, 2017. Information regarding this issue will be updated once solution details
+  script_tag(name:"solution", value:"No solution or patch is available as of
+  5th October, 2017. Information regarding this issue will be updated once solution details
   are available. For updates refer to http://www.vbulletin.com");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

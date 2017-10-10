@@ -26,15 +26,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842401");
-  script_version("$Revision: 6646 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:03:11 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7336 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-08-05 05:08:52 +0200 (Wed, 05 Aug 2015)");
   script_cve_id("CVE-2015-1270", "CVE-2015-1272", "CVE-2015-1276", "CVE-2015-1277",
                 "CVE-2015-1280", "CVE-2015-1281", "CVE-2015-1283", "CVE-2015-1284",
                 "CVE-2015-1285", "CVE-2015-1287", "CVE-2015-1289", "CVE-2015-1329",
                 "CVE-2015-5605");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for oxide-qt USN-2677-1");
   script_tag(name: "summary", value: "Check the version of oxide-qt");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ultraiso_detect.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: gb_ultraiso_detect.nasl 7332 2017-09-29 14:16:56Z cfischer $
 #
 # UltraISO Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(800274);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 7332 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-04-13 15:50:35 +0200 (Mon, 13 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("UltraISO Version Detection");
@@ -79,6 +79,12 @@ foreach item (registry_enum_keys(key:key))
 
     share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:path);
     file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:path);
+
+    name   =  kb_smb_name();
+    login  =  kb_smb_login();
+    pass   =  kb_smb_password();
+    domain =  kb_smb_domain();
+    port   =  kb_smb_transport();
 
     soc = open_sock_tcp(port);
     if(!soc){

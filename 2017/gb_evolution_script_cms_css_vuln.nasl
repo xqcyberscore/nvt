@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_evolution_script_cms_css_vuln.nasl 6726 2017-07-14 10:39:17Z cfischer $
+# $Id: gb_evolution_script_cms_css_vuln.nasl 7340 2017-10-04 12:29:09Z cfischer $
 #
 # Evolution Script CMS v5.3 - Cross Site Scripting Vulnerability 
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:evolution:script';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107219");
-  script_version("$Revision: 6726 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 12:39:17 +0200 (Fri, 14 Jul 2017) $");
+  script_version("$Revision: 7340 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-04 14:29:09 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-06-13 11:59:56 +0200 (Tue, 13 Jun 2017)");
 
   script_tag(name:"cvss_base", value:"10.0");
@@ -51,7 +51,7 @@ if(description)
   script_tag(name: "affected", value: "Evolution Script CMS Version 5.3");
 
   script_tag(name: "solution", value: "No solution or patch is available as of
-  14th July, 2017. Information regarding this issue will be updated once the
+  4th October, 2017. Information regarding this issue will be updated once the
   solution details are available. For updates refer to https://www.evolutionscript.com/");
 
   script_xref(name: "URL" , value: "http://seclists.org/fulldisclosure/2017/Jun/14");

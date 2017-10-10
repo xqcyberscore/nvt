@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nms_dvd_burning_sdk_actvx_vuln_900132.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_nms_dvd_burning_sdk_actvx_vuln_900132.nasl 7332 2017-09-29 14:16:56Z cfischer $
 # Description: NuMedia Soft DVD Burning SDK Activex Control Remote Code Execution Vulnerability
 #
 # Authors:
@@ -42,8 +42,8 @@ tag_summary = "The host is installed CDBurnerXP, which is prone to ActiveX contr
 if(description)
 {
   script_id(900132);
-  script_version("$Revision: 5370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7332 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-09-26 07:36:49 +0200 (Fri, 26 Sep 2008)");
   script_cve_id("CVE-2008-4342");
   script_bugtraq_id(31374);
@@ -84,6 +84,12 @@ if(!cdBurnerXpPath){
 cdBurnerXpPath = cdBurnerXpPath - "\NMSAccessU.exe" + "\cdbxpp.exe";
 share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:cdBurnerXpPath);
 file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:cdBurnerXpPath);
+
+name   =  kb_smb_name();
+login  =  kb_smb_login();
+pass   =  kb_smb_password();
+domain =  kb_smb_domain();
+port   =  kb_smb_transport();
 
 soc = open_sock_tcp(port);
 if(!soc){

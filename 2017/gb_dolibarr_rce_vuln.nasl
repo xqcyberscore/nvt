@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_rce_vuln.nasl 6585 2017-07-07 05:33:18Z cfischer $
+# $Id: gb_dolibarr_rce_vuln.nasl 7337 2017-10-04 06:29:35Z asteins $
 #
 # Dolibarr ERP/CRM Remote Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:dolibarr:dolibarr';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106908");
-  script_version("$Revision: 6585 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-07 07:33:18 +0200 (Fri, 07 Jul 2017) $");
+  script_version("$Revision: 7337 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-04 08:29:35 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-06-26 15:10:30 +0700 (Mon, 26 Jun 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -58,7 +58,7 @@ types, which can result in arbitrary code execution within the context of the vu
 
   script_tag(name: "affected", value: "Dolibarr ERP/CRM 5.0.3 and prior");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 26th June, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 4th October, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://www.wizlynxgroup.com/security-research-advisories/vuln/WLX-2017-009");

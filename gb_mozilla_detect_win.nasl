@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_detect_win.nasl 6468 2017-06-28 14:05:02Z cfischer $
+# $Id: gb_mozilla_detect_win.nasl 7332 2017-09-29 14:16:56Z cfischer $
 #
 # Mozilla Version Detection (Windows)
 #
@@ -30,8 +30,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6468 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 16:05:02 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 7332 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-09-07 19:45:38 +0200 (Mon, 07 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"registry");
@@ -65,6 +65,12 @@ function mozillaGetVersion(file, share)
 {
   mshare = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:file);
   file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:file);
+
+  name   =  kb_smb_name();
+  login  =  kb_smb_login();
+  pass   =  kb_smb_password();
+  domain =  kb_smb_domain();
+  port   =  kb_smb_transport();
 
   soc = open_sock_tcp(port);
   if(!soc){

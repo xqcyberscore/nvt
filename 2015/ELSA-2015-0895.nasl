@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-0895.nasl 6560 2017-07-06 11:58:38Z cfischer $
+# $Id: ELSA-2015-0895.nasl 7335 2017-10-02 11:53:53Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123123");
-script_version("$Revision: 6560 $");
+script_version("$Revision: 7335 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:59:38 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-10-02 13:53:53 +0200 (Mon, 02 Oct 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-0895");
 script_tag(name: "insight", value: "ELSA-2015-0895 -  389-ds-base security update - [1.3.3.1-16]- release 1.3.3.1-16- Resolves: bug 1212894 - CVE-2015-1854 389ds-base: access control bypass with modrdn"); 
 script_tag(name : "solution", value : "update software");
@@ -34,8 +34,8 @@ script_tag(name : "solution_type", value : "VendorFix");
 script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2015-0895");
 script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2015-0895.html");
 script_cve_id("CVE-2015-1854");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"5.0");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");

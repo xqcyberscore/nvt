@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3865.nasl 6607 2017-07-07 12:04:25Z cfischer $
+# $Id: deb_3865.nasl 7335 2017-10-02 11:53:53Z teissa $
 # Auto-generated from advisory DSA 3865-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703865);
-    script_version("$Revision: 6607 $");
+    script_version("$Revision: 7335 $");
     script_cve_id("CVE-2017-7650");
     script_name("Debian Security Advisory DSA 3865-1 (mosquitto - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-10-02 13:53:53 +0200 (Mon, 02 Oct 2017) $");
     script_tag(name: "creation_date", value: "2017-05-29 00:00:00 +0200 (Mon, 29 May 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"4.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_stuxnet_detect.nasl 7172 2017-09-18 11:07:34Z cfischer $
+# $Id: gb_stuxnet_detect.nasl 7332 2017-09-29 14:16:56Z cfischer $
 #
 # Stuxnet Detection
 #
@@ -33,8 +33,8 @@ tag_solution = "Remove all Stuxnet related files found.";
 if(description)
 {
  script_id(100815);
- script_version("$Revision: 7172 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:07:34 +0200 (Mon, 18 Sep 2017) $");
+ script_version("$Revision: 7332 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
  script_tag(name:"creation_date", value:"2010-09-20 15:31:27 +0200 (Mon, 20 Sep 2010)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -94,7 +94,7 @@ foreach file (stux) {
 }
 
 if(stux_found) {
-  security_message(port:port,data:report);
+  security_message(port:0,data:report);
   exit(0);
 }  
 

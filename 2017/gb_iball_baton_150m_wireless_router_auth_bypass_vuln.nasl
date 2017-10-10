@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iball_baton_150m_wireless_router_auth_bypass_vuln.nasl 7292 2017-09-27 08:38:54Z santu $
+# $Id: gb_iball_baton_150m_wireless_router_auth_bypass_vuln.nasl 7346 2017-10-05 06:46:33Z cfischer $
 #
 # iBall Baton 150M Wireless Router Authentication Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:iball:baton_150m_wireless-n_router";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811313");
-  script_version("$Revision: 7292 $");
+  script_version("$Revision: 7346 $");
   script_cve_id("CVE-2017-6558", "CVE-2017-14244");
   script_bugtraq_id(96822);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:38:54 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-05 08:46:33 +0200 (Thu, 05 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-31 12:06:39 +0530 (Thu, 31 Aug 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("iBall Baton 150M Wireless Router Authentication Bypass Vulnerability");
@@ -66,7 +66,7 @@ if(description)
   iBall ADSL2+ Home Router WRA150N Firmware version FW_iB-LR7011A_1.0.2");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  31th Aug, 2017. Information regarding this issue will be updated once solution
+  5th October, 2017. Information regarding this issue will be updated once solution
   details are available. For updates refer to https://www.iball.co.in/home");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

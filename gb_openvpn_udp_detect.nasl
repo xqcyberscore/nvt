@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvpn_udp_detect.nasl 4823 2016-12-21 08:01:25Z cfi $
+# $Id: gb_openvpn_udp_detect.nasl 7366 2017-10-06 10:55:39Z cfischer $
 #
 # OpenVPN Detection (UDP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108028");
-  script_version("$Revision: 4823 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 09:01:25 +0100 (Wed, 21 Dec 2016) $");
+  script_version("$Revision: 7366 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-06 12:55:39 +0200 (Fri, 06 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-05-28 12:39:47 +0100 (Wed, 28 May 2014)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,13 +36,11 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("gb_openvpn_detect.nasl");
-  script_require_udp_ports(1194);
+  script_dependencies("gb_open_udp_ports.nasl", "gb_openvpn_detect.nasl");
+  script_require_udp_ports("Services/udp/unknown", 1194);
 
-  tag_summary = "The script sends a connection request and attempts to detect an
-  OpenVPN server.";
-
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The script sends a connection request and attempts to detect an
+  OpenVPN server.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -54,12 +52,10 @@ include("misc_func.inc");
 include("host_details.inc");
 
 function vpn_req() {
-  return raw_string( ( 0x07 << 3 ) | 0x00 ) + mkdword( rand() ) + mkdword( rand() ) + raw_string( 0x00,0x00,0x00,0x00,0x00 );
+  return raw_string( ( 0x07 << 3 ) | 0x00 ) + mkdword( rand() ) + mkdword( rand() ) + raw_string( 0x00, 0x00, 0x00, 0x00, 0x00 );
 }
 
-port = 1194; # TBD: Also check the "Services/openvpn" from the TCP detection NVT?
-
-if( ! get_udp_port_state( port ) ) exit( 0 );
+port = get_unknown_port( default:1194, ipproto:"udp" );
   
 soc = open_sock_udp( port );
 if( ! soc ) exit( 0 );
@@ -67,7 +63,6 @@ if( ! soc ) exit( 0 );
 req = vpn_req();
 send( socket:soc, data:req );
 buf = recv( socket:soc, length:1024, timeout:10 );
-
 close( soc );
 
 if( strlen( buf ) < 14 ) exit( 0 );
@@ -78,10 +73,10 @@ if( substr( buf, 9, 13 ) != raw_string( 0x01, 0x00, 0x00, 0x00, 0x00 ) ||
   exit( 0 );
 } else {
 
-  register_service( port:port, ipproto:'udp', proto:"openvpn");
+  register_service( port:port, ipproto:"udp", proto:"openvpn" );
 
   cpe = "cpe:/a:openvpn:openvpn";
-  install = port + '/udp';
+  install = port + "/udp";
 
   register_product( cpe:cpe, location:install, port:port, proto:"udp" );
   log_message( data:build_detection_report( app:"OpenVPN",
@@ -89,5 +84,6 @@ if( substr( buf, 9, 13 ) != raw_string( 0x01, 0x00, 0x00, 0x00, 0x00 ) ||
                                             cpe:cpe ),
                                             port:port,
                                             proto:"udp" );
-  exit( 0 );
 }
+
+exit( 0 );

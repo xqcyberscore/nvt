@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_fusion_guest_rpc_null_pointer_deref_vuln_macosx.nasl 7292 2017-09-27 08:38:54Z santu $
+# $Id: gb_vmware_fusion_guest_rpc_null_pointer_deref_vuln_macosx.nasl 7336 2017-10-04 05:42:02Z asteins $
 #
 # VMware Fusion Guest RPC Null Pointer Dereference Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811834");
-  script_version("$Revision: 7292 $");
+  script_version("$Revision: 7336 $");
   script_cve_id("CVE-2017-4925");
   script_bugtraq_id(100842);
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:38:54 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-20 17:13:25 +0530 (Wed, 20 Sep 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VMware Fusion Guest RPC Null Pointer Dereference Vulnerability (Mac OS X)");

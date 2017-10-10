@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netbios_name_get.nasl 7316 2017-09-28 12:43:44Z cfischer $
+# $Id: netbios_name_get.nasl 7328 2017-09-29 13:20:55Z cfischer $
 #
 # Using NetBIOS to retrieve information from a Windows host
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10150");
-  script_version("$Revision: 7316 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-28 14:43:44 +0200 (Thu, 28 Sep 2017) $");
+  script_version("$Revision: 7328 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-29 15:20:55 +0200 (Fri, 29 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -107,11 +107,13 @@ hostname_found = FALSE;
 group_found = FALSE;
 messenger_found = FALSE;
 candidate = "";
+hostdetails_name = "";
+hostip = get_host_ip();
 
 dsport = 137;
 
 if( ! get_udp_port_state( dsport ) ) {
-  set_kb_item( name:"SMB/name", value:get_host_ip() );
+  set_kb_item( name:"SMB/name", value:hostip );
   exit( 0 );
 }
 
@@ -165,8 +167,10 @@ if( strlen( result ) > 56 ) {
       if( ord( hole_data[subloc] ) == 32 ) {
 
         if( ! hostname_found && name ) {
-          set_kb_item( name:"SMB/name", value:chomp( name ) );
+          tmp_name = chomp( name );
+          set_kb_item( name:"SMB/name", value:tmp_name );
           hostname_found = TRUE;
+          hostdetails_name = tmp_name;
         }
 
         name_list = make_list( name_list, name + " = This is the computer name." );
@@ -177,8 +181,10 @@ if( strlen( result ) > 56 ) {
 
         if( ! ( "~" >< name ) ) {
           if( ! hostname_found && name ) {
-            set_kb_item( name:"SMB/name", value:chomp( name ) );
+            tmp_name = chomp( name );
+            set_kb_item( name:"SMB/name", value:tmp_name );
             hostname_found = TRUE;
+            hostdetails_name = tmp_name;
           }
         }
       }
@@ -251,8 +257,10 @@ if( strlen( result ) > 56 ) {
       if( hole_data[subloc] == raw_string( 0 ) ) {
 
         if( ! hostname_found && name ) {
-          set_kb_item( name:"SMB/name", value:chomp( name ) );
+          tmp_name = chomp( name );
+          set_kb_item( name:"SMB/name", value:tmp_name );
           hostname_found = TRUE;
+          hostdetails_name = tmp_name;
         }
 
         if( "~" >!< name ) {
@@ -351,11 +359,17 @@ if( strlen( result ) > 56 ) {
 
 if( ! hostname_found ) {
   if( candidate ) {
-    set_kb_item( name:"SMB/name", value:chomp( candidate ) );
+    tmp_candidate = chomp( candidate );
+    set_kb_item( name:"SMB/name", value:tmp_candidate );
     hostname_found = TRUE;
+    hostdetails_name = tmp_candidate;
   } else {
-    set_kb_item(name:"SMB/name", value:get_host_ip());
+    set_kb_item( name:"SMB/name", value:hostip );
   }
+}
+
+if( hostname_found && ! isnull( hostdetails_name ) && hostdetails_name != '' && hostdetails_name != hostip ) {
+  register_host_detail( name:"SMB-HOST-NAME", value:hostdetails_name, desc:SCRIPT_DESC );
 }
 
 if( username ) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_wicket_detect.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_apache_wicket_detect.nasl 7338 2017-10-04 08:49:04Z santu $
 #
 # Apache Wicket Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807584");
-  script_version("$Revision: 6125 $");
+  script_version("$Revision: 7338 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-04 10:49:04 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-05-10 15:16:04 +0530 (Tue, 10 May 2016)");
   script_name("Apache Wicket Version Detection");
   script_tag(name:"summary", value:"Detection of installed version
@@ -81,19 +81,20 @@ foreach dir(make_list_unique("/", "/wicket-examples", "/wicket/wicket-examples",
       ('mappers">Wicket' >< rcvRes)) 
   {
     ## Grep for the version
-    ver = eregmatch( pattern:'class="version"> Wicket Version:.*>([0-9.]+)', string:rcvRes );
+    ver = eregmatch( pattern:'class="version"> Wicket Version:.*>([0-9.A-Z-]+)</span>', string:rcvRes );
     if( ver[1] ){
       version = ver[1];
     }
     else{
       version = "unknown";
     }
+    version = ereg_replace(pattern:"-", string:version, replace: ".");
 
     ## Set the KB value
     set_kb_item( name:"Apache/Wicket/Installed", value:TRUE );
 
     ## build cpe and store it as host_detail
-    cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:apache:wicket:");
+    cpe = build_cpe(value:version, exp:"^([0-9.A-Z]+)", base:"cpe:/a:apache:wicket:");
     if( ! cpe )
       cpe = "cpe:/a:apache:wicket";
 

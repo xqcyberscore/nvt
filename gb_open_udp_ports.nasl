@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_udp_ports.nasl 4255 2016-10-12 10:59:28Z cfi $
+# $Id: gb_open_udp_ports.nasl 7385 2017-10-09 12:02:13Z cfischer $
 #
 # Checks for open UDP ports
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103978");
-  script_version("$Revision: 4255 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-12 12:59:28 +0200 (Wed, 12 Oct 2016) $");
+  script_version("$Revision: 7385 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-09 14:02:13 +0200 (Mon, 09 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-02-08 21:19:00 +0200 (Wed, 08 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -38,9 +38,11 @@ if(description)
   script_category(ACT_SETTINGS);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
+  script_dependencies("global_settings.nasl");
+
   script_add_preference(name:"Silent", type:"checkbox", value:"yes");
 
-  script_tag(name:"summary", value:"Collects all open UDP ports of the UDP ports identified so far.");
+  script_tag(name:"summary", value:"Collects all open UDP ports identified so far.");
 
   script_tag(name:"qod_type", value:"remote_active");
 
@@ -55,6 +57,8 @@ silent = script_get_preference( "Silent" );
 if( silent == 'yes' ) {
   be_silent = TRUE;
 }
+
+set_unknown = get_kb_item( "Settings/non-default_udp_service_discovery" );
 
 ## Get all udp ports
 udp_ports = get_kb_list( "Ports/udp/*" );
@@ -74,6 +78,7 @@ foreach port( keys( udp_ports ) ) {
     continue;
   }
   set_kb_item( name:"UDP/PORTS", value:Port[1] );
+  if( set_unknown ) set_kb_item( name:"Services/udp/unknown", value:Port[1] );
   opened_udp_ports += Port[1] + ", ";
 }
 

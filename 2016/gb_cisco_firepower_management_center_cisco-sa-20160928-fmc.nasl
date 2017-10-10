@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20160928-fmc.nasl 7191 2017-09-20 04:14:22Z ckuersteiner $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20160928-fmc.nasl 7360 2017-10-06 07:41:52Z teissa $
 #
 # Cisco Firepower Management Center Software Cross-Site Request Forgery Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6417");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P"); 
- script_version ("$Revision: 7191 $");
+ script_version ("$Revision: 7360 $");
 
  script_name("Cisco Firepower Management Center Software Cross-Site Request Forgery Vulnerability");
 
@@ -41,8 +41,7 @@ if (description)
  
  script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"No solution or patch is available as of 20th September, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+ script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
  script_tag(name: "summary" , value:"A cross-site request forgery (CSRF) vulnerability for Cisco Firepower
 Management Center Software could allow an unauthenticated, remote attacker to execute unwanted actions.");
@@ -54,9 +53,9 @@ An attacker could exploit this vulnerability by convincing a user to follow a ma
 to the affected device via the web browser with the privileges of the user.");
 
  script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"NoneAvailable");
+ script_tag(name:"solution_type", value:"WillNotFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-20 06:14:22 +0200 (Wed, 20 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-06 09:41:52 +0200 (Fri, 06 Oct 2017) $");
  script_tag(name:"creation_date", value:"2016-09-29 14:22:04 +0700 (Thu, 29 Sep 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -147,7 +146,7 @@ foreach af ( affected )
 {
   if( version == af )
   {
-    report = report_fixed_ver(  installed_version:version, fixed_version: "See advisory" );
+    report = report_fixed_ver(  installed_version:version, fixed_version: "None Available" );
     security_message( port:0, data:report );
     exit( 0 );
   }

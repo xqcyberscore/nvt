@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_detect_win.nasl 6410 2017-06-23 08:17:07Z cfischer $
+# $Id: gb_google_chrome_detect_win.nasl 7327 2017-09-29 12:46:21Z cfischer $
 #
 # Google Chrome Version Detection (Windows)
 #
@@ -32,10 +32,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800120";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6410 $");
+  script_version("$Revision: 7327 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 10:17:07 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-29 14:46:21 +0200 (Fri, 29 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-10-31 15:07:51 +0100 (Fri, 31 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Google Chrome Version Detection (Windows)");
@@ -70,111 +70,6 @@ enumKeys="";
 chromeVer="";
 chromePath="";
 osArch = "";
-
-# Get the Google Chrome Version from HKU (HKEY_USER).
-function hku_registry_get_sz(key, item)
-{
-  if(!port){
-    port = 139;
-  }
-
-  if(!get_port_state(port)){
-    exit(0);
-  }
-
-  soc = open_sock_tcp(port);
-  if(!soc){
-    exit(0);
-  }
-
-  r = smb_session_request(soc:soc, remote:name);
-  if(!r)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  prot = smb_neg_prot(soc:soc);
-  if(!prot)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  r = smb_session_setup(soc:soc, login:login, password:pass,
-                        domain:domain, prot:prot);
-  if(!r)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  uid = session_extract_uid(reply:r);
-  if(!uid)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  r = smb_tconx(soc:soc, name:name, uid:uid, share:"IPC$");
-  if(!r)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  tid = tconx_extract_tid(reply:r);
-  if(!tid)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  r = smbntcreatex(soc:soc, uid:uid, tid:tid, name:"\winreg");
-  if(!r)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  pipe = smbntcreatex_extract_pipe(reply:r);
-  if(!pipe)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  r = pipe_accessible_registry(soc:soc, uid:uid, tid:tid, pipe:pipe);
-  if(!r)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  r = registry_open_hku(soc:soc, uid:uid, tid:tid, pipe:pipe);
-  if(!r)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  key = key + "\Software\Microsoft\Windows\CurrentVersion\Uninstall\Google Chrome";
-
-  r2 = registry_get_key(soc:soc, uid:uid, tid:tid, pipe:pipe, key:key, reply:r);
-  if(r2)
-  {
-    r3 = registry_get_item_sz(soc:soc, uid:uid, tid:tid, pipe:pipe, item:item, reply:r2);
-    registry_close(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r2);
-    registry_close(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r);
-    if(r3){
-      value = registry_decode_sz(data:r3, uid:uid);
-    }
-    close(soc);
-    return value;
-  }
-  close(soc);
-  return(FALSE);
-}
 
 ## Get the OS architecture
 osArch = get_kb_item("SMB/Windows/Arch");
@@ -237,10 +132,10 @@ enumKeys = registry_enum_keys(key:key);
 
 foreach key (enumKeys)
 {
-  chromeVer = hku_registry_get_sz(key:key, item:"Version");
+  chromeVer = registry_get_sz(key:key + "\Software\Microsoft\Windows\CurrentVersion\Uninstall\Google Chrome", item:"Version", type:"HKU");
   if(chromeVer)
   {
-    chromePath = hku_registry_get_sz(key:key, item:"InstallLocation");
+    chromePath = registry_get_sz(key:key + "\Software\Microsoft\Windows\CurrentVersion\Uninstall\Google Chrome", item:"InstallLocation", type:"HKU");
     if(!chromePath){
       chromePath = "Couldn find the install location from registry";
     }

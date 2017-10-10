@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zkteco_zkbiosecurity_mult_vuln.nasl 7295 2017-09-27 09:02:50Z teissa $
+# $Id: gb_zkteco_zkbiosecurity_mult_vuln.nasl 7360 2017-10-06 07:41:52Z teissa $
 #
 # ZKTeco ZKBioSecurity Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:zkteco:zkbiosecurity";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809335");
-  script_version("$Revision: 7295 $");
+  script_version("$Revision: 7360 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:02:50 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-06 09:41:52 +0200 (Fri, 06 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-10-06 14:18:22 +0530 (Thu, 06 Oct 2016)");
   script_name("ZKTeco ZKBioSecurity Multiple Vulnerabilities");
 
@@ -57,12 +57,9 @@ if(description)
 
   script_tag(name:"affected", value:"ZKTeco ZKBioSecurity version 3.0.1.0_R_230");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  27th September, 2017. Information regarding this issue will be updated once solution
-  details are available. For updates refer to
-  http://www.zkaccess.com/product/zkbiosecurity-software/");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

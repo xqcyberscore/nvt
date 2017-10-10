@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sip_detection.nasl 6829 2017-08-01 12:56:19Z cfischer $
+# $Id: sip_detection.nasl 7373 2017-10-06 13:51:46Z cfischer $
 #
 # Detect SIP Compatible Hosts (UDP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11963");
-  script_version("$Revision: 6829 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-01 14:56:19 +0200 (Tue, 01 Aug 2017) $");
+  script_version("$Revision: 7373 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-06 15:51:46 +0200 (Fri, 06 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,8 +37,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 Noam Rathaus");
   script_family("Service detection");
-  script_dependencies("find_service.nasl", "sip_detection_tcp.nasl");
-  script_require_udp_ports("Services/udp/sip", 5060, 5061, 5070);
+  script_dependencies("gb_open_udp_ports.nasl", "find_service.nasl", "sip_detection_tcp.nasl");
+  script_require_udp_ports("Services/udp/unknown", 5060, 5061, 5070);
 
   script_xref(name:"URL", value:"http://www.cs.columbia.edu/sip/");
 
@@ -58,62 +58,54 @@ if(description)
   exit(0);
 }
 
-include("global_settings.inc");
 include("misc_func.inc");
 include("sip.inc");
 
 proto = "udp";
+port = get_unknown_port( default:5060, ipproto:proto );
 
-ports = get_kb_list( "Services/udp/sip" );
-if( ! ports ) ports = make_list( 5060, 5061, 5070 );
+soc = open_sip_socket( port:port, proto:proto );
+if( ! soc ) exit( 0 );
 
-foreach port( ports ) {
+sndReq = construct_sip_options_req( port:port, proto:proto );
 
-  if( ! get_udp_port_state( port ) ) continue;
-  soc = open_sip_socket( port:port, proto:proto );
-  if( ! soc ) continue;
+send( socket:soc, data:sndReq );
+data = recv( socket:soc, length:1024 );
+close( soc );
+if( "SIP/2.0" >!< data ) exit( 0 );
 
-  sndReq = construct_sip_options_req( port:port, proto:proto );
+replace_kb_item( name:"sip/full_banner/" + proto + "/" + port, value:data );
 
-  send( socket:soc, data:sndReq );
-  data = recv( socket:soc, length:1024 );
-  close( soc );
-
-  if( "SIP/2.0" >!< data ) continue;
-
-  replace_kb_item( name:"sip/full_banner/" + proto + "/" + port, value:data );
-
-  if( "Server:" >< data ) {
-    banner = egrep( pattern:'^Server:', string:data );
-    banner = substr( banner, 8 );
-  } else if( "User-Agent" >< data ) {
-    banner = egrep( pattern:'^User-Agent', string:data );
-    banner = substr( banner, 12 );
-  }
-
-  if( banner ) {
-    replace_kb_item( name:"sip/banner/" + proto + "/" + port, value:banner );
-  }
-
-  desc = 'Server/User-Agent: ' + banner;
-
-  if( egrep( pattern:"Allow:.*OPTIONS.*", string:data ) ) {
-    OPTIONS = egrep( pattern:"Allow:.*OPTIONS.*", string:data );
-    OPTIONS -= "Allow: ";
-    OPTIONS = chomp( OPTIONS );
-  }
-
-  if( ! isnull( OPTIONS ) ) {
-    desc += '\nSupported Options:\n' + OPTIONS + '\n';
-  }
-
-  desc += '\nFull banner output:\n\n' + data;
-
-  replace_kb_item( name:"sip/detected", value:TRUE );
-  set_kb_item( name:"sip/port_and_proto", value:port + "#-#" + proto );
-
-  log_message( port:port, protocol:proto, data:desc );
-  register_service( port:port, ipproto:proto, proto:"sip", message:"A service supporting the SIP protocol was idendified." );
+if( "Server:" >< data ) {
+  banner = egrep( pattern:'^Server:', string:data );
+  banner = substr( banner, 8 );
+} else if( "User-Agent" >< data ) {
+  banner = egrep( pattern:'^User-Agent', string:data );
+  banner = substr( banner, 12 );
 }
+
+if( banner ) {
+  replace_kb_item( name:"sip/banner/" + proto + "/" + port, value:banner );
+}
+
+desc = 'Server/User-Agent: ' + banner;
+
+if( egrep( pattern:"Allow:.*OPTIONS.*", string:data ) ) {
+  OPTIONS = egrep( pattern:"Allow:.*OPTIONS.*", string:data );
+  OPTIONS -= "Allow: ";
+  OPTIONS = chomp( OPTIONS );
+}
+
+if( ! isnull( OPTIONS ) ) {
+  desc += '\nSupported Options:\n' + OPTIONS + '\n';
+}
+
+desc += '\nFull banner output:\n\n' + data;
+
+replace_kb_item( name:"sip/detected", value:TRUE );
+set_kb_item( name:"sip/port_and_proto", value:port + "#-#" + proto );
+
+log_message( port:port, protocol:proto, data:desc );
+register_service( port:port, ipproto:proto, proto:"sip", message:"A service supporting the SIP protocol was idendified." );
 
 exit( 0 );

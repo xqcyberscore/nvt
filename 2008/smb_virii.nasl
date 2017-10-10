@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_virii.nasl 7172 2017-09-18 11:07:34Z cfischer $
+# $Id: smb_virii.nasl 7332 2017-09-29 14:16:56Z cfischer $
 #
 # The remote host is infected by a virus
 #
@@ -79,8 +79,8 @@ tag_solution = "See the URLs which will appear in the report";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80043");
-  script_version("$Revision: 7172 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:07:34 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 7332 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
@@ -616,7 +616,7 @@ if(resp) {
 "Location checked: ", file, "\n\n",
 "Solution: http://www.symantec.com/avcenter/venc/data/w32.nimda.a@mm.html");
 
-  security_message(port:port, data:report);
+  security_message(port:0, data:report);
  }
 }
 
@@ -629,7 +629,7 @@ if(handle)
 "The virus 'W32.Goner.A@mm' is present on the remote host\n\n",
 "Location checked: ", file, "\n\n",
 "Solution: http://www.symantec.com/avcenter/venc/data/w32.goner.a@mm.html");
- security_message(port:port, data:report);
+ security_message(port:0, data:report);
 }
 
 file =  ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1\winxp.exe", string:rootfile);
@@ -641,7 +641,7 @@ if(handle)
 "The virus 'W32.Bable.AG@mm' is present on the remote host\n\n",
 "Location checked: ", file, "\n\n",
 "Solution: http://www.symantec.com/avcenter/venc/data/w32.beagle.ag@mm.html");
- security_message(port:port, data:report);
+ security_message(port:0, data:report);
 }
 
 file =  ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1\System32\dnkkq.dll", string:rootfile);
@@ -662,7 +662,7 @@ Delete these files and make sure to disable IE's Autofill feature for important
 data (ie: online banking, credit cart numbers, etc...)
 
 Solution: http://securityresponse.symantec.com/avcenter/venc/data/backdoor.berbew.k.html");
- security_message(port:port, data:report);
+ security_message(port:0, data:report);
 }
 
 file =  ereg_replace(pattern:"^[A-Za-z]:(.*)", replace:"\1\Swen1.dat", string:rootfile);
@@ -674,7 +674,7 @@ if(handle)
 "The virus 'W32.Swen.A@mm' is present on the remote host\n\n",
 "Location checked: ", file, "\n\n",
 "Solution: http://securityresponse.symantec.com/avcenter/venc/data/w32.swen.a@mm.html");
- security_message(port:port, data:report);
+ security_message(port:0, data:report);
 }
 
 # Submitted by Josh Zlatin-Amishav
@@ -748,7 +748,7 @@ if(handle)
 "See also : http://securityresponse.symantec.com/avcenter/venc/data/trojan.hotword.html\n",
 "See also : http://securityresponse.symantec.com/avcenter/venc/data/trojan.rona.html\n",
 "Solution:  Use latest anti-virus signatures to clean the machine.");
-  security_message(port:port, data:report);
+  security_message(port:0, data:report);
 }
 
 # Submitted by David Maciejak
@@ -777,7 +777,7 @@ foreach f (sober)
 "The virus 'Sober.i@mm' is present on the remote host\n\n",
 "Location checked: ", file, "\n\n",
 "Solution: http://securityresponse.symantec.com/avcenter/venc/data/w32.sober.i@mm.html");
-  security_message(port:port, data:report);
+  security_message(port:0, data:report);
   break;
  }
 }
@@ -790,7 +790,7 @@ if(handle)
 "The virus 'W32.Wargbot@mm' is present on the remote host\n\n",
 "Location checked: ", file, "\n\n",
 "Solution: http://www.symantec.com/security_response/writeup.jsp?docid=2006-081312-3302-99");
- security_message(port:port, data:report);
+ security_message(port:0, data:report);
 }
 
 # Submitted by Josh Zlatin-Amishav
@@ -806,7 +806,7 @@ foreach f (make_list("zsydll.dll", "zsyhide.dll"))
    "Location checked: ", file, "\n\n",
    "See also : http://securityresponse.symantec.com/avcenter/venc/data/backdoor.ginwui.b.html\n",
    "Solution:  Use latest anti-virus signatures to clean the machine.");
-   security_message(port:port, data:report);
+   security_message(port:0, data:report);
    break;
  }
 }

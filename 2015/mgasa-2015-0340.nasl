@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0340.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: mgasa-2015-0340.nasl 7362 2017-10-06 08:15:22Z asteins $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,17 +24,17 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130046");
-script_version("$Revision: 6637 $");
+script_version("$Revision: 7362 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:42:00 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-10-06 10:15:22 +0200 (Fri, 06 Oct 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0340");
 script_tag(name: "insight", value: "Jsoup before 1.8.3 was vulnerable to a possible XSS issue in the validator, related to how it handled tags without a closing '>' when reaching EOF (CVE-2015-6748)."); 
 script_tag(name : "solution", value : "update software");
 script_tag(name : "solution_type", value : "VendorFix");
 script_xref(name : "URL" , value : "https://advisories.mageia.org/MGASA-2015-0340.html");
 script_cve_id("CVE-2015-6748");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"4.3");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3213644.nasl 7131 2017-09-14 14:03:44Z santu $
+# $Id: gb_ms_kb3213644.nasl 7336 2017-10-04 05:42:02Z asteins $
 #
 # Microsoft Office Compatibility Pack Service Pack 3 Remote Code Execution Vulnerability (KB3213644)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811762");
-  script_version("$Revision: 7131 $");
+  script_version("$Revision: 7336 $");
   script_cve_id("CVE-2017-8742");
   script_bugtraq_id(100741);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-14 16:03:44 +0200 (Thu, 14 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-14 11:43:13 +0530 (Thu, 14 Sep 2017)");
   script_name("Microsoft Office Compatibility Pack Service Pack 3 Remote Code Execution Vulnerability (KB3213644)");
 

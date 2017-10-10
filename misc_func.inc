@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 7229 2017-09-22 07:34:58Z cfischer $
+# $Id: misc_func.inc 7367 2017-10-06 11:20:15Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7229 $
+# $Revision: 7367 $
 #
 ###############################################################################
 
@@ -155,7 +155,6 @@ function verify_service( port, ipproto, proto ) {
   if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#verify_service" );
   if( ! proto ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#proto#-#verify_service" );
 
-  # Remember: no KB yet in command line mode!
   if( ! ipproto ) ipproto = "tcp";
   k = strcat( "Known/", ipproto, "/", port );
   p = get_kb_list( k );
@@ -175,7 +174,6 @@ function get_port_for_service( default, ipproto, proto ) {
   if( ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_port_for_service" );
   if( ! proto ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#proto#-#get_port_for_service" );
 
-  # Remember: no KB yet in command line mode!
   if( ! ipproto ) ipproto = "tcp";
   if( ipproto == "tcp" ) {
     k = strcat( "Services/", proto );
@@ -199,11 +197,11 @@ function get_unknown_banner( port, ipproto, dontfetch ) {
     return;
   }
 
-  if ( ! ipproto ) ipproto = "tcp";
-  if ( ipproto == "tcp" )
-    tcp = 1;
+  if( ! ipproto ) ipproto = "tcp";
+  if( ipproto == "tcp" )
+    tcp = TRUE;
   else
-    tcp = 0;
+    tcp = FALSE;
 
   if( tcp ) {
    sb  = strcat( "unknown/banner/", port );
@@ -286,17 +284,22 @@ function get_service_banner_line( service, port, ipproto ) {
   if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_service_banner_line" );
   if( ! service ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#service#-#get_service_banner_line" );
 
-  tcp = ! ipproto || ipproto == 'tcp'; #TBD: Broken? Shouldn't this be within a if?
+  if( ! ipproto ) ipproto = "tcp";
+  if( ipproto == "tcp" )
+    tcp = TRUE;
+  else
+    tcp = FALSE;
+
   if( tcp )
    gport = get_kb_item( strcat( "Services/", service ) );
   else
    gport = get_kb_item( strcat( "Services/", ipproto, "/", service ) );
   if( ! gport ) gport = port;
 
-  if (tcp)
-   key = strcat(service, "/banner/", gport);
+  if( tcp )
+    key = strcat( service, "/banner/", gport );
   else
-   key = strcat(service, "/banner/", ipproto, "/", gport);
+    key = strcat( service, "/banner/", ipproto, "/", gport );
 
   banner = get_kb_item( key );
 
@@ -866,7 +869,7 @@ function register_all_pjl_ports( ports ) {
   local_var ports, port;
 
   if( isnull( ports ) || typeof( ports ) != "array" ) {
-    ports = make_list( 9100, 9101, 9102, 9103 );
+    ports = make_list( 9100, 9101, 9102, 9103, 9112, 9113, 9114, 9115, 9116 );
   }
 
   foreach port( ports ) {
@@ -879,13 +882,31 @@ function register_all_pjl_ports( ports ) {
   return;
 }
 
-function get_unknown_port( default, nodefault ) {
+function get_unknown_port( default, nodefault, ipproto ) {
 
-  local_var default, _port, port;
+  local_var default, nodefault, ipproto, udp, _port, port;
 
   if( ! nodefault && ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_unknown_port" );
 
-  port = get_kb_item( "Services/unknown" );
+  if( ! ipproto ) ipproto = "tcp";
+  if( ipproto == "tcp" ) {
+    udp = FALSE;
+    port = get_kb_item( "Services/unknown" );
+  } else {
+    if( ipproto == "udp" ) {
+      udp = TRUE;
+      # nb: We only want to return all unkown UDP ports if this is explicitely enabled within global_settings.nasl
+      if( get_kb_item( "Settings/non-default_udp_service_discovery" ) ) {
+        port = get_kb_item( "Services/udp/unknown" );
+      } else {
+        port = default;
+      }
+    } else {
+      udp = FALSE;
+      port = get_kb_item( "Services/" + ipproto + "/unknown" );
+    }
+  }
+
   if( port ) {
     _port = port;
   } else {
@@ -894,33 +915,57 @@ function get_unknown_port( default, nodefault ) {
 
   if( ! _port ) exit( 0 );
 
-  # Ignore NetBIOS port as previously done in get_unknown_svc()
-  if( _port == 139 ) exit( 0 );
+  if( ! udp ) {
+    # Ignore NetBIOS port as previously done in get_unknown_svc()
+    if( _port == 139 ) exit( 0 );
 
-  # PJL ports printing everything sent to them
-  # so exit for such a port here
-  if( is_pjl_port( port:_port ) ) exit( 0 );
-
-  # Always check port passed in default variable. Other detections
-  # (like telnet.nasl) might have falsely marked this as known.
-  if( _port != default ) {
-    if( ! service_is_unknown( port:_port ) ) exit( 0 );
+    # PJL ports printing everything sent to them so exit for such a port here
+    if( is_pjl_port( port:_port ) ) exit( 0 );
   }
 
-  if( ! get_port_state( _port ) ) exit( 0 );
+  # Don't check port passed in default variable. Other detections
+  # (like telnet.nasl) might have falsely marked this as known.
+  if( _port != default ) {
+    if( ! service_is_unknown( port:_port, ipproto:ipproto ) ) exit( 0 );
+  }
+
+  if( ! udp ) {
+    if( ! get_port_state( _port ) ) exit( 0 );
+  } else {
+    if( ! get_udp_port_state( _port ) ) exit( 0 );
+  }
 
   return _port;
 }
 
-function get_unknown_port_list( default ) {
+function get_unknown_port_list( default, nodefault, ipproto ) {
 
-  local_var default, port, port_list, _port_list, __port_list;
+  local_var default, nodefault, ipproto, udp, port, port_list, _port_list, __port_list;
 
   __port_list = make_list();
 
-  if( ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_unknown_port_list" );
+  if( ! nodefault && ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_unknown_port_list" );
 
-  port_list = get_kb_list( "Services/unknown" );
+  if( ! ipproto ) ipproto = "tcp";
+  if( ipproto == "tcp" ) {
+    udp = FALSE;
+    port_list = get_kb_list( "Services/unknown" );
+  } else {
+    if( ipproto == "udp" ) {
+      udp = TRUE;
+      # nb: We only want to return all unkown UDP ports if this is explicitely enabled within global_settings.nasl
+      if( get_kb_item( "Settings/non-default_udp_service_discovery" ) ) {
+        port_list = get_kb_list( "Services/udp/unknown" );
+      } else {
+        port_list = make_list( default );
+      }
+    } else {
+      udp = FALSE;
+      port_list = get_kb_list( "Services/" + ipproto + "/unknown" );
+    }
+  }
+ 
+
   if( port_list ) {
     if( ! in_array( search:default, array:port_list ) ) { # The passed default might be already in the Services/unknown list
       _port_list = make_list( default, port_list );
@@ -933,20 +978,25 @@ function get_unknown_port_list( default ) {
 
   foreach port( _port_list ) {
 
-    # Ignore NetBIOS port as previously done in get_unknown_svc()
-    if( port == 139 ) continue;
+    if( ! udp ) {
+      # Ignore NetBIOS port as previously done in get_unknown_svc()
+      if( port == 139 ) continue;
 
-    # PJL ports printing everything sent to them
-    # so continue for such a port here
-    if( is_pjl_port( port:port ) ) continue;
-
-    # Always check port passed in default variable. Other detections
-    # (like telnet.nasl) might have falsely marked this as known.
-    if( port != default ) {
-      if( ! service_is_unknown( port:port ) ) continue;
+      # PJL ports printing everything sent to them so continue for such a port here
+      if( is_pjl_port( port:port ) ) continue;
     }
 
-    if( ! get_port_state( port ) ) continue;
+    # Don't check port passed in default variable. Other detections
+    # (like telnet.nasl) might have falsely marked this as known.
+    if( port != default ) {
+      if( ! service_is_unknown( port:port, ipproto:ipproto ) ) continue;
+    }
+
+    if( ! udp ) {
+      if( ! get_port_state( port ) ) continue;
+    } else {
+      if( ! get_udp_port_state( port ) ) continue;
+    }
 
     __port_list = make_list( __port_list, port );
   }
@@ -961,6 +1011,9 @@ function get_all_tcp_ports( ) {
 
   port = get_kb_item( "TCP/PORTS" );
   if( ! port ) exit( 0 );
+
+  # PJL ports printing everything sent to them so exit for such a port here
+  if( is_pjl_port( port:port ) ) exit( 0 );
 
   if( ! get_port_state( port ) ) exit( 0 );
 
@@ -978,8 +1031,7 @@ function get_all_tcp_ports_list( ) {
 
   foreach port( _ports ) {
 
-    # PJL ports printing everything sent to them
-    # so continue for such a port here
+    # PJL ports printing everything sent to them so continue for such a port here
     if( is_pjl_port( port:port ) ) continue;
 
     if( ! get_port_state( port ) ) continue;

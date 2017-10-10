@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_trendmicro_officescan_cgiparsing_bof_vuln_900164.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_trendmicro_officescan_cgiparsing_bof_vuln_900164.nasl 7332 2017-09-29 14:16:56Z cfischer $
 # Description: Trend Micro OfficeScan CGI Parsing Buffer Overflow Vulnerability
 #
 # Authors:
@@ -49,8 +49,8 @@ tag_affected = "TrendMicro OfficeScan Corporate Edition 7.3 Build prior to 1374.
 if(description)
 {
   script_id(900164);
-  script_version("$Revision: 5370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7332 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-10-29 14:53:11 +0100 (Wed, 29 Oct 2008)");
   script_bugtraq_id(31859);
   script_cve_id("CVE-2008-3862");
@@ -95,6 +95,12 @@ scanPath += "PccNTMon.exe";
 
 share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:scanPath);
 file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:scanPath);
+
+name   =  kb_smb_name();
+login  =  kb_smb_login();
+pass   =  kb_smb_password();
+domain =  kb_smb_domain();
+port   =  kb_smb_transport();
 
 soc = open_sock_tcp(port);
 if(!soc){

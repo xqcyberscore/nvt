@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_bb4c07b01a_file_fc26.nasl 7145 2017-09-15 12:32:31Z santu $
+# $Id: gb_fedora_2017_bb4c07b01a_file_fc26.nasl 7336 2017-10-04 05:42:02Z asteins $
 #
 # Fedora Update for file FEDORA-2017-bb4c07b01a
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873362");
-  script_version("$Revision: 7145 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:32:31 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 7336 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-12 07:38:32 +0200 (Tue, 12 Sep 2017)");
   script_cve_id("CVE-2017-1000249");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for file FEDORA-2017-bb4c07b01a");
   script_tag(name: "summary", value: "Check the version of file");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_a52f252521_httpd_fc26.nasl 7315 2017-09-28 12:38:29Z santu $
+# $Id: gb_fedora_2017_a52f252521_httpd_fc26.nasl 7336 2017-10-04 05:42:02Z asteins $
 #
 # Fedora Update for httpd FEDORA-2017-a52f252521
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873446");
-  script_version("$Revision: 7315 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-28 14:38:29 +0200 (Thu, 28 Sep 2017) $");
+  script_version("$Revision: 7336 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-28 09:14:48 +0200 (Thu, 28 Sep 2017)");
   script_cve_id("CVE-2017-9798");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for httpd FEDORA-2017-a52f252521");
   script_tag(name: "summary", value: "Check the version of httpd");

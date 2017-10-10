@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmp_detect.nasl 7239 2017-09-22 16:10:31Z cfischer $
+# $Id: snmp_detect.nasl 7366 2017-10-06 10:55:39Z cfischer $
 #
 # A SNMP Agent is running
 #
@@ -31,17 +31,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10265");
-  script_version("$Revision: 7239 $");
+  script_version("$Revision: 7366 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-06 12:55:39 +0200 (Fri, 06 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("A SNMP Agent is running");
   script_category(ACT_SETTINGS);
   script_copyright("This script is Copyright (C) 1999 SecuriTeam");
   script_family("SNMP");
   script_dependencies("gb_open_udp_ports.nasl", "gb_snmp_authorization.nasl", "snmp_default_communities.nasl");
-  script_require_udp_ports("UDP/PORTS", 161);
+  script_require_udp_ports("Services/udp/unknown", 161);
 
   script_tag(name:"summary", value:"This script detects if SNMP is open and if it is possible to connect
   with the given credentials.");
@@ -89,9 +89,7 @@ report = 'A SNMP server is running on this host.\n\n';
 
 if( defined_func( "snmpv3_get" ) ) {
 
-  # nb: Don't use get_snmp_port() as snmp_detect.nasl will set the Services/udp/snmp used there
-  if( ! port = get_kb_item( "UDP/PORTS" ) ) port = 161;
-  if( ! get_udp_port_state( port ) ) exit( 0 );
+  port = get_unknown_port( default:161, ipproto:"udp" );
 
   provided_comm_report      = 'It was possible to log in using the community string provided in "SNMP Authorization (OID: 1.3.6.1.4.1.25623.1.0.105076)".\n';
   default_comm_report       = 'It was possible to log in using the default community string \'public\'.\n';

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.nasl 6893 2017-08-10 13:46:00Z cfischer $
+# $Id: host_details.nasl 7386 2017-10-09 13:42:15Z cfischer $
 #
 # Host Details
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103997");
-  script_version("$Revision: 6893 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-10 15:46:00 +0200 (Thu, 10 Aug 2017) $");
+  script_version("$Revision: 7386 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-09 15:42:15 +0200 (Mon, 09 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-03-16 12:21:12 +0100 (Wed, 16 Mar 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,7 +36,8 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Service detection");
   script_category(ACT_END);
-  script_dependencies("gb_wmi_get-dns_name.nasl", "host_scan_end.nasl", "gb_tls_version.nasl");
+  script_dependencies("gb_wmi_get-dns_name.nasl", "netbios_name_get.nasl", "sw_ssl_cert_get_hostname.nasl",
+                      "gb_host_id_tag_ssh.nasl", "host_scan_end.nasl", "gb_tls_version.nasl");
 
   script_tag(name:"summary", value:"This scripts aggregates the OS detection information gathered by several
   NVTs and store it in a structured and unified way.");
@@ -53,23 +54,35 @@ SCRIPT_DESC = "Host Details";
 include("host_details.inc");
 
 hostname = get_host_name();
-if( !isnull( hostname ) && hostname != '' && hostname != get_host_ip() ) {
+hostip   = get_host_ip();
+
+if( ! isnull( hostname ) && hostname != '' && hostname != hostip ) {
   register_host_detail( name:"hostname", value:hostname, desc:SCRIPT_DESC );
   register_host_detail( name:"DNS-via-TargetDefinition", value:hostname, desc:SCRIPT_DESC );
 }
 
-if( hostname == get_host_ip() || hostname == "" || isnull( hostname ) ) {
+if( hostname == hostip || hostname == "" || isnull( hostname ) ) {
   DNS_via_WMI_FQDNS = get_kb_item( "DNS-via-WMI-FQDNS" );
-  if( ! isnull( DNS_via_WMI_FQDNS ) && DNS_via_WMI_FQDNS != '' && DNS_via_WMI_FQDNS != get_host_ip() ) {
+  if( ! isnull( DNS_via_WMI_FQDNS ) && DNS_via_WMI_FQDNS != '' && DNS_via_WMI_FQDNS != hostip ) {
     register_host_detail( name:"hostname", value:DNS_via_WMI_FQDNS, desc:SCRIPT_DESC );
   } else {
     DNS_via_WMI_DNS = get_kb_item( "DNS-via-WMI-DNS" );
-    if( ! isnull( DNS_via_WMI_DNS ) && DNS_via_WMI_DNS != '' && DNS_via_WMI_DNS != get_host_ip() ) {
+    if( ! isnull( DNS_via_WMI_DNS ) && DNS_via_WMI_DNS != '' && DNS_via_WMI_DNS != hostip ) {
       register_host_detail( name:"hostname", value:DNS_via_WMI_DNS, desc:SCRIPT_DESC );
     } else {
       SMB_HOST_NAME = get_kb_item( "SMB/name" );
-      if( ! isnull( SMB_HOST_NAME ) && SMB_HOST_NAME != '' && SMB_HOST_NAME != get_host_ip() ) {
+      if( ! isnull( SMB_HOST_NAME ) && SMB_HOST_NAME != '' && SMB_HOST_NAME != hostip ) {
         register_host_detail( name:"hostname", value:SMB_HOST_NAME, desc:SCRIPT_DESC );
+      } else {
+        # nb: This KB entry could contain multiple hostnames, using a get_kb_list() to avoid forking
+        # TBD: Which one should we choose here? Currently its the "first" one after sorting the list
+        DNS_via_SSL_TLS_Cert_List = get_kb_list( "DNS_via_SSL_TLS_Cert" );
+        foreach DNS_via_SSL_TLS_Cert( DNS_via_SSL_TLS_Cert_List ) {
+          if( DNS_via_SSL_TLS_Cert != '' && DNS_via_SSL_TLS_Cert != hostip ) {
+            register_host_detail( name:"hostname", value:DNS_via_SSL_TLS_Cert, desc:SCRIPT_DESC );
+            break;
+          }
+        }
       }
     }
   }

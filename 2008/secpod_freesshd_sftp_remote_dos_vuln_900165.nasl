@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freesshd_sftp_remote_dos_vuln_900165.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_freesshd_sftp_remote_dos_vuln_900165.nasl 7332 2017-09-29 14:16:56Z cfischer $
 # Description: freeSSHd SFTP 'rename' and 'realpath' Remote DoS Vulnerability
 #
 # Authors:
@@ -39,8 +39,8 @@ tag_solution = "Upgrade to freeSSHd version 1.2.6 or later.
 if(description)
 {
   script_id(900165);
-  script_version("$Revision: 5370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7332 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
   script_tag(name:"creation_date", value:"2008-10-31 14:50:32 +0100 (Fri, 31 Oct 2008)");
   script_cve_id("CVE-2008-4762");
  script_bugtraq_id(31872);
@@ -92,6 +92,12 @@ if(!sshdPath){
 
 share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sshdPath);
 file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:sshdPath);
+
+name   =  kb_smb_name();
+login  =  kb_smb_login();
+pass   =  kb_smb_password();
+domain =  kb_smb_domain();
+port   =  kb_smb_transport();
 
 soc = open_sock_tcp(port);
 if(!soc){

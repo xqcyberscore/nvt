@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pydio_before_607_mult_vuln.nasl 7302 2017-09-27 12:36:51Z jschulte $ 
+# $Id: gb_pydio_before_607_mult_vuln.nasl 7336 2017-10-04 05:42:02Z asteins $ 
 #
 # Pydio version before 6.0.7 multiple vulnerablities
 # 
@@ -29,11 +29,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113004"); 
-  script_version("$Revision: 7302 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 14:36:51 +0200 (Wed, 27 Sep 2017) $"); 
+  script_version("$Revision: 7336 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $"); 
   script_tag(name:"creation_date", value:"2017-09-27 14:27:13 +0200 (Wed, 27 Sep 2017)");
-  script_tag(name:"cvss_base", value:"4.3"); 
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

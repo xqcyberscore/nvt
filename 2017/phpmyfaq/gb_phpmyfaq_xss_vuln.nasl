@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyfaq_xss_vuln.nasl 7269 2017-09-26 09:45:31Z ckuersteiner $
+# $Id: gb_phpmyfaq_xss_vuln.nasl 7336 2017-10-04 05:42:02Z asteins $
 #
 # phpMyFAQ XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:phpmyfaq:phpmyfaq';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140387");
-  script_version("$Revision: 7269 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-26 11:45:31 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 7336 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-09-21 16:15:51 +0700 (Thu, 21 Sep 2017)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-14618", "CVE-2017-14619");
 

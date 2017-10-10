@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3213562.nasl 7118 2017-09-13 15:08:32Z santu $
+# $Id: gb_ms_kb3213562.nasl 7336 2017-10-04 05:42:02Z asteins $
 #
 # Microsoft Office Web Apps 2013 Service Pack 1 Multiple Vulnerabilities (KB3213562)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811745");
-  script_version("$Revision: 7118 $");
+  script_version("$Revision: 7336 $");
   script_cve_id("CVE-2017-8631", "CVE-2017-8742");
   script_bugtraq_id(100751, 100741);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 17:08:32 +0200 (Wed, 13 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-13 09:24:52 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Office Web Apps 2013 Service Pack 1 Multiple Vulnerabilities (KB3213562)");
 

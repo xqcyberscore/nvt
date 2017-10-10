@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sg3xx_snmp_detect.nasl 7239 2017-09-22 16:10:31Z cfischer $
+# $Id: gb_cisco_sg3xx_snmp_detect.nasl 7383 2017-10-09 09:19:26Z santu $
 #
 # Cisco Small Business 300 Series Managed Switch SNMP Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105587");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7239 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
+ script_version ("$Revision: 7383 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-09 11:19:26 +0200 (Mon, 09 Oct 2017) $");
  script_tag(name:"creation_date", value:"2013-10-14 14:24:09 +0200 (Mon, 14 Oct 2013)");
  script_name('Cisco Small Business 300 Series Managed Switch SNMP Detection');
  script_category(ACT_GATHER_INFO);
@@ -131,7 +131,7 @@ for( i=1; i < 3; i++ )
   }
 }
 
-register_product( cpe:cpe, location:port + "/udp", service:"snmp", proto:"udp" );
+register_product( cpe:cpe, location:port + "/udp", service:"snmp", proto:"udp", port:port );
 
 report = 'The remote Host is a Cisco Small Business 300 Series Managed Switch\n' +
          'Version: ' + version + '\n' + 

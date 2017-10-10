@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_2681_kernel_centos6.nasl 7145 2017-09-15 12:32:31Z santu $
+# $Id: gb_CESA-2017_2681_kernel_centos6.nasl 7335 2017-10-02 11:53:53Z teissa $
 #
 # CentOS Update for kernel CESA-2017:2681 centos6 
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882766");
-  script_version("$Revision: 7145 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:32:31 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 7335 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-02 13:53:53 +0200 (Mon, 02 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-13 07:16:28 +0200 (Wed, 13 Sep 2017)");
   script_cve_id("CVE-2017-1000251");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"8.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for kernel CESA-2017:2681 centos6 ");
   script_tag(name: "summary", value: "Check the version of kernel");

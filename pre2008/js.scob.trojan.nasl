@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: js.scob.trojan.nasl 6456 2017-06-28 11:19:33Z cfischer $
+# $Id: js.scob.trojan.nasl 7332 2017-09-29 14:16:56Z cfischer $
 # Description: JS.Scob.Trojan or Download.Ject Trojan
 #
 # Authors:
@@ -40,8 +40,8 @@ and removal tools are being released as of 06/25/04";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12286");
-  script_version("$Revision: 6456 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 7332 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -76,20 +76,15 @@ if (! rootfile)
 files[0] = string(rootfile, "\\system32\\kk32.dll");
 files[1] = string(rootfile, "\\system32\\Surf.dat");
 
-
 foreach file (files) 
 {
         share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:file);
         file  = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:file);
         myread = read_file(file:file, share:share, offset:0,count:4);
         if (myread) {
-         security_message(port);
+         security_message(port:0);
          exit(0);
 	} 
 }
 
 exit(0);
-
-
-
-

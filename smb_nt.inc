@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 7288 2017-09-27 07:21:24Z cfischer $
+# $Id: smb_nt.inc 7326 2017-09-29 10:56:31Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,16 +23,21 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7288 $
+# $Revision: 7326 $
 #
 ###############################################################################
 
 # Global TODO: - Dedupliacte code tagged with <- START TODO: This duplicated code just makes this include huge and un-maintainable
 #              - Check the # TBD: marked items
 
-global_var multiplex_id, g_mhi, g_mlo, s_sign_key, initial, seq_number, ntlmssp_flag, ntlmv2_flag, isSignActive, sign_key, smb;
+global_var multiplex_id, g_mhi, g_mlo, s_sign_key, initial, seq_number, ct_flag, ntlmssp_flag, ntlmv2_flag, isSignActive, sign_key, smb;
+
+# Global keys to avoid that we're repeatedly asking redis for something we already know
+global_var __kb_smb_name, __kb_smb_domain, __kb_smb_login, __kb_smb_password, __kb_smb_transport, __kb_smb_is_samba;
 
 ntlmssp_flag = string( get_kb_item( "SMB/NTLMSSP" ) );
+ntlmv2_flag  = string( get_kb_item( "SMB/dont_send_ntlmv1" ) );
+ct_flag      = string( get_kb_item( "SMB/dont_send_in_cleartext" ) );
 
 ## An ISSUE reported as #71142, registry methods of smb_nt.inc are currently failing
 ## against a Windows Vista Ulimate SP1 and Windows Server (R) 2008 SP1 systems. Moreover,
@@ -55,8 +60,6 @@ if( _Workaround ) {
   }
 }
 
-ntlmv2_flag = string( get_kb_item( "SMB/dont_send_ntlmv1" ) );
-
 if( ntlmssp_flag ) {
   multiplex_id = 1;
 } else {
@@ -69,33 +72,88 @@ g_mhi = multiplex_id / 256;
 g_mlo = multiplex_id % 256;
 
 function kb_smb_name() {
-  return string( get_kb_item( "SMB/name" ) );
+
+  local_var name;
+
+  if( ! isnull( __kb_smb_name ) ) {
+    name = string( __kb_smb_name );
+  } else {
+    name = string( get_kb_item( "SMB/name" ) );
+    __kb_smb_name = name;
+  }
+  return name;
 }
 
 function kb_smb_domain() {
-  return string( get_kb_item( "SMB/domain" ) );
+
+  local_var domain;
+
+  if( ! isnull( __kb_smb_domain ) ) {
+    domain = string( __kb_smb_domain );
+  } else {
+    domain = string( get_kb_item( "SMB/domain" ) );
+    __kb_smb_domain = domain;
+  }
+  return domain;
 }
 
 function kb_smb_login() {
-  return string( get_kb_item( "SMB/login" ) );
+
+  local_var login;
+
+  if( ! isnull( __kb_smb_login ) ) {
+    login = string( __kb_smb_login );
+  } else {
+    login = string( get_kb_item( "SMB/login" ) );
+    __kb_smb_login = login;
+  }
+  return login;
 }
 
 function kb_smb_password() {
-  return string( get_kb_item( "SMB/password" ) );
+
+  local_var password;
+
+  if( ! isnull( __kb_smb_password ) ) {
+    password = string( __kb_smb_password );
+  } else {
+    password = string( get_kb_item( "SMB/password" ) );
+    __kb_smb_password = password;
+  }
+  return password;
 }
 
 function kb_smb_transport() {
 
-  local_var r, port;
+  local_var transport;
 
-  r = get_kb_item( "SMB/transport" );
-  if( r ) {
-    return int( r );
+  if( ! isnull( __kb_smb_transport ) ) {
+    transport = __kb_smb_transport;
   } else {
-    port = 445;
-    if( ! get_port_state( port ) ) exit( 0 );
-    return port;
+    transport = get_kb_item( "SMB/transport" );
+    if( transport ) {
+      transport = int( transport );
+      __kb_smb_transport = transport;
+    } else {
+      transport = 445;
+      if( ! get_port_state( transport ) ) exit( 0 );
+      __kb_smb_transport = transport;
+    }
   }
+  return transport;
+}
+
+function kb_smb_is_samba() {
+
+  local_var is_samba;
+
+  if( ! isnull( __kb_smb_is_samba ) ) {
+    is_samba = __kb_smb_is_samba;
+  } else {
+    is_samba = string( get_kb_item( "SMB/samba" ) );
+    __kb_smb_is_samba = is_samba;
+  }
+  return is_samba;
 }
 
 # Provides a mapping between a windows build number and version
@@ -123,7 +181,6 @@ function get_version_from_build( string, win_name ) {
     if( "14393" >< string ) return "1607";
     if( "15063" >< string ) return "1703";
   }
-
   return;
 }
 
@@ -2040,10 +2097,10 @@ function smb_session_setup_NTLMvN( soc, login, password, domain, cs, version ) {
 
 function smb_session_setup( soc, login, password, domain, prot ) {
 
-  # ntlmv2_flag and ntlmssp_flag are global_vars!!!
+  # ct_flag, ntlmv2_flag and ntlmssp_flag are global_vars!!!
 
   local_var soc, login, password, domain, prot;
-  local_var ct, ntlmv1, prot2, r, ret, cs, flags, flg_str, uid, addr_list;
+  local_var prot2, r, ret, cs, flags, flg_str, uid, addr_list;
 
   if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_session_setup" );
   if( isnull( login ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#login#-#smb_session_setup" );
@@ -2051,11 +2108,8 @@ function smb_session_setup( soc, login, password, domain, prot ) {
   if( isnull( domain ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#domain#-#smb_session_setup" );
   if( isnull( prot ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#prot#-#smb_session_setup" );
 
-  ct = get_kb_item( "SMB/dont_send_in_cleartext" );
-  ntlmv1 = get_kb_item( "SMB/dont_send_ntlmv1" );
-
   if( smb_neg_prot_value( prot:prot ) < 7 ) {
-    if( ct == "yes" ) {
+    if( ct_flag == "yes" ) {
       return NULL;
     } else {
       return smb_session_setup_cleartext( soc:soc, login:login, password:password, domain:domain );
@@ -2108,7 +2162,7 @@ function smb_session_setup( soc, login, password, domain, prot ) {
     } else {
       cs = smb_neg_prot_cs( prot:prot );
       ret = smb_session_setup_NTLMvN( soc:soc, login:login, password:password, domain:domain, cs:cs, version:2 );
-      if( ! ret && ! ntlmv1 ) {
+      if( ! ret && ! ntlmv2_flag ) {
         ret = smb_session_setup_NTLMvN( soc:soc, login:login, password:password, domain:domain, cs:cs, version:1 );
       }
       return ret;
@@ -2122,16 +2176,13 @@ function smb2_session_setup( soc, login, password, domain, prot ) {
   # ntlmv2_flag and ntlmssp_flag are global_vars!!!
 
   local_var soc, login, password, domain, prot;
-  local_var ct, ntlmv1, ret, cs, flags, flg_str, ssid, addr_list;
+  local_var ret, cs, flags, flg_str, ssid, addr_list;
 
   if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb2_session_setup" );
   if( isnull( login ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#login#-#smb2_session_setup" );
   if( isnull( password ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#password#-#smb2_session_setup" );
   if( isnull( domain ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#domain#-#smb2_session_setup" );
   if( isnull( prot ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#prot#-#smb2_session_setup" );
-
-  ct = get_kb_item( "SMB/dont_send_in_cleartext" );
-  ntlmv1 = get_kb_item( "SMB/dont_send_ntlmv1" );
 
   if( ntlmssp_flag ) {
 
@@ -2167,7 +2218,7 @@ function smb2_session_setup( soc, login, password, domain, prot ) {
   } else {
     cs = smb_neg_prot_cs( prot:prot );
     ret = smb_session_setup_NTLMvN( soc:soc, login:login, password:password, domain:domain, cs:cs, version:2 );
-    if( ! ret && ! ntlmv1 ) {
+    if( ! ret && ! ntlmv2_flag ) {
       ret = smb_session_setup_NTLMvN( soc:soc, login:login, password:password, domain:domain, cs:cs, version:1 );
     }
     return ret;
@@ -4852,7 +4903,7 @@ function registry_key_exists( key, type ) {
     return NULL;
   }
 
-  if( get_kb_item( "SMB/samba" ) ) {
+  if( kb_smb_is_samba() ) {
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#Windows SMB NVT was started against a Samba Server" );
     return NULL;
   }
@@ -5934,12 +5985,12 @@ function registry_get_dword( key, item, type ) {
   if( ! isnull( kb_proxy ) || kb_proxy )
     return kb_proxy;
 
-  # Value has not been previousle written to KB, fetch it.
-  if( get_kb_item( "SMB/samba" ) ) {
+  if( kb_smb_is_samba() ) {
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#Windows SMB NVT was started against a Samba Server" );
     return NULL;
   }
 
+  # Value has not been previously written to KB, fetch it.
   name = kb_smb_name();
   if( ! name ) return NULL;
 
@@ -6070,7 +6121,7 @@ function registry_get_binary( key, item, type ) {
   if( isnull( key ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#key#-#registry_get_binary" );
   if( isnull( item ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#item#-#registry_get_binary" );
 
-  if( get_kb_item( "SMB/samba" ) ) {
+  if( kb_smb_is_samba() ) {
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#Windows SMB NVT was started against a Samba Server" );
     return NULL;
   }
@@ -6213,12 +6264,12 @@ function registry_get_sz( key, item, type ) {
   if( ! isnull( kb_proxy ) || kb_proxy )
   return kb_proxy;
 
-  # Value has not been previousle written to KB, fetch it.
-  if( get_kb_item( "SMB/samba" ) ) {
+  if( kb_smb_is_samba() ) {
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#Windows SMB NVT was started against a Samba Server" );
     return NULL;
   }
 
+  # Value has not been previously written to KB, fetch it.
   name = kb_smb_name();
   if( ! name ) return NULL;
 

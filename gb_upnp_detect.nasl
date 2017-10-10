@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_upnp_detect.nasl 6829 2017-08-01 12:56:19Z cfischer $
+# $Id: gb_upnp_detect.nasl 7366 2017-10-06 10:55:39Z cfischer $
 #
 # UPnP Detection
 #
@@ -28,17 +28,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103652");
-  script_version("$Revision: 6829 $");
+  script_version("$Revision: 7366 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-01 14:56:19 +0200 (Tue, 01 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-06 12:55:39 +0200 (Fri, 06 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-02-01 09:39:54 +0100 (Fri, 01 Feb 2013)");
   script_name("UPnP Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Service detection");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl");
-  script_require_udp_ports(1900);
+  script_dependencies("gb_open_udp_ports.nasl", "find_service.nasl");
+  script_require_udp_ports("Services/udp/unknown", 1900);
+  script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
 
   script_tag(name:"summary", value:"Detection of the UPnP protocol.
 
@@ -46,18 +47,16 @@ if(description)
   determine if the remote host supports the UPnP protocol.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
 
   exit(0);
 }
 
 include("misc_func.inc");
 
-port = 1900; # TODO: We might need to check all unknown UDP Ports here: https://www.shodan.io/search?query=portable+sdk+port%3A%2232771%22
-
 if( islocalhost() ) exit( 0 );
 if( TARGET_IS_IPV6() ) exit( 0 );
-if( ! get_udp_port_state( port ) ) exit( 0 );
+
+port = get_unknown_port( default:1900, ipproto:"udp" );
 
 soc = open_sock_udp( port );
 if( ! soc ) exit( 0 );

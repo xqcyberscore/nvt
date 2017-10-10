@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flock_detect_win.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: gb_flock_detect_win.nasl 7332 2017-09-29 14:16:56Z cfischer $
 #
 # Flock Version Detection (Windows)
 #
@@ -34,8 +34,8 @@ if(description)
 {
   script_id(800877);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 7332 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
   script_tag(name:"creation_date", value:"2009-09-02 11:50:45 +0200 (Wed, 02 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Flock Version Detection (Windows)");
@@ -85,6 +85,13 @@ if(version == NULL)
   {
     share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:flockPath);
     file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:flockPath + "\flock.exe");
+
+    name   =  kb_smb_name();
+    login  =  kb_smb_login();
+    pass   =  kb_smb_password();
+    domain =  kb_smb_domain();
+    port   =  kb_smb_transport();
+
     soc = open_sock_tcp(port);
     if(!soc){
      exit(0);

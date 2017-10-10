@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: scan_info.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: scan_info.nasl 7385 2017-10-09 12:02:13Z cfischer $
 # Description: Information about the scan
 #
 # Authors:
@@ -46,8 +46,8 @@ if(description)
  script_id(19506);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 7385 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-09 14:02:13 +0200 (Mon, 09 Oct 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "Information about the scan";
@@ -75,12 +75,6 @@ include('global_settings.inc');
 
 be_silent = script_get_preference("Be silent");
 if("yes" >< be_silent)exit(0);
-
-# 
-# If no NVT has shown anything, quietly exit
-#
-list = get_kb_list("Success/*");
-if ( isnull(list) ) exit(0);
 
 version = OPENVAS_VERSION;
 

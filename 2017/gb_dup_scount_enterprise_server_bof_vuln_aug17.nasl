@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dup_scount_enterprise_server_bof_vuln_aug17.nasl 7034 2017-08-31 13:44:04Z santu $
+# $Id: gb_dup_scount_enterprise_server_bof_vuln_aug17.nasl 7378 2017-10-06 15:29:03Z cfischer $
 #
 # Dup Scout Enterprise Server Buffer Overflow Vulnerability - Aug17
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:dup:dup_scout_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811718");
-  script_version("$Revision: 7034 $");
+  script_version("$Revision: 7378 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 15:44:04 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-06 17:29:03 +0200 (Fri, 06 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-30 18:35:36 +0530 (Wed, 30 Aug 2017)");
   script_name("Dup Scout Enterprise Server Buffer Overflow Vulnerability - Aug17");
 
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Dup Scout Enterprise version 10.0.18 and prior.");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  30th Aug, 2017. Information regarding this issue will be updated once solution
+  6th October, 2017. Information regarding this issue will be updated once solution
   details are available. For updates refer to,
   http://www.dupscout.com");
 

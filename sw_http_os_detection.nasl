@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 7055 2017-09-04 16:35:13Z cfischer $
+# $Id: sw_http_os_detection.nasl 7387 2017-10-09 14:02:01Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 7055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 18:35:13 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 7387 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-09 16:02:01 +0200 (Mon, 09 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -351,6 +351,13 @@ if( banner && banner = egrep( pattern:"^Server:(.*)$", string:banner, icase:TRUE
   # Proxmox VE is only running on unix-like OS
   if( egrep( pattern:"^Server: pve-api-daemon/([0-9.]+)", string:banner, icase:TRUE ) ) {
     register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  # SERVER: POSIX, UPnP/1.0, Intel MicroStack/1.0.2126
+  # Server: POSIX, UPnP/1.0, Intel MicroStack/1.0.2777
+  if( "server: posix, upnp/1.0, intel microstack" >< tolower( banner ) ) {
+    register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
 

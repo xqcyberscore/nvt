@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2535_1.nasl 7312 2017-09-28 11:22:27Z santu $
+# $Id: gb_suse_2017_2535_1.nasl 7336 2017-10-04 05:42:02Z asteins $
 #
 # SuSE Update for emacs openSUSE-SU-2017:2535-1 (emacs)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851621");
-  script_version("$Revision: 7312 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-28 13:22:27 +0200 (Thu, 28 Sep 2017) $");
+  script_version("$Revision: 7336 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-21 07:19:43 +0200 (Thu, 21 Sep 2017)");
   script_cve_id("CVE-2017-14482");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for emacs openSUSE-SU-2017:2535-1 (emacs)");
   script_tag(name: "summary", value: "Check the version of emacs");

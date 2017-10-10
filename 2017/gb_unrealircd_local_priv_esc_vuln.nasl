@@ -29,12 +29,12 @@ CPE = "cpe:/a:unrealircd:unrealircd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811317");
-  script_version("$Revision: 7066 $");
+  script_version("$Revision: 7346 $");
   script_cve_id("CVE-2017-13649");
   script_bugtraq_id(100507);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-06 12:29:37 +0200 (Wed, 06 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-05 08:46:33 +0200 (Thu, 05 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-31 14:02:54 +0530 (Thu, 31 Aug 2017)");
   script_name("UnrealIRCd Local Privilege Escalation Vulnerability");
 
@@ -55,15 +55,13 @@ if(description)
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"UnrealIRCd versions 4.0.13  and prior.");
+  script_tag(name: "affected" , value:"UnrealIRCd versions 4.0.13 and prior.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as
-  of 31st August, 2017. Information regarding this issue will be updated once the
-  solution details are available.
-  For updates refer to https://www.unrealircd.org");
+  script_tag(name: "solution" , value:"Please see the referenced bugreport for
+  a workaround how to mitigate this issue within the used start scripts.");
  
-  script_tag(name:"solution_type", value:"NoneAvailable");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_xref(name:"URL", value:"https://vuldb.com/?id.105695");
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2017/q3/343");
   script_xref(name:"URL", value:"https://bugs.unrealircd.org/view.php?id=4990");

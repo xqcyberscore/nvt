@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dns_server.nasl 4463 2016-11-10 08:01:39Z cfi $
+# $Id: dns_server.nasl 7366 2017-10-06 10:55:39Z cfischer $
 #
 # DNS Server Detection (UDP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100069");
-  script_version("$Revision: 4463 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-10 09:01:39 +0100 (Thu, 10 Nov 2016) $");
+  script_version("$Revision: 7366 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-06 12:55:39 +0200 (Fri, 06 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-03-22 17:08:49 +0100 (Sun, 22 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,8 +36,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Service detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("dns_server_tcp.nasl");
-  script_require_udp_ports("Services/udp/domain", 53);
+  script_dependencies("gb_open_udp_ports.nasl", "dns_server_tcp.nasl");
+  script_require_udp_ports("Services/udp/unknown", 53);
 
   script_tag(name:"summary", value:"A DNS Server is running at this Host.
   A Name Server translates domain names into IP addresses. This makes it
@@ -62,9 +62,7 @@ data = raw_string( 0xB8, 0x4C, 0x01, 0x00, 0x00, 0x01,
                    0x04, 0x61, 0x72, 0x70, 0x61, 0x00,
                    0x00, 0x0C, 0x00, 0x01 );
 
-port = get_kb_item( "Services/udp/domain" );
-if( ! port ) port = 53;
-if( ! get_udp_port_state( port ) ) exit( 0 );
+port = get_unknown_port( default:53, ipproto:"udp" );
 
 soc = open_sock_udp( port );
 if( ! soc ) exit( 0 );

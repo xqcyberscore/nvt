@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_cp1755.nasl 6261 2017-06-01 10:22:21Z ckuersteiner $
+# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_cp1755.nasl 7338 2017-10-04 08:49:04Z santu $
 #
 # Trend Micro InternScan Web Security Virtual Appliance 6.5 Multiple Vulnerabilities
 #
@@ -30,8 +30,9 @@ CPE = "cpe:/a:trendmicro:interscan_web_security_virtual_appliance";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106841");
-  script_version("$Revision: 6261 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-01 12:22:21 +0200 (Thu, 01 Jun 2017) $");
+  script_version("$Revision: 7338 $");
+  script_cve_id("CVE-2017-11396");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-04 10:49:04 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-06-01 15:02:52 +0700 (Thu, 01 Jun 2017)");
   script_tag(name: "cvss_base", value: "9.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");

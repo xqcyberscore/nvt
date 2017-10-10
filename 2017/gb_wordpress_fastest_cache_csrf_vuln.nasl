@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_fastest_cache_csrf_vuln.nasl 7252 2017-09-25 15:28:16Z cfischer $
+# $Id: gb_wordpress_fastest_cache_csrf_vuln.nasl 7336 2017-10-04 05:42:02Z asteins $
 #
 # WordPress Fastest Cache Plugin CSRF Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112053");
-  script_version("$Revision: 7252 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-25 17:28:16 +0200 (Mon, 25 Sep 2017) $");
+  script_version("$Revision: 7336 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-09-25 09:35:51 +0200 (Mon, 25 Sep 2017)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2015-4089");
 
