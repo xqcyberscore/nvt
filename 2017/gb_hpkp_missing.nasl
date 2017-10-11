@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpkp_missing.nasl 7385 2017-10-09 12:02:13Z cfischer $
+# $Id: gb_hpkp_missing.nasl 7391 2017-10-10 08:05:50Z cfischer $
 #
 # SSL/TLS: HTTP Public Key Pinning (HPKP) Missing
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108247");
-  script_version("$Revision: 7385 $");
+  script_version("$Revision: 7391 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-09 14:02:13 +0200 (Mon, 09 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-10 10:05:50 +0200 (Tue, 10 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-09 08:07:41 +0200 (Mon, 09 Oct 2017)");
   script_name("SSL/TLS: HTTP Public Key Pinning (HPKP) Missing");
   script_category(ACT_GATHER_INFO);
@@ -61,14 +61,7 @@ if( ! port = get_kb_item( "hpkp/missing/port" ) ) exit( 0 );
 max_age_missing = get_kb_item( "hpkp/max_age/missing/" + port );
 max_age_zero    = get_kb_item( "hpkp/max_age/zero/" + port );
 pin_missing     = get_kb_item( "hpkp/pin/missing/" + port );
-banner          = get_kb_item( "www/banner/" + port + "/" );
 pkp_banner      = get_kb_item( "hpkp/" + port + "/banner" );
-
-# Clean-up Banner from dynamic data so we don't report differences on the delta report
-pattern = '([Dd]ate: |[Ee]xpires=|[Ee]xpires: |PHPSESSID=|[Ll]ast-[Mm]odified: |[Cc]ontent-[Ll]ength: |[Ss]et-[Cc]ookie: |[Ee][Tt]ag: (W/"|")?|[Ss]ession[Ii]d=)([0-9a-zA-Z :,-;=]+)';
-if( eregmatch( pattern:pattern, string:banner ) ) {
-  banner = ereg_replace( string:banner, pattern:pattern, replace:"\1***replaced***" );
-}
 
 if( max_age_missing ) {
   report = "The remote web server is sending a HPKP header but is missing the required 'max-age=' directive.";
@@ -80,6 +73,12 @@ if( max_age_missing ) {
   report = "The remote web server is sending a HPKP header but is missing a (supported) 'pin-' directive. Note: Currently only pin-sha256 is defined/supported.";
   report += '\n\nHPKP-Header:\n\n' + pkp_banner;
 } else {
+  banner = get_kb_item( "www/banner/" + port + "/" );
+  # Clean-up Banner from dynamic data so we don't report differences on the delta report
+  pattern = '([Dd]ate: |[Ee]xpires=|[Ee]xpires: |PHPSESSID=|[Ll]ast-[Mm]odified: |[Cc]ontent-[Ll]ength: |[Ss]et-[Cc]ookie: |[Ee][Tt]ag: (W/"|")?|[Ss]ession[Ii]d=)([0-9a-zA-Z :,-;=]+)';
+  if( eregmatch( pattern:pattern, string:banner ) ) {
+    banner = ereg_replace( string:banner, pattern:pattern, replace:"\1***replaced***" );
+  }
   report = "The remote web server is not enforcing HPKP.";
   report += '\n\nHTTP-Banner:\n\n' + banner;
 }

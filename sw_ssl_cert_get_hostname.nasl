@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ssl_cert_get_hostname.nasl 7333 2017-10-01 14:56:21Z cfischer $
+# $Id: sw_ssl_cert_get_hostname.nasl 7393 2017-10-10 11:32:56Z cfischer $
 #
 # SSL/TLS: Hostname discovery from server certificate
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111010");
-  script_version("$Revision: 7333 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-01 16:56:21 +0200 (Sun, 01 Oct 2017) $");
+  script_version("$Revision: 7393 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-10 13:32:56 +0200 (Tue, 10 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-03-27 12:00:00 +0100 (Fri, 27 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,7 +52,6 @@ include("host_details.inc");
 
 if( ! find_in_path( "ping" ) ) exit( 0 );
 
-pattern =  "([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})";
 hostname = get_host_name();
 hostip = get_host_ip();
 resolvableFound = FALSE;
@@ -62,6 +61,48 @@ report = "";
 resolvableHostnames = make_list();
 resolvableOther = make_list();
 additionalHostnames = make_list();
+ping_args = make_list();
+i = 0;
+
+# nb: There are differences between inetutils and iputils packages and versions.
+# Some packages have e.g. a ping6 binary, others just a symlink from ping6 to ping.
+
+# Check if the ping command supports the -6/-4 parameter
+check = pread( cmd:"ping", argv:make_list( "--usage" ), cd:1 );
+if( "Usage: ping" >< check && "64]" >< check ) {
+  param64 = TRUE;
+}
+
+if( TARGET_IS_IPV6() ) {
+  # If the -6 parameter is available explicitely specify it for the ping command and use only "ping"
+  if( param64 ) {
+    ping_cmd = "ping";
+    ping_args[i++] = "-6";
+  } else {
+    if( find_in_path( "ping6" ) ) {
+      ping_cmd = "ping6";
+    } else {
+      ping_cmd = "ping";
+    }
+  }
+  # https://stackoverflow.com/a/17871737
+  pattern = "(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))";
+} else {
+  # If the -4 parameter is available explicitely specify it for the ping command
+  if( param64 ) {
+    ping_cmd = "ping";
+    ping_args[i++] = "-4";
+  } else {
+    ping_cmd = "ping";
+  }
+  pattern = "([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})";
+}
+
+# nb: Only use one ping and a low timeout of one second (default is 10) so we don't
+# waste too much time here as we only want the hostname resolved by the ping command
+# nb: Both parameters are available in ping of inetutils and iputils
+ping_args[i++] = "-c 1";
+ping_args[i++] = "-W 1";
 
 tmpHostnames = get_kb_list( "HostDetails/Cert/*/hostnames" );
 
@@ -76,9 +117,7 @@ if ( ! isnull( tmpHostnames ) ) {
       # Don't ping known host or wildcard cert hostnames
       if( hostname == tmpHostname || "*." >< tmpHostname ) continue;
 
-      # nb: Only use one ping and a low timeout of one second (default is 10)
-      # so we don't waste too much time here as we only want the hostname resolved by ping
-      cnIp = pread( cmd:"ping", argv:make_list( "ping", "-c 1", "-W 1", tmpHostname ), cd:1 );
+      cnIp = pread( cmd:ping_cmd, argv:make_list( ping_args , tmpHostname ), cd:1 );
       cnIpPing = eregmatch( pattern:pattern, string:cnIp );
 
       if( cnIpPing ) {

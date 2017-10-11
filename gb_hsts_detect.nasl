@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hsts_detect.nasl 7385 2017-10-09 12:02:13Z cfischer $
+# $Id: gb_hsts_detect.nasl 7395 2017-10-10 14:12:44Z cfischer $
 #
 # SSL/TLS: HTTP Strict Transport Security (HSTS) Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105876");
-  script_version("$Revision: 7385 $");
+  script_version("$Revision: 7395 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-09 14:02:13 +0200 (Mon, 09 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-10 16:12:44 +0200 (Tue, 10 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-08-22 13:07:41 +0200 (Mon, 22 Aug 2016)");
   script_name("SSL/TLS: HTTP Strict Transport Security (HSTS) Detection");
   script_category(ACT_GATHER_INFO);
@@ -62,9 +62,13 @@ port = get_http_port( default:443, ignore_cgi_disabled:TRUE );
 if( get_port_transport( port ) < ENCAPS_SSLv23 ) exit( 0 );
 
 banner = get_http_banner( port:port );
-# We should not expect a HSTS header without a 20x or 30x.
-# nb: Nginx is e.g. only sending an header on 200, 201, 204, 206, 301, 302, 303, 304 and 307
-if( ! banner || banner !~ "^HTTP/1\.[01] [23]0[0-7]" ) exit( 0 );
+# We should not expect a HSTS header without a 20x or 30x status code in the response
+# e.g. nginx -> https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header
+# 200, 201 (1.3.10), 204, 206, 301, 302, 303, 304, 307 (1.1.16, 1.0.13), or 308 (1.13.0).
+#
+# 304 has a special meaning and shouldn't contain any additional headers -> https://tools.ietf.org/html/rfc2616#section-10.3.5
+# E.g. mod_headers from Apache won't add additional Headers on this code so don't check it here
+if( ! banner || banner !~ "^HTTP/1\.[01] (20[0146]|30[12378])" ) exit( 0 );
 
 if( ! sts = egrep( pattern:'^Strict-Transport-Security: ', string:banner, icase:TRUE ) ) { # Header fields are case-insensitive: https://tools.ietf.org/html/rfc7230#section-3.2
   replace_kb_item( name:"hsts/missing", value:TRUE );
@@ -82,8 +86,9 @@ if( "max-age=" >!< tolower( sts ) ) {
   exit( 0 );
 }
 
+# From https://tools.ietf.org/html/rfc6797#page-16:
 # A max-age value of zero (i.e., "max-age=0") signals the UA to
-# cease regarding the host as a Known HSTS Host: https://tools.ietf.org/html/rfc6797#page-16
+# cease regarding the host as a Known HSTS Host
 if( "max-age=0" >< tolower( sts ) ) {
   replace_kb_item( name:"hsts/missing", value:TRUE );
   set_kb_item( name:"hsts/missing/port", value:port );
@@ -92,6 +97,8 @@ if( "max-age=0" >< tolower( sts ) ) {
   exit( 0 );
 }
 
+replace_kb_item( name:"hsts/available", value:TRUE );
+set_kb_item( name:"hsts/available/port", value:port );
 set_kb_item( name:"hsts/" + port + "/banner", value:sts );
 
 if( "includesubdomains" >!< tolower( sts ) ) {
@@ -107,7 +114,7 @@ if( "preload" >!< tolower( sts ) ) {
 ma = eregmatch( pattern:'max-age=([0-9]+)', string:sts, icase:TRUE );
 
 if( ! isnull( ma[1] ) )
-  set_kb_item( name:"hsts/max_age/" + port, value:ma[1] ); # TODO: We could give some recommendation about a sensible max-age here
+  set_kb_item( name:"hsts/max_age/" + port, value:ma[1] );
 
 log_message( port:port, data:'The remote HTTPS server is sending the "HTTP Strict-Transport-Security" header.\n\nHSTS-Header:\n\n' + sts );
 exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_egroupware_detect.nasl 4980 2017-01-11 08:00:06Z cfi $
+# $Id: gb_egroupware_detect.nasl 7392 2017-10-10 09:59:08Z asteins $
 #
 # EGroupware Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100823");
-  script_version("$Revision: 4980 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-11 09:00:06 +0100 (Wed, 11 Jan 2017) $");
+  script_version("$Revision: 7392 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-10 11:59:08 +0200 (Tue, 10 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-09-24 14:46:08 +0200 (Fri, 24 Sep 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -93,6 +93,20 @@ foreach dir( make_list_unique( "/", "/egw", "/egroupware", "/groupware", "/eGrou
       req = http_get( item:url, port:port );
       buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
       version = eregmatch( string:buf, pattern:'versionstring":"EGroupware ([0-9.]+)"', icase:TRUE );
+      if( ! isnull( version[1] ) ) {
+        concludedUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+        vers = version[1];
+      }
+    }
+
+    # EGroupware's version has been unified since 16.1 (no more differences between various editions)
+    # The patterns above don't match to the exact versions that are being declared vulnerable in a vulnerability report
+    if( vers == "unknown" || vers =~ "^16" )  {
+      url = dir + "/doc/rpm-build/debian.changes";
+      req = http_get( item:url, port:port );
+      buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+
+      version = eregmatch( pattern:"egroupware-epl \(([0-9.]+)\)", string:buf);
       if( ! isnull( version[1] ) ) {
         concludedUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
         vers = version[1];

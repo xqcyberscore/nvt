@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_desktopcentral_cve_2015_8249.nasl 4402 2016-11-01 18:02:17Z mime $
+# $Id: gb_manageengine_desktopcentral_cve_2015_8249.nasl 7390 2017-10-10 07:15:36Z asteins $
 #
 # ManageEngine Desktop Central 9 FileUploadServlet connectionId Vulnerability
 #
@@ -30,10 +30,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140041");
   script_cve_id("CVE-2015-8249");
-  script_version("$Revision: 4402 $");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-01 19:02:17 +0100 (Tue, 01 Nov 2016) $");
+  script_version("$Revision: 7390 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-10 09:15:36 +0200 (Tue, 10 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-11-01 16:26:16 +0100 (Tue, 01 Nov 2016)");
   script_name("ManageEngine Desktop Central 9 FileUploadServlet connectionId Vulnerability");
   script_category(ACT_ATTACK);

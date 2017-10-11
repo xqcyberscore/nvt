@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 10 Oct 2017 08:55:48 +0200
+# Automatically created on:  Wed, 11 Oct 2017 08:52:05 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47475,6 +47475,8 @@
 2017/apache/gb_apache_openmeetings_xml_valid_vuln.nasl: GPLv2+
 2017/apache/gb_apache_optionsbleed.nasl: GPLv2+
 2017/apache/gb_apache_struts_problem_report_xss_vuln.nasl: GPLv2+
+2017/apache/gb_apache_wicket_csrf_detect_vuln.nasl: GPLv2+
+2017/apache/gb_apache_wicket_info_disc_vuln.nasl: GPLv2+
 2017/apache/gb_apache_wicket_weak_crypt_sec_bypass_vuln.nasl: GPLv2+
 2017/apple/gb_apple_icloud_HT208142.nasl: GPLv2+
 2017/apple/gb_apple_macosx_mult_vuln_HT208144.nasl: GPLv2+
@@ -48478,6 +48480,7 @@
 2017/gb_ecava_integraxor_sql_inj_vuln.nasl: GPLv2+
 2017/gb_egroupware_2014_mult_vuln.nasl: GPLv2+
 2017/gb_egroupware_65651.nasl: GPLv2+
+2017/gb_egroupware_xss_vuln.nasl: GPLv2+
 2017/gb_elasticsearch_kibana_CVE-2017-8439_lin.nasl: GPLv2+
 2017/gb_elasticsearch_kibana_CVE-2017-8439_win.nasl: GPLv2+
 2017/gb_elasticsearch_kibana_CVE-2017-8440_lin.nasl: GPLv2+
@@ -49717,11 +49720,13 @@
 2017/gb_hp_imc_mult_rce_vul.nasl: GPLv2+
 2017/gb_hpkp_hsts_on_http.nasl: GPLv2+
 2017/gb_hpkp_isd_missing.nasl: GPLv2+
+2017/gb_hpkp_low_max_age.nasl: GPLv2+
 2017/gb_hpkp_missing.nasl: GPLv2+
 2017/gb_hp_printer_improper_access_control_vuln.nasl: GPLv2+
 2017/gb_hp_printer_rce_vuln.nasl: GPLv2+
 2017/gb_hp_sitescope_mult_vuln.nasl: GPLv2+
 2017/gb_hp_sitescope_privilege_esc_vuln.nasl: GPLv2+
+2017/gb_hsts_low_max_age.nasl: GPLv2+
 2017/gb_http_default_command_injection.nasl: GPLv2+
 2017/gb_http_default_dir_trav.nasl: GPLv2+
 2017/gb_http_dir_trav.nasl: GPLv2+
@@ -50712,6 +50717,7 @@
 2017/gb_realplayer_divide_by_zero_dos_vuln_win.nasl: GPLv2+
 2017/gb_reddoxx_mult_vuln.nasl: GPLv2+
 2017/gb_red_hat_jboss_eap_server_mult_vuln_lin.nasl: GPLv2+
+2017/gb_redis_buffer_overflow_vuln.nasl: GPLv2+
 2017/gb_request_tracker_mult_vuln.nasl: GPLv2+
 2017/gb_request_tracker_mult_xss_vuln.nasl: GPLv2+
 2017/gb_revive_adserver_revive-sa-2017-001.nasl: GPLv2+

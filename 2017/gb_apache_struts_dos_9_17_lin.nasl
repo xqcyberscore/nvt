@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_dos_9_17_lin.nasl 7127 2017-09-14 08:36:48Z cfischer $
+# $Id: gb_apache_struts_dos_9_17_lin.nasl 7390 2017-10-10 07:15:36Z asteins $
 #
 # Apache Struts Multiple Denial of Service Vulnerabilities (Linux)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107239");
-  script_version("$Revision: 7127 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-14 10:36:48 +0200 (Thu, 14 Sep 2017) $");
+  script_version("$Revision: 7390 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-10 09:15:36 +0200 (Tue, 10 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-11 14:24:03 +0200 (Mon, 11 Sep 2017)");
   script_cve_id("CVE-2017-9793", "CVE-2017-9804");
   script_bugtraq_id(100611);
 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Struts Multiple Denial of Service Vulnerabilities (Linux)");

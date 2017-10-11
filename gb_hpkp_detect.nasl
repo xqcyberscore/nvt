@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpkp_detect.nasl 7385 2017-10-09 12:02:13Z cfischer $
+# $Id: gb_hpkp_detect.nasl 7395 2017-10-10 14:12:44Z cfischer $
 #
 # SSL/TLS: HTTP Public Key Pinning (HPKP) Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108245");
-  script_version("$Revision: 7385 $");
+  script_version("$Revision: 7395 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-09 14:02:13 +0200 (Mon, 09 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-10 16:12:44 +0200 (Tue, 10 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-09 08:07:41 +0200 (Mon, 09 Oct 2017)");
   script_name("SSL/TLS: HTTP Public Key Pinning (HPKP) Detection");
   script_category(ACT_GATHER_INFO);
@@ -61,9 +61,13 @@ port = get_http_port( default:443, ignore_cgi_disabled:TRUE );
 if( get_port_transport( port ) < ENCAPS_SSLv23 ) exit( 0 );
 
 banner = get_http_banner( port:port );
-# We should not expect a HSTS header without a 20x or 30x.
-# nb: Nginx is e.g. only sending an header on 200, 201, 204, 206, 301, 302, 303, 304 and 307
-if( ! banner || banner !~ "^HTTP/1\.[01] [23]0[0-7]" ) exit( 0 );
+# We should not expect a HPKP header without a 20x or 30x status code in the response
+# e.g. nginx -> https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header
+# 200, 201 (1.3.10), 204, 206, 301, 302, 303, 304, 307 (1.1.16, 1.0.13), or 308 (1.13.0).
+#
+# 304 has a special meaning and shouldn't contain any additional headers -> https://tools.ietf.org/html/rfc2616#section-10.3.5
+# E.g. mod_headers from Apache won't add additional Headers on this code so don't check it here
+if( ! banner || banner !~ "^HTTP/1\.[01] (20[0146]|30[12378])" ) exit( 0 );
 
 if( ! pkp = egrep( pattern:'^Public-Key-Pins: ', string:banner, icase:TRUE ) ) { # Public-Key-Pins-Report-Only is used for testing only
   replace_kb_item( name:"hpkp/missing", value:TRUE );
@@ -100,6 +104,8 @@ if( "pin-sha256=" >!< tolower( pkp ) ) {
   exit( 0 );
 }
 
+replace_kb_item( name:"hpkp/available", value:TRUE );
+set_kb_item( name:"hpkp/available/port", value:port );
 set_kb_item( name:"hpkp/" + port + "/banner", value:pkp );
 
 if( "includesubdomains" >!< tolower( pkp ) ) {
@@ -110,7 +116,7 @@ if( "includesubdomains" >!< tolower( pkp ) ) {
 ma = eregmatch( pattern:'max-age=([0-9]+)', string:pkp, icase:TRUE );
 
 if( ! isnull( ma[1] ) )
-  set_kb_item( name:"hpkp/max_age/" + port, value:ma[1] ); # TODO: We could give some recommendation about a sensible max-age here
+  set_kb_item( name:"hpkp/max_age/" + port, value:ma[1] );
 
 log_message( port:port, data:'The remote HTTPS server is sending the "HTTP Public Key Pinning" header.\n\nHPKP-Header:\n\n' + pkp );
 exit( 0 );
