@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id
+# $Id: gb_cisco_wsa_cisco-sa-20170816-csa.nasl 7407 2017-10-12 06:55:43Z cfischer $
 #
 # Cisco Web Security Appliance SNMP Polling Information Disclosure Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-6783");
  script_tag(name: "cvss_base", value: "4.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_version("$Revision: 6947 $");
+ script_version("$Revision: 7407 $");
 
  script_name("Cisco Web Security Appliance SNMP Polling Information Disclosure Vulnerability");
 
@@ -58,7 +58,7 @@ attacker must know the configured SNMP community string to exploit this vulnerab
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-08-17 06:21:42 +0200 (Thu, 17 Aug 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-10-12 08:55:43 +0200 (Thu, 12 Oct 2017) $");
  script_tag(name: "creation_date", value: "2017-08-17 10:48:31 +0700 (Thu, 17 Aug 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_check_mk_agent_detect.nasl 6839 2017-08-03 07:56:46Z cfischer $
+# $Id: gb_check_mk_agent_detect.nasl 7404 2017-10-11 14:20:29Z cfischer $
 #
 # Check_MK Agent Detection
 #
@@ -30,14 +30,14 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.140096");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6839 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-03 09:56:46 +0200 (Thu, 03 Aug 2017) $");
+  script_version("$Revision: 7404 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-11 16:20:29 +0200 (Wed, 11 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-12-12 12:33:00 +0100 (Mon, 12 Dec 2016)");
   script_name("Check_MK Agent Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Service detection");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
-  script_dependencies("find_service1.nasl");
+  script_dependencies("find_service5.nasl");
   script_require_ports("Services/check_mk_agent", 6556);
 
   script_tag(name:"summary", value:"This script performs detection of a Check_MK agent.");

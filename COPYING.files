@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 11 Oct 2017 08:52:05 +0200
+# Automatically created on:  Thu, 12 Oct 2017 09:46:53 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47474,6 +47474,7 @@
 2017/apache/gb_apache_openmeetings_mult_vuln.nasl: GPLv2+
 2017/apache/gb_apache_openmeetings_xml_valid_vuln.nasl: GPLv2+
 2017/apache/gb_apache_optionsbleed.nasl: GPLv2+
+2017/apache/gb_apache_optionsbleed_version.nasl: GPLv2+
 2017/apache/gb_apache_struts_problem_report_xss_vuln.nasl: GPLv2+
 2017/apache/gb_apache_wicket_csrf_detect_vuln.nasl: GPLv2+
 2017/apache/gb_apache_wicket_info_disc_vuln.nasl: GPLv2+
@@ -47723,6 +47724,9 @@
 2017/deb_3989.nasl: GPLv2+
 2017/deb_3990.nasl: GPLv2+
 2017/deb_3991.nasl: GPLv2+
+2017/deb_3992.nasl: GPLv2+
+2017/deb_3993.nasl: GPLv2+
+2017/deb_3994.nasl: GPLv2+
 2017/digium/gb_asterisk_rtp_info_leak_vuln.nasl: GPLv2+
 2017/drupal/gb_drupal_core_mult_vuln_SA-CORE-2015-001_lin.nasl: GPLv2+
 2017/drupal/gb_drupal_core_mult_vuln_SA-CORE-2015-001_win.nasl: GPLv2+
@@ -47968,6 +47972,7 @@
 2017/gb_asterisk_mult_vuln_aug17.nasl: GPLv2+
 2017/gb_asterisk_mult_vuln_may17.nasl: GPLv2+
 2017/gb_atheme_dos_vuln.nasl: GPLv2+
+2017/gb_atlassian_bamboo_rce_vuln1.nasl: GPLv2+
 2017/gb_atlassian_bamboo_rce_vuln.nasl: GPLv2+
 2017/gb_atlassian_bamboo_struts_vuln.nasl: GPLv2+
 2017/gb_atlassian_bitbucket_dir_trav_vuln.nasl: GPLv2+
@@ -49732,6 +49737,7 @@
 2017/gb_http_dir_trav.nasl: GPLv2+
 2017/gb_huawei_quidway_priv_esc_vuln.nasl: GPLv2+
 2017/gb_humax_gateway_file_dwnld_vuln.nasl: GPLv2+
+2017/gb_iball_baton_150m_default_credentials.nasl: GPLv2+
 2017/gb_iball_baton_150m_wireless_router_auth_bypass_vuln.nasl: GPLv2+
 2017/gb_ibm_db2_exceptional_conditions_bof_vuln_lin.nasl: GPLv2+
 2017/gb_ibm_db2_monitoring_nd_audit_info_disclosure_vuln.nasl: GPLv2+
@@ -50481,6 +50487,7 @@
 2017/gb_novell_iprint_client_plugin_parameter_rce_vuln_win.nasl: GPLv2+
 2017/gb_novell_iprint_client_stack_bof_vuln_win.nasl: GPLv2+
 2017/gb_novell_iprint_client_unspecified_rce_vuln_win.nasl: GPLv2+
+2017/gb_ntopng_default_admin_credentials.nasl: GPLv2+
 2017/gb_ntp_config_command_file_overwrite_vuln.nasl: GPLv2+
 2017/gb_ntp_entropy_sec_weakness_brute_force_vuln.nasl: GPLv2+
 2017/gb_ntp_mult_dos_vuln_mar17.nasl: GPLv2+
@@ -51479,6 +51486,7 @@
 2017/gb_unrealircd_authentication_spoofing_vuln.nasl: GPLv2+
 2017/gb_unrealircd_local_priv_esc_vuln.nasl: GPLv2+
 2017/gb_vaadin_javascript_inj_vuln.nasl: GPLv2+
+2017/gb_vacron_nvr_rce_vuln.nasl: GPLv2+
 2017/gb_vbulletin_forum_help_xss_vuln.nasl: GPLv2+
 2017/gb_vbulletin_parse_url_ssrf_vuln.nasl: GPLv2+
 2017/gb_vbulletin_private_messages_auth_bypass_vuln.nasl: GPLv2+
@@ -51654,8 +51662,46 @@
 2017/microsoft/gb_dotnet_framework_kb4040972_n_kb4040971.nasl: GPLv2+
 2017/microsoft/gb_dotnet_framework_kb4040973.nasl: GPLv2+
 2017/microsoft/gb_dotnet_framework_kb4041086.nasl: GPLv2+
+2017/microsoft/gb_ms_ie_mult_vuln_kb4040685.nasl: GPLv2+
+2017/microsoft/gb_ms_kb2553338.nasl: GPLv2+
+2017/microsoft/gb_ms_kb2837599.nasl: GPLv2+
+2017/microsoft/gb_ms_kb2920723.nasl: GPLv2+
+2017/microsoft/gb_ms_kb3172524.nasl: GPLv2+
+2017/microsoft/gb_ms_kb3172531.nasl: GPLv2+
 2017/microsoft/gb_ms_kb3213551.nasl: GPLv2+
+2017/microsoft/gb_ms_kb3213623.nasl: GPLv2+
+2017/microsoft/gb_ms_kb3213630.nasl: GPLv2+
+2017/microsoft/gb_ms_kb3213648.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011068.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011162.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011178.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011179.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011180.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011185.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011194.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011196.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011217.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011222.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011231.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011232.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011236.nasl: GPLv2+
 2017/microsoft/gb_ms_kb4025869.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4041671.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4041676.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4041681.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4041689.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4041690.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4041691.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4041693.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4041944.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4041995.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4042007.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4042067.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4042120.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4042121.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4042122.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4042123.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4042895.nasl: GPLv2+
 2017/microsoft/gb_ms_office_outlook_dos_vuln_macosx.nasl: GPLv2+
 2017/microsoft/gb_ms_outlook_dos_vuln.nasl: GPLv2+
 2017/microsoft/gb_ms_outlook_kb4011110.nasl: GPLv2+
@@ -53052,6 +53098,7 @@ gb_upnp_detect.nasl: GPLv2+
 gb_upnp_os_detection.nasl: GPLv2+
 gb_up_time_detect.nasl: GPLv2+
 gb_uptime_infrastructure_monitor_remote_detect.nasl: GPLv2+
+gb_vacron_nvr_detect.nasl: GPLv2+
 gb_vanderbilt_ip_camera_detect.nasl: GPLv2+
 gb_varnish_detect.nasl: GPLv2+
 gb_veeam_backup_replication_detect_http.nasl: GPLv2+

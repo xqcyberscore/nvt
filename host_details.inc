@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 7259 2017-09-26 06:10:22Z cfischer $
+# $Id: host_details.inc 7406 2017-10-12 06:15:28Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7259 $
+# $Revision: 7406 $
 #
 ###############################################################################
 
@@ -1261,11 +1261,13 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       egrep( pattern:"^Server: squid/([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: squid/([0-9.]+)\.STABLE([0-9.]+)$", string:banner ) || # e.g. Server: squid/2.7.STABLE5
       egrep( pattern:"^dnsmasq-([0-9.]+)$", string:banner ) ||
+      egrep( pattern:"^Server: Jetty\(([0-9.v]+\))$", string:banner ) || # e.g. Server: Jetty(7.3.1.v20110307)
       egrep( pattern:"^Server: nginx/([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: Apache/([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: lighttpd/([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: HASP LM/([0-9.]+)$", string:banner ) || # Is running under windows and linux
       egrep( pattern:"^Server: Mbedthis-Appweb/([0-9.]+)$", string:banner ) || # Is running under various OS variants
+      egrep( pattern:"^Server: Embedthis-http/([0-9.]+)$", string:banner ) || # Is running under various OS variants, banner e.g. Server: Embedthis-http/4.0.0
       egrep( pattern:"^Server: GoAhead-Webs/([0-9.]+)$", string:banner ) || # Is running under various OS variants
       egrep( pattern:"^Server: Allegro-Software-RomPager/([0-9.]+)$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
       egrep( pattern:"^SSH-2\.0-RomSShell_([0-9]+)$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
@@ -1274,6 +1276,7 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       egrep( pattern:"^PowerDNS Authoritative Server ([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Knot DNS ([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^SSH-2\.0-dropbear_([0-9.]+)$", string:banner ) ||
+      egrep( pattern:"^SSH-2\.0-Mocana SSH ([0-9.]+)$", string:banner ) || # platform independent
       egrep( pattern:"^SSH-2\.0-OpenSSH_([0-9.p]+)$", string:banner ) ) {
     return;
   }

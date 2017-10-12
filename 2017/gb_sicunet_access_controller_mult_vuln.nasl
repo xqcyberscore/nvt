@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sicunet_access_controller_mult_vuln.nasl 7191 2017-09-20 04:14:22Z ckuersteiner $
+# $Id: gb_sicunet_access_controller_mult_vuln.nasl 7407 2017-10-12 06:55:43Z cfischer $
 #
 # SICUNET Access Controller Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106672");
-  script_version("$Revision: 7191 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-20 06:14:22 +0200 (Wed, 20 Sep 2017) $");
+  script_version("$Revision: 7407 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-12 08:55:43 +0200 (Thu, 12 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-03-21 09:07:37 +0700 (Tue, 21 Mar 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,6 +45,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
   script_mandatory_keys("lighttpd/banner");
 
   script_tag(name: "summary", value: "SICUNET Access Controller is prone to multiple vulnerabilities.");

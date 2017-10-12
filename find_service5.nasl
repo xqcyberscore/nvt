@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service5.nasl 6849 2017-08-04 07:21:15Z cfischer $
+# $Id: find_service5.nasl 7404 2017-10-11 14:20:29Z cfischer $
 #
 # Service Detection with 'SIP' Request
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108203");
-  script_version("$Revision: 6849 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:21:15 +0200 (Fri, 04 Aug 2017) $");
+  script_version("$Revision: 7404 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-11 16:20:29 +0200 (Wed, 11 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-04 09:08:04 +0200 (Fri, 04 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -86,6 +86,16 @@ if( '\0' >< r )
 if( "SIP/2.0" >< r ) {
   register_service( port:port, proto:"sip", message:"A service supporting the SIP protocol was idendified." );
   log_message( port:port, data:"A service supporting the SIP protocol was idendified." );
+  exit( 0 );
+}
+
+# Check_MK Agent, find_service1.nasl should already do the job but sometimes the Agent behaves strange
+# and only sends data too late. This is a fallback for such a case.
+if( "<<<check_mk>>>" >< r || "<<<uptime>>>" >< r || "<<<services>>>" >< r || "<<<mem>>>" >< r ) {
+  # Check_MK Agents seems to not answer to repeated requests in a short amount of time so saving the response here for later processing.
+  replace_kb_item( name:"check_mk_agent/banner/" + port, value:r );
+  register_service( port:port, proto:"check_mk_agent", message:"A Check_MK Agent seems to be running on this port." );
+  log_message( port:port, data:"A Check_MK Agent seems to be running on this port." );
   exit( 0 );
 }
 

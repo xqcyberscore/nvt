@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sip_os_detection.nasl 6882 2017-08-09 07:05:06Z cfischer $
+# $Id: gb_sip_os_detection.nasl 7402 2017-10-11 13:58:17Z cfischer $
 #
 # SIP Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108201");
-  script_version("$Revision: 6882 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-09 09:05:06 +0200 (Wed, 09 Aug 2017) $");
+  script_version("$Revision: 7402 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-11 15:58:17 +0200 (Wed, 11 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-01 11:13:48 +0200 (Tue, 01 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -73,6 +73,12 @@ if( serverbanner = egrep( pattern:"^Server:(.*)$", string:banner, icase:TRUE ) )
 
   if( "~dfsg" >< serverbanner ) {
     register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  # e.g. Server:Microsoft-Windows-NT/5.1 UPnP/1.0 UPnP-Device-Host/1.0
+  if( "Microsoft-Windows" >< serverbanner ) {
+    register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
     exit( 0 );
   }
 }

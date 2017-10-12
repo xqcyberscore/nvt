@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_43747.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_postgresql_43747.nasl 7406 2017-10-12 06:15:28Z cfischer $
 #
 # PostgreSQL PL/Perl and PL/Tcl Local Privilege Escalation Vulnerability
 #
@@ -24,63 +24,61 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "PostgreSQL is prone to a local privilege-escalation vulnerability.
-
-Exploiting this issue allows local attackers to gain elevated
-privileges and execute arbitrary commands with the privileges of
-the victim.
-
-Versions prior to PostgreSQL 9.0.1 are vulnerable.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100843";
 CPE = "cpe:/a:postgresql:postgresql";
 
-if (description)
+if(description)
 {
- script_oid(SCRIPT_OID);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
- script_tag(name:"creation_date", value:"2010-10-06 12:55:58 +0200 (Wed, 06 Oct 2010)");
- script_bugtraq_id(43747);
- script_tag(name:"cvss_base", value:"6.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.100843");
+  script_version("$Revision: 7406 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-12 08:15:28 +0200 (Thu, 12 Oct 2017) $");
+  script_tag(name:"creation_date", value:"2010-10-06 12:55:58 +0200 (Wed, 06 Oct 2010)");
+  script_bugtraq_id(43747);
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
   script_cve_id("CVE-2010-3433");
+  script_name("PostgreSQL PL/Perl and PL/Tcl Local Privilege Escalation Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_family("Databases");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("postgresql_detect.nasl");
+  script_require_ports("Services/postgresql", 5432);
+  script_mandatory_keys("PostgreSQL/installed");
 
- script_name("PostgreSQL PL/Perl and PL/Tcl Local Privilege Escalation Vulnerability");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/43747");
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/9.0/static/release-9-0-1.html");
+  script_xref(name:"URL", value:"http://www.postgresql.org");
+  script_xref(name:"URL", value:"http://www.postgresql.org/support/security");
 
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/43747");
- script_xref(name : "URL" , value : "http://www.postgresql.org/docs/9.0/static/release-9-0-1.html");
- script_xref(name : "URL" , value : "http://www.postgresql.org");
- script_xref(name : "URL" , value : "http://www.postgresql.org/support/security");
+  tag_summary = "PostgreSQL is prone to a local privilege-escalation vulnerability.";
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Databases");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("postgresql_detect.nasl");
- script_require_ports("Services/postgresql", 5432);
- script_mandatory_keys("PostgreSQL/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  tag_impact = "Exploiting this issue allows local attackers to gain elevated
+  privileges and execute arbitrary commands with the privileges of the victim.";
+
+  tag_affected = "Versions prior to PostgreSQL 9.0.1 are vulnerable.";
+
+  tag_solution = "Updates are available. Please see the references for more information.";
+
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"solution", value:tag_solution);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
+  exit(0);
 }
 
 include("version_func.inc");
-include("misc_func.inc");
 include("host_details.inc");
 
-port = get_app_port(cpe:CPE, nvt:SCRIPT_OID);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if(!port)port = 5432;
-if(!get_tcp_port_state(port))exit(0);
+if( version_is_less( version:vers, test_version:"9.0.1" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"See references" );
+  security_message( port:port, data:report );
+  exit( 0 );
+}
 
-if(!ver =  get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
-
-if(version_is_less(version:ver, test_version:"9.0.1")) {
-  security_message(port:port);
-  exit(0);
-}   
-
-exit(0);
+exit( 99 );

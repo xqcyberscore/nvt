@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiandy_tech_info_disc_vuln.nasl 7376 2017-10-06 14:15:38Z teissa $
+# $Id: gb_tiandy_tech_info_disc_vuln.nasl 7409 2017-10-12 07:17:11Z cfischer $
 #
 # Tiandy IP cameras Sensitive Information Disclosure Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107183");
-  script_version("$Revision: 7376 $");
+  script_version("$Revision: 7409 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-06 16:15:38 +0200 (Fri, 06 Oct 2017) $");
-
+  script_tag(name:"last_modification", value:"$Date: 2017-10-12 09:17:11 +0200 (Thu, 12 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-04 16:39:44 +0530 (Wed, 04 Oct 2017)");
+  script_cve_id("CVE-2017-15236");
   script_name("Tiandy IP cameras Sensitive Information Disclosure Vulnerability");
 
   script_tag(name:"summary", value:"This host has Tiandy IP Camera and is prone to Sensitive Information Disclosure vulnerability.");

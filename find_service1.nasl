@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 7190 2017-09-19 15:19:13Z cfischer $
+# $Id: find_service1.nasl 7402 2017-10-11 13:58:17Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 7190 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-19 17:19:13 +0200 (Tue, 19 Sep 2017) $");
+  script_version("$Revision: 7402 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-11 15:58:17 +0200 (Wed, 11 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -226,7 +226,8 @@ if( r == 'gethostbyaddr: Error 0\n' ) {
   exit( 0 );
 }
 
-if( "GET / HTTP/1.0 : ERROR : INVALID-PORT" >< r ) {
+if( "GET / HTTP/1.0 : ERROR : INVALID-PORT" >< r ||
+    "GET/HTTP/1.0 : ERROR : INVALID-PORT" >< r ) { # nb: Some auth services on e.g. Windows are responding with such a different response
   report_service( port:port, svc:"auth", banner:r );
   exit( 0 );
 }
