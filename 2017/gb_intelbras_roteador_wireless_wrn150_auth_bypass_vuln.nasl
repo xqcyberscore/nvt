@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intelbras_roteador_wireless_wrn150_auth_bypass_vuln.nasl 7386 2017-10-09 13:42:15Z cfischer $
+# $Id: gb_intelbras_roteador_wireless_wrn150_auth_bypass_vuln.nasl 7436 2017-10-16 05:44:20Z asteins $
 #
 # Intelbras Roteador Wireless N WRN Device Authentication Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:intelbras_roteador:wireless-n_wrn";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812015");
-  script_version("$Revision: 7386 $");
+  script_version("$Revision: 7436 $");
   script_cve_id("CVE-2017-14942");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-09 15:42:15 +0200 (Mon, 09 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-16 07:44:20 +0200 (Mon, 16 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-06 20:36:50 +0530 (Fri, 06 Oct 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Intelbras Roteador Wireless N WRN Device Authentication Bypass Vulnerability");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_arbitrary_code_exec_vuln_june16.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_apache_activemq_arbitrary_code_exec_vuln_june16.nasl 7431 2017-10-13 13:02:56Z cfischer $
 #
 # Apache ActiveMQ Arbitrary Code Execution Vulnerability June16
 #
@@ -29,14 +29,21 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808146");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 7431 $");
   script_cve_id("CVE-2016-3088");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-13 15:02:56 +0200 (Fri, 13 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-06-06 16:11:05 +0530 (Mon, 06 Jun 2016)");
-  script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache ActiveMQ Arbitrary Code Execution Vulnerability June16");
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_dependencies("gb_apache_activemq_detect.nasl");
+  script_require_ports("Services/www", 8161, "Services/activemq_jms", 61616);
+  script_mandatory_keys("ActiveMQ/installed");
+
+  script_xref(name:"URL", value:"http://activemq.apache.org/security-advisories.data/CVE-2016-3088-announcement.txt");
 
   script_tag(name:"summary", value:"This host is running Apache ActiveMQ and is
   prone to arbitrary code execution vulnerability.");
@@ -59,40 +66,21 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to Apache ActiveMQ Version 5.14.0 or
   later. For updates refer to http://activemq.apache.org");
 
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://activemq.apache.org/security-advisories.data/CVE-2016-3088-announcement.txt");
-
-  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_category(ACT_GATHER_INFO);
-  script_family("Web application abuses");
-  script_dependencies("gb_apache_activemq_detect.nasl");
-  script_require_ports("Services/www", 8161);
-  script_mandatory_keys("ActiveMQ/installed");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-appVer = "";
-appPort = "";
+if( ! appVer = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
-## Get Port
-if(!appPort = get_app_port(cpe:CPE)){
-  exit(0);
+if( version_in_range( version:appVer, test_version:"5.0.0", test_version2:"5.13.2" ) ) {
+  report = report_fixed_ver( installed_version:appVer, fixed_version:"5.14.0" );
+  security_message( data:report, port:0 );
+  exit( 0 );
 }
 
-## Get version
-if(!appVer = get_app_version(cpe:CPE, port:appPort)){
-  exit(0);
-}
-
-## Check the vulnerable version 
-if(version_in_range(version:appVer, test_version:"5.0.0", test_version2:"5.13.2"))
-{
-  report = report_fixed_ver(installed_version:appVer, fixed_version:"5.14.0");
-  security_message(data:report, port:appPort);
-  exit(0);
-}
+exit( 99 );

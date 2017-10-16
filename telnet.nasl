@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: telnet.nasl 6775 2017-07-20 14:25:57Z cfischer $
+# $Id: telnet.nasl 7415 2017-10-13 05:18:52Z cfischer $
 #
 # Check for Telnet Server
 #
 # Authors:
-# Michael Meyer  <michael.meyer@greenbone.net>
+# Michael Meyer <michael.meyer@greenbone.net>
 #
 # Copyright:
 # Copyright (c) 2009 Greenbone Networks GmbH
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100074");
-  script_version("$Revision: 6775 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 16:25:57 +0200 (Thu, 20 Jul 2017) $");
+  script_version("$Revision: 7415 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-13 07:18:52 +0200 (Fri, 13 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-03-24 15:43:44 +0100 (Tue, 24 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Service detection");
-  script_dependencies("find_service1.nasl", "find_service2.nasl", "find_service_3digits.nasl", "mysql_version.nasl", "secpod_open_tcp_ports.nasl");
+  script_dependencies("find_service6.nasl", "mysql_version.nasl", "secpod_open_tcp_ports.nasl");
   script_mandatory_keys("TCP/PORTS");
 
   tag_summary = "A telnet Server is running at this host.
@@ -88,6 +88,7 @@ no_telnet = make_list( "<<<check_mk>>>", "\\check_mk\.ini", "<<<uptime>>>", "<<<
                        "\-nthreads", "NServer:", # Unknown service on 34903/tcp
                        "^ERROR :Closing Link:.*Throttled: Reconnecting too fast", # unlrealircd
                        "^:.*NOTICE (Auth|AUTH).*Looking up your hostname", # unlrealircd
+                       "^TDMM", #LANDesk Targeted Multicast Service, 33354/tcp
                        "\(Eggdrop v.* Eggheads\)" ); # Eggdrop Bot
 
 function no_telnet_banner( banner ) {
@@ -96,7 +97,7 @@ function no_telnet_banner( banner ) {
 
   if( ! banner ) return TRUE;
 
-  foreach nt ( no_telnet ) {
+  foreach nt( no_telnet ) {
     if( egrep( pattern:nt, string:banner ) )
       return TRUE;
   }

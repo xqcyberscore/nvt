@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: X.nasl 5943 2017-04-12 14:44:26Z antu123 $
-# Description: X Server
+# $Id: X.nasl 7422 2017-10-13 08:38:16Z cfischer $
+#
+# X Server Detection
 #
 # Authors:
 # John Jackson <jjackson@attrition.org>
@@ -26,22 +28,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "This plugin detects X Window servers.
-
-X11 is a client - server protocol. Basically, the server is in charge of the 
-screen, and the clients connect to it and send several requests like drawing 
-a window or a menu, and the server sends events back to the clients, such as 
-mouse clicks, key strokes, and so on...
-
-An improperly configured X server will accept connections from clients from 
-anywhere. This allows an attacker to make a client connect to the X server to 
-record the keystrokes of the user, which may contain sensitive information,
-such as account passwords.
-This can be prevented by using xauth, MIT cookies, or preventing
-the X server from listening on TCP (a Unix sock is used for local 
-connections)";
+###############################################################################
 
 # Fri May 12 15:58:21 GMT 2000
 # Test for an "open" X server
@@ -50,55 +37,59 @@ connections)";
 
 if(description)
 {
-  script_id(10407);
-  script_version("$Revision: 5943 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.10407");
+  script_version("$Revision: 7422 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-13 10:38:16 +0200 (Fri, 13 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-1999-0526");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("X Server Detection");
+  script_category(ACT_GATHER_INFO);
+  script_family("Service detection");
+  script_copyright("This script is Copyright (C) 2000 John Jackson");
+  script_dependencies("find_service.nasl");
+  script_require_ports(6000, 6001, 6002, 6003, 6004, 6005, 6006, 6007, 6008, 6009);
 
-  name = "X Server";
-  script_name(name);
+  tag_summary = "This plugin detects X Window servers.
 
- summary = "An X Window System Server is present";
+  X11 is a client - server protocol. Basically, the server is in charge of the 
+  screen, and the clients connect to it and send several requests like drawing 
+  a window or a menu, and the server sends events back to the clients, such as 
+  mouse clicks, key strokes, and so on...
 
- script_category(ACT_GATHER_INFO);
+  An improperly configured X server will accept connections from clients from 
+  anywhere. This allows an attacker to make a client connect to the X server to 
+  record the keystrokes of the user, which may contain sensitive information,
+  such as account passwords.
+  This can be prevented by using xauth, MIT cookies, or preventing
+  the X server from listening on TCP (a Unix sock is used for local 
+  connections)";
+
+  script_tag(name:"summary", value:tag_summary);
+
   script_tag(name:"qod_type", value:"remote_banner");
- family = "General";
- script_family(family);
- script_dependencies("find_service.nasl");
- script_require_ports(6000, 6001, 6002, 6003, 6004, 6005, 6006, 6007, 6008, 6009);
- 
- script_copyright("This script is Copyright (C) 2000 John Jackson");
-  script_tag(name : "summary" , value : tag_summary);
- exit(0);
-}
 
-#
-# The script code starts here
-#
+  exit(0);
+}
 
 include("cpe.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.10407";
-SCRIPT_DESC = "X Server";
+function riptext( data, begin, length ) {
 
-function riptext(data, begin, length)
-{
-  count=begin;
-  end=begin+length-1;
-  if (end >= strlen(data))
-    end = strlen(data) - 1;
-  text="";
-  for(count=begin;count<=end;count=count+1)
-  {
-    text = string(text + data[count]);
+  local_var data, begin, length, cound, end, text;
+
+  count = begin;
+  end = begin + length - 1;
+  if( end >= strlen( data ) )
+    end = strlen( data ) - 1;
+  text = "";
+
+  for( count = begin; count <= end; count++ ) {
+    text = string( text + data[count] );
   }
-  return(text);
+  return text;
 }
 
 ####   ##   # ###
@@ -132,70 +123,70 @@ function riptext(data, begin, length)
 # does not process connections without a cookie--everything you'll get
 # will be a stale connection
 
-for(port=6000; port<6010; port++)
-{
-  if(get_port_state(port))
-  { 
-    tcpsock = open_sock_tcp(port);
-    if(tcpsock)
-    {
-    xwininfo = raw_string(108,0,11,0,0,0,0,0,0,0,0,0);
-    # change the xwininfo bytes above to force servers to send a version mismatch
+xwininfo = raw_string(108,0,11,0,0,0,0,0,0,0,0,0);
+# change the xwininfo bytes above to force servers to send a version mismatch
 
-    send(socket:tcpsock, data:xwininfo);
-    tcpresult = recv(socket:tcpsock, length:32);
-    close(tcpsock);
+for( port = 6000; port < 6010; port++ ) {
 
-    if(tcpresult && strlen(tcpresult) >= 8)
-    {
-      result = ord(tcpresult[0]);
+  if( ! get_port_state( port ) ) continue;
+  soc = open_sock_tcp( port );
+  if( ! soc ) continue;
 
-      if (result == 0) # Failed
-          {
-            major = ord(tcpresult[2]) + 256 * ord(tcpresult[3]);
-            minor = ord(tcpresult[4]) + 256 * ord(tcpresult[5]);
-            ver = strcat(major, ".", minor);
-            set_kb_item(name: "X11/"+port+"/version", value: ver);
+  extra = "";
+  send( socket:soc, data:xwininfo );
+  res = recv( socket:soc, length:32 );
+  close( soc );
+  if( res && strlen(res) >= 8 ) {
 
-            ## build cpe and store it as host_detail
-            register_and_report_cpe(app:"X Windows Server", ver:ver, base:"cpe:/a:x.org:x11:", expr:"^([0-9.]+([a-z0-9]+)?)");
+    result = ord( res[0] );
 
-            textresult=riptext(data:tcpresult, begin:8, length:ord(tcpresult[1]));
-            set_kb_item(name: "X11/"+port+"/answer", value: textresult);
-            set_kb_item(name: "X11/"+port+"/open", value: FALSE);
+    if( result == 0 ) { # Failed
+      major = ord( res[2] ) + 256 * ord( res[3] );
+      minor = ord( res[4] ) + 256 * ord( res[5] );
+      ver = strcat( major, ".", minor );
+      set_kb_item( name:"X11/" + port + "/version", value:ver );
 
-          }
+      textres = riptext( data:res, begin:8, length:ord( res[1] ) );
+      if( textres ) {
+        set_kb_item( name:"X11/" + port + "/answer", value:textres );
+        extra = "Server answered with: " + textres;
+      }
+      set_kb_item( name:"X11/" + port + "/open", value:FALSE );
 
-      if (result == 1) # Success
-          {
-            major = ord(tcpresult[2]) + 256 * ord(tcpresult[3]);
-            minor = ord(tcpresult[4]) + 256 * ord(tcpresult[5]);
-            ver = strcat(major, ".", minor);
-            set_kb_item(name: "X11/"+port+"/version", value: ver);
+      register_service( port:port, proto:"X11" );
+      register_and_report_cpe( app:"X Windows Server", ver:ver, base:"cpe:/a:x.org:x11:", expr:"^([0-9.]+([a-z0-9]+)?)", regPort:port, insloc:port + "/tcp", extra:"Server answered with: " + textres );
+    }
 
-            ## build cpe and store it as host_detail
-            register_and_report_cpe(app:"X Windows Server", ver:ver, base:"cpe:/a:x.org:x11:", expr:"^([0-9.]+([a-z0-9]+)?)");
+    if( result == 1 ) { # Success
+      major = ord( res[2] ) + 256 * ord( res[3] );
+      minor = ord( res[4] ) + 256 * ord( res[5] );
+      ver = strcat( major, ".", minor );
+      set_kb_item( name:"X11/" + port + "/version", value:ver );
+      textres = riptext( data:res, begin:40, length:ord( res[24] ) );
+      if( textres ) {
+        set_kb_item( name:"X11/" + port + "/answer", value:textres );
+        extra = "Server answered with: " + textres;
+      }
+      set_kb_item( name:"X11/" + port + "/open", value:TRUE );
+      replace_kb_item( name:"X11/open", value:TRUE );
 
-            textresult=riptext(data:tcpresult, begin:40, length:ord(tcpresult[24]));
-            set_kb_item(name: "X11/"+port+"/answer", value: textresult);
-            set_kb_item(name: "X11/"+port+"/open", value: TRUE);
+      register_service( port:port, proto:"X11" );
+      register_and_report_cpe( app:"X Windows Server", ver:ver, base:"cpe:/a:x.org:x11:", expr:"^([0-9.]+([a-z0-9]+)?)", regPort:port, insloc:port + "/tcp", extra:extra );
+    }
 
-	 # security_message moved to open_X11_server.nasl
-	    register_service(port: port, proto: "X11");
-          }
+    if( result == 2 ) { # Authenticate
 
-      if (result == 2) # Authenticate
-          {
-            textresult=riptext(data:tcpresult, begin:8, length:ord(tcpresult[1]));
-            set_kb_item(name: "X11/"+port+"/answer", value: textresult);
-            set_kb_item(name: "X11/"+port+"/open", value: FALSE);
+      textres = riptext( data:res, begin:8, length:ord( res[1] ) );
+      if( textres ) {
+        set_kb_item( name:"X11/" + port + "/answer", value:textres );
+        extra = "Server answered with: " + textres;
+      }
 
-	    register_service(port: port, proto: "X11");
-          }
+      set_kb_item( name:"X11/" + port + "/open", value:FALSE );
+      register_service( port:port, proto:"X11" );
+      register_and_report_cpe( app:"X Windows Server", cpename:"cpe:/a:x.org:x11", regPort:port, insloc:port + "/tcp", extra:extra );
+    }
+  }
+}
 
-    } #if tcpresult
-   } #if tcpsock
-  } #if port open
-} #for portnum
-
-exit(0);
+exit( 0 );

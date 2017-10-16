@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 6905 2017-08-11 11:50:56Z cfischer $
+# $Id: cgi_directories.nasl 7428 2017-10-13 11:45:53Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 6905 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-11 13:50:56 +0200 (Fri, 11 Aug 2017) $");
+  script_version("$Revision: 7428 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-13 13:45:53 +0200 (Fri, 13 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,8 @@ if(description)
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Web application abuses");
   script_dependencies("webmirror.nasl", "DDI_Directory_Scanner.nasl", "gb_twonky_server_detect.nasl",
-  "gb_owncloud_detect.nasl", "gb_adobe_aem_remote_detect.nasl", "gb_libreoffice_online_detect.nasl"); # gb_* are additional dependencies setting auth_required
+  "gb_owncloud_detect.nasl", "gb_adobe_aem_remote_detect.nasl", "gb_libreoffice_online_detect.nasl",
+  "gb_apache_activemq_detect.nasl", "gb_orientdb_server_detect.nasl"); # gb_* are additional dependencies setting auth_required
   script_require_ports("Services/www", 80);
 
   script_tag(name:"summary", value:"The script consolidates various information for CGI scanning.

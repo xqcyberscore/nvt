@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orientdb_server_clickjacking_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_orientdb_server_clickjacking_vuln.nasl 7411 2017-10-12 09:20:45Z asteins $
 #
 # OrientDB Server Clickjacking Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:orientdb:orientdb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808754");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 7411 $");
   script_cve_id("CVE-2015-2918");
   script_bugtraq_id(76610);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-12 11:20:45 +0200 (Thu, 12 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-08-08 18:00:11 +0530 (Mon, 08 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OrientDB Server Clickjacking Vulnerability");
@@ -72,7 +72,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_orientdb_server_detect.nasl");
-  script_mandatory_keys("OrientDB/Server/Installed");
+  script_mandatory_keys("OrientDB/Installed");
   script_require_ports("Services/www", 2480);
   exit(0);
 }
@@ -80,21 +80,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-#Variable initialize
-dbPort = "";
-dbVer = "";
-
-## Get Port
 if(!dbPort = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-## Get the version
 if(!dbVer = get_app_version(cpe:CPE, port:dbPort)){
  exit(0);
 }
 
-##Check for vulnerable version
 if(version_is_less(version:dbVer, test_version:"2.0.15") ||
    version_is_equal(version:dbVer, test_version:"2.1.0"))
 {

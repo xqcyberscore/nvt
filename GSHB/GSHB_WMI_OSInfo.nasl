@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_OSInfo.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_WMI_OSInfo.nasl 7421 2017-10-13 08:32:05Z emoss $
 #
 # Get OS Version, OS Type, OS Servicepack and OS Name over WMI (win)
 #
@@ -33,21 +33,19 @@ tag_summary = "Get OS Version, OS Type, OS Servicepack and OS Name over WMI (win
 if(description)
 {
   script_id(96999);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 7421 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-13 10:32:05 +0200 (Fri, 13 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");  
   script_name("Get OS Version, OS Type, OS Servicepack and OS Name over WMI (win)");
 
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
-  script_mandatory_keys("Compliance/Launch/GSHB");
-  script_mandatory_keys("Tools/Present/wmi");
-  script_dependencies("smb_login.nasl", "secpod_reg_enum.nasl");
+  script_mandatory_keys("WMI/access_successful");
+  script_dependencies("smb_login.nasl", "secpod_reg_enum.nasl", "gb_wmi_access.nasl");
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }

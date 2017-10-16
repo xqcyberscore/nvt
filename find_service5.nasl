@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service5.nasl 7404 2017-10-11 14:20:29Z cfischer $
+# $Id: find_service5.nasl 7414 2017-10-12 14:22:07Z cfischer $
 #
 # Service Detection with 'SIP' Request
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108203");
-  script_version("$Revision: 7404 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-11 16:20:29 +0200 (Wed, 11 Oct 2017) $");
+  script_version("$Revision: 7414 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-12 16:22:07 +0200 (Thu, 12 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-04 09:08:04 +0200 (Fri, 04 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -96,6 +96,13 @@ if( "<<<check_mk>>>" >< r || "<<<uptime>>>" >< r || "<<<services>>>" >< r || "<<
   replace_kb_item( name:"check_mk_agent/banner/" + port, value:r );
   register_service( port:port, proto:"check_mk_agent", message:"A Check_MK Agent seems to be running on this port." );
   log_message( port:port, data:"A Check_MK Agent seems to be running on this port." );
+  exit( 0 );
+}
+
+# 0x00:  70 02 77 61                                        p.wa 
+if( hexstr( r ) =~ "^70027761$" ) {
+  register_service( port:port, proto:"activemq_mqtt", message:"A ActiveMQ MQTT service seems to be running on this port." );
+  log_message( port:port, data:"A ActiveMQ MQTT service seems to be running on this port." );
   exit( 0 );
 }
 

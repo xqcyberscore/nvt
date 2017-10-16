@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_detect.nasl 5796 2017-03-30 14:15:11Z cfi $
+# $Id: gb_apache_struts_detect.nasl 7424 2017-10-13 09:34:30Z santu $
 #
 # Apache Struts Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800276");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5796 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 16:15:11 +0200 (Thu, 30 Mar 2017) $");
+  script_version("$Revision: 7424 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-13 11:34:30 +0200 (Fri, 13 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache Struts Version Detection");
@@ -55,6 +55,8 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
+include("version_func.inc");
+
 
 asPort = get_http_port( default:8080 );
 
@@ -67,79 +69,138 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
   ## While for some versions path has only "/docs"
   foreach url (make_list(dir + "/docs/docs", dir +"/docs"))
   {
-
     # Main doc page
+    ##To confirm application
     rcvRes = http_get_cache( item:url + "/index.html", port:asPort);
 
-    ##Home Doc page
-    sndReq2 = http_get(item:url + "/WW/cwiki.apache.org/WW/home.html", port:asPort);
-    rcvRes2 = http_keepalive_send_recv(port:asPort, data:sndReq2);
+    ##Apache Struts2 Version Check from /struts2-core-apidocs/help-doc.html
+    sndReq1 = http_get(item:url + "/struts2-core-apidocs/help-doc.html", port:asPort);
+    rcvRes1 = http_keepalive_send_recv(port:asPort, data:sndReq1);
 
-    ##For some versions path is different
-    if(rcvRes2 !~ "HTTP/1.. 200 OK")
+
+    if(rcvRes1 !~ "HTTP/1.. 200" || "Struts 2 Core" >!< rcvRes1)
     {
-      rcvRes2 = http_get_cache( item:url + "/home.html", port:asPort );
+      ##Apache Struts2 Version Check from /struts2-core-apidocs/overview-summary.html
+      sndReq1 = http_get(item:url + "/struts2-core-apidocs/overview-summary.html", port:asPort);
+      rcvRes1 = http_keepalive_send_recv(port:asPort, data:sndReq1);
+      if(rcvRes1 !~ "HTTP/1.. 200" || "Struts 2 Core" >!< rcvRes1)
+      {
+        ##Apache Struts2 Version Check from /struts2-core-apidocs/index-all.html
+        sndReq1 = http_get(item:url + "/struts2-core-apidocs/index-all.html", port:asPort);
+        rcvRes1 = http_keepalive_send_recv(port:asPort, data:sndReq1);
+
+        if(rcvRes1 !~ "HTTP/1.. 200" || "Struts 2 Core" >!< rcvRes1)
+        {
+          ##src dir
+          sndReq2 = http_get(item:dir + "/src/pom.xml", port:asPort);
+          rcvRes2 = http_keepalive_send_recv(port:asPort, data:sndReq2);
+          if(rcvRes2 !~ "HTTP/1.. 200" || "Struts 2 Core" >!< rcvRes2)
+          {
+            sndReq2 = http_get(item:dir + "/src/apps/pom.xml", port:asPort);
+            rcvRes2 = http_keepalive_send_recv(port:asPort, data:sndReq2);
+          }
+        }
+      }
     }
 
-    # guides doc page
-    sndReq3 = http_get(item:url + "/WW/cwiki.apache.org/WW/guides.html", port:asPort);
+    ##Home Doc page
+    sndReq3 = http_get(item:url + "/WW/cwiki.apache.org/WW/home.html", port:asPort);
     rcvRes3 = http_keepalive_send_recv(port:asPort, data:sndReq3);
 
     ##For some versions path is different
     if(rcvRes3 !~ "HTTP/1.. 200 OK")
     {
+      rcvRes3 = http_get_cache( item:url + "/home.html", port:asPort );
+    }
+
+    # guides doc page
+    sndReq4 = http_get(item:url + "/WW/cwiki.apache.org/WW/guides.html", port:asPort);
+    rcvRes4 = http_keepalive_send_recv(port:asPort, data:sndReq4);
+
+
+    ##For some versions path is different
+    if(rcvRes4 !~ "HTTP/1.. 200 OK")
+    {
       sndReq = http_get(item:url + "/guides.html", port:asPort );
-      rcvRes3 = http_keepalive_send_recv( port:asPort, data:sndReq );
+      rcvRes4 = http_keepalive_send_recv( port:asPort, data:sndReq );
     }
 
     ## searching for Struts version in different possible files
-    sndReq4 = http_get( item:dir + "/src/src/site/xdoc/index.xml", port:asPort );
-    rcvRes4 = http_keepalive_send_recv( port:asPort, data:sndReq3 );
-
-    sndReq5 = http_get( item:dir + "/utils.js", port:asPort );
+    sndReq5 = http_get( item:dir + "/src/src/site/xdoc/index.xml", port:asPort );
     rcvRes5 = http_keepalive_send_recv( port:asPort, data:sndReq5 );
 
-    if(("Struts" >< rcvRes && ("Apache" >< rcvRes || "apache" >< rcvRes ) ) ||
-        ( "Getting Started" >< rcvRes2 && "Home" >< rcvRes2 && "Distributions" >< rcvRes2 ) ||
-        ( "Migration Guide" >< rcvRes3 && "Core Developers Guide" >< rcvRes3 && "Release Notes" >< rcvRes3 ) ||
-          "Apache Struts" >< rcvRes4  || "var StrutsUtils =" >< rcvRes5 ) {
 
-      version = "unknown";
- 
-      strutsVer = eregmatch( pattern:">Version Notes (([0-9]+).([0-9]+).([0-9]+))", string:rcvRes3);
-      if(isnull( strutsVer[1] ) ) 
+    sndReq6 = http_get( item:dir + "/utils.js", port:asPort );
+    rcvRes6 = http_keepalive_send_recv( port:asPort, data:sndReq6 );
+
+
+    if(("Struts" >< rcvRes && ("Apache" >< rcvRes || "apache" >< rcvRes ) ) ||
+        ((("title>API Help" >< rcvRes1) || ('"overviewSummary"' >< rcvRes1) ||
+          (rcvRes1 =~ "apache.struts2")) && "Struts 2 Core" >< rcvRes1) ||
+        (">Apache Struts 2<" >< rcvRes2 || ">Struts 2 Webapps<" >< rcvRes2) ||
+        ( "Getting Started" >< rcvRes3 && "Home" >< rcvRes3 && "Distributions" >< rcvRes3 ) ||
+        ( "Migration Guide" >< rcvRes4 && "Core Developers Guide" >< rcvRes4 && "Release Notes" >< rcvRes4 ) ||
+          "Apache Struts" >< rcvRes5  || "var StrutsUtils =" >< rcvRes6 )
+    {
+
+      ##Check version of Struts2 first         
+      strutsVer = eregmatch( pattern:"Struts 2 Core ([0-9A-Z.-]+) API", string:rcvRes1);
+      if(strutsVer[1]){
+        strutsVersion = strutsVer[1] ;
+      } else 
       {
-        strutsVer = eregmatch( pattern:"Release Notes ([0-9]\.[0-9.]+)", string:rcvRes2);
-        if(isnull(strutsVer[1]))
+        strutsdata = eregmatch( pattern:"<modelVersion(.*)<packaging>", string:rcvRes2);
+        strutsVer = eregmatch( pattern:"<version>([0-9A-Z.-]+)</version>", string:strutsdata[1]);
+        if(strutsVer[1]){
+          strutsVersion = strutsVer[1] ;
+        } else 
         {
-          strutsVer = eregmatch( pattern:"Release Notes ([0-9]\.[0-9.]+)", string:rcvRes3 );
-          if( isnull( strutsVer[1] ) ) 
+          strutsVer = eregmatch( pattern:">Version Notes (([0-9]+).([0-9]+).([0-9.]+))", string:rcvRes4);
+          ## >Version Notes 2.5.10.1<
+          ## guides.html page is not updated after version "2.5.10.1",
+          ## So if version is less than 2.5.10.1 , version detection is proper.
+          ## Else if version detected is 2.5.10.1, it can be 2.5.10.1 or later.
+          if(strutsVer[1] && version_is_less(version: strutsVer[1], test_version: "2.5.10.1")){
+            strutsVersion = strutsVer[1] ;
+          } else 
           {
-            strutsVer = eregmatch( pattern:">version ([0-9.]+)", string:rcvRes4 );
-            if( ! isnull( strutsVer[1] ) ) version = strutsVer[1];
-          } else {
-            version = strutsVer[1];
+            strutsVer = eregmatch( pattern:"Release Notes ([0-9]\.[0-9.]+)", string:rcvRes3);
+            if(strutsVer[1]){
+              strutsVersion = strutsVer[1] ;
+            } else 
+            {
+              strutsVer = eregmatch( pattern:"Release Notes ([0-9]\.[0-9.]+)", string:rcvRes4 );
+              ##>Release Notes 2.0.14<
+              ##guides.html page is not updated after version 2.0.14, So if version is less than
+              ## 2.0.14, version detection is proper. Else if version detected is 2.0.14,it can be
+              ## 2.0.14 or later.
+              if(strutsVer[1] && version_is_less(version: strutsVer[1], test_version: "2.0.14")){
+                strutsVersion = strutsVer[1] ;
+              } else
+              {
+                strutsVer = eregmatch( pattern:">version ([0-9.]+)", string:rcvRes5 );
+                if(strutsVer[1]){
+                  strutsVersion = strutsVer[1];
+                }
+              }
+            }
           }
-        } else {
-          version = strutsVer[1];
         }
-      } else { 
-        version = strutsVer[1];
       }
-      
-      tmp_version = version + " under " + install;
+
+      tmp_version = strutsVersion + " under " + install;
       set_kb_item( name:"www/" + asPort + "/Apache/Struts", value:tmp_version);
       set_kb_item( name:"ApacheStruts/installed", value:TRUE);
 
       ## Build CPE
-      cpe = build_cpe( value:version, exp: "^([0-9.]+)", base: "cpe:/a:apache:struts:" );
+      cpe = build_cpe( value:strutsVersion, exp: "^([0-9A-Z.-]+)", base: "cpe:/a:apache:struts:" );
       if(isnull(cpe))
         cpe = 'cpe:/a:apache:struts';
   
       register_product(cpe: cpe, location: install, port: asPort);
  
       log_message( data: build_detection_report( app:"Apache Struts",
-                                                 version: version,
+                                                 version: strutsVersion,
                                                  install: install,
                                                  cpe: cpe,
                                                  concluded: tmp_version),

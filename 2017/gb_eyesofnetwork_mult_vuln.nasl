@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eyesofnetwork_mult_vuln.nasl 7339 2017-10-04 11:56:30Z asteins $
+# $Id: gb_eyesofnetwork_mult_vuln.nasl 7410 2017-10-12 09:08:34Z cfischer $
 #
 # Eyes Of Network (EON) Multiple Vulnerabilities
 #
@@ -30,14 +30,14 @@ CPE = "cpe:/a:eyes_of_network:eyes_of_network";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140346");
-  script_version("$Revision: 7339 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-04 13:56:30 +0200 (Wed, 04 Oct 2017) $");
+  script_version("$Revision: 7410 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-12 11:08:34 +0200 (Thu, 12 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-09-04 13:33:34 +0700 (Mon, 04 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-13780", "CVE-2017-14118", "CVE-2017-14119", "CVE-2017-14753",
-      "CVE-2017-14983", "CVE-2017-14984", "CVE-2017-14985");
+                "CVE-2017-14983", "CVE-2017-14984", "CVE-2017-14985", "CVE-2017-15188");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
@@ -67,13 +67,13 @@ parameter to module/tool_all/select_tool.php. (CVE-2017-14118)
 popen calls, which allows remote attackers to execute arbitrary commands via shell metacharacters in a
 parameter. (CVE-2017-14119)
 
-- Multiple cross-site scripting (XSS) vulnerabilities. (CVE-2017-14753, CVE-2017-14983, CVE-2017-14984, CVE-2017-14985)");
+- Multiple cross-site scripting (XSS) vulnerabilities. (CVE-2017-14753, CVE-2017-14983, CVE-2017-14984, CVE-2017-14985, CVE-2017-15188)");
 
   script_tag(name: "vuldetect", value: "Check the version.");
 
   script_tag(name: "affected", value: "Eyes Of Network (EON) versions 5.1 and below are vulnerable.");
 
-  script_tag(name: "solution", value: "No Solution or patch is available as of 4th September, 2017. Information
+  script_tag(name: "solution", value: "No Solution or patch is available as of 12th October, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://kk.whitecell-club.org/index.php/archives/220/");
@@ -84,7 +84,7 @@ regarding this issue will be updated once the solution details are available.");
 include("host_details.inc");
 include("version_func.inc");
 
-if (!version = get_app_version(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, nofork:TRUE))
   exit(0);
 
 if (version_is_less_equal(version: version, test_version: "5.1")) {
@@ -93,4 +93,4 @@ if (version_is_less_equal(version: version, test_version: "5.1")) {
   exit(0);
 }
 
-exit(0);
+exit(99);

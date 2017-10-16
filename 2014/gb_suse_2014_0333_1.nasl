@@ -28,12 +28,12 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(850572);
-  script_version("$Revision: 6674 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:45:49 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 7419 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-13 09:51:30 +0200 (Fri, 13 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-03-12 09:29:13 +0530 (Wed, 12 Mar 2014)");
   script_cve_id("CVE-2014-2029");
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("SuSE Update for percona-toolkit,xtrabackup openSUSE-SU-2014:0333-1 (percona-toolkit,xtrabackup)");
 
   tag_insight = "

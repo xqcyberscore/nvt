@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orientdb_server_mult_vuln.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_orientdb_server_mult_vuln.nasl 7411 2017-10-12 09:20:45Z asteins $
 #
 # OrientDB Server 'Studio component' Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:orientdb:orientdb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808755");
-  script_version("$Revision: 5675 $");
+  script_version("$Revision: 7411 $");
   script_cve_id("CVE-2015-2913", "CVE-2015-2912");
   script_bugtraq_id(76610);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-12 11:20:45 +0200 (Thu, 12 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-08-08 16:26:31 +0530 (Mon, 08 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OrientDB Server 'Studio component' Multiple Vulnerabilities");
@@ -73,7 +73,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_orientdb_server_detect.nasl");
-  script_mandatory_keys("OrientDB/Server/Installed");
+  script_mandatory_keys("OrientDB/Installed");
   script_require_ports("Services/www", 2480);
   exit(0);
 }
@@ -81,16 +81,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-#Variable initialize
-dbPort = "";
-dbVer = "";
-
-## Get Port
 if(!dbPort = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-## Get the version
 if(!dbVer = get_app_version(cpe:CPE, port:dbPort)){
  exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 7406 2017-10-12 06:15:28Z cfischer $
+# $Id: host_details.inc 7428 2017-10-13 11:45:53Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7406 $
+# $Revision: 7428 $
 #
 ###############################################################################
 
@@ -130,6 +130,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108201", # gb_sip_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.140096", # gb_check_mk_agent_detect.nasl
     "1.3.6.1.4.1.25623.1.0.100062", # ms_rdp_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.105330", # gb_apache_activemq_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108044", # dcetest.nasl
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl
@@ -194,6 +195,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108201", # gb_sip_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.140096", # gb_check_mk_agent_detect.nasl
     "1.3.6.1.4.1.25623.1.0.100062", # ms_rdp_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.105330", # gb_apache_activemq_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108044", # dcetest.nasl
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl
@@ -1132,7 +1134,7 @@ function build_detection_report( app, version, install, regpath, cpe, concluded,
     report += '\nRegistry path: '+ regpath;
   }
 
-  if( strlen( concluded ) > 0 ) {
+  if( strlen( concluded ) > 0 && tolower( concluded ) != "unknown" ) {
     report += '\n\nConcluded from version/product identification result:\n' + concluded;
   }
 
@@ -1258,6 +1260,8 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       egrep( pattern:"ESMTP Exim ([0-9._]+) ", string:banner ) || # e.g. 220 host ESMTP Exim 4.84_2 Tue, 01 Aug 2017 13:01:18 +0200
       egrep( pattern:"^X-Powered-By: PHP/([0-9.]+)(-[0-9]+)?$", string:banner ) || # e.g. X-Powered-By: PHP/7.0.19 or X-Powered-By: PHP/7.0.19-1
       egrep( pattern:"^Server: CUPS/([0-9.]+) IPP/([0-9.]+)$", string:banner ) || # Handled at the bottom of sw_http_os_detection.nasl
+      egrep( pattern:"^Server: Themis ([0-9.]+)$", string:banner ) || # Currently unknown
+      egrep( pattern:"^Server: Mordac/([0-9.]+)$", string:banner ) || # Currently unknown
       egrep( pattern:"^Server: squid/([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: squid/([0-9.]+)\.STABLE([0-9.]+)$", string:banner ) || # e.g. Server: squid/2.7.STABLE5
       egrep( pattern:"^dnsmasq-([0-9.]+)$", string:banner ) ||

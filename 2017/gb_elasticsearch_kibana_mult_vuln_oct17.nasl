@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_mult_vuln_oct17.nasl 7384 2017-10-09 11:35:53Z jschulte $
+# $Id: gb_elasticsearch_kibana_mult_vuln_oct17.nasl 7436 2017-10-16 05:44:20Z asteins $
 #
 # Kibana version 5.6.0 and below multiple vulnerabilities
 #
@@ -29,11 +29,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113010");
-  script_version("$Revision: 7384 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-09 13:35:53 +0200 (Mon, 09 Oct 2017) $");
+  script_version("$Revision: 7436 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-16 07:44:20 +0200 (Mon, 16 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-09 13:04:33 +0200 (Mon, 09 Oct 2017)");
-  script_tag(name:"cvss_base", value:"8.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   
   script_tag(name:"qod_type", value:"remote_banner");
 

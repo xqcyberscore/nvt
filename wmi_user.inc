@@ -206,3 +206,17 @@ function wmi_user_is_user_locked(handle, usrName)
 
   return usrName;
 }
+
+function wmi_local_users(handle)
+{
+  query = 'Select * from Win32_UserAccount Where LocalAccount=true';
+
+  LocalUserList = wmi_query(wmi_handle:handle, query:query);
+
+  if(("NTSTATUS" >< LocalUserList) || !LocalUserList){
+    return(0);
+  }
+
+  return LocalUserList;
+}
+

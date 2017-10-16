@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 7326 2017-09-29 10:56:31Z cfischer $
+# $Id: smb_nt.inc 7414 2017-10-12 14:22:07Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7326 $
+# $Revision: 7414 $
 #
 ###############################################################################
 
@@ -6515,11 +6515,6 @@ function OpenAndX2_NTLMSSP( socket, uid, tid, file ) {
   req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
 
-  # TBD: name doesn't exist in this scope, namelen, name_hi and name_lo are unused
-  #namelen = strlen( name ) + 1;
-  #name_hi = namelen / 256;
-  #name_lo = namelen % 256;
-
   req += raw_string( 0x39, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00,
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -6696,11 +6691,6 @@ function ReadAndX2_NTLMSSP( socket, uid, tid, fid, count, off ) {
 
   req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
-
-  # TBD: name doesn't exist in this scope, namelen, name_hi and name_lo are unused
-  #namelen = strlen( name ) + 1;
-  #name_hi = namelen / 256;
-  #name_lo = namelen % 256;
 
   req += raw_string( 0x31, 0x00, 0x50, 0x00, cnt_lo_lo, cnt_lo_hi, cnt_hi_lo, cnt_hi_hi,
                      off_lo_lo, off_lo_lo_lo, off_lo_lo_hi, off_lo_hi,

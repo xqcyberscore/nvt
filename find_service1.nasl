@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 7402 2017-10-11 13:58:17Z cfischer $
+# $Id: find_service1.nasl 7414 2017-10-12 14:22:07Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 7402 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-11 15:58:17 +0200 (Wed, 11 Oct 2017) $");
+  script_version("$Revision: 7414 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-12 16:22:07 +0200 (Thu, 12 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -466,6 +466,56 @@ if( ( r =~ "^-ERR wrong number of arguments for 'get' command" && "-ERR unknown 
     r =~ "^-DENIED Redis is running in protected mode" ) {
   register_service( port:port, proto:"redis", message:"A Redis server seems to be running on this port." );
   log_message( port:port, data:"A Redis server seems to be running on this port." );
+  exit( 0 );
+}
+
+# 0x00:  41 4D 51 50 03 01 00 00 41 4D 51 50 00 01 00 00    AMQP....AMQP....
+# 0x10:  00 00 00 19 02 00 00 00 00 53 10 C0 0C 04 A1 00    .........S......
+# 0x20:  40 70 FF FF FF FF 60 7F FF 00 00 00 60 02 00 00    @p....`.....`...
+# 0x30:  00 00 53 18 C0 53 01 00 53 1D C0 4D 02 A3 11 61    ..S..S..S..M...a
+# 0x40:  6D 71 70 3A 64 65 63 6F 64 65 2D 65 72 72 6F 72    mqp:decode-error
+# 0x50:  A1 37 43 6F 6E 6E 65 63 74 69 6F 6E 20 66 72 6F    .7Connection fro
+# 0x60:  6D 20 63 6C 69 65 6E 74 20 75 73 69 6E 67 20 75    m client using u
+# 0x70:  6E 73 75 70 70 6F 72 74 65 64 20 41 4D 51 50 20    nsupported AMQP 
+# 0x80:  61 74 74 65 6D 70 74 65 64                         attempted   
+
+if( "Connection from client using unsupported AMQP attempted" >< r || "amqp:decode-error" >< r ) {
+  register_service( port:port, proto:"amqp", message:"A AMQP service seems to be running on this port." );
+  log_message( port:port, data:"An AMQP service seems to be running on this port." );
+  exit( 0 );
+}
+
+# 0x0000:  00 00 01 87 01 41 63 74 69 76 65 4D 51 00 00 00    .....ActiveMQ...
+# 0x0010:  0C 01 00 00 01 75 00 00 00 0C 00 11 54 63 70 4E    .....u......TcpN
+# 0x0020:  6F 44 65 6C 61 79 45 6E 61 62 6C 65 64 01 01 00    oDelayEnabled...
+# 0x0030:  12 53 69 7A 65 50 72 65 66 69 78 44 69 73 61 62    .SizePrefixDisab
+# 0x0040:  6C 65 64 01 00 00 09 43 61 63 68 65 53 69 7A 65    led....CacheSize
+# 0x0050:  05 00 00 04 00 00 0C 50 72 6F 76 69 64 65 72 4E    .......ProviderN
+# 0x0060:  61 6D 65 09 00 08 41 63 74 69 76 65 4D 51 00 11    ame...ActiveMQ..
+# 0x0070:  53 74 61 63 6B 54 72 61 63 65 45 6E 61 62 6C 65    StackTraceEnable
+# 0x0080:  64 01 01 00 0F 50 6C 61 74 66 6F 72 6D 44 65 74    d....PlatformDet
+# 0x0090:  61 69 6C 73 09 00 50 4A 56 4D 3A 20 31 2E 38 2E    ails..PJVM: 1.8.
+# 0x00A0:  30 5F 31 34 31 2C 20 32 35 2E 31 34 31 2D 62 31    0_141, 25.141-b1
+# 0x00B0:  35 2C 20 4F 72 61 63 6C 65 20 43 6F 72 70 6F 72    5, Oracle Corpor
+# 0x00C0:  61 74 69 6F 6E 2C 20 4F 53 3A 20 4C 69 6E 75 78    ation, OS: Linux
+# 0x00D0:  2C 20 34 2E 31 33 2E 30 2D 31 2D 61 6D 64 36 34    , 4.13.0-1-amd64
+# 0x00E0:  2C 20 61 6D 64 36 34 00 0C 43 61 63 68 65 45 6E    , amd64..CacheEn
+# 0x00F0:  61 62 6C 65 64 01 01 00 14 54 69 67 68 74 45 6E    abled....TightEn
+# 0x0100:  63 6F 64 69 6E 67 45 6E 61 62 6C 65 64 01 01 00    codingEnabled...
+# 0x0110:  0C 4D 61 78 46 72 61 6D 65 53 69 7A 65 06 00 00    .MaxFrameSize...
+# 0x0120:  00 00 06 40 00 00 00 15 4D 61 78 49 6E 61 63 74    ...@....MaxInact
+# 0x0130:  69 76 69 74 79 44 75 72 61 74 69 6F 6E 06 00 00    ivityDuration...
+# 0x0140:  00 00 00 00 75 30 00 20 4D 61 78 49 6E 61 63 74    ....u0. MaxInact
+# 0x0150:  69 76 69 74 79 44 75 72 61 74 69 6F 6E 49 6E 69    ivityDurationIni
+# 0x0160:  74 61 6C 44 65 6C 61 79 06 00 00 00 00 00 00 27    talDelay.......'
+# 0x0170:  10 00 0F 50 72 6F 76 69 64 65 72 56 65 72 73 69    ...ProviderVersi
+# 0x0180:  6F 6E 09 00 06 35 2E 31 34 2E 35                   on...5.14.5
+
+if( "ActiveMQ" >< r && ( "PlatformDetails" >< r || "StackTraceEnable" >< r || "ProviderVersion" >< r || "TcpNoDelayEnabled" >< r ) ) {
+  # Set the response for later use in gb_apache_activemq_detect.nasl
+  set_kb_item( name:"ActiveMQ/JMS/banner/" + port, value:bin2string( ddata:r ) );
+  register_service( port:port, proto:"activemq_jms", message:"A ActiveMQ JMS service seems to be running on this port." );
+  log_message( port:port, data:"A ActiveMQ JMS service seems to be running on this port." );
   exit( 0 );
 }
 

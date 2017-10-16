@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 7367 2017-10-06 11:20:15Z cfischer $
+# $Id: misc_func.inc 7416 2017-10-13 07:03:59Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7367 $
+# $Revision: 7416 $
 #
 ###############################################################################
 
@@ -1312,7 +1312,8 @@ function make_date_str( date ) {
   month = fancy_date( time["mon"]  );
   day   = fancy_date( time["mday"] );
 
-  return time["year"] + month + day;
+  # Using string to make sure we return a string and don't do an addition of ints
+  return string( time["year"], month, day );
 }
 
 function fancy_date() {

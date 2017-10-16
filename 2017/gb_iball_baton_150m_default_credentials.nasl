@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iball_baton_150m_default_credentials.nasl 7399 2017-10-11 13:10:03Z jschulte $
+# $Id: gb_iball_baton_150m_default_credentials.nasl 7433 2017-10-13 13:18:22Z cfischer $
 #
 # iBall Baton 150M Router Default Credentials
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113013");
-  script_version("$Revision: 7399 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-11 15:10:03 +0200 (Wed, 11 Oct 2017) $");
+  script_version("$Revision: 7433 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-13 15:18:22 +0200 (Fri, 13 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-11 15:09:33 +0200 (Wed, 11 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -58,8 +58,8 @@ if( description )
 }
 
 include( "host_details.inc" );
-include( "http_keepalive.inc" );
 include( "http_func.inc" );
+include( "http_keepalive.inc" );
 
 port = get_http_port( default: 80 );
 

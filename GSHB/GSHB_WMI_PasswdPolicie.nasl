@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_PasswdPolicie.nasl 6741 2017-07-17 15:53:49Z cfischer $
+# $Id: GSHB_WMI_PasswdPolicie.nasl 7421 2017-10-13 08:32:05Z emoss $
 #
 # Read the Windows Password Policy over WMI (Windows)
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96033");
-  script_version("$Revision: 6741 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 17:53:49 +0200 (Mon, 17 Jul 2017) $");
+  script_version("$Revision: 7421 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-13 10:32:05 +0200 (Fri, 13 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,8 +39,7 @@ if(description)
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_dependencies("secpod_reg_enum.nasl", "GSHB_WMI_OSInfo.nasl");
-  script_mandatory_keys("Compliance/Launch/GSHB", "Tools/Present/wmi");
-  # script_require_ports(139, 445);
+  script_mandatory_keys("WMI/access_successful");
 
   script_tag(name:"summary", value:"This script reads the Windows Password Policy configuration over WMI.");
 

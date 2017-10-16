@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871480");
-  script_version("$Revision: 6689 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:50:06 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 7419 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-13 09:51:30 +0200 (Fri, 13 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-11-20 06:19:54 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2015-3248");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for openhpi RHSA-2015:2369-01");
   script_tag(name: "summary", value: "Check the version of openhpi");

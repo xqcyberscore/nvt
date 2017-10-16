@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wisegiga_nas_multiple_vuln.nasl 7157 2017-09-18 06:32:56Z ckuersteiner $
+# $Id: gb_wisegiga_nas_multiple_vuln.nasl 7415 2017-10-13 05:18:52Z cfischer $
 #
 # WiseGiga NAS Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/h:wisegiga:nas";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811336");
-  script_version("$Revision: 7157 $");
+  script_version("$Revision: 7415 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 08:32:56 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-13 07:18:52 +0200 (Fri, 13 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-12 13:20:40 +0530 (Tue, 12 Sep 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("WiseGiga NAS Multiple Vulnerabilities");
@@ -76,7 +76,7 @@ if(description)
   script_tag(name: "affected" , value:"WiseGiga NAS devices.");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  12th Sep, 2017. Information regarding this issue will be updated once solution
+  13th October, 2017. Information regarding this issue will be updated once solution
   details are available. For updates refer to https://www.wisegiga.com ");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
