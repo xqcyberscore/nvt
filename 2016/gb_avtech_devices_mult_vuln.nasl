@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avtech_devices_mult_vuln.nasl 7180 2017-09-19 03:11:15Z ckuersteiner $
+# $Id: gb_avtech_devices_mult_vuln.nasl 7468 2017-10-18 05:48:02Z teissa $
 #
 # AVTECH Devices Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/o:avtech:avtech_device";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809067");
-  script_version("$Revision: 7180 $");
+  script_version("$Revision: 7468 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-19 05:11:15 +0200 (Tue, 19 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-18 07:48:02 +0200 (Wed, 18 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-10-18 11:30:44 +0530 (Tue, 18 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("AVTECH Devices Multiple Vulnerabilities");
@@ -74,12 +74,9 @@ if(description)
   firmware version as mentioned in the following link,
   http://www.search-lab.hu/media/vulnerability_matrix.txt.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  19th September, 2017, Information regarding this issue will be provided once 
-  the solution details are available.
-  For updates refer to http://www.avtech.com.");
+  script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40500");
 
   script_category(ACT_ATTACK);

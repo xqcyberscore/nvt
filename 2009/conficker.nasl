@@ -7,7 +7,7 @@
 #   - By Chandan S
 ############################################################################
 # OpenVAS Vulnerability Test
-# $Id: conficker.nasl 5455 2017-03-01 13:56:12Z cfi $
+# $Id: conficker.nasl 7462 2017-10-17 13:26:25Z santu $
 #
 # Conficker Detection
 #
@@ -66,8 +66,8 @@ if(description)
   script_xref(name : "URL" , value : "http://iv.cs.uni-bonn.de/wg/cs/applications/containing-conficker/");
   script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx");
   script_id(900091);
-  script_version("$Revision: 5455 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 14:56:12 +0100 (Wed, 01 Mar 2017) $");
+  script_version("$Revision: 7462 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-17 15:26:25 +0200 (Tue, 17 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-04-17 13:24:25 +0200 (Fri, 17 Apr 2009)");
   script_bugtraq_id(31874);
   script_cve_id("CVE-2008-4250");
@@ -143,6 +143,35 @@ if(!prot)
 {
   close(soc);
   exit(0);
+}
+
+##Validate length of response
+if(strlen(prot) < 5 ) {
+  exit(0);
+}
+
+##Currently Only SMB1 is supported, For SMB2 ord(prot[4]) == 254
+if(ord(prot[4]) == 254)
+{
+  ##Close current Socket
+  close(soc);
+  ## Open a new Socket
+  soc = open_sock_tcp(port);
+  if(!soc){
+   exit(0);
+  }
+
+  ##Session Request
+  r = smb_session_request(soc:soc, remote:name);
+  if(!r) { close(soc); exit(0); }
+
+  ##Try negotiating with SMB1
+  prot = smb_neg_prot_NTLMv1(soc:soc);
+  if(!prot)
+  {
+    close(soc);
+    exit(0);
+  }
 }
 
 r = smb_session_setup(soc:soc, login:login, password:pass, domain:domain, prot:prot);

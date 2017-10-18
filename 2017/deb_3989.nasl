@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3989.nasl 7342 2017-10-04 13:25:37Z teissa $
+# $Id: deb_3989.nasl 7466 2017-10-18 05:09:06Z teissa $
 #
 # Auto-generated from advisory DSA 3989-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703989");
-  script_version("$Revision: 7342 $");
+  script_version("$Revision: 7466 $");
   script_cve_id("CVE-2017-14491", "CVE-2017-14492", "CVE-2017-14493", "CVE-2017-14494", "CVE-2017-14495", "CVE-2017-14496");
   script_name("Debian Security Advisory DSA 3989-1 (dnsmasq - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 15:25:37 +0200 (Wed, 04 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-18 07:09:06 +0200 (Wed, 18 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-02 00:00:00 +0200 (Mon, 02 Oct 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

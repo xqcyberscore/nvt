@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnsmasq_multiple_vuln_oct17.nasl 7343 2017-10-05 05:09:15Z santu $
+# $Id: gb_dnsmasq_multiple_vuln_oct17.nasl 7466 2017-10-18 05:09:06Z teissa $
 #
 # Dnsmasq Multiple Vulnerabilities - Oct17
 #
@@ -30,13 +30,13 @@ CPE = 'cpe:/a:thekelleys:dnsmasq';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812010");
-  script_version("$Revision: 7343 $");
+  script_version("$Revision: 7466 $");
   script_cve_id("CVE-2017-13704", "CVE-2017-14491", "CVE-2017-14492", "CVE-2017-14493",
                 "CVE-2017-14494", "CVE-2017-14496", "CVE-2017-14495");
   script_bugtraq_id(101085);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-05 07:09:15 +0200 (Thu, 05 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-18 07:09:06 +0200 (Wed, 18 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-04 16:39:44 +0530 (Wed, 04 Oct 2017)");
   script_name("Dnsmasq Multiple Vulnerabilities - Oct17");
 

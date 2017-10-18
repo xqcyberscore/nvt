@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20161207-wsa1.nasl 4798 2016-12-19 09:23:30Z antu123 $
+# $Id: gb_cisco_wsa_cisco-sa-20161207-wsa1.nasl 7442 2017-10-16 09:45:56Z ckuersteiner $
 #
 # Cisco Web Security Appliance Drop Decrypt Policy Bypass Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-9212");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 4798 $");
+ script_version ("$Revision: 7442 $");
 
  script_name("Cisco Web Security Appliance Drop Decrypt Policy Bypass Vulnerability");
 
@@ -57,7 +57,7 @@ should be blocked.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-12-19 10:23:30 +0100 (Mon, 19 Dec 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-16 11:45:56 +0200 (Mon, 16 Oct 2017) $");
  script_tag(name:"creation_date", value:"2016-12-08 11:24:12 +0700 (Thu, 08 Dec 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -74,7 +74,11 @@ if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 affected = make_list( 
 		'9.0.1-162',
-		'9.1.1-074' );
+		'9.1.1-074',
+		'9.1.2-039',
+		'10.1.1-235',
+		'10.5.1-296',
+		'11.0.0-641' );
 
 foreach af ( affected )
 {

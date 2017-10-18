@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_f03b04acbb_mercurial_fc26.nasl 7032 2017-08-31 12:58:05Z santu $
+# $Id: gb_fedora_2017_f03b04acbb_mercurial_fc26.nasl 7466 2017-10-18 05:09:06Z teissa $
 #
 # Fedora Update for mercurial FEDORA-2017-f03b04acbb
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873321");
-  script_version("$Revision: 7032 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 14:58:05 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 7466 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-18 07:09:06 +0200 (Wed, 18 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-30 07:38:57 +0200 (Wed, 30 Aug 2017)");
   script_cve_id("CVE-2017-1000115", "CVE-2017-1000116");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mercurial FEDORA-2017-f03b04acbb");
   script_tag(name: "summary", value: "Check the version of mercurial");

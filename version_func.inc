@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: version_func.inc 7078 2017-09-07 16:56:41Z cfischer $
+# $Id: version_func.inc 7467 2017-10-18 05:14:21Z teissa $
 #
 # Helper functions for SSH-based target host access
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7078 $
+# $Revision: 7467 $
 #
 ###############################################################################
 
@@ -420,7 +420,7 @@ function check_locate( sock ) {
 
   if( ! sock ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#sock#-#check_locate" );
 
-  if( get_kb_item( "no_linux_shell" ) ) return;
+  if( get_kb_item( "no_linux_shell" ) ) return FALSE;
   if( get_kb_item( "lsc/locate/broken" ) ) return FALSE;
 
   if( ! get_kb_item( "lsc/locate/tested" ) ) {
@@ -433,9 +433,10 @@ function check_locate( sock ) {
           "Filenames"   >!< r &&
           "file names"  >!< r ) ) ||
           "command not found" >< r ||
-          "locate:" >< r ) {
+          "locate:" >< r ) { # nb: Also includes an outdated database like "locate: warning: database /var/cache/locate/locatedb is more than 8 days old (actual age is 9,3 days)"
 
       set_kb_item( name:"lsc/locate/broken", value:TRUE );
+      set_kb_item( name:"lsc/locate/broken/reason", value:r );
       set_kb_item( name:"lsc/locate/tested", value:TRUE );
       return FALSE;
     }

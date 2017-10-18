@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 7416 2017-10-13 07:03:59Z cfischer $
+# $Id: misc_func.inc 7447 2017-10-16 14:18:46Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7416 $
+# $Revision: 7447 $
 #
 ###############################################################################
 
@@ -1191,14 +1191,16 @@ function socket_send_recv( port, soc, data, proto, length ) {
 
 }
 
-function text_format_table( array, sep ) {
+function text_format_table( array, sep, columnheader ) {
 
-  local_var maxlen, array, sep, len, a, report, flen;
+  local_var array, sep, columnheader, len, a, report, maxlen, flen, reportheader;
 
-  if( ! array || ! is_array( array ) )
+  if( ! array || ! is_array( array ) ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#text_format_table: No array or empty variable passed" );
     return;
+  }
 
-  if( ! sep )
+  if( isnull( sep ) )
     sep = " : ";
 
   foreach a( sort( keys( array ) ) ) {
@@ -1217,11 +1219,17 @@ function text_format_table( array, sep ) {
     flen = strlen( a );
     padding_len = ( maxlen - flen ) + 1;
 
-    report += a + crap( data:" ", length:padding_len ) + sep + array[ a ] + '\n';
+    report += a + crap( data:" ", length:padding_len ) + sep + array[a] + '\n';
   }
 
-  if( strlen( report ) )
+  if( strlen( report ) ) {
+    if( columnheader && is_array( columnheader ) ) {
+      reportheader = columnheader[0] + crap( data:" ", length:maxlen - strlen( columnheader[0] ) + strlen( sep ) + 1 ) + columnheader[1] + '\n';
+      reportheader += crap( data:"-", length:strlen( columnheader[0] ) ) + crap( data:" ", length:maxlen - strlen( columnheader[0] ) + strlen( sep ) + 1 ) + crap( data:"-", length:strlen( columnheader[1] ) ) + '\n';
+      report = reportheader + report;
+    }
     return report;
+  }
 }
 
 function close_sock_and_exit() {

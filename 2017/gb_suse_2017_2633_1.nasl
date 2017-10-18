@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2633_1.nasl 7345 2017-10-05 06:16:00Z santu $
+# $Id: gb_suse_2017_2633_1.nasl 7466 2017-10-18 05:09:06Z teissa $
 #
 # SuSE Update for dnsmasq openSUSE-SU-2017:2633-1 (dnsmasq)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851625");
-  script_version("$Revision: 7345 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-05 08:16:00 +0200 (Thu, 05 Oct 2017) $");
+  script_version("$Revision: 7466 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-18 07:09:06 +0200 (Wed, 18 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-05 11:55:06 +0530 (Thu, 05 Oct 2017)");
   script_cve_id("CVE-2017-14491", "CVE-2017-14492", "CVE-2017-14493", "CVE-2017-14494", 
                 "CVE-2017-14495", "CVE-2017-14496");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for dnsmasq openSUSE-SU-2017:2633-1 (dnsmasq)");
   script_tag(name: "summary", value: "Check the version of dnsmasq");

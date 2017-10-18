@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-054_remote.nasl 5455 2017-03-01 13:56:12Z cfi $
+# $Id: secpod_ms10-054_remote.nasl 7462 2017-10-17 13:26:25Z santu $
 #
 # Microsoft SMB Server Trans2 Request Remote Code Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902662");
-  script_version("$Revision: 5455 $");
+  script_version("$Revision: 7462 $");
   script_cve_id("CVE-2010-2550", "CVE-2010-2551", "CVE-2010-2552");
   script_bugtraq_id(42224, 42263, 42267);
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 14:56:12 +0100 (Wed, 01 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-17 15:26:25 +0200 (Tue, 17 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-02-29 12:16:56 +0530 (Wed, 29 Feb 2012)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -137,6 +137,35 @@ prot = smb_neg_prot(soc:soc);
 if(!prot){
   close(soc);
   exit(0);
+}
+
+##Validate length of response
+if(strlen(prot) < 5 ) {
+  exit(0);
+}
+
+##Currently Only SMB1 is supported, For SMB2 ord(prot[4]) == 254
+if(ord(prot[4]) == 254)
+{
+  ##Close current Socket
+  close(soc);
+  ## Open a new Socket
+  soc = open_sock_tcp(port);
+  if(!soc){
+   exit(0);
+  }
+
+  ##Session Request
+  r = smb_session_request(soc:soc, remote:name);
+  if(!r) { close(soc); exit(0); }
+
+  ##Try negotiating with SMB1
+  prot = smb_neg_prot_NTLMv1(soc:soc);
+  if(!prot)
+  {
+    close(soc);
+    exit(0);
+  }
 }
 
 # Send SMB Session Setup and Andx Req

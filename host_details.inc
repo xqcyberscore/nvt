@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 7428 2017-10-13 11:45:53Z cfischer $
+# $Id: host_details.inc 7447 2017-10-16 14:18:46Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7428 $
+# $Revision: 7447 $
 #
 ###############################################################################
 
@@ -1256,7 +1256,8 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       banner == "220 FTP server ready" ||
       banner == "Server: NessusWWW" || # Nessus could be running on Windows, Linux/Unix or MacOS
       "erver: BBC " >< banner || # OV Communication Broker runs on various different OS variants
-      egrep( pattern:"^220 ([0-9a-zA-Z._\-]+) ESMTP$", string:banner ) || # E.g. 220 hostname ESMTP
+      egrep( pattern:"^OS String: Unix; SMB String: Samba ([0-9.]+)$", string:banner ) || # e.g. OS String: Unix; SMB String: Samba 4.0.9 set by smb_nativelanman.nasl
+      egrep( pattern:"^220 ([0-9a-zA-Z._\-]+) ESMTP$", string:banner ) || # e.g. 220 hostname ESMTP
       egrep( pattern:"ESMTP Exim ([0-9._]+) ", string:banner ) || # e.g. 220 host ESMTP Exim 4.84_2 Tue, 01 Aug 2017 13:01:18 +0200
       egrep( pattern:"^X-Powered-By: PHP/([0-9.]+)(-[0-9]+)?$", string:banner ) || # e.g. X-Powered-By: PHP/7.0.19 or X-Powered-By: PHP/7.0.19-1
       egrep( pattern:"^Server: CUPS/([0-9.]+) IPP/([0-9.]+)$", string:banner ) || # Handled at the bottom of sw_http_os_detection.nasl

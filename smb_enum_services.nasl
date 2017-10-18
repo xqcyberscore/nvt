@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_enum_services.nasl 7155 2017-09-16 18:15:09Z cfischer $
+# $Id: smb_enum_services.nasl 7462 2017-10-17 13:26:25Z santu $
 #
 # SMB Enumerate Services
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102016");
-  script_version("$Revision: 7155 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-16 20:15:09 +0200 (Sat, 16 Sep 2017) $");
+  script_version("$Revision: 7462 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-17 15:26:25 +0200 (Tue, 17 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-02-10 12:17:39 +0100 (Wed, 10 Feb 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -486,6 +486,7 @@ domain = kb_smb_domain();
 pass = kb_smb_password();
 name = chomp( kb_smb_name() ); #TODO: check for a bug! kb_smb_name returned a name with trailing whitespace!
 
+
 soc = open_sock_tcp( port );
 if( ! soc ) {
   exit( 0 );
@@ -501,6 +502,35 @@ prot = smb_neg_prot( soc:soc );
 if( ! prot ) {
   close( soc );
   exit( 0 );
+}
+
+##Validate length of response
+if(strlen(prot) < 5 ) {
+  exit(0);
+}
+
+##Currently Only SMB1 is supported, For SMB2 ord(prot[4]) == 254
+if(ord(prot[4]) == 254)
+{
+  ##Close current Socket
+  close(soc);
+  ## Open a new Socket
+  soc = open_sock_tcp(port);
+  if(!soc){
+   exit(0);
+  }
+
+  ##Session Request
+  r = smb_session_request(soc:soc, remote:name);
+  if(!r) { close(soc); exit(0); }
+
+  ##Try negotiating with SMB1
+  prot = smb_neg_prot_NTLMv1(soc:soc);
+  if(!prot)
+  {
+    close(soc);
+    exit(0);
+  }
 }
 
 r = smb_session_setup( soc:soc, login:login, password:pass, domain:domain, prot:prot );

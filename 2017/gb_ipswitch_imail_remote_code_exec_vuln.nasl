@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipswitch_imail_remote_code_exec_vuln.nasl 6810 2017-07-28 07:41:58Z santu $
+# $Id: gb_ipswitch_imail_remote_code_exec_vuln.nasl 7461 2017-10-17 13:08:44Z asteins $
 #
 # Ipswitch IMail Server SMTPD RCE Vulnerability (ETRE/ETCETERABLUE)
 #
@@ -29,10 +29,11 @@ CPE = "cpe:/a:ipswitch:imail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811255");
-  script_version("$Revision: 6810 $");
+  script_version("$Revision: 7461 $");
+  script_cve_id("CVE-2017-12638", "CVE-2017-12639");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-28 09:41:58 +0200 (Fri, 28 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-17 15:08:44 +0200 (Tue, 17 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-26 12:49:28 +0530 (Wed, 26 Jul 2017)");
   script_name("Ipswitch IMail Server SMTPD RCE Vulnerability (ETRE/ETCETERABLUE)");
 
@@ -40,7 +41,7 @@ if(description)
   Suite/IMail Server and is prone to remote code execution.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of SMTP banner response and check the version is vulnerable or not.");
+  of a SMTP banner response and check if the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"The flaw is due to some unspecified buffer
   overflow error in the application as disclosed by Shadow Brokers.");
@@ -75,25 +76,15 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-imPort = "";
-imVer = "";
+if(!imPort = get_app_port(cpe:CPE)) exit(0);
 
-## get the port
-if(!imPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
+if(!imVer = get_app_version(cpe:CPE, port:imPort)) exit(0);
 
-## Get the version
-if(!imVer = get_app_version(cpe:CPE, port:imPort)){
-  exit(0);
-}
-
-## Check for version
 if(version_is_less(version:imVer, test_version:"12.5.6"))
 {
-  report = report_fixed_ver( installed_version:imVer, fixed_version:"12.5.6");
-  security_message( data:report, port:imPort);
+  report = report_fixed_ver(installed_version:imVer, fixed_version:"12.5.6");
+  security_message(data:report, port:imPort);
   exit(0);
 }
-exit(0);
+
+exit(99);

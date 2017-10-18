@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_imc_cisco-sa-20170419-cimc.nasl 7348 2017-10-05 12:02:49Z jschulte $
+# $Id: gb_cisco_imc_cisco-sa-20170419-cimc.nasl 7442 2017-10-16 09:45:56Z ckuersteiner $
 #
 # Cisco Integrated Management Controller Command Execution Vulnerability 
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-6619");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 7348 $");
+ script_version ("$Revision: 7442 $");
 
  script_name("Cisco Integrated Management Controller Command Execution Vulnerability");
 
@@ -50,14 +50,14 @@ POST request that contains crafted, deserialized user data to the affected softw
  script_tag(name: "impact", value: "A successful exploit could allow the attacker to execute arbitrary commands
 with root-level privileges on the affected system, which the attacker could use to conduct further attacks.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
+ script_tag(name: "vuldetect" , value: "Check the version");
 
- script_tag(name: "solution" , value:"See vendor advisory");
+ script_tag(name: "solution" , value: "Update to version 3.0.1d or later.");
 
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name: "last_modification", value: "$Date: 2017-10-05 14:02:49 +0200 (Thu, 05 Oct 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-10-16 11:45:56 +0200 (Mon, 16 Oct 2017) $");
  script_tag(name: "creation_date", value: "2017-04-20 09:20:08 +0200 (Thu, 20 Apr 2017)");
 
  script_category(ACT_GATHER_INFO);
@@ -74,10 +74,48 @@ include("version_func.inc");
 if (!version = get_app_version(cpe:CPE))
   exit(0);
 
-if (version == "3.0(1c)" || version_in_range(version:version, test_version:"1.4(1)", test_version2:"1.4(8)") || version_in_range(version:version, test_version:"1.5(1)", test_version2:"1.5(9)") || version_in_range(version:version, test_version:"2.0(1)", test_version2:"2.0(13)")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");
-  security_message(port: 0, data: report);
-  exit(0);
+version = str_replace(string: version, find: ")", replace: '');
+version = str_replace(string: version, find: "(", replace: '.');
+
+affected = make_list( 
+                '1.4.1',
+                '1.4.2',
+                '1.4.3',
+                '1.4.4',
+                '1.4.5',
+                '1.4.6',
+                '1.4.7',
+                '1.4.8',
+                '1.5.1',
+                '1.5.2',
+                '1.5.3',
+                '1.5.4',
+                '1.5.5',
+                '1.5.6',
+                '1.5.7',
+                '1.5.8',
+                '1.5.9',
+                '2.0.1',
+                '2.0.2',
+                '2.0.3',
+                '2.0.4',
+                '2.0.5',
+                '2.0.6',
+                '2.0.7',
+                '2.0.8',
+                '2.0.9',
+                '2.0.10',
+                '2.0.11',
+                '2.0.12',
+                '2.0.13',
+                '3.0.1c' );
+
+foreach af (affected) {
+  if (version == af) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "3.0.1d");
+    security_message(port: 0, data: report);
+    exit(0);
+  }
 }
 
 exit(99);

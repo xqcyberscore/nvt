@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipswitch_imail_server_detect.nasl 7160 2017-09-18 07:39:22Z cfischer $
+# $Id: gb_ipswitch_imail_server_detect.nasl 7461 2017-10-17 13:08:44Z asteins $
 #
 # Ipswitch IMail Server Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811256");
-  script_version("$Revision: 7160 $");
+  script_version("$Revision: 7461 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:39:22 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-17 15:08:44 +0200 (Tue, 17 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-26 16:06:50 +0530 (Wed, 26 Jul 2017)");
   script_name("Ipswitch IMail Server Detection");
 
@@ -57,20 +57,10 @@ include("smtp_func.inc");
 include("pop3_func.inc");
 include("imap_func.inc");
 
-##Variable Initialization
-mailPort = "";
-mailVer = "";
-banner = "";
-
-## Function to get version
-
 function get_version(banner, port)
 {
+  set_kb_item(name:"Ipswitch/IMail/Installed", value:TRUE);
 
-  ## Set KB 
-  set_kb_item(name:"IpSwitch/IMail/Installed", value:TRUE);
-
-  ## Get Version
   mailVer = eregmatch(pattern:"Server: Ipswitch-IMail/([0-9.]+)", string: banner);
   if(!mailVer){
     mailVer = eregmatch(pattern:"IMail ([0-9.]+)", string: banner);
@@ -78,10 +68,8 @@ function get_version(banner, port)
 
   if(mailVer[1])
   {
-    ## Set kb
-    set_kb_item(name: "IpSwitch/IMail/version", value: mailVer[1]);
+    set_kb_item(name: "Ipswitch/IMail/version", value: mailVer[1]);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value: mailVer[1], exp: "^([0-9.]+)", base: "cpe:/a:ipswitch:imail_server:");
     if (!cpe)
       cpe = "cpe:/a:ipswitch:imail_server";
@@ -89,85 +77,65 @@ function get_version(banner, port)
     register_product(cpe:cpe, location:"/", port:port);
 
     log_message(data: build_detection_report(app: "Ipswitch IMail Server",
-                                           version: mailVer[1],
-                                           install: "/",
-                                           cpe: cpe,
-                                           concluded: mailVer[0]),
-    port: port);
+                                            version: mailVer[1],
+                                            install: "/",
+                                            cpe: cpe,
+                                            concluded: mailVer[0]),
+                                            port: port);
     exit(0);
   }
 }
 
+mailPorts = get_kb_list("Services/www");
+if(!mailPorts) mailPorts = make_list(80) ;
 
-##Try to get version from HTTP
-## Cannot use get_http_port() as it will exit script if port is not listening
-mailPort = get_kb_item( "Services/www" );
-if(!mailPort) {
-  mailPort = 80;
-}
-
-## Get banner
-if(banner = get_http_banner(port:mailPort))
-{
-  #Confirm application
-  if("Server: Ipswitch-IMail" >< banner){
-    ## Get Version
-    get_version(banner:banner, port:mailPort);
+foreach mailPort(mailPorts){
+  if(get_port_state(mailPort)) {
+    if(banner = get_http_banner(port:mailPort)) {
+      if("Server: Ipswitch-IMail" >< banner) {
+        get_version(banner:banner, port:mailPort);
+      }
+    }
   }
 }
 
-## Try to get Version from POP3 Baner
-## Cannot use get_pop3_port() as it will exit script if port is not listening
-## Directly Checking POP3 Port
-mailPort = get_kb_item("Services/pop3");
-if(!mailPort) {
-  mailPort = 110;
-}
+mailPorts = get_kb_list("Services/pop3");
+if(!mailPorts) mailPorts = make_list(110) ;
 
-## Get POP3 Baner
-if(banner = get_pop3_banner(port:mailPort))
-{
-  #Confirm application
-  if("IMail" >< banner) {
-    ## Get Version
-    get_version(banner:banner, port:mailPort);
+foreach mailPort(mailPorts){
+  if(get_port_state(mailPort)) {
+    if(banner = get_pop3_banner(port:mailPort)) {
+      if("IMail" >< banner) {
+        get_version(banner:banner, port:mailPort);
+      }
+    }
   }
 }
 
+mailPorts = get_kb_list("Services/smtp");
+if(!mailPorts) mailPorts = make_list(25) ;
 
-##Try to get version through SMTP Banner
-## Get SMTP Port
-## Cannot use get_smtp_port() as it will exit script if port is not listening
-## Directly Checking SMTP Port
-mailPort = get_kb_item("Services/smtp");
-if(!mailPort) {
-  mailPort = 25;
-}
-
-## Get SMTP Banner
-if(banner = get_smtp_banner(port:mailPort))
-{
-  ##Confirm Application
-  if("IMail" >< banner) {
-    ## Get Version
-    get_version(banner:banner, port:mailPort);
+foreach mailPort(mailPorts){
+  if(get_port_state(mailPort)) {
+    if(banner = get_smtp_banner(port:mailPort)) {
+      if("IMail" >< banner) {
+        get_version(banner:banner, port:mailPort);
+      }
+    }
   }
 }
 
-##Try to get version from IMAP Banner
-## Check IMAP Port
-mailPort = get_kb_item("Services/imap");
-if(!mailPort) {
-  mailPort = 143;
-}
+mailPort = get_kb_list("Services/imap");
+if(!mailPorts) mailPorts = make_list(143);
 
-## Get IMAP Banner
-if(banner = get_imap_banner(port:mailPort))
-{
-  ##Confirm Application
-  if("IMail" >< banner) {
-    ## Get Version
-    get_version(banner:banner,port:mailPort);
+foreach mailPort(mailPorts){
+  if(get_port_state(mailPort)) {
+    if(banner = get_imap_banner(port:mailPort)) {
+      if("IMail" >< banner) {
+        get_version(banner:banner,port:mailPort);
+      }
+    }
   }
 }
+
 exit(0);

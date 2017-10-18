@@ -112,12 +112,11 @@ function wmi_user_groupuser(handle)
 }
 
 # Ex: usrName = "Administrator"
-function wmi_user_is_uesraccount_disabled(handle, usrName)
+function wmi_user_is_useraccount_disabled(handle, usrName)
 {
   if(!usrName){
-    return(0);
-  }
-  else {
+    query = 'Select Disabled from Win32_UserAccount';
+  }else{
     query = 'Select Disabled from Win32_UserAccount Where Name = ' +
              raw_string(0x22) + usrName + raw_string(0x22);
   }
