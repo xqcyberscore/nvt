@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_unspecified_vuln01_july16.nasl 6765 2017-07-20 06:20:42Z santu $
+# $Id: gb_oracle_db_unspecified_vuln01_july16.nasl 7497 2017-10-19 07:06:06Z santu $
 #
 # Oracle Database Server Unspecified Vulnerability -01 July16
 #
@@ -29,18 +29,19 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808703");
-  script_version("$Revision: 6765 $");
-  script_cve_id("CVE-2016-3479", "CVE-2016-5555", "CVE-2016-5505", "CVE-2016-5498", "CVE-2016-5499",
-                "CVE-2016-3562", "CVE-2017-3310", "CVE-2017-3486", "CVE-2016-2183", "CVE-2014-3566");
-  script_bugtraq_id(91898, 93615, 93613, 93620, 93629, 93640, 95481, 92630, 70574);
+  script_version("$Revision: 7497 $");
+  script_cve_id("CVE-2016-3479", "CVE-2016-5555", "CVE-2016-5505", "CVE-2016-5498", 
+                "CVE-2016-5499", "CVE-2016-3562", "CVE-2017-3310", "CVE-2017-3486", 
+                "CVE-2016-2183", "CVE-2014-3566", "CVE-2017-10261");
+  script_bugtraq_id(91898, 93615, 93613, 93620, 93629, 93640, 95481, 92630, 70574, 101344);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 08:20:42 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-19 09:06:06 +0200 (Thu, 19 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-07-21 18:47:32 +0530 (Thu, 21 Jul 2016)");
   script_name("Oracle Database Server Unspecified Vulnerability -01 July16");
 
   script_tag(name:"summary", value:"This host is running  Oracle Database Server
-  and is prone to unspecified vulnerability.");
+  and is prone multiple unspecified vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
@@ -49,8 +50,8 @@ if(description)
 
   - Multiple unspecified errors.
 
-  - Multiple unspecified errors related to components 'DBMS_LDAP' and
-    'Real Application Clusters'. ");
+  - Multiple unspecified errors related to components 'DBMS_LDAP',
+    'Real Application Clusters' and 'XML Database' components.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote
   authenticated attackers to affect confidentiality, integrity, and availability
@@ -66,7 +67,8 @@ if(description)
   http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html
   http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html
   http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html
-  http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html#AppendixDB");
+  http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html
+  http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -76,7 +78,8 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html#AppendixDB");
+  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html");
+  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");

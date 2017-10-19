@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipswitch_imail_remote_code_exec_vuln.nasl 7461 2017-10-17 13:08:44Z asteins $
+# $Id: gb_ipswitch_imail_remote_code_exec_vuln.nasl 7484 2017-10-18 13:29:18Z cfischer $
 #
 # Ipswitch IMail Server SMTPD RCE Vulnerability (ETRE/ETCETERABLUE)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ipswitch:imail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811255");
-  script_version("$Revision: 7461 $");
+  script_version("$Revision: 7484 $");
   script_cve_id("CVE-2017-12638", "CVE-2017-12639");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-17 15:08:44 +0200 (Tue, 17 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-18 15:29:18 +0200 (Wed, 18 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-26 12:49:28 +0530 (Wed, 26 Jul 2017)");
   script_name("Ipswitch IMail Server SMTPD RCE Vulnerability (ETRE/ETCETERABLUE)");
 
@@ -68,22 +68,19 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_dependencies("gb_ipswitch_imail_server_detect.nasl");
-  script_mandatory_keys("IpSwitch/IMail/version");
+  script_mandatory_keys("Ipswitch/IMail/detected");
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(!imPort = get_app_port(cpe:CPE)) exit(0);
-
-if(!imVer = get_app_version(cpe:CPE, port:imPort)) exit(0);
+if(!imVer = get_app_version(cpe:CPE, nofork:TRUE)) exit(0);
 
 if(version_is_less(version:imVer, test_version:"12.5.6"))
 {
   report = report_fixed_ver(installed_version:imVer, fixed_version:"12.5.6");
-  security_message(data:report, port:imPort);
+  security_message(data:report, port:0);
   exit(0);
 }
 

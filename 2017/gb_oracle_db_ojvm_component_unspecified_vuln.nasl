@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_ojvm_component_unspecified_vuln.nasl 6981 2017-08-22 06:39:29Z asteins $
+# $Id: gb_oracle_db_ojvm_component_unspecified_vuln.nasl 7497 2017-10-19 07:06:06Z santu $
 #
 # Oracle Database Server 'OJVM' Component Unspecified Vulnerability
 #
@@ -28,23 +28,25 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811532");
-  script_version("$Revision: 6981 $");
-  script_cve_id("CVE-2017-10202");
-  script_bugtraq_id(99865);
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-22 08:39:29 +0200 (Tue, 22 Aug 2017) $");
+  script_version("$Revision: 7497 $");
+  script_cve_id("CVE-2017-10202", "CVE-2017-10321", "CVE-2017-10190", "CVE-2017-10292");
+  script_bugtraq_id(99865, 101329, 101335, 101350);
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-19 09:06:06 +0200 (Thu, 19 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-19 12:14:58 +0530 (Wed, 19 Jul 2017)");
   script_name("Oracle Database Server 'OJVM' Component Unspecified Vulnerability");
 
   script_tag(name:"summary", value:"This host is running  Oracle Database Server
-  and is prone to an unspecified security vulnerability.");
+  and is prone to multiple unspecified security vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw is due to an unspecified error
-  related to 'OJVM' Component.");
+  script_tag(name:"insight", value:"Multiple flaws are due to multiple 
+  unspecified errors in components 'Core RDBMS', 'Spatial (Apache Groovy)', 
+  'Java VM', 'WLM (Apache Tomcat)', 'XML Database', 'RDBMS Security' and 
+  'OJVM' components.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote
   attackers to affect confidentiality, integrity, and availability
@@ -55,14 +57,16 @@ if(description)
   script_tag(name:"affected", value:"Oracle Database Server versions
   11.2.0.4, 12.1.0.2, 12.2.0.1");
 
-  script_tag(name:"solution", value:"Apply patches from below link,
-  http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
+  script_tag(name:"solution", value:"Apply patches from below links,
+  http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html
+  http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
+  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");

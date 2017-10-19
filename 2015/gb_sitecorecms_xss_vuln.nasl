@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitecorecms_xss_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
+# $Id: gb_sitecorecms_xss_vuln.nasl 7484 2017-10-18 13:29:18Z cfischer $
 #
-# Sitecore_CMS XSS Vulnerabilities
+# Sitecore CMS XSS Vulnerabilities
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -24,17 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:sitecore:cms";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805497");
-  script_version("$Revision: 5819 $");
+  script_version("$Revision: 7484 $");
   script_cve_id("CVE-2014-100004");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-18 15:29:18 +0200 (Wed, 18 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-03-20 10:14:06 +0530 (Fri, 20 Mar 2015)");
-  script_tag(name:"qod_type", value:"remote_vul");
-  script_name("Sitecore_CMS XSS Vulnerabilities");
+  script_tag(name:"qod_type", value:"remote_app");
+  script_name("Sitecore CMS XSS Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is installed with Sitecore CMS
   and is prone to cross site scripting vulnerability.");
@@ -64,45 +66,27 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("gb_sitecore_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("sitecore/cms/installed");
 
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-# Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( dir == "/" ) dir = "";
 
-http_port = get_http_port(default:80);
+url = dir + "/login?xmlcontrol=body%20onload=alert%28document.cookie%29";
 
-foreach dir (make_list_unique("/", "/sitecore", "/sitecore_cms", cgi_dirs(port:http_port)))
-{
-
-  if( dir == "/" ) dir = "";
-
-  rcvRes = http_get_cache(item:dir + "/login", port:http_port);
-
-  ##Confirm Application
-  if(rcvRes && "Welcome to Sitecore" >< rcvRes)
-  {
-    ##Construct Attack Request
-    url = dir + "/login?xmlcontrol=body%20onload=alert%28document.cookie%29";
-
-    ## Try attack and check the response to confirm vulnerability
-    if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-       pattern:"alert\(document.cookie\)"))
-    {
-      report = report_vuln_url( port:http_port, url:url );
-      security_message(port:http_port, data:report);
-      exit(0);
-    }
-  }
+if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:"alert\(document\.cookie\)")) {
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-exit(99);
+exit( 99 );

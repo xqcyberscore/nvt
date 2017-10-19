@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arubaos_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_arubaos_detect.nasl 7471 2017-10-18 09:03:18Z cfischer $
 #
 # ArubaOS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105244");
-  script_version("$Revision: 7236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 7471 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-18 11:03:18 +0200 (Wed, 18 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-04-07 13:29:41 +0200 (Tue, 07 Apr 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,50 +51,58 @@ if(description)
 include("host_details.inc");
 include("snmp_func.inc");
 
-port    = get_snmp_port(default:161);
-sysdesc = get_snmp_sysdesc(port:port);
-if(!sysdesc) exit(0);
+port    = get_snmp_port( default:161 );
+sysdesc = get_snmp_sysdesc( port:port );
+if( ! sysdesc ) exit( 0 );
 
 # ArubaOS (MODEL: Aruba3400), Version 6.3.1.1 (40563)
 # ArubaOS (MODEL: Aruba200-US), Version 5.0.4.16 (43995)
 # ArubaOS Version 6.1.2.3-2.1.0.0
 if( "ArubaOS" >!< sysdesc ) exit( 0 );
 
-set_kb_item( name:"ArubaOS/installed", value:TRUE );
-cpe = 'cpe:/o:arubanetworks:arubaos';
+replace_kb_item( name:"ArubaOS/installed", value:TRUE );
+cpe = "cpe:/o:arubanetworks:arubaos";
 
-vers = 'unknown';
-build = FALSE;
-model = FALSE;
+vers    = "unknown";
+build   = FALSE;
+model   = FALSE;
+install = port + "/udp";
 
 version = eregmatch( pattern:"Version ([^ ]+)", string:sysdesc );
 
-if( ! isnull( version[1] ) )
-{
-  vers = version[1];
+if( ! isnull( version[1] ) ) {
+  vers = chomp( version[1] );
   set_kb_item( name:"ArubaOS/version", value:vers );
   rep_vers = vers;
   cpe += ':' + vers;
 }
 
 b = eregmatch( pattern:"Version [^ ]+ \(([0-9]+)\)", string:sysdesc );
-if( ! isnull( b[1] ) )
-{
+if( ! isnull( b[1] ) ) {
   build = b[1];
   set_kb_item( name:"ArubaOS/build", value:build );
   rep_vers += ' (' + build + ')';
+  extra += "Build: " + build;
 }
 
 mod = eregmatch( pattern:"\(MODEL: ([^)]+)\)", string:sysdesc );
-if( ! isnull( mod[1] ) )
-{
+if( ! isnull( mod[1] ) ) {
   model = mod[1];
   set_kb_item( name:"ArubaOS/model", value:model );
+  if( extra ) extra += '\n';
+  extra += "Model: " + model;
 }
 
-register_product( cpe:cpe, port:port, proto:"udp", location:port + "/udp", service:"snmp" );
+register_product( cpe:cpe, port:port, proto:"udp", location:install, service:"snmp" );
 register_and_report_os( os:"ArubaOS", cpe:cpe, banner_type:"SNMP sysdesc", banner:sysdesc, port:port, proto:"udp", desc:"ArubaOS Detection", runs_key:"unixoide" );
 
-log_message( data:'The remote host is running ArubaOS ' + rep_vers + '\nCPE: '+ cpe + '\nModel: ' + model + '\nConcluded: ' + sysdesc + '\n', port:port, proto:"udp" );
-exit( 0 );
 
+log_message( data:build_detection_report( app:"ArubaOS",
+                                          version:rep_vers,
+                                          install:install,
+                                          cpe:cpe,
+                                          extra:extra,
+                                          concluded:sysdesc ),
+                                          port:port,
+                                          proto:"udp" );
+exit( 0 );

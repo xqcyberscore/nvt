@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_security_headers_detect.nasl 7447 2017-10-16 14:18:46Z cfischer $
+# $Id: gb_http_security_headers_detect.nasl 7484 2017-10-18 13:29:18Z cfischer $
 #
 # HTTP Security Headers Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112081");
-  script_version("$Revision: 7447 $");
+  script_version("$Revision: 7484 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-16 16:18:46 +0200 (Mon, 16 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-18 15:29:18 +0200 (Wed, 18 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-13 13:12:41 +0200 (Fri, 13 Oct 2017)");
   script_name("HTTP Security Headers Detection");
   script_category(ACT_GATHER_INFO);
@@ -39,7 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "httpver.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Services/disable_cgi_scanning");
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"https://www.owasp.org/index.php/OWASP_Secure_Headers_Project");
   script_xref(name:"URL", value:"https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#tab=Headers");

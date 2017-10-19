@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_routeros_l2tp_mitm_attack_vuln.nasl 6270 2017-06-02 08:02:50Z cfischer $
+# $Id: gb_mikrotik_routeros_l2tp_mitm_attack_vuln.nasl 7480 2017-10-18 11:44:20Z cfischer $
 #
 # MikroTik RouterOS 'L2TP' Man-in-the-Middle Attack Vulnerability
 #
@@ -24,17 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:mikrotik:routeros";
+CPE = "cpe:/o:mikrotik:routeros";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810609");
-  script_version("$Revision: 6270 $");
+  script_version("$Revision: 7480 $");
   script_cve_id("CVE-2017-6297");
   script_bugtraq_id(96447);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-02 10:02:50 +0200 (Fri, 02 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-18 13:44:20 +0200 (Wed, 18 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-03-09 16:21:26 +0530 (Thu, 09 Mar 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("MikroTik RouterOS 'L2TP' Man-in-the-Middle Attack Vulnerability");
@@ -68,37 +68,25 @@ if(description)
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_family("Web application abuses");
+  script_family("General");
   script_dependencies("gb_mikrotik_router_routeros_detect.nasl");
-  script_mandatory_keys("mikrotik/detected", "mikrotik/routeros/version");
-  script_require_ports("Services/www", 10000);
+  script_mandatory_keys("mikrotik/detected");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-appPort = "";
-appVer = "";
+if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
-## get the port
-if(!appPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
-
-## Get the version
-if(!appVer = get_app_version(cpe:CPE, port:appPort)){
-  exit(0);
-}
-
-if(appVer =~ "^6\.")
-{
-  if(version_is_equal(version:appVer, test_version:"6.83.3")||
-     version_is_equal(version:appVer, test_version:"6.37.4"))
-  {
-    report = report_fixed_ver(installed_version:appVer, fixed_version:"Workaround");
-    security_message(data:report, port:appPort);
-    exit(0);
+if( version =~ "^6\.") {
+  if( version_is_equal( version:version, test_version:"6.83.3" ) ||
+      version_is_equal( version:version, test_version:"6.37.4" ) ) {
+    report = report_fixed_ver( installed_version:version, fixed_version:"6.37.5, 6.83.4 or later");
+    security_message( port:0, data:report );
+    exit( 0 );
   }
 }
+
+exit( 99 );

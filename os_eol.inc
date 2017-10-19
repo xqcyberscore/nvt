@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 6739 2017-07-17 12:21:54Z cfischer $
+# $Id: os_eol.inc 7482 2017-10-18 12:30:38Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6739 $
+# $Revision: 7482 $
 #
 ###############################################################################
 
@@ -723,6 +723,10 @@ eol_cpes['cpe:/o:microsoft:windows_vista::sp2:x64'] = '2017-04-11';
 eol_urls['cpe:/o:microsoft:windows_10'] = 'https://support.microsoft.com/en-US/help/13853/windows-lifecycle-fact-sheet';
 eol_names['cpe:/o:microsoft:windows_10'] = 'Windows 10';
 eol_cpes['cpe:/o:microsoft:windows_10:1507'] = '2017-05-09';
+eol_cpes['cpe:/o:microsoft:windows_10:1511'] = '2017-10-10';
+#eol_cpes['cpe:/o:microsoft:windows_10:1607'] = '2018-03-01'; # Tentatively March 2018
+#eol_cpes['cpe:/o:microsoft:windows_10:1703'] = '2018-09-01'; # Tentatively September 2018
+#eol_cpes['cpe:/o:microsoft:windows_10:1709'] = '2019-03-01'; # Tentatively March 2019
 
 function os_reached_eol( cpe ) {
 
@@ -735,7 +739,7 @@ function os_reached_eol( cpe ) {
 
   if( eol_cpes[cpe] && eol_date_reached( eol_date:eol_cpes[cpe] ) ) return TRUE;
 
-  return;  
+  return;
 }
 
 function get_eol_url( cpe ) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4041689.nasl 7401 2017-10-11 13:55:58Z santu $
+# $Id: gb_ms_kb4041689.nasl 7470 2017-10-18 07:59:52Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4041689)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811925");
-  script_version("$Revision: 7401 $");
+  script_version("$Revision: 7470 $");
   script_cve_id("CVE-2017-11762", "CVE-2017-8694", "CVE-2017-8715", "CVE-2017-8717",
                 "CVE-2017-8718", "CVE-2017-11763", "CVE-2017-11765", "CVE-2017-11816",
                 "CVE-2017-11769", "CVE-2017-8726", "CVE-2017-8727", "CVE-2017-11771", 
@@ -37,15 +37,15 @@ if(description)
                 "CVE-2017-11804", "CVE-2017-11808", "CVE-2017-11809", "CVE-2017-11810", 
                 "CVE-2017-11811", "CVE-2017-11812", "CVE-2017-11814", "CVE-2017-11817", 
                 "CVE-2017-11818", "CVE-2017-11822", "CVE-2017-11823", "CVE-2017-11824", 
-                "CVE-2017-8689", "CVE-2017-8693", "CVE-2017-11815");
+                "CVE-2017-8689", "CVE-2017-8693", "CVE-2017-11815", "CVE-2017-13080");
   script_bugtraq_id(101108, 101100, 101163, 101161, 101162, 101109, 101111, 101112,
                     101084, 101142, 101114, 101116, 101166, 101110, 101140, 101144, 
                     101149, 101077, 101141, 101125, 101126, 101127, 101130, 101131,
                     101135, 101137, 101081, 101138, 101139, 101093, 101095, 101101,
-                    101122, 101102, 101099, 101128, 101096, 101136, 101094);
+                    101122, 101102, 101099, 101128, 101096, 101136, 101094, 101274);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-11 15:55:58 +0200 (Wed, 11 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-18 09:59:52 +0200 (Wed, 18 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-11 08:49:56 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4041689)");
 
@@ -56,7 +56,9 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
- 
+
+  - A spoofing vulnerability in the Windows implementation of wireless networking (KRACK)
+
   - The Universal CRT _splitpath was not handling multi byte strings correctly,
     which caused apps to fail when accessing multi byte filenames.
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_apr2017-3236618_01_win.nasl 5989 2017-04-20 10:36:11Z antu123 $
+# $Id: gb_mysql_apr2017-3236618_01_win.nasl 7485 2017-10-18 13:41:01Z cfischer $
 #
 # Oracle Mysql Security Updates (apr2017-3236618) 01 - Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810880");
-  script_version("$Revision: 5989 $");
+  script_version("$Revision: 7485 $");
   script_cve_id("CVE-2017-3302");
   script_bugtraq_id(96162);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 12:36:11 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-18 15:41:01 +0200 (Wed, 18 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-04-19 16:43:18 +0530 (Wed, 19 Apr 2017)");
   script_name("Oracle Mysql Security Updates (apr2017-3236618) 01 - Windows");
 
@@ -69,9 +69,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Databases");
-  script_dependencies("mysql_version.nasl", "os_fingerprint.nasl");
+  script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
-  script_mandatory_keys("MySQL/installed");
+  script_mandatory_keys("MySQL/installed", "Host/runs_windows");
   exit(0);
 }
 

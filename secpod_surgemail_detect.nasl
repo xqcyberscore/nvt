@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_surgemail_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: secpod_surgemail_detect.nasl 7478 2017-10-18 11:11:40Z asteins $
 #
 # SurgeMail Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900839");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5888 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_version("$Revision: 7478 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-18 13:11:40 +0200 (Wed, 18 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-09-15 09:32:43 +0200 (Tue, 15 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -38,12 +38,12 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Service detection");
-  script_dependencies("gb_get_http_banner.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "find_service.nasl", "smtpserver_detect.nasl");
   script_mandatory_keys("surgemail/banner");
-  script_require_ports("Services/www", 7110, 7026);
+  script_require_ports("Services/www", 7110, 7026, "Services/smtp", 25, "Services/imap", 143, "Services/pop3", 110);
 
   script_tag(name : "summary" , value : "This script detects the installed version of SurgeMail
-  and sets the result in KB.");
+  and sets the result into the knowledgebase.");
   script_tag(name:"qod_type", value:"remote_banner");
   exit(0);
 }
@@ -52,39 +52,41 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("smtp_func.inc");
+include("imap_func.inc");
+include("pop3_func.inc");
 
-function SurgeMailSetVer(banner)
-{
-  version = eregmatch(pattern:"Version ([0-9.]+)([a-z][0-9]?(-[0-9])?)?",
-                      string:banner);
-  if(version[1])
-  {
-    if(!isnull(version[2]))
-      version = version[1] + "." + version[2];
+banner = get_http_banner(port:7110);
+
+if("surgemail" >< banner){
+  replace_kb_item(name:"SurgeMail/Installed", value:TRUE);
+
+  version = "unknown";
+  ver = eregmatch(pattern:"Version ([0-9.]+)([a-z][0-9]?(-[0-9])?)?", string:banner);
+
+  if(ver[1]){
+    if(!isnull(ver[2]))
+      version = ver[1] + "." + ver[2];
     else
-      version = version[1];
+      version = ver[1];
 
     version = ereg_replace(pattern:"-", replace:".", string:version);
 
-    if(version) {
-      set_kb_item(name:"SurgeMail/Ver", value:version);
-      log_message(data:"SurgeMail version " + version +
-                         " was detected on the host");
-
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value: version, exp:"^([0-9.]+([a-z0-9])?)",base:"cpe:/a:netwin:surgemail:");
-      if(!isnull(cpe))
-         register_host_detail(name:"App", value:cpe);
-
-    }
+    set_kb_item(name:"SurgeMail/Ver", value:version);
   }
-}
 
+  cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:netwin:surgemail:");
+  if (!cpe)
+    cpe = "cpe:/a:netwin:surgemail";
 
-surge_banner = get_http_banner(port:7110);
+  register_product(cpe:cpe, location:"/", port:port, service:"smtp");
 
-if("surgemail" >< surge_banner){
-  SurgeMailSetVer(banner:surge_banner);
+  log_message(data:build_detection_report(app:"Netwin Surgemail",
+                                          version:version,
+                                          install:"/",
+                                          cpe:cpe,
+                                          concluded:ver[0]),
+                                          port:port);
   exit(0);
 }
 
@@ -96,34 +98,128 @@ if(!surgemail_port){
 }
 
 # Check for Default Port Status
-if(!get_port_state(surgemail_port))
-{
+if(!get_port_state(surgemail_port)){
   exit(0);
 }
 
 rcvRes = http_get_cache(item:"/", port:surgemail_port);
 
-if(egrep(pattern:"SurgeMail", string:rcvRes, icase:1))
-{
-  smtpPort = get_kb_item("Services/smtp");
-  if(!smtpPort)
-    smtpPort = 25;
+if(egrep(pattern:"SurgeMail", string:rcvRes, icase:1)){
+  replace_kb_item(name:"SurgeMail/Installed", value:TRUE);
 
-  imapPort = get_kb_item("Services/imap");
-  if(!imapPort)
-    imapPort = 143;
+  smtpPorts = get_kb_list("Services/smtp");
+  if(!smtpPorts) smtpPorts = make_list(25);
 
-  popPort = get_kb_item("Services/pop3");
-  if(!popPort)
-    popPort = 110;
+  foreach port(smtpPorts){
+    if(get_port_state(port)){
+      banner = get_smtp_banner(port:port);
 
-  foreach port (make_list(smtpPort, imapPort, popPort))
-  {
-    surge_banner = get_kb_item(string("Banner/", port));
+      if("surgemail" >< banner){
+        ver = eregmatch(pattern:"Version ([0-9.]+)([a-z][0-9]?(-[0-9])?)?", string:banner);
+        version = "unknown";
 
-    if(surge_banner =~ "surgemail"){
-      SurgeMailSetVer(banner:surge_banner);
-      exit(0);
+        if(ver[1]){
+          if(!isnull(ver[2]))
+            version = ver[1] + "." + ver[2];
+          else
+            version = ver[1];
+
+          version = ereg_replace(pattern:"-", replace:".", string:version);
+
+          set_kb_item(name:"SurgeMail/Ver", value:version);
+        }
+
+        cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:netwin:surgemail:");
+        if (!cpe)
+        cpe = "cpe:/a:netwin:surgemail";
+
+        register_product(cpe:cpe, location:"/", port:port, service:"smtp");
+
+        log_message(data:build_detection_report(app:"Netwin Surgemail",
+                                                version:version,
+                                                install:"/",
+                                                cpe:cpe,
+                                                concluded:ver[0]),
+                                                port:port);
+      }
+    }
+  }
+
+  imapPorts = get_kb_list("Services/imap");
+  if(!imapPorts) imapPorts = make_list(143);
+
+  foreach port(imapPorts){
+    if(get_port_state(port)){
+      banner = get_imap_banner(port:port);
+
+      if("surgemail" >< banner){
+        ver = eregmatch(pattern:"Version ([0-9.]+)([a-z][0-9]?(-[0-9])?)?", string:banner);
+        version = "unknown";
+
+        if(ver[1]){
+          if(!isnull(ver[2]))
+            version = ver[1] + "." + ver[2];
+          else
+            version = ver[1];
+
+          version = ereg_replace(pattern:"-", replace:".", string:version);
+
+          set_kb_item(name:"SurgeMail/Ver", value:version);
+        }
+
+        cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:netwin:surgemail:");
+        if (!cpe)
+        cpe = "cpe:/a:netwin:surgemail";
+
+        register_product(cpe:cpe, location:"/", port:port, service:"imap");
+
+        log_message(data:build_detection_report(app:"Netwin Surgemail",
+                                                version:version,
+                                                install:"/",
+                                                cpe:cpe,
+                                                concluded:ver[0]),
+                                                port:port);
+      }
+    }
+  }
+
+  popPorts = get_kb_list("Services/pop3");
+  if(!popPorts) popPorts = make_list(110);
+
+  foreach port(popPorts){
+    if(get_port_state(port)){
+      banner = get_pop3_banner(port:port);
+
+      if("surgemail" >< banner){
+        ver = eregmatch(pattern:"Version ([0-9.]+)([a-z][0-9]?(-[0-9])?)?", string:banner);
+        version = "unknown";
+
+        if(ver[1]){
+          if(!isnull(ver[2]))
+            version = ver[1] + "." + ver[2];
+          else
+            version = ver[1];
+
+          version = ereg_replace(pattern:"-", replace:".", string:version);
+
+          set_kb_item(name:"SurgeMail/Ver", value:version);
+        }
+
+        cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:netwin:surgemail:");
+        if (!cpe)
+        cpe = "cpe:/a:netwin:surgemail";
+
+        register_product(cpe:cpe, location:"/", port:port, service:"pop3");
+
+        log_message(data:build_detection_report(app:"Netwin Surgemail",
+                                                version:version,
+                                                install:"/",
+                                                cpe:cpe,
+                                                concluded:ver[0]),
+                                                port:port);
+      }
     }
   }
 }
+
+exit(0);
