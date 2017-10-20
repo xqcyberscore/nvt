@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 7444 2017-10-16 13:36:25Z jschulte $
+# $Id: products_eol.inc 7499 2017-10-19 07:44:31Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7444 $
+# $Revision: 7499 $
 #
 ###############################################################################
 
@@ -143,8 +143,10 @@ eol_cpes[ 'cpe:/a:openssl:openssl' ]         = make_array(
                                                            'version_regex', '^([0-9]+\\.[0-9]+\\.[0-9]+)'
                                                          );
 
+# EOL basically means all branches like 4.2 listed at https://www.phpmyadmin.net/files/
+# but not as "maintained" at https://www.phpmyadmin.net/downloads/
 eol_cpes[ 'cpe:/a:phpmyadmin:phpmyadmin' ]   = make_array(
-                                                           'versions', '2.11:2011-07-12;4.4:2016-12-01',
+                                                           'versions', '0.9:unknown;1.1:unknown;1.2:unknown;1.3:unknown;2.0:unknown;2.1:unknown;2.2:unknown;2.3:unknown;2.4:unknown;2.5:unknown;2.6:unknown;2.7:unknown;2.8:unknown;2.9:unknown;2.10:unknown;2.11:2011-07-12;3.0:unknown;3.1:unknown;3.2:unknown;3.3:unknown;3.4:unknown;3.5:unknown;4.1:unknown;4.2:unknown;4.3:unknown;4.4:2017-01-23;4.5:unknown;4.6:unknown',
                                                            'version_regex', '^([0-9]+\\.[0-9]+)'
                                                          );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_health_appln_cmd_line_utilities_detect_lin.nasl 6602 2017-07-07 10:09:52Z cfischer $
+# $Id: gb_hp_health_appln_cmd_line_utilities_detect_lin.nasl 7512 2017-10-20 05:21:19Z cfischer $
 #
 # HP System Health Application and Command Line Utilities Version Detection (Linux)
 #
@@ -37,10 +37,10 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6602 $");
+ script_version("$Revision: 7512 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"package");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:09:52 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:21:19 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-05-08 13:05:57 +0530 (Tue, 08 May 2012)");
   script_name("HP System Health Application and Command Line Utilities Version Detection (Linux)");
   
@@ -48,7 +48,9 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rpms", "login/SSH/Linux");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }
@@ -64,18 +66,10 @@ buffer_rpm = NULL;
 version = "";
 cpe = NULL;
 
-## Confirm Linux, as SSH can be instslled on Windows as well
-result = get_kb_item( "ssh/login/uname" );
-if("Linux" >!< result){
-  exit(0);
-}
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(-1);
 }
-
 
 ## Trying to get version from rpm
 buffer_rpm = get_kb_item("ssh/login/rpms");

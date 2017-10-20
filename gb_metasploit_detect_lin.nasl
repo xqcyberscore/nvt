@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_metasploit_detect_lin.nasl 7143 2017-09-15 11:37:02Z santu $
+# $Id: gb_metasploit_detect_lin.nasl 7512 2017-10-20 05:21:19Z cfischer $
 #
 # Metasploit Version Detection (Linux)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811588");
-  script_version("$Revision: 7143 $");
+  script_version("$Revision: 7512 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 13:37:02 +0200 (Fri, 15 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:21:19 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-30 17:46:40 +0530 (Wed, 30 Aug 2017)");
   script_name("Metasploit Version Detection (Linux)");
 
@@ -44,8 +44,10 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_mandatory_keys("login/SSH/Linux");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   exit(0);
 }
 
@@ -63,12 +65,6 @@ paths = "";
 
 sock = ssh_login_or_reuse_connection();
 if(!sock){
-  exit(0);
-}
-
-## Confirm Linux, as SSH can be instslled on Windows as well
-result = get_kb_item("ssh/login/uname");
-if("Linux" >!< result){
   exit(0);
 }
 

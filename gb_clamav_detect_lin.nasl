@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_detect_lin.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_clamav_detect_lin.nasl 7512 2017-10-20 05:21:19Z cfischer $
 #
 # CalmAV Version Detection (Linux)
 #
@@ -31,17 +31,19 @@ if(description)
 {
   script_id(800553);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5499 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version("$Revision: 7512 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:21:19 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("ClamAV Version Detection (Linux)");
-  script_family("Service detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_mandatory_keys("login/SSH/Linux");
+  script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xpdf_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: secpod_xpdf_detect.nasl 7514 2017-10-20 05:39:50Z cfischer $
 #
 # Xpdf Version Detection
 #
@@ -46,8 +46,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5877 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_version("$Revision: 7514 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:39:50 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-05-06 08:04:28 +0200 (Wed, 06 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -63,8 +63,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_mandatory_keys("login/SSH/Linux");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   exit(0);
 }
 

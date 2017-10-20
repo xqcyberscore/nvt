@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synergy_detect_lin.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_synergy_detect_lin.nasl 7512 2017-10-20 05:21:19Z cfischer $
 #
 # Synergy Version Detection (Linux)
 #
@@ -31,30 +31,25 @@ if(description)
 {
   script_id(801874);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5877 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+ script_version("$Revision: 7512 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:21:19 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Synergy Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("Service detection");
-  script_mandatory_keys("login/SSH/Linux");
+  script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }
 
-
 include("ssh_func.inc");
 include("version_func.inc");
-
-## Confirm Linux, as SSH can be installed on Windows as well
-result = get_kb_item( "ssh/login/uname" );
-if("Linux" >!< result){
-  exit(0);
-}
 
 sock = ssh_login_or_reuse_connection();
 if(!sock){

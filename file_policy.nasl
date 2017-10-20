@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: file_policy.nasl 5456 2017-03-01 15:26:35Z cfi $
+# $Id: file_policy.nasl 7510 2017-10-20 05:12:02Z cfischer $
 #
 # Check for File Policy Violations
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96210");
-  script_version("$Revision: 5456 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 16:26:35 +0100 (Wed, 01 Mar 2017) $");
+  script_version("$Revision: 7510 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:12:02 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-05-25 14:26:00 +0200 (Wed, 25 May 2011)");
   script_tag(name:"cvss_base", value:"0.0");  
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");   
   script_name("Check for File Policy Violations");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("General");
-  script_dependencies("find_service.nasl", "ssh_authorization.nasl");
-  script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("login/SSH/Linux");
+  script_family("Policy");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
 
   #script_add_preference(name:"Target Security Level", type:"radio", value:"HIGH;MEDIUM;LOW");
   #script_add_preference(name:"Target File Policies", type:"file", value:"");

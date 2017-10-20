@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tiv_tsm_detect_lin.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_ibm_tiv_tsm_detect_lin.nasl 7515 2017-10-20 05:50:25Z cfischer $
 #
 # IBM Tivoli Storage Manager Version Detection (Linux)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808636");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 7515 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:50:25 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-10-06 12:39:14 +0530 (Thu, 06 Oct 2016)");
   script_name("IBM Tivoli Storage Manager Version Detection (Linux)");
 
@@ -44,8 +44,10 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_mandatory_keys("login/SSH/Linux");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   exit(0);
 }
 

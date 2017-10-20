@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 7447 2017-10-16 14:18:46Z cfischer $
+# $Id: host_details.inc 7509 2017-10-19 13:53:31Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7447 $
+# $Revision: 7509 $
 #
 ###############################################################################
 
@@ -132,6 +132,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.100062", # ms_rdp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105330", # gb_apache_activemq_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108044", # dcetest.nasl
+    "1.3.6.1.4.1.25623.1.0.14674",  # ident_process_owner.nasl
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl
 );
@@ -197,6 +198,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.100062", # ms_rdp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105330", # gb_apache_activemq_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108044", # dcetest.nasl
+    "1.3.6.1.4.1.25623.1.0.14674",  # ident_process_owner.nasl
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl
 );

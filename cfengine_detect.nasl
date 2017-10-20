@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cfengine_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: cfengine_detect.nasl 7515 2017-10-20 05:50:25Z cfischer $
 #
 # cfengine detection and local identification
 #
@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14315");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 7515 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:50:25 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("cfengine detection and local identification");
@@ -45,8 +45,9 @@ if(description)
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/Linux");
-  script_require_ports(5308);
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   exit(0);
 }
 
@@ -55,17 +56,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-cfPort = 5308;
-
-if(!get_port_state(cfPort)) exit(0);
-
-## Checking cfengine service is running or not
-soc = open_sock_tcp(cfPort);
-if(!soc){ 
-  exit(0);
-}
-
-## Try to get cfengine version locally
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_virtualbox_detect_lin.nasl 5943 2017-04-12 14:44:26Z antu123 $
+# $Id: secpod_sun_virtualbox_detect_lin.nasl 7512 2017-10-20 05:21:19Z cfischer $
 #
 # Oracle VirtualBox Version Detection (Linux)
 #
@@ -36,10 +36,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901051");
-  script_version("$Revision: 5943 $");
+  script_version("$Revision: 7512 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:21:19 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-11-20 06:52:52 +0100 (Fri, 20 Nov 2009)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Oracle VirtualBox Version Detection (Linux)");
@@ -53,8 +53,10 @@ queries the found executables via command line option '--version'.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_mandatory_keys("login/SSH/Linux");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnu_binutils_detect_lin.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_gnu_binutils_detect_lin.nasl 7515 2017-10-20 05:50:25Z cfischer $
 #
 # GNU Binutils Version Detection (Linux)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806085");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 7515 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:50:25 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-10-13 15:03:47 +0530 (Tue, 13 Oct 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("GNU Binutils Version Detection (Linux)");
@@ -44,7 +44,9 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/Linux");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   exit(0);
 }
 

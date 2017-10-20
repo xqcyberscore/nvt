@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nasl_detect_lin.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: secpod_nasl_detect_lin.nasl 7514 2017-10-20 05:39:50Z cfischer $
 #
 # NASL Version Detection (Linux)
 #
@@ -31,17 +31,19 @@ if(description)
 {
   script_id(900189);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5499 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version("$Revision: 7514 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:39:50 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-01-22 12:00:13 +0100 (Thu, 22 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("NASL Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 SecPod");
-  script_family("General");
-  script_mandatory_keys("login/SSH/Linux");
+  script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }
@@ -55,11 +57,6 @@ include("host_details.inc");
 ## Constant values
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900189";
 SCRIPT_DESC = "NASL Version Detection (Linux)";
-
-naslPort = 1241;
-if(!get_tcp_port_state(naslPort)){
-  exit(0);
-}
 
 sock = ssh_login_or_reuse_connection();
 if(!sock){

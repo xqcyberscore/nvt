@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_audacity_detect_lin.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: secpod_audacity_detect_lin.nasl 7510 2017-10-20 05:12:02Z cfischer $
 #
 # Audacity Version Detection (Linux)
 #
@@ -31,17 +31,19 @@ if(description)
 {
   script_id(900306);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5499 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version("$Revision: 7510 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:12:02 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-02-18 15:32:11 +0100 (Wed, 18 Feb 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Audacity Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 SecPod");
-  script_family("General");
-  script_mandatory_keys("login/SSH/Linux");
+  script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }

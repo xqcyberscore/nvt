@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 7428 2017-10-13 11:45:53Z cfischer $
+# $Id: os_detection.nasl 7509 2017-10-19 13:53:31Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 7428 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 13:45:53 +0200 (Fri, 13 Oct 2017) $");
+  script_version("$Revision: 7509 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-19 15:53:31 +0200 (Thu, 19 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -68,6 +68,7 @@ if(description)
                       "gb_upnp_os_detection.nasl", "gb_sip_os_detection.nasl",
                       "gb_check_mk_agent_detect.nasl", "ms_rdp_detect.nasl",
                       "gb_apache_activemq_detect.nasl", "dcetest.nasl",
+                      "ident_process_owner.nasl",
                       "gb_nmap_os_detection.nasl", "os_fingerprint.nasl");
 
   script_tag(name:"summary", value:"This script consolidates the OS information detected by several NVTs and tries to find the best matching OS.

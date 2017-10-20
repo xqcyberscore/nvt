@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_avahi_detection_lin.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: secpod_avahi_detection_lin.nasl 7515 2017-10-20 05:50:25Z cfischer $
 #
 # Avahi Version Detection (Linux)
 #
@@ -37,8 +37,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5499 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version("$Revision: 7515 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:50:25 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-12-31 15:14:17 +0100 (Wed, 31 Dec 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -46,8 +46,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("Product detection");
-  script_mandatory_keys("login/SSH/Linux");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }

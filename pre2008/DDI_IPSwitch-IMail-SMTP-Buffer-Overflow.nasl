@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_IPSwitch-IMail-SMTP-Buffer-Overflow.nasl 6053 2017-05-01 09:02:51Z teissa $
-# Description: IPSwitch IMail SMTP Buffer Overflow
+# $Id: DDI_IPSwitch-IMail-SMTP-Buffer-Overflow.nasl 7506 2017-10-19 11:45:46Z cfischer $
+#
+# IPSwitch IMail SMTP Buffer Overflow
 #
 # Authors:
 # Forrest Rae <forrest.rae@digitaldefense.net>
@@ -23,99 +25,59 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-tag_summary = "A vulnerability exists within IMail that
-allows remote attackers to gain SYSTEM level
-access to servers running IMail's SMTP
-daemon (versions 6.06 and below). The
-vulnerability stems from the IMail SMTP daemon 
-not doing proper bounds checking on various input 
-data that gets passed to the IMail Mailing List 
-handler code. If an attacker crafts a special 
-buffer and sends it to a remote IMail SMTP server 
-it is possible that an attacker can remotely execute 
-code (commands) on the IMail system.";
-
-tag_solution = "Download the latest patch from
-http://ipswitch.com/support/IMail/patch-upgrades.html";
+CPE = "cpe:/a:ipswitch:imail_server";
 
 if(description)
 {
-	script_id(10994);
-	script_version("$Revision: 6053 $");
-	script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
-	script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-	script_bugtraq_id(2083, 2651);
-    script_tag(name:"cvss_base", value:"7.5");
-    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-	script_cve_id("CVE-2001-0039","CVE-2001-0494");
+  script_oid("1.3.6.1.4.1.25623.1.0.10994");
+  script_version("$Revision: 7506 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-19 13:45:46 +0200 (Thu, 19 Oct 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(2083, 2651);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2001-0039", "CVE-2001-0494");
+  script_name("IPSwitch IMail SMTP Buffer Overflow");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2002 Digital Defense, Inc.");
+  script_family("SMTP problems");
+  script_dependencies("gb_ipswitch_imail_server_detect.nasl");
+  script_mandatory_keys("Ipswitch/IMail/detected");
 
- 
- 	name = "IPSwitch IMail SMTP Buffer Overflow";
- 	script_name(name);
- 
- 	summary = "IPSwitch IMail SMTP Buffer Overflow";
-	script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
-	script_copyright("This script is Copyright (C) 2002 Digital Defense, Inc.");
-	family = "SMTP problems";
-	script_family(family);
-	script_dependencies("find_service.nasl");
-	script_require_ports(25);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
-	exit(0);
+  tag_summary = "A vulnerability exists within IMail that allows remote attackers to gain SYSTEM level
+  access to servers running IMail's SMTP daemon (versions 6.06 and below).";
+
+  tag_insight = "The vulnerability stems from the IMail SMTP daemon not doing proper bounds checking on
+  various input data that gets passed to the IMail Mailing List handler code.";
+
+  tag_impact = "If an attacker crafts a special buffer and sends it to a remote IMail SMTP server
+  it is possible that an attacker can remotely execute code (commands) on the IMail system.";
+
+  tag_solution = "Download the latest patch from
+  http://ipswitch.com/support/IMail/patch-upgrades.html";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"insight", value:tag_insight);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
 }
 
-debug = 0;
-ddidata = string("Not Applicable");
-port = 25;
+include("version_func.inc");
+include("host_details.inc");
 
-if(get_port_state(port))
-{
-	if(debug == 1) { display("Port ", port, " is open.\n"); }
-		
+if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit(0);
 
-	soc = open_sock_tcp(port);
-	if(soc)
-	{
-		if(debug == 1)
-		{
-			display("Socket is open.\n");
-		}
-		
-		banner = recv_line(socket:soc, length:4096);
-		
-		if(debug == 1)
-		{
-			display("\n---------Results from request ---------\n");
-			display(banner);
-			display("\n---------End of Results from request ---------\n\n");
-		}
-		     
-		if(
-		   egrep(pattern:"IMail 6\.0[1-6] ", string:banner) 	|| 
-		   egrep(pattern:"IMail 6\.0 ", string:banner) 		||
-		   egrep(pattern:"IMail [1-5]\.", string:banner)
-		  )
-		{
-			if(debug == 1)
-			{
-				display("SMTP Server is Imail\n");
-			}
-		
-			security_message(port); 
-			exit(0);
-		}
-
-		close(soc);
-	}
-	else
-	{
-		if(debug == 1) { display("Error: Socket didn't open.\n"); }
-	}
+if( version_is_less_equal( version:version, test_version:"6.06" ) ) {
+  report = report_fixed_ver( installed_version:version, fixed_version:"See references" );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-
-
+exit( 99 );

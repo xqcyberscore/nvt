@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 19 Oct 2017 09:56:42 +0200
+# Automatically created on:  Fri, 20 Oct 2017 08:22:55 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -48223,6 +48223,7 @@
 2017/gb_CESA-2017_2882_httpd_centos7.nasl: GPLv2+
 2017/gb_CESA-2017_2885_thunderbird_centos6.nasl: GPLv2+
 2017/gb_CESA-2017_2885_thunderbird_centos7.nasl: GPLv2+
+2017/gb_CESA-2017_2907_wpa_supplicant_centos7.nasl: GPLv2+
 2017/gb_chef_manage_rce_vuln.nasl: GPLv2+
 2017/gb_chip_default_ssh_credentials.nasl: GPLv2+
 2017/gb_cisco_acs_cisco-sa-20170215-acs1.nasl: GPLv2+
@@ -49907,8 +49908,10 @@
 2017/gb_inspircd_m_sasl_module_spoofing_vuln.nasl: GPLv2+
 2017/gb_intel_amt_clickjack_vuln.nasl: GPLv2+
 2017/gb_intel_amt_prive_esc_vuln.nasl: GPLv2+
+2017/gb_intel_amt_wpa2_krack.nasl: GPLv2+
 2017/gb_intelbras_roteador_wireless_wrn150_auth_bypass_vuln.nasl: GPLv2+
 2017/gb_intel_standard_manageability_priv_esc_vuln.nasl: GPLv2+
+2017/gb_interspire_iem_remote_admin_auth_bypass_vuln.nasl: GPLv2+
 2017/gb_invoiceplane_mult_vuln.nasl: GPLv2+
 2017/gb_ipfire_oinkcode_param_rem_com_inj_vuln.nasl: GPLv2+
 2017/gb_ipswitch_imail_remote_code_exec_vuln.nasl: GPLv2+
@@ -50023,6 +50026,7 @@
 2017/gb_magento_90724.nasl: GPLv2+
 2017/gb_magento_file_upload_vuln.nasl: GPLv2+
 2017/gb_magento_mul_vuln_sept17.nasl: GPLv2+
+2017/gb_magento_password_reset_vuln.nasl: GPLv2+
 2017/gb_magento_xss_vuln.nasl: GPLv2+
 2017/gb_mako_web_server_mult_vuln.nasl: GPLv2+
 2017/gb_manageengine_admanager_plus_mul_vul_win.nasl: GPLv2+
@@ -50560,6 +50564,7 @@
 2017/gb_novell_iprint_client_plugin_parameter_rce_vuln_win.nasl: GPLv2+
 2017/gb_novell_iprint_client_stack_bof_vuln_win.nasl: GPLv2+
 2017/gb_novell_iprint_client_unspecified_rce_vuln_win.nasl: GPLv2+
+2017/gb_npm-v_login_vuln.nasl: GPLv2+
 2017/gb_ntopng_default_admin_credentials.nasl: GPLv2+
 2017/gb_ntp_config_command_file_overwrite_vuln.nasl: GPLv2+
 2017/gb_ntp_entropy_sec_weakness_brute_force_vuln.nasl: GPLv2+
@@ -50987,6 +50992,7 @@
 2017/gb_RHSA-2017_2863-01_kernel.nasl: GPLv2+
 2017/gb_RHSA-2017_2882-01_httpd.nasl: GPLv2+
 2017/gb_RHSA-2017_2885-01_thunderbird.nasl: GPLv2+
+2017/gb_RHSA-2017_2907-01_wpa_supplicant.nasl: GPLv2+
 2017/gb_riverbed_steelhead_file_read_vuln.nasl: GPLv2+
 2017/gb_roundcube_96817.nasl: GPLv2+
 2017/gb_roundcube_98673_98671.nasl: GPLv2+
@@ -51216,6 +51222,9 @@
 2017/gb_suse_2017_2615_1.nasl: GPLv2+
 2017/gb_suse_2017_2633_1.nasl: GPLv2+
 2017/gb_suse_2017_2710_1.nasl: GPLv2+
+2017/gb_suse_2017_2739_1.nasl: GPLv2+
+2017/gb_suse_2017_2741_1.nasl: GPLv2+
+2017/gb_suse_2017_2755_1.nasl: GPLv2+
 2017/gb_symantec_messaging_gateway_mult_vuln_aug17.nasl: GPLv2+
 2017/gb_symantec_messaging_gateway_rar_file_parser_dos_vuln.nasl: GPLv2+
 2017/gb_symantec_messaging_gateway_rce_vuln.nasl: GPLv2+
@@ -51593,6 +51602,8 @@
 2017/gb_ubuntu_USN_3452_1.nasl: GPLv2+
 2017/gb_ubuntu_USN_3453_1.nasl: GPLv2+
 2017/gb_ubuntu_USN_3454_1.nasl: GPLv2+
+2017/gb_ubuntu_USN_3455_1.nasl: GPLv2+
+2017/gb_ubuntu_USN_3456_1.nasl: GPLv2+
 2017/gb_unitrends_mult_vulns_04_17.nasl: GPLv2+
 2017/gb_unrealircd_authentication_spoofing_vuln.nasl: GPLv2+
 2017/gb_unrealircd_local_priv_esc_vuln.nasl: GPLv2+
@@ -51758,12 +51769,13 @@
 2017/gb_zoneminder_info_disc_vuln.nasl: GPLv2+
 2017/gb_zoneminder_mult_vuln.nasl: GPLv2+
 2017/gb_zoneminder_xss_vuln.nasl: GPLv2+
+2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-10_lin.nasl: GPLv2+
+2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-10_macosx.nasl: GPLv2+
+2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-10_win.nasl: GPLv2+
 2017/google/gb_google_chrome_stable-channel-update-for-desktop_21-2017-09_lin.nasl: GPLv2+
 2017/google/gb_google_chrome_stable-channel-update-for-desktop_21-2017-09_macosx.nasl: GPLv2+
 2017/google/gb_google_chrome_stable-channel-update-for-desktop_21-2017-09_win.nasl: GPLv2+
 2017/hikvision/gb_hikvision_ip_cameras_mult_vuln.nasl: GPLv2+
-2017/hp/gb_hpe_universal_cmdb_http_trace_info_disc_vuln.nasl: GPLv2+
-2017/hp/gb_hpe_universal_cmdb_xss_n_code_exec_vuln.nasl: GPLv2+
 2017/ibm/gb_ibm_db2_dos_vuln_sep17.nasl: GPLv2+
 2017/ibm/gb_ibm_db2_log_information_disclosure_vuln.nasl: GPLv2+
 2017/ibm/gb_ibm_db2_multiple_privilege_escalation_vuln.nasl: GPLv2+
@@ -51878,6 +51890,7 @@
 2017/sugarcrm/gb_sugarcrm_mult_vuln_sep17.nasl: GPLv2+
 2017/sugarcrm/gb_sugarcrm_php_saml_vuln.nasl: GPLv2+
 2017/symantec/gb_symantec_encryption_desktop_dos_vuln_win.nasl: GPLv2+
+2017/ubiquiti/gb_ubnt_wpa2_krack.nasl: GPLv2+
 2017/vmware/gb_vmware_esxi_guest_rpc_null_pointer_deref_vuln.nasl: GPLv2+
 2017/vmware/gb_vmware_esxi_svga_device_code_exec_vuln.nasl: GPLv2+
 2017/vmware/gb_vmware_fusion_guest_rpc_null_pointer_deref_vuln_macosx.nasl: GPLv2+
@@ -53445,6 +53458,7 @@ gsf/2017/cisco/gb_cisco_ios_xr_cisco-sa-20171004-ncs.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170906-cms.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170913-cmsturn.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20171004-cms.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_nx_os_cisco-sa-20171018-ppe.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_small_bussiness_300_series_switch_dos_vuln.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_small_bussiness_500_series_switch_dos_vuln.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_spa_cisco-sa-20170920-spa_dos_vuln.nasl: GPLv2+
@@ -53454,13 +53468,18 @@ gsf/2017/cisco/gb_cisco_vcs_cisco-sa-20171018-expressway-tp-vcs.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_webex_cisco-sa-20171004-wms.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_wlc_cisco-sa-20170405-wlc.nasl: GPLv2+
 gsf/2017/emc/gb_emc_data_protection_advisor_pw_vuln.nasl: GPLv2+
+gsf/2017/emc/gb_emc_isilon_onefs_xss_vuln.nasl: GPLv2+
+gsf/2017/emc/gb_rsa_archer_mult_vuln1.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K43945001.nasl: GPLv2+
+gsf/2017/fortinet/gb_fortigate_FG-IR-17-196.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortinet_fortios_config_rev_comments_xss_vuln.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortinet_fortios_firtiview_app_filter_xss_vuln.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortinet_fortios_mult_xss_vuln.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortinet_fortios_user_groups_xss_vuln.nasl: GPLv2+
 gsf/2017/gb_spidercontrol_scada_webserver_code_exec_vuln.nasl: GPLv2+
 gsf/2017/gb_winexesvc_service_delete.nasl: GPLv2+
+gsf/2017/hp/gb_hpe_universal_cmdb_http_trace_info_disc_vuln.nasl: GPLv2+
+gsf/2017/hp/gb_hpe_universal_cmdb_xss_n_code_exec_vuln.nasl: GPLv2+
 gsf/2017/ibm/gb_ibm_informix_dynamic_server_priv_escalation_vuln_lin.nasl: GPLv2+
 gsf/2017/ibm/gb_ibm_websphere_mq_dos_vuln_oct17_lin.nasl: GPLv2+
 gsf/2017/ibm/gb_ibm_websphere_mq_dos_vuln_oct17_win.nasl: GPLv2+

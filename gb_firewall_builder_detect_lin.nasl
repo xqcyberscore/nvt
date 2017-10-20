@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firewall_builder_detect_lin.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_firewall_builder_detect_lin.nasl 7514 2017-10-20 05:39:50Z cfischer $
 #
 # Firewall Builder Version Detection (Linux)
 #
@@ -31,17 +31,19 @@ if(description)
 {
   script_id(800995);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6125 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+ script_version("$Revision: 7514 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:39:50 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-03-18 15:44:57 +0100 (Thu, 18 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Firewall Builder Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
-  script_family("Service detection");
-  script_dependencies("find_service.nasl","gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/Linux");
+  script_family("Product detection");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }

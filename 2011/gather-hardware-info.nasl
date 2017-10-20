@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-hardware-info.nasl 5481 2017-03-03 19:37:30Z cfi $
+# $Id: gather-hardware-info.nasl 7513 2017-10-20 05:29:41Z cfischer $
 #
 # Gather Linux Hardware Information
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103996");
-  script_version("$Revision: 5481 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-03 20:37:30 +0100 (Fri, 03 Mar 2017) $");
+  script_version("$Revision: 7513 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:29:41 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-04-05 14:24:03 +0200 (Tue, 05 Apr 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,8 +36,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("ssh_authorization.nasl");
-  script_mandatory_keys("login/SSH/Linux"); # TBD or better just "login/SSH/success" ?
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
 
   script_tag(name:"summary", value:"This script attempts to gather information about the hardware configuration
   from a linux host and stores the results in the KB.");

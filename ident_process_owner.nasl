@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ident_process_owner.nasl 7447 2017-10-16 14:18:46Z cfischer $
+# $Id: ident_process_owner.nasl 7509 2017-10-19 13:53:31Z cfischer $
 #
 # Identd scan
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14674");
-  script_version("$Revision: 7447 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-16 16:18:46 +0200 (Mon, 16 Oct 2017) $");
+  script_version("$Revision: 7509 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-19 15:53:31 +0200 (Thu, 19 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,6 +50,10 @@ if(description)
 }
 
 include("misc_func.inc");
+include("host_details.inc");
+
+SCRIPT_DESC = "Identd scan";
+banner_type = "Identd scan OS report";
 
 #if (get_kb_item("Host/ident_scanned")) exit(0);
 
@@ -74,6 +78,7 @@ foreach iport( list ) {
 if( ! isoc ) exit( 0 );
 
 identd_n = 0;
+os_reported = FALSE;
 
 # Try several times, as some ident daemons limit the throughput of answers?!
 for( i = 1; i <= 6 && ! isnull( ports ); i++ ) {
@@ -96,13 +101,42 @@ for( i = 1; i <= 6 && ! isnull( ports ); i++ ) {
           }
           send( socket:isoc, data:req );
         }
-        id = recv_line( socket:isoc, length:1024 );
-        if( id ) {
-          ids = split( id, sep:':' );
-          if( "USERID" >< ids[1] && strlen( ids[3] ) < 30 ) {
+        res = recv_line( socket:isoc, length:1024 );
+        if( res ) {
+          _res = split( chomp( res ), sep:":" );
+          os = chomp( _res[2] );
+          id = chomp( _res[3] );
+          # e.g.
+          # 53,35089:USERID:UNIX:pdns
+          # 113 , 60954 : USERID : 20 : oidentd
+          # see also https://tools.ietf.org/html/rfc1413
+          if( "USERID" >< _res[1] && strlen( id ) < 30 ) {
             identd_n++;
-            set_kb_item( name:"Ident/tcp/" + port, value:ids[3] );
-            log_message( port:port, data:"identd reveals that this service is running as user " + ids[3] );
+            set_kb_item( name:"Ident/tcp/" + port, value:id );
+            report  = "identd reveals that this service is running as user '" + id + "'.";
+            report += ' Response:\n\n' + res;
+            log_message( port:port, data:report );
+
+            # try go gather the Host OS. See https://www.iana.org/assignments/operating-system-names/operating-system-names.xhtml#operating-system-names-1 for identifiers
+            # nb: Some ident services are just reporting a number
+            if( os && ! egrep( string:os, pattern:"^[0-9]+$" ) && ! os_reported ) {
+              os = tolower( os );
+              if( "windows" >< os || "win32" >< os ) {
+                register_and_report_os( os:"Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, banner:res, port:iport, desc:SCRIPT_DESC, runs_key:"windows" );
+                os_reported = TRUE;
+              } else if( "linux" >< os || "unix" >< os ) {
+                register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, banner:res, port:iport, desc:SCRIPT_DESC, runs_key:"unixoide" );
+                os_reported = TRUE;
+              } else if( "freebsd" >< os ) {
+                register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, banner:res, port:iport, desc:SCRIPT_DESC, runs_key:"unixoide" );
+                os_reported = TRUE;
+              } else {
+                if( "unknown" >!< os && "other" >!< os ) {
+                  register_unknown_os_banner( banner:res, banner_type_name:banner_type, banner_type_short:"identd_os_banner", port:iport );
+                  os_reported = TRUE;
+                }
+              }
+            }
           } else {
             bad[j++] = port;
           }

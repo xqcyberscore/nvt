@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3353_1.nasl 6800 2017-07-26 06:58:22Z cfischer $
+# $Id: gb_ubuntu_USN_3353_1.nasl 7506 2017-10-19 11:45:46Z cfischer $
 #
 # Ubuntu Update for heimdal USN-3353-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843242");
-  script_version("$Revision: 6800 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-26 08:58:22 +0200 (Wed, 26 Jul 2017) $");
+  script_version("$Revision: 7506 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-19 13:45:46 +0200 (Thu, 19 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-16 07:22:38 +0200 (Sun, 16 Jul 2017)");
   script_cve_id("CVE-2017-11103");
   script_tag(name:"cvss_base", value:"6.8");
@@ -50,7 +50,7 @@ trusted network services or perform other attacks.");
 
   script_xref(name: "USN", value: "3353-1");
   script_xref(name: "URL" , value: "https://www.ubuntu.com/usn/usn-3353-1");
-  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx228867.nasl 7437 2017-10-16 06:24:35Z ckuersteiner $
+# $Id: gb_xenserver_ctx228867.nasl 7503 2017-10-19 09:52:59Z ckuersteiner $
 #
 # Citrix XenServer Multiple Security Updates (CTX228867)
 #
@@ -30,11 +30,14 @@ CPE = "cpe:/a:citrix:xenserver";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140421");
-  script_version("$Revision: 7437 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-16 08:24:35 +0200 (Mon, 16 Oct 2017) $");
+  script_version("$Revision: 7503 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-19 11:52:59 +0200 (Thu, 19 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-10-16 09:49:18 +0700 (Mon, 16 Oct 2017)");
   script_tag(name: "cvss_base", value: "8.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:S/C:C/I:C/A:C");
+
+  script_cve_id("CVE-2017-15595", "CVE-2017-15588", "CVE-2017-15593", "CVE-2017-15592", "CVE-2017-15594",
+                "CVE-2017-15590", "CVE-2017-15589");
 
   script_tag(name: "qod_type", value: "package");
 
@@ -52,19 +55,19 @@ if (description)
   script_tag(name: "summary", value: "A number of security vulnerabilities have been identified in Citrix
 XenServer that may allow a malicious administrator of a guest VM to compromise the host:
 
-- CVE-2017-TBA0: Unlimited recursion in linear pagetable de-typing
+- CVE-2017-15595: Unlimited recursion in linear pagetable de-typing
 
-- CVE-2017-TBA1: Stale TLB entry due to page type release race
+- CVE-2017-15588: Stale TLB entry due to page type release race
 
-- CVE-2017-TBA2: page type reference leak on x86
+- CVE-2017-15593: page type reference leak on x86
 
-- CVE-2017-TBA3: x86: Incorrect handling of self-linear shadow mappings with translated guests
+- CVE-2017-15592: x86: Incorrect handling of self-linear shadow mappings with translated guests
 
-- CVE-2017-TBA4: x86: Incorrect handling of IST settings during CPU hotplug
+- CVE-2017-15594: x86: Incorrect handling of IST settings during CPU hotplug
 
-- CVE-2017-TBA7: multiple MSI mapping issues on x86
+- CVE-2017-15590: multiple MSI mapping issues on x86
 
-- CVE-2017-TBA9: hypervisor stack leak in x86 I/O intercept code
+- CVE-2017-15589: hypervisor stack leak in x86 I/O intercept code
 
 For customers that do not have PV-based guests, are not using PCI passthrough and are using hardware with HAP
 support, the risk is reduced to a disclosure of a small part of the hypervisor stack.");

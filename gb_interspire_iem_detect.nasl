@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interspire_iem_detect.nasl 7487 2017-10-18 14:17:37Z asteins $
+# $Id: gb_interspire_iem_detect.nasl 7509 2017-10-19 13:53:31Z cfischer $
 #
 # Interspire IEM Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112086");
-  script_version("$Revision: 7487 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-18 16:17:37 +0200 (Wed, 18 Oct 2017) $");
+  script_version("$Revision: 7509 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-19 15:53:31 +0200 (Thu, 19 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-18 15:11:22 +0200 (Wed, 18 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,8 +52,8 @@ if(description)
 }
 
 include("cpe.inc");
-include("http_keepalive.inc");
 include("http_func.inc");
+include("http_keepalive.inc");
 include("host_details.inc");
 
 port = get_http_port(default:80);

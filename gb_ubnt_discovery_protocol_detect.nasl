@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubnt_discovery_protocol_detect.nasl 7270 2017-09-26 09:49:58Z cfischer $
+# $Id: gb_ubnt_discovery_protocol_detect.nasl 7504 2017-10-19 10:02:05Z cfischer $
 #
 # UBNT Discovery Protocol Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106716");
- script_version ("$Revision: 7270 $");
- script_tag(name: "last_modification", value: "$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
+ script_version ("$Revision: 7504 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-10-19 12:02:05 +0200 (Thu, 19 Oct 2017) $");
  script_tag(name: "creation_date", value: "2017-04-03 09:45:47 +0700 (Mon, 03 Apr 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -122,25 +122,25 @@ set_kb_item(name: "ubnt_discovery_proto/detected", value: TRUE);
 
 register_service(port: port, ipproto: "udp", proto: "ubnt discovery");
 
-report = "Ubiquiti Networks Discovery service is running on this port.\n\nThe following information was extracted:\n\n";
+report = 'Ubiquiti Networks Discovery service is running on this port.\n\nThe following information was extracted:\n\n';
 
 if (ip)
-  report += "IP Address:       " + ip + "\n";
+  report += "IP Address:       " + ip + '\n';
 if (mac)
-  report += "MAC Address:      " + mac + "\n";
+  report += "MAC Address:      " + mac + '\n';
 if (max_index(alt_ip) > 0)
   foreach aip (alt_ip)
-    report += "Alternate IP:     " + aip + "\n";
+    report += "Alternate IP:     " + aip + '\n';
 if (model_full)
-  report += "Model:            " + model_full + "\n";
+  report += "Model:            " + model_full + '\n';
 else if (model_short)
-  report += "Model:            " + model_short + "\n";
+  report += "Model:            " + model_short + '\n';
 if (firmware)
-  report += "Firmware:         " + firmware + "\n";
+  report += "Firmware:         " + firmware + '\n';
 if (host_name)
-  report += "Hostname:         " + host_name + "\n";
+  report += "Hostname:         " + host_name + '\n';
 if (essid)
-  report += "ESSID:            " + essid + "\n";
+  report += "ESSID:            " + essid + '\n';
 
 log_message(data: report, port: port, proto: "udp");
 

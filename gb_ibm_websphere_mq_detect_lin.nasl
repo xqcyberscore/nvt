@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_detect_lin.nasl 7233 2017-09-22 12:05:13Z santu $
+# $Id: gb_ibm_websphere_mq_detect_lin.nasl 7515 2017-10-20 05:50:25Z cfischer $
 #
 # IBM Websphere MQ Version Detection (Linux)
 #
@@ -27,19 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811904");
-  script_version("$Revision: 7233 $");
+  script_version("$Revision: 7515 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 14:05:13 +0200 (Fri, 22 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:50:25 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-20 18:25:25 +0530 (Wed, 20 Sep 2017)");
   script_name("IBM Websphere MQ Version Detection (Linux)");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_family("Service detection");
-  script_mandatory_keys("login/SSH/Linux");
+  script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "summary" , value : "This script search for 'dspmqver' and
   queries for IBM Mq version.");
 
@@ -52,13 +54,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Confirm Linux, as SSH can be installed on Windows as well
-result = get_kb_item( "ssh/login/uname" );
-if("Linux" >!< result){
-  exit(0);
-}
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);

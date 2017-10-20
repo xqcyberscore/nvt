@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_detect_lin.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_wireshark_detect_lin.nasl 7513 2017-10-20 05:29:41Z cfischer $
 #
 # Wireshark Version Detection (Linux)
 #
@@ -38,8 +38,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+ script_version("$Revision: 7513 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:29:41 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 15:11:55 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -47,8 +47,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008, 2011 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_mandatory_keys("login/SSH/Linux");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }

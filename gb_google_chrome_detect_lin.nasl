@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_detect_lin.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_google_chrome_detect_lin.nasl 7515 2017-10-20 05:50:25Z cfischer $
 #
 # Google Chrome Version Detection (Linux)
 #
@@ -32,10 +32,10 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.801446";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 7515 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:50:25 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-09-21 16:43:08 +0200 (Tue, 21 Sep 2010)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Google Chrome Version Detection (Linux)");
@@ -53,7 +53,9 @@ and set it in KB.";
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/Linux");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   exit(0);
 }
 
@@ -67,13 +69,6 @@ include("host_details.inc");
 chromeVer="";
 chromePath="";
 
-## Confirm Linux, as SSH can be installed on Windows as well
-result = get_kb_item( "ssh/login/uname" );
-if("Linux" >!< result){
-  exit(0);
-}
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);

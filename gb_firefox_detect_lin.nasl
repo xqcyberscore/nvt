@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_detect_lin.nasl 6482 2017-06-29 08:31:43Z cfischer $
+# $Id: gb_firefox_detect_lin.nasl 7515 2017-10-20 05:50:25Z cfischer $
 #
 # Mozilla Firefox Version Detection (Linux)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800017");
-  script_version("$Revision: 6482 $");
+  script_version("$Revision: 7515 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:31:43 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:50:25 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-10-07 14:21:23 +0200 (Tue, 07 Oct 2008)");
   script_name("Mozilla Firefox Version Detection (Linux)");
 
@@ -43,10 +43,12 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
 
   script_category(ACT_GATHER_INFO);
-  script_family("Product detection");
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
+  script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/Linux");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   exit(0);
 }
 

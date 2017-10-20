@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f-prot_av_detect_lin.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_f-prot_av_detect_lin.nasl 7513 2017-10-20 05:29:41Z cfischer $
 #	
 # F-PROT Antivirus Version Detection (Linux)
 #
@@ -31,17 +31,19 @@ if(description)
 {
   script_id(800324);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5877 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+ script_version("$Revision: 7513 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:29:41 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-01-13 15:40:34 +0100 (Tue, 13 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("F-PROT Antivirus Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("General");
-  script_mandatory_keys("login/SSH/Linux");
+  script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }

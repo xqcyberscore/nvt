@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_eol_win.nasl 7489 2017-10-18 17:43:24Z cfischer $
+# $Id: gb_phpmyadmin_eol_win.nasl 7499 2017-10-19 07:44:31Z cfischer $
 #
 # phpMyAdmin End of Life Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113030");
-  script_version("$Revision: 7489 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-18 19:43:24 +0200 (Wed, 18 Oct 2017) $");
+  script_version("$Revision: 7499 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-19 09:44:31 +0200 (Thu, 19 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-16 13:54:55 +0200 (Mon, 16 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -63,7 +63,7 @@ if( description )
   script_tag(name:"vuldetect", value:tag_vuldetect);
 
   script_xref(name:"URL", value:"https://www.phpmyadmin.net/news/2011/7/12/phpmyadmin-211-end-of-life/");
-  script_xref(name:"URL", value:"https://twitter.com/phpmya/status/804321737030717440");
+  script_xref(name:"URL", value:"https://www.phpmyadmin.net/news/2017/1/23/phpmyadmin-466-441510-and-401019-are-released/");
 
   exit( 0 );
 }

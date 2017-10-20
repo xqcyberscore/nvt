@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_detect_lin.nasl 5943 2017-04-12 14:44:26Z antu123 $
+# $Id: gb_vmware_prdts_detect_lin.nasl 7513 2017-10-20 05:29:41Z cfischer $
 #
 # VMware products version detection (Linux)
 #
@@ -32,10 +32,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800001");
-  script_version("$Revision: 5943 $");
+  script_version("$Revision: 7513 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:29:41 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-09-25 10:10:31 +0200 (Thu, 25 Sep 2008)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VMware products version detection (Linux)");
@@ -47,7 +47,9 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/Linux");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   exit(0);
 }
 

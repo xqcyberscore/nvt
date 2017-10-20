@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_netscape_detect_lin.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: secpod_netscape_detect_lin.nasl 7510 2017-10-20 05:12:02Z cfischer $
 #
 # Netscape Version Detection (Linux)
 #
@@ -31,17 +31,19 @@ if(description)
 {
   script_id(900394);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+ script_version("$Revision: 7510 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:12:02 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-07-29 08:37:44 +0200 (Wed, 29 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Netscape Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 SecPod");
-  script_family("Service detection");
-  script_mandatory_keys("login/SSH/Linux");
+  script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }

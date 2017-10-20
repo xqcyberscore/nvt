@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 7482 2017-10-18 12:30:38Z cfischer $
+# $Id: os_eol.inc 7504 2017-10-19 10:02:05Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7482 $
+# $Revision: 7504 $
 #
 ###############################################################################
 
@@ -37,6 +37,8 @@ eol_cpes = make_array();
 # openSUSE Leap (http://en.opensuse.org/Lifetime)
 eol_urls['cpe:/o:opensuse_project:leap'] = 'http://en.opensuse.org/Lifetime'; # Starting with 42.2 the correct one is used by the NVD
 eol_names['cpe:/o:opensuse_project:leap'] = 'openSUSE Leap';
+eol_cpes['cpe:/o:opensuse_project:leap:42.3'] = '2019-01-31';
+eol_cpes['cpe:/o:opensuse_project:leap:42.2'] = '2018-01-26';
 eol_urls['cpe:/o:novell:leap'] = 'http://en.opensuse.org/Lifetime'; # NVD is currently using a wrong vendor here
 eol_names['cpe:/o:novell:leap'] = 'openSUSE Leap';
 eol_cpes['cpe:/o:novell:leap:42.1'] = '2017-05-17';
@@ -80,6 +82,7 @@ eol_cpes['cpe:/o:suse:linux_enterprise_server:9'] = '2011-07-31';
 # Ubuntu (https://wiki.ubuntu.com/Releases)
 eol_urls['cpe:/o:canonical:ubuntu_linux'] = 'https://wiki.ubuntu.com/Releases';
 eol_names['cpe:/o:canonical:ubuntu_linux'] = 'Ubuntu';
+eol_cpes['cpe:/o:canonical:ubuntu_linux:16.10'] = '2017-07-20';
 eol_cpes['cpe:/o:canonical:ubuntu_linux:15.10'] = '2016-07-28';
 eol_cpes['cpe:/o:canonical:ubuntu_linux:15.04'] = '2016-02-04';
 eol_cpes['cpe:/o:canonical:ubuntu_linux:14.10'] = '2014-07-23';
@@ -132,6 +135,7 @@ eol_cpes['cpe:/o:centos:centos:2'] = '2009-05-31';
 # Fedora (https://fedoraproject.org/wiki/End_of_life?rd=LifeCycle/EOL)
 eol_urls['cpe:/o:fedoraproject:fedora'] = 'https://fedoraproject.org/wiki/End_of_life?rd=LifeCycle/EOL';
 eol_names['cpe:/o:fedoraproject:fedora'] = 'Fedora';
+eol_cpes['cpe:/o:fedoraproject:fedora:24'] = '2017-08-08';
 eol_cpes['cpe:/o:fedoraproject:fedora:23'] = '2016-12-20';
 eol_cpes['cpe:/o:fedoraproject:fedora:22'] = '2016-07-19';
 eol_cpes['cpe:/o:fedoraproject:fedora:21'] = '2015-12-01';
@@ -209,6 +213,9 @@ eol_cpes['cpe:/o:mandrakesoft:mandrake_linux:7.2'] = 'unknown';
 # Mageia (https://en.wikipedia.org/wiki/Mageia#Version_history)
 eol_urls['cpe:/o:mageia:linux'] = 'https://en.wikipedia.org/wiki/Mageia#Version_history';
 eol_names['cpe:/o:mageia:linux'] = 'Mageia Linux';
+eol_cpes['cpe:/o:mageia:linux:6'] = '2019-01-16';
+eol_cpes['cpe:/o:mageia:linux:5.1'] = '2017-10-31';
+eol_cpes['cpe:/o:mageia:linux:5'] = '2017-10-31';
 eol_cpes['cpe:/o:mageia:linux:4.1'] = '2015-09-19';
 eol_cpes['cpe:/o:mageia:linux:4'] = '2015-09-19';
 eol_cpes['cpe:/o:mageia:linux:3'] = '2014-11-26';
@@ -256,6 +263,7 @@ eol_cpes['cpe:/a:connectiva:linux:9.0'] = 'unknown';
 # Univention Corporate Server (http://wiki.univention.de/index.php?title=Maintenance_Cycle_for_UCS)
 eol_urls['cpe:/o:univention:univention_corporate_server'] = 'http://wiki.univention.de/index.php?title=Maintenance_Cycle_for_UCS';
 eol_names['cpe:/o:univention:univention_corporate_server'] = 'Univention Corporate Server (UCS)';
+eol_cpes['cpe:/o:univention:univention_corporate_server:4.1'] = '2018-04-30';
 eol_cpes['cpe:/o:univention:univention_corporate_server:4.0'] = '2016-05-31';
 eol_cpes['cpe:/o:univention:univention_corporate_server:3.3'] = '2016-12-31';
 eol_cpes['cpe:/o:univention:univention_corporate_server:3.2'] = '2016-11-30';
@@ -293,6 +301,10 @@ eol_cpes['cpe:/o:hp:hp-ux:10.01'] = 'unknown';
 # FortiOS (https://www.boll.ch/fortinet/assets/LifeCycleStatus.pdf)
 eol_urls['cpe:/o:fortinet:fortios'] = 'https://www.boll.ch/fortinet/assets/LifeCycleStatus.pdf';
 eol_names['cpe:/o:fortinet:fortios'] = 'FortiOS';
+eol_cpes['cpe:/o:fortinet:fortios:5.4'] = '2020-06-21';
+eol_cpes['cpe:/o:fortinet:fortios:5.2'] = '2018-12-13';
+eol_cpes['cpe:/o:fortinet:fortios:5.0'] = '2017-05-01';
+eol_cpes['cpe:/o:fortinet:fortios:4.3'] = '2014-03-19';
 eol_cpes['cpe:/o:fortinet:fortios:4.2'] = '2013-04-01';
 eol_cpes['cpe:/o:fortinet:fortios:4.1'] = '2012-08-24';
 eol_cpes['cpe:/o:fortinet:fortios:4.0'] = '2012-02-24';
@@ -305,6 +317,13 @@ eol_cpes['cpe:/o:fortinet:fortios:3.3'] = '2009-10-02';
 # Xenserver (https://www.citrix.de/support/product-lifecycle/product-matrix.html)
 eol_urls['cpe:/a:citrix:xenserver'] = 'https://www.citrix.de/support/product-lifecycle/product-matrix.html';
 eol_names['cpe:/a:citrix:xenserver'] = 'Xenserver';
+eol_cpes['cpe:/a:citrix:xenserver:7.2'] = '2018-03-16';
+eol_cpes['cpe:/a:citrix:xenserver:7.0'] = '2021-05-19';
+eol_cpes['cpe:/a:citrix:xenserver:6.5'] = '2018-06-26';
+eol_cpes['cpe:/a:citrix:xenserver:6.2'] = '2018-06-26';
+eol_cpes['cpe:/a:citrix:xenserver:6.1'] = '2016-09-30';
+eol_cpes['cpe:/a:citrix:xenserver:6.0.2'] = '2018-06-26';
+eol_cpes['cpe:/a:citrix:xenserver:6.0.0'] = '2016-09-26';
 eol_cpes['cpe:/a:citrix:xenserver:5.6'] = '2014-03-31';
 eol_cpes['cpe:/a:citrix:xenserver:5.5'] = '2013-09-15';
 eol_cpes['cpe:/a:citrix:xenserver:5.0'] = '2013-09-15';
@@ -312,6 +331,11 @@ eol_cpes['cpe:/a:citrix:xenserver:5.0'] = '2013-09-15';
 # Cisco IOS XR (http://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-xr-software/eos-eol-notice-listing.html)
 eol_urls['cpe:/o:cisco:ios_xr'] = 'http://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-xr-software/eos-eol-notice-listing.html';
 eol_names['cpe:/o:cisco:ios_xr'] = 'Cisco IOS XR';
+eol_cpes['cpe:/o:cisco:ios_xr:5.3'] = '2019-08-11';
+eol_cpes['cpe:/o:cisco:ios_xr:5.2'] = '2019-01-29';
+eol_cpes['cpe:/o:cisco:ios_xr:5.1'] = '2018-04-01';
+eol_cpes['cpe:/o:cisco:ios_xr:5.0'] = '2018-03-15';
+eol_cpes['cpe:/o:cisco:ios_xr:4.3'] = '2017-10-10';
 eol_cpes['cpe:/o:cisco:ios_xr:4.2'] = '2016-02-15';
 eol_cpes['cpe:/o:cisco:ios_xr:4.1'] = '2016-03-19';
 eol_cpes['cpe:/o:cisco:ios_xr:4.0'] = '2014-10-01';
@@ -321,6 +345,7 @@ eol_cpes['cpe:/o:cisco:ios_xr:3.6'] = '2012-06-30';
 eol_cpes['cpe:/o:cisco:ios_xr:3.5'] = '2012-05-11';
 eol_cpes['cpe:/o:cisco:ios_xr:3.4'] = '2011-12-31';
 eol_cpes['cpe:/o:cisco:ios_xr:3.3'] = '2011-12-31';
+eol_cpes['cpe:/o:cisco:ios_xr:3.2'] = '2008-04-29';
 
 # FreeBSD (https://www.freebsd.org/security/unsupported.html)
 eol_urls['cpe:/o:freebsd:freebsd'] = 'https://www.freebsd.org/security/unsupported.html';
@@ -425,6 +450,7 @@ eol_cpes['cpe:/o:openbsd:openbsd:5.6'] = '2015-10-18';
 eol_cpes['cpe:/o:openbsd:openbsd:5.7'] = '2016-03-29';
 eol_cpes['cpe:/o:openbsd:openbsd:5.8'] = '2016-09-01';
 eol_cpes['cpe:/o:openbsd:openbsd:5.9'] = '2017-04-11';
+eol_cpes['cpe:/o:openbsd:openbsd:6.0'] = '2017-10-09';
 
 # Greenbone OS (https://www.greenbone.net/roadmap-lifecycle/#tab-id-6)
 eol_urls['cpe:/o:greenbone:greenbone_os'] = 'https://www.greenbone.net/roadmap-lifecycle/#tab-id-6';

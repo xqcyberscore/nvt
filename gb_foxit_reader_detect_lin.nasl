@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_detect_lin.nasl 4650 2016-11-30 13:18:14Z antu123 $
+# $Id: gb_foxit_reader_detect_lin.nasl 7514 2017-10-20 05:39:50Z cfischer $
 #
 # Foxit Reader Version Detection (Linux)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809332");
-  script_version("$Revision: 4650 $");
+  script_version("$Revision: 7514 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-30 14:18:14 +0100 (Wed, 30 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:39:50 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-11-08 17:20:13 +0530 (Tue, 08 Nov 2016)");
   script_name("Foxit Reader Version Detection (Linux)");
   script_tag(name : "summary" , value : "Detection of installed version of
@@ -43,8 +43,10 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_mandatory_keys("login/SSH/Linux");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   exit(0);
 }
 
@@ -59,12 +61,6 @@ FoxitVer = 0;
 sock = 0;
 Foxit_Name = "";
 
-## Confirm Linux, as SSH can be installed on Windows as well
-if("Linux" >!< get_kb_item("ssh/login/uname")){
-  exit(0);
-}
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);
