@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ts_client_mult_bof_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: secpod_ts_client_mult_bof_vuln.nasl 7519 2017-10-20 06:32:05Z cfischer $
 #
 # Terminal Server Client RDP File Processing BOF Vulnerabilities
 #
@@ -46,8 +46,8 @@ to multiple buffer overflow vulnerabilities.";
 if(description)
 {
   script_id(902297);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 7519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:32:05 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2011-0900", "CVE-2011-0901");
   script_bugtraq_id(46099);
@@ -62,8 +62,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");
-  script_mandatory_keys("login/SSH/success");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -77,14 +79,6 @@ if(description)
 include("ssh_func.inc");
 include("version_func.inc");
 
-
-## Confirm Linux, as SSH can be instslled on Windows as well
-result = get_kb_item("ssh/login/uname");
-if("Linux" >!< result){
-  exit(0);
-}
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);

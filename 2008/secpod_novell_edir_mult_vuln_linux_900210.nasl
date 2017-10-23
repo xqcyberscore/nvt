@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_edir_mult_vuln_linux_900210.nasl 4522 2016-11-15 14:52:19Z teissa $
+# $Id: secpod_novell_edir_mult_vuln_linux_900210.nasl 7522 2017-10-20 08:19:44Z cfischer $
 # Description: Novell eDirectory Multiple Vulnerabilities (Linux)
 #
 # Authors:
@@ -49,8 +49,8 @@ tag_summary = "This host is running Novell eDirectory, which is prone to XSS,
 if(description)
 {
  script_id(900210);
- script_version("$Revision: 4522 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-15 15:52:19 +0100 (Tue, 15 Nov 2016) $");
+ script_version("$Revision: 7522 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
  script_tag(name:"creation_date", value:"2008-09-02 16:25:07 +0200 (Tue, 02 Sep 2008)");
  script_cve_id("CVE-2008-5091","CVE-2008-5092","CVE-2008-5093","CVE-2008-5094","CVE-2008-5095");
  script_bugtraq_id(30947);
@@ -61,9 +61,10 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
  script_family("Buffer overflow");
  script_name("Novell eDirectory Multiple Vulnerabilities (Linux)");
-
  script_dependencies("gather-package-list.nasl");
- script_require_keys("ssh/login/uname");
+ script_mandatory_keys("login/SSH/success");
+ script_exclude_keys("no_linux_shell");
+
  script_xref(name : "URL" , value : "http://secunia.com/advisories/31684");
  script_xref(name : "URL" , value : "http://securitytracker.com/alerts/2008/Aug/1020788.html");
  script_xref(name : "URL" , value : "http://securitytracker.com/alerts/2008/Aug/1020787.html");
@@ -77,20 +78,7 @@ if(description)
  exit(0);
 }
 
- include("ssh_func.inc");
-
- if("Linux" >!< get_kb_item("ssh/login/uname")){
-         exit(0);
- }
-
- port = 8028;
- if(!get_port_state(port))
- {
- 	port = 8030;
-	if(!get_port_state(port)){
-        	exit(0);
- 	}
- }
+include("ssh_func.inc");
 
  sock = ssh_login_or_reuse_connection();
  if(!sock){
@@ -115,7 +103,7 @@ if(description)
         exit(0);
  }
 
- rpmList = get_kb_list("ssh/*/rpms");
+ rpmList = get_kb_list("ssh/login/rpms");
  foreach rpm (rpmList)
  {
         if((egrep(pattern:"^novell-AUDTedirinst~(9\.|8\.9\.|8.8.3|[1-9][0-9]+\.)",
@@ -123,4 +111,4 @@ if(description)
                 exit(0);
         }
  }
- security_message(0);
+ security_message(port:0);

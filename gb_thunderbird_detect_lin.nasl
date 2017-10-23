@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_detect_lin.nasl 6482 2017-06-29 08:31:43Z cfischer $
+# $Id: gb_thunderbird_detect_lin.nasl 7518 2017-10-20 06:23:37Z cfischer $
 #
 # Mozilla Thunderbird Version Detection (Linux)
 #
@@ -30,18 +30,20 @@ tag_summary = "This script retrieves Mozilla ThunderBird Version and
 if(description)
 {
   script_id(800018);
-  script_version("$Revision: 6482 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:31:43 +0200 (Thu, 29 Jun 2017) $");
+  script_version("$Revision: 7518 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:23:37 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-10-07 14:21:23 +0200 (Tue, 07 Oct 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Mozilla Thunderbird Version Detection (Linux)");
-  script_family("Product detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
-  script_mandatory_keys("login/SSH/Linux");
+  script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }

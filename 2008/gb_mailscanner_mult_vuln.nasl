@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mailscanner_mult_vuln.nasl 4487 2016-11-14 07:41:39Z cfi $
+# $Id: gb_mailscanner_mult_vuln.nasl 7522 2017-10-20 08:19:44Z cfischer $
 #
 # MailScanner Multiple Insecure Temporary Files Vulnerabilities
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is installed with MailScanner and is prone to multiple
 if(description)
 {
   script_id(800206);
-  script_version("$Revision: 4487 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 08:41:39 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 7522 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-12-16 16:12:00 +0100 (Tue, 16 Dec 2008)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -60,7 +60,9 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gather-package-list.nasl");
-  script_require_keys("ssh/login/uname");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -71,10 +73,6 @@ if(description)
 
 include("ssh_func.inc");
 include("version_func.inc");
-
-if("Linux" >!< get_kb_item("ssh/login/uname")){
-  exit(0);
-}
 
 sock = ssh_login_or_reuse_connection();
 if(sock)

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openoffice_code_exec_vuln_lin_900043.nasl 4522 2016-11-15 14:52:19Z teissa $
+# $Id: secpod_openoffice_code_exec_vuln_lin_900043.nasl 7522 2017-10-20 08:19:44Z cfischer $
 # Description: OpenOffice rtl_allocateMemory() Remote Code Execution Vulnerability
 #
 # Authors:
@@ -43,8 +43,8 @@ tag_summary = "This host has OpenOffice.Org installed, which is prone to remote
 if(description)
 {
  script_id(900043);
- script_version("$Revision: 4522 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-15 15:52:19 +0100 (Tue, 15 Nov 2016) $");
+ script_version("$Revision: 7522 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
  script_tag(name:"creation_date", value:"2008-09-02 07:39:00 +0200 (Tue, 02 Sep 2008)");
  script_bugtraq_id(30866);
  script_cve_id("CVE-2008-3282");
@@ -55,9 +55,10 @@ if(description)
   script_tag(name:"qod_type", value:"package");
  script_family("General");
  script_name("OpenOffice rtl_allocateMemory() Remote Code Execution Vulnerability (Linux)");
-
  script_dependencies("gather-package-list.nasl");
- script_require_keys("Host/uname"); 
+ script_mandatory_keys("ssh/login/rpms", "login/SSH/success");
+ script_exclude_keys("no_linux_shell");
+
  script_xref(name : "URL" , value : "http://secunia.com/advisories/31640/");
  script_xref(name : "URL" , value : "http://www.frsirt.com/english/advisories/2008/2449");
  script_tag(name : "summary" , value : tag_summary);
@@ -68,17 +69,12 @@ if(description)
  exit(0);
 }
 
-
- if("Linux" >!< get_kb_item("ssh/login/uname")){
-        exit(0);
- }
-
- foreach item (get_kb_list("ssh/*/rpms"))
+ foreach item (get_kb_list("ssh/login/rpms"))
  {
 	if(egrep(pattern:"^(O|o)pen(O|o)ffice.*?~([01]\..*|2\.([0-3][^0-9]" +
 			 "|4(\.[01])?[^.0-9]))", string:item))
 	{
- 		security_message(0);
+ 		security_message(port:0);
       		exit(0);
         }
  }

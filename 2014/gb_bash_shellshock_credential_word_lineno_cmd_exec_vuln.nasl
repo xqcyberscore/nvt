@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_credential_word_lineno_cmd_exec_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_bash_shellshock_credential_word_lineno_cmd_exec_vuln.nasl 7530 2017-10-20 13:14:01Z cfischer $
 #
 # GNU Bash Off-by-one aka 'word_lineno' Buffer Overflow Vulnerability (LSC)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802084");
-  script_version("$Revision: 6724 $");
+  script_version("$Revision: 7530 $");
   script_cve_id("CVE-2014-7187");
   script_bugtraq_id(70154);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 15:14:01 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-10-01 14:11:51 +0530 (Wed, 01 Oct 2014)");
 
   script_name("GNU Bash Off-by-one aka 'word_lineno' Buffer Overflow Vulnerability (LSC)");
@@ -64,55 +64,36 @@ if(description)
   script_xref(name : "URL" , value : "https://access.redhat.com/security/cve/CVE-2014-7187");
 
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"qod", value:"50"); # Not reliable enough according to some blogposts etc.
+  script_tag(name:"solution_type", value:"VendorFix");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success");
+  script_dependencies("gb_gnu_bash_detect_lin.nasl");
+  script_mandatory_keys("bash/Linux/detected");
   script_exclude_keys("ssh/force/pty");
   exit(0);
 }
-
 
 include("ssh_func.inc");
 
 if( get_kb_item( "ssh/force/pty" ) ) exit( 0 );
 
-## Variable Initialization
-sock = "";
-cmd ="";
-result = "";
-
-## Confirm Linux, as SSH can be installed on Windows as well
-result = get_kb_item("ssh/login/uname");
-if("Linux" >!< result){
-  exit(0);
-}
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
-if(!sock){
-  exit(0);
-}
+if( ! sock ) exit( 0 );
 
-if( ! get_kb_item( "shellshock/bash/installed" ) )
-{
-  cmd = "bash --version";
-  result = ssh_cmd(socket:sock, cmd:cmd, nosh:TRUE);
-  if( "GNU bash" >!< result ) exit( 0 );
-  replace_kb_item( name:"shellshock/bash/installed", value:TRUE );
-}
-
-## Command be to be executed
 cmd = '(for x in {1..200} ; do echo "for x$x in ; do :"; done; for x in ' +
       '{1..200} ; do echo done ; done) | bash || echo "CVE-2014-7187 ' +
       'vulnerable, word_lineno"';
-result = ssh_cmd(socket:sock, cmd:cmd, nosh:TRUE);
-close(sock);
+result = ssh_cmd( socket:sock, cmd:cmd, nosh:TRUE );
+close( sock );
 
-## check the result
-if("word_lineno vulnerable" >< result)
-{
-  security_message(0);
-  exit(0);
+# https://lists.gnu.org/archive/html/bug-bash/2014-10/msg00139.html
+if( "not a valid identifier" >< result ) exit( 0 );
+
+if( "CVE-2014-7187 vulnerable, word_lineno" >< result ) {
+  report = "Used command: " + cmd + '\n\nResult: ' + result;
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

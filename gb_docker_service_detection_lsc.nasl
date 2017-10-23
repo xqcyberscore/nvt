@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_docker_service_detection_lsc.nasl 5114 2017-01-26 14:05:13Z mime $
+# $Id: gb_docker_service_detection_lsc.nasl 7521 2017-10-20 06:46:39Z cfischer $
 #
 # Docker Service Detection (LSC)
 #
@@ -30,18 +30,19 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140119");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5114 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-26 15:05:13 +0100 (Thu, 26 Jan 2017) $");
+ script_version ("$Revision: 7521 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:46:39 +0200 (Fri, 20 Oct 2017) $");
  script_tag(name:"creation_date", value:"2017-01-11 15:14:18 +0100 (Wed, 11 Jan 2017)");
  script_name("Docker Service Detection (LSC)");
  script_tag(name: "summary" , value: "This script performs ssh based detection of Docker");
  script_tag(name:"qod_type", value:"package");
  script_category(ACT_GATHER_INFO);
- script_family("Product detection");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("ssh_authorization.nasl");
+ script_family("Product detection");
+ script_dependencies("gather-package-list.nasl");
  script_mandatory_keys("login/SSH/success");
- script_require_ports("Services/ssh", 22);
+ script_exclude_keys("no_linux_shell");
+
  exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_virtualbox_acquiredaemonlock_vuln_lin_900408.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: secpod_virtualbox_acquiredaemonlock_vuln_lin_900408.nasl 7522 2017-10-20 08:19:44Z cfischer $
 # Description: Sun xVM VirtualBox Insecure Temporary Files Vulnerability (Linux)
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with Sun xVM VirtualBox and is prone to
 if(description)
 {
   script_id(900408);
-  script_version("$Revision: 4557 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+  script_version("$Revision: 7522 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-12-10 17:58:14 +0100 (Wed, 10 Dec 2008)");
   script_bugtraq_id(32444);
   script_cve_id("CVE-2008-5256");
@@ -52,9 +52,10 @@ if(description)
   script_name("Sun xVM VirtualBox Insecure Temporary Files Vulnerability (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/Advisories/32851");
   script_xref(name : "URL" , value : "http://www.virtualbox.org/wiki/Changelog");
-
   script_dependencies("gather-package-list.nasl");
-  script_require_keys("ssh/login/uname");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -63,12 +64,7 @@ if(description)
   exit(0);
 }
 
-
 include("ssh_func.inc");
-
-if("Linux" >!< get_kb_item("ssh/login/uname")){
-  exit(0);
-}
 
 sock = ssh_login_or_reuse_connection();
 if(sock)

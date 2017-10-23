@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xine-lib_mult_code_exe_dos_vuln_900111.nasl 7277 2017-09-26 12:45:58Z cfischer $
+# $Id: secpod_xine-lib_mult_code_exe_dos_vuln_900111.nasl 7522 2017-10-20 08:19:44Z cfischer $
 # Description: xine-lib Multiple Vulnerabilities
 #
 # Authors:
@@ -51,8 +51,8 @@ tag_summary = "The host is installed with xine-lib, which prone to multiple
 if(description)
 {
  script_id(900111);
- script_version("$Revision: 7277 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
+ script_version("$Revision: 7522 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_cve_id("CVE-2008-5235");
  script_bugtraq_id(30698);
@@ -64,7 +64,8 @@ if(description)
  script_family("General");
  script_name("xine-lib Multiple Vulnerabilities");
  script_dependencies("gather-package-list.nasl");
- script_require_keys("ssh/login/uname");
+ script_mandatory_keys("login/SSH/success");
+ script_exclude_keys("no_linux_shell");
  script_xref(name : "URL" , value : "http://www.frsirt.com/english/advisories/2008/2382");
  script_xref(name : "URL" , value : "http://sourceforge.net/project/shownotes.php?release_id=619869&group_id=9655");
  script_tag(name : "summary" , value : tag_summary);
@@ -75,14 +76,9 @@ if(description)
  exit(0);
 }
 
-
- include("ssh_func.inc");
-
- if("Linux" >!< get_kb_item("ssh/login/uname")){
-        exit(0);
- }
+include("ssh_func.inc");
  
- foreach item (get_kb_list("ssh/*/rpms"))
+ foreach item (get_kb_list("ssh/login/rpms"))
  {
         if("xine" >< item)
         {
@@ -109,5 +105,5 @@ if(description)
 
  if(egrep(pattern:"^(0\..*|1\.(0\..*|1(\.0?[0-9]|\.1[0-4])?))([^.0-9]|$)",
 	  string:xineVer)){
- 	security_message(0);
+ 	security_message(port:0);
  } 

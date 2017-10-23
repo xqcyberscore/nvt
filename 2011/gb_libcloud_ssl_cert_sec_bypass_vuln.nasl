@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libcloud_ssl_cert_sec_bypass_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_libcloud_ssl_cert_sec_bypass_vuln.nasl 7530 2017-10-20 13:14:01Z cfischer $
 #
 # Libcloud SSL Certificates Security Bypass Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with Libcloud and is prone to security
 if(description)
 {
   script_id(802164);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 7530 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 15:14:01 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-09-22 10:24:03 +0200 (Thu, 22 Sep 2011)");
   script_cve_id("CVE-2010-4340");
   script_tag(name:"cvss_base", value:"4.3");
@@ -53,8 +53,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
-  script_mandatory_keys("login/SSH/success");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -63,15 +65,8 @@ if(description)
   exit(0);
 }
 
-
 include("ssh_func.inc");
 include("version_func.inc");
-
-## Confirm Linux, as SSH can be installed on Windows as well
-result = get_kb_item( "ssh/login/uname" );
-if("Linux" >!< result){
-  exit(0);
-}
 
 sock = ssh_login_or_reuse_connection();
 if(!sock){

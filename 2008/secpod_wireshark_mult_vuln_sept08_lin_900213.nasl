@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_mult_vuln_sept08_lin_900213.nasl 6602 2017-07-07 10:09:52Z cfischer $
+# $Id: secpod_wireshark_mult_vuln_sept08_lin_900213.nasl 7522 2017-10-20 08:19:44Z cfischer $
 # Description: Wireshark Multiple Vulnerabilities - Sept-08 (Linux)
 #
 # Authors:
@@ -28,8 +28,8 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900213";
 if(description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6602 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:09:52 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 7522 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
  script_tag(name:"creation_date", value:"2008-09-10 17:51:23 +0200 (Wed, 10 Sep 2008)");
  script_bugtraq_id(31009);
  script_cve_id("CVE-2008-3146", "CVE-2008-3932", "CVE-2008-3933");
@@ -41,7 +41,7 @@ if(description)
  script_family("Denial of Service");
  script_name("Wireshark Multiple Vulnerabilities - Sept08 (Linux)");
  script_dependencies("gather-package-list.nasl", "gb_wireshark_detect_lin.nasl");
- script_mandatory_keys("Wireshark/Linux/Ver", "ssh/login/uname");
+ script_mandatory_keys("Wireshark/Linux/Ver");
  script_xref(name:"URL", value:"http://secunia.com/advisories/31674");
  script_xref(name:"URL", value:"http://www.frsirt.com/english/advisories/2008/2493");
  script_xref(name:"URL", value:"http://www.wireshark.org/security/wnpa-sec-2008-05.html");
@@ -60,10 +60,6 @@ Impact Level : Application");
 include("ssh_func.inc");
 include("host_details.inc");
 
- if("Linux" >!< get_kb_item("ssh/login/uname")){
-        exit(0);
- }
-
  report = string("\n Overview : The host is running Wireshark/Ethereal, which " +
                  "is prone to multiple\n vulnerabilities.\n" +
                  "\n        Vulnerability Insight:\n" +
@@ -72,7 +68,7 @@ include("host_details.inc");
  vuln2 = string("       - an error when uncompressing zlib-compressed packet data.\n");
  vuln3 = string("       - an error when reading a Tektronix .rf5 file.\n");
 
- foreach item (get_kb_list("ssh/*/rpms"))
+ foreach item (get_kb_list("ssh/login/rpms"))
  {
         if("ethereal" >< item)
 	{

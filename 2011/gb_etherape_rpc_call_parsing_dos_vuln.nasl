@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_etherape_rpc_call_parsing_dos_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_etherape_rpc_call_parsing_dos_vuln.nasl 7519 2017-10-20 06:32:05Z cfischer $
 #
 # EtherApe RPC Packet Processing Denial of Service Vulnerability
 #
@@ -38,11 +38,11 @@ tag_summary = "This host is installed with EtherApe and is prone to denial of
 if(description)
 {
   script_id(802340);
-  script_version("$Revision: 7052 $");
+  script_version("$Revision: 7519 $");
   script_cve_id("CVE-2011-3369");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:32:05 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-11-08 17:22:20 +0530 (Tue, 08 Nov 2011)");
   script_name("EtherApe RPC Packet Processing Denial of Service Vulnerability");
 
@@ -51,8 +51,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_mandatory_keys("login/SSH/success");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -69,13 +71,6 @@ if(description)
 include("ssh_func.inc");
 include("version_func.inc");
 
-## Confirm Linux, as SSH can be instslled on Windows as well
-result = get_kb_item( "ssh/login/uname" );
-if("Linux" >!< result){
-  exit(0);
-}
-
-## Open the socket
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);

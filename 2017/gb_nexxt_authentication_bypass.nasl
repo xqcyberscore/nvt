@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nexxt_authentication_bypass.nasl 7433 2017-10-13 13:18:22Z cfischer $
+# $Id: gb_nexxt_authentication_bypass.nasl 7523 2017-10-20 08:20:46Z cfischer $
 #
 # NEXXT Authentication Bypass
 #
@@ -27,8 +27,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113014");
-  script_version("$Revision: 7433 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 15:18:22 +0200 (Fri, 13 Oct 2017) $");
+  script_version("$Revision: 7523 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:20:46 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-12 11:19:20 +0200 (Thu, 12 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -64,7 +64,8 @@ include( "host_details.inc" );
 include( "http_func.inc" );
 include( "http_keepalive.inc" );
 
-port = get_http_port( default: 80 );
+port = get_http_port( default:80 );
+if( ! can_host_asp( port:port ) ) exit( 0 );
 
 content = http_get_cache( port: port, item: "/login.asp" );
 if( ! ( "<title>LOGIN</title>" >< content || eregmatch( pattern: "(<title>.+Router.{0,}<\/title>)", string: content ) ) ) {

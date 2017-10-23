@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_credential_redir_stack_cmd_exec_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_bash_shellshock_credential_redir_stack_cmd_exec_vuln.nasl 7530 2017-10-20 13:14:01Z cfischer $
 #
 # GNU Bash Stacked Redirects aka 'redir_stack' Memory Corruption Vulnerability (LSC)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802083");
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 7530 $");
   script_cve_id("CVE-2014-7186");
   script_bugtraq_id(70152);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 15:14:01 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-10-01 13:23:37 +0530 (Wed, 01 Oct 2014)");
 
   script_name("GNU Bash Stacked Redirects aka 'redir_stack' Memory Corruption Vulnerability (LSC)");
@@ -64,56 +64,34 @@ if(description)
   script_xref(name : "URL" , value : "http://lcamtuf.blogspot.in/2014/09/bash-bug-apply-unofficial-patch-now.html");
 
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"qod_type", value:"exploit");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success");
+  script_dependencies("gb_gnu_bash_detect_lin.nasl");
+  script_mandatory_keys("bash/Linux/detected");
   script_exclude_keys("ssh/force/pty");
   exit(0);
 }
-
 
 include("ssh_func.inc");
 
 if( get_kb_item( "ssh/force/pty" ) ) exit( 0 );
 
-## Variable Initialization
-sock = "";
-cmd ="";
-result = "";
-
-## Confirm Linux, as SSH can be installed on Windows as well
-result = get_kb_item("ssh/login/uname");
-if("Linux" >!< result){
-  exit(0);
-}
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
-if(!sock){
-  exit(0);
-}
+if( ! sock ) exit( 0 );
 
-if( ! get_kb_item( "shellshock/bash/installed" ) )
-{
-  cmd = "bash --version";
-  result = ssh_cmd(socket:sock, cmd:cmd, nosh:TRUE);
-  if( "GNU bash" >!< result ) exit( 0 );
-  replace_kb_item( name:"shellshock/bash/installed", value:TRUE );
-}
-
-## Command be to be executed
 cmd = "bash -c 'true <<EOF <<EOF <<EOF <<EOF <<EOF <<EOF <<EOF <<EOF <<EOF " +
       "<<EOF <<EOF <<EOF <<EOF <<EOF' || echo 'redir_stack vulnerable'";
-result = ssh_cmd(socket:sock, cmd:cmd, nosh:TRUE);
-close(sock);
+result = ssh_cmd( socket:sock, cmd:cmd, nosh:TRUE );
+close( sock );
 
 if( "In fish, please use" >< result ) exit( 99 );
 
-## check the result
-if("redir_stack vulnerable" >< result)
-{
-  security_message(port:0, data:'Result:\n\n' + result);
-  exit(0);
+if( "redir_stack vulnerable" >< result ) {
+  report = "Used command: " + cmd + '\n\nResult: ' + result;
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

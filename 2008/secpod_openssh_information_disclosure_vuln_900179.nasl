@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openssh_information_disclosure_vuln_900179.nasl 4522 2016-11-15 14:52:19Z teissa $
+# $Id: secpod_openssh_information_disclosure_vuln_900179.nasl 7522 2017-10-20 08:19:44Z cfischer $
 # Description: OpenSSH CBC Mode Information Disclosure Vulnerability
 #
 # Authors:
@@ -39,8 +39,8 @@ tag_summary = "The host is installed with OpenSSH and is prone to information
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900179");
-  script_version("$Revision: 4522 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-15 15:52:19 +0100 (Tue, 15 Nov 2016) $");
+  script_version("$Revision: 7522 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_cve_id("CVE-2008-5161");
   script_bugtraq_id(32319);
@@ -55,10 +55,10 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name: "solution_type", value: "VendorFix");
-
   script_dependencies("gather-package-list.nasl", "ssh_detect.nasl");
-  script_require_keys("ssh/login/uname");
   script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("ssh/login/rpms");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -67,18 +67,14 @@ if(description)
   exit(0);
 }
 
-
 include("ssh_func.inc");
 
 port = get_kb_item("Services/ssh");
 if(!port){
   exit(0);
 }
-if("Linux" >!< get_kb_item("ssh/login/uname")){
-  exit(0);
-}
 
-foreach item (get_kb_list("ssh/*/rpms"))
+foreach item (get_kb_list("ssh/login/rpms"))
 {
   openItem = egrep(pattern:"^openssh~([.0-9a-z]+)~.*$", string:item);
   if("openssh" >< openItem)

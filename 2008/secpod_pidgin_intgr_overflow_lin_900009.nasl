@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pidgin_intgr_overflow_lin_900009.nasl 7277 2017-09-26 12:45:58Z cfischer $
+# $Id: secpod_pidgin_intgr_overflow_lin_900009.nasl 7522 2017-10-20 08:19:44Z cfischer $
 # Description: Pidgin MSN SLP Message Integer Overflow Vulnerabilities (Linux)
 #
 # Authors:
@@ -44,8 +44,8 @@ tag_insight = "The flaw is due to errors in the msn_slplink_process_msg
 if(description)
 {
  script_id(900009);
- script_version("$Revision: 7277 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
+ script_version("$Revision: 7522 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_bugtraq_id(29956);
  script_cve_id("CVE-2008-2927");
@@ -57,7 +57,8 @@ if(description)
  script_family("General");
  script_name("Pidgin MSN SLP Message Integer Overflow Vulnerabilities (Linux)");
  script_dependencies("gather-package-list.nasl");
- script_require_keys("ssh/login/uname");
+ script_mandatory_keys("login/SSH/success");
+ script_exclude_keys("no_linux_shell");
  script_tag(name : "affected" , value : tag_affected);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "summary" , value : tag_summary);
@@ -67,14 +68,9 @@ if(description)
  exit(0);
 }
 
+include("ssh_func.inc");
 
- include("ssh_func.inc");
-
- if("Linux" >!< get_kb_item("ssh/login/uname")){
-        exit(0);
- }
-
- foreach item (get_kb_list("ssh/*/rpms"))
+ foreach item (get_kb_list("ssh/login/rpms"))
  {
        if("pidgin~" >< item)
         {

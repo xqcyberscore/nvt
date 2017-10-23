@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpcas_session_hijack_n_xss_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_phpcas_session_hijack_n_xss_vuln.nasl 7519 2017-10-20 06:32:05Z cfischer $
 #
 # phpCAS Session Hijacking and Cross-Site Scripting Vulnerabilities
 #
@@ -43,8 +43,8 @@ tag_summary = "This host is installed with phpCAS and is prone to session
 if(description)
 {
   script_id(801428);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 7519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:32:05 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-08-19 10:23:11 +0200 (Thu, 19 Aug 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
@@ -60,8 +60,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_mandatory_keys("login/SSH/success");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -74,13 +76,6 @@ if(description)
 include("ssh_func.inc");
 include("version_func.inc");
 
-## Confirm Linux, as SSH can be instslled on Windows as well
-result = get_kb_item("ssh/login/uname");
-if("Linux" >!< result){
-  exit(0);
-}
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);

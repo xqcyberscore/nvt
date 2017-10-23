@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apple-sa-2004-08-09.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: apple-sa-2004-08-09.nasl 7524 2017-10-20 08:31:54Z cfischer $
 # Description: Apple SA 2003-12-19
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "http://docs.info.apple.com/article.html?artnum=61798";
 if(description)
 {
  script_id(14251);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 7524 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:31:54 +0200 (Fri, 20 Oct 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(8945);
  script_xref(name:"OSVDB", value:"7098");
@@ -65,17 +65,16 @@ if(description)
  script_family(family);
  
  script_dependencies("gather-package-list.nasl");
- script_require_keys("ssh/login/osx_pkgs");
+ script_mandatory_keys("ssh/login/osx_pkgs", "ssh/login/uname");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-
 packages = get_kb_item("ssh/login/osx_pkgs");
 if ( ! packages ) exit(0);
 
-uname = get_kb_item("Host/uname");
+uname = get_kb_item("ssh/login/uname");
 # MacOS X 10.2.8 and 10.3.2 only
 if ( egrep(pattern:"Darwin.* (6\.8\.|7\.2\.)", string:uname) )
 {

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_prdts_detect_lin.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: secpod_novell_prdts_detect_lin.nasl 7517 2017-10-20 06:13:53Z cfischer $
 #
 # Novell Products Version Detection (Linux)
 #
@@ -32,17 +32,19 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900598");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_version("$Revision: 7517 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:13:53 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-07-29 08:37:44 +0200 (Wed, 29 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Novell Products Version Detection (Linux)");
-  script_family("Service detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 SecPod");
-  script_mandatory_keys("login/SSH/Linux");
+  script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "summary" , value : "This script retrieves the installed
   version of Novell products and saves the result in KB.");
   exit(0);

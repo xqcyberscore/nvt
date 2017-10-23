@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_mult_vuln_aug08_lin_900039.nasl 4522 2016-11-15 14:52:19Z teissa $
+# $Id: secpod_opera_mult_vuln_aug08_lin_900039.nasl 7524 2017-10-20 08:31:54Z cfischer $
 # Description: Opera Web Browser Multiple Security Vulnerabilities Aug-08 (Linux)
 #
 # Authors:
@@ -48,8 +48,8 @@ tag_summary = "The remote host is running Opera Web Browser, which is prone
 if(description)
 {
  script_id(900039);
- script_version("$Revision: 4522 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-15 15:52:19 +0100 (Tue, 15 Nov 2016) $");
+ script_version("$Revision: 7524 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:31:54 +0200 (Fri, 20 Oct 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_cve_id("CVE-2008-4195");
  script_bugtraq_id(30768);
@@ -60,9 +60,8 @@ if(description)
   script_tag(name:"qod_type", value:"package");
  script_family("General");
  script_name("Opera Web Browser Multiple Security Vulnerabilities Aug-08 (Linux)");
- script_dependencies("gather-package-list.nasl",
-                     "secpod_opera_detection_linux_900037.nasl");
- script_require_keys("Host/uname");
+ script_dependencies("gather-package-list.nasl", "secpod_opera_detection_linux_900037.nasl");
+ script_mandatory_keys("Opera/Linux/Version");
  script_xref(name : "URL" , value : "http://www.opera.com/support/search/view/893/");
  script_xref(name : "URL" , value : "http://www.opera.com/support/search/view/894/");
  script_xref(name : "URL" , value : "http://www.opera.com/support/search/view/895/");
@@ -77,12 +76,6 @@ if(description)
  exit(0);
 }
 
-
- if("Linux" >!< get_kb_item("Host/uname")){
-	exit(0);
- }
-
- if(egrep(pattern:"^([0-8]\..*|9\.([0-4]?[0-9]|5[01]))$",
-	  string:get_kb_item("Opera/Linux/Version"))){
-	security_message(0);
- }
+if( egrep( pattern:"^([0-8]\..*|9\.([0-4]?[0-9]|5[01]))$", string:get_kb_item( "Opera/Linux/Version" ) ) ) {
+  security_message(port:0);
+}

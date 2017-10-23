@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpbb_open_redirect_vuln.nasl 7324 2017-09-29 07:27:48Z jschulte $
+# $Id: gb_phpbb_open_redirect_vuln.nasl 7523 2017-10-20 08:20:46Z cfischer $
 #
 # phpBB Open Redirect Vulnerability
 #
@@ -29,13 +29,13 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113005");
-  script_version("$Revision: 7324 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-29 09:27:48 +0200 (Fri, 29 Sep 2017) $");
+  script_version("$Revision: 7523 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:20:46 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-28 11:56:33 +0200 (Thu, 28 Sep 2017)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_mult_vuln_july08_lin_900011.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: secpod_wireshark_mult_vuln_july08_lin_900011.nasl 7522 2017-10-20 08:19:44Z cfischer $
 # Description: Wireshark Multiple Vulnerabilities - July08 (Linux)
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
  script_id(900011);
- script_version("$Revision: 7174 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+ script_version("$Revision: 7522 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_bugtraq_id(28485);
  script_cve_id("CVE-2008-1561", "CVE-2008-1562", "CVE-2008-1563");
@@ -39,7 +39,9 @@ if(description)
  script_family("General");
  script_name("Wireshark Multiple Vulnerabilities - July08 (Linux)");
  script_dependencies("gather-package-list.nasl");
- script_require_keys("ssh/login/uname");
+ script_mandatory_keys("login/SSH/success");
+ script_exclude_keys("no_linux_shell");
+
  script_tag(name:"solution", value:"Upgrade to wireshark to 1.0.1 or later.
 http://www.wireshark.org/download.html");
  script_tag(name:"summary", value: "The host is running Wireshark/Ethereal, which is prone to multiple
@@ -57,14 +59,9 @@ Impact Level : SYSTEM");
  exit(0);
 }
 
+include("ssh_func.inc");
 
- include("ssh_func.inc");
-
- if("Linux" >!< get_kb_item("ssh/login/uname")){
-        exit(0);
- }
-
- foreach item (get_kb_list("ssh/*/rpms"))
+ foreach item (get_kb_list("ssh/login/rpms"))
  {
         if("ethereal" >< item)
 	{

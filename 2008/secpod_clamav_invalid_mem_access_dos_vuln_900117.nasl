@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_clamav_invalid_mem_access_dos_vuln_900117.nasl 7277 2017-09-26 12:45:58Z cfischer $
+# $Id: secpod_clamav_invalid_mem_access_dos_vuln_900117.nasl 7522 2017-10-20 08:19:44Z cfischer $
 # Description: ClamAV Invalid Memory Access Denial Of Service Vulnerability 
 #
 # Authors:
@@ -44,8 +44,8 @@ tag_summary = "The host is running Clam AntiVirus, which is prone to denial of
 if(description)
 {
  script_id(900117);
- script_version("$Revision: 7277 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
+ script_version("$Revision: 7522 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
  script_tag(name:"creation_date", value:"2008-09-05 16:50:44 +0200 (Fri, 05 Sep 2008)");
  script_bugtraq_id(30994);
  script_cve_id("CVE-2008-1389");
@@ -56,9 +56,10 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
  script_family("Denial of Service");
  script_name("ClamAV Invalid Memory Access Denial Of Service Vulnerability");
-
  script_dependencies("gather-package-list.nasl");
- script_require_keys("ssh/login/uname");
+ script_mandatory_keys("login/SSH/success");
+ script_exclude_keys("no_linux_shell");
+
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name : "insight" , value : tag_insight);
  script_tag(name : "affected" , value : tag_affected);
@@ -69,14 +70,9 @@ if(description)
  exit(0);
 }
 
+include("ssh_func.inc");
 
- include("ssh_func.inc");
-
- if("Linux" >!< get_kb_item("ssh/login/uname")){
-        exit(0);
- }
- 
- foreach item (get_kb_list("ssh/*/rpms"))
+ foreach item (get_kb_list("ssh/login/rpms"))
  {
         if("clamav~" >< item)
         {

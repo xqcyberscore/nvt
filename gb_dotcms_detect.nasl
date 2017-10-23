@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_dotcms_detect.nasl 7526 2017-10-20 09:32:39Z asteins $
 #
 # dotCMS Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106114");
- script_version ("$Revision: 5888 $");
- script_tag(name: "last_modification", value: "$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+ script_version ("$Revision: 7526 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-10-20 11:32:39 +0200 (Fri, 20 Oct 2017) $");
  script_tag(name: "creation_date", value: "2016-07-05 08:55:18 +0700 (Tue, 05 Jul 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -75,13 +75,16 @@ foreach dir (make_list_unique("/", "/dotcms", "/dotCMS", cgi_dirs(port: port))) 
 
   if ("<title>dotCMS : Enterprise Web Content Management</title>" >< res && "modulePaths: { dotcms:" >< res) {
     version  = "unknown";
-    
-    ver = eregmatch(pattern: "<br />.*(COMMUNITY|ENTERPRISE) EDITION.*(([0-9.]){5})|(([0-9.]){3})<br/>",
-                    string: res);
-    if (!isnull(ver[4]))
-      version = ver[4];
-    else if (!isnull(ver[2]))
-      version = ver[2];
+
+    # The version length differs between 7, 5 and 3 characters (e.g. '1.9.5.1', '2.3.2', '3.3')
+    # Its identification gets significantly improved, if the specific length is being declared inside the regular expression pattern
+    for (i = 7; i > 0; i -= 2) {
+      ver = eregmatch(pattern: "<br />.*(COMMUNITY|ENTERPRISE) (EDITION|PROFESSIONAL).*([0-9\.]{" + i + "})<br/>", string: res);
+      if (!isnull(ver[3])) {
+        version = ver[3];
+        break;
+      }
+    }
 
     set_kb_item(name: "dotCMS/installed", value: TRUE);
     if (version != "unknown")

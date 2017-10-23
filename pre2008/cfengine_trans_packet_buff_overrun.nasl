@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cfengine_trans_packet_buff_overrun.nasl 6040 2017-04-27 09:02:38Z teissa $
-# Description: cfengine CFServD transaction packet buffer overrun vulnerability
+# $Id: cfengine_trans_packet_buff_overrun.nasl 7529 2017-10-20 10:53:04Z cfischer $
+#
+# cfengine CFServD transaction packet buffer overrun vulnerability
 #
 # Authors:
 # David Maciejak <david dot maciejak at kyxar dot fr>
@@ -20,61 +22,58 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "Cfengine is running on this remote host.
-
-This version is prone to a stack-based buffer overrun vulnerability. 
-An attacker, exploiting this flaw, would need network access to the
-server as well as the ability to send a crafted transaction packet
-to the cfservd process.  A successful exploitation of this flaw
-would lead to arbitrary code being executed on the remote machine
-or a loss of service (DoS).";
-
-tag_solution = "Upgrade to at least 1.5.3-4, 2.0.8 or most recent 2.1 version.";
+###############################################################################
 
 # Ref: Nick Cleaton <nick@cleaton.net>
 
+CPE = "cpe:/a:gnu:cfengine";
+
 if(description)
 {
- script_id(14317);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(8699);
- script_cve_id("CVE-2003-0849");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.14317");
+  script_version("$Revision: 7529 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 12:53:04 +0200 (Fri, 20 Oct 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(8699);
+  script_cve_id("CVE-2003-0849");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("cfengine CFServD transaction packet buffer overrun vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_family("Gain a shell remotely");
+  script_dependencies("cfengine_detect.nasl");
+  script_mandatory_keys("cfengine/running");
 
- name = "cfengine CFServD transaction packet buffer overrun vulnerability";
- script_name(name);
- 
+  tag_summary = "Cfengine is running on this remote host.
 
- summary = "check for cfengine flaw based on its version";
- 
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
- 
- script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  This version is prone to a stack-based buffer overrun vulnerability. 
+  An attacker, exploiting this flaw, would need network access to the
+  server as well as the ability to send a crafted transaction packet
+  to the cfservd process. A successful exploitation of this flaw
+  would lead to arbitrary code being executed on the remote machine
+  or a loss of service (DoS).";
 
- family = "Gain a shell remotely";
- 
- script_family(family);
- script_require_ports(5308);
+  tag_solution = "Upgrade to at least 1.5.3-4, 2.0.8 or most recent 2.1 version.";
 
- script_dependencies("cfengine_detect.nasl");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"executable_version");
+
+  exit(0);
 }
 
-port = 5308;
-if ( ! get_kb_item("cfengine/running") ) exit(0);
+include("host_details.inc");
+include("version_func.inc");
 
-version=get_kb_item("cfengine/version");
-if (version)
-{
- 	if (egrep(pattern:"(1\.[0-4]\.|1\.5\.[0-2]|1\.5\.3-[0-3]|2\.(0\.[0-7]|1\.0a[0-9][^0-9]))", string:version))
-  		security_message(port);
+if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
+
+if( version_is_less( version:version, test_version:"2.0.8" ) ) {
+  report = report_fixed_ver( installed_version:version, fixed_version:"2.0.8" );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
+exit( 99 );

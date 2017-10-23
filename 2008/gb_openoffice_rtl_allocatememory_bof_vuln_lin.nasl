@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openoffice_rtl_allocatememory_bof_vuln_lin.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_openoffice_rtl_allocatememory_bof_vuln_lin.nasl 7522 2017-10-20 08:19:44Z cfischer $
 #
 # OpenOffice rtl_allocateMemory Heap Based BOF Vulnerability (Linux)
 #
@@ -44,8 +44,8 @@ tag_insight = "The flaw is in alloc_global.c file in which rtl_allocateMemory fu
 if(description)
 {
   script_id(800010);
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 7522 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-10-01 17:01:16 +0200 (Wed, 01 Oct 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -61,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gather-package-list.nasl");
-  script_require_keys("ssh/login/uname");
+  script_mandatory_keys("ssh/login/rpms", "ssh/login/release");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "summary" , value : tag_summary);
@@ -72,13 +72,8 @@ if(description)
   exit(0);
 }
 
-
-if("Linux" >!< get_kb_item("ssh/login/uname")){
-  exit(0);
-}
-
 release = get_kb_item("ssh/login/release");
-foreach item (get_kb_list("ssh/*/rpms"))
+foreach item (get_kb_list("ssh/login/rpms"))
 {
   # Exit if advisory based local check is available as they perform complete
   # rpm package comparison.

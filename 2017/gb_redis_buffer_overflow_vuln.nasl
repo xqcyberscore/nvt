@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_buffer_overflow_vuln.nasl 7394 2017-10-10 13:12:44Z jschulte $
+# $Id: gb_redis_buffer_overflow_vuln.nasl 7529 2017-10-20 10:53:04Z cfischer $
 #
 # Redis 4.0.2 and prior Buffer Overflow vulnerability
 #
@@ -29,8 +29,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113011");
-  script_version("$Revision: 7394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-10 15:12:44 +0200 (Tue, 10 Oct 2017) $");
+  script_version("$Revision: 7529 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 12:53:04 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-10 14:58:31 +0200 (Tue, 10 Oct 2017)");
   script_tag(name:"cvss_base", value:"5.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:P/I:P/A:C");
@@ -57,7 +57,8 @@ if( description )
   script_tag(name:"insight", value:"The clusterLoadConfig function within /redis/src/cluster.c allows for a Buffer Overflow vulnerability leading from an array index being set from user-controllable input.");
   script_tag(name:"impact", value:"A successful exploitation would allow the attacker to corrupt the host's memory or even execute arbitrary commands on the host.");
   script_tag(name:"affected", value:"Redis Server version 4.0.2 and prior");
-  script_tag(name:"solution", value:"A fixed version has not been released as of 10 Oct 2017.
+  script_tag(name:"solution", value:"No solution or patch is available as of 20th October, 2017.
+  Solution details will be updated once the updates are made available.
   
   As a workaround, make the folder containing the redis.conf not writable by unprivileged users.");
 
@@ -80,7 +81,7 @@ if( !version = get_app_version( cpe: CPE ) ) {
 }
 
 if( version_is_less_equal( version: version, test_version: "4.0.2" ) ) {
-  report = "The vulnerable version has been detected on the host";
+  report = report_fixed_ver( installed_version: version, fixed_version: "None Available, see Workaround in the solution." );
   security_message( port: port, data: report );
   exit( 0 );
 }

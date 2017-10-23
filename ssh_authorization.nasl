@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_authorization.nasl 6664 2017-07-11 10:20:11Z cfischer $
+# $Id: ssh_authorization.nasl 7519 2017-10-20 06:32:05Z cfischer $
 #
 # This script allows to set SSH credentials for target hosts.
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.90022");
-  script_version("$Revision: 6664 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 12:20:11 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 7519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:32:05 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2007-11-01 23:55:52 +0100 (Thu, 01 Nov 2007)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -84,12 +84,6 @@ if( kb_ssh_login() && ( kb_ssh_password() || kb_ssh_privatekey() ) ) {
 
   set_kb_item( name:"login/SSH/success", value:TRUE );
   register_host_detail( name:"Auth-SSH-Success", value:"Protocol SSH, Port " + port + ", User " + kb_ssh_login() );
-
-  ## Confirm Linux and set the KB
-  result = ssh_cmd( socket:sock, cmd:"uname" );
-  if( "Linux" >< result ) {
-    set_kb_item( name:"login/SSH/Linux", value:TRUE );
-  }
 
   log_message( port:port, data:"It was possible to login using the provided SSH credentials. Hence authenticated checks are enabled." );
   ssh_close_connection();

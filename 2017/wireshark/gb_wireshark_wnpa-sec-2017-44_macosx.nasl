@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wnpa-sec-2017-44_macosx.nasl 7424 2017-10-13 09:34:30Z santu $
+# $Id: gb_wireshark_wnpa-sec-2017-44_macosx.nasl 7520 2017-10-20 06:34:47Z asteins $
 #
 # Wireshark Security Updates (wnpa-sec-2017-44)-MACOSX
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811948");
-  script_version("$Revision: 7424 $");
+  script_version("$Revision: 7520 $");
   script_cve_id("CVE-2017-15191" );
   script_bugtraq_id(101227);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 11:34:30 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:34:47 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-12 13:42:58 +0530 (Thu, 12 Oct 2017)");
   script_name("Wireshark Security Updates (wnpa-sec-2017-44)-MACOSX");
 

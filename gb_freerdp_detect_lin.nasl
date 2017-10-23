@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freerdp_detect_lin.nasl 4660 2016-12-02 12:23:55Z antu123 $
+# $Id: gb_freerdp_detect_lin.nasl 7518 2017-10-20 06:23:37Z cfischer $
 #
 # FreeRDP Version Detection (Linux)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809737");
-  script_version("$Revision: 4660 $");
+  script_version("$Revision: 7518 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-02 13:23:55 +0100 (Fri, 02 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:23:37 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-12-01 17:27:04 +0530 (Thu, 01 Dec 2016)");
   script_name("FreeRDP Version Detection (Linux)");
   script_tag(name : "summary" , value : "Detection of installed version of
@@ -43,8 +43,10 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_mandatory_keys("login/SSH/Linux");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   exit(0);
 }
 
@@ -57,12 +59,6 @@ include("host_details.inc");
 ##Variable initialization
 sock = "";
 binFiles = "";
-
-## Confirm Linux, as SSH can be instslled on Windows as well
-result = get_kb_item("ssh/login/uname");
-if("Linux" >!< result){
-  exit(0);
-}
 
 sock = ssh_login_or_reuse_connection();
 if(!sock){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interspire_iem_remote_admin_auth_bypass_vuln.nasl 7516 2017-10-20 05:52:25Z emoss $
+# $Id: gb_interspire_iem_remote_admin_auth_bypass_vuln.nasl 7527 2017-10-20 09:46:24Z cfischer $
 #
 # Interspire IEM Remote Authentication Admin Bypass Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:interspire:iem";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112087");
-  script_version("$Revision: 7516 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:52:25 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 7527 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 11:46:24 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-19 08:54:12 +0200 (Thu, 19 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -105,10 +105,7 @@ if (res =~ "HTTP/1\.. 200 OK" &&
         '<h1>Configuration</h1>' >< res || ('SERVER_ADMIN' >< res && 'SERVER_ADDR' >< res))
      )
   {
-    report = "It was possible to bypass the admin authentication and get unrestricted access to the Interspire Email Marketer system.
-
-To fix this critical issue, make sure to upgrade Interspire IEM to the latest available version or at least version 6.1.6.";
-
+    report = "It was possible to bypass the admin authentication and get unrestricted access to the Interspire Email Marketer system.";
     security_message(port:port, data:report);
     exit(0);
   }

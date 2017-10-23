@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_detect_lin.nasl 6476 2017-06-29 07:32:00Z cfischer $
+# $Id: gb_adobe_prdts_detect_lin.nasl 7518 2017-10-20 06:23:37Z cfischer $
 #
 # Adobe Reader Version Detection (Linux)
 #
@@ -32,16 +32,15 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800108";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6476 $");
+  script_version("$Revision: 7518 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:32:00 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:23:37 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-10-04 09:54:24 +0200 (Sat, 04 Oct 2008)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe products version detection (Linux)");
 
-  tag_summary =
-"Detection of installed version of Adobe Products.
+  tag_summary = "Detection of installed version of Adobe Products.
 
 This script retrieves all Adobe Products version and saves
 those in KB.";
@@ -52,7 +51,9 @@ those in KB.";
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/Linux");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   exit(0);
 }
 

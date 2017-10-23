@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_swftools_detect_lin.nasl 7510 2017-10-20 05:12:02Z cfischer $
+# $Id: gb_swftools_detect_lin.nasl 7519 2017-10-20 06:32:05Z cfischer $
 #
 # SWFTools Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(801438);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7510 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:12:02 +0200 (Fri, 20 Oct 2017) $");
+ script_version("$Revision: 7519 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:32:05 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-08-19 10:23:11 +0200 (Thu, 19 Aug 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SWFTools Version Detection");
@@ -58,13 +58,6 @@ include("host_details.inc");
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.801438";
 SCRIPT_DESC = "SWFTools Version Detection";
 
-## Confirm Linux, as SSH can be instslled on Windows as well
-result = get_kb_item( "ssh/login/uname" );
-if("Linux" >!< result){
-  exit(0);
-}
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);

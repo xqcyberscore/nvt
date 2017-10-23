@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_python_mult_vuln_lin_900106.nasl 7277 2017-09-26 12:45:58Z cfischer $
+# $Id: secpod_python_mult_vuln_lin_900106.nasl 7522 2017-10-20 08:19:44Z cfischer $
 # Description: Python Multiple Vulnerabilities (Linux)
 #
 # Authors:
@@ -51,9 +51,9 @@ tag_summary = "The host is installed Python, which is prone to multiple vulnerab
 if(description)
 {
  script_id(900106);
- script_version("$Revision: 7277 $");
+ script_version("$Revision: 7522 $");
  script_tag(name:"deprecated", value:TRUE);
- script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_bugtraq_id(30491);
  script_cve_id("CVE-2008-2315", "CVE-2008-2316", "CVE-2008-3142",
@@ -66,7 +66,9 @@ if(description)
  script_family("Buffer overflow");
  script_name("Python Multiple Vulnerabilities (Linux)");
  script_dependencies("gather-package-list.nasl");
- script_require_keys("ssh/login/uname");
+ script_mandatory_keys("login/SSH/success");
+ script_exclude_keys("no_linux_shell");
+
  script_xref(name : "URL" , value : "http://bugs.python.org/issue2588");
  script_xref(name : "URL" , value : "http://bugs.python.org/issue2589");
  script_xref(name : "URL" , value : "http://bugs.python.org/issue2620");
@@ -83,11 +85,7 @@ exit(66); ## This NVT is deprecated as addressed in gb_CESA-2009_1176_python_cen
 
  include("ssh_func.inc");
 
- if("Linux" >!< get_kb_item("ssh/login/uname")){
-        exit(0);
- }
-
- foreach item (get_kb_list("ssh/*/rpms"))
+ foreach item (get_kb_list("ssh/login/rpms"))
  {
         if("python" >< item)
         {

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realvnc_remote_code_exe_vuln_lin_900163.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: secpod_realvnc_remote_code_exe_vuln_lin_900163.nasl 7522 2017-10-20 08:19:44Z cfischer $
 # Description: RealVNC VNC Viewer Remote Code Execution Vulnerability (Linux)
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "Update to version 4.1.3
 if(description)
 {
   script_id(900163);
-  script_version("$Revision: 4557 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+  script_version("$Revision: 7522 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-10-29 14:53:11 +0100 (Wed, 29 Oct 2008)");
   script_cve_id("CVE-2008-4770");
  script_bugtraq_id(31832);
@@ -56,8 +56,9 @@ if(description)
   script_xref(name : "URL" , value : "http://www.realvnc.com/products/free/4.1/release-notes.html");
 
   script_dependencies("gather-package-list.nasl");
-  script_require_keys("ssh/login/uname");
-  script_require_ports("Services/vnc", 5900);
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);
@@ -67,19 +68,6 @@ if(description)
 
 
 include("ssh_func.inc");
-
-port = get_kb_item("Services/vnc");
-if(!port){
-  port = 5900;
-}
-
-if(!get_port_state(port)){
-  exit(0);
-}
-
-if("Linux" >!< get_kb_item("ssh/login/uname")){
-  exit(0);
-}
 
 sock = ssh_login_or_reuse_connection();
 if(!sock){
@@ -91,7 +79,7 @@ vncOut = ssh_cmd(socket:sock, cmd:command, timeout:120);
 
 if(ereg(pattern:"Binary file.* matches", string:vncOut))
 {
-  security_message(port);
+  security_message(port:0);
   ssh_close_connection();
   exit(0);
 }

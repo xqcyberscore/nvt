@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_db2_detect_linux_900217.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: secpod_ibm_db2_detect_linux_900217.nasl 7522 2017-10-20 08:19:44Z cfischer $
 # Description: IBM DB2 Server Detection (Linux)
 #
 # Authors:
@@ -30,37 +30,34 @@ if(description)
 {
  script_id(900217);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version("$Revision: 7522 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
  script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
  script_copyright("Copyright (C) 2008 SecPod");
  script_tag(name:"cvss_base", value:"0.0");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"executable_version");
- script_family("General");
+ script_family("Product detection");
  script_name("IBM DB2 Server Detection (Linux)");
  script_dependencies("gather-package-list.nasl");
- script_require_keys("ssh/login/uname");
+ script_mandatory_keys("login/SSH/success");
+ script_exclude_keys("no_linux_shell");
+
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
+include("ssh_func.inc");
+include("cpe.inc");
+include("host_details.inc");
 
- include("ssh_func.inc");
- include("cpe.inc");
- include("host_details.inc");
+## Constant values
+SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900217";
+SCRIPT_DESC = "IBM DB2 Server Detection (Linux)";
 
- ## Constant values
- SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900217";
- SCRIPT_DESC = "IBM DB2 Server Detection (Linux)";
-
- if("Linux" >!< get_kb_item("ssh/login/uname")){
-        exit(0);
- }
-
- sock = ssh_login_or_reuse_connection();
- if(sock)
- {
+sock = ssh_login_or_reuse_connection();
+if(sock)
+{
         db2Ver = ssh_cmd(socket:sock, cmd:"db2ls -a", timeout:120);
 	ssh_close_connection();
         if(!db2Ver){

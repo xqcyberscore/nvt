@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 20 Oct 2017 08:22:55 +0200
+# Automatically created on:  Fri, 20 Oct 2017 20:21:43 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -48492,6 +48492,8 @@
 2017/gb_dolibarr_rce_vuln.nasl: GPLv2+
 2017/gb_dotcms_rce_vuln.nasl: GPLv2+
 2017/gb_dotcms_sql_inj_vuln.nasl: GPLv2+
+2017/gb_dotcms_v411_rem_sh_upl_vuln.nasl: GPLv2+
+2017/gb_dotcms_v411_stored_xss_vuln.nasl: GPLv2+
 2017/gb_dotcms_xss_vuln.nasl: GPLv2+
 2017/gb_dotnet_framework_kb4014981.nasl: GPLv2+
 2017/gb_dotnet_framework_kb4014982.nasl: GPLv2+
@@ -51605,6 +51607,7 @@
 2017/gb_ubuntu_USN_3455_1.nasl: GPLv2+
 2017/gb_ubuntu_USN_3456_1.nasl: GPLv2+
 2017/gb_unitrends_mult_vulns_04_17.nasl: GPLv2+
+2017/gb_unitrends_mult_vulns_10_17.nasl: GPLv2+
 2017/gb_unrealircd_authentication_spoofing_vuln.nasl: GPLv2+
 2017/gb_unrealircd_local_priv_esc_vuln.nasl: GPLv2+
 2017/gb_vaadin_javascript_inj_vuln.nasl: GPLv2+
@@ -51781,6 +51784,7 @@
 2017/ibm/gb_ibm_db2_multiple_privilege_escalation_vuln.nasl: GPLv2+
 2017/ibm/gb_ibm_lotus_eol_lin.nasl: GPLv2+
 2017/ibm/gb_ibm_lotus_eol_win.nasl: GPLv2+
+2017/ilias/gb_ilias_xss_vuln.nasl: GPLv2+
 2017/intel/gb_intel_amt_unspecified_priv_esc_vuln.nasl: GPLv2+
 2017/intel/gb_intel_standard_manageability_unspecified_priv_esc_vuln.nasl: GPLv2+
 2017/joomla/gb_joomla_eol.nasl: GPLv2+
@@ -52531,6 +52535,7 @@ gb_github_enterprise_web_detect.nasl: GPLv2+
 gb_gizmo5_detect_lin.nasl: GPLv2+
 gb_glpi_detect.nasl: GPLv2+
 gb_gnu_assembler_detect_lin.nasl: GPLv2+
+gb_gnu_bash_detect_lin.nasl: GPLv2+
 gb_gnu_binutils_detect_lin.nasl: GPLv2+
 gb_gnu_gcc_detect_lin.nasl: GPLv2+
 gb_gnutls_detect_win.nasl: GPLv2+
@@ -52651,6 +52656,7 @@ gb_icq_toolbar_detect.nasl: GPLv2+
 gb_ideal_administrator_detect.nasl: GPLv2+
 gb_igss_detect.nasl: GPLv2+
 gb_ikiwiki_detect.nasl: GPLv2+
+gb_ilias_detect.nasl: GPLv2+
 gb_image_hosting_script_dpi_detect.nasl: GPLv2+
 gb_imagemagick_detect_macosx.nasl: GPLv2+
 gb_indusoft_web_studio_detect_win.nasl: GPLv2+
