@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ntp_open.nasl 6839 2017-08-03 07:56:46Z cfischer $
+# $Id: ntp_open.nasl 7535 2017-10-23 15:49:28Z cfischer $
 #
 # NTP read variables
 #
@@ -30,14 +30,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10884");
-  script_version("$Revision: 6839 $");
+  script_version("$Revision: 7535 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-03 09:56:46 +0200 (Thu, 03 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-23 17:49:28 +0200 (Mon, 23 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("NTP read variables");
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_copyright("This script is Copyright (C) 2002 David Lodge");
   script_family("Product detection");
   script_require_udp_ports(123);
 
@@ -50,6 +50,7 @@ if(description)
 
 include("host_details.inc");
 include("cpe.inc");
+include("misc_func.inc");
 
 SCRIPT_DESC = "NTP read variables";
 
@@ -103,13 +104,13 @@ port = 123;
 proto = "udp";
 banner_type = "NTP banner";
 
-# find out whether we can open the port
 if( ! get_udp_port_state( port ) ) exit( 0 );
 
 r = ntp_installed();
 
 if( r ) {
   set_kb_item( name:"NTP/Running", value:TRUE );
+  register_service( port:port, proto:"ntp", ipproto:proto );
   list = ntp_read_list();
   if( ! list ) {
     log_message( port:port, protocol:proto );
@@ -215,7 +216,6 @@ if( r ) {
 
       set_kb_item( name:"NTP/Linux/Ver", value:ntpVer );
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe( value:ntpVer, exp:"^([0-9.]+[a-z0-9A-Z.]+?)", base:"cpe:/a:ntp:ntp:" );
       if( ! cpe )
         cpe = "cpe:/a:ntp:ntp";

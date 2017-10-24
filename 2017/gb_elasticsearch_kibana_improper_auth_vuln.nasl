@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_improper_auth_vuln.nasl 6588 2017-07-07 08:21:40Z santu $
+# $Id: gb_elasticsearch_kibana_improper_auth_vuln.nasl 7534 2017-10-23 15:14:06Z cfischer $
 #
 # Elasticsearch Kibana Improper Authentication Vulnerability
 #
@@ -29,16 +29,19 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811410");
-  script_version("$Revision: 6588 $");
+  script_version("$Revision: 7534 $");
   script_cve_id("CVE-2016-10364");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 10:21:40 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-23 17:14:06 +0200 (Mon, 23 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-03 20:27:52 +0530 (Mon, 03 Jul 2017)");
   script_name("Elasticsearch Kibana Improper Authentication Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Elasticsearch Kibana
-  and is prone to improper authentication vulnerability.");
+  and is prone to improper authentication vulnerability.
+
+  This NVT has been split into two NVTs with the OIDs 1.3.6.1.4.1.25623.1.0.108259 and
+  1.3.6.1.4.1.25623.1.0.108260");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
@@ -66,8 +69,13 @@ if(description)
   script_dependencies("gb_elasticsearch_kibana_detect.nasl");
   script_mandatory_keys("Elasticsearch/Kibana/Installed");
   script_require_ports("Services/www", 9200, 5601);
+
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
+
+exit(66);
 
 include("version_func.inc");
 include("host_details.inc");

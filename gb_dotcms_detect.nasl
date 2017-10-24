@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_detect.nasl 7526 2017-10-20 09:32:39Z asteins $
+# $Id: gb_dotcms_detect.nasl 7535 2017-10-23 15:49:28Z cfischer $
 #
 # dotCMS Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106114");
- script_version ("$Revision: 7526 $");
- script_tag(name: "last_modification", value: "$Date: 2017-10-20 11:32:39 +0200 (Fri, 20 Oct 2017) $");
+ script_version ("$Revision: 7535 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-10-23 17:49:28 +0200 (Mon, 23 Oct 2017) $");
  script_tag(name: "creation_date", value: "2016-07-05 08:55:18 +0700 (Tue, 05 Jul 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,7 @@ extract its version");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_family("Product detection");
  script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
+ script_require_ports("Services/www", 80, 8080);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
  script_xref(name: "URL", value: "http://dotcms.com");
@@ -69,38 +69,65 @@ foreach dir (make_list_unique("/", "/dotcms", "/dotCMS", cgi_dirs(port: port))) 
   if (dir == "/")
     dir = "";
 
-  url = dir + "/html/portal/login.jsp";
-  req = http_get(port: port, item: url);
-  res = http_keepalive_send_recv(port: port, data: req);
+  foreach url (make_list_unique(dir + "/html/portal/login.jsp", dir + "/application/login/login.html")) {
+    found = FALSE;
+    version = "unknown";
+    concVer = "";
+    concUrl = "";
 
-  if ("<title>dotCMS : Enterprise Web Content Management</title>" >< res && "modulePaths: { dotcms:" >< res) {
-    version  = "unknown";
+    req = http_get(port: port, item: url);
+    res = http_keepalive_send_recv(port: port, data: req);
 
-    # The version length differs between 7, 5 and 3 characters (e.g. '1.9.5.1', '2.3.2', '3.3')
-    # Its identification gets significantly improved, if the specific length is being declared inside the regular expression pattern
-    for (i = 7; i > 0; i -= 2) {
-      ver = eregmatch(pattern: "<br />.*(COMMUNITY|ENTERPRISE) (EDITION|PROFESSIONAL).*([0-9\.]{" + i + "})<br/>", string: res);
-      if (!isnull(ver[3])) {
-        version = ver[3];
-        break;
+    # detection < 4.0.0
+    if (res =~ "^HTTP/1.. 200 OK" && "<title>dotCMS : Enterprise Web Content Management</title>" >< res && "modulePaths: { dotcms:" >< res) {
+      found = TRUE;
+
+      # The version length differs between 7, 5 and 3 characters (e.g. '1.9.5.1', '2.3.2', '3.3')
+      # Its identification gets significantly improved, if the specific length is being declared inside the regular expression pattern
+      for (i = 7; i > 0; i -= 2) {
+        ver = eregmatch(pattern: "<br />.*(COMMUNITY|ENTERPRISE) (EDITION|PROFESSIONAL).*([0-9\.]{" + i + "})<br/>", string: res);
+        if (!isnull(ver[3])) {
+          version = ver[3];
+          concVer = ver[0];
+          break;
+        }
       }
     }
 
-    set_kb_item(name: "dotCMS/installed", value: TRUE);
-    if (version != "unknown")
-      set_kb_item(name: "dotCMS/version", value: version);
+    # detection >= 4.0.0
+    if (res =~ "^HTTP/1.. 200 OK" && ("dotcms" >< res || "dotCMS" >< res) &&
+        ('<meta name="application-name" content="dotCMS dotcms.com"' >< res ||
+          "document.getElementById('macro-login-user-name').value = 'bill@dotcms.com';" >< res ||
+          '<link rel="stylesheet" href="/DOTLESS/application/themes/quest/less/main.css">' >< res ||
+          '<link rel="shortcut icon" href="http://dotcms.com/favicon.ico" type="image/x-icon">' >< res ||
+          'href="http://dotcms.com/plugins/single-sign-on-using-oauth2"' >< res ||
+          'Powered by dotCMS' >< res ||
+          '<a class="dropdown-item" href="/dotCMS/logout"' >< res)
+       ) {
+      found = TRUE;
+    }
 
-    cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:dotcms:dotcms:");
-    if (isnull(cpe))
-      cpe = "cpe:/a:dotcms:dotcms";
 
-    register_product(cpe: cpe, location: install, port: port);
+    if (found) {
+      set_kb_item(name: "dotCMS/installed", value: TRUE);
 
-    log_message(data: build_detection_report(app: "dotCMS", version: version, install: install, cpe: cpe,
-                                             concluded: ver[0]),
-                port: port);
+      if (version != "unknown") {
+        set_kb_item(name: "dotCMS/version", value: version);
+      }
 
-    exit(0);
+      concUrl = report_vuln_url(port: port, url: url, url_only: TRUE);
+
+      cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:dotcms:dotcms:");
+      if (isnull(cpe))
+        cpe = "cpe:/a:dotcms:dotcms";
+
+      register_product(cpe: cpe, location: install, port: port);
+
+      log_message(data: build_detection_report(app: "dotCMS", version: version, install: install, cpe: cpe,
+                                             concluded: concVer, concludedUrl: concUrl),
+                  port: port);
+
+    }
   }
 }
 

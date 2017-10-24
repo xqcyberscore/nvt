@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_mult_vuln_oct17.nasl 7436 2017-10-16 05:44:20Z asteins $
+# $Id: gb_elasticsearch_kibana_mult_vuln_oct17.nasl 7536 2017-10-24 05:28:23Z cfischer $
 #
-# Kibana version 5.6.0 and below multiple vulnerabilities
+# Elasticsearch Kibana <= 5.6.0 Cross Site Scripting (XSS) Vulnerability
 #
 # Authors:
 # Jan Philipp Schulte <jan.schulte@greenbone.net>
@@ -25,23 +25,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:elasticsearch:kibana";
 
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113010");
-  script_version("$Revision: 7436 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-16 07:44:20 +0200 (Mon, 16 Oct 2017) $");
+  script_version("$Revision: 7536 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 07:28:23 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-09 13:04:33 +0200 (Mon, 09 Oct 2017)");
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_cve_id("CVE-2017-11479", "CVE-2017-8448");
+  script_cve_id("CVE-2017-11479");
 
-  script_name("Kibana version 5.6.0 and below multiple vulnerabilities");
+  script_name("Elasticsearch Kibana <= 5.6.0 Cross Site Scripting (XSS) Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 
@@ -51,17 +52,10 @@ if( description )
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Elasticsearch/Kibana/Installed");
 
-  script_tag(name:"summary", value:"Kibana versions 5.0.0 to 5.6.1 are prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"The Timelion feature in Kibana versions versions 5.0.0 to 5.6.1 is vulnerable to an XSS attack.");
   script_tag(name:"vuldetect", value:"Scripts checks if a vulnerable version is present on the host.");
-  script_tag(name:"insight", value:"A) The Timelion feature in Kibana versions prior to 5.6.1 is vulnerable to an XSS attack.
-  
-
-  B) Authenticated users with certain roles could create a watch that results in that user gaining elevated privileges.");
-  script_tag(name:"impact", value:"Successful exploitation would allow the attacker to 
-
-  A) Forge GET-parameters and send a malicious link to a user that then performs actions against the host
-
-  B) Gain administrative privileges.");
+  script_tag(name:"impact", value:"Successful exploitation would allow the attacker to  forge GET-parameters and send a
+  malicious link to a user that then performs actions against the host.");
   script_tag(name:"affected", value:"Kibana versions 5.0.0 to 5.6.0");
   script_tag(name:"solution", value:"Upgrade Kibana to version 5.6.1");
 
@@ -69,8 +63,6 @@ if( description )
 
   exit( 0 );
 }
-
-CPE = "cpe:/a:elasticsearch:kibana";
 
 include( "host_details.inc" );
 include( "version_func.inc" );

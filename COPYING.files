@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 20 Oct 2017 20:21:43 +0200
+# Automatically created on:  Tue, 24 Oct 2017 08:03:13 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47760,6 +47760,30 @@
 2017/drupal/gb_drupal_core_mult_vuln_SA-CORE-2015-001_win.nasl: GPLv2+
 2017/drupal/gb_drupal_eol_lin.nasl: GPLv2+
 2017/drupal/gb_drupal_eol_win.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2016-10364_lin.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2016-10364_win.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8438_lin.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8438_win.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8441_lin.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8441_win.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8442_lin.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8442_win.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8443_lin.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8443_win.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8445_lin.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8445_win.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8446_lin.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8446_win.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8447_lin.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8447_win.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8448_lin.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8448_win.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8449_lin.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8449_win.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8450_lin.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8450_win.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8451_lin.nasl: GPLv2+
+2017/elastic/gb_elasticsearch_kibana_xpack_CVE-2017-8451_win.nasl: GPLv2+
 2017/fibaro/gb_fibaro_home_center_rce_vuln.nasl: GPLv2+
 2017/gb_3cx_phone_system_dir_trav_vuln.nasl: GPLv2+
 2017/gb_a2billing_rce.nasl: GPLv2+
@@ -51895,6 +51919,8 @@
 2017/sugarcrm/gb_sugarcrm_php_saml_vuln.nasl: GPLv2+
 2017/symantec/gb_symantec_encryption_desktop_dos_vuln_win.nasl: GPLv2+
 2017/ubiquiti/gb_ubnt_wpa2_krack.nasl: GPLv2+
+2017/unitrends/gb_unitrends_mult_vuln.nasl: GPLv2+
+2017/unitrends/gb_unitrends_rce_vuln.nasl: GPLv2+
 2017/vmware/gb_vmware_esxi_guest_rpc_null_pointer_deref_vuln.nasl: GPLv2+
 2017/vmware/gb_vmware_esxi_svga_device_code_exec_vuln.nasl: GPLv2+
 2017/vmware/gb_vmware_fusion_guest_rpc_null_pointer_deref_vuln_macosx.nasl: GPLv2+
@@ -53501,6 +53527,7 @@ gsf/2017/juniper/gb_junos_jsa10813.nasl: GPLv2+
 gsf/2017/juniper/gb_junos_jsa10814.nasl: GPLv2+
 gsf/2017/juniper/gb_junos_jsa10816.nasl: GPLv2+
 gsf/2017/juniper/gb_junos_jsa10817.nasl: GPLv2+
+gsf/2017/juniper/gb_junos_space_jsa10826.nasl: GPLv2+
 gsf/2017/saia/gb_saia_pcd_info_descl_vuln.nasl: GPLv2+
 gsf/2017/sap/gb_sap_netweaver_xml_xss_vuln.nasl: GPLv2+
 gsf/2017/sap/gb_sap_netweaver_xss_vuln_09_17.nasl: GPLv2+
