@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_auth_password_dos_vuln_win.nasl 6599 2017-07-07 09:50:33Z cfischer $
+# $Id: gb_openssh_auth_password_dos_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # OpenSSH Denial of Service And User Enumeration Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809121");
-  script_version("$Revision: 6599 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-6515", "CVE-2016-6210");
   script_bugtraq_id(92212);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:50:33 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-08-18 10:29:27 +0530 (Thu, 18 Aug 2016)");
   script_name("OpenSSH Denial of Service And User Enumeration Vulnerabilities (Windows)");
 
@@ -88,9 +88,6 @@ include("host_details.inc");
 # Variable Initialization
 sshPort = "";
 sshVer = "";
-
-## exit, if its not Windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## get the port
 if(!sshPort = get_app_port(cpe:CPE)){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powerdns_recursor_label_decompression_dos_vuln_win.nasl 5084 2017-01-24 11:27:12Z cfi $
+# $Id: gb_powerdns_recursor_label_decompression_dos_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # PowerDNS Recursor Label Decompression Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:powerdns:recursor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809856");
-  script_version("$Revision: 5084 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2015-1868", "CVE-2015-5470");
   script_bugtraq_id(74306);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:27:12 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-01-04 14:18:12 +0530 (Wed, 04 Jan 2017)");
   script_name("PowerDNS Recursor Label Decompression Denial of Service Vulnerability (Windows)");
   
@@ -74,9 +74,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-## exit, if its not Windows
-if(host_runs("Windows") != "yes") exit(0);
 
 # Get Port
 if(!dnsPort = get_app_port(cpe:CPE)){

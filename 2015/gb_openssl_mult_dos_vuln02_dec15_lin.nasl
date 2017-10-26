@@ -1,6 +1,6 @@
 ###############################################################################
 #OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_dos_vuln02_dec15_lin.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: gb_openssl_mult_dos_vuln02_dec15_lin.nasl 7546 2017-10-24 11:58:30Z cfischer $
 #
 # OpenSSL Multiple Denial of Service Vulnerabilities -02 Dec15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806745");
-  script_version("$Revision: 6211 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2015-1789", "CVE-2015-1790", "CVE-2015-1791", "CVE-2015-1792");
   script_bugtraq_id(75156, 75157, 75161, 75154);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-12-01 09:41:47 +0530 (Tue, 01 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple Denial of Service Vulnerabilities -02 Dec15 (Linux)");
@@ -85,9 +85,6 @@ include("version_func.inc");
 
 ## Variable Initialization
 sslVer = "";
-
-## exit, if its windows
-if(host_runs("Windows") == "yes")exit(0);
 
 ## Get Version
 if(!sslVer = get_app_version(cpe:CPE)){

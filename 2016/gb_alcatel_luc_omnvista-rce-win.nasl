@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alcatel_luc_omnvista-rce-win.nasl 5616 2017-03-20 13:32:41Z cfi $
+# $Id: gb_alcatel_luc_omnvista-rce-win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # Alcatel Lucent Omnivista 8770 - Remote Code Execution (windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:alcatel-lucent:omnivista";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107112");
-  script_version("$Revision: 5616 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-9796");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:32:41 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-12-23 13:00:46 +0530 (Fri, 23 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Alcatel Lucent Omnivista 8770 - Remote Code Execution (windows)");
@@ -68,8 +68,6 @@ if(description)
 }
 
 include("host_details.inc");
-
-if( host_runs("Windows") == "no" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 

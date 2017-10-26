@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_info_disc_vuln_win.nasl 5080 2017-01-24 11:02:59Z cfi $
+# $Id: gb_apache_tomcat_info_disc_vuln_win.nasl 7548 2017-10-24 12:06:02Z cfischer $
 #
 # Apache Tomcat Information Disclosure Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803635");
-  script_version("$Revision: 5080 $");
+  script_version("$Revision: 7548 $");
   script_cve_id("CVE-2013-2071");
   script_bugtraq_id(59798);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:02:59 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-06-06 12:45:15 +0530 (Thu, 06 Jun 2013)");
   script_name("Apache Tomcat Information Disclosure Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -81,9 +81,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-## Exit if its not windows
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );

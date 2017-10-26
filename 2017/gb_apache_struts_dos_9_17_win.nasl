@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_dos_9_17_win.nasl 7390 2017-10-10 07:15:36Z asteins $
+# $Id: gb_apache_struts_dos_9_17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Apache Struts Multiple Denial of Service Vulnerabilities (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107240");
-  script_version("$Revision: 7390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-10 09:15:36 +0200 (Tue, 10 Oct 2017) $");
+  script_version("$Revision: 7543 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-11 14:24:03 +0200 (Mon, 11 Sep 2017)");
   script_cve_id("CVE-2017-9793", "CVE-2017-9804");
   script_bugtraq_id(100611);
@@ -64,9 +64,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-if (host_runs("Windows") != "yes")
-  exit(0);
 
 if(!Port = get_app_port(cpe:CPE)){
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_server_null_point_deref_dos_vuln_lin.nasl 6419 2017-06-23 12:48:13Z santu $
+# $Id: gb_apache_http_server_null_point_deref_dos_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Apache HTTP Server 'mod_http2 null pointer dereference' DoS Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811218");
-  script_version("$Revision: 6419 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-7659");
   script_bugtraq_id(99132);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 14:48:13 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-06-21 17:55:58 +0530 (Wed, 21 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server 'mod_http2 null pointer dereference' DoS Vulnerability (Linux)");
@@ -80,9 +80,6 @@ include("version_func.inc");
 ## Variable Initialization
 httpd_port = 0;
 httpd_ver = "";
-
-## exit, if its not Linux
-if(host_runs("Linux") != "yes") exit(0);
 
 ## Get HTTP Port
 if(!httpd_port = get_app_port(cpe:CPE)){

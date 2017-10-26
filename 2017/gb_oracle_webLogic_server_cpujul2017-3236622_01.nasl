@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webLogic_server_cpujul2017-3236622_01.nasl 6981 2017-08-22 06:39:29Z asteins $
+# $Id: gb_oracle_webLogic_server_cpujul2017-3236622_01.nasl 7538 2017-10-24 06:46:01Z santu $
 #
 # Oracle WebLogic Server Multiple Vulnerabilities (cpujul2017-3236622)
 #
@@ -29,13 +29,14 @@ CPE = "cpe:/a:bea:weblogic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811244");
-  script_version("$Revision: 6981 $");
+  script_version("$Revision: 7538 $");
   script_cve_id("CVE-2017-5638", "CVE-2017-10147", "CVE-2017-10178", "CVE-2013-2027",
-                "CVE-2017-10148", "CVE-2017-10063");
-  script_bugtraq_id(96729, 99651, 99644, 78027, 99652, 99653);
+                "CVE-2017-10148", "CVE-2017-10063", "CVE-2017-10271", "CVE-2017-10336",
+                "CVE-2017-10334", "CVE-2017-10352", "CVE-2017-10271");
+  script_bugtraq_id(96729, 99651, 99644, 78027, 99652, 99653, 101304, 101392);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-22 08:39:29 +0200 (Tue, 22 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 08:46:01 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-19 12:53:23 +0530 (Wed, 19 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle WebLogic Server Multiple Vulnerabilities (cpujul2017-3236622)");
@@ -48,7 +49,7 @@ if(description)
 
   script_tag(name: "insight" , value:"Multiple flaws exists due to some unspecified
   errors in the 'Sample apps (Struts 2)', 'Core Components', 'Web Container', 'WLST'
-  and 'Web Services' components of application.");
+  'Web Services', 'WLS-WebServices' and 'WLS Security' components of application.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to have an impact on confidentiality, integrity and availability.
@@ -59,11 +60,13 @@ if(description)
   12.1.3.0, 12.2.1.1 and 12.2.1.2");
 
   script_tag(name:"solution", value:"Apply update from the link mentioned below,
-  http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
+  http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html
+  http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
+  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

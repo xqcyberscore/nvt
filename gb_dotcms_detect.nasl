@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_detect.nasl 7535 2017-10-23 15:49:28Z cfischer $
+# $Id: gb_dotcms_detect.nasl 7537 2017-10-24 05:56:44Z ckuersteiner $
 #
 # dotCMS Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106114");
- script_version ("$Revision: 7535 $");
- script_tag(name: "last_modification", value: "$Date: 2017-10-23 17:49:28 +0200 (Mon, 23 Oct 2017) $");
+ script_version ("$Revision: 7537 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-10-24 07:56:44 +0200 (Tue, 24 Oct 2017) $");
  script_tag(name: "creation_date", value: "2016-07-05 08:55:18 +0700 (Tue, 05 Jul 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -72,23 +72,23 @@ foreach dir (make_list_unique("/", "/dotcms", "/dotCMS", cgi_dirs(port: port))) 
   foreach url (make_list_unique(dir + "/html/portal/login.jsp", dir + "/application/login/login.html")) {
     found = FALSE;
     version = "unknown";
-    concVer = "";
-    concUrl = "";
 
     req = http_get(port: port, item: url);
     res = http_keepalive_send_recv(port: port, data: req);
 
     # detection < 4.0.0
-    if (res =~ "^HTTP/1.. 200 OK" && "<title>dotCMS : Enterprise Web Content Management</title>" >< res && "modulePaths: { dotcms:" >< res) {
+    if (res =~ "^HTTP/1.. 200 OK" && "<title>dotCMS : Enterprise Web Content Management</title>" >< res &&
+        "modulePaths: { dotcms:" >< res) {
       found = TRUE;
 
       # The version length differs between 7, 5 and 3 characters (e.g. '1.9.5.1', '2.3.2', '3.3')
-      # Its identification gets significantly improved, if the specific length is being declared inside the regular expression pattern
+      # Its identification gets significantly improved, if the specific length is being declared inside the
+      # regular expression pattern
       for (i = 7; i > 0; i -= 2) {
         ver = eregmatch(pattern: "<br />.*(COMMUNITY|ENTERPRISE) (EDITION|PROFESSIONAL).*([0-9\.]{" + i + "})<br/>", string: res);
         if (!isnull(ver[3])) {
           version = ver[3];
-          concVer = ver[0];
+          concUrl = url;
           break;
         }
       }
@@ -105,6 +105,23 @@ foreach dir (make_list_unique("/", "/dotcms", "/dotCMS", cgi_dirs(port: port))) 
           '<a class="dropdown-item" href="/dotCMS/logout"' >< res)
        ) {
       found = TRUE;
+
+      # Admin Login is on /dotAdmin which makes a POST call to /api/v1/loginform for the version et al.
+      url = '/api/v1/loginform';
+
+      data = '{"messagesKey":["Login","email-address","user-id","password","remember-me","sign-in",' +
+             '"get-new-password","cancel","Server","error.form.mandatory",' +
+             '"angular.login.component.community.licence.message","reset-password-success",' +
+             '"a-new-password-has-been-sent-to-x"],"language":"","country":""}';
+
+      req = http_post_req(port: port, url: url, data: data,
+                          add_headers: make_array("Content-Type", "application/json"));
+      res = http_keepalive_send_recv(port: port, data: req);
+
+      ver = eregmatch(pattern: '"version":"([0-9.]+)', string: res);
+      if (!isnull(ver[1]))
+        version = ver[1];
+        concUrl = url;
     }
 
 
@@ -115,7 +132,7 @@ foreach dir (make_list_unique("/", "/dotcms", "/dotCMS", cgi_dirs(port: port))) 
         set_kb_item(name: "dotCMS/version", value: version);
       }
 
-      concUrl = report_vuln_url(port: port, url: url, url_only: TRUE);
+#      concUrl = report_vuln_url(port: port, url: url, url_only: TRUE);
 
       cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:dotcms:dotcms:");
       if (isnull(cpe))
@@ -124,9 +141,9 @@ foreach dir (make_list_unique("/", "/dotcms", "/dotCMS", cgi_dirs(port: port))) 
       register_product(cpe: cpe, location: install, port: port);
 
       log_message(data: build_detection_report(app: "dotCMS", version: version, install: install, cpe: cpe,
-                                             concluded: concVer, concludedUrl: concUrl),
+                                             concluded: ver[0], concludedUrl: concUrl),
                   port: port);
-
+      exit(0);
     }
   }
 }

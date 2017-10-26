@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_tsrm_win32_dos_vuln_win.nasl 5077 2017-01-24 10:51:38Z cfi $
+# $Id: secpod_php_tsrm_win32_dos_vuln_win.nasl 7552 2017-10-24 13:00:36Z cfischer $
 #
 # PHP 'tsrm_win32.c' Denial Of Service Vulnerability (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900872");
-  script_version("$Revision: 5077 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:51:38 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 7552 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-09-29 09:16:03 +0200 (Tue, 29 Sep 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -42,7 +42,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("php/installed");
+  script_mandatory_keys("php/installed", "Host/runs_windows");
 
   script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/383831.php");
   script_xref(name:"URL", value:"http://downloads.securityfocus.com/vulnerabilities/exploits/31064.php");
@@ -79,9 +79,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-## exit, if its not Windows
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 7499 2017-10-19 07:44:31Z cfischer $
+# $Id: products_eol.inc 7556 2017-10-25 07:28:33Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7499 $
+# $Revision: 7556 $
 #
 ###############################################################################
 
@@ -193,7 +193,11 @@ eol_cpes[ 'cpe:/a:red_hat:jboss_operations_network' ] = make_array(
                                                            'versions', '3:2019-06-30',
                                                            'version_regex', '^([0-9]+)'
                                                                   );
-
+# https://pve.proxmox.com/wiki/FAQ
+eol_cpes[ 'cpe:/a:proxmox:ve' ] = make_array(
+                                                           'versions', '1:2013-01-01;2:2014-05-01;3:2017-02-01;4:2018-06-01',
+                                                           'version_regex', '^([0-9]+)'
+                                                                  );
 
 # http://lists.wald.intevation.org/pipermail/openvas-announce/2015-April/000181.html
 # http://lists.wald.intevation.org/pipermail/openvas-announce/2014-August/000166.html

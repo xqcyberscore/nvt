@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_8821_cisco-sa-20171016-wpa.nasl 7450 2017-10-17 03:43:34Z ckuersteiner $
+# $Id: gb_cisco_ip_phone_8821_cisco-sa-20171016-wpa.nasl 7553 2017-10-25 03:15:07Z ckuersteiner $
 #
 # Cisco Wireless IP Phone 8821 Multiple WPA2 Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140432");
-  script_version("$Revision: 7450 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-17 05:43:34 +0200 (Tue, 17 Oct 2017) $");
+  script_version("$Revision: 7553 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-25 05:15:07 +0200 (Wed, 25 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-10-17 09:02:23 +0700 (Tue, 17 Oct 2017)");
   script_tag(name: "cvss_base", value: "5.4");
   script_tag(name: "cvss_base_vector", value: "AV:A/AC:M/Au:N/C:P/I:P/A:P");
@@ -85,7 +85,7 @@ if (model =~ "^CP-8821") {
     exit(0);
 
   version = eregmatch(pattern: "sip8821\.([0-9SR-]+)", string: version);
-  display(version, "\n");
+
   if (!isnull(version[1])) {
     version = ereg_replace(string: version[1], pattern: "-", replace: ".");
     if (version_is_less(version: version, test_version: "11.0.3SR5")) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln_sep16_win.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_owncloud_mult_vuln_sep16_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # ownCloud Multiple Vulnerabilities Sep16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809292");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2015-4718", "CVE-2015-4717");
   script_bugtraq_id(76162, 76161);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-09-23 15:12:02 +0530 (Fri, 23 Sep 2016)");
   script_name("ownCloud Multiple Vulnerabilities Sep16 (Windows)");
 
@@ -82,9 +82,6 @@ include("version_func.inc");
 ## Variable Initialization
 ownPort = "";
 ownVer = "";
-
-## exit, if its not Windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## get the port
 if(!ownPort = get_app_port(cpe:CPE)){

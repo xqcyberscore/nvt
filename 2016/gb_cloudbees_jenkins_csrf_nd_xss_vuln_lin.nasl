@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_csrf_nd_xss_vuln_lin.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: gb_cloudbees_jenkins_csrf_nd_xss_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # Jenkins CSRF And XSS Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807348");
-  script_version("$Revision: 5712 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2013-2034", "CVE-2013-2033", "CVE-2013-1808");
   script_bugtraq_id(59631, 59634, 58257);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-07-14 13:00:47 +0530 (Thu, 14 Jul 2016)");
   script_name("Jenkins CSRF And XSS Vulnerabilities (Linux)");
 
@@ -87,11 +87,6 @@ include("version_func.inc");
 ## Variable Initialization
 jenkinPort = "";
 jenkinVer= "";
-
-if(host_runs("Linux") != "yes"){
-  exit(0);
-}
-
 
 ## Get HTTP Port
 if(!jenkinPort = get_app_port(cpe:CPE)){

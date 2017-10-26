@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_spring_dos_vuln_lin.nasl 6971 2017-08-21 07:15:23Z asteins $
+# $Id: gb_apache_struts_spring_dos_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Apache Struts Spring AOP DoS Vulnerability (Linux)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:struts";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106956");
-  script_version("$Revision: 6971 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-21 09:15:23 +0200 (Mon, 21 Aug 2017) $");
+  script_version("$Revision: 7543 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-07-18 09:09:00 +0700 (Tue, 18 Jul 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -67,9 +67,6 @@ possible to perform a DoS attack when user was properly authenticated");
 
 include("host_details.inc");
 include("version_func.inc");
-
-if (host_runs("Windows") == "yes")
-  exit(0);
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

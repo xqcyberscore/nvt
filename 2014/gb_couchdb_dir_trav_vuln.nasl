@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_couchdb_dir_trav_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_couchdb_dir_trav_vuln.nasl 7547 2017-10-24 12:02:32Z cfischer $
 #
 # CrouchDB Directory Traversal Vulnerability
 #
@@ -31,7 +31,7 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105903");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 7547 $");
 
   script_name("CouchDB Directory Traversal Vulnerability");
 
@@ -41,7 +41,7 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/81240");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Jan/81");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:02:32 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-04-28 11:20:26 +0700 (Mon, 28 Apr 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -72,11 +72,6 @@ include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("revisions-lib.inc");
-
-# Only windows installations affected
-if (host_runs("windows") != "yes") {
-  exit(0);
-}
 
 if (!port = get_app_port(cpe:CPE)) {
   exit(0);

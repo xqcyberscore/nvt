@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_privi_escalation_vuln_lin.nasl 6987 2017-08-22 13:34:14Z santu $
+# $Id: gb_mysql_privi_escalation_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # MySQL Privilege Escalation Vulnerability - Linux
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811630");
-  script_version("$Revision: 6987 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2008-4098");
   script_bugtraq_id(29106);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-22 15:34:14 +0200 (Tue, 22 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-14 17:56:34 +0530 (Mon, 14 Aug 2017)");
   script_name("MySQL Privilege Escalation Vulnerability - Linux");
 
@@ -77,10 +77,6 @@ include("host_details.inc");
 ## Variable Initialization
 mysqlVer = "";
 sqlPort = "";
-
-if(host_runs("Linux") != "yes"){
-  exit(0);
-}
 
 ## Get Port
 if(!sqlPort = get_app_port(cpe:CPE)){

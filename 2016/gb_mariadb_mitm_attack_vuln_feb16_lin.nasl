@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_mitm_attack_vuln_feb16_lin.nasl 6788 2017-07-21 19:16:52Z cfischer $
+# $Id: gb_mariadb_mitm_attack_vuln_feb16_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # MariaDB Man-in-the-Middle Attack Vulnerability - Feb16 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806679");
-  script_version("$Revision: 6788 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-2047");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-02-02 12:33:06 +0530 (Tue, 02 Feb 2016)");
   script_name("MariaDB Man-in-the-Middle Attack Vulnerability - Feb16 (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -81,9 +81,6 @@ include("host_details.inc");
 ## Variable Initialization
 mariadbPort = "";
 mariadbVer = "";
-
-## exit, if its windows
-if(host_runs("Windows") == "yes")exit(0);
 
 ## Get MariaDB port
 if(!mariadbPort = get_app_port(cpe:CPE)){

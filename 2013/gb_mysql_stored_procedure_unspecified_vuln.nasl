@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_stored_procedure_unspecified_vuln.nasl 5080 2017-01-24 11:02:59Z cfi $
+# $Id: gb_mysql_stored_procedure_unspecified_vuln.nasl 7548 2017-10-24 12:06:02Z cfischer $
 #
 # MySQL Stored Procedure Unspecified Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803483");
-  script_version("$Revision: 5080 $");
+  script_version("$Revision: 7548 $");
   script_cve_id("CVE-2013-2376", "CVE-2013-1511");
   script_bugtraq_id(59227);
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:02:59 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-04-22 18:36:21 +0530 (Mon, 22 Apr 2013)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -78,11 +78,6 @@ include("host_details.inc");
 ## Variable Initialization
 sqlPort = "";
 mysqlVer = "";
-
-##exit if its not Linux
-if(host_runs("Linux") != "yes"){
-  exit(0);
-}
 
 sqlPort = get_app_port(cpe:CPE);
 if(!sqlPort){

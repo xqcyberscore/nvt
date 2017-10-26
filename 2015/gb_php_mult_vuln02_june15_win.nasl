@@ -29,13 +29,13 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805655");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2015-4026", "CVE-2015-4025", "CVE-2015-4024", "CVE-2015-4022",
                 "CVE-2015-4021");
   script_bugtraq_id(75056, 74904, 74903, 74902, 74700);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-06-16 18:45:49 +0530 (Tue, 16 Jun 2015)");
   script_name("PHP Multiple Vulnerabilities - 02 - Jun15 (Windows)");
 
@@ -92,9 +92,6 @@ include("host_details.inc");
 ## Variable Initialization
 phpPort = "";
 phpVer = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes") exit(0);
 
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );

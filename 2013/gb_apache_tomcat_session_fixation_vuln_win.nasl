@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_session_fixation_vuln_win.nasl 5080 2017-01-24 11:02:59Z cfi $
+# $Id: gb_apache_tomcat_session_fixation_vuln_win.nasl 7548 2017-10-24 12:06:02Z cfischer $
 #
 # Apache Tomcat Session Fixation Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803636");
-  script_version("$Revision: 5080 $");
+  script_version("$Revision: 7548 $");
   script_cve_id("CVE-2013-2067");
   script_bugtraq_id(59799);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:02:59 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-06-06 12:57:30 +0530 (Thu, 06 Jun 2013)");
   script_name("Apache Tomcat Session Fixation Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -83,9 +83,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-## Exit if its not windows
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );

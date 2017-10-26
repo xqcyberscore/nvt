@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: fs_policy_manager_7_dos.nasl 5077 2017-01-24 10:51:38Z cfi $
+# $Id: fs_policy_manager_7_dos.nasl 7551 2017-10-24 12:24:05Z cfischer $
 # Description: F-Secure Policy Manager Server fsmsh.dll module DoS
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "Upgrade to F-Secure Policy Manager Server 7.01 or later.";
 if(description)
 {
 script_id(80061);;
-script_version("$Revision: 5077 $");
-script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:51:38 +0100 (Tue, 24 Jan 2017) $");
+script_version("$Revision: 7551 $");
+script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
 script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
 
 script_cve_id("CVE-2007-2964");
@@ -68,11 +68,7 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-if (host_runs("Windows") != "no") exit(0);
-
 port = get_http_port(default:80);
-if (!port) exit(0);
-if(!get_port_state(port))exit(0);
 
 # only check FSMSH.DLL version
 buf = http_get(item:"/fsms/fsmsh.dll?FSMSCommand=GetVersion", port:port);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-020_remote.nasl 7462 2017-10-17 13:26:25Z santu $
+# $Id: secpod_ms11-020_remote.nasl 7549 2017-10-24 12:10:14Z cfischer $
 #
 # Microsoft SMB Transaction Parsing Remote Code Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902660");
-  script_version("$Revision: 7462 $");
+  script_version("$Revision: 7549 $");
   script_cve_id("CVE-2011-0661");
   script_bugtraq_id(47198);
-  script_tag(name:"last_modification", value:"$Date: 2017-10-17 15:26:25 +0200 (Tue, 17 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-03-06 11:57:33 +0530 (Tue, 06 Mar 2012)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -85,8 +85,6 @@ if(description)
 
 include("smb_nt.inc");
 include("host_details.inc");
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 ## Variable Initialization
 

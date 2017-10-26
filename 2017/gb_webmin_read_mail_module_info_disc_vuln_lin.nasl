@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmin_read_mail_module_info_disc_vuln_lin.nasl 6751 2017-07-18 10:20:24Z santu $
+# $Id: gb_webmin_read_mail_module_info_disc_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Webmin Read Mail Module Information Disclosure Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:webmin:webmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811523");
-  script_version("$Revision: 6751 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2015-1377");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 12:20:24 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-17 12:05:05 +0530 (Mon, 17 Jul 2017)");
   script_name("Webmin Read Mail Module Information Disclosure Vulnerability (Linux)");
 
@@ -77,9 +77,6 @@ include("host_details.inc");
 wmport = "";
 wmver = "";
 report = "";
-
-## exit, if its not Linux
-if(host_runs("Linux") != "yes") exit(0);
 
 ## Get Port
 if(!wmport = get_app_port(cpe:CPE)){

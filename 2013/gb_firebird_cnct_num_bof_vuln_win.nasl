@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firebird_cnct_num_bof_vuln_win.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_firebird_cnct_num_bof_vuln_win.nasl 7552 2017-10-24 13:00:36Z cfischer $
 #
 # Firebird Relational Database CNCT Group Number Buffer Overflow Vulnerability (Windows)
 #
@@ -40,12 +40,12 @@ tag_summary = "This host is running Firebird server and is prone to buffer overf
 if(description)
 {
   script_id(803185);
-  script_version("$Revision: 6104 $");
+  script_version("$Revision: 7552 $");
   script_cve_id("CVE-2013-2492");
   script_bugtraq_id(58393);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-03-25 15:25:55 +0530 (Mon, 25 Mar 2013)");
   script_name("Firebird Relational Database CNCT Group Number Buffer Overflow Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52506");
@@ -58,6 +58,8 @@ if(description)
   script_family("Buffer overflow");
   script_dependencies("remote-detect-firebird.nasl", "os_detection.nasl");
   script_require_ports("Services/gds_db", 3050);
+  script_mandatory_keys("Host/runs_windows");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -77,11 +79,6 @@ soc = "";
 resp = "";
 data_req = "";
 fb_aut_pkt = "";
-
-## Exit if its not windows
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Get the default port
 port = get_kb_item("Services/gds_db");

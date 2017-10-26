@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_magic_quotes_gpc_sec_bypass_vuln_win.nasl 5086 2017-01-24 11:34:51Z cfi $
+# $Id: gb_php_magic_quotes_gpc_sec_bypass_vuln_win.nasl 7549 2017-10-24 12:10:14Z cfischer $
 #
 # PHP 'magic_quotes_gpc' Directive Security Bypass Vulnerability (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802591");
-  script_version("$Revision: 5086 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:34:51 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 7549 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-02-10 11:24:19 +0530 (Fri, 10 Feb 2012)");
   script_cve_id("CVE-2012-0831");
   script_bugtraq_id(51954);
@@ -78,11 +78,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-## If its not windows exit
-if(host_runs("windows") != "yes"){
-  exit(0);
-}
 
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_urlvalidator_dos_vuln_lin_oct17.nasl 7435 2017-10-13 13:45:29Z asteins $
+# $Id: gb_apache_struts_urlvalidator_dos_vuln_lin_oct17.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Apache Struts 'URLValidator' Denial-Of-Service Vulnerability - Oct17 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812000");
-  script_version("$Revision: 7435 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2016-8738");
   script_bugtraq_id(94657);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 15:45:29 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-28 13:02:47 +0530 (Thu, 28 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Struts 'URLValidator' Denial-Of-Service Vulnerability - Oct17 (Linux)");
@@ -78,11 +78,6 @@ include("host_details.inc");
 ## Variable Initialization
 appVer = "";
 appPort = "";
-
-## Exit if its not windows
-if(host_runs("Linux") != "yes"){
-  exit(0);
-}
 
 ## Get Port
 if(!appPort = get_app_port(cpe:CPE)){

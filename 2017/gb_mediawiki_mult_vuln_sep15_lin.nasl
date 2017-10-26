@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln_sep15_lin.nasl 5531 2017-03-10 08:32:35Z teissa $
+# $Id: gb_mediawiki_mult_vuln_sep15_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # MediaWiki Multiple Vulnerabilities - Sep15 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108092");
-  script_version("$Revision: 5531 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2015-6727", "CVE-2015-6728", "CVE-2015-6729", "CVE-2015-6730", "CVE-2013-7444");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 09:32:35 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-03-09 10:45:17 +0100 (Thu, 09 Mar 2017)");
   script_name("MediaWiki Multiple Vulnerabilities - Sep15 (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -79,8 +79,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-if( host_runs( "Windows" ) == "yes" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );

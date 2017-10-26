@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: basilix_detect.nasl 5720 2017-03-24 14:15:57Z cfi $
+# $Id: basilix_detect.nasl 7560 2017-10-25 11:12:22Z cfischer $
 # Description: BasiliX Detection
 #
 # Authors:
@@ -44,8 +44,8 @@ if(description)
 {
   script_id(14308);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5720 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 15:15:57 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 7560 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-25 13:12:22 +0200 (Wed, 25 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("BasiliX Detection");
@@ -138,7 +138,6 @@ foreach dir( make_list_unique( "/basilix", cgi_dirs( port:port ) ) ) {
       ++installs;
     }
 
-    # Scan for multiple installations only if "Thorough Tests" is checked.
     if (installs) break;
   }
 }

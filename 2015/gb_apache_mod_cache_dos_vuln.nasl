@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_cache_dos_vuln.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: gb_apache_mod_cache_dos_vuln.nasl 7546 2017-10-24 11:58:30Z cfischer $
 #
 # Apache HTTP Server Mod_Cache Denial of service Vulnerability May15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805634");
-  script_version("$Revision: 6132 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2013-4352");
   script_bugtraq_id(68863, 69248);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-05-27 12:15:46 +0530 (Wed, 27 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server Mod_Cache Denial of service Vulnerability May15");
@@ -80,9 +80,6 @@ include("version_func.inc");
 ## Variable Initialization
 httpd_port = 0;
 httpd_ver = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## Get HTTP Port
 if(!httpd_port = get_app_port(cpe:CPE)){

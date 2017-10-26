@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 7379 2017-10-07 13:11:26Z cfischer $
+# $Id: gather-package-list.nasl 7568 2017-10-26 05:34:38Z ckuersteiner $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 7379 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-07 15:11:26 +0200 (Sat, 07 Oct 2017) $");
+  script_version("$Revision: 7568 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 07:34:38 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -415,6 +415,12 @@ if( ! sock ) exit( 0 );
 uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, timeout:60, retry:30 );
 if( isnull( uname ) ) exit( 0 );
 
+# e.g. Cisco Prime Infrastructure if another admin is logged in
+if( "Another user is logged into the system at this time" >< uname && "Are you sure you want to continue" >< uname ) {
+  replace_kb_item( name:"ssh/send_extra_yes", value:TRUE );
+  uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, timeout:20, retry:10 );
+}
+
 if( "Following disconnected ssh sessions are available to resume" >< uname ) {
   replace_kb_item( name:"ssh/send_extra_ln", value:TRUE );
   uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, timeout:20, retry:10 );
@@ -677,18 +683,19 @@ if( "CLINFR0329  Invalid command" >< uname )
   if( show_ver && "Check Point Gaia" >< show_ver )
   {
     gaia_cpe = 'cpe:/o:checkpoint:gaia_os';
+    set_kb_item(name: "checkpoint_fw/detected", value: TRUE);
 
     version = eregmatch( pattern:'Product version Check Point Gaia (R[^\r\n]+)', string:show_ver );
     if( ! isnull( version[1] ) )
     {
-      gaia_cpe += ':' + version[1];
-      set_kb_item( name:"check_point_gaia/version", value:version[1] );
+      gaia_cpe += ':' + tolower(version[1]);
+      set_kb_item( name:"checkpoint_fw/ssh/version", value:version[1] );
     }
 
     register_and_report_os( os:"Check Point Gaia", cpe:gaia_cpe, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
 
     build = eregmatch( pattern:'OS build ([^\r\n]+)', string:show_ver );
-    if( ! isnull( build[1] ) ) set_kb_item( name:"check_point_gaia/build", value:build[1] );
+    if( ! isnull( build[1] ) ) set_kb_item( name:"checkpoint_fw/ssh/build", value:build[1] );
 
     report = 'We are able to login and detect that you are running Check Point Gaia.';
 

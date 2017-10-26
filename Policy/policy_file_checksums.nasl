@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums.nasl 7515 2017-10-20 05:50:25Z cfischer $
+# $Id: policy_file_checksums.nasl 7566 2017-10-25 14:28:42Z cfischer $
 #
 # Check File Checksums
 #
@@ -28,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103940");
-  script_version("$Revision: 7515 $");
+  script_version("$Revision: 7566 $");
   script_name("File Checksums");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:50:25 +0200 (Fri, 20 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-25 16:28:42 +0200 (Wed, 25 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-08-14 16:47:16 +0200 (Wed, 14 Aug 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,6 +41,8 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("no_linux_shell");
 
+  script_xref(name:"URL", value:"http://docs.greenbone.net/GSM-Manual/gos-4/en/compliance.html#file-checksums");
+
   script_add_preference(name:"Target checksum File", type:"file", value:"");
   script_add_preference(name:"List all and not only the first 100 entries", type:"checkbox", value:"no");
 
@@ -48,6 +50,8 @@ if(description)
   script_tag(name:"insight", value:"The SSH protocol is used to log in and to gather the needed information");
 
   script_tag(name:"qod", value:"98"); # direct authenticated file analysis is pretty reliable
+
+  script_timeout(600);
 
   exit(0);
 }
@@ -67,8 +71,12 @@ split_checksumlist = lines;
 
 line_count = max_index(lines);
 
-if (line_count == 1 && lines[0] =~ "Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?")
-   exit(0); # empty file, just the header is present.
+if (line_count == 1 && lines[0] =~ "Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?") {
+  report  = "Checksumtest aborted: Attached checksum File doesn't contain test entries (Only the header is present).";
+  report += "Please upload a file following the syntax described in the referenced documentation.";
+  log_message(port:0, data:report);
+  exit(0);
+}
 
 x = 0;
 
@@ -79,12 +87,17 @@ foreach line (lines) {
                  string:line)) {
     if (x == line_count && eregmatch(pattern:"^$", string:line))
       continue;  # accept one empty line at the end of checksumlist.
-    _error += 'Invalid line ' + line + ' in checksum File found. Checksumtest aborted.\n';
+
+    _error += 'Invalid line ' + line + ' in checksum File found.\n';
   }
 }
 
-if (_error)
+if (_error){
+  report  = 'Checksumtest aborted. Errors:\n' + _error;
+  report += '\n\nPlease upload a file following the syntax described in the referenced documentation.';
+  log_message(port:0, data:report);
   exit(0);
+}
 
 
 maxlist = 100;
@@ -227,7 +240,7 @@ for (i=0; i<max; i++) {
 
 if (_error) {
   report = 'Errors\n:' + _error;
-  log_message(port:0, proto="ssh", data:report);
+  log_message(port:0, data:report);
 }
 
 # Write results to KB for further checks and reporting

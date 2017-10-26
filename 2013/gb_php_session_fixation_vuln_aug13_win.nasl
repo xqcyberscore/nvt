@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_session_fixation_vuln_aug13_win.nasl 5086 2017-01-24 11:34:51Z cfi $
+# $Id: gb_php_session_fixation_vuln_aug13_win.nasl 7548 2017-10-24 12:06:02Z cfischer $
 #
 # PHP Sessions Subsystem Session Fixation Vulnerability - Aug13 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803737");
-  script_version("$Revision: 5086 $");
+  script_version("$Revision: 7548 $");
   script_cve_id("CVE-2011-4718");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:34:51 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-08-19 12:03:50 +0530 (Mon, 19 Aug 2013)");
   script_name("PHP Sessions Subsystem Session Fixation Vulnerability - Aug13 (Windows)");
 
@@ -81,11 +81,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-## If its not windows exit
-if(host_runs("windows") != "yes"){
-  exit(0);
-}
 
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );

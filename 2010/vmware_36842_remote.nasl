@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vmware_36842_remote.nasl 6463 2017-06-28 12:38:50Z cfischer $
+# $Id: vmware_36842_remote.nasl 7550 2017-10-24 12:17:52Z cfischer $
 #
 # VMware Products Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100502");
- script_version("$Revision: 6463 $");
- script_tag(name:"last_modification", value:"$Date: 2017-06-28 14:38:50 +0200 (Wed, 28 Jun 2017) $");
+ script_version("$Revision: 7550 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-02-23 17:05:07 +0100 (Tue, 23 Feb 2010)");
  script_bugtraq_id(36842);
  script_cve_id("CVE-2009-3733");
@@ -76,11 +76,7 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-if (host_runs("windows") == "yes") exit(0); # only vmware running under linux is affected
-
 port = get_http_port(default: 8222);
-if(!port)port=8222;
-if(!get_port_state(port))exit(0);
 
 # check that it is vmware.
 res = http_get_cache(item:"/", port:port);

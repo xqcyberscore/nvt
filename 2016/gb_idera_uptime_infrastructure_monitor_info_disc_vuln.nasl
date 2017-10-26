@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_idera_uptime_infrastructure_monitor_info_disc_vuln.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_idera_uptime_infrastructure_monitor_info_disc_vuln.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # Idera Up.time Agent Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:idera:uptime_infrastructure_monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808235");
-  script_version("$Revision: 5759 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2015-8268");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-06-27 17:28:12 +0530 (Mon, 27 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Idera Up.time Agent Information Disclosure Vulnerability");
@@ -79,11 +79,6 @@ include("version_func.inc");
 # Variable Initialization
 http_port = "";
 idera_ver = 0;
-
-## exit, if its not Linux machine
-if(host_runs("Linux") != "yes"){
-  exit(0);
-}
 
 # Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){

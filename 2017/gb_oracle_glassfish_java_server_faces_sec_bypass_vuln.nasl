@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_java_server_faces_sec_bypass_vuln.nasl 6084 2017-05-09 05:36:00Z cfi $
+# $Id: gb_oracle_glassfish_java_server_faces_sec_bypass_vuln.nasl 7538 2017-10-24 06:46:01Z santu $
 #
-# Oracle GlassFish Server 'Java Server Faces' Security Bypass Vulnerability
+# Oracle GlassFish Server Multiple Security Vulnerabilities
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
@@ -29,34 +29,37 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810747");
-  script_version("$Revision: 6084 $");
-  script_cve_id("CVE-2017-3626");
-  script_bugtraq_id(97896);
-  script_tag(name:"cvss_base", value:"2.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 07:36:00 +0200 (Tue, 09 May 2017) $");
+  script_version("$Revision: 7538 $");
+  script_cve_id("CVE-2017-3626", "CVE-2017-10400", "CVE-2016-3092");
+  script_bugtraq_id(97896, 101383, 91453);
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 08:46:01 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-04-19 13:45:58 +0530 (Wed, 19 Apr 2017)");
-  script_name("Oracle GlassFish Server 'Java Server Faces' Security Bypass Vulnerability");
+  script_name("Oracle GlassFish Server Multiple Security Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is running Oracle GlassFish Server
-  and is prone to security bypass vulnerability.");
+  and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw is due to an unspecified errors in
-  the Java Server Faces sub-component.");
+  script_tag(name:"insight", value:"Multiple flaws are due to unspecified errors in
+  the Java Server Faces sub-component, Web Container (Apache Commons FileUpload)
+  sub-component and Administration Graphical User Interface sub-component.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allows remote
-  users to unauthorized read access to a subset of Oracle GlassFish Server 
-  accessible data.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  users unauthorized read access to a subset of Oracle GlassFish Server accessible
+  data, conduct a denial-of-service condition and have an impact on confidentiality
+  and integrity.
 
   Impact Level: Application");
 
   script_tag(name:"affected", value:"Oracle GlassFish Server versions 3.1.2");
 
   script_tag(name:"solution", value:"Apply patches from below link,
-  http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html");
+  http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html
+  http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
 
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -65,6 +68,8 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuapr2017verbose-3236619.html");
+  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
+
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");

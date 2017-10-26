@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_56e23bc2b5_krb5_fc25.nasl 7315 2017-09-28 12:38:29Z santu $
+# $Id: gb_fedora_2017_56e23bc2b5_krb5_fc25.nasl 7554 2017-10-25 05:33:21Z cfischer $
 #
 # Fedora Update for krb5 FEDORA-2017-56e23bc2b5
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873445");
-  script_version("$Revision: 7315 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-28 14:38:29 +0200 (Thu, 28 Sep 2017) $");
+  script_version("$Revision: 7554 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-25 07:33:21 +0200 (Wed, 25 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-28 09:14:46 +0200 (Thu, 28 Sep 2017)");
   script_cve_id("CVE-2017-11462");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for krb5 FEDORA-2017-56e23bc2b5");
   script_tag(name: "summary", value: "Check the version of krb5");

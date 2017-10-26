@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_proxmox_ve_detect.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: sw_proxmox_ve_detect.nasl 7556 2017-10-25 07:28:33Z cfischer $
 #
 # Proxmox Virtual Environment Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111090");
-  script_version("$Revision: 5505 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+  script_version("$Revision: 7556 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-25 09:28:33 +0200 (Wed, 25 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-03-17 10:42:39 +0100 (Thu, 17 Mar 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,12 +36,14 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 3128, 8006);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"https://pve.proxmox.com");
+
   script_tag(name:"summary", value:"The script sends a HTTP request to the server and
-  attempts to identify a Proxmox Virtual Environmentfrom the reply.");
+  attempts to identify a Proxmox Virtual Environment from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -55,24 +57,46 @@ include("cpe.inc");
 
 port = get_http_port( default:8006 );
 banner = get_http_banner( port:port );
-buf = http_get_cache( item:"/", port:port );
+res = http_get_cache( item:"/", port:port );
 
-if( "erver: pve-api-daemon" >< banner || "Proxmox Virtual Environment</title>" >< buf || 
-    "/pve2/css/ext-pve.css" >< buf || ( "PVE.UserName" >< buf && "PVE.CSRFPreventionToken" >< buf ) ) {
+if( "erver: pve-api-daemon" >< banner || "Proxmox Virtual Environment</title>" >< res || 
+    "/pve2/css/ext-pve.css" >< res || "/pve2/css/ext6-pve.css" >< res || ( "PVE.UserName" >< res && "PVE.CSRFPreventionToken" >< res ) ) {
 
   version = "unknown";
   install = "/";
-  set_kb_item( name:"www/" + port + "/ProxmoxVE", value:version );
   set_kb_item( name:"ProxmoxVE/installed", value:TRUE );
 
+  # e.g "boxheadline">Proxmox Virtual Environment 1.9</a>
+  ver = eregmatch( pattern:'"boxheadline">Proxmox Virtual Environment ([0-9.]+)</a>', string:res );
+  if( ver[1] ) version = ver[1];
+
+  if( version == "unknown" ) {
+    # Only the major version but still better then nothing...
+    # Full version is only available via an authenticated API and would return something like 5.0-34
+    url = "/pve-docs/pve-admin-guide.html";
+    req = http_get( item:url, port:port );
+    res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+
+    # e.g. <span id="revnumber">version 5.0,</span>
+    ver = eregmatch( pattern:">version ([0-9.]+)", string:res );
+    if( ver[1] ) {
+      version  = ver[1];
+      conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+    }
+  }
+
   # CPE not registered yet
-  cpe = 'cpe:/a:proxmox:ve';
+  cpe = build_cpe( value:version, exp:"([0-9.]+)", base:"cpe:/a:proxmox:ve:" );
+  if( isnull( cpe ) )
+      cpe = "cpe:/a:proxmox:ve";
 
   register_product( cpe:cpe, location:install, port:port );
 
   log_message( data:build_detection_report( app:"Proxmox Virtual Environment",
                                                  version:version,
                                                  install:install,
+                                                 concluded:ver[0],
+                                                 concludedUrl:conclUrl,
                                                  cpe:cpe ),
                                                  port:port );
 }

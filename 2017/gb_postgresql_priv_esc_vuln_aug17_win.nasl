@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_priv_esc_vuln_aug17_win.nasl 7026 2017-08-31 06:13:04Z asteins $
+# $Id: gb_postgresql_priv_esc_vuln_aug17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # PostgreSQL Privilege Escalation Vulnerability - August17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811581");
-  script_version("$Revision: 7026 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-7548");
   script_bugtraq_id(100276);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 08:13:04 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-17 12:50:23 +0530 (Thu, 17 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("PostgreSQL Privilege Escalation Vulnerability - August17 (Windows)");
@@ -84,11 +84,6 @@ include("host_details.inc");
 ## Variable Initialization
 pgsqlPort = "";
 pgsqlVer = "";
-
-## Exit if its not windows
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Get the default port
 pgsqlPort = get_app_port(cpe:CPE);

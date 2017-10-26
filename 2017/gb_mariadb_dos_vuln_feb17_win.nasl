@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_dos_vuln_feb17_win.nasl 6788 2017-07-21 19:16:52Z cfischer $
+# $Id: gb_mariadb_dos_vuln_feb17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # MariaDB Denial Of Service Vulnerability Feb17 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810605");
-  script_version("$Revision: 6788 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-3302");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-02-16 15:35:00 +0530 (Thu, 16 Feb 2017)");
   script_name("MariaDB Denial Of Service Vulnerability Feb17 (Windows)");
 
@@ -85,9 +85,6 @@ include("host_details.inc");
 ## Variable Initialization
 mariadbPort = "";
 mariadbVer = "";
-
-## exit, if its not  windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## Get MariaDB port
 if(!mariadbPort = get_app_port(cpe:CPE)){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emby_media_dir_trav_win.nasl 7180 2017-09-19 03:11:15Z ckuersteiner $
+# $Id: gb_emby_media_dir_trav_win.nasl 7552 2017-10-24 13:00:36Z cfischer $
 #
 # Emby Media Server Directory Traversal Vulnerability (Windows)
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:emby:media";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.107100");
- script_version ("$Revision: 7180 $");
+ script_version ("$Revision: 7552 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -38,7 +38,7 @@ if (description)
 
  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/41948/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-19 05:11:15 +0200 (Tue, 19 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
 
  script_tag(name:"creation_date", value:"2017-05-03 11:37:14 +0530 (Wed, 03 May 2017)");
  
@@ -65,6 +65,7 @@ version information or release notes that reflect this. Therefore update to the 
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_emby_media_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 8096);
+ script_mandatory_keys("emby_media_server/installed", "Host/runs_windows");
 
  script_tag(name : "summary" , value : "This host is running Emby Media Server and is prone to a directory
 traversal vulnerability.");
@@ -75,9 +76,6 @@ traversal vulnerability.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-
-if (host_runs("Windows") != "yes")
-  exit(0);
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

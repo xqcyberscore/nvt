@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_con_spoof_vul_lin.nasl 6268 2017-06-01 14:48:58Z teissa $
+# $Id: gb_nextcloud_server_con_spoof_vul_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Nextcloud Server CVE-2017-0888 Content Spoofing Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107145");
-  script_version("$Revision: 6268 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-01 16:48:58 +0200 (Thu, 01 Jun 2017) $");
+  script_version("$Revision: 7543 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-04-10 09:39:06 +0200 (Mon, 10 Apr 2017)");
   script_cve_id("CVE-2017-0883", "CVE-2017-0884", "CVE-2017-0885", "CVE-2017-0886",
                 "CVE-2017-0887", "CVE-2017-0888");
@@ -93,9 +93,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-if (host_runs("Linux") != "yes")
-  exit(0);
 
 if(!Port = get_app_port(cpe:CPE)){
   exit(0);

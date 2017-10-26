@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807968");
-  script_version("$Revision: 5557 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-0663", "CVE-2016-0658", "CVE-2016-0656", "CVE-2016-0653",
                 "CVE-2016-0654", "CVE-2016-0652");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-05-05 10:33:24 +0530 (Thu, 05 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-04 May16 (Linux)");
@@ -78,9 +78,6 @@ include("host_details.inc");
 ## Variable Initialization
 mysqlVer = "";
 sqlPort = "";
-
-## exit, if its windows
-if(host_runs("Windows") == "yes") exit(0);
 
 ## Get Port
 if(!sqlPort = get_app_port(cpe:CPE)){

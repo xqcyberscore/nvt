@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 7221 2017-09-21 13:05:11Z cfischer $
+# $Id: ssh_func.inc 7564 2017-10-25 13:53:55Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7221 $
+# $Revision: 7564 $
 #
 ###############################################################################
 
@@ -1865,6 +1865,11 @@ function ssh_cmd_pty( sess, cmd, pattern, timeout, retry, clear_buffer ) {
 
   if( get_kb_item( "ssh/send_extra_ln" ) ) {
     ssh_shell_write( sess, cmd:'\n' );
+    sleep( 5 );
+  }
+
+  if( get_kb_item( "ssh/send_extra_yes" ) ) {
+    ssh_shell_write( sess, cmd:'Yes\n' );
     sleep( 5 );
   }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_sec_bypass_vuln_win.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_nginx_sec_bypass_vuln_win.nasl 7548 2017-10-24 12:06:02Z cfischer $
 #
 # nginx Security Bypass Vulnerability (Windows)
 #
@@ -40,12 +40,12 @@ tag_summary = "This host is running nginx and is prone to security bypass
 if (description)
 {
   script_id(803222);
-  script_version("$Revision: 6104 $");
+  script_version("$Revision: 7548 $");
   script_cve_id("CVE-2011-4963");
   script_bugtraq_id(55920);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-02-01 13:21:59 +0530 (Fri, 01 Feb 2013)");
   script_name("nginx Security Bypass Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50912");
@@ -78,11 +78,6 @@ include("version_func.inc");
 # Variable Initialization
 ngPort = 0;
 ngVer = "";
-
-## Exit if its not windows
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Get nginx Port
 ngPort = get_http_port(default:80);

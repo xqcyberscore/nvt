@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln05_july16_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_php_mult_vuln05_july16_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # PHP Multiple Vulnerabilities - 05 - Jul16 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808634");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-6288", "CVE-2016-6289", "CVE-2016-6290", "CVE-2016-6291",
                 "CVE-2016-6292", "CVE-2016-6294", "CVE-2016-6295", "CVE-2016-6296",
                 "CVE-2016-6297");
@@ -37,7 +37,7 @@ if(description)
                     92099);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-07-29 11:54:44 +0530 (Fri, 29 Jul 2016)");
   script_name("PHP Multiple Vulnerabilities - 05 - Jul16 (Linux)");
 
@@ -103,9 +103,6 @@ include("host_details.inc");
 ## Variable Initialization
 phpPort = "";
 phpVer = "";
-
-## exit, if its not Windows
-if(host_runs("Linux") != "yes") exit(0);
 
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );

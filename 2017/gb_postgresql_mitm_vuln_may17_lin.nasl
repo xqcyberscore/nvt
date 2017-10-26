@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_mitm_vuln_may17_lin.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_postgresql_mitm_vuln_may17_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # PostgreSQL Man In The Middle (MITM) Vulnerability - May17 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810992");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-7485");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-05-15 16:09:12 +0530 (Mon, 15 May 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL Man In The Middle (MITM) Vulnerability - May17 (Linux)");
@@ -80,11 +80,6 @@ include("host_details.inc");
 pgsqlPort = "";
 pgsqlVer = "";
 fix = "";
-
-## Exit if its not Linux
-if(host_runs("Linux") != "yes"){
-  exit(0);
-}
 
 ## Get the default port
 pgsqlPort = get_app_port(cpe:CPE);

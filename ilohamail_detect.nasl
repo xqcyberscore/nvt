@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ilohamail_detect.nasl 5736 2017-03-27 13:36:24Z cfi $
+# $Id: ilohamail_detect.nasl 7560 2017-10-25 11:12:22Z cfischer $
 # Description: IlohaMail Detection
 #
 # Authors:
@@ -40,8 +40,8 @@ if(description)
 {
   script_id(14629);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5736 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 15:36:24 +0200 (Mon, 27 Mar 2017) $");
+  script_version("$Revision: 7560 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-25 13:12:22 +0200 (Wed, 25 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("IlohaMail Detection");
   script_tag(name:"cvss_base", value:"0.0");
@@ -130,8 +130,6 @@ foreach dir( make_list_unique( "/webmail", "/ilohamail", "/IlohaMail", "/mail", 
     # nb: it's either a proper or a quick & dirty install.
     if (installs) break;
   }
-
-  # Scan for multiple installations only if "Thorough Tests" is checked.
   if (installs ) break;
 }
 

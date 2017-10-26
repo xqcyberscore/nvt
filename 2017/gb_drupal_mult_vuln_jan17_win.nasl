@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln_jan17_win.nasl 5752 2017-03-29 04:01:01Z teissa $
+# $Id: gb_drupal_mult_vuln_jan17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Drupal Multiple Vulnerabilities Jan17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108100");
-  script_version("$Revision: 5752 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-6377", "CVE-2017-6379", "CVE-2017-6381");
   script_bugtraq_id(96919);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-03-17 11:54:37 +0100 (Fri, 17 Mar 2017)");
   script_name("Drupal Multiple Vulnerabilities Jan17 (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -82,8 +82,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port, version_regex:"^[0-9]\.[0-9]+" ) ) exit( 0 );

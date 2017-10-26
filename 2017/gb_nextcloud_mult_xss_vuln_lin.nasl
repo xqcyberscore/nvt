@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_mult_xss_vuln_lin.nasl 6262 2017-06-01 11:47:33Z santu $
+# $Id: gb_nextcloud_mult_xss_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # nextCloud Multiple XSS Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811137");
-  script_version("$Revision: 6262 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-0893", "CVE-2017-0891");
   script_bugtraq_id(98423, 98411);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-01 13:47:33 +0200 (Thu, 01 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-05-30 16:57:47 +0530 (Tue, 30 May 2017)");
   script_name("nextCloud Multiple XSS Vulnerabilities (Linux)");
 
@@ -82,9 +82,6 @@ include("version_func.inc");
 nextPort = "";
 fix = "";
 nextVer = "";
-
-## exit, if its not Linux
-if(host_runs("Linux") != "yes") exit(0);
 
 ## get the port
 if(!nextPort = get_app_port(cpe:CPE)){

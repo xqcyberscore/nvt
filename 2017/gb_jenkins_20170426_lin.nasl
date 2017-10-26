@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20170426_lin.nasl 6131 2017-05-16 07:17:49Z cfi $
+# $Id: gb_jenkins_20170426_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Jenkins Security Advisory Apr17 -26 Multiple Vulnerabilities (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107156");
-  script_version("$Revision: 6131 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 09:17:49 +0200 (Tue, 16 May 2017) $");
+  script_version("$Revision: 7543 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-04-28 12:09:09 +0200 (Fri, 28 Apr 2017)");
   script_cve_id("CVE-2017-1000353", "CVE-2017-1000354", "CVE-2017-1000355");
   script_bugtraq_id(98056);
@@ -80,8 +80,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-if( host_runs( "Linux") != "yes") exit( 0 );
 
 if(!Port = get_app_port(cpe:CPE)){
   exit(0);

@@ -7,7 +7,7 @@
 #   - By Chandan S
 ############################################################################
 # OpenVAS Vulnerability Test
-# $Id: conficker.nasl 7462 2017-10-17 13:26:25Z santu $
+# $Id: conficker.nasl 7551 2017-10-24 12:24:05Z cfischer $
 #
 # Conficker Detection
 #
@@ -66,8 +66,8 @@ if(description)
   script_xref(name : "URL" , value : "http://iv.cs.uni-bonn.de/wg/cs/applications/containing-conficker/");
   script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx");
   script_id(900091);
-  script_version("$Revision: 7462 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-17 15:26:25 +0200 (Tue, 17 Oct 2017) $");
+  script_version("$Revision: 7551 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-04-17 13:24:25 +0200 (Fri, 17 Apr 2009)");
   script_bugtraq_id(31874);
   script_cve_id("CVE-2008-4250");
@@ -95,8 +95,6 @@ if(description)
 
 include("smb_nt.inc");
 include("host_details.inc");
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 # First of all check whether nmap already detected an infection.
 res = get_kb_list("conficker/nse");

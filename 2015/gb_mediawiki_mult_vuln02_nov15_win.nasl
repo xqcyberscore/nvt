@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln02_nov15_win.nasl 6329 2017-06-13 15:39:42Z teissa $
+# $Id: gb_mediawiki_mult_vuln02_nov15_win.nasl 7546 2017-10-24 11:58:30Z cfischer $
 #
 # MediaWiki Multiple Vulnerabilities -02 Nov15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806632");
-  script_version("$Revision: 6329 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2013-6452", "CVE-2013-6453", "CVE-2013-6454", "CVE-2013-6472");
   script_bugtraq_id(65003);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-11-26 16:21:27 +0530 (Thu, 26 Nov 2015)");
   script_name("MediaWiki Multiple Vulnerabilities -02 Nov15 (Windows)");
 
@@ -87,9 +87,6 @@ include("version_func.inc");
 ## Variable Initialization
 http_port = 0;
 http_ver = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){

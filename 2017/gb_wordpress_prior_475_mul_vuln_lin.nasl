@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_prior_475_mul_vuln_lin.nasl 6268 2017-06-01 14:48:58Z teissa $
+# $Id: gb_wordpress_prior_475_mul_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # WordPress Prior to 4.7.5 Multiple Security Vulnerabilities (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107201");
-  script_version("$Revision: 6268 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-01 16:48:58 +0200 (Thu, 01 Jun 2017) $");
+  script_version("$Revision: 7543 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-05-22 17:40:57 +0200 (Mon, 22 May 2017)");
   script_cve_id("CVE-2017-9061", "CVE-2017-9062", "CVE-2017-9063", "CVE-2017-9064", "CVE-2017-9065", "CVE-2017-9066");
 
@@ -67,8 +67,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-if( host_runs( "Linux" ) != "yes" ) exit( 0 );
 
 if(!Port = get_app_port(cpe:CPE)){
   exit(0);

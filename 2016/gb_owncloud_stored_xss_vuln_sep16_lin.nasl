@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_stored_xss_vuln_sep16_lin.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_owncloud_stored_xss_vuln_sep16_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # ownCloud Stored XSS Vulnerability Sep16 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809291");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2015-5953");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-09-23 15:00:37 +0530 (Fri, 23 Sep 2016)");
   script_name("ownCloud Stored XSS Vulnerability Sep16 (Linux)");
 
@@ -79,9 +79,6 @@ include("version_func.inc");
 ## Variable Initialization
 ownPort = "";
 ownVer = "";
-
-## exit, if its not Linux
-if(host_runs("Linux") != "yes") exit(0);
 
 ## Get the port
 if(!ownPort = get_app_port(cpe:CPE)){

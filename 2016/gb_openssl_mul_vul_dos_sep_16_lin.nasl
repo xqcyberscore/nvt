@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mul_vul_dos_sep_16_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_openssl_mul_vul_dos_sep_16_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
 # OpenSSL 1.0.2 and 1.0.1 multiple vulnerability Sep 16 (Linux)
 #
 # Authors:
@@ -55,9 +55,9 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107048");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-6306", "CVE-2016-6303", "CVE-2016-2181", "CVE-2016-6302", "CVE-2016-2182", "CVE-2016-2180", "CVE-2016-2179");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"creation_date", value:"2016-09-26 06:40:16 +0200 (Mon, 26 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.5");
@@ -84,9 +84,6 @@ include("version_func.inc");
 
 ## Variable Initialization
 sslVer = "";
-
-## exit, if its windows
-if(host_runs("Linux") != "yes")   exit(0);
 
 ## Get Version
 if(!sslVer = get_app_version(cpe:CPE))

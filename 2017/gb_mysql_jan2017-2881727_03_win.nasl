@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_jan2017-2881727_03_win.nasl 5204 2017-02-06 07:45:16Z teissa $
+# $Id: gb_mysql_jan2017-2881727_03_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Oracle Mysql Security Updates (jan2017-2881727) 03 - Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809867");
-  script_version("$Revision: 5204 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2016-8318", "CVE-2016-8327", "CVE-2017-3273", "CVE-2017-3257");
   script_bugtraq_id(95580, 95557, 95583, 95589);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-06 08:45:16 +0100 (Mon, 06 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-01-18 18:37:18 +0530 (Wed, 18 Jan 2017)");
   script_name("Oracle Mysql Security Updates (jan2017-2881727) 03 - Windows");
 
@@ -81,10 +81,6 @@ include("host_details.inc");
 ## Variable Initialization
 mysqlVer = "";
 sqlPort = "";
-
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Get Port
 if(!sqlPort = get_app_port(cpe:CPE)){

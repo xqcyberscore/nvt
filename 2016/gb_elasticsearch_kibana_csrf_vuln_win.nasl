@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_csrf_vuln_win.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_elasticsearch_kibana_csrf_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # Elasticsearch Kibana Cross-site Request Forgery (CSRF) Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808088");
-  script_version("$Revision: 5557 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2015-8131");
   script_bugtraq_id(77657);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-06-22 11:52:53 +0530 (Wed, 22 Jun 2016)");
   script_name("Elasticsearch Kibana Cross-site Request Forgery (CSRF) Vulnerability (Windows)");
 
@@ -82,9 +82,6 @@ include("host_details.inc");
 #Variable initialize
 kibanaPort = "";
 kibanaVer = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## Get Port
 if(!kibanaPort = get_app_port(cpe:CPE)){

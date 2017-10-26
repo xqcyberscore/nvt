@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805658");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2015-3330");
   script_bugtraq_id(74204);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-06-17 16:00:15 +0530 (Wed, 17 Jun 2015)");
   script_name("PHP Multiple Vulnerabilities - 04 - Jun15 (Linux)");
 
@@ -85,9 +85,6 @@ apVer = "";
 phpVer = "";
 apPort = "";
 phpPort = "";
-
-## exit, if its Windows
-if(host_runs("Windows") == "yes") exit(0);
 
 ## get the apache server port
 if(!apPort = get_app_port(cpe:CPE)){

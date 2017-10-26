@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_web_form_hash_collision_dos_vuln_win.nasl 5086 2017-01-24 11:34:51Z cfi $
+# $Id: gb_php_web_form_hash_collision_dos_vuln_win.nasl 7549 2017-10-24 12:10:14Z cfischer $
 #
 # PHP Web Form Hash Collision Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802408");
-  script_version("$Revision: 5086 $");
+  script_version("$Revision: 7549 $");
   script_cve_id("CVE-2011-4885", "CVE-2012-0788", "CVE-2012-0789");
   script_bugtraq_id(51193, 51952, 52043);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:34:51 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-01-03 16:47:40 +0530 (Tue, 03 Jan 2012)");
   script_name("PHP Web Form Hash Collision Denial of Service Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -88,11 +88,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-## If its not windows exit
-if(host_runs("windows") != "yes"){
-  exit(0);
-}
 
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );

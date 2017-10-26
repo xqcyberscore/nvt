@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_action_pack_remote_code_exec_vuln_win.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_ruby_on_rails_action_pack_remote_code_exec_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # Ruby on Rails Action Pack Remote Code Execution Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809352");
-  script_version("$Revision: 5745 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-2098");
   script_bugtraq_id(83725);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-10-14 18:40:26 +0530 (Fri, 14 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Ruby on Rails Action Pack Remote Code Execution Vulnerability (Windows)");
@@ -88,9 +88,6 @@ include("host_details.inc");
 ## Variable Initialization
 RubyonRailPort = "";
 RubyonRailVer = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## Get HTTP Port
 if(!RubyonRailPort = get_app_port(cpe:CPE)){

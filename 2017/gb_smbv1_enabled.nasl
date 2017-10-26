@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smbv1_enabled.nasl 6154 2017-05-18 05:54:36Z cfi $
+# $Id: gb_smbv1_enabled.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # SMBv1 enabled (Remote Check)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140151");
-  script_version("$Revision: 6154 $");
+  script_version("$Revision: 7543 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 07:54:36 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-02-04 09:33:13 +0100 (Sat, 04 Feb 2017)");
   script_name("SMBv1 enabled (Remote Check)");
   script_category(ACT_GATHER_INFO);
@@ -68,8 +68,6 @@ exit(66);
 
 include("smb_nt.inc");
 include("host_details.inc");
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 if( get_kb_item( "SMB/samba" ) ) exit( 99 );
 if( "samba" >< tolower( get_kb_item( "SMB/SERVER" ) ) ) exit( 99 );

@@ -29,11 +29,11 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808065");
-  script_version("$Revision: 6788 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2015-3152");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-06-02 18:10:39 +0530 (Thu, 02 Jun 2016)");
   script_name("MariaDB Man-in-the-Middle Attack Vulnerability - Jun16 (Windows)");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -80,9 +80,6 @@ include("host_details.inc");
 ## Variable Initialization
 mariadbPort = "";
 mariadbVer = "";
-
-## exit, if its not  windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## Get MariaDB port
 if(!mariadbPort = get_app_port(cpe:CPE)){

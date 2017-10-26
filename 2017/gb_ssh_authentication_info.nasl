@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_authentication_info.nasl 7463 2017-10-17 14:12:05Z cfischer $
+# $Id: gb_ssh_authentication_info.nasl 7564 2017-10-25 13:53:55Z cfischer $
 #
 # SSH Authenticated Scan Info Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108162");
-  script_version("$Revision: 7463 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-17 16:12:05 +0200 (Tue, 17 Oct 2017) $");
+  script_version("$Revision: 7564 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-25 15:53:55 +0200 (Wed, 25 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-17 10:31:0 +0200 (Tue, 17 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,6 +60,7 @@ kb_array = make_array( "ssh/login/uname", "Response to 'uname -a' command",
                        "ssh/cmd_exec_error", "Don't prepend '/bin/sh -c' to used commands",
                        "ssh/force/pty", "Commands are send via an pseudoterminal/pty",
                        "ssh/send_extra_ln", "Send an extra newline",
+                       "ssh/send_extra_yes", "Send an extra 'Yes' confirmation for the login prompt",
                        "global_settings/ssh/debug", "Debugging enabled within 'Global variable settings'",
                        "Enable/find", "Also use 'find' command to search for Applications enabled within 'Options for Local Security Checks'",
                        "Descend/OFS", "Descend directories on other filesystem enabled within 'Options for Local Security Checks'",

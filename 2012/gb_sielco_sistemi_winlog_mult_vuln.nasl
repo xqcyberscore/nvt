@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sielco_sistemi_winlog_mult_vuln.nasl 5079 2017-01-24 11:00:33Z cfi $
+# $Id: gb_sielco_sistemi_winlog_mult_vuln.nasl 7549 2017-10-24 12:10:14Z cfischer $
 #
 # Sielco Sistemi Winlog Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802879");
-  script_version("$Revision: 5079 $");
+  script_version("$Revision: 7549 $");
   script_cve_id("CVE-2012-4353", "CVE-2012-4354", "CVE-2012-4355", "CVE-2012-4356",
                 "CVE-2012-4357", "CVE-2012-4358", "CVE-2012-4359");
   script_bugtraq_id(54212);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:00:33 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-06-28 12:12:09 +0530 (Thu, 28 Jun 2012)");
   script_name("Sielco Sistemi Winlog Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -88,8 +88,6 @@ payload = "";
 readData = "";
 soc  = 0;
 port = 0;
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 ## Default Realwin Port
 port = 46824;

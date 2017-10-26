@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: os_fingerprint.nasl 6881 2017-08-09 06:55:24Z cfischer $
+# $Id: os_fingerprint.nasl 7560 2017-10-25 11:12:22Z cfischer $
 #
 # ICMP based OS Fingerprinting
 #
@@ -27,15 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("$Revision: 6881 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-09 08:55:24 +0200 (Wed, 09 Aug 2017) $");
+  script_version("$Revision: 7560 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-25 13:12:22 +0200 (Wed, 25 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("ICMP based OS Fingerprinting");
   script_category(ACT_GATHER_INFO);
-  script_family("Product detection");
   script_copyright("Copyright (C) 2009 LSS");
+  script_family("Product detection");
+  script_dependencies("ping_host.nasl");
+  script_exclude_keys("keys/TARGET_IS_IPV6");
 
   script_xref(name:"URL", value:"http://www.phrack.org/issues.html?issue=57&id=7#article");
 
@@ -46,12 +48,11 @@ if(description)
   script_tag(name:"summary", value:tag_summary);
 
   script_tag(name:"qod_type", value:"remote_analysis");
-  script_exclude_keys("keys/TARGET_IS_IPV6");
 
   exit(0);
 }
 
-if ( TARGET_IS_IPV6() ) exit(0);
+if( TARGET_IS_IPV6() ) exit( 0 );
 
 ATTEMPTS = 2;
 passed = 0;
@@ -329,6 +330,12 @@ function _TTL(ttl) {
 #   packet's IP and ICMP headers.
 
 function ModuleA() {
+
+    # We might already know from ping_host.nasl that the target is not answering
+    # to ICMP Echo request so directly return right away. This saves 2 seconds
+    # for such a target.
+    if( get_kb_item( "ICMPv4/EchoRequest/failed" ) ) return "n,,,,,";
+
     ICMP_ECHO_REQUEST = 8;
 
     # We will set the IP_ID to constant number. Further more that number
@@ -473,6 +480,8 @@ function ModuleB() {
 
         result += "," + ttl;
     } else {
+        # For later use in e.g. 2011/gb_icmp_timestamps.nasl
+        replace_kb_item( name:"ICMPv4/TimestampRequest/failed", value:TRUE );
         result += "n,,";
     }
 
@@ -535,6 +544,8 @@ function ModuleC() {
 
         result += "," + ttl;
     } else {
+        # For later use by other NVTs
+        replace_kb_item( name:"ICMPv4/AddressMaskRequest/failed", value:TRUE );
         result += "n,,";
     }
 
@@ -593,8 +604,9 @@ function ModuleD() {
         ttl = _TTL(ttl);
 
         result += "," + ttl;
-
     } else {
+        # For later use by other NVTs
+        replace_kb_item( name:"ICMPv4/InfoRequest/failed", value:TRUE );
         result = "n,,";
     }
 
@@ -815,8 +827,9 @@ function ModuleE() {
             result += ",FLIPPED";
         else
             result += ",unexpected";
-
     } else {
+        # For later use by other NVTs
+        replace_kb_item( name:"ICMPv4/UDPPortUnreachable/failed", value:TRUE );
         result += "n,,,,,,,,,,";
     }
 

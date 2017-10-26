@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gb_hp_openview_nnm_41829.nasl 6599 2017-07-07 09:50:33Z cfischer $
+# $Id: gb_gb_hp_openview_nnm_41829.nasl 7550 2017-10-24 12:17:52Z cfischer $
 #
 # HP OpenView Network Node Manager 'execvp_nc()' Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:openview_network_node_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100786");
-  script_version("$Revision: 6599 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:50:33 +0200 (Fri, 07 Jul 2017) $");
+  script_version("$Revision: 7550 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-09-07 15:26:31 +0200 (Tue, 07 Sep 2010)");
   script_bugtraq_id(41829);
   script_tag(name:"cvss_base", value:"10.0");
@@ -76,10 +76,8 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
-
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-get_app_version( cpe:CPE, port:port );
+get_app_version( cpe:CPE, port:port, nofork:TRUE );
 if( ! vers = get_kb_item( "www/"+ port + "/HP/OVNNM/Ver" ) ) exit( 0 );
 
 if( version_is_equal( version:vers, test_version:"B.07.51" ) ||

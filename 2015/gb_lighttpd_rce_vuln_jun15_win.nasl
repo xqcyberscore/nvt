@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lighttpd_rce_vuln_jun15_win.nasl 6497 2017-06-30 09:58:54Z teissa $
+# $Id: gb_lighttpd_rce_vuln_jun15_win.nasl 7546 2017-10-24 11:58:30Z cfischer $
 #
 # Lighttpd 'http_auth.c' Remote Code Execution Vulnerability - June15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:lighttpd:lighttpd';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805591");
-  script_version("$Revision: 6497 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2015-3200");
   script_bugtraq_id(74813);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-06-19 09:50:40 +0530 (Fri, 19 Jun 2015)");
   script_name("Lighttpd 'http_auth.c' Remote Code Execution Vulnerability - June15 (Windows)");
 
@@ -74,11 +74,6 @@ include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
-
-##Check for windows
-if( host_runs( "Windows" ) != "yes" ) {
-  exit( 0 );
-}
 
 ##Check for version less than 1.4.36
 if( version_is_less( version: vers, test_version: "1.4.36" ) ) {

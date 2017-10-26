@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_local_file_disc_vuln_may14.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_owncloud_local_file_disc_vuln_may14.nasl 7547 2017-10-24 12:02:32Z cfischer $
 #
 # ownCloud 'SabreDAV' Local File Disclosure Vulnerability -01 May14
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804289";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6637 $");
+  script_version("$Revision: 7547 $");
   script_cve_id("CVE-2013-1939");
   script_bugtraq_id(59027);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:02:32 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-05-08 10:56:50 +0530 (Thu, 08 May 2014)");
   script_name(" ownCloud 'SabreDAV' Local File Disclosure Vulnerability -01 May14");
 
@@ -92,11 +92,6 @@ include("version_func.inc");
 ## Variable Initialization
 ownPort = "";
 ownVer = "";
-
-#Confirm target is windows
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## get the port
 if(!ownPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){

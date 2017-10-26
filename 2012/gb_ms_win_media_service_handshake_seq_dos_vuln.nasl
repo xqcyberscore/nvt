@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_media_service_handshake_seq_dos_vuln.nasl 5079 2017-01-24 11:00:33Z cfi $
+# $Id: gb_ms_win_media_service_handshake_seq_dos_vuln.nasl 7549 2017-10-24 12:10:14Z cfischer $
 #
 # Microsoft Windows Media Service Handshake Sequence DoS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802888");
-  script_version("$Revision: 5079 $");
+  script_version("$Revision: 7549 $");
   script_cve_id("CVE-2000-0211");
   script_bugtraq_id(1000);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:00:33 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-07-30 13:22:23 +0530 (Mon, 30 Jul 2012)");
   script_name("Microsoft Windows Media Service Handshake Sequence DoS Vulnerability");
   script_category(ACT_DENIAL);
@@ -95,8 +95,6 @@ mss_req5 = "";
 mss_req6 = "";
 mss_req7 = "";
 mss_res = "";
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 ## Media Service Port
 port = 1755;

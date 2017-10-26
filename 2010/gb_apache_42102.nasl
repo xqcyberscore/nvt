@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_42102.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_apache_42102.nasl 7550 2017-10-24 12:17:52Z cfischer $
 #
 # Apache 'mod_proxy_http' 2.2.9 for Unix Timeout Handling Information Disclosure Vulnerability
 #
@@ -37,8 +37,8 @@ tag_solution = "Updates are available. Please see the references for more inform
 if (description)
 {
  script_id(100858);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_version("$Revision: 7550 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-10-19 12:49:22 +0200 (Tue, 19 Oct 2010)");
  script_bugtraq_id(42102);
  script_tag(name:"cvss_base", value:"5.0");
@@ -71,15 +71,7 @@ include("version_func.inc");
 include("global_settings.inc");
 include("host_details.inc");
 
-if (host_runs("windows") != "no") {
-  exit(0);
-}
-
-
 httpdPort = get_http_port(default:80);
-if(!httpdPort){
-  exit(0);
-}
 
 httpdVer = get_kb_item("www/" + httpdPort + "/Apache");
 

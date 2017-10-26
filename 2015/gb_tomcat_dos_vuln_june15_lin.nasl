@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805704");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2014-0230");
   script_bugtraq_id(74475);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-06-16 15:04:10 +0530 (Tue, 16 Jun 2015)");
   script_name("Apache Tomcat Denial Of Service Vulnerability - Jun15 (Linux)");
 
@@ -81,9 +81,6 @@ include("version_func.inc");
 ## Variable Initialization
 appPort = "";
 appVer = "";
-
-## exit, if its not Linux
-if(host_runs("Windows") == "yes") exit(0);
 
 ## get the port
 if(!appPort = get_app_port(cpe:CPE)){

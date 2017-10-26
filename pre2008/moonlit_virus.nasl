@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: moonlit_virus.nasl 5486 2017-03-04 18:08:45Z cfi $
+# $Id: moonlit_virus.nasl 7551 2017-10-24 12:24:05Z cfischer $
 #
 # MoonLit Virus Backdoor
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15586");
-  script_version("$Revision: 5486 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-04 19:08:45 +0100 (Sat, 04 Mar 2017) $");
+  script_version("$Revision: 7551 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -62,8 +62,6 @@ if(description)
 }
 
 include("host_details.inc");
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 #=============================================================================
 # NASL supports only 2 data type - string & integer, and not "long int" support

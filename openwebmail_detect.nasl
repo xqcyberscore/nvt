@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: openwebmail_detect.nasl 7278 2017-09-26 13:20:44Z cfischer $
+# $Id: openwebmail_detect.nasl 7560 2017-10-25 11:12:22Z cfischer $
 # Description: Open WebMail Detection
 #
 # Authors:
@@ -33,8 +33,8 @@ if(description)
 {
   script_id(14221);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7278 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 7560 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-25 13:12:22 +0200 (Wed, 25 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Open WebMail Detection");
@@ -160,7 +160,6 @@ foreach dir( make_list_unique( "/", "/cgi-bin/openwebmail", "/openwebmail-cgi", 
     installations[dir] = ver;
     ++installs;
   }
-  # Scan for multiple installations only if "Thorough Tests" is checked.
   if (installs) break;
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_ssl_peek_dos_win.nasl 5659 2017-03-21 11:24:51Z cfi $
+# $Id: gb_openssl_ssl_peek_dos_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 # OpenSSL SSL_peek hang on empty record DoS vulnerability (Windows)
 #
 # Authors:
@@ -39,9 +39,9 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107053");
-  script_version("$Revision: 5659 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-6305", "CVE-2016-6308", "CVE-2016-6307");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:24:51 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"creation_date", value:"2016-09-26 06:40:16 +0200 (Mon, 26 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.1");
@@ -68,9 +68,6 @@ include("version_func.inc");
 
 ## Variable Initialization
 sslVer = "";
-
-## check if the server runs windows
-if(host_runs("Windows") != "yes")   exit(0);
 
 ## Get Version
 if(!sslVer = get_app_version(cpe:CPE))

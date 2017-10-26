@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_smb_share_passwd_null_sec_bypass_vuln.nasl 5455 2017-03-01 13:56:12Z cfi $
+# $Id: gb_ms_windows_smb_share_passwd_null_sec_bypass_vuln.nasl 7550 2017-10-24 12:17:52Z cfischer $
 #
 # Microsoft Windows SMB/NETBIOS NULL Session Authentication Bypass Vulnerability
 #
@@ -53,8 +53,8 @@ bypass Vulnerability";
 if(description)
 {
   script_id(801991);
-  script_version("$Revision: 5455 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 14:56:12 +0100 (Wed, 01 Mar 2017) $");
+  script_version("$Revision: 7550 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_cve_id("CVE-1999-0519");
   script_tag(name:"cvss_base", value:"7.5");
@@ -83,8 +83,6 @@ if(description)
 
 include("smb_nt.inc");
 include("host_details.inc");
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 lanman = get_kb_item("SMB/NativeLanManager");
 

@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807412");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2015-5345");
   script_bugtraq_id(83328);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-02-25 14:41:53 +0530 (Thu, 25 Feb 2016)");
   script_name("Apache Tomcat Directory Disclosure Vulnerability - Feb16 (Linux)");
 
@@ -83,9 +83,6 @@ include("version_func.inc");
 ## Variable Initialization
 appPort = "";
 appVer = "";
-
-## exit, if its not linux
-if(host_runs("Linux") != "yes") exit(0);
 
 ## get the port
 if(!appPort = get_app_port(cpe:CPE)){

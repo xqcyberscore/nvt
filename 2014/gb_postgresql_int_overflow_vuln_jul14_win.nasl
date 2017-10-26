@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_int_overflow_vuln_jul14_win.nasl 5933 2017-04-11 10:42:30Z cfi $
+# $Id: gb_postgresql_int_overflow_vuln_jul14_win.nasl 7547 2017-10-24 12:02:32Z cfischer $
 #
 # PostgreSQL Multiple Integer Overflow Vulnerabilities July14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804712");
-  script_version("$Revision: 5933 $");
+  script_version("$Revision: 7547 $");
   script_cve_id("CVE-2014-2669");
   script_bugtraq_id(66557);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:02:32 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-07-07 15:46:46 +0530 (Mon, 07 Jul 2014)");
   script_name("PostgreSQL Multiple Integer Overflow Vulnerabilities July14 (Windows)");
 
@@ -93,11 +93,6 @@ include("host_details.inc");
 ## Variable Initialization
 pgsqlPort = "";
 pgsqlVer = "";
-
-## Exit if its not windows
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Get the default port
 pgsqlPort = get_app_port(cpe:CPE);

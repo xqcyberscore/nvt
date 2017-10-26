@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln_apr17_win.nasl 6375 2017-06-20 09:29:31Z ckuersteiner $
+# $Id: gb_mediawiki_mult_vuln_apr17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # MediaWiki Multiple Vulnerabilites - April17 (Windows)
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:mediawiki:mediawiki';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106884");
-  script_version("$Revision: 6375 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-20 11:29:31 +0200 (Tue, 20 Jun 2017) $");
+  script_version("$Revision: 7543 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-06-20 10:54:15 +0700 (Tue, 20 Jun 2017)");
   script_tag(name: "cvss_base", value: "9.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:N");
@@ -89,9 +89,6 @@ where to write the cache (CVE-2017-0367)
 
 include("host_details.inc");
 include("version_func.inc");
-
-if (host_runs("Windows") != "yes")
-  exit(0);
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

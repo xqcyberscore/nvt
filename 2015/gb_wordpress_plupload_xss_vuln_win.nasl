@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_plupload_xss_vuln_win.nasl 6376 2017-06-20 10:00:24Z teissa $
+# $Id: gb_wordpress_plupload_xss_vuln_win.nasl 7546 2017-10-24 11:58:30Z cfischer $
 #
 # WordPress plupload Cross-Site Scripting Vulnerability (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805985");
-  script_version("$Revision: 6376 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2015-3439");
   script_bugtraq_id(74269);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-10-12 13:03:09 +0530 (Mon, 12 Oct 2015)");
   script_name("WordPress plupload Cross-Site Scripting Vulnerability (Windows)");
 
@@ -82,9 +82,6 @@ include("host_details.inc");
 wpPort = "";
 wpName = "";
 wpVer = "";
-
-## exit, if its not Windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## get the port
 if(!wpPort = get_app_port(cpe:CPE)){

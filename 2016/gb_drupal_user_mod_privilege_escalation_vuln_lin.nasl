@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_user_mod_privilege_escalation_vuln_lin.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_drupal_user_mod_privilege_escalation_vuln_lin.nasl 7552 2017-10-24 13:00:36Z cfischer $
 #
 # Drupal 'User' Module Privilege Escalation Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807885");
-  script_version("$Revision: 5588 $");
+  script_version("$Revision: 7552 $");
   script_cve_id("CVE-2016-6211");
   script_bugtraq_id(91230);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-09-26 15:08:08 +0530 (Mon, 26 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal 'User' Module Privilege Escalation Vulnerability (Linux)");
@@ -67,7 +67,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("drupal_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("drupal/installed");
+  script_mandatory_keys("drupal/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
   exit(0);
 }
@@ -78,9 +78,6 @@ include("version_func.inc");
 ## Variable Initialization
 drupalPort= 0;
 drupalVer = "";
-
-## exit, if its not windows
-if(host_runs("Linux") != "yes")exit(0);
 
 ## Get HTTP Port
 if(!drupalPort= get_app_port(cpe:CPE)){

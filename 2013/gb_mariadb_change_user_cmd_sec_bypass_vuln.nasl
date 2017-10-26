@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_change_user_cmd_sec_bypass_vuln.nasl 6788 2017-07-21 19:16:52Z cfischer $
+# $Id: gb_mariadb_change_user_cmd_sec_bypass_vuln.nasl 7548 2017-10-24 12:06:02Z cfischer $
 #
 # MariaDB 'COM_CHANGE_USER' Command Insecure Salt Generation Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804037");
-  script_version("$Revision: 6788 $");
+  script_version("$Revision: 7548 $");
   script_cve_id("CVE-2012-5627");
   script_bugtraq_id(56837);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-11-06 15:34:28 +0530 (Wed, 06 Nov 2013)");
   script_name("MariaDB 'COM_CHANGE_USER' Command Insecure Salt Generation Security Bypass Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -87,11 +87,6 @@ include("host_details.inc");
 ## Variable Initialization
 mariadbPort = "";
 mariadbVer = "";
-
-## Windows 
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Get MariaDB port
 if(!mariadbPort = get_app_port(cpe:CPE)){

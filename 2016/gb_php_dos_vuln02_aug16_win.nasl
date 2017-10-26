@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dos_vuln02_aug16_win.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_php_dos_vuln02_aug16_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # PHP Denial of Service Vulnerability - 02 - Aug16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809138");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-5114");
   script_bugtraq_id(81808);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-08-17 15:48:17 +0530 (Wed, 17 Aug 2016)");
   script_name("PHP Denial of Service Vulnerability - 02 - Aug16 (Windows)");
 
@@ -81,9 +81,6 @@ include("host_details.inc");
 ## Variable Initialization
 phpPort = "";
 phpVer = "";
-
-## exit, if its not Windows
-if(host_runs("Windows") != "yes") exit(0);
 
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );

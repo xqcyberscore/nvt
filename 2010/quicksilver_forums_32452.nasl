@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: quicksilver_forums_32452.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: quicksilver_forums_32452.nasl 7550 2017-10-24 12:17:52Z cfischer $
 #
 # Quicksilver Forums Local File Include and Arbitrary File Upload Vulnerabilities
 #
@@ -43,8 +43,8 @@ tag_solution = "Updates are available. Please see the references for more inform
 if (description)
 {
  script_id(100504);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_version("$Revision: 7550 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-02-23 17:05:07 +0100 (Tue, 23 Feb 2010)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -75,11 +75,7 @@ include("host_details.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
 
-if (host_runs("windows") != "yes") exit(0);
-
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if (!can_host_php(port:port)) exit(0);
 
 if(!version = get_kb_item(string("www/", port, "/quicksilver")))exit(0);

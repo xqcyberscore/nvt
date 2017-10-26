@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xampp_50564.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_xampp_50564.nasl 7550 2017-10-24 12:17:52Z cfischer $
 #
 # XAMPP 'PHP_SELF' Variable Multiple Cross Site Scripting Vulnerabilities
 #
@@ -39,7 +39,7 @@ if (description)
 {
  script_id(103336);
  script_bugtraq_id(50564);
- script_version ("$Revision: 7024 $");
+ script_version ("$Revision: 7550 $");
  script_tag(name:"cvss_base", value:"2.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
  script_name("XAMPP 'PHP_SELF' Variable Multiple Cross Site Scripting Vulnerabilities");
@@ -48,7 +48,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.apachefriends.org/en/xampp.html");
  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2011-5054.php");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-11-08 09:38:06 +0100 (Tue, 08 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);
@@ -67,10 +67,8 @@ include("host_details.inc");
 include("http_keepalive.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-if (host_runs("windows") != "yes")exit(0);
 if (! xamppVer = get_kb_item("www/" + port + "/XAMPP"))exit(0);
 
 url = string('/xampp/perlinfo.pl/"><script>alert(/openvas-xss-test/)</script>'); 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cisco_prime_lms_rce_vuln.nasl 5080 2017-01-24 11:02:59Z cfi $
+# $Id: secpod_cisco_prime_lms_rce_vuln.nasl 7552 2017-10-24 13:00:36Z cfischer $
 #
 # Cisco Prime LAN Management Solution Remote Command Execution Vulnerability
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901215");
-  script_version("$Revision: 5080 $");
+  script_version("$Revision: 7552 $");
   script_bugtraq_id(57221);
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:02:59 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-01-24 16:05:48 +0530 (Thu, 24 Jan 2013)");
   script_cve_id("CVE-2012-6392");
   script_tag(name:"cvss_base", value:"10.0");
@@ -40,6 +40,7 @@ if(description)
   script_family("CISCO");
   script_dependencies("rsh.nasl", "os_detection.nasl");
   script_require_ports("Services/rsh", 514);
+  script_mandatory_keys("Host/runs_unixoide");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/81110");
   script_xref(name:"URL", value:"http://telussecuritylabs.com/threats/show/TSL20130118-01");
@@ -81,9 +82,6 @@ soc = "";
 soc = "";
 rsh_port = "";
 crafted_data = "";
-
-## Exit if its windows
-if(host_runs("Windows") == "yes")exit(0);
 
 ## Default RSH Port
 rsh_port = get_kb_item("Services/rsh");

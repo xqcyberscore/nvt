@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_multiple_vuln01_nov12_win.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_oracle_mysql_multiple_vuln01_nov12_win.nasl 7549 2017-10-24 12:10:14Z cfischer $
 #
 # Oracle MySQL Server Multiple Vulnerabilities-01 Nov12 (Windows)
 #
@@ -44,12 +44,12 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 7549 $");
   script_cve_id("CVE-2012-3197", "CVE-2012-3163", "CVE-2012-3158", "CVE-2012-3150");
   script_bugtraq_id(56036, 56017, 55990, 56005);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-11-26 16:54:56 +0530 (Mon, 26 Nov 2012)");
   script_name("Oracle MySQL Server Multiple Vulnerabilities-01 Nov12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51008/");
@@ -79,11 +79,6 @@ include("host_details.inc");
 
 sqlPort = "";
 mysqlVer = "";
-
-## Exit if its not windows
-if(host_runs("Windows")!= "yes"){
-  exit(0);
-}
 
 ## Get the default port
 sqlPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID);

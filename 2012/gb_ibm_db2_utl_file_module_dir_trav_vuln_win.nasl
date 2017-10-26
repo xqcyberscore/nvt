@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_utl_file_module_dir_trav_vuln_win.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: gb_ibm_db2_utl_file_module_dir_trav_vuln_win.nasl 7552 2017-10-24 13:00:36Z cfischer $
 #
 # IBM DB2 UTL_FILE Module Directory Traversal Vulnerability (Windows)
 #
@@ -42,11 +42,11 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5958 $");
+  script_version("$Revision: 7552 $");
   script_cve_id("CVE-2012-3324");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-09-27 15:12:59 +0530 (Thu, 27 Sep 2012)");
   script_name("IBM DB2 UTL_FILE Module Directory Traversal Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/77924");
@@ -57,8 +57,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Databases");
   script_dependencies("gb_ibm_db2_remote_detect.nasl", "os_detection.nasl");
-  script_require_keys("IBM-DB2/Remote/ver");
-  script_require_keys("IBM-DB2/installed");
+  script_mandatory_keys("IBM-DB2/Remote/ver", "IBM-DB2/installed", "Host/runs_windows");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -69,25 +68,14 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-## Only windows platform are affected
-## if its not windows exit
-if(host_runs("windows") != "yes"){
- exit(0);
-}
 
 ## Variable Initialization
 vers = "";
 ibmVer  = "";
 
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
-  exit(0);
-}
-
-if(!get_port_state(port)){
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_dos_vuln_aug15_win.nasl 6505 2017-07-03 09:58:27Z teissa $
+# $Id: gb_apache_http_dos_vuln_aug15_win.nasl 7546 2017-10-24 11:58:30Z cfischer $
 #
 # Apache HTTP Server Denial Of Service Vulnerability August15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806000");
-  script_version("$Revision: 6505 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2015-0253");
   script_bugtraq_id(75964);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-08-14 12:49:14 +0530 (Fri, 14 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache HTTP Server Denial Of Service Vulnerability August15 (Windows)");
@@ -80,9 +80,6 @@ include("version_func.inc");
 ## Variable Initialization
 httpd_port = 0;
 httpd_ver = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## Get HTTP Port
 if(!httpd_port = get_app_port(cpe:CPE)){

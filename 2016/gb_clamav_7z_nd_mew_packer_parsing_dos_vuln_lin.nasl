@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_7z_nd_mew_packer_parsing_dos_vuln_lin.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_clamav_7z_nd_mew_packer_parsing_dos_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # ClamAV Crafted '7z' And 'Mew Packer' Parsing Denial of Service Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807376");
-  script_version("$Revision: 5675 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-1372", "CVE-2016-1371");
   script_bugtraq_id(93221, 93222);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-10-13 13:09:56 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ClamAV Crafted '7z' And 'Mew Packer' Parsing Denial of Service Vulnerabilities (Linux)");
@@ -84,9 +84,6 @@ include("host_details.inc");
 ## Variable Initialization
 clamPort = "";
 clamVer = "";
-
-## exit, if its  windows
-if(host_runs("Linux") != "yes")exit(0);
 
 ## Get HTTP Port
 if(!clamPort = get_app_port(cpe:CPE)){

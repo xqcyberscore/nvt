@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_enum_services.nasl 7462 2017-10-17 13:26:25Z santu $
+# $Id: smb_enum_services.nasl 7551 2017-10-24 12:24:05Z cfischer $
 #
 # SMB Enumerate Services
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102016");
-  script_version("$Revision: 7462 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-17 15:26:25 +0200 (Tue, 17 Oct 2017) $");
+  script_version("$Revision: 7551 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-02-10 12:17:39 +0100 (Wed, 10 Feb 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -67,7 +67,6 @@ if(description)
 include("smb_nt.inc");
 include("host_details.inc");
 
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 lanman = get_kb_item( "SMB/NativeLanManager" );
 samba  = get_kb_item( "SMB/samba" );
 if( samba || "samba" >< tolower( lanman ) ) exit( 0 );

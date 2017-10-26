@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_host_scanned_wmi.nasl 5486 2017-03-04 18:08:45Z cfi $
+# $Id: gb_host_scanned_wmi.nasl 7548 2017-10-24 12:06:02Z cfischer $
 #
 # Leave information on scanned Windows hosts
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96171");
-  script_version("$Revision: 5486 $");
+  script_version("$Revision: 7548 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-04 19:08:45 +0100 (Sat, 04 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-03-03 10:37:58 +0100 (Sun, 03 Mar 2013)");
   script_name("Leave information on scanned Windows hosts");
   script_category(ACT_END);
@@ -66,8 +66,6 @@ key 'SOFTWARE\VulScanInfo'.");
 include("wmi_file.inc");
 include("wmi_os.inc");
 include("host_details.inc");
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 enabled = script_get_preference("Enable");
 if("yes" >!< enabled)exit(0);

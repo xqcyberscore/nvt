@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_xss_vuln_lin.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_elasticsearch_xss_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # Elasticsearch Cross-site Scripting (XSS) Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:elasticsearch";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808506");
-  script_version("$Revision: 5675 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2014-6439");
   script_bugtraq_id(70233);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-06-28 18:37:05 +0530 (Tue, 28 Jun 2016)");
   script_name("Elasticsearch Cross-site Scripting (XSS) Vulnerability (Linux)");
 
@@ -81,9 +81,6 @@ include("host_details.inc");
 #Variable initialize
 esPort = "";
 esVer = "";
-
-## exit, if its windows
-if(host_runs("Linux") != "yes") exit(0);
 
 ## Get Port
 if(!esPort = get_app_port(cpe:CPE)){

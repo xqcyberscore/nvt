@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_http2_dos_vuln_lin.nasl 6800 2017-07-26 06:58:22Z cfischer $
+# $Id: gb_apache_mod_http2_dos_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Apache HTTP Server 'mod_http2' Denial-Of-Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811239");
-  script_version("$Revision: 6800 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-9789");
   script_bugtraq_id(99568);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-26 08:58:22 +0200 (Wed, 26 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-17 18:25:12 +0530 (Mon, 17 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server 'mod_http2' Denial-Of-Service Vulnerability (Linux)");
@@ -81,9 +81,6 @@ include("version_func.inc");
 ## Variable Initialization
 httpd_port = 0;
 httpd_ver = "";
-
-## exit, if its not Linux
-if(host_runs("Linux") != "yes") exit(0);
 
 ## Get HTTP Port
 if(!httpd_port = get_app_port(cpe:CPE)){

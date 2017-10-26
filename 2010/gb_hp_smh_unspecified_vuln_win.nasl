@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_unspecified_vuln_win.nasl 5077 2017-01-24 10:51:38Z cfi $
+# $Id: gb_hp_smh_unspecified_vuln_win.nasl 7550 2017-10-24 12:17:52Z cfischer $
 #
 # HP System Management Homepage Unspecified Vulnerability (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800761");
-  script_version("$Revision: 5077 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:51:38 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 7550 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-05-05 15:59:12 +0200 (Wed, 05 May 2010)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
@@ -76,9 +76,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-## exit, if its not Windows
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );

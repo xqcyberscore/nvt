@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_proxy_ajp_process_timeout_dos_vuln_win.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_apache_mod_proxy_ajp_process_timeout_dos_vuln_win.nasl 7549 2017-10-24 12:10:14Z cfischer $
 #
 # Apache HTTP Server mod_proxy_ajp Process Timeout DoS Vulnerability (Windows)
 #
@@ -46,10 +46,10 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5931 $");
+  script_version("$Revision: 7549 $");
   script_cve_id("CVE-2012-4557");
   script_bugtraq_id(56753);
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-12-06 18:00:42 +0530 (Thu, 06 Dec 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -82,9 +82,6 @@ include("version_func.inc");
 # variable initialization
 httpPort = 0;
 httpVers = "";
-
-## Exit if its not windows
-if(host_runs("Windows") != "yes")exit(0);
 
 # get the port
 if(!httpPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);

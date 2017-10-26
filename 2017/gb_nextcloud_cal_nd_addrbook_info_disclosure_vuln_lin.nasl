@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_cal_nd_addrbook_info_disclosure_vuln_lin.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_nextcloud_cal_nd_addrbook_info_disclosure_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # nextCloud 'Calender and Addressbook' Information Disclosure Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811135");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-0895");
   script_bugtraq_id(98432);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-05-30 17:45:47 +0530 (Tue, 30 May 2017)");
   script_name("nextCloud 'Calender and Addressbook' Information Disclosure Vulnerability (Linux)");
 
@@ -77,9 +77,6 @@ include("version_func.inc");
 nextPort = "";
 fix = "";
 nextVer = "";
-
-## exit, if its not Linux
-if(host_runs("Linux") != "yes") exit(0);
 
 ## get the port
 if(!nextPort = get_app_port(cpe:CPE)){

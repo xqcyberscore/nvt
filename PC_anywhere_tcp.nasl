@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: PC_anywhere_tcp.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: PC_anywhere_tcp.nasl 7552 2017-10-24 13:00:36Z cfischer $
 # Description: pcAnywhere TCP
 #
 # Authors:
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(10794);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5499 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_version("$Revision: 7552 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   name = "pcAnywhere TCP";
@@ -45,6 +45,7 @@ if(description)
   script_family(family);
   script_dependencies("os_detection.nasl", "find_service.nasl");
   script_require_ports("Services/unknown", 5631);
+  script_mandatory_keys("Host/runs_windows");
 
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -55,9 +56,6 @@ if(description)
 include("misc_func.inc");
 include("global_settings.inc");
 include("host_details.inc");
-
-if (host_runs("Windows") != "yes")
-  exit(0);
 
 port = get_unknown_port( default:5631 );
 

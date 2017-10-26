@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_mult_dos_vuln_aug17_lin.nasl 7093 2017-09-11 07:58:34Z asteins $
+# $Id: gb_clamav_mult_dos_vuln_aug17_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # ClamAV Multiple Denial of Service Vulnerabilities Aug17 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811576");
-  script_version("$Revision: 7093 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-6418", "CVE-2017-6419", "CVE-2017-6420", "CVE-2017-11423");
   script_bugtraq_id(100154);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-11 09:58:34 +0200 (Mon, 11 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-08 14:13:11 +0530 (Tue, 08 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ClamAV Multiple Denial of Service Vulnerabilities Aug17 (Linux)");
@@ -83,20 +83,12 @@ if(description)
   exit(0);
 }
 
-
-##
-### Code Starts Here
-##
-
 include("version_func.inc");
 include("host_details.inc");
 
 ## Variable Initialization
 clamPort = "";
 clamVer = "";
-
-## exit, if its not windows
-if(host_runs("Linux") != "yes") exit(0);
 
 ## Get HTTP Port
 if(!clamPort = get_app_port(cpe:CPE)){

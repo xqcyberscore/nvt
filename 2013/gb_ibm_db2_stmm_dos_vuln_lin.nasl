@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_stmm_dos_vuln_lin.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_ibm_db2_stmm_dos_vuln_lin.nasl 7548 2017-10-24 12:06:02Z cfischer $
 #
 # IBM DB2 STMM Denial Of Service Vulnerability (Linux)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6115 $");
+  script_version("$Revision: 7548 $");
   script_cve_id("CVE-2011-1373");
   script_bugtraq_id(50686);
   script_tag(name:"cvss_base", value:"1.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-09-30 17:51:03 +0530 (Mon, 30 Sep 2013)");
   script_name("IBM DB2 STMM Denial Of Service Vulnerability (Linux)");
 
@@ -87,10 +87,6 @@ For updates refer to http://www-01.ibm.com ";
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
-
-if(host_runs("Linux") != "yes"){
-  exit(0);
-}
 
 ## Variable Initialization
 ibmVer  = "";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_mult_vuln_SA-CORE-2017-003_win.nasl 6419 2017-06-23 12:48:13Z santu $ 
+# $Id: gb_drupal_core_mult_vuln_SA-CORE-2017-003_win.nasl 7543 2017-10-24 11:02:02Z cfischer $ 
 #
 # Drupal Core Multiple Vulnerabilities (SA-CORE-2017-003) (Windows)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810960");
-  script_version("$Revision: 6419 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-6920", "CVE-2017-6921", "CVE-2017-6922");
   script_bugtraq_id(99211, 99222, 99219);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 14:48:13 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-06-22 14:36:14 +0530 (Thu, 22 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Drupal Core Multiple Vulnerabilities (SA-CORE-2017-003) (Windows)");
@@ -87,9 +87,6 @@ include("version_func.inc");
 report = "";
 drupalPort= 0;
 drupalVer = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## Get HTTP Port
 if(!drupalPort= get_app_port(cpe:CPE)){

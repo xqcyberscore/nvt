@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011180.nasl 7401 2017-10-11 13:55:58Z santu $
+# $Id: gb_ms_kb4011180.nasl 7554 2017-10-25 05:33:21Z cfischer $
 #
 # Microsoft SharePoint Enterprise Server 2013 Service Pack 1 Elevation of Privilege Vulnerability (KB4011180)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812018");
-  script_version("$Revision: 7401 $");
+  script_version("$Revision: 7554 $");
   script_cve_id("CVE-2017-11820");
   script_bugtraq_id(101097);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-11 15:55:58 +0200 (Wed, 11 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-25 07:33:21 +0200 (Wed, 25 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-11 09:05:07 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft SharePoint Enterprise Server 2013 Service Pack 1 Elevation of Privilege Vulnerability (KB4011180)");
 

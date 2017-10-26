@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_bbcode_injection_vuln01_july16_win.nasl 5933 2017-04-11 10:42:30Z cfi $
+# $Id: gb_phpmyadmin_bbcode_injection_vuln01_july16_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # phpMyAdmin BBCode Injection Vulnerability -01 July16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808244");
-  script_version("$Revision: 5933 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-5701");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-07-04 14:45:45 +0530 (Mon, 04 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("phpMyAdmin BBCode Injection Vulnerability -01 July16 (Windows)");
@@ -79,9 +79,6 @@ include("host_details.inc");
 # Variable Initialization
 phpPort = "";
 phpVer = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## get the port
 if(!phpPort = get_app_port(cpe:CPE)) exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_mult_vuln_SA-CORE-2017-004_lin.nasl 6987 2017-08-22 13:34:14Z santu $ 
+# $Id: gb_drupal_core_mult_vuln_SA-CORE-2017-004_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $ 
 #
 # Drupal Core Multiple Vulnerabilities (SA-CORE-2017-004) (Linux)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811705");
-  script_version("$Revision: 6987 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-6923", "CVE-2017-6924", "CVE-2017-6925");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-22 15:34:14 +0200 (Tue, 22 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-17 10:13:39 +0530 (Thu, 17 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Core Multiple Vulnerabilities (SA-CORE-2017-004) (Linux)");
@@ -86,9 +86,6 @@ include("version_func.inc");
 report = "";
 drupalPort= 0;
 drupalVer = "";
-
-## exit, if its not Linux 
-if(host_runs("Linux") != "yes")exit(0);
 
 ## Get HTTP Port
 if(!drupalPort= get_app_port(cpe:CPE)){

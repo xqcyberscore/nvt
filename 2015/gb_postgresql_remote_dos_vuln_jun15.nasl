@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_remote_dos_vuln_jun15.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: gb_postgresql_remote_dos_vuln_jun15.nasl 7546 2017-10-24 11:58:30Z cfischer $
 #
 # PostgreSQL Remote Denial Of Service Vulnerability June15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805194");
-  script_version("$Revision: 6194 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2015-3165");
   script_bugtraq_id(74787);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-06-08 14:53:21 +0530 (Mon, 08 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("PostgreSQL Remote Denial Of Service Vulnerability June15 (Windows)");
@@ -81,11 +81,6 @@ include("host_details.inc");
 ## Variable Initialization
 pgsqlPort = "";
 pgsqlVer = "";
-
-## Exit if its not windows
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Get the default port
 pgsqlPort = get_app_port(cpe:CPE);

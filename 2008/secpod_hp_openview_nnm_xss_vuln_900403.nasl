@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_openview_nnm_xss_vuln_900403.nasl 6599 2017-07-07 09:50:33Z cfischer $
+# $Id: secpod_hp_openview_nnm_xss_vuln_900403.nasl 7551 2017-10-24 12:24:05Z cfischer $
 #
 # HP OpenView Network Node Manager XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:hp:openview_network_node_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900403");
-  script_version("$Revision: 6599 $");
+  script_version("$Revision: 7551 $");
   script_bugtraq_id(26838,27237);
   script_cve_id("CVE-2007-5000", "CVE-2007-6388");
   script_copyright("Copyright (C) 2008 SecPod");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:50:33 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -81,10 +81,8 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( host_runs( "Windows" ) == "yes" ) exit( 0 );
-
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-get_app_version( cpe:CPE, port:port );
+get_app_version( cpe:CPE, port:port, nofork:TRUE );
 if( ! vers = get_kb_item( "www/"+ port + "/HP/OVNNM/Ver" ) ) exit( 0 );
 
 if( version_is_equal( version:vers, test_version:"B.07.01" ) ||

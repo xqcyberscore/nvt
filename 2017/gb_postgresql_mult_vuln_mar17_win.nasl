@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_mult_vuln_mar17_win.nasl 5521 2017-03-09 06:58:43Z antu123 $
+# $Id: gb_postgresql_mult_vuln_mar17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # PostgreSQL Multiple Vulnerabilities - Mar17 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809897");
-  script_version("$Revision: 5521 $");
+  script_version("$Revision: 7543 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 07:58:43 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-03-07 16:43:29 +0530 (Tue, 07 Mar 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("PostgreSQL Multiple Vulnerabilities - Mar17 (Windows)");
@@ -82,11 +82,6 @@ include("host_details.inc");
 ## Variable Initialization
 pgsqlPort = "";
 pgsqlVer = "";
-
-## Exit if its not windows
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Get the default port
 pgsqlPort = get_app_port(cpe:CPE);

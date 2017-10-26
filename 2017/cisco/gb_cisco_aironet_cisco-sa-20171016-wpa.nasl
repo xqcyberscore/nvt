@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_aironet_cisco-sa-20171016-wpa.nasl 7450 2017-10-17 03:43:34Z ckuersteiner $
+# $Id: gb_cisco_aironet_cisco-sa-20171016-wpa.nasl 7553 2017-10-25 03:15:07Z ckuersteiner $
 #
 # Cisco Aironet Access Points Multiple WPA2 Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:cisco:wireless_lan_controller_software";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140433");
- script_version("$Revision: 7450 $");
- script_tag(name: "last_modification", value: "$Date: 2017-10-17 05:43:34 +0200 (Tue, 17 Oct 2017) $");
+ script_version("$Revision: 7553 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-10-25 05:15:07 +0200 (Wed, 25 Oct 2017) $");
  script_tag(name: "creation_date", value: "2017-10-17 09:54:27 +0700 (Tue, 17 Oct 2017)");
  script_tag(name: "cvss_base", value: "5.4");
  script_tag(name: "cvss_base_vector", value: "AV:A/AC:M/Au:N/C:P/I:P/A:P");
@@ -88,10 +88,42 @@ if (!model || ((model !~ "^AIR-AP15(2|3|5|6|7)[0-9]") && (model !~ "^AIR-AP(7|16
 if (!version = get_app_version(cpe:CPE))
   exit(0);
 
-if (version_is_less(version: version, test_version: "8.3.130.0")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "8.3.130.0");
+if (version_is_less(version: version, test_version: "8.0.152.0")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "8.0.152.0");
   security_message(port: 0, data: report);
   exit(0);
+}
+
+if (version =~ "^8\.2\.") {
+  if (version_is_less(version: version, test_version: "8.2.164.0")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "8.2.164.0");
+    security_message(port: 0, data: report);
+    exit(0);
+  }
+}
+
+if (version =~ "^8\.3\.") {
+  if (version_is_less(version: version, test_version: "8.3.130.0")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "8.3.130.0");
+    security_message(port: 0, data: report);
+    exit(0);
+  }
+}
+
+if (version =~ "^8\.5\.") {
+  if (version_is_less(version: version, test_version: "8.5.105.0")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "8.5.105.0");
+    security_message(port: 0, data: report);
+    exit(0);
+  }
+}
+
+if (version =~ "^8\.6\.") {
+  if (version_is_less(version: version, test_version: "8.6.100.0")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "8.6.100.0");
+    security_message(port: 0, data: report);
+    exit(0);
+  }
 }
 
 exit(99);

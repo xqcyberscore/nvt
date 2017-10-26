@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_proxy_server_dos_vuln_win.nasl 6599 2017-07-07 09:50:33Z cfischer $
+# $Id: gb_sun_java_sys_web_proxy_server_dos_vuln_win.nasl 7551 2017-10-24 12:24:05Z cfischer $
 #
 # Sun Java System Web Proxy Server Denial Of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:sun:java_system_web_proxy_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800865");
-  script_version("$Revision: 6599 $");
+  script_version("$Revision: 7551 $");
   script_cve_id("CVE-2009-2597");
   script_bugtraq_id(35788);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:50:33 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-08-12 19:54:51 +0200 (Wed, 12 Aug 2009)");
   script_name("Sun Java System Web Proxy Server Denial Of Service Vulnerability (Windows)");
 
@@ -76,9 +76,6 @@ include("host_details.inc");
 include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-## exit, if its not Windows
-if(host_runs("Windows") != "yes") exit(0);
 
 sun_port = get_app_port(cpe:CPE);
 if(!sun_port){

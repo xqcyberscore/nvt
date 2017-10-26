@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln02_feb15_win.nasl 6505 2017-07-03 09:58:27Z teissa $
+# $Id: gb_mysql_unspecified_vuln02_feb15_win.nasl 7546 2017-10-24 11:58:30Z cfischer $
 #
 # Oracle MySQL Multiple Unspecified vulnerabilities-02 Feb15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805133");
-  script_version("$Revision: 6505 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2015-0432");
   script_bugtraq_id(72217);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-02-03 12:00:39 +0530 (Tue, 03 Feb 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities-02 Feb15 (Windows)");
@@ -81,10 +81,6 @@ include("host_details.inc");
 ## Variable Initialization
 mysqlVer = "";
 sqlPort = "";
-
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Get Port
 if(!sqlPort = get_app_port(cpe:CPE)){

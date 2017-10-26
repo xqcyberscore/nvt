@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_pdo_sql_parser_re_file_pdo_ext_dos_vuln_win.nasl 5086 2017-01-24 11:34:51Z cfi $
+# $Id: gb_php_pdo_sql_parser_re_file_pdo_ext_dos_vuln_win.nasl 7549 2017-10-24 12:10:14Z cfischer $
 #
 # PHP pdo_sql_parser.re 'PDO' extension DoS vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802670");
-  script_version("$Revision: 5086 $");
+  script_version("$Revision: 7549 $");
   script_cve_id("CVE-2012-3450");
   script_bugtraq_id(54777);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:34:51 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-08-27 17:03:25 +0530 (Mon, 27 Aug 2012)");
   script_name("PHP pdo_sql_parser.re 'PDO' extension DoS vulnerability (Windows)");
 
@@ -81,11 +81,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-## If its not windows exit
-if(host_runs("windows") != "yes"){
-  exit(0);
-}
 
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );

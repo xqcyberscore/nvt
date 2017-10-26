@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_code_exec_vuln.nasl 6243 2017-05-30 09:04:14Z teissa $
+# $Id: gb_cloudbees_jenkins_code_exec_vuln.nasl 7546 2017-10-24 11:58:30Z cfischer $
 #
 # CloudBees Jenkins Remote Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807002");
-  script_version("$Revision: 6243 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2014-3665");
   script_bugtraq_id(77573);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-12-15 17:52:00 +0530 (Tue, 15 Dec 2015)");
   script_name("CloudBees Jenkins Remote Code Execution Vulnerability");
 
@@ -79,11 +79,6 @@ include("version_func.inc");
 ## Variable Initialization
 jenkinPort = "";
 jenkinVer= "";
-
-##exit if its not windows
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Get HTTP Port
 if(!jenkinPort = get_app_port(cpe:CPE)){

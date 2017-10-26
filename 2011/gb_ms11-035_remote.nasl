@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms11-035_remote.nasl 5079 2017-01-24 11:00:33Z cfi $
+# $Id: gb_ms11-035_remote.nasl 7550 2017-10-24 12:17:52Z cfischer $
 #
 # Microsoft Windows WINS Remote Code Execution Vulnerability (2524426)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802260");
-  script_version("$Revision: 5079 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:00:33 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 7550 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-10-21 16:31:29 +0200 (Fri, 21 Oct 2011)");
   script_cve_id("CVE-2011-1248");
   script_bugtraq_id(47730);
@@ -40,6 +40,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("find_service.nasl","os_detection.nasl");
   script_require_ports(42);
+  script_mandatory_keys("Host/runs_windows");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/44538");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/67100");
@@ -76,8 +77,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_mandatory_keys("Host/runs_windows");
-
   exit(0);
 }
 
@@ -89,8 +88,6 @@ port = 42;
 if(!get_port_state(port)){
  exit(0);
 }
-
-if(host_runs("Windows") != "yes") exit(0);
 
 ## Open The Socket
 soc = open_sock_tcp(port);

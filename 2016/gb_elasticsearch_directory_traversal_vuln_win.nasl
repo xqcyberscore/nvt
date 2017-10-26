@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_directory_traversal_vuln_win.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_elasticsearch_directory_traversal_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # Elasticsearch Directory Traversal Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:elasticsearch";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808091");
-  script_version("$Revision: 5513 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2015-5531");
   script_bugtraq_id(75935);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-06-23 16:03:36 +0530 (Thu, 23 Jun 2016)");
   script_name("Elasticsearch Directory Traversal Vulnerability (Windows)");
 
@@ -81,9 +81,6 @@ include("host_details.inc");
 #Variable initialize
 esPort = "";
 esVer = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## Get Port
 if(!esPort = get_app_port(cpe:CPE)){

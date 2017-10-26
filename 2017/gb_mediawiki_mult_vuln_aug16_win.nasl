@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln_aug16_win.nasl 6044 2017-04-28 08:14:10Z teissa $
+# $Id: gb_mediawiki_mult_vuln_aug16_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # MediaWiki Multiple Vulnerabilites - Aug16 (Windows)
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:mediawiki:mediawiki';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106784");
-  script_version("$Revision: 6044 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-28 10:14:10 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 7543 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-04-21 11:45:55 +0200 (Fri, 21 Apr 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -92,9 +92,6 @@ function after Session::getAllowedUserRights. (CVE-2016-6337)");
 
 include("host_details.inc");
 include("version_func.inc");
-
-if (host_runs("Windows") != "yes")
-  exit(0);
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

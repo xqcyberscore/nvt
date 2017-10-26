@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_40760.nasl 6705 2017-07-12 14:25:59Z cfischer $
+# $Id: gb_nginx_40760.nasl 7552 2017-10-24 13:00:36Z cfischer $
 #
 # nginx Remote Source Code Disclosure and Denial of Service Vulnerabilities
 #
@@ -38,8 +38,8 @@ be affected.";
 if (description)
 {
  script_id(100676);
- script_version("$Revision: 6705 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 7552 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-06-14 14:19:59 +0200 (Mon, 14 Jun 2010)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -57,7 +57,7 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl", "nginx_detect.nasl");
  script_require_ports("Services/www", 80);
- script_mandatory_keys("nginx/installed");
+ script_mandatory_keys("nginx/installed", "Host/runs_windows");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
@@ -73,8 +73,6 @@ banner = get_http_banner(port:port);
 if(!banner || "nginx" >!< banner)exit(0);
 
 if(safe_checks()) {
-
-  if (host_runs("windows") == "no") exit(0);
 
   version = eregmatch(pattern:"nginx/([0-9.]+)", string:banner);
   if(isnull(version[1]))exit(0);

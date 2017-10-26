@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809330");
-  script_version("$Revision: 5557 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-6662");
   script_bugtraq_id(92912);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-09-26 12:24:08 +0530 (Mon, 26 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle Mysql 'my.conf' Security Bypass Vulnerability (Windows)");
@@ -82,9 +82,6 @@ include("host_details.inc");
 ## Variable Initialization
 mysqlVer = "";
 sqlPort = "";
-
-## exit, if its not  windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## Get Port
 if(!sqlPort = get_app_port(cpe:CPE)){

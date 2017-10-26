@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_php_parserr_bof_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_php_php_parserr_bof_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # PHP 'php_parserr' Heap Based Buffer Overflow Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809743");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2014-4049");
   script_bugtraq_id(68007);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-12-05 17:24:03 +0530 (Mon, 05 Dec 2016)");
   script_name("PHP 'php_parserr' Heap Based Buffer Overflow Vulnerability (Linux)");
 
@@ -81,11 +81,6 @@ include("host_details.inc");
 ## Variable Initialization
 phpPort = "";
 phpVer = "";
-
-## exit, if its not Linux
-if(host_runs( "Linux") != "yes"){
-  exit(0);
-}
 
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 

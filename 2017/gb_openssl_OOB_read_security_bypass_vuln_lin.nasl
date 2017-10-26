@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_OOB_read_security_bypass_vuln_lin.nasl 7125 2017-09-14 08:26:29Z cfischer $
+# $Id: gb_openssl_OOB_read_security_bypass_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # OpenSSL 'OOB read' Security Bypass Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811720");
-  script_version("$Revision: 7125 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-3735");
   script_bugtraq_id(100515);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-14 10:26:29 +0200 (Thu, 14 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-31 11:14:51 +0530 (Thu, 31 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL 'OOB read' Security Bypass Vulnerability (Linux)");
@@ -80,9 +80,6 @@ include("version_func.inc");
 
 ## Variable Initialization
 sslVer = "";
-
-## check if the server not runs linux
-if(host_runs("Linux") != "yes")   exit(0);
 
 ## Get Port
 if(!sslPort = get_app_port(cpe:CPE)){

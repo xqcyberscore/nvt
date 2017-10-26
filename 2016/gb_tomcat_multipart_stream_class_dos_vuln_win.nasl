@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808197");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-3092");
   script_bugtraq_id(91453);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-07-13 19:19:54 +0530 (Wed, 13 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat 'MultipartStream' Class Denial of Service Vulnerability (Windows)");
@@ -82,9 +82,6 @@ include("version_func.inc");
 ## Variable Initialization
 appPort = "";
 appVer = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## get the port
 if(!appPort = get_app_port(cpe:CPE)){

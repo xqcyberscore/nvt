@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_http_put_code_exec_vuln_win.nasl 7424 2017-10-13 09:34:30Z santu $
+# $Id: gb_apache_tomcat_http_put_code_exec_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Apache Tomcat 'HTTP PUT Request' Code Execution Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811845");
-  script_version("$Revision: 7424 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-12615");
   script_bugtraq_id(100901);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 11:34:30 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-25 17:29:27 +0530 (Mon, 25 Sep 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Apache Tomcat 'HTTP PUT Request' Code Execution Vulnerability (Windows)");
@@ -72,10 +72,6 @@ if(description)
   exit(0);
 }
 
-##
-##  Code Starts Here
-##
-
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -84,9 +80,6 @@ include("http_keepalive.inc");
 tomPort = "";
 req = "";
 res = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## get the port
 if(!tomPort = get_app_port(cpe:CPE)){

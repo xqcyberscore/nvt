@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_dos_vuln_may17_win.nasl 6262 2017-06-01 11:47:33Z santu $
+# $Id: gb_mongodb_dos_vuln_may17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # MongoDB Denial of Service Vulnerability - May17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811057");
-  script_version("$Revision: 6262 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2016-3104");
   script_bugtraq_id(94929);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-01 13:47:33 +0200 (Thu, 01 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-05-29 14:20:50 +0530 (Mon, 29 May 2017)");
   script_name("MongoDB Denial of Service Vulnerability - May17 (Windows)");
 
@@ -79,9 +79,6 @@ include("host_details.inc");
 ## Variable initialization
 mbPort = "";
 ver = "";
-
-## exit, if its not Windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## Get the app port
 if(!mbPort = get_app_port(cpe:CPE)){

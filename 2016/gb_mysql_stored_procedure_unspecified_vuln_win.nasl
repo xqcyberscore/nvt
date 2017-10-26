@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_stored_procedure_unspecified_vuln_win.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_mysql_stored_procedure_unspecified_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # MySQL Stored Procedure Unspecified Vulnerability (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809815");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2013-2376", "CVE-2013-1511");
   script_bugtraq_id(59227);
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-11-18 16:53:22 +0530 (Fri, 18 Nov 2016)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -81,11 +81,6 @@ include("host_details.inc");
 ## Variable Initialization
 sqlPort = "";
 mysqlVer = "";
-
-##exit if its not windows
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Get Port
 if(!sqlPort = get_app_port(cpe:CPE)){

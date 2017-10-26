@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_doublepulsar_infection_detect.nasl 6450 2017-06-28 07:54:52Z santu $
+# $Id: gb_doublepulsar_infection_detect.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Double Pulsar Infection Detect
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810698");
-  script_version("$Revision: 6450 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-0146", "CVE-2017-0147");
   script_bugtraq_id(96707, 96709);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 09:54:52 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-04-18 15:25:17 +0530 (Tue, 18 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_active");
   script_name("Double Pulsar Infection Detect");
@@ -77,9 +77,6 @@ if(description)
   exit(0);
 }
 
-##
-## Code starts here
-##
 include("smb_nt.inc");
 include("host_details.inc");
 
@@ -99,9 +96,6 @@ tid_high = "";
 uid_low = "";
 uid_high = "";
 uid = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes") exit(0);
 
 name = kb_smb_name();
 smbPort = kb_smb_transport();

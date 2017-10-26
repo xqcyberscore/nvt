@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_measuresoft_scadapro_mult_vuln.nasl 5079 2017-01-24 11:00:33Z cfi $
+# $Id: gb_measuresoft_scadapro_mult_vuln.nasl 7549 2017-10-24 12:10:14Z cfischer $
 #
 # Measuresoft ScadaPro Multiple Security Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802047");
-  script_version("$Revision: 5079 $");
+  script_version("$Revision: 7549 $");
   script_bugtraq_id(49613);
   script_cve_id("CVE-2011-3495","CVE-2011-3496","CVE-2011-3497","CVE-2011-3490");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:00:33 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-12-19 15:53:58 +0530 (Wed, 19 Dec 2012)");
   script_name("Measuresoft ScadaPro Multiple Security Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -83,8 +83,6 @@ trav_str = "";
 read_req = "";
 file_info = "";
 scada_port = 0;
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 ## get the port
 scada_port = 11234;

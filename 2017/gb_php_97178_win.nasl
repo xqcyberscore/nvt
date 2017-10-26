@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_97178_win.nasl 5975 2017-04-19 07:43:02Z teissa $
+# $Id: gb_php_97178_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # PHP Server Side Request Forgery Security Bypass Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108139");
-  script_version("$Revision: 5975 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-7272");
   script_bugtraq_id(97178);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 09:43:02 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-04-18 06:00:00 +0200 (Tue, 18 Apr 2017)");
   script_name("PHP Server Side Request Forgery Security Bypass Vulnerability (Windows)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -73,8 +73,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-if( host_runs( "Windows" ) != "yes") exit( 0 );
 
 if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_recaptcha_bypass_vuln_nov15_win.nasl 6486 2017-06-29 09:59:06Z teissa $
+# $Id: gb_phpmyadmin_recaptcha_bypass_vuln_nov15_win.nasl 7546 2017-10-24 11:58:30Z cfischer $
 #
 # phpMyAdmin Security Bypass Vulnerability Nov15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806548");
-  script_version("$Revision: 6486 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2015-6830");
   script_bugtraq_id(76674);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-11-24 10:32:31 +0530 (Tue, 24 Nov 2015)");
   script_name("phpMyAdmin Security Bypass Vulnerability Nov15 (Windows)");
 
@@ -79,9 +79,6 @@ include("host_details.inc");
 # Variable Initialization
 phpPort = "";
 phpVer = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## get the port
 if(!phpPort = get_app_port(cpe:CPE)) exit(0);

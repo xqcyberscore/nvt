@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810762");
-  script_version("$Revision: 6029 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-5647");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 09:02:41 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-04-21 15:34:00 +0530 (Fri, 21 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat 'pipelined' Requests Information Disclosure Vulnerability (Windows)");
@@ -86,9 +86,6 @@ include("version_func.inc");
 ## Variable Initialization
 tomPort = "";
 appVer = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## get the port
 if(!tomPort = get_app_port(cpe:CPE)){

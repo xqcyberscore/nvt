@@ -24,7 +24,7 @@ tag_summary = "This host is missing a critical security update according to
 
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-067_900056.nasl 5455 2017-03-01 13:56:12Z cfi $
+# $Id: secpod_ms08-067_900056.nasl 7551 2017-10-24 12:24:05Z cfischer $
 # Description: Vulnerability in Server Service Could Allow Remote Code Execution (958644)
 #
 # Authors:
@@ -53,8 +53,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(900056);
-  script_version("$Revision: 5455 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 14:56:12 +0100 (Wed, 01 Mar 2017) $");
+  script_version("$Revision: 7551 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-10-30 14:46:44 +0100 (Thu, 30 Oct 2008)");
   script_bugtraq_id(31874);
   script_cve_id("CVE-2008-4250");
@@ -88,8 +88,6 @@ if(description)
 
 include("smb_nt.inc");
 include("host_details.inc");
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 if(safe_checks()){
   exit(0);

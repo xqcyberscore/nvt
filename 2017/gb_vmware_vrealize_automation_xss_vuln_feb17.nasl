@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_automation_xss_vuln_feb17.nasl 5183 2017-02-03 08:14:57Z antu123 $
+# $Id: gb_vmware_vrealize_automation_xss_vuln_feb17.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # VMware vRealize Automation Cross-Site Scripting Vulnerability (VMSA-2016-0003)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:vmware:vrealize_automation';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809794");
-  script_version("$Revision: 5183 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2015-2344");
   script_bugtraq_id(84420);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 09:14:57 +0100 (Fri, 03 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-02-03 13:26:16 +0530 (Fri, 03 Feb 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("VMware vRealize Automation Cross-Site Scripting Vulnerability (VMSA-2016-0003)");
@@ -82,9 +82,6 @@ include("host_details.inc");
 ##Variable Initialization
 vmVersion = "";
 vmPort = "";
-
-## exit, if its not Linux
-if(host_runs("Linux") != "yes")exit(0);
 
 ## Get Port
 if(!vmPort = get_app_port(cpe:CPE)){

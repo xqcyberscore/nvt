@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_csrf_vuln_lin.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: gb_wordpress_csrf_vuln_lin.nasl 7546 2017-10-24 11:58:30Z cfischer $
 #
 # WordPress 'admin impersonation via comments' CSRF Vulnerability (Linux)
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805947");
-  script_version("$Revision: 6404 $");
+  script_version("$Revision: 7546 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-08-07 11:50:02 +0530 (Fri, 07 Aug 2015)");
   script_name("WordPress 'admin impersonation via comments' CSRF Vulnerability (Linux)");
 
@@ -77,10 +77,6 @@ include("host_details.inc");
 wpPort = "";
 wpName = "";
 wpVer = "";
-
-## exit, if its Windows
-if(host_runs("Windows") == "yes") exit(0);
-
 
 ## get the port
 if(!wpPort = get_app_port(cpe:CPE)){

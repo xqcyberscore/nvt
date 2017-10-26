@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_rce_vuln01_jun17_lin.nasl 6400 2017-06-22 05:47:08Z santu $
+# $Id: gb_php_rce_vuln01_jun17_lin.nasl 7544 2017-10-24 11:07:43Z cfischer $
 #
 # PHP Remote Code Execution Vulnerability-01 Jun17 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810954");
-  script_version("$Revision: 6400 $");
+  script_version("$Revision: 7544 $");
   script_cve_id("CVE-2016-4473");
   script_bugtraq_id(98999);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 07:47:08 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:07:43 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-06-20 15:46:19 +0530 (Tue, 20 Jun 2017)");
   script_name("PHP Remote Code Execution Vulnerability-01 Jun17 (Linux)");
 
@@ -79,10 +79,7 @@ include("host_details.inc");
 phpPort = "";
 phpVer = "";
 
-## exit, if its not Linux
-if(host_runs("Linux") != "yes") exit(0);
-
-if(!phpPort = get_app_port(cpe:CPE)){
+if(isnull(phpPort = get_app_port(cpe:CPE))){
   exit(0);
 }
 

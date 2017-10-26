@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_virtualdircontext_info_disc_vuln_win.nasl 7435 2017-10-13 13:45:29Z asteins $
+# $Id: gb_apache_tomcat_virtualdircontext_info_disc_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Apache Tomcat 'VirtualDirContext' Information Disclosure Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811846");
-  script_version("$Revision: 7435 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-12616");
   script_bugtraq_id(100897);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 15:45:29 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-25 17:29:27 +0530 (Mon, 25 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat 'VirtualDirContext' Information Disclosure Vulnerability (Windows)");
@@ -78,9 +78,6 @@ include("version_func.inc");
 ## Variable Initialization
 tomPort = "";
 appVer = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## get the port
 if(!tomPort = get_app_port(cpe:CPE)){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_urlvalidator_dos_vuln_lin.nasl 6746 2017-07-18 04:18:27Z ckuersteiner $
+# $Id: gb_apache_struts_urlvalidator_dos_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Apache Struts URLValidator DoS Vulnerability (Linux)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:struts";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106954");
-  script_version("$Revision: 6746 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-18 06:18:27 +0200 (Tue, 18 Jul 2017) $");
+  script_version("$Revision: 7543 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-07-18 09:09:00 +0700 (Tue, 18 Jul 2017)");
   script_tag(name: "cvss_base", value: "4.3");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -68,9 +68,6 @@ performing validation of the URL.");
 
 include("host_details.inc");
 include("version_func.inc");
-
-if (host_runs("Windows") == "yes")
-  exit(0);
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

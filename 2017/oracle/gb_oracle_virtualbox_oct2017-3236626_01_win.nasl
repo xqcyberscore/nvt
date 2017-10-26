@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_oct2017-3236626_01_win.nasl 7497 2017-10-19 07:06:06Z santu $
+# $Id: gb_oracle_virtualbox_oct2017-3236626_01_win.nasl 7554 2017-10-25 05:33:21Z cfischer $
 #
 # Oracle VirtualBox Security Updates (oct2017-3236626) 01 - Windows
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811980");
-  script_version("$Revision: 7497 $");
+  script_version("$Revision: 7554 $");
   script_cve_id("CVE-2017-10407", "CVE-2017-3733", "CVE-2017-10428", "CVE-2017-10392", 
 		"CVE-2017-10408");
   script_bugtraq_id(101370, 96269, 101362, 101368, 101371);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 09:06:06 +0200 (Thu, 19 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-25 07:33:21 +0200 (Wed, 25 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-18 12:48:43 +0530 (Wed, 18 Oct 2017)");
   script_name("Oracle VirtualBox Security Updates (oct2017-3236626) 01 - Windows");
 

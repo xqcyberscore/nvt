@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_my_cnf_security_bypass_vuln_lin.nasl 6788 2017-07-21 19:16:52Z cfischer $
+# $Id: gb_mariadb_my_cnf_security_bypass_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # MariaDB 'my.conf' Security Bypass Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809329");
-  script_version("$Revision: 6788 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-6662");
   script_bugtraq_id(92912);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-09-26 12:24:08 +0530 (Mon, 26 Sep 2016)");
   script_name("MariaDB 'my.conf' Security Bypass Vulnerability (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -81,9 +81,6 @@ include("host_details.inc");
 ## Variable Initialization
 mariadbPort = "";
 mariadbVer = "";
-
-## exit, if its not Linux
-if(host_runs("Linux") != "yes")exit(0);
 
 ## Get MariaDB port
 if(!mariadbPort = get_app_port(cpe:CPE)){

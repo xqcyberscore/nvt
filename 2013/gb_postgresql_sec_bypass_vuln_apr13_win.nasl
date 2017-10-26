@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_sec_bypass_vuln_apr13_win.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_postgresql_sec_bypass_vuln_apr13_win.nasl 7548 2017-10-24 12:06:02Z cfischer $
 #
 # PostgreSQL Security Bypass Vulnerability - Apr13 (Windows)
 #
@@ -42,12 +42,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6104 $");
+  script_version("$Revision: 7548 $");
   script_cve_id("CVE-2013-1901");
   script_bugtraq_id(58878);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-04-09 17:48:56 +0530 (Tue, 09 Apr 2013)");
   script_name("PostgreSQL Security Bypass Vulnerability - Apr13 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52837");
@@ -77,11 +77,6 @@ include("host_details.inc");
 ## Variable Initialization
 pgsqlPort = "";
 pgsqlVer = "";
-
-## Exit if its not windows
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Get the default port
 pgsqlPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID);

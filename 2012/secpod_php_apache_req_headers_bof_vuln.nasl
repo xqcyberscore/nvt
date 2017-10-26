@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_apache_req_headers_bof_vuln.nasl 5086 2017-01-24 11:34:51Z cfi $
+# $Id: secpod_php_apache_req_headers_bof_vuln.nasl 7549 2017-10-24 12:10:14Z cfischer $
 #
 # PHP 'apache_request_headers()' Function Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902837");
-  script_version("$Revision: 5086 $");
+  script_version("$Revision: 7549 $");
   script_bugtraq_id(53455);
   script_cve_id("CVE-2012-2329");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:34:51 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-05-23 16:16:16 +0530 (Wed, 23 May 2012)");
   script_name("PHP 'apache_request_headers()' Function Buffer Overflow Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -81,11 +81,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-## If its not windows exit
-if(host_runs("windows") != "yes"){
-  exit(0);
-}
 
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );

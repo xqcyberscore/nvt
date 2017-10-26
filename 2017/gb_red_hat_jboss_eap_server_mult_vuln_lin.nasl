@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_red_hat_jboss_eap_server_mult_vuln_lin.nasl 5084 2017-01-24 11:27:12Z cfi $
+# $Id: gb_red_hat_jboss_eap_server_mult_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Red Hat JBoss EAP Server Multiple Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:redhat:jboss_enterprise_application_platform";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810320");
-  script_version("$Revision: 5084 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2015-5220", "CVE-2015-5188", "CVE-2015-5178");
   script_bugtraq_id(77345, 77346, 68444);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:27:12 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-01-04 14:39:58 +0530 (Wed, 04 Jan 2017)");
   script_name("Red Hat JBoss EAP Server Multiple Vulnerabilities (Linux)");
 
@@ -87,11 +87,6 @@ include("host_details.inc");
 #Variable initialize
 jbossPort = "";
 jbossVer = "";
-
-## exit, if not linux
-if(host_runs("Linux") != "yes"){
-  exit(0);
-}
 
 if(!jbossPort = get_app_port(cpe:CPE)){
   exit(0);

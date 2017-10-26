@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_76452.nasl 7430 2017-10-13 12:51:38Z cfischer $
+# $Id: gb_apache_activemq_76452.nasl 7546 2017-10-24 11:58:30Z cfischer $
 #
 # Apache ActiveMQ Directory Traversal Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105331");
-  script_version("$Revision: 7430 $");
+  script_version("$Revision: 7546 $");
   script_bugtraq_id(76452);
   script_cve_id("CVE-2015-1830");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("Apache ActiveMQ Directory Traversal Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 14:51:38 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-08-24 13:28:31 +0200 (Mon, 24 Aug 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -69,8 +69,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-
-if( host_runs( "Windows" ) == "no" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
 get_app_location( cpe:CPE, port:port, nofork:TRUE ); # To have a reference to the Detection-NVT

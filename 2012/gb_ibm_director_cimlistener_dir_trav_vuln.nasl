@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_director_cimlistener_dir_trav_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
+# $Id: gb_ibm_director_cimlistener_dir_trav_vuln.nasl 7552 2017-10-24 13:00:36Z cfischer $
 #
 # IBM Director CIM Server CIMListener Directory Traversal Vulnerability (Windows)
 #
@@ -39,22 +39,24 @@ tag_summary = "The host is running IBM Director CIM Server and is prone to
 if(description)
 {
   script_id(802684);
-  script_version("$Revision: 5999 $");
+  script_version("$Revision: 7552 $");
   script_cve_id("CVE-2009-0880");
   script_bugtraq_id(34065);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-12-11 20:37:46 +0530 (Tue, 11 Dec 2012)");
   script_name("IBM Director CIM Server CIMListener Directory Traversal Vulnerability (Windows)");
 
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("os_detection.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 6988);
+  script_mandatory_keys("Host/runs_windows");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -77,14 +79,7 @@ cimPort = 0;
 sndReq = "";
 rcvRes = "";
 
-## exit, if its not Windows
-if(host_runs("Windows") != "yes")exit(0);
-
-## get the port
-if(!cimPort = get_http_port(default:6988)) cimPort = 6988;
-
-## check the port state
-if(!get_port_state(cimPort))exit(0);
+cimPort = get_http_port(default:6988);
 
 ## xmlscript
 xmlscript = string(

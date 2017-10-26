@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tomcat_49143.nasl 5079 2017-01-24 11:00:33Z cfi $
+# $Id: gb_tomcat_49143.nasl 7550 2017-10-24 12:17:52Z cfischer $
 #
 # Apache Commons Daemon 'jsvc' Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103202");
-  script_version("$Revision: 5079 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:00:33 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 7550 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-08-17 15:40:19 +0200 (Wed, 17 Aug 2011)");
   script_bugtraq_id(49143);
   script_cve_id("CVE-2011-2729");
@@ -42,7 +42,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 8080);
-  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_unixoide");
+  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_unixoide"); #  This issue affects applications running on Linux operating systems only.
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49143");
   script_xref(name:"URL", value:"http://mail-archives.apache.org/mod_mbox/tomcat-announce/201108.mbox/%3C4E45221D.1020306@apache.org%3E");
@@ -86,8 +86,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-if( host_runs( "Linux" ) == "no" ) exit( 0 ); #  This issue affects applications running on Linux operating systems only.
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );

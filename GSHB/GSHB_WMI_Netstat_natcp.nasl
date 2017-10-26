@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_Netstat_natcp.nasl 6816 2017-07-31 09:28:27Z cfischer $
+# $Id: GSHB_WMI_Netstat_natcp.nasl 7551 2017-10-24 12:24:05Z cfischer $
 #
 # Get Windows TCP Netstat over win_cmd_exec
 #
@@ -32,8 +32,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94251");
-  script_version("$Revision: 6816 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-31 11:28:27 +0200 (Mon, 31 Jul 2017) $");
+  script_version("$Revision: 7551 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:12:52 +0200 (Tue, 08 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,8 +53,6 @@ if(description)
 
 include("smb_nt.inc");
 include("host_details.inc");
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 samba = get_kb_item( "SMB/samba" );
 if( samba ) exit( 0 );

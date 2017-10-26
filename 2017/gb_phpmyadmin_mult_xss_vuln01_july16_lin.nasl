@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_xss_vuln01_july16_lin.nasl 5926 2017-04-11 07:18:43Z teissa $
+# $Id: gb_phpmyadmin_mult_xss_vuln01_july16_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # phpMyAdmin SQL Injection and Multiple XSS Vulnerabilities July16 (Linux)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106490");
-  script_version("$Revision: 5926 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-11 09:18:43 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 7543 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-01-03 09:57:21 +0700 (Tue, 03 Jan 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -81,9 +81,6 @@ An additional vulnerability was found in the 'User group' and 'Designer' feature
 
 include("host_details.inc");
 include("version_func.inc");
-
-if (host_runs("Windows") == "yes")
-  exit(0);
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

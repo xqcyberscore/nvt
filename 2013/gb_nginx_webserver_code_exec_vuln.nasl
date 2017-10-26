@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_webserver_code_exec_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_nginx_webserver_code_exec_vuln.nasl 7548 2017-10-24 12:06:02Z cfischer $
 #
 # nginx Arbitrary Code Execution Vulnerability
 #
@@ -48,10 +48,10 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6086 $");
+  script_version("$Revision: 7548 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-04-22 15:03:39 +0530 (Mon, 22 Apr 2013)");
   script_name("nginx Arbitrary Code Execution Vulnerability");
 
@@ -74,11 +74,6 @@ include("version_func.inc");
 
 port = "";
 vers = "";
-
-## exit if its not Windows
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Get the application port
 if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){

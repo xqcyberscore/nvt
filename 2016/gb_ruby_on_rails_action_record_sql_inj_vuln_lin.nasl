@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_action_record_sql_inj_vuln_lin.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_ruby_on_rails_action_record_sql_inj_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # Ruby on Rails Active Record SQL Injection Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807378");
-  script_version("$Revision: 5650 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-6317");
   script_bugtraq_id(92434);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-10-13 14:29:38 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Ruby on Rails Active Record SQL Injection Vulnerability (Linux)");
@@ -87,9 +87,6 @@ include("host_details.inc");
 ## Variable Initialization
 RubyonRailPort = "";
 RubyonRailVer = "";
-
-## exit, if its not Linux
-if(host_runs("Linux") != "yes")exit(0);
 
 ## Get HTTP Port
 if(!RubyonRailPort = get_app_port(cpe:CPE)){

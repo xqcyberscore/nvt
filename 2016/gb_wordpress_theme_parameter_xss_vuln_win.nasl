@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_theme_parameter_xss_vuln_win.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_wordpress_theme_parameter_xss_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # WordPress 'theme' Parameter Cross Site Scripting Vulnerability Jan16 (Windows)
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807030");
-  script_version("$Revision: 5732 $");
+  script_version("$Revision: 7545 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-01-18 14:20:15 +0530 (Mon, 18 Jan 2016)");
   script_name("WordPress 'theme' Parameter Cross Site Scripting Vulnerability Jan16 (Windows)");
 
@@ -81,9 +81,6 @@ include("host_details.inc");
 ## Variable Initialization
 wpPort = "";
 wpVer = "";
-
-## exit, if its not Windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## get the port
 if(!wpPort = get_app_port(cpe:CPE)){

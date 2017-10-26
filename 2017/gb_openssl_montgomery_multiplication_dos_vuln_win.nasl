@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_montgomery_multiplication_dos_vuln_win.nasl 6185 2017-05-22 11:17:57Z teissa $
+# $Id: gb_openssl_montgomery_multiplication_dos_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # OpenSSL Montgomery Multiplication Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810543");
-  script_version("$Revision: 6185 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2016-7055");
   script_bugtraq_id(94242);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-22 13:17:57 +0200 (Mon, 22 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-02-09 18:50:03 +0530 (Thu, 09 Feb 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Montgomery Multiplication Denial of Service Vulnerability (Windows)");
@@ -83,9 +83,6 @@ include("version_func.inc");
 sslVer = "";
 fix = "";
 sslPort = 0;
-
-## check if its windows
-if(host_runs("Windows") != "yes")   exit(0);
 
 ## Get Port
 if(!sslPort = get_app_port(cpe:CPE)){

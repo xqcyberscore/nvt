@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011170.nasl 7424 2017-10-13 09:34:30Z santu $
+# $Id: gb_ms_kb4011170.nasl 7554 2017-10-25 05:33:21Z cfischer $
 #
 # Microsoft SharePoint Enterprise Server 2013 Service Pack 1 Multiple XSS Vulnerabilities (KB4011170)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812023");
-  script_version("$Revision: 7424 $");
+  script_version("$Revision: 7554 $");
   script_cve_id("CVE-2017-11775", "CVE-2017-11777");
   script_bugtraq_id(101105, 101155);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 11:34:30 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-25 07:33:21 +0200 (Wed, 25 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-13 10:02:45 +0530 (Fri, 13 Oct 2017)");
   script_name("Microsoft SharePoint Enterprise Server 2013 Service Pack 1 Multiple XSS Vulnerabilities (KB4011170)");
 

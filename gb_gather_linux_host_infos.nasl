@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gather_linux_host_infos.nasl 6599 2017-07-07 09:50:33Z cfischer $
+# $Id: gb_gather_linux_host_infos.nasl 7551 2017-10-24 12:24:05Z cfischer $
 #
 # Gather Linux Host Information
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105525");
-  script_version("$Revision: 6599 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:50:33 +0200 (Fri, 07 Jul 2017) $");
+  script_version("$Revision: 7551 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-01-22 13:42:01 +0100 (Fri, 22 Jan 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -49,8 +49,6 @@ if(description)
 
 include("host_details.inc");
 include("ssh_func.inc");
-
-if( host_runs( "linux" ) == "no" ) exit( 0 );
 
 sock = ssh_login_or_reuse_connection( );
 if( ! sock ) exit( 0 );

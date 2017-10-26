@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_98295_lin.nasl 7177 2017-09-18 12:14:18Z asteins $
+# $Id: gb_wordpress_98295_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # WordPress Password Reset CVE-2017-8295 Security Bypass Vulnerability (Linux)
 #
@@ -31,12 +31,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108155");
-  script_version("$Revision: 7177 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-8295");
   script_bugtraq_id(98295);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:14:18 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-05-08 11:00:15 +0200 (Mon, 08 May 2017)");
   script_name("WordPress Password Reset CVE-2017-8295 Security Bypass Vulnerability (Linux)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -81,8 +81,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-if( host_runs( "Linux" ) != "yes" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );

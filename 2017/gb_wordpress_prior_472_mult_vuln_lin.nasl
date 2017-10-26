@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_prior_472_mult_vuln_lin.nasl 5864 2017-04-05 07:47:30Z cfi $
+# $Id: gb_wordpress_prior_472_mult_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # WordPress < 4.7.2 Multiple Security Vulnerabilities (Linux)
 #
@@ -31,11 +31,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108068");
-  script_version("$Revision: 5864 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-5610", "CVE-2017-5611", "CVE-2017-5612", "CVE-2017-1001000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:47:30 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-02-02 14:20:15 +0100 (Thu, 02 Feb 2017)");
   script_name("WordPress < 4.7.2 Multiple Security Vulnerabilities (Linux)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -87,8 +87,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-if( host_runs( "Linux" ) != "yes" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_vuln_lin_0817.nasl 6968 2017-08-21 04:31:11Z ckuersteiner $
+# $Id: gb_cacti_mult_vuln_lin_0817.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Cacti <= 0.8.8b Multiple Vulnerabilities (Linux)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cacti:cacti";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108207");
-  script_version("$Revision: 6968 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-21 06:31:11 +0200 (Mon, 21 Aug 2017) $");
+  script_version("$Revision: 7543 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-08-16 11:05:37 +0200 (Wed, 16 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -104,9 +104,6 @@ if (description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-if (host_runs("Windows") == "yes")
-  exit(0);
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

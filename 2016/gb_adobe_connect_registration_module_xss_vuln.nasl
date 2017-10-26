@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_registration_module_xss_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_adobe_connect_registration_module_xss_vuln.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # Adobe Connect 'registration module' Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:connect";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809471");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-7851");
   script_bugtraq_id(94152);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-11-15 13:01:25 +0530 (Tue, 15 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe Connect 'registration module' Cross-Site Scripting Vulnerability");
@@ -83,9 +83,6 @@ include("host_details.inc");
 acPort = "";
 acVer = "";
 dir = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## Get HTTP Port
 if(!acPort = get_app_port(cpe:CPE)){

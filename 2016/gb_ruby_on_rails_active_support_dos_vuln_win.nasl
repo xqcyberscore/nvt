@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_active_support_dos_vuln_win.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_ruby_on_rails_active_support_dos_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # Ruby on Rails Active Support Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807383");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2015-3227");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-10-13 16:29:50 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Ruby on Rails Active Support Denial of Service Vulnerability (Windows)");
@@ -84,9 +84,6 @@ include("host_details.inc");
 ## Variable Initialization
 RubyonRailPort = "";
 RubyonRailVer = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## Get HTTP Port
 if(!RubyonRailPort = get_app_port(cpe:CPE)){

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_edirectory_dos_vuln.nasl 6599 2017-07-07 09:50:33Z cfischer $
+# $Id: secpod_novell_edirectory_dos_vuln.nasl 7550 2017-10-24 12:17:52Z cfischer $
 #
 # Novell eDirectory NCP Request Remote Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902291");
-  script_version("$Revision: 6599 $");
+  script_version("$Revision: 7550 $");
   script_cve_id("CVE-2010-4327");
   script_bugtraq_id(46263);
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:50:33 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -40,7 +40,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("novell_edirectory_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/ldap", 389, 636);
-  script_mandatory_keys("eDirectory/installed", "Host/runs_unixoide");
+  script_mandatory_keys("eDirectory/installed", "Host/runs_unixoide"); # only eDirectory running under Linux is affected
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/43186");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/0305");
@@ -80,9 +80,6 @@ include("version_func.inc");
 include("host_details.inc");
 
 CPE = make_list( "cpe:/a:novell:edirectory","cpe:/a:netiq:edirectory" );
-
-# only eDirectory running under Linux is affected
-if( host_runs( "windows" ) == "yes" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! major = get_app_version( cpe:CPE, port:port ) ) exit( 0 );

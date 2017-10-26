@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln_lin3.nasl 5687 2017-03-23 09:50:41Z cfi $
+# $Id: gb_mantisbt_xss_vuln_lin3.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # MantisBT 'window_title' Cross Site Scripting Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108104");
-  script_version("$Revision: 5687 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-7222");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 10:50:41 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-03-23 09:57:33 +0100 (Thu, 23 Mar 2017)");
   script_name("MantisBT 'view_type' Cross Site Scripting Vulnerability (Linux)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -71,8 +71,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-if( host_runs( "Linux" ) != "yes" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );

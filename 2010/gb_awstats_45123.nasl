@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_awstats_45123.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_awstats_45123.nasl 7550 2017-10-24 12:17:52Z cfischer $
 #
 # Awstats Configuration File Remote Arbitrary Command Execution Vulnerability
 #
@@ -39,8 +39,8 @@ Awstats < 7.0 is vulnerable;";
 if (description)
 {
  script_id(100925);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_version("$Revision: 7550 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-12-01 13:10:27 +0100 (Wed, 01 Dec 2010)");
  script_cve_id("CVE-2010-4367", "CVE-2010-4368");
  script_bugtraq_id(45123);
@@ -72,13 +72,7 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if(!get_kb_item(string("www/", port, "/ApacheTomcat")))exit(0);
-
-if (host_runs("windows") != "yes") { # "no" or "unknown"
-  exit(0);
-}
 
 if(vers = get_version_from_kb(port:port,app:"awstats")) {
 

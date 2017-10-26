@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_sec_bypass_n_info_disc_vuln_lin.nasl 7026 2017-08-31 06:13:04Z asteins $
+# $Id: gb_apache_tomcat_sec_bypass_n_info_disc_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Apache Tomcat Security Bypass and Information Disclosure Vulnerabilities (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811703");
-  script_version("$Revision: 7026 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2016-6794", "CVE-2016-0762", "CVE-2016-5018", "CVE-2016-6796",
                 "CVE-2016-6797");
   script_bugtraq_id(93940, 93944, 93939, 93942, 93943);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 08:13:04 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-11 16:00:24 +0530 (Fri, 11 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat Security Bypass and Information Disclosure Vulnerabilities (Linux)");
@@ -98,9 +98,6 @@ include("version_func.inc");
 ## Variable Initialization
 tomPort = "";
 appVer = "";
-
-## exit, if its not linux
-if(host_runs("Linux") != "yes") exit(0);
 
 ## get the port
 if(!tomPort = get_app_port(cpe:CPE)){

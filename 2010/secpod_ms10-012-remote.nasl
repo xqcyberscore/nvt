@@ -54,8 +54,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902269);
-  script_version("$Revision: 7146 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:38:49 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 7550 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-10-22 15:51:55 +0200 (Fri, 22 Oct 2010)");
   script_cve_id("CVE-2010-0020", "CVE-2010-0021", "CVE-2010-0022", "CVE-2010-0231");
   script_tag(name:"cvss_base", value:"10.0");
@@ -87,9 +87,6 @@ if(description)
 
 include("smb_nt.inc");
 include("host_details.inc");
-
-## Exit if its not windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## default port
 port = "445";

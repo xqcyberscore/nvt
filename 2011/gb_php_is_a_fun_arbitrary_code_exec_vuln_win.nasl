@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_is_a_fun_arbitrary_code_exec_vuln_win.nasl 5085 2017-01-24 11:32:37Z cfi $
+# $Id: gb_php_is_a_fun_arbitrary_code_exec_vuln_win.nasl 7550 2017-10-24 12:17:52Z cfischer $
 #
 # PHP 'is_a()' Function Remote Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802504");
-  script_version("$Revision: 5085 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:32:37 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 7550 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-11-08 13:11:11 +0530 (Tue, 08 Nov 2011)");
   script_cve_id("CVE-2011-3379");
   script_bugtraq_id(49754);
@@ -81,11 +81,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-## If its not windows exit
-if(host_runs("windows") != "yes"){
-  exit(0);
-}
 
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );

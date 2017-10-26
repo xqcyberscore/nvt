@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_veritas_backup_exec_agent_win_bof_vuln.nasl 5079 2017-01-24 11:00:33Z cfi $
+# $Id: gb_veritas_backup_exec_agent_win_bof_vuln.nasl 7549 2017-10-24 12:10:14Z cfischer $
 #
 # VERITAS Backup Exec Remote Agent Windows Servers BOF Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802985");
-  script_version("$Revision: 5079 $");
+  script_version("$Revision: 7549 $");
   script_cve_id("CVE-2005-0773");
   script_bugtraq_id(14022);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:00:33 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-10-15 10:32:37 +0530 (Mon, 15 Oct 2012)");
   script_name("VERITAS Backup Exec Remote Agent Windows Servers BOF Vulnerability");
   script_category(ACT_DENIAL);
@@ -84,8 +84,6 @@ port = "";
 soc = "";
 buf = "";
 req = "";
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 ## Get the port
 port = 10000;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_eol_win.nasl 7488 2017-10-18 17:30:44Z cfischer $
+# $Id: gb_otrs_eol_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # OTRS End of Life Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113035");
-  script_version("$Revision: 7488 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-18 19:30:44 +0200 (Wed, 18 Oct 2017) $");
+  script_version("$Revision: 7543 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-16 15:04:05 +0200 (Mon, 16 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -73,8 +73,6 @@ include( "misc_func.inc" );
 include( "products_eol.inc" );
 include( "version_func.inc" );
 include( "host_details.inc" );
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );

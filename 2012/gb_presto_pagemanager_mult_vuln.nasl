@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_presto_pagemanager_mult_vuln.nasl 5079 2017-01-24 11:00:33Z cfi $
+# $Id: gb_presto_pagemanager_mult_vuln.nasl 7549 2017-10-24 12:10:14Z cfischer $
 #
 # Presto! PageManager Multiple Vulnerabilities
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802620");
   script_bugtraq_id(52503);
-  script_version("$Revision: 5079 $");
+  script_version("$Revision: 7549 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:00:33 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-03-15 15:15:15 +0530 (Thu, 15 Mar 2012)");
   script_name("Presto! PageManager Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -89,8 +89,6 @@ include("host_details.inc");
 soc = 0;
 req = "";
 res = "";
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 ## Network Group Service Port
 port = 2502;

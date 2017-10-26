@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln02_may16_win.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_openssl_mult_vuln02_may16_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # OpenSSL Multiple Vulnerabilities-02 May16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807816");
-  script_version("$Revision: 5568 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-2108");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-05-10 17:58:27 +0530 (Tue, 10 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Multiple Vulnerabilities-02 May16 (Windows)");
@@ -80,9 +80,6 @@ include("version_func.inc");
 
 ## Variable Initialization
 sslVer = "";
-
-## exit, if its not  windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## Get Version
 if(!sslVer = get_app_version(cpe:CPE)){

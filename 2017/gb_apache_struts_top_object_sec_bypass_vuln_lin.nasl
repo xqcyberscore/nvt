@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811316");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2015-5209");
   script_bugtraq_id(82550);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-31 13:48:08 +0530 (Thu, 31 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Struts 'top' Object Access Security Bypass Vulnerability (Linux)");
@@ -79,11 +79,6 @@ include("host_details.inc");
 ## Variable Initialization
 appVer = "";
 appPort = "";
-
-## Exit if its not linux
-if(host_runs("Linux") != "yes"){
-  exit(0);
-}
 
 ## Get Port
 if(!appPort = get_app_port(cpe:CPE)){

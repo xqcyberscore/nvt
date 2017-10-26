@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ping_host.nasl 6315 2017-06-12 10:34:26Z cfischer $
+# $Id: ping_host.nasl 7559 2017-10-25 10:55:03Z cfischer $
 #
 # Ping Host
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("$Revision: 6315 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-12 12:34:26 +0200 (Mon, 12 Jun 2017) $");
+  script_version("$Revision: 7559 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-25 12:55:03 +0200 (Wed, 25 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -106,8 +106,10 @@ function check_pa_port_list( list ) {
 }
 
 use_nmap     = script_get_preference("Use nmap");
-report_dead  = script_get_preference("Report about unrechable Hosts");
 report_up    = script_get_preference("Report about reachable Hosts");
+### In the following two lines, unreachable is spelled incorectly.
+### Unfortunately, this must stay in order to keep compatibility with existing scan configs.
+report_dead  = script_get_preference("Report about unrechable Hosts");
 mark_dead    = script_get_preference("Mark unrechable Hosts as dead (not scanning)");
 icmp_ping    = script_get_preference("Do an ICMP ping");
 tcp_ping     = script_get_preference("Do a TCP ping");
@@ -171,6 +173,7 @@ if( "yes" >< use_nmap ) {
           report += 'nmap command: ' + join( list:argv_sp_only ) + '\n' + res;
         log_message( data:report, port:0 );
       }
+      # TBD: This is mostly wrong / unreliable as an -sP "consists of an ICMP echo request, TCP SYN to port 443, TCP ACK to port 80, and an ICMP timestamp request by default" -> man nmap
       set_kb_item( name:"/tmp/ping/ICMP", value:1 );
       exit( 0 );
     }
@@ -200,6 +203,12 @@ if( "yes" >< use_nmap ) {
       }
       set_kb_item( name:"/tmp/ping/ICMP", value:1 );
       exit( 0 );
+    } else if( res && "Nmap done" >< res && "Host seems down" >< res ) {
+      # For later use in e.g. os_fingerprint.nasl
+      if( TARGET_IS_IPV6() )
+        replace_kb_item( name:"ICMPv6/EchoRequest/failed", value:TRUE );
+      else
+        replace_kb_item( name:"ICMPv4/EchoRequest/failed", value:TRUE );
     }
   }
 
@@ -307,6 +316,8 @@ if( "yes" >< use_nmap ) {
           exit( 0 );
         }
       }
+      # For later use in e.g. os_fingerprint.nasl
+      replace_kb_item( name:"ICMPv6/EchoRequest/failed", value:TRUE );
     } else {
 
       # ICMPv4
@@ -346,6 +357,8 @@ if( "yes" >< use_nmap ) {
           exit( 0 );
         }
       }
+      # For later use in e.g. os_fingerprint.nasl
+      replace_kb_item( name:"ICMPv4/EchoRequest/failed", value:TRUE );
     }
   }
 

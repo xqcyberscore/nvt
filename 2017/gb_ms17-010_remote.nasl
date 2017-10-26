@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-010_remote.nasl 6223 2017-05-26 12:27:08Z antu123 $
+# $Id: gb_ms17-010_remote.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Microsoft Windows SMB Server Multiple Vulnerabilities-Remote (4013389)
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810676");
-  script_version("$Revision: 6223 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-0143", "CVE-2017-0144", "CVE-2017-0145", "CVE-2017-0146",
                 "CVE-2017-0147", "CVE-2017-0148");
   script_bugtraq_id(96703, 96704, 96705, 96707, 96709, 96706);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-26 14:27:08 +0200 (Fri, 26 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-03-22 17:51:25 +0530 (Wed, 22 Mar 2017)");
   script_name("Microsoft Windows SMB Server Multiple Vulnerabilities-Remote (4013389)");
 
@@ -81,10 +81,6 @@ if(description)
   exit(0);
 }
 
-##
-## Code starts here
-##
-
 include("smb_nt.inc");
 include("host_details.inc");
 
@@ -96,9 +92,6 @@ smb_neg_resp = "";
 smb_sess_resp = "";
 smb_sess_andx_resp = ""; 
 smb_trans_resp = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes") exit(0);
 
 name = kb_smb_name();
 smbPort = kb_smb_transport();

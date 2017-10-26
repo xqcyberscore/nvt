@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmin_mult_xss_vuln_jul17_win.nasl 6730 2017-07-14 13:26:15Z santu $
+# $Id: gb_webmin_mult_xss_vuln_jul17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Webmin Multiple XSS Vulnerabilities - July17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:webmin:webmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811503");
-  script_version("$Revision: 6730 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-9313");
   script_bugtraq_id(99373);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 15:26:15 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-11 15:47:13 +0530 (Tue, 11 Jul 2017)");
   script_name("Webmin Multiple XSS Vulnerabilities - July17 (Windows)");
 
@@ -81,9 +81,6 @@ include("host_details.inc");
 wmport = "";
 wmver = "";
 report = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## Get Port
 if(!wmport = get_app_port(cpe:CPE)){

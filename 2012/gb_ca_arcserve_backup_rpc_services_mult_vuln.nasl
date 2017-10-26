@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_arcserve_backup_rpc_services_mult_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_ca_arcserve_backup_rpc_services_mult_vuln.nasl 7552 2017-10-24 13:00:36Z cfischer $
 #
 # CA ARCserve Backup RPC Services Multiple Vulnerabilities (Windows)
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is installed with CA ARCserve Backup and is prone
 if(description)
 {
   script_id(802677);
-  script_version("$Revision: 6018 $");
+  script_version("$Revision: 7552 $");
   script_cve_id("CVE-2012-2971", "CVE-2012-2972");
   script_bugtraq_id(56116);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-11-20 11:04:50 +0530 (Tue, 20 Nov 2012)");
   script_name("CA ARCserve Backup RPC Services Multiple Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51012/");
@@ -56,6 +56,8 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("secpod_rpc_portmap.nasl", "os_detection.nasl");
   script_require_keys("rpc/portmap");
+  script_mandatory_keys("Host/runs_windows");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -78,11 +80,6 @@ dos = "";
 soc2 = "";
 soc3 = "";
 req_getport = "";
-
-## for Windows only
-if(host_runs("Windows")!= "yes"){
-  exit(0);
-}
 
 RPC_PROG = "100000";
 

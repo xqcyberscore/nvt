@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_virusscan_enterprise_detect_lin.nasl 5089 2017-01-24 11:50:42Z cfi $
+# $Id: gb_mcafee_virusscan_enterprise_detect_lin.nasl 7551 2017-10-24 12:24:05Z cfischer $
 #
 # McAfee VirusScan Enterprise Version Detection (Linux)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106469");
-  script_version("$Revision: 5089 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:50:42 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 7551 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-12-13 16:56:55 +0700 (Tue, 13 Dec 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,9 +58,6 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-
-if (host_runs("Linux") != "yes")
-  exit(0);
 
 port = get_http_port(default: 55443);
 

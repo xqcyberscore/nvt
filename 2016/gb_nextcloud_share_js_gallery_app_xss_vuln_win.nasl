@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_share_js_gallery_app_xss_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_nextcloud_share_js_gallery_app_xss_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # nextCloud 'share.js' Gallery Application XSS Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809414");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-7419", "CVE-2016-9459", "CVE-2016-9460", "CVE-2016-9461", "CVE-2016-9462");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-09-27 12:59:47 +0530 (Tue, 27 Sep 2016)");
   script_name("nextCloud 'share.js' Gallery Application XSS Vulnerability (Windows)");
 
@@ -78,9 +78,6 @@ include("version_func.inc");
 ## Variable Initialization
 nextPort = "";
 nextVer = "";
-
-## exit, if its not Windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## get the port
 if(!nextPort = get_app_port(cpe:CPE)){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln02_aug15_win.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: gb_drupal_mult_vuln02_aug15_win.nasl 7546 2017-10-24 11:58:30Z cfischer $
 #
 # Drupal Multiple Vulnerabilities-02 August15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805966");
-  script_version("$Revision: 6333 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2015-6665", "CVE-2015-6659");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-08-28 12:30:50 +0530 (Fri, 28 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Drupal Multiple Vulnerabilities-02 August15 (Windows)");
@@ -82,9 +82,6 @@ include("version_func.inc");
 ## Variable Initialization
 drupalPort= 0;
 drupalVer = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## Get HTTP Port
 if(!drupalPort= get_app_port(cpe:CPE)){

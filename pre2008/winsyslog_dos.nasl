@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: winsyslog_dos.nasl 5091 2017-01-24 14:36:31Z cfi $
+# $Id: winsyslog_dos.nasl 7551 2017-10-24 12:24:05Z cfischer $
 #
 # WinSyslog (DoS)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11884");
-  script_version("$Revision: 5091 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 15:36:31 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 7551 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -61,8 +61,6 @@ if(description)
 
 include("global_settings.inc");
 include("host_details.inc");
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 port = 514;
 if( ! get_udp_port_state( port ) ) exit( 0 );

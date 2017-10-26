@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_mult_vuln_jan13_win.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_postgresql_mult_vuln_jan13_win.nasl 7548 2017-10-24 12:06:02Z cfischer $
 #
 # PostgreSQL 'xml_parse()' And 'xslt_process()' Multiple Vulnerabilities (Windows)
 #
@@ -44,12 +44,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6086 $");
+  script_version("$Revision: 7548 $");
   script_cve_id("CVE-2012-3488", "CVE-2012-3489");
   script_bugtraq_id(55072, 55074);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-01-24 17:08:52 +0530 (Thu, 24 Jan 2013)");
   script_name("PostgreSQL 'xml_parse()' And 'xslt_process()' Multiple Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50218");
@@ -80,12 +80,6 @@ include("host_details.inc");
 
 pgsqlPort = "";
 pgsqlVer = "";
-
-
-## Exit if its not windows
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Get the default port
 pgsqlPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID);

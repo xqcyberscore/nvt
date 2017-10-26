@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_exif_header_dos_vuln.nasl 5085 2017-01-24 11:32:37Z cfi $
+# $Id: gb_php_exif_header_dos_vuln.nasl 7550 2017-10-24 12:17:52Z cfischer $
 #
 # PHP EXIF Header Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802349");
-  script_version("$Revision: 5085 $");
+  script_version("$Revision: 7550 $");
   script_cve_id("CVE-2011-4566");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:32:37 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-12-01 11:41:26 +0530 (Thu, 01 Dec 2011)");
   script_name("PHP EXIF Header Denial of Service Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -78,11 +78,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-## If its not windows exit
-if(host_runs("windows") != "yes"){
-  exit(0);
-}
 
 if( isnull( phpPort = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );

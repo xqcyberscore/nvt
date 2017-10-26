@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_smh_unspecified_sec_bypass_vuln_900167.nasl 5657 2017-03-21 11:08:08Z cfi $
+# $Id: secpod_hp_smh_unspecified_sec_bypass_vuln_900167.nasl 7552 2017-10-24 13:00:36Z cfischer $
 # Description: HP SMH Unspecified Security Bypass Vulnerability
 #
 # Authors:
@@ -28,8 +28,8 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900167");
-  script_version("$Revision: 5657 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7552 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_bugtraq_id(32088);
   script_cve_id("CVE-2008-4413");
@@ -43,7 +43,7 @@ if(description)
   script_xref(name : "URL" , value : "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c01586921");
 
   script_dependencies("secpod_hp_smh_detect.nasl","os_detection.nasl");
-  script_mandatory_keys("HP/SMH/installed");
+  script_mandatory_keys("HP/SMH/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 2301, 2381);
 
   script_tag(name : "impact" , value : "Attackers can leverage this issue to gain local unauthorized access.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_vuln01_aug16_lin.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_cloudbees_jenkins_mult_vuln01_aug16_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # CloudBees Jenkins Multiple Vulnerabilities -01 August16 (Linux)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808267");
-  script_version("$Revision: 5598 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2014-2068", "CVE-2014-2066", "CVE-2014-2065", "CVE-2014-2064",
                 "CVE-2014-2063", "CVE-2014-2062", "CVE-2014-2061", "CVE-2014-2060",
                 "CVE-2014-2058");
   script_bugtraq_id(65694, 65720);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-08-05 09:47:29 +0530 (Fri, 05 Aug 2016)");
   script_name("CloudBees Jenkins Multiple Vulnerabilities -01 August16 (Linux)");
 
@@ -99,11 +99,6 @@ include("version_func.inc");
 ## Variable Initialization
 jenkinPort = "";
 jenkinVer= "";
-
-##Exit if its not Linux
-if(host_runs("Linux") != "yes"){
-  exit(0);
-}
 
 ## Get HTTP Port
 if(!jenkinPort = get_app_port(cpe:CPE)){

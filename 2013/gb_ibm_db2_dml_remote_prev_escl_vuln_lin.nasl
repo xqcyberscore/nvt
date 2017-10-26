@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_dml_remote_prev_escl_vuln_lin.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_ibm_db2_dml_remote_prev_escl_vuln_lin.nasl 7548 2017-10-24 12:06:02Z cfischer $
 #
 # IBM DB2 DML Statement Execution Remote Privilege Escalation Vulnerability (Linux)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6079 $");
+  script_version("$Revision: 7548 $");
   script_cve_id("CVE-2013-4033");
   script_bugtraq_id(62018);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-09-05 17:50:25 +0530 (Thu, 05 Sep 2013)");
   script_name("IBM DB2 DML Statement Execution Remote Privilege Escalation Vulnerability (Linux)");
 
@@ -89,10 +89,6 @@ http://www-01.ibm.com/support/docview.wss?uid=swg21646809";
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
-
-if(host_runs("Linux") != "yes"){
-  exit(0);
-}
 
 ## Variable Initialization
 ibmVer  = "";

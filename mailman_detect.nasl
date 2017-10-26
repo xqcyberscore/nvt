@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mailman_detect.nasl 5737 2017-03-27 14:18:12Z cfi $
+# $Id: mailman_detect.nasl 7560 2017-10-25 11:12:22Z cfischer $
 # Description: Mailman Detection
 #
 # Authors:
@@ -32,8 +32,8 @@ if(description)
 {
   script_id(16338);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5737 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:18:12 +0200 (Mon, 27 Mar 2017) $");
+  script_version("$Revision: 7560 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-25 13:12:22 +0200 (Wed, 25 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Mailman Detection");
@@ -92,7 +92,6 @@ foreach dir( make_list_unique( "/mailman", cgi_dirs( port:port ) ) ) {
     # nb: only worried about the first match.
     break;
   }
-  # Scan for multiple installations only if "Thorough Tests" is checked.
   if (installs) break;
 }
 

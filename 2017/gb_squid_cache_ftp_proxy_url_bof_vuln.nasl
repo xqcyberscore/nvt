@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_cache_ftp_proxy_url_bof_vuln.nasl 6813 2017-07-31 08:25:50Z santu $
+# $Id: gb_squid_cache_ftp_proxy_url_bof_vuln.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Squid Cache FTP Proxy URL Buffer Overflow Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = 'cpe:/a:squid-cache:squid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811542");
-  script_version("$Revision: 6813 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2002-0068");
   script_bugtraq_id(4148);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-31 10:25:50 +0200 (Mon, 31 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-28 12:44:20 +0530 (Fri, 28 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid Cache FTP Proxy URL Buffer Overflow Vulnerability");
@@ -78,11 +78,6 @@ if (description)
 include("host_details.inc");
 include("version_func.inc");
 include("revisions-lib.inc");
-
-## Check PLatform
-if (host_runs("Linux") != "yes"){
-  exit(0);
-}
 
 ##Get Port
 if (!sqport = get_app_port(cpe: CPE)){

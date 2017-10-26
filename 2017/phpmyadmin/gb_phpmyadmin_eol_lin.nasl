@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_eol_lin.nasl 7527 2017-10-20 09:46:24Z cfischer $
+# $Id: gb_phpmyadmin_eol_lin.nasl 7540 2017-10-24 08:55:55Z cfischer $
 #
 # phpMyAdmin End of Life Detection (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113015");
-  script_version("$Revision: 7527 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 11:46:24 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 7540 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 10:55:55 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-16 13:54:55 +0200 (Mon, 16 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -77,11 +77,9 @@ include( "version_func.inc" );
 include( "host_details.inc" );
 include( "http_func.inc" );
 
-if( host_runs( "Linux" ) != "yes" ) exit( 0 );
-
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
-if( ret = product_reached_eol( cpe: CPE, version: version, debug: True) ) {
+if( ret = product_reached_eol( cpe: CPE, version: version ) ) {
   report = build_eol_message( name: "phpMyAdmin",
                               cpe: CPE,
                               version: version,

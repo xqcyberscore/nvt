@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: icmp_domain_name.nasl 7176 2017-09-18 12:01:01Z cfischer $
-# Description: ICMP domain name request
+# $Id: icmp_domain_name.nasl 7559 2017-10-25 10:55:03Z cfischer $
+#
+# ICMP domain name request
 #
 # Authors:
 # Michel Arboi <mikhail@nessus.org>
@@ -20,20 +22,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote host answers to ICMP 'domain name' messages.
-
-Description :
-
-The remote host answered to an ICMP 'Domain Name Request'
-as defined in RFC 1788.
-
-Such a request is designed to obtain the DNS name of a host 
-based on its IP.";
-
-tag_solution = "If you do not use this feature, filter out incoming ICMP packets 
-of type 37 and outgoing ICMP packets of type 38.";
+###############################################################################
 
 # References:
 # RFC 1788
@@ -41,30 +30,41 @@ of type 37 and outgoing ICMP packets of type 38.";
 
 if(description)
 {
- script_id(80066);;
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7176 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
- script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name( "ICMP domain name request");
- 
- script_category(ACT_GATHER_INFO);
+  script_oid("1.3.6.1.4.1.25623.1.0.80066");
+  script_version("$Revision: 7559 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-25 12:55:03 +0200 (Wed, 25 Oct 2017) $");
+  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("ICMP domain name request");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2006 Michel Arboi <mikhail@nessus.org>");
+  script_family("Service detection");
+  script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
+
+  script_xref(name:"URL", value:"http://www.ietf.org/rfc/rfc1788.txt");
+
+  tag_summary = "The remote host answered to an ICMP 'Domain Name Request'
+  as defined in RFC 1788.
+
+  Such a request is designed to obtain the DNS name of a host 
+  based on its IP.";
+
+  tag_solution = "If you do not use this feature, filter out incoming ICMP packets 
+  of type 37 and outgoing ICMP packets of type 38.";
+
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
   script_tag(name:"qod_type", value:"remote_banner");
- script_copyright("This script is Copyright (C) 2006 Michel Arboi <mikhail@nessus.org>");
- family = "General";
- script_family(family);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.ietf.org/rfc/rfc1788.txt");
- script_exclude_keys("keys/TARGET_IS_IPV6");
- exit(0);
+
+  exit(0);
 }
 
-if ( TARGET_IS_IPV6())  exit(0);
+if( TARGET_IS_IPV6() ) exit( 0 );
+if( islocalhost() ) exit( 0 );
 
 max = 2;
-
 
 # 00: 09 63 61 73 73 65 72 6f 6c 65 06 28 6e 6f 6e 65    .casserole.(none
 # 10: 29 00                                              ).
@@ -106,9 +106,6 @@ function extract_dns_data(dns)
  for (i = 0; i < vi; i ++) { out = strcat(out, v[i], '\n'); }
  return out;
 }
-
-
-if (islocalhost()) exit(0);
 
 ip = forge_ip_packet(ip_hl:5, ip_v:4, ip_off:0,
                      ip_tos:0, ip_p : IPPROTO_ICMP,

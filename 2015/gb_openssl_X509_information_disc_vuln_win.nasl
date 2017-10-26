@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_X509_information_disc_vuln_win.nasl 6391 2017-06-21 09:59:48Z teissa $
+# $Id: gb_openssl_X509_information_disc_vuln_win.nasl 7546 2017-10-24 11:58:30Z cfischer $
 #
 # OpenSSL 'X509_ATTRIBUTE' Information Disclosure Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806655");
-  script_version("$Revision: 6391 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2015-3195");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-12-23 11:08:20 +0530 (Wed, 23 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL 'X509_ATTRIBUTE' Information Disclosure Vulnerability (Windows)");
@@ -76,9 +76,6 @@ include("version_func.inc");
 ## Variable Initialization
 sslPort = 0;
 sslVer = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## Get Version
 if(!sslVer = get_app_version(cpe:CPE)){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln01_dec15_lin.nasl 6513 2017-07-04 09:59:28Z teissa $
+# $Id: gb_wordpress_mult_vuln01_dec15_lin.nasl 7546 2017-10-24 11:58:30Z cfischer $
 #
 # WordPress Multiple Vulnerabilities Dec15 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806801");
-  script_version("$Revision: 6513 $");
+  script_version("$Revision: 7546 $");
   script_cve_id("CVE-2015-5734", "CVE-2015-5733", "CVE-2015-5732", "CVE-2015-5731",
                 "CVE-2015-5730", "CVE-2015-2213");
   script_bugtraq_id(76331,76160);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-12-15 13:15:38 +0530 (Tue, 15 Dec 2015)");
   script_name("WordPress Multiple Vulnerabilities Dec15 (Linux)");
 
@@ -97,9 +97,6 @@ include("host_details.inc");
 ## Variable Initialization
 wpPort = "";
 wpVer = "";
-
-## exit, if its not Windows
-if(host_runs("Windows") == "yes") exit(0);
 
 ## get the port
 if(!wpPort = get_app_port(cpe:CPE)){

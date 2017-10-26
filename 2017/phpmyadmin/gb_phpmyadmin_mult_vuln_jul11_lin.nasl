@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_vuln_jul11_lin.nasl 7097 2017-09-12 05:05:57Z cfischer $
+# $Id: gb_phpmyadmin_mult_vuln_jul11_lin.nasl 7539 2017-10-24 08:52:47Z cfischer $
 #
 # phpMyAdmin 3.4.x < 3.4.3.2 Multiple Directory Traversal Vulnerabilities (Linux)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108240");
-  script_version("$Revision: 7097 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-12 07:05:57 +0200 (Tue, 12 Sep 2017) $");
+  script_version("$Revision: 7539 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 10:52:47 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-11 08:48:02 +0200 (Mon, 11 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -64,8 +64,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-if( host_runs( "Linux" ) != "yes" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );

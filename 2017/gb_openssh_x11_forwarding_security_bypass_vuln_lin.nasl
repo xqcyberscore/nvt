@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_x11_forwarding_security_bypass_vuln_lin.nasl 6599 2017-07-07 09:50:33Z cfischer $
+# $Id: gb_openssh_x11_forwarding_security_bypass_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # OpenSSH X11 Forwarding Security Bypass Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810769");
-  script_version("$Revision: 6599 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2016-1908");
   script_bugtraq_id(84427);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:50:33 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-04-21 16:34:59 +0530 (Fri, 21 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSH X11 Forwarding Security Bypass Vulnerability (Linux)");
@@ -81,13 +81,9 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-
 # Variable Initialization
 sshPort = "";
 sshVer = "";
-
-## exit, if its not Linux
-if(host_runs("Linux") != "yes") exit(0);
 
 ## get the port
 if(!sshPort = get_app_port(cpe:CPE)){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_bi_publisher_jul2017-3236622_02_vuln.nasl 6924 2017-08-15 11:45:18Z teissa $
+# $Id: gb_oracle_bi_publisher_jul2017-3236622_02_vuln.nasl 7538 2017-10-24 06:46:01Z santu $
 #
 # Oracle BI Publisher Multiple Unspecified Vulnerabilities-02 (jul2017-3236622)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:business_intelligence_publisher";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811248");
-  script_version("$Revision: 6924 $");
-  script_cve_id("CVE-2017-10043", "CVE-2017-10035");
-  script_bugtraq_id(99696, 99741);
+  script_version("$Revision: 7538 $");
+  script_cve_id("CVE-2017-10043", "CVE-2017-10035", "CVE-2017-10037", "CVE-2017-10034");
+  script_bugtraq_id(99696, 99741, 101334, 101307);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-15 13:45:18 +0200 (Tue, 15 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 08:46:01 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-19 17:26:23 +0530 (Wed, 19 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle BI Publisher Multiple Unspecified Vulnerabilities-02 (jul2017-3236622)");
@@ -45,11 +45,11 @@ if(description)
   detect NVT and check the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to unspecified
-  errors in 'BI Publisher Security' and 'Web Server' components of the
-  application.");
+  errors in 'BI Publisher Security', 'Web Server', 'Core Formatting API' and 
+  'Web Service API' components of the application.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
-  vulnerability will allow remote attackers to have impact on
+  script_tag(name: "impact" , value:"Successful exploitation of these
+  vulnerabilities will allow remote attackers to have impact on
   confidentiality and integrity.
 
   Impact Level: System/Application");
@@ -57,12 +57,14 @@ if(description)
   script_tag(name: "affected" , value:"Oracle BI Publisher versions 11.1.1.7.0
   and 11.1.1.9.0");
 
-  script_tag(name:"solution", value:"Apply update from the link mentioned below
-  http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
+  script_tag(name:"solution", value:"Apply update from the links mentioned below
+  http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html
+  http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
+  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

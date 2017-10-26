@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln_win1.nasl 5556 2017-03-13 09:09:23Z ckuerste $
+# $Id: gb_mantisbt_xss_vuln_win1.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # MantisBT XSS Vulnerability (Windows)
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106643");
-  script_version("$Revision: 5556 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-13 10:09:23 +0100 (Mon, 13 Mar 2017) $");
+  script_version("$Revision: 7543 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-03-13 14:33:08 +0700 (Mon, 13 Mar 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -69,9 +69,6 @@ allows remote attackers to inject arbitrary JavaScript via the 'action_type' par
 
 include("host_details.inc");
 include("version_func.inc");
-
-if (host_runs("Windows") != "yes")
-  exit(0);
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

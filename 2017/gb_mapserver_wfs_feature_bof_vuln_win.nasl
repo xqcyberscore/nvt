@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mapserver_wfs_feature_bof_vuln_win.nasl 6289 2017-06-07 06:55:18Z emoss $
+# $Id: gb_mapserver_wfs_feature_bof_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # MapServer WFS Feature Requests Buffer Overflow Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:umn:mapserver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810790");
-  script_version("$Revision: 6289 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-5522");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-07 08:55:18 +0200 (Wed, 07 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-06-06 11:47:44 +0530 (Tue, 06 Jun 2017)");
   script_name("MapServer WFS Feature Requests Buffer Overflow Vulnerability (Windows)");
 
@@ -81,9 +81,6 @@ include("host_details.inc");
 #Variable initialize
 webPort = "";
 webVer = "";
-
-## exit, if its not Windows
-if(host_runs("Windows") != "yes") exit(0);
 
 if(!webPort = get_app_port(cpe:CPE)){
  exit(0);

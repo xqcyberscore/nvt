@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_audit_facility_loc_prev_escl_vuln_lin.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_ibm_db2_audit_facility_loc_prev_escl_vuln_lin.nasl 7548 2017-10-24 12:06:02Z cfischer $
 #
 # IBM DB2 Audit Facility Local Privilege Escalation Vulnerability (Linux)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 7548 $");
   script_cve_id("CVE-2013-3475");
   script_bugtraq_id(60255);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-09-05 15:09:14 +0530 (Thu, 05 Sep 2013)");
   script_name("IBM DB2 Audit Facility Local Privilege Escalation Vulnerability (Linux)");
 
@@ -92,10 +92,6 @@ http://www-01.ibm.com/support/docview.wss?uid=swg21639355";
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
-
-if(host_runs("Linux") != "yes"){
-  exit(0);
-}
 
 ## Variable Initialization
 ibmVer  = "";

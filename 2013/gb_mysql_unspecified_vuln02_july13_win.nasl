@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln02_july13_win.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_mysql_unspecified_vuln02_july13_win.nasl 7548 2017-10-24 12:06:02Z cfischer $
 #
 # MySQL Unspecified vulnerabilities-02 July-2013 (Windows)
 #
@@ -33,12 +33,12 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6104 $");
+  script_version("$Revision: 7548 $");
   script_cve_id("CVE-2013-3812", "CVE-2013-3809", "CVE-2013-3793");
   script_bugtraq_id(61249, 61272, 61264);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-07-29 17:20:08 +0530 (Mon, 29 Jul 2013)");
   script_name("MySQL Unspecified vulnerabilities-02 July-2013 (Windows)");
 
@@ -87,11 +87,6 @@ http://www.oracle.com/technetwork/topics/security/cpujuly2013-1899826.html ";
 include("misc_func.inc");
 include("version_func.inc");
 include("host_details.inc");
-
-## Exit if its not windows
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Variable Initialization
 sqlPort = "";

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln_feb17_win.nasl 5506 2017-03-07 10:08:00Z ckuerste $
+# $Id: gb_owncloud_mult_vuln_feb17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # ownCloud Multiple Vulnerabilities Feb17 (Windows)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106580");
-  script_version("$Revision: 5506 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-07 11:08:00 +0100 (Tue, 07 Mar 2017) $");
+  script_version("$Revision: 7543 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-02-08 16:01:56 +0700 (Wed, 08 Feb 2017)");
   script_tag(name: "cvss_base", value: "4.3");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -74,9 +74,6 @@ if (description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-if (host_runs("Windows") != "yes")
-  exit(0);
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

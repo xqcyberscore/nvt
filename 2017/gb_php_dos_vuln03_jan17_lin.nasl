@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dos_vuln03_jan17_lin.nasl 5099 2017-01-25 11:00:33Z cfi $
+# $Id: gb_php_dos_vuln03_jan17_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # PHP Denial of Service Vulnerability - 03 - Jan17 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108056");
-  script_version("$Revision: 5099 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2016-10162");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:00:33 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-01-25 11:00:00 +0100 (Wed, 25 Jan 2017)");
   script_name("PHP Denial of Service Vulnerability - 03 - Jan17 (Linux)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -74,8 +74,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-if( host_runs( "Linux" ) != "yes") exit( 0 );
 
 if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_mult_sec_bypass_vuln_win.nasl 5079 2017-01-24 11:00:33Z cfi $
+# $Id: gb_apache_tomcat_mult_sec_bypass_vuln_win.nasl 7549 2017-10-24 12:10:14Z cfischer $
 #
 # Apache Tomcat Multiple Security Bypass Vulnerabilities (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802678");
-  script_version("$Revision: 5079 $");
+  script_version("$Revision: 7549 $");
   script_cve_id("CVE-2012-5887", "CVE-2012-5886", "CVE-2012-5885");
   script_bugtraq_id(56403);
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:00:33 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-11-27 16:27:51 +0530 (Tue, 27 Nov 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -89,9 +89,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-## Exit if its not windows
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );

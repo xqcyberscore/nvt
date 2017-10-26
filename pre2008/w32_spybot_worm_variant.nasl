@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: w32_spybot_worm_variant.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: w32_spybot_worm_variant.nasl 7551 2017-10-24 12:24:05Z cfischer $
 # Description: w32.spybot.fcd worm infection
 #
 # Authors:
@@ -38,8 +38,8 @@ definitions.";
 if(description)
 {
  script_id(15520);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 7551 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -66,13 +66,8 @@ if(description)
  exit(0);
 }
 
-#
-# The script code starts here
-#
 include('misc_func.inc');
 include('host_details.inc');
-
-if (host_runs("Windows") != "yes") exit(0);
 
 if (get_kb_item('fake_identd/113')) exit(0);
 

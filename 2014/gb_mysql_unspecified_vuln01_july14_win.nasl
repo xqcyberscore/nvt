@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804721");
-  script_version("$Revision: 6715 $");
+  script_version("$Revision: 7547 $");
   script_cve_id("CVE-2014-4238", "CVE-2014-4240", "CVE-2014-4233",
                 "CVE-2014-2484", "CVE-2014-4214");
   script_bugtraq_id(68587, 68602, 68598, 68560, 68607);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:02:32 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-07-24 16:59:38 +0530 (Thu, 24 Jul 2014)");
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities-01 July14 (Windows)");
 
@@ -93,10 +93,6 @@ include("host_details.inc");
 ## Variable Initialization
 mysqlVer = "";
 sqlPort = "";
-
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 ## Get Port
 if(!sqlPort = get_app_port(cpe:CPE)){

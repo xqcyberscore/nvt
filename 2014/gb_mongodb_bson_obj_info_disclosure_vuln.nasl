@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_bson_obj_info_disclosure_vuln.nasl 5848 2017-04-04 07:21:55Z antu123 $
+# $Id: gb_mongodb_bson_obj_info_disclosure_vuln.nasl 7547 2017-10-24 12:02:32Z cfischer $
 #
 # MongoDB BSON Object Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mongodb:mongodb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804246");
-  script_version("$Revision: 5848 $");
+  script_version("$Revision: 7547 $");
   script_cve_id("CVE-2012-6619");
   script_bugtraq_id(64687);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 09:21:55 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:02:32 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-03-14 18:12:20 +0530 (Fri, 14 Mar 2014)");
   script_name("MongoDB BSON Object Information Disclosure Vulnerability");
 
@@ -77,11 +77,6 @@ include("global_settings.inc");
 ## Variable initialisation
 mbPort = "";
 ver = "";
-
-## windows
-if(host_runs("Windows") != "yes"){
-  exit(0);
-}
 
 if(!mbPort = get_app_port(cpe:CPE))exit(0);
 

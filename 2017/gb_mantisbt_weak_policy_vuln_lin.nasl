@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_weak_policy_vuln_lin.nasl 5430 2017-02-27 10:10:01Z cfi $
+# $Id: gb_mantisbt_weak_policy_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # MantisBT Weak Content Security Policy Vulnerability (Linux)
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106612");
-  script_version("$Revision: 5430 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-27 11:10:01 +0100 (Mon, 27 Feb 2017) $");
+  script_version("$Revision: 7543 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-02-20 13:33:44 +0700 (Mon, 20 Feb 2017)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
@@ -69,9 +69,6 @@ which allows remote attackers to conduct cross-site scripting (XSS) attacks via 
 
 include("host_details.inc");
 include("version_func.inc");
-
-if (host_runs("Linux") != "yes")
-  exit(0);
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

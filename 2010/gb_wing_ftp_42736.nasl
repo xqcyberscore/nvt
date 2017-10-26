@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wing_ftp_42736.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_wing_ftp_42736.nasl 7552 2017-10-24 13:00:36Z cfischer $
 #
 # Wing FTP Server HTTP Request Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100777");
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 7552 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
   script_bugtraq_id(42736);
   script_tag(name:"cvss_base", value:"5.0");
@@ -39,6 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "os_detection.nasl", "ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("Host/runs_windows");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42736");
   script_xref(name:"URL", value:"http://www.wftpserver.com/");
@@ -61,8 +62,6 @@ if(description)
 include("ftp_func.inc");
 include("version_func.inc");
 include("host_details.inc");
-
-if( host_runs( "windows" ) != "yes" ) exit( 0 );
 
 port = get_ftp_port( default:21 );
 if( ! banner = get_ftp_banner( port:port ) ) exit( 0 );

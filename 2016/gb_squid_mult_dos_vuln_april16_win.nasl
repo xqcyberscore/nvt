@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_mult_dos_vuln_april16_win.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_squid_mult_dos_vuln_april16_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # Squid Multiple Denial of Service Vulnerabilities April16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807793");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-3947", "CVE-2016-3948");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-04-18 18:23:23 +0530 (Mon, 18 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Squid Multiple Denial of Service Vulnerabilities April16 (Windows)");
@@ -83,9 +83,6 @@ include("version_func.inc");
 ## Variable Initialization
 squidPort = "";
 squidVer = "";
-
-## exit, if its not windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## Get HTTP Port
 if(!squidPort = get_app_port(cpe:CPE)){

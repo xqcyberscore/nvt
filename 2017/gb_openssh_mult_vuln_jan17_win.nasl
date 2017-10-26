@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_mult_vuln_jan17_win.nasl 6599 2017-07-07 09:50:33Z cfischer $
+# $Id: gb_openssh_mult_vuln_jan17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # OpenSSH Multiple Vulnerabilities Jan17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810325");
-  script_version("$Revision: 6599 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2016-10009", "CVE-2016-10010", "CVE-2016-10011", "CVE-2016-10012");
   script_bugtraq_id(94968, 94972, 94977, 94975);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:50:33 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-01-06 10:55:34 +0530 (Fri, 06 Jan 2017)");
   script_name("OpenSSH Multiple Vulnerabilities Jan17 (Windows)");
 
@@ -83,9 +83,6 @@ include("host_details.inc");
 # Variable Initialization
 sshPort = "";
 sshVer = "";
-
-## exit, if its not Windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## get the port
 if(!sshPort = get_app_port(cpe:CPE)){

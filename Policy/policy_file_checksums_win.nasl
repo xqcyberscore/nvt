@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums_win.nasl 6741 2017-07-17 15:53:49Z cfischer $
+# $Id: policy_file_checksums_win.nasl 7565 2017-10-25 14:25:27Z cfischer $
 #
 # Check for File Checksum Violations in Windows
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96180");
-  script_version("$Revision: 6741 $");
+  script_version("$Revision: 7565 $");
   script_name("Windows file Checksums");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 17:53:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-25 16:25:27 +0200 (Wed, 25 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-07-02 10:55:14 +0530 (Tue, 02 Jul 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Policy");
@@ -41,6 +41,8 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("SMB/samba");
+
+  script_xref(name:"URL", value:"http://docs.greenbone.net/GSM-Manual/gos-4/en/compliance.html#file-checksums");
 
   script_add_preference(name:"List all and not only the first 100 entries", type:"checkbox", value:"no");
   script_add_preference(name:"Install hash test Programm on the Target", type:"checkbox", value:"no");
@@ -75,7 +77,6 @@ if(description)
 include("smb_nt.inc");
 include("host_details.inc");
 
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 if( ! defined_func( "win_cmd_exec" ) ) exit( 0 );
 
 ## Variable Initialization
@@ -245,7 +246,7 @@ if (install = "yes") {
         else usleep (10000);
       }
       if (!fortmp){
-        log_message(data:"Required Tool is not installable on the target system");
+        log_message(port:0, data:"Required Tool is not installable on the target system");
         deltmp = win_cmd_exec (cmd:delvbs, password:password, username:username);
         exit(0);
       }
@@ -276,8 +277,12 @@ split_cheksumlist = lines;
 
 line_count = max_index(lines);
 
-if(line_count == 1 && lines[0] =~ "Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?")
-  exit(0); # empty file, just the header is present.
+if(line_count == 1 && lines[0] =~ "Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?") {
+  report  = "Checksumtest aborted: Attached checksum File doesn't contain test entries (Only the header is present).";
+  report += "Please upload a file following the syntax described in the referenced documentation.";
+  log_message(port:0, data:report);
+  exit(0);
+}
 
 x = 0;
 
@@ -291,13 +296,14 @@ foreach line (lines)
     if(x == line_count && eregmatch(pattern:"^$", string:line))
       continue;  # accept one emty line at the end of cheksumlist.
 
-    _error += 'Invalid line ' + line + ' in checksum File found. Checksumtest aborted.\n';
+    _error += 'Invalid line ' + line + ' in checksum File found.\n';
   }
 }
 
 if (_error){
-  report = 'Errors:\n' + _error;
-  log_message(port:0, proto="smb", data:report);
+  report  = 'Checksumtest aborted. Errors:\n' + _error;
+  report += '\n\nPlease upload a file following the syntax described in the referenced documentation.';
+  log_message(port:0, data:report);
   exit(0);
 }
 
@@ -432,7 +438,7 @@ for(i=1; i<max; i++)
       }
       else
       {
-        log_message(data:"The Required Tool is not available on the target system");
+        log_message(port:0, data:"The Required Tool is not available on the target system");
         exit(0);
       }
     }
@@ -483,7 +489,7 @@ for(i=1; i<max; i++)
       }
       else
       {
-        log_message(data:"Required Tool is not available on the target system");
+        log_message(port:0, data:"Required Tool is not available on the target system");
         exit(0);
       }
     }
@@ -495,7 +501,7 @@ if (install = "yes" && delete = "yes")clearexe = win_cmd_exec (cmd:delexe, passw
 
 if (_error) {
   report = 'Errors:\n' + _error;
-  log_message(port:0, proto="smb", data:report);
+  log_message(port:0, data:report);
 }
 
 # Write results to KB for further checks and reporting

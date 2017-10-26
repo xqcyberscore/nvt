@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_active_support_xss_vuln_lin.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: gb_ruby_on_rails_active_support_xss_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # Ruby on Rails Active Support Cross Site Scripting Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807382");
-  script_version("$Revision: 5505 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2015-3226");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-10-13 15:29:55 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Ruby on Rails Active Support Cross Site Scripting Vulnerability (Linux)");
@@ -82,9 +82,6 @@ include("host_details.inc");
 ## Variable Initialization
 RubyonRailPort = "";
 RubyonRailVer = "";
-
-## exit, if its not Linux
-if(host_runs("Linux") != "yes")exit(0);
 
 ## Get HTTP Port
 if(!RubyonRailPort = get_app_port(cpe:CPE)){

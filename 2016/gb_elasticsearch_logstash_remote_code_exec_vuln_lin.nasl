@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_logstash_remote_code_exec_vuln_lin.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: gb_elasticsearch_logstash_remote_code_exec_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # Elasticsearch Logstash Remote Code Execution Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:elasticsearch:logstash";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808507");
-  script_version("$Revision: 5612 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2014-4326");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-06-28 18:49:34 +0530 (Tue, 28 Jun 2016)");
   script_name("Elasticsearch Logstash Remote Code Execution Vulnerability (Linux)");
 
@@ -80,9 +80,6 @@ include("host_details.inc");
 #Variable initialize
 esPort = "";
 esVer = "";
-
-## exit, if its windows
-if(host_runs("Linux") != "yes") exit(0);
 
 ## Get Port
 if(!esPort = get_app_port(cpe:CPE)){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_dhe_ecdhe_key_exchange_dos_vuln_win.nasl 5301 2017-02-15 09:16:50Z antu123 $
+# $Id: gb_openssl_dhe_ecdhe_key_exchange_dos_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # OpenSSL Bad (EC)DHE Parameters DoS Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810546");
-  script_version("$Revision: 5301 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-3730");
   script_bugtraq_id(95812);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-15 10:16:50 +0100 (Wed, 15 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-02-09 18:50:03 +0530 (Thu, 09 Feb 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Bad (EC)DHE Parameters DoS Vulnerability (Windows)");
@@ -76,9 +76,6 @@ include("version_func.inc");
 
 ## Variable Initialization
 sslVer = "";
-
-## check if the server not runs windows
-if(host_runs("Windows") != "yes")   exit(0);
 
 ## Get Port
 if(!sslPort = get_app_port(cpe:CPE)){

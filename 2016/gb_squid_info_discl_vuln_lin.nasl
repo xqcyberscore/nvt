@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_info_discl_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_squid_info_discl_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # Squid Information Disclosure Vulnerability (Linux)
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:squid-cache:squid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106479");
-  script_version("$Revision: 5083 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 7545 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name: "creation_date", value: "2016-12-19 14:15:02 +0700 (Mon, 19 Dec 2016)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -73,9 +73,6 @@ resources.");
 
 include("host_details.inc");
 include("version_func.inc");
-
-if (host_runs("Linux") != "yes")
-  exit(0);
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

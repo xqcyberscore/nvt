@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_server_mult_vuln_jun17_win.nasl 6501 2017-07-03 07:48:47Z teissa $
+# $Id: gb_apache_http_server_mult_vuln_jun17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Apache HTTP Server Multiple Vulnerabilities June17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811213");
-  script_version("$Revision: 6501 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-7679", "CVE-2017-3169", "CVE-2017-3167");
   script_bugtraq_id(99135, 99134);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 09:48:47 +0200 (Mon, 03 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-06-21 17:06:43 +0530 (Wed, 21 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache HTTP Server Multiple Vulnerabilities June17 (Windows)");
@@ -83,16 +83,12 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
 ## Variable Initialization
 httpd_port = 0;
 httpd_ver = "";
-
-## exit, if its not Windows
-if(host_runs("Windows") != "yes") exit(0);
 
 ## Get HTTP Port
 if(!httpd_port = get_app_port(cpe:CPE)){

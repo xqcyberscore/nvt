@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_podcast_generator_41473.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_podcast_generator_41473.nasl 7550 2017-10-24 12:17:52Z cfischer $
 #
 # Podcast Generator 'download.php' Directory Traversal Vulnerability
 #
@@ -37,8 +37,8 @@ may also be affected.";
 if (description)
 {
  script_id(100709);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 7550 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-07-09 12:33:08 +0200 (Fri, 09 Jul 2010)");
  script_bugtraq_id(41473);
 
@@ -67,11 +67,7 @@ include("host_details.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
 
-if (host_runs("windows") == "no") exit(0);
-
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if (!can_host_php(port:port)) exit(0);
 
 if(vers = get_version_from_kb(port:port,app:"podcast_generator")) {

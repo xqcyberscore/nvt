@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_mult_info_disc_vuln_may17_lin.nasl 6249 2017-05-30 13:27:41Z teissa $
+# $Id: gb_postgresql_mult_info_disc_vuln_may17_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # PostgreSQL Multiple Information Disclosure Vulnerabilities - May17 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810990");
-  script_version("$Revision: 6249 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-7484", "CVE-2017-7486");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-30 15:27:41 +0200 (Tue, 30 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-05-15 16:07:12 +0530 (Mon, 15 May 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL Multiple Information Disclosure Vulnerabilities - May17 (Linux)");
@@ -83,11 +83,6 @@ include("host_details.inc");
 pgsqlPort = "";
 pgsqlVer = "";
 fix = "";
-
-## Exit if its not Linux
-if(host_runs("Linux") != "yes"){
-  exit(0);
-}
 
 ## Get the default port
 pgsqlPort = get_app_port(cpe:CPE);

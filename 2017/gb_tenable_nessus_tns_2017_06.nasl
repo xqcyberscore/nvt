@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tenable_nessus_tns_2017_06.nasl 5572 2017-03-14 14:10:43Z cfi $
+# $Id: gb_tenable_nessus_tns_2017_06.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # Tenable Nessus < 6.10.2 Arbitrary File Upload Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:tenable:nessus';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108098");
-  script_version("$Revision: 5572 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2017-6543");
   script_bugtraq_id(96418);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 15:10:43 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-03-14 13:00:00 +0100 (Tue, 14 Mar 2017)");
   script_name("Tenable Nessus < 6.10.2 Arbitrary File Upload Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -72,8 +72,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );

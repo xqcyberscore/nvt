@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_dos_vuln_jan17_lin.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_isc_bind_dos_vuln_jan17_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
 #
 # ISC BIND 'buffer.c' Assertion Failure Denial of Service Vulnerability (Linux) 
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810263");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 7543 $");
   script_cve_id("CVE-2016-2776");
   script_bugtraq_id(93188);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-01-06 12:10:51 +0530 (Fri, 06 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND 'buffer.c' Assertion Failure Denial of Service Vulnerability (Linux)");
@@ -76,9 +76,6 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 include("revisions-lib.inc");
-
-## exit, if its not Linux
-if(host_runs("Linux") != "yes") exit(0);
 
 ## Get port
 if( ! bindPort = get_app_port( cpe:CPE ) ) exit( 0 );

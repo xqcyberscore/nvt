@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_dbshell_info_disclose_vuln_win.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_mongodb_dbshell_info_disclose_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # MongoDB Client 'dbshell' Information Disclosure Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809351");
-  script_version("$Revision: 5534 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-6494");
   script_bugtraq_id(92204);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-10-13 15:38:52 +0530 (Thu, 13 Oct 2016)");
   script_name("MongoDB Client 'dbshell' Information Disclosure Vulnerability (Windows)");
 
@@ -81,9 +81,6 @@ include("host_details.inc");
 ## Variable initialization
 mbPort = "";
 ver = "";
-
-## exit, if its not Windows
-if(host_runs("Windows") != "yes")exit(0);
 
 ## Get the app port
 if(!mbPort = get_app_port(cpe:CPE)){

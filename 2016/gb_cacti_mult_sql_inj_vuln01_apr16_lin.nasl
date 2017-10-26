@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_sql_inj_vuln01_apr16_lin.nasl 5708 2017-03-24 08:55:10Z teissa $
+# $Id: gb_cacti_mult_sql_inj_vuln01_apr16_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
 #
 # Cacti Multiple SQL Injection Vulnerabilities -01 April16 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cacti:cacti";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807558");
-  script_version("$Revision: 5708 $");
+  script_version("$Revision: 7545 $");
   script_cve_id("CVE-2016-3172", "CVE-2016-3659");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:55:10 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-04-25 18:08:07 +0530 (Mon, 25 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Cacti Multiple SQL Injection Vulnerabilities -01 April16 (Linux)");
@@ -83,9 +83,6 @@ include("version_func.inc");
 ## Variable Initialization
 cacPort = 0;
 cactiVer = "";
-
-## exit, if its windows
-if(host_runs("Windows") == "yes") exit(0);
 
 ## Get HTTP Port
 if(!cacPort = get_app_port(cpe:CPE)){

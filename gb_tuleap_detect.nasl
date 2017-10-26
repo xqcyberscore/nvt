@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tuleap_detect.nasl 4425 2016-11-07 10:45:45Z ckuerste $
+# $Id: gb_tuleap_detect.nasl 7542 2017-10-24 10:23:14Z jschulte $
 #
 # Tuleap Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106378");
- script_version ("$Revision: 4425 $");
- script_tag(name: "last_modification", value: "$Date: 2016-11-07 11:45:45 +0100 (Mon, 07 Nov 2016) $");
+ script_version ("$Revision: 7542 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-10-24 12:23:14 +0200 (Tue, 24 Oct 2017) $");
  script_tag(name: "creation_date", value: "2016-11-07 12:46:37 +0700 (Mon, 07 Nov 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,7 +67,7 @@ res = http_get_cache(port: port, item: "/");
 if ("<title>Welcome - Tuleap" >< res && "/account/login.php" >< res) {
   version = "unknown";
 
-  vers = eregmatch(pattern: "</a> version ([0-9.]+)\.", string: res);
+  vers = eregmatch(pattern: "</a> version (([0-9]+\.)+[0-9]+)", string: res);
   if (!isnull(vers[1])) {
     version = vers[1];
     set_kb_item(name: "tuleap/version", value: version);

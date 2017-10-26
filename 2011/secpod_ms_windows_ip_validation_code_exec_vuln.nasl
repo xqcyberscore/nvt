@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_windows_ip_validation_code_exec_vuln.nasl 5455 2017-03-01 13:56:12Z cfi $
+# $Id: secpod_ms_windows_ip_validation_code_exec_vuln.nasl 7550 2017-10-24 12:17:52Z cfischer $
 #
 # Microsoft Windows Internet Protocol Validation Remote Code Execution Vulnerability
 #
@@ -45,13 +45,13 @@ tag_summary = "The host is running Microsoft Windows and is prone to remote code
 if(description)
 {
   script_id(902588);
-  script_version("$Revision: 5455 $");
+  script_version("$Revision: 7550 $");
   script_cve_id("CVE-2005-0048", "CVE-2005-0688", "CVE-2004-0790",
                 "CVE-2004-1060", "CVE-2004-0230");
   script_bugtraq_id(13116, 13658, 13124, 10183);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 14:56:12 +0100 (Wed, 01 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-11-21 15:15:15 +0530 (Mon, 21 Nov 2011)");
   script_name("Microsoft Windows Internet Protocol Validation Remote Code Execution Vulnerability");
 
@@ -82,8 +82,6 @@ if(description)
 
 include("smb_nt.inc");
 include("host_details.inc");
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 if(TARGET_IS_IPV6()){
   exit(0);

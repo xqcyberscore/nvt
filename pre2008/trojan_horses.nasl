@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: trojan_horses.nasl 5614 2017-03-20 12:04:28Z cfi $
+# $Id: trojan_horses.nasl 7551 2017-10-24 12:24:05Z cfischer $
 #
 # Trojan horses
 #
@@ -42,8 +42,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11157");
-  script_version("$Revision: 5614 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 13:04:28 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 7551 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -80,8 +80,6 @@ if(description)
 include("global_settings.inc");
 include("misc_func.inc");
 include("host_details.inc");
-
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 # This list comes from:
 # http://www.sans.org/newlook/resources/IDFAQ/oddports.htm

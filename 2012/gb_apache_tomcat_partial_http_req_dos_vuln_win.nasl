@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_partial_http_req_dos_vuln_win.nasl 5079 2017-01-24 11:00:33Z cfi $
+# $Id: gb_apache_tomcat_partial_http_req_dos_vuln_win.nasl 7549 2017-10-24 12:10:14Z cfischer $
 #
 # Apache Tomcat Partial HTTP Requests DoS Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802682");
-  script_version("$Revision: 5079 $");
+  script_version("$Revision: 7549 $");
   script_cve_id("CVE-2012-5568");
   script_bugtraq_id(56686);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:00:33 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-12-05 12:17:34 +0530 (Wed, 05 Dec 2012)");
   script_name("Apache Tomcat Partial HTTP Requests DoS Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -86,9 +86,6 @@ exit(66);
 
 include("host_details.inc");
 include("version_func.inc");
-
-## Exit if its not windows
-if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
