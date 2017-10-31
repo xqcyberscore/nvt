@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_raja_natarajan_guestbook_46098.nasl 5751 2017-03-28 14:37:16Z cfi $
+# $Id: gb_raja_natarajan_guestbook_46098.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Raja Natarajan Guestbook 'lang' Parameter Local File Include Vulnerability
 #
@@ -44,8 +44,8 @@ please mail us at: vuldb@securityfocus.com.";
 if(description)
 {
  script_id(103057);
- script_version("$Revision: 5751 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:37:16 +0200 (Tue, 28 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-02-03 13:07:13 +0100 (Thu, 03 Feb 2011)");
  script_bugtraq_id(46098);
  script_tag(name:"cvss_base", value:"5.0");
@@ -67,6 +67,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

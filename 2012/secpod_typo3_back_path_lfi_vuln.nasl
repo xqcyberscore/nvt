@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_typo3_back_path_lfi_vuln.nasl 6720 2017-07-13 14:25:27Z cfischer $
+# $Id: secpod_typo3_back_path_lfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # TYPO3 'BACK_PATH' Parameter Local File Include Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902795");
-  script_version("$Revision: 6720 $");
+  script_version("$Revision: 7577 $");
   script_cve_id("CVE-2011-4614");
   script_bugtraq_id(51090);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-02-22 13:46:49 +0530 (Wed, 22 Feb 2012)");
   script_name("TYPO3 'BACK_PATH' Parameter Local File Include Vulnerability");
 
@@ -66,6 +66,7 @@ of 4.7");
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_cisco-sa-20151204-openssl.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: gb_cisco_ip_phone_cisco-sa-20151204-openssl.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Cisco IP Phone 8800 Series Multiple Vulnerabilities in OpenSSL
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106286");
-  script_version("$Revision: 5612 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2016-09-22 10:06:54 +0700 (Thu, 22 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -92,7 +92,7 @@ if (model =~ "^CP-88..") {
   version = eregmatch(pattern: "sip88xx\.([0-9-]+)", string: version);
   if (version[1] && (version[1] =~ "^10-2-1" || version[1] =~ "^10-2-2")) {
     report = report_fixed_ver(installed_version: version[1], fixed_version: "11-5-1");
-    security_message(port: port, data: report);
+    security_message(port: 0, data: report);
   }
 }
 

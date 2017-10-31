@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: mysql.inc 5209 2017-02-06 14:27:52Z cfi $
+# $Id: mysql.inc 7578 2017-10-26 11:00:21Z cfischer $
 #
 # Functions for MySQL
 #
@@ -27,7 +27,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 5209 $
+# $Revision: 7578 $
 #
 ###############################################################################
 
@@ -39,7 +39,7 @@ ER_HOST_NOT_PRIVILEGED = 1130;
 
 function set_mysql_version( port, version ) {
 
-  local_var sb, port, version;
+  local_var port, version;
 
   if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#set_mysql_version" );
   if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#set_mysql_version" );
@@ -49,7 +49,7 @@ function set_mysql_version( port, version ) {
 
 function get_mysql_version( port ) {
 
-  local_var sb, port;
+  local_var port;
 
   if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_mysql_version" );
 
@@ -58,7 +58,7 @@ function get_mysql_version( port ) {
 
 function set_mariadb_version( port, version ) {
 
-  local_var sb, port, version;
+  local_var port, version;
 
   if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#set_mariadb_version" );
   if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#set_mariadb_version" );
@@ -68,7 +68,7 @@ function set_mariadb_version( port, version ) {
 
 function get_mariadb_version( port ) {
 
-  local_var sb, port;
+  local_var port;
 
   if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_mariadb_version" );
 

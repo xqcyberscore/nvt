@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_mult_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
+# $Id: gb_webid_mult_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # WeBid Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803053");
-  script_version("$Revision: 5814 $");
+  script_version("$Revision: 7577 $");
   script_bugtraq_id(56588);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-11-20 12:03:19 +0530 (Tue, 20 Nov 2012)");
   script_name("WeBid Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/80140");
@@ -70,6 +70,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

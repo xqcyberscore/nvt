@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cambium_epmp1000_mult_vuln.nasl 5474 2017-03-03 08:32:02Z ckuerste $
+# $Id: gb_cambium_epmp1000_mult_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Cambium Networks ePMP 1000 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cambium_networks:epmp1000";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106628");
-  script_version("$Revision: 5474 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-03 09:32:02 +0100 (Fri, 03 Mar 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-03-03 10:33:24 +0700 (Fri, 03 Mar 2017)");
   script_tag(name: "cvss_base", value: "9.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name: "vuldetect", value: "Check the version.");
 
-  script_tag(name: "insight", value: "Multiple vulnerabilites have been found in ePMP 1000:
+  script_tag(name: "insight", value: "Multiple vulnerabilities have been found in ePMP 1000:
 
 - OS command injection
 

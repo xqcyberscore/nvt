@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: SiteX_35122.nasl 5761 2017-03-29 10:54:12Z cfi $
+# $Id: SiteX_35122.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # SiteX 'THEME_FOLDER' Parameter Multiple Local File Include Vulnerabilities
 #
@@ -37,8 +37,8 @@ SiteX 0.7.4.418 is vulnerable; other versions may also be affected.";
 if(description)
 {
  script_id(100454);
- script_version("$Revision: 5761 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:54:12 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-01-20 10:52:14 +0100 (Wed, 20 Jan 2010)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -58,6 +58,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

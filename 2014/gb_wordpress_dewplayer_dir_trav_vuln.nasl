@@ -30,12 +30,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6724 $");
+  script_version("$Revision: 7577 $");
   script_cve_id("CVE-2013-7240");
   script_bugtraq_id(64587);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-01-07 16:29:23 +0530 (Tue, 07 Jan 2014)");
   script_name("WordPress Advanced Dewplayer 'dew_file' Directory Traversal Vulnerability");
 
@@ -85,7 +85,7 @@ For updates refer to http://wordpress.org/plugins/advanced-dewplayer";
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

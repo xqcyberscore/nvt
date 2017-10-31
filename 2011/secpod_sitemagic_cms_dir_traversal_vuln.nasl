@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sitemagic_cms_dir_traversal_vuln.nasl 5793 2017-03-30 13:40:15Z cfi $
+# $Id: secpod_sitemagic_cms_dir_traversal_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Sitemagic CMS 'SMTpl' Parameter Directory Traversal Vulnerability
 #
@@ -45,8 +45,8 @@ traversal vulnerability.";
 if(description)
 {
   script_id(902452);
-  script_version("$Revision: 5793 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:40:15 +0200 (Thu, 30 Mar 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_bugtraq_id(48399);
   script_tag(name:"cvss_base", value:"5.0");
@@ -71,6 +71,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

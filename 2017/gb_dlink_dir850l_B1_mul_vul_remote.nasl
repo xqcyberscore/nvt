@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir850l_B1_mul_vul_remote.nasl 7243 2017-09-25 05:48:36Z cfischer $
+# $Id: gb_dlink_dir850l_B1_mul_vul_remote.nasl 7590 2017-10-27 08:19:44Z asteins $
 #
 # D-Link 850L Firmware B1 Admin Password Disclosure Vulnerability (remote)
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107243");
-  script_version("$Revision: 7243 $");
+  script_version("$Revision: 7590 $");
   script_cve_id("CVE-2017-14417", "CVE-2017-14418");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-25 07:48:36 +0200 (Mon, 25 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-27 10:19:44 +0200 (Fri, 27 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-12 17:47:21 +0200 (Tue, 12 Sep 2017)");
 
   script_tag(name:"cvss_base", value:"7.5");
@@ -47,7 +47,7 @@ gain control of the device. This webpage is used to register the device to the m
   script_tag(name: "impact" , value: "Remote attacker can retrieve the admin password and gain full access.");
   script_tag(name: "affected", value: "DLink Dir 850 L Rev B1");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 12th September,2017. it is recommended to stop using this product immediately.");
+  script_tag(name: "solution", value: "No solution or patch is available as of 27th October, 2017. It is recommended to stop using this product immediately.");
 
   script_xref(name: "URL" , value: "https://packetstormsecurity.com/files/144056/dlink850l-xssexecxsrf.txt");
   script_xref(name: "URL" , value: "http://securityaffairs.co/wordpress/62937/hacking/d-link-dir-850l-zero-day.html");

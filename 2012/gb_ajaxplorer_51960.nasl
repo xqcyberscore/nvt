@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ajaxplorer_51960.nasl 6720 2017-07-13 14:25:27Z cfischer $
+# $Id: gb_ajaxplorer_51960.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # AjaXplorer 'doc_file' Parameter Local File Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103422");
   script_bugtraq_id(51960);
-  script_version ("$Revision: 6720 $");
+  script_version ("$Revision: 7577 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("AjaXplorer 'doc_file' Parameter Local File Disclosure Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-02-15 12:40:42 +0100 (Wed, 15 Feb 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -68,6 +68,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: thttpd_directory_traversal.nasl 5901 2017-04-09 13:17:48Z cfi $
+# $Id: thttpd_directory_traversal.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # HTTP Directory Traversal (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14229");
-  script_version("$Revision: 5901 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-09 15:17:48 +0200 (Sun, 09 Apr 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2628");
   script_bugtraq_id(10862);
@@ -61,6 +61,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

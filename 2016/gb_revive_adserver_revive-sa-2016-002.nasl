@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_revive_adserver_revive-sa-2016-002.nasl 4211 2016-10-05 07:59:43Z teissa $
+# $Id: gb_revive_adserver_revive-sa-2016-002.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Revive Adserver Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:revive:adserver';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106320");
-  script_version("$Revision: 4211 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-10-05 09:59:43 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2016-10-04 11:58:57 +0700 (Tue, 04 Oct 2016)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name: "summary", value: "Revive Adserver is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "Revive Adserver is prone to multiple vulnerabilites:
+  script_tag(name: "insight", value: "Revive Adserver is prone to multiple vulnerabilities:
 
 - www/delivery/asyncspc.php is vulnerable to the fairly new Reflected File Download (RFD) web attack vector that
 enables attackers to gain complete control over a victim's machine by virtually downloading a file from a

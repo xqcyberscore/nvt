@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_distinct_tftp_server_dir_trav_vuln.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_distinct_tftp_server_dir_trav_vuln.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Distinct TFTP Server Directory Traversal Vulnerability
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802623");
   script_bugtraq_id(52938);
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 7582 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-04-09 15:15:15 +0530 (Mon, 09 Apr 2012)");
   script_name("Distinct TFTP Server Directory Traversal Vulnerability");
 
@@ -65,10 +65,9 @@ if(description)
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("tftp.inc");
 include("network_func.inc");
-include("http_keepalive.inc");
 
 ## Variable Initialization
 port = 0;
@@ -94,7 +93,7 @@ foreach file(keys(files)) {
                  port:port);
 
   ## Confirm exploit worked by checking the response
-  if(egrep(pattern:file, string:get, icase:TRUE)){
+  if(egrep(pattern:file, string:res, icase:TRUE)){
     security_message(port:port);
     exit(0);
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_myeasybackup_plugin_dir_trav_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_wordpress_myeasybackup_plugin_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # WordPress myEASYbackup Plugin 'dwn_file' Parameter Directory Traversal Vulnerability
 #
@@ -47,12 +47,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5950 $");
+  script_version("$Revision: 7577 $");
   script_cve_id("CVE-2012-0898");
   script_bugtraq_id(51433);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-01-17 12:16:44 +0530 (Tue, 17 Jan 2012)");
   script_name("WordPress myEASYbackup Plugin 'dwn_file' Parameter Directory Traversal Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47594");
@@ -74,10 +74,7 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
+include("misc_func.inc");
 include("http_func.inc");
 include("version_func.inc");
 include("host_details.inc");

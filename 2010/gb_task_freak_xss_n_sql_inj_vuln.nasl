@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_task_freak_xss_n_sql_inj_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_task_freak_xss_n_sql_inj_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Task Freak Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -44,8 +44,8 @@ tag_summary = "This host is running Task Freak and is prone to Cross Site Script
 if(description)
 {
   script_id(800788);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-07-07 07:04:19 +0200 (Wed, 07 Jul 2010)");
   script_cve_id("CVE-2010-1520", "CVE-2010-1521");
   script_bugtraq_id(41221, 41218);
@@ -89,6 +89,6 @@ sndReq = http_get(item:string(dir, "/logout.php?tznMessage=<script>alert" +
 rcvRes = http_send_recv(port:tfPort, data:sndReq);
 
 ## Check the response to confirm vulnerability
-if(recRes =~ "HTTP/1\.. 200" && "<script>alert('OpenVAS-XSS-Testing'i)</script>" >< rcvRes){
+if(rcvRes =~ "HTTP/1\.. 200" && "<script>alert('OpenVAS-XSS-Testing'i)</script>" >< rcvRes){
   security_message(tfPort);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20170310-struts2.nasl 5678 2017-03-23 04:08:39Z ckuerste $
+# $Id: gb_cisco_cucm_cisco-sa-20170310-struts2.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # Cisco Unified Communications Manager Apache Struts2 Jakarta Multipart Parser File Upload Code Execution Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-5638");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5678 $");
+ script_version ("$Revision: 7571 $");
 
  script_name("Cisco Unified Communications Manager Apache Struts2 Jakarta Multipart Parser File Upload Code Execution Vulnerability");
 
@@ -53,7 +53,7 @@ using a crafted Content-Type header value.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-23 05:08:39 +0100 (Thu, 23 Mar 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name: "creation_date", value: "2017-03-14 09:51:18 +0700 (Tue, 14 Mar 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -70,7 +70,7 @@ include("version_func.inc");
 if (!version = get_app_version(cpe: CPE))
   exit(0);
 
-version = str_replace( string:vers, find:"-", replace:"." );
+version = str_replace( string:version, find:"-", replace:"." );
 
 if (version =~ "^11\.0" || version =~ "^11\.5") {
   report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");

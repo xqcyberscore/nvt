@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_ip_office_mgr_tftp_dir_trav.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_avaya_ip_office_mgr_tftp_dir_trav.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Avaya IP Office Manager TFTP Server Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802027");
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-07-14 13:16:44 +0200 (Thu, 14 Jul 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -65,12 +65,9 @@ if(description)
 
   exit(0);
 }
-##
-## The script code starts here
-##
 
+include("misc_func.inc");
 include("tftp.inc");
-include("http_keepalive.inc");
 
 ## Check fot tftp service
 port = get_kb_item("Services/udp/tftp");

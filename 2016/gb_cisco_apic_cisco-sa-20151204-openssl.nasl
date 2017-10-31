@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_cisco-sa-20151204-openssl.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_cisco_apic_cisco-sa-20151204-openssl.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Cisco Application Policy Infrastructure Controller Multiple Vulnerabilities in OpenSSL
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-3193","CVE-2015-3194","CVE-2015-3195","CVE-2015-3196","CVE-2015-1794");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5650 $");
+ script_version ("$Revision: 7573 $");
 
  script_name("Cisco Application Policy Infrastructure Controller Multiple Vulnerabilities in OpenSSL");
 
@@ -68,7 +68,7 @@ remote attacker to cause a denial of service (DoS) condition (CVE-2015-1794).");
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2016-09-22 10:06:54 +0700 (Thu, 22 Sep 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -89,7 +89,7 @@ affected = make_list(
 
 foreach af ( affected )
 {
-  if( check_vers == af )
+  if( version == af )
   {
     report = report_fixed_ver(  installed_version:version, fixed_version: "1.2(2)" );
     security_message( port:0, data:report );

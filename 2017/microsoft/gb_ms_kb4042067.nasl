@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4042067.nasl 7401 2017-10-11 13:55:58Z santu $
+# $Id: gb_ms_kb4042067.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4042067)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811860");
-  script_version("$Revision: 7401 $");
+  script_version("$Revision: 7571 $");
   script_cve_id("CVE-2017-11771", "CVE-2017-11772");
   script_bugtraq_id(101114, 101116);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-11 15:55:58 +0200 (Wed, 11 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-11 10:00:54 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4042067)");
 
@@ -104,8 +104,10 @@ query = 'Select Version from CIM_DataFile Where FileName ='
 fileVer = wmi_query( wmi_handle:handle, query:query );
 
 wmi_close( wmi_handle:handle );
-
 if( ! fileVer ) exit( 0 );
+
+# Don't pass NULL to version function below
+maxVer = "";
 
 ##Multiple files found
 ##On update old as well as new files come, so checking for highest version

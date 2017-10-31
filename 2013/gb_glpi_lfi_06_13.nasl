@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_glpi_lfi_06_13.nasl 5842 2017-04-03 13:15:19Z cfi $
+# $Id: gb_glpi_lfi_06_13.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # GLPI Local File Include Vulnerability
 #
@@ -40,7 +40,7 @@ CPE = "cpe:/a:glpi-project:glpi";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103743");
- script_version ("$Revision: 5842 $");
+ script_version ("$Revision: 7577 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -48,7 +48,7 @@ if (description)
 
  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2013-5145.php");
  
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2013-06-20 11:59:55 +0200 (Thu, 20 Jun 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -61,6 +61,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

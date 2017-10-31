@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ssl_ciphers.inc 5987 2017-04-20 09:01:59Z cfi $
+# $Id: secpod_ssl_ciphers.inc 7578 2017-10-26 11:00:21Z cfischer $
 #
 # Check SSL Weak Ciphers and Supported Ciphers
 #
@@ -28,7 +28,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5987 $
+# $Revision: 7578 $
 #
 ###############################################################################
 
@@ -733,9 +733,9 @@ function remove_cipher_from_list( list, cipher )
   return str_replace( string:list, find:cipher, replace:'' );
 }
 
-function check_single_cipher( tls_versions )
+function check_single_cipher( tls_versions, sslPort )
 {
-  local_var tls_versions, cipher_names, tlsv, SSL_VER, CIPHER_CODE, CIPHER_NAME;
+  local_var tls_versions, sslPort, cipher_names, tlsv, SSL_VER, CIPHER_CODE, CIPHER_NAME;
 
   if( ! tls_versions ) return;
 
@@ -769,9 +769,9 @@ function check_single_cipher( tls_versions )
   }
 }
 
-function check_all_cipher( tls_versions )
+function check_all_cipher( tls_versions, sslPort )
 {
-  local_var tls_versions, tlsv, cipher_names, initial_cipher_list, CHACHA_CIPHERS, SSL_VER, CIPHER_CODE, CIPHER_NAME;
+  local_var tls_versions, sslPort, tlsv, cipher_names, initial_cipher_list, CHACHA_CIPHERS, SSL_VER, CIPHER_CODE, CIPHER_NAME;
 
   if( ! tls_versions ) return;
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_sec_bypass_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_ntp_sec_bypass_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # NTP EVP_VerifyFinal() Security Bypass Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "This host has NTP installed and is prone to security bypass
 if(description)
 {
   script_id(800408);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-01-15 16:11:17 +0100 (Thu, 15 Jan 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -82,5 +82,5 @@ if(!ntpVer){
 # version 4.2.4 t0 4.2.4p5 and 4.2.5 to 4.2.5p150
 if (((revcomp(a: ntpVer, b: "4.2.4") >= 0) && (revcomp(a: ntpVer, b: "4.2.4p5") <= 0)) ||
     ((revcomp(a: ntpVer, b: "4.2.5") >= 0) && (revcomp(a: ntpVer, b: "4.2.5p150") <= 0))) {
-  security_message(port:ntpPort, proto:"udp");
+  security_message(port:0, proto:"udp");
 }

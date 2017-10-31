@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_java_console_auth_bypass_vuln.nasl 5724 2017-03-24 15:54:58Z cfi $
+# $Id: gb_ibm_domino_java_console_auth_bypass_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM Domino 'java console' Authentication Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808191");
-  script_version("$Revision: 5724 $");
+  script_version("$Revision: 7575 $");
   script_cve_id("CVE-2016-0304");
   script_bugtraq_id(90804);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:54:58 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-07-12 17:25:38 +0530 (Tue, 12 Jul 2016)");
   script_name("IBM Domino 'java console' Authentication Bypass Vulnerability");
 
@@ -75,9 +75,9 @@ if(description)
   exit(0);
 }
 
-
-include("host_details.inc");
 include("version_func.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
+include("host_details.inc");
 
 ## Variable Initialization
 domVer = "";

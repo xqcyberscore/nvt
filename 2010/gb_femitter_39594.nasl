@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_femitter_39594.nasl 5901 2017-04-09 13:17:48Z cfi $
+# $Id: gb_femitter_39594.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Acritum Femitter Server URI Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100590");
-  script_version("$Revision: 5901 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-09 15:17:48 +0200 (Sun, 09 Apr 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-04-21 13:10:07 +0200 (Wed, 21 Apr 2010)");
   script_bugtraq_id(39594);
   script_tag(name:"cvss_base", value:"5.0");
@@ -64,6 +64,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

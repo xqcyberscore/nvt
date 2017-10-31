@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetbrains_loc_file_disc_vuln.nasl 7039 2017-09-01 08:28:45Z teissa $
+# $Id: gb_jetbrains_loc_file_disc_vuln.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # JetBrains Remote Code Execution and Local File Disclosure Vulnerability (Active Check)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:jetbrains:jetbrains";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107231");
-  script_version("$Revision: 7039 $");
+  script_version("$Revision: 7571 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 10:28:45 +0200 (Fri, 01 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-25 10:25:40 +0530 (Fri, 25 Aug 2017)");
 
   script_tag(name:"qod_type", value:"exploit");
@@ -92,8 +92,7 @@ function guessProjectName()
 
   foreach name ( Dictionary ) {
     url = "/" + name + "/.idea/workspace.xml";
-    req = http_get_req( port: port, url: url, data: data,
-                        add_headers: make_array('Content-Type', 'application/xml') );
+    req = http_get_req( port: port, url: url, add_headers: make_array('Content-Type', 'application/xml') );
     res = http_keepalive_send_recv( port: port, data: req );
 
     if ( res =~ "HTTP/1.. 200" )
@@ -110,9 +109,9 @@ function buildDotsSegsToRoot( path )
 {
   i = 0;
   depth = 0;
-  while (i < strlen( projectPath ) )
+  while (i < strlen( path ) )
   {
-    if ( projectPath[i] == "/" )
+    if ( path[i] == "/" )
       depth += 1;
     i++;
   }
@@ -196,7 +195,7 @@ if (!isnull(Pycharm_report) || jetbrains_report) {
   if (isnull( Pycharm_report ))
     report = jetbrains_report;
   else
-    report = Pycharm_report + "\n" + jetbrain_report;
+    report = Pycharm_report + "\n" + jetbrains_report;
 
   security_message( port:port, data:report );
   exit(0);

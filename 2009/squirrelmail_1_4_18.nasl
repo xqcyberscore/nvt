@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: squirrelmail_1_4_18.nasl 6009 2017-04-21 15:30:58Z ckuerste $
+# $Id: squirrelmail_1_4_18.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # SquirrelMail Prior to 1.4.18 Multiple Vulnerabilities
 #
@@ -43,8 +43,8 @@ tag_summary = "SquirrelMail is prone to multiple vulnerabilities, including
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100203");
- script_version("$Revision: 6009 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-21 17:30:58 +0200 (Fri, 21 Apr 2017) $");
+ script_version("$Revision: 7573 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2009-05-14 20:19:12 +0200 (Thu, 14 May 2009)");
  script_bugtraq_id(34916);
  script_cve_id("CVE-2009-1578","CVE-2009-1579","CVE-2009-1580","CVE-2009-1581");
@@ -75,8 +75,8 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version_is_less(version: vers, test_version: "1.4.18")) {
-  report = report_fixed_ver(installed_version: vers, fixed_version: "1.4.18");
+if (version_is_less(version: version, test_version: "1.4.18")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "1.4.18");
   security_message(port: port, data: report);
   exit(0);
 }

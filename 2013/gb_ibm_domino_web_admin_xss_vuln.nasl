@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_web_admin_xss_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_ibm_domino_web_admin_xss_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM Lotus Domino Web Administrator Cross Site Scripting Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6104 $");
+  script_version("$Revision: 7575 $");
   script_cve_id("CVE-2013-4055", "CVE-2013-4051", "CVE-2013-4050");
   script_bugtraq_id(63578,63577,63576);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-12-05 13:26:26 +0530 (Thu, 05 Dec 2013)");
   script_name("IBM Lotus Domino Web Administrator Cross Site Scripting Vulnerability");
 
@@ -85,10 +85,9 @@ product or replace the product by another one.";
   exit(0);
 }
 
-
-include("host_details.inc");
 include("version_func.inc");
-include("global_settings.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
+include("host_details.inc");
 
 ## Variable Initialization
 domVer = "";

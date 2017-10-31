@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_surgemail_append_cmd_bof_vuln.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_surgemail_append_cmd_bof_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # SurgeMail 'APPEND' Command Buffer Overflow Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is running SurgeMail and is prone to Buffer Overflow
 if(description)
 {
   script_id(900840);
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-09-15 09:32:43 +0200 (Tue, 15 Sep 2009)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -76,6 +76,6 @@ if(!isnull(surgemailVer))
 {
   # Check for SurgeMail version < 3.9g2
   if(version_is_less(version:surgemailVer, test_version:"3.9.g2")){
-    security_message(surgemail_port);
+    security_message(port:0);
   }
 }

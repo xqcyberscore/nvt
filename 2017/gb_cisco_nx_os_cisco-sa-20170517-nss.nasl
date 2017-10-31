@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20170517-nss.nasl 6549 2017-07-06 09:27:17Z ckuersteiner $
+# $Id: gb_cisco_nx_os_cisco-sa-20170517-nss.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # Cisco Nexus 5000 Series Switches CLI Command Injection Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-6649");
  script_tag(name:"cvss_base", value:"4.6");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 6549 $");
+ script_version("$Revision: 7571 $");
 
  script_name("Cisco Nexus 5000 Series Switches CLI Command Injection Vulnerability");
 
@@ -56,7 +56,7 @@ user's privilege level outside of the user's path.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-07-06 11:27:17 +0200 (Thu, 06 Jul 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name: "creation_date", value: "2017-05-18 09:43:14 +0700 (Thu, 18 May 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -75,7 +75,7 @@ if (!device || "Nexus" >!< device)
   exit(0);
 
 model = get_kb_item("cisco_nx_os/model");
-if (!model || nx_model !~ "^(3|35|5|6|7|9)[0-9]+")
+if (!model || model !~ "^(3|35|5|6|7|9)[0-9]+")
   exit(0);
 
 if (!version = get_app_version(cpe:CPE))

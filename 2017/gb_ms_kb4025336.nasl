@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4025336.nasl 6717 2017-07-13 12:31:56Z santu $
+# $Id: gb_ms_kb4025336.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
-# Microsoft Windows Multiple Vulnerabilites (KB4025336)
+# Microsoft Windows Multiple Vulnerabilities (KB4025336)
 #
 # Authors:
 # Rinu <krinu@secpod.com>
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811518");
-  script_version("$Revision: 6717 $");
+  script_version("$Revision: 7585 $");
   script_cve_id("CVE-2017-8594", "CVE-2017-8602", "CVE-2017-0170", "CVE-2017-8463", 
                 "CVE-2017-8606", "CVE-2017-8607", "CVE-2017-8467", "CVE-2017-8486", 
                 "CVE-2017-8495", "CVE-2017-8608", "CVE-2017-8618", "CVE-2017-8556", 
@@ -42,9 +42,9 @@ if(description)
                     99413);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 14:31:56 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-12 10:05:45 +0530 (Wed, 12 Jul 2017)");
-  script_name("Microsoft Windows Multiple Vulnerabilites (KB4025336)");
+  script_name("Microsoft Windows Multiple Vulnerabilities (KB4025336)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4025336");

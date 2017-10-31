@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_cisco-sa-20170816-apic1.nasl 7013 2017-08-25 13:17:51Z asteins $
+# $Id: gb_cisco_apic_cisco-sa-20170816-apic1.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # Cisco Application Policy Infrastructure Controller SSH Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:cisco:application_policy_infrastructure_controller_(apic)";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140306");
- script_version("$Revision: 7013 $");
- script_tag(name: "last_modification", value: "$Date: 2017-08-25 15:17:51 +0200 (Fri, 25 Aug 2017) $");
+ script_version("$Revision: 7571 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name: "creation_date", value: "2017-08-17 09:20:52 +0700 (Thu, 17 Aug 2017)");
  script_tag(name:"cvss_base", value:"4.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
@@ -104,7 +104,7 @@ affected = make_list(
 		'2.0(1)');
 
 foreach af (affected) {
-  if (check_vers == af) {
+  if (version == af) {
     report = report_fixed_ver(installed_version: version, fixed_version: "See advisory.");
     security_message(port: 0, data: report);
     exit(0);

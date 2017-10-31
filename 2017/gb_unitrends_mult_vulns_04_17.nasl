@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unitrends_mult_vulns_04_17.nasl 7525 2017-10-20 08:57:52Z ckuersteiner $
+# $Id: gb_unitrends_mult_vulns_04_17.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
-# Unitrends Multiple Vulnerabillities
+# Unitrends Multiple Vulnerabilities
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -33,9 +33,9 @@ if (description)
  script_tag(name:"cvss_base", value:"10.0");
  script_cve_id("CVE-2017-7280","CVE-2017-7284","CVE-2017-7281","CVE-2017-7279", "CVE-2017-7282", "CVE-2017-7283");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 7525 $");
+ script_version ("$Revision: 7585 $");
 
- script_name("Unitrends Multiple Vulnerabillities");
+ script_name("Unitrends Multiple Vulnerabilities");
 
  script_xref(name:"URL", value:"https://rhinosecuritylabs.com/research/remote-code-execution-bug-hunting-chapter-1/");
  script_xref(name:"URL", value:"https://www.unitrends.com/");
@@ -57,7 +57,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:57:52 +0200 (Fri, 20 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2017-04-12 16:05:50 +0200 (Wed, 12 Apr 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");

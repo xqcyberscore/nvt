@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sapid_cms_51323.nasl 5714 2017-03-24 10:52:48Z cfi $
+# $Id: gb_sapid_cms_51323.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # SAPID CMS Multiple Remote File Include Vulnerabilities
 #
@@ -40,13 +40,13 @@ if (description)
 {
  script_id(103382);
  script_bugtraq_id(51323);
- script_version ("$Revision: 5714 $");
+ script_version ("$Revision: 7577 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_name("SAPID CMS Multiple Remote File Include Vulnerabilities");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51323");
  script_xref(name : "URL" , value : "http://sapid.sourceforge.net/");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-01-10 11:23:59 +0100 (Tue, 10 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -59,6 +59,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

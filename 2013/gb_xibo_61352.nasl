@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xibo_61352.nasl 5699 2017-03-23 14:53:33Z cfi $
+# $Id: gb_xibo_61352.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Xibo 'index.php' Multiple Directory Traversal Vulnerabilities
 #
@@ -54,10 +54,10 @@ if (description)
  script_cve_id("CVE-2013-5979");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 5699 $");
+ script_version("$Revision: 7577 $");
  script_name("Xibo 'index.php' Multiple Directory Traversal Vulnerabilities");
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61352");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:53:33 +0100 (Thu, 23 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2013-10-07 11:05:49 +0200 (Mon, 07 Oct 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -77,6 +77,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

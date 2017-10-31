@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: kiwi_cattools_tftpd_dir_traversal.nasl 5631 2017-03-20 15:46:35Z cfi $
+# $Id: kiwi_cattools_tftpd_dir_traversal.nasl 7577 2017-10-26 10:41:56Z cfischer $
 # Description: Kiwi CatTools < 3.2.9 Directory Traversal
 #
 # Authors:
@@ -27,8 +27,8 @@
 
 if (description) {
  script_oid("1.3.6.1.4.1.25623.1.0.80016");
- script_version("$Revision: 5631 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:46:35 +0100 (Mon, 20 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 19:51:47 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -67,8 +67,8 @@ if (description) {
  exit(0);
 }
 
+include("misc_func.inc");
 include("tftp.inc");
-include("http_keepalive.inc");
 
 port = get_kb_item("Services/udp/tftp");
 if (!port) port = 69;

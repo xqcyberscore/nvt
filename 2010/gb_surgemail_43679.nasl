@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_surgemail_43679.nasl 4919 2017-01-02 15:22:45Z cfi $
+# $Id: gb_surgemail_43679.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # SurgeMail SurgeWeb Cross Site Scripting Vulnerability
 #
@@ -40,8 +40,8 @@ the vendor for more information.";
 if(description)
 {
   script_id(100842);
-  script_version("$Revision: 4919 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 16:22:45 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-10-05 12:35:02 +0200 (Tue, 05 Oct 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -72,7 +72,7 @@ surgemailVer = get_kb_item("SurgeMail/Ver");
 if(!isnull(surgemailVer))
 {
   if(version_is_equal(version:surgemailVer, test_version:"4.3e")){
-    security_message(port:surgemail_port);
+    security_message(port:0);
     exit(0);
   }
 }

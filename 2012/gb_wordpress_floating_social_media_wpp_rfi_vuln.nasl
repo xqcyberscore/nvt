@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_floating_social_media_wpp_rfi_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: gb_wordpress_floating_social_media_wpp_rfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # WordPress Floating Social Media Links Plugin 'wpp' RFI Vulnerabilities
 #
@@ -42,9 +42,9 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6022 $");
+  script_version("$Revision: 7577 $");
   script_bugtraq_id(56913);
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-12-18 12:54:08 +0530 (Tue, 18 Dec 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -67,10 +67,7 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

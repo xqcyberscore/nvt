@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotProject_lfi_11_12.nasl 5715 2017-03-24 11:34:41Z cfi $
+# $Id: gb_dotProject_lfi_11_12.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # dotProject <= 2.1.6 Local File Include Vulnerability
 #
@@ -37,12 +37,12 @@ dotProject <= 2.1.6 is vulnerable.";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103608");
- script_version ("$Revision: 5715 $");
+ script_version ("$Revision: 7577 $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
  script_name("dotProject <= 2.1.6 Local File Include Vulnerability");
  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22708/");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 12:34:41 +0100 (Fri, 24 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-11-14 16:55:36 +0100 (Wed, 14 Nov 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -55,6 +55,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

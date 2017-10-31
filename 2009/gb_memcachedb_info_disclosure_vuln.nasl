@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_memcachedb_info_disclosure_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_memcachedb_info_disclosure_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # MemcacheDB Information Disclosure Vulnerability
 #
@@ -42,8 +42,8 @@ Disclosure Vulnerabilities.";
 if(description)
 {
   script_id(800717);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-05-18 09:37:31 +0200 (Mon, 18 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -78,5 +78,5 @@ if(memcachedbVer == NULL){
 
 # Grep for MemcacheDB version 1.2.0 and prior
 if(version_is_less_equal(version:memcachedbVer, test_version:"1.2.0")){
-  security_message(memdbPort);
+  security_message(port:0);
 }

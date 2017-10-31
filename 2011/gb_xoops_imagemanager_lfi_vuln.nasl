@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xoops_imagemanager_lfi_vuln.nasl 5952 2017-04-13 12:34:17Z cfi $
+# $Id: gb_xoops_imagemanager_lfi_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # XOOPS 'imagemanager.php' Local File Inclusion Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:xoops:xoops";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801932");
-  script_version("$Revision: 5952 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 14:34:17 +0200 (Thu, 13 Apr 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_bugtraq_id(47418);
   script_tag(name:"cvss_base", value:"6.0");
@@ -83,7 +83,7 @@ if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 ## Check for the XOOPS version less or equal 2.5.0
 if( version_is_less_equal( version:vers, test_version:"2.5.0" ) ) {
-  report = report_fixed_ver( installed_version:ver, fixed_version:"2.5.1" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.5.1" );
   security_message( port:port, data:report );
   exit( 0 );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_mult_dos_vuln_mar17.nasl 5775 2017-03-30 05:41:54Z antu123 $
+# $Id: gb_ntp_mult_dos_vuln_mar17.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # NTP Multiple Denial-of-Service Vulnerabilities -Mar17
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810678");
-  script_version("$Revision: 5775 $");
+  script_version("$Revision: 7571 $");
   script_cve_id("CVE-2017-6464", "CVE-2017-6462", "CVE-2017-6463", "CVE-2017-6455",
                 "CVE-2017-6452", "CVE-2017-6459", "CVE-2017-6458", "CVE-2017-6451",
                 "CVE-2017-6460", "CVE-2016-9042");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 07:41:54 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-03-23 11:35:22 +0530 (Thu, 23 Mar 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP Multiple Denial-of-Service Vulnerabilities -Mar17");
@@ -101,11 +101,6 @@ if(description)
   exit(0);
 }
 
-
-##
-## Code Starts Here
-##
-
 include("version_func.inc");
 include("revisions-lib.inc");
 include("host_details.inc");
@@ -138,7 +133,7 @@ if(ntpVer =~ "^(4\.(0|1|2))")
 
 else if(ntpVer =~ "^(4\.3)")
 {
-  if((revcomp(a: version, b: "4.3.94") < 0))
+  if((revcomp(a: ntpVer, b: "4.3.94") < 0))
   {
     report = report_fixed_ver(installed_version:ntpVer, fixed_version:"4.3.94");
     security_message(data:report, port:ntpPort, proto:"udp");

@@ -27,7 +27,7 @@
 #
 
 include("revisions-lib.inc");
-tag_insight = "Multiple vulnerabilites in the Sun JDK and JRE allow for several attacks,
+tag_insight = "Multiple vulnerabilities in the Sun JDK and JRE allow for several attacks,
     including the remote execution of arbitrary code.";
 tag_solution = "All Sun JRE 1.5.x users should upgrade to the latest version:
 
@@ -91,8 +91,8 @@ advisory GLSA 200911-02.";
 if(description)
 {
  script_id(66299);
- script_version("$Revision: 6595 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:19:55 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 7585 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2009-11-23 20:51:51 +0100 (Mon, 23 Nov 2009)");
  script_cve_id("CVE-2009-3879", "CVE-2009-3880", "CVE-2009-3881", "CVE-2009-3882", "CVE-2009-3883", "CVE-2009-3884", "CVE-2009-3886");
  script_tag(name:"cvss_base", value:"7.5");

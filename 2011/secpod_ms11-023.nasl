@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-023.nasl 6538 2017-07-05 11:38:27Z cfischer $
+# $Id: secpod_ms11-023.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
-# Microsoft Office Remote Code Execution Vulnerabilites (2489293)
+# Microsoft Office Remote Code Execution Vulnerabilities (2489293)
 #
 # Authors:
 # Madhuri D <dmadhuri@secpod.com>
@@ -45,14 +45,14 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902364);
-  script_version("$Revision: 6538 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2011-0107", "CVE-2011-0977");
   script_bugtraq_id(47246, 46227);
-  script_name("Microsoft Office Remote Code Execution Vulnerabilites (2489293)");
+  script_name("Microsoft Office Remote Code Execution Vulnerabilities (2489293)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/44015/");
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0942");
   script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/Bulletin/MS11-023.mspx");

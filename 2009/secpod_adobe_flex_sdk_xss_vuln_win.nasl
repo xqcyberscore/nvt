@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flex_sdk_xss_vuln_win.nasl 5369 2017-02-20 14:48:07Z cfi $
+# $Id: secpod_adobe_flex_sdk_xss_vuln_win.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Adobe Flex SDK Cross-Site Scripting Vulnerability (Windows)
 #
@@ -47,8 +47,8 @@ tag_summary = "This host is installed with Adobe Flex SDK and is prone to
 if(description)
 {
   script_id(900829);
-  script_version("$Revision: 5369 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:48:07 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-08-27 13:43:20 +0200 (Thu, 27 Aug 2009)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
@@ -107,7 +107,7 @@ foreach item (registry_enum_keys(key:key))
       if(!isnull(sdkVer[1]))
       {
         # Check for Flex SDK version < 3.4
-        if(version_is_less(version:jrunVer, test_version:"3.4")){
+        if(version_is_less(version:sdkVer, test_version:"3.4")){
           security_message(0);
         }
       }

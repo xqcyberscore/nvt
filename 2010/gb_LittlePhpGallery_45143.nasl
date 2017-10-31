@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_LittlePhpGallery_45143.nasl 5760 2017-03-29 10:24:17Z cfi $
+# $Id: gb_LittlePhpGallery_45143.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # LittlePhpGallery 'gallery.php' Local File Include Vulnerability
 #
@@ -39,8 +39,8 @@ be affected.";
 if(description)
 {
  script_id(100930);
- script_version("$Revision: 5760 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-12-02 12:48:19 +0100 (Thu, 02 Dec 2010)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -63,6 +63,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

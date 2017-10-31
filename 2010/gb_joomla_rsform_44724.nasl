@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_rsform_44724.nasl 5652 2017-03-21 10:14:46Z cfi $
+# $Id: gb_joomla_rsform_44724.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # RSForm! Component for Joomla! 'lang' Parameter SQL Injection and Local File Include Vulnerabilities
 #
@@ -44,8 +44,8 @@ information.";
 if (description)
 {
  script_id(100921);
- script_version("$Revision: 5652 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-11-30 12:57:59 +0100 (Tue, 30 Nov 2010)");
  script_bugtraq_id(44724);
  script_tag(name:"cvss_base", value:"7.5");
@@ -68,6 +68,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

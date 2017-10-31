@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_viart_shop_rfi_2012_09.nasl 5956 2017-04-14 09:02:12Z teissa $
+# $Id: gb_viart_shop_rfi_2012_09.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # ViArt Shop File Inclusion Vulnerability
 #
@@ -37,14 +37,14 @@ CPE = "cpe:/a:viart:viart_shop";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5956 $");
+ script_version ("$Revision: 7577 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("ViArt Shop File Inclusion Vulnerability");
 
  script_xref(name : "URL" , value : "http://se3c.blogspot.de/2012/09/viart-shop-evaluation-v41-multiple.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-09-26 10:51:47 +0200 (Wed, 26 Sep 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -57,6 +57,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

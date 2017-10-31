@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_argosoft_ftp_38756.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_argosoft_ftp_38756.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # ArGoSoft FTP Server .NET Directory Traversal Vulnerability
 #
@@ -39,8 +39,8 @@ also be affected.";
 if (description)
 {
  script_id(100539);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_version("$Revision: 7573 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-03-17 13:20:23 +0100 (Wed, 17 Mar 2010)");
  script_bugtraq_id(38756);
  script_tag(name:"cvss_base", value:"6.4");
@@ -68,7 +68,7 @@ if(!ftpPort){
   ftpPort = 21;
 }
 
-if(get_kb_item('ftp/'+port+'/broken'))exit(0);
+if(get_kb_item('ftp/'+ftpPort+'/broken'))exit(0);
 
 if(!get_port_state(ftpPort)){
   exit(0);

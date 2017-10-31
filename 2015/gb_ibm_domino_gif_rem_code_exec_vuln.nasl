@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_gif_rem_code_exec_vuln.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_ibm_domino_gif_rem_code_exec_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM Domino GIF Integer Truncation Remote Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805543");
-  script_version("$Revision: 6415 $");
+  script_version("$Revision: 7575 $");
   script_cve_id("CVE-2015-0135");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-05-04 17:48:30 +0530 (Mon, 04 May 2015)");
   script_name("IBM Domino GIF Integer Truncation Remote Code Execution Vulnerability");
 
@@ -73,9 +73,9 @@ if(description)
   exit(0);
 }
 
-include("host_details.inc");
 include("version_func.inc");
-include("global_settings.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
+include("host_details.inc");
 
 ## Variable Initialization
 domVer = "";

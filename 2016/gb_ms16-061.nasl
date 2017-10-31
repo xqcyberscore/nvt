@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-061.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_ms16-061.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # MS Windows Remote Privilege Escalation Vulnerability (3155520)
 #
@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807587");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 7582 $");
   script_cve_id("CVE-2016-0178");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-05-11 08:26:35 +0530 (Wed, 11 May 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Remote Privilege Escalation Vulnerability (3155520)");
@@ -112,7 +112,7 @@ if(!ntexeVer && !rpdllVer){
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
 
-  if(ntexeVe)
+  if(ntexeVer)
   {
     ## Check for 'Ntoskrnl.exe' file  version
     if(version_is_less(version:ntexeVer, test_version:"6.3.9600.18289"))

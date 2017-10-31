@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybackup_08_10.nasl 5761 2017-03-29 10:54:12Z cfi $
+# $Id: gb_mybackup_08_10.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # MyBackup 1.4.0 Multiple Security Vulnerabilities
 #
@@ -37,8 +37,8 @@ MyBackup 1.4.0 is vulnerable; other versions may also be affected.";
 if(description)
 {
  script_id(100768);
- script_version("$Revision: 5761 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:54:12 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-08-31 14:30:50 +0200 (Tue, 31 Aug 2010)");
  script_cve_id("CVE-2009-4977","CVE-2009-4978");
 
@@ -57,6 +57,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

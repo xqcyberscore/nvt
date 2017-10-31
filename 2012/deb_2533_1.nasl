@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2533_1.nasl 6612 2017-07-07 12:08:03Z cfischer $
+# $Id: deb_2533_1.nasl 7585 2017-10-26 15:03:01Z cfischer $
 # Description: Auto-generated from advisory DSA 2533-1 (pcp)
 #
 # Authors:
@@ -27,7 +27,7 @@
 
 include("revisions-lib.inc");
 tag_insight = "It was discovered that Performance Co-Pilot (pcp), a framework for
-performance monitoring, contains several vulnerabilites.
+performance monitoring, contains several vulnerabilities.
 
 CVE-2012-3418
 Multiple buffer overflows in the PCP protocol decoders can
@@ -69,8 +69,8 @@ if(description)
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_cve_id("CVE-2012-3418", "CVE-2012-3419", "CVE-2012-3420", "CVE-2012-3421");
- script_version("$Revision: 6612 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:08:03 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 7585 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-08-30 11:32:31 -0400 (Thu, 30 Aug 2012)");
  script_name("Debian Security Advisory DSA 2533-1 (pcp)");
 

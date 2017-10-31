@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_51788.nasl 6720 2017-07-13 14:25:27Z cfischer $
+# $Id: gb_openemr_51788.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # OpenEMR Local File Include and Command Injection Vulnerabilities
 #
@@ -47,7 +47,7 @@ if (description)
  script_cve_id("CVE-2012-0991","CVE-2012-0992");
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 6720 $");
+ script_version ("$Revision: 7577 $");
 
  script_name("OpenEMR Local File Include and Command Injection Vulnerabilities");
 
@@ -56,7 +56,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.open-emr.org/wiki/index.php/OpenEMR_Patches");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521448");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-02-02 12:55:39 +0100 (Thu, 02 Feb 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -70,6 +70,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

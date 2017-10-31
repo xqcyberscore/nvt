@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dynmedia_cms_47560.nasl 5749 2017-03-28 13:47:32Z cfi $
+# $Id: gb_dynmedia_cms_47560.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # DynMedia Pro Web CMS 'downloadfile.php' Local File Disclosure Vulnerability
 #
@@ -37,8 +37,8 @@ affected.";
 if (description)
 {
  script_id(103142);
- script_version("$Revision: 5749 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 15:47:32 +0200 (Tue, 28 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-04-29 15:04:36 +0200 (Fri, 29 Apr 2011)");
  script_bugtraq_id(47560);
  script_tag(name:"cvss_base", value:"5.0");
@@ -60,6 +60,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

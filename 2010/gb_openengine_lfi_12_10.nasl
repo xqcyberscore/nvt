@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openengine_lfi_12_10.nasl 5651 2017-03-21 10:09:09Z cfi $
+# $Id: gb_openengine_lfi_12_10.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # openEngine Local File Include Vulnerability
 #
@@ -43,8 +43,8 @@ openEngine 2.0 100226 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(100880);
- script_version("$Revision: 5651 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-10-29 12:58:08 +0200 (Fri, 29 Oct 2010)");
  script_bugtraq_id(44888);
  script_tag(name:"cvss_base", value:"5.1");
@@ -65,6 +65,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

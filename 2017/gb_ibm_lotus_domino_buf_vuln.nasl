@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_domino_buf_vuln.nasl 6092 2017-05-10 07:02:40Z cfi $
+# $Id: gb_ibm_lotus_domino_buf_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM Lotus Domino Server Stack Buffer Overflow Vulnerability
 #
@@ -30,8 +30,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107155");
 
-  script_version("$Revision: 6092 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 09:02:40 +0200 (Wed, 10 May 2017) $");
+  script_version("$Revision: 7575 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
 
   script_tag(name:"creation_date", value:"2017-04-26 07:07:25 +0200 (Wed, 26 Apr 2017)");
 
@@ -73,9 +73,9 @@ if(description)
   exit(0);
 }
 
-include("host_details.inc");
 include("version_func.inc");
-include("global_settings.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
+include("host_details.inc");
 
 if(!Port = get_app_port(cpe:CPE)){
   exit(0);

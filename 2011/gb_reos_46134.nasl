@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_reos_46134.nasl 5719 2017-03-24 13:29:29Z cfi $
+# $Id: gb_reos_46134.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # ReOS Local File Include and SQL Injection Vulnerabilities
 #
@@ -43,8 +43,8 @@ ReOS 2.0.5 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103061);
- script_version("$Revision: 5719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:29:29 +0100 (Fri, 24 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-02-04 13:23:33 +0100 (Fri, 04 Feb 2011)");
  script_bugtraq_id(46134);
  script_tag(name:"cvss_base", value:"5.0");
@@ -68,6 +68,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

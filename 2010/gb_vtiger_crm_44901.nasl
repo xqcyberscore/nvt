@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_44901.nasl 5653 2017-03-21 10:19:58Z cfi $
+# $Id: gb_vtiger_crm_44901.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Vtiger CRM Multiple Remote Security Vulnerabilities
 #
@@ -45,8 +45,8 @@ CPE = "cpe:/a:vtiger:vtiger_crm";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5653 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:19:58 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-11-18 13:10:44 +0100 (Thu, 18 Nov 2010)");
  script_bugtraq_id(44901);
  script_cve_id("CVE-2010-3910");
@@ -70,6 +70,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

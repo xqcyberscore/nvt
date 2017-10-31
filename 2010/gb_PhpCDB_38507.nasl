@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_PhpCDB_38507.nasl 5760 2017-03-29 10:24:17Z cfi $
+# $Id: gb_PhpCDB_38507.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # PhpCDB 'lang_global' Parameter Multiple Local File Include Vulnerabilities
 #
@@ -38,8 +38,8 @@ PhpCDB 1.0 is vulnerable; other versions may also be affected.";
 if(description)
 {
  script_id(100516);
- script_version("$Revision: 5760 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-03-04 12:28:05 +0100 (Thu, 04 Mar 2010)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -62,6 +62,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

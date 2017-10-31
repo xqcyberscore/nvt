@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_jre_mult_vuln_lin_apr10.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_sun_java_jre_mult_vuln_lin_apr10.nasl 7572 2017-10-26 08:08:35Z cfischer $
 #
 # Sun Java JRE Multiple Vulnerabilities (Linux)
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is installed with Sun Java Deployment Toolkit and is pr
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902168");
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 7572 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 10:08:35 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_cve_id("CVE-2010-0886", "CVE-2010-0887", "CVE-2010-1423");
   script_bugtraq_id(39492);
@@ -73,7 +73,7 @@ include("version_func.inc");
 include("host_details.inc");
 
 # Get KB for JRE Version On Linux
-jreVer = get_app_version(cpe:"cpe:/a:sun:jre", nvt:SCRIPT_OID);
+jreVer = get_app_version(cpe:"cpe:/a:sun:jre");
 if(jreVer)
 {
   jreVer = ereg_replace(pattern:"[a-z]+_|-", string:jreVer, replace: ".");

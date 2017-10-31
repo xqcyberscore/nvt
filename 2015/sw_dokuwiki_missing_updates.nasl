@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dokuwiki_missing_updates.nasl 6376 2017-06-20 10:00:24Z teissa $
+# $Id: sw_dokuwiki_missing_updates.nasl 7579 2017-10-26 11:10:22Z cfischer $
 #
 # Detection of missing Dokuwiki (security-)updates
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:dokuwiki:dokuwiki';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111043");
-  script_version("$Revision: 6376 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
+  script_version("$Revision: 7579 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:10:22 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-10-29 16:00:00 +0100 (Thu, 29 Oct 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -58,6 +58,7 @@ if(description)
   exit(0);
 }
 
+include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
@@ -65,7 +66,6 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! loc = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( get_kb_item( "dokuwiki/missing_updates/" + port + loc ) ) {
-
   report = report_vuln_url( port:port, url:loc );
   security_message( port:port, data:report );
   exit( 0 );

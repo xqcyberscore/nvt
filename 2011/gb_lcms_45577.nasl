@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lcms_45577.nasl 5717 2017-03-24 13:02:24Z cfi $
+# $Id: gb_lcms_45577.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # LoveCMS 'modules.php' Multiple Local File Include Vulnerabilities
 #
@@ -37,8 +37,8 @@ LoveCMS 1.6.2 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103017);
- script_version("$Revision: 5717 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-01-07 13:52:38 +0100 (Fri, 07 Jan 2011)");
  script_bugtraq_id(45577);
  script_tag(name:"cvss_base", value:"5.1");
@@ -58,6 +58,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

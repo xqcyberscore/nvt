@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-053.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_ms14-053.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Microsoft .NET Framework Denial of Service Vulnerability (2990931)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804480");
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 7582 $");
   script_cve_id("CVE-2014-4072");
   script_bugtraq_id(69603);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-09-10 09:34:51 +0530 (Wed, 10 Sep 2014)");
   script_tag(name:"solution_type", value: "VendorFix");
 
@@ -241,7 +241,7 @@ foreach item (registry_enum_keys(key:key2))
 
       ## .NET Framework 4.5, the .NET Framework 4.5.1, and the .NET Framework 4.5.2
       ## for Windows 8 and Windows Server 2012
-      if((hotfix_check_sp(win8:1, win8x64, win2012:1) > 0) &&
+      if((hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0) &&
          (version_in_range(version:dllVer, test_version:"4.0.30319.34000", test_version2:"4.0.30319.34229") ||
           version_in_range(version:dllVer, test_version:"4.0.30319.36000", test_version2:"4.0.30319.36240")))
       {

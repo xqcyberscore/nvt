@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_services_start.nasl 7186 2017-09-19 07:32:35Z cfischer $
+# $Id: gb_windows_services_start.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Windows Services Start
 #
@@ -36,10 +36,10 @@ if( ! strlen( gos_version ) > 0 ||
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804786");
-  script_version("$Revision: 7186 $");
+  script_version("$Revision: 7573 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-19 09:32:35 +0200 (Tue, 19 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-11-04 16:38:25 +0530 (Tue, 04 Nov 2014)");
   script_name("Windows Services Start");
   script_category(ACT_GATHER_INFO);
@@ -81,9 +81,9 @@ if( old_routine ) {
 
 if( ! defined_func( "win_cmd_exec" ) ) exit( 0 );
 
-function run_command( command, password, username ) {
+function run_command( command, password, username, service ) {
 
-  local_var command, password, username, serQueryRes, serStat;
+  local_var command, password, username, service, serQueryRes, serStat;
 
   serQueryRes = win_cmd_exec( cmd:command, password:password, username:username );
 
@@ -137,17 +137,17 @@ service_list = make_list( "RemoteRegistry" );
 foreach service( service_list ) {
 
   cmd = "cmd /c sc query " + service;
-  serQueryStat = run_command( command:cmd, password:password, username:username );
+  serQueryStat = run_command( command:cmd, password:password, username:username, service:service );
 
   if( "STOPPED" >< serQueryStat ) {
 
     cmd = "cmd /c sc start " + service;
-    serQueryStat = run_command( command:cmd, password:password, username:username );
+    serQueryStat = run_command( command:cmd, password:password, username:username, service:service );
 
     if( "START_PENDING" >< serQueryStat ) {
 
       cmd = "cmd /c sc query " + service;
-      serQueryStat = run_command( command:cmd, password:password, username:username );
+      serQueryStat = run_command( command:cmd, password:password, username:username, service:service );
 
       if( "RUNNING" >< serQueryStat ) {
         set_kb_item( name:service + "/Win/Service/Manual/Start", value:TRUE );

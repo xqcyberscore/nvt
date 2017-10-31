@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_kvirc_detect_win.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: secpod_kvirc_detect_win.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # KVIrc Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901010");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 7582 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-09-02 09:58:59 +0200 (Wed, 02 Sep 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("KVIrc Version Detection (Windows)");
@@ -155,7 +155,7 @@ foreach key(key_list)
         set_kb_item(name:"Kvirc/Win/Ver", value:kvircVer);
 
         ## build cpe and store it as host_detail
-        cpe = build_cpe(value:mpcVer, exp:"^([0-9.]+)", base:"cpe:/a:kvirc:kvirc:");
+        cpe = build_cpe(value:kvircVer, exp:"^([0-9.]+)", base:"cpe:/a:kvirc:kvirc:");
         if(isnull(cpe))
           cpe = "cpe:/a:kvirc:kvirc";
 

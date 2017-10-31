@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_wincc_hmi_51836.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_simatic_wincc_hmi_51836.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Siemens SIMATIC WinCC HMI Web Server Multiple Input Validation Vulnerabilities
 #
@@ -45,7 +45,7 @@ if (description)
  script_cve_id("CVE-2011-4512","CVE-2011-4878","CVE-2011-4879");
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
- script_version ("$Revision: 5940 $");
+ script_version ("$Revision: 7577 $");
 
  script_name("Siemens SIMATIC WinCC HMI Web Server Multiple Input Validation Vulnerabilities");
 
@@ -54,7 +54,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICSA-12-030-01A.pdf");
  script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICSA-12-030-01.pdf");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-09-20 11:25:41 +0200 (Thu, 20 Sep 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -68,6 +68,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

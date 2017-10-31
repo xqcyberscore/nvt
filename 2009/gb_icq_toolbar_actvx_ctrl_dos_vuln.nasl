@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icq_toolbar_actvx_ctrl_dos_vuln.nasl 6530 2017-07-05 06:23:50Z cfischer $
+# $Id: gb_icq_toolbar_actvx_ctrl_dos_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # ICQ Toolbar 'toolbaru.dll' ActiveX Control Remote DOS Vulnerability
 #
@@ -46,8 +46,8 @@ Denial of Service Vulnerability";
 if(description)
 {
   script_id(800694);
-  script_version("$Revision: 6530 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 08:23:50 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-09-07 19:45:38 +0200 (Mon, 07 Sep 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -79,8 +79,8 @@ include("version_func.inc");
 include("secpod_activex.inc");
 include("secpod_smb_func.inc");
 
-cqVer = get_kb_item("ICQ/Toolbar/Ver");
-if(!cqVer)
+icqVer = get_kb_item("ICQ/Toolbar/Ver");
+if(!icqVer)
 {
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: TinyPHPForum_mult_vuln.nasl 5220 2017-02-07 11:42:33Z teissa $
+# $Id: TinyPHPForum_mult_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # TinyPHPForum Multiple Vulnerabilities
 #
@@ -37,8 +37,8 @@ tag_summary = "TinyPHPForum is prone to a directory-traversal vulnerability and 
 if (description)
 {
  script_id(100097);
- script_version("$Revision: 5220 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-07 12:42:33 +0100 (Tue, 07 Feb 2017) $");
+ script_version("$Revision: 7573 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2009-04-02 12:09:33 +0200 (Thu, 02 Apr 2009)");
  script_bugtraq_id(19281,34339);
  script_tag(name:"cvss_base", value:"5.0");
@@ -64,15 +64,12 @@ include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
 if(VER = get_kb_item(string("www/", port, "/TinyPHPForum"))) {
   matches = eregmatch(string:VER, pattern:"^(.+) under (/.*)$");
   if(!isnull(matches)) {
     VER = matches[1];
-    if(version_is_less_equal(version:Ver, test_version:"3.6.1")) {
+    if(version_is_less_equal(version:VER, test_version:"3.6.1")) {
        security_message(port:port);
        exit(0);
     }   

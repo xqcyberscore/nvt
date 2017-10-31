@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: smb_nativelanman.nasl 7281 2017-09-26 14:10:31Z cfischer $
+# $Id: smb_nativelanman.nasl 7589 2017-10-27 07:03:33Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 7281 $");
+  script_version("$Revision: 7589 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 16:10:31 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-27 09:03:33 +0200 (Fri, 27 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -161,6 +161,7 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
         # At least Samba 4.2.10, 4.2.14 and 4.5.8 on Debian jessie and stretch has a os_str of "Windows 6.1"
         # but we can identify it from the smb_str: Samba 4.2.10-Debian, Samba 4.5.8-Debian
         # Older Debian versions have "Unix" as os_str and smb_str: like Samba 3.0.20-Debian
+        # Ubuntu 17.10: os_str: Windows 6.1 smb_str: Samba 4.6.7-Ubuntu
         # The same above is also valid for SLES:
         # SLES11: os_str: Unix, smb_str: Samba 3.6.3-0.58.1-3399-SUSE-CODE11-x86_64
         # SLES12: os_str: Windows 6.1, smb_str: Samba 4.4.2-29.4-3709-SUSE-SLE_12-x86_64
@@ -175,13 +176,19 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
             } else {
               os_str = "Debian GNU/Linux";
             }
-          } else if ( "SUSE" >< smb_str ) {
+          } else if( "SUSE" >< smb_str ) {
             if( "CODE11" >< smb_str ) {
               os_str = "SUSE Linux Enterprise Server 11";
             } else if( "SLE_12" >< smb_str ) {
               os_str = "SUSE Linux Enterprise Server 12";
             } else {
-              os_str = "Unknown SUSE";
+              os_str = "Unknown SUSE Release";
+            }
+          } else if( "ubuntu" >< tolower( smb_str ) ) {
+            if( "Samba 4.6.7-Ubuntu" >< smb_str ) {
+              os_str = "Ubuntu 17.10";
+            } else {
+              os_str = "Unknown Ubuntu Release";
             }
           # On other reporting the same "Windows 6.1" or simlar exit here for now with a generic OS registered
           # TODO: Recheck with other OS
@@ -274,6 +281,12 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
             register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           } else {
             register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          }
+        } else if( "ubuntu" >< tolower( os_str ) ) {
+          if( "17.10" >< os_str ) {
+            register_and_report_os( os:"Ubuntu", version:"17.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else {
+            register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           }
         } else if( "SUSE" >< os_str ) {
           if( "SUSE Linux Enterprise Server 11" >< os_str ) {

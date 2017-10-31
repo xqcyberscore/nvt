@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_WHMCompleteSolution.nasl 5717 2017-03-24 13:02:24Z cfi $
+# $Id: gb_WHMCompleteSolution.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # WHMCompleteSolution 'cart.php' Local File Disclosure Vulnerability
 #
@@ -39,8 +39,8 @@ details.";
 if (description)
 {
  script_id(103305);
- script_version("$Revision: 5717 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-10-20 15:15:44 +0200 (Thu, 20 Oct 2011)");
  script_bugtraq_id(50280);
  script_tag(name:"cvss_base", value:"5.0");
@@ -61,6 +61,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

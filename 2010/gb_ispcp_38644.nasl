@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ispcp_38644.nasl 7273 2017-09-26 11:17:25Z cfischer $
+# $Id: gb_ispcp_38644.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # ispCP Omega 'net2ftp_globals[application_skinsdir]' Parameter Remote File Include Vulnerability
 #
@@ -37,8 +37,8 @@ ispCP Omega 1.0.4 is vulnerable; other versions may also be affected.";
 if(description)
 {
  script_id(100526);
- script_version("$Revision: 7273 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:17:25 +0200 (Tue, 26 Sep 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-03-11 12:36:18 +0100 (Thu, 11 Mar 2010)");
  script_bugtraq_id(38644);
  script_tag(name:"cvss_base", value:"7.5");
@@ -60,6 +60,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

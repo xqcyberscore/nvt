@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openssl_mult_dos_vuln_lin.nasl 6503 2017-07-03 08:30:30Z cfischer $
+# $Id: secpod_openssl_mult_dos_vuln_lin.nasl 7572 2017-10-26 08:08:35Z cfischer $
 #
 # OpenSSL DTLS Packets Multiple Denial of Service Vulnerabilities (Linux)
 #
@@ -35,8 +35,8 @@ tag_impact = "Successful exploitation will allow attacker to cause denial-of-ser
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900653");
-  script_version("$Revision: 6503 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 10:30:30 +0200 (Mon, 03 Jul 2017) $");
+  script_version("$Revision: 7572 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 10:08:35 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-05-28 07:14:08 +0200 (Thu, 28 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -60,7 +60,7 @@ if(description)
 include ("version_func.inc");
 include("host_details.inc");
 
-opensslVer = get_app_version(cpe:"cpe:/a:openssl:openssl", nvt:SCRIPT_OID);
+opensslVer = get_app_version(cpe:"cpe:/a:openssl:openssl");
 if(opensslVer == NULL){
   exit(0);
 }
@@ -104,10 +104,10 @@ ref2 =string("\n  References:" +
 
 if(version_in_range(version:opensslVer, test_version:"0.9.8", test_version2:"0.9.8k"))
 {
-   security_message(data:string(report, vuln_in1, desc, "\n", aff_os1, fix1,  ref1));
+   security_message(data:string(report, vuln_in1, "\n", aff_os1, fix1,  ref1));
    exit(0);
  }
 
 if(version_is_less_equal(version:opensslVer, test_version:"1.0.0.beta2")){
-   security_message(data:string(report, vuln_in2, desc, "\n", aff_os1, fix2, ref2));
+   security_message(data:string(report, vuln_in2, "\n", aff_os1, fix2, ref2));
 }

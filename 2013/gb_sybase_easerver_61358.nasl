@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sybase_easerver_61358.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_sybase_easerver_61358.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Sybase EAServer Multiple Security Vulnerabilities
 #
@@ -47,7 +47,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(61358);
- script_version ("$Revision: 6698 $");
+ script_version ("$Revision: 7577 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -57,7 +57,7 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61358");
  script_xref(name:"URL", value:"http://www.sybase.com/products/modelingdevelopment/easerver");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2013-08-08 13:44:48 +0200 (Thu, 08 Aug 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -77,7 +77,7 @@ if (description)
  exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_archiva_45095.nasl 6195 2017-05-23 10:02:52Z ckuerste $
+# $Id: gb_apache_archiva_45095.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Apache Archiva Cross Site Request Forgery Vulnerability
 #
@@ -24,13 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-cpe = "cpe:/a:apache:archiva";
+CPE = "cpe:/a:apache:archiva";
 
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100924");
- script_version("$Revision: 6195 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-23 12:02:52 +0200 (Tue, 23 May 2017) $");
+ script_version("$Revision: 7573 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-12-01 13:10:27 +0100 (Wed, 01 Dec 2010)");
  script_bugtraq_id(45095);
  script_tag(name:"cvss_base", value:"6.8");
@@ -84,7 +84,7 @@ if (version_in_range(version: vers, test_version: "1", test_version2:"1.0.3") ||
     version_in_range(version: vers, test_version: "1.1", test_version2:"1.1.4") ||
     version_in_range(version: vers, test_version: "1.2", test_version2:"1.2.2") ||
     version_in_range(version: vers, test_version: "1.3", test_version2:"1.3.1")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");
+  report = report_fixed_ver(installed_version: vers, fixed_version: "See advisory");
   security_message(port: port, data: report);
   exit(0);
 }

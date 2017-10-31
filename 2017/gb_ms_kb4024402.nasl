@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4024402.nasl 6377 2017-06-20 10:16:39Z santu $
+# $Id: gb_ms_kb4024402.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
-# Microsoft Windows Multiple Vulnerabilites (KB4024402)
+# Microsoft Windows Multiple Vulnerabilities (KB4024402)
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811204");
-  script_version("$Revision: 6377 $");
+  script_version("$Revision: 7585 $");
   script_cve_id("CVE-2017-8543", "CVE-2017-8544");
   script_bugtraq_id(98824, 98826);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:16:39 +0200 (Tue, 20 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-06-14 08:32:08 +0530 (Wed, 14 Jun 2017)");
-  script_name("Microsoft Windows Multiple Vulnerabilites (KB4024402)");
+  script_name("Microsoft Windows Multiple Vulnerabilities (KB4024402)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4024402");

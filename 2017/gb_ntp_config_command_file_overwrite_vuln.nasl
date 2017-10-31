@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_config_command_file_overwrite_vuln.nasl 6851 2017-08-04 07:31:24Z asteins $
+# $Id: gb_ntp_config_command_file_overwrite_vuln.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # NTP ':config' Command Arbitrary File Overwrite Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811253");
-  script_version("$Revision: 6851 $");
+  script_version("$Revision: 7571 $");
   script_cve_id("CVE-2015-7703");
   script_bugtraq_id(77278);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:31:24 +0200 (Fri, 04 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-25 11:30:12 +0530 (Tue, 25 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP ':config' Command Arbitrary File Overwrite Vulnerability");
@@ -108,7 +108,7 @@ if(ntpVer =~ "^(4\.(0|1|2))")
 
 else if(ntpVer =~ "^(4\.3)")
 {
-  if((revcomp(a: version, b: "4.3.77") < 0)){
+  if((revcomp(a: ntpVer, b: "4.3.77") < 0)){
     fix = "4.3.77";
   }
 }

@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_webshopper.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: http_webshopper.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Web Shopper remote file retrieval
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10533");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1776);
   script_tag(name:"cvss_base", value:"5.0");
@@ -58,6 +58,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

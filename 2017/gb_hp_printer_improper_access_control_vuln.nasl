@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printer_improper_access_control_vuln.nasl 5352 2017-02-20 09:34:30Z antu123 $
+# $Id: gb_hp_printer_improper_access_control_vuln.nasl 7579 2017-10-26 11:10:22Z cfischer $
 #
 # HP Printer Wi-Fi Direct Improper Access Control Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807397");
-  script_version("$Revision: 5352 $");
+  script_version("$Revision: 7579 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 10:34:30 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:10:22 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-02-14 12:24:12 +0530 (Tue, 14 Feb 2017)");
   script_name("HP Printer Wi-Fi Direct Improper Access Control Vulnerability");
 
@@ -78,14 +78,9 @@ if(description)
   exit(0);
 }
 
-
-##
-## Script code starts here
-##
-
-## Include required standard functions
 include("version_func.inc");
 include("host_details.inc");
+include("http_func.inc");
 include("http_keepalive.inc");
 
 hpPort = "";

@@ -1,7 +1,7 @@
 
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_mult_unspecified_vuln01_oct15_lin.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_mysql_mult_unspecified_vuln01_oct15_lin.nasl 7572 2017-10-26 08:08:35Z cfischer $
 # Oracle MySQL Multiple Unspecified Vulnerabilities-01 Oct15 (Linux)
 #
 # Authors:
@@ -42,13 +42,13 @@ CPE = "cpe:/a:oracle:mysql";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107018");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 7572 $");
   script_cve_id("CVE-2015-4913", "CVE-2015-4830", "CVE-2015-4826", "CVE-2015-4815",
                 "CVE-2015-4807", "CVE-2015-4802", "CVE-2015-4792", "CVE-2015-4870",
                 "CVE-2015-4861", "CVE-2015-4858", "CVE-2015-4836");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 10:08:35 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-07-01 12:46:24 +0530 (Fri, 01 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-01 Oct15 (Linux)");
@@ -84,10 +84,10 @@ if(!sqlPort = get_app_port(cpe:CPE)){
 
 
 ## Get version
-if(!mysqlVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:sqlPort))
+if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort))
 {
   CPE = "cpe:/a:mysql:mysql";
-  if(!mysqlVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:sqlPort)){
+  if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort)){
     exit(0);
   }
 }

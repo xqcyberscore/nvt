@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_sni_supported.nasl 4686 2016-12-06 09:38:11Z cfi $
+# $Id: gb_ssl_sni_supported.nasl 7578 2017-10-26 11:00:21Z cfischer $
 #
 # SSL/TLS: SNI Support Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105884");
-  script_version("$Revision: 4686 $");
+  script_version("$Revision: 7578 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 10:38:11 +0100 (Tue, 06 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:00:21 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-09-01 16:56:11 +0200 (Thu, 01 Sep 2016)");
   script_name("SSL/TLS: SNI Support Detection");
   script_category(ACT_GATHER_INFO);
@@ -47,6 +47,7 @@ if(description)
   exit(0);
 }
 
+include("mysql.inc"); # For recv_mysql_server_handshake() in open_ssl_socket()
 include("misc_func.inc");
 include("ssl_funcs.inc");
 include("byte_func.inc");

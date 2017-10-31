@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_keepalive.inc 7229 2017-09-22 07:34:58Z cfischer $
+# $Id: http_keepalive.inc 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7229 $
+# $Revision: 7577 $
 #
 ###############################################################################
 
@@ -609,60 +609,6 @@ function http_vuln_check( port, url, pattern, check_header, debug, extra_check, 
     return buf;
   }
   return FALSE;
-}
-
-function traversal_files() {
-
-  if( _FCT_ANON_ARGS[0] ) {
-
-    if( tolower( _FCT_ANON_ARGS[0] ) == "windows" ) {
-      res = "yes";
-    } else if( tolower( _FCT_ANON_ARGS[0] ) == "linux" ) {
-      res = "no";
-    }
-  } else {
-    if( ! defined_func( "host_runs" ) ) include( "host_details.inc" );
-    res = host_runs( "windows" );
-  }
-
-  if( res == "yes" ) {
-
-    return make_array( "\[boot loader\]", "boot.ini",
-                       "; for 16-bit app supporT", "winnt/win.ini",
-                       "; for 16-bit app support", "windows/win.ini" );
-
-  } else if( res == "no" ) {
-
-    return make_array( "root:.*:0:[01]:", "etc/passwd" ); # TBD: Also check e.g. etc/hosts for basic IDS?
-
-  }
-
-  # "unknown"
-  return make_array( "root:.*:0:[01]:", "etc/passwd",
-                     "\[boot loader\]", "boot.ini",
-                     "; for 16-bit app supporT", "winnt/win.ini",
-                     "; for 16-bit app support", "windows/win.ini" );
-}
-
-function exploit_commands() {
-
-  if( ! defined_func( "host_runs" ) ) include( "host_details.inc" );
-  res = host_runs( "windows" );
-
-  if( res == "yes" ) {
-
-    return make_array( "Windows.IP..onfiguration", "ipconfig" );
-
-  } else if( res == "no" ) {
-
-    return make_array( "uid=[0-9]+.*gid=[0-9]+", "id" );
-
-  }
-
-  # unknown
-  return make_array( "uid=[0-9]+.*gid=[0-9]+", "id",
-                     "Windows.IP..onfiguration", "ipconfig" );
-
 }
 
 function report_vuln_url( port, url, url_only ) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_password_disclosure.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: gb_lantronix_password_disclosure.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Lantronix Device Server Password Disclosure
 #
@@ -38,12 +38,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103598";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5958 $");
+ script_version ("$Revision: 7573 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("Lantronix Device Server Password Disclosure");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-10-29 15:28:00 +0100 (Mon, 29 Oct 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -57,6 +57,10 @@ if (description)
  exit(0);
 }
 
+include("http_func.inc");
+include("misc_func.inc");
+include("telnet_func.inc");
+
 config_port = 30718;
 if(!get_udp_port_state(config_port))exit(0);
 
@@ -67,8 +71,6 @@ function check_telnet(password) {
 
   sock = open_sock_tcp(telnet_port);
   if(!sock)return FALSE;
-
-  include("telnet_func.inc");
 
   recv = telnet_negotiate(socket:sock);
 
@@ -101,9 +103,6 @@ function check_telnet(password) {
 }
 
 function check_http(password) {
-
-  include("http_func.inc");
-  include("misc_func.inc");
 
   http_port = get_http_port(default:80);
   if(!get_port_state(http_port))return FALSE;

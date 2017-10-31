@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_custom_pages_plugin_dir_trav.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_wordpress_wp_custom_pages_plugin_dir_trav.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # WordPress WP Custom Pages Plugin 'url' Parameter Directory Traversal Vulnerability
 #
@@ -50,8 +50,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_cve_id("CVE-2011-1669");
   script_tag(name:"cvss_base", value:"5.0");
@@ -77,10 +77,7 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_dh_weak_keysize_vuln.nasl 6114 2017-05-12 07:32:36Z cfi $
+# $Id: gb_ssl_dh_weak_keysize_vuln.nasl 7578 2017-10-26 11:00:21Z cfischer $
 #
 # SSL/TLS: Diffie-Hellman Key Exchange Insufficient DH Group Strength Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106223");
-  script_version("$Revision: 6114 $");
-  script_tag(name:"last_modification", value: "$Date: 2017-05-12 09:32:36 +0200 (Fri, 12 May 2017) $");
+  script_version("$Revision: 7578 $");
+  script_tag(name:"last_modification", value: "$Date: 2017-10-26 13:00:21 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value: "2016-09-06 12:25:58 +0700 (Tue, 06 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
@@ -67,6 +67,7 @@ if(description)
   exit(0);
 }
 
+include("mysql.inc"); # For recv_mysql_server_handshake() in open_ssl_socket()
 include("byte_func.inc");
 include("misc_func.inc");
 include("ssl_funcs.inc");

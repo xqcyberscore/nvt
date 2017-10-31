@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exponet_cms_44095.nasl 5653 2017-03-21 10:19:58Z cfi $
+# $Id: gb_exponet_cms_44095.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Exponent CMS Multiple Input Validation Vulnerabilities
 #
@@ -29,9 +29,9 @@ CPE = "cpe:/a:exponentcms:exponent_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100938");
-  script_version("$Revision: 5653 $");
+  script_version("$Revision: 7577 $");
   script_bugtraq_id(44095);
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:19:58 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-12-09 13:44:03 +0100 (Thu, 09 Dec 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -74,6 +74,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

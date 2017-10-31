@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln_oct08.nasl 4218 2016-10-05 14:20:48Z teissa $
+# $Id: gb_drupal_mult_vuln_oct08.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Drupal Core Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://drupal.org/node/318706");
   script_oid("1.3.6.1.4.1.25623.1.0.800123");
-  script_version("$Revision: 4218 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 16:20:48 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-11-04 15:12:12 +0100 (Tue, 04 Nov 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -80,14 +80,14 @@ vuln4 = string("  - weakness in the node module API allows for node validation t
 if(drupalVer =~ "^6.*")
 {
   if(version_is_less(version:drupalVer, test_version:"6.5")){
-    security_message(port:port, data:string(report, vuln1, vuln3, desc));
+    security_message(port:port, data:string(report, vuln1, vuln3));
     exit(0);
   }
 }
 else if(drupalVer =~ "^5.*")
 {
   if(version_is_less(version:drupalVer, test_version:"5.11")){
-    security_message(port:port, data:string(report, vuln2, vuln3, vuln4, desc));
+    security_message(port:port, data:string(report, vuln2, vuln3, vuln4));
     exit(0);
   }
 }

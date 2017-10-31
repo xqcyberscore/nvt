@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_editions_mult_vuln_aug17_macosx.nasl 6892 2017-08-10 13:03:58Z santu $
+# $Id: gb_adobe_digital_editions_mult_vuln_aug17_macosx.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Adobe Digital Editions Multiple Vulnerabilities Aug17 (Mac OS X)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811621");
-  script_version("$Revision: 6892 $");
+  script_version("$Revision: 7585 $");
   script_cve_id("CVE-2017-11274", "CVE-2017-3091", "CVE-2017-11275", "CVE-2017-11276",
                 "CVE-2017-11277", "CVE-2017-11278", "CVE-2017-11279", "CVE-2017-11280",
                 "CVE-2017-11272");
   script_bugtraq_id(100194, 100193);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-10 15:03:58 +0200 (Thu, 10 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-10 16:13:44 +0530 (Thu, 10 Aug 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Digital Editions Multiple Vulnerabilities Aug17 (Mac OS X)");
@@ -52,7 +52,7 @@ if(description)
 
   - A memory corruption vulnerability.
 
-  - XML External Entity Parsing vulnerbility.");
+  - XML External Entity Parsing vulnerability.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to execute arbitrary code on the target system, escalate privileges 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eocms_lfi_11_10.nasl 5761 2017-03-29 10:54:12Z cfi $
+# $Id: gb_eocms_lfi_11_10.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # eoCMS Local File Include Vulnerability
 #
@@ -42,8 +42,8 @@ eoCMS 0.9.04 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(100881);
- script_version("$Revision: 5761 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:54:12 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-10-29 12:58:08 +0200 (Fri, 29 Oct 2010)");
  script_bugtraq_id(44640);
  script_tag(name:"cvss_base", value:"4.3");
@@ -66,6 +66,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

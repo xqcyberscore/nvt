@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_auth_bypass_vuln.nasl 6995 2017-08-23 11:52:03Z teissa $
+# $Id: gb_vtiger_crm_auth_bypass_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # vTiger CRM Authentication Bypass Vulnerability
 #
@@ -33,14 +33,14 @@ if(description)
   script_cve_id("CVE-2013-3215");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_version("$Revision: 6995 $");
+  script_version("$Revision: 7573 $");
 
   script_name("vTiger CRM Authentication Bypass Vulnerability");
 
   script_xref(name:"URL", value:"https://www.vtiger.com/blogs/?p=1467");
   script_xref(name:"URL", value:"http://karmainsecurity.com/KIS-2013-08");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-01-28 15:47:55 +0700 (Tue, 28 Jan 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -139,7 +139,7 @@ sessionid = rand_str(length:4+randint, charset:"abcdefghijklmnopqrstuvwxyzABCDEF
 request = checkemail_soap_req(user:"admin", sessionid:sessionid);
 response = send_soap_req(data:request);
 
-if (!response || !ereg(string:response, pattern:'<return xsi:nil="true" xsi:type="xsd:string"/>', icase:false)) {
+if (!response || !ereg(string:response, pattern:'<return xsi:nil="true" xsi:type="xsd:string"/>', icase:FALSE)) {
   # No result or not the expected one
   exit(0);
 }
@@ -148,7 +148,7 @@ if (!response || !ereg(string:response, pattern:'<return xsi:nil="true" xsi:type
 request2 = checkemail_soap_req(user:"admin", sessionid:"");
 response2 = send_soap_req(data:request2);
 
-if (response2 && egrep(string:response2, pattern:'<return xsi:type="xsd:string">.*</return>', icase:false)) {
+if (response2 && egrep(string:response2, pattern:'<return xsi:type="xsd:string">.*</return>', icase:FALSE)) {
   report = report_vuln_url(port:port, url:url);
   security_message(port:port, data:report);
   exit(0);

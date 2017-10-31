@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tikiwiki_show_errors_stored_xss_vuln.nasl 5144 2017-01-31 09:55:46Z cfi $
+# $Id: secpod_tikiwiki_show_errors_stored_xss_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Tiki Wiki CMS Groupware 'show_errors' Parameter Stored Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902651");
-  script_version("$Revision: 5144 $");
+  script_version("$Revision: 7585 $");
   script_cve_id("CVE-2011-4551");
   script_bugtraq_id(51128);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 10:55:46 +0100 (Tue, 31 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-12-21 15:59:55 +0530 (Wed, 21 Dec 2011)");
   script_name("Tiki Wiki CMS Groupware 'show_errors' Parameter Stored Cross-Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -65,7 +65,7 @@ if(description)
   For updates refer to http://info.tiki.org/";
 
   tag_summary = "The host is running Tiki Wiki CMS Groupware and is prone to stored cross site
-  scripting vulnerabilitiy.";
+  scripting vulnerability.";
 
   script_tag(name:"impact", value:tag_impact);
   script_tag(name:"affected", value:tag_affected);

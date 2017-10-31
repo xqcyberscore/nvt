@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_58016.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_piwigo_58016.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Piwigo Arbitrary File Disclosure and Arbitrary File Deletion Vulnerabilities
 #
@@ -31,11 +31,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103670");
   script_bugtraq_id(58016);
-  script_version("$Revision: 5627 $");
+  script_version("$Revision: 7577 $");
   script_name("Piwigo Arbitrary File Disclosure and Arbitrary File Deletion Vulnerabilities");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-02-26 14:16:03 +0100 (Tue, 26 Feb 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -71,6 +71,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

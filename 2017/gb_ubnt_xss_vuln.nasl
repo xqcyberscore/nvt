@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubnt_xss_vuln.nasl 6798 2017-07-25 09:58:11Z ckuersteiner $
+# $Id: gb_ubnt_xss_vuln.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # Ubiquiti Networks EdgeRouter XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106984");
-  script_version("$Revision: 6798 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-25 11:58:11 +0200 (Tue, 25 Jul 2017) $");
+  script_version("$Revision: 7571 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-07-25 13:16:00 +0700 (Tue, 25 Jul 2017)");
   script_tag(name: "cvss_base", value: "5.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -85,7 +85,7 @@ version = vers[1];
 
 if (version_is_less(version: version, test_version: "1.9.1.1")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "1.9.1.1");
-  security_message(port: port, data: report);
+  security_message(port: 0, data: report);
   exit(0);
 }
 

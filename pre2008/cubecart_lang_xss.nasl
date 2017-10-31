@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cubecart_lang_xss.nasl 5780 2017-03-30 07:37:12Z cfi $
+# $Id: cubecart_lang_xss.nasl 7573 2017-10-26 09:18:50Z cfischer $
 # Description: Brooky CubeCart index.php language XSS
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "Upgrade to version 2.0.5 or higher";
 if(description)
 {
   script_id(17227);
-  script_version("$Revision: 5780 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 09:37:12 +0200 (Thu, 30 Mar 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(12549);
   script_cve_id("CVE-2005-0442", "CVE-2005-0443");
@@ -59,7 +59,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("url_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);

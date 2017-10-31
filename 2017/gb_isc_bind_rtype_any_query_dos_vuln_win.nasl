@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_rtype_any_query_dos_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_isc_bind_rtype_any_query_dos_vuln_win.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # ISC BIND RTYPE ANY Query Denial of Service Vulnerability (Windows) 
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810288");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 7571 $");
   script_cve_id("CVE-2016-9131");
   script_bugtraq_id(95386);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-01-16 16:59:09 +0530 (Mon, 16 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ISC BIND RTYPE ANY Query Denial of Service Vulnerability (Windows)");
@@ -123,7 +123,7 @@ if(bindVer =~ "^9")
     fix = "9.9.9-P5";
     VULN = TRUE;
   }
-  else if((revcomp(a: version, b: "9.4.0") >= 0) && (revcomp(a: version, b: "9.6.ESV.R11.W2") < 0)) 
+  else if((revcomp(a: bindVer, b: "9.4.0") >= 0) && (revcomp(a: bindVer, b: "9.6.ESV.R11.W2") < 0)) 
   {
     fix = "9.9.9-P5";
     VULN = TRUE;

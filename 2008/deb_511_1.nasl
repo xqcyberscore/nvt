@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_511_1.nasl 6616 2017-07-07 12:10:49Z cfischer $
+# $Id: deb_511_1.nasl 7585 2017-10-26 15:03:01Z cfischer $
 # Description: Auto-generated from advisory DSA 511-1
 #
 # Authors:
@@ -26,7 +26,7 @@
 
 include("revisions-lib.inc");
 tag_insight = "Several buffer overflow vulnerabilities were discovered in ethereal, a
-network traffic analyzer.  These vulnerabilites are described in the
+network traffic analyzer.  These vulnerabilities are described in the
 ethereal advisory enpa-sa-00013.  Of these, only some parts of
 CVE-2004-0176 affect the version of ethereal in Debian woody.
 CVE-2004-0367 and CVE-2004-0365 are not applicable to this version.
@@ -46,8 +46,8 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 if(description)
 {
  script_id(53201);
- script_version("$Revision: 6616 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 14:10:49 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 7585 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2008-01-17 22:45:44 +0100 (Thu, 17 Jan 2008)");
  script_cve_id("CVE-2004-0176", "CVE-2004-0367", "CVE-2004-0365");
  script_tag(name:"cvss_base", value:"5.0");

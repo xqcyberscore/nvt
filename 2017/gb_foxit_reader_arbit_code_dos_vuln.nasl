@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_arbit_code_dos_vuln.nasl 7336 2017-10-04 05:42:02Z asteins $
+# $Id: gb_foxit_reader_arbit_code_dos_vuln.nasl 7588 2017-10-27 06:53:29Z santu $
 #
-# Foxit Reader Arbitrary Code Execution and Denial of Service Vulnerability (Windows)
+# Foxit Reader Arbitrary Code Execution and Denial of Service Vulnerabilities (Windows)
 #
 # Authors:
 # Adrian Steins <adrian.steins@greenbone.net>
@@ -29,16 +29,17 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112056");
-  script_version("$Revision: 7336 $");
-  script_cve_id("CVE-2017-14694");
+  script_version("$Revision: 7588 $");
+  script_cve_id("CVE-2017-14694", "CVE-2017-15770", "CVE-2017-15771");
+  script_bugtraq_id(101009, 101540, 101549);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
-  script_tag(name:"creation_date", value:"2017-09-27 10:23:07 +0200 (Wed, 27 Sep 2017)");
-  script_name("Foxit Reader Arbitrary Code Execution and Denial of Service Vulnerability (Windows)");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-27 08:53:29 +0200 (Fri, 27 Oct 2017) $");
+  script_tag(name:"creation_date", value:"2017-10-26 11:18:43 +0530 (Thu, 26 Oct 2017)");
+  script_name("Foxit Reader Arbitrary Code Execution and Denial of Service Vulnerabilities (Windows)");
 
   script_tag(name: "summary", value:"The host is installed with Foxit Reader
-  and is prone to a code execution and denial of service vulnerability");
+  and is prone to a code execution and denial of service vulnerabilities.");
 
   script_tag(name: "vuldetect", value:"Get the installed version with the help
   of the detection NVT and check if the version is vulnerable or not.");
@@ -48,7 +49,8 @@ if(description)
       tiptsf!CPenInputPanel::FinalRelease+0x000000000000002f'.");
 
   script_tag(name: "impact", value:"Successful exploitation will allow local
-  attackers to crash the application via a buffer overflow.
+  attackers to execute arbitrary code or crash the application via a buffer 
+  overflow.
 
   Impact Level: Application");
 
@@ -60,6 +62,8 @@ if(description)
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name: "URL" , value:"https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-14694");
+  script_xref(name: "URL" , value:"https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-15771");
+  script_xref(name: "URL" , value:"https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-15770");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");

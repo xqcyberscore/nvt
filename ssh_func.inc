@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 7564 2017-10-25 13:53:55Z cfischer $
+# $Id: ssh_func.inc 7569 2017-10-26 07:04:30Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7564 $
+# $Revision: 7569 $
 #
 ###############################################################################
 
@@ -2311,4 +2311,183 @@ function ssh_broken_random_login( port ) {
     return TRUE;
   }
   return;
+}
+
+function find_bin( prog_name, sock ) {
+
+  local_var r, whe, whi, cl, prog_name, sock;
+
+  whe = "";
+  whi = "";
+
+  if( get_kb_item( "no_linux_shell" ) ) return;
+
+  if( ! prog_name ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#prog_name#-#find_bin" );
+
+  if( ! sock ) {
+    sock = ssh_login_or_reuse_connection();
+  }
+
+  if( sock ) {
+
+    cl = ssh_check_locate( sock:sock );
+
+    if( cl ) {
+      r = split( ssh_cmd( socket:sock, cmd:"locate -ei *bin/" + prog_name, timeout:60 ) );
+    } else {
+      r = NULL;
+    }
+
+  } else {
+     r = NULL;
+  }
+
+  if( "bin/" + prog_name >!< r ) {
+    if( sock ) {
+      whe = ssh_cmd( socket:sock, cmd:"whereis -b " + prog_name, timeout:60 );
+      if( "bin/" + prog_name >< whe ) {
+        r = split( substr( whe - ( prog_name + ":" ), 1 ), sep:" " );
+      } else {
+        r = NULL;
+      }
+    }
+  }
+
+  if( isnull( r ) ) {
+    if( sock ) {
+      whi = ssh_cmd( socket:sock, cmd:"which -a " + prog_name, timeout:60 );
+      if( ( "which: no "+prog_name ) >!< whi ) {
+        r = split( whi );
+      } else {
+        r = NULL;
+      }
+    }
+  }
+
+  return( r );
+}
+
+function find_file( file_name, file_path, useregex, regexpar, sock ) {
+
+  local_var r, f, fname, lparam, cl, file_name, file_path, useregex, regexpar, sock;
+  local_var use_find, descend_directories, cmd;
+
+  if( get_kb_item( "no_linux_shell" ) ) return;
+
+  if( ! file_name ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file_name#-#find_file" );
+  if( ! file_path ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file_path#-#find_file" );
+
+  r = NULL;
+
+  if( useregex ) {
+    lparam = "-eir";
+  } else {
+    lparam = "-ei";
+  }
+
+  use_find = get_kb_item( "Enable/find" );
+  descend_directories = get_kb_item( "Descend/OFS" );
+
+  if( isnull( use_find ) ) use_find = "yes";
+  if( isnull( descend_directories ) ) descend_directories = "yes";
+
+  fname = ereg_replace( pattern:"\*.+", string:file_name, replace:"" );
+
+  if( ! sock ) {
+    sock = ssh_login_or_reuse_connection();
+  }
+
+  if( sock ) {
+
+    cl = ssh_check_locate( sock:sock );
+
+    if ( cl ) {
+      r = split( ssh_cmd( socket:sock, cmd:"locate " + lparam + " " + raw_string(0x22) + file_path + file_name + regexpar + raw_string(0x22), timeout:60));
+    } else {
+      r = NULL;
+    }
+
+    if( fname >!< r && ( "yes" >< use_find ) ) {
+      if( ! isnull( file_path ) ) {
+
+        cmd = "find " + raw_string( 0x22 ) + file_path + raw_string( 0x22 );
+
+        if( "no" >< descend_directories ) {
+          cmd += " -xdev";
+        }
+
+        cmd += " -maxdepth 7 -mindepth 1";
+        cmd += ' \\( -path "*/proc" -o -path "/dev" -o -path "/sys" -o -path "/media" -o -path "/tmp" -o -path "/var" \\) -prune -o ';
+        cmd += " -name " + raw_string( 0x22 );
+        cmd += file_name + raw_string( 0x22 ) +" -a  -type f  -print 2>/dev/null";
+
+        f = split( ssh_cmd( socket:sock, cmd:cmd, timeout:60 ) );
+      }
+    }
+  }
+
+  if( fname >!< r ) {
+    if( fname >< f && "No such file or directory" >!< f ) {
+      r = f;
+    } else {
+      r = NULL;
+    }
+  }
+  return( r );
+}
+
+function get_bin_version( full_prog_name, version_argv, ver_pattern, sock ) {
+
+  local_var loc_version, r, full_prog_name, version_argv, ver_pattern, sock;
+
+  if( get_kb_item( "no_linux_shell" ) ) return;
+
+  if( ! full_prog_name ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#full_prog_name#-#get_bin_version" );
+  if( ! version_argv ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version_argv#-#get_bin_version" );
+  if( ! ver_pattern ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#ver_pattern#-#get_bin_version" );
+
+  full_prog_name = chomp( full_prog_name );
+  version_argv = chomp( version_argv );
+
+  if( ! sock) {
+    sock = ssh_login_or_reuse_connection();
+  }
+
+  if( sock ) {
+    r = ssh_cmd( socket:sock, cmd:full_prog_name + " " + version_argv, timeout:60 );
+  }
+
+  # e.g. /bin/sh: 1: /usr/share/bash-completion/completions/xfreerdp: Permission denied
+  if( ": Permission denied" >< r ) return;
+
+  loc_version = eregmatch( pattern:ver_pattern, string:r );
+  if( loc_version != NULL ) loc_version[max_index( loc_version )] = r;
+  return( loc_version );
+}
+
+function ssh_check_locate( sock ) {
+
+  local_var sock, r;
+
+  if( ! sock ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#sock#-#ssh_check_locate" );
+
+  if( get_kb_item( "lsc/locate/available" ) ) return TRUE;
+  if( get_kb_item( "no_linux_shell" ) ) return FALSE;
+  if( get_kb_item( "lsc/locate/broken" ) ) return FALSE;
+
+  r = ssh_cmd( socket:sock, cmd:"locate -S", timeout:60 );
+
+  if( ( "Database /" >!< r ||
+      ( "bytes" >!< r &&
+        "Compression" >!< r &&
+        "Filenames"   >!< r &&
+        "file names"  >!< r ) ) ||
+        "command not found" >< r ||
+        "locate:" >< r ) { # nb: Also includes an outdated database like "locate: warning: database /var/cache/locate/locatedb is more than 8 days old (actual age is 9,3 days)"
+
+    set_kb_item( name:"lsc/locate/broken", value:r );
+    return FALSE;
+  }
+  set_kb_item( name:"lsc/locate/available", value:TRUE );
+  return TRUE;
 }

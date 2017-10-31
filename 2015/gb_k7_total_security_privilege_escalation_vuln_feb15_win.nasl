@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_total_security_privilege_escalation_vuln_feb15_win.nasl 6243 2017-05-30 09:04:14Z teissa $
+# $Id: gb_k7_total_security_privilege_escalation_vuln_feb15_win.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # K7 Total Security Privilege Escalation Vulnerability Feb15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:k7computing:total_security:";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805454");
-  script_version("$Revision: 6243 $");
+  script_version("$Revision: 7573 $");
   script_cve_id("CVE-2014-9643");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-01-27 17:11:51 +0530 (Tue, 27 Jan 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("K7 Total Security Privilege Escalation Vulnerability Feb15 (Windows)");
@@ -84,9 +84,9 @@ if(!k7usecVer = get_app_version(cpe:CPE)){
 }
 
 ## Grep for vulnerable version
-if(version_is_less(version:k7tsecVer, test_version:"14.2.0.253"))
+if(version_is_less(version:k7usecVer, test_version:"14.2.0.253"))
 {
-  report = 'Installed version: ' + k7tsecVer + '\n' +
+  report = 'Installed version: ' + k7usecVer + '\n' +
              'Fixed version:     ' + "14.2.0.253" + '\n';
   security_message(data:report );
   exit(0);

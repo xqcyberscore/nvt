@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_dos_vuln_mar16.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_ibm_domino_dos_vuln_mar16.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM Domino Denial of Service Vulnerability - Mar16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807619");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 7575 $");
   script_cve_id("CVE-2014-0822");
   script_bugtraq_id(65427);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-03-21 19:13:44 +0530 (Mon, 21 Mar 2016)");
   script_name("IBM Domino Denial of Service Vulnerability - Mar16");
 
@@ -73,9 +73,9 @@ if(description)
   exit(0);
 }
 
-
-include("host_details.inc");
 include("version_func.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
+include("host_details.inc");
 
 ## Variable Initialization
 domVer = "";

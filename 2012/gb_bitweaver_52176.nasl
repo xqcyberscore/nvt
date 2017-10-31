@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitweaver_52176.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_bitweaver_52176.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Bitweaver 'rankings.php' Local File Include Vulnerability
 #
@@ -43,7 +43,7 @@ if (description)
  script_oid(SCRIPT_OID);
  script_bugtraq_id(52176);
  script_cve_id("CVE-2010-5086");
- script_version ("$Revision: 5950 $");
+ script_version ("$Revision: 7577 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("Bitweaver 'rankings.php' Local File Include Vulnerability");
@@ -51,7 +51,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52176");
  script_xref(name : "URL" , value : "http://sourceforge.net/projects/bitweaver/files/bitweaver2.x/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-02-28 11:12:27 +0100 (Tue, 28 Feb 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -64,6 +64,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 7568 2017-10-26 05:34:38Z ckuersteiner $
+# $Id: gather-package-list.nasl 7589 2017-10-27 07:03:33Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 7568 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 07:34:38 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 7589 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-27 09:03:33 +0200 (Fri, 27 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -138,6 +138,7 @@ OS_CPE = make_array(
     "SLED10.0SP0", "cpe:/o:suse:linux_enterprise_desktop:10:SP0",
 
     # Ubuntu
+    "UBUNTU17.10",    "cpe:/o:canonical:ubuntu_linux:17.10",
     "UBUNTU17.04",    "cpe:/o:canonical:ubuntu_linux:17.04",
     "UBUNTU16.10",    "cpe:/o:canonical:ubuntu_linux:16.10",
     "UBUNTU16.04 LTS","cpe:/o:canonical:ubuntu_linux:16.04:-:lts",
@@ -2061,6 +2062,14 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=17.04" >< rls ) {
   if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 17.04" );
   register_detected_os( os:"Ubuntu 17.04", oskey:"UBUNTU17.04" );
+  exit( 0 );
+}
+if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=17.10" >< rls ) {
+  replace_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
+  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
+  if( ! isnull( buf ) ) set_kb_item( name:"ssh/login/packages", value:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 17.10" );
+  register_detected_os( os:"Ubuntu 17.10", oskey:"UBUNTU17.10" );
   exit( 0 );
 }
 

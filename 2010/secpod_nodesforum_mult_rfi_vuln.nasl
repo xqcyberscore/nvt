@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nodesforum_mult_rfi_vuln.nasl 5900 2017-04-08 17:34:18Z cfi $
+# $Id: secpod_nodesforum_mult_rfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Nodesforum Multiple Remote File Inclusion Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902040");
-  script_version("$Revision: 5900 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-08 19:34:18 +0200 (Sat, 08 Apr 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-04-16 16:17:26 +0200 (Fri, 16 Apr 2010)");
   script_cve_id("CVE-2010-1351");
   script_tag(name:"cvss_base", value:"6.8");
@@ -70,6 +70,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

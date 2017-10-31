@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_65585.nasl 6756 2017-07-18 13:31:14Z cfischer $
+# $Id: gb_linksys_65585.nasl 7589 2017-10-27 07:03:33Z cfischer $
 #
 # Multiple Linksys Devices Multiple Remote Code Execution Vulnerabilities
 #
@@ -25,95 +25,89 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103909";
-
-tag_impact = "An attacker can exploit these issues to execute arbitrary code in the
-context of the affected device. Successful exploitation can completely
-compromise the vulnerable device.";
-
-tag_affected = "E4200
-E3200
-E3000
-E2500
-E2100L
-E2000
-E1550
-E1500
-E1200
-E1000
-E900
-E300
-WAG320N
-WAP300N
-WAP610N
-WES610N
-WET610N
-WRT610N
-WRT600N
-WRT400N
-WRT320N
-WRT160N
-WRT150N
-
-This list may not be accurate and/or complete!";
-
-tag_summary = "Multiple Linksys devices are prone to multiple remote code-execution
-vulnerabilities.";
-
-tag_solution = "Ask the Vendor for an update.";
-tag_vuldetect = "Try to execute a command on the remote host";
-
-if (description)
+if(description)
 {
- script_oid(SCRIPT_OID);
- script_bugtraq_id(65585);
- script_version ("$Revision: 6756 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.103909");
+  script_bugtraq_id(65585);
+  script_version("$Revision: 7589 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-27 09:03:33 +0200 (Fri, 27 Oct 2017) $");
+  script_tag(name:"creation_date", value:"2014-02-18 12:42:30 +0100 (Tue, 18 Feb 2014)");
+  script_name("Multiple Linksys Devices Multiple Remote Code Execution Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_hnap_detect.nasl");
+  script_require_ports("Services/www", 8080);
+  script_mandatory_keys("HNAP/vendor", "HNAP/port");
 
- script_name("Multiple Linksys Devices Multiple Remote Code Execution Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65585");
+  script_xref(name:"URL", value:"http://www.linksys.com");
 
+  tag_impact = "An attacker can exploit these issues to execute arbitrary code in the
+  context of the affected device. Successful exploitation can completely
+  compromise the vulnerable device.";
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65585");
- script_xref(name:"URL", value:"http://www.linksys.com");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
- script_tag(name:"creation_date", value:"2014-02-18 12:42:30 +0100 (Tue, 18 Feb 2014)");
- script_tag(name:"qod_type", value:"remote_analysis");
- script_tag(name:"solution_type", value: "VendorFix");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_hnap_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("HNAP/model","HNAP/port");
+  tag_affected = "E4200
+  E3200
+  E3000
+  E2500
+  E2100L
+  E2000
+  E1550
+  E1500
+  E1200
+  E1000
+  E900
+  E300
+  WAG320N
+  WAP300N
+  WAP610N
+  WES610N
+  WET610N
+  WRT610N
+  WRT600N
+  WRT400N
+  WRT320N
+  WRT160N
+  WRT150N
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+  This list may not be accurate and/or complete!";
 
- exit(0);
+  tag_summary = "Multiple Linksys devices are prone to multiple remote code-execution
+  vulnerabilities.";
+
+  tag_solution = "Ask the Vendor for an update.";
+  tag_vuldetect = "Try to execute a command on the remote host";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"vuldetect", value:tag_vuldetect);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"affected", value:tag_affected);
+
+  script_tag(name:"qod_type", value:"remote_analysis");
+  script_tag(name:"solution_type", value: "VendorFix");
+
+  exit(0);
 }
-
 
 include("http_func.inc");
 include("misc_func.inc");
 
-vendor = get_kb_item( "HNAP/vendor" );
-if( "linksys" >!< tolower( vendor ) || "cisco" >!< tolower( vendor ) ) exit(0 );
-
 port = get_kb_item( "HNAP/port" );
 if( ! port ) exit( 0 );
 
+vendor = get_kb_item( "HNAP/" + port + "/vendor" );
+if( "linksys" >!< tolower( vendor ) || "cisco" >!< tolower( vendor ) ) exit(0 );
+
 sleep = make_list( 3, 5, 8 );
 
-host = http_host_name(port:port);
-userpass64 = base64( str: 'admin:OpenVAS' );
+host = http_host_name( port:port );
+userpass64 = base64( str:'admin:OpenVAS' );
 
-foreach i ( sleep )
-{
+foreach i( sleep ) {
   ex = 'submit_button=&change_action=&submit_type=&action=&commit=0&ttcp_num=2&ttcp_size=2&ttcp_ip=-h `sleep%20' + i + '`&StartEPI=1';
   len = strlen( ex );
 
@@ -134,5 +128,5 @@ foreach i ( sleep )
   if( stop - start < i || stop - start > ( i+5 ) ) exit( 99 );
 }
 
-security_message(port:port);
-exit(0);
+security_message( port:port );
+exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-004.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-004.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Internet Information Services (IIS) FTP Service Remote Code Execution Vulnerability (2489256)
 #
@@ -45,12 +45,12 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(901183);
-  script_version("$Revision: 5362 $");
+  script_version("$Revision: 7582 $");
   script_cve_id("CVE-2010-3972");
   script_bugtraq_id(45542);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-02-09 17:14:46 +0100 (Wed, 09 Feb 2011)");
   script_name("Internet Information Services (IIS) FTP Service Remote Code Execution Vulnerability (2489256)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/42713");
@@ -99,7 +99,7 @@ if(!sysPath ){
 }
 
 ## Get Version from Ftpsvc.dll file
-dllVer = fetch_file_version(syspath, file_name:"system32\inetsrv\ftpsvc.dll");
+dllVer = fetch_file_version(sysPath, file_name:"system32\inetsrv\ftpsvc.dll");
 if(!dllVer){
   exit(0);
 }

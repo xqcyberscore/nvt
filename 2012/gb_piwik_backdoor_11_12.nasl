@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwik_backdoor_11_12.nasl 6720 2017-07-13 14:25:27Z cfischer $
+# $Id: gb_piwik_backdoor_11_12.nasl 7576 2017-10-26 10:01:33Z cfischer $
 #
 # Backdoor in Piwik analytics software
 #
@@ -30,14 +30,14 @@ CPE = "cpe:/a:piwik:piwik";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103611");
- script_version ("$Revision: 6720 $");
+ script_version ("$Revision: 7576 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("Backdoor in Piwik analytics software");
  script_xref(name : "URL" , value : "http://piwik.org/blog/2012/11/security-report-piwik-org-webserver-hacked-for-a-few-hours-on-2012-nov-26th/");
  script_xref(name : "URL" , value : "http://forum.piwik.org/read.php?2,97666");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:01:33 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-11-27 13:36:59 +0100 (Tue, 27 Nov 2012)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -58,6 +58,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

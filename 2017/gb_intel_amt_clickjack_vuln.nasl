@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_amt_clickjack_vuln.nasl 6495 2017-06-30 09:07:21Z teissa $
+# $Id: gb_intel_amt_clickjack_vuln.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # Intel Active Management Technology Clickjacking Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/h:intel:active_management_technology";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106877");
-  script_version("$Revision: 6495 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-30 11:07:21 +0200 (Fri, 30 Jun 2017) $");
+  script_version("$Revision: 7571 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-06-16 13:48:56 +0700 (Fri, 16 Jun 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -101,7 +101,7 @@ if (version =~ "^10\.0\.") {
 
 if (version =~ "^11\.6\.") {
   if (version_is_less(version: version, test_version: "11.6.25.1129")) {
-    report = report_fixed_ver(installed_version: verison, fixed_version: "11.6.25.1129");
+    report = report_fixed_ver(installed_version: version, fixed_version: "11.6.25.1129");
     security_message(port: port, data: report);
     exit(0);
   }

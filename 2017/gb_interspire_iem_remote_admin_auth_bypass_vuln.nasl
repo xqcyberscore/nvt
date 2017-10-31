@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interspire_iem_remote_admin_auth_bypass_vuln.nasl 7527 2017-10-20 09:46:24Z cfischer $
+# $Id: gb_interspire_iem_remote_admin_auth_bypass_vuln.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # Interspire IEM Remote Authentication Admin Bypass Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:interspire:iem";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112087");
-  script_version("$Revision: 7527 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 11:46:24 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 7571 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-19 08:54:12 +0200 (Thu, 19 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -70,8 +70,8 @@ by replacing the randomly generated string with just a boolean value ('true').")
 
 include("host_details.inc");
 include("version_func.inc");
-include("http_keepalive.inc");
 include("http_func.inc");
+include("http_keepalive.inc");
 
 if (!port = get_app_port(cpe:CPE)) exit(0);
 if (!dir = get_app_location(cpe:CPE, port:port)) exit(0);

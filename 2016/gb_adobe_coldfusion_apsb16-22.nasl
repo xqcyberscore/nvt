@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808165");
-  script_version("$Revision: 5732 $");
+  script_version("$Revision: 7573 $");
   script_cve_id("CVE-2016-4159");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-06-16 12:39:02 +0530 (Thu, 16 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Security Update APSB16-22");
@@ -95,15 +95,13 @@ if(!cfdVer = get_app_version(cpe:CPE, port:cfPort)){
 if(version_in_range(version:cfdVer, test_version:"10.0", test_version2:"10.0.20.299201"))
 {
   fix = "10.0.20.299202";
-  VULN = True;
 }
 else if(version_in_range(version:cfdVer, test_version:"11.0", test_version2:"11.0.09.299200"))
 {
   fix = "11.0.09.299201";
-  VULN = True;
 }
 
-if(VULN)
+if(fix)
 {
   report = report_fixed_ver(installed_version:cfdVer, fixed_version:fix);
   security_message(data:report, port:cfPort);

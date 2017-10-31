@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bonita_bpm_path_traversal_vuln.nasl 6207 2017-05-24 09:04:07Z teissa $
+# $Id: gb_bonita_bpm_path_traversal_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Bonita BPM Path Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:bonitasoft:bonita_bpm';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106010");
-  script_version("$Revision: 6207 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2015-06-16 09:22:17 +0700 (Tue, 16 Jun 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -71,6 +71,7 @@ to the web server user.");
   exit(0);
 }
 
+include("misc_func.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

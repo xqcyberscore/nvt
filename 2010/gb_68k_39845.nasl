@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_68k_39845.nasl 5761 2017-03-29 10:54:12Z cfi $
+# $Id: gb_68k_39845.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # 68designs 68kb Multiple Remote File Include Vulnerabilities
 #
@@ -34,8 +34,8 @@ application and the computer; other attacks are also possible.";
 if(description)
 {
  script_id(100741);
- script_version("$Revision: 5761 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:54:12 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-08-04 13:50:35 +0200 (Wed, 04 Aug 2010)");
  script_bugtraq_id(39845);
 
@@ -57,6 +57,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

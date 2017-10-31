@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: burning_board_3_0_5_input_validation.nasl 5767 2017-03-29 13:32:35Z cfi $
+# $Id: burning_board_3_0_5_input_validation.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
-# Woltlab Burning Board Multiple Input Validation Vulnerabilites
+# Woltlab Burning Board Multiple Input Validation Vulnerabilities
 #
 # Authors:
 # Michael Meyer
@@ -42,13 +42,13 @@ tag_summary = "Woltlab Burning Board is prone to multiple input-validation vulne
 if(description)
 {
  script_id(100056);
- script_version("$Revision: 5767 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:32:35 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7585 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
  script_bugtraq_id(34057);
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_name("Woltlab Burning Board Multiple Input Validation Vulnerabilites");
+ script_name("Woltlab Burning Board Multiple Input Validation Vulnerabilities");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

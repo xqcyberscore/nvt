@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastisearch_cve_2015_3337.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: gb_elastisearch_cve_2015_3337.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Elasticsearch Directory Traversal Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-3337");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6214 $");
+ script_version ("$Revision: 7577 $");
 
  script_name("Elasticsearch Directory Traversal Vulnerability");
 
@@ -49,7 +49,7 @@ when a site plugin is enabled, allows remote attackers to read arbitrary files."
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2015-05-05 15:11:20 +0200 (Tue, 05 May 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -61,6 +61,7 @@ when a site plugin is enabled, allows remote attackers to read arbitrary files."
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

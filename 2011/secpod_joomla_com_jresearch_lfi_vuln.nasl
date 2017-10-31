@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_com_jresearch_lfi_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: secpod_joomla_com_jresearch_lfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Joomla Component 'com_jresearch' Local File Inclusion Vulnerability
 #
@@ -47,8 +47,8 @@ vulnerability.";
 if(description)
 {
   script_id(902386);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -72,7 +72,7 @@ if(description)
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("version_func.inc");
 include("host_details.inc");

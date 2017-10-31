@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_portal_access_ctl_bypass_vuln_swg21968474.nasl 5941 2017-04-12 12:01:06Z antu123 $
+# $Id: gb_ibm_websphere_portal_access_ctl_bypass_vuln_swg21968474.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # IBM WebSphere Portal Access Control Bypass Vulnerability(swg22000152) 
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:ibm:websphere_portal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810733");
-  script_version("$Revision: 5941 $");
+  script_version("$Revision: 7571 $");
   script_cve_id("CVE-2015-4997");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 14:01:06 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-04-07 17:09:57 +0530 (Fri, 07 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM WebSphere Portal Access Control Bypass Vulnerability(swg22000152)");
@@ -91,7 +91,7 @@ if(webVer =~ "^8\.5\.0")
 {
   if(version_is_less(version:webVer, test_version:"8.5.0.0.8"))
   {
-    report = report_fixed_ver(installed_version:webVer, fixed_version:fix);
+    report = report_fixed_ver(installed_version:webVer, fixed_version:"8.5.0 Cumulative Fix 08 (CF08) or later");
     security_message(data:report, port:webPort);
     exit(0);
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_kb4019113.nasl 6231 2017-05-29 09:29:50Z teissa $
+# $Id: gb_dotnet_framework_kb4019113.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Microsoft .NET Framework Security Bypass Vulnerability (4019113)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811038");
-  script_version("$Revision: 6231 $");
+  script_version("$Revision: 7582 $");
   script_cve_id("CVE-2017-0248");
   script_bugtraq_id(98117);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:29:50 +0200 (Mon, 29 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-05-11 12:37:20 +0530 (Thu, 11 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Security Bypass Vulnerability (4019113)");
@@ -138,7 +138,7 @@ foreach item (registry_enum_keys(key:key))
       ##https://support.microsoft.com/en-us/help/4014506
       key1 = "SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Client\";
       brkVer = registry_get_sz(key:key1, item:"Version");
-      if((brkVer == "4.6.01590" || brkVer == "4.6.01586" ) && sysdllVer =~ "(^4\.6)")
+      if((brkVer == "4.6.01590" || brkVer == "4.6.01586" ) && dllVer =~ "(^4\.6)")
       {
         if(version_in_range(version:dllVer, test_version:"4.6", test_version2:"4.6.1646"))
         {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_office_suite_ms16-015.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_office_suite_ms16-015.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Microsoft Office Suite Remote Code Execution Vulnerabilities (3134226)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807302");
-  script_version("$Revision: 5850 $");
+  script_version("$Revision: 7582 $");
   script_cve_id("CVE-2016-0022", "CVE-2016-0052", "CVE-2016-0053", "CVE-2016-0054",
                 "CVE-2016-0055", "CVE-2016-0056");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-02-10 10:23:22 +0530 (Wed, 10 Feb 2016)");
   script_name("Microsoft Office Suite Remote Code Execution Vulnerabilities (3134226)");
 
@@ -85,7 +85,6 @@ include("secpod_smb_func.inc");
 
 exeVer = "";
 InsPath = "";
-offsubver = "";
 
 ## MS Office 2007,2010, 2015
 if(get_kb_item("MS/Office/Ver") =~ "^(12|14|15).*")
@@ -96,7 +95,7 @@ if(get_kb_item("MS/Office/Ver") =~ "^(12|14|15).*")
   if(InsPath)
   {
     ## Get Version from Mso.dll
-    offPath = InsPath + "\Microsoft Shared\" + "Office12";
+    offPath = InsPath + "\Microsoft Shared\Office12";
 
     exeVer = fetch_file_version(sysPath:offPath, file_name:"Mso.dll");
     if(exeVer)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_nport_mult_vuln.nasl 5674 2017-03-22 09:41:01Z ckuerste $
+# $Id: gb_moxa_nport_mult_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Moxa NPort Devices Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106589");
-  script_version("$Revision: 5674 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-22 10:41:01 +0100 (Wed, 22 Mar 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-02-16 09:18:30 +0700 (Thu, 16 Feb 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -83,7 +83,7 @@ compromise of an affected system.");
 5600-8-DTL Series, 6x50 Series and IA5450A.");
 
   script_tag(name: "solution", value: "Moxa has released new firmware versions which addresses the identified
-vulnerabilites.");
+vulnerabilities.");
 
   script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-16-336-02");
 

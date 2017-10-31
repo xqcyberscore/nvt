@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: 4images_171_directory_traversal.nasl 6076 2017-05-05 18:03:36Z cfi $
+# $Id: 4images_171_directory_traversal.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # 4Images <= 1.7.1 Directory Traversal Vulnerability
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:4homepages:4images";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.21020");
-  script_version("$Revision: 6076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 20:03:36 +0200 (Fri, 05 May 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -75,6 +75,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

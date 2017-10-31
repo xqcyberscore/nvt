@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdx_38718.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_httpdx_38718.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # httpdx Multiple Remote Denial Of Service Vulnerabilities
 #
@@ -35,8 +35,8 @@ httpdx 1.5.3b is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(100534);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 7573 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-03-15 19:33:39 +0100 (Mon, 15 Mar 2010)");
  script_bugtraq_id(38718);
  script_tag(name:"cvss_base", value:"5.0");
@@ -64,7 +64,7 @@ if(!ftpPort){
   ftpPort = 21;
 }
 
-if(get_kb_item('ftp/'+port+'/broken'))exit(0);
+if(get_kb_item('ftp/'+ftpPort+'/broken'))exit(0);
 
 if(!get_port_state(ftpPort)){
   exit(0);

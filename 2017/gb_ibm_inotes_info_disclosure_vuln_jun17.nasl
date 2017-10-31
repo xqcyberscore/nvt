@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_inotes_info_disclosure_vuln_jun17.nasl 6400 2017-06-22 05:47:08Z santu $
+# $Id: gb_ibm_inotes_info_disclosure_vuln_jun17.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM iNotes SVG Keylogger Information Disclosure Vulnerability - Jun17
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811131");
-  script_version("$Revision: 6400 $");
+  script_version("$Revision: 7575 $");
   script_cve_id("CVE-2017-1214");
   script_bugtraq_id(98993);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 07:47:08 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-06-21 15:24:35 +0530 (Wed, 21 Jun 2017)");
   script_name("IBM iNotes SVG Keylogger Information Disclosure Vulnerability - Jun17");
 
@@ -70,9 +70,9 @@ if(description)
   exit(0);
 }
 
-
-include("host_details.inc");
 include("version_func.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
+include("host_details.inc");
 
 ## Variable Initialization
 domVer = "";

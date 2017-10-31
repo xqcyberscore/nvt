@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_epesi_stored_xss_vuln.nasl 7443 2017-10-16 13:18:35Z asteins $
+# $Id: gb_epesi_stored_xss_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # EPESI Multiple Stored XSS Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:telaxus:epesi";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112083");
-  script_version("$Revision: 7443 $");
+  script_version("$Revision: 7585 $");
   script_cve_id("CVE-2017-14712", "CVE-2017-14713", "CVE-2017-14714", "CVE-2017-14715", "CVE-2017-14716", "CVE-2017-14717");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-16 15:18:35 +0200 (Mon, 16 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-16 13:53:00 +0200 (Mon, 16 Oct 2017)");
   script_name("EPESI Multiple Stored XSS Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -46,7 +46,7 @@ if(description)
   script_xref(name:"URL", value:"https://forum.epesibim.com/d/4956-security-issue-multiple-stored-xss-in-epesi-version-1-8-2-rev20170830");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42950/");
 
-  script_tag(name:"summary", value:"EPESI is prone to multiple stored cross-site scripting (XSS) vulnerabilites in various parameters.");
+  script_tag(name:"summary", value:"EPESI is prone to multiple stored cross-site scripting (XSS) vulnerabilities in various parameters.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue will allow an auhenticated remote attacker to store persistently executable scripts inside the application.");
 

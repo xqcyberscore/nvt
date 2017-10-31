@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_dos_vuln.nasl 6044 2017-04-28 08:14:10Z teissa $
+# $Id: gb_asterisk_dos_vuln.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # Asterisk Open Source and Certified Asterisk RTP Resource Exhaustion Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107148");
-  script_version("$Revision: 6044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 10:14:10 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 7571 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-04-18 10:44:46 +0200 (Tue, 18 Apr 2017)");
   script_cve_id("CVE-2016-7551");
 
@@ -73,11 +73,11 @@ include("host_details.inc");
 include("version_func.inc");
 include("revisions-lib.inc");
 
-if(!Port = get_app_port(cpe:CPE)){
+if(!port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!Ver = get_app_version(cpe:CPE, port: port)){
+if(!version = get_app_version(cpe:CPE, port: port)){
   exit(0);
 }
 

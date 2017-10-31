@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_iframe_admin_pages_plugin_xss_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
+# $Id: gb_wordpress_iframe_admin_pages_plugin_xss_vuln.nasl 7572 2017-10-26 08:08:35Z cfischer $
 #
 # WordPress iFrame Admin Pages Plugin 'url' Parameter XSS Vulnerability
 #
@@ -50,11 +50,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802855");
-  script_version("$Revision: 5841 $");
+  script_version("$Revision: 7572 $");
   script_bugtraq_id(53522);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 10:08:35 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-05-16 15:26:57 +0530 (Wed, 16 May 2012)");
   script_name("WordPress iFrame Admin Pages Plugin 'url' Parameter XSS Vulnerability");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53522");
@@ -90,7 +90,7 @@ ifReq = "";
 ifRes = "";
 
 if(!port = get_app_port(cpe:CPE))exit(0);
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 host = http_host_name(port:port);
 

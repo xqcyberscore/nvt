@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_scalance_multiple_vuln_05_13.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_siemens_scalance_multiple_vuln_05_13.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
-# Siemens Scalance X200 Series Switches Multiple Vulnerabillities.
+# Siemens Scalance X200 Series Switches Multiple Vulnerabilities.
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -52,16 +52,16 @@ if (description)
  script_cve_id("CVE-2013-3634","CVE-2013-3633");
  script_tag(name:"cvss_base", value:"8.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
- script_version ("$Revision: 6104 $");
+ script_version ("$Revision: 7585 $");
 
- script_name("Siemens Scalance X200 Series Switches Multiple Vulnerabillities");
+ script_name("Siemens Scalance X200 Series Switches Multiple Vulnerabilities");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60165");
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60168");
  script_xref(name:"URL", value:"http://subscriber.communications.siemens.com/");
  script_xref(name:"URL", value:"http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-170686.pdf");
  
- script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2013-05-30 17:50:28 +0200 (Thu, 30 May 2013)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");

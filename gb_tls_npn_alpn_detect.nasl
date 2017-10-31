@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tls_npn_alpn_detect.nasl 6664 2017-07-11 10:20:11Z cfischer $
+# $Id: gb_tls_npn_alpn_detect.nasl 7578 2017-10-26 11:00:21Z cfischer $
 #
 # SSL/TLS: NPN / ALPN Extension and Protocol Support Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108099");
-  script_version("$Revision: 6664 $");
+  script_version("$Revision: 7578 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 12:20:11 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:00:21 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 11:00:00 +0100 (Wed, 15 Mar 2017)");
   script_name("SSL/TLS: NPN / ALPN and Protocol Support Extension Detection");
   script_category(ACT_GATHER_INFO);
@@ -57,6 +57,7 @@ if(description)
   exit(0);
 }
 
+include("mysql.inc"); # For recv_mysql_server_handshake() in open_ssl_socket()
 include("http_func.inc");
 include("misc_func.inc");
 include("byte_func.inc");

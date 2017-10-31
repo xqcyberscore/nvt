@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_browser_rejector_plugin_rfi_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_wordpress_browser_rejector_plugin_rfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # WordPress Browser Rejector Plugin Remote File Inclusion Vulnerability
 #
@@ -48,11 +48,11 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6104 $");
+  script_version("$Revision: 7577 $");
   script_bugtraq_id(57220);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-01-17 14:17:27 +0530 (Thu, 17 Jan 2013)");
   script_name("WordPress Browser Rejector Plugin Remote File Inclusion Vulnerability");
 
@@ -69,10 +69,7 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

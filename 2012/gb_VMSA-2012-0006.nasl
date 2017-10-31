@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2012-0006.nasl 5956 2017-04-14 09:02:12Z teissa $
+# $Id: gb_VMSA-2012-0006.nasl 7583 2017-10-26 12:07:01Z cfischer $
 #
 # VMSA-2012-0006 VMware ESXi and ESX address several security issues
 #
@@ -70,12 +70,12 @@ if (description)
  script_cve_id("CVE-2012-1515","CVE-2011-2482","CVE-2011-3191","CVE-2011-4348","CVE-2011-4862");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5956 $");
+ script_version ("$Revision: 7583 $");
  script_name("VMSA-2012-0006 VMware ESXi and ESX address several security issues");
 
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 14:07:01 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-04-02 10:53:01 +0100 (Mon, 02 Apr 2012)");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
@@ -89,6 +89,7 @@ if (description)
  exit(0);
 }
 
+include("version_func.inc"); # Used in _esxi_patch_missing()
 include("vmware_esx.inc");
 
 if(!get_kb_item('VMware/ESXi/LSC'))exit(0);

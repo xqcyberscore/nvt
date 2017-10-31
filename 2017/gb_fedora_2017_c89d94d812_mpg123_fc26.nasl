@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_c89d94d812_mpg123_fc26.nasl 7237 2017-09-22 15:00:35Z cfischer $
+# $Id: gb_fedora_2017_c89d94d812_mpg123_fc26.nasl 7593 2017-10-27 10:22:01Z cfischer $
 #
 # Fedora Update for mpg123 FEDORA-2017-c89d94d812
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873442");
-  script_version("$Revision: 7237 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 17:00:35 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 7593 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-27 12:22:01 +0200 (Fri, 27 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-21 07:36:51 +0200 (Thu, 21 Sep 2017)");
   script_cve_id("CVE-2017-10683", "CVE-2017-11126", "CVE-2017-9545", "CVE-2017-12797");
   script_tag(name:"cvss_base", value:"5.0");
@@ -68,7 +68,7 @@ if(release == NULL){
 if(release == "FC26")
 {
 
-  if ((res = isrpmvuln(pkg:"mpg123", rpm:"mpg123~1.26.6~1.fc26", rls:"FC26")) != NULL)
+  if ((res = isrpmvuln(pkg:"mpg123", rpm:"mpg123~1.25.6~1.fc26", rls:"FC26")) != NULL)
   {
     security_message(data:res);
     exit(0);

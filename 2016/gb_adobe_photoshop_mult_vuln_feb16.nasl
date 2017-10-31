@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_mult_vuln_feb16.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_adobe_photoshop_mult_vuln_feb16.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Adobe Photoshop CC Multiple Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:photoshop_cc2015";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806869");
-  script_version("$Revision: 5675 $");
+  script_version("$Revision: 7573 $");
   script_cve_id("CVE-2016-0951", "CVE-2016-0952", "CVE-2016-0953");
   script_bugtraq_id(83114);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-02-15 13:37:52 +0530 (Mon, 15 Feb 2016)");
   script_name("Adobe Photoshop CC Multiple Vulnerabilities (Windows)");
 
@@ -94,15 +94,13 @@ if(!prodVer = get_app_version(cpe:CPE))
 if(version_is_less(version:prodVer, test_version:"16.1.2"))
 {
   fix = "16.1.2 (2015.1.2)";
-  VULN = True;
 }
 else if(version_is_less(version:prodVer, test_version:"15.2.4"))
 {
   fix = "15.2.4 (2014.2.4)";
-  VULN = True;
 }
 
-if(VULN)
+if(fix)
 {
   report = report_fixed_ver(installed_version:prodVer, fixed_version:fix);
   security_message(data:report);

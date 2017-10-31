@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_efront_rfi_vuln.nasl 5631 2017-03-20 15:46:35Z cfi $
+# $Id: secpod_efront_rfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # eFront 'database.php' Remote File Inclusion Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:efrontlearning:efront';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901045");
-  script_version("$Revision: 5631 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:46:35 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-10-31 09:54:01 +0100 (Sat, 31 Oct 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -70,7 +70,7 @@ if(description)
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

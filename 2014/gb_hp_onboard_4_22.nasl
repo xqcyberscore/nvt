@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_onboard_4_22.nasl 6756 2017-07-18 13:31:14Z cfischer $
+# $Id: gb_hp_onboard_4_22.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # HP BladeSystem c-Class Onboard Administrator (OA) running OpenSSL, Remote Disclosure of Information
 #
@@ -48,7 +48,7 @@ if (description)
  script_cve_id("CVE-2014-0224");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6756 $");
+ script_version ("$Revision: 7573 $");
 
  script_name("HP BladeSystem c-Class Onboard Administrator Remote Disclosure of Information");
 
@@ -56,7 +56,7 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/67899");
  script_xref(name:"URL", value:"http://h20566.www2.hp.com/portal/site/hpsc/template.PAGE/public/kb/docDisplay/?spf_p.tpst=kbDocDisplay&spf_p.prp_kbDocDisplay=wsrp-navigationalState%3DdocId%253Demr_na-c04351097-1%257CdocLocale%253D%257CcalledBy%253D&javax.portlet.begCacheTok=com.vignette.cachetoken&javax.portlet.endCacheTok=com.vignette.cachetoken");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2014-07-04 10:53:22 +0200 (Fri, 04 Jul 2014)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
@@ -79,7 +79,7 @@ include("host_details.inc");
 include("version_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! ver = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( version_is_less( version:vers, test_version:"4.22" ) )
 {

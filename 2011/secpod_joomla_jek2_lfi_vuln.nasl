@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_jek2_lfi_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: secpod_joomla_jek2_lfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Joomla Component JE K2 Story Submit Local File Inclusion Vulnerability
 #
@@ -46,8 +46,8 @@ prone to local file inclusion vulnerability.";
 if(description)
 {
   script_id(902542);
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -70,7 +70,7 @@ if(description)
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");

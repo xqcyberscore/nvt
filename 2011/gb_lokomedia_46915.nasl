@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lokomedia_46915.nasl 5625 2017-03-20 15:02:04Z cfi $
+# $Id: gb_lokomedia_46915.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # CMS Lokomedia 'downlot.php' Arbitrary File Download Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103121");
-  script_version("$Revision: 5625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:02:04 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-03-21 13:19:58 +0100 (Mon, 21 Mar 2011)");
   script_bugtraq_id(46915);
   script_tag(name:"cvss_base", value:"5.0");
@@ -60,6 +60,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
    

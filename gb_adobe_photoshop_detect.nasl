@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_detect.nasl 7083 2017-09-08 11:53:47Z teissa $
+# $Id: gb_adobe_photoshop_detect.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Adobe Photoshop Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801224");
-  script_version("$Revision: 7083 $");
+  script_version("$Revision: 7582 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-08 13:53:47 +0200 (Fri, 08 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-06-15 06:05:27 +0200 (Tue, 15 Jun 2010)");
   script_name("Adobe Photoshop Version Detection");
 
@@ -111,6 +111,8 @@ if(appPath)
 if(!registry_key_exists(key:key)){
     exit(0);
 }
+
+checkduplicate = "";
 
 foreach item (registry_enum_keys(key:key))
 {

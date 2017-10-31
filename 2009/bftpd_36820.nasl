@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bftpd_36820.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: bftpd_36820.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Bftpd Unspecified Remote Denial of Service Vulnerability
 #
@@ -38,8 +38,8 @@ tag_solution = "Updates are available. Please see the references for details.";
 if (description)
 {
  script_id(100320);
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_version("$Revision: 7573 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2009-10-28 11:13:14 +0100 (Wed, 28 Oct 2009)");
  script_bugtraq_id(36820);
  script_tag(name:"cvss_base", value:"5.0");
@@ -71,7 +71,7 @@ if(!ftpPort){
   ftpPort = 21;
 }
 
-if(get_kb_item('ftp/'+port+'/broken'))exit(0);
+if(get_kb_item('ftp/'+ftpPort+'/broken'))exit(0);
 
 if(!get_port_state(ftpPort)){
   exit(0);

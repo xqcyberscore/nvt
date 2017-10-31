@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pbboard_page_param_lfi_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
+# $Id: gb_pbboard_page_param_lfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # PBBoard 'page' Parameter Local File Inclusion Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802631");
-  script_version("$Revision: 5814 $");
+  script_version("$Revision: 7577 $");
   script_bugtraq_id(53710);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-06-01 10:53:55 +0530 (Fri, 01 Jun 2012)");
   script_name("PBBoard 'page' Parameter Local File Inclusion Vulnerability");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53710");
@@ -67,6 +67,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

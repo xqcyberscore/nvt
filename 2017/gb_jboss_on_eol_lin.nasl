@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_on_eol_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_jboss_on_eol_lin.nasl 7570 2017-10-26 07:33:23Z asteins $
 #
 # JBoss Operations Network End of Life Detection (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113020");
-  script_version("$Revision: 7543 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 7570 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:33:23 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-16 14:09:10 +0200 (Mon, 16 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -67,7 +67,7 @@ if( description )
   exit( 0 );
 }
 
-CPE = "cpe:/a:red_hat:jboss_operations_network";
+CPE = "cpe:/a:redhat:jboss_operations_network";
 
 include( "misc_func.inc" );
 include( "products_eol.inc" );

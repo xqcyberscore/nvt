@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_memcached_info_disclosure_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_memcached_info_disclosure_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Memcached Information Disclosure Vulnerabilities
 #
@@ -41,8 +41,8 @@ tag_summary = "The host is running Memcached and is prone to Information Disclos
 if(description)
 {
   script_id(800715);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-05-18 09:37:31 +0200 (Mon, 18 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -77,5 +77,5 @@ if(memcachedVer == NULL){
 
 # Grep for Memcached version prior to 1.2.8
 if(version_is_less(version:memcachedVer, test_version:"1.2.8")){
-  security_message(memPort);
+  security_message(port:0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edirectory_mult_vuln_03_17.nasl 5806 2017-03-31 07:21:48Z teissa $
+# $Id: gb_novell_edirectory_mult_vuln_03_17.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # Novell eDirectory Multiple Vulnerabilities - Mar17
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140224");
-  script_version("$Revision: 5806 $");
+  script_version("$Revision: 7571 $");
   script_cve_id("CVE-2016-9167", "CVE-2016-9168");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 09:21:48 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-03-30 12:28:05 +0200 (Thu, 30 Mar 2017)");
   script_name("Novell eDirectory Multiple Vulnerabilities - Mar17");
   script_tag(name:"summary", value:"This host is installed with Novell eDirectory
@@ -83,7 +83,7 @@ revision = get_kb_item( "ldap/eDirectory/" + port + "/build" );
 revision = str_replace( string:revision, find:".", replace:"" );
 
 if( version_is_less( version:major, test_version:"9.0.2" ) ||
-    ( version == "9.0.2" && int( revision ) < 4000456 )
+    ( major == "9.0.2" && int( revision ) < 4000456 )
   )
 {
   report = 'Installed version: ' + invers + '\n' +

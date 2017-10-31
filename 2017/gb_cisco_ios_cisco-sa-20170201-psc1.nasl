@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20170201-psc1.nasl 5441 2017-02-28 08:41:33Z cfi $
+# $Id: gb_cisco_ios_cisco-sa-20170201-psc1.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # Cisco Industrial Ethernet 2000 Series Switches CIP Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-3812");
  script_tag(name:"cvss_base", value:"7.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 5441 $");
+ script_version("$Revision: 7571 $");
 
  script_name("Cisco Industrial Ethernet 2000 Series Switches CIP Denial of Service Vulnerability");
 
@@ -56,7 +56,7 @@ the targeted device due to low system memory.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-02-28 09:41:33 +0100 (Tue, 28 Feb 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name: "creation_date", value: "2017-02-09 16:05:18 +0700 (Thu, 09 Feb 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -72,6 +72,8 @@ include("version_func.inc");
 model = get_kb_item("cisco_ios/image");
 if (!model || model !~ "^IE2000")
   exit(99);
+
+if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
 if (version == "15.2(5.4.32i)E2") {
   report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");

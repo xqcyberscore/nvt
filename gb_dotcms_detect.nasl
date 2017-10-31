@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_detect.nasl 7537 2017-10-24 05:56:44Z ckuersteiner $
+# $Id: gb_dotcms_detect.nasl 7570 2017-10-26 07:33:23Z asteins $
 #
 # dotCMS Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106114");
- script_version ("$Revision: 7537 $");
- script_tag(name: "last_modification", value: "$Date: 2017-10-24 07:56:44 +0200 (Tue, 24 Oct 2017) $");
+ script_version ("$Revision: 7570 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:33:23 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name: "creation_date", value: "2016-07-05 08:55:18 +0700 (Tue, 05 Jul 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,7 @@ extract its version");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_family("Product detection");
  script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80, 8080);
+ script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
  script_xref(name: "URL", value: "http://dotcms.com");
@@ -91,6 +91,13 @@ foreach dir (make_list_unique("/", "/dotcms", "/dotCMS", cgi_dirs(port: port))) 
           concUrl = url;
           break;
         }
+      }
+
+      # Version info might be appended to .css, .js and/or .jsp files
+      if (version == "unknown") {
+          ver = eregmatch(pattern: '\\.(css|js|jsp)\\?b=([0-9\\.]+)\\";', string: res);
+          version = ver[2];
+          concUrl = url;
       }
     }
 

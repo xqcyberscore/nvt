@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CultBooking_45965.nasl 5717 2017-03-24 13:02:24Z cfi $
+# $Id: gb_CultBooking_45965.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # CultBooking 'cultbooking.php' Local File Include and Multiple Cross Site Scripting Vulnerabilities
 #
@@ -43,8 +43,8 @@ CultBooking 2.0.4 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103042);
- script_version("$Revision: 5717 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-01-25 13:20:03 +0100 (Tue, 25 Jan 2011)");
  script_bugtraq_id(45965);
  script_tag(name:"cvss_base", value:"5.0");
@@ -65,6 +65,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

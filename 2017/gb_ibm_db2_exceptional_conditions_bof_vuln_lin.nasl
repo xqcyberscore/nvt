@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_exceptional_conditions_bof_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_ibm_db2_exceptional_conditions_bof_vuln_lin.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # IBM DB2 'Exceptional Conditions' Buffer Overflow Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811404");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 7571 $");
   script_cve_id("CVE-2017-1105");
   script_bugtraq_id(99271);
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-06-29 13:12:55 +0530 (Thu, 29 Jun 2017)");
   script_name("IBM DB2 'Exceptional Conditions' Buffer Overflow Vulnerability (Linux)");
 
@@ -121,7 +121,7 @@ else if(ibmVer =~ "^1101\.*")
   }
 }
 
-if(VULN)
+if(fix)
 {
   report = report_fixed_ver(installed_version:ibmVer, fixed_version:fix);
   security_message(data:report, port:ibmPort);

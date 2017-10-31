@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_os_detection.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_snmp_os_detection.nasl 7598 2017-10-27 13:05:40Z cfischer $
 #
 # SNMP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103429");
-  script_version("$Revision: 7236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 7598 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-27 15:05:40 +0200 (Fri, 27 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-02-17 10:17:12 +0100 (Fri, 17 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -493,9 +493,13 @@ if( "WatchGuard Fireware" >< sysdesc ) {
 }
 
 if( sysdesc =~ 'HP Comware (Platform )?Software' ) {
-
   register_and_report_os( os:'HP Comware OS', cpe:"cpe:/o:hp:comware_os", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
 
+# Assume Linux/Unix for this device
+if( "Triax TDX" >< sysdesc ) {
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecava_integraxor_dir_trav_vuln.nasl 5652 2017-03-21 10:14:46Z cfi $
+# $Id: gb_ecava_integraxor_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Ecava IntegraXor Directory Traversal Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:ecava:integraxor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801496");
-  script_version("$Revision: 5652 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-12-27 09:55:05 +0100 (Mon, 27 Dec 2010)");
   script_cve_id("CVE-2010-4598");
   script_bugtraq_id(45535);
@@ -64,7 +64,7 @@ if(description)
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

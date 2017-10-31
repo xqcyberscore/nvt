@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plone_60247.nasl 6755 2017-07-18 12:55:56Z cfischer $
+# $Id: gb_plone_60247.nasl 7576 2017-10-26 10:01:33Z cfischer $
 #
 # PloneFormGen Arbitrary Code Execution Vulnerability
 #
@@ -44,7 +44,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(60247);
- script_version ("$Revision: 6755 $");
+ script_version ("$Revision: 7576 $");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
 
@@ -53,7 +53,7 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60247");
  script_xref(name:"URL", value:"http://plone.org/");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:01:33 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2013-06-12 11:35:33 +0200 (Wed, 12 Jun 2013)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -67,6 +67,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

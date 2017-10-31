@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssl_funcs.inc 7252 2017-09-25 15:28:16Z cfischer $
+# $Id: ssl_funcs.inc 7578 2017-10-26 11:00:21Z cfischer $
 #
 # Implementation of common ssl functions
 #
@@ -25,7 +25,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7252 $
+# $Revision: 7578 $
 #
 ###############################################################################
 
@@ -1357,6 +1357,7 @@ function data_len( data ) {
   return raw_string( data_len / 256, data_len % 256 );
 }
 
+# nb: Include mysql.inc for recv_mysql_server_handshake() if you're using this function
 function open_ssl_socket( port )
 {
   local_var soc, port, starttls_typ, starttls, st, search, stls;
@@ -1460,8 +1461,6 @@ function open_ssl_socket( port )
     }
     else if ( starttls_typ == "mysql" )
     {
-
-      if( ! defined_func( "recv_mysql_server_handshake" ) ) include("mysql.inc");
 
       buf = recv_mysql_server_handshake( soc:soc );
 

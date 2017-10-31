@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_mult_dos_vuln_aug17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_clamav_mult_dos_vuln_aug17_win.nasl 7590 2017-10-27 08:19:44Z asteins $
 #
 # ClamAV Multiple Denial of Service Vulnerabilities Aug17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811575");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 7590 $");
   script_cve_id("CVE-2017-6418", "CVE-2017-6419", "CVE-2017-6420", "CVE-2017-11423");
   script_bugtraq_id(100154);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-27 10:19:44 +0200 (Fri, 27 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-08 14:13:11 +0530 (Tue, 08 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ClamAV Multiple Denial of Service Vulnerabilities Aug17 (Windows)");
@@ -67,11 +67,9 @@ if(description)
 
   script_tag(name:"affected", value:"ClamAV version 0.99.2 on Windows");
 
-  script_tag(name:"solution", value:"No solution or patch is available as 
-  of 11th September, 2017. Information regarding this issue will be updated once the 
-  solution details are available.");
+  script_tag(name:"solution", value:"Update to version 0.99.3-beta1. For further information head to https://github.com/vrtadmin/clamav-devel");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "https://github.com/vrtadmin/clamav-devel/commit/a83773682e856ad6529ba6db8d1792e6d515d7f1");
   script_category(ACT_GATHER_INFO);
@@ -103,7 +101,7 @@ if(!clamVer = get_app_version(cpe:CPE, port:clamPort)){
 ##Check for vulnerable version
 if(clamVer == "0.99.2")
 {
-  report = report_fixed_ver(installed_version:clamVer, fixed_version:"NoneAvailable");
+  report = report_fixed_ver(installed_version:clamVer, fixed_version:"0.99.3-beta1");
   security_message(data:report, port:clamPort);
   exit(0);
 }

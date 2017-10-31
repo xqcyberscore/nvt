@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_inotes_bof_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_ibm_domino_inotes_bof_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM Lotus Domino iNotes Buffer Overflow Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6115 $");
+  script_version("$Revision: 7575 $");
   script_cve_id("CVE-2013-4068");
   script_bugtraq_id(62481);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:C/I:C/A:C");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-12-05 17:56:32 +0530 (Thu, 05 Dec 2013)");
   script_name("IBM Lotus Domino iNotes Buffer Overflow Vulnerability");
 
@@ -84,10 +84,9 @@ http://www-01.ibm.com/support/docview.wss?uid=swg21649476";
   exit(0);
 }
 
-
-include("host_details.inc");
 include("version_func.inc");
-include("global_settings.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
+include("host_details.inc");
 
 ## Variable Initialization
 domVer = "";

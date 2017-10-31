@@ -25,7 +25,7 @@
 #
 
 include("revisions-lib.inc");
-tag_insight = "Remote buffer overflow vulnerabilites have been found in Courier-IMAP and
+tag_insight = "Remote buffer overflow vulnerabilities have been found in Courier-IMAP and
 Courier MTA. These exploits may allow the execution of arbitrary code,
 allowing unauthorized access to a vulnerable system.";
 tag_solution = "All users should upgrade to current versions of the affected packages:
@@ -52,8 +52,8 @@ advisory GLSA 200403-06.";
 if(description)
 {
  script_id(54531);
- script_version("$Revision: 6596 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:21:37 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 7585 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
  script_bugtraq_id(9845);
  script_cve_id("CVE-2004-0224");

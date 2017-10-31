@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022725.nasl 6853 2017-08-04 11:45:08Z santu $
+# $Id: gb_ms_kb4022725.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
-# Microsoft Windows Multiple Vulnerabilites (KB4022725)
+# Microsoft Windows Multiple Vulnerabilities (KB4022725)
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811167");
-  script_version("$Revision: 6853 $");
+  script_version("$Revision: 7585 $");
   script_cve_id("CVE-2017-8474", "CVE-2017-8524", "CVE-2017-8527", "CVE-2017-8475", 
                 "CVE-2017-8476", "CVE-2017-8529", "CVE-2017-8530", "CVE-2017-0282", 
                 "CVE-2017-0283", "CVE-2017-8477", "CVE-2017-8478", "CVE-2017-8531", 
@@ -53,9 +53,9 @@ if(description)
                     98818, 98843, 98833, 98895);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 13:45:08 +0200 (Fri, 04 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-06-14 13:30:05 +0530 (Wed, 14 Jun 2017)");
-  script_name("Microsoft Windows Multiple Vulnerabilites (KB4022725)");
+  script_name("Microsoft Windows Multiple Vulnerabilities (KB4022725)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4022725");

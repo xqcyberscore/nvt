@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_imc_mult_vuln.nasl 6991 2017-08-23 08:57:18Z santu $
+# $Id: gb_hp_imc_mult_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # HP Intelligent Management Center (iMC) Multiple Vulnerabilities
 # 
@@ -29,7 +29,7 @@ CPE = "cpe:/a:hp:intelligent_management_center";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809283");
-  script_version("$Revision: 6991 $");
+  script_version("$Revision: 7573 $");
   script_cve_id("CVE-2012-5201", "CVE-2012-5202", "CVE-2012-5203", "CVE-2012-5204",
                 "CVE-2012-5205", "CVE-2012-5206", "CVE-2012-5207", "CVE-2012-5208",
                 "CVE-2012-5209", "CVE-2012-5210", "CVE-2012-5211", "CVE-2012-5212",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(58673, 58675, 58672, 58676);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-23 10:57:18 +0200 (Wed, 23 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-09-22 18:02:02 +0530 (Thu, 22 Sep 2016)");
   script_name("HP Intelligent Management Center (iMC) Multiple Vulnerabilities");
 
@@ -88,7 +88,7 @@ if(!hpVer = get_app_version(cpe:CPE)){
 }
 
 ## Check For Version less than 5.2 E0401
-if(revcomp(a: hpver, b: "5.2.E0401") < 0)
+if(revcomp(a: hpVer, b: "5.2.E0401") < 0)
 {
   report = report_fixed_ver(installed_version:hpVer, fixed_version:"5.2 E0401");
   security_message(data:report);

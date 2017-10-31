@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_direct_news_38975.nasl 5760 2017-03-29 10:24:17Z cfi $
+# $Id: gb_direct_news_38975.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Direct News Multiple Remote File Include Vulnerabilities
 #
@@ -36,8 +36,8 @@ affected as well.";
 if(description)
 {
  script_id(100556);
- script_version("$Revision: 5760 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-03-29 12:55:36 +0200 (Mon, 29 Mar 2010)");
  script_bugtraq_id(38975);
  script_cve_id("CVE-2010-1342");
@@ -60,6 +60,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

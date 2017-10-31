@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_soappy_xxe_05_14.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_soappy_xxe_05_14.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # SOAPpy XML External Entities Information Disclosure Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105017");
- script_version ("$Revision: 6735 $");
+ script_version ("$Revision: 7577 $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
@@ -36,7 +36,7 @@ if (description)
 
  script_xref(name:"URL", value:"http://www.pnigos.com/?p=260");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2014-05-06 11:10:06 +0200 (Tue, 06 May 2014)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -60,6 +60,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

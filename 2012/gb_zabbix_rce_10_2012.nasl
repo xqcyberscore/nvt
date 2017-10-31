@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_rce_10_2012.nasl 6720 2017-07-13 14:25:27Z cfischer $
+# $Id: gb_zabbix_rce_10_2012.nasl 7576 2017-10-26 10:01:33Z cfischer $
 #
 # ZABBIX 'locales.php' 'extlang' Parameter Remote Code Execution
 #
@@ -41,7 +41,7 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 6720 $");
+ script_version ("$Revision: 7576 $");
  script_tag(name:"cvss_base", value:"9.7");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:C");
 
@@ -50,7 +50,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.zabbix.com/");
  script_xref(name : "URL" , value : "http://www.ush.it/team/ush/hack-zabbix_162/adv.txt");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:01:33 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-10-02 10:27:14 +0200 (Tue, 02 Oct 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -64,6 +64,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

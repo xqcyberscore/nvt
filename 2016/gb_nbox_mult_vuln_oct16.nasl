@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nbox_mult_vuln_oct16.nasl 5261 2017-02-10 13:25:38Z teissa $
+# $Id: gb_nbox_mult_vuln_oct16.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # NBOX Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:ntop:nbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809083");
-  script_version("$Revision: 5261 $");
+  script_version("$Revision: 7585 $");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:25:38 +0100 (Fri, 10 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-11-03 18:01:01 +0530 (Thu, 03 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NBOX Multiple Vulnerabilities");
@@ -59,7 +59,7 @@ if(description)
 
   script_tag(name:"affected", value:"NBOX version 2.3 through 2.5");
 
-  script_tag(name: "solution" , value:"Patches are available to fix these vulnerabilites, please refer to http://www.ntop.org/support/misc/security/ or contact the vendor at http://www.ntop.org");
+  script_tag(name: "solution" , value:"Patches are available to fix these vulnerabilities, please refer to http://www.ntop.org/support/misc/security/ or contact the vendor at http://www.ntop.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40201");

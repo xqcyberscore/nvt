@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_50362.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_joomla_50362.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Joomla YJ Contact us Component 'view' Parameter Local File Include Vulnerability
 #
@@ -38,8 +38,8 @@ also possible.";
 if (description)
 {
  script_id(103315);
- script_version("$Revision: 7029 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-10-26 13:58:20 +0200 (Wed, 26 Oct 2011)");
  script_bugtraq_id(50362);
  script_tag(name:"cvss_base", value:"5.1");
@@ -60,6 +60,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

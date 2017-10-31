@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_count_per_day_plugin_stored_xss_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
+# $Id: gb_wordpress_count_per_day_plugin_stored_xss_vuln.nasl 7572 2017-10-26 08:08:35Z cfischer $
 #
 # WordPress Count per Day Plugin 'note' Parameter Persistent XSS Vulnerability
 #
@@ -48,11 +48,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803009");
-  script_version("$Revision: 5841 $");
+  script_version("$Revision: 7572 $");
   script_bugtraq_id(55231);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 10:08:35 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-08-28 12:46:18 +0530 (Tue, 28 Aug 2012)");
   script_name("WordPress Count per Day Plugin 'note' Parameter Persistent XSS Vulnerability");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/20862/");
@@ -91,7 +91,7 @@ if(!port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port)){
+if(!dir = get_app_location(cpe:CPE, port:port)){
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-039.nasl 5346 2017-02-19 08:43:11Z cfi $
+# $Id: secpod_ms10-039.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Microsoft SharePoint Privilege Elevation Vulnerabilities (2028554)
 #
@@ -47,8 +47,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902069);
-  script_version("$Revision: 5346 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 09:43:11 +0100 (Sun, 19 Feb 2017) $");
+  script_version("$Revision: 7582 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:19:57 +0200 (Wed, 09 Jun 2010)");
   script_cve_id("CVE-2010-1257", "CVE-2010-1264");
   script_bugtraq_id(40409, 40559);
@@ -155,7 +155,7 @@ if(dllPath)
   dllPath += "web server extensions\12\BIN\bpa.common.dll";
   share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
   file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:dllPath);
-  dllver = GetVer(file:file, share:share);
+  dllVer = GetVer(file:file, share:share);
   if(dllVer)
   {
     ## Check for bpa.common.dll version < 8.0.669.0

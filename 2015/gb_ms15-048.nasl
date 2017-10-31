@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805178");
-  script_version("$Revision: 6391 $");
+  script_version("$Revision: 7582 $");
   script_cve_id("CVE-2015-1672", "CVE-2015-1673");
   script_bugtraq_id(74482, 74487);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-05-13 09:21:10 +0530 (Wed, 13 May 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerability (3057134)");
@@ -188,7 +188,7 @@ foreach item (registry_enum_keys(key:key))
       }
 
       # .NET Framework 4.5, 4.5.1, and 4.5.2 on Windows 8, and Windows Server 2012
-      if((hotfix_check_sp(win8:1, win8x64, win2012:1) > 0) &&
+      if((hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0) &&
          (version_in_range(version:dllVer, test_version:"4.0.30319.34000", test_version2:"4.0.30319.34249") ||
           version_in_range(version:dllVer, test_version:"4.0.30319.36000", test_version2:"4.0.30319.36285")))
       {
@@ -278,7 +278,7 @@ foreach item (registry_enum_keys(key:key))
       }
 
       # .NET Framework 4.5, 4.5.1, and 4.5.2 on Windows 8, and Windows Server 2012
-      if((hotfix_check_sp(win8:1, win8x64, win2012:1) > 0) &&
+      if((hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0) &&
          (version_in_range(version:dllVer2, test_version:"4.0.30319.34000", test_version2:"4.0.30319.34247") ||
           version_in_range(version:dllVer2, test_version:"4.0.30319.36000", test_version2:"4.0.30319.36282")))
       {

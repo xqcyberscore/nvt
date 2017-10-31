@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netdecision_mult_dir_trav_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_netdecision_mult_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # NetDecision Multiple Directory Traversal Vulnerabilities
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802618");
   script_bugtraq_id(52327);
-  script_version("$Revision: 6697 $");
+  script_version("$Revision: 7577 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-03-09 16:16:16 +0530 (Fri, 09 Mar 2012)");
   script_name("NetDecision Multiple Directory Traversal Vulnerabilities");
 
@@ -69,7 +69,7 @@ if(description)
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

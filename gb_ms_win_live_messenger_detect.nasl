@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_live_messenger_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_ms_win_live_messenger_detect.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Microsoft Windows Live Messenger Client Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800331");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 7582 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-01-08 07:43:30 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Windows Live Messenger Client Version Detection");
@@ -93,6 +93,9 @@ else if("x64" >< osArch){
                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
+checkduplicate = "";
+checkduplicate_path = "";
+
 foreach key (key_list)
 {
   foreach item (registry_enum_keys(key:key))
@@ -112,12 +115,12 @@ foreach key (key_list)
       if(livemgrVer)
       {
         ## Check if version is already set
-        if (livemgrVer + ", " >< checkduplicate && insPath + ", " >< checkduplicate_path){
+        if (livemgrVer + ", " >< checkduplicate && appLoc + ", " >< checkduplicate_path){
           continue;
         }
-        ##Assign detectted version value to checkduplicate so as to check in next loop iteration
+        ##Assign detected version value to checkduplicate so as to check in next loop iteration
         checkduplicate  += livemgrVer + ", ";
-        checkduplicate_path += insPath + ", ";
+        checkduplicate_path += appLoc + ", ";
  
         # Set KB for Windows Live Messenger
         set_kb_item(name:"MS/LiveMessenger/Ver", value:livemgrVer);

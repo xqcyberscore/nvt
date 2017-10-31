@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-021.nasl 6538 2017-07-05 11:38:27Z cfischer $
+# $Id: secpod_ms09-021.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Microsoft Office Excel Remote Code Execution Vulnerabilities (969462)
 #
@@ -45,8 +45,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(900670);
-  script_version("$Revision: 6538 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 13:38:27 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-06-12 17:18:17 +0200 (Fri, 12 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -80,25 +80,25 @@ include("version_func.inc");
 if(egrep(pattern:"^(9|10|11|12)\..*", string:get_kb_item("MS/Office/Ver")))
 {
   excelVer = get_kb_item("SMB/Office/Excel/Version");
-  if(xcelVer != NULL)
+  if(excelVer != NULL)
   {
     # Check for Office Excell-2000 9.0 < 9.0.0.8979
-    if(version_in_range(version:excelver, test_version:"9.0",
+    if(version_in_range(version:excelVer, test_version:"9.0",
                       test_version2:"9.0.0.8978")){
       security_message(0);
     }
     # Check for Office Excel-2002 10.0 < 10.0.6854.0
-    else if(version_in_range(version:excelver, test_version:"10.0",
+    else if(version_in_range(version:excelVer, test_version:"10.0",
                            test_version2:"10.0.6853.0")){
       security_message(0);
     }
     # Check for Office Excel-2003 11.0 < 11.0.8307.0
-    else if(version_in_range(version:excelver, test_version:"11.0",
+    else if(version_in_range(version:excelVer, test_version:"11.0",
                            test_version2:"11.0.8306.0")){
       security_message(0);
     }
     # Check for Office Excel-2007 12.0 < 12.0.6504.5001
-    else if(version_in_range(version:excelver, test_version:"12.0",
+    else if(version_in_range(version:excelVer, test_version:"12.0",
                            test_version2:"12.0.6504.5000")){
      security_message(0);
     }

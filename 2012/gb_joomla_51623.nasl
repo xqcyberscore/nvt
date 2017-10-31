@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_51623.nasl 6720 2017-07-13 14:25:27Z cfischer $
+# $Id: gb_joomla_51623.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Joomla! 'com_kp' Component 'controller' Parameter Local File Include Vulnerability
 #
@@ -44,14 +44,14 @@ if (description)
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
- script_version ("$Revision: 6720 $");
+ script_version ("$Revision: 7577 $");
 
  script_name("Joomla! 'com_kp' Component 'controller' Parameter Local File Include Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51623");
  script_xref(name : "URL" , value : "http://www.joomla.org");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-01-24 10:42:33 +0100 (Tue, 24 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -64,6 +64,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

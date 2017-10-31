@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eFront_38787.nasl 5652 2017-03-21 10:14:46Z cfi $
+# $Id: gb_eFront_38787.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # eFront 'langname' Parameter Local File Include Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:efrontlearning:efront';
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100546");
- script_version("$Revision: 5652 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-03-22 19:12:13 +0100 (Mon, 22 Mar 2010)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -66,6 +66,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_weak_policy_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_mantisbt_weak_policy_vuln_lin.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # MantisBT Weak Content Security Policy Vulnerability (Linux)
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106612");
-  script_version("$Revision: 7543 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 7571 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-02-20 13:33:44 +0700 (Mon, 20 Feb 2017)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
@@ -82,7 +82,7 @@ if (version_is_less(version: version, test_version: "1.3.1")) {
   exit(0);
 }
 
-if (vers =~ "2\.0\.0") {
+if (version =~ "2\.0\.0") {
   if (version_is_less(version: version, test_version: "2.0.0-beta2")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "2.0.0-beta2");
     security_message(port: port, data: report);

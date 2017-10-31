@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_authentication_info.nasl 7564 2017-10-25 13:53:55Z cfischer $
+# $Id: gb_ssh_authentication_info.nasl 7569 2017-10-26 07:04:30Z cfischer $
 #
 # SSH Authenticated Scan Info Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108162");
-  script_version("$Revision: 7564 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 15:53:55 +0200 (Wed, 25 Oct 2017) $");
+  script_version("$Revision: 7569 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:04:30 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-17 10:31:0 +0200 (Tue, 17 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,7 +56,7 @@ info_array = make_array();
 kb_array = make_array( "ssh/login/uname", "Response to 'uname -a' command",
                        "login/SSH/success", "Login successfull",
                        "no_linux_shell", "Login on a system without common commands like 'cat' or 'find'",
-                       "lsc/locate/broken", "locate: Command not available",
+                       "lsc/locate/available", "locate: Command available",
                        "ssh/cmd_exec_error", "Don't prepend '/bin/sh -c' to used commands",
                        "ssh/force/pty", "Commands are send via an pseudoterminal/pty",
                        "ssh/send_extra_ln", "Send an extra newline",
@@ -71,17 +71,18 @@ foreach kb_item( keys( kb_array ) ) {
   if( kb = get_kb_item( kb_item ) ) {
     if( kb == TRUE ) kb = "TRUE";
     info_array[kb_array[kb_item] + " (" + kb_item + ")"] = kb;
-    if( kb_item == "lsc/locate/broken" ) {
-      locate_broken = TRUE;
-      reason = get_kb_item( "lsc/locate/broken/reason" );
-      if( strlen( reason ) <= 0 ) reason = "Empty/no response (maybe the database is not initialized or locate is not installed)";
-      info_array["locate: Response to 'locate -S' command (lsc/locate/broken/reason)"] = reason;
-    }
   } else {
-    if( kb_item == "ssh/login/release" )
+    if( kb_item == "ssh/login/release" ) {
       info_array[kb_array[kb_item] + " (" + kb_item + ")"] = "None/Empty";
-    else
+    } else {
       info_array[kb_array[kb_item] + " (" + kb_item + ")"] = "FALSE";
+      if( kb_item == "lsc/locate/available" ) {
+        locate_broken = TRUE;
+        reason = get_kb_item( "lsc/locate/broken" );
+        if( strlen( reason ) <= 0 ) reason = "Empty/no response (maybe the database is not initialized or locate is not installed)";
+        info_array["locate: Response to 'locate -S' command (lsc/locate/broken)"] = reason;
+      }
+    }
   }
 }
 

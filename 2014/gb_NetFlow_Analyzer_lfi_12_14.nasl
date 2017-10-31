@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_NetFlow_Analyzer_lfi_12_14.nasl 5625 2017-03-20 15:02:04Z cfi $
+# $Id: gb_NetFlow_Analyzer_lfi_12_14.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Netflow Analyzer Arbitrary File Download
 #
@@ -30,11 +30,11 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105127");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version ("$Revision: 5625 $");
+  script_version ("$Revision: 7577 $");
   script_cve_id("CVE-2014-9373");
   script_bugtraq_id(71640);
   script_name("Netflow Analyzer Arbitrary File Download");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:02:04 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-12-01 17:20:40 +0200 (Mon, 01 Dec 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -61,6 +61,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

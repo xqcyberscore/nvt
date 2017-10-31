@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_jan13_win.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_adobe_shockwave_player_mult_vuln_jan13_win.nasl 7584 2017-10-26 12:15:30Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities Jan-2013 (Windows)
 #
@@ -50,12 +50,12 @@ to multiple vulnerabilities.";
 if(description)
 {
   script_id(803092);
-  script_version("$Revision: 6104 $");
+  script_version("$Revision: 7584 $");
   script_cve_id("CVE-2012-6270", "CVE-2012-6271");
   script_bugtraq_id(56975, 56972);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 14:15:30 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-01-02 13:05:18 +0530 (Wed, 02 Jan 2013)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities Jan-2013 (Windows)");
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/546769");
@@ -80,8 +80,8 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
+include("smb_nt.inc"); # For registry_key_exists() used in secpod_activex.inc
 include("secpod_activex.inc");
 
 ## Variables Initialization

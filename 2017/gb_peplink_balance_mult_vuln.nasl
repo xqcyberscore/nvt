@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_peplink_balance_mult_vuln.nasl 6354 2017-06-16 08:50:49Z teissa $
+# $Id: gb_peplink_balance_mult_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Peplink Balance Routers Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:peplink:balance";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106848");
-  script_version("$Revision: 6354 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-16 10:50:49 +0200 (Fri, 16 Jun 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-06-06 10:51:07 +0700 (Tue, 06 Jun 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -52,9 +52,9 @@ if (description)
   script_dependencies("gb_peplink_balance_webadmin_detect.nasl");
   script_mandatory_keys("peplink_balance/detected");
 
-  script_tag(name: "summary", value: "Peplink Balance routers are prone to multiple vulnerabilites.");
+  script_tag(name: "summary", value: "Peplink Balance routers are prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "Peplink Balance routers are prone to multiple vulnerabilites:
+  script_tag(name: "insight", value: "Peplink Balance routers are prone to multiple vulnerabilities:
 
 - SQL injection attack via the 'bauth' cookie parameter (CVE-2017-8835)
 

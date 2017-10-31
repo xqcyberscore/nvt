@@ -27,7 +27,7 @@
 #
 
 include("revisions-lib.inc");
-tag_insight = "fence contains multiple programs containing vulnerabilites that may allow
+tag_insight = "fence contains multiple programs containing vulnerabilities that may allow
     local users to overwrite arbitrary files via a symlink attack.";
 tag_solution = "Gentoo discontinued support for fence. All fence users should uninstall
     and choose another software that provides the same functionality.
@@ -45,8 +45,8 @@ advisory GLSA 201009-09.";
 if(description)
 {
  script_id(69033);
- script_version("$Revision: 7044 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+ script_version("$Revision: 7585 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-03-09 05:54:11 +0100 (Wed, 09 Mar 2011)");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");

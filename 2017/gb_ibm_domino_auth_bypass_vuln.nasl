@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_auth_bypass_vuln.nasl 5701 2017-03-23 16:10:36Z mime $
+# $Id: gb_ibm_domino_auth_bypass_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM Domino Authentication Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809885");
-  script_version("$Revision: 5701 $");
+  script_version("$Revision: 7575 $");
   script_bugtraq_id(96062);
   script_cve_id("CVE-2016-0270");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-02-15 14:45:56 +0530 (Wed, 15 Feb 2017)");
   script_name("IBM Domino Authentication Bypass Vulnerability");
 
@@ -74,9 +74,9 @@ if(description)
   exit(0);
 }
 
-
-include("host_details.inc");
 include("version_func.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
+include("host_details.inc");
 
 ## Variable Initialization
 domVer = "";

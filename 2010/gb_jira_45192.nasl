@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jira_45192.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_jira_45192.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Atlassian JIRA Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:atlassian:jira';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100936");
- script_version("$Revision: 5306 $");
- script_tag(name: "last_modification", value: "$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 7573 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name: "creation_date", value: "2010-12-06 15:55:47 +0100 (Mon, 06 Dec 2010)");
  script_tag(name: "cvss_base", value: "4.3");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -82,7 +82,7 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if("#" >< version) {
-  jver = split(vers, sep: "#",keep: FALSE);
+  jver = split(version, sep: "#",keep: FALSE);
   if(!isnull(jver[0]))
     version = jver[0];
 }  

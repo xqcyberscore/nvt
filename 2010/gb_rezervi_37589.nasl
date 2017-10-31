@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rezervi_37589.nasl 5762 2017-03-29 11:20:04Z cfi $
+# $Id: gb_rezervi_37589.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # REZERVI Belegungsplan und Gästedatenbank 'include/mail.inc.php' Remote File Include Vulnerability
 #
@@ -39,8 +39,8 @@ versions may also be affected.";
 if(description)
 {
  script_id(100635);
- script_version("$Revision: 5762 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:20:04 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-05-11 20:07:01 +0200 (Tue, 11 May 2010)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -63,6 +63,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

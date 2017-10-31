@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nopsec_php_5_2_2.nasl 6841 2017-08-03 11:59:21Z emoss $
+# $Id: nopsec_php_5_2_2.nasl 7585 2017-10-26 15:03:01Z cfischer $
 # 
-# PHP Version < 5.2.2 Vulnerabilitiy
+# PHP Version < 5.2.2 Vulnerability
 #
 # Authors:
 # Songhan Yu <syu@nopsec.com>
@@ -29,14 +29,14 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.110185");
-  script_version("$Revision: 6841 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-03 13:59:21 +0200 (Thu, 03 Aug 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-06-21 11:43:12 +0100 (Thu, 21 Jun 2012)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
   script_cve_id("CVE-2007-1649");
   script_bugtraq_id(23105);
-  script_name("PHP Version < 5.2.2 Vulnerabilitiy");
+  script_name("PHP Version < 5.2.2 Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright NopSec Inc. 2012");

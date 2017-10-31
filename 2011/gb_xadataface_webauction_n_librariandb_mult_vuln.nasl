@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xadataface_webauction_n_librariandb_mult_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_xadataface_webauction_n_librariandb_mult_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Xataface WebAuction and Xataface Librarian DB Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801981");
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-09-09 17:36:48 +0200 (Fri, 09 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -81,7 +81,7 @@ if(description)
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");

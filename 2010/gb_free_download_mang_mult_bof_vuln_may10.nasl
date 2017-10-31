@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_free_download_mang_mult_bof_vuln_may10.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_free_download_mang_mult_bof_vuln_may10.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Free Download Manager Multiple Buffer Overflow Vulnerabilities
 #
@@ -39,13 +39,13 @@ tag_insight = "Multiple buffer overflow errors exists due to boundary errors whe
 tag_solution = "Upgrade to version 3.0 bulid 852
   http://www.freedownloadmanager.org/download.htm";
 tag_summary = "This host has Free Download Manager installed and is prone to
-  multiple buffer overflow vulnerabilites.";
+  multiple buffer overflow vulnerabilities.";
 
 if(description)
 {
   script_id(801339);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-0998", "CVE-2010-0999");
   script_tag(name:"cvss_base", value:"10.0");

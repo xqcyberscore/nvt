@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4025877.nasl 6800 2017-07-26 06:58:22Z cfischer $
+# $Id: gb_ms_kb4025877.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
-# Microsoft Windows Multiple Vulnerabilites (KB4025877)
+# Microsoft Windows Multiple Vulnerabilities (KB4025877)
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811224");
-  script_version("$Revision: 6800 $");
+  script_version("$Revision: 7585 $");
   script_cve_id("CVE-2017-8467", "CVE-2017-8486", "CVE-2017-8556", "CVE-2017-8573", 
                 "CVE-2017-8577", "CVE-2017-8578", "CVE-2017-8580", "CVE-2017-8581");
   script_bugtraq_id(99409, 99414, 99439, 99431, 99416, 99419, 99421, 99423);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-26 08:58:22 +0200 (Wed, 26 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-12 09:05:15 +0530 (Wed, 12 Jul 2017)");
-  script_name("Microsoft Windows Multiple Vulnerabilites (KB4025877)");
+  script_name("Microsoft Windows Multiple Vulnerabilities (KB4025877)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4025877");

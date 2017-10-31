@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-075.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-075.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Microsoft Active Accessibility Remote Code Execution Vulnerability (2623699)
 #
@@ -45,8 +45,8 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(902746);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7582 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-10-12 16:01:32 +0200 (Wed, 12 Oct 2011)");
   script_cve_id("CVE-2011-1247");
   script_bugtraq_id(49976);
@@ -102,6 +102,7 @@ if(dllVer)
   ## Windows XP
   if(hotfix_check_sp(xp:4) > 0)
   {
+    SP = get_kb_item("SMB/WinXP/ServicePack");
     if("Service Pack 3" >< SP)
     {
       ## Check for Oleacc.dll version

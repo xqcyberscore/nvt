@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_theme_method_arbitrary_file_download_06_14.nasl 6756 2017-07-18 13:31:14Z cfischer $
+# $Id: gb_wordpress_theme_method_arbitrary_file_download_06_14.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Wordpress Theme Method Arbitrary File Download Vulnerability 
 #
@@ -32,13 +32,13 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105051");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6756 $");
+ script_version ("$Revision: 7577 $");
 
  script_name("Wordpress Theme Method Arbitrary File Download Vulnerability");
 
  script_xref(name:"URL", value:"http://1337day.com/exploit/22350");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2014-06-26 14:02:57 +0200 (Thu, 26 Jun 2014)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -59,6 +59,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

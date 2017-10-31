@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_domino_rpc_auth_dos_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: secpod_ibm_lotus_domino_rpc_auth_dos_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM Lotus Domino Notes RPC Authentication Processing Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.2497");
-  script_version("$Revision: 7015 $");
+  script_version("$Revision: 7575 $");
   script_cve_id("CVE-2011-1393");
   script_bugtraq_id(51167);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-12-29 10:48:29 +0530 (Thu, 29 Dec 2011)");
   script_name("IBM Lotus Domino Notes RPC Authentication Processing Denial of Service Vulnerability");
 
@@ -67,8 +67,8 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
 include("host_details.inc");
 
 if( ! vers = get_highest_app_version( cpe:CPE ) ) exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_colorado_ftp_server_dir_trav_vun.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_colorado_ftp_server_dir_trav_vun.nasl 7579 2017-10-26 11:10:22Z cfischer $
 #
 # ColoradoFTP Server Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:colorado:coloradoftpserver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807877");
-  script_version("$Revision: 5588 $");
+  script_version("$Revision: 7579 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:10:22 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-08-17 16:19:22 +0530 (Wed, 17 Aug 2016)");
   script_name("ColoradoFTP Server Directory Traversal Vulnerability");
 
@@ -72,13 +72,8 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
 include("ftp_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
 
 ## Variable Initialization
 ftplogin = "";

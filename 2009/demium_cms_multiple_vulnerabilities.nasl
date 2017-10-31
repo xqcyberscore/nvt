@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: demium_cms_multiple_vulnerabilities.nasl 5771 2017-03-29 15:14:22Z cfi $
+# $Id: demium_cms_multiple_vulnerabilities.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Demium CMS Multiple Local File Include and SQL Injection
 # Vulnerabilities
@@ -43,8 +43,8 @@ tag_summary = "Demium CMS is prone to multiple local file-include vulnerabilitie
 if(description)
 {
  script_id(100008);
- script_version("$Revision: 5771 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 17:14:22 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2009-03-02 16:07:07 +0100 (Mon, 02 Mar 2009)");
  script_bugtraq_id(33933);
  script_tag(name:"cvss_base", value:"6.8");
@@ -61,6 +61,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809027");
-  script_version("$Revision: 5759 $");
+  script_version("$Revision: 7573 $");
   script_cve_id("CVE-2016-4264");
   script_bugtraq_id(92684);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-09-01 11:45:09 +0530 (Thu, 01 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion 'XML External Entity' Information Disclosure Vulnerability");
@@ -96,17 +96,15 @@ if(!cfdVer = get_app_version(cpe:CPE, port:cfPort)){
 if(version_in_range(version:cfdVer, test_version:"10.0", test_version2:"10.0.20.299202"))
 {
   fix = "10.0.21.300068";
-  VULN = True;
 }
 
 ## https://helpx.adobe.com/coldfusion/kb/coldfusion-11-updates.html
 else if(version_in_range(version:cfdVer, test_version:"11.0", test_version2:"11.0.09.299201"))
 {
   fix = "11.0.10.300066";
-  VULN = True;
 }
 
-if(VULN)
+if(fix)
 {
   report = report_fixed_ver(installed_version:cfdVer, fixed_version:fix);
   security_message(data:report, port:cfPort);

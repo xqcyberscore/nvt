@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_55137.nasl 6493 2017-06-30 07:00:59Z ckuersteiner $
+# $Id: gb_symantec_messaging_gateway_55137.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Symantec Messaging Gateway  Cross Site Request Forgery Vulnerability
 #
@@ -47,13 +47,13 @@ if (description)
  script_cve_id("CVE-2012-0308");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6493 $");
+ script_version ("$Revision: 7573 $");
 
  script_name("Symantec Messaging Gateway  Cross Site Request Forgery Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55137");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-30 09:00:59 +0200 (Fri, 30 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-12-03 10:22:01 +0100 (Mon, 03 Dec 2012)");
  script_tag(name:"qod_type", value:"remote_banner");
  script_category(ACT_GATHER_INFO);
@@ -71,7 +71,7 @@ include("version_func.inc");
 
 if(vers =  get_app_version(cpe:CPE, nofork:TRUE)) {
   if(version_is_less(version: vers, test_version: "10.0.0")) {
-      report = report_fixed_ver(  installed_version:version, fixed_version:"10.0.0" );
+      report = report_fixed_ver(  installed_version:vers, fixed_version:"10.0.0" );
       security_message(port:0, data:report);
       exit(0);
   }

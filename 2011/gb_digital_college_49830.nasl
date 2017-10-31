@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_digital_college_49830.nasl 5719 2017-03-24 13:29:29Z cfi $
+# $Id: gb_digital_college_49830.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Digital College 'basepath' Parameter Multiple Remote File Include Vulnerabilities
 #
@@ -41,8 +41,8 @@ affected.";
 if (description)
 {
  script_id(103280);
- script_version("$Revision: 5719 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:29:29 +0100 (Fri, 24 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-09-29 13:17:07 +0200 (Thu, 29 Sep 2011)");
  script_bugtraq_id(49830);
  script_tag(name:"cvss_base", value:"7.5");
@@ -62,6 +62,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

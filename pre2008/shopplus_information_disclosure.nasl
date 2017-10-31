@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: shopplus_information_disclosure.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: shopplus_information_disclosure.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # ShopPlus Arbitrary Command Execution
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10774");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2001-0992");
   script_tag(name:"cvss_base", value:"7.5");
@@ -54,6 +54,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

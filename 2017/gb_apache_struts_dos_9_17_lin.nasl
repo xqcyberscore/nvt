@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_dos_9_17_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_apache_struts_dos_9_17_lin.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # Apache Struts Multiple Denial of Service Vulnerabilities (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107239");
-  script_version("$Revision: 7543 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 7571 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-11 14:24:03 +0200 (Mon, 11 Sep 2017)");
   script_cve_id("CVE-2017-9793", "CVE-2017-9804");
   script_bugtraq_id(100611);
@@ -79,7 +79,7 @@ if (version_in_range(version: Ver, test_version: "2.3.7", test_version2: "2.3.33
   exit(0);
 }
 
-if (version_in_range(version: version, test_version: "2.5", test_version2: "2.5.12")) {
+if (version_in_range(version: Ver, test_version: "2.5", test_version2: "2.5.12")) {
   report = report_fixed_ver(installed_version: Ver, fixed_version: "2.5.13");
   security_message(port: Port, data: report);
   exit(0);

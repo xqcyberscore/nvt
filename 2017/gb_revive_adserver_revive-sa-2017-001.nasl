@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_revive_adserver_revive-sa-2017-001.nasl 5511 2017-03-08 08:17:42Z teissa $
+# $Id: gb_revive_adserver_revive-sa-2017-001.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Revive Adserver Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:revive:adserver';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106559");
-  script_version("$Revision: 5511 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-08 09:17:42 +0100 (Wed, 08 Mar 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-02-02 13:44:37 +0700 (Thu, 02 Feb 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name: "summary", value: "Revive Adserver is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "Revive Adserver is prone to multiple vulnerabilites:
+  script_tag(name: "insight", value: "Revive Adserver is prone to multiple vulnerabilities:
 
 - Revive Adserver does unserializing untrusted data submitted via cookies in the delivery scripts. An attacker
 could use such vector to either perform generic RCE attacks (e.g. when a vulnerable PHP version is being used) or,

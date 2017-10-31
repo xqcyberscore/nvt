@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_web_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_cisco_pis_web_detect.nasl 7591 2017-10-27 09:24:32Z cfischer $
 #
 # Cisco Prime Infrastructure Web Interface Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105613");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7000 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+ script_version ("$Revision: 7591 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-27 11:24:32 +0200 (Fri, 27 Oct 2017) $");
  script_tag(name:"creation_date", value:"2016-04-20 16:20:47 +0200 (Wed, 20 Apr 2016)");
  script_name("Cisco Prime Infrastructure Web Interface Detection");
 
@@ -61,14 +61,14 @@ url = '/webacs/pages/common/login.jsp';
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( buf =~ "HTTP/1\.. 200" && "Prime Infrastructure" >< buf )
+if( buf =~ "^HTTP/1\.[01] 200" && "Prime Infrastructure" >< buf )
 {
-  rep_url = url;
+  rep_url = report_vuln_url( port:port, url:url, url_only:TRUE );
   vers = 'unknown';
   m_buf = buf;
 
   set_kb_item( name:"cisco/pis/http/port", value:port );
-  replace_kb_item( name:"cisco/pis/detected", value:TRUE );
+  set_kb_item( name:"cisco/pis/detected", value:TRUE );
 
   cpe = 'cpe:/a:cisco:prime_infrastructure';
 
@@ -128,10 +128,30 @@ if( buf =~ "HTTP/1\.. 200" && "Prime Infrastructure" >< buf )
     vers = chomp( max_patch_version );
     set_kb_item( name:"cisco_pis/" + source + "/version", value:vers );
     cpe += ':' + max_patch_version;
+    concluded_url = report_vuln_url( port:port, url:url, url_only:TRUE );
+  }
+
+  # First check location for newer versions (see comment in the next check below)
+  if( vers == 'unknown' )
+  {
+    url = "/webacs/js/xmp/nls/xmp.js";
+    req = http_get( item:url, port:port );
+    buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+
+    # file_version: "Version: 3.0",
+    version = eregmatch( pattern:'file_version: "Version: ([0-9.]+)",', string:buf );
+    if( ! isnull( version[1] ) )
+    {
+      vers = version[1];
+      set_kb_item( name:"cisco_pis/" + source + "/version", value:vers );
+      concluded_url = report_vuln_url( port:port, url:url, url_only:TRUE );
+    }
   }
 
   if( vers == 'unknown' )
   {
+    # nb: Newer versions of PIS (e.g. 3.0.0) have commented out that one
+    # like // dojo.query(".productVersion")[0].innerHTML= "Version: 2.2";
     version = eregmatch( pattern:'[^/]*dojo\\.query\\("\\.productVersion"\\)\\[0\\]\\.innerHTML= .Version: ([0-9.]+[^\'"]+).;', string:m_buf );
     if( ! isnull( version[1] ) )
     {
@@ -145,10 +165,9 @@ if( buf =~ "HTTP/1\.. 200" && "Prime Infrastructure" >< buf )
   report += 'URL: ' + rep_url + '\nCPE: ' + cpe + '\n';
   if( max_patch_version ) report += 'Max patch version installed: PI ' + max_patch_version + '\n';
   if( installed_patches ) report += '\nInstalled Patches:\n' + installed_patches + '\n';
+  if( concluded_url )     report += '\nVersion concluded from:\n' + concluded_url;
 
   log_message( port:port, data:report );
-  exit( 0 );
 }
 
-exit(0);
-
+exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_domino_mult_bof_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: secpod_ibm_lotus_domino_mult_bof_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM Lotus Domino Multiple Remote Buffer Overflow Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902418");
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_version("$Revision: 7575 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_cve_id("CVE-2011-0913", "CVE-2011-0914", "CVE-2011-0915");
   script_tag(name:"cvss_base", value:"10.0");
@@ -74,8 +74,8 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
 include("host_details.inc");
 
 if( ! vers = get_highest_app_version( cpe:CPE ) ) exit( 0 );

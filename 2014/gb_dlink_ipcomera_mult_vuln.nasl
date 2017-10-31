@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_ipcomera_mult_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_dlink_ipcomera_mult_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # D-link IP Camera DCS-2103 Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805031");
-  script_version("$Revision: 6759 $");
+  script_version("$Revision: 7577 $");
   script_cve_id("CVE-2014-9234", "CVE-2014-9238");
   script_bugtraq_id(71484);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-12-15 14:54:29 +0530 (Mon, 15 Dec 2014)");
   script_name("D-link IP Camera DCS-2103 Multiple Vulnerabilities");
 
@@ -77,7 +77,7 @@ if(description)
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

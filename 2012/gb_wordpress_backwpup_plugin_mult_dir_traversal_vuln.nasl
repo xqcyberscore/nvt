@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_backwpup_plugin_mult_dir_traversal_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_wordpress_backwpup_plugin_mult_dir_traversal_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # WordPress BackWPup Plugin Mutliple Directory Traversal Vulnerabilities
 #
@@ -45,9 +45,9 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5963 $");
+  script_version("$Revision: 7577 $");
   script_cve_id("CVE-2011-5208");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-10-09 14:50:11 +0530 (Tue, 09 Oct 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -70,10 +70,7 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");

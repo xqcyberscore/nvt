@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4035055.nasl 6959 2017-08-18 07:24:59Z asteins $
+# $Id: gb_ms_kb4035055.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
-# Microsoft Windows Multiple Vulnerabilites (KB4035055)
+# Microsoft Windows Multiple Vulnerabilities (KB4035055)
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811602");
-  script_version("$Revision: 6959 $");
+  script_version("$Revision: 7585 $");
   script_cve_id("CVE-2017-8593", "CVE-2017-8666");
   script_bugtraq_id(100032, 100089);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-09 08:50:33 +0530 (Wed, 09 Aug 2017)");
-  script_name("Microsoft Windows Multiple Vulnerabilites (KB4035055)");
+  script_name("Microsoft Windows Multiple Vulnerabilities (KB4035055)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4035055");

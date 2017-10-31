@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: TangoCMS_xss.nasl 5771 2017-03-29 15:14:22Z cfi $
+# $Id: TangoCMS_xss.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # TangoCMS 'listeners.php' Cross Site Scripting Vulnerability
 #
@@ -43,8 +43,8 @@ tag_solution = "The vendor has released updates. Please see http://tangocms.org 
 if(description)
 {
  script_id(100059);
- script_version("$Revision: 5771 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 17:14:22 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7573 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2009-03-18 12:46:43 +0100 (Wed, 18 Mar 2009)");
  script_bugtraq_id(33833);
  script_cve_id("CVE-2009-0862");
@@ -77,7 +77,7 @@ foreach dir( make_list_unique( "/tangocms", "/cms", cgi_dirs( port:port ) ) ) {
   buf = http_get_cache(item:url, port:port);
   if( buf == NULL )continue;
 
-  if (egrep(pattern:".*TangoCMS.*", string: buf, icase: true) ) { 
+  if (egrep(pattern:".*TangoCMS.*", string: buf, icase: TRUE) ) { 
     version = eregmatch(string: buf, pattern: "\* Version, ([0-9]+\.*[0-9]*\.*[0-9]*)");
     if(!isnull(version[1])) { 
       if(version_is_less(version:version[1], test_version:"2.2.4")){

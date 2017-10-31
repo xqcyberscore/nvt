@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openoffice_senddoc_tmp_file_creation_vuln_lin.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_openoffice_senddoc_tmp_file_creation_vuln_lin.nasl 7569 2017-10-26 07:04:30Z cfischer $
 #
 # OpenOffice senddoc Insecure Temporary File Creation Vulnerability (Linux)
 #
@@ -39,8 +39,8 @@ tag_summary = "The host has OpenOffice installed and is prone to Insecure
 if(description)
 {
   script_id(800129);
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 7569 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:04:30 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-11-11 09:00:11 +0100 (Tue, 11 Nov 2008)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:N/I:P/A:P");
@@ -53,8 +53,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Remote file access");
-  script_mandatory_keys("login/SSH/success");
   script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("no_linux_shell");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -74,7 +76,7 @@ if(!sock){
   exit(0);
 }
 
-filePath = find_file(file_name:"versionrc", sock:sock);
+filePath = find_file(file_name:"versionrc", file_path:"/", sock:sock);
 foreach path (filePath)
 {
   path = chomp(path);

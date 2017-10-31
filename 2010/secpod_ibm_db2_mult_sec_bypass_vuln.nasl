@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_db2_mult_sec_bypass_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_ibm_db2_mult_sec_bypass_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # IBM DB2 Multiple Security Bypass Vulnerabilities
 #
@@ -38,13 +38,13 @@ tag_insight = "Multiple flaws are due to,
 tag_solution = "Upgrade to IBM DB2 version 9.7 Fix Pack 3 or later,
   http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg27007053";
 tag_summary = "The host is running IBM DB2 and is prone to multiple security
-  bypass vulnerabilites.";
+  bypass vulnerabilities.";
 
 if(description)
 {
   script_id(901156);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-09-23 08:13:58 +0200 (Thu, 23 Sep 2010)");
   script_bugtraq_id(43291);
   script_cve_id("CVE-2010-3474","CVE-2010-3475");

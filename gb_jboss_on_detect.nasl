@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_on_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_jboss_on_detect.nasl 7570 2017-10-26 07:33:23Z asteins $
 #
 # JBoss Operations Network Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105831");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version ("$Revision: 7570 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:33:23 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2016-07-28 15:03:19 +0200 (Thu, 28 Jul 2016)");
  script_name("JBoss Operations Network Detection");
 
@@ -66,7 +66,7 @@ if( "<title>JBoss ON Login Page</title>" >!< buf || "Welcome to JBoss ON" >!< bu
 set_kb_item( name:"jboss_on/installed", value:TRUE );
 
 vers = 'unknown';
-cpe ='cpe:/a:red_hat:jboss_operations_network';
+cpe ='cpe:/a:redhat:jboss_operations_network';
 
 version = eregmatch( pattern:'>Welcome to JBoss ON ([0-9.]+)(.GA)?', string:buf );
 if( ! isnull( version[1] ) )
@@ -84,7 +84,7 @@ if(  vers != 'unknown' )
   set_kb_item( name:"jboss_on/version", value:vers );
 }
 
-# cpe:/a:red_hat:jboss_operations_network:3.3.0.02
+# cpe:/a:redhat:jboss_operations_network:3.3.0.02
 register_product( cpe:cpe, location:'/coregui/', port:port, service:'www' );
 
 report = build_detection_report( app:'JBoss Operations Network',

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tls_version_get.nasl 5240 2017-02-08 16:35:35Z mime $
+# $Id: gb_tls_version_get.nasl 7578 2017-10-26 11:00:21Z cfischer $
 #
 # SSL/TLS: Version Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105782");
-  script_version("$Revision: 5240 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 17:35:35 +0100 (Wed, 08 Feb 2017) $");
+  script_version("$Revision: 7578 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:00:21 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-06-29 10:54:20 +0200 (Wed, 29 Jun 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,6 +49,7 @@ if(description)
   exit(0);
 }
 
+include("mysql.inc"); # For recv_mysql_server_handshake() in open_ssl_socket()
 include("ssl_funcs.inc");
 include("byte_func.inc");
 include("misc_func.inc");

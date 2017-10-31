@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodi_file_disc_vuln.nasl 7180 2017-09-19 03:11:15Z ckuersteiner $
+# $Id: gb_kodi_file_disc_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Kodi Local File Inclusion Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:kodi:kodi_web_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106586");
-  script_version("$Revision: 7180 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-19 05:11:15 +0200 (Tue, 19 Sep 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-02-13 10:37:26 +0700 (Mon, 13 Feb 2017)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -69,6 +69,7 @@ regarding this issue will be updated once the solution details are available.");
   exit(0);
 }
 
+include("misc_func.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

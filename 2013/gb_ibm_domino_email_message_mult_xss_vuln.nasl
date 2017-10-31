@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_email_message_mult_xss_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_ibm_domino_email_message_mult_xss_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM Domino Email Message Cross-Site Scripting Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6074 $");
+  script_version("$Revision: 7575 $");
   script_cve_id("CVE-2013-4063", "CVE-2013-4064", "CVE-2013-4065");
   script_bugtraq_id(64445, 64451, 64444);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-12-26 10:59:41 +0530 (Thu, 26 Dec 2013)");
   script_name("IBM Domino Email Message Cross-Site Scripting Vulnerabilities");
 
@@ -85,9 +85,9 @@ http://www-01.ibm.com/support/docview.wss?uid=swg21647740";
   exit(0);
 }
 
-
-include("host_details.inc");
 include("version_func.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
+include("host_details.inc");
 
 ## Variable Initialization
 domVer = "";

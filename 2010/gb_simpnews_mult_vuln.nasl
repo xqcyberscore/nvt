@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simpnews_mult_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_simpnews_mult_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # SimpNews Multiple Vulnerabilities
 #
@@ -43,8 +43,8 @@ tag_summary = "This host is running SimpNews and is prone to multiple
 if(description)
 {
   script_id(801391);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_cve_id("CVE-2010-2858", "CVE-2010-2859");
   script_tag(name:"cvss_base", value:"5.0");
@@ -89,5 +89,5 @@ if(isnull(simpnewsVer[1])){
 }
 
 if(version_is_less_equal(version:simpnewsVer[1], test_version:"2.47.03")){
- security_message(port:port);
+ security_message(port:snPort);
 }

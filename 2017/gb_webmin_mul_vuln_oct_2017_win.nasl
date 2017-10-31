@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmin_mul_vuln_oct_2017_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_webmin_mul_vuln_oct_2017_win.nasl 7588 2017-10-27 06:53:29Z santu $
 #
 # Webmin Multiple Vulnerabilities (Windows)
 #
@@ -29,38 +29,44 @@ CPE = "cpe:/a:webmin:webmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107250");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 7588 $");
+  script_cve_id("CVE-2017-15644", "CVE-2017-15645", "CVE-2017-15646");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-27 08:53:29 +0200 (Fri, 27 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-16 12:05:05 +0530 (Mon, 16 Oct 2017)");
   script_name("Webmin Multiple Vulnerabilities (Windows)");
 
-  script_tag(name:"summary", value:"This host is running Webmin and is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"This host is running Webmin and is prone
+  to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check for vulnerable version.");
 
-  script_tag(name:"insight", value:"Webmin echo back the 'File Download' request status which we can trigger the
-XSS vulnerability and bypass this Referrer check by setting the domain=webmin-victim-ip. User controlled input is
-not sufficiently sanitized which can lead to CSRF and Server side Request Forgery.");
+  script_tag(name:"insight", value:"Webmin echo back the 'File Download' request
+  status which we can trigger the XSS vulnerability and bypass this Referrer check
+  by setting the domain=webmin-victim-ip. User controlled input is not sufficiently
+  sanitized which can lead to CSRF and Server side Request Forgery.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to perform the following attacks:
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
+  to perform the following attacks:
 
-- XSS vulnerability that leads to Remote Code Execution
+  - XSS vulnerability that leads to Remote Code Execution
 
-- CSRF Schedule arbitrary commands
+  - CSRF Schedule arbitrary commands
 
-- Server Side Request Forgery
+  - Server Side Request Forgery
 
-Impact Level: Application");
+  Impact Level: Application");
 
-  script_tag(name:"affected", value:"Webmin version 1.860 and prior.");
+  script_tag(name:"affected", value:"Webmin version prior to 1.860");
 
-  script_tag(name:"solution", value:"The vendor has released patches to address these vulnerabilities. For more information: https://github.com/webmin/webmin/commit/0c58892732ee7610a7abba5507614366d382c9c9 and http://www.webmin.com/security.html");
+  script_tag(name:"solution", value:"Upgrade to webmin version 1.860
+  For more information refer to http://www.webmin.com/security.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3430");
+  script_xref(name:"URL", value:"https://github.com/webmin/webmin/commit/0c58892732ee7610a7abba5507614366d382c9c9");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -81,11 +87,10 @@ if(!Ver = get_app_version(cpe:CPE, port:Port)){
  exit(0);
 }
 
-if(version_is_less_equal(version:Ver, test_version:"1.860"))
+if(version_is_less(version:Ver, test_version:"1.860"))
 {
-  report = report_fixed_ver(installed_version:Ver, fixed_version:"Apply patch");
+  report = report_fixed_ver(installed_version:Ver, fixed_version:"1.860");
   security_message(data:report, port:Port);
   exit(0);
 }
-
-exit(99);
+exit(0);

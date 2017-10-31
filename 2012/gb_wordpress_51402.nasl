@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_51402.nasl 6720 2017-07-13 14:25:27Z cfischer $
+# $Id: gb_wordpress_51402.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # WordPress Count per Day Plugin Arbitrary File Download and Cross Site Scripting Vulnerabilities
 #
@@ -46,7 +46,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(51402);
- script_version ("$Revision: 6720 $");
+ script_version ("$Revision: 7577 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("WordPress Count per Day Plugin Arbitrary File Download and Cross Site Scripting Vulnerabilities");
@@ -54,7 +54,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51402");
  script_xref(name : "URL" , value : "http://wordpress.org/extend/plugins/count-per-day/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-01-13 10:18:15 +0100 (Fri, 13 Jan 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -68,6 +68,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rips_lfi_01_12.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: gb_rips_lfi_01_12.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Rips Scanner Local File Include Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:rips_scanner:rips";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103375");
-  script_version ("$Revision: 6022 $");
+  script_version ("$Revision: 7577 $");
   script_name("Rips Scanner Local File Include Vulnerability");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-01-02 09:57:26 +0100 (Mon, 02 Jan 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -57,6 +57,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

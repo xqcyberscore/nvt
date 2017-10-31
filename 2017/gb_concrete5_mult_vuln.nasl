@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_concrete5_mult_vuln.nasl 7156 2017-09-18 05:28:25Z cfischer $
+# $Id: gb_concrete5_mult_vuln.nasl 7590 2017-10-27 08:19:44Z asteins $
 #
 # Concrete5 <= 5.7.3.1 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:concrete5:concrete5';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112039");
-  script_version("$Revision: 7156 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 07:28:25 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 7590 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-27 10:19:44 +0200 (Fri, 27 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-11 08:49:26 +0200 (Mon, 11 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -51,15 +51,14 @@ if (description)
 
   script_tag(name:"affected", value:"Concrete5 versions up to and including 5.7.3.1.");
 
- script_tag(name: "solution" , value:"No solution or patch is available as of 11th Sep, 2017. Information
-     regarding this issue will be updated once the solution details are available.
+ script_tag(name: "solution" , value:"Update to version 5.7.4.
      For updates refer to https://github.com/concrete5/concrete5");
 
   script_xref(name:"URL", value:"https://hackerone.com/reports/59664");
   script_xref(name:"URL", value:"https://hackerone.com/reports/59661");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -71,7 +70,7 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( version_is_less_equal( version:vers, test_version:"5.7.3.1" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"NoneAvailable" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"5.7.4" );
   security_message( port:port, data:report );
   exit( 0 );
 }

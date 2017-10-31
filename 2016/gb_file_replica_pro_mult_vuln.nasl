@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_file_replica_pro_mult_vuln.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_file_replica_pro_mult_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # File Replication Pro Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:file:replication:pro";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806689");
-  script_version("$Revision: 5650 $");
+  script_version("$Revision: 7577 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-03-01 14:45:28 +0530 (Tue, 01 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("File Replication Pro Multiple Vulnerabilities");
@@ -70,6 +70,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

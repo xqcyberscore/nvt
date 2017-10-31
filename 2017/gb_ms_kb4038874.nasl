@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4038874.nasl 7260 2017-09-26 06:48:48Z asteins $
+# $Id: gb_ms_kb4038874.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
-# Microsoft Windows Multiple Vulnerabilites (KB4038874)
+# Microsoft Windows Multiple Vulnerabilities (KB4038874)
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811811");
-  script_version("$Revision: 7260 $");
+  script_version("$Revision: 7585 $");
   script_cve_id("CVE-2017-8679", "CVE-2017-8708", "CVE-2017-8719");
   script_bugtraq_id(100720, 100791);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-13 08:31:27 +0530 (Wed, 13 Sep 2017)");
-  script_name("Microsoft Windows Multiple Vulnerabilites (KB4038874)");
+  script_name("Microsoft Windows Multiple Vulnerabilities (KB4038874)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4038874");

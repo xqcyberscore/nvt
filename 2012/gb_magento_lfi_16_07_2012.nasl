@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_lfi_16_07_2012.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_magento_lfi_16_07_2012.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Magento eCommerce Local File Disclosure
 #
@@ -30,7 +30,7 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103518");
- script_version ("$Revision: 5988 $");
+ script_version ("$Revision: 7577 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -52,7 +52,7 @@ if (description)
  may be coerced to open arbitrary files and/or TCP connections.");
  script_tag(name : "summary" , value : "Updates are available. Please see the references for more information.");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-07-16 10:24:55 +0200 (Mon, 16 Jul 2012)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -66,6 +66,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

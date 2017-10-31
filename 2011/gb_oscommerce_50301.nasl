@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oscommerce_50301.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_oscommerce_50301.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # osCommerce Remote File Upload and File Disclosure Vulnerabilities
 #
@@ -35,8 +35,8 @@ arbitrary file's content; other attacks are also possible.";
 if (description)
 {
  script_id(103309);
- script_version("$Revision: 7006 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-10-24 14:18:38 +0200 (Mon, 24 Oct 2011)");
  script_bugtraq_id(50301);
  script_tag(name:"cvss_base", value:"4.6");
@@ -58,6 +58,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

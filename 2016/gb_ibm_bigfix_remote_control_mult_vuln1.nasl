@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_bigfix_remote_control_mult_vuln1.nasl 4700 2016-12-07 10:05:52Z ckuerste $
+# $Id: gb_ibm_bigfix_remote_control_mult_vuln1.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # IBM Endpoint Manager for Remote Control Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:ibm:bigfix_remote_control';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106435");
-  script_version("$Revision: 4700 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-12-07 11:05:52 +0100 (Wed, 07 Dec 2016) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2016-12-07 11:10:46 +0700 (Wed, 07 Dec 2016)");
   script_tag(name:"cvss_base", value: "4.3");
   script_tag(name:"cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -59,7 +59,7 @@ vulnerabilities.");
   script_tag(name: "insight", value: "IBM Endpoint Manager for Remote Control is prone to multiple
 vulnerabilities:
 
-- Multiple Java vulnerabilites
+- Multiple Java vulnerabilities
 
 - Multiple OpenSSL vulnerabilities
 

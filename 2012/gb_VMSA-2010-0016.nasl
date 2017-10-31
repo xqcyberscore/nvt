@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2010-0016.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_VMSA-2010-0016.nasl 7583 2017-10-26 12:07:01Z cfischer $
 #
 # VMSA-2010-0016 VMware ESXi and ESX third party updates for Service Console and Likewise components
 #
@@ -56,11 +56,11 @@ if (description)
  script_cve_id("CVE-2010-0415","CVE-2010-0307","CVE-2010-0291","CVE-2010-0622","CVE-2010-1087","CVE-2010-1437","CVE-2010-1088","CVE-2009-0844","CVE-2009-0845","CVE-2009-0846","CVE-2009-4212","CVE-2010-1321");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5963 $");
+ script_version ("$Revision: 7583 $");
  script_name("VMSA-2010-0016 VMware ESXi and ESX third party updates for Service Console and Likewise components");
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 14:07:01 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-03-15 16:13:01 +0100 (Thu, 15 Mar 2012)");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
@@ -75,6 +75,7 @@ if (description)
  exit(0);
 }
 
+include("version_func.inc"); # Used in _esxi_patch_missing()
 include("vmware_esx.inc");
 
 if(!get_kb_item('VMware/ESXi/LSC'))exit(0);
@@ -92,10 +93,3 @@ if(_esxi_patch_missing(esxi_version:esxVersion, patch:patches[esxVersion])) {
 }
 
 exit(99);
-
-
-
-
-
-
-

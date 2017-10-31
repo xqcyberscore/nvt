@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_logsign_rce_vuln.nasl 5577 2017-03-15 06:19:37Z teissa $
+# $Id: gb_logsign_rce_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Logsign Remote Command Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:logsign:logsign";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106651");
-  script_version("$Revision: 5577 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-15 07:19:37 +0100 (Wed, 15 Mar 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-03-14 12:58:36 +0700 (Tue, 14 Mar 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,7 @@ if (description)
   script_dependencies("gb_logsign_detect.nasl");
   script_mandatory_keys("logsign/installed");
 
-  script_tag(name: "summary", value: "Logsign is prone to a remote code execution vulnerabilitiy.");
+  script_tag(name: "summary", value: "Logsign is prone to a remote code execution vulnerability.");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP request and checks the response.");
 

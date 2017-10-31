@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_awiki_49187.nasl 5651 2017-03-21 10:09:09Z cfi $
+# $Id: gb_awiki_49187.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # awiki Multiple Local File Include Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103210");
-  script_version("$Revision: 5651 $");
+  script_version("$Revision: 7577 $");
   script_bugtraq_id(49187);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-08-18 15:52:07 +0200 (Thu, 18 Aug 2011)");
   script_name("awiki Multiple Local File Include Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -70,6 +70,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

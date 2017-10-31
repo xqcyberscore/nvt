@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cruxcms_45594.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_cruxcms_45594.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # CruxCMS Multiple Input Validation Vulnerabilities
 #
@@ -44,8 +44,8 @@ CruxCMS 3.0.0 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103015);
- script_version("$Revision: 7015 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-01-05 15:07:33 +0100 (Wed, 05 Jan 2011)");
  script_bugtraq_id(45594);
  script_tag(name:"cvss_base", value:"7.5");
@@ -68,6 +68,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

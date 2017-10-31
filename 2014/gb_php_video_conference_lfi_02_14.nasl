@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_video_conference_lfi_02_14.nasl 5698 2017-03-23 14:04:51Z cfi $
+# $Id: gb_php_video_conference_lfi_02_14.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # PHP Webcam Video Conference Local File Inclusion / XSS
 #
@@ -39,12 +39,12 @@ tag_vuldetect = "Send a HTTP GET request which tries to read a local file.";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103902");
- script_version ("$Revision: 5698 $");
+ script_version ("$Revision: 7577 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("PHP Webcam Video Conference Local File Inclusion / XSS");
  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31458/");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:04:51 +0100 (Thu, 23 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2014-02-07 11:53:08 +0100 (Fri, 07 Feb 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -63,6 +63,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

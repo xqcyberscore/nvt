@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: limewire_remote_unauth_access.nasl 6695 2017-07-12 11:17:53Z cfischer $
+# $Id: limewire_remote_unauth_access.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Lime Wire Multiple Remote Unauthorized Access
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17973");
-  script_version("$Revision: 6695 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(12802);
   script_cve_id("CVE-2005-0788", "CVE-2005-0789");
@@ -61,6 +61,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

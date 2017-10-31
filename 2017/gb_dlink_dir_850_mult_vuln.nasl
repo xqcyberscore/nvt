@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_850_mult_vuln.nasl 6936 2017-08-16 10:12:17Z ckuersteiner $
+# $Id: gb_dlink_dir_850_mult_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # D-Link DIR-850L Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:dlink:dir-850L';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140304");
-  script_version("$Revision: 6936 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-16 12:12:17 +0200 (Wed, 16 Aug 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-08-16 16:49:52 +0700 (Wed, 16 Aug 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,11 +49,11 @@ if (description)
   script_dependencies("gb_dlink_dir_detect.nasl");
   script_mandatory_keys("host_is_dlink_dir");
 
-  script_tag(name: "summary", value: "D-Link DIR 850L is prone to multiple vulnerabilites.");
+  script_tag(name: "summary", value: "D-Link DIR 850L is prone to multiple vulnerabilities.");
 
   script_tag(name: "vuldetect", value: "Check the version.");
 
-  script_tag(name: "insight", value: "D-Link DIR 850L is prone to multiple vulnerabilites:
+  script_tag(name: "insight", value: "D-Link DIR 850L is prone to multiple vulnerabilities:
 
 - Remote Command Execution via WAN and LAN
 

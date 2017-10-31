@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_imanager_43635.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_novell_imanager_43635.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Novell iManager 'getMultiPartParameters()' Arbitrary File Upload Vulnerability
 #
@@ -39,8 +39,8 @@ tag_solution = "Updates are available. Please see the references for details.";
 if (description)
 {
  script_id(100835);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_version("$Revision: 7573 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-10-04 14:08:22 +0200 (Mon, 04 Oct 2010)");
  script_bugtraq_id(43635);
  script_tag(name:"cvss_base", value:"4.6");
@@ -74,7 +74,7 @@ if(!version = get_kb_item(string("www/", port, "/imanager")))exit(0);
 
 if(!isnull(version) && version >!< "unknown") {
 
-  if(version_is_less_equal(version: vers, test_version: "2.7.3.2")) {
+  if(version_is_less_equal(version: version, test_version: "2.7.3.2")) {
       security_message(port:port);
       exit(0);
   }

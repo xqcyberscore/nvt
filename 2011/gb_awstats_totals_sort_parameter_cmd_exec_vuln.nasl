@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_awstats_totals_sort_parameter_cmd_exec_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_awstats_totals_sort_parameter_cmd_exec_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # AWStats Totals 'sort' Parameter Remote Command Execution Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801893");
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2008-3922");
   script_bugtraq_id(30856);
@@ -59,7 +59,7 @@ if(description)
   script_tag(name : "solution" , value : "Upgrade to AWStats Totals version 1.15 or later.
   For updates refer to http://www.telartis.nl/xcms/awstats/");
   script_tag(name : "summary" , value : "This host is running AWStats Totals and is prone to remote command
-  execution vulnerabilites.");
+  execution vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");

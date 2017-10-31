@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_wicket_csrf_detect_vuln.nasl 7396 2017-10-10 14:19:33Z asteins $
+# $Id: gb_apache_wicket_csrf_detect_vuln.nasl 7587 2017-10-27 04:54:12Z cfischer $
 #
 # Apache Wicket CSRF Detection Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:apache:wicket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112077");
-  script_version("$Revision: 7396 $");
+  script_version("$Revision: 7587 $");
 
   script_cve_id("CVE-2016-6806");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-10-10 16:19:33 +0200 (Tue, 10 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-27 06:54:12 +0200 (Fri, 27 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-10 15:26:12 +0200 (Tue, 10 Oct 2017)");
 
   script_tag(name:"qod_type", value:"remote_banner");

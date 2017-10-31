@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_tftp_server_read_mode_dos_vuln.nasl 5609 2017-03-20 08:08:00Z teissa $
+# $Id: gb_quick_tftp_server_read_mode_dos_vuln.nasl 7579 2017-10-26 11:10:22Z cfischer $
 #
 # Quick Tftp Server Read Mode Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807479");
-  script_version("$Revision: 5609 $");
+  script_version("$Revision: 7579 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 09:08:00 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:10:22 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-03-14 10:59:12 +0530 (Mon, 14 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Quick Tftp Server Read Mode Denial of Service Vulnerability");
@@ -68,7 +68,6 @@ if(description)
 
 include("tftp.inc");
 include("network_func.inc");
-include("http_keepalive.inc");
 
 socport = "";
 soc = "";

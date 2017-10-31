@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_multiple_vuln_jul_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_php_multiple_vuln_jul_win.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # PHP Multiple Vulnerabilities - Jul17 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811481");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 7571 $");
   script_cve_id("CVE-2017-11145", "CVE-2017-11144", "CVE-2017-11146", "CVE-2017-11628",
                 "CVE-2017-7890");
   script_bugtraq_id(99492, 99550, 99605, 99612, 99489);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-07-11 19:28:21 +0530 (Tue, 11 Jul 2017)");
   script_name("PHP Multiple Vulnerabilities - Jul17 (Windows)");
 
@@ -97,7 +97,7 @@ if(isnull(port = get_app_port(cpe:CPE))){
   exit(0);
 }
 
-if(! vers = get_app_version(cpe:CPE, port:phpport)){
+if(! vers = get_app_version(cpe:CPE, port:port)){
   exit(0);
 }
 
@@ -116,7 +116,8 @@ if(vers =~ "^7\.1" && version_is_less(version:vers, test_version:"7.1.7")){
 if(fix)
 {
   report = report_fixed_ver(installed_version:vers, fixed_version:fix);
-  security_message(port:phpport, data:report);
+  security_message(port:port, data:report);
   exit(0);
 }
+
 exit(99);

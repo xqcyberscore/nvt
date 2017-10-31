@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_collaborative_passwords_manager_lfi_vuln.nasl 5793 2017-03-30 13:40:15Z cfi $
+# $Id: gb_collaborative_passwords_manager_lfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Collaborative Passwords Manager (cPassMan) 'path' Local File Inclusion Vulnerability
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is running Collaborative Passwords Manager (cPassMan) a
 if(description)
 {
   script_id(801923);
-  script_version("$Revision: 5793 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:40:15 +0200 (Thu, 30 Mar 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-04-26 15:24:49 +0200 (Tue, 26 Apr 2011)");
   script_bugtraq_id(47379);
   script_tag(name:"cvss_base", value:"6.8");
@@ -66,6 +66,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");

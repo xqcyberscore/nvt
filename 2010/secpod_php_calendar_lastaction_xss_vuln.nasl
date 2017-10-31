@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_calendar_lastaction_xss_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_php_calendar_lastaction_xss_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # PHP-Calendar 'description' and 'lastaction' Cross Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php-calendar:php-calendar";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902190");
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-05-28 16:52:49 +0200 (Fri, 28 May 2010)");
   script_cve_id("CVE-2010-2041");
   script_bugtraq_id(40334);
@@ -60,7 +60,7 @@ if(description)
   tag_solution = "Upgrade PHP-Calendar to 2.0 Beta7 or later,
   http://code.google.com/p/php-calendar/downloads/list";
   tag_summary = "This host is running PHP-Calendar and is prone to Cross Site
-  Scripting vulnerabilites.";
+  Scripting vulnerabilities.";
 
   script_tag(name:"affected" , value:tag_affected);
   script_tag(name:"insight" , value:tag_insight);

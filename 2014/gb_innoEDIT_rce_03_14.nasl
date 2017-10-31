@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_innoEDIT_rce_03_14.nasl 5698 2017-03-23 14:04:51Z cfi $
+# $Id: gb_innoEDIT_rce_03_14.nasl 7576 2017-10-26 10:01:33Z cfischer $
 #
 # innoEDIT 6.2 Remote Command Execution
 #
@@ -39,10 +39,10 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103927");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5698 $");
+ script_version ("$Revision: 7576 $");
  script_name("innoEDIT 6.2 Remote Command Execution");
  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125823/innoEDIT-6.2-Remote-Command-Execution.html");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:04:51 +0100 (Thu, 23 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:01:33 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2014-03-24 11:13:42 +0100 (Mon, 24 Mar 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -61,6 +61,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

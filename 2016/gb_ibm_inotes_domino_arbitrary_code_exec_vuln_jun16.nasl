@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_inotes_domino_arbitrary_code_exec_vuln_jun16.nasl 5724 2017-03-24 15:54:58Z cfi $
+# $Id: gb_ibm_inotes_domino_arbitrary_code_exec_vuln_jun16.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM INotes and Domino Arbitrary Code Execution Vulnerability - Jun16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808112");
-  script_version("$Revision: 5724 $");
+  script_version("$Revision: 7575 $");
   script_cve_id("CVE-2014-0892");
   script_bugtraq_id(67014);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:54:58 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-06-02 18:14:09 +0530 (Thu, 02 Jun 2016)");
   script_name("IBM INotes and Domino Arbitrary Code Execution Vulnerability - Jun16");
 
@@ -74,9 +74,9 @@ if(description)
   exit(0);
 }
 
-
-include("host_details.inc");
 include("version_func.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
+include("host_details.inc");
 
 ## Variable Initialization
 domVer = "";

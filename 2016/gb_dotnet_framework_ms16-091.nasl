@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms16-091.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_dotnet_framework_ms16-091.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Microsoft .NET Framework Information Disclosure Vulnerability (3170048)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807856");
-  script_version("$Revision: 5588 $");
+  script_version("$Revision: 7582 $");
   script_cve_id("CVE-2016-3255");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-07-13 08:15:13 +0530 (Wed, 13 Jul 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (3170048)");
@@ -164,7 +164,7 @@ foreach item (registry_enum_keys(key:key))
       ##.NET Framework 4.5.2 in Windows Vista Service Pack 2, Windows Server 2008 Service Pack 2,
       ## Windows 7 Service Pack 1, and Windows Server 2008 R2 Service Pack 1
       ## https://support.microsoft.com/en-us/kb/3163251
-      if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, winVista:3, winVistax64:3, win2008:3, win2008x64) > 0)
+      if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
       {
         if(version_in_range(version:sysdllVer, test_version:"4.0.30319.30000", test_version2:"4.0.30319.34296"))
         {
@@ -184,7 +184,7 @@ foreach item (registry_enum_keys(key:key))
       ##.NET Framework 4.6 and 4.6.1 in Windows Server 2012
       ##.NET Framework 4.6 and 4.6.1 in Windows 8.1, and Windows Server 2012 R2
       if(hotfix_check_sp(win2012:1, win7:2, win7x64:2, win2008r2:2,
-            winVista:3, winVistax64:3, win2008:3, win2008x64, win8_1:1,
+            winVista:3, winVistax64:3, win2008:3, win2008x64:3, win8_1:1,
             win8_1x64:1, win2012R2:1) > 0)
       {
         ##https://support.microsoft.com/en-us/kb/3164024

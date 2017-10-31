@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arcgis_server_rce_vuln.nasl 7562 2017-10-25 11:40:08Z jschulte $
+# $Id: gb_arcgis_server_rce_vuln.nasl 7591 2017-10-27 09:24:32Z cfischer $
 #
 # ArcGis Server 10.3.1 Remote Code Execution vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113041");
-  script_version("$Revision: 7562 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 13:40:08 +0200 (Wed, 25 Oct 2017) $");
+  script_version("$Revision: 7591 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-27 11:24:32 +0200 (Fri, 27 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-25 13:47:48 +0200 (Wed, 25 Oct 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -52,7 +52,7 @@ if( description )
   script_tag(name:"vuldetect", value:"The script checks if the vulnerable version is present on the host.");
   script_tag(name:"insight", value:"ArcGIS 10.3.1 sets useCodebaseOnly=false in Java, which creates a risk for Remote Code Execution.");
   script_tag(name:"impact", value:"Successful exploitation could allow the attacker to execute arbitrary code on the host.");
-  script_tag(name:"affected", value:"ArcGIS Server verion 10.3.1");
+  script_tag(name:"affected", value:"ArcGIS Server version 10.3.1");
   script_tag(name:"solution", value:"Update to ArcGIS Server version 10.4.1");
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Oct/18");
@@ -69,7 +69,7 @@ include( "version_func.inc" );
 if( !port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( !version = get_app_version( cpe: CPE ) ) exit( 0 );
 
-if( version_is_equal( version: version, test_version: "10.3.1" ) ) {
+if( version_is_less( version: version, test_version: "10.4.1" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "10.4.1" );
   security_message( port: port, data: report );
   exit( 0 );

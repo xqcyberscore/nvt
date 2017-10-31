@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_cisco-sa-20170517-sip.nasl 6302 2017-06-10 17:10:53Z cfischer $
+# $Id: gb_cisco_ip_phone_cisco-sa-20170517-sip.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # Cisco IP Phone 8851 Session Initiation Protocol Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106814");
-  script_version("$Revision: 6302 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-10 19:10:53 +0200 (Sat, 10 Jun 2017) $");
+  script_version("$Revision: 7571 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-05-18 10:24:33 +0700 (Thu, 18 May 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -80,7 +80,7 @@ if (model =~ "^CP-8851") {
   version = eregmatch(pattern: "sip88xx\.([0-9-]+)", string: version);
   if (version[1] && version[1] =~ "^11-0-0-1") {
     report = report_fixed_ver(installed_version: version[1], fixed_version: "See advisory");
-    security_message(port: port, data: report);
+    security_message(port: 0, data: report);
   }
 }
 

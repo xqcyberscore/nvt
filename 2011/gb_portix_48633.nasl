@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_portix_48633.nasl 5717 2017-03-24 13:02:24Z cfi $
+# $Id: gb_portix_48633.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Portix-CMS 'page' Parameter Local File Include Vulnerability
 #
@@ -39,8 +39,8 @@ affected.";
 if (description)
 {
  script_id(103189);
- script_version("$Revision: 5717 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-07-12 13:37:01 +0200 (Tue, 12 Jul 2011)");
  script_bugtraq_id(48633);
  script_name("Portix-CMS 'page' Parameter Local File Include Vulnerability");
@@ -59,6 +59,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

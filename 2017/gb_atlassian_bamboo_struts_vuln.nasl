@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bamboo_struts_vuln.nasl 5654 2017-03-21 10:23:47Z cfi $
+# $Id: gb_atlassian_bamboo_struts_vuln.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # Atlassian Bamboo Struts2 RCE Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:atlassian:bamboo";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106652");
-  script_version("$Revision: 5654 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-21 11:23:47 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7571 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-03-15 11:39:14 +0700 (Wed, 15 Mar 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -84,7 +84,7 @@ if (version_in_range(version: version, test_version: "5.1.0", test_version2: "5.
 }
 
 if (version_in_range(version: version, test_version: "5.15.0", test_version2: "5.15.2")) {
-  report = report_fixed_ver(installed_version: verison, fixed_version: "5.15.3");
+  report = report_fixed_ver(installed_version: version, fixed_version: "5.15.3");
   security_message(port: port, data: report);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_opera_mult_vuln.nasl 4821 2016-12-21 07:18:13Z antu123 $
+# $Id: gb_oracle_opera_mult_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Oracle OPERA Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:oracle:hospitality_opera_5_property_services";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106483");
-  script_version("$Revision: 4821 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-12-21 08:18:13 +0100 (Wed, 21 Dec 2016) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2016-12-20 08:18:50 +0700 (Tue, 20 Dec 2016)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -55,7 +55,7 @@ if (description)
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP request and checks the response.");
 
-  script_tag(name: "insight", value: "Oracle OPERA is prone to multiple vulnerabilites:
+  script_tag(name: "insight", value: "Oracle OPERA is prone to multiple vulnerabilities:
 
 - Remote command execution via OS command injection and remote file inclusion (CVE-2016-5563)
 

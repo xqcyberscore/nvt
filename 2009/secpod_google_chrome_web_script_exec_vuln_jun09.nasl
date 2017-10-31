@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_web_script_exec_vuln_jun09.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_google_chrome_web_script_exec_vuln_jun09.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Google Chrome Web Script Execution Vulnerabilities - June09
 #
@@ -70,12 +70,12 @@ if(description)
   script_cve_id("CVE-2009-2060", "CVE-2009-2071", "CVE-2009-2068");
 
   script_id(900370);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-06-17 17:54:48 +0200 (Wed, 17 Jun 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_name("Google Chrome Web Script Execution Vulnerabilites - June09");
+  script_name("Google Chrome Web Script Execution Vulnerabilities - June09");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 SecPod");

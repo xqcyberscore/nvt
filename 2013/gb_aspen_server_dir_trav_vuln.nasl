@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aspen_server_dir_trav_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_aspen_server_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Aspen Sever Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803367");
-  script_version("$Revision: 6698 $");
+  script_version("$Revision: 7577 $");
   script_cve_id("CVE-2013-2619");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-04-04 12:47:57 +0530 (Thu, 04 Apr 2013)");
   script_name("Aspen Sever Directory Traversal Vulnerability");
 
@@ -61,6 +61,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

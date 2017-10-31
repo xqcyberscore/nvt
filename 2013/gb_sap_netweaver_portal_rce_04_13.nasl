@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_netweaver_portal_rce_04_13.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_sap_netweaver_portal_rce_04_13.nasl 7576 2017-10-26 10:01:33Z cfischer $
 #
 # SAP NetWeaver Portal 'ConfigServlet' Remote Code Execution
 #
@@ -37,7 +37,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103700";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 6698 $");
+ script_version ("$Revision: 7576 $");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
 
@@ -46,7 +46,7 @@ if (description)
  script_xref(name:"URL", value:"http://erpscan.com/wp-content/uploads/2012/11/Breaking-SAP-Portal-HackerHalted-2012.pdf");
  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24963/");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:01:33 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2013-04-18 16:24:58 +0200 (Thu, 18 Apr 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -59,6 +59,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

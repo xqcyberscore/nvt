@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_application_server_unserialize_vuln.nasl 4835 2016-12-22 06:42:42Z antu123 $
+# $Id: gb_ibm_websphere_application_server_unserialize_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # IBM WebSphere Application Server Unserialize Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806624");
-  script_version("$Revision: 4835 $");
+  script_version("$Revision: 7573 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-22 07:42:42 +0100 (Thu, 22 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-11-17 17:28:17 +0530 (Tue, 17 Nov 2015)");
   script_name("IBM WebSphere Application Server Unserialize Vulnerability");
 
@@ -75,10 +75,6 @@ if(description)
   exit(0);
 }
 
-##
-##  Code Starts Here
-##
-
 include("host_details.inc");
 include("version_func.inc");
 
@@ -91,6 +87,6 @@ if(version_is_less_equal(version:webVer, test_version:"8.5.5.7"))
 {
   report = 'Installed Version:  ' + webVer + '\n' +
            'Solution            None Available' + '\n';
-  security_message(data:report, port:webPort);
+  security_message(data:report, port:0);
   exit(0);
 }

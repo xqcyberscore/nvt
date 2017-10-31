@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmturbo_operations_mngr_dir_trav_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_vmturbo_operations_mngr_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # VM Turbo Operations Manager Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804448");
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 7577 $");
   script_cve_id("CVE-2014-3806");
   script_bugtraq_id(67292);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-05-09 14:42:04 +0530 (Fri, 09 May 2014)");
   script_name("VM Turbo Operations Manager Directory Traversal Vulnerability");
 
@@ -66,7 +66,7 @@ if(description)
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

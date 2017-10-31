@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_amsn_session_hijack_vuln_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
+# $Id: secpod_amsn_session_hijack_vuln_win.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # aMSN session hijack vulnerability (Windows)
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with aMSN and is prone to session hijack
 if(description)
 {
   script_id(902045);
-  script_version("$Revision: 6519 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-04-29 10:04:32 +0200 (Thu, 29 Apr 2010)");
   script_cve_id("CVE-2008-7255");
   script_tag(name:"cvss_base", value:"4.6");
@@ -73,7 +73,7 @@ amsnVer = get_kb_item("aMSN/Win/Ver");
 # Check for the version < 0.97.1
 if(amsnVer != NULL)
 {
-  if(version_is_less(version:xnviewVer, test_version:"0.97.1")){
+  if(version_is_less(version:amsnVer, test_version:"0.97.1")){
     security_message(0);
   }
 }

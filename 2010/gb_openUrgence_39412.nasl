@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openUrgence_39412.nasl 5653 2017-03-21 10:19:58Z cfi $
+# $Id: gb_openUrgence_39412.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # openUrgence Vaccin Multiple Remote File Include Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:francois_raynaud:openurgence_vaccin";
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100627");
- script_version("$Revision: 5653 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:19:58 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-05-06 13:19:12 +0200 (Thu, 06 May 2010)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -72,6 +72,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

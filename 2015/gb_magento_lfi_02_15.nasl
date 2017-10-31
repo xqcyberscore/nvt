@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_lfi_02_15.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: gb_magento_lfi_02_15.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Magento Server MAGMI Cross Site Scripting / Local File Inclusion
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-2067");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6333 $");
+ script_version ("$Revision: 7577 $");
 
  script_name("Magento Server MAGMI Cross Site Scripting / Local File Inclusion");
 
@@ -48,7 +48,7 @@ traversal sequences ('../') to read arbitrary files in the context of the applic
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2015-02-06 17:04:13 +0100 (Fri, 06 Feb 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -61,6 +61,7 @@ traversal sequences ('../') to read arbitrary files in the context of the applic
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

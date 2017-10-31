@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tls_fallback_scsv_enabled.nasl 4753 2016-12-12 20:50:24Z cfi $
+# $Id: gb_tls_fallback_scsv_enabled.nasl 7578 2017-10-26 11:00:21Z cfischer $
 #
 # SSL/TLS: TLS_FALLBACK_SCSV Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105483");
-  script_version("$Revision: 4753 $");
+  script_version("$Revision: 7578 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-12 21:50:24 +0100 (Mon, 12 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:00:21 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-12-11 15:21:49 +0100 (Fri, 11 Dec 2015)");
   script_name("SSL/TLS: TLS_FALLBACK_SCSV Detection");
   script_category(ACT_GATHER_INFO);
@@ -47,6 +47,7 @@ if(description)
   exit(0);
 }
 
+include("mysql.inc"); # For recv_mysql_server_handshake() in open_ssl_socket()
 include("ssl_funcs.inc");
 include("misc_func.inc");
 include("byte_func.inc");

@@ -48,8 +48,8 @@ prone to Multiple Buffer Overflow vulnerabilities.";
 if(description)
 {
   script_id(900918);
-  script_version("$Revision: 6519 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-08-20 09:27:17 +0200 (Thu, 20 Aug 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -108,7 +108,7 @@ if(version_is_less_equal(version:cmailVer, test_version:"5.4.6"))
     # Check if the Killbits are set
     if((is_killbit_set(clsid:"{6971D9B8-B53E-4C25-A414-76199768A592}") == 0) ||
        (is_killbit_set(clsid:"{0609792F-AB56-4CB6-8909-19CDF72CB2A0}") == 0)){
-      security_message(cmailPort);
+      security_message(port:0);
     }
   }
 }

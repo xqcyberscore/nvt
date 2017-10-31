@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: zen_cart_37283.nasl 5815 2017-03-31 09:50:39Z cfi $
+# $Id: zen_cart_37283.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Zen Cart 'extras/curltest.php' Information Disclosure Vulnerability
 #
@@ -34,8 +34,8 @@ sensitive information; other attacks are also possible.";
 if(description)
 {
  script_id(100402);
- script_version("$Revision: 5815 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2009-12-16 12:39:06 +0100 (Wed, 16 Dec 2009)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -60,6 +60,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

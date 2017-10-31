@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_pgp_desktop_usp_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_symantec_pgp_desktop_usp_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Symantec PGP Desktop Untrusted Search Path Vulnerability
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803890";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6115 $");
+  script_version("$Revision: 7573 $");
   script_cve_id("CVE-2010-3397");
   script_bugtraq_id(42856);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-09-10 13:52:56 +0530 (Tue, 10 Sep 2013)");
   script_name("Symantec PGP Desktop Untrusted Search Path Vulnerability");
 
@@ -90,12 +90,12 @@ include("version_func.inc");
 rpVer = "";
 
 ## Get Symantec PGP Desktop version
-if(!rpVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!rpVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
 ## Check for Symantec PGP Desktop version
-if(version_is_equal(version:fesrVer, test_version:"9.9.0.397") ||
+if(version_is_equal(version:rpVer, test_version:"9.9.0.397") ||
    version_in_range(version:rpVer, test_version:"9.10.0", test_version2:"10.0.0.2732"))
 {
   security_message(0);

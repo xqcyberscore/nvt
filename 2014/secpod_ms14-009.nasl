@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-009.nasl 5365 2017-02-20 13:46:09Z cfi $
+# $Id: secpod_ms14-009.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Microsoft .NET Framework Multiple Vulnerabilities (2916607)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(903337);
-  script_version("$Revision: 5365 $");
+  script_version("$Revision: 7582 $");
   script_cve_id("CVE-2014-0253", "CVE-2014-0257", "CVE-2014-0295");
   script_bugtraq_id(65415, 65417, 65418);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:46:09 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-02-12 10:37:08 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft .NET Framework Multiple Vulnerabilities (2916607)");
 
@@ -231,7 +231,7 @@ foreach item (registry_enum_keys(key:key))
       }
 
       ## .NET Framework 4.5 for Windows 8 and Windows Server 2012
-      if(hotfix_check_sp(win8:1, win8x64, win2012:1) > 0)
+      if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
       {
         if(version_in_range(version:dllVer, test_version:"4.0.30319.18000", test_version2:"4.0.30319.18448"))
         {
@@ -255,7 +255,7 @@ foreach item (registry_enum_keys(key:key))
       }
 
       ## .NET Framework 4.5.1 for Windows 8 and Windows Server 2012
-      if((hotfix_check_sp(win8:1, win8x64, win2012:1) > 0) &&
+      if((hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0) &&
          (version_in_range(version:dllVer, test_version:"4.0.30319.18000", test_version2:"4.0.30319.18448")))
       {
         VULN1 = TRUE;
@@ -391,7 +391,7 @@ foreach item (registry_enum_keys(key:key))
         }
       }
       ## .NET Framework 4.5 for Windows 8 and Windows Server 2012
-      if(hotfix_check_sp(win8:1, win8x64, win2012:1) > 0)
+      if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
       {
         if(version_in_range(version:dllVer, test_version:"4.0.30319.18000", test_version2:"4.0.30319.18448"))
         {
@@ -415,7 +415,7 @@ foreach item (registry_enum_keys(key:key))
       }
 
       ## .NET Framework 4.5.1 for Windows 8 and Windows Server 2012
-      if((hotfix_check_sp(win8:1, win8x64, win2012:1) > 0) &&
+      if((hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0) &&
          (version_in_range(version:dllVer, test_version:"4.0.30319.18000", test_version2:"4.0.30319.18446")))
       {
         VULN2 = TRUE;

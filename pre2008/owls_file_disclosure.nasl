@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: owls_file_disclosure.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: owls_file_disclosure.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # File Disclosure in OWL's Workshop
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12079");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-0302", "CVE-2004-0303");
   script_bugtraq_id(9689);
@@ -58,6 +58,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

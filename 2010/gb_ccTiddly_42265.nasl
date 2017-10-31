@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ccTiddly_42265.nasl 5763 2017-03-29 11:54:30Z cfi $
+# $Id: gb_ccTiddly_42265.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # ccTiddly 'cct_base' Parameter Multiple Remote File Include Vulnerabilities
 #
@@ -36,8 +36,8 @@ ccTiddly 1.7.6 is vulnerable; other versions may also be affected.";
 if(description)
 {
  script_id(100769);
- script_version("$Revision: 5763 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:54:30 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-09-01 14:30:27 +0200 (Wed, 01 Sep 2010)");
  script_cve_id("CVE-2008-5949");
  script_bugtraq_id(42265);
@@ -59,6 +59,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

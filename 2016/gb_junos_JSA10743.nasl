@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_JSA10743.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_junos_JSA10743.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Junos Multiple cURL and libcurl Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106069");
-  script_version ("$Revision: 5650 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+  script_version ("$Revision: 7585 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-05-07 00:05:01 +0200 (Sat, 07 May 2016)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -64,7 +64,7 @@ updates or importing data into a Junos device.
 
 Libcurl and cURL were upgraded from 7.36.0 to 7.42.1");
 
-  script_tag(name: "impact", value: "The vulnerabilites range from denial of service attacks
+  script_tag(name: "impact", value: "The vulnerabilities range from denial of service attacks
 until information disclosure. Please check the according CVE resources for more details.");
 
   script_tag(name: "affected", value: "Junos OS 12.1, 12.3, 13.2, 13.3, 14.1, 14.2 and 15.1");

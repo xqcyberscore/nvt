@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SafeNet_Sentinel_lfi_05_14.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_SafeNet_Sentinel_lfi_05_14.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # SafeNet Sentinel Protection Server and Sentinel Keys Server Directory Traversal
 #
@@ -45,14 +45,14 @@ if (description)
  script_cve_id("CVE-2007-6483");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 7000 $");
+ script_version ("$Revision: 7577 $");
 
  script_name("SafeNet Sentinel Protection Server and Sentinel Keys Server Directory Traversal");
 
 
  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/33428/");
  
- script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2014-05-20 12:17:04 +0200 (Tue, 20 May 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -71,6 +71,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

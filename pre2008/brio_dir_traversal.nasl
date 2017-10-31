@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: brio_dir_traversal.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: brio_dir_traversal.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Brio Unix Directory Traversal
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15849");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Brio Unix Directory Traversal");
   script_tag(name:"cvss_base", value:"5.0");
@@ -61,6 +61,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -70,7 +71,7 @@ files = traversal_files();
 foreach file( keys( files ) ) {
 
   foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
-    url = dir + "/ods-cgi/odscgi?HTMLFile=../../../../../../../../../../../../../../../";
+    url = dir + "/ods-cgi/odscgi?HTMLFile=../../../../../../../../../../../../../../../" + files[file];
     if( http_vuln_check( port:port, url:url, pattern:file ) ) {
       report = report_vuln_url( port:port, url:url );
       security_message( port:port, data:report );

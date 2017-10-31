@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsa16-02_lin.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_adobe_flash_player_apsa16-02_lin.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Adobe Flash Player Security Updates( apsa16-02 )-Linux
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808100");
-  script_version("$Revision: 5527 $");
+  script_version("$Revision: 7585 $");
   script_cve_id("CVE-2016-4117");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-05-12 15:58:15 +0530 (Thu, 12 May 2016)");
   script_name("Adobe Flash Player Security Updates( apsa16-02 )-Linux");
 
@@ -44,7 +44,7 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"The flaw exists due to an unspecified
-  vulnerbility");
+  vulnerability");
 
   script_tag(name: "impact" , value:"Successful exploitation of this
   vulnerability will allow remote attackers to execute arbitrary code and

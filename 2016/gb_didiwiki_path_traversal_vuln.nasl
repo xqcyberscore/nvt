@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_didiwiki_path_traversal_vuln.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_didiwiki_path_traversal_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # DidiWiki Path Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:didiwiki_project:didiwiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807528");
-  script_version("$Revision: 5675 $");
+  script_version("$Revision: 7577 $");
   script_cve_id("CVE-2013-7448");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-04-12 10:34:57 +0530 (Tue, 12 Apr 2016)");
   script_name("DidiWiki Path Traversal Vulnerability");
 
@@ -71,7 +71,7 @@ if(description)
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

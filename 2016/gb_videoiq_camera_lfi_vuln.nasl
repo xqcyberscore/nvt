@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_videoiq_camera_lfi_vuln.nasl 5626 2017-03-20 15:16:30Z cfi $
+# $Id: gb_videoiq_camera_lfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # VideoIQ Camera Local File Inclusion Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:videoiq:videoiq_camera";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807356");
-  script_version("$Revision: 5626 $");
+  script_version("$Revision: 7577 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:16:30 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-08-23 16:18:17 +0530 (Tue, 23 Aug 2016)");
   script_name("VideoIQ Camera Local File Inclusion Vulnerability");
 
@@ -69,11 +69,7 @@ if(description)
   exit(0);
 }
 
-
-##
-## The script code starts here
-##
-
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

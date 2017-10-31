@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_urgence_vaccin_mult_lfi_vuln.nasl 5653 2017-03-21 10:19:58Z cfi $
+# $Id: gb_open_urgence_vaccin_mult_lfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Openurgence Vaccin Multiple File Inclusion Vulnerabilities 
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:francois_raynaud:openurgence_vaccin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800764");
-  script_version("$Revision: 5653 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:19:58 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-05-05 15:59:12 +0200 (Wed, 05 May 2010)");
   script_cve_id("CVE-2010-1466", "CVE-2010-1467");
   script_bugtraq_id(39412);
@@ -76,7 +76,7 @@ if(description)
 
 exit(66);
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

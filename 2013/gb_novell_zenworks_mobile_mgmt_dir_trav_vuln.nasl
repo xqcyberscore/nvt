@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_mobile_mgmt_dir_trav_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_novell_zenworks_mobile_mgmt_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Novell ZENworks Mobile Management Directory Traversal Vulnerability
 #
@@ -42,12 +42,12 @@ CPE = "cpe:/a:novell:zenworks_mobile_management";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 7577 $");
   script_cve_id("CVE-2013-1082");
   script_bugtraq_id(60179);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-06-14 11:06:05 +0530 (Fri, 14 Jun 2013)");
   script_name("Novell ZENworks Mobile Management Directory Traversal Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52545");
@@ -68,6 +68,7 @@ if (description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

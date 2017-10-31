@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_default_cred_vuln.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_cisco_nx_os_default_cred_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Cisco NX-OS Default Credentials Vulnerability
 #
@@ -29,10 +29,10 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807524");
   script_cve_id("CVE-2016-1329");
-  script_version ("$Revision: 5568 $");
+  script_version ("$Revision: 7573 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-03-15 13:16:16 +0530 (Tue, 15 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco NX-OS Default Credentials Vulnerability");
@@ -94,27 +94,22 @@ if( nx_model =~ "^30")
   if(nx_ver  == '6.0(2)U6(1)')
   {  
     fix = "6.0(2)U6(1a)";
-    VULN = True;
   }
   else if(nx_ver  == '6.0(2)U6(2)')
   {
     fix = "6.0(2)U6(2a)";
-    VULN = True;
   }
   else if(nx_ver  == '6.0(2)U6(3)')
   {
     fix = "6.0(2)U6(3a)";
-    VULN = True;
   }
   else if(nx_ver  == '6.0(2)U6(4)')
   {
     fix = "6.0(2)U6(4a)";
-    VULN = True;
   }
   else if(nx_ver  == '6.0(2)U6(5)')
   {
     fix = "6.0(2)U6(5a)";
-    VULN = True;
   }
 }
 
@@ -123,36 +118,30 @@ else if( nx_model =~ "^35")
   if(nx_ver  == '6.0(2)A6(1)')
   {
     fix = "6.0(2)A6(1a)";
-    VULN = True;
   }
   else if(nx_ver  == '6.0(2)A6(2)')
   {
     fix = "6.0(2)A6(2a)";
-    VULN = True;
   }
   else if(nx_ver  == '6.0(2)A6(3)')
   {
     fix = "6.0(2)A6(3a)";
-    VULN = True;
   }
   else if(nx_ver  == '6.0(2)A6(4)')
   {
     fix = "6.0(2)A6(4a)";
-    VULN = True;
   }
   else if(nx_ver  == '6.0(2)A6(5)')
   {
     fix = "6.0(2)A6(5a)";
-    VULN = True;
   }
   else if(nx_ver  == '6.0(2)A7(1)')
   {
     fix = "6.0(2)A7(1a)";
-    VULN = True;
   }
 }
 
-if(VULN)
+if(fix)
 {
   report = report_fixed_ver(installed_version:nx_ver, fixed_version:fix);
   security_message(data:report);

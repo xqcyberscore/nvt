@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomly_redirect_45364.nasl 5651 2017-03-21 10:09:09Z cfi $
+# $Id: gb_joomly_redirect_45364.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Joomla Redirect Component 'com_redirect' Local File Include Vulnerability
 #
@@ -38,8 +38,8 @@ are also possible.";
 if (description)
 {
  script_id(100946);
- script_version("$Revision: 5651 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-12-14 13:08:24 +0100 (Tue, 14 Dec 2010)");
  script_bugtraq_id(45364);
  script_tag(name:"cvss_base", value:"5.0");
@@ -61,6 +61,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_49685.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_wordpress_49685.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # WordPress AllWebMenus Plugin 'abspath' Parameter Remote File Include Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103287");
- script_version("$Revision: 7052 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-10-06 13:32:57 +0200 (Thu, 06 Oct 2011)");
  script_bugtraq_id(49685);
  script_cve_id("CVE-2011-3981");
@@ -62,6 +62,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

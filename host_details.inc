@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 7509 2017-10-19 13:53:31Z cfischer $
+# $Id: host_details.inc 7589 2017-10-27 07:03:33Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7509 $
+# $Revision: 7589 $
 #
 ###############################################################################
 
@@ -132,6 +132,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.100062", # ms_rdp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105330", # gb_apache_activemq_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108044", # dcetest.nasl
+    "1.3.6.1.4.1.25623.1.0.108284", # gb_hnap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.14674",  # ident_process_owner.nasl
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl
@@ -198,6 +199,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.100062", # ms_rdp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105330", # gb_apache_activemq_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108044", # dcetest.nasl
+    "1.3.6.1.4.1.25623.1.0.108284", # gb_hnap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.14674",  # ident_process_owner.nasl
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl
@@ -604,6 +606,7 @@ function get_app_version( cpe, port, service, nofork, version_regex ) {
   return get_app_details( cpe:cpe, typ:"version", port:port, service:service, nofork:nofork, version_regex:version_regex );
 }
 
+# nb: If you use this you need to include revisions-lib.inc
 function get_highest_app_version( cpe ) {
 
   local_var cpe, ad, version, ret_version;
@@ -612,8 +615,6 @@ function get_highest_app_version( cpe ) {
 
   ad = get_app_details( cpe:cpe, typ:"all_versions" );
   if( ! ad ) return;
-
-  if( ! defined_func( "revcomp" ) ) include("revisions-lib.inc");
 
   ret_version = FALSE;
 
@@ -625,6 +626,7 @@ function get_highest_app_version( cpe ) {
       continue;
     }
 
+    # from revisions-lib.inc
     if( revcomp( a:version, b:ret_version ) == 1 )
       ret_version = version;
   }

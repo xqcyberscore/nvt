@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_on_90430.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_jboss_on_90430.nasl 7570 2017-10-26 07:33:23Z asteins $
 #
 # Red Hat JBoss Operations Network Deserialization Remote Code Execution Vulnerability
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:red_hat:jboss_operations_network";
+CPE = "cpe:/a:redhat:jboss_operations_network";
 
 if (description)
 {
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2016-3737");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
- script_version ("$Revision: 5850 $");
+ script_version ("$Revision: 7570 $");
 
  script_name("Red Hat JBoss Operations Network  Deserialization Remote Code Execution Vulnerability");
 
@@ -52,7 +52,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:33:23 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2016-07-28 15:24:48 +0200 (Thu, 28 Jul 2016)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");

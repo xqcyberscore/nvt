@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_gallery_bank_xss_vuln.nasl 7381 2017-10-09 07:01:02Z asteins $
+# $Id: gb_wordpress_gallery_bank_xss_vuln.nasl 7581 2017-10-26 11:28:22Z asteins $
 #
-# WordPress Gallery Bank Plugin  XSS Vulnerability
+# WordPress Gallery Bank Plugin XSS Vulnerability
 #
 # Authors:
 # Adrian Steins <adrian.steins@greenbone.net>
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112071");
-  script_version("$Revision: 7381 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-09 09:01:02 +0200 (Mon, 09 Oct 2017) $");
+  script_version("$Revision: 7581 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 13:28:22 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-10-09 08:27:51 +0200 (Mon, 09 Oct 2017)");
   script_tag(name: "cvss_base", value: "4.3");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,7 @@ if (description)
 
   script_tag(name: "solution_type", value: "VendorFix");
 
-  script_name("WordPress Gallery Bank XSS Vulnerability");
+  script_name("WordPress Gallery Bank Plugin XSS Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 
@@ -83,6 +83,8 @@ if (dir == "/")
 res = http_get_cache(port: port, item: dir + "/wp-content/plugins/gallery-bank/readme.txt");
 
 if ("Gallery Bank" >< res && "Changelog" >< res) {
+
+  vers = eregmatch(pattern: "Stable tag: ([0-9.]+)", string: res);
 
   # Stable tag is "trunk", get the latest Changelog version
   if (isnull(vers[1])) {

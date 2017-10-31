@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808125");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 7572 $");
   script_cve_id("CVE-2014-2435");
   script_bugtraq_id(66853);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 10:08:35 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 13:42:28 +0530 (Fri, 03 Jun 2016)");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities - 13 Jun16 (Linux)");
 
@@ -81,12 +81,12 @@ mysqlVer = "";
 sqlPort = "";
 
 ## Get Port
-if(!sqlPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!sqlPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
 ## Get version
-if(!mysqlVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:sqlPort)){
+if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort)){
   exit(0);
 }
 

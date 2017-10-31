@@ -73,7 +73,7 @@ tag_insight = "Multiple vulnerabilities have been identified and fixed in mplaye
   (application crash) via a crafted .ogg file, related to the
   vorbis_floor0_decode function. (CVE-2010-4704)
   
-  And several additional vulnerabilites originally discovered b ... 
+  And several additional vulnerabilities originally discovered b ... 
 
   Description truncated, for more information please check the Reference URL";
 tag_solution = "Please Install the Updated Packages.";
@@ -86,8 +86,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-05/msg00010.php");
   script_id(831391);
-  script_version("$Revision: 6570 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:06:35 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-05-17 15:58:48 +0200 (Tue, 17 May 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

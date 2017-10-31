@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_1024_cms_50275.nasl 5747 2017-03-28 12:18:28Z cfi $
+# $Id: gb_1024_cms_50275.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # 1024 CMS 1.1.0 Beta 'force_download.php' Local File Include Vulnerability
 #
@@ -39,8 +39,8 @@ affected.";
 if(description)
 {
  script_id(103307);
- script_version("$Revision: 5747 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-10-20 15:15:44 +0200 (Thu, 20 Oct 2011)");
  script_bugtraq_id(50275);
  script_tag(name:"cvss_base", value:"6.8");
@@ -62,6 +62,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

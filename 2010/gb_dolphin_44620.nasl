@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolphin_44620.nasl 5760 2017-03-29 10:24:17Z cfi $
+# $Id: gb_dolphin_44620.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Dolphin SQL Injection and Information Disclosure Vulnerabilities
 #
@@ -36,8 +36,8 @@ Dolphin 7.0.3 is vulnerable; other versions may also be affected.";
 if(description)
 {
  script_id(100893);
- script_version("$Revision: 5760 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-11-05 13:21:25 +0100 (Fri, 05 Nov 2010)");
  script_bugtraq_id(44620);
  script_tag(name:"cvss_base", value:"7.5");
@@ -59,6 +59,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_detect_win.nasl 6469 2017-06-28 14:24:07Z cfischer $
+# $Id: gb_firefox_detect_win.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Mozilla Firefox Version Detection (Windows)
 #
@@ -42,10 +42,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800014");
-  script_version("$Revision: 6469 $");
+  script_version("$Revision: 7582 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 16:24:07 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Mozilla Firefox Version Detection (Windows)");
@@ -281,7 +281,7 @@ foreach key (key_list)
         cpe = 'cpe:/a:mozilla:firefox';
        
       ## Register for 64 bit app on 64 bit OS once again
-      if("64" >< os_arch && "Wow6432Node" >!< key_firefox)
+      if("64" >< os_arch && "Wow6432Node" >!< key)
       {
         set_kb_item(name:"Firefox64/Win/Ver", value:foxVer);
         cpe = build_cpe(value:foxVer, exp:"^([0-9.]+)([0-9a-zA-Z]*)", base:"cpe:/a:mozilla:firefox:x64:");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-066.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: secpod_ms12-066.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Microsoft Products HTML Sanitisation Component XSS Vulnerability (2741517)
 #
@@ -55,12 +55,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902927";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5940 $");
+  script_version("$Revision: 7582 $");
   script_bugtraq_id(55797);
   script_cve_id("CVE-2012-2520");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-10-10 10:34:20 +0530 (Wed, 10 Oct 2012)");
   script_name("Microsoft Products HTML Sanitisation Component XSS Vulnerability (2741517)");
 
@@ -168,7 +168,7 @@ foreach key (keys)
       exeVer = fetch_file_version(sysPath:infoPath, file_name:"Infopath.Exe");
       dllVer = fetch_file_version(sysPath:infoPath, file_name:"Ipeditor.dll");
       if((exeVer &&
-         (version_in_range(version:exever, test_version:"12.0", test_version2:"12.0.6662.5003") ||
+         (version_in_range(version:exeVer, test_version:"12.0", test_version2:"12.0.6662.5003") ||
           version_in_range(version:exeVer, test_version:"14.0", test_version2:"14.0.6123.5005"))) ||
          (dllVer &&
          (version_in_range(version:dllVer, test_version:"12.0", test_version2:"12.0.6662.5003") ||

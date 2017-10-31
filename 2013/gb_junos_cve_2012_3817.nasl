@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2012_3817.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_junos_cve_2012_3817.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Junos DNSSEC validation Denial of Service
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103948");
-  script_version ("$Revision: 6086 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_version ("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-10-15 21:39:27 +0700 (Tue, 15 Oct 2013)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -97,46 +97,46 @@ if (version_is_greater(version:build2check, test_version:"20130212")) {
 }
 
 if (version_is_less(version:version, test_version:"10.4R13")) {
-  security_message(port:port, data:desc);
+  security_message(port:0, data:desc);
   exit(0);
 }
 
 if (ereg(pattern:"^11", string:version)) {
   if (version_is_less(version:version, test_version:"11.4.R6")) {
-    security_message(port:port, data:desc);
+    security_message(port:0, data:desc);
     exit(0);
   } else if (version_is_less(version:version, test_version:"11.4X27.43") &&
              version_is_greater(version:version, test_version:"11.4.X")) {
-      security_message(port:port, data:desc);
+      security_message(port:0, data:desc);
       exit(0);
   }
 } 
 
 if (ereg(pattern:"^12.1", string:version)) {
   if (version_is_less(version:version, test_version:"12.1R5")) {
-    security_message(port:port, data:desc);
+    security_message(port:0, data:desc);
     exit(0);
   } else if (version_is_less(version:version, test_version:"12.1X44-D15") &&
              version_is_greater(version:version, test_version:"12.1X"))  {
-      security_message(port:port, data:desc);
+      security_message(port:0, data:desc);
       exit(0);
   }
 }
 
 if (ereg(pattern:"^12.2", string:version)) {
   if (version_is_less(version:version, test_version:"12.2R3")) {
-    security_message(port:port, data:desc);
+    security_message(port:0, data:desc);
     exit(0);
   }
 } 
 
 if (ereg(pattern:"^12.3", string:version)) {
   if (version_is_less(version:version, test_version:"12.3R1")) {
-    security_message(port:port, data:desc);
+    security_message(port:0, data:desc);
     exit(0);
   } else if (version_is_less(version:version, test_version:"12.3X50-D11") &&
              version_is_greater(version:version, test_version:"12.3X")) {
-      security_message(port:port, data:desc);
+      security_message(port:0, data:desc);
       exit(0);
   }
 }

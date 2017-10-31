@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mysqldumper_mult_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: secpod_mysqldumper_mult_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # MySQLDumper Multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mysqldumper:mysqldumper";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902675");
-  script_version("$Revision: 5977 $");
+  script_version("$Revision: 7577 $");
   script_cve_id("CVE-2012-4251", "CVE-2012-4252", "CVE-2012-4253",
                 "CVE-2012-4254", "CVE-2012-4255");
   script_bugtraq_id(53306);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-04-30 15:02:29 +0530 (Mon, 30 Apr 2012)");
   script_name("MySQLDumper Multiple Vulnerabilities");
 
@@ -83,11 +83,7 @@ if(description)
   exit(0);
 }
 
-
-##
-## The script code starts here
-##
-
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

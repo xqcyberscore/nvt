@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_ibm_domino_mult_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM Lotus Domino Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6079 $");
+  script_version("$Revision: 7575 $");
   script_cve_id("CVE-2013-0488", "CVE-2013-0487", "CVE-2013-0486");
   script_bugtraq_id(58648,58652,58646);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-12-10 11:48:14 +0530 (Tue, 10 Dec 2013)");
   script_name("IBM Lotus Domino Multiple Vulnerabilities");
 
@@ -89,9 +89,9 @@ http://www-01.ibm.com/support/docview.wss?uid=swg21627597";
   exit(0);
 }
 
-
-include("host_details.inc");
 include("version_func.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
+include("host_details.inc");
 
 ## Variable Initialization
 domVer = "";

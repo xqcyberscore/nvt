@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_bof_vuln_jun09.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_google_chrome_bof_vuln_jun09.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Google Chrome Browser Kernel Buffer Overflow Vulnerability - Jun09
 #
@@ -39,14 +39,14 @@ tag_summary = "This host has Google Chrome installed and is prone to buffer
 if(description)
 {
   script_id(900380);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-06-26 07:55:21 +0200 (Fri, 26 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-2121");
   script_bugtraq_id(35462);
-  script_name("Google Chrome Web Script Execution Vulnerabilites - Jun09");
+  script_name("Google Chrome Web Script Execution Vulnerabilities - Jun09");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/35548");
   script_xref(name : "URL" , value : "http://code.google.com/p/chromium/issues/detail?id=14508");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/2009/06/stable-beta-update-security-fix.html");

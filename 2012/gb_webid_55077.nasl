@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_55077.nasl 6720 2017-07-13 14:25:27Z cfischer $
+# $Id: gb_webid_55077.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # WeBid Remote File Include and SQL Injection Vulnerabilities
 #
@@ -44,14 +44,14 @@ if (description)
  script_bugtraq_id(55077);
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 6720 $");
+ script_version ("$Revision: 7577 $");
 
  script_name("WeBid Remote File Include and SQL Injection Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55077");
  script_xref(name : "URL" , value : "http://www.webidsupport.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-08-20 10:23:22 +0200 (Mon, 20 Aug 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -65,6 +65,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_opmanager_mult_vuln_feb15.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: gb_manage_engine_opmanager_mult_vuln_feb15.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # ZOHO ManageEngine OpManager Multiple Vulnerabilities - Feb15
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805473");
-  script_version("$Revision: 6600 $");
+  script_version("$Revision: 7577 $");
   script_cve_id("CVE-2014-7864");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-03-20 11:53:55 +0530 (Fri, 20 Mar 2015)");
   script_name("ZOHO ManageEngine OpManager Multiple Vulnerabilities - Feb15");
 
@@ -77,7 +77,7 @@ if(description)
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

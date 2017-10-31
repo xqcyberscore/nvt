@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adaptcms_41116.nasl 5761 2017-03-29 10:54:12Z cfi $
+# $Id: gb_adaptcms_41116.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # AdaptCMS 'init.php' Remote File Include Vulnerability
 #
@@ -38,8 +38,8 @@ AdaptCMS 2.0.0 Beta is vulnerable; other versions may be affected.";
 if(description)
 {
  script_id(100852);
- script_version("$Revision: 5761 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:54:12 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-10-13 13:28:00 +0200 (Wed, 13 Oct 2010)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -62,6 +62,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

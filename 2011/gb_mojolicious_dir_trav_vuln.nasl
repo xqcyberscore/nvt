@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mojolicious_dir_trav_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_mojolicious_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Mojolicious Directory Traversal Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "The host is running Mojolicious and is prone to directory travers
 if(description)
 {
   script_id(801882);
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-05-18 15:37:30 +0200 (Wed, 18 May 2011)");
   script_bugtraq_id(47402);
   script_cve_id("CVE-2011-1589");
@@ -66,7 +66,7 @@ if(description)
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

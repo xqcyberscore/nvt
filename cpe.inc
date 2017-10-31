@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cpe.inc 6085 2017-05-09 05:52:45Z antu123 $
+# $Id: cpe.inc 7580 2017-10-26 11:16:36Z cfischer $
 #
 # CPE Support Functions
 #
@@ -28,7 +28,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6085 $
+# $Revision: 7580 $
 #
 ###############################################################################
 
@@ -139,8 +139,6 @@ function register_and_report_cpe( app, ver, concluded, cpename, base, expr, insl
       cpename = base ;
     }
   }
-
-  if( ! defined_func( "register_product" ) ) include( "host_details.inc" );
 
   if(cpename)
   {

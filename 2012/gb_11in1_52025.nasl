@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_11in1_52025.nasl 5700 2017-03-23 16:03:37Z cfi $
+# $Id: gb_11in1_52025.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # 11in1 Cross Site Request Forgery and Local File Include Vulnerabilities
 #
@@ -40,14 +40,14 @@ if (description)
  script_id(103424);
  script_bugtraq_id(52025);
  script_cve_id("CVE-2012-0996","CVE-2012-0997");
- script_version ("$Revision: 5700 $");
+ script_version ("$Revision: 7577 $");
  script_name("11in1 Cross Site Request Forgery and Local File Include Vulnerabilities");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52025");
  script_xref(name : "URL" , value : "http://www.11in1.org/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521660");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:03:37 +0100 (Thu, 23 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-02-16 11:39:18 +0100 (Thu, 16 Feb 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -62,6 +62,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

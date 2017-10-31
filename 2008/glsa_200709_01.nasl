@@ -25,7 +25,7 @@
 #
 
 include("revisions-lib.inc");
-tag_insight = "Two vulnerabilites have been found in MIT Kerberos 5, which could allow a
+tag_insight = "Two vulnerabilities have been found in MIT Kerberos 5, which could allow a
 remote unauthenticated user to execute arbitrary code with root
 privileges.";
 tag_solution = "All MIT Kerberos 5 users should upgrade to the latest version:
@@ -43,8 +43,8 @@ advisory GLSA 200709-01.";
 if(description)
 {
  script_id(58599);
- script_version("$Revision: 6596 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:21:37 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 7585 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
  script_cve_id("CVE-2007-3999", "CVE-2007-4000");
  script_tag(name:"cvss_base", value:"10.0");

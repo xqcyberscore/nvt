@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_spoofing_n_xss_vuln_HT208116.nasl 7233 2017-09-22 12:05:13Z santu $
+# $Id: gb_apple_safari_spoofing_n_xss_vuln_HT208116.nasl 7588 2017-10-27 06:53:29Z santu $
 #
 # Apple Safari Spoofing and Cross-Site Scripting Vulnerabilities - HT208116 
 #
@@ -29,12 +29,18 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811782");
-  script_version("$Revision: 7233 $");
-  script_cve_id("CVE-2017-7085", "CVE-2017-7089", "CVE-2017-7106");
-  script_bugtraq_id(100895, 100893, 100893);
+  script_version("$Revision: 7588 $");
+  script_cve_id("CVE-2017-7085", "CVE-2017-7089", "CVE-2017-7106", "CVE-2017-7081",
+                "CVE-2017-7087", "CVE-2017-7090", "CVE-2017-7091", "CVE-2017-7092",
+                "CVE-2017-7093", "CVE-2017-7094", "CVE-2017-7095", "CVE-2017-7096",
+                "CVE-2017-7098", "CVE-2017-7099", "CVE-2017-7100", "CVE-2017-7102",
+                "CVE-2017-7104", "CVE-2017-7107", "CVE-2017-7109", "CVE-2017-7111",
+                "CVE-2017-7117", "CVE-2017-7120", "CVE-2017-7142", "CVE-2017-7144");
+  script_bugtraq_id(100895, 100893, 100893, 100995, 100994, 101006, 100998, 101005,
+                    100996, 100991);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 14:05:13 +0200 (Fri, 22 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-27 08:53:29 +0200 (Fri, 27 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-09-21 11:33:23 +0530 (Thu, 21 Sep 2017)");
   script_name("Apple Safari Spoofing and Cross-Site Scripting Vulnerabilities - HT208116");
 
@@ -46,14 +52,23 @@ if(description)
 
   script_tag(name:"insight" , value:"Multiple flaws exists due to,
 
-  - An inconsistent user interface issue.
+  - Multiple inconsistent user interface issues.
 
   - A logic issue exists in the handling of the parent-tab.
 
-  - An inconsistent user interface issue.");
+  - An inconsistent user interface issue.
+
+  - Multiple memory corruption issues.
+
+  - A permissions issue existed in the handling of web browser cookies.
+
+  - An information leakage issue existed in the handling of website data in 
+    Safari Private windows.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to conduct cross site scripting and address bar spoofing attacks.
+  attackers to conduct cross site scripting and address bar spoofing attacks,
+  execute arbitrary code or cause a denial of service, obtain sensitive 
+  information and bypass security.
 
   Impact Level: Application");
 

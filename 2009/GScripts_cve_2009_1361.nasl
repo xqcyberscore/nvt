@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GScripts_cve_2009_1361.nasl 6901 2017-08-11 08:28:09Z cfischer $
+# $Id: GScripts_cve_2009_1361.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # GScripts.net DNS Tools 'dig.php' Remote Command Execution
 # Vulnerability
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100182");
-  script_version("$Revision: 6901 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-11 10:28:09 +0200 (Fri, 11 Aug 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_bugtraq_id(34559);
   script_cve_id("CVE-2009-1361", "CVE-2009-1916");
@@ -60,6 +60,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: mssql_version.nasl 6456 2017-06-28 11:19:33Z cfischer $
+# $Id: mssql_version.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Microsoft's SQL Version Query
 #
@@ -40,8 +40,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11217");
-  script_version("$Revision: 6456 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 7582 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 18:10:09 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(1292, 2030, 2042, 2043, 2863, 3733, 4135, 4847, 5014, 5205);
   script_tag(name:"cvss_base", value:"7.5");
@@ -220,7 +220,7 @@ function GetRealFileVersion(socket, uid, tid, fid)
 
  for ( i = 0 ; off < fsize ; i ++ )
  {
-   tmp = ReadAndX(socket:soc, uid:uid, tid:tid, fid:fid, count:16384, off:off);
+   tmp = ReadAndX(socket:socket, uid:uid, tid:tid, fid:fid, count:16384, off:off);
    if (!tmp) return NULL;
    info = strstr (tmp, 'V\x00S\x00_\x00V\x00E\x00R\x00S\x00I\x00O\x00N\x00_\x00I\x00N\x00F\x00O\x00');
    if ( strlen (info) >= 0x35 )

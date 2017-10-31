@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_62851.nasl 6755 2017-07-18 12:55:56Z cfischer $
+# $Id: gb_cisco_ucs_62851.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Cisco Unified Computing System Multiple Vulnerabilities
 #
@@ -66,7 +66,7 @@ tag_affected = "Cisco Unified Computing System 1.0(x)
 2.0(1x) and Prior";
 
 tag_summary = "Cisco Unified Computing System is prone to multiple
-vulnerabillities";
+vulnerabilities";
 
 tag_solution = "Update to 2.1.1e";
 tag_vuldetect = "Check the Cisco Unified Computing System Version";
@@ -78,7 +78,7 @@ if (description)
  script_cve_id("CVE-2013-1182","CVE-2013-1183","CVE-2013-1184","CVE-2013-1185","CVE-2013-1186");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6755 $");
+ script_version ("$Revision: 7585 $");
 
  script_name("Cisco Unified Computing System Multiple Vulnerabilities");
 
@@ -91,7 +91,7 @@ if (description)
 
  script_xref(name:"URL", value:"http://www.cisco.com/");
  
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2013-10-10 19:10:32 +0200 (Thu, 10 Oct 2013)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");

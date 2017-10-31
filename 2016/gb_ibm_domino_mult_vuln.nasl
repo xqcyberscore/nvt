@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_vuln.nasl 5701 2017-03-23 16:10:36Z mime $
+# $Id: gb_ibm_domino_mult_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM Domino KeyView PDF Filter Buffer Overflow Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106112");
-  script_version("$Revision: 5701 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
+  script_version("$Revision: 7575 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2016-07-04 08:56:27 +0700 (Mon, 04 Jul 2016)");
   script_tag(name: "cvss_base", value: "6.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -70,8 +70,9 @@ in the KeyView PDF filter.");
   exit(0);
 }
 
-include("host_details.inc");
 include("version_func.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
+include("host_details.inc");
 
 if( ! version = get_highest_app_version( cpe:CPE ) ) exit( 0 );
 

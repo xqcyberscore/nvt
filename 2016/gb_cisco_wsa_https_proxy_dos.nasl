@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_https_proxy_dos.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_cisco_wsa_https_proxy_dos.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Cisco WSA HTTPS Packet Processing Denial of Service Vulnerability
 #
@@ -31,10 +31,10 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807510");
   script_cve_id("CVE-2016-1288");
-  script_version ("$Revision: 5598 $");
+  script_version ("$Revision: 7573 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-03-04 18:36:07 +0530 (Fri, 04 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco WSA HTTPS Packet Processing Denial of Service Vulnerability");
@@ -82,16 +82,14 @@ version = str_replace( string:vers, find:"-", replace:"." );
 if(version_is_less(version:version, test_version:'8.5.3.051'))
 {
   fix = "8.5.3-051";
-  VULN = True;
 }
 
 else if(version_in_range(version:version, test_version:"9.0", test_version2:"9.0.0.484"))
 {
   fix = "9.0.0-485";
-  VULN = True;
 }
 
-if(VULN)
+if(fix)
 {
   report = report_fixed_ver(installed_version:vers, fixed_version:fix);
   security_message( port:0, data:report );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_nio_http_info_disc_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_apache_tomcat_nio_http_info_disc_vuln_lin.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # Apache Tomcat NIO HTTP connector Information Disclosure Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811701");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 7571 $");
   script_cve_id("CVE-2016-8745");
   script_bugtraq_id(94828);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-11 16:00:03 +0530 (Fri, 11 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat NIO HTTP connector Information Disclosure Vulnerability (Linux)");
@@ -109,7 +109,7 @@ if(!appVer = get_app_version(cpe:CPE, port:tomPort)){
 if(appVer =~ "^6")
 {
   if((revcomp(a: appVer, b: "6.0.50") < 0) &&
-     (revcomp(a: version, b: "6.0.16") >= 0)){
+     (revcomp(a: appVer, b: "6.0.16") >= 0)){
     fix = "6.0.50";
   }
 }

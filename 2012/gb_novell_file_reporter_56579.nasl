@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_file_reporter_56579.nasl 5841 2017-04-03 12:46:41Z cfi $
+# $Id: gb_novell_file_reporter_56579.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Novell File Reporter 'NFRAgent.exe' Multiple Security Vulnerabilities
 #
@@ -32,14 +32,14 @@ if (description)
  script_cve_id("CVE-2012-4956","CVE-2012-4957","CVE-2012-4958","CVE-2012-4959");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5841 $");
+ script_version ("$Revision: 7577 $");
 
  script_name("Novell File Reporter 'NFRAgent.exe' Multiple Security Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56579");
  script_xref(name : "URL" , value : "http://www.novell.com/products/file-reporter/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-12-12 17:33:48 +0100 (Wed, 12 Dec 2012)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -65,6 +65,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

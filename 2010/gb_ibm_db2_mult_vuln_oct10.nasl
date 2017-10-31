@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_mult_vuln_oct10.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_ibm_db2_mult_vuln_oct10.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # IBM DB2 Multiple Vulnerabilities (Oct10)
 #
@@ -54,13 +54,13 @@ tag_insight = "Multiple flaws are due to,
 tag_solution = "Update DB2 version 9.5 Fix Pack 6a,
   For updates refer to http://www-933.ibm.com/support/fixcentral/swg/downloadFixes";
 tag_summary = "The host is running IBM DB2 and is prone to multiple
-  vulnerabilites.";
+  vulnerabilities.";
 
 if(description)
 {
   script_id(801522);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-10-08 08:29:14 +0200 (Fri, 08 Oct 2010)");
   script_cve_id("CVE-2010-3734", "CVE-2010-3731", "CVE-2010-3732", "CVE-2010-3733",
                 "CVE-2010-3736", "CVE-2010-3735", "CVE-2010-3737", "CVE-2010-3738",

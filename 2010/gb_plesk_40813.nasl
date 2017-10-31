@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plesk_40813.nasl 5900 2017-04-08 17:34:18Z cfi $
+# $Id: gb_plesk_40813.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Plesk Server Administrator (PSA) 'locale' Parameter Local File Include Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100677");
-  script_version("$Revision: 5900 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-08 19:34:18 +0200 (Sat, 08 Apr 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-06-14 14:19:59 +0200 (Mon, 14 Jun 2010)");
   script_bugtraq_id(40813);
   script_name("Plesk Server Administrator (PSA) 'locale' Parameter Local File Include Vulnerability");
@@ -60,6 +60,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

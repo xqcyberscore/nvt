@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_code_exec_vuln_lin.nasl 4218 2016-10-05 14:20:48Z teissa $
+# $Id: gb_adobe_prdts_code_exec_vuln_lin.nasl 7572 2017-10-26 08:08:35Z cfischer $
 #
 # Adobe Reader/Acrobat JavaScript Method Handling Vulnerability (Linux)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800107");
-  script_version("$Revision: 4218 $");
+  script_version("$Revision: 7572 $");
   script_cve_id("CVE-2008-2641");
   script_bugtraq_id(29908);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 16:20:48 +0200 (Wed, 05 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 10:08:35 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-10-04 09:54:24 +0200 (Sat, 04 Oct 2008)");
   script_xref(name:"CB-A", value:"08-0105");
   script_name("Adobe Reader/Acrobat JavaScript Method Handling Vulnerability (Linux)");
@@ -96,7 +96,7 @@ include("version_func.inc");
 adobeVer = "";
 
 ## Get version
-if(!adobeVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!adobeVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

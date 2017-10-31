@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lotuscms_45745.nasl 5749 2017-03-28 13:47:32Z cfi $
+# $Id: gb_lotuscms_45745.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # LotusCMS 'index.php' Local File Include Vulnerability
 #
@@ -39,8 +39,8 @@ affected.";
 if(description)
 {
  script_id(103023);
- script_version("$Revision: 5749 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 15:47:32 +0200 (Tue, 28 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-01-11 12:59:27 +0100 (Tue, 11 Jan 2011)");
  script_bugtraq_id(45745);
  script_tag(name:"cvss_base", value:"6.8");
@@ -63,6 +63,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_49271.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_wordpress_49271.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # WordPress UnGallery 'zip' Parameter Local File Disclosure Vulnerability
 #
@@ -42,8 +42,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 7044 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-08-23 15:25:10 +0200 (Tue, 23 Aug 2011)");
  script_bugtraq_id(49271);
  script_tag(name:"cvss_base", value:"5.0");
@@ -67,6 +67,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nhttpd_46880.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_nhttpd_46880.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # nostromo nhttpd Directory Traversal Remote Command Execution Vulnerability
 #
@@ -37,8 +37,8 @@ tag_solution = "Updates are available. Please see the references for details.";
 if (description)
 {
  script_id(103119);
- script_version("$Revision: 7044 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-03-21 13:19:58 +0100 (Mon, 21 Mar 2011)");
  script_bugtraq_id(46880);
  script_tag(name:"cvss_base", value:"7.5");
@@ -63,6 +63,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

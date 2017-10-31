@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_robo_ftp_client_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
+# $Id: gb_robo_ftp_client_detect.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Robo-FTP Client Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801053");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5943 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
+  script_version("$Revision: 7582 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-12-02 13:54:57 +0100 (Wed, 02 Dec 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Robo-FTP Client Version Detection");
@@ -78,7 +78,7 @@ foreach item (registry_enum_keys(key:key))
 
       ## build cpe and store it as host_detail
       register_and_report_cpe(app:"Robo-FTP Client", ver:ftpVer, base:"cpe:/a:robo-ftp:robo-ftp:",
-                              expr:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", insloc:path);
+                              expr:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?");
       exit(0);
     }
   }

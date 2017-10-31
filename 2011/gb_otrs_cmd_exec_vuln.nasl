@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_cmd_exec_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_otrs_cmd_exec_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Open Ticket Request System (OTRS) Command Execution Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 7024 $");
+  script_version("$Revision: 7573 $");
   script_cve_id("CVE-2011-0456");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
   script_name("Open Ticket Request System (OTRS) Command Execution Vulnerability");
 
@@ -93,15 +93,15 @@ port = "";
 vers = "";
 
 ## Get Application HTTP Port
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
 ## Get application version
-if(vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))
+if(vers = get_app_version(cpe:CPE, port:port))
 {
   if(version_is_less_equal(version:vers, test_version:"2.3.4"))
   {
-    security_message(otrsPort);
+    security_message(port:port);
   }
 }

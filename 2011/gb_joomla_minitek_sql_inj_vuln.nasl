@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_minitek_sql_inj_vuln.nasl 5840 2017-04-03 12:02:24Z cfi $
+# $Id: gb_joomla_minitek_sql_inj_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Joomla Minitek FAQ Book 'id' Parameter SQL Injection Vulnerability
 #
@@ -44,8 +44,8 @@ prone to SQL injection vulnerability.";
 if(description)
 {
   script_id(802106);
-  script_version("$Revision: 5840 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-06-20 15:22:27 +0200 (Mon, 20 Jun 2011)");
   script_bugtraq_id(48223);
   script_tag(name:"cvss_base", value:"7.5");
@@ -82,7 +82,7 @@ if(!joomlaDir = get_dir_from_kb(port:joomlaPort, app:"joomla")){
 
 host = http_host_name( port:joomlaPort );
 
-if( dir == "/" ) dir = "";
+if( joomlaDir == "/" ) joomlaDir = "";
 
 sndReq = http_get(item:string(joomlaDir, "/index.php"), port:joomlaPort);
 rcvRes = http_keepalive_send_recv(port:joomlaPort, data:sndReq);

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022719.nasl 6474 2017-06-29 06:26:00Z santu $
+# $Id: gb_ms_kb4022719.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
-# Microsoft Windows Multiple Vulnerabilites (KB4022719)
+# Microsoft Windows Multiple Vulnerabilities (KB4022719)
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811173");
-  script_version("$Revision: 6474 $");
+  script_version("$Revision: 7585 $");
   script_cve_id("CVE-2017-0193", "CVE-2017-8472", "CVE-2017-8473", "CVE-2017-8475", 
                 "CVE-2017-8527", "CVE-2017-8528", "CVE-2017-0260", "CVE-2017-0282", 
                 "CVE-2017-8476", "CVE-2017-8477", "CVE-2017-8529", "CVE-2017-8531", 
@@ -50,9 +50,9 @@ if(description)
                     98818, 98842, 98848, 98849, 98930, 98899);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:26:00 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-06-14 16:22:36 +0530 (Wed, 14 Jun 2017)");
-  script_name("Microsoft Windows Multiple Vulnerabilites (KB4022719)");
+  script_name("Microsoft Windows Multiple Vulnerabilities (KB4022719)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4022719");

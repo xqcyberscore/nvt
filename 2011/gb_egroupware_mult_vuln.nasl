@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_egroupware_mult_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_egroupware_mult_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # eGroupware Multiple Vulnerabilities
 #
@@ -50,8 +50,8 @@ CPE = "cpe:/a:egroupware:egroupware";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2011-4951","CVE-2011-4950","CVE-2011-4949","CVE-2011-4948");
   script_bugtraq_id(52770);
@@ -77,10 +77,7 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: novell_groupwise_webacc_information_disclosure.nasl 5638 2017-03-21 07:59:02Z teissa $
+# $Id: novell_groupwise_webacc_information_disclosure.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Novell Groupwise WebAcc Information Disclosure
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10789");
-  script_version("$Revision: 5638 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 08:59:02 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2001-1458");
   script_bugtraq_id(3436);
@@ -60,6 +60,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

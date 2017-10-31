@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_event_horizon_xss_n_sql_inj_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_event_horizon_xss_n_sql_inj_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Event Horizon 'modfile.php' Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is running Event Horizon and is prone cross site
 if(description)
 {
   script_id(902088);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_bugtraq_id(41580);
   script_cve_id("CVE-2010-2854", "CVE-2010-2855");
@@ -84,6 +84,6 @@ sndReq = http_get(item:string(dir, '/modfile.php?YourEmail=<script>alert' +
 rcvRes = http_send_recv(port:eventhPort, data:sndReq);
 
 ## Check the Response string
-if(recRes =~ "HTTP/1\.. 200" && '<script>alert("OpenVAS-XSS-Testing")</script>' >< rcvRes){
+if(rcvRes =~ "HTTP/1\.. 200" && '<script>alert("OpenVAS-XSS-Testing")</script>' >< rcvRes){
     security_message(eventhPort);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nulllogic_groupware_mult_vuln_win.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_nulllogic_groupware_mult_vuln_win.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # NullLogic Groupware Multiple Vulnerabilities
 #
@@ -54,8 +54,8 @@ multiple vulnerabilities.";
 if(description)
 {
   script_id(800906);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-07-18 09:37:41 +0200 (Sat, 18 Jul 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -95,5 +95,5 @@ if(nullgrpVer == NULL){
 
 # Check for NullLogic Groupware version <= 1.2.7
 if(version_is_less_equal(version:nullgrpVer, test_version:"1.2.7")){
-  security_message(nullgrpPort);
+  security_message(port:0);
 }

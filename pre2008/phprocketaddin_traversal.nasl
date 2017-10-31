@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phprocketaddin_traversal.nasl 5897 2017-04-07 15:27:16Z cfi $
+# $Id: phprocketaddin_traversal.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # PHP Rocket Add-in File Traversal
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10831");
-  script_version("$Revision: 5897 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 17:27:16 +0200 (Fri, 07 Apr 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3751);
   script_cve_id("CVE-2001-1204");
@@ -60,6 +60,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asaanCart_52498.nasl 5714 2017-03-24 10:52:48Z cfi $
+# $Id: gb_asaanCart_52498.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # asaanCart Multiple Input Validation Vulnerabilities
 #
@@ -46,12 +46,12 @@ if (description)
  script_cve_id("CVE-2012-5330","CVE-2012-5331");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5714 $");
+ script_version ("$Revision: 7577 $");
  script_name("asaanCart Multiple Input Validation Vulnerabilities");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52498");
  script_xref(name : "URL" , value : "http://sourceforge.net/projects/asaancart/");
  script_xref(name : "URL" , value : "http://asaancart.wordpress.com");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-10-23 11:48:15 +0200 (Tue, 23 Oct 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -64,6 +64,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

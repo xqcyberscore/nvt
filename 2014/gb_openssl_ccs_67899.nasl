@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_ccs_67899.nasl 5537 2017-03-10 13:11:34Z cfi $
+# $Id: gb_openssl_ccs_67899.nasl 7578 2017-10-26 11:00:21Z cfischer $
 #
 # SSL/TLS: OpenSSL CCS Man in the Middle Security Bypass Vulnerability
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105042");
-  script_version("$Revision: 5537 $");
+  script_version("$Revision: 7578 $");
   script_bugtraq_id(67899);
   script_cve_id("CVE-2014-0224");
   script_name("SSL/TLS: OpenSSL CCS Man in the Middle Security Bypass Vulnerability");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 14:11:34 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:00:21 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2014-06-10 17:18:54 +0200 (Tue, 10 Jun 2014)");
   script_category(ACT_ATTACK);
   script_family("SSL and TLS");
@@ -78,6 +78,7 @@ if(description)
   exit(0);
 }
 
+include("mysql.inc"); # For recv_mysql_server_handshake() in open_ssl_socket()
 include("byte_func.inc");
 include("ssl_funcs.inc");
 include("misc_func.inc");

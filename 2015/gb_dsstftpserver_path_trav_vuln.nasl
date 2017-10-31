@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dsstftpserver_path_trav_vuln.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: gb_dsstftpserver_path_trav_vuln.nasl 7579 2017-10-26 11:10:22Z cfischer $
 #
 # DSS TFTP Server Path Traversal Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105957");
-  script_version("$Revision: 6159 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+  script_version("$Revision: 7579 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-10-26 13:10:22 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name : "creation_date", value : "2015-03-04 09:41:51 +0700 (Wed, 04 Mar 2015)");
   script_tag(name : "cvss_base", value : "6.4");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -73,9 +73,9 @@ outside the tftp root directory.");
   exit(0);
 }
 
+include("misc_func.inc");
 include("tftp.inc");
 include("network_func.inc");
-include("http_keepalive.inc");
 
 port = get_kb_item("Services/udp/tftp");
 if (!port)

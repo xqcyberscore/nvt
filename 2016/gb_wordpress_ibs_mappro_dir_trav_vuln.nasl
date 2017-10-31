@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ibs_mappro_dir_trav_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_wordpress_ibs_mappro_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Wordpress IBS Mappro Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808201");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 7577 $");
   script_cve_id("CVE-2015-5472");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-05-20 16:09:30 +0530 (Fri, 20 May 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress IBS Mappro Directory Traversal Vulnerability");
@@ -70,10 +70,7 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

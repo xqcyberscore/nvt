@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: novell_imanager_37672.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: novell_imanager_37672.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Novell iManager Importing/Exporting Schema Stack Buffer Overflow Vulnerability
 #
@@ -40,8 +40,8 @@ references for details.";
 if (description)
 {
  script_id(100435);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_version("$Revision: 7573 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-01-11 11:18:50 +0100 (Mon, 11 Jan 2010)");
  script_bugtraq_id(37672);
  script_cve_id("CVE-2009-4486");
@@ -71,13 +71,12 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:8080);
-if(!get_port_state(port))exit(0);
 
 if(!version = get_kb_item(string("www/", port, "/imanager")))exit(0);
 
 if(!isnull(version) && version >!< "unknown") {
 
-  if(version_is_less(version: vers, test_version: "2.7.2")) {
+  if(version_is_less(version: version, test_version: "2.7.2")) {
       security_message(port:port);
       exit(0);
   }

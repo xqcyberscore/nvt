@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_49688.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_wordpress_49688.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # WordPress TheCartPress Plugin 'tcp_class_path' Parameter Remote File Include Vulnerability
 #
@@ -41,8 +41,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 7029 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-09-20 13:31:33 +0200 (Tue, 20 Sep 2011)");
  script_bugtraq_id(49688);
  script_tag(name:"cvss_base", value:"5.0");
@@ -64,6 +64,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

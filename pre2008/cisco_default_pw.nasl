@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cisco_default_pw.nasl 6548 2017-07-06 08:19:53Z cfischer $
+# $Id: cisco_default_pw.nasl 7573 2017-10-26 09:18:50Z cfischer $
 # Description: Cisco default password
 #
 # Authors:
@@ -36,8 +36,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.23938");
- script_version("$Revision: 6548 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-06 10:19:53 +0200 (Thu, 06 Jul 2017) $");
+ script_version("$Revision: 7573 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2007-11-04 00:32:20 +0100 (Sun, 04 Nov 2007)");
  script_cve_id("CVE-1999-0508");
  script_tag(name:"cvss_base", value:"4.6");
@@ -69,6 +69,8 @@ either or is also a default password.");
 include("default_account.inc");
 include("default_credentials.inc");
 include("telnet_func.inc");
+
+ssh_port = 0;
 
 # Function to connect to a Cisco system through telnet, send
 # a password

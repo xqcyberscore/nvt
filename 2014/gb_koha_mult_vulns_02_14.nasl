@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_koha_mult_vulns_02_14.nasl 5698 2017-03-23 14:04:51Z cfi $
+# $Id: gb_koha_mult_vulns_02_14.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Koha Multiple Vulnerabilities
 #
@@ -53,10 +53,10 @@ if (description)
  script_cve_id("CVE-2014-1922","CVE-2014-1923","CVE-2014-1924","CVE-2014-1925");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 5698 $");
+ script_version ("$Revision: 7577 $");
  script_name("Koha Multiple Vulnerabilities");
  script_xref(name:"URL", value:"http://koha-community.org/security-release-february-2014/");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:04:51 +0100 (Thu, 23 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2014-02-10 15:39:58 +0100 (Mon, 10 Feb 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -75,6 +75,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

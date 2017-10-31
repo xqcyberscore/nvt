@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 7447 2017-10-16 14:18:46Z cfischer $
+# $Id: misc_func.inc 7586 2017-10-26 15:47:05Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7447 $
+# $Revision: 7586 $
 #
 ###############################################################################
 
@@ -895,7 +895,7 @@ function get_unknown_port( default, nodefault, ipproto ) {
   } else {
     if( ipproto == "udp" ) {
       udp = TRUE;
-      # nb: We only want to return all unkown UDP ports if this is explicitely enabled within global_settings.nasl
+      # nb: We only want to return all unknown UDP ports if this is explicitely enabled within global_settings.nasl
       if( get_kb_item( "Settings/non-default_udp_service_discovery" ) ) {
         port = get_kb_item( "Services/udp/unknown" );
       } else {
@@ -953,7 +953,7 @@ function get_unknown_port_list( default, nodefault, ipproto ) {
   } else {
     if( ipproto == "udp" ) {
       udp = TRUE;
-      # nb: We only want to return all unkown UDP ports if this is explicitely enabled within global_settings.nasl
+      # nb: We only want to return all unknown UDP ports if this is explicitely enabled within global_settings.nasl
       if( get_kb_item( "Settings/non-default_udp_service_discovery" ) ) {
         port_list = get_kb_list( "Services/udp/unknown" );
       } else {
@@ -1332,4 +1332,58 @@ function fancy_date() {
   if( int( datestr ) < 10 ) return string( "0", datestr );
 
   return datestr;
+}
+
+function exploit_commands() {
+
+  if( ! defined_func( "host_runs" ) ) include( "host_details.inc" );
+  res = host_runs( "windows" );
+
+  if( res == "yes" ) {
+
+    return make_array( "Windows.IP..onfiguration", "ipconfig" );
+
+  } else if( res == "no" ) {
+
+    return make_array( "uid=[0-9]+.*gid=[0-9]+", "id" );
+
+  }
+
+  # unknown
+  return make_array( "uid=[0-9]+.*gid=[0-9]+", "id",
+                     "Windows.IP..onfiguration", "ipconfig" );
+
+}
+
+function traversal_files() {
+
+  if( _FCT_ANON_ARGS[0] ) {
+
+    if( tolower( _FCT_ANON_ARGS[0] ) == "windows" ) {
+      res = "yes";
+    } else if( tolower( _FCT_ANON_ARGS[0] ) == "linux" ) {
+      res = "no";
+    }
+  } else {
+    if( ! defined_func( "host_runs" ) ) include( "host_details.inc" );
+    res = host_runs( "windows" );
+  }
+
+  if( res == "yes" ) {
+
+    return make_array( "\[boot loader\]", "boot.ini",
+                       "; for 16-bit app supporT", "winnt/win.ini",
+                       "; for 16-bit app support", "windows/win.ini" );
+
+  } else if( res == "no" ) {
+
+    return make_array( "root:.*:0:[01]:", "etc/passwd" ); # TBD: Also check e.g. etc/hosts for basic IDS?
+
+  }
+
+  # "unknown"
+  return make_array( "root:.*:0:[01]:", "etc/passwd",
+                     "\[boot loader\]", "boot.ini",
+                     "; for 16-bit app supporT", "winnt/win.ini",
+                     "; for 16-bit app support", "windows/win.ini" );
 }

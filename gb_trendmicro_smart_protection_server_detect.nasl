@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_smart_protection_server_detect.nasl 7538 2017-10-24 06:46:01Z santu $
+# $Id: gb_trendmicro_smart_protection_server_detect.nasl 7586 2017-10-26 15:47:05Z cfischer $
 #
 # Trend Micro Smart Protection Server Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811915");
-  script_version("$Revision: 7538 $");
+  script_version("$Revision: 7586 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 08:46:01 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:47:05 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-05 17:44:54 +0530 (Thu, 05 Oct 2017)");
   script_name("Trend Micro Smart Protection Server Remote Version Detection");
 
@@ -61,13 +61,10 @@ rcvRes = "";
 tspsPort = 0;
 pfsVer = "";
 
-if(!tspsPort = get_http_port(default:4343)){
- exit(0);
-}
+tspsPort = get_http_port(default:4343);
+if(!can_host_php(port:tspsPort)) exit(0);
 
-## Send request and receive response
-sndReq = http_get(item:"/index.php", port:tspsPort);
-rcvRes = http_keepalive_send_recv( port:tspsPort, data:sndReq );
+rcvRes = http_get_cache(item:"/index.php", port:tspsPort);
 
 ## Confirm application
 if('Trend Micro Smart Protection Server' >< rcvRes &&

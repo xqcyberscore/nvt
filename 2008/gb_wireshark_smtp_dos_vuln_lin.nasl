@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_smtp_dos_vuln_lin.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_wireshark_smtp_dos_vuln_lin.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Wireshark SMTP Processing Denial of Service Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:wireshark:wireshark';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800075");
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-12-04 14:15:00 +0100 (Thu, 04 Dec 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -68,7 +68,7 @@ include("host_details.inc");
 if(!ver = get_app_version(cpe:CPE)) exit(0);
 
 if(version_is_less_equal(version:ver, test_version:"1.0.4")){
-  report = report_fixed_ver(installed_version:version, fixed_version:"1.0.5");
+  report = report_fixed_ver(installed_version:ver, fixed_version:"1.0.5");
   security_message(data:report);
   exit(0);
 }

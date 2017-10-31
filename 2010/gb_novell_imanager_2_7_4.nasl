@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_imanager_2_7_4.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_novell_imanager_2_7_4.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Novell iManager < 2.7.4 Multiple Vulnerabilities
 #
@@ -47,8 +47,8 @@ Versions prior to Novell iManager 2.7.4 are vulnerable.";
 if (description)
 {
  script_id(100692);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_version("$Revision: 7573 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-06-24 12:53:20 +0200 (Thu, 24 Jun 2010)");
  script_bugtraq_id(40480,40485);
  script_cve_id("CVE-2010-1929","CVE-2010-1930");
@@ -82,7 +82,7 @@ if(!version = get_kb_item(string("www/", port, "/imanager")))exit(0);
 
 if(!isnull(version) && version >!< "unknown") {
 
-  if(version_is_less(version: vers, test_version: "2.7.4")) {
+  if(version_is_less(version: version, test_version: "2.7.4")) {
       security_message(port:port);
       exit(0);
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_rce_vuln.nasl 7563 2017-10-25 13:11:39Z jschulte $
+# $Id: gb_apache_solr_rce_vuln.nasl 7592 2017-10-27 09:39:16Z cfischer $
 #
 # Apache Solr Remote Code Execution Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113042");
-  script_version("$Revision: 7563 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 15:11:39 +0200 (Wed, 25 Oct 2017) $");
+  script_version("$Revision: 7592 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-27 11:39:16 +0200 (Fri, 27 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-10-25 15:03:04 +0200 (Wed, 25 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,7 +51,7 @@ if( description )
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Apache/Solr/Installed");
 
-  script_tag(name:"summary", value:"Apache Solr versions 5.1 until beofre 7.1 are vulnerable to XML Entity Expansion leading to Remote Code Execution.");
+  script_tag(name:"summary", value:"Apache Solr versions 5.1 until before 7.1 are vulnerable to XML Entity Expansion leading to Remote Code Execution.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the host.");
   script_tag(name:"insight", value:"Through XML Entity Expansion code from another, malicious host can be made to load and execute on the target host.");
   script_tag(name:"impact", value:"Successful exploitation would allow the attacker to execute arbitrary code on the host.");

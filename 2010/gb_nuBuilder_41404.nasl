@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuBuilder_41404.nasl 5769 2017-03-29 13:50:21Z cfi $
+# $Id: gb_nuBuilder_41404.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # nuBuilder Local File Include and Cross Site Scripting Vulnerabilities
 #
@@ -43,8 +43,8 @@ nuBuilder 10.04.20 is vulnerable; other versions may also be affected.";
 if(description)
 {
  script_id(100704);
- script_version("$Revision: 5769 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:50:21 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-07-07 12:47:04 +0200 (Wed, 07 Jul 2010)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -69,6 +69,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

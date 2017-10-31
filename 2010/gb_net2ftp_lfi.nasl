@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_net2ftp_lfi.nasl 5652 2017-03-21 10:14:46Z cfi $
+# $Id: gb_net2ftp_lfi.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # net2ftp 'admin1.template.php' Local and Remote File Include Vulnerabilities
 #
@@ -38,8 +38,8 @@ affected.";
 if (description)
 {
  script_id(100943);
- script_version("$Revision: 5652 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-12-10 13:28:59 +0100 (Fri, 10 Dec 2010)");
  script_bugtraq_id(45312);
  script_tag(name:"cvss_base", value:"7.5");
@@ -60,6 +60,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

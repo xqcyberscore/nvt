@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_syntax_desktop_dir_trvsl_vuln.nasl 5631 2017-03-20 15:46:35Z cfi $
+# $Id: gb_syntax_desktop_dir_trvsl_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Syntax Desktop Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800234");
-  script_version("$Revision: 5631 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:46:35 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-02-20 17:40:17 +0100 (Fri, 20 Feb 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -62,7 +62,7 @@ if(description)
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

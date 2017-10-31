@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_webdav_rce_vuln_kb3197835.nasl 7051 2017-09-04 11:38:56Z cfischer $
+# $Id: gb_ms_webdav_rce_vuln_kb3197835.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # Microsoft Windows 'WebDAV' Remote Code Execution Vulnerability (KB3197835)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811206");
-  script_version("$Revision: 7051 $");
+  script_version("$Revision: 7571 $");
   script_cve_id("CVE-2017-7269");
   script_bugtraq_id(97127);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:38:56 +0200 (Mon, 04 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-06-16 12:56:08 +0530 (Fri, 16 Jun 2017)");
   script_name("Microsoft Windows 'WebDAV' Remote Code Execution Vulnerability (KB3197835)");
   script_category(ACT_GATHER_INFO);
@@ -98,6 +98,9 @@ query = 'Select Version from CIM_DataFile Where FileName ='
 fileVer = wmi_query( wmi_handle:handle, query:query );
 wmi_close( wmi_handle:handle );
 if( ! fileVer ) exit( 0 );
+
+# Don't pass NULL to version function below
+maxVer = "";
 
 ##Multiple files found
 ##On update old as well as new files come, so checking for highest version

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pulse_cms_45186.nasl 5761 2017-03-29 10:54:12Z cfi $
+# $Id: gb_pulse_cms_45186.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Pulse CMS Basic Local File Include Vulnerability
 #
@@ -40,8 +40,8 @@ confirmed this. Please contact the vendor for more information.";
 if(description)
 {
  script_id(100935);
- script_version("$Revision: 5761 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:54:12 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-12-06 15:55:47 +0100 (Mon, 06 Dec 2010)");
  script_bugtraq_id(45186);
  script_tag(name:"cvss_base", value:"6.8");
@@ -66,6 +66,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

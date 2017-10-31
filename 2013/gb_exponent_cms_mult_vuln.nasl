@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exponent_cms_mult_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_exponent_cms_mult_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Exponent CMS Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:exponentcms:exponent_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803702");
-  script_version("$Revision: 5627 $");
+  script_version("$Revision: 7577 $");
   script_cve_id("CVE-2013-3294", "CVE-2013-3295");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-05-23 14:56:02 +0530 (Thu, 23 May 2013)");
   script_name("Exponent CMS Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -78,6 +78,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

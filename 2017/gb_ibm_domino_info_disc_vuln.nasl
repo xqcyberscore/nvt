@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_info_disc_vuln.nasl 6354 2017-06-16 08:50:49Z teissa $
+# $Id: gb_ibm_domino_info_disc_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM Domino TLS Server Diffie-Hellman Key Validation Vulnerability 
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106873");
-  script_version("$Revision: 6354 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-16 10:50:49 +0200 (Fri, 16 Jun 2017) $");
+  script_version("$Revision: 7575 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-06-15 11:51:23 +0700 (Thu, 15 Jun 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -67,8 +67,9 @@ connection. An attacker may be able to exploit this vulnerability to obtain user
   exit(0);
 }
 
-include("host_details.inc");
 include("version_func.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
+include("host_details.inc");
 
 if (!version = get_highest_app_version(cpe: CPE))
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_mult_bof_vuln.nasl 6588 2017-07-07 08:21:40Z santu $
+# $Id: gb_ibm_db2_mult_bof_vuln.nasl 7571 2017-10-26 07:59:06Z cfischer $
 #
 # IBM DB2 Multiple Buffer OVerflow Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811403");
-  script_version("$Revision: 6588 $");
+  script_version("$Revision: 7571 $");
   script_cve_id("CVE-2017-1297");
   script_bugtraq_id(99264);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 10:21:40 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-06-29 13:12:55 +0530 (Thu, 29 Jun 2017)");
   script_name("IBM DB2 Command Line Processor Buffer Overflow Vulnerability Jun17");
 
@@ -121,7 +121,7 @@ else if(ibmVer =~ "^1101\.*")
   }
 }
 
-if(VULN)
+if(fix)
 {
   report = report_fixed_ver(installed_version:ibmVer, fixed_version:fix);
   security_message(data:report, port:ibmPort);

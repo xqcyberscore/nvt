@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_jrun_mult_vuln_win.nasl 6605 2017-07-07 11:22:07Z cfischer $
+# $Id: secpod_adobe_jrun_mult_vuln_win.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Adobe JRun Management Console Multiple Vulnerabilities (Windows)
 #
@@ -47,8 +47,8 @@ tag_summary = "The host is running Adobe JRun and is prone to multiple vulnerabi
 if(description)
 {
   script_id(900823);
-  script_version("$Revision: 6605 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 13:22:07 +0200 (Fri, 07 Jul 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-08-26 14:01:08 +0200 (Wed, 26 Aug 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -101,6 +101,6 @@ if(jrunVer =~ "^4")
   # Check for Adobe JRun version 4.0 < 4.0.7.43085
   if(version_in_range(version:jrunVer, test_version:"4.0",
                                       test_version2:"4.0.7.43085")){
-    security_message(jrunPort);
+    security_message(port:0);
   }
 }

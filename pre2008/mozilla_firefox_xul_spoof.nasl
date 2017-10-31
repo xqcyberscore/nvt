@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mozilla_firefox_xul_spoof.nasl 6467 2017-06-28 13:51:19Z cfischer $
+# $Id: mozilla_firefox_xul_spoof.nasl 7573 2017-10-26 09:18:50Z cfischer $
 # Description: Mozilla/Firefox user interface spoofing
 #
 # Authors:
@@ -41,8 +41,8 @@ tag_solution = "None at this time";
 if(description)
 {
   script_id(14181);
-  script_version("$Revision: 6467 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:51:19 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10796, 10832);
   script_cve_id("CVE-2004-0763", "CVE-2004-0764");
@@ -69,7 +69,7 @@ mozVer = get_kb_item("Firefox/Win/Ver");
 if(mozVer)
 {
   # check firefox version < 1.7
-  if(version_is_less(version:MozVer ,test_version:"1.7"))
+  if(version_is_less(version:mozVer ,test_version:"1.7"))
   {
     security_message(0);
     exit(0);

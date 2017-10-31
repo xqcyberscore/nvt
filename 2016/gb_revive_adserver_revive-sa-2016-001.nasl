@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_revive_adserver_revive-sa-2016-001.nasl 4210 2016-10-05 07:30:18Z teissa $
+# $Id: gb_revive_adserver_revive-sa-2016-001.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Revive Adserver Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:revive:adserver';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106321");
-  script_version("$Revision: 4210 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-10-05 09:30:18 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2016-10-04 11:58:57 +0700 (Tue, 04 Oct 2016)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name: "summary", value: "Revive Adserver is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "Revive Adserver is prone to multiple vulnerabilites:
+  script_tag(name: "insight", value: "Revive Adserver is prone to multiple vulnerabilities:
 
 - The login page of Revive Adserver is vulnerable to password-guessing attacks. An account lockdown feature was
 considered, but rejected to avoid introducing service disruptions to regular users during such attacks. A random

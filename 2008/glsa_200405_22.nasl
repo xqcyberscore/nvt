@@ -25,7 +25,7 @@
 #
 
 include("revisions-lib.inc");
-tag_insight = "Several security vulnerabilites have been fixed in the latest release of
+tag_insight = "Several security vulnerabilities have been fixed in the latest release of
 Apache 1.3.";
 tag_solution = "All users should upgrade to the latest stable version of Apache 1.3.
 
@@ -44,8 +44,8 @@ advisory GLSA 200405-22.";
 if(description)
 {
  script_id(54582);
- script_version("$Revision: 6596 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:21:37 +0200 (Fri, 07 Jul 2017) $");
+ script_version("$Revision: 7585 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
  script_cve_id("CVE-2003-0993", "CVE-2003-0020", "CVE-2003-0987", "CVE-2004-0174");
  script_tag(name:"cvss_base", value:"7.5");

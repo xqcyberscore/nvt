@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linknat_vos_dir_traversal.nasl 5626 2017-03-20 15:16:30Z cfi $
+# $Id: gb_linknat_vos_dir_traversal.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Linknat VOS3000/2009 Direcory Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:linknat:vos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106088");
-  script_version("$Revision: 5626 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-20 16:16:30 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2016-05-27 12:47:53 +0700 (Fri, 27 May 2016)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -67,6 +67,7 @@ encoded characters are not properly validated.");
   exit(0);
 }
 
+include("misc_func.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

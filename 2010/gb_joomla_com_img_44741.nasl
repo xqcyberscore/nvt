@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_img_44741.nasl 5652 2017-03-21 10:14:46Z cfi $
+# $Id: gb_joomla_com_img_44741.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Joomla Component 'com_img' Local File Include Vulnerability
 #
@@ -38,8 +38,8 @@ are also possible.";
 if (description)
 {
  script_id(100920);
- script_version("$Revision: 5652 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2010-11-29 13:18:51 +0100 (Mon, 29 Nov 2010)");
  script_bugtraq_id(44741);
  script_tag(name:"cvss_base", value:"5.1");
@@ -60,6 +60,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

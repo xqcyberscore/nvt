@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openwga_cms_xss_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_openwga_cms_xss_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # OpenWGA Content Manager Cross-site Scripting Vulnerability
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:OpenWGA_CMS:openwga";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807687");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 7585 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-05-03 16:40:17 +0530 (Tue, 03 May 2016)");
   script_name("OpenWGA Content Manager Cross-site Scripting Vulnerability");
 
   script_tag(name: "summary" , value:"The host is installed with OpenWGA Content Manager
-  and is prone to cross-site scripting vulnerbility.");
+  and is prone to cross-site scripting vulnerability.");
 
   script_tag(name: "vuldetect" , value:"Send a crafted request via HTTP GET and
   check whether its able to read cookie value.");
@@ -111,7 +111,6 @@ req1 =  'GET '+url+' HTTP/1.1\r\n' +
 
 res1 =  http_keepalive_send_recv(port:wgacmsPort, data:req1);
 
-##Confirm the vulnerbility
 if("<script>alert(document.cookie)</script>" >< res1 && 
    res1 =~ "HTTP/1.1 200 OK" && res1 =~ "OpenWG.*Server")
 {

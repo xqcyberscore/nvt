@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_unity_express_mult_xss_n_csrf_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_cisco_unity_express_mult_xss_n_csrf_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Cisco Unity Express Multiple XSS and CSRF Vulnerabilities
 #
@@ -44,18 +44,18 @@ tag_summary = "The host is installed with Cisco Unity Express and is prone to
 if(description)
 {
   script_id(803167);
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 7585 $");
   script_cve_id("CVE-2013-1114", "CVE-2013-1120");
   script_bugtraq_id(57677, 57678);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2013-02-06 11:33:49 +0530 (Wed, 06 Feb 2013)");
   script_name("Cisco Unity Express Multiple XSS and CSRF Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52045");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/24449");
   script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=28044");
-  script_xref(name : "URL" , value : "http://infosec42.blogspot.in/2013/02/cisco-unity-express-vulnerabilites.html");
+  script_xref(name : "URL" , value : "http://infosec42.blogspot.in/2013/02/cisco-unity-express-vulnerabilities.html");
   script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/content/CiscoSecurityNotice/CVE-2013-1114");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

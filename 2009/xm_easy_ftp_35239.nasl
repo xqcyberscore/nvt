@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xm_easy_ftp_35239.nasl 5231 2017-02-08 11:52:34Z teissa $
+# $Id: xm_easy_ftp_35239.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # XM Easy Personal FTP Server Multiple Command Remote Buffer Overflow
 # Vulnerabilities
@@ -41,8 +41,8 @@ tag_summary = "XM Easy Personal FTP Server is prone to multiple remote
 if(description)
 {
   script_id(100223);
-  script_version("$Revision: 5231 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-06-14 17:19:03 +0200 (Sun, 14 Jun 2009)");
   script_bugtraq_id(35239);
   script_tag(name:"cvss_base", value:"6.8");
@@ -70,7 +70,7 @@ if(!ftpPort){
   ftpPort = 21;
 }
 
-if(get_kb_item('ftp/'+port+'/broken'))exit(0);
+if(get_kb_item('ftp/'+ftpPort+'/broken'))exit(0);
 
 if(!get_port_state(ftpPort)){
   exit(0);

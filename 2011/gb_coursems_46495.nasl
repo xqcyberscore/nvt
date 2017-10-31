@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coursems_46495.nasl 5747 2017-03-28 12:18:28Z cfi $
+# $Id: gb_coursems_46495.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Course MS Cross Site Scripting, SQL Injection and Local File Include Vulnerabilities
 #
@@ -43,8 +43,8 @@ versions may also be affected.";
 if(description)
 {
  script_id(103088);
- script_version("$Revision: 5747 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-02-23 13:14:43 +0100 (Wed, 23 Feb 2011)");
  script_bugtraq_id(46495);
  script_tag(name:"cvss_base", value:"7.5");
@@ -66,6 +66,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

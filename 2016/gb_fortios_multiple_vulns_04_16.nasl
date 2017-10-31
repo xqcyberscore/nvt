@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortios_multiple_vulns_04_16.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_fortios_multiple_vulns_04_16.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
-# FortiOS: Multiple Vulnerabillities
+# FortiOS: Multiple Vulnerabilities
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -31,9 +31,9 @@ if (description)
  script_cve_id("CVE-2015-3626");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N"); 
- script_version ("$Revision: 5745 $");
+ script_version ("$Revision: 7585 $");
 
- script_name("FortiOS: Multiple Vulnerabillities");
+ script_name("FortiOS: Multiple Vulnerabilities");
 
  script_xref(name:"URL", value:"http://fortiguard.com/advisory/dhcp-hostname-html-injection");
  script_xref(name:"URL", value:"http://fortiguard.com/advisory/fortios-open-redirect-vulnerability");
@@ -58,7 +58,7 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2016-04-04 11:42:25 +0200 (Mon, 04 Apr 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");

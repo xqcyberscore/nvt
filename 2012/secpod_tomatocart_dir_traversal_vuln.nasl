@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tomatocart_dir_traversal_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
+# $Id: secpod_tomatocart_dir_traversal_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # TomatoCart 'json.php' Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901302");
-  script_version("$Revision: 5814 $");
+  script_version("$Revision: 7577 $");
   script_cve_id("CVE-2012-5907");
   script_bugtraq_id(52766);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-11-28 10:32:05 +0530 (Wed, 28 Nov 2012)");
   script_name("TomatoCart 'json.php' Directory Traversal Vulnerability");
 
@@ -68,6 +68,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

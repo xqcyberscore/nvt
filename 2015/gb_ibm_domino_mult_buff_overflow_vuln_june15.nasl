@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_buff_overflow_vuln_june15.nasl 6453 2017-06-28 09:59:05Z teissa $
+# $Id: gb_ibm_domino_mult_buff_overflow_vuln_june15.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM Domino Multiple Stack-based Buffer Overflow Vulnerabilities - June15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805644");
-  script_version("$Revision: 6453 $");
+  script_version("$Revision: 7575 $");
   script_cve_id("CVE-2015-1903", "CVE-2015-1902");
   script_bugtraq_id(74598, 74597);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-06-04 12:22:20 +0530 (Thu, 04 Jun 2015)");
   script_name("IBM Domino Multiple Stack-based Buffer Overflow Vulnerabilities - June15");
 
@@ -77,10 +77,9 @@ if(description)
   exit(0);
 }
 
-
-include("host_details.inc");
 include("version_func.inc");
-include("global_settings.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
+include("host_details.inc");
 
 ## Variable Initialization
 domVer = "";

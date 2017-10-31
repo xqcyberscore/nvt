@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sg220_cisco-sa-20160831-sps3.nasl 7310 2017-09-28 09:57:57Z cfischer $
+# $Id: gb_cisco_sg220_cisco-sa-20160831-sps3.nasl 7598 2017-10-27 13:05:40Z cfischer $
 #
 # Cisco Small Business 220 Series Smart Plus Switches SNMP Unauthorized Access Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106241");
-  script_version("$Revision: 7310 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-28 11:57:57 +0200 (Thu, 28 Sep 2017) $");
+  script_version("$Revision: 7598 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-27 15:05:40 +0200 (Fri, 27 Oct 2017) $");
   script_tag(name: "creation_date", value: "2016-09-13 10:45:09 +0700 (Tue, 13 Sep 2016)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -75,6 +75,7 @@ firmware release 1.0.0.17, 1.0.0.18, or 1.0.0.19");
 include("snmp_func.inc");
 
 port = get_snmp_port( default:161 );
+if( get_kb_item( "SNMP/" + port + "/v12c/all_communities" ) ) exit( 0 ); # For devices which are accepting every random community
 
 community = "rmonmgmtuicommunity";
 

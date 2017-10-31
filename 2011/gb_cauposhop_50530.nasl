@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cauposhop_50530.nasl 5747 2017-03-28 12:18:28Z cfi $
+# $Id: gb_cauposhop_50530.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # CaupoShop 'template' Parameter Local File Include Vulnerability
 #
@@ -38,7 +38,7 @@ if(description)
  script_id(103335);
  script_bugtraq_id(50530);
  script_cve_id("CVE-2011-4832");
- script_version ("$Revision: 5747 $");
+ script_version ("$Revision: 7577 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("CaupoShop 'template' Parameter Local File Include Vulnerability");
@@ -47,7 +47,7 @@ if(description)
  script_xref(name : "URL" , value : "http://www.caupo.com");
  script_xref(name : "URL" , value : "http://www.caupo.net/de/shopsysteme/csp/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2011-11-07 10:54:56 +0100 (Mon, 07 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);
@@ -60,6 +60,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

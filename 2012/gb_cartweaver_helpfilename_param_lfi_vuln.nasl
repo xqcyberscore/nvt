@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cartweaver_helpfilename_param_lfi_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_cartweaver_helpfilename_param_lfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Cartweaver 'helpFileName' Parameter Local File Include Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802997");
-  script_version("$Revision: 5988 $");
+  script_version("$Revision: 7577 $");
   script_bugtraq_id(55917);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-10-16 17:35:45 +0530 (Tue, 16 Oct 2012)");
   script_name("Cartweaver 'helpFileName' Parameter Local File Include Vulnerability");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/79227");
@@ -63,10 +63,7 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_honeywell_ip_camera_lfi_n_cred_disc_vuln.nasl 7009 2017-08-25 12:07:30Z teissa $
+# $Id: gb_honeywell_ip_camera_lfi_n_cred_disc_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Honeywell IP-Camera LFI and Credential Disclosure Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:honeywell:honeywell_ip_camera";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807354");
-  script_version("$Revision: 7009 $");
+  script_version("$Revision: 7577 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 14:07:30 +0200 (Fri, 25 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-08-23 16:18:17 +0530 (Tue, 23 Aug 2016)");
   script_name("Honeywell IP-Camera LFI and Credential Disclosure Vulnerabilities");
 
@@ -74,11 +74,7 @@ if(description)
   exit(0);
 }
 
-
-##
-## The script code starts here
-##
-
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

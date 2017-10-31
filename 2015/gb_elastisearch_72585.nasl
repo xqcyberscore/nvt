@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastisearch_72585.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: gb_elastisearch_72585.nasl 7576 2017-10-26 10:01:33Z cfischer $
 #
 # Elasticsearch Groovy Scripting Engine Unauthenticated Remote Code Execution
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-1427");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6345 $");
+ script_version ("$Revision: 7576 $");
 
  script_name("Elasticsearch Groovy Scripting Engine Unauthenticated Remote Code Execution");
 
@@ -55,7 +55,7 @@ the sandbox protection mechanism and execute arbitrary shell commands via a craf
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:01:33 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2015-03-12 10:52:20 +0100 (Thu, 12 Mar 2015)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -67,6 +67,7 @@ the sandbox protection mechanism and execute arbitrary shell commands via a craf
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

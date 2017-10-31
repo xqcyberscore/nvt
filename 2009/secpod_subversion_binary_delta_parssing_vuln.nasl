@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_subversion_binary_delta_parssing_vuln.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_subversion_binary_delta_parssing_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Subversion Binary Delta Processing Multiple Integer Overflow Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:subversion:subversion';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101104");
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 7573 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2009-08-20 09:27:17 +0200 (Thu, 20 Aug 2009)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
@@ -78,7 +78,7 @@ if(!ver = get_app_version(cpe:CPE)) exit(0);
 
 if(version_is_less(version:ver, test_version:"1.5.7")||
    version_in_range(version:ver, test_version:"1.6",test_version2:"1.6.3")){
-  report = report_fixed_ver(installed_version:version, fixed_version:"1.5.7/1.6.4");
+  report = report_fixed_ver(installed_version:ver, fixed_version:"1.5.7/1.6.4");
   security_message(data:report);
   exit(0);
 }

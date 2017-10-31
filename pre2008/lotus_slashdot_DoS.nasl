@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: lotus_slashdot_DoS.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: lotus_slashdot_DoS.nasl 7575 2017-10-26 09:47:04Z cfischer $
 # Description: Lotus /./ database lock
 #
 # Authors:
@@ -32,8 +32,8 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11718");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 7575 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3656);
   script_cve_id("CVE-2001-0954");
@@ -63,6 +63,7 @@ if (description)
 }
 
 include("version_func.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
 include("host_details.inc");
 
 if( ! vers = get_highest_app_version( cpe:CPE ) ) exit( 0 );

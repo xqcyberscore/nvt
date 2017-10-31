@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_inotes_xss_vuln02_aug17.nasl 6892 2017-08-10 13:03:58Z santu $
+# $Id: gb_ibm_inotes_xss_vuln02_aug17.nasl 7575 2017-10-26 09:47:04Z cfischer $
 #
 # IBM iNotes Cross-Site Scripting Vulnerability-02 Aug17
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811275");
-  script_version("$Revision: 6892 $");
+  script_version("$Revision: 7575 $");
   script_cve_id("CVE-2017-1327");
   script_bugtraq_id(100139);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-10 15:03:58 +0200 (Thu, 10 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2017-08-07 16:44:30 +0530 (Mon, 07 Aug 2017)");
   script_name("IBM iNotes Cross-Site Scripting Vulnerability-02 Aug17");
 
@@ -73,9 +73,9 @@ if(description)
   exit(0);
 }
 
-
-include("host_details.inc");
 include("version_func.inc");
+include("revisions-lib.inc"); # Used in get_highest_app_version
+include("host_details.inc");
 
 ## Variable Initialization
 domVer = "";

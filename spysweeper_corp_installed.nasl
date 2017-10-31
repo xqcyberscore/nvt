@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: spysweeper_corp_installed.nasl 7172 2017-09-18 11:07:34Z cfischer $
+# $Id: spysweeper_corp_installed.nasl 7580 2017-10-26 11:16:36Z cfischer $
 # Description: Webroot SpySweeper Enterprise Check
 #
 # Authors:
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(80046);
-  script_version("$Revision: 7172 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:07:34 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 7580 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:16:36 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -52,6 +52,7 @@ if(description)
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
+include("host_details.inc");
 
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);

@@ -1,8 +1,8 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: version_func.inc 7467 2017-10-18 05:14:21Z teissa $
+# OpenVAS Include File
+# $Id: version_func.inc 7575 2017-10-26 09:47:04Z cfischer $
 #
-# Helper functions for SSH-based target host access
+# Helper functions for various version related tests
 #
 # Authors:
 # Carsten Koch-Mauthe <c.koch-mauthe at dn-systems.de>
@@ -23,163 +23,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7467 $
+# $Revision: 7575 $
 #
 ###############################################################################
 
 # XXX: the version tests should be eventually consolidated with
 # the methods from revisions-lib.inc.
-
-function find_bin( prog_name, sock ) {
-
-  local_var r, whe, whi, cl, prog_name, sock;
-
-  whe = "";
-  whi = "";
-
-  if( get_kb_item( "no_linux_shell" ) ) return;
-
-  if( ! prog_name ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#prog_name#-#find_bin" );
-
-  if( ! sock ) {
-    sock = ssh_login_or_reuse_connection();
-  }
-
-  if( sock ) {
-
-    cl = check_locate( sock:sock );
-
-    if( cl ) {
-      r = split( ssh_cmd( socket:sock, cmd:"locate -ei *bin/" + prog_name, timeout:60 ) );
-    } else {
-      r = NULL;
-    }
-
-  } else {
-     r = NULL;
-  }
-
-  if( "bin/" + prog_name >!< r ) {
-    if( sock ) {
-      whe = ssh_cmd( socket:sock, cmd:"whereis -b " + prog_name, timeout:60 );
-      if( "bin/" + prog_name >< whe ) {
-        r = split( substr( whe - ( prog_name + ":" ), 1 ), sep:" " );
-      } else {
-        r = NULL;
-      }
-    }
-  }
-
-  if( isnull( r ) ) {
-    if( sock ) {
-      whi = ssh_cmd( socket:sock, cmd:"which -a " + prog_name, timeout:60 );
-      if( ( "which: no "+prog_name ) >!< whi ) {
-        r = split( whi );
-      } else {
-        r = NULL;
-      }
-    }
-  }
-
-  return( r );
-}
-
-function find_file( file_name, file_path, useregex, regexpar, sock ) {
-
-  local_var r, f, fname, lparam, cl, file_name, file_path, useregex, regexpar, sock;
-
-  if( get_kb_item( "no_linux_shell" ) ) return;
-
-  if( ! file_name ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file_name#-#find_file" );
-
-  r = NULL;
-
-  if( useregex ) {
-    lparam = "-eir";
-  } else {
-    lparam = "-ei";
-  }
-
-  use_find = get_kb_item( "Enable/find" );
-  descend_directories = get_kb_item( "Descend/OFS" );
-
-  if( isnull( use_find ) ) use_find="yes";
-  if( isnull( descend_directories ) ) descend_directories="yes";
-
-  fname = ereg_replace( pattern:"\*.+", string:file_name, replace:"" );
-
-  if( ! sock ) {
-    sock = ssh_login_or_reuse_connection();
-  }
-
-  if( sock ) {
-
-    cl = check_locate( sock:sock );
-
-    if ( cl ) {
-      r = split(ssh_cmd(socket:sock, cmd:"locate "+lparam+" "+raw_string(0x22)+file_path+file_name+regexpar+raw_string(0x22), timeout:60));
-    } else {
-      r = NULL;
-    }
-
-    if( fname >!< r && ( "yes" >< use_find ) ) {
-      if( ! isnull( file_path ) ) {
-
-        cmd = "find " + raw_string( 0x22 ) + file_path + raw_string( 0x22 );
-
-        if( "no" >< descend_directories ) {
-          cmd += " -xdev";
-        }
-
-        cmd += " -maxdepth 7 -mindepth 1";
-        cmd += ' \\( -path "*/proc" -o -path "/dev" -o -path "/sys" -o -path "/media" -o -path "/tmp" -o -path "/var" \\) -prune -o ';
-        cmd += " -name " + raw_string( 0x22 );
-        cmd += file_name + raw_string( 0x22 ) +" -a  -type f  -print 2>/dev/null";
-
-        f = split( ssh_cmd( socket:sock, cmd:cmd, timeout:60 ) );
-
-      }
-    }
-  }
-
-  if( fname >!< r ) {
-    if( fname >< f && "No such file or directory" >!< f ) {
-      r = f;
-    } else {
-      r = NULL;
-    }
-  }
-  return( r );
-}
-
-function get_bin_version( full_prog_name, version_argv, ver_pattern, sock ) {
-
-  local_var loc_version, r, report, full_prog_name, version_argv, ver_pattern;
-
-  if( get_kb_item( "no_linux_shell" ) ) return;
-
-  if( ! full_prog_name ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#full_prog_name#-#get_bin_version" );
-  if( ! version_argv ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version_argv#-#get_bin_version" );
-  if( ! ver_pattern ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#ver_pattern#-#get_bin_version" );
-
-  full_prog_name = chomp( full_prog_name );
-  version_argv = chomp( version_argv );
-
-  if( ! sock) {
-    sock = ssh_login_or_reuse_connection();
-  }
-
-  if( sock ) {
-    r = ssh_cmd( socket:sock, cmd:full_prog_name + " " + version_argv, timeout:60 );
-  }
-
-  # e.g. /bin/sh: 1: /usr/share/bash-completion/completions/xfreerdp: Permission denied
-  if( ": Permission denied" >< r ) return;
-
-  loc_version = eregmatch( pattern:ver_pattern, string:r );
-  if( loc_version != NULL ) loc_version[max_index( loc_version )] = r;
-  return( loc_version );
-}
 
 function get_string_version( text, ver_pattern ) {
 
@@ -414,38 +263,8 @@ function get_samba_version() {
   return version[1];
 }
 
-function check_locate( sock ) {
-
-  local_var r;
-
-  if( ! sock ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#sock#-#check_locate" );
-
-  if( get_kb_item( "no_linux_shell" ) ) return FALSE;
-  if( get_kb_item( "lsc/locate/broken" ) ) return FALSE;
-
-  if( ! get_kb_item( "lsc/locate/tested" ) ) {
-
-    r = ssh_cmd( socket:sock, cmd:"locate -S", timeout:60 );
-
-    if( ( "Database /" >!< r ||
-        ( "bytes" >!< r &&
-          "Compression" >!< r &&
-          "Filenames"   >!< r &&
-          "file names"  >!< r ) ) ||
-          "command not found" >< r ||
-          "locate:" >< r ) { # nb: Also includes an outdated database like "locate: warning: database /var/cache/locate/locatedb is more than 8 days old (actual age is 9,3 days)"
-
-      set_kb_item( name:"lsc/locate/broken", value:TRUE );
-      set_kb_item( name:"lsc/locate/broken/reason", value:r );
-      set_kb_item( name:"lsc/locate/tested", value:TRUE );
-      return FALSE;
-    }
-    set_kb_item( name:"lsc/locate/tested", value:TRUE );
-  }
-  return TRUE;
-}
-
 ## This function will return the version of the given file
+## nb: If you use this you need to include secpod_smb_func.inc
 function fetch_file_version( sysPath, file_name ) {
 
   local_var share, file, file_name, sysVer, kb_proxy_file, kb_proxy, kbsysPath ;
@@ -475,10 +294,7 @@ function fetch_file_version( sysPath, file_name ) {
   share = ereg_replace( pattern:"([A-Za-z]):.*", replace:"\1$", string:sysPath );
   file =  ereg_replace( pattern:"[A-Za-z]:(.*)", replace:"\1", string:sysPath + "\" + file_name );
 
-  # openvas-nasl-lint currently can't detect a missing function within a function
-  if( ! defined_func( "GetVer" ) ) include( "secpod_smb_func.inc" );
-
-  sysVer = GetVer( file:file, share:share );
+  sysVer = GetVer( file:file, share:share ); # from secpod_smb_func.inc
   if( ! sysVer || isnull( sysVer ) || sysVer == "" || sysVer == 0 || sysVer == '0' ) {
     set_kb_item( name:kb_proxy_file, value:"unknown" );
     return FALSE;

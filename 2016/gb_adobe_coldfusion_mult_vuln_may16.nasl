@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807588");
-  script_version("$Revision: 5505 $");
+  script_version("$Revision: 7573 $");
   script_cve_id("CVE-2016-1113", "CVE-2016-1114", "CVE-2016-1115");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-05-16 13:44:30 +0530 (Mon, 16 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Multiple Vulnerabilities(may-2016)");
@@ -99,15 +99,13 @@ if(!cfdVer || "unknown" >< cfdVer){
 if(version_in_range(version:cfdVer, test_version:"10.0", test_version2:"10.0.19.298510"))
 {
   fix = "10.0.19.298511";
-  VULN = True;
 }
 else if(version_in_range(version:cfdVer, test_version:"11.0", test_version2:"11.0.08.298511"))
 {
   fix = "11.0.08.298512";
-  VULN = True;
 }
 
-if(VULN)
+if(fix)
 {
   report = report_fixed_ver(installed_version:cfdVer, fixed_version:fix);
   security_message(data:report, port:cfPort);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limny_theme_param_dir_trav_vuln.nasl 5633 2017-03-20 15:56:23Z cfi $
+# $Id: gb_limny_theme_param_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Limny admin/preview.php theme Parameter Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:limny:limny";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802984");
-  script_version("$Revision: 5633 $");
+  script_version("$Revision: 7577 $");
   script_cve_id("CVE-2011-5210");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-10-12 15:41:59 +0530 (Fri, 12 Oct 2012)");
   script_name("Limny admin/preview.php theme Parameter Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -74,6 +74,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

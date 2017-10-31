@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3511.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3511.nasl 7585 2017-10-26 15:03:01Z cfischer $
 # Auto-generated from advisory DSA 3511-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703511);
-    script_version("$Revision: 6608 $");
+    script_version("$Revision: 7585 $");
     script_cve_id("CVE-2016-1285", "CVE-2016-1286");
     script_name("Debian Security Advisory DSA 3511-1 (bind9 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
     script_tag(name: "creation_date", value: "2016-03-09 00:00:00 +0100 (Wed, 09 Mar 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -64,7 +64,7 @@ For the testing (stretch) and unstable (sid) distributions, these
 problems will be fixed soon.
 
 We recommend that you upgrade your bind9 packages.");
-    script_tag(name: "summary",   value: "Two vulnerabilites have been
+    script_tag(name: "summary",   value: "Two vulnerabilities have been
 discovered in ISC's BIND DNS server.
 
 CVE-2016-1285

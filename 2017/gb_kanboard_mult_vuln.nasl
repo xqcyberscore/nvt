@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kanboard_mult_vuln.nasl 7026 2017-08-31 06:13:04Z asteins $
+# $Id: gb_kanboard_mult_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
 #
 # Kanboard Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:kanboard:kanboard';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140302");
-  script_version("$Revision: 7026 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-31 08:13:04 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-08-16 08:40:15 +0700 (Wed, 16 Aug 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -51,11 +51,11 @@ if (description)
   script_dependencies("sw_kanboard_detect.nasl");
   script_mandatory_keys("kanboard/installed");
 
-  script_tag(name: "summary", value: "Kanboard is prone to multiple vulnerabilites.");
+  script_tag(name: "summary", value: "Kanboard is prone to multiple vulnerabilities.");
 
   script_tag(name: "vuldetect", value: "Check the version.");
 
-  script_tag(name: "insight", value: "Kanboard is prone to multiple vulnerabilites:
+  script_tag(name: "insight", value: "Kanboard is prone to multiple vulnerabilities:
 
 - An authenticated standard user could reset the password of other users (including the admin) by altering form
 data. (CVE-2017-12850)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webgrind_lfi_02_2012.nasl 5716 2017-03-24 12:31:10Z cfi $
+# $Id: gb_webgrind_lfi_02_2012.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # webgrind 1.0 (file param) Local File Inclusion Vulnerability
 #
@@ -37,13 +37,13 @@ Webgrind 1.0 (v1.02 in trunk on github) are vulnerable; other versions may also 
 if (description)
 {
  script_id(103439);
- script_version ("$Revision: 5716 $");
+ script_version ("$Revision: 7577 $");
  script_name("webgrind 1.0 (file param) Local File Inclusion Vulnerability");
  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5075.php");
  script_cve_id("CVE-2011-3047");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 13:31:10 +0100 (Fri, 24 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2012-02-28 11:24:22 +0100 (Tue, 28 Feb 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -56,6 +56,7 @@ if (description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

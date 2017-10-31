@@ -43,7 +43,7 @@ tag_insight = "Multiple vulnerabilities have been identified and fixed in mplaye
   
   Fix invalid reads in VC-1 decoding (CVE-2011-0723)
   
-  And several additional vulnerabilites originally discovered by Google
+  And several additional vulnerabilities originally discovered by Google
   Chrome developers were also fixed with this advisory.
   
   The updated packages have been patched to correct these issues.";
@@ -57,8 +57,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-05/msg00011.php");
   script_id(831389);
-  script_version("$Revision: 6570 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:06:35 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 7585 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-05-17 15:58:48 +0200 (Tue, 17 May 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

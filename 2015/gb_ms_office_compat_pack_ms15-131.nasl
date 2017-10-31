@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_compat_pack_ms15-131.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: gb_ms_office_compat_pack_ms15-131.nasl 7582 2017-10-26 11:56:51Z cfischer $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3116111)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806177");
-  script_version("$Revision: 6211 $");
+  script_version("$Revision: 7582 $");
   script_cve_id("CVE-2015-6040", "CVE-2015-6122", "CVE-2015-6124", "CVE-2015-6172");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2015-12-09 14:32:12 +0530 (Wed, 09 Dec 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3116111)");
@@ -133,7 +133,7 @@ if(wordcnvVer && wordcnvVer =~ "^12.*")
     if(InsPath)
     {
       ## Get Version from Mso.dll
-      offPath = InsPath + "\Microsoft Shared\Office12" + offsubver;
+      offPath = InsPath + "\Microsoft Shared\Office12";
       exeVer = fetch_file_version(sysPath:offPath, file_name:"Mso.dll");
       if(exeVer)
       {

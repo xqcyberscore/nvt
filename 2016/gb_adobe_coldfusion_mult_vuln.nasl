@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_mult_vuln.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_adobe_coldfusion_mult_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
 #
 # Adobe ColdFusion Multiple Vulnerabilities(march-2016)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807014");
-  script_version("$Revision: 5513 $");
+  script_version("$Revision: 7573 $");
   script_cve_id("CVE-2015-8052", "CVE-2015-8053", "CVE-2015-5255");
   script_bugtraq_id(77625, 77626);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-03-11 14:43:52 +0530 (Fri, 11 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Multiple Vulnerabilities(march-2016)");
@@ -98,15 +98,13 @@ if(!cfdVer || "unknown" >< cfdVer){
 if(version_in_range(version:cfdVer, test_version:"10.0", test_version2:"10.0.18.296329"))
 {
   fix = "10.0.18.296330";
-  VULN = True;
 }
 else if(version_in_range(version:cfdVer, test_version:"11.0", test_version2:"11.0.07.296329"))
 {
   fix = "11.0.07.296330";
-  VULN = True;
 }
 
-if(VULN)
+if(fix)
 {
   report_fixed_ver(installed_version:cfdVer, fixed_version:fix);
   security_message(data:report, port:cfPort);

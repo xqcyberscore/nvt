@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_scriptegrator_plugin_lfi_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_joomla_scriptegrator_plugin_lfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Joomla! Scriptegrator plugin Multiple Local File Inclusion Vulnerabilities
 #
@@ -46,8 +46,8 @@ prone to multiple local file inclusion vulnerabilities.";
 if(description)
 {
   script_id(802026);
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 7577 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2011-06-17 11:16:31 +0200 (Fri, 17 Jun 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -70,7 +70,7 @@ if(description)
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");

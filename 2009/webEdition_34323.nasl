@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webEdition_34323.nasl 5768 2017-03-29 13:37:01Z cfi $
+# $Id: webEdition_34323.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # webEdition CMS 'WE_LANGUAGE' Parameter Local File Include
 # Vulnerability
@@ -38,8 +38,8 @@ tag_summary = "webEdition CMS is prone to a local file-include vulnerability
 if(description)
 {
  script_id(100103);
- script_version("$Revision: 5768 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:37:01 +0200 (Wed, 29 Mar 2017) $");
+ script_version("$Revision: 7577 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
  script_tag(name:"creation_date", value:"2009-04-05 13:52:05 +0200 (Sun, 05 Apr 2009)");
  script_tag(name:"cvss_base", value:"5.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -57,6 +57,7 @@ if(description)
  exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

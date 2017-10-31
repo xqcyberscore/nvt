@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiny_server_file_disc_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_tiny_server_file_disc_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
 #
 # Tiny Server Arbitrary File Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802721");
-  script_version("$Revision: 6697 $");
+  script_version("$Revision: 7577 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
   script_tag(name:"creation_date", value:"2012-03-21 10:53:33 +0530 (Wed, 21 Mar 2012)");
   script_name("Tiny Server Arbitrary File Disclosure Vulnerability");
 
@@ -64,6 +64,7 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
