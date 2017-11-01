@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netmri_detect.nasl 7270 2017-09-26 09:49:58Z cfischer $
+# $Id: gb_netmri_detect.nasl 7600 2017-10-30 09:52:59Z ckuersteiner $
 #
 # NetMRI Detection
 #
@@ -25,92 +25,73 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Detection of NetMRI.
-                    
-The script sends a connection request to the server and attempts to
-extract the version number from the reply.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103575";   
-
 if (description)
 {
-
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103575");
+ script_version("$Revision: 7600 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-10-30 10:52:59 +0100 (Mon, 30 Oct 2017) $");
+ script_tag(name:"creation_date", value:"2012-09-25 12:05:19 +0200 (Tue, 25 Sep 2012)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 7270 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
- script_tag(name:"creation_date", value:"2012-09-25 12:05:19 +0200 (Tue, 25 Sep 2012)");
+
  script_name("NetMRI Detection");
+
+ script_tag(name: "summary", value: "Detection of NetMRI.
+                    
+The script sends a connection request to the server and attempts to extract the version number from the reply.");
+
  script_category(ACT_GATHER_INFO);
- script_family("Product detection");
+
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+ script_family("Product detection");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 443);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
+
  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:443);
 
-soc = open_sock_tcp(port, transport:get_port_transport(port));
-if(!soc)exit(0);
+data = 'mode=LOGIN-FORM';
+url = "/netmri/config/userAdmin/login.tdf";
 
-host = http_host_name(port:port);
+req = http_post(port: port, item: url, data: data);
+res = http_keepalive_send_recv(port: port, data: req);
 
-req = string("POST /netmri/config/userAdmin/login.tdf HTTP/1.1\r\n",
-             "Host: ",host,"\r\n",
-             "Content-Length: 15\r\n",
-             "\r\n",
-             "mode=LOGIN-FORM\r\n");
-
-send(socket:soc, data:req);
-while(buf = recv(socket:soc, length:1024)) {
-  data += buf;
-}
-
-close(soc);
-
-c = 0;
-
-if("<title>NetMRI Login" >< data || "<title>Network Automation Login" >< data)
-{
-
-  lines = split(data);
+if ("<title>NetMRI Login" >< res || "<title>Network Automation Login" >< res) {
+  # This probably could be checked with a single eregmatch(), however the correct regex is unclear
+  lines = split(res);
+  c = 0;
 
   foreach line(lines) {
-
     c++;
-
     vers = 'unknown';
-    if("Version:" >< line) {
-
-       version = eregmatch(pattern:"<td>([^<]+)</td>", string:lines[c]); 
-       if(isnull(version[1]))exit(0);
-
-       vers = version[1];
-
+    if ("Version:" >< line) {
+       version = eregmatch(pattern: "<td>([^<]+)</td>", string: lines[c]); 
+       if (!isnull(version[1]))
+         vers = version[1];
     }    
 
     set_kb_item(name: string("www/", port, "/netmri"), value: string(vers," under /"));
     set_kb_item(name:"netMRI/installed", value:TRUE);
 
-    cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:infoblox:netmri:");
-    if(isnull(cpe))
+    cpe = build_cpe(value: vers, exp: "^([0-9.]+)", base: "cpe:/a:infoblox:netmri:");
+    if (!cpe)
       cpe = 'cpe:/a:infoblox:netmri';
 
-    register_product(cpe:cpe, location:"/", nvt:SCRIPT_OID, port:port);
+    register_product(cpe: cpe, location: "/", port: port);
 
-    log_message(data: build_detection_report(app:"NetMRI", version:vers, install:"/", cpe:cpe, concluded: version[0]),
-                port:port);
+    log_message(data: build_detection_report(app: "Infoblox NetMRI", version: vers, install: "/", cpe: cpe,
+                                             concluded: version[0]),
+                port: port);
 
     exit(0);
   }  

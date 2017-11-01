@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_buffer_overflow_vuln.nasl 7529 2017-10-20 10:53:04Z cfischer $
+# $Id: gb_redis_buffer_overflow_vuln.nasl 7604 2017-11-01 06:48:12Z asteins $
 #
 # Redis 4.0.2 and prior Buffer Overflow vulnerability
 #
@@ -29,11 +29,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113011");
-  script_version("$Revision: 7529 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 12:53:04 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 7604 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-10 14:58:31 +0200 (Tue, 10 Oct 2017)");
-  script_tag(name:"cvss_base", value:"5.7");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:P/I:P/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   # There exists a backport of the vulnerable version for Debian Stretch
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

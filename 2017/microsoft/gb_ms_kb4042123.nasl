@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4042123.nasl 7401 2017-10-11 13:55:58Z santu $
+# $Id: gb_ms_kb4042123.nasl 7604 2017-11-01 06:48:12Z asteins $
 #
 # Windows Shell Memory Corruption Vulnerability (KB4042123)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812020");
-  script_version("$Revision: 7401 $");
+  script_version("$Revision: 7604 $");
   script_cve_id("CVE-2017-8727");
   script_bugtraq_id(101142);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-11 15:55:58 +0200 (Wed, 11 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-11 09:16:21 +0530 (Wed, 11 Oct 2017)");
   script_name("Windows Shell Memory Corruption Vulnerability (KB4042123)");
 

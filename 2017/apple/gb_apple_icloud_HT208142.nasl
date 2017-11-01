@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_icloud_HT208142.nasl 7292 2017-09-27 08:38:54Z santu $
+# $Id: gb_apple_icloud_HT208142.nasl 7604 2017-11-01 06:48:12Z asteins $
 #
 # Apple iCloud Security Updates(HT208142)
 #
@@ -28,16 +28,16 @@ CPE = "cpe:/a:apple:icloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811789");
-  script_version("$Revision: 7292 $");
+  script_version("$Revision: 7604 $");
   script_cve_id("CVE-2017-7127", "CVE-2017-7081", "CVE-2017-7087", "CVE-2017-7091", 
                 "CVE-2017-7092", "CVE-2017-7093", "CVE-2017-7094", "CVE-2017-7095", 
                 "CVE-2017-7096", "CVE-2017-7098", "CVE-2017-7099", "CVE-2017-7100", 
                 "CVE-2017-7102", "CVE-2017-7104", "CVE-2017-7107", "CVE-2017-7111", 
                 "CVE-2017-7117", "CVE-2017-7120", "CVE-2017-7089", "CVE-2017-7090", 
                 "CVE-2017-7106", "CVE-2017-7109" );
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:38:54 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-09-26 10:42:35 +0530 (Tue, 26 Sep 2017)");
   script_name("Apple iCloud Security Updates(HT208142)");
 

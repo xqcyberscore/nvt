@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 7589 2017-10-27 07:03:33Z cfischer $
+# $Id: host_details.inc 7600 2017-10-30 09:52:59Z ckuersteiner $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7589 $
+# $Revision: 7600 $
 #
 ###############################################################################
 
@@ -108,6 +108,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
+    "1.3.6.1.4.1.25623.1.0.140454", # gb_checkpoint_fw_version.nasl
     "1.3.6.1.4.1.25623.1.0.103621", # gb_smb_windows_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105586", # gb_ssh_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.104000", # nmap_net.nasl
@@ -175,6 +176,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
+    "1.3.6.1.4.1.25623.1.0.140454", # gb_checkpoint_fw_version.nasl
     "1.3.6.1.4.1.25623.1.0.103621", # gb_smb_windows_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105586", # gb_ssh_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.104000", # nmap_net.nasl

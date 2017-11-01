@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 7589 2017-10-27 07:03:33Z cfischer $
+# $Id: os_detection.nasl 7600 2017-10-30 09:52:59Z ckuersteiner $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 7589 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 09:03:33 +0200 (Fri, 27 Oct 2017) $");
+  script_version("$Revision: 7600 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-10-30 10:52:59 +0100 (Mon, 30 Oct 2017) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,7 +56,8 @@ if(description)
                       "gb_brocade_netiron_snmp_detect.nasl", "gb_arubaos_detect.nasl",
                       "gb_cyberoam_umt_ngfw_detect.nasl", "gb_aerohive_hiveos_detect.nasl",
                       "gb_windows_cpe_detect.nasl", "gather-package-list.nasl",
-                      "gb_cisco_pis_version.nasl", "gb_smb_windows_detect.nasl",
+                      "gb_cisco_pis_version.nasl", "gb_checkpoint_fw_version.nasl",
+                      "gb_smb_windows_detect.nasl",
                       "gb_ssh_os_detection.nasl", "gb_junos_snmp_version.nasl",
                       "gb_snmp_os_detection.nasl", "gb_dns_os_detection.nasl",
                       "gb_ftp_os_detection.nasl", "smb_nativelanman.nasl",

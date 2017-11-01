@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wnpa-sec-2017-43_wnpa-sec-2017-42_win.nasl 7424 2017-10-13 09:34:30Z santu $
+# $Id: gb_wireshark_wnpa-sec-2017-43_wnpa-sec-2017-42_win.nasl 7604 2017-11-01 06:48:12Z asteins $
 #
 # Wireshark Security Updates (wnpa-sec-2017-43_wnpa-sec-2017-42)-Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811943");
-  script_version("$Revision: 7424 $");
+  script_version("$Revision: 7604 $");
   script_cve_id("CVE-2017-15193", "CVE-2017-15192" );
   script_bugtraq_id(101240, 101235);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 11:34:30 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-12 13:42:13 +0530 (Thu, 12 Oct 2017)");
   script_name("Wireshark Security Updates (wnpa-sec-2017-43_wnpa-sec-2017-42)-Windows");
 

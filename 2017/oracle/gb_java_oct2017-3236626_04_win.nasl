@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_oct2017-3236626_04_win.nasl 7497 2017-10-19 07:06:06Z santu $
+# $Id: gb_java_oct2017-3236626_04_win.nasl 7604 2017-11-01 06:48:12Z asteins $
 #
 # Oracle Java SE Security Updates (oct2017-3236626) 04 - Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812039");
-  script_version("$Revision: 7497 $");
+  script_version("$Revision: 7604 $");
   script_cve_id("CVE-2016-10165", "CVE-2017-10350");
   script_bugtraq_id(101341, 95808);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 09:06:06 +0200 (Thu, 19 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-18 13:04:32 +0530 (Wed, 18 Oct 2017)");
   script_name("Oracle Java SE Security Updates (oct2017-3236626) 04 - Windows");
 

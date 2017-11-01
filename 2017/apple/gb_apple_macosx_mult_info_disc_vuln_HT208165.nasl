@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_info_disc_vuln_HT208165.nasl 7424 2017-10-13 09:34:30Z santu $
+# $Id: gb_apple_macosx_mult_info_disc_vuln_HT208165.nasl 7604 2017-11-01 06:48:12Z asteins $
 #
 # Apple Mac OS X Multiple Information Disclosure Vulnerabilities-HT208165
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811853");
-  script_version("$Revision: 7424 $");
+  script_version("$Revision: 7604 $");
   script_cve_id("CVE-2017-7149", "CVE-2017-7150");
   script_bugtraq_id(101178, 101177);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 11:34:30 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-09 10:57:39 +0530 (Mon, 09 Oct 2017)");
   script_name("Apple Mac OS X Multiple Information Disclosure Vulnerabilities-HT208165");
 

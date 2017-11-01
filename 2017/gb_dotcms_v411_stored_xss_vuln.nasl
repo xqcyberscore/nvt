@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_v411_stored_xss_vuln.nasl 7526 2017-10-20 09:32:39Z asteins $
+# $Id: gb_dotcms_v411_stored_xss_vuln.nasl 7604 2017-11-01 06:48:12Z asteins $
 #
 # dotCMS 4.1.1 Stored Cross-Site Scripting (XSS) Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:dotcms:dotcms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112090");
-  script_version("$Revision: 7526 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-20 11:32:39 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 7604 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-10-20 11:47:18 +0200 (Fri, 20 Oct 2017)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-15219");
 

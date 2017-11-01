@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prtg_netmon_xss_vuln2.nasl 7574 2017-10-26 09:34:34Z ckuersteiner $
+# $Id: gb_prtg_netmon_xss_vuln2.nasl 7600 2017-10-30 09:52:59Z ckuersteiner $
 #
 # PRTG Network Monitor Multiple Vulnerabilities
 #
@@ -30,13 +30,13 @@ CPE = 'cpe:/a:paessler:prtg_network_monitor';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140434");
-  script_version("$Revision: 7574 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 11:34:34 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 7600 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-10-30 10:52:59 +0100 (Mon, 30 Oct 2017) $");
   script_tag(name: "creation_date", value: "2017-10-17 16:07:51 +0700 (Tue, 17 Oct 2017)");
   script_tag(name: "cvss_base", value: "8.3");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:M/C:C/I:C/A:C");
 
-  script_cve_id("CVE-2017-15008", "CVE-2017-15009", "CVE-2017-15651", "CVE-2017-15360");
+  script_cve_id("CVE-2017-15008", "CVE-2017-15009", "CVE-2017-15651", "CVE-2017-15360", "CVE-2017-15917");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
@@ -65,13 +65,16 @@ attribute of an IMG element (CVE-2017-15008)
 encoded script (CVE-2017-15360)
 
 - Arbitrary remote code execution by remote autenticated administrators by uploading a .exe file and then
-proceeding in spite of the error message (CVE-2017-15651)");
+proceeding in spite of the error message (CVE-2017-15651)
+
+- it's possible to create a Map as a read-only user, by forging a request and sending it to the server
+(CVE-2017-15917)");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 
   script_tag(name: "affected", value: "PRTG Network Monitor version 17.3.33.2830 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 26th October, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 30th October, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://medium.com/stolabs/security-issue-on-prtg-network-manager-ada65b45d37b");
