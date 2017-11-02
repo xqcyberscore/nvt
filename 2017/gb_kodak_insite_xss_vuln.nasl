@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodak_insite_xss_vuln.nasl 7191 2017-09-20 04:14:22Z ckuersteiner $
+# $Id: gb_kodak_insite_xss_vuln.nasl 7610 2017-11-01 13:14:39Z jschulte $
 #
 # Kodak InSite XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:kodak:insite";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106821");
-  script_version("$Revision: 7191 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-20 06:14:22 +0200 (Wed, 20 Sep 2017) $");
+  script_version("$Revision: 7610 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-05-23 09:17:36 +0700 (Tue, 23 May 2017)");
   script_tag(name: "cvss_base", value: "6.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -61,7 +61,7 @@ code in the context of the interface or allow the attacker to access sensitive b
 
   script_tag(name: "affected", value: "Kodak InSite version 6.5 until 8.0.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 20th September, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 1st November, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://packetstormsecurity.com/files/142587/Kodak-InSite-8.0-Cross-Site-Scripting.html");

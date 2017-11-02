@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 01 Nov 2017 09:16:33 +0100
+# Automatically created on:  Thu, 02 Nov 2017 08:01:00 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47510,6 +47510,9 @@
 2017/centos/gb_CESA-2017_3071_ntp_centos6.nasl: GPLv2+
 2017/centos/gb_CESA-2017_3075_wget_centos7.nasl: GPLv2+
 2017/cisco/gb_cisco_aironet_cisco-sa-20171016-wpa.nasl: GPLv2+
+2017/cisco/gb_cisco_aironet_cisco-sa-20171101-aironet2.nasl: GPLv2+
+2017/cisco/gb_cisco_aironet_cisco-sa-20171101-aironet3.nasl: GPLv2+
+2017/cisco/gb_cisco_aironet_cisco-sa-20171101-aironet4.nasl: GPLv2+
 2017/cisco/gb_cisco_ip_phone_8821_cisco-sa-20171016-wpa.nasl: GPLv2+
 2017/cisco/gb_cisco_ip_phone_8861_cisco-sa-20171016-wpa.nasl: GPLv2+
 2017/cisco/gb_cisco_ip_phone_8865_cisco-sa-20171016-wpa.nasl: GPLv2+
@@ -47766,12 +47769,6 @@
 2017/deb_3998.nasl: GPLv2+
 2017/deb_3999.nasl: GPLv2+
 2017/deb_4000.nasl: GPLv2+
-2017/deb_4001.nasl: GPLv2+
-2017/deb_4002.nasl: GPLv2+
-2017/deb_4003.nasl: GPLv2+
-2017/deb_4004.nasl: GPLv2+
-2017/deb_4005.nasl: GPLv2+
-2017/deb_4006.nasl: GPLv2+
 2017/deb_4011.nasl: GPLv2+
 2017/debian/deb_4001.nasl: GPLv2+
 2017/debian/deb_4002.nasl: GPLv2+
@@ -47779,6 +47776,13 @@
 2017/debian/deb_4004.nasl: GPLv2+
 2017/debian/deb_4005.nasl: GPLv2+
 2017/debian/deb_4006.nasl: GPLv2+
+2017/debian/deb_4007.nasl: GPLv2+
+2017/debian/deb_4008.nasl: GPLv2+
+2017/debian/deb_4009.nasl: GPLv2+
+2017/debian/deb_4010.nasl: GPLv2+
+2017/debian/deb_4011.nasl: GPLv2+
+2017/debian/deb_4012.nasl: GPLv2+
+2017/debian/deb_4013.nasl: GPLv2+
 2017/digium/gb_asterisk_rtp_info_leak_vuln.nasl: GPLv2+
 2017/drupal/gb_drupal_core_mult_vuln_SA-CORE-2015-001_lin.nasl: GPLv2+
 2017/drupal/gb_drupal_core_mult_vuln_SA-CORE-2015-001_win.nasl: GPLv2+
@@ -48604,6 +48608,7 @@
 2017/gb_drupal_mult_vuln_jan17_lin.nasl: GPLv2+
 2017/gb_drupal_mult_vuln_jan17_win.nasl: GPLv2+
 2017/gb_dup_scount_enterprise_server_bof_vuln_aug17.nasl: GPLv2+
+2017/gb_dvr_jaws_web_auth_bypass.nasl: GPLv2+
 2017/gb_ecava_integraxor_sql_inj_vuln2.nasl: GPLv2+
 2017/gb_ecava_integraxor_sql_inj_vuln.nasl: GPLv2+
 2017/gb_egroupware_2014_mult_vuln.nasl: GPLv2+
@@ -50048,6 +50053,7 @@
 2017/gb_java_jul2017-3236622_01_win.nasl: GPLv2+
 2017/gb_java_jul2017-3236622_02_win.nasl: GPLv2+
 2017/gb_java_jul2017-3236622_03_win.nasl: GPLv2+
+2017/gb_jaws_rce_vuln.nasl: GPLv2+
 2017/gb_jboss_eap_eol_lin.nasl: GPLv2+
 2017/gb_jboss_eap_eol_win.nasl: GPLv2+
 2017/gb_jboss_eap_server_xml_ext_ent_inj_vuln.nasl: GPLv2+
@@ -53584,6 +53590,7 @@ gnutella_detect.nasl: GPLv2
 gos_funcs.inc: GPLv2+
 gravity_board_x_detect.nasl: GPLv2+
 gsf/2017/aruba/gb_arubaos_aruba_psa_2017_007.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_apic_em_cisco-sa-20171101-apicem.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_asa_cisco-sa-20171004-asa1.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_asa_cisco-sa-20171004-asa.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_cucm_cisco-sa-20170906-ucm.nasl: GPLv2+
@@ -53616,15 +53623,19 @@ gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170927-privesc.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170927-restapi.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20171018-cisco-ios-xe.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xr_cisco-sa-20171004-ncs.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ise_cisco-sa-20171101-ise.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170906-cms.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170913-cmsturn.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20171004-cms.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_nx_os_cisco-sa-20171018-aaavty.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_nx_os_cisco-sa-20171018-ppe.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_pcp_cisco-sa-20171101-cpcp.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_small_bussiness_300_series_switch_dos_vuln.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_small_bussiness_500_series_switch_dos_vuln.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_spa_cisco-sa-20170920-spa_dos_vuln.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ucs_central_cisco-sa-20170920-ucs.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ucs_manager_cisco-sa-20171101-arce.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ucs_platform_emulator_rce_vuln.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_vcs_cisco-sa-20170816-vcs.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_vcs_cisco-sa-20171018-expressway-tp-vcs.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_webex_cisco-sa-20171004-wms.nasl: GPLv2+
@@ -53632,9 +53643,16 @@ gsf/2017/cisco/gb_cisco_wlc_cisco-sa-20170405-wlc.nasl: GPLv2+
 gsf/2017/emc/gb_emc_data_protection_advisor_pw_vuln.nasl: GPLv2+
 gsf/2017/emc/gb_emc_isilon_onefs_xss_vuln.nasl: GPLv2+
 gsf/2017/emc/gb_rsa_archer_mult_vuln1.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K02692210.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K10002335.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K13421245.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K19430431.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K21154730.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K22317030.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K22541983.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K30201296.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K43945001.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K62279530.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K74759095.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K81601350.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortigate_FG-IR-17-196.nasl: GPLv2+
@@ -53662,6 +53680,7 @@ gsf/2017/juniper/gb_junos_jsa10813.nasl: GPLv2+
 gsf/2017/juniper/gb_junos_jsa10814.nasl: GPLv2+
 gsf/2017/juniper/gb_junos_jsa10816.nasl: GPLv2+
 gsf/2017/juniper/gb_junos_jsa10817.nasl: GPLv2+
+gsf/2017/juniper/gb_junos_jsa10818.nasl: GPLv2+
 gsf/2017/juniper/gb_junos_space_jsa10826.nasl: GPLv2+
 gsf/2017/oracle/gb_oracle_bi_publisher_oct2017-3236626_01_vuln.nasl: GPLv2+
 gsf/2017/oracle/gb_oracle_ilo_cpuct2017-3236626_01.nasl: GPLv2+

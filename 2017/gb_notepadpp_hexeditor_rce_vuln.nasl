@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_notepadpp_hexeditor_rce_vuln.nasl 7257 2017-09-26 05:43:20Z asteins $
+# $Id: gb_notepadpp_hexeditor_rce_vuln.nasl 7613 2017-11-01 14:51:05Z asteins $
 #
 # Notepad++ Hex Editor Plugin Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:don_ho:notepad++";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811586");
-  script_version("$Revision: 7257 $");
+  script_version("$Revision: 7613 $");
   script_cve_id("CVE-2017-8803");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 07:43:20 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-01 15:51:05 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-08-22 14:00:19 +0530 (Tue, 22 Aug 2017)");
   script_name("Notepad++ Hex Editor Plugin Buffer Overflow Vulnerability");
 
@@ -56,7 +56,7 @@ if(description)
   Hex Editor Plugin v0.9.5 on Windows.");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of 
-  26th September, 2017. Information regarding this issue will be updated once the 
+  01st November, 2017. Information regarding this issue will be updated once the 
   solution details are available.
   For updates refer to http://notepad-plus-plus.org");
   script_tag(name:"solution_type", value:"NoneAvailable");

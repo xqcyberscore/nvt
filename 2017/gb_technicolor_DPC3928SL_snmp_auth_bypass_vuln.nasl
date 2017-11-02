@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_technicolor_DPC3928SL_snmp_auth_bypass_vuln.nasl 7598 2017-10-27 13:05:40Z cfischer $
+# $Id: gb_technicolor_DPC3928SL_snmp_auth_bypass_vuln.nasl 7610 2017-11-01 13:14:39Z jschulte $
 #
 # Technicolor DPC3928SL SNMP Authentication Bypass Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810980");
-  script_version("$Revision: 7598 $");
+  script_version("$Revision: 7610 $");
   script_cve_id("CVE-2017-5135");
   script_bugtraq_id(98092);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 15:05:40 +0200 (Fri, 27 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-05-19 17:59:31 +0530 (Fri, 19 May 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Technicolor DPC3928SL SNMP Authentication Bypass Vulnerability");
@@ -58,7 +58,7 @@ if(description)
   affected.");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  19th September 2017, information regarding this issue will be updated once the
+  1st November 2017, information regarding this issue will be updated once the
   soultion details are available.
   For updates refer to http://partnerhub.technicolor.com");
 

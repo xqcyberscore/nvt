@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netscape_fasttrack_server_auth_bof_vuln.nasl 7197 2017-09-20 08:09:47Z jschulte $
+# $Id: gb_netscape_fasttrack_server_auth_bof_vuln.nasl 7610 2017-11-01 13:14:39Z jschulte $
 #
-# Netscape FastTrack Server Authentication Buffer Overflow Vulnerability  
+# Netscape FastTrack Server Authentication Buffer Overflow Vulnerability
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -29,12 +29,12 @@ CPE = "cpe:/a:netscape:fasttrack_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811546");
-  script_version("$Revision: 7197 $");
+  script_version("$Revision: 7610 $");
   script_cve_id("CVE-1999-0853");
   script_bugtraq_id(847);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 10:09:47 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-07-28 15:05:05 +0530 (Fri, 28 Jul 2017)");
   script_name("Netscape FastTrack Server Authentication Buffer Overflow Vulnerability");
 
@@ -44,8 +44,8 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an error in the 
-  HTTP Basic Authentication procedure for the servers, which has a buffer overflow 
+  script_tag(name: "insight" , value:"The flaw is due to an error in the
+  HTTP Basic Authentication procedure for the servers, which has a buffer overflow
   condition when a long username or password (over 508 characters) are provided.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
@@ -56,7 +56,7 @@ if(description)
   script_tag(name: "affected" , value:"Netscape FastTrack Server 3.01");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  20th September, 2017. The product is end-of-life and the vulnerability was disclose in 1999.
+  1st November, 2017. The product is end-of-life and the vulnerability was disclose in 1999.
   A fix is unlikely.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

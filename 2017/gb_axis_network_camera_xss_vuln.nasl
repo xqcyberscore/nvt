@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axis_network_camera_xss_vuln.nasl 7197 2017-09-20 08:09:47Z jschulte $
+# $Id: gb_axis_network_camera_xss_vuln.nasl 7610 2017-11-01 13:14:39Z jschulte $
 #
 # Axis Network Camera Cross-Site Scripting Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:axis:network_camera";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811276");
-  script_version("$Revision: 7197 $");
+  script_version("$Revision: 7610 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 10:09:47 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-08-07 18:10:07 +0530 (Mon, 07 Aug 2017)");
   script_name("Axis Network Camera Cross-Site Scripting Vulnerability");
 
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"affected", value:"Axis Camera model 2100 Network Camera 2.43");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  20th Sep, 2017. The product is considered end-of-life and a fix is unlikely.
+  1st Nov, 2017. The product is considered end-of-life and a fix is unlikely.
   For updates refer to http://www.axis.com");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

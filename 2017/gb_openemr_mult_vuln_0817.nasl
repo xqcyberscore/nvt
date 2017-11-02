@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_mult_vuln_0817.nasl 7197 2017-09-20 08:09:47Z jschulte $
+# $Id: gb_openemr_mult_vuln_0817.nasl 7610 2017-11-01 13:14:39Z jschulte $
 #
 # OpenEMR <= 5.0.0-3 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:open-emr:openemr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108206");
-  script_version("$Revision: 7197 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 10:09:47 +0200 (Wed, 20 Sep 2017) $");
+  script_version("$Revision: 7610 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-08-15 09:04:14 +0200 (Tue, 15 Aug 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -62,7 +62,7 @@ if(description)
   script_tag(name:"affected", value:"OpenEMR 5.0.0-3 and prior");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
-  script_tag(name:"solution", value:"No solution or patch is available as of 20th September, 2017. Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name:"solution", value:"No solution or patch is available as of 1st November, 2017. Information regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://www.wizlynxgroup.com/security-research-advisories/vuln/WLX-2017-002");
   script_xref(name: "URL", value: "https://github.com/openemr/openemr/commit/b8963a5ca483211ed8de71f18227a0e66a2582ad");

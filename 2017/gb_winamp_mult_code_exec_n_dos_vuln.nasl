@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winamp_mult_code_exec_n_dos_vuln.nasl 7198 2017-09-20 08:10:07Z jschulte $
+# $Id: gb_winamp_mult_code_exec_n_dos_vuln.nasl 7610 2017-11-01 13:14:39Z jschulte $
 #
 # Winamp '.flv' File Processing Denial of Service And Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nullsoft:winamp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811547");
-  script_version("$Revision: 7198 $");
+  script_version("$Revision: 7610 $");
   script_cve_id("CVE-2017-10725", "CVE-2017-10726", "CVE-2017-10727", "CVE-2017-10728");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 10:10:07 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-08-02 16:51:17 +0530 (Wed, 02 Aug 2017)");
   script_name("Winamp '.flv' File Processing Denial of Service And Code Execution Vulnerabilities");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to multiple memory 
+  script_tag(name: "insight" , value:"Multiple flaws are due to multiple memory
   corruption errors when handling malicious '.flv' files.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
@@ -54,7 +54,7 @@ if(description)
   script_tag(name: "affected" , value:"Winamp version 5.666 Build 3516(x86).");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  20th September 2017, Information regarding this issue will be updated once the 
+  1st November 2017, Information regarding this issue will be updated once the
   solution details are available.");
 
   script_xref(name : "URL" , value : "https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-10725");

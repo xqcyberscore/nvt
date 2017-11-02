@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20170726-anidos.nasl 7197 2017-09-20 08:09:47Z jschulte $
+# $Id: gb_cisco_ios_cisco-sa-20170726-anidos.nasl 7610 2017-11-01 13:14:39Z jschulte $
 #
 # Cisco IOS Software Autonomic Networking Infrastructure Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-6663");
  script_tag(name: "cvss_base", value: "6.1");
  script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 7197 $");
+ script_version("$Revision: 7610 $");
 
  script_name("Cisco IOS Software Autonomic Networking Infrastructure Denial of Service Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
 
  script_tag(name: "vuldetect" , value: "Check the version.");
 
- script_tag(name: "solution", value: "No solution or patch is available as of 20th September, 2017. Information
+ script_tag(name: "solution", value: "No solution or patch is available as of 1st November, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
  script_tag(name: "summary", value: "A vulnerability in the Autonomic Networking feature of Cisco IOS Software
@@ -58,7 +58,7 @@ affected system and consequently cause the affected device to reload, resulting 
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "NoneAvailable");
 
- script_tag(name: "last_modification", value: "$Date: 2017-09-20 10:09:47 +0200 (Wed, 20 Sep 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
  script_tag(name: "creation_date", value: "2017-07-28 09:13:57 +0700 (Fri, 28 Jul 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

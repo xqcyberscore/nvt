@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgain_em_cmd_inj_vuln.nasl 7180 2017-09-19 03:11:15Z ckuersteiner $
+# $Id: gb_netgain_em_cmd_inj_vuln.nasl 7610 2017-11-01 13:14:39Z jschulte $
 #
 # NetGain Enterprise Manager OS Command Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:netgain:enterprise_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106632");
-  script_version("$Revision: 7180 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-19 05:11:15 +0200 (Tue, 19 Sep 2017) $");
+  script_version("$Revision: 7610 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-03-07 08:12:26 +0700 (Tue, 07 Mar 2017)");
   script_tag(name: "cvss_base", value: "9.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -56,7 +56,7 @@ vulnerability.");
 
   script_tag(name: "affected", value: "NetGain Enterprise Manager v7.2.562 build 853 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 19th September, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 1st November, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://packetstormsecurity.com/files/141430/NetGain-Enterprise-Manager-7.2.562-Command-Execution.html");

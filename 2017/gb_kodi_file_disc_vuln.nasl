@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodi_file_disc_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_kodi_file_disc_vuln.nasl 7610 2017-11-01 13:14:39Z jschulte $
 #
 # Kodi Local File Inclusion Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:kodi:kodi_web_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106586");
-  script_version("$Revision: 7577 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 7610 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-02-13 10:37:26 +0700 (Mon, 13 Feb 2017)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -61,7 +61,7 @@ in a local file inclusion vulnerability.");
 
   script_tag(name: "impact", value: "A unauthenticated attacker may read arbitrary files from the file system.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 19th September, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 1st November, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/41312/");

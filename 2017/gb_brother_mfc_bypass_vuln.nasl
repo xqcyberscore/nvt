@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brother_mfc_bypass_vuln.nasl 7257 2017-09-26 05:43:20Z asteins $
+# $Id: gb_brother_mfc_bypass_vuln.nasl 7613 2017-11-01 14:51:05Z asteins $
 #
 # Brother Devices - Authentication Bypass / Password Change Exploit
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107152");
-  script_version("$Revision: 7257 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 07:43:20 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 7613 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-01 15:51:05 +0100 (Wed, 01 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-04-24 13:30:11 +0200 (Mon, 24 Apr 2017)");
   script_cve_id("CVE-2017-7588");
   script_tag(name:"cvss_base", value:"10.0");
@@ -48,7 +48,7 @@ if(description)
   MFC-J5910DW, ,MFC-J6920DW, MFC-L2700DW, MFC-9130CW, MFC-9330CDW, MFC-9340CDW, MFC-J5620DW, MFC-J6720DW, MFC-L8600CDW, MFC-L9550CDW, MFC-L2720DW,
   DCP-L2540DW, DCP-L2520DW, HL-3140CW, HL-3170CDW, HL-3180CDW, HL-L8350CDW, HL-L2380DW, ADS-2500W, ADS-1000W, ADS-1500W");
 
-  script_tag(name: "solution", value: "No solution or patch was made available as of 26th September, 2017.
+  script_tag(name: "solution", value: "No solution or patch was made available as of 01st November, 2017.
   As a workaround, minimize the network access to Brother MFC device or disable HTTP(S) interface.");
 
   script_xref(name: "URL" , value: "https://www.exploit-db.com/exploits/41863/");
