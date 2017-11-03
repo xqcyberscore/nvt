@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_ep_sanbox_escape_sec_bypass_vuln.nasl 7195 2017-09-20 08:05:00Z jschulte $
+# $Id: gb_avast_ep_sanbox_escape_sec_bypass_vuln.nasl 7631 2017-11-02 13:36:10Z jschulte $
 #
 # Avast Endpoint Protection Sandbox Escape Security Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:avast:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810212");
-  script_version("$Revision: 7195 $");
+  script_version("$Revision: 7631 $");
   script_cve_id("CVE-2016-4025");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 10:05:00 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-02 14:36:10 +0100 (Thu, 02 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-11-24 14:26:59 +0530 (Thu, 24 Nov 2016)");
   script_name("Avast Endpoint Protection Sandbox Escape Security Bypass Vulnerability");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exists due to a design flaw in the 
+  script_tag(name:"insight", value:"The flaw exists due to a design flaw in the
   Avast DeepScreen feature.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
@@ -52,12 +52,12 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"Avast Endpoint Protection version 8.x 
+  script_tag(name:"affected", value:"Avast Endpoint Protection version 8.x
   through 8.0.1609");
 
   script_tag(name:"solution", value:"No solution or patch is available as
-  of 20th September, 2017. Information regarding this issue will be updated
-  once the solution details are available. 
+  of 2nd November, 2017. Information regarding this issue will be updated
+  once the solution details are available.
   For updates refer to https://www.avast.com");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

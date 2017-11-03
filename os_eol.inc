@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 7504 2017-10-19 10:02:05Z cfischer $
+# $Id: os_eol.inc 7633 2017-11-02 14:01:14Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,14 +23,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7504 $
+# $Revision: 7633 $
 #
 ###############################################################################
 
-local_var eol_urls, eol_cpes;
+local_var eol_urls, eol_names, eol_regex, eol_cpes;
 
-eol_urls = make_array();
-eol_cpes = make_array();
+eol_urls  = make_array();
+eol_names = make_array();
+eol_regex = make_array();
+eol_cpes  = make_array();
 
 # See gather-package-list.nasl for valid/known linux cpes
 
@@ -453,15 +455,18 @@ eol_cpes['cpe:/o:openbsd:openbsd:5.9'] = '2017-04-11';
 eol_cpes['cpe:/o:openbsd:openbsd:6.0'] = '2017-10-09';
 
 # Greenbone OS (https://www.greenbone.net/roadmap-lifecycle/#tab-id-6)
+# 3.0+ have patchlevels like 3.0.39
+# 2.2.0 and below has patchlevels like 2.2.0-37
 eol_urls['cpe:/o:greenbone:greenbone_os'] = 'https://www.greenbone.net/roadmap-lifecycle/#tab-id-6';
 eol_names['cpe:/o:greenbone:greenbone_os'] = 'Greenbone OS';
+eol_regex['cpe:/o:greenbone:greenbone_os'] = '^([0-9]+\\.[0-9]+)';
 eol_cpes['cpe:/o:greenbone:greenbone_os:4.0'] = '2017-07-30';
 eol_cpes['cpe:/o:greenbone:greenbone_os:3.0'] = '2015-10-03';
-eol_cpes['cpe:/o:greenbone:greenbone_os:2.2.0'] = '2016-01-03';
-eol_cpes['cpe:/o:greenbone:greenbone_os:2.1.0'] = '2014-05-31';
-eol_cpes['cpe:/o:greenbone:greenbone_os:2.0.0'] = '2014-01-31';
-eol_cpes['cpe:/o:greenbone:greenbone_os:1.7.0'] = '2013-06-30';
-eol_cpes['cpe:/o:greenbone:greenbone_os:1.6.0'] = 'unknown';
+eol_cpes['cpe:/o:greenbone:greenbone_os:2.2'] = '2016-01-03';
+eol_cpes['cpe:/o:greenbone:greenbone_os:2.1'] = '2014-05-31';
+eol_cpes['cpe:/o:greenbone:greenbone_os:2.0'] = '2014-01-31';
+eol_cpes['cpe:/o:greenbone:greenbone_os:1.7'] = '2013-06-30';
+eol_cpes['cpe:/o:greenbone:greenbone_os:1.6'] = 'unknown';
 
 # General notes for windows: https://support.microsoft.com/en-us/help/13853/windows-lifecycle-fact-sheet
 
@@ -754,16 +759,43 @@ eol_cpes['cpe:/o:microsoft:windows_10:1511'] = '2017-10-10';
 #eol_cpes['cpe:/o:microsoft:windows_10:1703'] = '2018-09-01'; # Tentatively September 2018
 #eol_cpes['cpe:/o:microsoft:windows_10:1709'] = '2019-03-01'; # Tentatively March 2019
 
-function os_reached_eol( cpe ) {
+function os_reached_eol( cpe, debug ) {
 
-  local_var cpe;
+  local_var cpe, debug, base_cpe, pattern, v, version, final_cpe;
 
   if( ! cpe ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#os_reached_eol" );
     return;
   }
 
-  if( eol_cpes[cpe] && eol_date_reached( eol_date:eol_cpes[cpe] ) ) return TRUE;
+  base_cpe = get_base_cpe( cpe:cpe );
+
+  if( ! array_key_exist( key:base_cpe, array:eol_cpes, part_match:TRUE ) ) {
+    if( debug ) display( "DEBUG: Base CPE " + base_cpe + " not in eol_cpes array." );
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#Base CPE '" + base_cpe + "' passed to cpe parameter of os_reached_eol is not in the list of EOL products" );
+    return;
+  }
+
+  # This allows to check for partial matches
+  if( eol_regex[base_cpe] ) {
+    if( debug ) display( "DEBUG: Base CPE " + base_cpe + " found in eol_regex array." );
+    pattern = eol_regex[base_cpe];
+    version = get_version_from_cpe( cpe:cpe );
+    v = eregmatch( pattern:pattern, string:version );
+    if( isnull( v[0] ) ) {
+      if( debug ) display( "DEBUG: Passed eol_regex: " + pattern + " doesn't match version in CPE: " + cpe + " ." );
+      return;
+    } else {
+      final_cpe = base_cpe + ":" + v[0];
+      if( debug ) display( "DEBUG: Final CPE to check agains EOL versions: " + final_cpe + " ." );
+    }
+  # Full match for a CPE
+  } else {
+    if( debug ) display( "DEBUG: Base CPE " + base_cpe + " not found in eol_regex array. Assuming a full match for the CPE " + cpe + " ." );
+    final_cpe = cpe;
+  }
+
+  if( eol_cpes[final_cpe] && eol_date_reached( eol_date:eol_cpes[final_cpe] ) ) return TRUE;
 
   return;
 }
@@ -830,4 +862,24 @@ function get_eol_name( cpe ) {
   if( ! eol_names[cpe] ) return FALSE;
 
   return eol_names[cpe];
+}
+
+function get_eol_version( cpe ) {
+
+  local_var cpe, base_cpe, pattern, version, v;
+
+  if( ! cpe ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_eol_version" );
+    return FALSE;
+  }
+
+  base_cpe = get_base_cpe( cpe:cpe );
+  if( ! eol_regex[base_cpe] ) return FALSE;
+
+  pattern = eol_regex[base_cpe];
+  version = get_version_from_cpe( cpe:cpe );
+  v = eregmatch( pattern:pattern, string:version );
+  if( isnull( v[0] ) ) return FALSE;
+
+  return v[0];
 }

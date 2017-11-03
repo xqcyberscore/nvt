@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_detect_lin.nasl 7518 2017-10-20 06:23:37Z cfischer $
+# $Id: gb_adobe_prdts_detect_lin.nasl 7623 2017-11-02 07:28:59Z cfischer $
 #
 # Adobe Reader Version Detection (Linux)
 #
@@ -32,10 +32,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800108";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 7518 $");
+  script_version("$Revision: 7623 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:23:37 +0200 (Fri, 20 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-02 08:28:59 +0100 (Thu, 02 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-10-04 09:54:24 +0200 (Sat, 04 Oct 2008)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe products version detection (Linux)");
@@ -73,7 +73,7 @@ if(!sock){
 }
 
 ## Get the Adobe Products installed path
-adobePath = find_file(file_name:"AcroVersion", file_path:"/", useregex=TRUE,
+adobePath = find_file(file_name:"AcroVersion", file_path:"/", useregex:TRUE,
                       regexpar:"$", sock:sock);
 
 ## Traverse over the path and try to get the version

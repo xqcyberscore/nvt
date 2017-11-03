@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_samsung_printer_snmp_auth_bypass_vuln.nasl 7235 2017-09-22 13:15:52Z cfischer $
+# $Id: secpod_samsung_printer_snmp_auth_bypass_vuln.nasl 7618 2017-11-02 06:51:15Z cfischer $
 #
 # Samsung Printer SNMP Hardcoded Community String Authentication Bypass Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902935");
-  script_version("$Revision: 7235 $");
+  script_version("$Revision: 7618 $");
   script_cve_id("CVE-2012-4964");
   script_bugtraq_id(56692);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 15:15:52 +0200 (Fri, 22 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-02 07:51:15 +0100 (Thu, 02 Nov 2017) $");
   script_tag(name:"creation_date", value:"2012-11-28 13:37:22 +0530 (Wed, 28 Nov 2012)");
   script_name("Samsung Printer SNMP Hardcoded Community String Authentication Bypass Vulnerability");
 
@@ -46,7 +46,7 @@ if(description)
   script_family("SNMP");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("snmp_detect.nasl");
-  script_require_udp_ports("Services/udp/snmp", 161);
+  script_require_udp_ports("Services/udp/snmp", 161, 1118);
   script_mandatory_keys("SNMP/detected");
 
   script_tag(name : "impact" , value : "Successful exploitation will allow attackers to access an affected device
@@ -67,6 +67,7 @@ if(description)
         will be releasing a patch tool later this year to address vulnerable
         devices.");
 
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
@@ -74,11 +75,10 @@ if(description)
 }
 
 include("dump.inc");
+include("http_func.inc"); # for make_list_unique
 
-p = get_kb_item("Services/udp/snmp");
-if(!p)p = 161;
-
-ports = make_list(p,1118);
+ports = get_kb_list( "Services/udp/snmp" );
+if( ! ports ) ports = make_list_unique( 161, 1118 );
 
 function parse_result(data) {
 
@@ -156,10 +156,8 @@ function test(community,port) {
 
 foreach port (ports) {
 
-  if(!(get_udp_port_state(port)))continue;
-
-  res = test(community:'lkjfhlsk',port:port); # make sure remote snmp doesn't accept any community.
-  if(res)exit(0);
+  if(!get_udp_port_state(port))continue;
+  if(get_kb_item("SNMP/" + port + "/v12c/all_communities"))continue; # For devices which are accepting every random community
 
   res = test(community:'s!a@m#n$p%c',port:port);
   if(!res)continue;

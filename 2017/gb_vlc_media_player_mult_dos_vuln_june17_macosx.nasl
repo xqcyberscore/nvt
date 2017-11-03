@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_dos_vuln_june17_macosx.nasl 7193 2017-09-20 07:15:33Z asteins $
+# $Id: gb_vlc_media_player_mult_dos_vuln_june17_macosx.nasl 7631 2017-11-02 13:36:10Z jschulte $
 #
 # VLC Media Player Multiple Denial-of-Service Vulnerabilities (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811078");
-  script_version("$Revision: 7193 $");
+  script_version("$Revision: 7631 $");
   script_cve_id("CVE-2017-9301","CVE-2017-9300");
   script_bugtraq_id(98747, 98746);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 09:15:33 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-02 14:36:10 +0100 (Thu, 02 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-06-05 14:29:56 +0530 (Mon, 05 Jun 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VLC Media Player Multiple Denial-of-Service Vulnerabilities (Mac OS X)");
@@ -46,7 +46,7 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws exist due to an error in
-  the 'plugins\codec\libflac_plugin.dll' and 
+  the 'plugins\codec\libflac_plugin.dll' and
   'plugins\audio_filter\libmpgatofixed32_plugin.dll' scripts while reading a
   crafted file.");
 
@@ -59,8 +59,8 @@ if(description)
 
   script_tag(name: "affected" , value:"VideoLAN VLC media player 2.2.4 on Mac OS X");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of 20th
-  September, 2017. Information regarding this issue will be updated once the solution
+  script_tag(name: "solution" , value:"No solution or patch is available as of 2nd
+  November, 2017. Information regarding this issue will be updated once the solution
   details are available. For details refer to http://www.videolan.org");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

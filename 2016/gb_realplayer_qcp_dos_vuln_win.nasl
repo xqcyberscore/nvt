@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_qcp_dos_vuln_win.nasl 7191 2017-09-20 04:14:22Z ckuersteiner $
+# $Id: gb_realplayer_qcp_dos_vuln_win.nasl 7631 2017-11-02 13:36:10Z jschulte $
 #
 # RealNetworks RealPlayer 'QCP' Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:realnetworks:realplayer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809399");
-  script_version("$Revision: 7191 $");
+  script_version("$Revision: 7631 $");
   script_cve_id("CVE-2016-9018");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 06:14:22 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-02 14:36:10 +0100 (Thu, 02 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-11-03 11:05:43 +0530 (Thu, 03 Nov 2016)");
   script_name("RealNetworks RealPlayer 'QCP' Denial of Service Vulnerability (Windows)");
 
@@ -54,13 +54,11 @@ if(description)
   script_tag(name : "affected" , value : "RealNetworks RealPlayer version 18.1.5.705
   on Windows.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  20th September, 2017. Information regarding this issue will be updated once the
-  solution details are made available. For updates refer http://www.real.com");
+  script_tag(name:"solution", value:"Update RealPlayer to version 18.1.6.161");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40617");
   script_xref(name : "URL" , value : "https://customer.real.com/hc/en-gb/articles/214793317-RealNetworks-product-security-updates");
@@ -88,7 +86,7 @@ if(!realVer = get_app_version(cpe:CPE)){
 ## Grep for vulnerable version
 if(version_is_equal(version:realVer, test_version:"18.1.5.705"))
 {
-  report = report_fixed_ver(installed_version:realVer, fixed_version:"None Available");
+  report = report_fixed_ver(installed_version:realVer, fixed_version:"18.1.6.161");
   security_message(data:report);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_w3c_amaya_mult_bof_vuln_dec08_lin.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gb_w3c_amaya_mult_bof_vuln_dec08_lin.nasl 7623 2017-11-02 07:28:59Z cfischer $
 #
 # W3C Amaya Multiple Buffer Overflow Vulnerabilities - Dec08 (Linux)
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with W3C Amaya Web Browser and is prone to
 if(description)
 {
   script_id(800313);
-  script_version("$Revision: 4227 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 7623 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-02 08:28:59 +0100 (Thu, 02 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-12-09 13:27:23 +0100 (Tue, 09 Dec 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -77,7 +77,7 @@ if(!sock){
 }
 
 amayaPath = find_file(file_name:"AmayaPage_WX.html", file_path:"/",
-                      useregex=TRUE, regexpar:"$", sock:sock);
+                      useregex:TRUE, regexpar:"$", sock:sock);
 if(amayaPath == NULL){
   exit(0);
 }

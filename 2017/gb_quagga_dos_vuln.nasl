@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quagga_dos_vuln.nasl 7603 2017-11-01 05:25:57Z ckuersteiner $
+# $Id: gb_quagga_dos_vuln.nasl 7624 2017-11-02 08:14:30Z cfischer $
 #
 # Quagga DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:quagga:quagga";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140461");
-  script_version("$Revision: 7603 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-01 06:25:57 +0100 (Wed, 01 Nov 2017) $");
+  script_version("$Revision: 7624 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-02 09:14:30 +0100 (Thu, 02 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-11-01 12:34:31 +0700 (Wed, 01 Nov 2017)");
   script_tag(name: "cvss_base", value: "7.1");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -48,8 +48,8 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("sw_magento_detect.nasl");
-  script_mandatory_keys("gb_quagga_remote_detect.nasl");
+  script_dependencies("gb_quagga_remote_detect.nasl");
+  script_mandatory_keys("quagga/installed");
 
   script_tag(name: "summary", value: "Quagga is prone to a denial of service vulnerability.");
 

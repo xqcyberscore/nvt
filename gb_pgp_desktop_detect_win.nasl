@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pgp_desktop_detect_win.nasl 6515 2017-07-04 11:54:15Z cfischer $
+# $Id: gb_pgp_desktop_detect_win.nasl 7628 2017-11-02 12:00:39Z santu $
 #
 # Symantec PGP/Encryption Desktop Version Detection (Windows)
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800215");
-  script_version("$Revision: 6515 $");
+  script_version("$Revision: 7628 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-02 13:00:39 +0100 (Thu, 02 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-01-06 15:38:06 +0100 (Tue, 06 Jan 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec PGP/Encryption Desktop Version Detection (Windows)");
@@ -81,88 +81,81 @@ if(!os_arch){
 
 
 ##32-bit application cannot be installed on 64-bit OS
-key_list =  make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
-
-if(isnull(key_list)){
-  exit(0);
-}
+key =  "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 
 ## Confirm Application
 if(!registry_key_exists(key:"SOFTWARE\PGP Corporation\PGP")){
-    exit(0);
+  exit(0);
 }
 
-foreach key (key_list)
+foreach item (registry_enum_keys(key:key))
 {
-  foreach item (registry_enum_keys(key:key))
+  appName = registry_get_sz(key:key + item, item:"DisplayName");
+
+  if("PGP Desktop" >< appName || "Symantec Encryption Desktop" >< appName)
   {
-    appName = registry_get_sz(key:key + item, item:"DisplayName");
+    ## Get the Installed Path
+    insloc = registry_get_sz(key:key + item, item:"InstallLocation");
+    if(!insloc){
+      insloc = "Could not find the install location from registry";
+    }
 
-    if("PGP Desktop" >< appName || "Symantec Encryption Desktop" >< appName)
+    ## Get the version
+    deskVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+    if(!deskVer) exit(0);
+
+    if("PGP Desktop" >< appName)
     {
-      ## Get the Installed Path
-      insloc = registry_get_sz(key:key + item, item:"InstallLocation");
-      if(!insloc){
-        insloc = "Could not find the install location from registry";
-      }
+      replace_kb_item(name:"PGPDesktop_or_EncryptionDesktop/Win/Installed", value:TRUE);
+      set_kb_item(name:"PGPDesktop/Win/Ver", value:deskVer);
 
-      ## Get the version
-      deskVer = registry_get_sz(key:key + item, item:"DisplayVersion");
-      if(!deskVer) exit(0);
+      ## build cpe and store it as host_detail
+      cpe = build_cpe(value:deskVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:pgp_desktop:");
+      if(isnull(cpe))
+        cpe = "cpe:/a:symantec:pgp_desktop";
 
-      if("PGP Desktop" >< appName)
+      build_report(app: appName, ver: deskVer, cpe: cpe, insloc: insloc);
+
+      ## 64 bit apps on 64 bit platform
+      if("x64" >< os_arch)
       {
         replace_kb_item(name:"PGPDesktop_or_EncryptionDesktop/Win/Installed", value:TRUE);
-        set_kb_item(name:"PGPDesktop/Win/Ver", value:deskVer);
+        set_kb_item(name:"PGPDesktop64/Win/Ver", value:deskVer);
 
         ## build cpe and store it as host_detail
-        cpe = build_cpe(value:deskVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:pgp_desktop:");
+        cpe = build_cpe(value:deskVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:pgp_desktop:x64:");
         if(isnull(cpe))
-          cpe = "cpe:/a:symantec:pgp_desktop";
+          cpe = "cpe:/a:symantec:pgp_desktop:x64";
 
+        ## Register Product and Build Report
         build_report(app: appName, ver: deskVer, cpe: cpe, insloc: insloc);
-
-        ## 64 bit apps on 64 bit platform
-        if("x64" >< os_arch)
-        {
-          replace_kb_item(name:"PGPDesktop_or_EncryptionDesktop/Win/Installed", value:TRUE);
-          set_kb_item(name:"PGPDesktop64/Win/Ver", value:deskVer);
-
-          ## build cpe and store it as host_detail
-          cpe = build_cpe(value:deskVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:pgp_desktop:x64:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:symantec:pgp_desktop:x64";
-
-          ## Register Product and Build Report
-          build_report(app: appName, ver: deskVer, cpe: cpe, insloc: insloc);
-        }
       }
-      else
+    }
+    else
+    {
+      replace_kb_item(name:"PGPDesktop_or_EncryptionDesktop/Win/Installed", value:TRUE);
+      set_kb_item(name:"EncryptionDesktop/Win/Ver", value:deskVer);
+
+      ## build cpe and store it as host_detail
+      cpe = build_cpe(value:deskVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:encryption_desktop:");
+      if(isnull(cpe))
+        cpe = "cpe:/a:symantec:encryption_desktop";
+
+      build_report(app: appName, ver: deskVer, cpe: cpe, insloc: insloc);
+
+      ## 64 bit apps on 64 bit platform
+      if("x64" >< os_arch)
       {
         replace_kb_item(name:"PGPDesktop_or_EncryptionDesktop/Win/Installed", value:TRUE);
-        set_kb_item(name:"EncryptionDesktop/Win/Ver", value:deskVer);
+        set_kb_item(name:"EncryptionDesktop64/Win/Ver", value:deskVer);
 
         ## build cpe and store it as host_detail
-        cpe = build_cpe(value:deskVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:encryption_desktop:");
+        cpe = build_cpe(value:deskVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:encryption_desktop:x64:");
         if(isnull(cpe))
-          cpe = "cpe:/a:symantec:encryption_desktop";
+          cpe = "cpe:/a:symantec:encryption_desktop:x64";
 
+        ## Register Product and Build Report
         build_report(app: appName, ver: deskVer, cpe: cpe, insloc: insloc);
-
-        ## 64 bit apps on 64 bit platform
-        if("x64" >< os_arch)
-        {
-          replace_kb_item(name:"PGPDesktop_or_EncryptionDesktop/Win/Installed", value:TRUE);
-          set_kb_item(name:"EncryptionDesktop64/Win/Ver", value:deskVer);
-
-          ## build cpe and store it as host_detail
-          cpe = build_cpe(value:deskVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:encryption_desktop:x64:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:symantec:encryption_desktop:x64";
-
-          ## Register Product and Build Report
-          build_report(app: appName, ver: deskVer, cpe: cpe, insloc: insloc);
-        }
       }
     }
   }

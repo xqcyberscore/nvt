@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 7586 2017-10-26 15:47:05Z cfischer $
+# $Id: misc_func.inc 7633 2017-11-02 14:01:14Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7586 $
+# $Revision: 7633 $
 #
 ###############################################################################
 
@@ -783,9 +783,9 @@ function in_array( search, array, part_match ) {
   return;
 }
 
-function array_key_exist( key, array ) {
+function array_key_exist( key, array, part_match ) {
 
-  local_var key, array, a;
+  local_var key, array, part_match, a;
 
   if( typeof( array ) != "array" ) {
     set_kb_item( name:"nvt_debug_no_array/" + get_script_oid(), value:get_script_oid() + "#-#array#-#array_key_exist" );
@@ -797,8 +797,13 @@ function array_key_exist( key, array ) {
     return;
   }
 
-  foreach a( keys( array ) )
-    if( a == key ) return TRUE;
+  foreach a( keys( array ) ) {
+    if( part_match ) {
+      if( key >< a ) return TRUE;
+    } else {
+      if( a == key ) return TRUE;
+    }
+  }
 
   return;
 }
@@ -964,7 +969,6 @@ function get_unknown_port_list( default, nodefault, ipproto ) {
       port_list = get_kb_list( "Services/" + ipproto + "/unknown" );
     }
   }
- 
 
   if( port_list ) {
     if( ! in_array( search:default, array:port_list ) ) { # The passed default might be already in the Services/unknown list
@@ -1300,6 +1304,9 @@ function build_eol_message( eol_type, name, cpe, version, eol_version, eol_date,
       report += '\nInstalled version,\n';
       report += 'build or SP:       ' + version;
     }
+
+    if( eol_version )
+      report += '\nEOL version:       ' + eol_version;
 
     if( eol_date )
       report += '\nEOL date:          ' + eol_date;
