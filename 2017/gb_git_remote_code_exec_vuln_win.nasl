@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_git_remote_code_exec_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_git_remote_code_exec_vuln_win.nasl 7658 2017-11-06 05:53:53Z teissa $
 #
 # Git Remote Code Execution Vulnerability - Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:git_for_windows_project:git_for_windows";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811706");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 7658 $");
   script_cve_id("CVE-2017-1000117");
   script_bugtraq_id(100283);
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 06:53:53 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-08-17 11:01:31 +0530 (Thu, 17 Aug 2017)");
   script_name("Git Remote Code Execution Vulnerability - Windows");
 

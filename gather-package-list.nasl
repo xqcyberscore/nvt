@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 7589 2017-10-27 07:03:33Z cfischer $
+# $Id: gather-package-list.nasl 7642 2017-11-03 09:03:56Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 7589 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 09:03:33 +0200 (Fri, 27 Oct 2017) $");
+  script_version("$Revision: 7642 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-03 10:03:56 +0100 (Fri, 03 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -516,12 +516,18 @@ if( "Cisco UCS Director Shell Menu" >< uname )
   }
 }
 
-if( "% invalid command at '^' marker" >< tolower( uname ) || "No token match at '^' marker" >< uname || "NX-OS" >< uname || "Cisco Nexus Operating System" >< uname )
+if( "% invalid command at '^' marker" >< tolower( uname ) || "No token match at '^' marker" >< uname ||
+    "NX-OS" >< uname || "Cisco Nexus Operating System" >< uname || "Line has invalid autocommand" >< uname )
 {
   set_kb_item( name:"no_linux_shell", value:TRUE );
   set_kb_item( name:"ssh/force/pty", value:TRUE );
-
   set_kb_item( name:"cisco/detected", value:TRUE );
+
+  # The CISCO device is closing the connection after this message.
+  # Unfortunately we can't detect if the device has configured a working autocommand but we still
+  # want to report a broken one to the user (in 2017/gb_ssh_authentication_info.nasl).
+  if( "Line has invalid autocommand" >< uname ) set_kb_item( name:"cisco/broken_autocommand", value:TRUE );
+
   exit( 0 );
 }
 

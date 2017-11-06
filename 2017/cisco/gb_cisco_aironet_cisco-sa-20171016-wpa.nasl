@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_aironet_cisco-sa-20171016-wpa.nasl 7553 2017-10-25 03:15:07Z ckuersteiner $
+# $Id: gb_cisco_aironet_cisco-sa-20171016-wpa.nasl 7658 2017-11-06 05:53:53Z teissa $
 #
 # Cisco Aironet Access Points Multiple WPA2 Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/o:cisco:wireless_lan_controller_software";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140433");
- script_version("$Revision: 7553 $");
- script_tag(name: "last_modification", value: "$Date: 2017-10-25 05:15:07 +0200 (Wed, 25 Oct 2017) $");
+ script_version("$Revision: 7658 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-11-06 06:53:53 +0100 (Mon, 06 Nov 2017) $");
  script_tag(name: "creation_date", value: "2017-10-17 09:54:27 +0700 (Tue, 17 Oct 2017)");
- script_tag(name: "cvss_base", value: "5.4");
- script_tag(name: "cvss_base_vector", value: "AV:A/AC:M/Au:N/C:P/I:P/A:P");
+ script_tag(name:"cvss_base", value:"5.8");
+ script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
 
  script_cve_id("CVE-2017-13082");
 

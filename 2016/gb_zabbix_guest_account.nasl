@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_guest_account.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_zabbix_guest_account.nasl 7650 2017-11-03 13:34:50Z cfischer $
 #
 # Zabbix Default Guest Account 
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106180");
-  script_version("$Revision: 5580 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+  script_version("$Revision: 7650 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-03 14:34:50 +0100 (Fri, 03 Nov 2017) $");
   script_tag(name: "creation_date", value: "2016-08-17 11:04:27 +0700 (Wed, 17 Aug 2016)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,7 +47,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Default Accounts");
   script_dependencies("zabbix_web_detect.nasl");
-  script_mandatory_keys("Zabbix/installed");
+  script_mandatory_keys("Zabbix/Web/installed");
 
   script_tag(name: "summary", value: "Zabbix has a default guest account with no password set. It was possible
 to access the dashboard without special authentication.");
@@ -70,7 +70,7 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if (!port = get_app_port(cpe: CPE))
+if (!port = get_app_port(cpe: CPE, service: "www"))
   exit(0);
 
 if (!location = get_app_location(cpe: CPE, port: port))
@@ -92,6 +92,5 @@ if (http_vuln_check(port: port, url: location + "/dashboard.php", check_header: 
   security_message(port: port, data: report);
   exit(0);
 }
-
 
 exit(0);

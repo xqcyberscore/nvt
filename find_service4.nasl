@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service4.nasl 6820 2017-07-31 11:37:34Z cfischer $
+# $Id: find_service4.nasl 7646 2017-11-03 12:11:12Z cfischer $
 #
 # Service Detection with 'JSON' Request
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108199");
-  script_version("$Revision: 6820 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-31 13:37:34 +0200 (Mon, 31 Jul 2017) $");
+  script_version("$Revision: 7646 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-03 13:11:12 +0100 (Fri, 03 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-07-20 14:08:04 +0200 (Thu, 20 Jul 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -63,7 +63,7 @@ if( ! service_is_unknown( port:port ) ) exit( 0 );
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
 
-# This is a request where a Zabbix Server is answering to. There might be other services out there answering to
+# This is a request where a Zabbix Server/Agent is answering to. There might be other services out there answering to
 # such a JSON request. And at least we catch a Zabbix Service early without throwing more service detections NVTs on it.
 send( socket:soc, data:'{"request":"active checks"}\n' ); # TBD: \r\n instead?
 r = recv( socket:soc, length:4096 );
@@ -80,7 +80,7 @@ if( '\0' >< r )
   set_kb_item( name:k + "Hex", value:hexstr( r ) );
 
 if( r =~ "^ZBXD" ) {
-  register_service( port:port, proto:"zabbix_server", message:"A Zabbix Server seems to be running on this port." );
+  register_service( port:port, proto:"zabbix", message:"A Zabbix Server seems to be running on this port." );
   log_message( port:port, data:"A Zabbix Server seems to be running on this port." );
   exit( 0 );
 }

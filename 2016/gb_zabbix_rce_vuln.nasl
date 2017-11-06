@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_rce_vuln.nasl 6722 2017-07-14 08:54:37Z cfischer $
+# $Id: gb_zabbix_rce_vuln.nasl 7651 2017-11-03 13:41:18Z cfischer $
 #
 # Zabbix Remote Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106181");
-  script_version("$Revision: 6722 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-14 10:54:37 +0200 (Fri, 14 Jul 2017) $");
+  script_version("$Revision: 7651 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-03 14:41:18 +0100 (Fri, 03 Nov 2017) $");
   script_tag(name: "creation_date", value: "2016-08-17 11:04:27 +0700 (Wed, 17 Aug 2016)");
   script_tag(name: "cvss_base", value: "8.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:N");
@@ -60,7 +60,7 @@ in api_jsonrpc.php.");
 
   script_tag(name: "impact", value: "An authenticated attacker may execute arbitrary commands.");
 
-  script_tag(name: "affected", value: "Zabix version 2.2.x until 3.0.3");
+  script_tag(name: "affected", value: "Zabbix version 2.2.x until 3.0.3");
 
   script_tag(name: "solution", value: "Update to 3.0.4 or newer versions.");
 

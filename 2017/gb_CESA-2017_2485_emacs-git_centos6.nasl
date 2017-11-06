@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_2485_emacs-git_centos6.nasl 6986 2017-08-22 12:47:34Z santu $
+# $Id: gb_CESA-2017_2485_emacs-git_centos6.nasl 7658 2017-11-06 05:53:53Z teissa $
 #
 # CentOS Update for emacs-git CESA-2017:2485 centos6 
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882761");
-  script_version("$Revision: 6986 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-22 14:47:34 +0200 (Tue, 22 Aug 2017) $");
+  script_version("$Revision: 7658 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 06:53:53 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-08-18 07:32:29 +0200 (Fri, 18 Aug 2017)");
   script_cve_id("CVE-2017-1000117");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for emacs-git CESA-2017:2485 centos6 ");
   script_tag(name: "summary", value: "Check the version of emacs-git");

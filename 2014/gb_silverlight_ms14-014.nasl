@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms14-014.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_silverlight_ms14-014.nasl 7653 2017-11-03 14:24:06Z cfischer $
 #
 # Microsoft Silverlight DEP/ASLR Security Bypass Vulnerability (2932677)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804407";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 7000 $");
+  script_version("$Revision: 7653 $");
   script_cve_id("CVE-2014-0319");
   script_bugtraq_id(66046);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-03 15:24:06 +0100 (Fri, 03 Nov 2017) $");
   script_tag(name:"creation_date", value:"2014-03-12 08:02:21 +0530 (Wed, 12 Mar 2014)");
   script_name("Microsoft Silverlight DEP/ASLR Security Bypass Vulnerability (2932677)");
 
@@ -100,7 +100,9 @@ if(msl_ver=~ "^5\.")
   ## Check for Silverlight version
   if(version_in_range(version:msl_ver, test_version:"5.0", test_version2:"5.1.30213"))
   {
-    security_message(0);
+    report = 'Silverlight version:  ' + msl_ver  + '\n' +
+             'Vulnerable range:  5.0 - 5.1.30213' + '\n' ;
+    security_message(data:report);
     exit(0);
   }
 }

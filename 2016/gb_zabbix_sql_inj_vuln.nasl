@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_sql_inj_vuln.nasl 6722 2017-07-14 08:54:37Z cfischer $
+# $Id: gb_zabbix_sql_inj_vuln.nasl 7651 2017-11-03 13:41:18Z cfischer $
 #
 # Zabbix SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106179");
-  script_version("$Revision: 6722 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-14 10:54:37 +0200 (Fri, 14 Jul 2017) $");
+  script_version("$Revision: 7651 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-03 14:41:18 +0100 (Fri, 03 Nov 2017) $");
   script_tag(name: "creation_date", value: "2016-08-17 11:04:27 +0700 (Wed, 17 Aug 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -70,7 +70,7 @@ Although the attacker needs to be authenticated in general, the system could als
 has no user account. Zabbix offers a guest mode which provides a low privileged default account for users without
 password. If this guest mode is enabled, the SQL injection vulnerability can be exploited unauthenticated.");
 
-  script_tag(name: "affected", value: "Zabix version 2.2.x and 3.0.x");
+  script_tag(name: "affected", value: "Zabbix version 2.2.x and 3.0.x");
 
   script_tag(name: "solution", value: "Update to 2.2.14, 3.0.4 or newer versions.");
 

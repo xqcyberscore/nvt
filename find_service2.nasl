@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service2.nasl 7190 2017-09-19 15:19:13Z cfischer $
+# $Id: find_service2.nasl 7647 2017-11-03 12:29:41Z cfischer $
 #
 # Service Detection with 'HELP' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11153");
-  script_version("$Revision: 7190 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-19 17:19:13 +0200 (Tue, 19 Sep 2017) $");
+  script_version("$Revision: 7647 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-03 13:29:41 +0100 (Fri, 03 Nov 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1048,9 +1048,11 @@ if( r =~ '^[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+\n$' ) {
 }
 
 # Submitted by Lucian Ravac - See http://zabbix.org
-if( r == 'ZBX_NOTSUPPORTED\n' ) {
-  register_service( port:port, proto:"zabbix_agent" );
-  log_message( port:port, data:"A Zabbix agent is running on this port" );
+# nb: Seems only an agent is answering to this request, a server will only answer to the request of find_service4.nasl
+if( r == 'ZBX_NOTSUPPORTED\n' ||
+    ( r =~ '^ZBXD' && 'ZBX_NOTSUPPORTED' >< r ) ) {
+  register_service( port:port, proto:"zabbix" );
+  log_message( port:port, data:"A Zabbix Agent is running on this port" );
   exit( 0 );
 }
 

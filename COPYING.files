@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 03 Nov 2017 08:05:59 +0100
+# Automatically created on:  Mon, 06 Nov 2017 08:54:25 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47788,6 +47788,11 @@
 2017/debian/deb_4011.nasl: GPLv2+
 2017/debian/deb_4012.nasl: GPLv2+
 2017/debian/deb_4013.nasl: GPLv2+
+2017/debian/deb_4014.nasl: GPLv2+
+2017/debian/deb_4015.nasl: GPLv2+
+2017/debian/deb_4016.nasl: GPLv2+
+2017/debian/deb_4017.nasl: GPLv2+
+2017/debian/deb_4018.nasl: GPLv2+
 2017/digium/gb_asterisk_rtp_info_leak_vuln.nasl: GPLv2+
 2017/drupal/gb_drupal_core_mult_vuln_SA-CORE-2015-001_lin.nasl: GPLv2+
 2017/drupal/gb_drupal_core_mult_vuln_SA-CORE-2015-001_win.nasl: GPLv2+
@@ -47979,6 +47984,7 @@
 2017/gb_aerohive_hiveos_rce_vuln.nasl: GPLv2+
 2017/gb_aerospike_database_server_95415.nasl: GPLv2+
 2017/gb_agfeo_smarthome_mult_vuln.nasl: GPLv2+
+2017/gb_akka_http_dos_vuln.nasl: GPLv2+
 2017/gb_alienvault_ossim_usm_5.3.6.nasl: GPLv2+
 2017/gb_alienvault_ossim_usm_mult_vuln.nasl: GPLv2+
 2017/gb_antiweb_dir_trav_vuln.nasl: GPLv2+
@@ -50664,6 +50670,7 @@
 2017/gb_nagios_priv_esc_vuln.nasl: GPLv2+
 2017/gb_nagios_xss_vuln.nasl: GPLv2+
 2017/gb_nagvis_xss_vuln.nasl: GPLv2+
+2017/gb_nasdeluxe_2400_rce_vuln.nasl: GPLv2+
 2017/gb_netgain_auth_bypass.nasl: GPLv2+
 2017/gb_netgain_em_cmd_inj_vuln.nasl: GPLv2+
 2017/gb_netgear_cve_2016_5649.nasl: GPLv2+
@@ -50721,6 +50728,8 @@
 2017/gb_openssl_montgomery_multiplication_dos_vuln_lin.nasl: GPLv2+
 2017/gb_openssl_montgomery_multiplication_dos_vuln_win.nasl: GPLv2+
 2017/gb_openssl_mult_vuln_feb17.nasl: GPLv2+
+2017/gb_openssl_mult_vuln_nov17.nasl: GPLv2+
+2017/gb_openssl_mult_vuln_nov17_win.nasl: GPLv2+
 2017/gb_openssl_OOB_read_security_bypass_vuln_lin.nasl: GPLv2+
 2017/gb_openssl_OOB_read_security_bypass_vuln_win.nasl: GPLv2+
 2017/gb_openssl_padding_oracle_vul.nasl: GPLv2+
@@ -52081,6 +52090,7 @@
 2017/wireshark/gb_wireshark_wnpa-sec-2017-46_wnpa-sec-2017-45_macosx.nasl: GPLv2+
 2017/wireshark/gb_wireshark_wnpa-sec-2017-46_wnpa-sec-2017-45_win.nasl: GPLv2+
 2017/wordpress/gb_wordpress_count-per-day_sql_inj_vuln.nasl: GPLv2+
+2017/wordpress/gb_wordpress_easy-appointments_xss_vuln.nasl: GPLv2+
 2017/wordpress/gb_wordpress_eol_lin.nasl: GPLv2+
 2017/wordpress/gb_wordpress_eol_win.nasl: GPLv2+
 2017/wordpress/gb_wordpress_esc_sql_fun_vuln_nov17_lin.nasl: GPLv2+
@@ -52091,6 +52101,7 @@
 2017/wordpress/gb_wordpress_pmpro_xss_vuln.nasl: GPLv2+
 2017/wordpress/gb_wordpress_profile_builder_xss_vuln.nasl: GPLv2+
 2017/wordpress/gb_wordpress_smushit_dir_trav_vuln.nasl: GPLv2+
+2017/wordpress/gb_wordpress_ultimate-form-builder-lite_sql_inj_vuln.nasl: GPLv2+
 2017/wordpress/gb_wordpress_wp-noexternallinks_xss_vuln.nasl: GPLv2+
 2017/wso2/gb_wso2_api_manager_xss_vuln.nasl: GPLv2+
 2017/wso2/gb_wso2_business_process_server_xss_vuln.nasl: GPLv2+
@@ -52266,6 +52277,7 @@ gb_aimp_detect.nasl: GPLv2+
 gb_AjaXplorer_detect.nasl: GPLv2+
 gb_ajaxportal_detect.nasl: GPLv2+
 gb_akips_network_monitor_detect.nasl: GPLv2+
+gb_akka_http_detect.nasl: GPLv2+
 gb_alcatel_luc_omnvista_detect.nasl: GPLv2+
 gb_allegro_rompager_detect.nasl: GPLv2+
 gb_alleycode_html_editor_detect.nasl: GPLv2+
@@ -53646,6 +53658,7 @@ gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170927-ngwc.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170927-privesc.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170927-restapi.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20171018-cisco-ios-xe.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20171103-bgp.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xr_cisco-sa-20171004-ncs.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ise_cisco-sa-20171101-ise.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170906-cms.nasl: GPLv2+
@@ -53687,7 +53700,10 @@ gsf/2017/f5/gb_f5_big_ip_K62279530.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K74759095.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K81601350.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortigate_FG-IR-17-196.nasl: GPLv2+
+gsf/2017/fortinet/gb_fortimail_FG-IR-17-099.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortinet_fortios_config_rev_comments_xss_vuln.nasl: GPLv2+
+gsf/2017/fortinet/gb_fortinet_fortios_FG-IR-17-113.nasl: GPLv2+
+gsf/2017/fortinet/gb_fortinet_fortios_FG-IR-17-206.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortinet_fortios_firtiview_app_filter_xss_vuln.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortinet_fortios_info_disc_vuln.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortinet_fortios_mult_xss_vuln.nasl: GPLv2+

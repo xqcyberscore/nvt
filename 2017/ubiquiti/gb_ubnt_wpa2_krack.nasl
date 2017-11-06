@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubnt_wpa2_krack.nasl 7504 2017-10-19 10:02:05Z cfischer $
+# $Id: gb_ubnt_wpa2_krack.nasl 7658 2017-11-06 05:53:53Z teissa $
 #
 # Ubiquiti Networks UAP/USW Products WPA2 Key Reinstallation Vulnerabilities - KRACK
 #
@@ -28,14 +28,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108257");
-  script_version("$Revision: 7504 $");
+  script_version("$Revision: 7658 $");
   script_cve_id("CVE-2017-13077", "CVE-2017-13078", "CVE-2017-13079", "CVE-2017-13080",
                 "CVE-2017-13081", "CVE-2017-13082", "CVE-2017-13084", "CVE-2017-13086",
                 "CVE-2017-13087", "CVE-2017-13088");
   script_bugtraq_id(101274);
-  script_tag(name:"cvss_base", value:"8.3");
-  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C"); 
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 12:02:05 +0200 (Thu, 19 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 06:53:53 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-19 10:31:0 +0200 (Thu, 19 Oct 2017)");
   script_name("Ubiquiti Networks UAP/USW Products WPA2 Key Reinstallation Vulnerabilities - KRACK");
   script_category(ACT_GATHER_INFO);

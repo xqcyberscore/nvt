@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_routeros_krack_vuln.nasl 7480 2017-10-18 11:44:20Z cfischer $
+# $Id: gb_mikrotik_routeros_krack_vuln.nasl 7658 2017-11-06 05:53:53Z teissa $
 #
 # MikroTik RouterOS WPA2 Key Reinstallation Vulnerabilities - KRACK
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/o:mikrotik:routeros";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108254");
-  script_version("$Revision: 7480 $");
+  script_version("$Revision: 7658 $");
   script_cve_id("CVE-2017-13077", "CVE-2017-13078", "CVE-2017-13079", "CVE-2017-13080",
                 "CVE-2017-13081", "CVE-2017-13082", "CVE-2017-13084", "CVE-2017-13086",
                 "CVE-2017-13087", "CVE-2017-13088");
   script_bugtraq_id(101274);
-  script_tag(name:"cvss_base", value:"8.3");
-  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C"); 
-  script_tag(name:"last_modification", value:"$Date: 2017-10-18 13:44:20 +0200 (Wed, 18 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 06:53:53 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-18 12:31:0 +0200 (Wed, 18 Oct 2017)");
   script_name("MikroTik RouterOS WPA2 Key Reinstallation Vulnerabilities - KRACK");
   script_category(ACT_GATHER_INFO);

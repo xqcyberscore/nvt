@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_silverlight_multiple_memory_leak_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_ms_silverlight_multiple_memory_leak_vuln.nasl 7653 2017-11-03 14:24:06Z cfischer $
 #
 # Microsoft Silverlight Multiple Memory Leak Vulnerabilities
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is installed with Microsoft Silverlight and is prone to
 if(description)
 {
   script_id(801935);
-  script_version("$Revision: 7174 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 7653 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-03 15:24:06 +0100 (Fri, 03 Nov 2017) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_cve_id("CVE-2011-1844", "CVE-2011-1845");
   script_tag(name:"cvss_base", value:"7.8");
@@ -76,5 +76,7 @@ if(!mslVer){
 
 # Check for Microsoft Silverlight 4 before 4.0.60310.0
 if(version_in_range(version:mslVer, test_version:"4.0", test_version2:"4.0.60309.0")){
-  security_message(0);
+  report = 'Silverlight version:  ' + mslVer  + '\n' +
+           'Vulnerable range:  4.0 - 4.0.60309.0' + '\n' ;
+  security_message(data:report);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_amt_wpa2_krack.nasl 7501 2017-10-19 08:54:48Z teissa $
+# $Id: gb_intel_amt_wpa2_krack.nasl 7658 2017-11-06 05:53:53Z teissa $
 #
 # Intel Active Management Technology WPA2 Key Reinstallation Vulnerabilities - KRACK
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/h:intel:active_management_technology";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107191");
-  script_version("$Revision: 7501 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-19 10:54:48 +0200 (Thu, 19 Oct 2017) $");
+  script_version("$Revision: 7658 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-06 06:53:53 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-10-19 13:48:56 +0700 (Thu, 19 Oct 2017)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"5.4");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-13077", "CVE-2017-13078", "CVE-2017-13080");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3385_2.nasl 6956 2017-08-18 06:02:43Z santu $
+# $Id: gb_ubuntu_USN_3385_2.nasl 7658 2017-11-06 05:53:53Z teissa $
 #
 # Ubuntu Update for linux-lts-xenial USN-3385-2
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843278");
-  script_version("$Revision: 6956 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-18 08:02:43 +0200 (Fri, 18 Aug 2017) $");
+  script_version("$Revision: 7658 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 06:53:53 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-08-11 07:22:44 +0200 (Fri, 11 Aug 2017)");
   script_cve_id("CVE-2017-1000112", "CVE-2017-1000111");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-lts-xenial USN-3385-2");
   script_tag(name: "summary", value: "Check the version of linux-lts-xenial");

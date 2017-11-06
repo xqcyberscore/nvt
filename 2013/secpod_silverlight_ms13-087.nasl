@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_silverlight_ms13-087.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: secpod_silverlight_ms13-087.nasl 7653 2017-11-03 14:24:06Z cfischer $
 #
 # Microsoft Silverlight Information Disclosure Vulnerability (2890788)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.901223";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6074 $");
+  script_version("$Revision: 7653 $");
   script_cve_id("CVE-2013-3896");
   script_bugtraq_id(62793);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-03 15:24:06 +0100 (Fri, 03 Nov 2017) $");
   script_tag(name:"creation_date", value:"2013-10-09 11:03:47 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Silverlight Information Disclosure Vulnerability (2890788)");
 
@@ -100,7 +100,9 @@ if(msl_ver=~ "^5\.")
   ## Check for Silverlight version
   if(version_in_range(version:msl_ver, test_version:"5.0", test_version2:"5.1.20912.0"))
   {
-    security_message(0);
+    report = 'Silverlight version:  ' + msl_ver  + '\n' +
+             'Vulnerable range:  5.0 - 5.1.20912.0' + '\n' ;
+    security_message(data:report);
     exit(0);
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms15-049.nasl 6453 2017-06-28 09:59:05Z teissa $
+# $Id: gb_silverlight_ms15-049.nasl 7653 2017-11-03 14:24:06Z cfischer $
 #
 # Microsoft Silverlight Elevation of Privilege Vulnerability (3058985)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805554");
-  script_version("$Revision: 6453 $");
+  script_version("$Revision: 7653 $");
   script_cve_id("CVE-2015-1715");
   script_bugtraq_id(74503);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-03 15:24:06 +0100 (Fri, 03 Nov 2017) $");
   script_tag(name:"creation_date", value:"2015-05-13 12:50:27 +0530 (Wed, 13 May 2015)");
   script_name("Microsoft Silverlight Elevation of Privilege Vulnerability (3058985)");
 
@@ -93,7 +93,9 @@ if(msl_ver=~ "^5\.")
   ## Check for Silverlight version
   if(version_in_range(version:msl_ver, test_version:"5.0", test_version2:"5.1.40415"))
   {
-    security_message(0);
+    report = 'Silverlight version:  ' + msl_ver  + '\n' +
+             'Vulnerable range:  5.0 - 5.1.40415' + '\n' ;
+    security_message(data:report);
     exit(0);
   }
 }

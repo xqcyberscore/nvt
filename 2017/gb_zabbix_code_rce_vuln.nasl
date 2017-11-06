@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_code_rce_vuln.nasl 7142 2017-09-15 11:03:00Z cfischer $
+# $Id: gb_zabbix_code_rce_vuln.nasl 7651 2017-11-03 13:41:18Z cfischer $
 #
 # Zabbix Server Active Proxy Trapper Remote Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106835");
-  script_version("$Revision: 7142 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-15 13:03:00 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 7651 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-03 14:41:18 +0100 (Fri, 03 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-05-29 11:13:22 +0700 (Mon, 29 May 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,7 @@ remote code execution. An attacker can make requests from an active Zabbix Proxy
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 
-  script_tag(name: "affected", value: "Zabix version 2.4.x");
+  script_tag(name: "affected", value: "Zabbix version 2.4.x");
 
   script_tag(name: "solution", value: "By removing the three default script entries inside of the Zabbix Server's
 'Zabbix' database, an attacker would be unable to actually execute code, even if they can insert hosts with

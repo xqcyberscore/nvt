@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: gather-package-list-docker-container.inc 6887 2017-08-10 06:12:10Z cfischer $
+# $Id: gather-package-list-docker-container.inc 7638 2017-11-03 07:11:45Z cfischer $
 #
 # Functions for OS Detection in Docker Containers
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 6887 $
+# $Revision: 7638 $
 #
 ###############################################################################
 
@@ -74,6 +74,7 @@ OS_CPE = make_array(
     "UCS2.0", "cpe:/o:univention:univention_corporate_server:2.0",
 
     # Ubuntu
+    "UBUNTU17.10",    "cpe:/o:canonical:ubuntu_linux:17.10",
     "UBUNTU17.04",    "cpe:/o:canonical:ubuntu_linux:17.04",
     "UBUNTU16.10",    "cpe:/o:canonical:ubuntu_linux:16.10",
     "UBUNTU16.04 LTS","cpe:/o:canonical:ubuntu_linux:16.04:-:lts",
@@ -144,6 +145,7 @@ OS_CPE = make_array(
 
     # Debian
     "DEB10.0", "cpe:/o:debian:debian_linux:10.0",
+    "DEB9.2", "cpe:/o:debian:debian_linux:9.2",
     "DEB9.1", "cpe:/o:debian:debian_linux:9.1",
     "DEB9.0", "cpe:/o:debian:debian_linux:9.0",
     "DEB8.9", "cpe:/o:debian:debian_linux:8.9",
@@ -948,6 +950,15 @@ function get_container_os( container_id, soc )
     {
       if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
       ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 17.04", oskey:"UBUNTU17.04");
+      return ret;
+    }
+  }
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=17.10"><rls) {
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
+    if(!isnull(buf))
+    {
+      if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+      ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 17.10", oskey:"UBUNTU17.10");
       return ret;
     }
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_esc_sql_fun_vuln_nov17_lin.nasl 7630 2017-11-02 12:48:35Z santu $
+# $Id: gb_wordpress_esc_sql_fun_vuln_nov17_lin.nasl 7640 2017-11-03 07:40:38Z asteins $
 #
 # WordPress 'esc_sql' Function SQL Injection Vulnerability - Nov 2017 (Linux)
 #
@@ -29,10 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811888");
-  script_version("$Revision: 7630 $");
+  script_version("$Revision: 7640 $");
+  script_cve_id("CVE-2017-16510");
   script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-02 13:48:35 +0100 (Thu, 02 Nov 2017) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-03 08:40:38 +0100 (Fri, 03 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-02 10:53:57 +0530 (Thu, 02 Nov 2017)");
   script_name("WordPress 'esc_sql' Function SQL Injection Vulnerability - Nov 2017 (Linux)");
 
@@ -42,7 +43,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help of
   the detect NVT and check if the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exists because '$wpdb->prepare' 
+  script_tag(name:"insight", value:"The flaw exists because '$wpdb->prepare'
   function can create unexpected and unsafe queries.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote

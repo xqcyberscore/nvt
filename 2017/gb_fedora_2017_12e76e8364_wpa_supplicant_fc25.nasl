@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_12e76e8364_wpa_supplicant_fc25.nasl 7558 2017-10-25 10:46:31Z santu $
+# $Id: gb_fedora_2017_12e76e8364_wpa_supplicant_fc25.nasl 7658 2017-11-06 05:53:53Z teissa $
 #
 # Fedora Update for wpa_supplicant FEDORA-2017-12e76e8364
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873515");
-  script_version("$Revision: 7558 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 12:46:31 +0200 (Wed, 25 Oct 2017) $");
+  script_version("$Revision: 7658 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 06:53:53 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-21 09:52:30 +0200 (Sat, 21 Oct 2017)");
   script_cve_id("CVE-2017-13082", "CVE-2017-13078", "CVE-2017-13079", "CVE-2017-13080", 
                 "CVE-2017-13081", "CVE-2017-13087", "CVE-2017-13088", "CVE-2017-13077");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for wpa_supplicant FEDORA-2017-12e76e8364");
   script_tag(name: "summary", value: "Check the version of wpa_supplicant");

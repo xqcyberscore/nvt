@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_win.nasl 7497 2017-10-19 07:06:06Z santu $
+# $Id: gb_java_prdts_detect_win.nasl 7654 2017-11-03 14:29:50Z cfischer $
 #
 # Sun Java Products Version Detection (Windows)
 #
@@ -29,10 +29,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800383";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 7497 $");
+  script_version("$Revision: 7654 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 09:06:06 +0200 (Thu, 19 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-03 15:29:50 +0100 (Fri, 03 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Sun Java Products Version Detection (Windows)");
@@ -84,34 +84,25 @@ if(!osArch){
 
 
 if("x86" >< osArch){
-  adkeylist = make_list("SOFTWARE\JavaSoft\Java Runtime Environment\",
-                        "SOFTWARE\JavaSoft\JRE\");
+adkeylist = make_list("SOFTWARE\JavaSoft\Java Runtime Environment\");
 }
 
 ## Check for 64 bit platform
 else if("x64" >< osArch)
 {
   adkeylist =  make_list("SOFTWARE\JavaSoft\Java Runtime Environment\",
-                         "SOFTWARE\JavaSoft\JRE\",
-                         "SOFTWARE\Wow6432Node\JavaSoft\Java Runtime Environment\",
-                         "SOFTWARE\Wow6432Node\JavaSoft\JRE\");
+                         "SOFTWARE\Wow6432Node\JavaSoft\Java Runtime Environment\");
 }
 
 foreach jreKey (adkeylist)
 {
-  if("Java Runtime Environment" >< jreKey){
-    pattern = "([0-9.]\.[0-9]\.[0-9._]+)";
-  } else if ("JRE" >< jreKey){
-    pattern = "([0-9.]+)";
-    flagjre9 = TRUE;
-  }
   # Java Runtime Environment
   if(registry_key_exists(key:jreKey))
   {
     keys = registry_enum_keys(key:jreKey);
     foreach item (keys)
     {
-      jreVer = eregmatch(pattern:pattern, string:item);
+      jreVer = eregmatch(pattern:"([0-9.]\.[0-9]\.[0-9._]+)", string:item);
       if(jreVer[1])
       {
          JreTmpkey =  jreKey + "\\"  + jreVer[1];
@@ -126,17 +117,11 @@ foreach jreKey (adkeylist)
             set_kb_item(name:"Sun/Java/JRE/Win/Ver", value:jreVer[1]);
             replace_kb_item(name:"Sun/Java/JDK_or_JRE/Win/installed", value:TRUE);
             replace_kb_item(name:"Sun/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE);
-            if(flagjre9)
-            {
-              jrVer = jreVer[1];
-              jreVer_or = jrVer ;
-            } else
-            {
-              jrVer = ereg_replace(pattern:"_|-", string:jreVer[1], replace: ".");
+            jrVer = ereg_replace(pattern:"_|-", string:jreVer[1], replace: ".");
 
-              jreVer1 = eregmatch(pattern:"([0-9]+\.[0-9]+\.[0-9]+)\.([0-9]+)", string:jrVer);
-              jreVer_or = jreVer1[1] + ":update_" + jreVer1[2];
-            }
+            jreVer1 = eregmatch(pattern:"([0-9]+\.[0-9]+\.[0-9]+)\.([0-9]+)", string:jrVer);
+            jreVer_or = jreVer1[1] + ":update_" + jreVer1[2];
+
             if(version_is_less(version:jrVer, test_version:"1.4.2.38") ||
                version_in_range(version:jrVer, test_version:"1.5", test_version2:"1.5.0.33") ||
                version_in_range(version:jrVer, test_version:"1.6", test_version2:"1.6.0.18"))
@@ -166,18 +151,11 @@ foreach jreKey (adkeylist)
             if(jreVer[1] != NULL && "x64" >< osArch && "Wow6432Node" >!< jreKey)
             {
                set_kb_item(name:"Sun/Java64/JRE64/Win/Ver", value:jreVer[1]);
-               if(flagjre9)
-               {
-                 jrVer = jreVer[1];
-                 jreVer_or = jrVer ;
-               } else
-               {
+               jrVer = ereg_replace(pattern:"_|-", string:jreVer[1], replace: ".");
 
-                 jrVer = ereg_replace(pattern:"_|-", string:jreVer[1], replace: ".");
+               jreVer1 = eregmatch(pattern:"([0-9]+\.[0-9]+\.[0-9]+)\.([0-9]+)", string:jrVer);
+               jreVer_or = jreVer1[1] + ":update_" + jreVer1[2];
 
-                 jreVer1 = eregmatch(pattern:"([0-9]+\.[0-9]+\.[0-9]+)\.([0-9]+)", string:jrVer);
-                 jreVer_or = jreVer1[1] + ":update_" + jreVer1[2];
-               }
                if(version_is_less(version:jrVer, test_version:"1.4.2.38") ||
                   version_in_range(version:jrVer, test_version:"1.5", test_version2:"1.5.0.33") ||
                   version_in_range(version:jrVer, test_version:"1.6", test_version2:"1.6.0.18"))

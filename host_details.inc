@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 7600 2017-10-30 09:52:59Z ckuersteiner $
+# $Id: host_details.inc 7653 2017-11-03 14:24:06Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7600 $
+# $Revision: 7653 $
 #
 ###############################################################################
 
@@ -1269,6 +1269,7 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       egrep( pattern:"^Server: CUPS/([0-9.]+) IPP/([0-9.]+)$", string:banner ) || # Handled at the bottom of sw_http_os_detection.nasl
       egrep( pattern:"^Server: Themis ([0-9.]+)$", string:banner ) || # Currently unknown
       egrep( pattern:"^Server: Mordac/([0-9.]+)$", string:banner ) || # Currently unknown
+      egrep( pattern:"^Server: gSOAP/([0-9.]+)$", string:banner ) || # Cross-platform
       egrep( pattern:"^Server: squid/([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: squid/([0-9.]+)\.STABLE([0-9.]+)$", string:banner ) || # e.g. Server: squid/2.7.STABLE5
       egrep( pattern:"^dnsmasq-([0-9.]+)$", string:banner ) ||

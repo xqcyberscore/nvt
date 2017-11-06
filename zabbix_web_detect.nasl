@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: zabbix_web_detect.nasl 6755 2017-07-18 12:55:56Z cfischer $
+# $Id: zabbix_web_detect.nasl 7649 2017-11-03 13:09:14Z cfischer $
 #
 # ZABBIX Web Interface Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100405");
- script_version("$Revision: 6755 $");
+ script_version("$Revision: 7649 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-03 14:09:14 +0100 (Fri, 03 Nov 2017) $");
  script_tag(name:"creation_date", value:"2009-12-17 19:46:08 +0100 (Thu, 17 Dec 2009)");
  script_tag(name:"qod_type", value:"remote_banner");
  script_name("ZABBIX Web Interface Detection");
@@ -86,6 +86,7 @@ foreach dir( make_list_unique("/", "/zabbix", "/monitoring", cgi_dirs( port:zbPo
 
     set_kb_item(name: string("www/", zbPort, "/zabbix_client"), value: string(zbVer," under ",install));
     set_kb_item(name:"Zabbix/installed", value:TRUE);
+    set_kb_item(name:"Zabbix/Web/installed", value:TRUE);
 
     cpe = build_cpe(value:zbVer, exp:"^([0-9.]+)", base:"cpe:/a:zabbix:zabbix:");
     if(!cpe)

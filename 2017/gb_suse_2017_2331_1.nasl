@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2331_1.nasl 7075 2017-09-07 11:09:13Z santu $
+# $Id: gb_suse_2017_2331_1.nasl 7658 2017-11-06 05:53:53Z teissa $
 #
 # SuSE Update for git openSUSE-SU-2017:2331-1 (git)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851605");
-  script_version("$Revision: 7075 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:09:13 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 7658 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 06:53:53 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-09-03 07:18:57 +0200 (Sun, 03 Sep 2017)");
   script_cve_id("CVE-2017-1000117");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for git openSUSE-SU-2017:2331-1 (git)");
   script_tag(name: "summary", value: "Check the version of git");

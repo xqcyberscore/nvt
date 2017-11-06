@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2017_2911_wpa_supplicant_centos6.nasl 7558 2017-10-25 10:46:31Z santu $
+# $Id: gb_CESA-2017_2911_wpa_supplicant_centos6.nasl 7658 2017-11-06 05:53:53Z teissa $
 #
 # CentOS Update for wpa_supplicant CESA-2017:2911 centos6 
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882788");
-  script_version("$Revision: 7558 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 12:46:31 +0200 (Wed, 25 Oct 2017) $");
+  script_version("$Revision: 7658 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 06:53:53 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-20 08:41:10 +0200 (Fri, 20 Oct 2017)");
   script_cve_id("CVE-2017-13077", "CVE-2017-13078", "CVE-2017-13080", "CVE-2017-13087");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.4");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for wpa_supplicant CESA-2017:2911 centos6 ");
   script_tag(name: "summary", value: "Check the version of wpa_supplicant");

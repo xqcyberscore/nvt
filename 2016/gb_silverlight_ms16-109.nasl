@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms16-109.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_silverlight_ms16-109.nasl 7656 2017-11-03 16:28:52Z cfischer $
 #
 # Microsoft Silverlight Remote Code Execution Vulnerability (3182373)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809309");
-  script_version("$Revision: 5759 $");
+  script_version("$Revision: 7656 $");
   script_cve_id("CVE-2016-3367");
   script_bugtraq_id(92837);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-03 17:28:52 +0100 (Fri, 03 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-09-14 08:56:33 +0530 (Wed, 14 Sep 2016)");
   script_name("Microsoft Silverlight Remote Code Execution Vulnerability (3182373)");
 
@@ -90,8 +90,8 @@ if(msl_ver=~ "^5\.")
   ## Check for Silverlight version 5.0 < 5.1.50709.0
   if(version_is_less(version:msl_ver, test_version:"5.1.50709.0"))
   {
-    report = ' Silverlight version:     ' + msl_ver  + '\n' +
-             'Vulnerable range:  5.0 - 5.1.50709.0' + '\n' ;
+    report = 'Silverlight version:     ' + msl_ver  + '\n' +
+             'Vulnerable range:  5.0 - 5.1.50708.0' + '\n' ;
     security_message(data:report);
     exit(0);
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2755_1.nasl 7507 2017-10-19 12:10:58Z santu $
+# $Id: gb_suse_2017_2755_1.nasl 7658 2017-11-06 05:53:53Z teissa $
 #
 # SuSE Update for wpa_supplicant openSUSE-SU-2017:2755-1 (wpa_supplicant)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851627");
-  script_version("$Revision: 7507 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 14:10:58 +0200 (Thu, 19 Oct 2017) $");
+  script_version("$Revision: 7658 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 06:53:53 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-18 16:54:50 +0200 (Wed, 18 Oct 2017)");
   script_cve_id("CVE-2017-13078", "CVE-2017-13079", "CVE-2017-13080", "CVE-2017-13081", 
                 "CVE-2017-13087", "CVE-2017-13088");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"2.9");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for wpa_supplicant openSUSE-SU-2017:2755-1 (wpa_supplicant)");
   script_tag(name: "summary", value: "Check the version of wpa_supplicant");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_code_exec_vuln.nasl 6722 2017-07-14 08:54:37Z cfischer $
+# $Id: gb_zabbix_code_exec_vuln.nasl 7651 2017-11-03 13:41:18Z cfischer $
 #
 # Zabbix Arbitrary Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106545");
-  script_version("$Revision: 6722 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-14 10:54:37 +0200 (Fri, 14 Jul 2017) $");
+  script_version("$Revision: 7651 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-03 14:41:18 +0100 (Fri, 03 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-01-26 14:54:40 +0700 (Thu, 26 Jan 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -59,7 +59,7 @@ if (description)
 when used with a shell other than bash, allows context-dependent attackers to execute arbitrary code or SQL
 commands via the mysql.size parameter.");
 
-  script_tag(name: "affected", value: "Zabix version prior to 2.0.18, 2.2.x and 3.0.x");
+  script_tag(name: "affected", value: "Zabbix version prior to 2.0.18, 2.2.x and 3.0.x");
 
   script_tag(name: "solution", value: "Update to 2.0.18, 2.2.13, 3.0.3 or newer versions.");
 
