@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_mariadb_os_detection.nasl 7270 2017-09-26 09:49:58Z cfischer $
+# $Id: gb_mysql_mariadb_os_detection.nasl 7669 2017-11-06 15:08:30Z cfischer $
 #
 # MySQL/MariaDB Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108192");
-  script_version("$Revision: 7270 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 7669 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 16:08:30 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-07-17 09:13:48 +0100 (Mon, 17 Jul 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -60,10 +60,14 @@ port = infos['port'];
 if( ! banner = get_kb_item( "mysql_mariadb/full_banner/" + port ) ) exit( 0 );
 
 if( "ubuntu" >< banner ) {
-  if( "5.5.55-0ubuntu0.14.04" >< banner ) {
+  if( "ubuntu0.14.04" >< banner ) {
     register_and_report_os( os:"Ubuntu", version:"14.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-  } else if( "5.7.18-0ubuntu0.16.04" >< banner ) {
+  } else if( "ubuntu0.16.04" >< banner ) {
     register_and_report_os( os:"Ubuntu", version:"16.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else if( "ubuntu0.17.04" >< banner ) {
+    register_and_report_os( os:"Ubuntu", version:"17.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else if( "ubuntu0.17.10" >< banner ) {
+    register_and_report_os( os:"Ubuntu", version:"17.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
     register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }

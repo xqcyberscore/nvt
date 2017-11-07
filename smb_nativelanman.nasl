@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: smb_nativelanman.nasl 7589 2017-10-27 07:03:33Z cfischer $
+# $Id: smb_nativelanman.nasl 7669 2017-11-06 15:08:30Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 7589 $");
+  script_version("$Revision: 7669 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 09:03:33 +0200 (Fri, 27 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 16:08:30 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -185,7 +185,14 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
               os_str = "Unknown SUSE Release";
             }
           } else if( "ubuntu" >< tolower( smb_str ) ) {
-            if( "Samba 4.6.7-Ubuntu" >< smb_str ) {
+            # Trusty (and previous?) up to Xenial had this version, choose the highest Ubuntu version
+            if( "Samba 4.3.11-Ubuntu" >< smb_str ) {
+              os_str = "Ubuntu 14.04 - 16.04";
+            # Zesty had only one version
+            } else if( "Samba 4.5.8-Ubuntu" >< smb_str ) {
+              os_str = "Ubuntu 17.04";
+            # Artful (and currently upcoming Bionic)
+            } else if( "Samba 4.6.7-Ubuntu" >< smb_str ) {
               os_str = "Ubuntu 17.10";
             } else {
               os_str = "Unknown Ubuntu Release";
@@ -283,7 +290,11 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
             register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           }
         } else if( "ubuntu" >< tolower( os_str ) ) {
-          if( "17.10" >< os_str ) {
+          if( "16.04" >< os_str ) {
+            register_and_report_os( os:"Ubuntu", version:"16.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "17.04" >< os_str ) {
+            register_and_report_os( os:"Ubuntu", version:"17.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "17.10" >< os_str ) {
             register_and_report_os( os:"Ubuntu", version:"17.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           } else {
             register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );

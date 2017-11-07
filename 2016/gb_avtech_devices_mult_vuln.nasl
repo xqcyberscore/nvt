@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avtech_devices_mult_vuln.nasl 7468 2017-10-18 05:48:02Z teissa $
+# $Id: gb_avtech_devices_mult_vuln.nasl 7664 2017-11-06 09:16:58Z cfischer $
 #
 # AVTECH Devices Multiple Vulnerabilities
 #
@@ -29,16 +29,18 @@ CPE = "cpe:/o:avtech:avtech_device";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809067");
-  script_version("$Revision: 7468 $");
+  script_version("$Revision: 7664 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-18 07:48:02 +0200 (Wed, 18 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 10:16:58 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-10-18 11:30:44 +0530 (Tue, 18 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("AVTECH Devices Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is installed with an 
-  AVTECH device(IP camera/NVR/DVR) and is prone to multiple vulnerabilities.");
+  AVTECH device(IP camera/NVR/DVR) and is prone to multiple vulnerabilities.
+
+  This vulnerability was known to be exploited by the IoT Botnet 'Reaper' in 2017.");
 
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to bypass authentication and disclose information 
@@ -77,7 +79,9 @@ if(description)
   script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40500");
+  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40500");
+  script_xref(name: "URL", value: "https://github.com/Trietptm-on-Security/AVTECH");
+  script_xref(name: "URL", value: "http://blog.netlab.360.com/iot_reaper-a-rappid-spreading-new-iot-botnet-en/");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

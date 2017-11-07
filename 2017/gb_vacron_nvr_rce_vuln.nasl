@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vacron_nvr_rce_vuln.nasl 7408 2017-10-12 07:11:39Z emoss $
+# $Id: gb_vacron_nvr_rce_vuln.nasl 7664 2017-11-06 09:16:58Z cfischer $
 #
 # Vacron NVR Remote Code Execution Vulnerability
 #
@@ -29,15 +29,17 @@ CPE = "cpe:/a:vacron:nvr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107187");
-  script_version("$Revision: 7408 $");
+  script_version("$Revision: 7664 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 09:11:39 +0200 (Thu, 12 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 10:16:58 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-11 10:31:53 +0200 (Wed, 11 Oct 2017)");
   script_name("Vacron NVR Remote Code Execution Vulnerability");
 
-  script_tag(name:"summary", value:"The host is installed with Vacron NVR and is prone to Remote Code Execution Vulnerability.");
+  script_tag(name:"summary", value:"The host is installed with Vacron NVR and is prone to Remote Code Execution Vulnerability.
+
+  This vulnerability was known to be exploited by the IoT Botnet 'Reaper' in 2017.");
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
@@ -53,6 +55,8 @@ regarding this issue will be updated once the solution details are available.");
   script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3445");
+  script_xref(name: "URL", value: "http://blog.netlab.360.com/iot_reaper-a-rappid-spreading-new-iot-botnet-en/");
+
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_ATTACK);

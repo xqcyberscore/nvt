@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: gb_openemr_detect.nasl 7661 2017-11-06 08:00:29Z asteins $
 #
 # OpenEMR Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103018");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 7661 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 09:00:29 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2011-01-07 13:52:38 +0100 (Fri, 07 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OpenEMR Detection");
@@ -75,7 +75,7 @@ foreach dir( make_list_unique( "/", "/openemr", cgi_dirs( port:port ) ) ) {
 
     version = "unknown";
 
-    ### try to get version 
+    ### try to get version
     ver = eregmatch( pattern:'<div class="version">[\r\n ]*v([0-9dev (.-]+)', string:buf );
 
     if (isnull(ver[1])) {
@@ -105,7 +105,10 @@ foreach dir( make_list_unique( "/", "/openemr", cgi_dirs( port:port ) ) ) {
     set_kb_item( name:"openemr/installed", value:TRUE );
     set_kb_item( name:"www/" + port + "/OpenEMR", value:tmp_version );
 
-    cpe = build_cpe( value:version, exp:"^([0-9dev.]+)-?([0-9])?", base:"cpe:/a:open-emr:openemr:" );
+    # replaced until get_version_from_cpe() is being fixed
+    # cpe = build_cpe( value:version, exp:"^([0-9dev.]+)-?([0-9])?", base:"cpe:/a:open-emr:openemr:" );
+    cpe = build_cpe( value:version, exp:"^([0-9dev\.\-]+)", base:"cpe:/a:open-emr:openemr:" );
+
     if( ! cpe )
       cpe = 'cpe:/a:open-emr:openemr';
 

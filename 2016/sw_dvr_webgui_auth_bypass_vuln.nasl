@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dvr_webgui_auth_bypass_vuln.nasl 5396 2017-02-22 16:55:09Z mime $
+# $Id: sw_dvr_webgui_auth_bypass_vuln.nasl 7664 2017-11-06 09:16:58Z cfischer $
 #
 # Multiple DVR Devices Authentication Bypass And Remote Code Execution Vulnerabilities
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111088");
-  script_version("$Revision: 5396 $");
+  script_version("$Revision: 7664 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 17:55:09 +0100 (Wed, 22 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 10:16:58 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-02-22 08:00:0 +0100 (Mon, 22 Feb 2016)");
   script_name("Multiple DVR Devices Authentication Bypass And Remote Code Execution Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -42,7 +42,10 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"This host is running a Digital Video Recorder (DVR)
-  device and is prone to authentication bypass and remote code execution vulnerabilities.");
+  device and is prone to authentication bypass and remote code execution vulnerabilities.
+
+  This vulnerability was known to be exploited by the IoT Botnet 'Reaper' in 2017.");
+
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET method
   and check whether it is able to access admin panel of the device or execute remote commands.");
   script_tag(name:"insight", value:"The flaw is due to the device:
@@ -57,6 +60,7 @@ if(description)
   script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://www.pentestpartners.com/blog/pwning-cctv-cameras/");
+  script_xref(name:"URL", value:"http://blog.netlab.360.com/iot_reaper-a-rappid-spreading-new-iot-botnet-en/");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_e1500_2500_mul_vuln.nasl 7638 2017-11-03 07:11:45Z cfischer $
+# $Id: gb_linksys_e1500_2500_mul_vuln.nasl 7664 2017-11-06 09:16:58Z cfischer $
 #
 # Linksys E1500/E2500 Multiple Vulnerabilities
 #
@@ -29,17 +29,19 @@ CPE = "cpe:/a:linksys:devices";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107202");
-  script_version("$Revision: 7638 $");
+  script_version("$Revision: 7664 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 08:11:45 +0100 (Fri, 03 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 10:16:58 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-02 11:57:11 +0530 (Thu, 02 Nov 2017)");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Linksys E1500/E2500 Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is running Linksys E1500 or E2500 device and is prone to multiple
-vulnerabilities.");
+vulnerabilities.
+
+  This vulnerability was known to be exploited by the IoT Botnet 'Reaper' in 2017.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check if the
 version is vulnerable or not.");
@@ -58,7 +60,8 @@ regarding this issue will be updated once solution details are available. For de
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
-  script_xref(name : "URL" , value : "http://www.s3cur1ty.de/m1adv2013-004");
+  script_xref(name: "URL", value: "http://www.s3cur1ty.de/m1adv2013-004");
+  script_xref(name: "URL", value: "http://blog.netlab.360.com/iot_reaper-a-rappid-spreading-new-iot-botnet-en/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

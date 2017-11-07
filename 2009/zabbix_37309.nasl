@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: zabbix_37309.nasl 7649 2017-11-03 13:09:14Z cfischer $
+# $Id: zabbix_37309.nasl 7666 2017-11-06 09:54:39Z cfischer $
 #
 # ZABBIX Denial Of Service and SQL Injection Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:zabbix:zabbix";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 7649 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 14:09:14 +0100 (Fri, 03 Nov 2017) $");
+  script_version("$Revision: 7666 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-06 10:54:39 +0100 (Mon, 06 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-12-17 19:46:08 +0100 (Thu, 17 Dec 2009)");
   script_cve_id("CVE-2009-4499", "CVE-2009-4501");
   script_bugtraq_id(37309);
@@ -79,7 +79,7 @@ if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 ); # nb: Only the 
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( version_is_less( version:vers, test_version:"1.6.8" ) ) {
-  if( zabbix_port = get_kb_item( "Services/zabbix_server" ) ) {
+  if( zabbix_port = get_kb_item( "Services/zabbix" ) ) {
     port = zabbix_port;
   }
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.6.8" );
