@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foreman_detect.nasl 4640 2016-11-29 01:50:34Z ckuerste $
+# $Id: gb_foreman_detect.nasl 7674 2017-11-07 06:54:24Z ckuersteiner $
 #
 # Foreman Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106384");
-  script_version("$Revision: 4640 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-29 02:50:34 +0100 (Tue, 29 Nov 2016) $");
+  script_version("$Revision: 7674 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-07 07:54:24 +0100 (Tue, 07 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -72,6 +72,13 @@ if ("Welcome to Foreman" >< res && "<title>Login</title>" >< res) {
   if (!isnull(vers[1])) {
     version = vers[1];
     set_kb_item(name: "foreman/version", value: version);
+  }
+  else {
+    vers = eregmatch(pattern: "<p>Version ([0-9.]+)", string: res);
+    if (!isnull(vers[1])) {
+      version = vers[1];
+      set_kb_item(name: "foreman/version", value: version);
+    }
   }
 
   set_kb_item(name: "foreman/installed", value: TRUE);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_se_unspecified_vuln_aug09.nasl 6466 2017-06-28 13:28:20Z cfischer $
+# $Id: gb_sun_java_se_unspecified_vuln_aug09.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Sun Java SE Unspecified Vulnerability In JDK/JRE/SDK - Aug09
 #
@@ -51,8 +51,8 @@ tag_summary = "This host is installed with Sun Java JDK/JRE/SDK and is prone to
 if(description)
 {
   script_id(800869);
-  script_version("$Revision: 6466 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:28:20 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 7699 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-08-20 09:27:17 +0200 (Thu, 20 Aug 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -81,7 +81,6 @@ include("version_func.inc");
 
 # Get KB for JDK Version On Windows
 jdkVer = get_kb_item("Sun/Java/JDK/Win/Ver");
-jdkVer = ereg_replace(pattern:"_", string:jdkVer, replace: ".");
 
 if(jdkVer)
 {
@@ -101,12 +100,10 @@ if(isnull(jreVer))
 {
   # Get KB for JRE version installed on Linux
   jreVer = get_kb_item("Sun/Java/JRE/Linux/Ver");
-  jreVer = ereg_replace(pattern:"-b[0-9][1-9]", string:jreVer, replace:"");
 
   if(isnull(jreVer))
     exit(0);
 }
-jreVer = ereg_replace(pattern:"_", string:jreVer, replace: ".");
 
 if(jreVer)
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4042120.nasl 7401 2017-10-11 13:55:58Z santu $
+# $Id: gb_ms_kb4042120.nasl 7689 2017-11-08 05:46:44Z teissa $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4042120)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811920");
-  script_version("$Revision: 7401 $");
+  script_version("$Revision: 7689 $");
   script_cve_id("CVE-2017-8694", "CVE-2017-11765", "CVE-2017-11814", "CVE-2017-11824", 
                 "CVE-2017-8689");
   script_bugtraq_id(101100, 101111, 101093, 101099, 101128);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-11 15:55:58 +0200 (Wed, 11 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 06:46:44 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-11 08:44:10 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4042120)");
 

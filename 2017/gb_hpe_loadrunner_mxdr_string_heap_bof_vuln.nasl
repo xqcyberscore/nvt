@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_loadrunner_mxdr_string_heap_bof_vuln.nasl 6043 2017-04-28 08:00:52Z teissa $
+# $Id: gb_hpe_loadrunner_mxdr_string_heap_bof_vuln.nasl 7689 2017-11-08 05:46:44Z teissa $
 #
 # HPE LoadRunner 'libxdrutil.dll mxdr_string method' RCE Vulnerability
 # 
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:loadrunner";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811014");
-  script_version("$Revision: 6043 $");
+  script_version("$Revision: 7689 $");
   script_cve_id("CVE-2017-5789");
   script_bugtraq_id(96774);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 10:00:52 +0200 (Fri, 28 Apr 2017) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 06:46:44 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-04-25 17:17:50 +0530 (Tue, 25 Apr 2017)");
   script_name("HPE LoadRunner 'libxdrutil.dll mxdr_string method' RCE Vulnerability");
 

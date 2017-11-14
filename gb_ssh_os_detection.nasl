@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_os_detection.nasl 7589 2017-10-27 07:03:33Z cfischer $
+# $Id: gb_ssh_os_detection.nasl 7732 2017-11-10 10:29:01Z cfischer $
 #
 # SSH OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105586");
-  script_version("$Revision: 7589 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 09:03:33 +0200 (Fri, 27 Oct 2017) $");
+  script_version("$Revision: 7732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-10 11:29:01 +0100 (Fri, 10 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-03-23 14:28:40 +0100 (Wed, 23 Mar 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -64,8 +64,21 @@ textbanner = get_kb_item( "SSH/textbanner/" + port );
 #For banners see e.g. https://github.com/BetterCrypto/Applied-Crypto-Hardening/blob/master/unsorted/ssh/ssh_version_strings.txt
 
 # Order matters, as some banners can include several keywords.
+# Ubuntu pattern for new releases last checked on 11/2017 (up to 17.10, LTS releases: 12.04 up to 12.04.5, 14.04 up to 14.04.5, 16.04 up to 16.04.3)
 if( "ubuntu" >< tolower( banner ) )
 {
+  if( "SSH-2.0-OpenSSH_3.8.1p1 Debian 1:3.8.1p1-11ubuntu3" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"4.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_3.9p1 Debian-1ubuntu2" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"5.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
   if( "SSH-2.0-OpenSSH_4.1p1 Debian-7ubuntu4" >< banner )
   {
     register_and_report_os( os:"Ubuntu", version:"5.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
@@ -74,7 +87,13 @@ if( "ubuntu" >< tolower( banner ) )
 
   if( "SSH-2.0-OpenSSH_4.2p1 Debian-7ubuntu3" >< banner )
   {
-    register_and_report_os( os:"Ubuntu", version:"6.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    register_and_report_os( os:"Ubuntu", version:"6.06", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_4.3p2 Debian-5ubuntu1" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"6.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
 
@@ -122,7 +141,7 @@ if( "ubuntu" >< tolower( banner ) )
     exit( 0 );
   }
 
-  if( "SSH-2.0-OpenSSH_5.5p1 Debian-4ubuntu4" >< banner || "SSH-2.0-OpenSSH_5.5p1 Debian-4ubuntu5" >< banner)
+  if( "SSH-2.0-OpenSSH_5.5p1 Debian-4ubuntu3" >< banner || "SSH-2.0-OpenSSH_5.5p1 Debian-4ubuntu4" >< banner || "SSH-2.0-OpenSSH_5.5p1 Debian-4ubuntu5" >< banner)
   {
     register_and_report_os( os:"Ubuntu", version:"10.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
@@ -219,6 +238,20 @@ if( "ubuntu" >< tolower( banner ) )
 
 else if( "Debian" >< banner || "Raspbian" >< banner )
 {
+  # Special case on Ubuntu 7.10
+  if( "SSH-2.0-OpenSSH_4.6p1 Debian-5build1" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"7.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  # Another special case on Ubuntu 13.04
+  if( "SSH-2.0-OpenSSH_6.1p1 Debian-4" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"13.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
   if( "SSH-2.0-OpenSSH_5.1p1 Debian" >< banner )
   {
     register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
@@ -375,6 +408,13 @@ else if( "SSH-2.0-mpSSH_" >< banner )
 else if( "SSH-2.0-Data ONTAP SSH" >< banner )
 {
   register_and_report_os( os:"NetApp Data ONTAP", cpe:"cpe:/o:netapp:data_ontap", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+# Embedded Linux
+else if( "SSH-2.0-moxa_" >< banner )
+{
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_unspecified_vuln01_jan16.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_java_unspecified_vuln01_jan16.nasl 7724 2017-11-10 07:05:05Z santu $
 #
 # Oracle Java SE JRE Unspecified Vulnerability-01 Jan 2016 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806670");
-  script_version("$Revision: 5675 $");
+  script_version("$Revision: 7724 $");
   script_cve_id("CVE-2016-0475");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-10 08:05:05 +0100 (Fri, 10 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-01-22 16:24:06 +0530 (Fri, 22 Jan 2016)");
   script_name("Oracle Java SE JRE Unspecified Vulnerability-01 Jan 2016 (Windows)");
 
@@ -77,20 +77,17 @@ include("version_func.inc");
 ## Variable Initialization
 jreVer = "";
 
-## Get version
-if(!jreVer = get_app_version(cpe:CPE)){
-  exit(0);
-}
+infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+
+jreVer = infos['version'];
+jrePath = infos['location'];
 
 if(jreVer =~ "^(1\.8)")
 {
-  jreVer = ereg_replace(pattern:"[a-z]+_|-", string:jreVer, replace: ".");
-
   ##Check for Oracle Java SE Versions
   if(version_in_range(version:jreVer, test_version:"1.8.0", test_version2:"1.8.0.66"))
-  {
-    report = 'Installed version: ' + jreVer + '\n' +
-             'Fixed version:     ' + "Apply the patch"  + '\n';
+  { 
+    report = report_fixed_ver(installed_version:jreVer, fixed_version:"Apply the patch", install_path:jrePath);
     security_message(data:report);
     exit(0);
   }

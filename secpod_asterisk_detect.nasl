@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_asterisk_detect.nasl 4893 2016-12-30 15:49:57Z cfi $
+# $Id: secpod_asterisk_detect.nasl 7702 2017-11-09 04:34:57Z ckuersteiner $
 #
 # Asterisk Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900811");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4893 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 16:49:57 +0100 (Fri, 30 Dec 2016) $");
+  script_version("$Revision: 7702 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-09 05:34:57 +0100 (Thu, 09 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-08-05 14:14:14 +0200 (Wed, 05 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Asterisk Version Detection");
@@ -67,18 +67,21 @@ if("Asterisk PBX" >< banner || "FPBX-" >< banner ) {
 
   version = string("unknown");
 
-  asteriskVer = eregmatch(pattern:"Asterisk PBX ([0-9.]+(.?[a-z0-9]+)?)",
+  asteriskVer = eregmatch(pattern:"Asterisk PBX (certified/)?([0-9.]+(.?[a-z0-9]+)?)",
                           string:banner);
 
-  if( ! isnull( asteriskVer[1] ) )
-    asteriskVer[1] = ereg_replace(pattern:"-", replace:".", string:asteriskVer[1]);
-  else
-    asteriskVer = eregmatch( pattern:'FPBX-[0-9.]+\\(([0-9.]+[^)]+)\\)', string:banner );
-
-  if(asteriskVer[1] != NULL) {
-    set_kb_item(name:"Asterisk-PBX/Ver", value:asteriskVer[1]);
-    version = asteriskVer[1];
+  if( ! isnull( asteriskVer[2] ) ) {
+    version = ereg_replace(pattern:"-", replace:".", string:asteriskVer[2]);
+    set_kb_item(name:"Asterisk-PBX/Ver", value:version);
   }
+  else {
+    vers = eregmatch( pattern:'FPBX-[0-9.]+\\(([0-9.]+[^)]+)\\)', string:banner );
+    if (!isnull(vers[1])) {
+      version = vers[1];
+      set_kb_item(name:"Asterisk-PBX/Ver", value:version);
+    }
+  }
+
   set_kb_item(name:"Asterisk-PBX/Installed", value:TRUE);
   ## build cpe and store it as host_detail
   cpe = build_cpe(value:version, exp:"^([0-9.]+\.[0-9]+)\.?((rc[0-9]+)|(cert[1-9]))?", base:"cpe:/a:digium:asterisk:");

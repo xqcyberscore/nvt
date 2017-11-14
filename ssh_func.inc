@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 7569 2017-10-26 07:04:30Z cfischer $
+# $Id: ssh_func.inc 7701 2017-11-08 15:45:36Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7569 $
+# $Revision: 7701 $
 #
 ###############################################################################
 
@@ -2476,6 +2476,17 @@ function ssh_check_locate( sock ) {
   if( get_kb_item( "lsc/locate/broken" ) ) return FALSE;
 
   r = ssh_cmd( socket:sock, cmd:"locate -S", timeout:60 );
+
+  # nb: slocate (and maybe other variants?) don't have the database statistic command
+  # Just try a search instead, if the database isn't build it will return something like
+  # warning: locate: could not open database: /path/to/db: No such file or directory
+  if( "locate: invalid option -- S" >< r ) {
+    r = ssh_cmd( socket:sock, cmd:"locate /bin/bash", timeout:60 ); # nb: Assuming that /bin/bash exists on the target system
+    if( "locate:" >!< r && "/bin/bash" >< r ) {
+      set_kb_item( name:"lsc/locate/available", value:TRUE );
+      return TRUE;
+    }
+  }
 
   if( ( "Database /" >!< r ||
       ( "bytes" >!< r &&

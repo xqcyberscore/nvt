@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_pro_sanbox_escape_sec_bypass_vuln.nasl 7191 2017-09-20 04:14:22Z ckuersteiner $
+# $Id: gb_avast_pro_sanbox_escape_sec_bypass_vuln.nasl 7675 2017-11-07 07:38:53Z cfischer $
 #
 # Avast Pro Sandbox Escape Security Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:avast:avast_pro_antivirus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810206");
-  script_version("$Revision: 7191 $");
+  script_version("$Revision: 7675 $");
   script_cve_id("CVE-2016-4025");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 06:14:22 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-07 08:38:53 +0100 (Tue, 07 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-11-18 14:57:52 +0530 (Fri, 18 Nov 2016)");
   script_name("Avast Pro Sandbox Escape Security Bypass Vulnerability");
 
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Avast Pro version 11.x through 11.1.2262");
 
   script_tag(name:"solution", value:"No solution or patch is available as
-  of 20th September, 2017. Information regarding this issue will be updated
+  of 7th November, 2017. Information regarding this issue will be updated
   once the solution details are available. 
   For updates refer to https://www.avast.com");
 

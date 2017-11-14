@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_mult_vuln_may17.nasl 6192 2017-05-23 03:20:52Z ckuerste $
+# $Id: gb_asterisk_mult_vuln_may17.nasl 7722 2017-11-10 06:23:33Z asteins $
 #
 # Asterisk Multiple Vulnerabilities Vulnerability (May 2017)
 #
@@ -30,11 +30,13 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106822");
-  script_version("$Revision: 6192 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-23 05:20:52 +0200 (Tue, 23 May 2017) $");
+  script_version("$Revision: 7722 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-10 07:23:33 +0100 (Fri, 10 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-05-23 10:00:40 +0700 (Tue, 23 May 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+
+  script_cve_id("CVE-2017-9372", "CVE-2017-9372", "CVE-2017-9358");
 
   script_tag(name: "qod_type", value: "remote_banner_unreliable");
 

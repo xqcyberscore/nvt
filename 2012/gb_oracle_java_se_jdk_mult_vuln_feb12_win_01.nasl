@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_jdk_mult_vuln_feb12_win_01.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_oracle_java_se_jdk_mult_vuln_feb12_win_01.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Oracle Java SE JDK Multiple Vulnerabilities - February 2012 (Windows - 01)
 #
@@ -46,13 +46,13 @@ tag_summary = "This host is installed with Oracle Java SE JDK and is prone to
 if(description)
 {
   script_id(803334);
-  script_version("$Revision: 5963 $");
+  script_version("$Revision: 7699 $");
   script_cve_id("CVE-2011-3563", "CVE-2012-0499", "CVE-2012-0502",
                 "CVE-2012-0503", "CVE-2012-0505", "CVE-2012-0506");
   script_bugtraq_id(52011, 52012, 52014, 52016, 52017, 52018);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2012-02-21 16:16:16 +0530 (Tue, 21 Feb 2012)");
   script_name("Oracle Java SE JDK Multiple Vulnerabilities - February 2012 (Windows - 01)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48009");
@@ -85,8 +85,6 @@ jdkVer = "";
 jdkVer = get_kb_item("Sun/Java/JDK/Win/Ver");
 if(jdkVer)
 {
-  jdkVer = ereg_replace(pattern:"_|-", string:jdkVer, replace: ".");
-
   ## Check for Oracle Java SE JDK 7 Update 2 and earlier, 6 Update 30 and earlier,
   ## 5.0 Update 33 and earlier, and 1.4.2_35 and earlier
   if(version_is_less_equal(version:jdkVer, test_version:"1.4.2.35") ||

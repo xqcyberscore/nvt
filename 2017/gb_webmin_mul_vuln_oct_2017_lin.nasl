@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmin_mul_vuln_oct_2017_lin.nasl 7588 2017-10-27 06:53:29Z santu $
+# $Id: gb_webmin_mul_vuln_oct_2017_lin.nasl 7739 2017-11-13 05:04:18Z teissa $
 #
 # Webmin Multiple Vulnerabilities (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:webmin:webmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107249");
-  script_version("$Revision: 7588 $");
+  script_version("$Revision: 7739 $");
   script_cve_id("CVE-2017-15644", "CVE-2017-15645", "CVE-2017-15646");
-  script_tag(name:"cvss_base", value:"4.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 08:53:29 +0200 (Fri, 27 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-13 06:04:18 +0100 (Mon, 13 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-16 12:05:05 +0530 (Mon, 16 Oct 2017)");
   script_name("Webmin Multiple Vulnerabilities (Linux)");
 

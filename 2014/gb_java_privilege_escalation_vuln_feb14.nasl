@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_privilege_escalation_vuln_feb14.nasl 5299 2017-02-15 07:43:09Z antu123 $
+# $Id: gb_java_privilege_escalation_vuln_feb14.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Oracle Java SE Privilege Escalation Vulnerability Feb 2014 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804313");
-  script_version("$Revision: 5299 $");
+  script_version("$Revision: 7699 $");
   script_cve_id("CVE-2014-1876");
   script_bugtraq_id(65568);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-15 08:43:09 +0100 (Wed, 15 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2014-02-13 12:54:10 +0530 (Thu, 13 Feb 2014)");
   script_name("Oracle Java SE Privilege Escalation Vulnerability Feb 2014 (Windows)");
 
@@ -85,8 +85,6 @@ if(!jreVer = get_app_version(cpe:CPE)){
 
 if(jreVer =~ "^(1\.7)")
 {
-  jreVer = ereg_replace(pattern:"[a-z]+_|[a-z]+-|-|_|[a-z]+", string:jreVer, replace: ".");
-
   ##Check for Oracle Java SE Versions
   if(version_in_range(version:jreVer, test_version:"1.7", test_version2:"1.7.0.51"))
   {

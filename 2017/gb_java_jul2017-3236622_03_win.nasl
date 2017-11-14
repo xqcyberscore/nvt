@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_jul2017-3236622_03_win.nasl 6981 2017-08-22 06:39:29Z asteins $
+# $Id: gb_java_jul2017-3236622_03_win.nasl 7711 2017-11-09 10:31:37Z cfischer $
 #
 # Oracle Java SE Security Updates (jul2017-3236622) 03 - Windows
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811243");
-  script_version("$Revision: 6981 $");
+  script_version("$Revision: 7711 $");
   script_cve_id("CVE-2017-10090", "CVE-2017-10114", "CVE-2017-10118", "CVE-2017-10086", 
                 "CVE-2017-10176", "CVE-2017-10125");
   script_bugtraq_id(99706, 99726, 99782, 99662, 99788, 99809);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-22 08:39:29 +0200 (Tue, 22 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-09 11:31:37 +0100 (Thu, 09 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-07-19 11:51:38 +0530 (Wed, 19 Jul 2017)");
   script_name("Oracle Java SE Security Updates (jul2017-3236622) 03 - Windows");
 
@@ -75,22 +75,17 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-jreVer = "";
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
-## Get version
-if(!jreVer = get_app_version(cpe:CPE)){
-  exit(0);
-}
-
-if(version_in_range(version:jreVer, test_version:"1.7.0", test_version2:"1.7.0.141") ||
-   version_in_range(version:jreVer, test_version:"1.8.0", test_version2:"1.8.0.131"))
+if(version_in_range(version:vers, test_version:"1.7.0", test_version2:"1.7.0.141") ||
+   version_in_range(version:vers, test_version:"1.8.0", test_version2:"1.8.0.131"))
 {
-  report = report_fixed_ver(installed_version:jreVer, fixed_version: "Apply the patch");
+  report = report_fixed_ver(installed_version:vers, fixed_version: "Apply the patch", install_path:path);
   security_message(data:report);
   exit(0);
 }

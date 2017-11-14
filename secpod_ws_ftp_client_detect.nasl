@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ws_ftp_client_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: secpod_ws_ftp_client_detect.nasl 7747 2017-11-14 06:11:31Z santu $
 #
 # Iswitch WS-FTP Client Version Detection
 #
@@ -27,22 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902170");
-  script_version("$Revision: 7076 $");
+  script_version("$Revision: 7747 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-14 07:11:31 +0100 (Tue, 14 Nov 2017) $");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Iswitch WS-FTP Client Version Detection");
 
-tag_summary =
-"Detection of installed version of Iswitch WS-FTP Client.
+  script_tag(name: "summary" , value: "Detection of installed version of Iswitch
+  WS-FTP Client.
 
-The script logs in via smb, searches for Iswitch WS-FTP Client in the registry
-and gets the version from registry.";
+  The script logs in via smb, searches for Iswitch WS-FTP Client in the registry
+  and gets the version from registry.");
 
-
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"qod_type", value:"registry");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
@@ -58,6 +57,8 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
+include("version_func.inc");
+
 
 osArch = "";
 key_list = "";
@@ -99,13 +100,26 @@ foreach key (key_list)
     if(("Ipswitch" >< appName) || ("WS_FTP" >< appName)) 
     {
       appAdd = registry_get_sz(key:key + item, item:"DisplayIcon");
-      if("ftppro" >< appAdd)
+      appLoc = registry_get_sz(key:key + item, item:"InstallLocation");
+      if("ftppro" >< appAdd){
+        install = TRUE;
+      } else if(appLoc)
+      {
+        ##If version is fetched, file is present and so professional edition
+        checkpro = fetch_file_version(sysPath:appLoc, file_name:"wsftppro.exe");
+        if(checkpro){
+          install = TRUE;
+        }
+      } else {
+          exit(0);
+      }
+
+      if(install)
       {
         ipsVer = registry_get_sz(key:key + item, item:"DisplayVersion");
 
         if(ipsVer)
         {
-          appLoc = registry_get_sz(key:key + item, item:"InstallLocation");
           if(!appLoc){
             appLoc = "Couldn find the install location from registry";
           }

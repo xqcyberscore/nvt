@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 7633 2017-11-02 14:01:14Z cfischer $
+# $Id: os_eol.inc 7707 2017-11-09 08:56:02Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7633 $
+# $Revision: 7707 $
 #
 ###############################################################################
 
@@ -333,6 +333,7 @@ eol_cpes['cpe:/a:citrix:xenserver:5.0'] = '2013-09-15';
 # Cisco IOS XR (http://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-xr-software/eos-eol-notice-listing.html)
 eol_urls['cpe:/o:cisco:ios_xr'] = 'http://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-xr-software/eos-eol-notice-listing.html';
 eol_names['cpe:/o:cisco:ios_xr'] = 'Cisco IOS XR';
+eol_regex['cpe:/o:cisco:ios_xr'] = '^([0-9]+\\.[0-9]+)';
 eol_cpes['cpe:/o:cisco:ios_xr:5.3'] = '2019-08-11';
 eol_cpes['cpe:/o:cisco:ios_xr:5.2'] = '2019-01-29';
 eol_cpes['cpe:/o:cisco:ios_xr:5.1'] = '2018-04-01';
@@ -348,6 +349,51 @@ eol_cpes['cpe:/o:cisco:ios_xr:3.5'] = '2012-05-11';
 eol_cpes['cpe:/o:cisco:ios_xr:3.4'] = '2011-12-31';
 eol_cpes['cpe:/o:cisco:ios_xr:3.3'] = '2011-12-31';
 eol_cpes['cpe:/o:cisco:ios_xr:3.2'] = '2008-04-29';
+
+# Cisco IOS (https://www.cisco.com/c/en/us/support/ios-nx-os-software/index.html#nearingEOS)
+eol_urls['cpe:/o:cisco:ios'] = 'https://www.cisco.com/c/en/us/products/ios-nx-os-software/eos-eol-listing.html';
+eol_names['cpe:/o:cisco:ios'] = 'Cisco IOS';
+eol_regex['cpe:/o:cisco:ios'] = '^([0-9]+\\.[0-9]+)';
+eol_cpes['cpe:/o:cisco:ios:12.4'] = '2014-01-12';
+eol_cpes['cpe:/o:cisco:ios:12.3'] = '2008-03-15';
+eol_cpes['cpe:/o:cisco:ios:12.2'] = '2007-03-19';
+eol_cpes['cpe:/o:cisco:ios:12.1'] = 'unknown';
+eol_cpes['cpe:/o:cisco:ios:12.0'] = 'unknown';
+
+# Cisco ASA (https://www.cisco.com/c/en/us/products/security/asa-firepower-services/eos-eol-notice-listing.html)
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software'] = 'https://www.cisco.com/c/en/us/products/security/asa-firepower-services/eos-eol-notice-listing.html';
+eol_names['cpe:/o:cisco:adaptive_security_appliance_software'] = 'Cisco ASA';
+eol_regex['cpe:/o:cisco:adaptive_security_appliance_software'] = '^([0-9]+\\.[0-9]+)';
+eol_cpes['cpe:/o:cisco:adaptive_security_appliance_software:9.7'] = '2018-08-25';
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software:9.7'] = 'https://www.cisco.com/c/en/us/products/collateral/security/asa-firepower-services/eos-eol-notice-c51-738646.html';
+eol_cpes['cpe:/o:cisco:adaptive_security_appliance_software:9.5'] = '2017-05-03';
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software:9.5'] = 'https://www.cisco.com/c/en/us/products/collateral/security/asa-5500-series-next-generation-firewalls/eos-eol-notice-c51-736011.html';
+eol_cpes['cpe:/o:cisco:adaptive_security_appliance_software:9.3'] = '2017-01-07';
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software:9.3'] = 'https://www.cisco.com/c/en/us/products/collateral/security/asa-5500-series-next-generation-firewalls/eos-eol-notice-C51-735387.html';
+eol_cpes['cpe:/o:cisco:adaptive_security_appliance_software:9.2'] = '2018-08-25';
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software:9.2'] = 'https://www.cisco.com/c/en/us/products/collateral/security/asa-firepower-services/eos-eol-notice-c51-738647.html';
+eol_cpes['cpe:/o:cisco:adaptive_security_appliance_software:9.1'] = '2018-08-25';
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software:9.1'] = 'https://www.cisco.com/c/en/us/products/collateral/security/asa-firepower-services/eos-eol-notice-c51-738645.html';
+eol_cpes['cpe:/o:cisco:adaptive_security_appliance_software:9.0'] = '2017-01-07';
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software:9.0'] = 'https://www.cisco.com/c/en/us/products/collateral/security/asa-5500-series-next-generation-firewalls/eos-eol-notice-C51-735387.html';
+eol_cpes['cpe:/o:cisco:adaptive_security_appliance_software:8.6'] = '2015-05-27';
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software:8.6'] = 'https://www.cisco.com/c/en/us/products/collateral/routers/800-series-routers/eol_C51-730372.html';
+eol_cpes['cpe:/o:cisco:adaptive_security_appliance_software:8.4'] = '2016-03-05';
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software:8.4'] = 'https://www.cisco.com/c/en/us/products/collateral/security/asa-5500-series-next-generation-firewalls/eos-eol-notice-c51-732687.html';
+eol_cpes['cpe:/o:cisco:adaptive_security_appliance_software:8.3'] = '2015-05-27';
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software:8.3'] = 'https://www.cisco.com/c/en/us/products/collateral/routers/800-series-routers/eol_C51-730374.html';
+eol_cpes['cpe:/o:cisco:adaptive_security_appliance_software:8.2'] = '2015-10-21';
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software:8.2'] = 'https://www.cisco.com/c/en/us/products/collateral/security/asa-5500-series-next-generation-firewalls/eos-eol-notice-c51-731651.html';
+eol_cpes['cpe:/o:cisco:adaptive_security_appliance_software:8.1'] = '2012-07-15';
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software:8.1'] = 'https://www.cisco.com/c/en/us/products/collateral/security/asa-5500-series-next-generation-firewalls/end_of_life_c51_640618.html';
+eol_cpes['cpe:/o:cisco:adaptive_security_appliance_software:8.0'] = '2013-02-20';
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software:8.0'] = 'https://www.cisco.com/c/en/us/products/collateral/security/asa-5500-series-next-generation-firewalls/end_of_life_c51-682452.html';
+eol_cpes['cpe:/o:cisco:adaptive_security_appliance_software:7.2'] = '2015-06-03';
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software:7.2'] = 'https://www.cisco.com/c/en/us/products/collateral/routers/800-series-routers/eos-eol-notice-c51-730696.html';
+eol_cpes['cpe:/o:cisco:adaptive_security_appliance_software:7.1'] = '2009-08-04';
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software:7.1'] = 'https://www.cisco.com/c/en/us/products/collateral/security/asa-5500-series-next-generation-firewalls/end_of_life_notice_cisco_asa_5500_series_adaptive_sec_app_sw.html';
+eol_cpes['cpe:/o:cisco:adaptive_security_appliance_software:7.0'] = '2011-10-22';
+eol_urls['cpe:/o:cisco:adaptive_security_appliance_software:7.0'] = 'https://www.cisco.com/c/en/us/products/collateral/security/asa-5500-series-next-generation-firewalls/end_of_life_c51-588227.html';
 
 # FreeBSD (https://www.freebsd.org/security/unsupported.html)
 eol_urls['cpe:/o:freebsd:freebsd'] = 'https://www.freebsd.org/security/unsupported.html';
@@ -460,6 +506,7 @@ eol_cpes['cpe:/o:openbsd:openbsd:6.0'] = '2017-10-09';
 eol_urls['cpe:/o:greenbone:greenbone_os'] = 'https://www.greenbone.net/roadmap-lifecycle/#tab-id-6';
 eol_names['cpe:/o:greenbone:greenbone_os'] = 'Greenbone OS';
 eol_regex['cpe:/o:greenbone:greenbone_os'] = '^([0-9]+\\.[0-9]+)';
+eol_cpes['cpe:/o:greenbone:greenbone_os:4.1'] = '2017-12-15';
 eol_cpes['cpe:/o:greenbone:greenbone_os:4.0'] = '2017-07-30';
 eol_cpes['cpe:/o:greenbone:greenbone_os:3.0'] = '2015-10-03';
 eol_cpes['cpe:/o:greenbone:greenbone_os:2.2'] = '2016-01-03';
@@ -802,11 +849,25 @@ function os_reached_eol( cpe, debug ) {
 
 function get_eol_url( cpe ) {
 
-  local_var cpe, _cpe;
+  local_var cpe, _cpe, pattern, version, v;
 
   if( ! cpe ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_eol_url" );
     return FALSE;
+  }
+
+  base_cpe = get_base_cpe( cpe:cpe );
+
+  # Return specific URL for regex matching (e.g. Cisco ASA)
+  if( eol_regex[base_cpe] ) {
+    pattern = eol_regex[base_cpe];
+    version = get_version_from_cpe( cpe:cpe );
+    v = eregmatch( pattern:pattern, string:version );
+    if( !isnull(v[0])) {
+      _cpe = base_cpe + ":" + v[0];
+      if( eol_urls[_cpe] )
+        return eol_urls[_cpe];
+    }
   }
 
   if( eol_urls[cpe] ) # for some windows cpes

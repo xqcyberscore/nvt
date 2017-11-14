@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiandy_tech_info_disc_vuln.nasl 7409 2017-10-12 07:17:11Z cfischer $
+# $Id: gb_tiandy_tech_info_disc_vuln.nasl 7690 2017-11-08 06:26:20Z asteins $
 #
 # Tiandy IP cameras Sensitive Information Disclosure Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107183");
-  script_version("$Revision: 7409 $");
+  script_version("$Revision: 7690 $");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 09:17:11 +0200 (Thu, 12 Oct 2017) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 07:26:20 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-04 16:39:44 +0530 (Wed, 04 Oct 2017)");
   script_cve_id("CVE-2017-15236");
   script_name("Tiandy IP cameras Sensitive Information Disclosure Vulnerability");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_detect.nasl 4302 2016-10-19 09:59:38Z cfi $
+# $Id: gb_mongodb_detect.nasl 7674 2017-11-07 06:54:24Z ckuersteiner $
 #
 # MongoDB Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100747");
-  script_version("$Revision: 4302 $");
+  script_version("$Revision: 7674 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-19 11:59:38 +0200 (Wed, 19 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-07 07:54:24 +0100 (Tue, 07 Nov 2017) $");
   script_tag(name:"creation_date", value:"2010-08-06 15:09:20 +0200 (Fri, 06 Aug 2010)");
   script_name("MongoDB Detection");
   script_category(ACT_GATHER_INFO);
@@ -56,11 +56,6 @@ include("misc_func.inc");
 include("dump.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Variable Initialization
-dbPort = "";
-vers = "";
-buf = "";
 
 dbPort = get_unknown_port( default:27017 );
 

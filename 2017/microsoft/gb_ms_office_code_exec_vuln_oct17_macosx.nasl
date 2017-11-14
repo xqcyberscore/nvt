@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_code_exec_vuln_oct17_macosx.nasl 7459 2017-10-17 12:22:14Z santu $
+# $Id: gb_ms_office_code_exec_vuln_oct17_macosx.nasl 7689 2017-11-08 05:46:44Z teissa $
 #
 # Microsoft Office Remote Code Execution Vulnerability - Oct17 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811869");
-  script_version("$Revision: 7459 $");
+  script_version("$Revision: 7689 $");
   script_cve_id("CVE-2017-11825");
   script_bugtraq_id(101124);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-17 14:22:14 +0200 (Tue, 17 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 06:46:44 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-17 11:19:59 +0530 (Tue, 17 Oct 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Remote Code Execution Vulnerability - Oct17 (Mac OS X)");

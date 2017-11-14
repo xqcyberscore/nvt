@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_jre_awt_comp_unspecified_vuln_win.nasl 4378 2016-10-28 09:01:50Z cfi $
+# $Id: gb_oracle_java_se_jre_awt_comp_unspecified_vuln_win.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Oracle Java SE JRE AWT Component Unspecified Vulnerability - (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803021");
-  script_version("$Revision: 4378 $");
+  script_version("$Revision: 7699 $");
   #Remark: NIST don't see "security-in-depth fixes" as software flaws so this CVSS has a value of 0.0.
   #However we still should report missing security fixes with a criticality so this has been commented
   #out to avoid that the automatic CVSS score correction is setting the CVSS back to 0.0
@@ -35,7 +35,7 @@ if(description)
   script_bugtraq_id(55339);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-28 11:01:50 +0200 (Fri, 28 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2012-09-03 12:12:23 +0530 (Mon, 03 Sep 2012)");
   script_name("Oracle Java SE JRE AWT Component Unspecified Vulnerability - (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -85,8 +85,6 @@ jreVer = get_kb_item("Sun/Java/JRE/Win/Ver");
 
 if(jreVer)
 {
-  jreVer = ereg_replace(pattern:"_|-", string:jreVer, replace: ".");
-
   ## Check for Oracle Java SE versions 7 Update 6 and earlier,
   if(version_in_range(version:jreVer, test_version:"1.7", test_version2:"1.7.0.6")||
      version_in_range(version:jreVer, test_version:"1.6", test_version2:"1.6.0.34")){

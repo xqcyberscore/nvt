@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_con_spoof_vul_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_nextcloud_server_con_spoof_vul_lin.nasl 7686 2017-11-07 13:16:25Z cfischer $
 #
 # Nextcloud Server CVE-2017-0888 Content Spoofing Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107145");
-  script_version("$Revision: 7543 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 7686 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-07 14:16:25 +0100 (Tue, 07 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-04-10 09:39:06 +0200 (Mon, 10 Apr 2017)");
   script_cve_id("CVE-2017-0883", "CVE-2017-0884", "CVE-2017-0885", "CVE-2017-0886",
                 "CVE-2017-0887", "CVE-2017-0888");
@@ -39,7 +39,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_name(" Nextcloud Server CVE-2017-0888 Content Spoofing Vulnerability (Windows)");
+  script_name(" Nextcloud Server CVE-2017-0888 Content Spoofing Vulnerability (Linux)");
   script_tag(name: "summary", value: "Nextcloud Server is prone to Multiple vulnerabilities.");
 
   script_tag(name: "vuldetect", value: "Get the installed version with the help of

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_dos_vuln.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_asterisk_dos_vuln.nasl 7702 2017-11-09 04:34:57Z ckuersteiner $
 #
 # Asterisk Open Source and Certified Asterisk RTP Resource Exhaustion Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107148");
-  script_version("$Revision: 7571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 7702 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-09 05:34:57 +0100 (Thu, 09 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-04-18 10:44:46 +0200 (Tue, 18 Apr 2017)");
   script_cve_id("CVE-2016-7551");
 
@@ -39,7 +39,10 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name(" Asterisk Open Source and Certified Asterisk RTP Resource Exhaustion Denial of Service Vulnerability");
-  script_tag(name: "summary", value: "Asterisk Open Source and Certified Asterisk are prone to a remote denial-of-service vulnerability.");
+  script_tag(name: "summary", value: "DEPRECATED since this check is already covered in 'Asterisk RTP Resource
+Exhaustion Vulnerability' (OID: 1.3.6.1.4.1.25623.1.0.106239)
+
+Asterisk Open Source and Certified Asterisk are prone to a remote denial-of-service vulnerability.");
 
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
 
@@ -66,8 +69,12 @@ Digium Asterisk 13 before 13.11.1, Digium Asterisk 11 before 11.23.1, Digium Cer
   script_dependencies("secpod_asterisk_detect.nasl");
   script_mandatory_keys("Asterisk-PBX/Installed");
 
+  script_tag(name: "deprecated", value: TRUE);
+
   exit(0);
 }
+
+exit(66);
 
 include("host_details.inc");
 include("version_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sip_os_detection.nasl 7667 2017-11-06 10:57:29Z cfischer $
+# $Id: gb_sip_os_detection.nasl 7718 2017-11-09 15:45:46Z cfischer $
 #
 # SIP Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108201");
-  script_version("$Revision: 7667 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-06 11:57:29 +0100 (Mon, 06 Nov 2017) $");
+  script_version("$Revision: 7718 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-09 16:45:46 +0100 (Thu, 09 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-08-01 11:13:48 +0200 (Tue, 01 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -86,6 +86,33 @@ if( serverbanner = egrep( pattern:"^Server:(.*)$", string:banner, icase:TRUE ) )
     register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
     exit( 0 );
   }
+
+  # e.g.
+  # Server: kamailio (4.0.1 (sparc/solaris))
+  # Server: kamailio (4.2.3 (x86_64/linux))
+  # Server: Kamailio (1.5.4-notls (i386/linux))
+  if( "kamailio" >< tolower( serverbanner ) ) {
+
+    if( "/linux))" >< serverbanner ) {
+      register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );    
+      exit( 0 );
+    }
+
+    if( "/solaris))" >< serverbanner ) {
+      register_and_report_os( os:"Sun Solaris", cpe:"cpe:/o:sun:solaris", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );    
+      exit( 0 );
+    }
+
+    if( "/freebsd))" >< serverbanner ) {
+      register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );    
+      exit( 0 );
+    }
+
+    if( "/openbsd))" >< serverbanner ) {
+      register_and_report_os( os:"OpenBSD", cpe:"cpe:/o:openbsd:openbsd", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );    
+      exit( 0 );
+    }
+  }
 }
 
 if( uabanner = egrep( pattern:"^User-Agent:(.*)$", string:banner, icase:TRUE ) ) {
@@ -105,6 +132,13 @@ if( uabanner = egrep( pattern:"^User-Agent:(.*)$", string:banner, icase:TRUE ) )
       # nb: Also register an unknown banner so we can update the ones above
       register_unknown_os_banner( banner:banner, banner_type_name:BANNER_TYPE, banner_type_short:"sip_banner", port:port, proto:proto );
     }
+    exit( 0 );
+  }
+
+  # e.g. User-Agent: Alcatel-Lucent 8460 ACS 12.0.2b0290
+  # According to some docs the base OS is Red Hat but using Linux/Unix for now
+  if( "Alcatel-Lucent" >< uabanner && "ACS" >< uabanner ) {
+    register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
 

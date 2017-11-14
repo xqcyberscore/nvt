@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_jdk_mult_vuln_win_apr10.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_sun_java_jdk_mult_vuln_win_apr10.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Sun Java Deployment Toolkit Multiple Vulnerabilities (Windows)
 #
@@ -45,8 +45,8 @@ tag_summary = "This host is installed with Sun Java Deployment Toolkit and is pr
 if(description)
 {
   script_id(902167);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 7699 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_cve_id("CVE-2010-0886", "CVE-2010-0887", "CVE-2010-1423");
   script_bugtraq_id(39492);
@@ -82,7 +82,6 @@ jdkVer = get_kb_item("Sun/Java/JDK/Win/Ver");
 if(jdkVer)
 {
   ## Check for 1.6 < 1.6.0_19 (6 Update 19)
-  jdkVer = ereg_replace(pattern:"_", string:jdkVer, replace: ".");
   if(version_in_range(version:jdkVer, test_version:"1.6", test_version2:"1.6.0.19")){
     security_message(0);
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_9b0095a6f2_SDL2_image_fc26.nasl 7558 2017-10-25 10:46:31Z santu $
+# $Id: gb_fedora_2017_9b0095a6f2_SDL2_image_fc26.nasl 7689 2017-11-08 05:46:44Z teissa $
 #
 # Fedora Update for SDL2_image FEDORA-2017-9b0095a6f2
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873520");
-  script_version("$Revision: 7558 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 12:46:31 +0200 (Wed, 25 Oct 2017) $");
+  script_version("$Revision: 7689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 06:46:44 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-21 09:52:55 +0200 (Sat, 21 Oct 2017)");
   script_cve_id("CVE-2017-2887");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for SDL2_image FEDORA-2017-9b0095a6f2");
   script_tag(name: "summary", value: "Check the version of SDL2_image");

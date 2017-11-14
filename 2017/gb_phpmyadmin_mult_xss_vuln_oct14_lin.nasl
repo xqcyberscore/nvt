@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_xss_vuln_oct14_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_phpmyadmin_mult_xss_vuln_oct14_lin.nasl 7686 2017-11-07 13:16:25Z cfischer $
 #
 # phpMyAdmin Multiple Cross-Site Scripting Vulnerabilities - Oct14 (Linux)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112015");
-  script_version("$Revision: 7543 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 7686 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-07 14:16:25 +0100 (Tue, 07 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-08-21 11:38:02 +0200 (Mon, 21 Aug 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -43,7 +43,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("phpMyAdmin/installed", "Host/runs_windows");
+  script_mandatory_keys("phpMyAdmin/installed", "Host/runs_unixoide");
 
   script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2014-11/");
 

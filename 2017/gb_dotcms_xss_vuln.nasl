@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_xss_vuln.nasl 7193 2017-09-20 07:15:33Z asteins $
+# $Id: gb_dotcms_xss_vuln.nasl 7676 2017-11-07 08:01:38Z asteins $
 #
 # dotCMS Multiple XSS Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:dotcms:dotcms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106572");
-  script_version("$Revision: 7193 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-20 09:15:33 +0200 (Wed, 20 Sep 2017) $");
+  script_version("$Revision: 7676 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-07 09:01:38 +0100 (Tue, 07 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-02-07 11:43:11 +0700 (Tue, 07 Feb 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -65,7 +65,7 @@ if (description)
 
   script_tag(name: "affected", value: "Version 3.7.0 and previous versions.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 20th September, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 7th November, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://github.com/dotCMS/core/issues/10643");

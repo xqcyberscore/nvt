@@ -1,6 +1,6 @@
 #################################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_java_jre_actvx_ctrl_mult_bof_vuln.nasl 6530 2017-07-05 06:23:50Z cfischer $
+# $Id: secpod_java_jre_actvx_ctrl_mult_bof_vuln.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Java JRE deploytk.dll ActiveX Control Multiple BOF Vulnerabilities
 #
@@ -48,8 +48,8 @@ tag_summary = "This host is installed with Java JRE Deployment Toolkit ActiveX a
 if(description)
 {
   script_id(900354);
-  script_version("$Revision: 6530 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 08:23:50 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 7699 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-05-22 08:49:17 +0200 (Fri, 22 May 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -87,7 +87,6 @@ if(!jreVer){
   exit(0);
 }
 
-jreVer = ereg_replace(pattern:"_", string:jreVer, replace: ".");
 if(version_in_range(version:jreVer, test_version:"1.6.0", test_version2:"1.6.0.13"))
 {
   dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",

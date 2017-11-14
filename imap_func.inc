@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: imap_func.inc 4042 2016-09-13 05:49:25Z cfi $
+# OpenVAS Include File
+# $Id: imap_func.inc 7735 2017-11-10 13:16:05Z cfischer $
 #
 # Support methods for IMAP
 #
@@ -23,13 +23,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 4042 $
+# $Revision: 7735 $
 #
 ###############################################################################
 
 function get_imap_banner( port ) {
 
-  local_var sb, banner, soc;
+  local_var port, sb, banner, soc, idbanner, request;
 
   if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_imap_banner" );
   
@@ -37,23 +37,38 @@ function get_imap_banner( port ) {
   banner = get_kb_item( sb );
   if( banner ) return( banner );
   if( get_kb_item( "imap/" + port + "/broken" ) )
-    return ( 0 );
+    return NULL;
 
-  if( ! get_port_state( port ) ) return ( 0 );
+  if( ! get_port_state( port ) ) return NULL;
   soc = open_sock_tcp( port );
   if( ! soc ) {
     set_kb_item( name:"imap/" + port + "/broken", value:TRUE );
-    return ( 0 );
+    return NULL;
   }
   banner = recv_line( socket:soc, length:4096 );
-  close( soc );
   if( ! banner ) {
+    close( soc );
     set_kb_item( name:"imap/" + port + "/broken", value:TRUE );
-    return ( 0 );
+    return NULL;
   }
-  
+
+  # Request to get a version for e.g. Cyrus-IMAP:
+  # 01 ID ("name" "MailMate" "version" "r3255" "vendor" "Freron Software" "contact" "imap-id@freron.com")
+  # Responses are e.g.
+  # ID ("name" "dbmail" "version" "0.9.9" "os" "Linux" "os-version" "3.2.12-gentoo")
+  # ID ("name", "Bigfoot", "version", "1.0", "os", "Linux", "os-version", "2.6",
+  # nb: A few systems / implementation are replying with a "NO Only one Id allowed in non-authenticated state"
+  # until an authenticated request is done in between. So this is not absolutely reliable.
+  request = '01 ID ("name" "OpenVAS" "version" "' + OPENVAS_VERSION + '" "vendor" "OpenVAS" "contact" "openvas@example.com")\r\n';
+  send( socket:soc, data:request );
+  idbanner = recv_line( socket:soc, length:4096 );
+  if( "ID" >< idbanner && "ID NIL" >!< idbanner ) {
+    banner += idbanner;
+  }
+
+  close( soc );
   replace_kb_item( name:sb, value:banner );
-  return( banner );
+  return banner;
 }
 
 function get_imap_port( default ) {

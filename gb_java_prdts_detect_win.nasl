@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_win.nasl 7654 2017-11-03 14:29:50Z cfischer $
+# $Id: gb_java_prdts_detect_win.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Sun Java Products Version Detection (Windows)
 #
@@ -24,27 +24,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800383";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 7654 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800383");
+  script_version("$Revision: 7699 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 15:29:50 +0100 (Fri, 03 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Sun Java Products Version Detection (Windows)");
 
-  tag_summary =
-  "Detection of installed version of Java Products.
+  script_tag(name:"summary", value:"Detection of installed version of Java Products.
 
-The script logs in via smb, searches for Java Products in the registry and
-gets the version from 'Version' string in registry";
+  The script logs in via smb, searches for Java Products in the registry and
+  gets the version from 'Version' string in registry");
 
-
-  script_tag(name : "summary" , value : tag_summary);
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -84,14 +79,17 @@ if(!osArch){
 
 
 if("x86" >< osArch){
-adkeylist = make_list("SOFTWARE\JavaSoft\Java Runtime Environment\");
+  adkeylist = make_list("SOFTWARE\JavaSoft\Java Runtime Environment\",
+                        "SOFTWARE\JavaSoft\JRE\");
 }
 
 ## Check for 64 bit platform
 else if("x64" >< osArch)
 {
   adkeylist =  make_list("SOFTWARE\JavaSoft\Java Runtime Environment\",
-                         "SOFTWARE\Wow6432Node\JavaSoft\Java Runtime Environment\");
+                         "SOFTWARE\JavaSoft\JRE\",
+                         "SOFTWARE\Wow6432Node\JavaSoft\Java Runtime Environment\",
+                         "SOFTWARE\Wow6432Node\JavaSoft\JRE\");
 }
 
 foreach jreKey (adkeylist)
@@ -102,7 +100,16 @@ foreach jreKey (adkeylist)
     keys = registry_enum_keys(key:jreKey);
     foreach item (keys)
     {
-      jreVer = eregmatch(pattern:"([0-9.]\.[0-9]\.[0-9._]+)", string:item);
+      ##For latest Java Versions
+      if("JRE" >< jreKey && item =~ "^9")
+      {
+        pattern = "([0-9.]+)";
+        flagjre9 = TRUE;
+      } else {
+        pattern = "([0-9.]\.[0-9]\.[0-9._]+)";
+      }
+
+      jreVer = eregmatch(pattern:pattern, string:item);
       if(jreVer[1])
       {
          JreTmpkey =  jreKey + "\\"  + jreVer[1];
@@ -117,11 +124,22 @@ foreach jreKey (adkeylist)
             set_kb_item(name:"Sun/Java/JRE/Win/Ver", value:jreVer[1]);
             replace_kb_item(name:"Sun/Java/JDK_or_JRE/Win/installed", value:TRUE);
             replace_kb_item(name:"Sun/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE);
-            jrVer = ereg_replace(pattern:"_|-", string:jreVer[1], replace: ".");
+            if(flagjre9)
+            {
+              jreVer_or = jreVer[1] ;
+              ##Reset Flag
+              flagjre9 = FALSE ;
+            } else
+            {
+              jrVer = ereg_replace(pattern:"_|-", string:jreVer[1], replace: ".");
 
-            jreVer1 = eregmatch(pattern:"([0-9]+\.[0-9]+\.[0-9]+)\.([0-9]+)", string:jrVer);
-            jreVer_or = jreVer1[1] + ":update_" + jreVer1[2];
-
+              jreVer1 = eregmatch(pattern:"([0-9]+\.[0-9]+\.[0-9]+)(\.([0-9]+))?", string:jrVer);
+              if(jreVer1[1] && jreVer1[3]){
+                jreVer_or = jreVer1[1] + ":update_" + jreVer1[3];
+              } else if (jreVer1[1]){
+                jreVer_or = jreVer1[1];
+              }
+            }
             if(version_is_less(version:jrVer, test_version:"1.4.2.38") ||
                version_in_range(version:jrVer, test_version:"1.5", test_version2:"1.5.0.33") ||
                version_in_range(version:jrVer, test_version:"1.6", test_version2:"1.6.0.18"))
@@ -151,11 +169,6 @@ foreach jreKey (adkeylist)
             if(jreVer[1] != NULL && "x64" >< osArch && "Wow6432Node" >!< jreKey)
             {
                set_kb_item(name:"Sun/Java64/JRE64/Win/Ver", value:jreVer[1]);
-               jrVer = ereg_replace(pattern:"_|-", string:jreVer[1], replace: ".");
-
-               jreVer1 = eregmatch(pattern:"([0-9]+\.[0-9]+\.[0-9]+)\.([0-9]+)", string:jrVer);
-               jreVer_or = jreVer1[1] + ":update_" + jreVer1[2];
-
                if(version_is_less(version:jrVer, test_version:"1.4.2.38") ||
                   version_in_range(version:jrVer, test_version:"1.5", test_version2:"1.5.0.33") ||
                   version_in_range(version:jrVer, test_version:"1.6", test_version2:"1.6.0.18"))

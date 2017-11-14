@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_java_mult_unspecified_vuln_win01_jun11.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: secpod_oracle_java_mult_unspecified_vuln_win01_jun11.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Oracle Java SE Multiple Unspecified Vulnerabilities 01 - June11 (Windows)
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is installed with Oracle Java SE and is prone to multip
 if(description)
 {
   script_id(902525);
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_version("$Revision: 7699 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_cve_id("CVE-2011-0868", "CVE-2011-0869", "CVE-2011-0872", "CVE-2011-0786",
                 "CVE-2011-0788", "CVE-2011-0817", "CVE-2011-0863");
@@ -75,7 +75,6 @@ include("version_func.inc");
 jreVer = get_kb_item("Sun/Java/JRE/Win/Ver");
 if(jreVer)
 {
-  jreVer = ereg_replace(pattern:"_|-", string:jreVer, replace: ".");
 
   ## Check for Oracle Java SE versions 6 Update 25 and prior
   if(version_in_range(version:jreVer, test_version:"1.6", test_version2:"1.6.0.25"))
@@ -89,8 +88,6 @@ if(jreVer)
 jdkVer = get_kb_item("Sun/Java/JDK/Win/Ver");
 if(jdkVer)
 {
-  jdkVer = ereg_replace(pattern:"_|-", string:jdkVer, replace: ".");
-
   ## Check for Oracle Java SE versions 6 Update 25 and prior
   if(version_in_range(version:jdkVer, test_version:"1.6", test_version2:"1.6.0.25")) {
      security_message(0);

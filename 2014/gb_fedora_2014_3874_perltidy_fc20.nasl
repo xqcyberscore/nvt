@@ -28,12 +28,12 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(867621);
-  script_version("$Revision: 6629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:33:41 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7739 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-13 06:04:18 +0100 (Mon, 13 Nov 2017) $");
   script_tag(name:"creation_date", value:"2014-03-25 10:18:45 +0530 (Tue, 25 Mar 2014)");
   script_cve_id("CVE-2014-2277");
-  script_tag(name:"cvss_base", value:"3.0");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:N");
   script_name("Fedora Update for perltidy FEDORA-2014-3874");
 
   tag_insight = "Perltidy is a Perl script which indents and reformats Perl scripts to

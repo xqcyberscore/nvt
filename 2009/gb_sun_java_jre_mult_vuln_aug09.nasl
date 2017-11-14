@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_jre_mult_vuln_aug09.nasl 6466 2017-06-28 13:28:20Z cfischer $
+# $Id: gb_sun_java_jre_mult_vuln_aug09.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Sun Java JDK/JRE Multiple Vulnerabilities - Aug09
 #
@@ -49,8 +49,8 @@ tag_summary = "This host is installed with Sun Java JDK/JRE and is prone to
 if(description)
 {
   script_id(800867);
-  script_version("$Revision: 6466 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:28:20 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 7699 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-08-20 09:27:17 +0200 (Thu, 20 Aug 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -89,7 +89,6 @@ include("version_func.inc");
 
 # Get KB for JDK Version On Windows
 jdkVer = get_kb_item("Sun/Java/JDK/Win/Ver");
-jdkVer = ereg_replace(pattern:"_", string:jdkVer, replace: ".");
 
 if(jdkVer)
 {
@@ -113,8 +112,6 @@ if(isnull(jreVer))
     exit(0);
 }
 
-jreVer = ereg_replace(pattern:"_", string:jreVer, replace: ".");
-jreVer = ereg_replace(pattern:"-b[0-9][0-9]", string:jreVer, replace:"");
 if(jreVer)
 {
   # Check for 1.5 < 1.5.0_20 (5 Update 20) or 1.6 < 1.6.0_15 (6 Update 15)

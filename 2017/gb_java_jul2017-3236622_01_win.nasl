@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_jul2017-3236622_01_win.nasl 7013 2017-08-25 13:17:51Z asteins $
+# $Id: gb_java_jul2017-3236622_01_win.nasl 7711 2017-11-09 10:31:37Z cfischer $
 #
 # Oracle Java SE Security Updates (jul2017-3236622) 01 - Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811241");
-  script_version("$Revision: 7013 $");
+  script_version("$Revision: 7711 $");
   script_cve_id("CVE-2017-10198", "CVE-2017-10096", "CVE-2017-10135", "CVE-2017-10110", 
                 "CVE-2017-10115", "CVE-2017-10116", "CVE-2017-10074", "CVE-2017-10053", 
                 "CVE-2017-10087", "CVE-2017-10089", "CVE-2017-10243", "CVE-2017-10102",
@@ -39,7 +39,7 @@ if(description)
                     99827, 99712, 99674, 99719, 99847, 99851, 99853, 99854, 99756, 99846);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 15:17:51 +0200 (Fri, 25 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-09 11:31:37 +0100 (Thu, 09 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-07-19 11:49:40 +0530 (Wed, 19 Jul 2017)");
   script_name("Oracle Java SE Security Updates (jul2017-3236622) 01 - Windows");
 
@@ -80,27 +80,23 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-jreVer = "";
-
-## Get version
-if(!jreVer = get_app_version(cpe:CPE))
-{
+infos = get_app_version_and_location( cpe:CPE );
+vers = infos['version'];
+if( ! vers ) {
   CPE = "cpe:/a:sun:jre";
-  if(!jreVer = get_app_version(cpe:CPE)){
-    exit(0);
-  }
+  infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 }
 
-if(version_in_range(version:jreVer, test_version:"1.6.0", test_version2:"1.6.0.151") ||
-   version_in_range(version:jreVer, test_version:"1.7.0", test_version2:"1.7.0.141") ||
-   version_in_range(version:jreVer, test_version:"1.8.0", test_version2:"1.8.0.131"))
+path = infos['location'];
+
+if(version_in_range(version:vers, test_version:"1.6.0", test_version2:"1.6.0.151") ||
+   version_in_range(version:vers, test_version:"1.7.0", test_version2:"1.7.0.141") ||
+   version_in_range(version:vers, test_version:"1.8.0", test_version2:"1.8.0.131"))
 {
-  report = report_fixed_ver(installed_version:jreVer, fixed_version: "Apply the patch");
+  report = report_fixed_ver(installed_version:vers, fixed_version: "Apply the patch", install_path:path);
   security_message(data:report);
   exit(0);
 }

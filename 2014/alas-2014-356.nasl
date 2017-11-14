@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2014-356.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: alas-2014-356.nasl 7739 2017-11-13 05:04:18Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,17 +24,17 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120313");
-script_version("$Revision: 6724 $");
+script_version("$Revision: 7739 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:23:21 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-11-13 06:04:18 +0100 (Mon, 13 Nov 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2014-356");
 script_tag(name: "insight", value: "It was discovered that perltidy's make_temporary_filename() function insecurely created temporary files via the use of the tmpnam() function. A local attacker could use this flaw to perform a symbolic link attack."); 
 script_tag(name : "solution", value : "Run yum update perltidy to update your system.");
 script_tag(name : "solution_type", value : "VendorFix");
 script_xref(name : "URL" , value : "https://alas.aws.amazon.com/ALAS-2014-356.html");
 script_cve_id("CVE-2014-2277");
-script_tag(name:"cvss_base", value:"2.1");
-script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
+script_tag(name:"cvss_base", value:"3.6");
+script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");

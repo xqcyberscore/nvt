@@ -43,12 +43,12 @@ tag_summary = "This host is installed with Oracle Java SE and is prone to
 if(description)
 {
   script_id(903203);
-  script_version("$Revision: 6079 $");
+  script_version("$Revision: 7699 $");
   script_cve_id("CVE-2013-1484","CVE-2013-1485","CVE-2013-1486","CVE-2013-1487");
   script_bugtraq_id(58027,58028,58029,58031);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2013-02-22 13:41:39 +0530 (Fri, 22 Feb 2013)");
   script_name("Oracle Java SE Multiple Vulnerabilities -02 Feb 13 (Windows)");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1028155");
@@ -79,8 +79,6 @@ jreVer = get_kb_item("Sun/Java/JRE/Win/Ver");
 
 if(jreVer)
 {
-  jreVer = ereg_replace(pattern:"_|-", string:jreVer, replace: ".");
-
   ##Check for Oracle Java SE Versions
   if(version_in_range(version:jreVer, test_version:"1.7", test_version2:"1.7.0.13")||
      version_in_range(version:jreVer, test_version:"1.6", test_version2:"1.6.0.39")||

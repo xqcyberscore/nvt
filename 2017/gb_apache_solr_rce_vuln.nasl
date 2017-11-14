@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_rce_vuln.nasl 7592 2017-10-27 09:39:16Z cfischer $
+# $Id: gb_apache_solr_rce_vuln.nasl 7739 2017-11-13 05:04:18Z teissa $
 #
 # Apache Solr Remote Code Execution Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113042");
-  script_version("$Revision: 7592 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 11:39:16 +0200 (Fri, 27 Oct 2017) $");
+  script_version("$Revision: 7739 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-13 06:04:18 +0100 (Mon, 13 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-25 15:03:04 +0200 (Wed, 25 Oct 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

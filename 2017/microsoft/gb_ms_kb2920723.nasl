@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb2920723.nasl 7401 2017-10-11 13:55:58Z santu $
+# $Id: gb_ms_kb2920723.nasl 7682 2017-11-07 11:49:59Z santu $
 #
 # Microsoft Office 2016 Defense in Depth Update (KB2920723)
 #
@@ -26,12 +26,12 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.811929");
-  script_version("$Revision: 7401 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.811968");
+  script_version("$Revision: 7682 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-11 15:55:58 +0200 (Wed, 11 Oct 2017) $");
-  script_tag(name:"creation_date", value:"2017-10-11 09:44:16 +0530 (Wed, 11 Oct 2017)");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-07 12:49:59 +0100 (Tue, 07 Nov 2017) $");
+  script_tag(name:"creation_date", value:"2017-11-03 16:21:21 +0530 (Fri, 03 Nov 2017)");
   script_name("Microsoft Office 2016 Defense in Depth Update (KB2920723)");
 
   script_tag(name:"summary", value:"This host is missing an important security
@@ -44,7 +44,7 @@ if(description)
   Office that provides enhanced security as a defense-in-depth measure.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to compromise on availability, confidentiality and integrity of the system.
+  to compromise on availability, confidentiality and integrity of the system. 
 
   Impact Level: System/Application");
 
@@ -69,41 +69,34 @@ if(description)
 
 
 include("smb_nt.inc");
-include("secpod_reg.inc");
+include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable initialization
-officeVer = "";
+msPath = "";
+msdllVer = "";
 offPath = "";
-offexeVer = "";
-commonpath = "";
 
-## MS Office
-officeVer = get_kb_item("MS/Office/Ver");
-if(!officeVer){
+offVer = get_kb_item("MS/Office/Ver");
+if(!offVer || !(offVer =~ "^16\.")){
   exit(0);
 }
 
-## Get Office File Path
-commonpath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
+msPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                             item:"CommonFilesDir");
-if(!commonpath){
-  exit(0);
-}
-
-##For office 2016
-if(officeVer =~ "^16\.")
+if(msPath)
 {
-  ## Get Version from osetup.dll
-  offPath = commonpath + "\Microsoft Shared\Office16\Office Setup Controller";
-  offexeVer = fetch_file_version(sysPath:offPath, file_name:"osetup.dll");
+  offPath = msPath + "\Microsoft Shared\Source Engine" ;
+  msdllVer = fetch_file_version(sysPath:offPath, file_name:"ose.exe");
+  if(!msdllVer){
+    exit(0);
+  }
 
-  if(offexeVer && version_in_range(version:offexeVer, test_version:"16.0", test_version2:"16.0.4600.999"))
+  if(msdllVer =~ "^(16\.0)" && version_is_less(version:msdllVer, test_version:"16.0.4600.1000"))
   {
-    report = 'File checked:     ' + offPath + "\osetup.dll" + '\n' +
-             'File version:     ' + offexeVer  + '\n' +
-             'Vulnerable range: ' + "16.0 - 16.0.4600.999" + '\n' ;
+    report = 'File checked:     ' + offPath + "\ose.exe" + '\n' +
+             'File version:     ' + msdllVer  + '\n' +
+             'Vulnerable range: ' + "16.0 - 16.0.4600.0999" + '\n' ;
     security_message(data:report);
     exit(0);
   }

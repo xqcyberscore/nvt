@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_20170201_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_cloudbees_jenkins_20170201_lin.nasl 7678 2017-11-07 08:52:00Z asteins $
 #
 # CloudBees Jenkins Multiple Vulnerability Feb17 - 01 - (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108095");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 7678 $");
   script_cve_id("CVE-2011-4969", "CVE-2015-0886", "CVE-2017-2598", "CVE-2017-2599",
                 "CVE-2017-2600", "CVE-2017-2601", "CVE-2017-2602", "CVE-2017-2603",
                 "CVE-2017-2604", "CVE-2017-2605", "CVE-2017-2606", "CVE-2017-2607",
@@ -37,7 +37,7 @@ if(description)
                 "CVE-2017-2612", "CVE-2017-2613", "CVE-2017-1000362");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-07 09:52:00 +0100 (Tue, 07 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-03-13 11:00:00 +0100 (Mon, 13 Mar 2017)");
   script_name("CloudBees Jenkins Multiple Vulnerability Feb17 - 01 - (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -69,7 +69,7 @@ if(description)
   - a information disclosure vulnerability");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain sensitive informaion,
-  to bypass bypass intended access restrictions and execute arbitrary code.
+  to bypass intended access restrictions and execute arbitrary code.
 
   Impact Level: Application");
 

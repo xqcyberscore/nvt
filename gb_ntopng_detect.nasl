@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntopng_detect.nasl 4854 2016-12-26 17:10:14Z cfi $
+# $Id: gb_ntopng_detect.nasl 7685 2017-11-07 13:05:44Z cfischer $
 #
 # ntopng Version Detection
 #
 # Authors:
-# Tameem Eissa <tameem.eissa..at..greenbone.net>
+# Tameem Eissa <tameem.eissa@greenbone.net>
 #
 # Copyright:
 # Copyright (c) 2016 Greenbone Networks GmbH
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107109");
-  script_version("$Revision: 4854 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-26 18:10:14 +0100 (Mon, 26 Dec 2016) $");
+  script_version("$Revision: 7685 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-07 14:05:44 +0100 (Tue, 07 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-12-20 06:40:16 +0200 (Tue, 20 Dec 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 3000);
-  script_exclude_keys("Settings/disable_cgi_scanning"); 
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Detection of installed version of ntopng
 
@@ -54,39 +54,54 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-appPort = get_http_port( default:3000 );
+port = get_http_port( default:3000 );
 
-foreach dir( make_list_unique( "/", cgi_dirs( port:appPort ) ) ) {
+url = "/lua/about.lua";
 
-  install = dir;
-  if( dir == "/" ) dir = "";
+req = http_get( item:url, port:port );
+res = http_send_recv( port:port, data:req ); # nb: Use http_send_recv as some older versions have issues when sending a keepalive request
 
-  url = dir + "/lua/login.lua?referer=/";
+if( "<title>Welcome to ntopng</title>" >< res && "<h2>About ntopng</h2>" >< res ) {
+  found = TRUE;
+  # e.g. <tr><th>Version</th><td>1.0.1 (r6777)</td></tr>
+  tmpVer = eregmatch( string:res, pattern:"<th>Version</th><td>([0-9\.]+)( \(r([0-9]+)\))?", icase:TRUE );
+  if( ! isnull( tmpVer[3] ) ) extra = "Revision: " + tmpVer[3];
+}
 
-  sndReq = http_get( item:url, port:appPort );
-  rcvRes = http_keepalive_send_recv( port:appPort, data:sndReq );
+if( ! found ) {
+  url = "/lua/login.lua?referer=/";
 
-  if ( "erver: ntopng" >!< rcvRes && "<title>Welcome to ntopng</title>" >!< rcvRes && "ntop.org<br> ntopng is released under" >!< rcvRes ) continue;
+  req = http_get( item:url, port:port );
+  res = http_send_recv( port:port, data:req ); # nb: Use http_send_recv as some older versions have issues when sending a keepalive request
 
-  tmpVer = eregmatch( string:rcvRes, pattern:"Server: ntopng ([0-9.]+)", icase:TRUE );
-  if( tmpVer[1] ) {
-    ntopngVer = tmpVer[1];
-    set_kb_item( name:"www/" + appPort + "/ntopng", value:ntopngVer );
+  if( "erver: ntopng" >< res || "<title>Welcome to ntopng</title>" >< res || "ntop.org<br> ntopng is released under" >< res ) {
+    found = TRUE;
+    tmpVer = eregmatch( string:res, pattern:"Server: ntopng ([0-9.]+)", icase:TRUE );
   }
+}
 
-  replace_kb_item( name:"ntopng/installed", value:TRUE );
+if( found ) {
+
+  ntopngVer = "unknown";
+  install   = "/";
+  set_kb_item( name:"ntopng/installed", value:TRUE );
+  concUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+
+  if( tmpVer[1] ) ntopngVer = tmpVer[1];
 
   cpe = build_cpe( value:ntopngVer, exp:"^([0-9.]+)", base:"cpe:/a:ntop:ntopng:" );
   if( ! cpe )
     cpe = 'cpe:/a:ntop:ntopng';
 
-  register_product( cpe:cpe, location:install, port:appPort );
+  register_product( cpe:cpe, location:install, port:port );
   log_message( data:build_detection_report( app:"ntopng",
                                             version:ntopngVer,
                                             install:install,
                                             cpe:cpe,
-                                            concluded:tmpVer[0] ),
-                                            port:appPort );
+                                            concluded:tmpVer[0],
+                                            concludedUrl:concUrl,
+                                            extra:extra ),
+                                            port:port );
 }
 
 exit( 0 );

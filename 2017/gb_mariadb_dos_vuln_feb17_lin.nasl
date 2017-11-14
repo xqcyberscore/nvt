@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_dos_vuln_feb17_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_mariadb_dos_vuln_feb17_lin.nasl 7686 2017-11-07 13:16:25Z cfischer $
 #
 # MariaDB Denial Of Service Vulnerability Feb17 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810606");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 7686 $");
   script_cve_id("CVE-2017-3302");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-07 14:16:25 +0100 (Tue, 07 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-02-16 15:44:39 +0530 (Thu, 16 Feb 2017)");
   script_name("MariaDB Denial Of Service Vulnerability Feb17 (Linux)");
 
@@ -72,7 +72,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Databases");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
-  script_mandatory_keys("MariaDB/installed", "Host/runs_windows");
+  script_mandatory_keys("MariaDB/installed", "Host/runs_unixoide");
   script_require_ports("Services/mysql", 3306);
   exit(0);
 }

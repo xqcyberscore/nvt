@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_unspecified_vuln_oct15.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: gb_java_unspecified_vuln_oct15.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Oracle Java SE JRE Unspecified Vulnerability Oct 2015 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806519");
-  script_version("$Revision: 6345 $");
+  script_version("$Revision: 7699 $");
   script_cve_id("CVE-2015-4871");
   script_bugtraq_id(77238);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2015-10-29 09:37:58 +0530 (Thu, 29 Oct 2015)");
   script_name("Oracle Java SE JRE Unspecified Vulnerability Oct 2015 (Windows)");
 
@@ -85,8 +85,6 @@ if(!jreVer = get_app_version(cpe:CPE)){
 
 if(jreVer =~ "^(1\.7)")
 {
-  jreVer = ereg_replace(pattern:"[a-z]+_|-", string:jreVer, replace: ".");
-
   ##Check for Oracle Java SE Versions
   if(version_in_range(version:jreVer, test_version:"1.7.0", test_version2:"1.7.0.85"))
   {

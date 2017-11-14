@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_puppet_enterprise_mult_vuln.nasl 6890 2017-08-10 09:58:07Z ckuersteiner $
+# $Id: gb_puppet_enterprise_mult_vuln.nasl 7739 2017-11-13 05:04:18Z teissa $
 #
 # Puppet Enterprise Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:puppet:enterprise";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106363");
-  script_version("$Revision: 6890 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-10 11:58:07 +0200 (Thu, 10 Aug 2017) $");
+  script_version("$Revision: 7739 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-13 06:04:18 +0100 (Mon, 13 Nov 2017) $");
   script_tag(name: "creation_date", value: "2016-11-01 10:57:40 +0700 (Tue, 01 Nov 2016)");
-  script_tag(name: "cvss_base", value: "8.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-5714", "CVE-2016-5715", "CVE-2016-5716");
 

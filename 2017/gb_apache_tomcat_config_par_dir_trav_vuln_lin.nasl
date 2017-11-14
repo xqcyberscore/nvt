@@ -29,10 +29,10 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810736");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 7676 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-07 09:01:38 +0100 (Tue, 07 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-04-10 15:51:52 +0530 (Mon, 10 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat Config Parameter Directory Traversal Vulnerability (Linux)");
@@ -57,7 +57,7 @@ if(description)
   script_tag(name:"affected", value:"Apache Tomcat versions 7.0.76 on Linux.");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  20th September, 2017. Information regarding this issue will be updated once the
+  7th November, 2017. Information regarding this issue will be updated once the
   solution details are available.
   For updates refer to http://tomcat.apache.org");
 

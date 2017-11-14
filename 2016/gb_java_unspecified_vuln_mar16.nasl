@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807735");
-  script_version("$Revision: 5557 $");
+  script_version("$Revision: 7724 $");
   script_cve_id("CVE-2016-0636");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-10 08:05:05 +0100 (Fri, 10 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-03-28 14:58:10 +0530 (Mon, 28 Mar 2016)");
   script_name("Oracle Java SE JRE Unspecified Vulnerability March 2016 (Windows)");
 
@@ -78,21 +78,18 @@ include("version_func.inc");
 ## Variable Initialization
 jreVer = "";
 
-## Get version
-if(!jreVer = get_app_version(cpe:CPE)){
-  exit(0);
-}
+infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+
+jreVer = infos['version'];
+jrePath = infos['location'];
 
 if(jreVer =~ "^(1\.(7|8))")
 {
-  jreVer = ereg_replace(pattern:"[a-z]+_|-", string:jreVer, replace: ".");
-
   ##Check for Oracle Java SE Versions
   if(version_in_range(version:jreVer, test_version:"1.7.0", test_version2:"1.7.0.97")||
      version_in_range(version:jreVer, test_version:"1.8.0", test_version2:"1.8.0.74"))
-  {
-    report = 'Installed version: ' + jreVer + '\n' +
-             'Fixed version:     ' + "Apply the patch"  + '\n';
+  { 
+    report = report_fixed_ver(installed_version:jreVer, fixed_version:"Apply the patch", install_path:jrePath);
     security_message(data:report);
     exit(0);
   }

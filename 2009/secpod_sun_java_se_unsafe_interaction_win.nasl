@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_se_unsafe_interaction_win.nasl 6465 2017-06-28 13:17:01Z cfischer $
+# $Id: secpod_sun_java_se_unsafe_interaction_win.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Unsafe Interaction In Sun Java SE Abstract Window Toolkit (Windows)
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with Sun Java SE and is prone to Unsafe
 if(description)
 {
   script_id(900820);
-  script_version("$Revision: 6465 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:17:01 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 7699 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-08-24 07:49:31 +0200 (Mon, 24 Aug 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -76,7 +76,6 @@ jdkVer = get_kb_item("Sun/Java/JDK/Win/Ver");
 
 if(jdkVer)
 {
-  jdkVer = ereg_replace(pattern:"_", string:jdkVer, replace: ".");
   # Check for 1.6 < 1.6.0_15 (6 Update 15)
   if(version_in_range(version:jdkVer, test_version:"1.6", test_version2:"1.6.0.14")){
     security_message(0);
@@ -89,7 +88,6 @@ jreVer = get_kb_item("Sun/Java/JRE/Win/Ver");
 
 if(jreVer)
 {
-  jreVer = ereg_replace(pattern:"_", string:jreVer, replace: ".");
   # Check for 1.6 < 1.6.0_15 (6 Update 15)
   if(version_in_range(version:jreVer, test_version:"1.6", test_version2:"1.6.0.14")){
     security_message(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_rv_series_cisco-sa-20151125-ci.nasl 4066 2016-09-15 08:25:31Z ckuerste $
+# $Id: gb_cisco_rv_series_cisco-sa-20151125-ci.nasl 7689 2017-11-08 05:46:44Z teissa $
 #
 # Cisco Small Business RV Series Confidential Information Decryption Man-in-the-Middle Vulnerability
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106248");
-  script_version("$Revision: 4066 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-15 10:25:31 +0200 (Thu, 15 Sep 2016) $");
+  script_version("$Revision: 7689 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-08 06:46:44 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name: "creation_date", value: "2016-09-15 12:51:33 +0700 (Thu, 15 Sep 2016)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2015-6358");
 

@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: smb_nativelanman.nasl 7669 2017-11-06 15:08:30Z cfischer $
+# $Id: smb_nativelanman.nasl 7732 2017-11-10 10:29:01Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 7669 $");
+  script_version("$Revision: 7732 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-06 16:08:30 +0100 (Mon, 06 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-10 11:29:01 +0100 (Fri, 10 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -165,7 +165,7 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
         # The same above is also valid for SLES:
         # SLES11: os_str: Unix, smb_str: Samba 3.6.3-0.58.1-3399-SUSE-CODE11-x86_64
         # SLES12: os_str: Windows 6.1, smb_str: Samba 4.4.2-29.4-3709-SUSE-SLE_12-x86_64
-        if( samba && ( "windows" >< tolower( os_str ) || ( "unix" >< tolower( os_str ) && ( "debian" >< tolower( smb_str ) || "SUSE" >< smb_str ) ) ) ) {
+        if( samba && ( "windows" >< tolower( os_str ) || ( "unix" >< tolower( os_str ) && ( "debian" >< tolower( smb_str ) || "SUSE" >< smb_str || "ubuntu" >< tolower( smb_str ) ) ) ) ) {
           if( "debian" >< tolower( smb_str ) ) {
             # 4.2.10 was up to 8.6 and 4.2.14 was 8.7 or later
             # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
@@ -184,17 +184,62 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
             } else {
               os_str = "Unknown SUSE Release";
             }
+          # Ubuntu pattern for new releases last checked on 11/2017 (up to 17.10, LTS releases: 12.04 up to 12.04.5, 14.04 up to 14.04.5, 16.04 up to 16.04.3)
           } else if( "ubuntu" >< tolower( smb_str ) ) {
-            # Trusty (and previous?) up to Xenial had this version, choose the highest Ubuntu version
-            if( "Samba 4.3.11-Ubuntu" >< smb_str ) {
-              os_str = "Ubuntu 14.04 - 16.04";
-            # Zesty had only one version
-            } else if( "Samba 4.5.8-Ubuntu" >< smb_str ) {
+            # Warty
+            if( "Samba 3.0.7-Ubuntu" >< smb_str ) {
+              os_str = "Ubuntu 4.10";
+            # Hoary
+            } else if( "Samba 3.0.10-Ubuntu" >< smb_str ) {
+              os_str = "Ubuntu 5.04";
+            # Breezy
+            } else if( "Samba 3.0.14a-Ubuntu" >< smb_str ) {
+              os_str = "Ubuntu 5.10";
+            # Trusty
+            } else if( "Samba 4.1.6-Ubuntu" >< smb_str ) {
+              os_str = "Ubuntu 14.04";
+            # Utopic
+            } else if( "Samba 4.1.11-Ubuntu" >< smb_str ) {
+              os_str = "Ubuntu 14.10";
+            # Vivid
+            } else if( "Samba 4.1.13-Ubuntu" >< smb_str ) {
+              os_str = "Ubuntu 15.04";
+            # Wily
+            } else if( "Samba 4.1.17-Ubuntu" >< smb_str ) {
+              os_str = "Ubuntu 15.10";
+            # Xenial
+            } else if( "Samba 4.3.8-Ubuntu" >< smb_str ) {
+              os_str = "Ubuntu 16.04";
+            # Trusty and Xenial had this versions, choose the highest Ubuntu version
+            } else if( "Samba 4.3.11-Ubuntu" >< smb_str || "Samba 4.3.9-Ubuntu" >< smb_str ) {
+              os_str = "Ubuntu 14.04 or Ubuntu 16.04";
+            # Yakkety
+            } else if( "Samba 4.4.5-Ubuntu" >< smb_str ) {
+              os_str = "Ubuntu 16.10";
+            # Zesty
+            } else if( "Samba 4.5.8-Ubuntu" >< smb_str || "Samba 4.5.4-Ubuntu" >< smb_str ) {
               os_str = "Ubuntu 17.04";
             # Artful (and currently upcoming Bionic)
             } else if( "Samba 4.6.7-Ubuntu" >< smb_str ) {
               os_str = "Ubuntu 17.10";
             } else {
+              # nb: Versions without the the -Ubuntu pattern:
+              # Dapper and Edgy: Samba 3.0.22
+              # Feisty: Samba 3.0.24
+              # Gutsy: Samba 3.0.26a
+              # Hardy: Samba 3.0.28a
+              # Intrepid: Samba 3.2.3
+              # Jaunty: Samba 3.3.2
+              # Karmic: Samba 3.4.0
+              # Lucid: Samba 3.4.7
+              # Maverick: Samba 3.5.4
+              # Natty: Samba 3.5.8
+              # Oneiric: Samba 3.5.11
+              # Precise: Samba 3.6.3
+              # Quantal: Samba 3.6.6
+              # Raring: Samba 3.6.9
+              # Saucy: Samba 3.6.18
+              # nb: Starting with Utopic / 14.10 we have a -Ubuntu pattern again
               os_str = "Unknown Ubuntu Release";
             }
           # On other reporting the same "Windows 6.1" or simlar exit here for now with a generic OS registered
@@ -290,14 +335,35 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
             register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           }
         } else if( "ubuntu" >< tolower( os_str ) ) {
-          if( "16.04" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"16.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          if( "17.10" >< os_str ) {
+            register_and_report_os( os:"Ubuntu", version:"17.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           } else if( "17.04" >< os_str ) {
             register_and_report_os( os:"Ubuntu", version:"17.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-          } else if( "17.10" >< os_str ) {
-            register_and_report_os( os:"Ubuntu", version:"17.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "16.10" >< os_str ) {
+            register_and_report_os( os:"Ubuntu", version:"16.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          # nb: Trusty and Xenial had a same Samba string (see above), choose the highest Ubuntu version
+          } else if( "16.04" >< os_str && "14.04" >< os_str ) {
+            register_and_report_os( os:"Ubuntu 14.04 or 16.04", cpe:"cpe:/o:canonical:ubuntu_linux:16.04", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "16.04" >< os_str ) {
+            register_and_report_os( os:"Ubuntu", version:"16.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "15.10" >< os_str ) {
+            register_and_report_os( os:"Ubuntu", version:"15.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "15.04" >< os_str ) {
+            register_and_report_os( os:"Ubuntu", version:"15.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "14.10" >< os_str ) {
+            register_and_report_os( os:"Ubuntu", version:"14.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "14.04" >< os_str ) {
+            register_and_report_os( os:"Ubuntu", version:"14.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "5.10" >< os_str ) {
+            register_and_report_os( os:"Ubuntu", version:"5.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "5.04" >< os_str ) {
+            register_and_report_os( os:"Ubuntu", version:"5.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "4.10" >< os_str ) {
+            register_and_report_os( os:"Ubuntu", version:"4.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           } else {
-            register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+            register_and_report_os( os:"Unknown Ubuntu release", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+            # nb: We want to report an unknown banner here as well to catch reports with more detailed info
+            register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );
           }
         } else if( "SUSE" >< os_str ) {
           if( "SUSE Linux Enterprise Server 11" >< os_str ) {

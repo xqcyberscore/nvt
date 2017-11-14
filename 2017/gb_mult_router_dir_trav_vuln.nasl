@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_router_dir_trav_vuln.nasl 7537 2017-10-24 05:56:44Z ckuersteiner $
+# $Id: gb_mult_router_dir_trav_vuln.nasl 7739 2017-11-13 05:04:18Z teissa $
 #
 # Multiple Router Directory Traversal Vulnerability
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140448");
-  script_version("$Revision: 7537 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-24 07:56:44 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 7739 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-13 06:04:18 +0100 (Mon, 13 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-10-24 09:17:33 +0700 (Tue, 24 Oct 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-15647");
 

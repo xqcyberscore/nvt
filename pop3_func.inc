@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: pop3_func.inc 4042 2016-09-13 05:49:25Z cfi $
+# OpenVAS Include File
+# $Id: pop3_func.inc 7735 2017-11-10 13:16:05Z cfischer $
 #
 # Methods for handling POP3
 #
@@ -23,19 +23,19 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 4042 $
+# $Revision: 7735 $
 #
 ###############################################################################
 
 function get_pop3_banner( port ) {
 
-  local_var sb, banner, soc, port;
+  local_var port, sb, banner, soc, capabanner, implbanner;
 
   if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_pop3_banner" );
 
   sb = "pop3/banner/" + port;
   banner = get_kb_item( sb );
-  if( banner ) return( banner );
+  if( banner ) return banner;
   if( get_kb_item( "pop3/" + port + "/broken" ) )
     return NULL;
 
@@ -46,14 +46,30 @@ function get_pop3_banner( port ) {
     return NULL;
   }
   banner = recv_line( socket:soc, length:4096 );
-  close( soc );
   if( ! banner ) {
+    close( soc );
     set_kb_item( name:"pop3/" + port + "/broken", value:TRUE );
     return NULL;
   }
 
+  # nb: This part is used to catch the software from the "CAPA" request.
+  # e.g. the initial banner is only: POP3 banner is +OK POP3 server ready <example@example.com>
+  # but the CAPA request is exposing the software version: IMPLEMENTATION Smartertools_SmarterMail_1.5
+  send( socket:soc, data:'CAPA\r\n' );
+  capabanner = recv_line( socket:soc, length:4096 );
+  if( "capability list follows" >< tolower( capabanner ) || "List of capabilities follows" >< tolower( capabanner ) ||
+      "capa list follows" >< tolower( capabanner ) || "list follows" >< capabanner ) {
+    while( capabanner = recv_line( socket:soc, length:4096 ) ) {
+      implbanner = egrep( pattern:"IMPLEMENTATION .*", string:capabanner );
+      if( implbanner ) {
+        banner += implbanner;
+        break;
+      }
+    }
+  }
+  close( soc );
   replace_kb_item( name:sb, value:banner );
-  return( banner );
+  return banner;
 }
 
 function get_pop3_port( default ) {

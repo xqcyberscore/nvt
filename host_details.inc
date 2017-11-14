@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 7653 2017-11-03 14:24:06Z cfischer $
+# $Id: host_details.inc 7718 2017-11-09 15:45:46Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7653 $
+# $Revision: 7718 $
 #
 ###############################################################################
 
@@ -1242,8 +1242,10 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       banner == "+OK Dovecot ready." ||
       banner == "dnsmasq" ||
       banner == "220 Welcome message" || # Default welcome messages on some FTP servers
+      banner == "220 Service ready for new user." || # Default welcome messages on some FTP servers
       banner == "Server:" ||
       banner == "Server: " ||
+      banner == "Server: Undefined" || # Unknown
       banner == "Server: squid" ||
       banner == "Server: nginx" ||
       banner == "Server: Apache" ||
@@ -1262,13 +1264,15 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       banner == "220 FTP server ready" ||
       banner == "Server: NessusWWW" || # Nessus could be running on Windows, Linux/Unix or MacOS
       "erver: BBC " >< banner || # OV Communication Broker runs on various different OS variants
-      egrep( pattern:"^OS String: Unix; SMB String: Samba ([0-9.]+)$", string:banner ) || # e.g. OS String: Unix; SMB String: Samba 4.0.9 set by smb_nativelanman.nasl
+      egrep( pattern:"^OS String: Unix; SMB String: Samba ([0-9.]+)a?$", string:banner ) || # e.g. OS String: Unix; SMB String: Samba 4.0.9 set by smb_nativelanman.nasl
       egrep( pattern:"^220 ([0-9a-zA-Z._\-]+) ESMTP$", string:banner ) || # e.g. 220 hostname ESMTP
       egrep( pattern:"ESMTP Exim ([0-9._]+) ", string:banner ) || # e.g. 220 host ESMTP Exim 4.84_2 Tue, 01 Aug 2017 13:01:18 +0200
       egrep( pattern:"^X-Powered-By: PHP/([0-9.]+)(-[0-9]+)?$", string:banner ) || # e.g. X-Powered-By: PHP/7.0.19 or X-Powered-By: PHP/7.0.19-1
       egrep( pattern:"^Server: CUPS/([0-9.]+) IPP/([0-9.]+)$", string:banner ) || # Handled at the bottom of sw_http_os_detection.nasl
       egrep( pattern:"^Server: Themis ([0-9.]+)$", string:banner ) || # Currently unknown
       egrep( pattern:"^Server: Mordac/([0-9.]+)$", string:banner ) || # Currently unknown
+      egrep( pattern:"^Server: eHTTP v([0-9.]+)$", string:banner ) || # Currently unknown, have seen this on HP ProCurves but also on some login pages without any info
+      egrep( pattern:"^Server: Agranat-EmWeb/([0-9_R]+)$" ) || # Currently unknown, might be an Alcatel device...
       egrep( pattern:"^Server: gSOAP/([0-9.]+)$", string:banner ) || # Cross-platform
       egrep( pattern:"^Server: squid/([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Server: squid/([0-9.]+)\.STABLE([0-9.]+)$", string:banner ) || # e.g. Server: squid/2.7.STABLE5
@@ -1282,14 +1286,18 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       egrep( pattern:"^Server: Embedthis-http/([0-9.]+)$", string:banner ) || # Is running under various OS variants, banner e.g. Server: Embedthis-http/4.0.0
       egrep( pattern:"^Server: GoAhead-Webs/([0-9.]+)$", string:banner ) || # Is running under various OS variants
       egrep( pattern:"^Server: Allegro-Software-RomPager/([0-9.]+)$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
-      egrep( pattern:"^SSH-2\.0-RomSShell_([0-9]+)$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
+      egrep( pattern:"^Server: CompaqHTTPServer/([0-9.]+) HPE System Management Homepage$", string:banner ) || # Is running under various OS variants
+      egrep( pattern:"^SSH-2\.0-RomSShell_([0-9.]+)$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
       egrep( pattern:"^([0-9.]+)$", string:banner ) || # Bind9 and MySQL. Both are often only sending e.g. 9.4.2
       egrep( pattern:"^([0-9.]+)(-[0-9.]+)?-(MariaDB|log)$", string:banner ) || # MariaDB, e.g. 5.5.5-10.1.19-MariaDB or 5.5.49-MariaDB, MySQL e.g. 5.5.54-38.6-log or 5.6.25-log
       egrep( pattern:"^PowerDNS Authoritative Server ([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^Knot DNS ([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^SSH-2\.0-dropbear_([0-9.]+)$", string:banner ) ||
       egrep( pattern:"^SSH-2\.0-Mocana SSH ([0-9.]+)$", string:banner ) || # platform independent
-      egrep( pattern:"^SSH-2\.0-OpenSSH_([0-9.p]+)$", string:banner ) ) {
+      egrep( pattern:"^SSH-1\.99-OpenSSH_([0-9.p]+)$", string:banner ) ||
+      egrep( pattern:"^SSH-2\.0-OpenSSH_([0-9.p]+)-FIPS_hpn([0-9v]+)$", string:banner ) || # SSH-2.0-OpenSSH_6.1-FIPS_hpn13v11
+      egrep( pattern:"^SSH-2\.0-OpenSSH_([0-9.p]+)(\-FIPS\(capable\))?$", string:banner ) ) {
+
     return;
   }
 

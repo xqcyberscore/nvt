@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_se_mult_vuln_nov09_win.nasl 6465 2017-06-28 13:17:01Z cfischer $
+# $Id: secpod_sun_java_se_mult_vuln_nov09_win.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Sun Java SE Multiple Vulnerabilities - Nov09 (Windows)
 #
@@ -56,8 +56,8 @@ tag_summary = "This host is installed with Sun Java SE and is prone to multiple
 if(description)
 {
   script_id(900978);
-  script_version("$Revision: 6465 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:17:01 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 7699 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-11-23 07:01:19 +0100 (Mon, 23 Nov 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -103,7 +103,6 @@ foreach ver (version)
 {
   if(ver)
   {
-    ver = ereg_replace(pattern:"_", string:ver, replace: ".");
     # Check for 1.6 < 1.6.0_17 (6 Update 17) and 1.5 < 1.5.0_22 (5 Update 22)
     if(version_in_range(version:ver, test_version:"1.5", test_version2:"1.5.0.21")||
        version_in_range(version:ver, test_version:"1.6", test_version2:"1.6.0.16"))

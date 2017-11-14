@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3388_1.nasl 6956 2017-08-18 06:02:43Z santu $
+# $Id: gb_ubuntu_USN_3388_1.nasl 7739 2017-11-13 05:04:18Z teissa $
 #
 # Ubuntu Update for subversion USN-3388-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843282");
-  script_version("$Revision: 6956 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-18 08:02:43 +0200 (Fri, 18 Aug 2017) $");
+  script_version("$Revision: 7739 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-13 06:04:18 +0100 (Mon, 13 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-08-12 07:29:58 +0200 (Sat, 12 Aug 2017)");
   script_cve_id("CVE-2017-9800", "CVE-2016-2167", "CVE-2016-8734");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for subversion USN-3388-1");
   script_tag(name: "summary", value: "Check the version of subversion");

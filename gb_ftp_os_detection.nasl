@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftp_os_detection.nasl 6863 2017-08-07 14:00:23Z cfischer $
+# $Id: gb_ftp_os_detection.nasl 7718 2017-11-09 15:45:46Z cfischer $
 #
 # FTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105355");
-  script_version("$Revision: 6863 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-07 16:00:23 +0200 (Mon, 07 Aug 2017) $");
+  script_version("$Revision: 7718 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-09 16:45:46 +0100 (Thu, 09 Nov 2017) $");
   script_tag(name:"creation_date", value:"2015-09-15 15:57:03 +0200 (Tue, 15 Sep 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -206,19 +206,31 @@ if( "220 Solaris FTP Server" >< banner || "(Sun Solaris" >< banner ) {
 
 # vsFTPd runs only on Unix-like systems
 if( "220 (vsFTPd" >< banner ) {
-  register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 
 # Pure-FTPd was designed for Unix-like systems. There might be windows systems out but they are probably very rare
 if( "Pure-FTPd" >< banner ) {
-  register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+# WU-FTPD runs only on Unix-like systems
+if( "FTP server (Version wu-" >< banner ) {
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+# UPS / USV on embedded OS
+if( "ManageUPSnet FTP server" >< banner ) {
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 
 # Zimbra runs only on Unix-like systems
 if( "Zimbra LMTP server ready" >< banner ) {
-  register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 

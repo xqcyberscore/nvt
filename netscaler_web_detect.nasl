@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netscaler_web_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: netscaler_web_detect.nasl 7723 2017-11-10 06:41:18Z asteins $
 #
-# NetScaler web management interface detection
+# Citrix NetScaler Web Detection
 #
 # Authors:
 # nnposter
@@ -27,12 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80024");
-  script_version("$Revision: 5390 $");
-  script_name("NetScaler web management interface detection");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 7723 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-10 07:41:18 +0100 (Fri, 10 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
+
+  script_name("Citrix NetScaler Web Detection");
+
   script_family("Product detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (c) 2007 nnposter");
@@ -40,17 +42,12 @@ if(description)
   script_require_ports("Services/www",80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name:"URL", value:"http://www.citrix.com/lang/English/ps2/index.asp");
+  script_xref(name:"URL", value:"https://www.citrix.com/networking/");
 
-  tag_summary = "A Citrix NetScaler web management interface is running on this port.
+  script_tag(name:"summary", value: "Detection of Citrix Netscaler Web UI.
 
-  Description :
-
-  The remote host appears to be a Citrix NetScaler, an appliance for web
-  application delivery, and the remote web server is its management
-  interface.";
-
-  script_tag(name:"summary", value:tag_summary);
+The script sends a connection request to the server and attempts to detect Citrix Netscaler and to extract its
+version.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -64,12 +61,12 @@ include("host_details.inc");
 
 port = get_http_port( default:80 );
 
-foreach url( make_list("/vpn/index.html", "/", "/index.html") ) {
+foreach url( make_list("/vpn/tmindex.html", "/vpn/index.html", "/", "/index.html") ) {
 
   res = http_get_cache( item:url, port:port );
   if( ! res ) continue;
 
-  if ("<title>Citrix Login</title>" >!< res && res !~ 'action="(/login/do_login|/ws/login\\.pl)"' &&
+  if (("<title>Citrix Login</title>" >!< res || res !~ 'action="(/login/do_login|/ws/login\\.pl)"') &&
       "<title>netscaler gateway</title>" >!< tolower( res ) && "<title>citrix access gateway</title>" >!< tolower( res ) )
     continue;
 
@@ -78,8 +75,8 @@ foreach url( make_list("/vpn/index.html", "/", "/index.html") ) {
   replace_kb_item( name:"Services/www/" + port + " /embedded", value:TRUE );
   set_kb_item( name:"citrix_netscaler/webinterface/port", value:port );
 
-  url = '/epa/epa.html';
-  req = http_get( item:url, port:port );
+  url2 = '/epa/epa.html';
+  req = http_get( item:url2, port:port );
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
   version = eregmatch( pattern:'var nsversion="([^;]+)";', string:buf );
@@ -91,16 +88,19 @@ foreach url( make_list("/vpn/index.html", "/", "/index.html") ) {
     replace_kb_item( name:"citrix_netscaler/web/version", value:vers );
     replace_kb_item( name:"citrix_netscaler/found", value:TRUE );
     cpe += ':' + vers;
+    concUrl = url2;
   }
 
   register_product( cpe:cpe, location:"/", port:port );
 
-  log_message( data:build_detection_report( app:"Citrix NetScaler web management interface",
+  log_message( data:build_detection_report( app:"Citrix NetScaler",
                                             version:vers,
                                             install:"/",
                                             cpe:cpe,
-                                            concluded:version[0] ),
-                                            port:port );
+                                            concluded:version[0],
+                                            concludedUrl: concUrl,
+                                            extra: "Detected URL: " + url),
+               port:port );
   exit( 0 );
 }
 

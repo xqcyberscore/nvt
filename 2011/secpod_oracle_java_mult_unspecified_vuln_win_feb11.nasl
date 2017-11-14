@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_java_mult_unspecified_vuln_win_feb11.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: secpod_oracle_java_mult_unspecified_vuln_win_feb11.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Oracle Java SE Multiple Unspecified Vulnerabilities - Feb11 (Windows)
 #
@@ -45,8 +45,8 @@ tag_summary = "This host is installed with Sun Java SE and is prone to multiple
 if(description)
 {
   script_id(902344);
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_version("$Revision: 7699 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2010-4447", "CVE-2010-4448", "CVE-2010-4454", "CVE-2010-4462",
                 "CVE-2010-4465", "CVE-2010-4466", "CVE-2010-4469", "CVE-2010-4473",
@@ -81,7 +81,6 @@ include("version_func.inc");
 jreVer = get_kb_item("Sun/Java/JRE/Win/Ver");
 if(jreVer)
 {
-  jreVer = ereg_replace(pattern:"_|-", string:jreVer, replace: ".");
   
   # Check for 1.6 < 1.6.0_23 (6 Update 23), 1.5 < 1.5.0_27(5 Update 27), =< 1.4.2_29
   if(version_is_less_equal(version:jreVer, test_version:"1.4.2.29") ||
@@ -97,8 +96,6 @@ if(jreVer)
 jdkVer = get_kb_item("Sun/Java/JDK/Win/Ver");
 if(jdkVer)
 {
-  jdkVer = ereg_replace(pattern:"_|-", string:jdkVer, replace: ".");
-
   # Check for 1.6 < 1.6.0_23 (6 Update 23), 1.5 < 1.5.0_27(5 Update 27), =< 1.4.2_29
   if(version_is_less_equal(version:jdkVer, test_version:"1.4.2.29") ||
      version_in_range(version:jdkVer, test_version:"1.6", test_version2:"1.6.0.23") ||

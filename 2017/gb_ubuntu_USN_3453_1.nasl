@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3453_1.nasl 7453 2017-10-17 06:34:30Z santu $
+# $Id: gb_ubuntu_USN_3453_1.nasl 7690 2017-11-08 06:26:20Z asteins $
 #
 # Ubuntu Update for xorg-server USN-3453-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843341");
-  script_version("$Revision: 7453 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-17 08:34:30 +0200 (Tue, 17 Oct 2017) $");
+  script_version("$Revision: 7690 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 07:26:20 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-13 08:36:07 +0200 (Fri, 13 Oct 2017)");
   script_cve_id("CVE-2017-13721", "CVE-2017-13723");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for xorg-server USN-3453-1");
   script_tag(name: "summary", value: "Check the version of xorg-server");

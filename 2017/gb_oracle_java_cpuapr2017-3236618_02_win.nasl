@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_cpuapr2017-3236618_02_win.nasl 6092 2017-05-10 07:02:40Z cfi $
+# $Id: gb_oracle_java_cpuapr2017-3236618_02_win.nasl 7711 2017-11-09 10:31:37Z cfischer $
 #
 # Oracle Java SE Security Updates (cpuapr2017-3236618) 02 - Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810746");
-  script_version("$Revision: 6092 $");
+  script_version("$Revision: 7711 $");
   script_cve_id("CVE-2017-3512", "CVE-2017-3511");
   script_bugtraq_id(97727, 97731);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 09:02:40 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-09 11:31:37 +0100 (Thu, 09 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-04-19 13:06:39 +0530 (Wed, 19 Apr 2017)");
   script_name("Oracle Java SE Security Updates (cpuapr2017-3236618) 02 - Windows");
 
@@ -70,30 +70,19 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-jreVer = "";
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
-## Get version
-if(!jreVer = get_app_version(cpe:CPE))
+if(vers =~ "^(1\.(7|8))")
 {
-  CPE = "cpe:/a:sun:jre";
-  if(!jreVer = get_app_version(cpe:CPE)){
-    exit(0);
-  }
-}
-
-if(jreVer =~ "^(1\.(7|8))")
-{
-  jreVer = ereg_replace(pattern:"[a-z]+_|[a-z]+-|-|_|[a-z]+", string:jreVer, replace: ".");
-
-  if(version_in_range(version:jreVer, test_version:"1.7.0", test_version2:"1.7.0.131") ||
-     version_in_range(version:jreVer, test_version:"1.8.0", test_version2:"1.8.0.121"))
+  if(version_in_range(version:vers, test_version:"1.7.0", test_version2:"1.7.0.131") ||
+     version_in_range(version:vers, test_version:"1.8.0", test_version2:"1.8.0.121"))
   {
-    report = report_fixed_ver(installed_version:jreVer, fixed_version: "Apply the patch");
+    report = report_fixed_ver(installed_version:vers, fixed_version: "Apply the patch", install_path:path);
     security_message(data:report);
     exit(0);
   }

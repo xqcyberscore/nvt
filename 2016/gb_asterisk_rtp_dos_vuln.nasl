@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_rtp_dos_vuln.nasl 4031 2016-09-12 10:37:49Z ckuerste $
+# $Id: gb_asterisk_rtp_dos_vuln.nasl 7702 2017-11-09 04:34:57Z ckuersteiner $
 #
 # Asterisk RTP Resource Exhaustion Vulnerability
 #
@@ -30,11 +30,14 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106239");
-  script_version("$Revision: 4031 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-12 12:37:49 +0200 (Mon, 12 Sep 2016) $");
+  script_version("$Revision: 7702 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-09 05:34:57 +0100 (Thu, 09 Nov 2017) $");
   script_tag(name: "creation_date", value: "2016-09-12 12:33:46 +0700 (Mon, 12 Sep 2016)");
-  script_tag(name: "cvss_base", value: "4.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:N/A:P");
+  script_tag(name: "cvss_base", value: "5.0");
+  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:P");
+
+  script_cve_id("CVE-2016-7551");
+  script_bugtraq_id(92888);
 
   script_tag(name: "qod_type", value: "remote_banner_unreliable");
 

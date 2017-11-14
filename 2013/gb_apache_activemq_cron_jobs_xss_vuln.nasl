@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_cron_jobs_xss_vuln.nasl 7430 2017-10-13 12:51:38Z cfischer $
+# $Id: gb_apache_activemq_cron_jobs_xss_vuln.nasl 7687 2017-11-07 13:36:38Z cfischer $
 #
-# Apache ActiveMQ 'Cron Jobs' Cross Site Scripting Vulnerability
+# Apache ActiveMQ < 5.9.0 Multiple Cross Site Scripting Vulnerabilities
 #
 # Authors:
 # Thanga Prakash S <tprakash@secpod.com>
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803866");
-  script_version("$Revision: 7430 $");
-  script_cve_id("CVE-2013-1879");
-  script_bugtraq_id(61142);
+  script_version("$Revision: 7687 $");
+  script_cve_id("CVE-2013-1879", "CVE-2013-1880");
+  script_bugtraq_id(61142, 65615);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 14:51:38 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-07 14:36:38 +0100 (Tue, 07 Nov 2017) $");
   script_tag(name:"creation_date", value:"2013-08-13 14:52:49 +0530 (Tue, 13 Aug 2013)");
-  script_name("Apache ActiveMQ 'Cron Jobs' Cross Site Scripting Vulnerability");
+  script_name("Apache ActiveMQ < 5.9.0 Multiple Cross Site Scripting Vulnerabilities");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -46,15 +46,20 @@ if(description)
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/54073");
   script_xref(name:"URL", value:"https://issues.apache.org/jira/browse/AMQ-4397");
+  script_xref(name:"URL", value:"https://issues.apache.org/jira/browse/AMQ-4398");
 
-  tag_summary = "This host is installed with Apache ActiveMQ and is prone to cross site
-  scripting vulnerability.";
+  tag_summary = "This host is installed with Apache ActiveMQ and is prone to multiple
+  cross site scripting vulnerabilities.";
 
   tag_vuldetect = "Send a Crafted HTTP POST request and check whether it is able to read the
   cookie or not.";
 
-  tag_insight = "Flaws is due to an improper validation of the command in a user crontab file
-  upon processing by the scheduled.jsp script.";
+  tag_insight = "Multiple flaws exist due to:
+
+  - an improper validation of the command in a user crontab file upon processing by the scheduled.jsp script
+
+  - the Portfolio publisher servlet in the demo web application allows remote attackers to inject arbitrary web
+  script or HTML via the refresh parameter to demo/portfolioPublish";
 
   tag_impact = "Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site.

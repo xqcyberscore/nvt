@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_office_products_version_900032.nasl 6544 2017-07-05 14:50:30Z cfischer $#
+# $Id: secpod_office_products_version_900032.nasl 7747 2017-11-14 06:11:31Z santu $#
 #
 # MS Office Products Version Detection
 #
@@ -58,8 +58,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900032");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6544 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 16:50:30 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 7747 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-14 07:11:31 +0100 (Tue, 14 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("MS Office Products Version Detection");
@@ -544,6 +544,8 @@ outlookFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                               "\App Paths\OUTLOOK.EXE", item:"Path");
 if(outlookFile)
 {
+  set_kb_item(name:"SMB/Office/Outlook/Install/Path", value:outlookFile);
+
   share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:outlookFile);
   outlookFile = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
                              string:outlookFile + "\OUTLOOK.EXE");

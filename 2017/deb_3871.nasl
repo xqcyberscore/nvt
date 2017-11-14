@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3871.nasl 6607 2017-07-07 12:04:25Z cfischer $
+# $Id: deb_3871.nasl 7690 2017-11-08 06:26:20Z asteins $
 # Auto-generated from advisory DSA 3871-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703871);
-    script_version("$Revision: 6607 $");
+    script_version("$Revision: 7690 $");
     script_cve_id("CVE-2017-5637");
     script_name("Debian Security Advisory DSA 3871-1 (zookeeper - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:04:25 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-11-08 07:26:20 +0100 (Wed, 08 Nov 2017) $");
     script_tag(name: "creation_date", value: "2017-06-01 00:00:00 +0200 (Thu, 01 Jun 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"5.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

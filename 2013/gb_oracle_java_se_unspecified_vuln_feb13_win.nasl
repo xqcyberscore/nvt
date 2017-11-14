@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_unspecified_vuln_feb13_win.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_oracle_java_se_unspecified_vuln_feb13_win.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Oracle Java SE Unspecified Vulnerability - Feb 13 (Windows)
 #
@@ -45,11 +45,11 @@ unspecified vulnerability.";
 if(description)
 {
   script_id(803306);
-  script_version("$Revision: 6074 $");
+  script_version("$Revision: 7699 $");
   script_cve_id("CVE-2013-1490");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2013-02-06 10:54:26 +0530 (Wed, 06 Feb 2013)");
   script_name("Oracle Java SE Unspecified Vulnerability - Feb 13 (Windows)");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Jan/142");
@@ -80,8 +80,6 @@ jreVer = get_kb_item("Sun/Java/JRE/Win/Ver");
 
 if(jreVer)
 {
-  jreVer = ereg_replace(pattern:"_|-", string:jreVer, replace: ".");
-
   ## Check for Oracle Java SE version 1.7.0_11
   if(jreVer == "1.7.0.11")
   {

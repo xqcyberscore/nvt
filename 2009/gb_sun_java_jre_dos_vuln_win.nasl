@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_jre_dos_vuln_win.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_sun_java_jre_dos_vuln_win.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Sun Java JDK/JRE Multiple Vulnerabilities (Windows)
 #
@@ -50,8 +50,8 @@ tag_summary = "This host is installed with Sun Java JDK/JRE and is prone to
 if(description)
 {
   script_id(800384);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 7699 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -89,7 +89,6 @@ if(!jreVer){
   exit(0);
 }
 
-jreVer = ereg_replace(pattern:"_", string:jreVer, replace: ".");
 if(jreVer)
 {
   # Check for 1.3 < 1.3.1_25, 1.4 < 1.4.2_20, 1.5 < 1.5.0_18 (5 Update 18),

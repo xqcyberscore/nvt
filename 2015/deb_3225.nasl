@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3225.nasl 7604 2017-11-01 06:48:12Z asteins $
+# $Id: deb_3225.nasl 7693 2017-11-08 07:12:54Z cfischer $
 # Auto-generated from advisory DSA 3225-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,10 @@
 if(description)
 {
     script_id(703225);
-    script_version("$Revision: 7604 $");
+    script_version("$Revision: 7693 $");
     script_cve_id("CVE-2015-0797");
     script_name("Debian Security Advisory DSA 3225-1 (gst-plugins-bad0.10 - security update)");
-    script_tag(name: "check_type", value: "authenticated package test");
-    script_tag(name: "last_modification", value: "$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-11-08 08:12:54 +0100 (Wed, 08 Nov 2017) $");
     script_tag(name: "creation_date", value: "2015-04-15 00:00:00 +0200 (Wed, 15 Apr 2015)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcworx_detect.nasl 7311 2017-09-28 10:35:29Z ckuersteiner $
+# $Id: gb_pcworx_detect.nasl 7738 2017-11-13 02:50:25Z ckuersteiner $
 #
 # PCWorx Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140418");
- script_version ("$Revision: 7311 $");
- script_tag(name: "last_modification", value: "$Date: 2017-09-28 12:35:29 +0200 (Thu, 28 Sep 2017) $");
+ script_version ("$Revision: 7738 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-11-13 03:50:25 +0100 (Mon, 13 Nov 2017) $");
  script_tag(name: "creation_date", value: "2017-09-28 15:33:55 +0700 (Thu, 28 Sep 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -74,8 +74,10 @@ send(socket: soc, data: query);
 recv = recv(socket: soc, length: 512);
 
 # Check if error occured
-if (hexstr(recv[0]) != 81 || strlen(recv) < 20)
+if (hexstr(recv[0]) != "81" || strlen(recv) < 20) {
+  close(soc);
   exit(0);
+}
 
 # The PLC returns a session ID, which we need for further communication
 sessionid = recv[17];
@@ -87,34 +89,38 @@ send(socket: soc, data: query);
 recv = recv(socket: soc, length: 512);
 
 # Check if error occured
-if (hexstr(recv[0]) != 81)
+if (hexstr(recv[0]) != "81") {
+  close(soc);
   exit(0);
+}
 
 # Request the information about the PLC
 query = raw_string(0x01, 0x06, 0x00, 0x0e, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, sessionid, 0x04, 0x00);
 send(socket: soc, data: query);
 recv = recv(socket: soc, length: 512);
+close(soc);
 
 # Check if error occured
-if (hexstr(recv[0]) != 81)
+if (hexstr(recv[0]) != "81") {
   exit(0);
+}
 
 # PLC Type (Remove unprintable characters)
-type = bin2string(ddata: substr(recv, 30, 65), nonprint_replacement: '');
+type = bin2string(ddata: substr(recv, 30, 65), noprint_replacement: '');
 set_kb_item(name: "pcworx/plc_type", value: type);
 
 # Model Number (Remove unprintable characters)
-model_num = chomp(bin2string(ddata: substr(recv, 152), nonprint_replacement: ''));
+model_num = chomp(bin2string(ddata: substr(recv, 152), noprint_replacement: ''));
 
 # Firmware version (Remove unprintable characters)
-fw_ver = bin2string(ddata: substr(recv, 66, 71), nonprint_replacement: '');
+fw_ver = bin2string(ddata: substr(recv, 66, 71), noprint_replacement: '');
 set_kb_item(name: "pcworx/fw_version", value: fw_ver);
 
 # Firmware date (Remove unprintable characters)
-fw_date = bin2string(ddata: substr(recv, 79, 90), nonprint_replacement: '');
+fw_date = bin2string(ddata: substr(recv, 79, 90), noprint_replacement: '');
 
 # Firmware time (Remove unprintable characters)
-fw_time = bin2string(ddata: substr(recv, 91, 99), nonprint_replacement: '');
+fw_time = bin2string(ddata: substr(recv, 91, 99), noprint_replacement: '');
 
 set_kb_item(name: "pcworx/detected", value: TRUE);
 

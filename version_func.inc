@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: version_func.inc 7575 2017-10-26 09:47:04Z cfischer $
+# $Id: version_func.inc 7736 2017-11-10 13:58:57Z cfischer $
 #
 # Helper functions for various version related tests
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7575 $
+# $Revision: 7736 $
 #
 ###############################################################################
 
@@ -86,8 +86,16 @@ function version_test( version, test_version, less, icase, debug ) {
   # Replace commonly used version separators (e.g. 1.0 rc1, or 1.0-rc1) with the standard separator.
   # nb: The "\.\." replacement is a fallback for NVTs passing doubled dots to the version comparsion functions.
   # Such a doubled point would e.g. report "1.0..99" to be a lower version then 1.0.1
-  version = ereg_replace( pattern:"( |\-|\.\.)", string:version, replace:"." );
-  test_version = ereg_replace( pattern:"( |\-|\.\.)", string:test_version, replace:"." );
+  ##For Java NVTs updated regex, 'update_' to be replaced by '.'. 1.8.0_151 , 1.8.0update_51, 1.7.0update1
+  version = ereg_replace( pattern:"( |\-|\.\.|_|update_)", string:version, replace:"." );
+
+  ##Next few lines for Java only
+  ##For case 1.7.0update1 --> 1.7.0.1
+  version = ereg_replace( pattern:"update", string:version, replace:".");
+  ##Few Java NVTs are doing this, removing e.g. '-b11'
+  version = ereg_replace( pattern:"-b[0-9][0-9]", string:version, replace:"");
+
+  test_version = ereg_replace( pattern:"( |\-|\.\.|_)", string:test_version, replace:"." );
 
   if( debug ) display('DEBUG: version: ' + version + ' and test_version: ' + test_version + ' after applying standard separator\n');
 
@@ -375,7 +383,7 @@ function get_version( dllPath, string, offs ) {
     close(soc);
     exit(0);
   }
-      
+
   prVersion = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid, verstr:string, offset:offs);
   if( ! prVersion || isnull( prVersion ) || prVersion == "" || prVersion == 0 || prVersion == '0' ) {
     close(soc);
@@ -386,22 +394,27 @@ function get_version( dllPath, string, offs ) {
   return prVersion;
 }
 
-function report_fixed_ver( installed_version, installed_build, installed_patch,
-                           fixed_version, fixed_build, fixed_patch, extra ) {
+function report_fixed_ver( installed_version, installed_build, installed_patch, vulnerable_range, file_checked,
+                           file_version, fixed_version, fixed_build, fixed_patch, extra, install_path, install_url ) {
 
-  local_var installed_version, installed_build, installed_patch, fixed_version, fixed_build, fixed_patch, extra;
+  local_var installed_version, installed_build, installed_patch, vulnerable_range, file_checked;
+  local_var file_version, fixed_version, fixed_build, fixed_patch, extra, install_path, install_url;
 
-  if( ! installed_version ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#installed_version#-#report_fixed_ver" );
-  if( ! fixed_version ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fixed_version#-#report_fixed_ver" );
+  if( ! installed_version && ! file_checked ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#installed_version/file_checked#-#report_fixed_ver" );
+  if( ! fixed_version && ! vulnerable_range ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fixed_version/vulnerable_range#-#report_fixed_ver" );
 
-  report = 'Installed version: ' + installed_version + '\n' +
-           'Fixed version:     ' + fixed_version + '\n';
-
-  if( installed_build ) report += 'Installed build:   ' + installed_build + '\n';
-  if( installed_patch ) report += 'Installed patch:   ' + installed_patch + '\n';
-  if( fixed_build ) report += 'Fixed build:       ' + fixed_build + '\n';
-  if( fixed_patch ) report += 'Fixed patch:       ' + fixed_patch + '\n';
-  if( extra ) report += '\n' + extra + '\n';
+  if( installed_version ) report += 'Installed version: ' + installed_version + '\n';
+  if( file_checked )      report += 'File checked:      ' + file_checked + '\n';
+  if( file_version )      report += 'File version:      ' + file_version + '\n';
+  if( vulnerable_range )  report += 'Vulnerable range:  ' + vulnerable_range + '\n';
+  if( fixed_version )     report += 'Fixed version:     ' + fixed_version + '\n';
+  if( installed_build )   report += 'Installed build:   ' + installed_build + '\n';
+  if( installed_patch )   report += 'Installed patch:   ' + installed_patch + '\n';
+  if( fixed_build )       report += 'Fixed build:       ' + fixed_build + '\n';
+  if( fixed_patch )       report += 'Fixed patch:       ' + fixed_patch + '\n';
+  if( install_path )      report += 'Installation path: ' + install_path + '\n';
+  if( install_url )       report += 'Installation URL:  ' + install_url + '\n';
+  if( extra )             report += '\n' + extra + '\n';
 
   return report;
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_actiontec_c1000a_default_telnet_credentials.nasl 7665 2017-11-06 09:29:54Z asteins $
+# $Id: gb_actiontec_c1000a_default_telnet_credentials.nasl 7717 2017-11-09 14:09:12Z jschulte $
 #
 # Actiontec C1000A Modem Backup Telnet Account
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112104");
-  script_version("$Revision: 7665 $");
+  script_version("$Revision: 7717 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Actiontec C1000A Modem Backup Telnet Account");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-06 10:29:54 +0100 (Mon, 06 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-09 15:09:12 +0100 (Thu, 09 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-06 10:23:00 +0200 (Mon, 06 Nov 2017)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -49,7 +49,7 @@ if(description)
   script_tag(name:"insight", value:"It was possible to login with backup telnet credentials 'admin:CeturyL1nk'.");
   script_tag(name:"solution", value:"It is recommended to disable the telnet access.");
 
-  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);

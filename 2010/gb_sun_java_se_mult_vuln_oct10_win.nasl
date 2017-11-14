@@ -49,8 +49,8 @@ tag_summary = "This host is installed with Oracle Java JDK/JRE and is prone to
 if(description)
 {
   script_id(801530);
-  script_version("$Revision: 6465 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:17:01 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 7699 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2010-10-28 11:50:37 +0200 (Thu, 28 Oct 2010)");
   script_cve_id("CVE-2010-3550", "CVE-2010-3551", "CVE-2010-3552", "CVE-2010-3553",
                 "CVE-2010-3554", "CVE-2010-3555", "CVE-2010-3556", "CVE-2010-3557",
@@ -87,7 +87,6 @@ include("version_func.inc");
 jdkVer = get_kb_item("Sun/Java/JDK/Win/Ver");
 if(jdkVer)
 {
-  jdkVer = ereg_replace(pattern:"_", string:jdkVer, replace: ".");
   if(jdkVer)
   {
     # Check for 1.6 < 1.6.0_22 (6 Update 22)
@@ -102,7 +101,6 @@ if(jdkVer)
 jreVer = get_kb_item("Sun/Java/JRE/Win/Ver");
 if(jreVer)
 {
-  jreVer = ereg_replace(pattern:"_", string:jreVer, replace: ".");
   if(jreVer)
   {
     # Grep for JRE Version 1.6 < 1.6.0_22 (6 Update 22)

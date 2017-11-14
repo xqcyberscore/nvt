@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_debut_dos_vuln.nasl 7469 2017-10-18 06:23:14Z asteins $
+# $Id: gb_debut_dos_vuln.nasl 7674 2017-11-07 06:54:24Z ckuersteiner $
 #
 # Debut Embedded Server DoS Vulnerability
 #
@@ -28,13 +28,13 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140295");
-  script_version("$Revision: 7469 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-18 08:23:14 +0200 (Wed, 18 Oct 2017) $");
+  script_version("$Revision: 7674 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-07 07:54:24 +0100 (Tue, 07 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-08-14 12:10:48 +0700 (Mon, 14 Aug 2017)");
   script_tag(name: "cvss_base", value: "7.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
-  script_cve_id("CVE-2017-12568");
+  script_cve_id("CVE-2017-12568", "CVE-2017-16249");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
@@ -50,17 +50,27 @@ if (description)
   script_require_ports("Services/www", 443);
   script_mandatory_keys("debut/banner");
 
-  script_tag(name: "summary", value: "Debut embedded httpd server is prone to a denial of service vulnerability
-which allows a remote attacker to hang the printer by sending a large amount of HTTP packets.");
+  script_tag(name: "summary", value: "Debut embedded httpd server is prone to multiple denial of service
+vulnerabilities.");
+
+  script_tag(name: "insight", value: "- The Debut embedded httpd server is prone to a denial of service
+vulnerability which allows a remote attacker to hang the printer by sending a large amount of HTTP packets.
+(CVE-2017-12568)
+
+- The Debut embedded http server contains a remotely exploitable denial of service where a single malformed HTTP
+POST request can cause the server to hang until eventually replying with an HTTP 500 error. While the server is
+hung, print jobs over the network are blocked and the web interface is inaccessible. An attacker can continuously
+send this malformed request to keep the device inaccessible to legitimate traffic. (CVE-2017-16249)");
 
   script_tag(name: "vuldetect", value: "Check the version.");
 
-  script_tag(name: "affected", value: "Debut embedded httpd 1.20 (Brother/HP printer http admin)");
+  script_tag(name: "affected", value: "Debut embedded httpd 1.20 and prior (Brother/HP printer http admin)");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 18th October, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 7th November, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://gist.github.com/tipilu/53f142466507b2ef4c8ceb08d22d1278");
+  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/43119/");
 
   exit(0);
 }
@@ -76,7 +86,7 @@ banner = get_http_banner(port: port);
 vers = eregmatch(pattern: "debut/([0-9.]+)", string: banner);
 
 if (!isnull(vers[1])) {
-  if (vers[1] == "1.20") {
+  if (version_is_less_equal(version: vers[1], test_version: "1.20")) {
     report = report_fixed_ver(installed_version: vers[1], fixed_version: "None");
     security_message(port: port, data: report);
     exit(0);

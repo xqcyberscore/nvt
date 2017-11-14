@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln05_jun13_win.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_oracle_java_se_mult_vuln05_jun13_win.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Oracle Java SE Multiple Vulnerabilities -05 June 13 (Windows)
 #
@@ -44,12 +44,12 @@ tag_summary = "This host is installed with Oracle Java SE and is prone to
 if(description)
 {
   script_id(803823);
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 7699 $");
   script_cve_id("CVE-2013-2467");
   script_bugtraq_id(60649);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2013-06-24 18:12:09 +0530 (Mon, 24 Jun 2013)");
   script_name("Oracle Java SE Multiple Vulnerabilities -05 June 13 (Windows)");
 
@@ -82,8 +82,6 @@ jreVer = get_kb_item("Sun/Java/JRE/Win/Ver");
 
 if(jreVer && jreVer =~ "^(1\.5)")
 {
-  jreVer = ereg_replace(pattern:"_|-", string:jreVer, replace: ".");
-
   ##Check for Oracle Java SE Versions
   if(version_in_range(version:jreVer, test_version:"1.5", test_version2:"1.5.0.45"))
   {

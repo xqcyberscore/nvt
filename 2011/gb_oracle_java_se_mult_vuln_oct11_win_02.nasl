@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln_oct11_win_02.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_oracle_java_se_mult_vuln_oct11_win_02.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Oracle Java SE Multiple Vulnerabilities - October 2011 (Windows02)
 #
@@ -45,13 +45,13 @@ tag_summary = "This host is installed with Oracle Java SE and is prone to multip
 if(description)
 {
   script_id(802274);
-  script_version("$Revision: 7052 $");
+  script_version("$Revision: 7699 $");
   script_cve_id("CVE-2011-3544", "CVE-2011-3546", "CVE-2011-3550", "CVE-2011-3551",
                 "CVE-2011-3553", "CVE-2011-3558", "CVE-2011-3561");
   script_bugtraq_id(50218, 50224, 50226, 50239, 50242, 50246, 50250);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2011-11-15 14:34:22 +0530 (Tue, 15 Nov 2011)");
   script_name("Oracle Java SE Multiple Vulnerabilities - October 2011 (Windows02)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46512");
@@ -78,7 +78,6 @@ include("version_func.inc");
 jreVer = get_kb_item("Sun/Java/JRE/Win/Ver");
 if(jreVer)
 {
-  jreVer = ereg_replace(pattern:"_|-", string:jreVer, replace: ".");
 
   ## Check for Oracle Java SE versions 7, 6 Update 27 and earlier
   if(version_is_equal(version:jreVer, test_version:"1.7.0") ||
@@ -93,7 +92,6 @@ if(jreVer)
 jdkVer = get_kb_item("Sun/Java/JDK/Win/Ver");
 if(jdkVer)
 {
-  jdkVer = ereg_replace(pattern:"_|-", string:jdkVer, replace: ".");
 
   ## Check for Oracle Java SE versions 7, 6 Update 27 and earlier
   if(version_is_equal(version:jdkVer, test_version:"1.7.0") ||

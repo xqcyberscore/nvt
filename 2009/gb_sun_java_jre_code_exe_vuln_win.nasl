@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_jre_code_exe_vuln_win.nasl 6465 2017-06-28 13:17:01Z cfischer $
+# $Id: gb_sun_java_jre_code_exe_vuln_win.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Sun Java JRE Remote Code Execution Vulnerability (Windows)
 #
@@ -43,8 +43,8 @@ tag_summary = "This host is installed with Sun Java JRE and is prone to Remote
 if(description)
 {
   script_id(800977);
-  script_version("$Revision: 6465 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 15:17:01 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 7699 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-11-13 15:48:12 +0100 (Fri, 13 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -88,7 +88,6 @@ foreach ver (version)
 {
   if(ver)
   {
-    ver = ereg_replace(pattern:"_", string:ver, replace: ".");
     # Check for 1.6 < 1.6.0_17 (6 Update 17)
     if(version_in_range(version:ver, test_version:"1.6", test_version2:"1.6.0.16"))
     {

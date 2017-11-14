@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_005f8f7f7d_lucene_fc25.nasl 7668 2017-11-06 13:16:04Z santu $
+# $Id: gb_fedora_2017_005f8f7f7d_lucene_fc25.nasl 7739 2017-11-13 05:04:18Z teissa $
 #
 # Fedora Update for lucene FEDORA-2017-005f8f7f7d
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873561");
-  script_version("$Revision: 7668 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-06 14:16:04 +0100 (Mon, 06 Nov 2017) $");
+  script_version("$Revision: 7739 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-13 06:04:18 +0100 (Mon, 13 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-02 11:13:52 +0100 (Thu, 02 Nov 2017)");
   script_cve_id("CVE-2017-12629");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for lucene FEDORA-2017-005f8f7f7d");
   script_tag(name: "summary", value: "Check the version of lucene");

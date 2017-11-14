@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_jre_mult_vuln_lin_apr10.nasl 7572 2017-10-26 08:08:35Z cfischer $
+# $Id: secpod_sun_java_jre_mult_vuln_lin_apr10.nasl 7699 2017-11-08 12:10:34Z santu $
 #
 # Sun Java JRE Multiple Vulnerabilities (Linux)
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is installed with Sun Java Deployment Toolkit and is pr
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902168");
-  script_version("$Revision: 7572 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 10:08:35 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 7699 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_cve_id("CVE-2010-0886", "CVE-2010-0887", "CVE-2010-1423");
   script_bugtraq_id(39492);
@@ -76,7 +76,6 @@ include("host_details.inc");
 jreVer = get_app_version(cpe:"cpe:/a:sun:jre");
 if(jreVer)
 {
-  jreVer = ereg_replace(pattern:"[a-z]+_|-", string:jreVer, replace: ".");
   # Check for 1.6 < 1.6.0_19
   if(version_in_range(version:jreVer, test_version:"1.6", test_version2:"1.6.0.19")){
      security_message(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2905_1.nasl 7601 2017-10-31 06:41:32Z santu $
+# $Id: gb_suse_2017_2905_1.nasl 7739 2017-11-13 05:04:18Z teissa $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2017:2905-1 (Linux Kernel)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851638");
-  script_version("$Revision: 7601 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-31 07:41:32 +0100 (Tue, 31 Oct 2017) $");
+  script_version("$Revision: 7739 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-13 06:04:18 +0100 (Mon, 13 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-30 09:25:38 +0100 (Mon, 30 Oct 2017)");
   script_cve_id("CVE-2017-13080", "CVE-2017-15265", "CVE-2017-15649", "CVE-2017-6346");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2017:2905-1 (Linux Kernel)");
   script_tag(name: "summary", value: "Check the version of Linux Kernel");

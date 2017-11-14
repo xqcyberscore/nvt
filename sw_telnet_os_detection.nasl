@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_telnet_os_detection.nasl 6882 2017-08-09 07:05:06Z cfischer $
+# $Id: sw_telnet_os_detection.nasl 7718 2017-11-09 15:45:46Z cfischer $
 #
 # Telnet OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111069");
-  script_version("$Revision: 6882 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-09 09:05:06 +0200 (Wed, 09 Aug 2017) $");
+  script_version("$Revision: 7718 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-09 16:45:46 +0100 (Thu, 09 Nov 2017) $");
   script_tag(name:"creation_date", value:"2015-12-13 13:00:00 +0100 (Sun, 13 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -77,6 +77,18 @@ if( "NetBSD/" >< banner && ( "(tty" >< banner || "(pts" >< banner ) ) {
 
 if( "SunOS" >< banner && "login:" >< banner ) {
   register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+# UPS / USV on embedded OS
+if( "ManageUPSnet" >< banner ) {
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+# Rittal CMC-TC-PU on an embedded linux, keep this above the login: check below as some devices doesn't show that login: prompt
+if( "CMC-TC-PU2" >< banner ) {
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }
 
