@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums_win.nasl 7565 2017-10-25 14:25:27Z cfischer $
+# $Id: policy_file_checksums_win.nasl 7753 2017-11-14 10:57:07Z jschulte $
 #
 # Check for File Checksum Violations in Windows
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96180");
-  script_version("$Revision: 7565 $");
+  script_version("$Revision: 7753 $");
   script_name("Windows file Checksums");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 16:25:27 +0200 (Wed, 25 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-14 11:57:07 +0100 (Tue, 14 Nov 2017) $");
   script_tag(name:"creation_date", value:"2013-07-02 10:55:14 +0530 (Tue, 02 Jul 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Policy");
@@ -79,6 +79,13 @@ include("host_details.inc");
 
 if( ! defined_func( "win_cmd_exec" ) ) exit( 0 );
 
+
+function exit_cleanly() {
+  set_kb_item(name:"policy/win_no_timeout", value:TRUE);
+
+  exit(0);
+}
+
 ## Variable Initialization
 cmd = "";
 port = "";
@@ -107,6 +114,8 @@ if (!cheksumlist) exit(0);
 
 cheksumlist = script_get_preference_file_content("Target checksum File");
 if (!cheksumlist) exit(0);
+
+set_kb_item(name:"policy/win_checksum_started", value:TRUE);
 
 install = script_get_preference("Install hash test Programm on the Target");
 if (install = "yes") {
@@ -246,9 +255,9 @@ if (install = "yes") {
         else usleep (10000);
       }
       if (!fortmp){
-        log_message(port:0, data:"Required Tool is not installable on the target system");
+        set_kb_item(name:"policy/win_general_err", value:"Required Tool is not installable on the target system");
         deltmp = win_cmd_exec (cmd:delvbs, password:password, username:username);
-        exit(0);
+        exit_cleanly();
       }
     }
   }
@@ -280,8 +289,8 @@ line_count = max_index(lines);
 if(line_count == 1 && lines[0] =~ "Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?") {
   report  = "Checksumtest aborted: Attached checksum File doesn't contain test entries (Only the header is present).";
   report += "Please upload a file following the syntax described in the referenced documentation.";
-  log_message(port:0, data:report);
-  exit(0);
+  set_kb_item(name:"policy/win_general_err", value:report);
+  exit_cleanly();
 }
 
 x = 0;
@@ -295,16 +304,19 @@ foreach line (lines)
   {
     if(x == line_count && eregmatch(pattern:"^$", string:line))
       continue;  # accept one emty line at the end of cheksumlist.
-
-    _error += 'Invalid line ' + line + ' in checksum File found.\n';
+    _error = TRUE;
+    set_kb_item(name:"policy/win_general_err", value:"Invalid line " + line + " in checksum File found.");
   }
 }
 
 if (_error){
-  report  = 'Checksumtest aborted. Errors:\n' + _error;
+  _error = FALSE;
+  report = 'Checksumtest aborted';
   report += '\n\nPlease upload a file following the syntax described in the referenced documentation.';
-  log_message(port:0, data:report);
-  exit(0);
+
+  set_kb_item(name:"policy/win_general_err", value:report);
+
+  exit_cleanly();
 }
 
 host_ip = get_host_ip();
@@ -365,7 +377,7 @@ for(i=1; i<max; i++)
     ip = val[3];
     if (!check_ip(ip: ip)) {
       if (tolower(ip) != "only-check-this-ip") {
-        _error += filename + '|ip format error|error;\n';
+        set_kb_item(name:"policy/win_general_err", value:filename + '|ip format error|error;');
       }
       continue;
     }
@@ -374,14 +386,13 @@ for(i=1; i<max; i++)
   }
 
   if (!checksum || !filename || !algorithm) {
-    errorlog = "Error in file read";
-    log_message(port:0, data:errorlog);
+    set_kb_item(name:"policy/win_general_err", value:"Error in file read");
     continue;
   }
 
   if (!check_file(file:filename)) {
     if (tolower(filename) != 'file') {
-      _error += filename + '|filename format error|error;\n';
+      set_kb_item(name:"policy/win_general_err", value:filename + '|filename format error|error;');
     }
     continue;
   }
@@ -396,7 +407,7 @@ for(i=1; i<max; i++)
   if (algorithm == "md5") {
     if (!check_md5(md5:checksum)) {
       if (checksum != 'md5') {
-        _error += filename + '|md5 format error|error;\n';
+        set_kb_item(name:"policy/win_general_err", value:filename + '|md5 format error|error;');
       }
       continue;
     }
@@ -422,7 +433,7 @@ for(i=1; i<max; i++)
       {
         temp_split = split(md5res);
         if(filecheck >!< temp_split[2]){
-        md5error += filename + '|No such file or directory|error;\n';
+          set_kb_item(name:"policy/win_md5cksum_err", value:filename + '|No such file or directory|error;');
         }
         else {
           ## Split and Get the checksum value from the response
@@ -430,25 +441,35 @@ for(i=1; i<max; i++)
           if (md5val[1])
           {
             md5val = split(md5val[1], keep:0);
-            if (md5val[0] == checksum)  md5pass += filename + '|' + md5val[0] + '|pass;\n';
-            else  md5fail += filename + '|' + md5val[0] + '|fail;\n';
+            if (md5val[0] == checksum) {
+             set_kb_item(name:"policy/win_md5cksum_ok", value:filename + '|' + md5val[0] + '|pass;');
+             replace_kb_item(name:"policy/win_checksum_ok", value:TRUE);
+            }
+            else {
+              set_kb_item(name:"policy/win_md5cksum_fail", value:filename + '|' + md5val[0] + '|fail;');
+              replace_kb_item(name:"policy/win_checksum_fail", value:TRUE);
+            }
           }
-          else md5error += filename + '|Error while calculating checksum|Re-test this file;\n';
+          else {
+            set_kb_item(name:"policy/win_md5cksum_err", value:filename + '|Error while calculating checksum|Re-test this file;');
+          }
         }
       }
       else
       {
-        log_message(port:0, data:"The Required Tool is not available on the target system");
-        exit(0);
+        set_kb_item(name:"policy/win_general_err", value:"The Required Tool is not available on the target system");
+        exit_cleanly();
       }
     }
-    else  md5error += filename + '|win_cmd_exec() Connection Failed|Re-test this file;\n';
+    else {
+     set_kb_item(name:"policy/win_md5cksum_err", value:filename + '|win_cmd_exec() Connection Failed|Re-test this file;');
+    }
   }
   ## sha1 Checksum Calculation
   else if (algorithm == "sha1") {
          if (!check_sha1(sha1:checksum)) {
            if (checksum != "sha1") {
-             _error += filename + '|sha1 format error|error;\n';
+             set_kb_item(name:"policy/win_general_err", value:filename + '|sha1 format error|error;');
            }
            continue;
          }
@@ -473,7 +494,7 @@ for(i=1; i<max; i++)
       {
         temp_split = split(sha1res);
         if(filecheck >!< temp_split[2]){
-          sha1error += filename + '|No such file or directory|error;\n';
+          set_kb_item(name:"policy/win_sha1cksum_err", value:filename + '|No such file or directory|error;');
         }
         else {
           ## Split and Get the checksum value from the response
@@ -481,54 +502,32 @@ for(i=1; i<max; i++)
           if (sha1val[1])
           {
             sha1val = split(sha1val[1], keep:0);
-            if (sha1val[0] == checksum)  sha1pass += filename + '|' + sha1val[0] + '|pass;\n';
-            else  sha1fail += filename + '|' + sha1val[0] + '|fail;\n';
+            if (sha1val[0] == checksum) {
+             set_kb_item(name:"policy/win_sha1cksum_ok", value:filename + '|' + sha1val[0] + '|pass;');
+             replace_kb_item(name:"policy/win_checksum_ok", value:TRUE);
+            }
+            else {
+              set_kb_item(name:"policy/win_sha1cksum_fail", value:filename + '|' + sha1val[0] + '|fail;');
+              replace_kb_item(name:"policy/win_checksum_fail", value:TRUE);
+            }
           }
-          else sha1error += filename + '|Error while calculating checksum|Re-test this file;\n';
+          else {
+            set_kb_item(name:"policy/win_sha1cksum_err", value:filename + '|Error while calculating checksum|Re-test this file;');
+          }
         }
       }
       else
       {
-        log_message(port:0, data:"Required Tool is not available on the target system");
-        exit(0);
+        set_kb_item(name:"policy/win_general_err", value:"Required Tool is not available on the target system");
+        exit_cleanly();
       }
     }
-    else  sha1error += filename + '|win_cmd_exec() Connection Failed|Re-test this file;\n';
+    else {
+     set_kb_item(name:"policy/win_sha1cksum_err", value:filename + '|win_cmd_exec() Connection Failed|Re-test this file;');
+    }
   }
 }
 
 if (install = "yes" && delete = "yes")clearexe = win_cmd_exec (cmd:delexe, password:password, username:username);
 
-if (_error) {
-  report = 'Errors:\n' + _error;
-  log_message(port:0, data:report);
-}
-
-# Write results to KB for further checks and reporting
-if (md5pass) {
-  set_kb_item(name:"policy/win_md5cksum_ok", value:md5pass);
-  replace_kb_item(name:"policy/win_checksum_ok", value:TRUE);
-}
-if (md5fail) {
-  set_kb_item(name:"policy/win_md5cksum_fail", value:md5fail);
-  replace_kb_item(name:"policy/win_checksum_fail", value:TRUE);
-}
-if (md5error) {
-  set_kb_item(name:"policy/win_md5cksum_err", value:md5error);
-  replace_kb_item(name:"policy/win_checksum_err", value:TRUE);
-}
-
-if (sha1pass) {
-  set_kb_item(name:"policy/win_sha1cksum_ok", value:sha1pass);
-  replace_kb_item(name:"policy/win_checksum_ok", value:TRUE);
-}
-if (sha1fail) {
-  set_kb_item(name:"policy/win_sha1cksum_fail", value:sha1fail);
-  replace_kb_item(name:"policy/win_checksum_fail", value:TRUE);
-}
-if (sha1error) {
-  set_kb_item(name:"policy/win_sha1cksum_err", value:sha1error);
-  replace_kb_item(name:"policy/win_checksum_err", value:TRUE);
-}
-
-exit(0);
+exit_cleanly();

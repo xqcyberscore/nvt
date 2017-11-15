@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_registry.nasl 4928 2017-01-03 09:00:28Z cfi $
+# $Id: policy_registry.nasl 7753 2017-11-14 10:57:07Z jschulte $
 #
 # Windows Registry Check
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105988");
-  script_version("$Revision: 4928 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-03 10:00:28 +0100 (Tue, 03 Jan 2017) $");
+  script_version("$Revision: 7753 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-14 11:57:07 +0100 (Tue, 14 Nov 2017) $");
   script_tag(name:"creation_date", value:"2015-05-22 12:17:31 +0700 (Fri, 22 May 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,6 +65,14 @@ line_count = max_index(lines);
 if (line_count == 1 && lines[0] == "Present|Hive|Key|Value|ValueType|ValueContent")
   exit(0);	# Just header is present
 
+function exit_cleanly() {
+  set_kb_item(name:"policy/registry_no_timeout", value: TRUE);
+
+  exit(0);
+}
+
+set_kb_item(name:"policy/registry_started", value:TRUE);
+
 for (i=1; i<line_count; i++) {
   line = lines[i];
   # Check structure of line
@@ -72,7 +80,7 @@ for (i=1; i<line_count; i++) {
                  string:line) && !eregmatch(pattern:"(TRUE|FALSE)\|HKLM\|([a-zA-Z0-9\\]+)", string:line)) {
     if (eregmatch(pattern:"^$", string:line))
       break;
-    errors += 'Invalid line: ' + line + '\n';
+    set_kb_item(name:"policy/registry_err", value:'Invalid line: ' + line);
   }
   else {
     val = split(line, sep:"|", keep:0);
@@ -90,11 +98,12 @@ for (i=1; i<line_count; i++) {
       key_exists = registry_key_exists(key:key);
       if (((present == "true") && key_exists) ||
           ((present == "false") && !key_exists))
-        passes += hive + '\\' + key + ' | ' + present + '\n';
+        set_kb_item(name:"policy/registry_ok", value:hive + '\\' + key + ' | ' + present);
       else
         if (((present == "true") && !key_exists) ||
             ((present == "false") && key_exists))
-          violations += hive + '\\' + key + ' | ' + present+ '\n';
+          set_kb_item(name:"policy/registry_fail", value:hive + '\\' + key + ' | ' + present);
+          replace_kb_item(name:"policy/registry_fail_exists", value:TRUE);
     }
     # Check as well the content
     else {
@@ -105,22 +114,21 @@ for (i=1; i<line_count; i++) {
       else if (type == "REG_BINARY")
         reg_content = registry_get_binary(key:key, item:value);
       if (reg_content == content && present == "true" ||
-        reg_content != content && present == "false")
-        passes += hive + '\\' + key + '\\' + value + ' | ' + present + ' | ' +
-                  content + ' | ' + reg_content + '\n';
-      else
+        reg_content != content && present == "false") {
+        set_kb_item(name:"policy/registry_ok", value:hive + '\\' + key + '\\' + value + ' | ' + present + ' | ' +
+                  content + ' | ' + reg_content);
+        replace_kb_item(name:"policy/registry_ok_exists", value:TRUE);
+      }
+      else {
         if (reg_content == content && present == "false" ||
-          reg_content != content && present == "true")
-          violations += hive + '\\' + key + '\\' + value + ' | ' + present + ' | ' +
-                        content + ' | ' + reg_content + '\n';
+          reg_content != content && present == "true") {
+          set_kb_item(name:"policy/registry_fail", value:hive + '\\' + key + '\\' + value + ' | ' + present + ' | ' +
+                        content + ' | ' + reg_content);
+          replace_kb_item(name:"policy/registry_fail_exists", value:TRUE);
+        }
+      }
     }
   }
 }
 
-# Write the results to KB for reporting
-if (passes)
-  set_kb_item(name:"policy/registry_ok", value:passes);
-if (violations)
-  set_kb_item(name:"policy/registry_violation", value:violations);
-if (errors)
-  set_kb_item(name:"policy/registry_errors", value:errors);
+exit_cleanly();

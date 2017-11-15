@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pelco_videoxpert_mult_vuln.nasl 7340 2017-10-04 12:29:09Z cfischer $
+# $Id: gb_pelco_videoxpert_mult_vuln.nasl 7764 2017-11-15 06:26:49Z cfischer $
 #
 # Pelco VideoXpert Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:pelco:videoxpert";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106936");
-  script_version("$Revision: 7340 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-04 14:29:09 +0200 (Wed, 04 Oct 2017) $");
+  script_version("$Revision: 7764 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-15 07:26:49 +0100 (Wed, 15 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-07-11 09:20:39 +0700 (Tue, 11 Jul 2017)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -61,7 +61,7 @@ session hijacking.");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 4th October, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 15th November, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5419.php");

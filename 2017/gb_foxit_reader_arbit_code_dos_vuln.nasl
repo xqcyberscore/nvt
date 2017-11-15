@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_arbit_code_dos_vuln.nasl 7604 2017-11-01 06:48:12Z asteins $
+# $Id: gb_foxit_reader_arbit_code_dos_vuln.nasl 7764 2017-11-15 06:26:49Z cfischer $
 #
 # Foxit Reader Arbitrary Code Execution and Denial of Service Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112056");
-  script_version("$Revision: 7604 $");
+  script_version("$Revision: 7764 $");
   script_cve_id("CVE-2017-14694", "CVE-2017-15770", "CVE-2017-15771");
   script_bugtraq_id(101009, 101540, 101549);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-15 07:26:49 +0100 (Wed, 15 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-26 11:18:43 +0530 (Thu, 26 Oct 2017)");
   script_name("Foxit Reader Arbitrary Code Execution and Denial of Service Vulnerabilities (Windows)");
 
@@ -54,12 +54,11 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Foxit Reader version 8.3.2.25013 on Windows");
-  script_tag(name: "solution" , value:"No solution is available as of 27th September, 2017.
-  Information regarding this issue will be updated once the solution details are available.
+  script_tag(name: "affected" , value:"Foxit Reader version 8.3.2.25013 and earlier on Windows");
+  script_tag(name: "solution" , value:"Update to Foxit Reader 9.0 or later.
   For updates refer to http://www.foxitsoftware.com");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name: "URL" , value:"https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-14694");
   script_xref(name: "URL" , value:"https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-15771");
@@ -80,9 +79,9 @@ if(!ver = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-if(version_is_equal(version:ver, test_version:"8.3.2.25013"))
+if(version_is_less_equal(version:ver, test_version:"8.3.2.25013"))
 {
-  report = report_fixed_ver(installed_version:ver, fixed_version:"None");
+  report = report_fixed_ver(installed_version:ver, fixed_version:"9.0");
   security_message(data:report);
   exit(0);
 }

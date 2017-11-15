@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_os_detection.nasl 7598 2017-10-27 13:05:40Z cfischer $
+# $Id: gb_snmp_os_detection.nasl 7758 2017-11-14 15:05:56Z cfischer $
 #
 # SNMP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103429");
-  script_version("$Revision: 7598 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 15:05:40 +0200 (Fri, 27 Oct 2017) $");
+  script_version("$Revision: 7758 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-14 16:05:56 +0100 (Tue, 14 Nov 2017) $");
   script_tag(name:"creation_date", value:"2012-02-17 10:17:12 +0100 (Fri, 17 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -179,8 +179,9 @@ if( sysdesc =~ "Microsoft Corp. Windows 98" || sysdesc =~ "Hardware:.*Software: 
   exit( 0 );
 }
 
-# FreeBSD infoware-nt.infoware.local 4.11-RELEASE-p26 FreeBSD 4.11-RELEASE-p26 #12: S i386
-if( sysdesc =~ "FreeBSD.* FreeBSD" ) {
+# FreeBSD localhost.localdomain 4.11-RELEASE-p26 FreeBSD 4.11-RELEASE-p26 #12: S i386
+# pfSense localhost.localdomain 2.4.1-RELEASE pfSense FreeBSD 11.1-RELEASE-p2 amd64
+if( sysdesc =~ "(FreeBSD|pfSense).* FreeBSD" ) {
 
   set_kb_item( name:"Host/OS/SNMP", value:"FreeBSD" );
   set_kb_item( name:"Host/OS/SNMP/Confidence", value:100 );
@@ -194,7 +195,7 @@ if( sysdesc =~ "FreeBSD.* FreeBSD" ) {
   exit( 0 );
 }
 
-# NetBSD IPr.archway.net 1.6.1_STABLE NetBSD 1.6.1_STABLE (SCZ_16) #0: Thu May 24 14:42:04 CEST 2007...
+# NetBSD localhost.localdomain 1.6.1_STABLE NetBSD 1.6.1_STABLE (SCZ_16) #0: Thu May 24 14:42:04 CEST 2007...
 if( sysdesc =~ "NetBSD.* NetBSD" ) {
 
   set_kb_item( name:"Host/OS/SNMP", value:"NetBSD" );
@@ -210,7 +211,7 @@ if( sysdesc =~ "NetBSD.* NetBSD" ) {
 }
 
 # Powered by OpenBSD
-# OpenBSD frsrvfwbk.dev.netgem.com 4.2 GENERIC#375 i386
+# OpenBSD localhost.localdomain 4.2 GENERIC#375 i386
 if( sysdesc =~ "^OpenBSD" || sysdesc =~ "Powered by OpenBSD" ) {
 
   set_kb_item( name:"Host/OS/SNMP", value:"OpenBSD" );
@@ -328,7 +329,7 @@ if( "Base Operating System Runtime AIX" >< sysdesc ) {
   exit( 0 );
 }
 
-# Darwin mars.imageline.it 9.6.0 Darwin Kernel Version 9.6.0: Mon Nov 24 17:37:00 PST 2008; root:xnu-1228.9.59~1/RELEASE_I386 i386
+# Darwin localhost.localdomain 9.6.0 Darwin Kernel Version 9.6.0: Mon Nov 24 17:37:00 PST 2008; root:xnu-1228.9.59~1/RELEASE_I386 i386
 if( "Darwin Kernel" >< sysdesc ) {
 
   set_kb_item( name:"Host/OS/SNMP", value:"Apple Mac OS X" );
@@ -355,7 +356,7 @@ if( "Juniper Networks" >< sysdesc && "JUNOS" >< sysdesc ) {
   exit( 0 );
 }
 
-# tuneld.slrsuzbar.com AlphaServer 1200 5/533 4MB OpenVMS V7.3-1 Compaq TCP/IP Services for OpenVMS
+# localhost.localdomain AlphaServer 1200 5/533 4MB OpenVMS V7.3-1 Compaq TCP/IP Services for OpenVMS
 if( "OpenVMS" >< sysdesc ) {
 
   set_kb_item( name:"Host/OS/SNMP", value:"OpenVMS" );

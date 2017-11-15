@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_wizard_xml_dir_trav_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_pfsense_wizard_xml_dir_trav_vuln.nasl 7754 2017-11-14 11:15:34Z asteins $
 #
 # PFSense Wizard XML Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:pfsense:pfsense';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806806");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 7754 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-14 12:15:34 +0100 (Tue, 14 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-01-14 18:46:02 +0530 (Thu, 14 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("PFSense Wizard XML Directory Traversal Vulnerability");
@@ -67,8 +67,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_dependencies("gb_pfsense_remote_detect.nasl");
-  script_mandatory_keys("pfsense/Installed");
+  script_dependencies("gb_pfsense_detect.nasl");
+  script_require_ports("Services/www", 443);
+  script_mandatory_keys("pfsense/http/installed");
   exit(0);
 }
 
@@ -76,13 +77,9 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-req = "";
-buf = "";
 url = "/index.php";
 
-# Get HTTPs Port
-if(!nmsPort = get_app_port(cpe:CPE)){
+if(!nmsPort = get_app_port(cpe:CPE, service:"www")){
   exit(0);
 }
 
@@ -90,7 +87,6 @@ if(!dir = get_app_location(cpe:CPE, port:nmsPort)){
   exit(0);
 }
 
-## Get host name or IP
 host = http_host_name(port:nmsPort);
 if(!host){
   exit(0);

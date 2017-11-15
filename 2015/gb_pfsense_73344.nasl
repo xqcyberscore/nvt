@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_73344.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: gb_pfsense_73344.nasl 7754 2017-11-14 11:15:34Z asteins $
 #
 # pfSense Cross Site Scripting and Cross Site Request Forgery Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-2294","CVE-2015-2295");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6443 $");
+ script_version ("$Revision: 7754 $");
 
  script_name("pfSense Cross Site Scripting and Cross Site Request Forgery Vulnerabilities");
 
@@ -59,13 +59,12 @@ arbitrary files on the target system with root privileges.");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-14 12:15:34 +0100 (Tue, 14 Nov 2017) $");
  script_tag(name:"creation_date", value:"2015-08-21 15:06:51 +0200 (Fri, 21 Aug 2015)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_pfsense_version.nasl");
- script_require_ports("Services/ssh", 22);
+ script_dependencies("gb_pfsense_detect.nasl");
  script_mandatory_keys("pfsense/installed");
 
  exit(0);
@@ -74,7 +73,7 @@ arbitrary files on the target system with root privileges.");
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
+if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
 if( version_is_less( version:version, test_version:"2.2.1" ) )
 {

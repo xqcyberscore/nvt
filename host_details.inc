@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 7718 2017-11-09 15:45:46Z cfischer $
+# $Id: host_details.inc 7749 2017-11-14 07:03:27Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7718 $
+# $Revision: 7749 $
 #
 ###############################################################################
 
@@ -1260,6 +1260,7 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       banner == "Server: HASP LM" || # Is running under windows and linux
       banner == "Server: Mbedthis-Appweb" || # Is running under various OS variants
       banner == "Server: GoAhead-Webs" || # Is running under various OS variants
+      banner == "Server: Mojolicious (Perl)" || # Cross-platform
       banner == "+OK POP3 ready" ||
       banner == "220 FTP server ready" ||
       banner == "Server: NessusWWW" || # Nessus could be running on Windows, Linux/Unix or MacOS
@@ -1287,6 +1288,7 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       egrep( pattern:"^Server: GoAhead-Webs/([0-9.]+)$", string:banner ) || # Is running under various OS variants
       egrep( pattern:"^Server: Allegro-Software-RomPager/([0-9.]+)$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
       egrep( pattern:"^Server: CompaqHTTPServer/([0-9.]+) HPE System Management Homepage$", string:banner ) || # Is running under various OS variants
+      egrep( pattern:"^Server: Payara Server  ([0-9.]+) #badassfish$", string:banner ) || # Cross-platform, e.g. Server: Payara Server  4.1.2.172 #badassfish
       egrep( pattern:"^SSH-2\.0-RomSShell_([0-9.]+)$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
       egrep( pattern:"^([0-9.]+)$", string:banner ) || # Bind9 and MySQL. Both are often only sending e.g. 9.4.2
       egrep( pattern:"^([0-9.]+)(-[0-9.]+)?-(MariaDB|log)$", string:banner ) || # MariaDB, e.g. 5.5.5-10.1.19-MariaDB or 5.5.49-MariaDB, MySQL e.g. 5.5.54-38.6-log or 5.6.25-log

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums.nasl 7566 2017-10-25 14:28:42Z cfischer $
+# $Id: policy_file_checksums.nasl 7753 2017-11-14 10:57:07Z jschulte $
 #
 # Check File Checksums
 #
@@ -28,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103940");
-  script_version("$Revision: 7566 $");
+  script_version("$Revision: 7753 $");
   script_name("File Checksums");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 16:28:42 +0200 (Wed, 25 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-14 11:57:07 +0100 (Tue, 14 Nov 2017) $");
   script_tag(name:"creation_date", value:"2013-08-14 16:47:16 +0200 (Wed, 14 Aug 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,6 +66,14 @@ checksumlist = script_get_preference_file_content("Target checksum File");
 if (!checksumlist)
   exit(0);
 
+function exit_cleanly() {
+  set_kb_item(name:"policy/no_timeout", value:TRUE);
+
+  exit(0);
+}
+
+set_kb_item(name:"policy/checksum_started", value:TRUE);
+
 lines = split(checksumlist,keep:0);
 split_checksumlist = lines;
 
@@ -74,8 +82,8 @@ line_count = max_index(lines);
 if (line_count == 1 && lines[0] =~ "Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?") {
   report  = "Checksumtest aborted: Attached checksum File doesn't contain test entries (Only the header is present).";
   report += "Please upload a file following the syntax described in the referenced documentation.";
-  log_message(port:0, data:report);
-  exit(0);
+  set_kb_item(name:"policy/general_err", value:report);
+  exit_cleanly();
 }
 
 x = 0;
@@ -95,8 +103,8 @@ foreach line (lines) {
 if (_error){
   report  = 'Checksumtest aborted. Errors:\n' + _error;
   report += '\n\nPlease upload a file following the syntax described in the referenced documentation.';
-  log_message(port:0, data:report);
-  exit(0);
+  set_kb_item(name:"policy/general_err", value:report);
+  exit_cleanly();
 }
 
 
@@ -112,8 +120,8 @@ if (!sock) {
   error = get_ssh_error();
   if (!error)
     error = "No SSH Port or Connection!";
-  log_message(port:port, data:error);
-  exit(0);
+  set_kb_item(name:"policy/general_err", value:error);
+  exit_cleanly();
 }
 
 # Check if it has the format of an MD5 hash
@@ -190,7 +198,7 @@ for (i=0; i<max; i++) {
 
   if (!check_file(file:filename)) {
     if (tolower(filename) != 'file') {
-      _error += filename + '|filename format error|error;\n';
+      set_kb_item(name:"policy/general_err", value:filename + '|filename format error|error;');
     }
     continue;
   }
@@ -198,7 +206,7 @@ for (i=0; i<max; i++) {
   if (algorithm == "md5") {
     if (!check_md5(md5:checksum)) {
       if (checksum != 'md5') {
-        _error += filename + '|md5 format error|error;\n'; 
+        set_kb_item(name:"policy/general_err", value:filename + '|md5 format error|error;');
       }
       continue;
     }
@@ -207,18 +215,20 @@ for (i=0; i<max; i++) {
     if (sshval !~ ".*No such file or directory") {
       md5val = split(sshval, sep:' ', keep:0);
       if (tolower(md5val[0]) == checksum) {
-        md5pass += filename + '|' + md5val[0] + '|pass;\n';
+        set_kb_item(name:"policy/md5cksum_ok", value:filename + '|' + md5val[0] + '|pass;');
+        replace_kb_item(name:"policy/checksum_ok", value:TRUE);
       } else {
-        md5fail += filename + '|' + md5val[0] + '|fail;\n';
+        set_kb_item(name:"policy/md5cksum_fail", value:filename + '|' + md5val[0] + '|fail;');
+        replace_kb_item(name:"policy/checksum_fail", value:TRUE);
       }
     } else {
-      md5error += filename + '|No such file or directory|error;\n';
+      set_kb_item(name:"policy/md5cksum_err", value:filename + '|No such file or directory|error;');
     }
   } else {
     if (algorithm == "sha1") {
       if (!check_sha1(sha1:checksum)) {
         if (checksum != "sha1") {
-          _error += filename + '|sha1 format error|error;\n'; 
+          set_kb_item(name:"policy/general_err", value:filename + '|sha1 format error|error;');
         }
         continue;
       }
@@ -227,47 +237,17 @@ for (i=0; i<max; i++) {
       if (sshval !~ ".*No such file or directory") {
         sha1val = split(sshval, sep:' ', keep:0);
           if (tolower(sha1val[0]) == checksum) {
-            sha1pass += filename + '|' + sha1val[0] + '|pass;\n';
+            set_kb_item(name:"policy/sha1cksum_ok", value:filename + '|' + sha1val[0] + '|pass;');
+            replace_kb_item(name:"policy/checksum_ok", value:TRUE);
           } else {
-            sha1fail += filename + '|' + sha1val[0] + '|fail;\n';
+            set_kb_item(name:"policy/sha1cksum_fail", value:filename + '|' + sha1val[0] + '|fail;');
+            replace_kb_item(name:"policy/checksum_fail", value:TRUE);
           }
       } else {
-        sha1error += filename + '|No such file or directory|error;\n';
+        set_kb_item(name:"policy/sha1cksum_err", value:filename + '|No such file or directory|error;');
       }
     }
   }
 }
 
-if (_error) {
-  report = 'Errors\n:' + _error;
-  log_message(port:0, data:report);
-}
-
-# Write results to KB for further checks and reporting
-if (md5pass) {
-  set_kb_item(name:"policy/md5cksum_ok", value:md5pass);
-  replace_kb_item(name:"policy/checksum_ok", value:TRUE);
-}
-if (md5fail) {
-  set_kb_item(name:"policy/md5cksum_fail", value:md5fail);
-  replace_kb_item(name:"policy/checksum_fail", value:TRUE);
-}
-if (md5error) {
-  set_kb_item(name:"policy/md5cksum_err", value:md5error);
-  replace_kb_item(name:"policy/checksum_err", value:TRUE);
-}
-
-if (sha1pass) {
-  set_kb_item(name:"policy/sha1cksum_ok", value:sha1pass);
-  replace_kb_item(name:"policy/checksum_ok", value:TRUE);
-}
-if (sha1fail) {
-  set_kb_item(name:"policy/sha1cksum_fail", value:sha1fail);
-  replace_kb_item(name:"policy/checksum_fail", value:TRUE);
-}
-if (sha1error) {
-  set_kb_item(name:"policy/sha1cksum_err", value:sha1error);
-  replace_kb_item(name:"policy/checksum_err", value:TRUE);
-}
-
-exit(0);
+exit_cleanly();

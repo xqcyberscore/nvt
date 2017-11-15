@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_registry_errors.nasl 4928 2017-01-03 09:00:28Z cfi $
+# $Id: policy_registry_errors.nasl 7753 2017-11-14 10:57:07Z jschulte $
 #
 # Windows Registry Check: Errors
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105991");
-  script_version("$Revision: 4928 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-03 10:00:28 +0100 (Tue, 03 Jan 2017) $");
+  script_version("$Revision: 7753 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-14 11:57:07 +0100 (Tue, 14 Nov 2017) $");
   script_tag(name:"creation_date", value:"2015-05-22 15:06:15 +0700 (Fri, 22 May 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("policy_registry.nasl");
-  script_mandatory_keys("policy/registry_errors");
+  script_mandatory_keys("policy/registry_started");
 
   script_tag(name:"summary", value:"List registry entries from the registry policy check
   which contain errors.");
@@ -48,11 +48,22 @@ if(description)
   exit(0);
 }
 
-errors = get_kb_item("policy/registry_errors");
+errors = get_kb_list("policy/registry_err");
 
 if (errors) {
-  report = 'The following errors occurred:\n\n' + errors;
+  report = 'The following errors occurred:\n\n';
+  foreach error (errors) {
+    report += error + '\n';
+  }
   log_message(data:report, port:0);
+}
+
+if (!get_kb_item("policy/registry_no_timeout")) {
+  timeoutReport = "A timeout happened during the test for Windows Registry entries. " +
+                  "Consider raising the script_timeout value of the NVT " +
+                  "'Windows Registry Check' " +
+                  "(OID: 1.3.6.1.4.1.25623.1.0.105988)";
+  log_message( port: 0, data: timeoutReport );
 }
 
 exit(0);

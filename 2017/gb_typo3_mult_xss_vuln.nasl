@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_xss_vuln.nasl 7698 2017-11-08 12:01:33Z asteins $
+# $Id: gb_typo3_mult_xss_vuln.nasl 7762 2017-11-15 06:11:01Z cfischer $
 #
 # TYPO3 Multiple XSS Vulnerabilities
 #
@@ -29,15 +29,16 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112112");
-  script_version("$Revision: 7698 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:01:33 +0100 (Wed, 08 Nov 2017) $");
+  script_version("$Revision: 7762 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-15 07:11:01 +0100 (Wed, 15 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-08 13:15:49 +0100 (Wed, 08 Nov 2017)");
   script_bugtraq_id(42029);
+  script_cve_id("CVE-2010-3659");
 
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("TYPO3 Multiple XSS Vulnerabilities");
   script_tag(name: "summary", value: "TYPO3 is prone to multiple cross-site scripting (XSS) vulnerabilities.");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");

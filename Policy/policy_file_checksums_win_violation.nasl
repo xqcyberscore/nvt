@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums_win_violation.nasl 4926 2017-01-03 08:49:00Z cfi $
+# $Id: policy_file_checksums_win_violation.nasl 7753 2017-11-14 10:57:07Z jschulte $
 #
 # List Windows File Checksum Violations
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96183");
-  script_version("$Revision: 4926 $");
+  script_version("$Revision: 7753 $");
   script_name("Windows file Checksums: Violations");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-03 09:49:00 +0100 (Tue, 03 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-14 11:57:07 +0100 (Tue, 14 Nov 2017) $");
   script_tag(name:"creation_date", value:"2013-09-09 11:15:54 +0200 (Mon, 09 Sep 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Policy");
@@ -48,14 +48,19 @@ if(description)
   exit(0);
 }
 
-md5fail = get_kb_item("policy/win_md5cksum_fail");
-sha1fail = get_kb_item("policy/win_sha1cksum_fail");
+md5fail = get_kb_list("policy/win_md5cksum_fail");
+sha1fail = get_kb_list("policy/win_sha1cksum_fail");
 
 if (md5fail || sha1fail) {
   report = "The following file checksums don't match:\n\n";
-  report += 'Filename|Result|Errorcode;\n' + md5fail + sha1fail;
+  report += 'Filename|Result|Errorcode;\n';
+  foreach fail (md5fail) {
+    report += fail + '\n';
+  }
+  foreach fail (sha1fail) {
+    report += fail + '\n';
+  }
   log_message(data:report, port:0, proto:"ssh");
 }
 
 exit(0);
- 

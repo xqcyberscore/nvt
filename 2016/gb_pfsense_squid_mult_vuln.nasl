@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_squid_mult_vuln.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_pfsense_squid_mult_vuln.nasl 7754 2017-11-14 11:15:34Z asteins $
 #
 # pfSense Squid Multiple Vulnerabilities
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:pfsense:pfsense";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808587");
-  script_version("$Revision: 5557 $");
+  script_version("$Revision: 7754 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-14 12:15:34 +0100 (Tue, 14 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-07-19 12:17:57 +0530 (Tue, 19 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("pfSense Squid Multiple Vulnerabilities");
@@ -68,8 +68,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_pfsense_remote_detect.nasl");
-  script_mandatory_keys("pfsense/Installed");
+  script_dependencies("gb_pfsense_detect.nasl");
+  script_require_ports("Services/www", 443);
+  script_mandatory_keys("pfsense/http/installed");
   exit(0);
 }
 
@@ -77,16 +78,10 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-url = "";
-
-## Get HTTP Port
-if(!http_port = get_app_port(cpe:CPE)){
+if(!http_port = get_app_port(cpe:CPE, service:"www")){
   exit(0);
 }
 
-##Checking for Squid installation
 url = "/squid_clwarn.php";
 req1 = http_get(item:url, port:http_port);
 res1 = http_send_recv(port:http_port, data:req1);

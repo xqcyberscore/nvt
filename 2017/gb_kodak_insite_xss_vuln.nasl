@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodak_insite_xss_vuln.nasl 7610 2017-11-01 13:14:39Z jschulte $
+# $Id: gb_kodak_insite_xss_vuln.nasl 7763 2017-11-15 06:15:22Z teissa $
 #
 # Kodak InSite XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:kodak:insite";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106821");
-  script_version("$Revision: 7610 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-01 14:14:39 +0100 (Wed, 01 Nov 2017) $");
+  script_version("$Revision: 7763 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-15 07:15:22 +0100 (Wed, 15 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-05-23 09:17:36 +0700 (Tue, 23 May 2017)");
   script_tag(name: "cvss_base", value: "6.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -78,7 +78,7 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version_in_range(version: version, test_version: "6.5", test_version2: "9.0")) {
+if (version_in_range(version: version, test_version: "6.5", test_version2: "8.0")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "None");
   security_message(port: port, data: report);
   exit(0);

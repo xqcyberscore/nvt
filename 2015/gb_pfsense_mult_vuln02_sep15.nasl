@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_mult_vuln02_sep15.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: gb_pfsense_mult_vuln02_sep15.nasl 7754 2017-11-14 11:15:34Z asteins $
 #
 # pfSense Multiple Vulnerabilities -02 Sep15
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:pfsense:pfsense";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805971");
-  script_version("$Revision: 6443 $");
+  script_version("$Revision: 7754 $");
   script_cve_id("CVE-2015-6508", "CVE-2015-6509", "CVE-2015-6510", "CVE-2015-6511",
                 "CVE-2015-4029");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-14 12:15:34 +0100 (Tue, 14 Nov 2017) $");
   script_tag(name:"creation_date", value:"2015-09-04 14:53:21 +0530 (Fri, 04 Sep 2015)");
   script_name("pfSense Multiple Vulnerabilities -02 Sep15");
 
@@ -83,8 +83,7 @@ if (description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("gb_pfsense_version.nasl");
-  script_require_ports("Services/ssh", 22);
+  script_dependencies("gb_pfsense_detect.nasl");
   script_mandatory_keys("pfsense/installed");
   exit(0);
 }
@@ -95,7 +94,7 @@ include("version_func.inc");
 ## Variable Initialization
 pfVer = "";
 
-if(!pfVer = get_app_version(cpe:CPE)) exit(0);
+if(!pfVer = get_app_version(cpe:CPE, nofork:TRUE)) exit(0);
 
 ##Check version is < 2.2.3
 if(version_is_less(version:pfVer, test_version:"2.2.3" ) )

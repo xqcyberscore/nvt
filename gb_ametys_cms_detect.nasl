@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ametys_cms_detect.nasl 7746 2017-11-13 13:35:20Z teissa $
+# $Id: gb_ametys_cms_detect.nasl 7751 2017-11-14 07:09:45Z teissa $
 #
 # Ametys CMS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107256");
-  script_version("$Revision: 7746 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-13 14:35:20 +0100 (Mon, 13 Nov 2017) $");
+  script_version("$Revision: 7751 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-14 08:09:45 +0100 (Tue, 14 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-11-13 09:55:00 +0700 (Mon, 13 Nov 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,13 +61,13 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 8080);
 
-foreach dir (make_list_unique( "/", "/en", "/fr", "/de", "/cms"))
+foreach dir (make_list_unique("/", "/en", "/fr", "/de", "/cms", cgi_dirs(port)))
 {
 
   install = dir;
   if (dir == "/") dir = "";
 
-  res = http_get_cache(port: port, item: dir + "index.html");
+  res = http_get_cache(port: port, item: dir + "/index.html");
 
   if ("title>Ametys" >< res || "<h1>Welcome to Ametys" >< res || res =~ 'meta content="Ametys CMS Open source' )
   {

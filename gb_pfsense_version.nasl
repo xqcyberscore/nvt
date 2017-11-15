@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_version.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_pfsense_version.nasl 7754 2017-11-14 11:15:34Z asteins $
 #
-# pfSense Detection
+# pfSense Detection (SSH)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -30,10 +30,10 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105328");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version ("$Revision: 7754 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-14 12:15:34 +0100 (Tue, 14 Nov 2017) $");
  script_tag(name:"creation_date", value:"2015-08-21 14:51:09 +0200 (Fri, 21 Aug 2015)");
- script_name("pfSense Detection");
+ script_name("pfSense Detection (SSH)");
 
  script_tag(name: "summary" , value: "This script performs SSH based detection of pfSense");
 
@@ -44,34 +44,27 @@ if (description)
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_dependencies("gather-package-list.nasl");
  script_require_ports("Services/ssh", 22);
- script_mandatory_keys("pfSense/uname");
+ script_mandatory_keys("pfsense/uname");
  exit(0);
 }
 
 include("host_details.inc");
 
-uname = get_kb_item( "pfSense/uname" );
+uname = get_kb_item( "pfsense/uname" );
 if( ! uname || "pfSense" >!< uname ) exit( 0 );
+port = get_kb_item( "pfsense/ssh/port" );
+
+set_kb_item( name:"pfsense/installed", value:TRUE );
+set_kb_item( name:"pfsense/ssh/installed", value:TRUE );
 
 vers = 'unknown';
-cpe = 'cpe:/a:pfsense:pfsense';
 
 version = eregmatch( pattern:'Welcome to pfSense ([^-]+)-RELEASE', string:uname );
 if( ! isnull( version[1] ) )
 {
   vers = version[1];
-  cpe += ':' + vers;
+  set_kb_item( name:"pfsense/ssh/" + port + "/version", value:vers);
+  set_kb_item( name:"pfsense/ssh/" + port + "/concluded", value:uname);
 }
-
-set_kb_item( name:"pfsense/installed", value:TRUE );
-
-register_product( cpe:cpe, location:'ssh' );
-
-log_message( data: build_detection_report( app:'pfSense',
-                                           version:vers,
-                                           install:'ssh',
-                                           cpe:cpe,
-                                           concluded: version[0] ),
-             port:0 );
 
 exit( 0 );

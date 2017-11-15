@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 7642 2017-11-03 09:03:56Z cfischer $
+# $Id: gather-package-list.nasl 7752 2017-11-14 08:12:43Z asteins $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 7642 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 10:03:56 +0100 (Fri, 03 Nov 2017) $");
+  script_version("$Revision: 7752 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-14 09:12:43 +0100 (Tue, 14 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -740,7 +740,8 @@ if( "JUNOS" >< uname && "Junos Space" >!< uname )
 
 if( "Welcome to pfSense" >< uname )
 {
-  set_kb_item( name:"pfSense/uname", value:uname );
+  set_kb_item( name:"pfsense/uname", value:uname );
+  set_kb_item( name:"pfsense/ssh/port", value:port);
   exit( 0 );
 }
 

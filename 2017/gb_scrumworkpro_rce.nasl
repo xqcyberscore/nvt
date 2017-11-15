@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrumworkpro_rce.nasl 7258 2017-09-26 06:06:58Z emoss $
+# $Id: gb_scrumworkpro_rce.nasl 7764 2017-11-15 06:26:49Z cfischer $
 #
 # ScrumWorks Pro Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:collabnet:scrumworkspro';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107181");
-  script_version("$Revision: 7258 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:06:58 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 7764 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-15 07:26:49 +0100 (Wed, 15 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-09-25 13:57:36 +0200 (Mon, 25 Sep 2017)");
 
   script_tag(name:"cvss_base", value:"10.0");
@@ -48,9 +48,9 @@ if(description)
   script_tag(name: "impact" , value: "Remote attacker is able to execute arbitrary code with the permissions of the ScrumWorks application server.");
 
   script_tag(name: "affected", value: "ScrumWorks Pro version 6.7.0");
-  script_tag(name: "solution", value: "No solution or patch is available as of 25th September, 2017. Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch is available as of 15th November, 2017. Information regarding this issue will be updated once the solution details are available.");
 
-  script_xref(name: "URL" , value: "https://blogs.securiteam.com/index.php/archives/3387?utm_source=tuicool&utm_medium=referral");
+  script_xref(name: "URL" , value: "https://blogs.securiteam.com/index.php/archives/3387");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_category(ACT_GATHER_INFO);

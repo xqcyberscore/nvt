@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_mybb_detect.nasl 7741 2017-11-13 07:51:59Z teissa $
+# $Id: sw_mybb_detect.nasl 7749 2017-11-14 07:03:27Z cfischer $
 #
 # MyBB Forum Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111023");
-  script_version("$Revision: 7741 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-13 08:51:59 +0100 (Mon, 13 Nov 2017) $");
+  script_version("$Revision: 7749 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-14 08:03:27 +0100 (Tue, 14 Nov 2017) $");
   script_tag(name:"creation_date", value:"2015-07-20 13:14:40 +0200 (Mon, 20 Jul 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -104,7 +104,6 @@ foreach dir( make_list_unique( "/" , "/forum" , "/forums" , "/mybb" , "/MyBB" , 
                                                cpe:cpe,
                                                concluded:version[0] ),
                                                port:port );
-    exit( 0 );
   }
 }
 

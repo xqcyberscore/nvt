@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_file_upload_vuln.nasl 7188 2017-09-19 10:29:47Z asteins $
+# $Id: gb_typo3_file_upload_vuln.nasl 7762 2017-11-15 06:11:01Z cfischer $
 #
 # TYPO3 Unrestricted File Upload Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112040");
-  script_version("$Revision: 7188 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-19 12:29:47 +0200 (Tue, 19 Sep 2017) $");
+  script_version("$Revision: 7762 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-15 07:11:01 +0100 (Wed, 15 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-09-12 07:56:49 +0200 (Tue, 12 Sep 2017)");
 
   script_cve_id("CVE-2017-14251");
@@ -39,7 +39,7 @@ if(description)
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("TYPO3 Unrestricted File Upload Vulnerability");
   script_tag(name: "summary", value: "TYPO3 is prone to an unrestrcited file upload vulnerability.");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of the detect NVT and check if the version is vulnerable or not.");

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_remote_detect.nasl 5829 2017-04-03 07:00:29Z cfi $
+# $Id: gb_pfsense_remote_detect.nasl 7754 2017-11-14 11:15:34Z asteins $
 #
-# Pfsense Remote Version Detection
+# pfSense Detection (HTTP(s))
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806807");
-  script_version("$Revision: 5829 $");
+  script_version("$Revision: 7754 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:00:29 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-14 12:15:34 +0100 (Tue, 14 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-01-14 18:46:02 +0530 (Thu, 14 Jan 2016)");
-  script_name("Pfsense Remote Version Detection");
+  script_name("pfSense Detection (HTTP(s))");
 
   script_tag(name : "summary" , value : "Detection of installed version
-  of pfsense.
+  of pfSense.
 
-  This script sends HTTP GET request and try to get the version from the
+  This script sends an HTTP GET request, tries to get the version from the
   response, and sets the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -51,40 +51,21 @@ if(description)
 }
 
 include("http_func.inc");
-include("cpe.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-sndReq = "";
-rcvRes = "";
-pfsPort = "";
-pfsVer = "";
 
 pfsPort = get_http_port(default:443);
 
 rcvRes = http_get_cache(item:"/", port:pfsPort);
 
-## Confirm application
-if('pfsense' >< rcvRes && ('>Login to pfSense<' >< rcvRes || 
-   '/themes/pfsense_ng' >< rcvRes))
+if('pfsense' >< rcvRes && ('>Login to pfSense<' >< rcvRes ||
+   '/themes/pfsense_ng' >< rcvRes || '<title id="pfsense-logo-svg">pfSense Logo</title>' >< rcvRes))
 {
-  ## Set the KB value
-  set_kb_item(name:"pfsense/Installed", value:TRUE);
+  set_kb_item(name:"pfsense/installed", value:TRUE);
+  set_kb_item(name:"pfsense/http/installed", value:TRUE);
+  set_kb_item(name:"pfsense/http/port", value:pfsPort);
 
-  ## version info is not available
   vers = 'unknown';
-   
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:pfsense:pfsense:");
-  if(!cpe)
-     cpe = 'cpe:/a:pfsense:pfsense';
-
-   register_product(cpe:cpe, location:"/", port:pfsPort);
-   log_message(data: build_detection_report(app: "pfsense",
-                                            version: vers,
-                                            install: "/",
-                                            cpe: cpe,
-                                            concluded: vers,
-                                            port: pfsPort));
 }
+
+exit(0);
