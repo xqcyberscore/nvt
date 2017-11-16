@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wisegiga_nas_multiple_vuln.nasl 7415 2017-10-13 05:18:52Z cfischer $
+# $Id: gb_wisegiga_nas_multiple_vuln.nasl 7771 2017-11-15 11:52:34Z jschulte $
 #
 # WiseGiga NAS Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/h:wisegiga:nas";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811336");
-  script_version("$Revision: 7415 $");
+  script_version("$Revision: 7771 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 07:18:52 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-15 12:52:34 +0100 (Wed, 15 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-09-12 13:20:40 +0530 (Tue, 12 Sep 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("WiseGiga NAS Multiple Vulnerabilities");
@@ -65,21 +65,18 @@ if(description)
   - Default accounts:
     - Username: guest
     - Password: guest09#$ ");
-  
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to gain access to bypass authentication mechanism and perform
-  unauthorized actions and execute arbitrary commands. 
+  unauthorized actions and execute arbitrary commands.
 
   Impact Level: System/Application");
 
   script_tag(name: "affected" , value:"WiseGiga NAS devices.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  13th October, 2017. Information regarding this issue will be updated once solution
-  details are available. For updates refer to https://www.wisegiga.com ");
+  script_tag(name: "solution" , value:"The vendor ignored security researchers trying to contact them. The vendor's website hasn't been updated since 2016. A fix is unlikely.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/42651/");
   script_xref(name : "URL" , value : "https://blogs.securiteam.com/index.php/archives/3402");

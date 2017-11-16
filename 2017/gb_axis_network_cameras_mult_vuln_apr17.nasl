@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axis_network_cameras_mult_vuln_apr17.nasl 7378 2017-10-06 15:29:03Z cfischer $
+# $Id: gb_axis_network_cameras_mult_vuln_apr17.nasl 7771 2017-11-15 11:52:34Z jschulte $
 #
 # Axis Network Cameras Multiple Vulnerabilities Apr17
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:axis:network_camera";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810932");
-  script_version("$Revision: 7378 $");
+  script_version("$Revision: 7771 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-06 17:29:03 +0200 (Fri, 06 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-15 12:52:34 +0100 (Wed, 15 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-04-20 13:14:28 +0530 (Thu, 20 Apr 2017)");
   script_name("Axis Network Cameras Multiple Vulnerabilities Apr17");
 
@@ -69,8 +69,8 @@ if (description)
   Model M3007, software versions <= 6.30.1.1");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  6th October, 2017. Information regarding this issue will be addressed once the
-  updates are available.  
+  15th November, 2017. Information regarding this issue will be addressed once the
+  updates are available.
   For updates refer to http://www.axis.com");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums_win.nasl 7753 2017-11-14 10:57:07Z jschulte $
+# $Id: policy_file_checksums_win.nasl 7777 2017-11-15 14:52:55Z cfischer $
 #
 # Check for File Checksum Violations in Windows
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96180");
-  script_version("$Revision: 7753 $");
+  script_version("$Revision: 7777 $");
   script_name("Windows file Checksums");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 11:57:07 +0100 (Tue, 14 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-15 15:52:55 +0100 (Wed, 15 Nov 2017) $");
   script_tag(name:"creation_date", value:"2013-07-02 10:55:14 +0530 (Tue, 02 Jul 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Policy");
@@ -61,7 +61,9 @@ if(description)
   If configured, the application rehash.exe will be deleted afterwards with the command 'del rehash.exe'.
 
   License of the application rehash.exe: BSD 2-Clause License
+
   Sourcecode for the application rehash.exe: http://sourceforge.net/projects/rehash/files/rehash/0.2/rehash-0.2-src.zip/download
+
   Binary for the application rehash.exe: http://sourceforge.net/projects/rehash/files/rehash/0.2/rehash-0.2-win.zip/download";
 
   script_tag(name:"summary", value:tag_summary);
@@ -74,51 +76,103 @@ if(description)
   exit(0);
 }
 
+cheksumlist = script_get_preference( "Target checksum File" );
+if( ! cheksumlist ) exit( 0 );
+
+cheksumlist = script_get_preference_file_content( "Target checksum File" );
+if( ! cheksumlist ) exit( 0 );
+
+if( ! defined_func( "win_cmd_exec" ) ) exit( 0 );  #TBD: Report this in the error NVT?
+
 include("smb_nt.inc");
-include("host_details.inc");
-
-if( ! defined_func( "win_cmd_exec" ) ) exit( 0 );
-
 
 function exit_cleanly() {
-  set_kb_item(name:"policy/win_no_timeout", value:TRUE);
-
-  exit(0);
+  set_kb_item( name:"policy/file_checksums_win/no_timeout", value:TRUE );
+  exit( 0 );
 }
 
-## Variable Initialization
-cmd = "";
-port = "";
-doamin = "";
+function check_md5( md5 ) {
+  local_var md5;
+  if( ereg( pattern:"^[a-f0-9]{32}$", string:md5 ) )
+    return TRUE;
+  else
+    return FALSE;
+}
+
+function check_sha1( sha1 ) {
+  local_var sha1;
+  if( ereg( pattern:"^[a-f0-9]{40}$", string:sha1 ) )
+    return TRUE;
+  else
+    return FALSE;
+}
+
+function check_ip( ip ) {
+  local_var ip;
+  if( ereg( pattern:"([0-9]{1,3}\.){3}[0-9]{1,3}$", string:ip ) )
+    return TRUE;
+  else
+    return FALSE;
+}
+
+function check_file( file ) {
+  local_var file, unallowed, ua;
+  unallowed = make_list( "#",">","<",";",'\0',"!","'",'"',"$","%","&","(",")","?","`","*"," |","}","{","[","]" );
+  foreach ua( unallowed ) {
+    if( ua >< file ) return FALSE;
+  }
+  if( ! ereg( pattern:"^[a-zA-Z]:.*$", string:file ) )
+    return FALSE;
+  else
+    return TRUE;
+}
+
+listall = script_get_preference( "List all and not only the first 100 entries" );
+delete  = script_get_preference( "Delete hash test Programm after the test" );
+install = script_get_preference( "Install hash test Programm on the Target" );
 maxlist = 100;
-username = "";
-password = "";
-filename = "";
-algorithm = "";
+host_ip = get_host_ip();
+
+set_kb_item( name:"policy/file_checksums_win/started", value:TRUE );
+
+lines = split( cheksumlist, keep:FALSE );
+line_count = max_index( lines );
+
+if( line_count == 1 && lines[0] =~ "Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?" ) {
+  set_kb_item( name:"policy/file_checksums_win/general_error_list", value:"Attached checksum File doesn't contain test entries (Only the header is present)." );
+  exit_cleanly();
+}
+
+x = 0;
+valid_lines_list = make_list();
+
+foreach line( lines ) {
+  x++;
+  if( ! eregmatch( pattern:"((Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?)|([a-f0-9]{32,40}\|[a-zA-Z]:.*\|(sha1|md5)))", string:line ) ) {
+    if( x == line_count && eregmatch( pattern:"^$", string:line ) )
+      continue; # accept one empty line at the end of the checksum file
+    set_kb_item( name:"policy/file_checksums_win/invalid_list", value:line + "|invalid line error|error;");
+    continue;
+  }
+  # Ignore the header of the checksum file
+  if( ! eregmatch( pattern:"(Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?)", string:line ) )
+    valid_lines_list = make_list( valid_lines_list, line );
+}
 
 port = kb_smb_transport();
 if( ! port ) port = 139;
-if( ! get_port_state( port ) ) exit( 0 );
+if( ! get_port_state( port ) ) exit_cleanly(); #TBD: Report this in the error NVT?
 
 username = kb_smb_login();
 password = kb_smb_password();
-if( ! username && ! password ) exit( 0 );
+if( ! username && ! password ) exit_cleanly(); #TBD: Report this in the error NVT?
 
 domain = kb_smb_domain();
 if( domain ) username = domain + "/" + username;
 
-listall = script_get_preference("List all and not only the first 100 entries");
-
-cheksumlist = script_get_preference("Target checksum File");
-if (!cheksumlist) exit(0);
-
-cheksumlist = script_get_preference_file_content("Target checksum File");
-if (!cheksumlist) exit(0);
-
-set_kb_item(name:"policy/win_checksum_started", value:TRUE);
-
-install = script_get_preference("Install hash test Programm on the Target");
-if (install = "yes") {
+# This always defaults to TRUE but was there since the beginning of this NVT
+# and currently needs to stay to not break existing scan configs.
+if( install = "yes" ) {
 
   delexe = 'cmd /C del rehash.exe & echo 1';
   exec_vbs = "cmd /C cscript //nologo %temp%\\greenbone_base64_to_exe.vbs & echo 1";
@@ -245,289 +299,183 @@ if (install = "yes") {
   "cmd /C echo   'Save binary data to disk>> %temp%\\greenbone_base64_to_exe.vbs & echo 1",
   'cmd /C echo   binaryStream.SaveToFile file, ForWriting>> %temp%\\greenbone_base64_to_exe.vbs && echo End Sub>> %temp%\\greenbone_base64_to_exe.vbs & echo 1');
 
-  foreach c (commands) {
-    cmdtmp = win_cmd_exec (cmd:c, password:password, username:username);
-    if (!cmdtmp)
-    {
-      for(f=0; 9; f++){
-        fortmp = win_cmd_exec (cmd:c, password:password, username:username);
-        if (fortmp)break;
-        else usleep (10000);
+  foreach c( commands ) {
+    cmdtmp = win_cmd_exec( cmd:c, password:password, username:username );
+    if( ! cmdtmp ) {
+      for( f = 0; f <= 9; f++ ) {
+        fortmp = win_cmd_exec( cmd:c, password:password, username:username );
+        if( fortmp )
+          break;
+        else
+          usleep( 10000 );
       }
-      if (!fortmp){
-        set_kb_item(name:"policy/win_general_err", value:"Required Tool is not installable on the target system");
-        deltmp = win_cmd_exec (cmd:delvbs, password:password, username:username);
+      if( ! fortmp ) {
+        set_kb_item( name:"policy/file_checksums_win/general_error_list", value:"Required Tool is not installable on the target system." );
+        deltmp = win_cmd_exec( cmd:delvbs, password:password, username:username );
         exit_cleanly();
       }
     }
   }
-  vbstmp = win_cmd_exec (cmd:exec_vbs, password:password, username:username);
-  if (!vbstmp){
-    for(f=0; 9; f++){
-      forvbstmp = win_cmd_exec (cmd:exec_vbs, password:password, username:username);
-      if (forvbstmp)break;
-      else usleep (10000);
+
+  vbstmp = win_cmd_exec( cmd:exec_vbs, password:password, username:username );
+  if( ! vbstmp ) {
+    for( f = 0; f <= 9; f++ ) {
+      forvbstmp = win_cmd_exec( cmd:exec_vbs, password:password, username:username );
+      if( forvbstmp )
+        break;
+      else
+        usleep( 10000 );
     }
   }
-  deltmp = win_cmd_exec (cmd:delvbs, password:password, username:username);
-  if (!deltmp){
-    for(f=0; 9; f++){
-      fordeltmp = win_cmd_exec (cmd:delvbs, password:password, username:username);
-      if (fordeltmp)break;
-      else usleep (10000);
+
+  deltmp = win_cmd_exec( cmd:delvbs, password:password, username:username );
+  if( ! deltmp ) {
+    for( f = 0; f <= 9; f++ ) {
+      fordeltmp = win_cmd_exec( cmd:delvbs, password:password, username:username );
+      if( fordeltmp )
+        break;
+      else
+        usleep( 10000 );
     }
   }
 }
 
-delete = script_get_preference("Delete hash test Programm after the test");
-
-lines = split(cheksumlist,keep:0);
-split_cheksumlist = lines;
-
-line_count = max_index(lines);
-
-if(line_count == 1 && lines[0] =~ "Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?") {
-  report  = "Checksumtest aborted: Attached checksum File doesn't contain test entries (Only the header is present).";
-  report += "Please upload a file following the syntax described in the referenced documentation.";
-  set_kb_item(name:"policy/win_general_err", value:report);
-  exit_cleanly();
+if( listall == "yes" ) {
+  max = max_index( valid_lines_list );
+} else {
+  maxindex = max_index( valid_lines_list );
+  if( maxindex < maxlist )
+    max = maxindex;
+  else
+    max = maxlist;
 }
 
-x = 0;
+for( i = 1; i < max; i++ ) {
 
-## Verify the given pattern in the Checksum file
-foreach line (lines)
-{
-  x++;
-  if(!eregmatch(pattern:"((Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?)|([a-f0-9]{32,40}\|[a-zA-Z]:.*\|(sha1|md5)))",
-                string:line))
-  {
-    if(x == line_count && eregmatch(pattern:"^$", string:line))
-      continue;  # accept one emty line at the end of cheksumlist.
-    _error = TRUE;
-    set_kb_item(name:"policy/win_general_err", value:"Invalid line " + line + " in checksum File found.");
-  }
-}
-
-if (_error){
-  _error = FALSE;
-  report = 'Checksumtest aborted';
-  report += '\n\nPlease upload a file following the syntax described in the referenced documentation.';
-
-  set_kb_item(name:"policy/win_general_err", value:report);
-
-  exit_cleanly();
-}
-
-host_ip = get_host_ip();
-
-## Verify the md5 Value
-function check_md5(md5)
-{
-  if(ereg(pattern:"^[a-f0-9]{32}$", string:md5))return TRUE;
-  return FALSE;
-}
-
-## Verify the sha1 Value
-function check_sha1(sha1)
-{
-  if(ereg(pattern:"^[a-f0-9]{40}$", string:sha1))return TRUE;
-  return FALSE;
-}
-
-# Check if it has the format of an IP address
-function check_ip(ip) {
-  if (ereg(pattern: "([0-9]{1,3}\.){3}[0-9]{1,3}$", string: ip))
-    return TRUE;
-
-  return FALSE;
-}
-
-## Verify the file name
-function check_file(file)
-{
-  unallowed = make_list("#",">","<",";",'\0',"!","'",'"',"$","%","&","(",")","?","`","*"," |","}","{","[","]");
-
-  foreach ua (unallowed)
-    if(ua >< file) return FALSE;
-
-  if(!ereg(pattern:"^[a-zA-Z]:.*$", string:file))return FALSE;
-
-  return TRUE;
-}
-
-if (listall == "yes")
-  max = max_index(split_cheksumlist);
-else
-{
-  maxindex = max_index(split_cheksumlist);
-  if (maxindex < maxlist)max = maxindex;
-  else max = maxlist;
-}
-
-## Traversing through the checksum file
-for(i=1; i<max; i++)
-{
-  val = split(split_cheksumlist[i], sep:'|', keep:0);
-  checksum = val[0];
-  filename = val[1];
+  val = split( valid_lines_list[i], sep:'|', keep:FALSE );
+  checksum   = val[0];
+  filename   = val[1];
   algorithm  = val[2];
 
-  if (max_index(val) == 4) {
+  if( max_index( val ) == 4 ) {
     ip = val[3];
-    if (!check_ip(ip: ip)) {
-      if (tolower(ip) != "only-check-this-ip") {
-        set_kb_item(name:"policy/win_general_err", value:filename + '|ip format error|error;');
-      }
+    if( ! check_ip( ip:ip ) ) {
+      set_kb_item( name:"policy/file_checksums_win/invalid_list", value:valid_lines_list[i] + '|ip format error|error;' );
       continue;
     }
-    if (ip && ip != host_ip)
+    if( ip && ip != host_ip )
       continue;
   }
 
-  if (!checksum || !filename || !algorithm) {
-    set_kb_item(name:"policy/win_general_err", value:"Error in file read");
+  if( ! checksum || ! filename || ! algorithm ) {
+    set_kb_item( name:"policy/file_checksums_win/invalid_list", value:valid_lines_list[i] + '|error reading line|error;' );
     continue;
   }
 
-  if (!check_file(file:filename)) {
-    if (tolower(filename) != 'file') {
-      set_kb_item(name:"policy/win_general_err", value:filename + '|filename format error|error;');
-    }
+  if( ! check_file( file:filename ) ) {
+    set_kb_item( name:"policy/file_checksums_win/invalid_list", value:valid_lines_list[i] + '|filename format error|error;' );
     continue;
   }
 
-  file = split(filename, sep:'\\', keep:0);
-  f = max_index(file);
-  f = f - 1;
+  file = split( filename, sep:'\\', keep:FALSE );
+  f = max_index( file );
+  f--;
   filecheck = '<' + file[f] + '>';
 
-
-  ## md5 Checksum Calculation
-  if (algorithm == "md5") {
-    if (!check_md5(md5:checksum)) {
-      if (checksum != 'md5') {
-        set_kb_item(name:"policy/win_general_err", value:filename + '|md5 format error|error;');
-      }
+  if( algorithm == "md5" ) {
+    if( ! check_md5( md5:checksum ) ) {
+      set_kb_item( name:"policy/file_checksums_win/invalid_list", value:valid_lines_list[i] + '|md5 format error|error;' );
       continue;
     }
 
-    ## Construct the cmd to calculate md5 checksum
     cmd = "cmd /C rehash.exe -v -none -out:nospaces -out:lowhex -" + algorithm + " " + filename;
-    md5res = win_cmd_exec (cmd: cmd, password:password, username:username);
-    if (!md5res){
-      for(f=0; 9; f++){
-        formd5res = win_cmd_exec (cmd:cmd, password:password, username:username);
-        usleep (5000);
-        if (formd5res){
+    md5res = win_cmd_exec( cmd:cmd, password:password, username:username );
+    if( ! md5res ) {
+      for( f = 0; f <= 9; f++ ) {
+        formd5res = win_cmd_exec( cmd:cmd, password:password, username:username );
+        usleep( 5000 );
+        if( formd5res ) {
           md5res = formd5res;
           break;
         }
       }
     }
 
-    if(md5res)
-    {
-      ## Check wheather the required tool is present
-      if("ReHash - Console-Based Hash Calculator" >< md5res)
-      {
-        temp_split = split(md5res);
-        if(filecheck >!< temp_split[2]){
-          set_kb_item(name:"policy/win_md5cksum_err", value:filename + '|No such file or directory|error;');
-        }
-        else {
-          ## Split and Get the checksum value from the response
-          md5val = split(temp_split[3], sep:': ', keep:0);
-          if (md5val[1])
-          {
-            md5val = split(md5val[1], keep:0);
-            if (md5val[0] == checksum) {
-             set_kb_item(name:"policy/win_md5cksum_ok", value:filename + '|' + md5val[0] + '|pass;');
-             replace_kb_item(name:"policy/win_checksum_ok", value:TRUE);
+    if( md5res ) {
+      if( "ReHash - Console-Based Hash Calculator" >< md5res ) {
+        temp_split = split( md5res );
+        if( filecheck >!< temp_split[2] ) {
+          set_kb_item( name:"policy/file_checksums_win/md5_error_list", value:filename + '|No such file or directory|error;' );
+        } else {
+          md5val = split( temp_split[3], sep:': ', keep:FALSE );
+          if( md5val[1] ) {
+            md5val = split( md5val[1], keep:FALSE );
+            if( md5val[0] == checksum ) {
+              set_kb_item( name:"policy/file_checksums_win/md5_ok_list", value:filename + '|' + md5val[0] + '|pass;' );
+            } else {
+              set_kb_item( name:"policy/file_checksums_win/md5_violation_list", value:filename + '|' + md5val[0] + '|fail;' );
             }
-            else {
-              set_kb_item(name:"policy/win_md5cksum_fail", value:filename + '|' + md5val[0] + '|fail;');
-              replace_kb_item(name:"policy/win_checksum_fail", value:TRUE);
-            }
-          }
-          else {
-            set_kb_item(name:"policy/win_md5cksum_err", value:filename + '|Error while calculating checksum|Re-test this file;');
+          } else {
+            set_kb_item( name:"policy/file_checksums_win/md5_error_list", value:filename + '|Error while calculating checksum, re-test this file|error;' );
           }
         }
-      }
-      else
-      {
-        set_kb_item(name:"policy/win_general_err", value:"The Required Tool is not available on the target system");
+      } else {
+        set_kb_item( name:"policy/file_checksums_win/general_error_list", value:"The Required Tool is not available on the target system." );
         exit_cleanly();
       }
+    } else {
+      set_kb_item( name:"policy/file_checksums_win/md5_error_list", value:filename + '|win_cmd_exec() Connection Failed, re-test this file|error;' );
     }
-    else {
-     set_kb_item(name:"policy/win_md5cksum_err", value:filename + '|win_cmd_exec() Connection Failed|Re-test this file;');
+  } else if( algorithm == "sha1" ) {
+    if( ! check_sha1( sha1:checksum ) ) {
+      set_kb_item(name:"policy/file_checksums_win/invalid_list", value:valid_lines_list[i] + '|sha1 format error|error;');
+      continue;
     }
-  }
-  ## sha1 Checksum Calculation
-  else if (algorithm == "sha1") {
-         if (!check_sha1(sha1:checksum)) {
-           if (checksum != "sha1") {
-             set_kb_item(name:"policy/win_general_err", value:filename + '|sha1 format error|error;');
-           }
-           continue;
-         }
 
-    ## Construct the cmd to calculate sha1 checksum
     cmd = "cmd /C rehash.exe -v -none -out:nospaces -out:lowhex -" + algorithm + " " + filename;
-    sha1res = win_cmd_exec (cmd: cmd, password:password, username:username);
-    if (!sha1res){
-      for(f=0; 9; f++){
-        forsha1res = win_cmd_exec (cmd:cmd, password:password, username:username);
-        usleep (5000);
-        if (forsha1res){
+    sha1res = win_cmd_exec( cmd:cmd, password:password, username:username );
+    if( ! sha1res ) {
+      for( f = 0; f <= 9; f++ ) {
+        forsha1res = win_cmd_exec( cmd:cmd, password:password, username:username );
+        usleep( 5000 );
+        if( forsha1res ) {
           sha1res = forsha1res;
           break;
         }
       }
     }
-    if(sha1res)
-    {
-      ## Check wheather the required tool is present
-      if("ReHash - Console-Based Hash Calculator" >< sha1res)
-      {
-        temp_split = split(sha1res);
-        if(filecheck >!< temp_split[2]){
-          set_kb_item(name:"policy/win_sha1cksum_err", value:filename + '|No such file or directory|error;');
-        }
-        else {
-          ## Split and Get the checksum value from the response
-          sha1val = split(temp_split[3], sep:': ', keep:0);
-          if (sha1val[1])
-          {
-            sha1val = split(sha1val[1], keep:0);
-            if (sha1val[0] == checksum) {
-             set_kb_item(name:"policy/win_sha1cksum_ok", value:filename + '|' + sha1val[0] + '|pass;');
-             replace_kb_item(name:"policy/win_checksum_ok", value:TRUE);
+
+    if( sha1res ) {
+      if( "ReHash - Console-Based Hash Calculator" >< sha1res ) {
+        temp_split = split( sha1res );
+        if( filecheck >!< temp_split[2] ) {
+          set_kb_item( name:"policy/file_checksums_win/sha1_error_list", value:filename + '|No such file or directory|error;' );
+        } else {
+          sha1val = split( temp_split[3], sep:': ', keep:FALSE );
+          if( sha1val[1] ) {
+            sha1val = split( sha1val[1], keep:FALSE );
+            if( sha1val[0] == checksum ) {
+              set_kb_item( name:"policy/file_checksums_win/sha1_ok_list", value:filename + '|' + sha1val[0] + '|pass;' );
+            } else {
+              set_kb_item( name:"policy/file_checksums_win/sha1_violation_list", value:filename + '|' + sha1val[0] + '|fail;' );
             }
-            else {
-              set_kb_item(name:"policy/win_sha1cksum_fail", value:filename + '|' + sha1val[0] + '|fail;');
-              replace_kb_item(name:"policy/win_checksum_fail", value:TRUE);
-            }
-          }
-          else {
-            set_kb_item(name:"policy/win_sha1cksum_err", value:filename + '|Error while calculating checksum|Re-test this file;');
+          } else {
+            set_kb_item( name:"policy/file_checksums_win/sha1_error_list", value:filename + '|Error while calculating checksum, re-test this file|error;' );
           }
         }
-      }
-      else
-      {
-        set_kb_item(name:"policy/win_general_err", value:"Required Tool is not available on the target system");
+      } else {
+        set_kb_item( name:"policy/file_checksums_win/general_error_list", value:"Required Tool is not available on the target system." );
         exit_cleanly();
       }
-    }
-    else {
-     set_kb_item(name:"policy/win_sha1cksum_err", value:filename + '|win_cmd_exec() Connection Failed|Re-test this file;');
+    } else {
+      set_kb_item( name:"policy/file_checksums_win/sha1_error_list", value:filename + '|win_cmd_exec() Connection Failed, re-test this file|error;' );
     }
   }
 }
 
-if (install = "yes" && delete = "yes")clearexe = win_cmd_exec (cmd:delexe, password:password, username:username);
+# This always defaults to TRUE but was there since the beginning of this NVT
+# and currently needs to stay to not break existing scan configs.
+if( install = "yes" && delete = "yes" )
+  clearexe = win_cmd_exec( cmd:delexe, password:password, username:username );
 
 exit_cleanly();

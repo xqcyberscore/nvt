@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums.nasl 7753 2017-11-14 10:57:07Z jschulte $
+# $Id: policy_file_checksums.nasl 7777 2017-11-15 14:52:55Z cfischer $
 #
 # Check File Checksums
 #
@@ -28,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103940");
-  script_version("$Revision: 7753 $");
+  script_version("$Revision: 7777 $");
   script_name("File Checksums");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 11:57:07 +0100 (Tue, 14 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-15 15:52:55 +0100 (Wed, 15 Nov 2017) $");
   script_tag(name:"creation_date", value:"2013-08-14 16:47:16 +0200 (Wed, 14 Aug 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,116 +56,99 @@ if(description)
   exit(0);
 }
 
-listall = script_get_preference("List all and not only the first 100 entries");
+checksumlist = script_get_preference( "Target checksum File" );
+if( ! checksumlist ) exit( 0 );
 
-checksumlist = script_get_preference("Target checksum File");
-if (!checksumlist)
-  exit(0);
+checksumlist = script_get_preference_file_content( "Target checksum File" );
+if( ! checksumlist ) exit( 0 );
 
-checksumlist = script_get_preference_file_content("Target checksum File");
-if (!checksumlist)
-  exit(0);
+include("ssh_func.inc");
 
 function exit_cleanly() {
-  set_kb_item(name:"policy/no_timeout", value:TRUE);
-
+  set_kb_item( name:"policy/file_checksums/no_timeout", value:TRUE );
   exit(0);
 }
 
-set_kb_item(name:"policy/checksum_started", value:TRUE);
+function check_md5( md5 ) {
+  local_var md5;
+  if( ereg( pattern:"^[a-f0-9]{32}$", string:md5 ) )
+    return TRUE;
+  else
+    return FALSE;
+}
 
-lines = split(checksumlist,keep:0);
-split_checksumlist = lines;
+function check_sha1( sha1 ) {
+  local_var sha1;
+  if( ereg( pattern:"^[a-f0-9]{40}$", string:sha1 ) )
+    return TRUE;
+  else
+    return FALSE;
+}
 
+function check_ip( ip ) {
+  local_var ip;
+  if( ereg( pattern:"([0-9]{1,3}\.){3}[0-9]{1,3}$", string:ip ) )
+    return TRUE;
+  else
+    return FALSE;
+}
+
+function check_file( file ) {
+  local_var file, unallowed, ua;
+  unallowed = make_list("#",">","<",";",'\0',"!","'",'"',"$","%","&","(",")","?","`","*"," |","}","{","[","]");
+  foreach ua( unallowed ) {
+    if( ua >< file ) return FALSE;
+  }
+  if( ! ereg( pattern:"^/.*$", string:file ) )
+    return FALSE;
+  else
+    return TRUE;
+}
+
+listall = script_get_preference("List all and not only the first 100 entries");
+maxlist = 100;
+host_ip = get_host_ip();
+valid_lines_list = make_list();
+
+set_kb_item(name:"policy/file_checksums/started", value:TRUE);
+
+lines = split(checksumlist, keep:FALSE);
 line_count = max_index(lines);
 
 if (line_count == 1 && lines[0] =~ "Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?") {
-  report  = "Checksumtest aborted: Attached checksum File doesn't contain test entries (Only the header is present).";
-  report += "Please upload a file following the syntax described in the referenced documentation.";
-  set_kb_item(name:"policy/general_err", value:report);
+  set_kb_item(name:"policy/file_checksums/general_error_list", value:"Attached checksum File doesn't contain test entries (Only the header is present).");
   exit_cleanly();
 }
 
 x = 0;
-
 foreach line (lines) {
   x++;
-
-  if (!eregmatch(pattern:"((Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?)|([a-f0-9]{32,40}\|.*\|(sha1|md5)))",
-                 string:line)) {
+  if (!eregmatch(pattern:"((Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?)|([a-f0-9]{32,40}\|.*\|(sha1|md5)))", string:line)) {
     if (x == line_count && eregmatch(pattern:"^$", string:line))
       continue;  # accept one empty line at the end of checksumlist.
-
-    _error += 'Invalid line ' + line + ' in checksum File found.\n';
+    set_kb_item(name:"policy/file_checksums/invalid_list", value:line + "|invalid line error|error;");
+    continue;
   }
+  # Ignore the header of the checksum file
+  if (!eregmatch(pattern:"(Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?)", string:line))
+    valid_lines_list = make_list( valid_lines_list, line );
 }
-
-if (_error){
-  report  = 'Checksumtest aborted. Errors:\n' + _error;
-  report += '\n\nPlease upload a file following the syntax described in the referenced documentation.';
-  set_kb_item(name:"policy/general_err", value:report);
-  exit_cleanly();
-}
-
-
-maxlist = 100;
-include("ssh_func.inc");
 
 port = kb_ssh_transport();
-
-host_ip = get_host_ip();
 
 sock = ssh_login_or_reuse_connection();
 if (!sock) {
   error = get_ssh_error();
   if (!error)
     error = "No SSH Port or Connection!";
-  set_kb_item(name:"policy/general_err", value:error);
+  set_kb_item(name:"policy/file_checksums/general_error_list", value:error);
   exit_cleanly();
 }
 
-# Check if it has the format of an MD5 hash
-function check_md5(md5) {
-  if (ereg(pattern:"^[a-f0-9]{32}$", string:md5))
-    return TRUE;
-
-  return FALSE;
-}
-
-# Check if it has the format of an SHA1 hash
-function check_sha1(sha1) {
-  if (ereg(pattern:"^[a-f0-9]{40}$", string:sha1))
-    return TRUE;
-
-  return FALSE;
-}
-
-# Check if it has the format of an IP address
-function check_ip(ip) {
-  if (ereg(pattern: "([0-9]{1,3}\.){3}[0-9]{1,3}$", string: ip))
-    return TRUE;
-
-  return FALSE;
-}
-
-function check_file(file) {
-  unallowed = make_list("#",">","<",";",'\0',"!","'",'"',"$","%","&","(",")","?","`","*"," |","}","{","[","]");
-
-  foreach ua (unallowed) {
-    if (ua >< file)
-      return FALSE;
-  }
-
-  if (!ereg(pattern:"^/.*$", string:file))
-    return FALSE;
-
-  return TRUE;
-}
-
 if (listall == "yes"){
-  max = max_index(split_checksumlist);
+  max = max_index(valid_lines_list);
 } else {
-  maxindex = max_index(split_checksumlist);
+  maxindex = max_index(valid_lines_list);
   if (maxindex < maxlist)
     max = maxindex;
   else
@@ -173,17 +156,15 @@ if (listall == "yes"){
 }
 
 for (i=0; i<max; i++) {
-  val = split(split_checksumlist[i], sep:'|', keep:0);
-  checksum = tolower(val[0]);
-  filename = val[1];
+  val = split(valid_lines_list[i], sep:'|', keep:FALSE);
+  checksum   = tolower(val[0]);
+  filename   = val[1];
   algorithm  = tolower(val[2]);
 
   if (max_index(val) == 4) {
     ip = val[3];
-    if (!check_ip(ip: ip)) {
-      if (tolower(ip) != "only-check-this-ip") {
-        _error += filename + '|ip format error|error;\n';
-      }
+    if (!check_ip(ip:ip)) {
+      set_kb_item(name:"policy/file_checksums/invalid_list", value:valid_lines_list[i] + '|ip format error|error;');
       continue;
     }
     if (ip && ip != host_ip)
@@ -191,60 +172,49 @@ for (i=0; i<max; i++) {
   }
 
   if (!checksum || !filename || !algorithm) {
-    errorlog = "Error in file read";
-    log_message(port:0, data:errorlog);
+    set_kb_item(name:"policy/file_checksums/invalid_list", value:valid_lines_list[i] + '|error reading line|error;');
     continue;
   }
 
   if (!check_file(file:filename)) {
-    if (tolower(filename) != 'file') {
-      set_kb_item(name:"policy/general_err", value:filename + '|filename format error|error;');
-    }
+    set_kb_item(name:"policy/file_checksums/invalid_list", value:valid_lines_list[i] + '|filename format error|error;');
     continue;
   }
 
   if (algorithm == "md5") {
     if (!check_md5(md5:checksum)) {
-      if (checksum != 'md5') {
-        set_kb_item(name:"policy/general_err", value:filename + '|md5 format error|error;');
-      }
+      set_kb_item(name:"policy/file_checksums/invalid_list", value:valid_lines_list[i] + '|md5 format error|error;');
       continue;
     }
 
     sshval = ssh_cmd(socket:sock, cmd:"LC_ALL=C md5sum " + " '" + filename + "'");
     if (sshval !~ ".*No such file or directory") {
-      md5val = split(sshval, sep:' ', keep:0);
+      md5val = split(sshval, sep:' ', keep:FALSE);
       if (tolower(md5val[0]) == checksum) {
-        set_kb_item(name:"policy/md5cksum_ok", value:filename + '|' + md5val[0] + '|pass;');
-        replace_kb_item(name:"policy/checksum_ok", value:TRUE);
+        set_kb_item(name:"policy/file_checksums/md5_ok_list", value:filename + '|' + md5val[0] + '|pass;');
       } else {
-        set_kb_item(name:"policy/md5cksum_fail", value:filename + '|' + md5val[0] + '|fail;');
-        replace_kb_item(name:"policy/checksum_fail", value:TRUE);
+        set_kb_item(name:"policy/file_checksums/md5_violation_list", value:filename + '|' + md5val[0] + '|fail;');
       }
     } else {
-      set_kb_item(name:"policy/md5cksum_err", value:filename + '|No such file or directory|error;');
+      set_kb_item(name:"policy/file_checksums/md5_error_list", value:filename + '|No such file or directory|error;');
     }
   } else {
     if (algorithm == "sha1") {
       if (!check_sha1(sha1:checksum)) {
-        if (checksum != "sha1") {
-          set_kb_item(name:"policy/general_err", value:filename + '|sha1 format error|error;');
-        }
+        set_kb_item(name:"policy/file_checksums/general_error_list", value:valid_lines_list[i] + '|sha1 format error|error;');
         continue;
       }
 
       sshval = ssh_cmd(socket:sock, cmd:"LC_ALL=C sha1sum " + " '" + filename + "'");
       if (sshval !~ ".*No such file or directory") {
-        sha1val = split(sshval, sep:' ', keep:0);
+        sha1val = split(sshval, sep:' ', keep:FALSE);
           if (tolower(sha1val[0]) == checksum) {
-            set_kb_item(name:"policy/sha1cksum_ok", value:filename + '|' + sha1val[0] + '|pass;');
-            replace_kb_item(name:"policy/checksum_ok", value:TRUE);
+            set_kb_item(name:"policy/file_checksums/sha1_ok_list", value:filename + '|' + sha1val[0] + '|pass;');
           } else {
-            set_kb_item(name:"policy/sha1cksum_fail", value:filename + '|' + sha1val[0] + '|fail;');
-            replace_kb_item(name:"policy/checksum_fail", value:TRUE);
+            set_kb_item(name:"policy/file_checksums/sha1_violation_list", value:filename + '|' + sha1val[0] + '|fail;');
           }
       } else {
-        set_kb_item(name:"policy/sha1cksum_err", value:filename + '|No such file or directory|error;');
+        set_kb_item(name:"policy/file_checksums/sha1_error_list", value:filename + '|No such file or directory|error;');
       }
     }
   }

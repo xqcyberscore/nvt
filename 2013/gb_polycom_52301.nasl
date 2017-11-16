@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_polycom_52301.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_polycom_52301.nasl 7765 2017-11-15 06:34:32Z cfischer $
 #
 # Polycom Products Directory Traversal and Command Injection Vulnerabilities
 #
@@ -46,17 +46,17 @@ if (description)
  script_bugtraq_id(52301);
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_version ("$Revision: 6079 $");
+ script_version ("$Revision: 7765 $");
 
  script_name("Polycom Products Directory Traversal and Command Injection Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52301");
- script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Mar/18?utm_source=twitterfeed&utm_medium=twitter");
+ script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Mar/18");
  script_xref(name : "URL" , value : "http://blog.tempest.com.br/joao-paulo-campello/path-traversal-on-polycom-web-management-interface.html");
  script_xref(name : "URL" , value : "http://www.polycom.com/");
  script_xref(name : "URL" , value : "http://blog.tempest.com.br/joao-paulo-campello/polycom-web-management-interface-os-command-injection.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-15 07:34:32 +0100 (Wed, 15 Nov 2017) $");
  script_tag(name:"creation_date", value:"2013-02-13 11:31:54 +0100 (Wed, 13 Feb 2013)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

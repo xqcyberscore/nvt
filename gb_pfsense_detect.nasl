@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_detect.nasl 7754 2017-11-14 11:15:34Z asteins $
+# $Id: gb_pfsense_detect.nasl 7769 2017-11-15 10:07:45Z asteins $
 #
 # pfSense Detection (Version)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112118");
-  script_version("$Revision: 7754 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 12:15:34 +0100 (Tue, 14 Nov 2017) $");
+  script_version("$Revision: 7769 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-15 11:07:45 +0100 (Wed, 15 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-13 08:56:05 +0100 (Mon, 13 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_pfsense_remote_detect.nasl", "gb_pfsense_version.nasl", "gb_pfsense_snmp_detect.nasl");
+  script_dependencies("gb_pfsense_detect_http.nasl", "gb_pfsense_detect_ssh.nasl", "gb_pfsense_detect_snmp.nasl");
   script_mandatory_keys("pfsense/installed");
 
   script_tag(name:"summary", value:"The script reports a detected pfSense including the

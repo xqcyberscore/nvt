@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iball_baton_150m_wireless_router_auth_bypass_vuln.nasl 7346 2017-10-05 06:46:33Z cfischer $
+# $Id: gb_iball_baton_150m_wireless_router_auth_bypass_vuln.nasl 7775 2017-11-15 14:08:06Z jschulte $
 #
 # iBall Baton 150M Wireless Router Authentication Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:iball:baton_150m_wireless-n_router";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811313");
-  script_version("$Revision: 7346 $");
+  script_version("$Revision: 7775 $");
   script_cve_id("CVE-2017-6558", "CVE-2017-14244");
   script_bugtraq_id(96822);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-05 08:46:33 +0200 (Thu, 05 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-15 15:08:06 +0100 (Wed, 15 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-08-31 12:06:39 +0530 (Thu, 31 Aug 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("iBall Baton 150M Wireless Router Authentication Bypass Vulnerability");
@@ -46,16 +46,16 @@ if(description)
   check whether it is able to get specific information or not.");
 
   script_tag(name: "insight" , value:"Multiple flaws are due to,
-  
-  - iball Baton 150M Router login page is insecurely developed and any attacker 
+
+  - iball Baton 150M Router login page is insecurely developed and any attacker
     could bypass the admin authentication just by tweaking the password.cgi file.
- 
-  - iBall ADSL2+ Home Router does not properly authenticate when pages are 
+
+  - iBall ADSL2+ Home Router does not properly authenticate when pages are
     accessed through cgi version.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to gain access to bypass authentication mechanism and perform
-  unauthorized actions and can access sensitive information and perform actions 
+  unauthorized actions and can access sensitive information and perform actions
   such as reset router, downloading backup configuration, upload backup etc.
   This may lead to further attacks. 
 
@@ -66,7 +66,7 @@ if(description)
   iBall ADSL2+ Home Router WRA150N Firmware version FW_iB-LR7011A_1.0.2");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  5th October, 2017. Information regarding this issue will be updated once solution
+  10th November, 2017. Information regarding this issue will be updated once solution
   details are available. For updates refer to https://www.iball.co.in/home");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

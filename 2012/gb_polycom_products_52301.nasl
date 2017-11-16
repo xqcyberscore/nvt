@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_polycom_products_52301.nasl 7277 2017-09-26 12:45:58Z cfischer $
+# $Id: gb_polycom_products_52301.nasl 7765 2017-11-15 06:34:32Z cfischer $
 #
 # Polycom Products Directory Traversal and Command Injection Vulnerabilities
 #
@@ -40,14 +40,14 @@ if (description)
 {
  script_id(103442);
  script_bugtraq_id(52301);
- script_version ("$Revision: 7277 $");
+ script_version ("$Revision: 7765 $");
 
  script_name("Polycom Products Directory Traversal and Command Injection Vulnerabilities");
 
 
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-15 07:34:32 +0100 (Wed, 15 Nov 2017) $");
  script_tag(name:"creation_date", value:"2012-03-06 10:45:23 +0100 (Tue, 06 Mar 2012)");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -59,7 +59,7 @@ if (description)
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52301");
- script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Mar/18?utm_source=twitterfeed&utm_medium=twitter");
+ script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Mar/18");
  script_xref(name : "URL" , value : "http://blog.tempest.com.br/joao-paulo-campello/path-traversal-on-polycom-web-management-interface.html");
  script_xref(name : "URL" , value : "http://www.polycom.com/");
  script_xref(name : "URL" , value : "http://blog.tempest.com.br/joao-paulo-campello/polycom-web-management-interface-os-command-injection.html");

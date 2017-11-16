@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_disk_pulse_enterprise_server_bof_vuln_aug17.nasl 7378 2017-10-06 15:29:03Z cfischer $
+# $Id: gb_disk_pulse_enterprise_server_bof_vuln_aug17.nasl 7775 2017-11-15 14:08:06Z jschulte $
 #
 # Disk Pulse Enterprise Server Buffer Overflow Vulnerability - Aug17
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:diskpulse:diskpulse_enterprise_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811717");
-  script_version("$Revision: 7378 $");
+  script_version("$Revision: 7775 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-06 17:29:03 +0200 (Fri, 06 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-15 15:08:06 +0100 (Wed, 15 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-08-30 17:59:00 +0530 (Wed, 30 Aug 2017)");
   script_name("Disk Pulse Enterprise Server Buffer Overflow Vulnerability - Aug17");
 
@@ -54,11 +54,9 @@ if(description)
 
   script_tag(name:"affected", value:"Disk Pulse Enterprise version 10.0.12 and prior.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  6th October, 2017. Information regarding this issue will be updated once solution
-  details are available. For updates refer to http://www.diskpulse.com");
+  script_tag(name:"solution", value:"Update Disk Pulse Enterprise to version 10.2 or higher.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -85,7 +83,7 @@ if( ! diskVer = get_app_version(cpe:CPE, port:diskPort)) exit(0);
 ## Installed 10.0.12, 9.9.16, 9.1.16 ; all are vulnerable
 if(version_is_less_equal(version:diskVer, test_version:"10.0.12"))
 {
-  report = report_fixed_ver( installed_version:diskVer, fixed_version:"None Available");
+  report = report_fixed_ver( installed_version:diskVer, fixed_version:"10.2");
   security_message(port:diskPort, data:report);
   exit(0);
 }

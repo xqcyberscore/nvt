@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icewarp_xss_vuln.nasl 7378 2017-10-06 15:29:03Z cfischer $
+# $Id: gb_icewarp_xss_vuln.nasl 7771 2017-11-15 11:52:34Z jschulte $
 #
 # IceWarp XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:icewarp:mail_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140331");
-  script_version("$Revision: 7378 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-06 17:29:03 +0200 (Fri, 06 Oct 2017) $");
+  script_version("$Revision: 7771 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-15 12:52:34 +0100 (Wed, 15 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-08-29 10:02:16 +0700 (Tue, 29 Aug 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -61,7 +61,7 @@ user name.");
 
   script_tag(name: "affected", value: "IceWarp version 10.4.4 and maybe prior and later.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 6th October, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 15th November, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://youtu.be/MI4dhEia1d4");

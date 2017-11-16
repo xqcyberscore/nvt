@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gb_hp_openview_nnm_41829.nasl 7550 2017-10-24 12:17:52Z cfischer $
+# $Id: gb_gb_hp_openview_nnm_41829.nasl 7765 2017-11-15 06:34:32Z cfischer $
 #
 # HP OpenView Network Node Manager 'execvp_nc()' Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:openview_network_node_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100786");
-  script_version("$Revision: 7550 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 7765 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-15 07:34:32 +0100 (Wed, 15 Nov 2017) $");
   script_tag(name:"creation_date", value:"2010-09-07 15:26:31 +0200 (Tue, 07 Sep 2010)");
   script_bugtraq_id(41829);
   script_tag(name:"cvss_base", value:"10.0");
@@ -48,7 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/moaub-6-hp-openview-nnm-webappmon-exe-execvp_nc-remote-code-execution/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/512543");
   script_xref(name:"URL", value:"http://itrc.hp.com/service/cki/docDisplay.do?docId=emr_na-c02286088");
-  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-137/?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed:+ZDI-Published-Advisories+%28Zero+Day+Initiative+Published+Advisories%29");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-137/");
 
   tag_summary = "HP OpenView Network Node Manager (OV NNM) is prone to a remote
   code-execution vulnerability.";

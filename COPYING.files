@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 15 Nov 2017 07:58:27 +0100
+# Automatically created on:  Thu, 16 Nov 2017 08:09:40 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47475,9 +47475,16 @@
 2017/adobe/gb_adobe_flash_player_apsb17-32_lin.nasl: GPLv2+
 2017/adobe/gb_adobe_flash_player_apsb17-32_macosx.nasl: GPLv2+
 2017/adobe/gb_adobe_flash_player_apsb17-32_win.nasl: GPLv2+
+2017/adobe/gb_adobe_flash_player_apsb17-33_lin.nasl: GPLv2+
+2017/adobe/gb_adobe_flash_player_apsb17-33_macosx.nasl: GPLv2+
+2017/adobe/gb_adobe_flash_player_apsb17-33_win.nasl: GPLv2+
 2017/adobe/gb_adobe_flash_player_within_chrome_apsb17-32_lin.nasl: GPLv2+
 2017/adobe/gb_adobe_flash_player_within_chrome_apsb17-32_macosx.nasl: GPLv2+
 2017/adobe/gb_adobe_flash_player_within_chrome_apsb17-32_win.nasl: GPLv2+
+2017/adobe/gb_adobe_flash_player_within_chrome_apsb17-33_lin.nasl: GPLv2+
+2017/adobe/gb_adobe_flash_player_within_chrome_apsb17-33_macosx.nasl: GPLv2+
+2017/adobe/gb_adobe_flash_player_within_chrome_apsb17-33_win.nasl: GPLv2+
+2017/adobe/gb_flash_player_for_ie_edge_nov17.nasl: GPLv2+
 2017/afterlogic/gb_afterlogic_aurora_webmail_xss_vuln.nasl: GPLv2+
 2017/apache/gb_activemq_web_default_credentials.nasl: GPLv2+
 2017/apache/gb_apache_activemq_dos_vuln2_lin.nasl: GPLv2+
@@ -47541,6 +47548,7 @@
 2017/cisco/gb_cisco_ip_phone_8821_cisco-sa-20171016-wpa.nasl: GPLv2+
 2017/cisco/gb_cisco_ip_phone_8861_cisco-sa-20171016-wpa.nasl: GPLv2+
 2017/cisco/gb_cisco_ip_phone_8865_cisco-sa-20171016-wpa.nasl: GPLv2+
+2017/cisco/gb_cisco_ip_phone_cisco-sa-20171115-ipp.nasl: GPLv2+
 2017/citrix/gb_xenserver_ctx227185.nasl: GPLv2+
 2017/citrix/gb_xenserver_ctx228867.nasl: GPLv2+
 2017/citrix/gb_xenserver_ctx229057.nasl: GPLv2+
@@ -50902,6 +50910,7 @@
 2017/gb_paypal_merchant-sdk-php_CVE-2017-6099.nasl: GPLv2+
 2017/gb_pelco_videoxpert_mult_vuln.nasl: GPLv2+
 2017/gb_peplink_balance_mult_vuln.nasl: GPLv2+
+2017/gb_pfsense_default_credentials.nasl: GPLv2+
 2017/gb_php_97178_lin.nasl: GPLv2+
 2017/gb_php_97178_win.nasl: GPLv2+
 2017/gb_phpbb_mult_vuln.nasl: GPLv2+
@@ -52058,9 +52067,11 @@
 2017/microsoft/gb_microsoft_outlook_dde_attacks_advisory_4053440.nasl: GPLv2+
 2017/microsoft/gb_microsoft_publisher_dde_attacks_advisory_4053440.nasl: GPLv2+
 2017/microsoft/gb_ms_ie_mult_vuln_kb4040685.nasl: GPLv2+
+2017/microsoft/gb_ms_kb2553204.nasl: GPLv2+
 2017/microsoft/gb_ms_kb2553338.nasl: GPLv2+
 2017/microsoft/gb_ms_kb2837599.nasl: GPLv2+
 2017/microsoft/gb_ms_kb2920723.nasl: GPLv2+
+2017/microsoft/gb_ms_kb3162047.nasl: GPLv2+
 2017/microsoft/gb_ms_kb3172524.nasl: GPLv2+
 2017/microsoft/gb_ms_kb3172531.nasl: GPLv2+
 2017/microsoft/gb_ms_kb3213551.nasl: GPLv2+
@@ -52076,11 +52087,31 @@
 2017/microsoft/gb_ms_kb4011185.nasl: GPLv2+
 2017/microsoft/gb_ms_kb4011194.nasl: GPLv2+
 2017/microsoft/gb_ms_kb4011196.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011197.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011199.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011205.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011206.nasl: GPLv2+
 2017/microsoft/gb_ms_kb4011217.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011220.nasl: GPLv2+
 2017/microsoft/gb_ms_kb4011222.nasl: GPLv2+
 2017/microsoft/gb_ms_kb4011231.nasl: GPLv2+
 2017/microsoft/gb_ms_kb4011232.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011233.nasl: GPLv2+
 2017/microsoft/gb_ms_kb4011236.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011242.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011244.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011245.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011247.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011250.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011257.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011262.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011264.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011265.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011266.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011267.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011270.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011271.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4011276.nasl: GPLv2+
 2017/microsoft/gb_ms_kb4025869.nasl: GPLv2+
 2017/microsoft/gb_ms_kb4041671.nasl: GPLv2+
 2017/microsoft/gb_ms_kb4041676.nasl: GPLv2+
@@ -52098,6 +52129,20 @@
 2017/microsoft/gb_ms_kb4042122.nasl: GPLv2+
 2017/microsoft/gb_ms_kb4042123.nasl: GPLv2+
 2017/microsoft/gb_ms_kb4042895.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4046184.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4047206.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4047211.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4048952.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4048953.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4048954.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4048955.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4048956.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4048957.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4048958.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4048959.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4048968.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4048970.nasl: GPLv2+
+2017/microsoft/gb_ms_kb4049164.nasl: GPLv2+
 2017/microsoft/gb_ms_office_code_exec_vuln_oct17_macosx.nasl: GPLv2+
 2017/microsoft/gb_ms_office_outlook_dos_vuln_macosx.nasl: GPLv2+
 2017/microsoft/gb_ms_outlook_dos_vuln.nasl: GPLv2+
@@ -52657,6 +52702,7 @@ gb_cmscout_detect.nasl: GPLv2+
 gb_cnpilot_snmp_detect.nasl: GPLv2+
 gb_cobbler_detect.nasl: GPLv2+
 gb_codemeter_webadmin_detect.nasl: GPLv2+
+gb_codesys_detect.nasl: GPLv2+
 gb_codoforum_detect.nasl: GPLv2+
 gb_coldfusion_detect.nasl: GPLv2+
 gb_collabtive_detect.nasl: GPLv2+
@@ -53312,10 +53358,10 @@ gb_pentaho_ga_ba_suite_remote_detect.nasl: GPLv2+
 gb_pentaho_ga_pdi_suite_remote_detect.nasl: GPLv2+
 gb_peplink_balance_webadmin_detect.nasl: GPLv2+
 gb_perl_detect_win.nasl: GPLv2+
+gb_pfsense_detect_http.nasl: GPLv2+
 gb_pfsense_detect.nasl: GPLv2+
-gb_pfsense_remote_detect.nasl: GPLv2+
-gb_pfsense_snmp_detect.nasl: GPLv2+
-gb_pfsense_version.nasl: GPLv2+
+gb_pfsense_detect_snmp.nasl: GPLv2+
+gb_pfsense_detect_ssh.nasl: GPLv2+
 gb_pgp_desktop_detect_win.nasl: GPLv2+
 gb_phpbazar_detect.nasl: GPLv2+
 gb_phpcoin_detect.nasl: GPLv2+
@@ -53769,8 +53815,10 @@ gsf/2017/cisco/gb_cisco_asa_cisco-sa-20171004-asa1.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_asa_cisco-sa-20171004-asa.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_cucm_cisco-sa-20170906-ucm.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_cucm_cisco-sa-20171004-ucm.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_cucm_cisco-sa-20171115-ucm.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_esa_cisco-sa-20170906-esa.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_esa_cisco-sa-20170920-esa.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_esa_cisco-sa-20171115-esa.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_firepower_management_center_cisco-sa-20170906-firepower-1.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_firepower_management_center_cisco-sa-20170906-firepower-2.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_firepower_management_center_cisco-sa-20171004-fpsnort.nasl: GPLv2+
@@ -53786,6 +53834,7 @@ gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170927-pnp.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170927-profinet.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170927-rbip-dos.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_cisco-sa-20170927-vpls.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ios_cisco-sa-20171115-ios.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170906-cat.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170906-ios-udp.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20170927-cc.nasl: GPLv2+
@@ -53799,9 +53848,11 @@ gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20171018-cisco-ios-xe.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xe_cisco-sa-20171103-bgp.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ios_xr_cisco-sa-20171004-ncs.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_ise_cisco-sa-20171101-ise.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_ise_cisco-sa-20171115-ise.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170906-cms.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20170913-cmsturn.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20171004-cms.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_meeting_server_cisco-sa-20171115-cms.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_nx_os_cisco-sa-20171018-aaavty.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_nx_os_cisco-sa-20171018-ppe.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_pcp_cisco-sa-20171101-cpcp.nasl: GPLv2+
@@ -53822,6 +53873,7 @@ gsf/2017/cisco/gb_cisco_wlc_cisco-sa-20171101-wlc1.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_wlc_cisco-sa-20171101-wlc2.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_wlc_cisco-sa-20171101-wlc3.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_wlc_cisco-sa-20171101-wlc4.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_wsa_cisco-sa-20171115-wsa.nasl: GPLv2+
 gsf/2017/emc/gb_emc_data_protection_advisor_pw_vuln.nasl: GPLv2+
 gsf/2017/emc/gb_emc_isilon_onefs_xss_vuln.nasl: GPLv2+
 gsf/2017/emc/gb_rsa_archer_mult_vuln1.nasl: GPLv2+
