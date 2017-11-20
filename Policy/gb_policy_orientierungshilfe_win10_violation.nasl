@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_orientierungshilfe_win10_violation.nasl 5944 2017-04-12 14:55:50Z cfi $
+# $Id: gb_policy_orientierungshilfe_win10_violation.nasl 7783 2017-11-16 08:20:50Z cfischer $
 #
 # AKIF Orientierungshilfe Windows 10: Nicht erfuellt
 #
@@ -25,14 +25,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+# kb: Keep above the description part as it is used there
+include("gos_funcs.inc");
+include("version_func.inc");
+gos_version = get_local_gos_version();
+if( strlen( gos_version ) > 0 &&
+    version_is_greater_equal( version:gos_version, test_version:"4.2.4" ) ) {
+  use_severity = TRUE;
+}
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108080");
-  script_version("$Revision: 5944 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:55:50 +0200 (Wed, 12 Apr 2017) $");
+  script_version("$Revision: 7783 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-16 09:20:50 +0100 (Thu, 16 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-02-10 10:55:08 +0100 (Fri, 10 Feb 2017)");
-  script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  if( use_severity ) {
+    script_tag(name:"cvss_base", value:"10.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  } else {
+    script_tag(name:"cvss_base", value:"0.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  }
   script_name("AKIF Orientierungshilfe Windows 10: Nicht erfuellt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -73,7 +87,10 @@ if( failed ) {
     }
     report += '\n';
   }
-  log_message( data:report, port:0 );
+  if( use_severity )
+    security_message( port:0, data:report );
+  else
+    log_message( port:0, data:report );
 }
 
 exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_efeb59171d_chromium_fc26.nasl 7453 2017-10-17 06:34:30Z santu $
+# $Id: gb_fedora_2017_efeb59171d_chromium_fc26.nasl 7801 2017-11-17 07:10:11Z asteins $
 #
 # Fedora Update for chromium FEDORA-2017-efeb59171d
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873498");
-  script_version("$Revision: 7453 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-17 08:34:30 +0200 (Tue, 17 Oct 2017) $");
+  script_version("$Revision: 7801 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 08:10:11 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-15 06:13:47 +0200 (Sun, 15 Oct 2017)");
   script_cve_id("CVE-2017-5111", "CVE-2017-5112", "CVE-2017-5113", "CVE-2017-5114", 
                 "CVE-2017-5115", "CVE-2017-5116", "CVE-2017-5117", "CVE-2017-5118", 
                 "CVE-2017-5119", "CVE-2017-5120", "CVE-2017-5121", "CVE-2017-5122");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for chromium FEDORA-2017-efeb59171d");
   script_tag(name: "summary", value: "Check the version of chromium");

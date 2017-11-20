@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln03_june_macosx.nasl 7337 2017-10-04 06:29:35Z asteins $
+# $Id: gb_wireshark_mult_dos_vuln03_june_macosx.nasl 7799 2017-11-17 06:09:34Z teissa $
 #
 # Wireshark Multiple Denial-of-Service Vulnerabilities-03 June17 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810963");
-  script_version("$Revision: 7337 $");
+  script_version("$Revision: 7799 $");
   script_cve_id("CVE-2017-9616", "CVE-2017-9617");
   script_bugtraq_id(99087, 99085);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 08:29:35 +0200 (Wed, 04 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 07:09:34 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-06-27 16:34:23 +0530 (Tue, 27 Jun 2017)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-03 June17 (Mac OS X)");
 
@@ -61,7 +61,7 @@ if(description)
   script_tag(name: "affected" , value: "Wireshark version 2.2.7 on Mac OS X");
 
   script_tag(name: "solution" , value: "No solution or patch is available as of 
-  4th October, 2017. Information regarding this issue will be updated once the 
+  17th November, 2017. Information regarding this issue will be updated once the 
   solution details are available. For updates refer to https://www.wireshark.org");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

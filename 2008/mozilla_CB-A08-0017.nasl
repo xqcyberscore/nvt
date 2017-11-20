@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mozilla_CB-A08-0017.nasl 5672 2017-03-22 08:15:28Z teissa $
+# $Id: mozilla_CB-A08-0017.nasl 7784 2017-11-16 08:42:29Z cfischer $
 # Description: Mozilla Firefox, Thunderbird, Seamonkey. Several vulnerabilitys (Linux)
 #
 # Authors:
@@ -43,14 +43,14 @@ Impact
 
 tag_solution = "All Users should upgrade to the latest versions of Firefox, Thunderbird or Seamonkey.";
 
-# $Revision: 5672 $
+# $Revision: 7784 $
 
 if(description)
 {
 
  script_id(90014);
- script_version("$Revision: 5672 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-22 09:15:28 +0100 (Wed, 22 Mar 2017) $");
+ script_version("$Revision: 7784 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-16 09:42:29 +0100 (Thu, 16 Nov 2017) $");
  script_tag(name:"creation_date", value:"2008-06-17 20:22:38 +0200 (Tue, 17 Jun 2008)");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -79,11 +79,6 @@ if(description)
 
 exit(66);
 
-#
-# The code starts here
-#
-
-
 include("ssh_func.inc");
 include("version_func.inc");
 
@@ -98,9 +93,9 @@ foreach binary_name (r) {
   ver = get_bin_version(full_prog_name:binary_name, version_argv:"--version", ver_pattern:"([0-9\.]+)");
   if(ver != NULL) {
     if(version_is_less(version:ver[0], test_version:"2.0.0.14") ) {
-      security_message(port:0, proto:"Mozilla");
+      security_message(port:0);
       report = string("\nFound : ") + binary_name + "  Version : " + ver[max_index(ver)-1] + string("\n");
-      security_message(port:0, proto:"Mozilla", data:report);
+      security_message(port:0, data:report);
     } 
   }
 }
@@ -110,9 +105,9 @@ foreach binary_name (r) {
   ver = get_bin_version(full_prog_name:binary_name, version_argv:"--version", ver_pattern:"([0-9\.]+)");
   if(ver != NULL) {
     if(version_is_less(version:ver[0], test_version:"2.0.0.14") ) {
-      security_message(port:0, proto:"Mozilla");
+      security_message(port:0);
       report = string("\nFound : ") + binary_name + "  Version : " + ver[max_index(ver)-1] + string("\n");
-      security_message(port:0, proto:"Mozilla", data:report);
+      security_message(port:0, data:report);
     } 
   }
 }
@@ -122,9 +117,9 @@ foreach binary_name (r) {
   ver = get_bin_version(full_prog_name:binary_name, version_argv:"--version", ver_pattern:"([0-9\.]+)");
   if(ver != NULL) {
     if(version_is_less(version:ver[0], test_version:"1.1.9") ) {
-      security_message(port:0, proto:"Mozilla");
+      security_message(port:0);
       report = string("\nFound : ") + binary_name + "  Version : " + ver[max_index(ver)-1] + string("\n");
-      security_message(port:0, proto:"Mozilla", data:report);
+      security_message(port:0, data:report);
     } 
   }
 }

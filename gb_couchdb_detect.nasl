@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_couchdb_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_couchdb_detect.nasl 7792 2017-11-16 13:49:52Z teissa $
 #
 # CouchDB Detection
 #
@@ -31,11 +31,10 @@ bi-directional conflict detection and resolution.";
 
 if (description)
 {
- 
- script_id(100571);
+ script_oid("1.3.6.1.4.1.25623.1.0.107260");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version("$Revision: 7792 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-16 14:49:52 +0100 (Thu, 16 Nov 2017) $");
  script_tag(name:"creation_date", value:"2010-04-12 18:40:45 +0200 (Mon, 12 Apr 2010)");
  script_name("CouchDB Detection");
  script_tag(name:"cvss_base", value:"0.0");
@@ -51,12 +50,10 @@ if (description)
  exit(0);
 }
 
-include("http_func.inc");
-include("global_settings.inc");
-include("host_details.inc");
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.100571";
-SCRIPT_DESC = "CouchDB Detection";
+include("cpe.inc");
+include("http_func.inc");
+include("host_details.inc");
 
 port = get_http_port(default:5984);
 if(!get_port_state(port))exit(0);
@@ -65,25 +62,30 @@ banner = get_http_banner(port: port);
 if(!banner)exit(0);
 if("Server: CouchDB/" >!< banner)exit(0);
 
-vers = string("unknown");
+set_kb_item(name: "couchdb/installed", value:TRUE);
+
+vers = "unknown";
+
 version = eregmatch(pattern:"Server: CouchDB/([^ ]+)", string: banner);
 
 if(!isnull(version[1])) {
   vers = version[1];
-  register_host_detail(name:"App", value:string("cpe:/a:apache:couchdb:", vers), nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-} else {
-  register_host_detail(name:"App", value:string("cpe:/a:apache:couchdb"), nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}  
+  set_kb_item(name: "couchdb/version", value: vers);
+  cpe = build_cpe(value: vers, exp: "^([0-9.]+)", base: "cpe:/a:apache:couchdb:");
 
-set_kb_item(name:string("couchdb/",port,"/version"), value: vers);
+  if (!cpe)
+    cpe = "cpe:/a:apache:couchdb";
 
-info = string("CouchDB Version (");
-info += string(vers);
-info += string(") was detected on the remote host");
+  register_product(cpe: cpe, location: "/", port: port, service: "www");
 
-if(report_verbosity > 0) {
-  log_message(port:port,data:info);
+  log_message(data: build_detection_report(app: "Apache CouchDB", 
+                                           version: vers,
+                                           install: "/",
+                                           cpe: cpe, concluded: version[0]),
+                                           port: port);
+
   exit(0);
+
 }
 
-exit(0);
+exit(99);

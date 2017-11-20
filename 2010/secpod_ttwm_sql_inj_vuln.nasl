@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ttwm_sql_inj_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_ttwm_sql_inj_vuln.nasl 7806 2017-11-17 09:22:46Z cfischer $
 #
 # TT Web Site Manager 'tt_name' Remote SQL Injection Vulnerability
 #
@@ -45,8 +45,8 @@ vulnerability.";
 if(description)
 {
   script_id(902135);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 7806 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 10:22:46 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_cve_id("CVE-2009-4732");
   script_tag(name:"cvss_base", value:"6.8");
@@ -88,6 +88,9 @@ if(isnull(ttwmver)){
 ttwmver = eregmatch(pattern:"^(.+) under (/.*)$", string:ttwmver);
 if(!isnull(ttwmver[2]))
 {
+
+  host = http_host_name(port:ttwmport);
+
   filename = string(ttwmver[2] + "/index.php");
   authVariables = "tt_name=admin+%27+or%27+1%3D1&tt_userpassword=admin+%27" +
                   "+or%27+1%3D1&action=Log+me+in";

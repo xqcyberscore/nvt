@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: http_keepalive.inc 7577 2017-10-26 10:41:56Z cfischer $
+# OpenVAS Include File
+# $Id: http_keepalive.inc 7805 2017-11-17 08:42:10Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7577 $
+# $Revision: 7805 $
 #
 ###############################################################################
 
@@ -633,39 +633,54 @@ function report_vuln_url( port, url, url_only ) {
 }
 
 # req = http_post_req( port:port, url:"/", data:data, accept_header:"application/json", add_headers: make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
-function http_post_req( port, url, data, add_headers, accept_header ) {
+function http_post_req( port, url, data, add_headers, accept_header, user_agent, host_header_use_ip ) {
 
-  local_var req, port, data, add_headers, header, accept_header, url, len, host;
+  local_var port, url, data, add_headers, accept_header, user_agent, host_header_use_ip;
+  local_var x_header, host, req, header, len;
 
   if( ! isnull( add_headers ) ) {
     if( typeof( add_headers ) != "array" ) {
-      set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#add_headers_no-array#-#http_post_req" );
+      set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#add_headers_no-array#-#http_post_req" );
       return;
     }
   }
 
   if( ! port ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_post_req" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_post_req" );
     return;
   }
 
   if( ! url ) url = "/";
+  x_header = FALSE;
 
   if( data ) len = strlen( data );
 
-  host = http_host_name( port:port );
+  if( host_header_use_ip ) {
+    host = http_host_name( port:port, use_ip:TRUE );
+  } else {
+    host = http_host_name( port:port );
+  }
+
   if( ! accept_header ) accept_header = '*/*';
+
+  if ( ! user_agent )
+    user_agent = OPENVAS_HTTP_USER_AGENT;
+  else
+    x_header = TRUE;
 
   req = 'POST ' + url + ' HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
         'Pragma: no-cache\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+        'User-Agent: ' + user_agent + '\r\n' +
         'Accept-Language: en\r\n' +
         'Accept-Charset: iso-8859-1,utf-8;q=0.9,*;q=0.1\r\n' +
         'Accept: ' + accept_header + '\r\n' +
         'Accept-Encoding: identity\r\n';
 
   if( data ) req += 'Content-Length: ' + len + '\r\n';
+
+  if( x_header )
+    req += 'X-Scanner: OpenVAS ' + OPENVAS_VERSION + '\r\n';
 
   if( ! isnull( add_headers ) ) {
     foreach header( keys( add_headers ) )
@@ -679,26 +694,32 @@ function http_post_req( port, url, data, add_headers, accept_header ) {
   return req;
 }
 
-function http_get_req( port, url, add_headers, accept_header, user_agent ) {
+function http_get_req( port, url, add_headers, accept_header, user_agent, host_header_use_ip ) {
 
-  local_var req, port, add_headers, header, url, accept_header, host, x_header;
+  local_var port, url, add_headers, accept_header, user_agent, host_header_use_ip;
+  local_var x_header, host, req, header;
 
   if( ! isnull( add_headers ) ) {
     if( typeof( add_headers ) != "array" ) {
-      set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#add_headers_no-array#-#http_get_req" );
+      set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#add_headers_no-array#-#http_get_req" );
       return;
     }
   }
 
   if( ! port ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_get_req" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_get_req" );
     return;
   }
 
   if( ! url ) url = "/";
   x_header = FALSE;
 
-  host = http_host_name( port:port );
+  if( host_header_use_ip ) {
+    host = http_host_name( port:port, use_ip:TRUE );
+  } else {
+    host = http_host_name( port:port );
+  }
+
   if( ! accept_header ) accept_header = 'image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*';
 
   if ( ! user_agent )

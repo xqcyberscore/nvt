@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_cisco_ios_compliance_ok.nasl 4982 2017-01-11 08:57:53Z ckuerste $
+# $Id: policy_cisco_ios_compliance_ok.nasl 7784 2017-11-16 08:42:29Z cfischer $
 #
 # Cisco IOS Compliance Check: Passes
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106432");
-  script_version("$Revision: 4982 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-11 09:57:53 +0100 (Wed, 11 Jan 2017) $");
+  script_version("$Revision: 7784 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-16 09:42:29 +0100 (Thu, 16 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-01-11 10:55:08 +0700 (Wed, 11 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,7 +65,7 @@ if (passed) {
     report += "Must be present: " + entry[3] + "\n\n";
   }
 
-  log_message(data: report, port: 0, proto: "ssh");
+  log_message(data: report, port: 0);
 }
 
 exit(0);

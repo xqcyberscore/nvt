@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_chip_default_ssh_credentials.nasl 6165 2017-05-18 13:55:39Z cfi $
+# $Id: gb_chip_default_ssh_credentials.nasl 7806 2017-11-17 09:22:46Z cfischer $
 #
 # C.H.I.P. Device Default SSH Login
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108164");
-  script_version("$Revision: 6165 $");
+  script_version("$Revision: 7806 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 15:55:39 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 10:22:46 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-05-18 13:24:16 +0200 (Thu, 18 May 2017)");
   script_name("C.H.I.P. Device Default SSH Login");
   script_category(ACT_ATTACK);
@@ -61,6 +61,7 @@ include("ssh_func.inc");
 port = get_ssh_port( default:22 );
 
 password = "chip";
+report = 'It was possible to login to the remote C.H.I.P. Device via SSH with the following credentials:\n';
 
 foreach username( make_list( "root", "chip" ) ) {
 
@@ -70,16 +71,20 @@ foreach username( make_list( "root", "chip" ) ) {
 
   if( login == 0 ) {
     cmd = ssh_cmd( socket:soc, cmd:"cat /etc/passwd" );
-    close( soc );
 
-    if( cmd =~ 'root:.*:0:[01]:' ) {
-      report = 'It was possible to login as user `' + username  + '` with password `' + password  + '` and to execute `cat /etc/passwd`. Result:\n\n' + cmd;
-      security_message( port:port, data:report );
-      exit( 0 );
+    if( passwd = egrep( pattern:"root:.*:0:[01]:", string:cmd ) ) {
+      vuln = TRUE;
+      report += '\nUsername: "' + username  + '", Password: "' + password + '"';
+      passwd_report += '\nIt was also possible to execute "cat /etc/passwd" as "' + username + '". Result:\n\n' + passwd;
     }
   }
-  if( soc ) close( soc );
+  close( soc );
 }
 
-if( soc ) close( soc );
-exit( 0 );
+if( vuln ) {
+  if( passwd_report ) report += '\n' + passwd_report;
+  security_message( port:port, data:report );
+  exit( 0 );
+}
+
+exit( 99 );

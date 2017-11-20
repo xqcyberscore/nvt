@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: http_func.inc 7256 2017-09-26 05:24:20Z asteins $
+# OpenVAS Include File
+# $Id: http_func.inc 7805 2017-11-17 08:42:10Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7256 $
+# $Revision: 7805 $
 #
 ###############################################################################
 
@@ -673,11 +673,18 @@ function http_gunzip( buf, onlybody ) {
   return buf;
 }
 
-function http_host_name( port ) {
+function http_host_name( port, use_ip ) {
 
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_host_name" );
+  local_var port, use_ip, host;
 
-  host = get_host_name();
+  if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_host_name" );
+
+  if( use_ip ) {
+    host = get_host_ip();
+  } else {
+    host = get_host_name();
+  }
+
   if( port ) {
     if( port != 80 && port != 443 )
       host += ':' + port;

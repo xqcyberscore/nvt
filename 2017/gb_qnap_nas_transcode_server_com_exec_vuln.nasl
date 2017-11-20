@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_nas_transcode_server_com_exec_vuln.nasl 7346 2017-10-05 06:46:33Z cfischer $
+# $Id: gb_qnap_nas_transcode_server_com_exec_vuln.nasl 7791 2017-11-16 13:18:39Z jschulte $
 #
 # QNAP NAS 'Transcode Server' Command Execution Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/h:qnap";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811727");
-  script_version("$Revision: 7346 $");
+  script_version("$Revision: 7791 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-05 08:46:33 +0200 (Thu, 05 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-16 14:18:39 +0100 (Thu, 16 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-09-01 10:43:16 +0530 (Fri, 01 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("QNAP NAS 'Transcode Server' Command Execution Vulnerability");
@@ -57,7 +57,7 @@ if (description)
   (20170727) and QNAP_TS-131. Many other QNAP models may also be affected.");
 
   script_tag(name: "solution" , value:"No solution or patch exists as of
-  5th October, 2017. Information regarding this issue will be updated once solution
+  16th November, 2017. Information regarding this issue will be updated once solution
   details are available. For updates refer to,
   https://www.qnap.com");
 

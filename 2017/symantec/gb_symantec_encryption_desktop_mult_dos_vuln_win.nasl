@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_encryption_desktop_mult_dos_vuln_win.nasl 7628 2017-11-02 12:00:39Z santu $
+# $Id: gb_symantec_encryption_desktop_mult_dos_vuln_win.nasl 7819 2017-11-20 05:26:56Z teissa $
 #
 # Symantec Encryption Desktop Multiple DoS Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:encryption_desktop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812049");
-  script_version("$Revision: 7628 $");
+  script_version("$Revision: 7819 $");
   script_cve_id("CVE-2017-13682", "CVE-2017-13679");
   script_bugtraq_id(101497, 101090);
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-02 13:00:39 +0100 (Thu, 02 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"2.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 06:26:56 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-02 17:20:00 +0530 (Thu, 02 Nov 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec Encryption Desktop Multiple DoS Vulnerabilities (Windows)");

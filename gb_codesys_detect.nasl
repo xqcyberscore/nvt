@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_codesys_detect.nasl 7778 2017-11-16 01:46:02Z ckuersteiner $
+# $Id: gb_codesys_detect.nasl 7817 2017-11-20 02:24:15Z ckuersteiner $
 #
 # CODESYS Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140500");
- script_version ("$Revision: 7778 $");
- script_tag(name: "last_modification", value: "$Date: 2017-11-16 02:46:02 +0100 (Thu, 16 Nov 2017) $");
+ script_version ("$Revision: 7817 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-11-20 03:24:15 +0100 (Mon, 20 Nov 2017) $");
  script_tag(name: "creation_date", value: "2017-11-16 08:54:19 +0700 (Thu, 16 Nov 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -90,7 +90,7 @@ if (!recv) {
 
 close(soc); 
 
-if (hexstr(substr(recv, 0, 1) != "bbbb") || strlen(recv) < 130)
+if (hexstr(substr(recv, 0, 1)) != "bbbb" || strlen(recv) < 130)
   exit(0);
 
 set_kb_item(name: "codesys/detected", value: TRUE);

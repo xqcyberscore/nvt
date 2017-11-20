@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ultimate-form-builder-lite_sql_inj_vuln.nasl 7655 2017-11-03 15:53:34Z emoss $
+# $Id: gb_wordpress_ultimate-form-builder-lite_sql_inj_vuln.nasl 7801 2017-11-17 07:10:11Z asteins $
 #
 # WordPress Ultimate Form Builder Lite Plugin SQL Injection Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112101");
-  script_version("$Revision: 7655 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-03 16:53:34 +0100 (Fri, 03 Nov 2017) $");
+  script_version("$Revision: 7801 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-17 08:10:11 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-11-03 14:15:51 +0200 (Fri, 03 Nov 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-15919");
 

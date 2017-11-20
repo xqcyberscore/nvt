@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_weak_hash.nasl 7716 2017-11-09 12:41:45Z jschulte $
+# $Id: gb_wordpress_weak_hash.nasl 7798 2017-11-17 05:43:16Z teissa $
 #
 # WordPress through 4.8.2 Weak Password Hash Algorithm
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113048");
-  script_version("$Revision: 7716 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-09 13:41:45 +0100 (Thu, 09 Nov 2017) $");
+  script_version("$Revision: 7798 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 06:43:16 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-09 13:53:54 +0100 (Thu, 09 Nov 2017)");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   # Unreliable for Linux AND Windows, as some settings, PHP versions, etc. may circumvent the vulnerability
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

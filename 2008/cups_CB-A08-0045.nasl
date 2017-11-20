@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cups_CB-A08-0045.nasl 5672 2017-03-22 08:15:28Z teissa $
+# $Id: cups_CB-A08-0045.nasl 7784 2017-11-16 08:42:29Z cfischer $
 # Description: Cups < 1.3.8 vulnerability
 #
 # Authors:
@@ -43,13 +43,13 @@ Impact
 
 tag_solution = "All Cups users should upgrade to the latest version:";
 
-# $Revision: 5672 $
+# $Revision: 7784 $
 
 if(description)
 {
   script_id(90017);
-  script_version("$Revision: 5672 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 09:15:28 +0100 (Wed, 22 Mar 2017) $");
+  script_version("$Revision: 7784 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-16 09:42:29 +0100 (Thu, 16 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-06-17 20:22:38 +0200 (Tue, 17 Jun 2008)");
   script_cve_id("CVE-2008-1722", "CVE-2008-0047");
   script_bugtraq_id(28781);
@@ -148,14 +148,14 @@ include("pkg-lib-deb.inc");
          version = get_string_version(text:rpms, ver_pattern:pat);
          if(!isnull(version)) {
 	   if( version_is_less(version:version[1], test_version:ver[i]) ) {
-             security_message(port:0, proto:"Cups");
+             security_message(port:0);
            } else {
              if( version_is_equal(version:version[1], test_version:ver[i]) ) {
                pat = version[0]+"~([0-9\.\-]+)";
                release = get_string_version(text:rpms, ver_pattern:pat);
                if(!isnull(release)) {
                  if( version_is_less(version:release[1] ,test_version:rel[i]) ) {
-                   security_message(port:0, proto:"Cups");
+                   security_message(port:0);
                  }
                }
              }
@@ -178,7 +178,7 @@ include("pkg-lib-deb.inc");
        if(pkg) {
          version = get_string_version(text:pkg, ver_pattern:pat);
          if(!isnull(version)) {
-	   security_message(port:0, proto:"Cups");
+	   security_message(port:0);
          }
        }
    }
@@ -204,7 +204,7 @@ include("pkg-lib-deb.inc");
    foreach i (keys(rls)) {
      if( kbrls == rls[i] ) {
        if(isdpkgvuln(pkg:pkg[i], ver:ver[i], rls:rls[i])) {
-         security_message(port:0, proto:"Cups");
+         security_message(port:0);
        }
      }
    }

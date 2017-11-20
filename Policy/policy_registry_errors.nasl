@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_registry_errors.nasl 7753 2017-11-14 10:57:07Z jschulte $
+# $Id: policy_registry_errors.nasl 7811 2017-11-17 11:52:16Z cfischer $
 #
 # Windows Registry Check: Errors
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105991");
-  script_version("$Revision: 7753 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 11:57:07 +0100 (Tue, 14 Nov 2017) $");
+  script_version("$Revision: 7811 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 12:52:16 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2015-05-22 15:06:15 +0700 (Fri, 22 May 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("policy_registry.nasl");
-  script_mandatory_keys("policy/registry_started");
+  script_mandatory_keys("policy/registry/started");
 
   script_tag(name:"summary", value:"List registry entries from the registry policy check
   which contain errors.");
@@ -48,22 +48,43 @@ if(description)
   exit(0);
 }
 
-errors = get_kb_list("policy/registry_err");
+general_errors = get_kb_list( "policy/registry/general_error_list" );
+invalid_lines  = get_kb_list( "policy/registry/invalid_list" );
 
-if (errors) {
-  report = 'The following errors occurred:\n\n';
-  foreach error (errors) {
+if( general_errors ) {
+
+  # Sort to not report changes on delta reports if just the order is different
+  general_errors = sort( general_errors );
+
+  report += 'The following errors occured during the check:\n\n';
+
+  foreach error( general_errors ) {
     report += error + '\n';
   }
-  log_message(data:report, port:0);
+  report += '\n';
 }
 
-if (!get_kb_item("policy/registry_no_timeout")) {
-  timeoutReport = "A timeout happened during the test for Windows Registry entries. " +
-                  "Consider raising the script_timeout value of the NVT " +
-                  "'Windows Registry Check' " +
-                  "(OID: 1.3.6.1.4.1.25623.1.0.105988)";
-  log_message( port: 0, data: timeoutReport );
+if( invalid_lines ) {
+
+  # Sort to not report changes on delta reports if just the order is different
+  invalid_lines = sort( invalid_lines );
+
+  report += 'The following invalid lines where identified within the uploaded policy file:\n\n';
+  report += 'Line|Result|Errorcode;\n';
+
+  foreach error( invalid_lines ) {
+    report += error + '\n';
+  }
+  report += '\n';
 }
 
-exit(0);
+if( ! get_kb_item( "policy/registry/no_timeout" ) ) {
+  report += "A timeout happened during the check. Consider raising the 'Timeout' value of the NVT " +
+            "'Windows Registry Check' (OID: 1.3.6.1.4.1.25623.1.0.105988)";
+}
+
+if( strlen( report ) > 0 ) {
+  log_message( port:0, data:report );
+}
+
+exit( 0 );

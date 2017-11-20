@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_cisco_ios_compliance_violation.nasl 4982 2017-01-11 08:57:53Z ckuerste $
+# $Id: policy_cisco_ios_compliance_violation.nasl 7783 2017-11-16 08:20:50Z cfischer $
 #
 # Cisco IOS Compliance Check: Failed
 #
@@ -25,14 +25,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+# kb: Keep above the description part as it is used there
+include("gos_funcs.inc");
+include("version_func.inc");
+gos_version = get_local_gos_version();
+if( strlen( gos_version ) > 0 &&
+    version_is_greater_equal( version:gos_version, test_version:"4.2.4" ) ) {
+  use_severity = TRUE;
+}
+
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106433");
-  script_version("$Revision: 4982 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-11 09:57:53 +0100 (Wed, 11 Jan 2017) $");
+  script_version("$Revision: 7783 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-16 09:20:50 +0100 (Thu, 16 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-01-11 10:55:08 +0700 (Wed, 11 Jan 2017)");
-  script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  if( use_severity ) {
+    script_tag(name:"cvss_base", value:"10.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  } else {
+    script_tag(name:"cvss_base", value:"0.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  }
 
   script_tag(name: "qod", value: "98");
 
@@ -67,7 +81,10 @@ if (failed) {
     report += '\n';
   }
 
-  log_message(data: report, port: 0, proto: "ssh");
+  if( use_severity )
+    security_message( port:0, data:report );
+  else
+    log_message( port:0, data:report );
 }
 
 exit(0);

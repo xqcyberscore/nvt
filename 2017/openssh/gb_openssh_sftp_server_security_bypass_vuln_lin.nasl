@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_sftp_server_security_bypass_vuln_lin.nasl 7599 2017-10-30 09:14:28Z santu $
+# $Id: gb_openssh_sftp_server_security_bypass_vuln_lin.nasl 7801 2017-11-17 07:10:11Z asteins $
 #
 # OpenSSH 'sftp-server' Security Bypass Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812051");
-  script_version("$Revision: 7599 $");
+  script_version("$Revision: 7801 $");
   script_cve_id("CVE-2017-15906");
   script_bugtraq_id(101552);
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-30 10:14:28 +0100 (Mon, 30 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 08:10:11 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-27 13:08:12 +0530 (Fri, 27 Oct 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSH 'sftp-server' Security Bypass Vulnerability (Linux)");

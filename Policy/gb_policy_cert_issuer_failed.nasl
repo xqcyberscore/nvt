@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_cert_issuer_failed.nasl 4741 2016-12-12 09:21:30Z cfi $
+# $Id: gb_policy_cert_issuer_failed.nasl 7783 2017-11-16 08:20:50Z cfischer $
 #
 # SSL/TLS: Cert Issuer Policy Check Failed
 #
@@ -24,13 +24,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+# kb: Keep above the description part as it is used there
+include("gos_funcs.inc");
+include("version_func.inc");
+gos_version = get_local_gos_version();
+if( strlen( gos_version ) > 0 &&
+    version_is_greater_equal( version:gos_version, test_version:"4.2.4" ) ) {
+  use_severity = TRUE;
+}
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140040");
-  script_version("$Revision: 4741 $");
-  script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-12 10:21:30 +0100 (Mon, 12 Dec 2016) $");
+  script_version("$Revision: 7783 $");
+  if( use_severity ) {
+    script_tag(name:"cvss_base", value:"10.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  } else {
+    script_tag(name:"cvss_base", value:"0.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  }
+  script_tag(name:"last_modification", value:"$Date: 2017-11-16 09:20:50 +0100 (Thu, 16 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-11-01 10:15:30 +0100 (Tue, 01 Nov 2016)");
   script_name("SSL/TLS: Cert Issuer Policy Check Failed");
   script_category(ACT_GATHER_INFO);
@@ -57,5 +71,8 @@ check_issuer = get_kb_item( "policy_cert_issuer/check_issuer" );
 
 report = 'The issuer `' + issuer + '` is not matching the given issuer `' + check_issuer  + '`.';
 
-log_message( port:port, data:report );
+if( use_severity )
+  security_message( port:port, data:report );
+else
+  log_message( port:port, data:report );
 exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_rce_vuln.nasl 7337 2017-10-04 06:29:35Z asteins $
+# $Id: gb_dolibarr_rce_vuln.nasl 7799 2017-11-17 06:09:34Z teissa $
 #
 # Dolibarr ERP/CRM Remote Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:dolibarr:dolibarr';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106908");
-  script_version("$Revision: 7337 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-04 08:29:35 +0200 (Wed, 04 Oct 2017) $");
+  script_version("$Revision: 7799 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-17 07:09:34 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-06-26 15:10:30 +0700 (Mon, 26 Jun 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("Dolibarr ERP/CRM Remote Code Execution Vulnerability");
 
@@ -58,8 +58,7 @@ types, which can result in arbitrary code execution within the context of the vu
 
   script_tag(name: "affected", value: "Dolibarr ERP/CRM 5.0.3 and prior");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 4th October, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update to version 5.0.4.");
 
   script_xref(name: "URL", value: "https://www.wizlynxgroup.com/security-research-advisories/vuln/WLX-2017-009");
 
@@ -76,7 +75,7 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less_equal(version: version, test_version: "5.0.3")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+  report = report_fixed_ver(installed_version: version, fixed_version: "5.0.4");
   security_message(port: port, data: report);
   exit(0);
 }

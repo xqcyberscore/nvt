@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_authentication_info.nasl 7642 2017-11-03 09:03:56Z cfischer $
+# $Id: gb_ssh_authentication_info.nasl 7814 2017-11-17 14:30:20Z cfischer $
 #
 # SSH Authenticated Scan Info Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108162");
-  script_version("$Revision: 7642 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 10:03:56 +0100 (Fri, 03 Nov 2017) $");
+  script_version("$Revision: 7814 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 15:30:20 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-17 10:31:0 +0200 (Tue, 17 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,8 +59,7 @@ kb_array = make_array( "ssh/login/uname", "Response to 'uname -a' command",
                        "lsc/locate/available", "locate: Command available",
                        "ssh/cmd_exec_error", "Don't prepend '/bin/sh -c' to used commands",
                        "ssh/force/pty", "Commands are send via an pseudoterminal/pty",
-                       "ssh/send_extra_ln", "Send an extra newline",
-                       "ssh/send_extra_yes", "Send an extra 'Yes' confirmation for the login prompt",
+                       "ssh/send_extra_cmd", "Send an extra command",
                        "global_settings/ssh/debug", "Debugging enabled within 'Global variable settings'",
                        "Enable/find", "Also use 'find' command to search for Applications enabled within 'Options for Local Security Checks'",
                        "Descend/OFS", "Descend directories on other filesystem enabled within 'Options for Local Security Checks'",
@@ -71,6 +70,9 @@ kb_array = make_array( "ssh/login/uname", "Response to 'uname -a' command",
 foreach kb_item( keys( kb_array ) ) {
   if( kb = get_kb_item( kb_item ) ) {
     if( kb == TRUE ) kb = "TRUE";
+    if( kb_item == "ssh/send_extra_cmd" ) {
+      kb = str_replace( string:kb, find:'\n', replace:"\newline" );
+    }
     info_array[kb_array[kb_item] + " (" + kb_item + ")"] = kb;
   } else {
     if( kb_item == "ssh/login/release" ) {

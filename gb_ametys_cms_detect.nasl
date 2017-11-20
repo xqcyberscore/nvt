@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ametys_cms_detect.nasl 7751 2017-11-14 07:09:45Z teissa $
+# $Id: gb_ametys_cms_detect.nasl 7782 2017-11-16 07:43:02Z cfischer $
 #
 # Ametys CMS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107256");
-  script_version("$Revision: 7751 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-14 08:09:45 +0100 (Tue, 14 Nov 2017) $");
+  script_version("$Revision: 7782 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-16 08:43:02 +0100 (Thu, 16 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-11-13 09:55:00 +0700 (Mon, 13 Nov 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -45,7 +45,7 @@ The script sends a connection request to the server and attempts to detect Amety
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -61,7 +61,7 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 8080);
 
-foreach dir (make_list_unique("/", "/en", "/fr", "/de", "/cms", cgi_dirs(port)))
+foreach dir (make_list_unique("/", "/en", "/fr", "/de", "/cms", cgi_dirs(port: port)))
 {
 
   install = dir;

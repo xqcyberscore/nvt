@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 7752 2017-11-14 08:12:43Z asteins $
+# $Id: gather-package-list.nasl 7815 2017-11-17 14:40:09Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 7752 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 09:12:43 +0100 (Tue, 14 Nov 2017) $");
+  script_version("$Revision: 7815 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 15:40:09 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -418,12 +418,12 @@ if( isnull( uname ) ) exit( 0 );
 
 # e.g. Cisco Prime Infrastructure if another admin is logged in
 if( "Another user is logged into the system at this time" >< uname && "Are you sure you want to continue" >< uname ) {
-  replace_kb_item( name:"ssh/send_extra_yes", value:TRUE );
+  replace_kb_item( name:"ssh/send_extra_cmd", value:'Yes\n' );
   uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, timeout:20, retry:10 );
 }
 
 if( "Following disconnected ssh sessions are available to resume" >< uname ) {
-  replace_kb_item( name:"ssh/send_extra_ln", value:TRUE );
+  replace_kb_item( name:"ssh/send_extra_cmd", value:'\n' );
   uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, timeout:20, retry:10 );
 }
 
@@ -431,6 +431,17 @@ if( "Welcome to Data Domain OS" >< uname ) {
   set_kb_item( name:"emc/data_domain_os/uname", value:uname );
   log_message( port:port, data:'We are able to login and detect that you are running EMC Data Domain OS');
   exit( 0 );
+}
+
+if( "Welcome to pfSense" >< uname ) {
+  set_kb_item( name:"pfsense/uname", value:uname );
+  set_kb_item( name:"pfsense/ssh/port", value:port);
+  set_kb_item( name:"ssh/force/pty", value:TRUE );
+  replace_kb_item( name:"ssh/send_extra_cmd", value:'8\n' );
+  # clear the buffer to avoid that we're saving the whole pfSense menue in the uname
+  uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, clear_buffer:TRUE, nosh:TRUE, timeout:20, retry:10 );
+  # nb: FreeBSD will be caught later below
+  _ssh_is_pfsense = TRUE;
 }
 
 if( "Welcome to the Greenbone OS" >< uname ) {
@@ -465,7 +476,7 @@ if( get_kb_item( "greenbone/OS" ) ) exit( 0 );
 
 if( "TANDBERG Video Communication Server" >< uname ) {
   set_kb_item( name:"cisco/ssh/vcs", value:TRUE );
-  set_kb_item( name:"ssh/send_extra_ln", value:TRUE );
+  set_kb_item( name:"ssh/send_extra_cmd", value:'\n' );
   exit( 0 );
 }
 
@@ -735,13 +746,6 @@ if( "JUNOS" >< uname && "Junos Space" >!< uname )
     set_kb_item( name:"junos/cli", value:TRUE);
   }
   set_kb_item( name:"junos/detected", value:TRUE );
-  exit( 0 );
-}
-
-if( "Welcome to pfSense" >< uname )
-{
-  set_kb_item( name:"pfsense/uname", value:uname );
-  set_kb_item( name:"pfsense/ssh/port", value:port);
   exit( 0 );
 }
 
@@ -3114,96 +3118,123 @@ if( "HP-UX" >< uname ) {
 
 #How about FreeBSD?  If the uname line begins with "FreeBSD ", we have a match
 #We need to run uname twice, because of lastlogin and motd ..
-uname = ssh_cmd(socket:sock, cmd:"uname -a");
-if("FreeBSD" >< uname) {
 
-  osversion = ssh_cmd(socket:sock, cmd:"uname -r");
-  register_detected_os(os:osversion);
+# Special handling for pfSense using FreeBSD
+if( _ssh_is_pfsense ) {
+  _freebsd_clear_buffer = TRUE;
+  _freebsd_nosh = TRUE;
+} else {
+  _freebsd_clear_buffer = FALSE;
+  _freebsd_nosh = FALSE;
+}
 
-  version=eregmatch(pattern:"^[^ ]+ [^ ]+ ([^ ]+)+",string:uname);
-  splitup = eregmatch(pattern:"([^-]+)-([^-]+)-p([0-9]+)", string:version[1]);
+uname = ssh_cmd( socket:sock, cmd:"uname -a", clear_buffer:_freebsd_clear_buffer, nosh:_freebsd_nosh );
+if( "FreeBSD" >< uname ) {
+
+  osversion = ssh_cmd( socket:sock, cmd:"uname -r", clear_buffer:_freebsd_clear_buffer, nosh:_freebsd_nosh );
+
+  version = eregmatch( pattern:"^[^ ]+ [^ ]+ ([^ ]+)+", string:uname );
+  splitup = eregmatch( pattern:"([^-]+)-([^-]+)-p([0-9]+)", string:version[1] );
   found = 0;
-  if(!isnull(splitup)) {
-    release = splitup[1];
+  if( ! isnull( splitup ) ) {
+    release    = splitup[1];
     patchlevel = splitup[3];
     found = 1;
   } else {
-    splitup = eregmatch(pattern:"([^-]+)-RELEASE", string:version[1]);
-    if(!isnull(splitup)) {
-      release = splitup[1];
+    splitup = eregmatch( pattern:"([^-]+)-RELEASE", string:version[1] );
+    if( ! isnull( splitup ) ) {
+      release    = splitup[1];
       patchlevel = "0";
       found = 1;
     } else {
-      splitup=eregmatch(pattern:"([^-]+)-SECURITY",string:version[1]);
-      if(!isnull(splitup)) {
+      splitup = eregmatch( pattern:"([^-]+)-SECURITY",string:version[1] );
+      if( ! isnull( splitup ) ) {
         release = splitup[1];
-        log_message(port:port, data:string("We have detected you are running FreeBSD ", splitup[0], ". It also appears that you are using freebsd-update, a binary update tool for keeping your distribution up to date.  We will not be able to check your core distribution for vulnerabilities, but we will check your installed ports packages."));
+        log_message( port:port, data:"We have detected you are running FreeBSD " + splitup[0] + ". It also appears that you are using freebsd-update, a binary update tool for keeping your distribution up to date. We will not be able to check your core distribution for vulnerabilities, but we will check your installed ports packages." );
         found = 2;
       } else {
-        log_message(port:port, data:string("You appear to be running FreeBSD, but we do not recognize the output format of uname: ", uname, ". Local security checks will NOT be run."));
+        log_message( port:port, data:"You appear to be running FreeBSD, but we do not recognize the output format of uname: " + uname + ". Local security checks will NOT be run." );
+        register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+        # nb: We want to report the unknown / not detected version
+        register_unknown_os_banner( banner:'Unknown FreeBSD release.\n\nuname -a: ' + uname + '\nuname -r: ' + osversion, banner_type_name:SCRIPT_DESC, banner_type_short:"gather_package_list", port:port );
       }
     }
   }
-  if(found==1) {
-    set_kb_item(name: "ssh/login/freebsdrel", value: release);
-    set_kb_item(name: "ssh/login/freebsdpatchlevel", value: patchlevel);
-    log_message(port:port, data:string("We are able to login and detect that you are running FreeBSD ", release, " Patch level: ", patchlevel));
+  if( found == 1 ) {
+    set_kb_item( name:"ssh/login/freebsdrel", value:release );
+    set_kb_item( name:"ssh/login/freebsdpatchlevel", value:patchlevel );
+    register_and_report_os( os:"FreeBSD", version:release, cpe:"cpe:/o:freebsd:freebsd", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+    log_message( port:port, data:"We are able to login and detect that you are running FreeBSD " + release + " Patch level: " + patchlevel );
   }
-  if(found==2) {
-    set_kb_item(name: "ssh/login/freebsdrel", value: release);
-    log_message(port:port, data:string("We are able to login and detect that you are running FreeBSD ", release, " Patch level: Unknown"));
+  if( found == 2 ) {
+    set_kb_item( name:"ssh/login/freebsdrel", value:release );
+    register_and_report_os( os:"FreeBSD", version:release, cpe:"cpe:/o:freebsd:freebsd", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+    log_message( port:port, data:"We are able to login and detect that you are running FreeBSD " + release + " Patch level: Unknown" );
   }
-  if(found!=0) {
-    buf = ssh_cmd(socket:sock, cmd:"pkg info");
-    set_kb_item(name: "ssh/login/freebsdpkg", value:buf);
+  if( found != 0 ) {
+    buf = ssh_cmd( socket:sock, cmd:"pkg info", clear_buffer:_freebsd_clear_buffer, nosh:_freebsd_nosh );
+    set_kb_item( name:"ssh/login/freebsdpkg", value:buf );
   }
-  exit(0);
+  exit( 0 );
 }
 
 # Whilst we're at it, lets check if it's Solaris
-if ("SunOS " >< uname) {
-    osversion = ssh_cmd(socket:sock, cmd:"uname -r");
-    set_kb_item(name: "ssh/login/solosversion", value:osversion);
-    hardwaretype = ssh_cmd(socket:sock, cmd:"uname -p");
-    set_kb_item(name: "ssh/login/solhardwaretype", value:hardwaretype);
-    buf = ssh_cmd(socket:sock, cmd:"pkginfo");
-    set_kb_item(name: "ssh/login/solpackages", value:buf);
-    buf = ssh_cmd(socket:sock, cmd:"showrev -p");
-    set_kb_item(name: "ssh/login/solpatches", value:buf);
-    if (hardwaretype >< "sparc") {
-        register_detected_os(os:string("Solaris ", osversion, " Arch: SPARC"));
-        log_message(port:port, data:string("We are able to login and detect that you are running Solaris ", osversion, " Arch: SPARC"));
-    } else {
-        register_detected_os(os:string("Solaris ", osversion, " Arch: x86"));
-        log_message(port:port, data:string("We are able to login and detect that you are running Solaris ", osversion, " Arch: x86"));
-    }
+if( "SunOS " >< uname ) {
 
-    solaris_cpe = build_cpe(value:osversion, exp:"^([0-9.]+)", base:"cpe:/o:sun:solaris:");
-    if (!isnull(solaris_cpe))
-      register_host_detail(name:"OS", value:solaris_cpe, desc:SCRIPT_DESC);
-    exit(0);
+  osversion = ssh_cmd( socket:sock, cmd:"uname -r" );
+  set_kb_item( name:"ssh/login/solosversion", value:osversion );
+
+  if( match = eregmatch( pattern:"^([0-9.]+)", string:osversion ) ) {
+    register_and_report_os( os:"Solaris", version:match[1], cpe:"cpe:/o:sun:solaris", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else {
+    register_and_report_os( os:"Solaris", cpe:"cpe:/o:sun:solaris", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+    # nb: We want to report the unknown / not detected version
+    register_unknown_os_banner( banner:'Unknown Solaris release.\n\nuname: ' + uname + '\nuname -r: ' + osversion, banner_type_name:SCRIPT_DESC, banner_type_short:"gather_package_list", port:port );
+  }
+
+  hardwaretype = ssh_cmd( socket:sock, cmd:"uname -p" );
+  set_kb_item( name:"ssh/login/solhardwaretype", value:hardwaretype );
+  if( hardwaretype >< "sparc" ) {
+    log_message( port:port, data:"We are able to login and detect that you are running Solaris " + osversion + " Arch: SPARC" );
+  } else {
+    log_message( port:port, data:"We are able to login and detect that you are running Solaris " + osversion + " Arch: x86" );
+  }
+
+  buf = ssh_cmd( socket:sock, cmd:"pkginfo" );
+  set_kb_item( name:"ssh/login/solpackages", value:buf );
+
+  buf = ssh_cmd( socket:sock, cmd:"showrev -p" );
+  set_kb_item( name:"ssh/login/solpatches", value:buf );
+
+  exit( 0 );
 }
 
 #maybe it's a real OS... like Mac OS X :)
 if( "Darwin" >< uname ) {
 
-  buf = ssh_cmd( socket:sock, cmd:"sw_vers" );
-  register_detected_os( os:buf );
-  log_message( data:string( "We are able to login and detect that you are running:\n", buf, '\n' ) );
+  sw_vers_buf = ssh_cmd( socket:sock, cmd:"sw_vers" );
+  log_message( data:'We are able to login and detect that you are running:\n' + sw_vers_buf );
+
   buf = chomp( ssh_cmd( socket:sock, cmd:"sw_vers -productName" ) );
   set_kb_item( name:"ssh/login/osx_name", value:buf );
+
   buf = chomp( ssh_cmd( socket:sock, cmd:"sw_vers -productVersion" ) );
   set_kb_item( name:"ssh/login/osx_version", value:buf );
+  if( match = eregmatch( pattern:"^([0-9]+\.[0-9]+\.[0-9]+)", string:buf ) ) {
+    register_and_report_os( os:"Mac OS X", version:match[1], cpe:"cpe:/o:apple:mac_os_x", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else {
+    register_and_report_os( os:"Mac OS X", cpe:"cpe:/o:apple:mac_os_x", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+    # nb: We want to report the unknown / not detected version
+    register_unknown_os_banner( banner:'Unknown Mac OS X release.\n\nsw_vers output:\n' + sw_vers_buf, banner_type_name:SCRIPT_DESC, banner_type_short:"gather_package_list", port:port );
+  }
+
   buf = chomp( ssh_cmd( socket:sock, cmd:"sw_vers -buildVersion" ) );
   set_kb_item( name:"ssh/login/osx_build", value:buf );
+
   buf = ssh_cmd( socket:sock, cmd:"list=$(pkgutil --pkgs);for l in $list;do echo $l;v=$(pkgutil --pkg-info $l | grep version);echo ${v#version: };done;" );
   set_kb_item( name:"ssh/login/osx_pkgs", value:buf );
 
-  osx_cpe = build_cpe( value:buf, exp:"Mac OS X (10\.[0-9]+\.[0-9]+)", base:"cpe:/o:apple:mac_os_x:" );
-  if( ! isnull( osx_cpe ) )
-    register_host_detail( name:"OS", value:osx_cpe, desc:SCRIPT_DESC );
-
-  exit(0);
+  exit( 0 );
 }
 
 #{ "NetBSD",     "????????????????",         },

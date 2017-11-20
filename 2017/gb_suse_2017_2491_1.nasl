@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2491_1.nasl 7227 2017-09-22 06:36:11Z santu $
+# $Id: gb_suse_2017_2491_1.nasl 7801 2017-11-17 07:10:11Z asteins $
 #
 # SuSE Update for chromium openSUSE-SU-2017:2491-1 (chromium)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851615");
-  script_version("$Revision: 7227 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 08:36:11 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 7801 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 08:10:11 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-09-16 07:26:13 +0200 (Sat, 16 Sep 2017)");
   script_cve_id("CVE-2017-5111", "CVE-2017-5112", "CVE-2017-5113", "CVE-2017-5114", 
                 "CVE-2017-5115", "CVE-2017-5116", "CVE-2017-5117", "CVE-2017-5118", 
                 "CVE-2017-5119", "CVE-2017-5120");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for chromium openSUSE-SU-2017:2491-1 (chromium)");
   script_tag(name: "summary", value: "Check the version of chromium");

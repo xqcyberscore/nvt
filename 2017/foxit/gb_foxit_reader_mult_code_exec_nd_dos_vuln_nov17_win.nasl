@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_code_exec_nd_dos_vuln_nov17_win.nasl 7747 2017-11-14 06:11:31Z santu $
+# $Id: gb_foxit_reader_mult_code_exec_nd_dos_vuln_nov17_win.nasl 7819 2017-11-20 05:26:56Z teissa $
 #
 # Foxit Reader Multiple Arbitrary Code Execution and DoS Vulnerabilities Nov17 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812101");
-  script_version("$Revision: 7747 $");
+  script_version("$Revision: 7819 $");
   script_cve_id("CVE-2017-10947", "CVE-2017-10948", "CVE-2017-10946");
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 07:11:31 +0100 (Tue, 14 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 06:26:56 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-10 12:34:48 +0530 (Fri, 10 Nov 2017)");
   script_name("Foxit Reader Multiple Arbitrary Code Execution and DoS Vulnerabilities Nov17 (Windows)");
 

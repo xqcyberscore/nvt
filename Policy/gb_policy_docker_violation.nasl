@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_docker_violation.nasl 5107 2017-01-25 17:31:44Z mime $
+# $Id: gb_policy_docker_violation.nasl 7783 2017-11-16 08:20:50Z cfischer $
 #
 # Docker Compliance Check: Failed
 #
@@ -25,14 +25,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+# kb: Keep above the description part as it is used there
+include("gos_funcs.inc");
+include("version_func.inc");
+gos_version = get_local_gos_version();
+if( strlen( gos_version ) > 0 &&
+    version_is_greater_equal( version:gos_version, test_version:"4.2.4" ) ) {
+  use_severity = TRUE;
+}
+
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140122");
-  script_version("$Revision: 5107 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-25 18:31:44 +0100 (Wed, 25 Jan 2017) $");
+  script_version("$Revision: 7783 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-16 09:20:50 +0100 (Thu, 16 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-01-19 10:35:52 +0100 (Thu, 19 Jan 2017)");
-  script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  if( use_severity ) {
+    script_tag(name:"cvss_base", value:"10.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  } else {
+    script_tag(name:"cvss_base", value:"0.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  }
 
   script_tag(name: "qod", value: "98");
 
@@ -78,6 +92,9 @@ foreach failed ( sort( keys( f ) ) )
   report += ' - ' + data['title'] + '\n\nDescription: ' +  data['desc'] + '\n' + 'Solution: ' + data['solution'] + '\n\n' + 'Result: ' + reason + '\n\n';
 }
 
-log_message( port:0, data:report );
+if( use_severity )
+  security_message( port:0, data:report );
+else
+  log_message( port:0, data:report );
 
 exit( 0 );

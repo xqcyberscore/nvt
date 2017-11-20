@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_expect-ct_detect.nasl 7697 2017-11-08 11:58:32Z jschulte $
+# $Id: gb_expect-ct_detect.nasl 7795 2017-11-16 14:42:08Z cfischer $
 #
 # SSL/TLS: Expect Certificate Transparency (Expect-CT) Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113045");
-  script_version("$Revision: 7697 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 12:58:32 +0100 (Wed, 08 Nov 2017) $");
+  script_version("$Revision: 7795 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-16 15:42:08 +0100 (Thu, 16 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-07 10:06:44 +0100 (Tue, 07 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,6 +42,8 @@ if( description )
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SSL and TLS");
+  # nb: Don't add a dependency to http_version.nasl to allow a minimal SSL/TLS check configuration
+  script_dependencies("find_service.nasl", "httpver.nasl", "gb_tls_version_get.nasl");
   script_require_ports("Services/www", 443);
   script_mandatory_keys("ssl_tls/port");
 
@@ -57,13 +59,16 @@ include( "http_func.inc" );
 include( "http_keepalive.inc" );
 
 port = get_http_port( default: 443, ignore_cgi_disabled: TRUE );
+if( get_port_transport( port ) < ENCAPS_SSLv23 ) exit( 0 );
 
-banner = get_http_banner( port );
+banner = get_http_banner( port: port );
 
-if( ect = egrep( pattern: "Expect-CT:", string: banner, icase: TRUE ) )
+if( ! banner || banner !~ "^HTTP/1\.[01] (20[0146]|30[12378])" ) exit( 0 );
+
+if( ect = egrep( pattern: "^Expect-CT: ", string: banner, icase: TRUE ) )
 {
   set_kb_item( name: "expect-ct/available", value: TRUE );
-  log_message( port: port, data: 'The remote HTTPS server is sending the "Expect Certificate Transparency" header.' );
+  log_message( port: port, data: 'The remote HTTPS server is sending the "Expect Certificate Transparency" header: "' + ect + '"');
   exit( 0 );
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-05_macosx.nasl 6064 2017-05-03 09:30:11Z antu123 $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-05_macosx.nasl 7798 2017-11-17 05:43:16Z teissa $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2017-05)-MAC OS X
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810772");
-  script_version("$Revision: 6064 $");
+  script_version("$Revision: 7798 $");
   script_cve_id("CVE-2017-5068" );
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:30:11 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"cvss_base", value:"5.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 06:43:16 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-05-03 11:37:14 +0530 (Wed, 03 May 2017)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2017-05)-MAC OS X");
 

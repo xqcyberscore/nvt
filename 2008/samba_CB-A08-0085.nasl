@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: samba_CB-A08-0085.nasl 5661 2017-03-21 11:39:13Z cfi $
+# $Id: samba_CB-A08-0085.nasl 7784 2017-11-16 08:42:29Z cfischer $
 # Description: Samba 3.0.0 > 3.0.29 vulnerability
 #
 # Authors:
@@ -37,13 +37,13 @@ Impact
 
 tag_solution = "All Samba users should upgrade to the latest version.";
 
-# $Revision: 5661 $
+# $Revision: 7784 $
 
 if(description)
 {
   script_id(90028);
-  script_version("$Revision: 5661 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:39:13 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 7784 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-16 09:42:29 +0100 (Thu, 16 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-09-06 20:50:27 +0200 (Sat, 06 Sep 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -65,7 +65,6 @@ if(description)
 
 include("version_func.inc");
 include("pkg-lib-deb.inc");
-sec_proto = "Samba";
 
 # Checking SuSE/Fedora
    kbrls = get_kb_item("ssh/login/release");
@@ -106,14 +105,14 @@ sec_proto = "Samba";
          version = get_string_version(text:rpms, ver_pattern:pat);
          if(!isnull(version)) {
 	   if( version_is_less(version:version[1], test_version:ver[i]) ) {
-             security_message(port:0, proto:sec_proto);
+             security_message(port:0);
            } else {
              if( version_is_equal(version:version[1], test_version:ver[i]) ) {
                pat = version[0]+"~([0-9\.\-]+)";
                release = get_string_version(text:rpms, ver_pattern:pat);
                if(!isnull(release)) {
                  if( version_is_less(version:release[1] ,test_version:rel[i]) ) {
-                   security_message(port:0, proto:sec_proto);
+                   security_message(port:0);
                  }
                }
              }
@@ -136,7 +135,7 @@ sec_proto = "Samba";
        if(pkg) {
          version = get_string_version(text:pkg, ver_pattern:pat);
          if(!isnull(version)) {
-	   security_message(port:0, proto:sec_proto);
+	   security_message(port:0);
          }
        }
    }
@@ -162,7 +161,7 @@ sec_proto = "Samba";
    foreach i (keys(rls)) {
      if( kbrls == rls[i] ) {
        if(isdpkgvuln(pkg:pkg[i], ver:ver[i], rls:rls[i])) {
-         security_message(port:0, proto:sec_proto);
+         security_message(port:0);
        }
      }
    }

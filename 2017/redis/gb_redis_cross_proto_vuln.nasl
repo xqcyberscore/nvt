@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_cross_proto_vuln.nasl 7602 2017-10-31 09:29:17Z ckuersteiner $
+# $Id: gb_redis_cross_proto_vuln.nasl 7801 2017-11-17 07:10:11Z asteins $
 #
 # Redis Cross Protocol Scripting Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:redis:redis";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140459");
-  script_version("$Revision: 7602 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-31 10:29:17 +0100 (Tue, 31 Oct 2017) $");
+  script_version("$Revision: 7801 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-17 08:10:11 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-10-30 16:16:15 +0700 (Mon, 30 Oct 2017)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-10517");
 

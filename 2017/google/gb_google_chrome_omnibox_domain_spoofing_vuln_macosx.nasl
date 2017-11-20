@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_omnibox_domain_spoofing_vuln_macosx.nasl 7628 2017-11-02 12:00:39Z santu $
+# $Id: gb_google_chrome_omnibox_domain_spoofing_vuln_macosx.nasl 7801 2017-11-17 07:10:11Z asteins $
 #
 # Google Chrome Omnibox Domain Spoofing Vulnerability - MAC OS X
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811886");
-  script_version("$Revision: 7628 $");
+  script_version("$Revision: 7801 $");
   script_cve_id("CVE-2017-5090");
   script_bugtraq_id(101591);
-  script_tag(name:"cvss_base", value:"6.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-02 13:00:39 +0100 (Thu, 02 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 08:10:11 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-02 17:19:50 +0530 (Thu, 02 Nov 2017)");
   script_name("Google Chrome Omnibox Domain Spoofing Vulnerability - MAC OS X");
 

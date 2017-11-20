@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3985.nasl 7334 2017-10-02 09:55:56Z teissa $
+# $Id: deb_3985.nasl 7801 2017-11-17 07:10:11Z asteins $
 #
 # Auto-generated from advisory DSA 3985-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703985");
-  script_version("$Revision: 7334 $");
+  script_version("$Revision: 7801 $");
   script_cve_id("CVE-2017-5111", "CVE-2017-5112", "CVE-2017-5113", "CVE-2017-5114", "CVE-2017-5115", "CVE-2017-5116", "CVE-2017-5117", "CVE-2017-5118", "CVE-2017-5119", "CVE-2017-5120", "CVE-2017-5121", "CVE-2017-5122");
   script_name("Debian Security Advisory DSA 3985-1 (chromium-browser - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-02 11:55:56 +0200 (Mon, 02 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 08:10:11 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-09-28 00:00:00 +0200 (Thu, 28 Sep 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

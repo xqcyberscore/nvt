@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prtg_netmon_xss_vuln2.nasl 7600 2017-10-30 09:52:59Z ckuersteiner $
+# $Id: gb_prtg_netmon_xss_vuln2.nasl 7801 2017-11-17 07:10:11Z asteins $
 #
 # PRTG Network Monitor Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:paessler:prtg_network_monitor';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140434");
-  script_version("$Revision: 7600 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-30 10:52:59 +0100 (Mon, 30 Oct 2017) $");
+  script_version("$Revision: 7801 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-17 08:10:11 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-10-17 16:07:51 +0700 (Tue, 17 Oct 2017)");
-  script_tag(name: "cvss_base", value: "8.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:M/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-15008", "CVE-2017-15009", "CVE-2017-15651", "CVE-2017-15360", "CVE-2017-15917");
 

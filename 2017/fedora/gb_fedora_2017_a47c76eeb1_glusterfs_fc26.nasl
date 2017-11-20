@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_a47c76eeb1_glusterfs_fc26.nasl 7629 2017-11-02 12:23:12Z santu $
+# $Id: gb_fedora_2017_a47c76eeb1_glusterfs_fc26.nasl 7801 2017-11-17 07:10:11Z asteins $
 #
 # Fedora Update for glusterfs FEDORA-2017-a47c76eeb1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873555");
-  script_version("$Revision: 7629 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-02 13:23:12 +0100 (Thu, 02 Nov 2017) $");
+  script_version("$Revision: 7801 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 08:10:11 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-02 18:05:39 +0530 (Thu, 02 Nov 2017)");
   script_cve_id("CVE-2017-15096");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for glusterfs FEDORA-2017-a47c76eeb1");
   script_tag(name: "summary", value: "Check the version of glusterfs");

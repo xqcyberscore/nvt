@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_xss_vuln.nasl 7337 2017-10-04 06:29:35Z asteins $
+# $Id: gb_piwigo_xss_vuln.nasl 7791 2017-11-16 13:18:39Z jschulte $
 #
 # Piwigo XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:piwigo:piwigo';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106437");
-  script_version("$Revision: 7337 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-04 08:29:35 +0200 (Wed, 04 Oct 2017) $");
+  script_version("$Revision: 7791 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-16 14:18:39 +0100 (Thu, 16 Nov 2017) $");
   script_tag(name: "creation_date", value: "2016-12-08 09:38:25 +0700 (Thu, 08 Dec 2016)");
   script_tag(name:"cvss_base", value: "4.3");
   script_tag(name:"cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("Piwigo XSS Vulnerability");
 
@@ -62,8 +62,7 @@ allows remote attackers to inject arbitrary web script or HTML via the search pa
 
   script_tag(name: "affected", value: "Piwigo 2.8.3");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 4th October, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update Piwigo to version 2.9.1 or above.");
 
   script_xref(name: "URL", value: "https://github.com/Piwigo/Piwigo/issues/559");
 
@@ -80,7 +79,7 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version == "2.8.3") {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+  report = report_fixed_ver(installed_version: version, fixed_version: "2.9.1");
   security_message(port: port, data: report);
   exit(0);
 }

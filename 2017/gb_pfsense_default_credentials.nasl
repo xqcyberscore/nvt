@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_default_credentials.nasl 7772 2017-11-15 11:54:48Z asteins $ # auto-updated by SVN
+# $Id: gb_pfsense_default_credentials.nasl 7805 2017-11-17 08:42:10Z cfischer $ # auto-updated by SVN
 #
 # pfSense Default Admin Credentials
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:pfsense:pfsense';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112122");
-  script_version("$Revision: 7772 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 12:54:48 +0100 (Wed, 15 Nov 2017) $");
+  script_version("$Revision: 7805 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 09:42:10 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-14 10:54:12 +0100 (Tue, 14 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -56,6 +56,9 @@ if(description)
   script_tag(name:"insight", value:"By convention, each time you create a new instance of pfSense, the admin user is being created with default credentials:
   Username: admin, Password: pfsense.");
 
+  script_xref(name:"URL", value:"https://doc.pfsense.org/index.php/Installing_pfSense#pfSense_Default_Configuration");
+  script_xref(name:"URL", value:"https://doc.pfsense.org/index.php/What_is_the_default_username_and_password");
+
   exit(0);
 }
 
@@ -78,8 +81,7 @@ if(magic_token = eregmatch(pattern:'var csrfMagicToken = "(.*)";var csrfMagicNam
 
 if(magic_var = eregmatch(pattern:'var csrfMagicName = "(.*)";</script>', string:res_1, icase:TRUE)) {
   magic_var = magic_var[1];
-}
-else {
+} else {
   magic_var = '__csrf_magic';
 }
 
@@ -88,20 +90,16 @@ cookie_1 = get_cookie_from_header(buf:res_1, pattern:'Set-Cookie: (.*); path=/')
 data = magic_var + '=' + magic_token + '&usernamefld=admin&passwordfld=pfsense&login=Sign+In';
 accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8';
 
-# In order to avoid being blocked by DNS Rebind Protection, the Host Name is being replaced with the Host IP
-prep_req_2 = http_post_req(port:port, url:"/", data:data, add_headers:make_array("Upgrade-Insecure-Requests", "1", "Cookie", cookie_1, "Content-Type", "application/x-www-form-urlencoded"),
-                    accept_header:accept);
-host = egrep(pattern:"Host: (.*)", string:prep_req_2, icase:TRUE);
-req_2 = ereg_replace(pattern:host, string:prep_req_2, replace:'Host: ' + get_host_ip() + '\r\n', icase:TRUE);
+# In order to avoid being blocked by DNS Rebind Protection (e.g. if it is misconfigured), the Host Name is being replaced with the Host IP
+req_2 = http_post_req(port:port, url:"/", data:data, accept_header:accept, host_header_use_ip:TRUE,
+                      add_headers:make_array("Upgrade-Insecure-Requests", "1", "Cookie", cookie_1, "Content-Type", "application/x-www-form-urlencoded"));
 res_2 = http_keepalive_send_recv(port:port, data:req_2, bodyonly:FALSE);
 
 # Another cookie is set by the application and therefore being obtained since the POST response is an HTTP redirect (302)
 cookie_2 = get_cookie_from_header(buf:res_2, pattern:'Set-Cookie: (.*); path=/');
 
 # Again, the DNS Rebind Protection needs to be avoided, so the Host IP is needed for a valid GET request
-prep_req_3 = http_get_req(port:port, url:"/", add_headers:make_array("Cookie", cookie_2), accept_header:accept);
-host = egrep(pattern:"Host: (.*)", string:prep_req_3, icase:TRUE);
-req_3 = ereg_replace(pattern:host, string:prep_req_3, replace:'Host: ' + get_host_ip() + '\r\n', icase:TRUE);
+req_3 = http_get_req(port:port, url:"/", add_headers:make_array("Cookie", cookie_2), accept_header:accept, host_header_use_ip:TRUE);
 res_3 = http_keepalive_send_recv(port:port, data:req_3, bodyonly:FALSE);
 
 if("Status: Dashboard</title>" >< res_3) {

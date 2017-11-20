@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_cpe_violation.nasl 7150 2017-09-15 13:20:49Z cfischer $
+# $Id: gb_policy_cpe_violation.nasl 7783 2017-11-16 08:20:50Z cfischer $
 #
 # CPE-based Policy Check Violations
 #
@@ -26,14 +26,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+# kb: Keep above the description part as it is used there
+include("gos_funcs.inc");
+include("version_func.inc");
+gos_version = get_local_gos_version();
+if( strlen( gos_version ) > 0 &&
+    version_is_greater_equal( version:gos_version, test_version:"4.2.4" ) ) {
+  use_severity = TRUE;
+}
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103964");
-  script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7150 $");
+  if( use_severity ) {
+    script_tag(name:"cvss_base", value:"10.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  } else {
+    script_tag(name:"cvss_base", value:"0.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  }
+  script_version("$Revision: 7783 $");
   script_name("CPE-based Policy Check Violations");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 15:20:49 +0200 (Fri, 15 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-16 09:20:50 +0100 (Thu, 16 Nov 2017) $");
   script_tag(name:"creation_date", value:"2014-01-06 11:43:01 +0700 (Mon, 06 Jan 2014)");
   script_category(ACT_END);
   script_family("Policy");
@@ -73,7 +87,10 @@ if (checkfor == "present") {
 }
 
 if (report) {
-  log_message(port:0, data:report);
+  if( use_severity )
+    security_message( port:0, data:report );
+  else
+    log_message( port:0, data:report );
 }
 
 exit(0);

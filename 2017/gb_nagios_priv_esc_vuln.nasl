@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_priv_esc_vuln.nasl 7337 2017-10-04 06:29:35Z asteins $
+# $Id: gb_nagios_priv_esc_vuln.nasl 7803 2017-11-17 08:14:49Z teissa $
 #
 # Nagios Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:nagios:nagios';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106606");
-  script_version("$Revision: 7337 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-04 08:29:35 +0200 (Wed, 04 Oct 2017) $");
+  script_version("$Revision: 7803 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-17 09:14:49 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-02-17 10:06:51 +0700 (Fri, 17 Feb 2017)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("Nagios Privilege Escalation Vulnerability");
 
@@ -62,12 +62,12 @@ symlink. An identical attack not addressed by CVE-2016-8641 works with hardlinks
 
   script_tag(name: "impact", value: "A local attacker may gain root privileges.");
 
-  script_tag(name: "affected", value: "Nagios 4.2.4 and before (4.x.x).");
+  script_tag(name: "affected", value: "Nagios before 4.3.3 (4.x.x).");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 4th October, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update to Nagios 4.3.3 or a later version.");
 
   script_xref(name: "URL", value: "http://seclists.org/oss-sec/2016/q4/783");
+  script_xref(name: "URL", value: "https://github.com/NagiosEnterprises/nagioscore/blob/nagios-4.3.3/daemon-init.in");
 
   exit(0);
 }
@@ -81,8 +81,8 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version_is_less_equal(version: version, test_version: "4.2.4")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+if (version_is_less(version: version, test_version: "4.3.3")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "4.3.3");
   security_message(port: port, data: report);
   exit(0);
 }

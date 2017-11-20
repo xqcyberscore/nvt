@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums_win.nasl 7777 2017-11-15 14:52:55Z cfischer $
+# $Id: policy_file_checksums_win.nasl 7794 2017-11-16 14:27:38Z cfischer $
 #
 # Check for File Checksum Violations in Windows
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96180");
-  script_version("$Revision: 7777 $");
+  script_version("$Revision: 7794 $");
   script_name("Windows file Checksums");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 15:52:55 +0100 (Wed, 15 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-16 15:27:38 +0100 (Thu, 16 Nov 2017) $");
   script_tag(name:"creation_date", value:"2013-07-02 10:55:14 +0530 (Tue, 02 Jul 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Policy");
@@ -76,11 +76,11 @@ if(description)
   exit(0);
 }
 
-cheksumlist = script_get_preference( "Target checksum File" );
-if( ! cheksumlist ) exit( 0 );
+checksumlist = script_get_preference( "Target checksum File" );
+if( ! checksumlist ) exit( 0 );
 
-cheksumlist = script_get_preference_file_content( "Target checksum File" );
-if( ! cheksumlist ) exit( 0 );
+checksumlist = script_get_preference_file_content( "Target checksum File" );
+if( ! checksumlist ) exit( 0 );
 
 if( ! defined_func( "win_cmd_exec" ) ) exit( 0 );  #TBD: Report this in the error NVT?
 
@@ -135,7 +135,7 @@ host_ip = get_host_ip();
 
 set_kb_item( name:"policy/file_checksums_win/started", value:TRUE );
 
-lines = split( cheksumlist, keep:FALSE );
+lines = split( checksumlist, keep:FALSE );
 line_count = max_index( lines );
 
 if( line_count == 1 && lines[0] =~ "Checksum\|File\|Checksumtype(\|Only-Check-This-IP)?" ) {
@@ -350,7 +350,7 @@ if( listall == "yes" ) {
     max = maxlist;
 }
 
-for( i = 1; i < max; i++ ) {
+for( i = 0; i < max; i++ ) {
 
   val = split( valid_lines_list[i], sep:'|', keep:FALSE );
   checksum   = val[0];

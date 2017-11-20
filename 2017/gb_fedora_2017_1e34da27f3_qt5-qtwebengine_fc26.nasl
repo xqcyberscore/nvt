@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_1e34da27f3_qt5-qtwebengine_fc26.nasl 6850 2017-08-04 07:23:54Z santu $
+# $Id: gb_fedora_2017_1e34da27f3_qt5-qtwebengine_fc26.nasl 7801 2017-11-17 07:10:11Z asteins $
 #
 # Fedora Update for qt5-qtwebengine FEDORA-2017-1e34da27f3
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873085");
-  script_version("$Revision: 6850 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:23:54 +0200 (Fri, 04 Aug 2017) $");
+  script_version("$Revision: 7801 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-17 08:10:11 +0100 (Fri, 17 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-08-04 12:46:40 +0530 (Fri, 04 Aug 2017)");
   script_cve_id("CVE-2017-5070", "CVE-2017-5071", "CVE-2017-5075", "CVE-2017-5076", 
                 "CVE-2017-5077", "CVE-2017-5078", "CVE-2017-5079", "CVE-2017-5083", 
                 "CVE-2017-5088", "CVE-2017-5089");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for qt5-qtwebengine FEDORA-2017-1e34da27f3");
   script_tag(name: "summary", value: "Check the version of qt5-qtwebengine");

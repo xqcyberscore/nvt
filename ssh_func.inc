@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 7701 2017-11-08 15:45:36Z cfischer $
+# $Id: ssh_func.inc 7814 2017-11-17 14:30:20Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7701 $
+# $Revision: 7814 $
 #
 ###############################################################################
 
@@ -1847,7 +1847,8 @@ function ssh_read_from_shell( sess, pattern, timeout, retry ) {
 
 function ssh_cmd_pty( sess, cmd, pattern, timeout, retry, clear_buffer ) {
 
-  local_var sess, cmd, pattern, ret, timeout, retry;
+  local_var sess, cmd, pattern, timeout, retry, clear_buffer;
+  local_var extra_cmd, c, ret;
 
   if( ! cmd ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cmd#-#ssh_cmd_pty" );
@@ -1863,13 +1864,8 @@ function ssh_cmd_pty( sess, cmd, pattern, timeout, retry, clear_buffer ) {
   if( ! timeout ) timeout = 15;
   if( ! retry ) retry = 3;
 
-  if( get_kb_item( "ssh/send_extra_ln" ) ) {
-    ssh_shell_write( sess, cmd:'\n' );
-    sleep( 5 );
-  }
-
-  if( get_kb_item( "ssh/send_extra_yes" ) ) {
-    ssh_shell_write( sess, cmd:'Yes\n' );
+  if( extra_cmd = get_kb_item( "ssh/send_extra_cmd" ) ) {
+    ssh_shell_write( sess, cmd:extra_cmd );
     sleep( 5 );
   }
 
@@ -1899,15 +1895,15 @@ function ssh_cmd_pty( sess, cmd, pattern, timeout, retry, clear_buffer ) {
   ret = str_replace( string:ret, find:cmd + '\n', replace:"" );
 
   return ret;
-
 }
 
 #-----------------------------------------------------------------#
 # Execute command on SSH server                                   #
 #-----------------------------------------------------------------#
-function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry ) {
+function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry, clear_buffer ) {
 
-  local_var payload, ret, tempbuf, end, cret, messid_data, ret_payload, ret_ssh_buf, pty, sess;
+  local_var socket, cmd, timeout, nosh, return_errors, pty, pattern, retry, clear_buffer;
+  local_var payload, ret, tempbuf, end, cret, messid_data, ret_payload, ret_ssh_buf, sess;
 
   if( ! cmd ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cmd#-#ssh_cmd" );
@@ -1936,7 +1932,7 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
     # Note: Setting stdout and stderr to 0 enables a
     # compatibility mode to be bug compliant to the NASL ssh code.
     if( pty && defined_func( "ssh_shell_open" ) )
-      ret_ssh_buf = ssh_cmd_pty( sess:sess, cmd:cmd, pattern:pattern, timeout:timeout, retry:retry );
+      ret_ssh_buf = ssh_cmd_pty( sess:sess, cmd:cmd, pattern:pattern, timeout:timeout, retry:retry, clear_buffer:clear_buffer );
     else
       ret_ssh_buf = ssh_request_exec( sess, cmd:cmd, stdout:0, stderr:0 );
 
