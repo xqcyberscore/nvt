@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpkp_hsts_on_http.nasl 7385 2017-10-09 12:02:13Z cfischer $
+# $Id: gb_hpkp_hsts_on_http.nasl 7830 2017-11-20 12:43:05Z cfischer $
 #
-# SSL/TLS: HPKP / HSTS Headers sent via plain HTTP
+# SSL/TLS: HPKP / HSTS / Expect-CT Headers sent via plain HTTP
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108248");
-  script_version("$Revision: 7385 $");
+  script_version("$Revision: 7830 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-09 14:02:13 +0200 (Mon, 09 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 13:43:05 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-09 08:07:41 +0200 (Mon, 09 Oct 2017)");
-  script_name("SSL/TLS: HPKP / HSTS Headers sent via plain HTTP");
+  script_name("SSL/TLS: HPKP / HSTS / Expect-CT Headers sent via plain HTTP");
   script_category(ACT_GATHER_INFO);
   script_family("SSL and TLS");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
@@ -45,14 +45,17 @@ if(description)
   script_xref(name:"URL", value:"https://www.owasp.org/index.php/OWASP_Secure_Headers_Project");
   script_xref(name:"URL", value:"https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#hpkp");
   script_xref(name:"URL", value:"https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#hsts");
+  script_xref(name:"URL", value:"https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#ect");
   script_xref(name:"URL", value:"https://tools.ietf.org/html/rfc6797");
   script_xref(name:"URL", value:"https://tools.ietf.org/html/rfc7469");
   script_xref(name:"URL", value:"https://securityheaders.io/");
+  script_xref(name:"URL", value:"http://httpwg.org/http-extensions/expect-ct.html#http-request-type");
 
-  script_tag(name:"summary", value:"This script checks if the remote HTTP server is sending a HPKP and/or HSTS header via plain HTTP.");
+  script_tag(name:"summary", value:"This script checks if the remote HTTP server is sending a HPKP, HSTS
+  and/or Expect-CT header via plain HTTP.");
 
-  script_tag(name:"solution", value:"Configure the remote host to only send HPKP and HSTS via HTTPS. Sending those headers via plain HTTP
-  doesn't comply with the referenced RFCs.");
+  script_tag(name:"solution", value:"Configure the remote host to only send HPKP, HSTS and Expect-CT headers
+  via HTTPS. Sending those headers via plain HTTP doesn't comply with the referenced RFCs.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"Workaround");
@@ -77,12 +80,17 @@ if( sts = egrep( pattern:"^Strict-Transport-Security: ", string:banner, icase:TR
   hsts_on_http = TRUE;
 }
 
-if( hpkp_on_http || hsts_on_http ) {
+if( ect = egrep( pattern:"^Expect-CT: ", string:banner, icase:TRUE ) ) {
+  ect_on_http = TRUE;
+}
 
-  report = 'The remote HTTP server is sending HPKP and/or HSTS headers via plain HTTP.\n';
+if( hpkp_on_http || hsts_on_http || ect_on_http ) {
+
+  report = 'The remote HTTP server is sending HPKP, HSTS and/or Expect-CT headers via plain HTTP.\n';
 
   if( hpkp_on_http ) report += '\nHPKP-Header:\n\n' + pkp;
   if( hsts_on_http ) report += '\nHSTS-Header:\n\n' + sts;
+  if( ect_on_http )  report += '\nECT-Header:\n\n' + ect;
 
   log_message( port:port, data:report );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvas_manager_command_exec_vuln.nasl 7530 2017-10-20 13:14:01Z cfischer $
+# $Id: gb_openvas_manager_command_exec_vuln.nasl 7823 2017-11-20 08:54:04Z cfischer $
 #
 # OpenVAS Manager OMP Request Handling Command Injection Vulnerability
 #
@@ -45,8 +45,8 @@ tag_summary = "This host is installed with OpenVAS Manager and is prone command
 if(description)
 {
   script_id(801920);
-  script_version("$Revision: 7530 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 15:14:01 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 7823 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_cve_id("CVE-2011-0018");
   script_bugtraq_id(45987);
@@ -66,7 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("no_linux_shell");
+  script_exclude_keys("ssh/no_linux_shell");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

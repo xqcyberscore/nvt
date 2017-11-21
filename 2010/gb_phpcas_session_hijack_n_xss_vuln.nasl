@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpcas_session_hijack_n_xss_vuln.nasl 7519 2017-10-20 06:32:05Z cfischer $
+# $Id: gb_phpcas_session_hijack_n_xss_vuln.nasl 7823 2017-11-20 08:54:04Z cfischer $
 #
 # phpCAS Session Hijacking and Cross-Site Scripting Vulnerabilities
 #
@@ -43,8 +43,8 @@ tag_summary = "This host is installed with phpCAS and is prone to session
 if(description)
 {
   script_id(801428);
-  script_version("$Revision: 7519 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:32:05 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 7823 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2010-08-19 10:23:11 +0200 (Thu, 19 Aug 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
@@ -62,7 +62,7 @@ if(description)
   script_family("General");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("no_linux_shell");
+  script_exclude_keys("ssh/no_linux_shell");
 
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

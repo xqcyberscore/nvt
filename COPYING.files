@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 20 Nov 2017 08:31:44 +0100
+# Automatically created on:  Tue, 21 Nov 2017 07:53:25 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47856,6 +47856,9 @@
 2017/debian/deb_4037.nasl: GPLv2+
 2017/debian/deb_4038.nasl: GPLv2+
 2017/debian/deb_4039.nasl: GPLv2+
+2017/debian/deb_4040.nasl: GPLv2+
+2017/debian/deb_4041.nasl: GPLv2+
+2017/debian/deb_4042.nasl: GPLv2+
 2017/digium/gb_asterisk_AST-2017-009.nasl: GPLv2+
 2017/digium/gb_asterisk_AST-2017-010.nasl: GPLv2+
 2017/digium/gb_asterisk_AST-2017-011.nasl: GPLv2+
@@ -48233,6 +48236,7 @@
 2017/gb_b2evolution_mult_vuln.nasl: GPLv2+
 2017/gb_b2evolution_mult_xss_vuln.nasl: GPLv2+
 2017/gb_belkin_wemo_switch_auth_bypass_vuln.nasl: GPLv2+
+2017/gb_bftpd__mem_leak_vuln.nasl: GPLv2+
 2017/gb_bigtree_csrf_vuln2.nasl: GPLv2+
 2017/gb_bigtree_csrf_vuln.nasl: GPLv2+
 2017/gb_bigtree_cve_2016_10223.nasl: GPLv2+
@@ -48690,6 +48694,7 @@
 2017/gb_disk_savvy_bof_vul_feb17.nasl: GPLv2+
 2017/gb_django_open_re_vul.nasl: GPLv2+
 2017/gb_dlink_dgs-1500_rce.nasl: GPLv2+
+2017/gb_dlink_dir605l_dos_vuln.nasl: GPLv2+
 2017/gb_dlink_dir850l_B1_mul_vul_remote.nasl: GPLv2+
 2017/gb_dlink_dir850l_mul_vuln_09_17.nasl: GPLv2+
 2017/gb_dlink_dir_850_mult_vuln.nasl: GPLv2+
@@ -49960,6 +49965,7 @@
 2017/gb_foxit_reader_out_of_bounds_info_disc_vuln_win.nasl: GPLv2+
 2017/gb_freeipa_mult_vuln.nasl: GPLv2+
 2017/gb_garretcom_switch_mult_vuln.nasl: GPLv2+
+2017/gb_geneko_info_disc_vuln_exploit.nasl: GPLv2+
 2017/gb_geneko_info_disc_vuln.nasl: GPLv2+
 2017/gb_github_enterprise_2_8_10.nasl: GPLv2+
 2017/gb_github_enterprise_management_console_rce_03_17.nasl: GPLv2+
@@ -50196,6 +50202,8 @@
 2017/gb_jenkins_20170426_win.nasl: GPLv2+
 2017/gb_jenkins_20171011_lin.nasl: GPLv2+
 2017/gb_jenkins_20171011_win.nasl: GPLv2+
+2017/gb_jenkins_20171108_lin.nasl: GPLv2+
+2017/gb_jenkins_20171108_win.nasl: GPLv2+
 2017/gb_jenkins_java_deserialization_vul_07_2017.nasl: GPLv2+
 2017/gb_jetbrains_loc_file_disc_vuln.nasl: GPLv2+
 2017/gb_jetty_sec_bypass_vuln.nasl: GPLv2+
@@ -50838,8 +50846,8 @@
 2017/gb_nuxeo_platform_dir_trav_vuln.nasl: GPLv2+
 2017/gb_oilrig_malware_detection.nasl: GPLv2+
 2017/gb_openemr_db_disc_vuln.nasl: GPLv2+
-2017/gb_openemr_mult_vuln_0817.nasl: GPLv2+
-2017/gb_openemr_xss_vuln.nasl: GPLv2+
+2017/gb_openemr_mult_vuln_0517_1.nasl: GPLv2+
+2017/gb_openemr_mult_vuln_0517_2.nasl: GPLv2+
 2017/gb_openldap_ber_get_next_dos_vuln.nasl: GPLv2+
 2017/gb_openssh_mult_vuln_jan17_lin.nasl: GPLv2+
 2017/gb_openssh_mult_vuln_jan17_win.nasl: GPLv2+
@@ -52598,6 +52606,7 @@ gb_barracuda_web_filter_detect.nasl: GPLv2+
 gb_batavi_detect.nasl: GPLv2+
 gb_becky_internet_mail_detect.nasl: GPLv2+
 gb_belkin_wemo_detect.nasl: GPLv2+
+gb_bftpd_detect.nasl: GPLv2+
 gb_bigtree_detect.nasl: GPLv2+
 gb_biscom_sft_detect.nasl: GPLv2+
 gb_bisonware_bisonftp_server_detect.nasl: GPLv2+
@@ -52878,6 +52887,7 @@ gb_filr_version.nasl: GPLv2+
 gb_filr_web_administration_detect.nasl: GPLv2+
 gb_filr_web_detect.nasl: GPLv2+
 gb_finderview_detect.nasl: GPLv2+
+gb_fins_tcp_detect.nasl: GPLv2+
 gb_firebird_detect_win.nasl: GPLv2+
 gb_firefox_detect_lin.nasl: GPLv2+
 gb_firefox_detect_win.nasl: GPLv2+
@@ -55359,6 +55369,7 @@ podcast_generator_detect.nasl: GPLv2+
 Policy/gb_policy_cert_issuer_failed.nasl: GPLv2+
 Policy/gb_policy_cert_issuer.nasl: GPLv2+
 Policy/gb_policy_cert_issuer_passed.nasl: GPLv2+
+Policy/gb_policy_cpe_error.nasl: GPLv2+
 Policy/gb_policy_cpe.nasl: GPLv2+
 Policy/gb_policy_cpe_ok.nasl: GPLv2+
 Policy/gb_policy_cpe_violation.nasl: GPLv2+

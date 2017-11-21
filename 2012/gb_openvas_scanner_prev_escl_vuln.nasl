@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvas_scanner_prev_escl_vuln.nasl 7530 2017-10-20 13:14:01Z cfischer $
+# $Id: gb_openvas_scanner_prev_escl_vuln.nasl 7823 2017-11-20 08:54:04Z cfischer $
 #
 # OpenVAS Scanner Symlink Attack Local Privilege Escalation Vulnerability
 #
@@ -43,12 +43,12 @@ tag_summary = "This host is installed with OpenVAS Scanner and is prone to
 if(description)
 {
   script_id(801979);
-  script_version("$Revision: 7530 $");
+  script_version("$Revision: 7823 $");
   script_cve_id("CVE-2011-3351");
   script_bugtraq_id(49460);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 15:14:01 +0200 (Fri, 20 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2012-01-10 17:29:46 +0530 (Tue, 10 Jan 2012)");
   script_name("OpenVAS Scanner Symlink Attack Local Privilege Escalation Vulnerability");
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2011/q3/432");
@@ -61,7 +61,7 @@ if(description)
   script_family("General");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("no_linux_shell");
+  script_exclude_keys("ssh/no_linux_shell");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

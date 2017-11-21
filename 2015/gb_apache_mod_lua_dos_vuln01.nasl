@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_lua_dos_vuln01.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: gb_apache_mod_lua_dos_vuln01.nasl 7834 2017-11-20 14:48:51Z cfischer $
 #
 # Apache HTTP Server Mod_Lua Denial of service Vulnerability -01 May15
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805616");
-  script_version("$Revision: 6229 $");
+  script_version("$Revision: 7834 $");
   script_cve_id("CVE-2015-0228");
   script_bugtraq_id(73041);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 15:48:51 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2015-05-18 13:29:48 +0530 (Mon, 18 May 2015)");
-  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable"); # Only vulnerable if mod_lua is enabled
   script_name("Apache HTTP Server Mod_Lua Denial of service Vulnerability -01 May15");
 
   script_tag(name:"summary", value:"This host is installed with Apache HTTP Server

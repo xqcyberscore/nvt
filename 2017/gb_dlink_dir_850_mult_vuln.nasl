@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_850_mult_vuln.nasl 7664 2017-11-06 09:16:58Z cfischer $
+# $Id: gb_dlink_dir_850_mult_vuln.nasl 7833 2017-11-20 14:44:32Z asteins $
 #
 # D-Link DIR-850L Multiple Vulnerabilities
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/h:dlink:dir-850L';
+CPE = 'cpe:/o:d-link:dir-850l_firmware';
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140304");
-  script_version("$Revision: 7664 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-06 10:16:58 +0100 (Mon, 06 Nov 2017) $");
+  script_version("$Revision: 7833 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-20 15:44:32 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-08-16 16:49:52 +0700 (Wed, 16 Aug 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");

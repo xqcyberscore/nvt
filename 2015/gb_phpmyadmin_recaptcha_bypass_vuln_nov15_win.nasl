@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_recaptcha_bypass_vuln_nov15_win.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_phpmyadmin_recaptcha_bypass_vuln_nov15_win.nasl 7834 2017-11-20 14:48:51Z cfischer $
 #
 # phpMyAdmin Security Bypass Vulnerability Nov15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806548");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 7834 $");
   script_cve_id("CVE-2015-6830");
   script_bugtraq_id(76674);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 15:48:51 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2015-11-24 10:32:31 +0530 (Tue, 24 Nov 2015)");
   script_name("phpMyAdmin Security Bypass Vulnerability Nov15 (Windows)");
 
@@ -61,7 +61,7 @@ if(description)
   or later. For updates refer http://www.phpmyadmin.net");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2015-4");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

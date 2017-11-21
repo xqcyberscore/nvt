@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4048952.nasl 7773 2017-11-15 13:21:06Z santu $
+# $Id: gb_ms_kb4048952.nasl 7835 2017-11-20 15:03:10Z cfischer $
 #
-# Microsoft Windows Multiple Vulnerabilites (KB4048952)
+# Microsoft Windows Multiple Vulnerabilities (KB4048952)
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812136");
-  script_version("$Revision: 7773 $");
+  script_version("$Revision: 7835 $");
   script_cve_id("CVE-2017-11863", "CVE-2017-11866", "CVE-2017-11869", "CVE-2017-11873", 
                 "CVE-2017-11768", "CVE-2017-11788", "CVE-2017-11880", "CVE-2017-11791", 
                 "CVE-2017-11827", "CVE-2017-11834", "CVE-2017-11836", "CVE-2017-11837", 
@@ -42,9 +42,9 @@ if(description)
 	            101714, 101721, 101706);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 14:21:06 +0100 (Wed, 15 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 16:03:10 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-15 08:08:33 +0530 (Wed, 15 Nov 2017)");
-  script_name("Microsoft Windows Multiple Vulnerabilites (KB4048952)");
+  script_name("Microsoft Windows Multiple Vulnerabilities (KB4048952)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4048952");

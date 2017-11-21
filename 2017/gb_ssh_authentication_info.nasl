@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_authentication_info.nasl 7814 2017-11-17 14:30:20Z cfischer $
+# $Id: gb_ssh_authentication_info.nasl 7822 2017-11-20 08:46:09Z cfischer $
 #
 # SSH Authenticated Scan Info Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108162");
-  script_version("$Revision: 7814 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 15:30:20 +0100 (Fri, 17 Nov 2017) $");
+  script_version("$Revision: 7822 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:46:09 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-17 10:31:0 +0200 (Tue, 17 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,18 +53,20 @@ include("misc_func.inc");
 
 info_array = make_array();
 # nb: key is the KB item, value the description used in the report
+# The order doesn't matter, this will be sorted later in text_format_table()
 kb_array = make_array( "ssh/login/uname", "Response to 'uname -a' command",
                        "login/SSH/success", "Login successfull",
-                       "no_linux_shell", "Login on a system without common commands like 'cat' or 'find'",
-                       "lsc/locate/available", "locate: Command available",
-                       "ssh/cmd_exec_error", "Don't prepend '/bin/sh -c' to used commands",
+                       "ssh/no_linux_shell", "Login on a system without common commands like 'cat' or 'find'",
+                       "ssh/locate/available", "locate: Command available",
+                       "ssh/force/clear_buffer", "Clear received buffer before sending a command",
+                       "ssh/force/nosh", "Don't prepend '/bin/sh -c' to used commands",
                        "ssh/force/pty", "Commands are send via an pseudoterminal/pty",
                        "ssh/send_extra_cmd", "Send an extra command",
                        "global_settings/ssh/debug", "Debugging enabled within 'Global variable settings'",
-                       "Enable/find", "Also use 'find' command to search for Applications enabled within 'Options for Local Security Checks'",
-                       "Descend/OFS", "Descend directories on other filesystem enabled within 'Options for Local Security Checks'",
+                       "ssh/lsc/enable_find", "Also use 'find' command to search for Applications enabled within 'Options for Local Security Checks'",
+                       "ssh/lsc/descend_ofs", "Descend directories on other filesystem enabled within 'Options for Local Security Checks'",
                        "ssh/login/release", "Operating System Key used",
-                       "cisco/broken_autocommand", "Misconfigured CISCO device. No autocommand should be configured for the scanning user.",
+                       "ssh/cisco/broken_autocommand", "Misconfigured CISCO device. No autocommand should be configured for the scanning user.",
                        "ssh/restricted_shell", "Login on a system with a restricted shell" );
 
 foreach kb_item( keys( kb_array ) ) {
@@ -79,11 +81,11 @@ foreach kb_item( keys( kb_array ) ) {
       info_array[kb_array[kb_item] + " (" + kb_item + ")"] = "None/Empty";
     } else {
       info_array[kb_array[kb_item] + " (" + kb_item + ")"] = "FALSE";
-      if( kb_item == "lsc/locate/available" ) {
+      if( kb_item == "ssh/locate/available" ) {
         locate_broken = TRUE;
-        reason = get_kb_item( "lsc/locate/broken" );
+        reason = get_kb_item( "ssh/locate/broken" );
         if( strlen( reason ) <= 0 ) reason = "Empty/no response (maybe the database is not initialized or locate is not installed)";
-        info_array["locate: Response to 'locate -S' command (lsc/locate/broken)"] = reason;
+        info_array["locate: Response to 'locate -S' command (ssh/locate/broken)"] = reason;
       }
     }
   }

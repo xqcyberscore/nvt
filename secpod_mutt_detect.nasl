@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mutt_detect.nasl 7515 2017-10-20 05:50:25Z cfischer $
+# $Id: secpod_mutt_detect.nasl 7823 2017-11-20 08:54:04Z cfischer $
 #
 # Mutt Version Detection
 #
@@ -38,8 +38,8 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7515 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 07:50:25 +0200 (Fri, 20 Oct 2017) $");
+ script_version("$Revision: 7823 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-06-24 07:17:25 +0200 (Wed, 24 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -49,7 +49,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("no_linux_shell");
+  script_exclude_keys("ssh/no_linux_shell");
 
   script_tag(name : "summary" , value : tag_summary);
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 7815 2017-11-17 14:40:09Z cfischer $
+# $Id: gather-package-list.nasl 7822 2017-11-20 08:46:09Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 7815 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 15:40:09 +0100 (Fri, 17 Nov 2017) $");
+  script_version("$Revision: 7822 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:46:09 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -437,11 +437,12 @@ if( "Welcome to pfSense" >< uname ) {
   set_kb_item( name:"pfsense/uname", value:uname );
   set_kb_item( name:"pfsense/ssh/port", value:port);
   set_kb_item( name:"ssh/force/pty", value:TRUE );
-  replace_kb_item( name:"ssh/send_extra_cmd", value:'8\n' );
+  set_kb_item( name:"ssh/force/nosh", value:TRUE );
   # clear the buffer to avoid that we're saving the whole pfSense menue in the uname
-  uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, clear_buffer:TRUE, nosh:TRUE, timeout:20, retry:10 );
+  set_kb_item( name:"ssh/force/clear_buffer", value:TRUE );
+  replace_kb_item( name:"ssh/send_extra_cmd", value:'8\n' );
+  uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, timeout:20, retry:10 );
   # nb: FreeBSD will be caught later below
-  _ssh_is_pfsense = TRUE;
 }
 
 if( "Welcome to the Greenbone OS" >< uname ) {
@@ -483,7 +484,7 @@ if( "TANDBERG Video Communication Server" >< uname ) {
 if( "Cyberoam Central Console" >< uname )
 {
   set_kb_item( name:"cyberoam_cc/detected", value:TRUE );
-  set_kb_item( name:"no_linux_shell", value:TRUE );
+  set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
   set_kb_item( name:"ssh/force/pty", value:TRUE );
 
   ccc = eregmatch( pattern:'([0-9]+)\\.\\s*CCC Console', string:uname );
@@ -504,7 +505,7 @@ if( "Welcome to the Immediate Insight Management Console" >< uname || ( "type 's
 
 if( 'Error: Unknown: "/bin/sh"' >< uname )
 {
-  set_kb_item( name:"no_linux_shell", value:TRUE );
+  set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
   set_kb_item( name:"ssh/force/pty", value:TRUE );
   set_kb_item( name:"enterasys/detected", value:TRUE );
   exit( 0 );
@@ -512,7 +513,7 @@ if( 'Error: Unknown: "/bin/sh"' >< uname )
 
 if( "Cisco UCS Director Shell Menu" >< uname )
 {
-  set_kb_item( name:"no_linux_shell", value:TRUE );
+  set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
   set_kb_item( name:"ssh/force/pty", value:TRUE );
 
   v = eregmatch( pattern:'([0-9]+)\\) Show Version', string:uname );
@@ -530,21 +531,21 @@ if( "Cisco UCS Director Shell Menu" >< uname )
 if( "% invalid command at '^' marker" >< tolower( uname ) || "No token match at '^' marker" >< uname ||
     "NX-OS" >< uname || "Cisco Nexus Operating System" >< uname || "Line has invalid autocommand" >< uname )
 {
-  set_kb_item( name:"no_linux_shell", value:TRUE );
+  set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
   set_kb_item( name:"ssh/force/pty", value:TRUE );
   set_kb_item( name:"cisco/detected", value:TRUE );
 
   # The CISCO device is closing the connection after this message.
   # Unfortunately we can't detect if the device has configured a working autocommand but we still
   # want to report a broken one to the user (in 2017/gb_ssh_authentication_info.nasl).
-  if( "Line has invalid autocommand" >< uname ) set_kb_item( name:"cisco/broken_autocommand", value:TRUE );
+  if( "Line has invalid autocommand" >< uname ) set_kb_item( name:"ssh/cisco/broken_autocommand", value:TRUE );
 
   exit( 0 );
 }
 
 if( "Command Line Interface is starting up" >< uname || "Invalid command, a dash character must be preceded" >< uname )
 {
-  set_kb_item( name:"no_linux_shell", value:TRUE );
+  set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
   set_kb_item( name:"ssh/force/pty", value:TRUE );
 
   system = ssh_cmd( socket:sock, cmd:'show tech ccm_service', nosh:TRUE, pty:TRUE, timeout:60, retry:50 );
@@ -578,7 +579,7 @@ if( uname =~ "Cisco Prime( Virtual)? Network Analysis Module" )
   if( "NAM application image" >< show_ver )
   {
     set_kb_item( name:"cisco_nam/show_ver", value:show_ver );
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
     set_kb_item( name:"ssh/force/pty", value:TRUE );
     exit( 0 );
   }
@@ -587,7 +588,7 @@ if( uname =~ "Cisco Prime( Virtual)? Network Analysis Module" )
 if( "CMC Build" >< uname && "LEM" >< uname && "Exit CMC" >< uname )
 {
   replace_kb_item( name:"solarwinds_lem/installed", value:TRUE );
-  set_kb_item( name:"no_linux_shell", value:TRUE );
+  set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
   set_kb_item( name:"ssh/force/pty", value:TRUE );
   sysinfo = ssh_cmd( socket:sock, cmd:'manager\nviewsysinfo', nosh:TRUE, pty:TRUE, timeout:90, retry:10, pattern:'/tmp/swi-lem-sysinfo.txt' );
   vers = eregmatch( pattern:'TriGeo manager version is: ([^\r\n]+)', string:sysinfo );
@@ -731,7 +732,7 @@ if( "% Unknown command" >< uname )
    if( show_ver && "NSX Manager" >< show_ver )
    {
      set_kb_item( name:"vmware_nsx/show_ver", value:show_ver);
-     set_kb_item( name:"no_linux_shell", value:TRUE );
+     set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
      set_kb_item( name:"ssh/force/pty", value:TRUE );
      set_kb_item( name:"vmware_nsx/detected_by", value:"SSH" );
      exit( 0 );
@@ -742,7 +743,7 @@ if( "JUNOS" >< uname && "Junos Space" >!< uname )
 {
   if( "unknown command" >< uname )
   {
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
     set_kb_item( name:"junos/cli", value:TRUE);
   }
   set_kb_item( name:"junos/detected", value:TRUE );
@@ -799,7 +800,7 @@ if( "Unknown command:" >< uname && "IBM Security Network Protection" >< uname )
 {
   set_kb_item( name:"isnp/detected", value:TRUE );
   set_kb_item( name:"ssh/force/pty", value:TRUE );
-  set_kb_item( name:"no_linux_shell", value:TRUE );
+  set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
   exit( 0 );
 }
 
@@ -811,7 +812,7 @@ if( "Unknown command: " >< uname || "Unknown command or missing feature key" >< 
     set_kb_item( name:"panOS/system", value: system );
     set_kb_item( name:"panOS/detected_by", value:"SSH" );
     set_kb_item( name:"ssh/force/pty", value:TRUE );
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
     exit( 0 );
   }
 
@@ -822,7 +823,7 @@ if( "Unknown command: " >< uname || "Unknown command or missing feature key" >< 
     set_kb_item( name:"cisco_csm/system", value:system );
     replace_kb_item( name:"cisco_csm/installed", value:TRUE );
 
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
 
     version = eregmatch( pattern:'Version: ([^\r\n]+)', string:system );
     if( ! isnull( version[1] ) ) set_kb_item( name:"cisco_csm/version/ssh", value:version[1] );
@@ -838,7 +839,7 @@ if( "Unknown command: " >< uname || "Unknown command or missing feature key" >< 
     set_kb_item( name:"cisco_esa/system", value:system );
     replace_kb_item( name:"cisco_esa/installed", value:TRUE );
 
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
 
     version = eregmatch( pattern:'Version: ([^\r\n]+)', string:system );
     if( ! isnull( version[1] ) ) set_kb_item( name:"cisco_esa/version/ssh", value:version[1] );
@@ -854,7 +855,7 @@ if( "Unknown command: " >< uname || "Unknown command or missing feature key" >< 
     set_kb_item( name:"cisco_wsa/system", value:system );
     replace_kb_item( name:"cisco_wsa/installed", value:TRUE );
 
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
 
     version = eregmatch( pattern:'Version: ([^\r\n]+)', string:system );
     if( ! isnull( version[1] ) ) set_kb_item( name:"cisco_wsa/version/ssh", value:version[1] );
@@ -873,7 +874,7 @@ if( ( "diagnose" >< uname || "traceroute6" >< uname ) && "enable" >< uname && "e
   {
     set_kb_item( name:"IWSVA/system", value:system);
     set_kb_item( name:"IWSVA/cli_is_clish", value:TRUE);
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
     exit( 0 );
   }
 
@@ -883,7 +884,7 @@ if( ( "diagnose" >< uname || "traceroute6" >< uname ) && "enable" >< uname && "e
   {
     set_kb_item( name:"IMSVA/system", value:system);
     set_kb_item( name:"IMSVA/cli_is_clish", value:TRUE);
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
     exit( 0 );
   }
 
@@ -892,7 +893,7 @@ if( ( "diagnose" >< uname || "traceroute6" >< uname ) && "enable" >< uname && "e
 if( "Invalid input detected at" >< uname )
 {
   set_kb_item( name:"cisco/detected", value:TRUE );
-  set_kb_item( name:"no_linux_shell", value:TRUE );
+  set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
   exit( 0 );
 }
 
@@ -905,7 +906,7 @@ if( "% invalid command detected" >< uname )
   if( "Cisco ACS VERSION INFORMATION" >< show_ver )
   {
     set_kb_item( name:"cisco_acs/show_ver", value:show_ver);
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
 
     ade_cpe = 'cpe:/o:cisco:application_deployment_engine';
     ade_version = eregmatch( pattern:'ADE-OS Build Version: ([0-9.]+)', string:show_ver );
@@ -919,7 +920,7 @@ if( "% invalid command detected" >< uname )
   if( "Cisco Identity Services Engine" >< show_ver )
   {
     set_kb_item( name:"cisco_ise/show_ver", value:show_ver);
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
 
     ade_cpe = 'cpe:/o:cisco:application_deployment_engine';
     ade_version = eregmatch( pattern:'ADE-OS Build Version: ([0-9.]+)', string:show_ver );
@@ -933,7 +934,7 @@ if( "% invalid command detected" >< uname )
   if( "Cisco Prime Collaboration Provisioning" >< show_ver )
   {
     set_kb_item( name:"cisco_pcp/show_ver", value:show_ver);
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
 
     ade_cpe = 'cpe:/o:cisco:application_deployment_engine';
     ade_version = eregmatch( pattern:'ADE-OS Build Version: ([0-9.]+)', string:show_ver );
@@ -947,7 +948,7 @@ if( "% invalid command detected" >< uname )
   if( "Cisco Prime Collaboration Assurance" >< show_ver )
   {
     set_kb_item( name:"cisco_pca/show_ver", value:show_ver);
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
 
     ade_cpe = 'cpe:/o:cisco:application_deployment_engine';
     ade_version = eregmatch( pattern:'ADE-OS Build Version: ([0-9.]+)', string:show_ver );
@@ -961,7 +962,7 @@ if( "% invalid command detected" >< uname )
   if( "Cisco Prime Infrastructure" >< show_ver )
   {
     set_kb_item( name:"cisco_pis/show_ver", value:show_ver );
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
     set_kb_item( name:"ssh/force/pty", value:TRUE );
 
     ade_cpe = 'cpe:/o:cisco:application_deployment_engine';
@@ -976,7 +977,7 @@ if( "% invalid command detected" >< uname )
   if ("Cisco Prime Network Control System" >< show_ver )
   {
     set_kb_item( name:"cisco_ncs/show_ver", value:show_ver );
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
     set_kb_item( name:"ssh/force/pty", value:TRUE );
 
     ade_cpe = 'cpe:/o:cisco:application_deployment_engine';
@@ -997,7 +998,7 @@ if( ": No such command" >< uname ) {
     set_kb_item(name:"FortiOS/Authenticator/system", value:system );
     set_kb_item( name:"ssh/force/pty", value:TRUE );
     register_detected_os(os:"FortiOS", oskey:"FortiOS");
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
     exit( 0 );
   }
 }
@@ -1007,7 +1008,7 @@ if( "Unknown action 0" >< uname ) {
   if( "Forti" >< system ) {
     set_kb_item(name:"FortiOS/system_status", value:system);
     register_detected_os(os:"FortiOS", oskey:"FortiOS");
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
 
     # set FortiOS version for all models
 
@@ -1170,7 +1171,7 @@ if( "Syntax Error: unexpected argument" >< rls ) {
   rls = ssh_cmd(socket:sock, cmd:'run util bash -c "cat /VERSION"', nosh:TRUE);
   if( "BIG-" >< rls || "Product: EM" >< rls ) {
     set_kb_item( name:"f5/shell_is_tmsh", value:TRUE );
-    set_kb_item( name:"no_linux_shell", value:TRUE );
+    set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
   }
 }
 
@@ -3118,20 +3119,11 @@ if( "HP-UX" >< uname ) {
 
 #How about FreeBSD?  If the uname line begins with "FreeBSD ", we have a match
 #We need to run uname twice, because of lastlogin and motd ..
-
-# Special handling for pfSense using FreeBSD
-if( _ssh_is_pfsense ) {
-  _freebsd_clear_buffer = TRUE;
-  _freebsd_nosh = TRUE;
-} else {
-  _freebsd_clear_buffer = FALSE;
-  _freebsd_nosh = FALSE;
-}
-
-uname = ssh_cmd( socket:sock, cmd:"uname -a", clear_buffer:_freebsd_clear_buffer, nosh:_freebsd_nosh );
+# nb: pfSense is also running on FreeBSD, see for a special handling for this at the top
+uname = ssh_cmd( socket:sock, cmd:"uname -a" );
 if( "FreeBSD" >< uname ) {
 
-  osversion = ssh_cmd( socket:sock, cmd:"uname -r", clear_buffer:_freebsd_clear_buffer, nosh:_freebsd_nosh );
+  osversion = ssh_cmd( socket:sock, cmd:"uname -r" );
 
   version = eregmatch( pattern:"^[^ ]+ [^ ]+ ([^ ]+)+", string:uname );
   splitup = eregmatch( pattern:"([^-]+)-([^-]+)-p([0-9]+)", string:version[1] );
@@ -3172,7 +3164,7 @@ if( "FreeBSD" >< uname ) {
     log_message( port:port, data:"We are able to login and detect that you are running FreeBSD " + release + " Patch level: Unknown" );
   }
   if( found != 0 ) {
-    buf = ssh_cmd( socket:sock, cmd:"pkg info", clear_buffer:_freebsd_clear_buffer, nosh:_freebsd_nosh );
+    buf = ssh_cmd( socket:sock, cmd:"pkg info" );
     set_kb_item( name:"ssh/login/freebsdpkg", value:buf );
   }
   exit( 0 );

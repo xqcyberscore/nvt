@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_etherape_rpc_call_parsing_dos_vuln.nasl 7519 2017-10-20 06:32:05Z cfischer $
+# $Id: gb_etherape_rpc_call_parsing_dos_vuln.nasl 7823 2017-11-20 08:54:04Z cfischer $
 #
 # EtherApe RPC Packet Processing Denial of Service Vulnerability
 #
@@ -38,11 +38,11 @@ tag_summary = "This host is installed with EtherApe and is prone to denial of
 if(description)
 {
   script_id(802340);
-  script_version("$Revision: 7519 $");
+  script_version("$Revision: 7823 $");
   script_cve_id("CVE-2011-3369");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:32:05 +0200 (Fri, 20 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2011-11-08 17:22:20 +0530 (Tue, 08 Nov 2011)");
   script_name("EtherApe RPC Packet Processing Denial of Service Vulnerability");
 
@@ -53,7 +53,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("no_linux_shell");
+  script_exclude_keys("ssh/no_linux_shell");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

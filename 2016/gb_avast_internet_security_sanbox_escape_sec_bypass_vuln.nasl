@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_internet_security_sanbox_escape_sec_bypass_vuln.nasl 7676 2017-11-07 08:01:38Z asteins $
+# $Id: gb_avast_internet_security_sanbox_escape_sec_bypass_vuln.nasl 7840 2017-11-21 06:15:08Z teissa $
 #
 # Avast Internet Security Sandbox Escape Security Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:avast:avast_internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810204");
-  script_version("$Revision: 7676 $");
+  script_version("$Revision: 7840 $");
   script_cve_id("CVE-2016-4025");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-07 09:01:38 +0100 (Tue, 07 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-21 07:15:08 +0100 (Tue, 21 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-11-18 14:57:52 +0530 (Fri, 18 Nov 2016)");
   script_name("Avast Internet Security Sandbox Escape Security Bypass Vulnerability");
 
@@ -55,12 +55,9 @@ if(description)
   script_tag(name:"affected", value:"Avast Internet Security version 11.x
   through 11.1.2262");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  7th November, 2017. Information regarding this issue will be updated
-  once the solution details are available.
-  For updates refer to https://www.avast.com");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"registry");
 
@@ -88,7 +85,7 @@ if(avastVer =~ "^(11)")
 {
   if(version_in_range(version:avastVer, test_version:"11.0", test_version2:"11.1.2262"))
   {
-    report = report_fixed_ver(installed_version:avastVer, fixed_version:"NoneAvailable");
+    report = report_fixed_ver(installed_version:avastVer, fixed_version:"WillNotFix");
     security_message(data:report);
     exit(0);
   }

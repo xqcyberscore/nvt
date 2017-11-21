@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20171011_win.nasl 7678 2017-11-07 08:52:00Z asteins $
+# $Id: gb_jenkins_20171011_win.nasl 7821 2017-11-20 08:23:45Z asteins $
 #
 # Jenkins Multiple Vulnerabilities Oct 17 (Windows)
 #
@@ -29,10 +29,14 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112107");
-  script_version("$Revision: 7678 $");
+  script_version("$Revision: 7821 $");
+
+  script_cve_id("CVE-2017-1000393", "CVE-2017-1000394", "CVE-2017-1000396",
+"CVE-2017-1000398", "CVE-2017-1000399", "CVE-2017-1000400", "CVE-2017-1000401");
+
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-07 09:52:00 +0100 (Tue, 07 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:23:45 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-07 10:05:00 +0100 (Tue, 07 Nov 2017)");
   script_name("Jenkins Multiple Vulnerabilities Oct 17 (Windows)");
   script_category(ACT_GATHER_INFO);

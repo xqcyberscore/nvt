@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_heap_bof_vuln_lin.nasl 7517 2017-10-20 06:13:53Z cfischer $
+# $Id: gb_sun_java_sys_web_serv_heap_bof_vuln_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
 #
 # Sun Java System Web Server Multiple Heap-based Buffer Overflow Vulnerabilities (Linux)
 #
@@ -41,8 +41,8 @@ tag_summary = "This host has Sun Java Web Server running which is prone to
 if(description)
 {
   script_id(800160);
-  script_version("$Revision: 7517 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:13:53 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 7823 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2010-02-02 07:26:26 +0100 (Tue, 02 Feb 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -58,7 +58,7 @@ if(description)
   script_family("Buffer overflow");
   script_dependencies("gb_sun_java_sys_web_serv_detect.nasl", "gather-package-list.nasl");
   script_mandatory_keys("java_system_web_server/installed", "login/SSH/success");
-  script_exclude_keys("no_linux_shell");
+  script_exclude_keys("ssh/no_linux_shell");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

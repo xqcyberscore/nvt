@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_42102.nasl 7550 2017-10-24 12:17:52Z cfischer $
+# $Id: gb_apache_42102.nasl 7835 2017-11-20 15:03:10Z cfischer $
 #
 # Apache 'mod_proxy_http' 2.2.9 for Unix Timeout Handling Information Disclosure Vulnerability
 #
@@ -37,8 +37,8 @@ tag_solution = "Updates are available. Please see the references for more inform
 if (description)
 {
  script_id(100858);
- script_version("$Revision: 7550 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
+ script_version("$Revision: 7835 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-20 16:03:10 +0100 (Mon, 20 Nov 2017) $");
  script_tag(name:"creation_date", value:"2010-10-19 12:49:22 +0200 (Tue, 19 Oct 2010)");
  script_bugtraq_id(42102);
  script_tag(name:"cvss_base", value:"5.0");
@@ -54,7 +54,7 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("os_detection.nasl","secpod_apache_detect.nasl");
  script_require_ports("Services/www", 80);
- script_mandatory_keys("Host/runs_windows");
+ script_mandatory_keys("apache/installed", "Host/runs_unixoide");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/42102");

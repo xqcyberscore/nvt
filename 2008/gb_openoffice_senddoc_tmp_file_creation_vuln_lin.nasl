@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openoffice_senddoc_tmp_file_creation_vuln_lin.nasl 7569 2017-10-26 07:04:30Z cfischer $
+# $Id: gb_openoffice_senddoc_tmp_file_creation_vuln_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
 #
 # OpenOffice senddoc Insecure Temporary File Creation Vulnerability (Linux)
 #
@@ -39,8 +39,8 @@ tag_summary = "The host has OpenOffice installed and is prone to Insecure
 if(description)
 {
   script_id(800129);
-  script_version("$Revision: 7569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:04:30 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 7823 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-11-11 09:00:11 +0100 (Tue, 11 Nov 2008)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:N/I:P/A:P");
@@ -55,7 +55,7 @@ if(description)
   script_family("Remote file access");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("no_linux_shell");
+  script_exclude_keys("ssh/no_linux_shell");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

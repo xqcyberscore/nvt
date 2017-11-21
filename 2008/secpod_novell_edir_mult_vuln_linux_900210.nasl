@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_edir_mult_vuln_linux_900210.nasl 7522 2017-10-20 08:19:44Z cfischer $
+# $Id: secpod_novell_edir_mult_vuln_linux_900210.nasl 7823 2017-11-20 08:54:04Z cfischer $
 # Description: Novell eDirectory Multiple Vulnerabilities (Linux)
 #
 # Authors:
@@ -49,8 +49,8 @@ tag_summary = "This host is running Novell eDirectory, which is prone to XSS,
 if(description)
 {
  script_id(900210);
- script_version("$Revision: 7522 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
+ script_version("$Revision: 7823 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
  script_tag(name:"creation_date", value:"2008-09-02 16:25:07 +0200 (Tue, 02 Sep 2008)");
  script_cve_id("CVE-2008-5091","CVE-2008-5092","CVE-2008-5093","CVE-2008-5094","CVE-2008-5095");
  script_bugtraq_id(30947);
@@ -63,7 +63,7 @@ if(description)
  script_name("Novell eDirectory Multiple Vulnerabilities (Linux)");
  script_dependencies("gather-package-list.nasl");
  script_mandatory_keys("login/SSH/success");
- script_exclude_keys("no_linux_shell");
+ script_exclude_keys("ssh/no_linux_shell");
 
  script_xref(name : "URL" , value : "http://secunia.com/advisories/31684");
  script_xref(name : "URL" , value : "http://securitytracker.com/alerts/2008/Aug/1020788.html");

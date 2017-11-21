@@ -45,12 +45,12 @@ certificate spoofing vulnerability.";
 if(description)
 {
   script_id(902764);
-  script_version("$Revision: 7519 $");
+  script_version("$Revision: 7823 $");
   script_cve_id("CVE-2011-3367");
   script_bugtraq_id(49925);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:32:05 +0200 (Fri, 20 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2011-12-15 14:01:47 +0530 (Thu, 15 Dec 2011)");
   script_name("Arora Common Name SSL Certificate Spoofing Vulnerability (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46269");
@@ -63,7 +63,7 @@ if(description)
   script_family("General");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("no_linux_shell");
+  script_exclude_keys("ssh/no_linux_shell");
 
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_proxy_dos_vuln.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_apache_mod_proxy_dos_vuln.nasl 7834 2017-11-20 14:48:51Z cfischer $
 #
 # Apache HTTP Server Mod_Proxy Denial of service Vulnerability May15
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805635");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 7834 $");
   script_cve_id("CVE-2014-0117");
   script_bugtraq_id(68740);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 15:48:51 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2015-05-27 12:15:46 +0530 (Wed, 27 May 2015)");
-  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable"); # Only vulnerable if mod_proxy and a threaded MPM is enabled
   script_name("Apache HTTP Server Mod_Cache Denial of service Vulnerability -01 May15");
 
   script_tag(name:"summary", value:"This host is installed with Apache HTTP Server
@@ -68,8 +68,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_dependencies("secpod_apache_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("apache/installed","Host/runs_windows");
+  script_dependencies("secpod_apache_detect.nasl");
+  script_mandatory_keys("apache/installed");
   script_require_ports("Services/www", 80);
   exit(0);
 }

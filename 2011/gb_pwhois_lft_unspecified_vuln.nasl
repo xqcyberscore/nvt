@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pwhois_lft_unspecified_vuln.nasl 7519 2017-10-20 06:32:05Z cfischer $
+# $Id: gb_pwhois_lft_unspecified_vuln.nasl 7823 2017-11-20 08:54:04Z cfischer $
 #
 # pWhois Layer Four Traceroute (LFT) Unspecified Vulnerability
 #
@@ -35,8 +35,8 @@ tag_summary = "This host is installed with Whois Layer Four Traceroute (LFT) and
 if(description)
 {
   script_id(801915);
-  script_version("$Revision: 7519 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:32:05 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 7823 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2011-04-13 15:50:09 +0200 (Wed, 13 Apr 2011)");
   script_cve_id("CVE-2011-1652");
   script_tag(name:"cvss_base", value:"5.0");
@@ -50,7 +50,7 @@ if(description)
   script_family("General");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("no_linux_shell");
+  script_exclude_keys("ssh/no_linux_shell");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

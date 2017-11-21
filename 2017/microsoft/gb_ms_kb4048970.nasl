@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4048970.nasl 7773 2017-11-15 13:21:06Z santu $
+# $Id: gb_ms_kb4048970.nasl 7835 2017-11-20 15:03:10Z cfischer $
 #
-# Microsoft Windows Multiple Vulnerabilites (KB4048970)
+# Microsoft Windows Multiple Vulnerabilities (KB4048970)
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812121");
-  script_version("$Revision: 7773 $");
+  script_version("$Revision: 7835 $");
   script_cve_id("CVE-2017-11847", "CVE-2017-11849", "CVE-2017-11851", "CVE-2017-11852", 
                 "CVE-2017-11853");
   script_bugtraq_id(101729, 101762, 101763, 101739, 101764);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 14:21:06 +0100 (Wed, 15 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 16:03:10 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-15 00:05:21 +0530 (Wed, 15 Nov 2017)");
-  script_name("Microsoft Windows Multiple Vulnerabilites (KB4048970)");
+  script_name("Microsoft Windows Multiple Vulnerabilities (KB4048970)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4048970");

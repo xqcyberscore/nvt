@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realvnc_remote_code_exe_vuln_lin_900163.nasl 7522 2017-10-20 08:19:44Z cfischer $
+# $Id: secpod_realvnc_remote_code_exe_vuln_lin_900163.nasl 7823 2017-11-20 08:54:04Z cfischer $
 # Description: RealVNC VNC Viewer Remote Code Execution Vulnerability (Linux)
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "Update to version 4.1.3
 if(description)
 {
   script_id(900163);
-  script_version("$Revision: 7522 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 7823 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-10-29 14:53:11 +0100 (Wed, 29 Oct 2008)");
   script_cve_id("CVE-2008-4770");
  script_bugtraq_id(31832);
@@ -57,7 +57,7 @@ if(description)
 
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("no_linux_shell");
+  script_exclude_keys("ssh/no_linux_shell");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

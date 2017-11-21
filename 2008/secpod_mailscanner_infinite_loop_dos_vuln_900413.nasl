@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mailscanner_infinite_loop_dos_vuln_900413.nasl 7522 2017-10-20 08:19:44Z cfischer $
+# $Id: secpod_mailscanner_infinite_loop_dos_vuln_900413.nasl 7823 2017-11-20 08:54:04Z cfischer $
 # Description: MailScanner Infinite Loop Denial of Service Vulnerability
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_summary = "This host is installed with MailScanner and is prone to Denial of
 if(description)
 {
   script_id(900413);
-  script_version("$Revision: 7522 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 7823 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-12-10 08:20:26 +0100 (Wed, 10 Dec 2008)");
   script_bugtraq_id(32514);
   script_copyright("Copyright (C) 2008 SecPod");
@@ -50,7 +50,7 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/Advisories/32915");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("no_linux_shell");
+  script_exclude_keys("ssh/no_linux_shell");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

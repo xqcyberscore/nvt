@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_ssh_version.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_cisco_wlc_ssh_version.nasl 7822 2017-11-20 08:46:09Z cfischer $
 #
 # Cisco Wireless LAN Controller Detection (SSH)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105429");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7052 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+ script_version ("$Revision: 7822 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:46:09 +0100 (Mon, 20 Nov 2017) $");
  script_tag(name:"creation_date", value:"2015-10-30 14:08:04 +0100 (Fri, 30 Oct 2015)");
  script_name("Cisco Wireless LAN Controller Detection (SSH)");
 
@@ -89,7 +89,7 @@ for( i=0; i < 3; i++ )
   if( buf !~ 'Product Name.*Cisco Controller' ) exit( 0 );
 
   set_kb_item( name:"cisco_wlc/detected", value:TRUE );
-  set_kb_item( name:"no_linux_shell", value:TRUE );
+  set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
   set_kb_item( name:"ssh/force/pty", value:TRUE );
 
   version = eregmatch( pattern:'Product Version[.]+ ([0-9][^\r\n ]+)', string:buf );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_multiple_vuln01_nov12_win.nasl 7549 2017-10-24 12:10:14Z cfischer $
+# $Id: gb_oracle_mysql_multiple_vuln01_nov12_win.nasl 7838 2017-11-21 05:43:57Z santu $
 #
 # Oracle MySQL Server Multiple Vulnerabilities-01 Nov12 (Windows)
 #
@@ -44,12 +44,12 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 7549 $");
+  script_version("$Revision: 7838 $");
   script_cve_id("CVE-2012-3197", "CVE-2012-3163", "CVE-2012-3158", "CVE-2012-3150");
   script_bugtraq_id(56036, 56017, 55990, 56005);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-21 06:43:57 +0100 (Tue, 21 Nov 2017) $");
   script_tag(name:"creation_date", value:"2012-11-26 16:54:56 +0530 (Mon, 26 Nov 2012)");
   script_name("Oracle MySQL Server Multiple Vulnerabilities-01 Nov12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51008/");
@@ -59,7 +59,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Databases");
-  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed","Host/runs_windows");

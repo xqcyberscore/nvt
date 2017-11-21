@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_python_mult_vuln_lin_900106.nasl 7522 2017-10-20 08:19:44Z cfischer $
+# $Id: secpod_python_mult_vuln_lin_900106.nasl 7823 2017-11-20 08:54:04Z cfischer $
 # Description: Python Multiple Vulnerabilities (Linux)
 #
 # Authors:
@@ -51,9 +51,9 @@ tag_summary = "The host is installed Python, which is prone to multiple vulnerab
 if(description)
 {
  script_id(900106);
- script_version("$Revision: 7522 $");
+ script_version("$Revision: 7823 $");
  script_tag(name:"deprecated", value:TRUE);
- script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
  script_bugtraq_id(30491);
  script_cve_id("CVE-2008-2315", "CVE-2008-2316", "CVE-2008-3142",
@@ -67,7 +67,7 @@ if(description)
  script_name("Python Multiple Vulnerabilities (Linux)");
  script_dependencies("gather-package-list.nasl");
  script_mandatory_keys("login/SSH/success");
- script_exclude_keys("no_linux_shell");
+ script_exclude_keys("ssh/no_linux_shell");
 
  script_xref(name : "URL" , value : "http://bugs.python.org/issue2588");
  script_xref(name : "URL" , value : "http://bugs.python.org/issue2589");

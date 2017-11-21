@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vim_shell_cmd_injection_vuln_lin_900412.nasl 7522 2017-10-20 08:19:44Z cfischer $
+# $Id: secpod_vim_shell_cmd_injection_vuln_lin_900412.nasl 7823 2017-11-20 08:54:04Z cfischer $
 # Description: Vim Shell Command Injection Vulnerability (Linux)
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with Vim and is prone to Command Injection
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900412");
-  script_version("$Revision: 7522 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 7823 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_bugtraq_id(32462);
   script_cve_id("CVE-2008-2712", "CVE-2008-3074", "CVE-2008-3075", "CVE-2008-3076");
@@ -56,7 +56,7 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("login/SSH/success");
-  script_exclude_keys("no_linux_shell");
+  script_exclude_keys("ssh/no_linux_shell");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

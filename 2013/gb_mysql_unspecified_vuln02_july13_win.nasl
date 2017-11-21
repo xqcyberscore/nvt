@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln02_july13_win.nasl 7548 2017-10-24 12:06:02Z cfischer $
+# $Id: gb_mysql_unspecified_vuln02_july13_win.nasl 7838 2017-11-21 05:43:57Z santu $
 #
 # MySQL Unspecified vulnerabilities-02 July-2013 (Windows)
 #
@@ -33,12 +33,12 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 7548 $");
+  script_version("$Revision: 7838 $");
   script_cve_id("CVE-2013-3812", "CVE-2013-3809", "CVE-2013-3793");
   script_bugtraq_id(61249, 61272, 61264);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-21 06:43:57 +0100 (Tue, 21 Nov 2017) $");
   script_tag(name:"creation_date", value:"2013-07-29 17:20:08 +0530 (Mon, 29 Jul 2013)");
   script_name("MySQL Unspecified vulnerabilities-02 July-2013 (Windows)");
 
@@ -76,7 +76,7 @@ http://www.oracle.com/technetwork/topics/security/cpujuly2013-1899826.html ";
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Databases");
-  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);

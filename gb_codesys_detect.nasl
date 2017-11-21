@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_codesys_detect.nasl 7817 2017-11-20 02:24:15Z ckuersteiner $
+# $Id: gb_codesys_detect.nasl 7836 2017-11-21 01:58:02Z ckuersteiner $
 #
 # CODESYS Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140500");
- script_version ("$Revision: 7817 $");
- script_tag(name: "last_modification", value: "$Date: 2017-11-20 03:24:15 +0100 (Mon, 20 Nov 2017) $");
+ script_version ("$Revision: 7836 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-11-21 02:58:02 +0100 (Tue, 21 Nov 2017) $");
  script_tag(name: "creation_date", value: "2017-11-16 08:54:19 +0700 (Thu, 16 Nov 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -98,7 +98,9 @@ set_kb_item(name: "codesys/detected", value: TRUE);
 register_service(port: port, proto: "codesys");
 
 os_name = bin2string(ddata:substr(recv, 64, 95), noprint_replacement: '');
+set_kb_item(name: "codesys/os_name", value: os_name);
 os_details = bin2string(ddata:substr(recv, 96, 127), noprint_replacement: '');
+set_kb_item(name: "codesys/os_details", value: os_details);
 type =  bin2string(ddata:substr(recv, 128, 159), noprint_replacement: '');
 
 report = "A CODESYS service is running at this port.\n\nThe following information was extracted:\n\n" +

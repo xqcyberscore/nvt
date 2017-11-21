@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_cpe.nasl 5458 2017-03-01 16:16:07Z cfi $
+# $Id: gb_policy_cpe.nasl 7828 2017-11-20 11:35:04Z cfischer $
 #
 # CPE-based Policy Check
 #
@@ -28,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103962");
-  script_version("$Revision: 5458 $");
+  script_version("$Revision: 7828 $");
   script_name("CPE Policy Check");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 17:16:07 +0100 (Wed, 01 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-20 12:35:04 +0100 (Mon, 20 Nov 2017) $");
   script_tag(name:"creation_date", value:"2014-01-06 11:30:32 +0700 (Mon, 06 Jan 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,6 +39,8 @@ if(description)
   script_copyright("Copyright (c) 2014 Greenbone Networks GmbH");
   script_dependencies("cpe_inventory.nasl");
   script_mandatory_keys("cpe_inventory/available");
+
+  script_xref(name:"URL", value:"http://docs.greenbone.net/GSM-Manual/gos-4/en/compliance.html#cpe-based");
 
   script_add_preference(name:"Single CPE", type:"entry", value:"cpe:/");
   script_add_preference(name:"CPE List", type:"file", value:"");
@@ -70,18 +72,28 @@ if (!single_cpe || strlen(single_cpe) < 6) {
     sep = '\n';
   }
 
-  mycpes_split = split(cpes_list, sep:sep, keep:0);
+  mycpes_split = split(cpes_list, sep:sep, keep:FALSE);
   mycpes = make_list();
 
   i = 0;
   foreach mcpe (mycpes_split) {
-    if (ereg(pattern:"^cpe:/.*", string:mcpe)) {
+    # Use get_base_cpe() from host_details.inc to verify the correct syntax of the passed CPE
+    if (get_base_cpe(cpe:mcpe)) {
       mycpes[i] = mcpe;
       i++;
+    } else {
+      set_kb_item(name:"policy/cpe/invalid_list", value:mcpe);
+      set_kb_item(name:"policy/cpe/invalid_line/found", value:TRUE);
     }
   }
 } else {
-  mycpes = make_list(single_cpe);
+  # Use get_base_cpe() from host_details.inc to verify the correct syntax of the passed CPE
+  if (get_base_cpe(cpe:single_cpe)) {
+    mycpes = make_list(single_cpe);
+  } else {
+    set_kb_item(name:"policy/cpe/invalid_list", value:single_cpe);
+    set_kb_item(name:"policy/cpe/invalid_line/found", value:TRUE);
+  }
 }
 
 if (!mycpes) {
@@ -115,7 +127,6 @@ foreach mycpe (mycpes) {
   }
 }
 
-# Write to KB
 checkfor = script_get_preference("Check for");
 set_kb_item(name:"policy/cpe/checkfor", value:checkfor);
 

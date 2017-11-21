@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xine-lib_mult_vuln_aug08_900041.nasl 7522 2017-10-20 08:19:44Z cfischer $
+# $Id: secpod_xine-lib_mult_vuln_aug08_900041.nasl 7823 2017-11-20 08:54:04Z cfischer $
 # Description: xine-lib Multiple Vulnerabilities (Aug-08)
 #
 # Authors:
@@ -45,8 +45,8 @@ vulnerabilities.";
 if(description)
 {
  script_id(900041);
- script_version("$Revision: 7522 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
+ script_version("$Revision: 7823 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
  script_tag(name:"creation_date", value:"2008-08-27 11:53:45 +0200 (Wed, 27 Aug 2008)");
  script_copyright("Copyright (C) 2008 SecPod");
  script_tag(name:"cvss_base", value:"5.1");
@@ -57,7 +57,7 @@ if(description)
  script_name("xine-lib Multiple Vulnerabilities (Aug-08)");
  script_dependencies("gather-package-list.nasl");
  script_mandatory_keys("login/SSH/success");
- script_exclude_keys("no_linux_shell");
+ script_exclude_keys("ssh/no_linux_shell");
 
  script_xref(name : "URL" , value : "http://secunia.com/advisories/31567/");
  script_xref(name : "URL" , value : "http://www.ocert.org/analysis/2008-008/analysis.txt");

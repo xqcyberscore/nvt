@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 7814 2017-11-17 14:30:20Z cfischer $
+# $Id: ssh_func.inc 7822 2017-11-20 08:46:09Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7814 $
+# $Revision: 7822 $
 #
 ###############################################################################
 
@@ -1869,6 +1869,9 @@ function ssh_cmd_pty( sess, cmd, pattern, timeout, retry, clear_buffer ) {
     sleep( 5 );
   }
 
+  if( ! clear_buffer )
+    if( get_kb_item( "ssh/force/clear_buffer" ) ) clear_buffer = TRUE;
+
   # Clear the buffer before sending the command. This is needed for
   # Cisco NGIPS for example. Without clearing the buffer you didn't
   # get anything back for the executed command. I'd only see this
@@ -1912,9 +1915,10 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
 
   if( ! socket ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ssh_cmd" );
 
-  if( get_kb_item( "ssh/cmd_exec_error" ) ) nosh = TRUE; # NX-OS/IOS/JunOS/F5
+  if( ! nosh )
+    if( get_kb_item( "ssh/force/nosh" ) ) nosh = TRUE; # NX-OS/IOS/JunOS/F5
 
-  if( get_kb_item( "no_linux_shell" ) ) {
+  if( get_kb_item( "ssh/no_linux_shell" ) ) {
     nosh = TRUE;
     if( cmd =~ "^(/bin|/sbin|cat |perl |cmd /|netstat |find |which |whereis |locate |/opt/slad)" ) return FALSE; # don't run find, which ... if target doesn't support it
   }
@@ -1954,7 +1958,7 @@ function ssh_cmd( socket, cmd, timeout, nosh, return_errors, pty, pattern, retry
         "-----unknown keyword " >< ret_ssh_buf ||
         "Unknown action 0" >< ret_ssh_buf ||
         "Syntax Error: unexpected argument" >< ret_ssh_buf ) { # NX-OS/IOS/JunOS/F5
-        set_kb_item( name:"ssh/cmd_exec_error", value:TRUE ); # force nosh
+        set_kb_item( name:"ssh/force/nosh", value:TRUE );
         if( ! return_errors )
          return '';
     }
@@ -2316,9 +2320,12 @@ function find_bin( prog_name, sock ) {
   whe = "";
   whi = "";
 
-  if( get_kb_item( "no_linux_shell" ) ) return;
+  if( get_kb_item( "ssh/no_linux_shell" ) ) return;
 
-  if( ! prog_name ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#prog_name#-#find_bin" );
+  if( ! prog_name ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#prog_name#-#find_bin" );
+    return;
+  }
 
   if( ! sock ) {
     sock = ssh_login_or_reuse_connection();
@@ -2368,10 +2375,17 @@ function find_file( file_name, file_path, useregex, regexpar, sock ) {
   local_var r, f, fname, lparam, cl, file_name, file_path, useregex, regexpar, sock;
   local_var use_find, descend_directories, cmd;
 
-  if( get_kb_item( "no_linux_shell" ) ) return;
+  if( get_kb_item( "ssh/no_linux_shell" ) ) return;
 
-  if( ! file_name ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file_name#-#find_file" );
-  if( ! file_path ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file_path#-#find_file" );
+  if( ! file_name ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file_name#-#find_file" );
+    return;
+  }
+
+  if( ! file_path ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file_path#-#find_file" );
+    file_path = "/";
+  }
 
   r = NULL;
 
@@ -2381,8 +2395,8 @@ function find_file( file_name, file_path, useregex, regexpar, sock ) {
     lparam = "-ei";
   }
 
-  use_find = get_kb_item( "Enable/find" );
-  descend_directories = get_kb_item( "Descend/OFS" );
+  use_find = get_kb_item( "ssh/lsc/enable_find" );
+  descend_directories = get_kb_item( "ssh/lsc/descend_ofs" );
 
   if( isnull( use_find ) ) use_find = "yes";
   if( isnull( descend_directories ) ) descend_directories = "yes";
@@ -2436,11 +2450,15 @@ function get_bin_version( full_prog_name, version_argv, ver_pattern, sock ) {
 
   local_var loc_version, r, full_prog_name, version_argv, ver_pattern, sock;
 
-  if( get_kb_item( "no_linux_shell" ) ) return;
+  if( get_kb_item( "ssh/no_linux_shell" ) ) return;
 
-  if( ! full_prog_name ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#full_prog_name#-#get_bin_version" );
-  if( ! version_argv ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version_argv#-#get_bin_version" );
-  if( ! ver_pattern ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#ver_pattern#-#get_bin_version" );
+  if( ! full_prog_name ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#full_prog_name#-#get_bin_version" );
+    return;
+  }
+
+  if( ! version_argv ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version_argv#-#get_bin_version" );
+  if( ! ver_pattern )  set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#ver_pattern#-#get_bin_version" );
 
   full_prog_name = chomp( full_prog_name );
   version_argv = chomp( version_argv );
@@ -2465,11 +2483,14 @@ function ssh_check_locate( sock ) {
 
   local_var sock, r;
 
-  if( ! sock ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#sock#-#ssh_check_locate" );
+  if( ! sock ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#sock#-#ssh_check_locate" );
+    return;
+  }
 
-  if( get_kb_item( "lsc/locate/available" ) ) return TRUE;
-  if( get_kb_item( "no_linux_shell" ) ) return FALSE;
-  if( get_kb_item( "lsc/locate/broken" ) ) return FALSE;
+  if( get_kb_item( "ssh/locate/available" ) ) return TRUE;
+  if( get_kb_item( "ssh/no_linux_shell" ) )   return FALSE;
+  if( get_kb_item( "ssh/locate/broken" ) )    return FALSE;
 
   r = ssh_cmd( socket:sock, cmd:"locate -S", timeout:60 );
 
@@ -2479,7 +2500,7 @@ function ssh_check_locate( sock ) {
   if( "locate: invalid option -- S" >< r ) {
     r = ssh_cmd( socket:sock, cmd:"locate /bin/bash", timeout:60 ); # nb: Assuming that /bin/bash exists on the target system
     if( "locate:" >!< r && "/bin/bash" >< r ) {
-      set_kb_item( name:"lsc/locate/available", value:TRUE );
+      set_kb_item( name:"ssh/locate/available", value:TRUE );
       return TRUE;
     }
   }
@@ -2492,9 +2513,9 @@ function ssh_check_locate( sock ) {
         "command not found" >< r ||
         "locate:" >< r ) { # nb: Also includes an outdated database like "locate: warning: database /var/cache/locate/locatedb is more than 8 days old (actual age is 9,3 days)"
 
-    set_kb_item( name:"lsc/locate/broken", value:r );
+    set_kb_item( name:"ssh/locate/broken", value:r );
     return FALSE;
   }
-  set_kb_item( name:"lsc/locate/available", value:TRUE );
+  set_kb_item( name:"ssh/locate/available", value:TRUE );
   return TRUE;
 }
