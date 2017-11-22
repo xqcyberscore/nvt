@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_detect.nasl 7113 2017-09-13 06:03:30Z cfischer $
+# $Id: gb_apache_hadoop_detect.nasl 7851 2017-11-21 14:36:26Z asteins $
 #
 # Apache Hadoop Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810317");
-  script_version("$Revision: 7113 $");
+  script_version("$Revision: 7851 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-21 15:36:26 +0100 (Tue, 21 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-12-23 11:51:30 +0530 (Fri, 23 Dec 2016)");
   script_name("Apache Hadoop Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -64,7 +64,7 @@ port = get_http_port( default:50070 );
 # <tr><td class='col1'>Version:</td><td>2.6.0-cdh5.8.2, 9abce7e9ea82d98c14606e7ccc7fa3aa448f6e90</td></tr>
 # <tr> <td id="col1"> Version: <td> 0.20.2-cdh3u3, 318bc781117fa276ae81a3d111f5eeba0020634f
 urls =
-make_array( "/dfshealth.jsp", '> *Version:.*<td> *([0-9.]+)([0-9a-z.\\-]+)?,',
+make_array( "/dfshealth.jsp", '> *Version:( |</td>)?<td> *([0-9\\.]+)([0-9a-z.\\-]+)?,',
             "/dfshealth.html", '"SoftwareVersion" : "([0-9.]+)([0-9a-z.\\-]+)?",' );
 
 foreach url( keys( urls ) ) {
@@ -88,11 +88,16 @@ foreach url( keys( urls ) ) {
       req = http_get( item:url2, port:port );
       res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
       if( res =~ "^HTTP/1\.[01] 200" ) conclUrl = report_vuln_url( port:port, url:url2, url_only:TRUE );
-    }
 
-    vers = eregmatch( pattern:urls[url], string:res );
-    if( vers[1] ) version = vers[1];
-    replace_kb_item( name:"Apache/Hadoop/Installed", value:TRUE );
+      vers = eregmatch( pattern:urls[url], string:res );
+      if( vers[1] ) version = vers[1];
+      set_kb_item( name:"Apache/Hadoop/Installed", value:TRUE );
+    }
+    else {
+      vers = eregmatch( pattern:urls[url], string:res );
+      if( vers[2] ) version = vers[2];
+      set_kb_item( name:"Apache/Hadoop/Installed", value:TRUE );
+    }
 
     if( ">Security is <em>OFF</em>" >< res ) {
       secureModeDisabled = TRUE;

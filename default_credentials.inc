@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_credentials.inc 4969 2017-01-09 10:12:25Z ckuerste $
+# $Id: default_credentials.inc 7851 2017-11-21 14:36:26Z asteins $
 #
 # Default Credentials
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 4969 $
+# $Revision: 7851 $
 #
 ###############################################################################
 
@@ -222,7 +222,7 @@ credentials = make_list(
 "root;alpine;iOS",
 "mobile;dottie;iOS",
 "admin;PASS;Lantronix",
-"none;TANDBERG;Tandberg",
+"TANDBERG;none;Tandberg",
 "skyboxview;skyboxview;SkyBOX",
 "pi;raspberry;raspberry",
 "root;toor;kali linux,backtrack linux",

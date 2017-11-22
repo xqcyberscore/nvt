@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zyxel_nbg6716_rce_vuln.nasl 7721 2017-11-10 06:02:17Z ckuersteiner $
+# $Id: gb_zyxel_nbg6716_rce_vuln.nasl 7854 2017-11-22 02:34:41Z ckuersteiner $
 #
 # Zyxel NBG6716 RCE Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140497");
-  script_version("$Revision: 7721 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-10 07:02:17 +0100 (Fri, 10 Nov 2017) $");
+  script_version("$Revision: 7854 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-22 03:34:41 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-11-10 13:05:48 +0700 (Fri, 10 Nov 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -67,7 +67,7 @@ port = get_http_port(default: 80);
 
 res = http_get_cache(port: port, item: "/cgi-bin/luci");
 
-if ("title>NBG6716 - Login</title>" >< res && "Model:NBG6716") {
+if ("title>NBG6716 - Login</title>" >< res && "Model:NBG6716" >< res) {
   url = "/cgi-bin/ozkerz?eventFlows=1&beginIndex=|id&endIndex=";
   if (http_vuln_check(port: port, url: url, pattern: 'uid=[0-9]+.*gid=[0-9]+', check_header: TRUE)) {
     report = report_vuln_url(port: port, url: url);

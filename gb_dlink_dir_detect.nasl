@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_detect.nasl 7833 2017-11-20 14:44:32Z asteins $
+# $Id: gb_dlink_dir_detect.nasl 7853 2017-11-21 15:12:03Z cfischer $
 #
 # D-Link DIR Devices Detection
 #
@@ -27,21 +27,21 @@
 
 if (description)
 {
-
- script_oid("1.3.6.1.4.1.25623.1.0.10368");
+ script_oid("1.3.6.1.4.1.25623.1.0.103689");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7833 $");
- script_tag(name:"last_modification", value:"$Date: 2017-11-20 15:44:32 +0100 (Mon, 20 Nov 2017) $");
+ script_version("$Revision: 7853 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-21 16:12:03 +0100 (Tue, 21 Nov 2017) $");
  script_tag(name:"creation_date", value:"2013-04-08 13:52:56 +0200 (Mon, 08 Apr 2013)");
  script_name("D-Link DIR Devices Detection");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("gb_get_http_banner.nasl");
  script_require_ports("Services/www", 80, 8080);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("D-LinkDIR/banner");
+
  script_tag(name: "summary" , value: "Detection of D-Link DIR Devices
 
 The script sends a connection request to the server and attempts to
@@ -53,7 +53,6 @@ determine if the remote host is a Dlink DIR device from the reply.");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
-include("global_settings.inc");
 include("host_details.inc");
 
 port = get_http_port(default:8080);

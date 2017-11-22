@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_os_eol.nasl 7633 2017-11-02 14:01:14Z cfischer $
+# $Id: gb_os_eol.nasl 7849 2017-11-21 14:29:21Z cfischer $
 #
 # OS End Of Life Detection
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103674");
-  script_version("$Revision: 7633 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-02 15:01:14 +0100 (Thu, 02 Nov 2017) $");
+  script_version("$Revision: 7849 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-21 15:29:21 +0100 (Tue, 21 Nov 2017) $");
   script_tag(name:"creation_date", value:"2013-03-05 18:11:24 +0100 (Tue, 05 Mar 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("OS End Of Life Detection");
-  script_category(ACT_END);
+  script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("os_detection.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fins_tcp_detect.nasl 7837 2017-11-21 03:33:59Z ckuersteiner $
+# $Id: gb_fins_tcp_detect.nasl 7843 2017-11-21 09:51:22Z ckuersteiner $
 #
 # Factory Interface Network Service (FINS) Detection (TCP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140512");
- script_version ("$Revision: 7837 $");
- script_tag(name: "last_modification", value: "$Date: 2017-11-21 04:33:59 +0100 (Tue, 21 Nov 2017) $");
+ script_version ("$Revision: 7843 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-11-21 10:51:22 +0100 (Tue, 21 Nov 2017) $");
  script_tag(name: "creation_date", value: "2017-11-20 16:46:39 +0700 (Mon, 20 Nov 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -96,23 +96,26 @@ send(socket: soc, data: ctrl_data_read);
 recv = recv(socket: soc, length: 512);
 close(soc);
 
-if (!recv || recv !~ "^FINS")
-  exit(0);
-
-# Some more information could be extracted (memory card type, program area size, etc) but this doesn't really
-# add some valuable info for vulnerability scanning.
-model = bin2string(ddata: substr(recv, 30, 45), noprint_replacement: '');
-set_kb_item(name: "fins/model", value: model);
-version = bin2string(ddata: substr(recv, 60, 64), noprint_replacement: '');
-set_kb_item(name: "fins/version", value: version);
+if (recv && recv =~ "^FINS" && strlen(recv) >= 65) {
+  # Some more information could be extracted (memory card type, program area size, etc) but this doesn't really
+  # add some valuable info for vulnerability scanning.
+  model = bin2string(ddata: substr(recv, 30, 45), noprint_replacement: '');
+  set_kb_item(name: "fins/model", value: model);
+  version = bin2string(ddata: substr(recv, 60, 64), noprint_replacement: '');
+  set_kb_item(name: "fins/version", value: version);
+}
 
 set_kb_item(name: "fins/detected", value: TRUE);
 
 register_service(port: port, proto: "fins", ipproto: "tcp");
 
-report = "A FINS service is running at this port.\n\nThe following information was extracted:\n\n" +
-         "Controller Model:      " + model + "\n" +
-         "Controller Version:    " + version + "\n";
+report = "A FINS service is running at this port.\n";
+
+if (model || version) {
+  report += "\nThe following information was extracted:\n\n" +
+            "Controller Model:      " + model + "\n" +
+            "Controller Version:    " + version + "\n";
+}
 
 log_message(port: port, data: report);
 

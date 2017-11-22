@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_get_http_banner.nasl 7820 2017-11-20 06:45:44Z cfischer $
+# $Id: gb_get_http_banner.nasl 7852 2017-11-21 14:55:38Z cfischer $
 #
 # HTTP Banner
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140170");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7820 $");
- script_tag(name:"last_modification", value:"$Date: 2017-11-20 07:45:44 +0100 (Mon, 20 Nov 2017) $");
+ script_version ("$Revision: 7852 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-21 15:55:38 +0100 (Tue, 21 Nov 2017) $");
  script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
  script_name("HTTP Banner");
 
@@ -61,7 +61,7 @@ function set_mandatory_key( key, regex, banner )
   if( ! banner ) return;
 
   if( m = egrep( pattern:regex, string:banner, icase:TRUE ) )
-    replace_kb_item( name:key + '/banner', value:TRUE );
+    set_kb_item( name:key + '/banner', value:TRUE );
 
   return;
 
@@ -370,5 +370,7 @@ set_mandatory_key( key:"App-webs", regex: "Server: App-webs/", banner:banner );
 set_mandatory_key( key:"Kannel", regex: "Server: Kannel/", banner:banner );
 set_mandatory_key( key:"akka", regex: "Server: akka-http/", banner:banner );
 set_mandatory_key( key:"voipnow", regex: "Server: voipnow", banner:banner );
+set_mandatory_key( key:"D-LinkDNS", regex: "Server: (lighttpd/|GoAhead-Webs)", banner:banner );
+set_mandatory_key( key:"D-LinkDIR", regex: "Server: (Linux, ((HTTP/1\.1)|(WEBACCESS/1\.0)), DIR|Mathopd/|WebServer)", banner:banner );
 
 exit( 0 );

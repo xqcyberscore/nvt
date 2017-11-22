@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB-12.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: GSHB-12.nasl 7850 2017-11-21 14:31:39Z emoss $
 #
 # IT-Grundschutz, 12. Ergänzungslieferung
 #
@@ -124,8 +124,8 @@ depend = make_list("M4_001", "M4_002", "M4_003", "M4_004", "M4_005", "M4_007",
 if(description)
 {
   script_id(94000);
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 7850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-21 15:31:39 +0100 (Tue, 21 Nov 2017) $");
   script_tag(name:"creation_date", value:"2011-12-09 15:38:53 +0100 (Fri, 09 Dec 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -137,7 +137,7 @@ if(description)
   script_mandatory_keys("Compliance/Launch/GSHB-12");
   script_add_preference(name:"Berichtformat", type:"radio", value:"Text;Tabellarisch;Text und Tabellarisch");
   script_require_keys("GSHB-12/silence");
-  script_dependencies("GSHB/compliance_tests.nasl");
+  script_dependencies("compliance_tests.nasl");
   foreach d (depend) script_dependencies("GSHB/EL12/GSHB_" + d + ".nasl");
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name:"deprecated", value:TRUE);

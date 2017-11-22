@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_adobe_connect_detect.nasl 7857 2017-11-22 07:24:15Z cfischer $
 #
 # Adobe Connect Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805661");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 7857 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-22 08:24:15 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name:"creation_date", value:"2015-06-19 10:58:10 +0530 (Fri, 19 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe Connect Version Detection");
@@ -44,8 +44,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
