@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quagga_dos_vuln.nasl 7624 2017-11-02 08:14:30Z cfischer $
+# $Id: gb_quagga_dos_vuln.nasl 7859 2017-11-22 09:05:55Z asteins $
 #
 # Quagga DoS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:quagga:quagga";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140461");
-  script_version("$Revision: 7624 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-02 09:14:30 +0100 (Thu, 02 Nov 2017) $");
+  script_version("$Revision: 7859 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-22 10:05:55 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-11-01 12:34:31 +0700 (Wed, 01 Nov 2017)");
-  script_tag(name: "cvss_base", value: "7.1");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-16227");
 

@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: ssl_funcs.inc 7578 2017-10-26 11:00:21Z cfischer $
+# OpenVAS Include File
+# $Id: ssl_funcs.inc 7884 2017-11-23 12:54:50Z cfischer $
 #
 # Implementation of common ssl functions
 #
@@ -25,7 +25,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7578 $
+# $Revision: 7884 $
 #
 ###############################################################################
 
@@ -696,63 +696,82 @@ function cert_summary( key ) {
                  "fingerprint (SHA-256): ", get_kb_item( key + "fprSHA256" ) );
 }
 
-#
 # Check a single certificate if it is valid, expired, not valid yet, will
 # expire soon or is valid for a too long period.
-#
-function check_cert_validity(fprlist, port, vhost, check_for, now, timeframe) {
+function check_cert_validity( fprlist, port, vhost, check_for, now, timeframe ) {
 
-    local_var key, certobj, valid_start, valid_end;
+  local_var fprlist, port, vhost, check_for, now, timeframe;
+  local_var tmp, fpr, key, valid_end, valid_start, untrusted_authorities, issuer;
 
-    if( ! fprlist ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fprlist#-#check_cert_validity" );
-
-    tmp = split(fprlist, sep:",", keep:FALSE);
-    fpr = tmp[0];
-
-    if (fpr[0] == "[") {
-        debug_print("A SSL certificate on port ", port, " (" + vhost + ")",
-                    " is erroneous.", level:0);
-        return;
-    }
-
-    key = "HostDetails/Cert/" + fpr + "/";
-
-    if (check_for == "expired") {
-      valid_end = get_kb_item(key + "notAfter");
-      if (valid_end < now)
-        return key;
-      else
-        return;
-    }
-
-    if (check_for == "not_valid_yet") {
-      valid_start = get_kb_item(key + "notBefore");
-      if (valid_start > now)
-        return key;
-      else
-        return;
-    }
-
-    if (check_for == "expire_soon") {
-      valid_end =  get_kb_item(key + "notAfter");
-
-      if(valid_end < now) return;
-
-      if (valid_end < timeframe)
-        return key;
-      else
-        return;
-    }
-
-    if (check_for == "too_long_valid") {
-      valid_end = get_kb_item(key + "notAfter");
-      if (valid_end > timeframe)
-        return key;
-      else
-        return;
-    }
-
+  if( ! fprlist ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fprlist#-#check_cert_validity" );
     return;
+  }
+
+  tmp = split( fprlist, sep:",", keep:FALSE );
+  fpr = tmp[0];
+
+  if( fpr[0] == "[" ) {
+    debug_print( "A SSL/TLS certificate on port ", port, " (" + vhost + ") is erroneous.", level:0 );
+    return;
+  }
+
+  key = "HostDetails/Cert/" + fpr + "/";
+
+  if( check_for == "expired" ) {
+    valid_end = get_kb_item( key + "notAfter" );
+    if( valid_end < now )
+      return key;
+    else
+      return;
+  }
+
+  if( check_for == "not_valid_yet" ) {
+    valid_start = get_kb_item( key + "notBefore" );
+    if( valid_start > now )
+      return key;
+    else
+      return;
+  }
+
+  if( check_for == "expire_soon") {
+    valid_end = get_kb_item(key + "notAfter");
+    if( valid_end < now ) return;
+    if( valid_end < timeframe )
+      return key;
+    else
+      return;
+  }
+
+  if( check_for == "too_long_valid" ) {
+    valid_end = get_kb_item( key + "notAfter" );
+    if( valid_end > timeframe )
+      return key;
+    else
+      return;
+  }
+
+  if( check_for == "untrusted_ca" ) {
+
+    # List of pattern and an optional URL to a reference why the CA is untrusted
+    untrusted_authorities = make_array( "startcom", "https://www.startcomca.com/index/News/newDetail?date=20171116",
+                                        "superfish", "https://support.lenovo.com/de/en/product_security/superfish",
+                                        "edellroot", "https://blog.hboeck.de/archives/876-Superfish-2.0-Dangerous-Certificate-on-Dell-Laptops-breaks-encrypted-HTTPS-Connections.html",
+                                        "dsd ?test ?provider", "https://blog.hboeck.de/archives/876-Superfish-2.0-Dangerous-Certificate-on-Dell-Laptops-breaks-encrypted-HTTPS-Connections.html",
+                                        "preact(-| )cli", "none",
+                                        "acme co", "none",
+                                        "webpack(-| )dev(-| )server", "none",
+                                        "localhost", "none" );
+
+    issuer = get_kb_item( key + "issuer" );
+    foreach pattern( keys( untrusted_authorities ) ) {
+      if( egrep( string:issuer, pattern:pattern, icase:TRUE ) ) {
+        return make_list( issuer, key, untrusted_authorities[pattern] );
+      }
+    }
+    return;
+  }
+  return;
 }
 
 # Don't use this directly, please use ssl_hello instead

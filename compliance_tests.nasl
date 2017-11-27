@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: compliance_tests.nasl 7850 2017-11-21 14:31:39Z emoss $
+# $Id: compliance_tests.nasl 7883 2017-11-23 11:22:59Z emoss $
 #
 # Compliance Tests
 #
@@ -29,8 +29,8 @@ tag_summary = "This script controls various compliance tests like IT-Grundschutz
 if(description)
 {
   script_id(95888);
-  script_version("$Revision: 7850 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-21 15:31:39 +0100 (Tue, 21 Nov 2017) $");
+  script_version("$Revision: 7883 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-23 12:22:59 +0100 (Thu, 23 Nov 2017) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,7 +44,9 @@ if(description)
   script_add_preference(name:"Launch IT-Grundschutz (11. EL)", type:"checkbox", value:"no");
   script_add_preference(name:"Launch IT-Grundschutz (12. EL)", type:"checkbox", value:"no");
   script_add_preference(name:"Launch IT-Grundschutz (13. EL)", type:"checkbox", value:"no");
+  script_add_preference(name:"Launch IT-Grundschutz (15. EL)", type:"checkbox", value:"no");
   script_add_preference(name:"Launch latest IT-Grundschutz version", type:"checkbox", value:"no");
+  script_add_preference(name:"Level of Security (IT-Grundschutz)", type:"radio", value:"Basis;Standard;Kern");
   script_add_preference(name:"Verbose IT-Grundschutz results", type:"checkbox", value:"no");
   script_add_preference(name:"Launch PCI-DSS (Version 2.0)", type:"checkbox", value:"no");
   script_add_preference(name:"Launch latest PCI-DSS version", type:"checkbox", value:"no");
@@ -79,9 +81,14 @@ if (launch_gshb_13 == "yes") {
   set_kb_item(name: "Compliance/Launch/GSHB-13", value: TRUE);
   set_kb_item(name: "Compliance/Launch/GSHB", value: TRUE);
 }
-launch_gshb_14 = script_get_preference("Launch latest IT-Grundschutz version");
-if (launch_gshb_14 == "yes") {
-  set_kb_item(name: "Compliance/Launch/GSHB-14", value: TRUE);
+launch_gshb_15 = script_get_preference("Launch IT-Grundschutz (15. EL)");
+if (launch_gshb_15 == "yes") {
+  set_kb_item(name: "Compliance/Launch/GSHB-15", value: TRUE);
+  set_kb_item(name: "Compliance/Launch/GSHB", value: TRUE);
+}
+launch_gshb = script_get_preference("Launch latest IT-Grundschutz version");
+if (launch_gshb == "yes") {
+  set_kb_item(name: "Compliance/Launch/GSHB-ITG", value: TRUE);
   set_kb_item(name: "Compliance/Launch/GSHB", value: TRUE);
 }
 # Set KB item if IT-Grundschutz silence is requested
@@ -91,8 +98,12 @@ if (verbose_gshb == "no") {
   set_kb_item(name: "GSHB-11/silence", value: "Wahr");
   set_kb_item(name: "GSHB-12/silence", value: "Wahr");
   set_kb_item(name: "GSHB-13/silence", value: "Wahr");
+  set_kb_item(name: "GSHB-15/silence", value: "Wahr");
   set_kb_item(name: "GSHB/silence", value: "Wahr");
 }
+
+security_level = script_get_preference("Level of Security (IT-Grundschutz)");
+set_kb_item(name:"GSHB/level", value: security_level);
 
 # Set KB item if PCI-DSS 2.0 is enabled
 launch_pci_dss = script_get_preference("Launch PCI-DSS (Version 2.0)");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3464_1.nasl 7601 2017-10-31 06:41:32Z santu $
+# $Id: gb_ubuntu_USN_3464_1.nasl 7859 2017-11-22 09:05:55Z asteins $
 #
 # Ubuntu Update for wget USN-3464-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843351");
-  script_version("$Revision: 7601 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-31 07:41:32 +0100 (Tue, 31 Oct 2017) $");
+  script_version("$Revision: 7859 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-22 10:05:55 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-27 14:32:33 +0200 (Fri, 27 Oct 2017)");
   script_cve_id("CVE-2017-13089", "CVE-2017-13090", "CVE-2016-7098", "CVE-2017-6508");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for wget USN-3464-1");
   script_tag(name: "summary", value: "Check the version of wget");

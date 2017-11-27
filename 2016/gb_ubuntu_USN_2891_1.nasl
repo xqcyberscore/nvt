@@ -26,16 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842633");
-  script_version("$Revision: 6647 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:04:05 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7900 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-24 11:35:02 +0100 (Fri, 24 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-02-05 13:14:14 +0530 (Fri, 05 Feb 2016)");
   script_cve_id("CVE-2015-7549", "CVE-2015-8504", "CVE-2015-8550", "CVE-2015-8558",
                 "CVE-2015-8567", "CVE-2015-8568", "CVE-2015-8613", "CVE-2015-8619",
                 "CVE-2016-1922", "CVE-2015-8666", "CVE-2015-8743", "CVE-2015-8744",
                 "CVE-2015-8745", "CVE-2016-1568", "CVE-2016-1714", "CVE-2016-1981",
                 "CVE-2016-2197", "CVE-2016-2198");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for qemu USN-2891-1");
   script_tag(name: "summary", value: "Check the version of qemu");

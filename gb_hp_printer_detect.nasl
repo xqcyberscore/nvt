@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printer_detect.nasl 7288 2017-09-27 07:21:24Z cfischer $
+# $Id: gb_hp_printer_detect.nasl 7890 2017-11-23 14:45:52Z asteins $
 #
 # HP Printer Detection
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103675");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7288 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 09:21:24 +0200 (Wed, 27 Sep 2017) $");
+  script_version("$Revision: 7890 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-23 15:45:52 +0100 (Thu, 23 Nov 2017) $");
   script_tag(name:"creation_date", value:"2013-03-07 14:31:24 +0100 (Thu, 07 Mar 2013)");
   script_name("HP Printer Detection");
   script_category(ACT_GATHER_INFO);
@@ -58,12 +58,17 @@ include("host_details.inc");
 include("misc_func.inc");
 
 port = get_http_port(default:80);
-
 urls = get_hp_detect_urls();
 
 foreach url (keys(urls)) {
 
   buf = http_get_cache(item:url, port:port);
+
+  if("301 Moved Permanently" >< buf) {
+    if(port != 443) new_port = 443;
+    else new_port = 80;
+    buf = http_get_cache(item:url, port:new_port);
+  }
 
   if(match = eregmatch(pattern:urls[url], string:buf, icase:TRUE)) {
 
@@ -84,9 +89,13 @@ foreach url (keys(urls)) {
 
     chomp(model);
 
-    if( "Server: HP HTTP Server" >< buf )
-    {
+    if( "Server: HP HTTP Server" >< buf )  {
       version = eregmatch( pattern:'Server: HP HTTP Server.*\\{([^},]+).*\\}[\r\n]+', string:buf );
+      if( ! isnull( version[1] ) ) fw_ver = version[1];
+    }
+
+    if( '<strong id="FirmwareRevision">' >< buf ) {
+      version = eregmatch( pattern:'<strong id="FirmwareRevision">([0-9_]*)', string:buf );
       if( ! isnull( version[1] ) ) fw_ver = version[1];
     }
 

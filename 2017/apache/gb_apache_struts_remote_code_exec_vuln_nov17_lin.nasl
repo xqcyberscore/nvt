@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_remote_code_exec_vuln_nov17_lin.nasl 7682 2017-11-07 11:49:59Z santu $
+# $Id: gb_apache_struts_remote_code_exec_vuln_nov17_lin.nasl 7900 2017-11-24 10:35:02Z asteins $
 #
 # Apache Struts 'TextParseUtil.translateVariables' RCE Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812065");
-  script_version("$Revision: 7682 $");
+  script_version("$Revision: 7900 $");
   script_cve_id("CVE-2016-3090");
   script_bugtraq_id(85131);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-07 12:49:59 +0100 (Tue, 07 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-24 11:35:02 +0100 (Fri, 24 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-02 15:20:14 +0530 (Thu, 02 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Struts 'TextParseUtil.translateVariables' RCE Vulnerability (Linux)");

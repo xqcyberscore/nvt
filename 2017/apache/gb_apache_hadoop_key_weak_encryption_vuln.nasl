@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_key_weak_encryption_vuln.nasl 7747 2017-11-14 06:11:31Z santu $
+# $Id: gb_apache_hadoop_key_weak_encryption_vuln.nasl 7900 2017-11-24 10:35:02Z asteins $
 #
 # Apache Hadoop Weak Key Encryption Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:hadoop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811969");
-  script_version("$Revision: 7747 $");
+  script_version("$Revision: 7900 $");
   script_cve_id("CVE-2012-4449");
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 07:11:31 +0100 (Tue, 14 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-24 11:35:02 +0100 (Fri, 24 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-08 11:34:54 +0530 (Wed, 08 Nov 2017)");
   script_name("Apache Hadoop Weak Key Encryption Vulnerability");
 

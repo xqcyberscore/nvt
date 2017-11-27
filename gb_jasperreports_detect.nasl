@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jasperreports_detect.nasl 6535 2017-07-05 10:05:25Z ckuersteiner $
+# $Id: gb_jasperreports_detect.nasl 7875 2017-11-23 05:36:42Z ckuersteiner $
 #
 # TIBCO JasperReports Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106922");
-  script_version("$Revision: 6535 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-05 12:05:25 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 7875 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-23 06:36:42 +0100 (Thu, 23 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-07-05 12:04:45 +0700 (Wed, 05 Jul 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,7 +47,7 @@ version.");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -63,14 +63,15 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 443);
 
-foreach dir (make_list_unique("/jasperserver", "/jasperreports", cgi_dirs(port: port))) {
+foreach dir (make_list_unique("/jasperserver", "/jasperserver-pro", "/jasperreports", cgi_dirs(port: port))) {
   install = dir;
   if (dir == "/")
     dir = "";
 
   res = http_get_cache(port: port, item: dir + "/login.html");
 
-  if (res =~ "<title>(TIBCO )?Jaspersoft: Login</title>" && res =~ "About (TIBCO )?JasperReports Server") {
+  if ((res =~ "<title>(TIBCO )?Jaspersoft: Login</title>" || 'aria-label="TIBCO Jaspersoft"' >< res) &&
+      res =~ "About (TIBCO )?JasperReports Server") {
     version = "unknown";
 
     vers = eregmatch(pattern: 'Product Version: <span class="emphasis">([0-9.]+)', string: res);

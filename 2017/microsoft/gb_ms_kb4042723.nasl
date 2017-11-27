@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4042723.nasl 7855 2017-11-22 04:40:39Z santu $
+# $Id: gb_ms_kb4042723.nasl 7862 2017-11-22 10:11:26Z cfischer $
 #
 # Windows Server 2008 Defense in Depth (KB4042723)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811950");
-  script_version("$Revision: 7855 $");
+  script_version("$Revision: 7862 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 05:40:39 +0100 (Wed, 22 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-22 11:11:26 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-10 18:23:04 +0530 (Fri, 10 Nov 2017)");
   script_name("Windows Server 2008 Defense in Depth (KB4042723)");
 
@@ -94,8 +94,8 @@ query = 'Select Version from CIM_DataFile Where FileName ='
 fileVer = wmi_query( wmi_handle:handle, query:query );
 
 wmi_close( wmi_handle:handle );
-
 if( ! fileVer ) exit( 0 );
+maxVer = NULL;
 
 foreach ver( split( fileVer ) ) {
   ver1 = eregmatch( pattern:"(.*)\nwifi.sys.?([0-9.]+)", string:ver );

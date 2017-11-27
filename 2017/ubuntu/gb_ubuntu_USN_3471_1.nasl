@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3471_1.nasl 7668 2017-11-06 13:16:04Z santu $
+# $Id: gb_ubuntu_USN_3471_1.nasl 7859 2017-11-22 09:05:55Z asteins $
 #
 # Ubuntu Update for quagga USN-3471-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843355");
-  script_version("$Revision: 7668 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-06 14:16:04 +0100 (Mon, 06 Nov 2017) $");
+  script_version("$Revision: 7859 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-22 10:05:55 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-01 05:03:18 +0100 (Wed, 01 Nov 2017)");
   script_cve_id("CVE-2017-16227", "CVE-2017-5495");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for quagga USN-3471-1");
   script_tag(name: "summary", value: "Check the version of quagga");

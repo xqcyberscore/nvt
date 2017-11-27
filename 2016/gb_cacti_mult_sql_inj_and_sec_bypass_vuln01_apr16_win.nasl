@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_sql_inj_and_sec_bypass_vuln01_apr16_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_cacti_mult_sql_inj_and_sec_bypass_vuln01_apr16_win.nasl 7891 2017-11-23 14:46:48Z cfischer $
 #
 # Cacti Multiple SQL Injection And Security Bypass Vulnerabilities-01 Apr16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cacti:cacti";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807559");
-  script_version("$Revision: 7545 $");
-  script_cve_id("CVE-2015-8604", "CVE-2015-8369", "CVE-2015-8377", "CVE-2016-2313");
+  script_version("$Revision: 7891 $");
+  script_cve_id("CVE-2015-8604", "CVE-2015-8369", "CVE-2015-8377");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-23 15:46:48 +0100 (Thu, 23 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-04-26 10:28:01 +0530 (Tue, 26 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cacti Multiple SQL Injection And Security Bypass Vulnerabilities-01 Apr16 (Windows)");
@@ -51,9 +51,7 @@ if(description)
     'rra_id' in a properties action to graph.php script.
   - An insufficient validation of user supplied input via parameter
     'selected_graphs_array' in the host_new_graphs_save function in 
-    graphs_new.php script.
-  - An error in 'auth_login.php' script which fail to check the query actually
-   found any data or not during authentication.");
+    graphs_new.php script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to execute arbitrary SQL commands and to bypass intended access 
@@ -74,7 +72,7 @@ if(description)
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Web application abuses");
   script_dependencies("cacti_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("cacti/installed","Host/runs_windows");
   script_require_ports("Services/www", 80);

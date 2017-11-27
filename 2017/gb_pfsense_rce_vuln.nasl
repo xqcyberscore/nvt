@@ -1,0 +1,84 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_pfsense_rce_vuln.nasl 7879 2017-11-23 07:43:08Z asteins $
+#
+# pfSense Remote Code Execution Vulnerability
+#
+# Authors:
+# Adrian Steins <adrian.steins@greenbone.net>
+#
+# Copyright:
+# Copyright (C) 2017 Greenbone Networks GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+CPE = "cpe:/a:pfsense:pfsense";
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.112135");
+  script_version("$Revision: 7879 $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-23 08:43:08 +0100 (Thu, 23 Nov 2017) $");
+  script_tag(name:"creation_date", value:"2017-11-23 08:35:21 +0100 (Thu, 23 Nov 2017)");
+  script_name("pfSense Remote Code Execution Vulnerability");
+
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+
+  script_tag(name:"summary", value:"This host is running pfSense and is prone
+to a remote code execution vulnerability.");
+
+  script_tag(name:"vuldetect", value:"Get the installed version with the help
+of the detection NVT and check if the version is vulnerable or not.");
+
+  script_tag(name:"insight", value: "The pfSense WebGUI is vulnerable to clickjacking.
+By tricking an authenticated admin into interacting with a specially crafted webpage it is possible for an attacker
+to execute arbitrary code in the WebGUI.");
+
+  script_tag(name:"impact", value:"Since the WebGUI runs as the root user, this will result in a full compromise of the pfSense instance.");
+
+  script_tag(name: "affected" , value:"pfSense before version 2.4.2");
+
+  script_tag(name:"solution", value:"Upgrade to version 2.4.2 or later. For updates refer to https://www.pfsense.org");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  script_xref(name : "URL" , value : "https://www.securify.nl/advisory/SFY20171101/clickjacking-vulnerability-in-csrf-error-page-pfsense.html");
+
+  script_dependencies("gb_pfsense_detect.nasl");
+  script_mandatory_keys("pfsense/installed");
+
+  exit(0);
+}
+
+include("host_details.inc");
+include("version_func.inc");
+
+if(!ver = get_app_version(cpe:CPE, nofork:TRUE)) exit(0);
+
+if(version_is_less(version:ver, test_version:"2.4.2"))
+{
+  report = report_fixed_ver(installed_version:ver, fixed_version:"2.4.2-RELEASE");
+  security_message(port:0, data:report);
+  exit(0);
+}
+
+exit(99);

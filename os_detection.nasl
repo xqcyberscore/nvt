@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 7600 2017-10-30 09:52:59Z ckuersteiner $
+# $Id: os_detection.nasl 7864 2017-11-22 11:39:13Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 7600 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-30 10:52:59 +0100 (Mon, 30 Oct 2017) $");
+  script_version("$Revision: 7864 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-22 12:39:13 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -164,6 +164,12 @@ if( ! found_best ) {
   # TBD: Move into host_details.nasl?
   set_kb_item( name:"HostDetails/OS/BestMatch", value:best_match );
   set_kb_item( name:"HostDetails/OS/BestMatch/Details", value:best_match_oid + ';' + best_match_desc );
+
+  # Store link between os_detection.nasl and gb_os_eol.nasl
+  # nb: We don't use the host_details.inc functions in both so we need to call this directly.
+  register_host_detail( name:"OS-Detection", value:best_match );
+  register_host_detail( name:best_match, value:"general/tcp" ); # the port:0 from below
+  register_host_detail( name:"port", value:"general/tcp" ); # the port:0 from below
 }
 
 if( found_os )

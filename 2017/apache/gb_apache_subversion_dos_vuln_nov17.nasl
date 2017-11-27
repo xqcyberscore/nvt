@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_dos_vuln_nov17.nasl 7747 2017-11-14 06:11:31Z santu $
+# $Id: gb_apache_subversion_dos_vuln_nov17.nasl 7859 2017-11-22 09:05:55Z asteins $
 #
 # Apache Subversion Denial of Service Vulnerability - Nov17
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811983");
-  script_version("$Revision: 7747 $");
+  script_version("$Revision: 7859 $");
   script_cve_id("CVE-2013-4246");
   script_bugtraq_id(101620);
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 07:11:31 +0100 (Tue, 14 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-22 10:05:55 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-08 18:27:59 +0530 (Wed, 08 Nov 2017)");
   ## Only FSFS repositories created with Subversion 1.8 or upgraded to
   ## 1.8 format (using 'svnadmin upgrade') are affected.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mrbs_xss_vuln.nasl 7858 2017-11-22 08:08:27Z emoss $
+# $Id: gb_mrbs_xss_vuln.nasl 7862 2017-11-22 10:11:26Z cfischer $
 #
 # Meeting Room Booking System  Multiple Vulnerabilities
 #
@@ -26,58 +26,60 @@
 
 CPE = "cpe:/a:john_beranek:meeting_room_booking_system";
 
-tag_impact = "attacker may leverage this issue to execute arbitrary script code in the browser
-              of an unsuspecting user in the context of the affected site. This may let the 
-              attacker steal cookie-based authentication credentials and launch other attacks.
-              Impact Level: Application.";
-
-tag_affected = "Meeting Room Booking System prior to 1.7.0 
-                Platforms: Red Hat Fedora 25, Red Hat Fedora 26, Red Hat Fedora 27, Extra Packages 
-                for Red Hat Enterprise Linux 6, Extra Packages for Red Hat Enterprise Linux 7 on all platforms.";
-
-tag_solution = "Upgrade to Meeting Room Booking System 1.7.0 or later.
-  For updates refer to http://mrbs.sourceforge.net/download.php";
-tag_summary = "This host is installed with Meeting Room Booking System and is
-  prone to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107264");
-  script_version("$Revision: 7858 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 09:08:27 +0100 (Wed, 22 Nov 2017) $");
+  script_version("$Revision: 7862 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-22 11:11:26 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-21 07:28:01 +0200 (Tue, 21 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Meeting Room Booking System Multiple Vulnerabilities");
-
-
-  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_mrbs_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "https://www.cert-bund.de/advisoryshort/CB-K17-1995");
+  script_mandatory_keys("MRBS/installed");
+
+  script_xref(name:"URL", value:"https://www.cert-bund.de/advisoryshort/CB-K17-1995");
+
+  tag_impact = "An attacker may leverage this issue to execute arbitrary script code in the browser
+  of an unsuspecting user in the context of the affected site. This may let the 
+  attacker steal cookie-based authentication credentials and launch other attacks.
+
+  Impact Level: Application.";
+
+  tag_affected = "Meeting Room Booking System prior to 1.7.0";
+
+  tag_solution = "Upgrade to Meeting Room Booking System 1.7.0 or later.
+
+  For updates refer to http://mrbs.sourceforge.net/download.php";
+
+  tag_summary = "This host is installed with Meeting Room Booking System and is
+  prone to multiple vulnerabilities.";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
   exit(0);
 }
-
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-if (!Port = get_app_port(cpe: CPE)) exit(0);
-if (!ver = get_app_version(cpe: CPE, port: Port)) exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if(version_is_less(version: ver, test_version: "1.7.0"))
-{
-    report = report_fixed_ver(installed_version: version, fixed_version: "1.7.0");
-    security_message(port: Port, data: report);
-    exit(0);
+if( version_is_less( version:vers, test_version:"1.7.0" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.7.0" );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-exit(99);
+exit( 99 );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-04_win.nasl 5989 2017-04-20 10:36:11Z antu123 $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-04_win.nasl 7859 2017-11-22 09:05:55Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2017-04)-Windows
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810753");
-  script_version("$Revision: 5989 $");
+  script_version("$Revision: 7859 $");
   script_cve_id("CVE-2017-5057", "CVE-2017-5058", "CVE-2017-5059", "CVE-2017-5060", 
                 "CVE-2017-5061", "CVE-2017-5062", "CVE-2017-5063", "CVE-2017-5064", 
                 "CVE-2017-5065", "CVE-2017-5066", "CVE-2017-5067", "CVE-2017-5069" );
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 12:36:11 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-22 10:05:55 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-04-20 11:29:33 +0530 (Thu, 20 Apr 2017)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2017-04)-Windows");
 

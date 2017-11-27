@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872863");
-  script_version("$Revision: 6725 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 12:23:29 +0200 (Fri, 14 Jul 2017) $");
+  script_version("$Revision: 7859 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-22 10:05:55 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-07-14 15:55:08 +0530 (Fri, 14 Jul 2017)");
   script_cve_id("CVE-2017-5006", "CVE-2017-5007", "CVE-2017-5008", "CVE-2017-5009", 
                 "CVE-2017-5010", "CVE-2017-5011", "CVE-2017-5012", "CVE-2017-5013", 
@@ -41,8 +41,8 @@ if(description)
                 "CVE-2017-5058", "CVE-2017-5059", "CVE-2017-5060", "CVE-2017-5061", 
                 "CVE-2017-5062", "CVE-2017-5065", "CVE-2017-5066", "CVE-2017-5067", 
                 "CVE-2017-5068", "CVE-2017-5069");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for qt5-qtwebengine FEDORA-2017-58cde32413");
   script_tag(name: "summary", value: "Check the version of qt5-qtwebengine");

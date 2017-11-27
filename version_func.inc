@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: version_func.inc 7736 2017-11-10 13:58:57Z cfischer $
+# $Id: version_func.inc 7884 2017-11-23 12:54:50Z cfischer $
 #
 # Helper functions for various version related tests
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7736 $
+# $Revision: 7884 $
 #
 ###############################################################################
 
@@ -412,7 +412,10 @@ function report_fixed_ver( installed_version, installed_build, installed_patch, 
   if( installed_patch )   report += 'Installed patch:   ' + installed_patch + '\n';
   if( fixed_build )       report += 'Fixed build:       ' + fixed_build + '\n';
   if( fixed_patch )       report += 'Fixed patch:       ' + fixed_patch + '\n';
-  if( install_path )      report += 'Installation path: ' + install_path + '\n';
+  if( install_path ) {
+                          report += 'Installation\n';
+                          report += 'path / port:       ' + install_path + '\n';
+  }
   if( install_url )       report += 'Installation URL:  ' + install_url + '\n';
   if( extra )             report += '\n' + extra + '\n';
 

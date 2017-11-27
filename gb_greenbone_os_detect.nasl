@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_os_detect.nasl 6781 2017-07-21 08:31:34Z cfischer $
+# $Id: gb_greenbone_os_detect.nasl 7896 2017-11-24 06:54:12Z asteins $
 #
-# Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection
+# Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection (Version)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -27,145 +27,96 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103220");
-  script_version("$Revision: 6781 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 10:31:34 +0200 (Fri, 21 Jul 2017) $");
+  script_version("$Revision: 7896 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-24 07:54:12 +0100 (Fri, 24 Nov 2017) $");
   script_tag(name:"creation_date", value:"2011-08-23 15:25:10 +0200 (Tue, 23 Aug 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection");
+  script_name("Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection (Version)");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl", "gather-package-list.nasl");
-  script_require_ports("Services/www", 80, 443, "Services/ssh", 22);
+  script_dependencies("gb_greenbone_os_detect_http.nasl", "gb_greenbone_os_detect_snmp.nasl", "gb_greenbone_os_detect_ssh.nasl");
+  script_mandatory_keys("greenbone/gos/detected");
 
   script_tag(name:"summary", value:"Detection of Greenbone Security Manager (GSM)
-  and Greenbone OS (GOS).
-
-  The script sends a connection request via HTTP and SSH to the server and attempts to
-  extract the version number from the reply.");
+  and Greenbone OS (GOS) including version number and exposed services.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
-include("ssh_func.inc");
 
-SCRIPT_DESC = "Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection";
+if( ! get_kb_item( "greenbone/gos/detected" ) ) exit( 0 );
 
-function check_http() {
+detected_version = "unknown";
 
-  local_var port, vers, version, url, buf, concluded;
+foreach source( make_list( "ssh", "http", "snmp" ) ) {
 
-  port = get_http_port( default:443 );
-
-  url = "/login/login.html";
-  buf = http_get_cache( item:url, port:port );
-
-  if( buf =~ "HTTP/1\.. 200" && ( ( "<title>Greenbone Security Assistant" >< buf && "Greenbone OS" >< buf ) ||
-      '"title">Greenbone Security Manager</span>' >< buf ) ) {
-
-    vers = "unknown";
-    version = eregmatch( string:buf, pattern:'<div class="gos_version">Greenbone OS ([^<]+)</div>', icase:FALSE );
-
-    if( ! isnull( version[1] ) ) {
-      vers = version[1];
-      concluded = version[0];
-    } else {
-      version = eregmatch( string:buf, pattern:'<span class="version">Greenbone OS ([^<]+)</span>', icase:FALSE );
-      if( ! isnull( version[1] ) ) {
-        vers = version[1];
-        concluded = version[0];
-      } else {
-        version = eregmatch( string:buf, pattern:'<span class="version">Version Greenbone OS ([^<]+)</span>', icase:FALSE );
-        if( ! isnull( version[1] ) ) {
-          vers = version[1];
-          concluded = version[0];
-        }
-      }
-    }
-    _set_kb_entrys_and_report( version:vers, concluded:concluded, port:port, source:"HTTP banner" );
-  }
-}
-
-function check_ssh() {
-
-  local_var port, vers, version, uname, concluded, soc, banner;
-
-  ports = get_kb_list( "Services/ssh" );
-  if( ! ports ) ports = make_list( 22 );
-
-  foreach port ( ports ) {
-
-    if( get_kb_item( "greenbone/OS" ) ) {
-      uname = get_kb_item( "greenbone/OS/uname" );
-      if( uname ) {
-        version = eregmatch( pattern:'Welcome to the Greenbone OS ([^ ]+) ', string:uname );
-        if( ! isnull( version[1] ) && version[1] =~ "^([0-9.-]+)$" ) {
-          _set_kb_entrys_and_report( version:version[1], concluded:version[0], port:port, source:"SSH login" );
-        } else {
-          # GOS 4+ doesn't expose the version in the initial login banner
-          _set_kb_entrys_and_report( version:"unknown", concluded:"Welcome to the Greenbone OS", port:port, source:"SSH login" );
-        }
-      }
-    }
-
-    if( get_port_state( port ) ) {
-
-      soc = open_sock_tcp( port );
-      if( soc ) {
-        # We do not need to login to get the banner.  Until we can
-        # switch to libssh 0.6 we use our hacked up version.
-        # After the switch we may want to have a login function
-        # which terminates the connection right before the KEX
-        # protocol part.  This will allows us to get the server
-        # banner without a need to try a login.
-        banner = ssh_hack_get_server_version( socket:soc );
-        close( soc );
-
-        if( banner && "Greenbone OS" >< banner ) {
-          version = eregmatch( pattern:"Greenbone OS ([0-9.-]+)", string:banner );
-          if( ! isnull( version[1] ) ) {
-            _set_kb_entrys_and_report( version:version[1], concluded:version[0], port:port, source:"SSH banner" );
-          } else {
-            _set_kb_entrys_and_report( version:"unknown", concluded:"Greenbone OS", port:port, source:"SSH banner" );
-          }
-        }
-      }
+  version_list = get_kb_list( "greenbone/gos/" + source + "/*/version" );
+  foreach version( version_list ) {
+    if( version != "unknown" && detected_version == "unknown" ) {
+      detected_version = version;
+      set_kb_item( name:"greenbone/gos/version", value:version );
     }
   }
 }
 
-function _set_kb_entrys_and_report( version, concluded, port, source ) {
-
-  local_var version, cpe, concluded, port, source;
-
-  set_kb_item( name:"greenbone/G_OS", value:version );
-
-  cpe = build_cpe( value:version, exp:"^([0-9.-]+)", base:"cpe:/o:greenbone:greenbone_os:" );
-  if( isnull( cpe ) )
-    cpe = 'cpe:/o:greenbone:greenbone_os';
-
-  register_and_report_os( os:"Greenbone OS", cpe:cpe, banner_type:source, port:port, desc:SCRIPT_DESC, runs_key:"unixoide" );
-
-  log_message( data:build_detection_report( app:"Greenbone OS",
-                                            version:version,
-                                            install:port + '/tcp',
-                                            cpe:cpe,
-                                            concluded:concluded ),
-                                            port:port );
-  exit( 0 );
+if( detected_version != "unknown" ) {
+  cpe = "cpe:/o:greenbone:greenbone_os:" + version;
+} else {
+  cpe = "cpe:/o:greenbone:greenbone_os";
 }
 
-if( ! get_kb_item( "Settings/disable_cgi_scanning" ) ) {
-  check_http();
+location = "/";
+extra = '\nDetection methods:\n';
+
+if( http_port = get_kb_list( "greenbone/gos/http/port" ) ) {
+  foreach port( http_port ) {
+    concluded = get_kb_item( "greenbone/gos/http/" + port + "/concluded" );
+    concludedUrl = get_kb_item( "greenbone/gos/http/" + port + "/concludedUrl" );
+    extra += '\nHTTP(s) on port ' + port + '/tcp';
+    if( concluded && concludedUrl ) {
+      extra += '\nConcluded: ' + concluded + ' from URL: ' + concludedUrl + '\n';
+    }
+    register_product( cpe:cpe, location:location, port:port, service:"www" );
+  }
 }
 
-check_ssh();
+if( ssh_port = get_kb_list( "greenbone/gos/ssh/port" ) ) {
+  foreach port( ssh_port ) {
+    concluded = get_kb_item( "greenbone/gos/ssh/" + port + "/concluded" );
+    extra += '\nSSH on port ' + port + '/tcp';
+    if( concluded ) {
+      extra += '\nConcluded: ' + concluded + '\n';
+    }
+    register_product( cpe:cpe, location:location, port:port, service:"ssh" );
+  }
+}
+
+if( snmp_port = get_kb_list( "greenbone/gos/snmp/port" ) ) {
+  foreach port( snmp_port ) {
+    concluded = get_kb_item( "greenbone/gos/snmp/" + port + "/concluded" );
+    extra += '\nSNMP on port ' + port + '/udp';
+    if( concluded ) {
+      extra += '\nConcluded from SNMP SysDesc: ' + concluded + '\n';
+    }
+    register_product( cpe:cpe, location:location, port:port, service:"snmp", proto:"udp" );
+
+    if( gsm_type = get_kb_item( "greenbone/gsm/snmp/" + port + "/type" ) ) {
+      register_product( cpe:"cpe:/h:greenbone:gsm_" + gsm_type, location:location, port:port, service:"snmp", proto:"udp" );
+    }
+  }
+}
+
+log_message( data:build_detection_report( app:"Greenbone OS",
+                                          version:detected_version,
+                                          install:location,
+                                          cpe:cpe,
+                                          extra:extra ),
+                                          port:0 );
 
 exit( 0 );

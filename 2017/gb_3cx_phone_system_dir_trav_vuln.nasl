@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_3cx_phone_system_dir_trav_vuln.nasl 7472 2017-10-18 09:39:25Z ckuersteiner $
+# $Id: gb_3cx_phone_system_dir_trav_vuln.nasl 7860 2017-11-22 09:16:07Z cfischer $
 #
 # 3CX Phone System Directory Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:3cx:phone_system';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140437");
-  script_version("$Revision: 7472 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-18 11:39:25 +0200 (Wed, 18 Oct 2017) $");
+  script_version("$Revision: 7860 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-22 10:16:07 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-10-18 15:51:00 +0700 (Wed, 18 Oct 2017)");
   script_tag(name: "cvss_base", value: "4.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("3CX Phone System Directory Traversal Vulnerability");
 
@@ -58,10 +58,11 @@ authenticated attacker may read arbitrary files.");
 
   script_tag(name: "affected", value: "3CX Phone System version 15.5.3849.1 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 18th October, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update 3CX Phone System to version 15.5 Update 2 or later.");
 
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42991/");
+  script_xref(name: "URL", value: "https://www.3cx.com/blog/releases/pbx-update/");
+  script_xref(name: "URL", value: "https://www.3cx.com/blog/change-log/phone-system-change-log/");
 
   exit(0);
 }

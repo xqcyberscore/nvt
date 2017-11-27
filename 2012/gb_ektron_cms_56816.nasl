@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ektron_cms_56816.nasl 5716 2017-03-24 12:31:10Z cfi $
+# $Id: gb_ektron_cms_56816.nasl 7859 2017-11-22 09:05:55Z asteins $
 #
 # Ektron CMS 'XslCompiledTransform' Class Remote Code Execution Vulnerability
 #
@@ -40,12 +40,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103624");
  script_bugtraq_id(56816);
  script_cve_id("CVE-2012-5357");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5716 $");
+ script_tag(name:"cvss_base", value:"7.5");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+ script_version ("$Revision: 7859 $");
  script_name("Ektron CMS 'XslCompiledTransform' Class Remote Code Execution Vulnerability");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56816");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 13:31:10 +0100 (Fri, 24 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-22 10:05:55 +0100 (Wed, 22 Nov 2017) $");
  script_tag(name:"creation_date", value:"2012-12-10 11:13:54 +0100 (Mon, 10 Dec 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");

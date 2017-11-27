@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_count-per-day_sql_inj_vuln.nasl 7581 2017-10-26 11:28:22Z asteins $
+# $Id: gb_wordpress_count-per-day_sql_inj_vuln.nasl 7859 2017-11-22 09:05:55Z asteins $
 #
 # WordPress Count Per Day Plugin SQL Injection Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112095");
-  script_version("$Revision: 7581 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 13:28:22 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 7859 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-22 10:05:55 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-10-26 13:42:51 +0200 (Thu, 26 Oct 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2015-5533");
 

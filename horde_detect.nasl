@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: horde_detect.nasl 5820 2017-03-31 11:20:49Z cfi $
+# $Id: horde_detect.nasl 7861 2017-11-22 10:03:30Z ckuersteiner $
 # Description: Horde Detection
 #
 # Authors:
@@ -24,43 +24,42 @@
 
 if (description) {
   script_oid("1.3.6.1.4.1.25623.1.0.15604");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5820 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
+  script_version("$Revision: 7861 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-22 11:03:30 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-  script_tag(name:"qod_type", value:"remote_banner");
-  script_name("Horde Detection");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
 
-tag_summary = "The script sends a connection request to the server and attempts to
-extract the version number from the reply.";
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  script_name("Horde Detection");
+
+  script_tag(name: "summary", value: "The script sends a connection request to the server and attempts to extract
+the version number from the reply.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl", "no404.nasl");
-  script_require_ports("Services/www", 80);
+  script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_xref(name: "URL", value: "https://www.horde.org/");
 
   exit(0);
 }
 
 include("cpe.inc");
 include("host_details.inc");
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port(default:80);
+port = get_http_port(default: 443);
 
 if (get_kb_item("www/no404/" + port)) exit(0);
 
 # Search for Horde in a couple of different locations in addition to cgi_dirs().
 dirs = make_list_unique( cgi_dirs(port:port), "/horde", "/" );
-
-installs = 0;
 
 foreach dir (dirs) {
   # Search for version number in a couple of different pages.
@@ -71,7 +70,9 @@ foreach dir (dirs) {
    "/status.php3"
   );
 
-  if( dir == "/" ) dir = "/";
+  install = dir;
+  if (dir == "/")
+    dir = "";
 
   foreach file (files) {
 
@@ -84,7 +85,6 @@ foreach dir (dirs) {
     if (egrep(string:res, pattern:"^HTTP/1\.. 200 ")) {
       # Specify pattern used to identify version string.
       # - version 3.x
-
       if (file =~ "^/services/help") {
         if("about" >< file)
           pat = ">This is Horde (.+)";
@@ -108,45 +108,30 @@ foreach dir (dirs) {
         exit(1);
       }
 
-      # Get the version string.
-      matches = egrep(pattern:pat, string:res);
-      foreach match (split(matches)) {
-        match = chomp(match);
-        ver = eregmatch(pattern:pat, string:match);
-        concluded = ver[0];
-        if (ver == NULL) break;
-        ver = ver[1];
+      version = "unknown";
 
-        # Success!
-        tmp_version = string(ver, " under ", dir);
-        set_kb_item(
-          name:string("www/", port, "/horde"), 
-          value:tmp_version);
-
-        set_kb_item(name:"horde/installed", value:TRUE);
-
-        installations[dir] = ver;
-        ++installs;
-
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value: tmp_version, exp:"^([0-9.]+)",base:"cpe:/a:horde:horde_groupware:");
-        if(isnull(cpe))
-          cpe = 'cpe:/a:horde:horde_groupware';
-
-        register_product(cpe:cpe, location:dir, port:port);
-
-        log_message(data: build_detection_report(app:"Horde",
-                                                 version:ver,
-                                                 install:dir,
-                                                 cpe:cpe,
-                                                 concluded: concluded),
-                    port:port);
-
-        # nb: only worried about the first match.
-        break;
+      vers = eregmatch(pattern: pat, string: res);
+      if (!isnull(vers[1])) {
+        version = vers[1];
+        concUrl = file;
+        tmp_version = version + " under " + dir;
+        set_kb_item(name: string("www/", port, "/horde"), value: tmp_version);
       }
+
+      set_kb_item(name:"horde/installed", value:TRUE);
+
+      cpe = build_cpe(value: version, exp:"^([0-9.]+)",base:"cpe:/a:horde:horde_groupware:");
+      if (!cpe)
+        cpe = 'cpe:/a:horde:horde_groupware';
+
+      register_product(cpe: cpe, location: install, port: port);
+
+      log_message(data: build_detection_report(app: "Horde", version: version, install: install, cpe: cpe,
+                                               concluded: vers[0], concludedUrl: concUrl),
+                  port: port);
+      exit(0); 
     }
   }
 }
 
-exit( 0 );
+exit(0);

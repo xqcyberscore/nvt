@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 7822 2017-11-20 08:46:09Z cfischer $
+# $Id: gather-package-list.nasl 7888 2017-11-23 14:20:55Z asteins $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 7822 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:46:09 +0100 (Mon, 20 Nov 2017) $");
+  script_version("$Revision: 7888 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-23 15:20:55 +0100 (Thu, 23 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -446,8 +446,8 @@ if( "Welcome to pfSense" >< uname ) {
 }
 
 if( "Welcome to the Greenbone OS" >< uname ) {
-  set_kb_item( name:"greenbone/OS/uname", value:uname );
-  set_kb_item( name:"greenbone/OS", value:TRUE );
+  set_kb_item( name:"greenbone/gos/uname", value:uname );
+  set_kb_item( name:"greenbone/gos", value:TRUE );
 }
 
 set_kb_item( name:"ssh/login/uname", value:uname );
@@ -473,7 +473,7 @@ if( "restricted: cannot specify" >< uname ) {
 }
 
 # To catch the restricted shell and uname stuff above before doing an exit
-if( get_kb_item( "greenbone/OS" ) ) exit( 0 );
+if( get_kb_item( "greenbone/gos" ) ) exit( 0 );
 
 if( "TANDBERG Video Communication Server" >< uname ) {
   set_kb_item( name:"cisco/ssh/vcs", value:TRUE );

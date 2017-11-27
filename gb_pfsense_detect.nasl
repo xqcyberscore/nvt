@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_detect.nasl 7769 2017-11-15 10:07:45Z asteins $
+# $Id: gb_pfsense_detect.nasl 7888 2017-11-23 14:20:55Z asteins $
 #
 # pfSense Detection (Version)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112118");
-  script_version("$Revision: 7769 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 11:07:45 +0100 (Wed, 15 Nov 2017) $");
+  script_version("$Revision: 7888 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-23 15:20:55 +0100 (Thu, 23 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-13 08:56:05 +0100 (Mon, 13 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -90,7 +90,10 @@ if( http_port = get_kb_list( "pfsense/http/port" ) ) {
 if( ssh_port = get_kb_list( "pfsense/ssh/port" ) ) {
   foreach port( ssh_port ) {
     concluded = get_kb_item( "pfsense/ssh/" + port + "/concluded" );
-    extra += '\nSSH on port ' + port + '/tcp\nConcluded: ' + concluded + '\n';
+    extra += '\nSSH on port ' + port + '/tcp';
+    if( concluded ){
+      extra += '\nConcluded: ' + concluded + '\n';
+    }
     register_product( cpe:cpe, location:location, port:port, service:"ssh" );
   }
 }
@@ -98,7 +101,10 @@ if( ssh_port = get_kb_list( "pfsense/ssh/port" ) ) {
 if( snmp_port = get_kb_list( "pfsense/snmp/port" ) ) {
   foreach port( snmp_port ) {
     concluded = get_kb_item( "pfsense/snmp/" + port + "/concluded" );
-    extra += '\nSNMP on port ' + port + '/udp\nConcluded from SNMP SysDesc: ' + concluded + '\n';
+    extra += '\nSNMP on port ' + port + '/udp';
+    if( concluded ) {
+      extra += '\nConcluded from SNMP SysDesc: ' + concluded + '\n';
+    }
     register_product( cpe:cpe, location:location, port:port, service:"snmp", proto:"udp" );
   }
 }

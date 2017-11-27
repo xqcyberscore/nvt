@@ -26,15 +26,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872699");
-  script_version("$Revision: 6634 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7859 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-22 10:05:55 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-05-23 07:14:32 +0200 (Tue, 23 May 2017)");
   script_cve_id("CVE-2017-5068", "CVE-2017-5057", "CVE-2017-5058", "CVE-2017-5059", 
                 "CVE-2017-5060", "CVE-2017-5061", "CVE-2017-5062", "CVE-2017-5063", 
                 "CVE-2017-5064", "CVE-2017-5065", "CVE-2017-5066", "CVE-2017-5067", 
                 "CVE-2017-5069");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for chromium FEDORA-2017-dc7ce3b314");
   script_tag(name: "summary", value: "Check the version of chromium");

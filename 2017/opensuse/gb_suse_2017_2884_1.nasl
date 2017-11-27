@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2884_1.nasl 7601 2017-10-31 06:41:32Z santu $
+# $Id: gb_suse_2017_2884_1.nasl 7859 2017-11-22 09:05:55Z asteins $
 #
 # SuSE Update for wget openSUSE-SU-2017:2884-1 (wget)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851637");
-  script_version("$Revision: 7601 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-31 07:41:32 +0100 (Tue, 31 Oct 2017) $");
+  script_version("$Revision: 7859 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-22 10:05:55 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-30 09:25:34 +0100 (Mon, 30 Oct 2017)");
   script_cve_id("CVE-2017-13089", "CVE-2017-13090");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for wget openSUSE-SU-2017:2884-1 (wget)");
   script_tag(name: "summary", value: "Check the version of wget");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: snmp_func.inc 7239 2017-09-22 16:10:31Z cfischer $
+# $Id: snmp_func.inc 7885 2017-11-23 13:34:17Z cfischer $
 #
 # Functions for SNMP
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 7239 $
+# $Revision: 7885 $
 #
 ###############################################################################
 
@@ -145,7 +145,14 @@ function snmp_get( port, oid, version, community ) {
   local_var port, oid, version, community, ret;
   local_var v3_username, v3_password, v3_authalgo, v3_privpass, v3_privalgo;
 
-  if( ! defined_func( "snmpv3_get" ) ) return;
+  # The SNMP functions needs this include but the installation might be lacking libsnmp support
+  # Report this back to the caller so we at least know why snmp_get is failing
+  if( ! defined_func( "snmpv3_get" ) ) {
+    report  = "snmp_get: The scanner/libraries are not build with libsnmp support. Advanced SNMP checks will fail.";
+    report += " Please rebuild with SNMP support enabled.";
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#" + report );
+    return;
+  }
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#snmp_get" );

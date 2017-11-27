@@ -26,15 +26,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811307");
-  script_version("$Revision: 6634 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7859 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-22 10:05:55 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-07-01 05:24:03 +0200 (Sat, 01 Jul 2017)");
   script_cve_id("CVE-2017-5070", "CVE-2017-5071", "CVE-2017-5072", "CVE-2017-5073", 
                 "CVE-2017-5074", "CVE-2017-5075", "CVE-2017-5086", "CVE-2017-5076", 
                 "CVE-2017-5077", "CVE-2017-5078", "CVE-2017-5079", "CVE-2017-5080", 
                 "CVE-2017-5081", "CVE-2017-5082", "CVE-2017-5083", "CVE-2017-5085");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for chromium-native_client FEDORA-2017-a66e2c5b62");
   script_tag(name: "summary", value: "Check the version of chromium-native_client");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_devices_multiple_vuln.nasl 7538 2017-10-24 06:46:01Z santu $
+# $Id: gb_linksys_devices_multiple_vuln.nasl 7860 2017-11-22 09:16:07Z cfischer $
 #
 # Linksys Devices Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:linksys:devices";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812040");
-  script_version("$Revision: 7538 $");
+  script_version("$Revision: 7860 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 08:46:01 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-22 10:16:07 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-10-19 11:57:11 +0530 (Thu, 19 Oct 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Linksys Devices Multiple Vulnerabilities");
@@ -64,20 +64,28 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Linksys E2500 firmware version 3.0.02 (build 2)
+  script_tag(name:"affected", value:"Linksys E2500 firmware version 3.0.02 (build 2)
+
   Linksys E900 firmware version 1.0.06
+
   Linksys E1200 firmware version 2.0.07 (build 5)
+
   Linksys E8400 AC2400 Dual-Band Wi-Fi Router
+
   Linksys E900-ME firmware version: 1.0.06
+
   Linksys E1500 firmware version: 1.0.06 (build 1)
+
   Linksys E3200 firmware version: 1.0.05 (build 2)
+
   Linksys E4200 firmware version: 1.0.06 (build 3)
+
   Linksys WRT54G2 firmware version: 1.5.02 (build 5)
+
   This list may not be accurate and/or complete!");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 19th
-  October, 2017. Information regarding this issue will be updated once solution
+  script_tag(name:"solution", value:"No solution or patch is available as of 22nd
+  November, 2017. Information regarding this issue will be updated once solution
   details are available. For details refer to http://www.linksys.com");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

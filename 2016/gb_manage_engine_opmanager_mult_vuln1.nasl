@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_opmanager_mult_vuln1.nasl 7337 2017-10-04 06:29:35Z asteins $
+# $Id: gb_manage_engine_opmanager_mult_vuln1.nasl 7860 2017-11-22 09:16:07Z cfischer $
 #
 # ManageEngine OpManager Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:zohocorp:manageengine_opmanager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106402");
-  script_version("$Revision: 7337 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-04 08:29:35 +0200 (Wed, 04 Oct 2017) $");
+  script_version("$Revision: 7860 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-22 10:16:07 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name: "creation_date", value: "2016-11-22 11:33:23 +0700 (Tue, 22 Nov 2016)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("ManageEngine OpManager Multiple Vulnerabilities");
 
@@ -67,8 +67,9 @@ Unauthenticated attackers may inject web script or HTML and steal sensitive data
 
   script_tag(name: "affected", value: "Version v12.2 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 4th October, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name: "URL", value: "http://seclists.org/bugtraq/2016/Nov/70");
 

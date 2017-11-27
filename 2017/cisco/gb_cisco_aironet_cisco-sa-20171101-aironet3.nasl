@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_aironet_cisco-sa-20171101-aironet3.nasl 7614 2017-11-02 05:41:04Z ckuersteiner $
+# $Id: gb_cisco_aironet_cisco-sa-20171101-aironet3.nasl 7900 2017-11-24 10:35:02Z asteins $
 #
 # Cisco Aironet Access Points MAC Authentication Bypass Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/o:cisco:wireless_lan_controller_software";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140472");
- script_version("$Revision: 7614 $");
- script_tag(name: "last_modification", value: "$Date: 2017-11-02 06:41:04 +0100 (Thu, 02 Nov 2017) $");
+ script_version("$Revision: 7900 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-11-24 11:35:02 +0100 (Fri, 24 Nov 2017) $");
  script_tag(name: "creation_date", value: "2017-11-02 09:51:43 +0700 (Thu, 02 Nov 2017)");
- script_tag(name: "cvss_base", value: "4.6");
- script_tag(name: "cvss_base_vector", value: "AV:A/AC:H/Au:N/C:N/I:N/A:C");
+ script_tag(name:"cvss_base", value:"5.4");
+ script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
 
  script_cve_id("CVE-2017-12281");
 

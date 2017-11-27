@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvas_comps_eol.nasl 6845 2017-08-03 14:41:54Z cfischer $
+# $Id: gb_openvas_comps_eol.nasl 7888 2017-11-23 14:20:55Z asteins $
 #
 # OpenVAS Framework Components End Of Life Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108197");
-  script_version("$Revision: 6845 $");
+  script_version("$Revision: 7888 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-03 16:41:54 +0200 (Thu, 03 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-23 15:20:55 +0100 (Thu, 23 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-07-26 15:00:00 +0200 (Wed, 26 Jul 2017)");
   script_name("OpenVAS Framework Components End Of Life Detection");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -39,7 +39,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_gsa_detect.nasl", "gb_openvas_manager_detect.nasl", "gb_greenbone_os_detect.nasl");
   script_mandatory_keys("openvas_framework_component/installed");
-  script_exclude_keys("greenbone/G_OS"); # GOS is already covered via 2013/gb_os_eol.nasl
+  script_exclude_keys("greenbone/gos/detected"); # GOS is already covered via 2013/gb_os_eol.nasl
 
   script_xref(name:"URL", value:"http://lists.wald.intevation.org/pipermail/openvas-announce/2016-May/000194.html");
   script_xref(name:"URL", value:"http://lists.wald.intevation.org/pipermail/openvas-announce/2015-April/000181.html");
@@ -75,7 +75,7 @@ include("products_eol.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-if( get_kb_item( "greenbone/G_OS" ) ) exit( 0 ); # GOS is already covered via 2013/gb_os_eol.nasl
+if( get_kb_item( "greenbone/gos/detected" ) ) exit( 0 ); # GOS is already covered via 2013/gb_os_eol.nasl
 
 foreach cpe( make_list( "cpe:/a:greenbone:greenbone_security_assistant", "cpe:/a:openvas:openvas_manager" ) ) {
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx229057.nasl 7553 2017-10-25 03:15:07Z ckuersteiner $
+# $Id: gb_xenserver_ctx229057.nasl 7859 2017-11-22 09:05:55Z asteins $
 #
 # Citrix XenServer Security Update (CTX229057)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:citrix:xenserver";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140450");
-  script_version("$Revision: 7553 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-25 05:15:07 +0200 (Wed, 25 Oct 2017) $");
+  script_version("$Revision: 7859 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-22 10:05:55 +0100 (Wed, 22 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-10-25 09:32:33 +0700 (Wed, 25 Oct 2017)");
-  script_tag(name: "cvss_base", value: "8.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-15597");
 
