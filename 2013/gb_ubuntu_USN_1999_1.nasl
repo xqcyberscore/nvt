@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1999_1.nasl 7958 2017-12-01 06:47:47Z santu $
 #
 # Ubuntu Update for linux-ti-omap4 USN-1999-1
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841610);
-  script_version("$Revision: 6644 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:01:20 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7958 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-10-29 17:02:30 +0530 (Tue, 29 Oct 2013)");
   script_cve_id("CVE-2013-2147");
   script_tag(name:"cvss_base", value:"2.1");
@@ -51,7 +52,7 @@ exploit this flaw to obtain sensitive information from kernel memory.";
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "1999-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2013-October/002287.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1999-1/");
   script_summary("Check for the Version of linux-ti-omap4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

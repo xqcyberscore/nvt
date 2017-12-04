@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1764_1.nasl 7958 2017-12-01 06:47:47Z santu $
 #
 # Ubuntu Update for glance USN-1764-1
 #
@@ -37,10 +38,10 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2013-March/002041.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1764-1/");
   script_id(841357);
-  script_version("$Revision: 6644 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:01:20 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7958 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-03-15 10:05:21 +0530 (Fri, 15 Mar 2013)");
   script_cve_id("CVE-2013-1840");
   script_tag(name:"cvss_base", value:"3.5");

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_unprotected_web.nasl 7888 2017-11-23 14:20:55Z asteins $
+# $Id: gb_lantronix_unprotected_web.nasl 7933 2017-11-29 14:03:45Z cfischer $
 #
-# Lantronix UDS1100 Device Server Unprotected Web Access
+# Lantronix Devices Unprotected Web Access
 #
 # Authors:
 # Adrian Steins <adrian.steins@greenbone.net>
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112133");
-  script_version("$Revision: 7888 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 15:20:55 +0100 (Thu, 23 Nov 2017) $");
+  script_version("$Revision: 7933 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-29 15:03:45 +0100 (Wed, 29 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-22 11:46:00 +0100 (Wed, 22 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,15 +38,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"Mitigation");
 
-  script_name("Lantronix UDS1100 Device Server Unprotected Web Access");
+  script_name("Lantronix Devices Unprotected Web Access");
 
   script_category(ACT_ATTACK);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_dependencies("gb_lantronix_device_version.nasl");
+  script_mandatory_keys("lantronix_device/http/detected");
 
   script_tag(name:"summary", value:"The Lantronix UDS1100 Device Server web interface is accessible via an unprotected HTTP connection.");
   script_tag(name:"impact", value:"Successful exploitation allows an attacker to configure and control the device.");
@@ -59,21 +58,28 @@ include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port(default:80);
-cache = http_get_cache(port:port, item:"/");
+if( ! port = get_kb_item( "lantronix_device/http/port" ) ) exit( 0 );
 
-if ("secure/ltx_conf.htm" >< cache) {
-  added_headers = make_array("Authorization", "Basic Og==");
-  req = http_get_req(port:port, url:"/secure/menu.htm", add_headers:added_headers, accept_header:"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
+# Older devices are using a java based GUI and returning a 400
+# exit for those here
+url = "/secure/welcome.htm";
+req = http_get( item:url, port:port );
+res = http_send_recv( port:port, data:req, bodyonly:FALSE );
+if( res !~ "^HTTP/1\.[01] 401" ) exit( 0 );
 
-  res = http_keepalive_send_recv(port:port, data:req);
+# Any user and empty password
+userpass   = "root:";
+userpass64 = base64( str:userpass );
 
-  if (res && res =~ "^HTTP/1\.[01] 200" && "Device Server Home Page" >< res && "Configure IP address and hostname" >< res
-      && "Configure global server settings" >< res && "Apply Settings" >< res && "Apply Defaults" >< res) {
-    report = "The Lantronix UDS1100 Device Server web-manager configuration could be accessed via an unprotected HTTP connection.";
-    security_message(port:port, data:report);
-    exit(0);
-  }
+added_headers = make_array( "Authorization", "Basic " + userpass64 );
+req = http_get_req( port:port, url:"/secure/menu.htm", add_headers:added_headers, accept_header:"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" );
+res = http_send_recv( port:port, data:req, bodyonly:FALSE );
+
+if( res && res =~ "^HTTP/1\.[01] 200" && "Device Server Home Page" >< res && "Configure IP address and hostname" >< res
+        && "Configure global server settings" >< res && "Apply Settings" >< res && "Apply Defaults" >< res ) {
+  report = "The Lantronix Device web-manager configuration could be accessed with any username and an empty password.";
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-exit(99);
+exit( 99 );

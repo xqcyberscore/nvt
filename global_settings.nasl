@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: global_settings.nasl 7366 2017-10-06 10:55:39Z cfischer $
+# $Id: global_settings.nasl 7922 2017-11-28 10:06:28Z cfischer $
 #
 # Global variable settings
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12288");
-  script_version("$Revision: 7366 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-06 12:55:39 +0200 (Fri, 06 Oct 2017) $");
+  script_version("$Revision: 7922 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-28 11:06:28 +0100 (Tue, 28 Nov 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -51,6 +51,7 @@ if(description)
   script_add_preference(name:"HTTP User-Agent", type:"entry", value: "");
   script_add_preference(name:"Strictly unauthenticated", type:"checkbox", value: "no");
   script_add_preference(name:"Exclude printers from scan", type:"checkbox", value:"yes");
+  script_add_preference(name:"Exclude known fragile devices/ports from scan", type:"checkbox", value:"yes");
   script_add_preference(name:"Enable SSH Debug", type:"checkbox", value:"no");
   script_add_preference(name:"Mark host as dead if going offline (failed ICMP ping) during scan", type:"checkbox", value:"no");
   script_add_preference(name:"Service discovery on non-default UDP ports (slow)", type:"checkbox", value:"no");
@@ -113,6 +114,9 @@ if( opt == "yes" ) set_kb_item( name:"global_settings/authenticated_scans_disabl
 
 opt = script_get_preference( "Exclude printers from scan" );
 if( opt == "yes" ) set_kb_item( name:"global_settings/exclude_printers", value:"yes" );
+
+opt = script_get_preference( "Exclude known fragile devices/ports from scan" );
+if( opt == "yes" ) set_kb_item( name:"global_settings/exclude_fragile", value:TRUE );
 
 cgi_bin = cgibin();
 cgis = split( cgi_bin, sep:":", keep:FALSE );

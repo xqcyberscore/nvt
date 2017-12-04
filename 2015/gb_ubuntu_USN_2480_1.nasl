@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842070");
-  script_version("$Revision: 6646 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:03:11 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7956 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:53:44 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-01-23 12:59:15 +0100 (Fri, 23 Jan 2015)");
   script_cve_id("CVE-2014-6568", "CVE-2015-0374", "CVE-2015-0381", "CVE-2015-0382",
                 "CVE-2015-0411", "CVE-2015-0432");
@@ -52,7 +52,7 @@ http://www.oracle.com/technetwork/topics/security/cpujan2015-1972971.html");
   Ubuntu 12.04 LTS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "USN", value: "2480-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-January/002806.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2480-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);

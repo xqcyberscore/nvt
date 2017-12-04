@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_dos_vuln_oct17_lin.nasl 7674 2017-11-07 06:54:24Z ckuersteiner $
+# $Id: gb_mongodb_dos_vuln_oct17_lin.nasl 7912 2017-11-27 06:00:54Z teissa $
 #
 # MongoDB DoS Vulnerability - Oct17 (Linux)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:mongodb:mongodb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140491");
-  script_version("$Revision: 7674 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-07 07:54:24 +0100 (Tue, 07 Nov 2017) $");
+  script_version("$Revision: 7912 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-27 07:00:54 +0100 (Mon, 27 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-11-07 12:22:09 +0700 (Tue, 07 Nov 2017)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
 
   script_cve_id("CVE-2017-15535");
 

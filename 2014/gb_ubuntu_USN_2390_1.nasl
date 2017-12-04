@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2390_1.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for pidgin USN-2390-1
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842015");
-  script_version("$Revision: 6735 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-10-29 05:53:47 +0100 (Wed, 29 Oct 2014)");
   script_cve_id("CVE-2014-3694", "CVE-2014-3695", "CVE-2014-3696", "CVE-2014-3698");
   script_tag(name:"cvss_base", value:"6.4");
@@ -64,7 +65,7 @@ resulting in an information leak. (CVE-2014-3698)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2390-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-October/002708.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2390-1/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

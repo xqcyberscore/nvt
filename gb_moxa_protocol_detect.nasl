@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_protocol_detect.nasl 5731 2017-03-27 05:51:25Z ckuerste $
+# $Id: gb_moxa_protocol_detect.nasl 7926 2017-11-29 06:54:31Z ckuersteiner $
 #
 # Moxa Management Protocol Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106693");
- script_version ("$Revision: 5731 $");
- script_tag(name: "last_modification", value: "$Date: 2017-03-27 07:51:25 +0200 (Mon, 27 Mar 2017) $");
+ script_version ("$Revision: 7926 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-11-29 07:54:31 +0100 (Wed, 29 Nov 2017) $");
  script_tag(name: "creation_date", value: "2017-03-24 14:13:08 +0700 (Fri, 24 Mar 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,6 +54,7 @@ It is used for Broadcast, Monitor, Get current settings, RealCOM Port mapping.")
 }
 
 include("byte_func.inc");
+include("host_details.inc");
 include("misc_func.inc");
 include("moxa.inc");
 
@@ -89,6 +90,8 @@ model = moxa_get_model(data: model_data);
 mac = substr(data, 10, 15);
 mac = hexstr(mac[0]) + ':' + hexstr(mac[1]) + ':' + hexstr(mac[2]) + ':' + hexstr(mac[3]) + ':' + hexstr(mac[4]) +
       ':' + hexstr(mac[5]);
+register_host_detail(name: "MAC", value: mac, desc: "gb_moxa_protocol_detect.nasl");
+replace_kb_item(name: "Host/mac_address", value: mac);
 
 # Query name info
 query = raw_string(0x10, 0x00, 0x00, 0x14, data);

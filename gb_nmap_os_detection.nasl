@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_os_detection.nasl 7270 2017-09-26 09:49:58Z cfischer $
+# $Id: gb_nmap_os_detection.nasl 7922 2017-11-28 10:06:28Z cfischer $
 #
 # Nmap OS Identification (NASL wrapper)
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108021");
-  script_version("$Revision: 7270 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 7922 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-28 11:06:28 +0100 (Tue, 28 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-11-21 12:08:04 +0100 (Mon, 21 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -207,6 +207,10 @@ foreach port( openPorts ) {
 
   # non_simult_ports so ignoring these here. Also removing 27960 which is known to crash (see find_service.nasl)
   if( port == "139" || port == "445" || port == "27960" ) continue;
+
+  # Includes e.g. PJL ports which are printing everything
+  # sent to them so continue for such a port here
+  if( is_fragile_port( port:port ) ) continue;
 
   if( isnull ( portList ) ) {
     portList = port;

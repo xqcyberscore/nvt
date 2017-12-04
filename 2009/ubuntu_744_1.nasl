@@ -1,5 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_744_1.nasl 6639 2017-07-10 10:52:06Z cfischer $
+# $Id: ubuntu_744_1.nasl 7969 2017-12-01 09:23:16Z santu $
+# $Id: ubuntu_744_1.nasl 7969 2017-12-01 09:23:16Z santu $
 # Description: Auto-generated from advisory USN-744-1 (lcms)
 #
 # Authors:
@@ -73,8 +74,8 @@ announced via advisory USN-744-1.";
 if(description)
 {
  script_id(64170);
- script_version("$Revision: 6639 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:52:06 +0200 (Mon, 10 Jul 2017) $");
+ script_version("$Revision: 7969 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-06-05 18:04:08 +0200 (Fri, 05 Jun 2009)");
  script_cve_id("CVE-2009-0581", "CVE-2009-0723", "CVE-2009-0733", "CVE-2009-0920", "CVE-2009-0921", "CVE-2009-0927", "CVE-2009-0207", "CVE-2009-0928", "CVE-2009-0193", "CVE-2009-0629", "CVE-2009-0626", "CVE-2009-0628", "CVE-2009-0635", "CVE-2009-0633", "CVE-2009-0634", "CVE-2009-0637", "CVE-2009-0784", "CVE-2009-0698", "CVE-2008-5239", "CVE-2008-1036", "CVE-2008-4316", "CVE-2006-2426", "CVE-2009-1093", "CVE-2009-1094", "CVE-2009-1095", "CVE-2009-1096", "CVE-2009-1097", "CVE-2009-1098", "CVE-2009-1100", "CVE-2009-1101", "CVE-2009-1102");
  script_tag(name:"cvss_base", value:"10.0");
@@ -84,6 +85,7 @@ if(description)
 
 
  script_category(ACT_GATHER_INFO);
+ script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-744-1/");
 
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("Ubuntu Local Security Checks");

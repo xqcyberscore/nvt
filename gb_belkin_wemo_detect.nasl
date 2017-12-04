@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_belkin_wemo_detect.nasl 6868 2017-08-08 09:39:18Z ckuersteiner $
+# $Id: gb_belkin_wemo_detect.nasl 7926 2017-11-29 06:54:31Z ckuersteiner $
 #
 # Belkin WeMo Device Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140282");
- script_version ("$Revision: 6868 $");
- script_tag(name: "last_modification", value: "$Date: 2017-08-08 11:39:18 +0200 (Tue, 08 Aug 2017) $");
+ script_version ("$Revision: 7926 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-11-29 07:54:31 +0100 (Wed, 29 Nov 2017) $");
  script_tag(name: "creation_date", value: "2017-08-08 11:52:33 +0700 (Tue, 08 Aug 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -90,8 +90,11 @@ if ("Belkin" >< res && "<friendlyName>WeMo" >< res) {
     extra += "Model Number:  " + buf[1] + "\n";
 
   buf = eregmatch(pattern: "<macAddress>([^</]+)", string: res);
-  if (!isnull(buf[1]))
+  if (!isnull(buf[1])) {
     extra += "Mac Address:   " + buf[1] + "\n";
+    register_host_detail(name: "MAC", value: buf[1], desc: "gb_belkin_wemo_detect.nasl");
+    replace_kb_item(name: "Host/mac_address", value: buf[1]);
+  }
 
   buf = eregmatch(pattern: "<binaryState>(0|1)", string: res);
   if (!isnull(buf[1]))

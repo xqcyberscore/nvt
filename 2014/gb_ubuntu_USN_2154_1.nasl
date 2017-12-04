@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2154_1.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for ca-certificates USN-2154-1
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841760);
-  script_version("$Revision: 6645 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-03-25 10:24:04 +0530 (Tue, 25 Mar 2014)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +54,7 @@ This update refreshes the included certificates to those contained in the
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2154-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-March/002449.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2154-1/");
   script_summary("Check for the Version of ca-certificates");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

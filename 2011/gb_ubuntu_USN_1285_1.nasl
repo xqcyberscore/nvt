@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1285_1.nasl 7964 2017-12-01 07:32:11Z santu $
 #
 # Ubuntu Update for linux USN-1285-1
 #
@@ -61,12 +62,12 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2011-November/001504.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1285-1/");
   script_id(840826);
   script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+ script_version("$Revision: 7964 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:32:11 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-12-02 13:30:37 +0530 (Fri, 02 Dec 2011)");
   script_xref(name: "USN", value: "1285-1");
   script_cve_id("CVE-2011-2183", "CVE-2011-2491", "CVE-2011-2494", "CVE-2011-2495",

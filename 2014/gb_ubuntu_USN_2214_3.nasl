@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2214_3.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for libxml2 USN-2214-3
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841864");
-  script_version("$Revision: 6645 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-06-23 16:54:51 +0530 (Mon, 23 Jun 2014)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -61,7 +62,7 @@ possibly cause resource consumption, resulting in a denial of service.";
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2214-3");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-June/002548.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2214-3/");
   script_summary("Check for the Version of libxml2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

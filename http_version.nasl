@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_version.nasl 6760 2017-07-19 14:00:26Z cfischer $
+# $Id: http_version.nasl 7913 2017-11-27 08:48:58Z cfischer $
 #
 # HTTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10107");
-  script_version("$Revision: 6760 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 16:00:26 +0200 (Wed, 19 Jul 2017) $");
+  script_version("$Revision: 7913 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-27 09:48:58 +0100 (Mon, 27 Nov 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -40,6 +40,7 @@ if(description)
                       "embedded_web_server_detect.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+  script_add_preference(name:"Show full HTTP headers in output", type:"checkbox", value:"no");
 
   script_tag(name:"solution", value:"Configure your server to use an alternate name like
   'Wintendo httpD w/Dotmatrix display'
@@ -111,6 +112,8 @@ function get_domino_version() {
   }
 }
 
+show_headers = script_get_preference("Show full HTTP headers in output");
+
 port = get_http_port( default:80 );
 
 soc = http_open_socket( port );
@@ -121,9 +124,11 @@ if( soc ) {
   resultsend = send( socket:soc, data:data );
   resultrecv = http_recv_headers2( socket:soc );
   close( soc );
+  if( ! resultrecv ) exit( 0 );
 
   if( "Server: " >< resultrecv ) {
 
+    found_server_line = TRUE;
     svrline = egrep( pattern:"^(DAAP-)?Server:", string:resultrecv ) ;
     svr = ereg_replace( pattern:".*Server: (.*)$", string:svrline, replace:"\1" );
     report = 'The remote web server type is :\n\n';
@@ -168,8 +173,6 @@ if( soc ) {
         report = report + svr;
       }
     }
-
-    log_message( port:port, data:report );
 
     #
     # put the name of the web server in the KB
@@ -415,7 +418,11 @@ if( soc ) {
 
     #if(!egrep(pattern:"^Server:.*", string:svrline ) )
     #  set_kb_item( name:"www/none", value:TRUE );
+  }
 
+  if( found_server_line || show_headers == "yes" ) {
+    if( show_headers == "yes" ) report += '\n\nFull HTTP headers:\n\n' + resultrecv;
+    log_message( port:port, data:report );
   }
 }
 

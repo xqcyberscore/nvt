@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1712_1.nasl 7958 2017-12-01 06:47:47Z santu $
 #
 # Ubuntu Update for inkscape USN-1712-1
 #
@@ -46,10 +47,10 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2013-January/001979.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1712-1/");
   script_id(841294);
-  script_version("$Revision: 6644 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:01:20 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7958 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-01-31 09:26:22 +0530 (Thu, 31 Jan 2013)");
   script_cve_id("CVE-2012-5656", "CVE-2012-6076");
   script_tag(name:"cvss_base", value:"4.4");

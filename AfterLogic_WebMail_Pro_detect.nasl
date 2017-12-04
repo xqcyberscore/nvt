@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: AfterLogic_WebMail_Pro_detect.nasl 6006 2017-04-21 13:31:07Z cfi $
+# $Id: AfterLogic_WebMail_Pro_detect.nasl 7928 2017-11-29 09:42:17Z ckuersteiner $
 #
 # AfterLogic WebMail Pro Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100313");
-  script_version("$Revision: 6006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 15:31:07 +0200 (Fri, 21 Apr 2017) $");
+  script_version("$Revision: 7928 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-29 10:42:17 +0100 (Wed, 29 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-10-20 18:54:22 +0200 (Tue, 20 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -43,7 +43,8 @@ if(description)
   tag_summary = "This host is running AfterLogic WebMail Pro, a Webmail front-end for
   your existing POP3/IMAP mail server.";
 
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running AfterLogic WebMail Pro, a Webmail front-end for your
+existing POP3/IMAP mail server.");
 
   script_xref(name:"URL", value:"http://www.afterlogic.com/");
 
@@ -89,9 +90,7 @@ foreach dir( make_list_unique( "/webmail", "/mail", "/email", cgi_dirs( port:por
         vers = chomp( version[1] );
       }
 
-      tmp_version = vers + " under " + install;
-      set_kb_item( name:"www/" + port + "/AfterLogicWebMailPro", value:tmp_version );
-      replace_kb_item( name:"AfterLogicWebMailPro/installed", value:TRUE );
+      set_kb_item( name:"AfterLogicWebMailPro/installed", value:TRUE );
 
       cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:afterlogic:mailbee_webmail_pro:" );
       if( isnull( cpe ) )
@@ -104,7 +103,7 @@ foreach dir( make_list_unique( "/webmail", "/mail", "/email", cgi_dirs( port:por
                                                 install:install,
                                                 cpe:cpe,
                                                 concluded:version[0] ),
-                                                port:port );
+                   port:port );
       exit( 0 );
     }
   }

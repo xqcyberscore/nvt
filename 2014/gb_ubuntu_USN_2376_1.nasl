@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2376_1.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for linux USN-2376-1
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842003");
-  script_version("$Revision: 6692 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-10-10 06:11:29 +0200 (Fri, 10 Oct 2014)");
   script_cve_id("CVE-2014-3181", "CVE-2014-3184", "CVE-2014-3185", "CVE-2014-3186", "CVE-2014-6410", "CVE-2014-6416", "CVE-2014-6417", "CVE-2014-6418");
   script_tag(name:"cvss_base", value:"7.8");
@@ -80,7 +81,7 @@ service (system crash) or possibly have other unspecified impact.
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2376-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-October/002690.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2376-1/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

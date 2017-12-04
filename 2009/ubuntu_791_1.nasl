@@ -1,5 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_791_1.nasl 6639 2017-07-10 10:52:06Z cfischer $
+# $Id: ubuntu_791_1.nasl 7969 2017-12-01 09:23:16Z santu $
+# $Id: ubuntu_791_1.nasl 7969 2017-12-01 09:23:16Z santu $
 # Description: Auto-generated from advisory USN-791-1 (moodle)
 #
 # Authors:
@@ -51,8 +52,8 @@ For details, please visit the referenced security advisories.";
 if(description)
 {
  script_id(64320);
- script_version("$Revision: 6639 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:52:06 +0200 (Mon, 10 Jul 2017) $");
+ script_version("$Revision: 7969 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-06-30 00:29:55 +0200 (Tue, 30 Jun 2009)");
  script_cve_id("CVE-2007-3215", "CVE-2008-4796", "CVE-2008-4810", "CVE-2008-4811", "CVE-2008-5153", "CVE-2008-5432", "CVE-2008-5619", "CVE-2008-6124", "CVE-2009-0499", "CVE-2009-0500", "CVE-2009-0501", "CVE-2009-0502", "CVE-2009-1171", "CVE-2009-1669");
  script_tag(name:"cvss_base", value:"10.0");
@@ -62,6 +63,7 @@ if(description)
 
 
  script_category(ACT_GATHER_INFO);
+ script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-791-1/");
 
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("Ubuntu Local Security Checks");

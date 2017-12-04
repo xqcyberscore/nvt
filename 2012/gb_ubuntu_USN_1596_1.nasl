@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1596_1.nasl 7960 2017-12-01 06:58:16Z santu $
 #
 # Ubuntu Update for python2.6 USN-1596-1
 #
@@ -77,10 +78,10 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-October/001855.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1596-1/");
   script_id(841178);
-  script_version("$Revision: 6643 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:00:30 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7960 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:58:16 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-10-05 09:45:35 +0530 (Fri, 05 Oct 2012)");
   script_cve_id("CVE-2008-5983", "CVE-2010-1634", "CVE-2010-2089", "CVE-2010-3493",
                 "CVE-2011-1015", "CVE-2011-1521", "CVE-2011-4940", "CVE-2011-4944",

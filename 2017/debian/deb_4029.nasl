@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4029.nasl 7728 2017-11-10 09:05:33Z teissa $
+# $Id: deb_4029.nasl 7971 2017-12-01 11:34:01Z cfischer $
 #
 # Auto-generated from advisory DSA 4029-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704029");
-  script_version("$Revision: 7728 $");
+  script_version("$Revision: 7971 $");
   script_cve_id("CVE-2017-8806");
   script_name("Debian Security Advisory DSA 4029-1 (postgresql-common - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-10 10:05:33 +0100 (Fri, 10 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 12:34:01 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-09 00:00:00 +0100 (Thu, 09 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -73,49 +73,13 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"postgresql", ver:"181+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"postgresql-all", ver:"181+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"postgresql-client", ver:"181+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"postgresql-client-common", ver:"181+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
-}
+
+# nb: Only postgresql-common is affected, the LSC generator has wrongly added other packages
+# with have a different version like 9.4+165+deb8u3 but the used version to test was 165+deb8u3
 if ((res = isdpkgvuln(pkg:"postgresql-common", ver:"181+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"postgresql-contrib", ver:"181+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"postgresql-doc", ver:"181+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"postgresql-server-dev-all", ver:"181+deb9u1", rls_regex:"DEB9.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"postgresql", ver:"165+deb8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"postgresql-client", ver:"165+deb8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"postgresql-client-common", ver:"165+deb8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
-}
 if ((res = isdpkgvuln(pkg:"postgresql-common", ver:"165+deb8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"postgresql-contrib", ver:"165+deb8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"postgresql-doc", ver:"165+deb8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
-}
-if ((res = isdpkgvuln(pkg:"postgresql-server-dev-all", ver:"165+deb8u3", rls_regex:"DEB8.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
 

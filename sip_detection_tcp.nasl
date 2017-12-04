@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sip_detection_tcp.nasl 6849 2017-08-04 07:21:15Z cfischer $
+# $Id: sip_detection_tcp.nasl 7934 2017-11-29 14:51:02Z cfischer $
 #
 # Detect SIP Compatible Hosts (TCP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108020");
-  script_version("$Revision: 6849 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:21:15 +0200 (Fri, 04 Aug 2017) $");
+  script_version("$Revision: 7934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-29 15:51:02 +0100 (Wed, 29 Nov 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -68,24 +68,17 @@ port = get_kb_item( "Services/sip" );
 if( ! port ) port = 5060;
 if( ! get_port_state( port ) ) exit( 0 );
 
-soc = open_sip_socket( port:port, proto:proto );
-if( ! soc ) exit( 0 );
+req = construct_sip_options_req( port:port, proto:proto );
+res = sip_send_recv( port:port, data:req, proto:proto );
+if( "SIP/2.0" >!< res ) exit( 0 );
 
-sndReq = construct_sip_options_req( port:port, proto:proto );
+replace_kb_item( name:"sip/full_banner/" + proto + "/" + port, value:res );
 
-send( socket:soc, data:sndReq );
-data = recv( socket:soc, length:1024 );
-close( soc );
-
-if( "SIP/2.0" >!< data ) exit( 0 );
-
-replace_kb_item( name:"sip/full_banner/" + proto + "/" + port, value:data );
-
-if( "Server:" >< data ) {
-  banner = egrep( pattern:'^Server:', string:data );
+if( "Server:" >< res ) {
+  banner = egrep( pattern:'^Server:', string:res );
   banner = substr( banner, 8 );
-} else if( "User-Agent" >< data ) {
-  banner = egrep( pattern:'^User-Agent', string:data );
+} else if( "User-Agent" >< res ) {
+  banner = egrep( pattern:'^User-Agent', string:res );
   banner = substr( banner, 12 );
 }
 
@@ -95,8 +88,8 @@ if( banner ) {
 
 desc += 'Server/User-Agent: ' + banner;
 
-if( egrep( pattern:"Allow:.*OPTIONS.*", string:data ) ) {
-  OPTIONS = egrep( pattern:"Allow:.*OPTIONS.*", string:data );
+if( egrep( pattern:"Allow:.*OPTIONS.*", string:res ) ) {
+  OPTIONS = egrep( pattern:"Allow:.*OPTIONS.*", string:res );
   OPTIONS -= "Allow: ";
   OPTIONS = chomp( OPTIONS );
 }
@@ -105,9 +98,9 @@ if( ! isnull( OPTIONS ) ) {
   desc += '\nSupported Options:\n' + OPTIONS + '\n';
 }
 
-desc += '\nFull banner output:\n\n' + data;
+desc += '\nFull banner output:\n\n' + res;
 
-replace_kb_item( name:"sip/detected", value:TRUE );
+set_kb_item( name:"sip/detected", value:TRUE );
 set_kb_item( name:"sip/port_and_proto", value:port + "#-#" + proto );
 
 log_message( port:port, protocol:proto, data:desc );

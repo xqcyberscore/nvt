@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1674_1.nasl 7960 2017-12-01 06:58:16Z santu $
 #
 # Ubuntu Update for libav USN-1674-1
 #
@@ -38,10 +39,10 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-December/001941.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1674-1/");
   script_id(841260);
-  script_version("$Revision: 6643 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:00:30 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7960 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:58:16 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-12-26 12:07:44 +0530 (Wed, 26 Dec 2012)");
   script_cve_id("CVE-2012-2772", "CVE-2012-2775", "CVE-2012-2777", "CVE-2012-2779",
                 "CVE-2012-2784", "CVE-2012-2786", "CVE-2012-2788", "CVE-2012-2789",

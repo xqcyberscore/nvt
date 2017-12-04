@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fibaro_home_center_detect.nasl 7325 2017-09-29 09:09:19Z ckuersteiner $
+# $Id: gb_fibaro_home_center_detect.nasl 7926 2017-11-29 06:54:31Z ckuersteiner $
 #
 # FIBARO Home Center Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140419");
-  script_version("$Revision: 7325 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-29 11:09:19 +0200 (Fri, 29 Sep 2017) $");
+  script_version("$Revision: 7926 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-29 07:54:31 +0100 (Wed, 29 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-09-29 12:10:53 +0700 (Fri, 29 Sep 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -104,6 +104,7 @@ if ("<title>(Fibaro )?Home Center" && ("com.fibaro.plugins" >< res || "zwaveDevi
   if (!isnull(mac[1])) {
     info += "MAC:             " + mac[1] + "\n";
     register_host_detail(name: "MAC", value: mac[1], desc: "gb_fibaro_home_center_detect.nasl");
+    replace_kb_item(name: "Host/mac_address", value: mac[1]);
   }
   # Z-Wave version
   zwave_vers = eregmatch(pattern: '"zwaveVersion":"([0-9.]+)"', string: res);

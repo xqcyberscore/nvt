@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 7633 2017-11-02 14:01:14Z cfischer $
+# $Id: misc_func.inc 7922 2017-11-28 10:06:28Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7633 $
+# $Revision: 7922 $
 #
 ###############################################################################
 
@@ -850,20 +850,20 @@ function hex2str() {
   return s;
 }
 
-function is_pjl_port( port ) {
+function is_fragile_port( port ) {
 
-  local_var port, pjl_ports, pjl_port;
+  local_var port, fragile_ports, fragile_port;
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#is_pjl_port" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#is_fragile_port" );
     return;
   }
 
-  pjl_ports = get_kb_list( 'Services/PJL' ); #TBD Use Services/jedirect like in 2008/pjl_detect.nasl?
-  if( ! pjl_ports ) return;
+  fragile_ports = get_kb_list( "Services/fragile_port" );
+  if( ! fragile_ports ) return;
 
-  foreach pjl_port( pjl_ports ) {
-    if( port == pjl_port ) return TRUE;
+  foreach fragile_port( fragile_ports ) {
+    if( port == fragile_port ) return TRUE;
   }
 
   return;
@@ -880,6 +880,7 @@ function register_all_pjl_ports( ports ) {
   foreach port( ports ) {
     if( get_port_state( port ) ) {
       register_service( port:port, proto:"PJL" ); #TBD Use Services/jedirect like in 2008/pjl_detect.nasl?
+      register_service( port:port, proto:"fragile_port" );
       replace_kb_item( name:"BannerHex/" + port, value:"aeaeaeaeae" );
       replace_kb_item( name:"Banner/" + port, value:"ignore-this-banner" );
     }
@@ -924,8 +925,9 @@ function get_unknown_port( default, nodefault, ipproto ) {
     # Ignore NetBIOS port as previously done in get_unknown_svc()
     if( _port == 139 ) exit( 0 );
 
-    # PJL ports printing everything sent to them so exit for such a port here
-    if( is_pjl_port( port:_port ) ) exit( 0 );
+    # Includes e.g. PJL ports which are printing everything
+    # sent to them so exit for such a port here
+    if( is_fragile_port( port:_port ) ) exit( 0 );
   }
 
   # Don't check port passed in default variable. Other detections
@@ -986,8 +988,9 @@ function get_unknown_port_list( default, nodefault, ipproto ) {
       # Ignore NetBIOS port as previously done in get_unknown_svc()
       if( port == 139 ) continue;
 
-      # PJL ports printing everything sent to them so continue for such a port here
-      if( is_pjl_port( port:port ) ) continue;
+      # Includes e.g. PJL ports which are printing everything
+      # sent to them so continue for such a port here
+      if( is_fragile_port( port:port ) ) continue;
     }
 
     # Don't check port passed in default variable. Other detections
@@ -1016,8 +1019,9 @@ function get_all_tcp_ports( ) {
   port = get_kb_item( "TCP/PORTS" );
   if( ! port ) exit( 0 );
 
-  # PJL ports printing everything sent to them so exit for such a port here
-  if( is_pjl_port( port:port ) ) exit( 0 );
+  # Includes e.g. PJL ports which are printing everything
+  # sent to them so exit for such a port here
+  if( is_fragile_port( port:port ) ) exit( 0 );
 
   if( ! get_port_state( port ) ) exit( 0 );
 
@@ -1035,8 +1039,9 @@ function get_all_tcp_ports_list( ) {
 
   foreach port( _ports ) {
 
-    # PJL ports printing everything sent to them so continue for such a port here
-    if( is_pjl_port( port:port ) ) continue;
+    # Includes e.g. PJL ports which are printing everything
+    # sent to them so continue for such a port here
+    if( is_fragile_port( port:port ) ) continue;
 
     if( ! get_port_state( port ) ) continue;
 
@@ -1076,7 +1081,7 @@ function is_printer_mac( mac ) {
 
 # Add a dependency to secpod_open_tcp_ports.nasl if you want to use this
 # This replaces the nasl built-in get_host_open_port where you can't
-# control that it doesn't return a PJL based port.
+# control that it doesn't return a "fragile" port.
 function get_host_open_tcp_port( ) {
 
   ports = get_all_tcp_ports_list();

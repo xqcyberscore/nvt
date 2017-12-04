@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1377_1.nasl 7960 2017-12-01 06:58:16Z santu $
 #
 # Ubuntu Update for ruby1.8 USN-1377-1
 #
@@ -66,10 +67,10 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-February/001606.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1377-1/");
   script_id(840923);
-  script_version("$Revision: 6643 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:00:30 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7960 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:58:16 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-03-07 11:20:13 +0530 (Wed, 07 Mar 2012)");
   script_cve_id("CVE-2010-0541", "CVE-2011-0188", "CVE-2011-1004", "CVE-2011-1005",
                 "CVE-2011-2686", "CVE-2011-2705", "CVE-2011-4815");

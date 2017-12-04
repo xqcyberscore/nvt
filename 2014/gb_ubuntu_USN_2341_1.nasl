@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2341_1.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for cups USN-2341-1
 #
@@ -27,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841963");
-  script_version("$Revision: 6645 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-09-09 05:55:36 +0200 (Tue, 09 Sep 2014)");
   script_cve_id("CVE-2014-5029", "CVE-2014-5030", "CVE-2014-5031");
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,7 +47,7 @@ and read arbitrary files, possibly leading to a privilege escalation.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name: "USN", value: "2341-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-September/002654.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2341-1/");
   script_summary("Check for the Version of cups");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

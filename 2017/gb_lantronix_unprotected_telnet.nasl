@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_unprotected_telnet.nasl 7868 2017-11-22 14:14:30Z asteins $
+# $Id: gb_lantronix_unprotected_telnet.nasl 7929 2017-11-29 09:59:29Z cfischer $
 #
-# Lantronix Device Server Unprotected Telnet Access
+# Lantronix Devices Unprotected Telnet Access
 #
 # Authors:
 # Adrian Steins <adrian.steins@greenbone.net>
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112132");
-  script_version("$Revision: 7868 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 15:14:30 +0100 (Wed, 22 Nov 2017) $");
+  script_version("$Revision: 7929 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-29 10:59:29 +0100 (Wed, 29 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-22 11:46:00 +0100 (Wed, 22 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,14 +38,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"Mitigation");
 
-  script_name("Lantronix Device Server Unprotected Telnet Access");
+  script_name("Lantronix Devices Unprotected Telnet Access");
 
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Default Accounts");
-  script_dependencies("telnetserver_detect_type_nd_version.nasl");
-  script_require_ports("Services/telnet", 9999);
+  script_dependencies("gb_lantronix_device_version.nasl");
+  script_mandatory_keys("lantronix_device/telnet/detected");
 
   script_tag(name:"summary", value:"The Lantronix Device Server setup is accessible via an unprotected telnet connection.");
   script_tag(name:"impact", value:"Successful exploitation allows an attacker to configure and control the device.");
@@ -54,16 +54,15 @@ if(description)
   exit(0);
 }
 
-include("misc_func.inc");
 include("telnet_func.inc");
 
-port = get_telnet_port(default:9999);
-recv = get_telnet_banner(port:port);
+if( ! port = get_kb_item( "lantronix_device/telnet/port" ) ) exit( 0 );
+banner = get_telnet_banner( port:port );
 
-if (recv && "*** Lantronix" >< recv && "Device Server ***" >< recv && "Press Enter" >< recv && "Setup Mode" >< recv) {
-  report = "The Lantronix Device Server setup menu could be accessed via an unprotected telnet connection.";
-  security_message(port:port, data:report);
-  exit(0);
+if( banner && "Press Enter" >< banner && "Setup Mode" >< banner ) {
+  report = "The Lantronix Device setup menu could be accessed via an unprotected telnet connection.";
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-exit(99);
+exit( 99 );

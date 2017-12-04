@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2168_1.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for python-imaging USN-2168-1
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841777);
-  script_version("$Revision: 6645 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-04-21 12:04:11 +0530 (Mon, 21 Apr 2014)");
   script_cve_id("CVE-2014-1932", "CVE-2014-1933");
   script_tag(name:"cvss_base", value:"4.4");
@@ -55,7 +56,7 @@ issue to overwrite arbitrary files, or gain access to temporary file contents.
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2168-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-April/002464.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2168-1/");
   script_summary("Check for the Version of python-imaging");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

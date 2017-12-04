@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2215_1.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for libgadu USN-2215-1
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841828");
-  script_version("$Revision: 6645 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-05-26 15:59:00 +0530 (Mon, 26 May 2014)");
   script_cve_id("CVE-2014-3775");
   script_tag(name:"cvss_base", value:"7.5");
@@ -53,7 +54,7 @@ resulting in a denial of service, or possibly execute arbitrary code.";
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2215-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-May/002517.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2215-1/");
   script_summary("Check for the Version of libgadu");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: atmail_detect.nasl 6296 2017-06-09 10:10:42Z ckuersteiner $
+# $Id: atmail_detect.nasl 7928 2017-11-29 09:42:17Z ckuersteiner $
 #
 # Atmail Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100148");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6296 $");
- script_tag(name:"last_modification", value:"$Date: 2017-06-09 12:10:42 +0200 (Fri, 09 Jun 2017) $");
+ script_version("$Revision: 7928 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-29 10:42:17 +0100 (Wed, 29 Nov 2017) $");
  script_tag(name:"creation_date", value:"2009-04-17 18:35:24 +0200 (Fri, 17 Apr 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Atmail Detection");  
@@ -102,12 +102,10 @@ foreach dir( make_list_unique( "/mail", "/webmail", "/atmail", cgi_dirs( port:po
         }
       }  
     
-      tmp_version = string(vers," under ",install);
-      set_kb_item(name: string("www/", port, "/atmail"), value: tmp_version);
       set_kb_item(name:"Atmail/installed",value:TRUE);
 
       ## build cpe and store it as host_detail
-      cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)",base:"cpe:/a:atmail:atmail:");
+      cpe = build_cpe(value:vers, exp:"^([0-9.]+)",base:"cpe:/a:atmail:atmail:");
       if(isnull(cpe))
         cpe = 'cpe:/a:atmail:atmail';
 

@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1889_1.nasl 7958 2017-12-01 06:47:47Z santu $
 #
 # Ubuntu Update for haproxy USN-1889-1
 #
@@ -40,8 +41,8 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "insight" , value : tag_insight);
   script_id(841486);
-  script_version("$Revision: 6644 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:01:20 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7958 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-06-24 15:06:46 +0530 (Mon, 24 Jun 2013)");
   script_cve_id("CVE-2013-2175");
   script_tag(name:"cvss_base", value:"5.0");
@@ -51,7 +52,7 @@ if(description)
   script_name("Ubuntu Update for haproxy USN-1889-1");
 
   script_xref(name: "USN", value: "1889-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2013-June/002173.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1889-1/");
   script_summary("Check for the Version of haproxy");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_antivirus_engine_detect_win.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_symantec_antivirus_engine_detect_win.nasl 7938 2017-11-30 08:19:37Z santu $
 #
 # Symantec Antivirus Engine Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808533");
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 7938 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-30 09:19:37 +0100 (Thu, 30 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-07-05 11:35:48 +0530 (Tue, 05 Jul 2016)");
   script_name("Symantec Antivirus Engine Version Detection (Windows)");
 
@@ -128,15 +128,9 @@ foreach item (registry_enum_keys(key:key))
       cpe = build_cpe(value:symVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:anti-virus_engine:");
       if(isnull(cpe))
         cpe = "cpe:/a:symantec:anti-virus_engine";
+      
+      build_report(app: "Symantec Antivirus Engine", ver:symVer, cpe: cpe, insloc:symPath, concluded:symVer); 
     }
-    ## Register Product and Build Report
-    register_product(cpe:cpe, location:symPath);
-
-    log_message(data: build_detection_report(app: "Symantec Antivirus Engine",
-                                             version: symVer,
-                                             install: symPath,
-                                             cpe: cpe,
-                                             concluded: symVer));
     exit(0);
   }
 }

@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1509_2.nasl 7960 2017-12-01 06:58:16Z santu $
 #
 # Ubuntu Update for ubufox USN-1509-2
 #
@@ -82,10 +83,10 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-July/001764.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1509-2/");
   script_id(841087);
-  script_version("$Revision: 6643 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:00:30 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7960 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:58:16 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-07-19 10:45:15 +0530 (Thu, 19 Jul 2012)");
   script_cve_id("CVE-2012-1948", "CVE-2012-1949", "CVE-2012-1950", "CVE-2012-1951",
                 "CVE-2012-1952", "CVE-2012-1953", "CVE-2012-1954", "CVE-2012-1955",

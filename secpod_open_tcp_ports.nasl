@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_open_tcp_ports.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: secpod_open_tcp_ports.nasl 7922 2017-11-28 10:06:28Z cfischer $
 #
 # Checks for open TCP ports
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900239");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 7922 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-28 11:06:28 +0100 (Tue, 28 Nov 2017) $");
   script_tag(name:"creation_date", value:"2010-04-16 11:02:50 +0200 (Fri, 16 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Checks for open TCP ports");
@@ -76,9 +76,9 @@ foreach port( keys( tcp_ports ) ) {
     continue;
   }
 
-  # PJL ports printing everything sent to them
-  # so dont include this ports here
-  if( ! is_pjl_port( port:Port[1] ) ) {
+  # Includes e.g. PJL ports which are printing everything
+  # sent to them so dont include this ports here
+  if( ! is_fragile_port( port:Port[1] ) ) {
     set_kb_item( name:"TCP/PORTS", value:Port[1] );
   }
 

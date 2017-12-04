@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_two_factor_auth_bypass_vuln_nov17.nasl 7734 2017-11-10 11:35:05Z santu $
+# $Id: gb_joomla_two_factor_auth_bypass_vuln_nov17.nasl 7968 2017-12-01 08:26:28Z asteins $
 #
 # Joomla! Core Two-factor Authentication Bypass Vulnerability Nov17
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811897");
-  script_version("$Revision: 7734 $");
+  script_version("$Revision: 7968 $");
   script_cve_id("CVE-2017-16634");
   script_bugtraq_id(101701);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-10 12:35:05 +0100 (Fri, 10 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 09:26:28 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-08 10:36:51 +0530 (Wed, 08 Nov 2017)");
   script_name("Joomla! Core Two-factor Authentication Bypass Vulnerability Nov17");
 

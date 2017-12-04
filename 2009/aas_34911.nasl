@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: aas_34911.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: aas_34911.nasl 7928 2017-11-29 09:42:17Z ckuersteiner $
 #
 # A-A-S Application Access Server Multiple Vulnerabilities
 #
@@ -24,25 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "According to its version number, the remote version of A-A-S
-  Application Access Server is prone to multiple security issues
-  including a cross-site request-forgery vulnerability, an
-  insecure-default-password vulnerability and an
-  information-disclosure vulnerability.
-
-  Attackers can exploit these issues to run privileged commands on the
-  affected computer and gain unauthorized administrative access to the
-  affected application and the underlying system.
-
-  These issues affect version 2.0.48; other versions may also be
-  affected.";
-
+CPE = "cpe:/a:klinzmann:application_access_server";
 
 if (description)
 {
- script_id(100197);
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100197");
+ script_version("$Revision: 7928 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-29 10:42:17 +0100 (Wed, 29 Nov 2017) $");
  script_tag(name:"creation_date", value:"2009-05-12 22:04:51 +0200 (Tue, 12 May 2009)");
  script_bugtraq_id(34911);
  script_cve_id("CVE-2009-1464","CVE-2009-1465","CVE-2009-1466");
@@ -51,34 +39,41 @@ if (description)
 
  script_name("A-A-S Application Access Server Multiple Vulnerabilities");
 
-
  script_tag(name:"qod_type", value:"remote_banner");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("aas_detect.nasl");
+ script_mandatory_keys("aas/detected");
  script_require_ports("Services/www", 6262);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34911");
+
+ script_tag(name: "summary", value: "According to its version number, the remote version of A-A-S
+Application Access Server is prone to multiple security issues including a cross-site request-forgery
+vulnerability, an insecure-default-password vulnerability and an information-disclosure vulnerability.
+
+Attackers can exploit these issues to run privileged commands on the affected computer and gain unauthorized
+administrative access to the affected application and the underlying system.
+
+These issues affect version 2.0.48; other versions may also be affected.");
+
+ script_xref(name: "URL", value: "http://www.securityfocus.com/bid/34911");
+
  exit(0);
 }
 
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:6262);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if(!get_port_state(port))exit(0);
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-if(!vers = get_kb_item(string("www/", port, "/aas")))exit(0);
-
-if(!isnull(vers) && vers >!< "unknown") {
-
-  if(version_is_equal(version: vers, test_version: "2.0.48")) {
-      security_message(port:port);
-      exit(0);
-  }  
-
+if (version_is_equal(version: version, test_version: "2.0.48")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+  security_message(port: port, data: report);
+  exit(0);
 }
 
 exit(0);

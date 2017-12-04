@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_os_detect_snmp.nasl 7896 2017-11-24 06:54:12Z asteins $
+# $Id: gb_greenbone_os_detect_snmp.nasl 7902 2017-11-24 11:02:42Z cfischer $
 #
 # Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112138");
-  script_version("$Revision: 7896 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 07:54:12 +0100 (Fri, 24 Nov 2017) $");
+  script_version("$Revision: 7902 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-24 12:02:42 +0100 (Fri, 24 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-23 11:04:05 +0100 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,8 +57,8 @@ if( ! sysdesc = get_snmp_sysdesc( port:port ) ) exit ( 0 );
 
 if ( "Greenbone Security Manager" >< sysdesc ) {
 
-# This OID should contain both the GSM type and GOS version.
-oid = snmp_get( port:port, oid:'1.3.6.1.2.1.1.5.0' );
+  # This OID should contain both the GSM type and GOS version.
+  oid = snmp_get( port:port, oid:"1.3.6.1.2.1.1.5.0" );
 
   set_kb_item( name:"greenbone/gos/detected", value:TRUE );
   set_kb_item( name:"greenbone/gos/snmp/detected", value:TRUE );
@@ -73,6 +73,9 @@ oid = snmp_get( port:port, oid:'1.3.6.1.2.1.1.5.0' );
   if( !isnull( type_nd_vers[2] ) ) {
     gos_ver = str_replace( string:type_nd_vers[2], find:"-", replace:".");
     set_kb_item( name:"greenbone/gos/snmp/" + port + "/version", value:gos_ver );
+    set_kb_item( name:"greenbone/gos/snmp/" + port + "/concluded", value:oid );
+    set_kb_item( name:"greenbone/gos/snmp/" + port + "/concludedOID", value:"1.3.6.1.2.1.1.5.0" );
+  } else {
     set_kb_item( name:"greenbone/gos/snmp/" + port + "/concluded", value:sysdesc );
   }
 }

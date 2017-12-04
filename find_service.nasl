@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service.nasl 6821 2017-07-31 13:16:41Z cfischer $
+# $Id: find_service.nasl 7922 2017-11-28 10:06:28Z cfischer $
 #
 # Wrapper for calling built-in NVT "find_service" which was previously
 # a binary ".nes".
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10330");
-  script_version("$Revision: 6821 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-31 15:16:41 +0200 (Mon, 31 Jul 2017) $");
+  script_version("$Revision: 7922 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-28 11:06:28 +0100 (Tue, 28 Nov 2017) $");
   script_tag(name:"creation_date", value:"2011-01-14 10:12:23 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Service detection");
   script_copyright("Written by Renaud Deraison <deraison@cvs.nessus.org>");
-  script_dependencies("dont_scan_printers.nasl", "dont_print_on_printers.nasl");
+  script_dependencies("dont_scan_printers.nasl", "dont_print_on_printers.nasl", "gb_dont_scan_fragile_device.nasl");
 
   # Keep these settings in sync with the nasl_builtin_find_service.c
   script_add_preference(name:"Number of connections done in parallel : ", value:"6", type:"entry");

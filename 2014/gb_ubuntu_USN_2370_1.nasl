@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2370_1.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for apt USN-2370-1
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841994");
-  script_version("$Revision: 6995 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-10-09 06:01:51 +0200 (Thu, 09 Oct 2014)");
   script_cve_id("CVE-2014-7206");
   script_tag(name:"cvss_base", value:"3.6");
@@ -45,7 +46,7 @@ should be prevented by the kernel link restrictions.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2370-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-October/002686.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2370-1/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

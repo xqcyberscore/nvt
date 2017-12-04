@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2048_2.nasl 7958 2017-12-01 06:47:47Z santu $
 #
 # Ubuntu Update for curl USN-2048-2
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841660);
-  script_version("$Revision: 6644 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:01:20 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7958 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-12-17 12:10:08 +0530 (Tue, 17 Dec 2013)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -62,7 +63,7 @@ information or alter encrypted communications.";
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2048-2");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2013-December/002337.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2048-2/");
   script_summary("Check for the Version of curl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

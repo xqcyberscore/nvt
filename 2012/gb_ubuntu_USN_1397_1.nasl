@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1397_1.nasl 7960 2017-12-01 06:58:16Z santu $
 #
 # Ubuntu Update for mysql-5.1 USN-1397-1
 #
@@ -51,10 +52,10 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-March/001627.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1397-1/");
   script_id(840944);
-  script_version("$Revision: 6643 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:00:30 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7960 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:58:16 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-03-16 10:51:25 +0530 (Fri, 16 Mar 2012)");
   script_cve_id("CVE-2007-5925", "CVE-2008-3963", "CVE-2008-4098", "CVE-2008-4456",
                 "CVE-2008-7247", "CVE-2009-2446", "CVE-2009-4019", "CVE-2009-4030",

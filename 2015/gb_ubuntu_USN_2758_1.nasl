@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842472");
-  script_version("$Revision: 6646 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:03:11 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7956 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:53:44 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-10-01 07:12:58 +0200 (Thu, 01 Oct 2015)");
   script_cve_id("CVE-2015-5589", "CVE-2015-5590", "CVE-2015-6831", "CVE-2015-6834",
                 "CVE-2015-6835", "CVE-2015-6832", "CVE-2015-6833", "CVE-2015-6836",
@@ -75,7 +75,7 @@ resulting in a denial of service. (CVE-2015-6837)");
   Ubuntu 12.04 LTS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "USN", value: "2758-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-September/003132.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2758-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

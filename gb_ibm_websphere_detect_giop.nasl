@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_detect_giop.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_ibm_websphere_detect_giop.nasl 7922 2017-11-28 10:06:28Z cfischer $
 #
 # IBM WebSphere Application Server Detection Detection (GIOP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105834");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7000 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+ script_version ("$Revision: 7922 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-28 11:06:28 +0100 (Tue, 28 Nov 2017) $");
  script_tag(name:"creation_date", value:"2016-07-29 15:04:09 +0200 (Fri, 29 Jul 2016)");
  script_name("IBM WebSphere Application Server Detection (GIOP)");
 
@@ -69,9 +69,9 @@ if( ! port ) port = 9100;
 
 if( ! get_port_state( port ) ) exit( 0 );
 
-# 9100 which might be a PJL port is printing
-# everything sent so exit for such a port here
-if( is_pjl_port( port:port ) ) exit( 0 );
+# 9100 which might be a PJL port which is printing
+# everything sent to it so exit for such a port here
+if( is_fragile_port( port:port ) ) exit( 0 );
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );

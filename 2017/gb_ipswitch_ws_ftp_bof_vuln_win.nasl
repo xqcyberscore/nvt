@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipswitch_ws_ftp_bof_vuln_win.nasl 7747 2017-11-14 06:11:31Z santu $
+# $Id: gb_ipswitch_ws_ftp_bof_vuln_win.nasl 7968 2017-12-01 08:26:28Z asteins $
 #
 # Ipswitch WS_FTP Professional Local Buffer Overflow Vulnerability 
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ipswitch:ws_ftp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812071");
-  script_version("$Revision: 7747 $");
+  script_version("$Revision: 7968 $");
   script_cve_id("CVE-2017-16513");
-  script_tag(name:"cvss_base", value:"6.6");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 07:11:31 +0100 (Tue, 14 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 09:26:28 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-09 14:14:47 +0530 (Thu, 09 Nov 2017)");
   script_name("Ipswitch WS_FTP Professional Local Buffer Overflow Vulnerability");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubnt_discovery_protocol_detect.nasl 7504 2017-10-19 10:02:05Z cfischer $
+# $Id: gb_ubnt_discovery_protocol_detect.nasl 7926 2017-11-29 06:54:31Z ckuersteiner $
 #
 # UBNT Discovery Protocol Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106716");
- script_version ("$Revision: 7504 $");
- script_tag(name: "last_modification", value: "$Date: 2017-10-19 12:02:05 +0200 (Thu, 19 Oct 2017) $");
+ script_version ("$Revision: 7926 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-11-29 07:54:31 +0100 (Wed, 29 Nov 2017) $");
  script_tag(name: "creation_date", value: "2017-04-03 09:45:47 +0700 (Mon, 03 Apr 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,6 +52,7 @@ this host.");
 }
 
 include("byte_func.inc");
+include("host_details.inc");
 include("misc_func.inc");
 
 port = 10001;
@@ -126,8 +127,11 @@ report = 'Ubiquiti Networks Discovery service is running on this port.\n\nThe fo
 
 if (ip)
   report += "IP Address:       " + ip + '\n';
-if (mac)
+if (mac) {
   report += "MAC Address:      " + mac + '\n';
+  register_host_detail(name: "MAC", value: mac, desc: "gb_ubnt_discovery_protocol_detect.nasl");
+  replace_kb_item(name: "Host/mac_address", value: mac);
+}
 if (max_index(alt_ip) > 0)
   foreach aip (alt_ip)
     report += "Alternate IP:     " + aip + '\n';

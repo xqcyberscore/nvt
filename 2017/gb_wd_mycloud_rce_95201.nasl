@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mycloud_rce_95201.nasl 4935 2017-01-04 10:03:48Z cfi $
+# $Id: gb_wd_mycloud_rce_95201.nasl 7942 2017-11-30 11:48:20Z cfischer $
 #
-# Western Digital MyCloud Products Multiple Remote Command Injection Vulnerabilities
+# WD MyCloud Products Multiple Remote Command Injection Vulnerabilities
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -29,14 +29,14 @@ CPE = 'cpe:/a:western_digital:mycloud_nas';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108035");
-  script_version("$Revision: 4935 $");
+  script_version("$Revision: 7942 $");
   script_cve_id("CVE-2016-10107", "CVE-2016-10108");
   script_bugtraq_id(95200, 95201);
-  script_tag(name:"last_modification", value:"$Date: 2017-01-04 11:03:48 +0100 (Wed, 04 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-30 12:48:20 +0100 (Thu, 30 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-01-04 10:00:00 +0100 (Wed, 04 Jan 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_name("Western Digital MyCloud Products Multiple Remote Command Injection Vulnerabilities");
+  script_name("WD MyCloud Products Multiple Remote Command Injection Vulnerabilities");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -74,9 +74,10 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port, service:"www" ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
@@ -87,17 +88,22 @@ cookie = "isAdmin=1; username=admin; local_login=1; fw_version=2.11.142";
 req = http_post_req( port:port, url:url, data:data,
                      accept_header:"application/xml, text/xml, */*; q=0.01",
                      add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded", "X-Requested-With", "XMLHttpRequest", "Cookie", cookie ) );
-res = http_keepalive_send_recv( port:port, data:req );
+res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( res =~ "HTTP/1\.. 200" && res =~ "uid=[0-9]+.*gid=[0-9]+" ) {
+if( res =~ "HTTP/1\.[01] 200" && res =~ "uid=[0-9]+.*gid=[0-9]+" ) {
 
   uid = eregmatch( pattern:"(uid=[0-9]+.*gid=[0-9]+[^ ]+)", string:res );
 
-  report = 'By requesting the URL "' + report_vuln_url( port:port, url:url, url_only:TRUE ) + '" with the "HTTP POST" body set to\n"' + 
-           data + '"\nit was possible to execute the "id" command.\n\nResult: ' + uid[1] + '\n';
+  info['"HTTP POST" body'] = data;
+  info['Cookie'] = cookie;
+  info['URL'] = report_vuln_url( port:port, url:url, url_only:TRUE );
 
-  expert_info = 'Request:\n'+ req + 'Response:\n' + res + '\n';
+  report  = 'By doing the following request:\n\n';
+  report += text_format_table( array:info ) + '\n';
+  report += 'it was possible to execute the "id" command.';
+  report += '\n\nResult: ' + uid[1];
 
+  expert_info = 'Request:\n'+ req + 'Response:\n' + res;
   security_message( port:port, data:report, expert_info:expert_info );
   exit( 0 );
 }

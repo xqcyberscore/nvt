@@ -1,5 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_723_1.nasl 6639 2017-07-10 10:52:06Z cfischer $
+# $Id: ubuntu_723_1.nasl 7969 2017-12-01 09:23:16Z santu $
+# $Id: ubuntu_723_1.nasl 7969 2017-12-01 09:23:16Z santu $
 # Description: Auto-generated from advisory USN-723-1 (git-core)
 #
 # Authors:
@@ -73,8 +74,8 @@ announced via advisory USN-723-1.";
 if(description)
 {
  script_id(64168);
- script_version("$Revision: 6639 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:52:06 +0200 (Mon, 10 Jul 2017) $");
+ script_version("$Revision: 7969 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-06-05 18:04:08 +0200 (Fri, 05 Jun 2009)");
  script_cve_id("CVE-2008-3546", "CVE-2008-5516", "CVE-2008-5517", "CVE-2008-5916", "CVE-2008-3974", "CVE-2009-0318", "CVE-2008-5984", "CVE-2009-0352", "CVE-2009-0353", "CVE-2009-0354", "CVE-2009-0355", "CVE-2009-0356", "CVE-2009-0357", "CVE-2009-0358", "CVE-2009-0316", "CVE-2008-5557", "CVE-2008-5658", "CVE-2008-5624", "CVE-2008-5625", "CVE-2008-5985", "CVE-2009-0544", "CVE-2008-3964", "CVE-2008-5907", "CVE-2009-0040", "CVE-2008-1232", "CVE-2008-1947", "CVE-2008-2370", "CVE-2009-0520", "CVE-2008-4810", "CVE-2008-3663", "CVE-2007-5624", "CVE-2008-1360", "CVE-2007-5803", "CVE-2009-0187", "CVE-2007-3698", "CVE-2007-3922", "CVE-2008-5263", "CVE-2009-0615", "CVE-2009-0616", "CVE-2009-0617", "CVE-2009-0618", "CVE-2009-0620", "CVE-2009-0621", "CVE-2009-0622", "CVE-2009-0623", "CVE-2009-0624", "CVE-2009-0625", "CVE-2009-0490", "CVE-2009-0614", "CVE-2009-0542", "CVE-2009-0543", "CVE-2009-0478");
  script_tag(name:"cvss_base", value:"10.0");
@@ -84,6 +85,7 @@ if(description)
 
 
  script_category(ACT_GATHER_INFO);
+ script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-723-1/");
 
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("Ubuntu Local Security Checks");

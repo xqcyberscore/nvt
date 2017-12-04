@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842704");
-  script_version("$Revision: 6647 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:04:05 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7955 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:40:43 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-04-11 12:47:23 +0530 (Mon, 11 Apr 2016)");
   script_cve_id("CVE-2014-9769", "CVE-2015-2325", "CVE-2015-2326", "CVE-2015-2327", "CVE-2015-2328", "CVE-2015-3210", "CVE-2015-5073", "CVE-2015-8380", "CVE-2015-8381", "CVE-2015-8382", "CVE-2015-8383", "CVE-2015-8384", "CVE-2015-8385", "CVE-2015-8386", "CVE-2015-8387", "CVE-2015-8388", "CVE-2015-8389", "CVE-2015-8390", "CVE-2015-8391", "CVE-2015-8392", "CVE-2015-8393", "CVE-2015-8394", "CVE-2015-8395", "CVE-2016-1283", "CVE-2016-3191");
   script_tag(name:"cvss_base", value:"9.0");
@@ -46,7 +46,7 @@ arbitrary code.");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "USN", value: "2943-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-March/003370.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2943-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

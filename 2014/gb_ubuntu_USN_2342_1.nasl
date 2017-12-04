@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2342_1.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for qemu USN-2342-1
 #
@@ -27,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841962");
-  script_version("$Revision: 6645 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-09-09 05:55:17 +0200 (Tue, 09 Sep 2014)");
   script_cve_id("CVE-2013-4148", "CVE-2013-4149", "CVE-2013-4150", "CVE-2013-4151",
                 "CVE-2013-4526", "CVE-2013-4527", "CVE-2013-4529", "CVE-2013-4530",
@@ -69,7 +70,7 @@ resulting in a denial of service. (CVE-2014-3471)");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name: "USN", value: "2342-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-September/002655.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2342-1/");
   script_summary("Check for the Version of qemu");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

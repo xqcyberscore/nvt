@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1033_1.nasl 7964 2017-12-01 07:32:11Z santu $
 #
 # Ubuntu Update for eucalyptus vulnerability USN-1033-1
 #
@@ -36,10 +37,10 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2010-December/001217.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1033-1/");
   script_id(840556);
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_version("$Revision: 7964 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:32:11 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-01-04 09:11:34 +0100 (Tue, 04 Jan 2011)");
   script_xref(name: "USN", value: "1033-1");
   script_tag(name:"cvss_base", value:"7.5");

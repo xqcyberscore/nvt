@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_epp_sanbox_escape_sec_bypass_vuln.nasl 7631 2017-11-02 13:36:10Z jschulte $
+# $Id: gb_avast_epp_sanbox_escape_sec_bypass_vuln.nasl 7915 2017-11-27 10:32:14Z teissa $
 #
 # Avast Endpoint Protection Plus Sandbox Escape Security Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:avast:endpoint_protection_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810214");
-  script_version("$Revision: 7631 $");
+  script_version("$Revision: 7915 $");
   script_cve_id("CVE-2016-4025");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-02 14:36:10 +0100 (Thu, 02 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-27 11:32:14 +0100 (Mon, 27 Nov 2017) $");
   script_tag(name:"creation_date", value:"2016-11-24 14:26:59 +0530 (Thu, 24 Nov 2016)");
   script_name("Avast Endpoint Protection Plus Sandbox Escape Security Bypass Vulnerability");
 
@@ -55,11 +55,9 @@ if(description)
   script_tag(name:"affected", value:"Avast Endpoint Protection Plus version 8.x
   through 8.0.1609");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 2nd November, 2017. Information regarding this issue will be updated
-  once the solution details are available.
-  For updates refer to https://www.avast.com");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"registry");
 
@@ -87,7 +85,7 @@ if(avastVer =~ "^(8)")
 {
   if(version_in_range(version:avastVer, test_version:"8.0", test_version2:"8.0.1609"))
   {
-    report = report_fixed_ver(installed_version:avastVer, fixed_version:"NoneAvailable");
+    report = report_fixed_ver(installed_version:avastVer, fixed_version:"WillNotFix");
     security_message(data:report);
     exit(0);
   }

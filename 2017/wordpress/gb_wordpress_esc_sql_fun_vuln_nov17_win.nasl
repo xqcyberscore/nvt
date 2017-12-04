@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_esc_sql_fun_vuln_nov17_win.nasl 7640 2017-11-03 07:40:38Z asteins $
+# $Id: gb_wordpress_esc_sql_fun_vuln_nov17_win.nasl 7912 2017-11-27 06:00:54Z teissa $
 #
 # WordPress 'esc_sql' Function SQL Injection Vulnerability - Nov 2017 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811887");
-  script_version("$Revision: 7640 $");
+  script_version("$Revision: 7912 $");
   script_cve_id("CVE-2017-16510");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 08:40:38 +0100 (Fri, 03 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-27 07:00:54 +0100 (Mon, 27 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-02 10:53:57 +0530 (Thu, 02 Nov 2017)");
   script_name("WordPress 'esc_sql' Function SQL Injection Vulnerability - Nov 2017 (Windows)");
 

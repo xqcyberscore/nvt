@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: toolcheck.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: toolcheck.nasl 7975 2017-12-04 06:44:10Z cfischer $
 # Description: Initializing routine for checking presence of helper tools
 #
 # Authors:
@@ -33,8 +33,8 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.810000");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version("$Revision: 7975 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-04 07:44:10 +0100 (Mon, 04 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-08-17 09:05:44 +0200 (Mon, 17 Aug 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Availability of scanner helper tools");
@@ -248,6 +248,7 @@ Effect: Port scanning and service detection based on nmap is not available.
 # TODO: Migh find a  pd executable from "pure data", disambiguate
 if ( find_in_path("pd") ){
   set_kb_item(name: "Tools/Present/pd", value: TRUE);
+  set_kb_item(name: "Tools/Present/pd_or_ncrack", value: TRUE);
   set_kb_item(name: "Tools/Missing/pd", value: FALSE);
 } else {
   set_kb_item(name: "Tools/Missing/pd", value: TRUE);
@@ -266,6 +267,7 @@ Effect: The phrasendrescher wrapper will not deliver results.
 #
 if ( find_in_path("ncrack") ){
   set_kb_item(name: "Tools/Present/ncrack", value: TRUE);
+  set_kb_item(name: "Tools/Present/pd_or_ncrack", value: TRUE);
   set_kb_item(name: "Tools/Missing/ncrack", value: FALSE);
 } else {
   set_kb_item(name: "Tools/Missing/ncrack", value: TRUE);

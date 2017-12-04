@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2386_1.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for openjdk-6 USN-2386-1
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842010");
-  script_version("$Revision: 6663 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-10-17 05:58:54 +0200 (Fri, 17 Oct 2014)");
   script_cve_id("CVE-2014-6457", "CVE-2014-6502", "CVE-2014-6512", "CVE-2014-6519",
                 "CVE-2014-6558", "CVE-2014-6504", "CVE-2014-6511", "CVE-2014-6517",
@@ -63,7 +64,7 @@ the network. (CVE-2014-6506, CVE-2014-6513)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2386-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-October/002703.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2386-1/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

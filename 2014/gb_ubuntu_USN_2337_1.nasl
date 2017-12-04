@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2337_1.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for linux USN-2337-1
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841956");
-  script_version("$Revision: 6645 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-09-03 05:56:38 +0200 (Wed, 03 Sep 2014)");
   script_cve_id("CVE-2014-0155", "CVE-2014-0181", "CVE-2014-0206", "CVE-2014-4014",
                 "CVE-2014-4027", "CVE-2014-4171", "CVE-2014-4508", "CVE-2014-4652",
@@ -107,7 +108,7 @@ An integer overflow flaw was discovered  ...
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2337-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-September/002646.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2337-1/");
   script_summary("Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

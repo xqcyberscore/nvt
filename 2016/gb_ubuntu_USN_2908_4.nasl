@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842666");
-  script_version("$Revision: 6647 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:04:05 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7955 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:40:43 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-02-27 06:18:02 +0100 (Sat, 27 Feb 2016)");
   script_cve_id("CVE-2016-1576", "CVE-2016-1575", "CVE-2013-4312", "CVE-2015-8785", "CVE-2016-2069");
   script_tag(name:"cvss_base", value:"7.2");
@@ -72,7 +72,7 @@ if(description)
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "USN", value: "2908-4");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-February/003327.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2908-4/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

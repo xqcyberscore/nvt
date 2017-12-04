@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2033_1.nasl 7958 2017-12-01 06:47:47Z santu $
 #
 # Ubuntu Update for openjdk-6 USN-2033-1
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841636);
-  script_version("$Revision: 6644 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:01:20 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7958 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-11-26 11:26:48 +0530 (Tue, 26 Nov 2013)");
   script_cve_id("CVE-2013-3829", "CVE-2013-5783", "CVE-2013-5804", "CVE-2013-4002",
                 "CVE-2013-5803", "CVE-2013-5823", "CVE-2013-5825", "CVE-2013-5772",
@@ -78,7 +79,7 @@ CVE-2013-5814, CVE-2013-5817, CVE-2013-5830, CVE-2013-5842, CVE-2013-5850)";
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2033-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2013-November/002321.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2033-1/");
   script_summary("Check for the Version of openjdk-6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

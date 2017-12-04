@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fins_udp_detect.nasl 7899 2017-11-24 09:30:33Z ckuersteiner $
+# $Id: gb_fins_udp_detect.nasl 7922 2017-11-28 10:06:28Z cfischer $
 #
 # Factory Interface Network Service (FINS) Detection (UDP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140538");
- script_version ("$Revision: 7899 $");
- script_tag(name: "last_modification", value: "$Date: 2017-11-24 10:30:33 +0100 (Fri, 24 Nov 2017) $");
+ script_version ("$Revision: 7922 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-11-28 11:06:28 +0100 (Tue, 28 Nov 2017) $");
  script_tag(name: "creation_date", value: "2017-11-24 15:03:31 +0700 (Fri, 24 Nov 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -94,6 +94,6 @@ report = "A FINS service is running at this port.\n\nThe following information w
          "Controller Model:      " + model + "\n" +
          "Controller Version:    " + version + "\n";
 
-log_message(port: port, data: report);
+log_message(port: port, data: report, proto: "udp");
 
 exit(0);

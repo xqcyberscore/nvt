@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2134_1.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for linux-ti-omap4 USN-2134-1
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841738);
-  script_version("$Revision: 6645 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-03-12 09:31:51 +0530 (Wed, 12 Mar 2014)");
   script_cve_id("CVE-2013-4579", "CVE-2013-6368", "CVE-2014-1438", "CVE-2014-1446",
                 "CVE-2014-1874");
@@ -74,7 +75,7 @@ mode) could exploit this flaw to cause a denial of service (kernel crash).
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2134-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-March/002428.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2134-1/");
   script_summary("Check for the Version of linux-ti-omap4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

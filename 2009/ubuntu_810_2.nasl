@@ -1,5 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_810_2.nasl 6639 2017-07-10 10:52:06Z cfischer $
+# $Id: ubuntu_810_2.nasl 7969 2017-12-01 09:23:16Z santu $
+# $Id: ubuntu_810_2.nasl 7969 2017-12-01 09:23:16Z santu $
 # Description: Auto-generated from advisory USN-810-2 (fixed)
 #
 # Authors:
@@ -53,8 +54,8 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=USN-81
 if(description)
 {
  script_id(64574);
- script_version("$Revision: 6639 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:52:06 +0200 (Mon, 10 Jul 2017) $");
+ script_version("$Revision: 7969 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-08-17 16:54:45 +0200 (Mon, 17 Aug 2009)");
  script_cve_id("CVE-2009-2404", "CVE-2009-2408", "CVE-2009-2409");
  script_tag(name:"cvss_base", value:"9.3");
@@ -64,6 +65,7 @@ if(description)
 
 
  script_category(ACT_GATHER_INFO);
+ script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-810-2/");
 
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("Ubuntu Local Security Checks");

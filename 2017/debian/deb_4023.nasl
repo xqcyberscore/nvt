@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4023.nasl 7695 2017-11-08 10:01:29Z teissa $
+# $Id: deb_4023.nasl 7912 2017-11-27 06:00:54Z teissa $
 #
 # Auto-generated from advisory DSA 4023-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704023");
-  script_version("$Revision: 7695 $");
+  script_version("$Revision: 7912 $");
   script_cve_id("CVE-2017-15566");
   script_name("Debian Security Advisory DSA 4023-1 (slurm-llnl - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 11:01:29 +0100 (Wed, 08 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-27 07:00:54 +0100 (Mon, 27 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-11-07 00:00:00 +0100 (Tue, 07 Nov 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

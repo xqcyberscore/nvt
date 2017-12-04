@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printer_detect.nasl 7890 2017-11-23 14:45:52Z asteins $
+# $Id: gb_hp_printer_detect.nasl 7967 2017-12-01 08:17:56Z cfischer $
 #
 # HP Printer Detection
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103675");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7890 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 15:45:52 +0100 (Thu, 23 Nov 2017) $");
+  script_version("$Revision: 7967 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 09:17:56 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-03-07 14:31:24 +0100 (Thu, 07 Mar 2013)");
   script_name("HP Printer Detection");
   script_category(ACT_GATHER_INFO);
@@ -64,12 +64,6 @@ foreach url (keys(urls)) {
 
   buf = http_get_cache(item:url, port:port);
 
-  if("301 Moved Permanently" >< buf) {
-    if(port != 443) new_port = 443;
-    else new_port = 80;
-    buf = http_get_cache(item:url, port:new_port);
-  }
-
   if(match = eregmatch(pattern:urls[url], string:buf, icase:TRUE)) {
 
     if(isnull(match[1]))continue;
@@ -87,7 +81,7 @@ foreach url (keys(urls)) {
 
     if(!model)exit(0);
 
-    chomp(model);
+    model = chomp(model);
 
     if( "Server: HP HTTP Server" >< buf )  {
       version = eregmatch( pattern:'Server: HP HTTP Server.*\\{([^},]+).*\\}[\r\n]+', string:buf );
@@ -104,13 +98,19 @@ foreach url (keys(urls)) {
     set_kb_item(name:"hp_printer/port", value: port);
     set_kb_item(name:"hp_model", value:model);
 
-    if( fw_ver )  set_kb_item( name:"hp_fw_ver", value:fw_ver );
+    if( fw_ver ) set_kb_item( name:"hp_fw_ver", value:fw_ver );
 
     cpe_model = tolower(model);
 
     cpe = 'cpe:/h:hp:' + cpe_model;
-    cpe = str_replace(string:cpe,find:" ", replace:":", count:1);
-    cpe = str_replace(string:cpe,find:" ", replace:"_");
+    # some special handling for Color LaserJet M651
+    if( "color laserjet" >< cpe_model ) {
+      cpe = str_replace(string:cpe, find:"color laserjet ", replace:"color laserjet:", count:1);
+      cpe = str_replace(string:cpe, find:" ", replace:"_");
+    } else {
+      cpe = str_replace(string:cpe, find:" ", replace:":", count:1);
+      cpe = str_replace(string:cpe, find:" ", replace:"_");
+    }
 
     register_product(cpe:cpe, location:port + '/tcp', port:port);
 

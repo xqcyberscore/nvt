@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_3348_1.nasl 7966 2017-12-01 07:42:50Z santu $
 #
 # Ubuntu Update for samba USN-3348-1
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843236");
-  script_version("$Revision: 6733 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 16:39:43 +0200 (Fri, 14 Jul 2017) $");
+  script_version("$Revision: 7966 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:42:50 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-07-14 15:54:50 +0530 (Fri, 14 Jul 2017)");
   script_cve_id("CVE-2017-9461");
   script_tag(name:"cvss_base", value:"7.8");
@@ -50,7 +51,7 @@ if(description)
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "USN", value: "3348-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2017-July/003933.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3348-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_453_2.nasl 7969 2017-12-01 09:23:16Z santu $
 #
 # Ubuntu Update for rdesktop regression USN-453-2
 #
@@ -37,13 +38,13 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2007-April/000522.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-453-2/");
   script_id(840040);
   script_cve_id("CVE-2007-1667");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 6640 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:57:13 +0200 (Mon, 10 Jul 2017) $");
+ script_version("$Revision: 7969 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-23 10:55:18 +0100 (Mon, 23 Mar 2009)");
   script_xref(name: "USN", value: "453-2");
   script_name( "Ubuntu Update for rdesktop regression USN-453-2");

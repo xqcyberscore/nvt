@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_vuln_lin_1114.nasl 7766 2017-11-15 07:09:35Z cfischer $
+# $Id: gb_cacti_mult_vuln_lin_1114.nasl 7968 2017-12-01 08:26:28Z asteins $
 #
 # Cacti 1.1.27 multiple vulnerabilities (Linux)
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113050");
-  script_version("$Revision: 7766 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 08:09:35 +0100 (Wed, 15 Nov 2017) $");
+  script_version("$Revision: 7968 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 09:26:28 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-14 12:30:30 +0100 (Tue, 14 Nov 2017)");
-  script_tag(name:"cvss_base", value:"4.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

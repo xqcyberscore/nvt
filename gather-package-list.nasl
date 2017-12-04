@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 7888 2017-11-23 14:20:55Z asteins $
+# $Id: gather-package-list.nasl 7911 2017-11-27 04:54:41Z santu $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 7888 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 15:20:55 +0100 (Thu, 23 Nov 2017) $");
+  script_version("$Revision: 7911 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-27 05:54:41 +0100 (Mon, 27 Nov 2017) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -188,6 +188,7 @@ OS_CPE = make_array(
     "CentOS2", "cpe:/o:centos:centos:2",
 
     # Fedora / Fedora Core
+    "FC27", "cpe:/o:fedoraproject:fedora:27",
     "FC26", "cpe:/o:fedoraproject:fedora:26",
     "FC25", "cpe:/o:fedoraproject:fedora:25",
     "FC24", "cpe:/o:fedoraproject:fedora:24",
@@ -450,8 +451,11 @@ if( "Welcome to the Greenbone OS" >< uname ) {
   set_kb_item( name:"greenbone/gos", value:TRUE );
 }
 
+# nb: Don't save the text based login menu of GOS in here
+if( "Welcome to the Greenbone OS" >!< uname ) {
 set_kb_item( name:"ssh/login/uname", value:uname );
 set_kb_item( name:"Host/uname", value:uname );
+}
 
 if( "linux" >< tolower( uname ) ) {
   un = egrep( pattern:'(Linux[^\r\n]+)', string:uname );
@@ -1506,6 +1510,14 @@ if( "Fedora release 26" >< rls && "(Twenty Six)" >< rls ) {
   set_kb_item( name:"ssh/login/rpms", value:";" + buf );
   log_message( port:port, data:"We are able to login and detect that you are running " + rls );
   register_detected_os( os:rls, oskey:"FC26" );
+  exit( 0 );
+}
+if( "Fedora release 27" >< rls && "(Twenty Seven)" >< rls ) {
+  replace_kb_item( name:"ssh/login/fedora", value:TRUE );
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
+  set_kb_item( name:"ssh/login/rpms", value:";" + buf );
+  log_message( port:port, data:"We are able to login and detect that you are running " + rls );
+  register_detected_os( os:rls, oskey:"FC27" );
   exit( 0 );
 }
 

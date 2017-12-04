@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1891_1.nasl 7958 2017-12-01 06:47:47Z santu $
 #
 # Ubuntu Update for thunderbird USN-1891-1
 #
@@ -75,8 +76,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(841489);
-  script_version("$Revision: 6644 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:01:20 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7958 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-06-27 10:01:25 +0530 (Thu, 27 Jun 2013)");
   script_cve_id("CVE-2013-1682", "CVE-2013-1684", "CVE-2013-1685", "CVE-2013-1686",
                 "CVE-2013-1687", "CVE-2013-1690", "CVE-2013-1692", "CVE-2013-1693",
@@ -86,7 +87,7 @@ if(description)
   script_name("Ubuntu Update for thunderbird USN-1891-1");
 
   script_xref(name: "USN", value: "1891-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2013-June/002175.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1891-1/");
   script_summary("Check for the Version of thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

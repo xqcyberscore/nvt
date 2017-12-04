@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powerdns_eol.nasl 7481 2017-10-18 12:29:15Z jschulte $
+# $Id: gb_powerdns_eol.nasl 7976 2017-12-04 07:09:00Z cfischer $
 #
 # PowerDNS End of Life Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113017");
-  script_version("$Revision: 7481 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-18 14:29:15 +0200 (Wed, 18 Oct 2017) $");
+  script_version("$Revision: 7976 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-04 08:09:00 +0100 (Mon, 04 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-10-16 13:11:12 +0200 (Mon, 16 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,6 +45,7 @@ if( description )
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("pdns_version.nasl");
+  script_mandatory_keys("powerdns/authoritative_server/installed");
 
   tag_summary = "The PowerDNS version on the remote host has reached the end of life and should not be used anymore.";
 

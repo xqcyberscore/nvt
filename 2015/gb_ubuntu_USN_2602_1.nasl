@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842224");
-  script_version("$Revision: 6646 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:03:11 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7956 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:53:44 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-06-09 11:08:39 +0200 (Tue, 09 Jun 2015)");
   script_cve_id("CVE-2015-2708", "CVE-2015-2709", "CVE-2015-2710", "CVE-2015-2711",
                 "CVE-2015-2712", "CVE-2015-2713", "CVE-2015-2715", "CVE-2015-2716",
@@ -92,7 +92,7 @@ arbitrary code with the privileges of the us ...
   Ubuntu 12.04 LTS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "USN", value: "2602-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-May/002952.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2602-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

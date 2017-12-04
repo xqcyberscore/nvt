@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1358_2.nasl 7960 2017-12-01 06:58:16Z santu $
 #
 # Ubuntu Update for php5 USN-1358-2
 #
@@ -86,10 +87,10 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-February/001585.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1358-2/");
   script_id(840895);
-  script_version("$Revision: 6643 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:00:30 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7960 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:58:16 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-02-21 18:59:05 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2012-0831", "CVE-2011-4885", "CVE-2012-0830", "CVE-2011-4153",
                 "CVE-2012-0057", "CVE-2012-0788", "CVE-2011-0441");

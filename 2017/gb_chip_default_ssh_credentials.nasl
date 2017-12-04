@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_chip_default_ssh_credentials.nasl 7806 2017-11-17 09:22:46Z cfischer $
+# $Id: gb_chip_default_ssh_credentials.nasl 7953 2017-11-30 15:08:11Z cfischer $
 #
 # C.H.I.P. Device Default SSH Login
 #
@@ -28,15 +28,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108164");
-  script_version("$Revision: 7806 $");
+  script_version("$Revision: 7953 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 10:22:46 +0100 (Fri, 17 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-30 16:08:11 +0100 (Thu, 30 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-05-18 13:24:16 +0200 (Thu, 18 May 2017)");
   script_name("C.H.I.P. Device Default SSH Login");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
-  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/ssh", 22);
 
@@ -50,7 +50,7 @@ if(description)
 
   script_tag(name:"solution", value:"Change the password.");
 
-  script_tag(name:"solution_type", value: "Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"exploit");
 
   exit(0);

@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1985_1.nasl 7958 2017-12-01 06:47:47Z santu $
 #
 # Ubuntu Update for python3.3 USN-1985-1
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841576);
-  script_version("$Revision: 6644 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:01:20 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7958 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-10-03 10:20:45 +0530 (Thu, 03 Oct 2013)");
   script_cve_id("CVE-2013-2099", "CVE-2013-4238");
   script_tag(name:"cvss_base", value:"4.3");
@@ -58,7 +59,7 @@ information or alter encrypted communications. (CVE-2013-4238)";
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "1985-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2013-October/002273.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1985-1/");
   script_summary("Check for the Version of python3.3");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

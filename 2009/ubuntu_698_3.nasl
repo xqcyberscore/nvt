@@ -1,5 +1,6 @@
 # OpenVAS Vulnerability Test
-# $Id: ubuntu_698_3.nasl 6639 2017-07-10 10:52:06Z cfischer $
+# $Id: ubuntu_698_3.nasl 7969 2017-12-01 09:23:16Z santu $
+# $Id: ubuntu_698_3.nasl 7969 2017-12-01 09:23:16Z santu $
 # Description: Auto-generated from advisory USN-698-3 (nagios2)
 #
 # Authors:
@@ -57,8 +58,8 @@ announced via advisory USN-698-3.";
 if(description)
 {
  script_id(64164);
- script_version("$Revision: 6639 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:52:06 +0200 (Mon, 10 Jul 2017) $");
+ script_version("$Revision: 7969 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-06-05 18:04:08 +0200 (Fri, 05 Jun 2009)");
  script_cve_id("CVE-2008-5027", "CVE-2008-5028", "CVE-2007-2739", "CVE-2008-5033", "CVE-2008-4933", "CVE-2008-5025", "CVE-2007-2865", "CVE-2007-5728", "CVE-2008-5587", "CVE-2008-2383", "CVE-2008-3443", "CVE-2008-5029", "CVE-2009-0022", "CVE-2006-7236", "CVE-2008-2382");
  script_tag(name:"cvss_base", value:"9.3");
@@ -68,6 +69,7 @@ if(description)
 
 
  script_category(ACT_GATHER_INFO);
+ script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-698-3/");
 
  script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
  script_family("Ubuntu Local Security Checks");

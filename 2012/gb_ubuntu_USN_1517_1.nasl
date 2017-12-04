@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1517_1.nasl 7960 2017-12-01 06:58:16Z santu $
 #
 # Ubuntu Update for mono USN-1517-1
 #
@@ -46,10 +47,10 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-July/001770.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1517-1/");
   script_id(841093);
-  script_version("$Revision: 6643 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:00:30 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7960 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:58:16 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-07-26 11:10:18 +0530 (Thu, 26 Jul 2012)");
   script_cve_id("CVE-2012-3382", "CVE-2010-1459");
   script_tag(name:"cvss_base", value:"4.3");

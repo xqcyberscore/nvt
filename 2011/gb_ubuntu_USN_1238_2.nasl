@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1238_2.nasl 7964 2017-12-01 07:32:11Z santu $
 #
 # Ubuntu Update for puppet USN-1238-2
 #
@@ -47,13 +48,13 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2011-October/001466.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1238-2/");
   script_id(840784);
   script_cve_id("CVE-2011-3872");
  script_tag(name:"cvss_base", value:"2.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+ script_version("$Revision: 7964 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:32:11 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-10-31 13:45:00 +0100 (Mon, 31 Oct 2011)");
   script_xref(name: "USN", value: "1238-2");
   script_name("Ubuntu Update for puppet USN-1238-2");

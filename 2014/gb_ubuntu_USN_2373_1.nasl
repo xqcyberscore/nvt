@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2373_1.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for thunderbird USN-2373-1
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842008");
-  script_version("$Revision: 6769 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-10-16 06:00:32 +0200 (Thu, 16 Oct 2014)");
   script_cve_id("CVE-2014-1574", "CVE-2014-1576", "CVE-2014-1577", "CVE-2014-1578",
                 "CVE-2014-1581", "CVE-2014-1585", "CVE-2014-1586");
@@ -82,7 +83,7 @@ user being aware. (CVE-2014-1585, CVE-2014-1586)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2373-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-October/002700.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2373-1/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

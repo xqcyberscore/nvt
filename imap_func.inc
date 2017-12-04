@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: imap_func.inc 7735 2017-11-10 13:16:05Z cfischer $
+# $Id: imap_func.inc 7922 2017-11-28 10:06:28Z cfischer $
 #
 # Support methods for IMAP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7735 $
+# $Revision: 7922 $
 #
 ###############################################################################
 
@@ -80,9 +80,9 @@ function get_imap_port( default ) {
   port = get_kb_item( "Services/imap" );
   if( port ) default = port;
 
-  # PJL ports printing everything sent to them
-  # so exit for such a port here
-  if( imap_is_pjl_port( port:default ) ) exit( 0 );
+  # Includes e.g. PJL ports which are printing everything
+  # sent to them so exit for such a port here
+  if( imap_is_fragile_port( port:default ) ) exit( 0 );
 
   p = get_kb_item( "imap/" + default + "/broken" );
   if( p ) exit( 0 );
@@ -93,20 +93,20 @@ function get_imap_port( default ) {
 }
 
 # Duplicated from misc_func.inc
-function imap_is_pjl_port( port ) {
+function imap_is_fragile_port( port ) {
 
-  local_var port, pjl_ports, pjl_port;
+  local_var port, fragile_ports, fragile_port;
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#imap_is_pjl_port" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#imap_is_fragile_port" );
     return;
   }
 
-  pjl_ports = get_kb_list( 'Services/PJL' );
-  if( ! pjl_ports ) return;
+  fragile_ports = get_kb_list( "Services/fragile_port" );
+  if( ! fragile_ports ) return;
 
-  foreach pjl_port( pjl_ports ) {
-    if( port == pjl_port ) return TRUE;
+  foreach fragile_port( fragile_ports ) {
+    if( port == fragile_port ) return TRUE;
   }
 
   return;

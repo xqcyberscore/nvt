@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_459_2.nasl 7969 2017-12-01 09:23:16Z santu $
 #
 # Ubuntu Update for pptpd vulnerabilities USN-459-2
 #
@@ -44,13 +45,13 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2007-May/000532.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-459-2/");
   script_id(840143);
   script_cve_id("CVE-2007-0244");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 6640 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:57:13 +0200 (Mon, 10 Jul 2017) $");
+ script_version("$Revision: 7969 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-23 10:55:18 +0100 (Mon, 23 Mar 2009)");
   script_xref(name: "USN", value: "459-2");
   script_name( "Ubuntu Update for pptpd vulnerabilities USN-459-2");

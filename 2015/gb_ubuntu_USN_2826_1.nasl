@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842549");
-  script_version("$Revision: 6646 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:03:11 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7956 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 06:53:44 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-12-04 06:13:21 +0100 (Fri, 04 Dec 2015)");
   script_cve_id("CVE-2015-5283", "CVE-2015-7872");
   script_tag(name:"cvss_base", value:"4.7");
@@ -49,7 +49,7 @@ attacker could use this to cause a denial of service (system crash).
   script_tag(name: "affected", value: "linux-lts-trusty on Ubuntu 12.04 LTS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "USN", value: "2826-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-December/003206.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2826-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1928_1.nasl 7958 2017-12-01 06:47:47Z santu $
 #
 # Ubuntu Update for puppet USN-1928-1
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(841529);
-  script_version("$Revision: 6644 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:01:20 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7958 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-08-16 09:04:19 +0530 (Fri, 16 Aug 2013)");
   script_cve_id("CVE-2013-4761", "CVE-2013-4956");
   script_tag(name:"cvss_base", value:"5.1");
@@ -58,7 +59,7 @@ existed when they were built, possibly exposing them to a local attacker.
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "1928-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2013-August/002216.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1928-1/");
   script_summary("Check for the Version of puppet");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

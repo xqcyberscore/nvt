@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2405_1.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for cinder USN-2405-1
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842033");
-  script_version("$Revision: 6692 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-11-12 06:24:41 +0100 (Wed, 12 Nov 2014)");
   script_cve_id("CVE-2014-3641", "CVE-2014-7230");
   script_tag(name:"cvss_base", value:"4.0");
@@ -53,7 +54,7 @@ access to Cinder log files could obtain access to sensitive information.
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2405-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-November/002723.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2405-1/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

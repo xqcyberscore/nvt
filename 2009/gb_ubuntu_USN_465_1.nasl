@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_465_1.nasl 7969 2017-12-01 09:23:16Z santu $
 #
 # Ubuntu Update for pulseaudio vulnerability USN-465-1
 #
@@ -37,10 +38,10 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2007-May/000537.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-465-1/");
   script_id(840160);
-  script_version("$Revision: 6640 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 12:57:13 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7969 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 10:23:16 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-23 10:55:18 +0100 (Mon, 23 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");

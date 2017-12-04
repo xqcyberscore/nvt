@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_3347_1.nasl 7966 2017-12-01 07:42:50Z santu $
 #
 # Ubuntu Update for libgcrypt20 USN-3347-1
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843235");
-  script_version("$Revision: 6725 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 12:23:29 +0200 (Fri, 14 Jul 2017) $");
+  script_version("$Revision: 7966 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:42:50 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-07-14 15:55:04 +0530 (Fri, 14 Jul 2017)");
   script_cve_id("CVE-2017-7526", "CVE-2017-9526");
   script_tag(name:"cvss_base", value:"10.0");
@@ -52,7 +53,7 @@ if(description)
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "USN", value: "3347-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2017-July/003931.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3347-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

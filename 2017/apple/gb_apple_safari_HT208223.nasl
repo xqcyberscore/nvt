@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_HT208223.nasl 7628 2017-11-02 12:00:39Z santu $
+# $Id: gb_apple_safari_HT208223.nasl 7968 2017-12-01 08:26:28Z asteins $
 #
 # Apple Safari Security Updates( HT208223 )
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811956");
-  script_version("$Revision: 7628 $");
+  script_version("$Revision: 7968 $");
   script_cve_id("CVE-2017-13790", "CVE-2017-13789", "CVE-2017-13784", "CVE-2017-13785", 
 		"CVE-2017-13783", "CVE-2017-13788", "CVE-2017-13795", "CVE-2017-13802", 
 		"CVE-2017-13792", "CVE-2017-13791", "CVE-2017-13798", "CVE-2017-13796", 
 		"CVE-2017-13793", "CVE-2017-13794", "CVE-2017-13803" );
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-02 13:00:39 +0100 (Thu, 02 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 09:26:28 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-02 17:19:54 +0530 (Thu, 02 Nov 2017)");
   script_name("Apple Safari Security Updates( HT208223 )");
 

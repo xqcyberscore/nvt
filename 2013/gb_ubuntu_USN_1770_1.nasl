@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1770_1.nasl 7958 2017-12-01 06:47:47Z santu $
 #
 # Ubuntu Update for perl USN-1770-1
 #
@@ -43,10 +44,10 @@ if(description)
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "insight" , value : tag_insight);
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2013-March/002047.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1770-1/");
   script_id(841369);
-  script_version("$Revision: 6644 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:01:20 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7958 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-03-22 10:41:36 +0530 (Fri, 22 Mar 2013)");
   script_cve_id("CVE-2013-1667");
   script_tag(name:"cvss_base", value:"7.5");

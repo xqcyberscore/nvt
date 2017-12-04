@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ldapsearch.nasl 6604 2017-07-07 10:31:59Z cfischer $
+# $Id: ldapsearch.nasl 7940 2017-11-30 10:04:48Z cfischer $
 #
 # LDAP information extraction with ldapsearch
 #
@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.91984");
-  script_version("$Revision: 6604 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 12:31:59 +0200 (Fri, 07 Jul 2017) $");
+  script_version("$Revision: 7940 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-30 11:04:48 +0100 (Thu, 30 Nov 2017) $");
   script_tag(name:"creation_date", value:"2006-04-23 14:49:44 +0200 (Sun, 23 Apr 2006)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -100,7 +100,7 @@ function getdc( res ) {
   r = split( res, sep:"," );
   n = 0;
   i = 0;
-  patt = '*dc=([a-zA-Z0-9]*+)';
+  patt = "dc=([a-zA-Z0-9-]+)";
   dc = eregmatch( string:r, pattern:patt, icase:TRUE );
   if( dc ) {
     value[i] = dc[n+1];

@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1704_2.nasl 7958 2017-12-01 06:47:47Z santu $
 #
 # Ubuntu Update for linux-lts-quantal USN-1704-2
 #
@@ -70,10 +71,10 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2013-February/001985.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1704-2/");
   script_id(841304);
-  script_version("$Revision: 6644 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:01:20 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7958 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-02-04 09:57:45 +0530 (Mon, 04 Feb 2013)");
   script_cve_id("CVE-2012-0957", "CVE-2012-4461", "CVE-2012-4508", "CVE-2012-4530",
                 "CVE-2012-4565", "CVE-2012-5517", "CVE-2012-5532");

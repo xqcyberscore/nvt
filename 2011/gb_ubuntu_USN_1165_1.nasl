@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1165_1.nasl 7964 2017-12-01 07:32:11Z santu $
 #
 # Ubuntu Update for qemu-kvm USN-1165-1
 #
@@ -47,12 +48,12 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2011-July/001368.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1165-1/");
   script_id(840695);
   script_tag(name:"cvss_base", value:"7.4");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:C/A:C");
- script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+ script_version("$Revision: 7964 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:32:11 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-07-08 16:31:28 +0200 (Fri, 08 Jul 2011)");
   script_xref(name: "USN", value: "1165-1");
   script_cve_id("CVE-2011-2212", "CVE-2011-2512");

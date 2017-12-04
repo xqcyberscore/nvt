@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_roller_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_apache_roller_detect.nasl 7947 2017-11-30 12:36:50Z santu $
 #
 # Apache Roller Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800677");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_version("$Revision: 7947 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-30 13:36:50 +0100 (Thu, 30 Nov 2017) $");
   script_tag(name:"creation_date", value:"2009-08-12 19:54:51 +0200 (Wed, 12 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache Roller Version Detection");
@@ -77,6 +77,7 @@ foreach dir( make_list_unique( "/roller", "/roller-ui", cgi_dirs( port:port ) ) 
       ver = eregmatch( pattern:'</a> Version ([0-9.]+)',string:rcvRes );
       if( ver[1] != NULL ) version = ver[1];
 
+      set_kb_item( name:"ApacheRoller/Installed", value:TRUE );
       set_kb_item( name:"www/" + port + "/ApacheRoller", value:version );
    
       ## build cpe and store it as host_detail

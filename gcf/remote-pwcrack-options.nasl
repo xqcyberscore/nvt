@@ -22,39 +22,35 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This plugin sets options for the various password cracking tools.";
-
 if(description)
 {
- script_id(80104);
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6841 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-03 13:59:21 +0200 (Thu, 03 Aug 2017) $");
- script_tag(name:"creation_date", value:"2009-08-10 08:41:48 +0200 (Mon, 10 Aug 2009)");
- script_tag(name:"cvss_base", value:"0.0");
- name= "Password cracking (NASL wrappers common options)";
- script_name(name);
+  script_oid("1.3.6.1.4.1.25623.1.0.80104");
+  script_version("$Revision: 7975 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-04 07:44:10 +0100 (Mon, 04 Dec 2017) $");
+  script_tag(name:"creation_date", value:"2009-08-10 08:41:48 +0200 (Mon, 10 Aug 2009)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Password cracking (NASL wrappers common options)");
+  script_category(ACT_SETTINGS);
+  script_copyright("This script is Copyright (C) 2009 Vlatko Kosturjak");
+  script_family("Brute force attacks");
+  script_dependencies("toolcheck.nasl");
+  script_mandatory_keys("Tools/Present/pd_or_ncrack");
 
- summary = "Brute force authentication protocols";
+  script_add_preference(name:"Logins file : ", value:"", type:"file");
+  script_add_preference(name:"Passwords file : ", value:"", type:"file");
+  script_add_preference(name:"Number of parallel tasks :", value:"16", type:"entry");
+  script_add_preference(name:"Timeout (in seconds) :", value:"30", type:"entry");
+  script_add_preference(name:"Try empty passwords", type:"checkbox", value:"no");
+  script_add_preference(name:"Try login as password", type:"checkbox", value:"no");
+  script_add_preference(name:"Exit as soon as an account is found", type:"checkbox", value:"no");
+  script_add_preference(name:"Add accounts found by other plugins to login file", type:"checkbox", value:"yes");
 
- script_category(ACT_SETTINGS);
+  script_tag(name:"summary", value:"This plugin sets options for the various password cracking tools.");
+
   script_tag(name:"qod_type", value:"remote_banner");
- 
- script_copyright("This script is Copyright (C) 2009 Vlatko Kosturjak");
- script_family("Brute force attacks");
 
- script_add_preference(name: "Logins file : ", value: "", type: "file");
- script_add_preference(name: "Passwords file : ", value: "", type: "file");
- script_add_preference(name: "Number of parallel tasks :", value: "16", type: "entry");
- script_add_preference(name: "Timeout (in seconds) :", value: "30", type: "entry");
- script_add_preference(name: "Try empty passwords", type:"checkbox", value: "no");
- script_add_preference(name: "Try login as password", type:"checkbox", value: "no");
- script_add_preference(name: "Exit as soon as an account is found", type:"checkbox", value: "no");
- script_add_preference(name: "Add accounts found by other plugins to login file",
-	type:"checkbox", value: "yes");
-
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 # Exit if nasl version is too old (<2200)

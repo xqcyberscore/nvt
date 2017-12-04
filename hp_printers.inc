@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: hp_printers.inc 7887 2017-11-23 13:56:04Z jschulte $
+# $Id: hp_printers.inc 7967 2017-12-01 08:17:56Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7887 $
+# $Revision: 7967 $
 #
 ###############################################################################
 
@@ -36,8 +36,8 @@ function get_hp_detect_urls() {
   hp_detect_urls['/info_deviceStatus.html?']                            = '<title>HP (LaserJet [^&]+)'; # HP LaserJet 400 M401n a.o.
   hp_detect_urls['/index_top.htm']                                      =  string("(HP (LaserJet [^\n ]+)|HP Color (LaserJet [^\n ]+)|(DesignJet [^ ]+)|(psc [^ ]+) series)"); # LaserJet 3600 a.o.
   hp_detect_urls['/index.htm?cat=info&page=printerInfo']                =  string("((Officejet Pro [^& ]+)|(Officejet [^\n ]+))"); # K5400 a.o.
-  hp_detect_urls['/hp/device/InternalPages/Index?id=ConfigurationPage'] = '<strong id="ProductName">HP([^&<]+)'; # HP Color LaserJet Flow MFP 680 a.o.
-  hp_detect_urls['/']                                                   = '<strong class="product">HP([^&<]+)'; # HP Color LaserJet M651 a.o.
+  hp_detect_urls['/hp/device/InternalPages/Index?id=ConfigurationPage'] = '<strong id="ProductName">HP ?([^&<]+)'; # HP Color LaserJet Flow MFP 680 a.o.
+  hp_detect_urls['/']                                                   = '<strong class="product">HP ?([^&<]+)'; # HP Color LaserJet M651 a.o.
 
   # Detection string from dont_print_on_printers.nasl. TDB: Include here?
   # if( "<title>Hewlett Packard</title>" >< banner || egrep( pattern:"<title>.*LaserJet.*</title>", string:banner, icase:TRUE ) || "HP Officejet" >< banner || "server: hp-chai" >< tolower( banner ) || ( "Server: Virata-EmWeb/" >< banner && ( "HP" >< banner || "printer" >< banner ) ) ) {
@@ -161,6 +161,7 @@ function hp_login_details( model ) {
           model == "LaserJet 4730"    ||
           model == "LaserJet CM4730"  ||
           model == "LaserJet P2055dn" ||
+          model == "Color LaserJet M651" ||
           model == "LaserJet 2430") {
 
     hp_printer['req_type'] = "GET";

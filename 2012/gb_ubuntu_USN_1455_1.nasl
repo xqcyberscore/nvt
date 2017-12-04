@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1455_1.nasl 7960 2017-12-01 06:58:16Z santu $
 #
 # Ubuntu Update for linux-lts-backport-oneiric USN-1455-1
 #
@@ -42,10 +43,10 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-May/001696.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1455-1/");
   script_id(841024);
-  script_version("$Revision: 6643 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:00:30 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7960 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:58:16 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-06-01 09:54:04 +0530 (Fri, 01 Jun 2012)");
   script_cve_id("CVE-2012-1601", "CVE-2012-2123");
   script_tag(name:"cvss_base", value:"7.2");

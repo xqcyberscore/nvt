@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2312_1.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for openjdk-6 USN-2312-1
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841928");
-  script_version("$Revision: 6645 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-08-13 05:56:30 +0200 (Wed, 13 Aug 2014)");
   script_cve_id("CVE-2014-2490", "CVE-2014-4216", "CVE-2014-4219", "CVE-2014-4262",
                 "CVE-2014-4209", "CVE-2014-4244", "CVE-2014-4263", "CVE-2014-4218",
@@ -67,7 +68,7 @@ data over the network. (CVE-2014-4252, CVE-2014-4268)";
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2312-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-August/002620.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2312-1/");
   script_summary("Check for the Version of openjdk-6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

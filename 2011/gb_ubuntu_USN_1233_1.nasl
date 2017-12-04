@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1233_1.nasl 7964 2017-12-01 07:32:11Z santu $
 #
 # Ubuntu Update for krb5 USN-1233-1
 #
@@ -49,10 +50,10 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2011-October/001448.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1233-1/");
   script_id(840781);
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_version("$Revision: 7964 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:32:11 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-10-21 16:31:29 +0200 (Fri, 21 Oct 2011)");
   script_xref(name: "USN", value: "1233-1");
   script_cve_id("CVE-2011-1527", "CVE-2011-1528", "CVE-2011-1529");

@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_1823_1.nasl 7958 2017-12-01 06:47:47Z santu $
 #
 # Ubuntu Update for thunderbird USN-1823-1
 #
@@ -61,8 +62,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(841428);
-  script_version("$Revision: 6644 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:01:20 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7958 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:47:47 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-05-17 09:55:07 +0530 (Fri, 17 May 2013)");
   script_cve_id("CVE-2013-0801", "CVE-2013-1669", "CVE-2013-1670", "CVE-2013-1674",
                 "CVE-2013-1675", "CVE-2013-1676", "CVE-2013-1677", "CVE-2013-1678",
@@ -72,7 +73,7 @@ if(description)
   script_name("Ubuntu Update for thunderbird USN-1823-1");
 
   script_xref(name: "USN", value: "1823-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2013-May/002109.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1823-1/");
   script_summary("Check for the Version of thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

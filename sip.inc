@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: sip.inc 5094 2017-01-25 06:43:45Z cfi $
+# OpenVAS Include File
+# $Id: sip.inc 7922 2017-11-28 10:06:28Z cfischer $
 #
 # functions to support sip
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5094 $
+# $Revision: 7922 $
 #
 ###############################################################################
 
@@ -223,9 +223,10 @@ function get_sip_port_proto( default_port, default_proto ) {
     if( ! get_udp_port_state( x_port ) ) exit( 0 );
   } else {
     if( ! get_port_state( x_port ) ) exit( 0 );
+    # Includes e.g. PJL ports which are printing everything
+    # sent to them so exit for such a port here
+    if( sip_is_fragile_port( port:x_port ) ) exit( 0 );
   }
-
-  if( sip_is_pjl_port( port:x_port ) ) exit( 0 );
 
   ret_arr['port'] = x_port;
   ret_arr['proto'] = x_proto;
@@ -235,20 +236,20 @@ function get_sip_port_proto( default_port, default_proto ) {
 }
 
 # Duplicated from misc_func.inc
-function sip_is_pjl_port( port ) {
+function sip_is_fragile_port( port ) {
 
-  local_var port, pjl_ports, pjl_port;
+  local_var port, fragile_ports, fragile_port;
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#sip_is_pjl_port" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#telnet_is_fragile_port" );
     return;
   }
 
-  pjl_ports = get_kb_list( 'Services/PJL' );
-  if( ! pjl_ports ) return;
+  fragile_ports = get_kb_list( "Services/fragile_port" );
+  if( ! fragile_ports ) return;
 
-  foreach pjl_port( pjl_ports ) {
-    if( port == pjl_port ) return TRUE;
+  foreach fragile_port( fragile_ports ) {
+    if( port == fragile_port ) return TRUE;
   }
 
   return;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln_nov17_lin.nasl 7788 2017-11-16 10:04:21Z asteins $
+# $Id: gb_mediawiki_mult_vuln_nov17_lin.nasl 7968 2017-12-01 08:26:28Z asteins $
 #
 # MediaWiki Multiple Vulnerabilities - November17 (Linux)
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:mediawiki:mediawiki';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112124");
-  script_version("$Revision: 7788 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-16 11:04:21 +0100 (Thu, 16 Nov 2017) $");
+  script_version("$Revision: 7968 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-01 09:26:28 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-16 11:18:15 +0100 (Thu, 16 Nov 2017)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name: "qod_type", value: "remote_banner_unreliable");
 

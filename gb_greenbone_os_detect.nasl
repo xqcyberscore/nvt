@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_os_detect.nasl 7896 2017-11-24 06:54:12Z asteins $
+# $Id: gb_greenbone_os_detect.nasl 7902 2017-11-24 11:02:42Z cfischer $
 #
 # Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection (Version)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103220");
-  script_version("$Revision: 7896 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 07:54:12 +0100 (Fri, 24 Nov 2017) $");
+  script_version("$Revision: 7902 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-24 12:02:42 +0100 (Fri, 24 Nov 2017) $");
   script_tag(name:"creation_date", value:"2011-08-23 15:25:10 +0200 (Tue, 23 Aug 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -99,9 +99,12 @@ if( ssh_port = get_kb_list( "greenbone/gos/ssh/port" ) ) {
 
 if( snmp_port = get_kb_list( "greenbone/gos/snmp/port" ) ) {
   foreach port( snmp_port ) {
-    concluded = get_kb_item( "greenbone/gos/snmp/" + port + "/concluded" );
+    concluded    = get_kb_item( "greenbone/gos/snmp/" + port + "/concluded" );
+    concludedOID = get_kb_item( "greenbone/gos/snmp/" + port + "/concludedOID" );
     extra += '\nSNMP on port ' + port + '/udp';
-    if( concluded ) {
+    if( concluded && concludedOID ) {
+      extra += '\nConcluded from ' + concluded + ' via OID: ' + concludedOID + '\n';
+    } else if( concluded ) {
       extra += '\nConcluded from SNMP SysDesc: ' + concluded + '\n';
     }
     register_product( cpe:cpe, location:location, port:port, service:"snmp", proto:"udp" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_refl_xss_vuln.nasl 7752 2017-11-14 08:12:43Z asteins $
+# $Id: gb_cms_made_simple_refl_xss_vuln.nasl 7912 2017-11-27 06:00:54Z teissa $
 #
 # CMS Made Simple 2.2.2 Reflected XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112120");
-  script_version("$Revision: 7752 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-14 09:12:43 +0100 (Tue, 14 Nov 2017) $");
+  script_version("$Revision: 7912 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-11-27 07:00:54 +0100 (Mon, 27 Nov 2017) $");
   script_tag(name: "creation_date", value: "2017-11-13 14:05:33 +0100 (Mon, 13 Nov 2017)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-16784");
 

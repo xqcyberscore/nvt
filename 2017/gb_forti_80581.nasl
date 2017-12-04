@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_forti_80581.nasl 5895 2017-04-07 14:44:59Z mime $
+# $Id: gb_forti_80581.nasl 7940 2017-11-30 10:04:48Z cfischer $
 #
 # Fortinet FortiOS SSH Undocumented Interactive Login Security Bypass Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
  script_cve_id("CVE-2016-1909");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5895 $");
+ script_version ("$Revision: 7940 $");
 
  script_name("Fortinet FortiOS SSH Undocumented Interactive Login Security Bypass Vulnerability");
 
@@ -49,7 +49,7 @@ further attacks.");
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 16:44:59 +0200 (Fri, 07 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-11-30 11:04:48 +0100 (Thu, 30 Nov 2017) $");
  script_tag(name:"creation_date", value:"2017-04-07 16:08:03 +0200 (Fri, 07 Apr 2017)");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
@@ -78,6 +78,7 @@ if( defined_func( "ssh_login_interactive" ) &&
   if( auth =~ '^publickey$' ) exit( 0 );
 
   sess = ssh_connect( socket:soc );
+  if( ! sess ) exit( 0 );
   prompt = ssh_login_interactive( sess, login:user );
 
   if( ! prompt || prompt !~ '^(-)?[0-9]+' )

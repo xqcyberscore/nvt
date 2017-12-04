@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_appli_manager_sql_inj_vul.nasl 7764 2017-11-15 06:26:49Z cfischer $
+# $Id: gb_manageengine_appli_manager_sql_inj_vul.nasl 7968 2017-12-01 08:26:28Z asteins $
 #
 # ManageEngine Applications Manager SQL Injection Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:manageengine:applications_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107251");
-  script_version("$Revision: 7764 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-15 07:26:49 +0100 (Wed, 15 Nov 2017) $");
+  script_version("$Revision: 7968 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-01 09:26:28 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-07 15:43:15 +0700 (Tue, 07 Nov 2017)");
 
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-16542", "CVE-2017-16543" );
 

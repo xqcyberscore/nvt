@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 7749 2017-11-14 07:03:27Z cfischer $
+# $Id: host_details.inc 7929 2017-11-29 09:59:29Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7749 $
+# $Revision: 7929 $
 #
 ###############################################################################
 
@@ -1122,15 +1122,20 @@ function get_base_cpe( cpe ) {
   return base_cpe;
 }
 
-function build_detection_report( app, version, install, regpath, cpe, concluded, concludedUrl, extra ) {
+function build_detection_report( app, version, install, regpath, cpe, concluded, concludedUrl, extra, skip_version ) {
 
-  local_var app, version, install, regpath, cpe, concluded, concludedUrl, extra, report;
+  local_var app, version, install, regpath, cpe, concluded, concludedUrl, extra, skip_version, report;
 
-  if( ! version ) version = 'unknown';
+  if( isnull( app ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#app#-#build_detection_report" );
 
-  report = 'Detected ' + app + '\n' +
-           '\nVersion:  ' + version +
-           '\nLocation: ' + install;
+  report = 'Detected ' + app + '\n';
+
+  if( ! skip_version ) {
+    if( ! version ) version = 'unknown';
+    report += '\nVersion:  ' + version;
+  }
+
+  report += '\nLocation: ' + install;
 
   if( strlen( cpe ) > 0 ) {
     report += '\nCPE:      '+ cpe;

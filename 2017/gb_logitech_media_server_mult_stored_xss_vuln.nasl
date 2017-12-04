@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_logitech_media_server_mult_stored_xss_vuln.nasl 7747 2017-11-14 06:11:31Z santu $
+# $Id: gb_logitech_media_server_mult_stored_xss_vuln.nasl 7968 2017-12-01 08:26:28Z asteins $
 #
 # Logitech Media Server Multiple Persistent XSS Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:logitech:media_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811895");
-  script_version("$Revision: 7747 $");
+  script_version("$Revision: 7968 $");
   script_cve_id("CVE-2017-16568", "CVE-2017-16567");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 07:11:31 +0100 (Tue, 14 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 09:26:28 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-07 14:00:28 +0530 (Tue, 07 Nov 2017)");
   script_name("Logitech Media Server Multiple Persistent XSS Vulnerabilities");
 

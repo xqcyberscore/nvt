@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_ubuntu_USN_2292_1.nasl 7957 2017-12-01 06:40:08Z santu $
 #
 # Ubuntu Update for liblwp-protocol-https-perl USN-2292-1
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841894");
-  script_version("$Revision: 6645 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:02:37 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7957 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 07:40:08 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-07-21 16:46:57 +0530 (Mon, 21 Jul 2014)");
   script_cve_id("CVE-2014-3230");
   script_tag(name:"cvss_base", value:"6.8");
@@ -54,7 +55,7 @@ information in applications that used the LWP::Protocol::https module.";
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "USN", value: "2292-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-July/002599.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2292-1/");
   script_summary("Check for the Version of liblwp-protocol-https-perl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

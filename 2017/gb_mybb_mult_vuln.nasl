@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_mult_vuln.nasl 7742 2017-11-13 07:52:14Z teissa $
+# $Id: gb_mybb_mult_vuln.nasl 7968 2017-12-01 08:26:28Z asteins $
 #
 # MyBB Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:mybb:mybb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107255");
-  script_version("$Revision: 7742 $");
+  script_version("$Revision: 7968 $");
   script_cve_id("CVE-2017-16781");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-13 08:52:14 +0100 (Mon, 13 Nov 2017) $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-01 09:26:28 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-13 09:06:56 +0700 (Mon, 13 Nov 2017)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_tag(name: "qod_type", value: "remote_banner");
 

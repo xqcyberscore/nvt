@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netstat_portscan.nasl 7275 2017-09-26 11:46:31Z cfischer $
+# $Id: netstat_portscan.nasl 7973 2017-12-01 14:05:33Z cfischer $
 # Description: Netstat 'scanner'
 #
 # Authors:
@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14272");
-  script_version("$Revision: 7275 $");
+  script_version("$Revision: 7973 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"executable_version");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-01 15:05:33 +0100 (Fri, 01 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Netstat 'scanner'");
 
@@ -41,7 +41,7 @@ if(description)
 
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 Michel Arboi");
-  script_family("General");
+  script_family("Port scanners");
   script_dependencies("gather-package-list.nasl");
   exit(0);
 }
@@ -105,7 +105,7 @@ if (n == 0) n = 1; i = 0;
 scanner_status(current: 0, total: n);
 scanned = 0;
 last_seen_proto = "";
-check = 
+check =
  (! safe_checks()) ||
  ("yes" >< get_preference("unscanned_closed"));
 
@@ -132,7 +132,7 @@ foreach line (lines)
         v = eregmatch(pattern: '^[ \t]*(\\*|[0-9.]+)\\.([0-9]+)[ \t]+Idle', string: line);
       else
         v = eregmatch(pattern: '^[ \t]*(\\*|[0-9.]+)\\.([0-9]+)[ \t]+\\*\\.\\*[ \t]+.*(Idle|LISTEN)', string: line);
-      
+
       if (! isnull(v))
       {
         # "Fix" array
@@ -149,7 +149,7 @@ foreach line (lines)
       }
     }
   }
-  
+
 
   if (!isnull(v))
   {
@@ -161,7 +161,7 @@ foreach line (lines)
     # display("> ", addr, ":", port, " (", proto, ")\n");
     if (int(port) < 1 || int(port) > 65535) {
       #display('netstat_portscan(', get_host_ip(), '): invalid port number ', port, '\n');
-    } else if ((check && addr != "127.0.0.1") || 
+    } else if ((check && addr != "127.0.0.1") ||
         addr == "0.0.0.0" || addr == ip || addr == ":::" || addr == '*')
     {
       if (check && proto == "tcp")
@@ -191,7 +191,7 @@ foreach line (lines)
               {
 		identd_n ++;
 		set_kb_item(name: "Ident/tcp/"+port, value: ids[3]);
-		log_message(port: port, 
+		log_message(port: port,
 data: 'identd reveals that this service is running as user '+ids[3]);
 	      }
 	    }
