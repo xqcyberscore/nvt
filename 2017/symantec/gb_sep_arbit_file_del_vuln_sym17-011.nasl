@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sep_arbit_file_del_vuln_sym17-011.nasl 7734 2017-11-10 11:35:05Z santu $
+# $Id: gb_sep_arbit_file_del_vuln_sym17-011.nasl 7977 2017-12-04 08:28:58Z asteins $
 #
 # Symantec Endpoint Protection Arbitrary File Deletion Vulnerability (SYM17-011)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812069");
-  script_version("$Revision: 7734 $");
+  script_version("$Revision: 7977 $");
   script_cve_id("CVE-2017-13680");
   script_bugtraq_id(101503);
-  script_tag(name:"cvss_base", value:"6.6");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-10 12:35:05 +0100 (Fri, 10 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"3.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-04 09:28:58 +0100 (Mon, 04 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-08 15:56:13 +0530 (Wed, 08 Nov 2017)");
   script_name("Symantec Endpoint Protection Arbitrary File Deletion Vulnerability (SYM17-011)");
 

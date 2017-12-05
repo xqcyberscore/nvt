@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-666.nasl 6574 2017-07-06 13:41:26Z cfischer $
+# $Id: alas-2016-666.nasl 7977 2017-12-04 08:28:58Z asteins $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -27,17 +27,17 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120656");
-script_version("$Revision: 6574 $");
+script_version("$Revision: 7977 $");
 script_tag(name:"creation_date", value:"2016-03-11 07:09:17 +0200 (Fri, 11 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:41:26 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-12-04 09:28:58 +0100 (Mon, 04 Dec 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-666");
 script_tag(name: "insight", value: "An insecure temporary file use flaw was found in the way sos created certain sosreport files. A local attacker could possibly use this flaw to perform a symbolic link attack to reveal the contents of sosreport files, or in some cases modify arbitrary files and escalate their privileges on the system."); 
 script_tag(name : "solution", value : "Run yum update sos to update your system.");
 script_tag(name : "solution_type", value : "VendorFix");
 script_xref(name : "URL" , value : "https://alas.aws.amazon.com/ALAS-2016-666.html");
 script_cve_id("CVE-2015-7529");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"4.6");
+script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");

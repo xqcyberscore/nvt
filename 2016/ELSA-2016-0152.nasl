@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0152.nasl 6552 2017-07-06 11:49:41Z cfischer $
+# $Id: ELSA-2016-0152.nasl 7977 2017-12-04 08:28:58Z asteins $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122875");
-script_version("$Revision: 6552 $");
+script_version("$Revision: 7977 $");
 script_tag(name:"creation_date", value:"2016-02-11 07:20:46 +0200 (Thu, 11 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-12-04 09:28:58 +0100 (Mon, 04 Dec 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0152");
 script_tag(name: "insight", value: "ELSA-2016-0152 -  sos security and bug fix update - [3.2-28.0.1.2]- Add vendor, vendor URL info for Oracle Linux [orabug 17656507] (joe.jin@oracle.com)- Direct traceroute to linux.oracle.com (John Haxby) [orabug 11713272] (joe.jin@oracle.com)- Check oraclelinux-release instead of redhat-release to get OS version (John Haxby) [bug 11681869] (joe.jin@oracle.com)- Remove RH ftp URL and support email (joe.jin@oracle.com)- add sos-oracle-enterprise.patch (joe.jin@oracle.com)- Add smartmon plugin (John Haxby) [orabug 17995005] (joe.jin@oracle.com)[= 3.2-28.el6_7.2]- [sosreport] Report correct final path with --build Related: bz1290953[= 3.2-28.el6_7.1]- [hpasm] Add timeout. Resolves: bz1291828[= 3.2-28.el6_7]- [sosreport] Prepare report in a private subdirectory Resolves: bz1290953"); 
 script_tag(name : "solution", value : "update software");
@@ -34,8 +34,8 @@ script_tag(name : "solution_type", value : "VendorFix");
 script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2016-0152");
 script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2016-0152.html");
 script_cve_id("CVE-2015-7529");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"4.6");
+script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");

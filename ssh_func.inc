@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 7940 2017-11-30 10:04:48Z cfischer $
+# $Id: ssh_func.inc 7979 2017-12-04 10:32:54Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7940 $
+# $Revision: 7979 $
 #
 ###############################################################################
 
@@ -2385,7 +2385,7 @@ function find_bin( prog_name, sock ) {
 function find_file( file_name, file_path, useregex, regexpar, sock ) {
 
   local_var r, f, fname, lparam, cl, file_name, file_path, useregex, regexpar, sock;
-  local_var use_find, descend_directories, cmd;
+  local_var use_find, descend_directories, cmd, start, end, current_timeout;
 
   if( get_kb_item( "ssh/no_linux_shell" ) ) return;
 
@@ -2445,7 +2445,24 @@ function find_file( file_name, file_path, useregex, regexpar, sock ) {
         cmd += " -name " + raw_string( 0x22 );
         cmd += file_name + raw_string( 0x22 ) +" -a  -type f  -print 2>/dev/null";
 
+        start = unixtime();
         f = split( ssh_cmd( socket:sock, cmd:cmd, timeout:60 ) );
+        end = unixtime();
+
+        # A local find should take only a few seconds. If we're reaching more
+        # then this we can try to add the -xdev parameter to find to bring down
+        # the time if an network based file filesystem like NFS or AFS is mounted
+        # at the target host. To be safe we're counting the timeouts and only add
+        # the -xdev once we have reached the timeout three times.
+        # TBD: If this doesn't help maybe lower the -maxdepth 7 above?
+        current_timeout = get_kb_item( "ssh/lsc/find_timeout" );
+        if( end - start > 14 ) { #nb: OpenVAS 9 and below has a timeout of 15 seconds, current trunk has 30 seconds
+          current_timeout++;
+          replace_kb_item( name:"ssh/lsc/find_timeout", value:current_timeout );
+        }
+        if( "yes" >< descend_directories && current_timeout >= 3 ) {
+          replace_kb_item( name:"ssh/lsc/descend_ofs", value:"no" );
+        }
       }
     }
   }

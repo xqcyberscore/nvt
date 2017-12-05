@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.1.2.2.nasl 7883 2017-11-23 11:22:59Z emoss $
+# $Id: GSHB_SYS.1.2.2.nasl 7980 2017-12-04 10:36:47Z emoss $
 #
 # IT-Grundschutz Baustein: SYS.1.2.2 Windows Server 2012
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109035");
-  script_version("$Revision: 7883 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 12:22:59 +0100 (Thu, 23 Nov 2017) $");
+  script_version("$Revision: 7980 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-04 11:36:47 +0100 (Mon, 04 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-15 14:42:28 +0200 (Wed, 15 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -54,7 +54,7 @@ include("smb_nt.inc");
 
 Windows_Version = get_kb_item("WMI/WMI_OSNAME");
 if( "windows server 2012" >!< tolower(Windows_Version) ){
-  set_kb_item(name:"ITG/SYS.1.2.2", value:"error");
+  set_kb_item(name:"GSHB/SYS.1.2.2", value:"error");
   log_message(data:"Der Host scheint kein Windows Server 2012 zu sein, oder es konnte keine Verbindung zum Host hergestellt werden.");
   exit(0);
 }

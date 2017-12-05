@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0188.nasl 6552 2017-07-06 11:49:41Z cfischer $
+# $Id: ELSA-2016-0188.nasl 7977 2017-12-04 08:28:58Z asteins $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122883");
-script_version("$Revision: 6552 $");
+script_version("$Revision: 7977 $");
 script_tag(name:"creation_date", value:"2016-02-18 07:27:23 +0200 (Thu, 18 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-12-04 09:28:58 +0100 (Mon, 04 Dec 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0188");
 script_tag(name: "insight", value: "ELSA-2016-0188 -  sos security and bug fix update - [3.2-35.0.1.3]- Recreated patch for [orabug 18913115]- Make the selinux plugin fixfiles option useful (John Haxby) [orabug 18913115]- Added remove_gpgstring.patch [Bug 18313898]- Added sos-oracle-enterprise.patch- Added sos-oraclelinux-vendor-vendorurl.patch[= 3.2-37]- [sosreport] prepare report in a private subdirectory (updated) Resolves: bz1290954[= 3.2-35.2]- [sosreport] prepare report in a private subdirectory (updated) Resolves: bz1290954[= 3.2-35.1]- [ceph] collect /var/lib/ceph and /var/run/ceph Resolves: bz1291347- [sosreport] prepare report in a private subdirectory Resolves: bz1290954"); 
 script_tag(name : "solution", value : "update software");
@@ -34,8 +34,8 @@ script_tag(name : "solution_type", value : "VendorFix");
 script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2016-0188");
 script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2016-0188.html");
 script_cve_id("CVE-2015-7529");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"4.6");
+script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_file_disc_vuln.nasl 7879 2017-11-23 07:43:08Z asteins $
+# $Id: gb_roundcube_file_disc_vuln.nasl 7977 2017-12-04 08:28:58Z asteins $
 #
 # Roundcube Webmail File Disclosure Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:roundcube:webmail';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112134");
-  script_version("$Revision: 7879 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-23 08:43:08 +0100 (Thu, 23 Nov 2017) $");
+  script_version("$Revision: 7977 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-04 09:28:58 +0100 (Mon, 04 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-22 17:17:17 +0100 (Wed, 22 Nov 2017)");
-  script_tag(name: "cvss_base", value: "5.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-16651");
 
