@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_octopus_deploy_xss_vuln1.nasl 7841 2017-11-21 08:13:45Z ckuersteiner $
+# $Id: gb_octopus_deploy_xss_vuln1.nasl 7992 2017-12-05 08:34:22Z teissa $
 #
 # Octopus Deploy XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:octopus:deploy";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140518");
-  script_version("$Revision: 7841 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-21 09:13:45 +0100 (Tue, 21 Nov 2017) $");
+  script_version("$Revision: 7992 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-21 13:29:51 +0700 (Tue, 21 Nov 2017)");
-  script_tag(name: "cvss_base", value: "5.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-16801");
 

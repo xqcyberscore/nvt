@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 05 Dec 2017 09:14:51 +0100
+# Automatically created on:  Wed, 06 Dec 2017 07:56:01 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -53607,6 +53607,7 @@ gb_netcharts_server_detect.nasl: GPLv2+
 gb_netgain_em_detect.nasl: GPLv2+
 gb_netgear_dgn2200_detect.nasl: GPLv2+
 gb_netgear_nighthawk_router_detect.nasl: GPLv2+
+gb_netgear_prosafe_consolidation.nasl: GPLv2+
 gb_netgear_prosafe_snmp_detect.nasl: GPLv2+
 gb_netgear_wnr2000_router_detect.nasl: GPLv2+
 gb_netiq_access_manager_detect.nasl: GPLv2+
@@ -54339,10 +54340,15 @@ gsf/2017/moxa/gb_moxa_nport_mult_vuln.nasl: GPLv2+
 gsf/2017/oracle/gb_oracle_bi_publisher_oct2017-3236626_01_vuln.nasl: GPLv2+
 gsf/2017/oracle/gb_oracle_ilo_cpuct2017-3236626_01.nasl: GPLv2+
 gsf/2017/oracle/gb_oracle_iplanet_web_server_unspecified_vuln.nasl: GPLv2+
+gsf/2017/paloaltonetworks/gb_panos_pan_sa-2017-0025.nasl: GPLv2+
+gsf/2017/paloaltonetworks/gb_panos_pan_sa-2017-0026.nasl: GPLv2+
+gsf/2017/paloaltonetworks/gb_panos_pan_sa-2017-0027.nasl: GPLv2+
+gsf/2017/paloaltonetworks/gb_panos_pan_sa-2017-0028.nasl: GPLv2+
 gsf/2017/saia/gb_saia_pcd_info_descl_vuln.nasl: GPLv2+
 gsf/2017/sap/gb_sap_netweaver_xml_xss_vuln.nasl: GPLv2+
 gsf/2017/sap/gb_sap_netweaver_xss_vuln_09_17.nasl: GPLv2+
 gsf/2017/siemens/gb_siemens_fieldpanels_mult_vuln.nasl: GPLv2+
+gsf/2017/siemens/gb_simatic_s7_dos_vuln.nasl: GPLv2+
 gsf/2017/vmware/gb_vcenter_server_dos_VMSA-2017-0017.nasl: GPLv2+
 gsf/2017/vmware/gb_vcenter_server_ssrf_crlf_VMSA-2017-0017.nasl: GPLv2+
 gsf/2017/vmware/gb_vmware_fusion_code_exec_n_dos_vuln_nov17.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_device_detect_telnet.nasl 7929 2017-11-29 09:59:29Z cfischer $
+# $Id: gb_lantronix_device_detect_telnet.nasl 8000 2017-12-06 06:15:14Z cfischer $
 #
 # Lantronix Devices Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108302");
-  script_version("$Revision: 7929 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-29 10:59:29 +0100 (Wed, 29 Nov 2017) $");
+  script_version("$Revision: 8000 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-06 07:15:14 +0100 (Wed, 06 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-29 08:03:31 +0100 (Wed, 29 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,9 +65,9 @@ if( ( "Lantronix" >< banner && ( "Password :" >< banner || ( "Press Enter" >< ba
   version = "unknown";
 
   vers = eregmatch( pattern:"Software version V([0-9.]+)", string:banner );
-  if( vers[1] ) { 
+  if( vers[1] ) {
     version = vers[1];
-    set_kb_item( name:"lantronix_device/telnet/" + port + "/concluded", value:vers[1] );
+    set_kb_item( name:"lantronix_device/telnet/" + port + "/concluded", value:vers[0] );
   } else {
     set_kb_item( name:"lantronix_device/telnet/" + port + "/concluded", value:bin2string( ddata:banner, noprint_replacement:'' ) );
   }

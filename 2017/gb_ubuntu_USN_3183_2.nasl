@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843098");
-  script_version("$Revision: 6648 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:05:27 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 7992 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-03-21 05:50:50 +0100 (Tue, 21 Mar 2017)");
   script_cve_id("CVE-2016-8610", "CVE-2016-7444", "CVE-2017-5334", "CVE-2017-5335", 
                 "CVE-2017-5336", "CVE-2017-5337");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for gnutls26 USN-3183-2");
   script_tag(name: "summary", value: "Check the version of gnutls26");

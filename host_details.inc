@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 7929 2017-11-29 09:59:29Z cfischer $
+# $Id: host_details.inc 7995 2017-12-05 15:10:59Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7929 $
+# $Revision: 7995 $
 #
 ###############################################################################
 
@@ -97,7 +97,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.106513", # gb_cisco_asa_version_snmp.nasl
     "1.3.6.1.4.1.25623.1.0.105222", # gb_cisco_asa_version.nasl
     "1.3.6.1.4.1.25623.1.0.106494", # gb_arista_eos_snmp_detect.nasl
-    "1.3.6.1.4.1.25623.1.0.108163", # gb_netgear_prosafe_snmp_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108307", # gb_netgear_prosafe_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.105144", # gb_xenserver_version.nasl
     "1.3.6.1.4.1.25623.1.0.105659", # gb_cisco_ios_xe_version.nasl
     "1.3.6.1.4.1.25623.1.0.105155", # gb_mcafee_email_gateway_version.nasl
@@ -166,7 +166,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.105222", # gb_cisco_asa_version.nasl
     "1.3.6.1.4.1.25623.1.0.106494", # gb_arista_eos_snmp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106875", # gb_aerohive_hiveos_detect.nasl
-    "1.3.6.1.4.1.25623.1.0.108163", # gb_netgear_prosafe_snmp_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108307", # gb_netgear_prosafe_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.105144", # gb_xenserver_version.nasl
     "1.3.6.1.4.1.25623.1.0.105659", # gb_cisco_ios_xe_version.nasl
     "1.3.6.1.4.1.25623.1.0.105155", # gb_mcafee_email_gateway_version.nasl

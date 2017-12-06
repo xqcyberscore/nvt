@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencast_default_credentials.nasl 7932 2017-11-29 12:56:41Z jschulte $
+# $Id: gb_opencast_default_credentials.nasl 7996 2017-12-05 15:16:18Z cfischer $
 #
 # Opencast Default Credentials
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113058");
-  script_version("$Revision: 7932 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-29 13:56:41 +0100 (Wed, 29 Nov 2017) $");
+  script_version("$Revision: 7996 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-05 16:16:18 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-28 16:02:03 +0100 (Tue, 28 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -68,7 +68,8 @@ include( "http_keepalive.inc" );
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe: CPE, port: port ) ) exit( 0 );
 
-res = http_get_cache( port: port, item: dir + "/login.html");
+req = http_get( port: port, item: dir + "/login.html");
+res = http_keepalive_send_recv( port: port, data: req );
 
 cookie = eregmatch( pattern: "Set-Cookie: JSESSIONID=([^;]+);", string: res, icase: TRUE );
 if( !cookie[1] ) {

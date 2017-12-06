@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 7864 2017-11-22 11:39:13Z cfischer $
+# $Id: os_detection.nasl 7995 2017-12-05 15:10:59Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 7864 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 12:39:13 +0100 (Wed, 22 Nov 2017) $");
+  script_version("$Revision: 7995 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-05 16:10:59 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,26 +51,27 @@ if(description)
                       "gb_palo_alto_panOS_version.nasl", "gb_screenos_version.nasl",
                       "gb_extremeos_snmp_detect.nasl", "gb_palo_alto_webgui_detect.nasl",
                       "gb_cisco_asa_version_snmp.nasl", "gb_cisco_asa_version.nasl",
-                      "gb_arista_eos_snmp_detect.nasl", "gb_xenserver_version.nasl",
-                      "gb_cisco_ios_xe_version.nasl", "gb_mcafee_email_gateway_version.nasl",
-                      "gb_brocade_netiron_snmp_detect.nasl", "gb_arubaos_detect.nasl",
-                      "gb_cyberoam_umt_ngfw_detect.nasl", "gb_aerohive_hiveos_detect.nasl",
-                      "gb_windows_cpe_detect.nasl", "gather-package-list.nasl",
-                      "gb_cisco_pis_version.nasl", "gb_checkpoint_fw_version.nasl",
-                      "gb_smb_windows_detect.nasl",
-                      "gb_ssh_os_detection.nasl", "gb_junos_snmp_version.nasl",
-                      "gb_snmp_os_detection.nasl", "gb_dns_os_detection.nasl",
-                      "gb_ftp_os_detection.nasl", "smb_nativelanman.nasl",
-                      "gb_ucs_detect.nasl", "sw_http_os_detection.nasl",
-                      "sw_mail_os_detection.nasl", "sw_telnet_os_detection.nasl",
+                      "gb_arista_eos_snmp_detect.nasl", "gb_netgear_prosafe_consolidation.nasl",
+                      "gb_xenserver_version.nasl", "gb_cisco_ios_xe_version.nasl",
+                      "gb_mcafee_email_gateway_version.nasl", "gb_brocade_netiron_snmp_detect.nasl",
+                      "gb_arubaos_detect.nasl", "gb_cyberoam_umt_ngfw_detect.nasl",
+                      "gb_aerohive_hiveos_detect.nasl", "gb_windows_cpe_detect.nasl",
+                      "gather-package-list.nasl", "gb_cisco_pis_version.nasl",
+                      "gb_checkpoint_fw_version.nasl", "gb_smb_windows_detect.nasl",
+                      "gb_ssh_os_detection.nasl", # nmap_net.nasl not added as this is in ACT_SCANNER (and doesn't use register_and_report_os yet)
+                      "gb_junos_snmp_version.nasl", "gb_snmp_os_detection.nasl",
+                      "gb_dns_os_detection.nasl", "gb_ftp_os_detection.nasl",
+                      "smb_nativelanman.nasl", "gb_ucs_detect.nasl",
+                      "sw_http_os_detection.nasl", "sw_mail_os_detection.nasl",
+                      "sw_telnet_os_detection.nasl", "gb_mysql_mariadb_os_detection.nasl",
                       "ntp_open.nasl", "remote-detect-MDNS.nasl",
-                      "gb_mysql_mariadb_os_detection.nasl", "mssqlserver_detect.nasl",
-                      "gb_apple_tv_version.nasl", "gb_apple_tv_detect.nasl",
-                      "gb_upnp_os_detection.nasl", "gb_sip_os_detection.nasl",
-                      "gb_check_mk_agent_detect.nasl", "ms_rdp_detect.nasl",
-                      "gb_apache_activemq_detect.nasl", "dcetest.nasl",
-                      "gb_hnap_os_detection.nasl", "ident_process_owner.nasl",
-                      "gb_nmap_os_detection.nasl", "os_fingerprint.nasl");
+                      "mssqlserver_detect.nasl", "gb_apple_tv_version.nasl",
+                      "gb_apple_tv_detect.nasl", "gb_upnp_os_detection.nasl",
+                      "gb_sip_os_detection.nasl", "gb_check_mk_agent_detect.nasl",
+                      "ms_rdp_detect.nasl", "gb_apache_activemq_detect.nasl",
+                      "dcetest.nasl", "gb_hnap_os_detection.nasl",
+                      "ident_process_owner.nasl", "gb_nmap_os_detection.nasl",
+                      "os_fingerprint.nasl");
 
   script_tag(name:"summary", value:"This script consolidates the OS information detected by several NVTs and tries to find the best matching OS.
 

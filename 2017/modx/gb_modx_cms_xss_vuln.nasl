@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_cms_xss_vuln.nasl 7892 2017-11-24 02:15:26Z ckuersteiner $
+# $Id: gb_modx_cms_xss_vuln.nasl 7992 2017-12-05 08:34:22Z teissa $
 #
 # MODX Revolution CMS XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:modx:revolution';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140530");
-  script_version("$Revision: 7892 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-24 03:15:26 +0100 (Fri, 24 Nov 2017) $");
+  script_version("$Revision: 7992 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-24 09:41:29 +0700 (Fri, 24 Nov 2017)");
-  script_tag(name: "cvss_base", value: "5.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-1000223");
 

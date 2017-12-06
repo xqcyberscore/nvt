@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3495_1.nasl 7943 2017-11-30 11:54:54Z santu $
+# $Id: gb_ubuntu_USN_3495_1.nasl 7992 2017-12-05 08:34:22Z teissa $
 #
 # Ubuntu Update for optipng USN-3495-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843381");
-  script_version("$Revision: 7943 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-30 12:54:54 +0100 (Thu, 30 Nov 2017) $");
+  script_version("$Revision: 7992 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-28 07:19:18 +0100 (Tue, 28 Nov 2017)");
   script_cve_id("CVE-2017-1000229");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for optipng USN-3495-1");
   script_tag(name: "summary", value: "Check the version of optipng");

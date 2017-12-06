@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_7f30914972_compat-openssl10_fc26.nasl 7911 2017-11-27 04:54:41Z santu $
+# $Id: gb_fedora_2017_7f30914972_compat-openssl10_fc26.nasl 7992 2017-12-05 08:34:22Z teissa $
 #
 # Fedora Update for compat-openssl10 FEDORA-2017-7f30914972
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873785");
-  script_version("$Revision: 7911 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-27 05:54:41 +0100 (Mon, 27 Nov 2017) $");
+  script_version("$Revision: 7992 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-23 08:15:39 +0100 (Thu, 23 Nov 2017)");
   script_cve_id("CVE-2017-3735", "CVE-2017-3736");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for compat-openssl10 FEDORA-2017-7f30914972");
   script_tag(name: "summary", value: "Check the version of compat-openssl10");

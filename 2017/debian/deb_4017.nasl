@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4017.nasl 7659 2017-11-06 05:54:31Z teissa $
+# $Id: deb_4017.nasl 7992 2017-12-05 08:34:22Z teissa $
 #
 # Auto-generated from advisory DSA 4017-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704017");
-  script_version("$Revision: 7659 $");
+  script_version("$Revision: 7992 $");
   script_cve_id("CVE-2017-3735", "CVE-2017-3736");
   script_name("Debian Security Advisory DSA 4017-1 (openssl1.0 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-06 06:54:31 +0100 (Mon, 06 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-03 00:00:00 +0100 (Fri, 03 Nov 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

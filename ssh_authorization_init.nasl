@@ -1,6 +1,8 @@
-# OpenVAS
-# $Id: ssh_authorization_init.nasl 6063 2017-05-03 09:03:05Z teissa $
-# Description: This script allows to set SSH credentials for target hosts.
+##############################################################################
+# OpenVAS Vulnerability Test
+# $Id: ssh_authorization_init.nasl 7993 2017-12-05 09:04:08Z cfischer $
+#
+# This script allows to set SSH credentials for target hosts.
 #
 # Authors:
 # Jan-Oliver Wagner <jan-oliver.wagner@greenbone.net>
@@ -24,63 +26,52 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-
-tag_summary = "This script allows users to enter the information
-required to authorize and login via ssh protocol.
-
-These data will be used by other tests to executed
-authenticated checks.";
+#
+##############################################################################
 
 if(description)
 {
- script_id(103591);
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
- script_tag(name:"creation_date", value:"2012-10-24 10:55:52 +0100 (Wed, 24 Oct 2012)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("SSH Authorization");
+  script_oid("1.3.6.1.4.1.25623.1.0.103591");
+  script_version("$Revision: 7993 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-05 10:04:08 +0100 (Tue, 05 Dec 2017) $");
+  script_tag(name:"creation_date", value:"2012-10-24 10:55:52 +0100 (Wed, 24 Oct 2012)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("SSH Authorization"); # nb: Don't change the script name, this name is hardcoded within some manager functions...
+  script_category(ACT_SETTINGS);
+  script_copyright("Copyright 2007-2012 Greenbone Networks GmbH");
+  script_family("Credentials");
 
+  # Don't change the preference names, those names are hardcoded within some manager functions...
 
- script_category(ACT_SETTINGS);
+  # Preference type to trigger client-side ssh-login selection per target
+  script_add_preference(name:"Keys:", type:"sshlogin", value:"-");
+  script_add_preference(name:"SSH login name:", type:"entry", value:"");
+  script_add_preference(name:"SSH password (unsafe!):", type:"password", value:"");
+  script_add_preference(name:"SSH public key:", type:"file", value:"");
+  script_add_preference(name:"SSH private key:", type:"file", value:"");
+  script_add_preference(name:"SSH key passphrase:", type:"password", value:"");
+
+  script_tag(name:"summary", value:"This script allows users to enter the information
+  required to authorize and login via ssh protocol.
+
+  These data will be used by other tests to executed authenticated checks.");
+
   script_tag(name:"qod_type", value:"remote_banner");
- script_copyright("Copyright 2007-2012 Greenbone Networks GmbH");
- script_family("Credentials");
 
-# Preference type to trigger client-side ssh-login selection per target
- script_add_preference(name:"Keys:", type:"sshlogin", value:"-");
-
-# Preference to decide whether to use old-style "single" login or the "new" per-target-wise
-# (deprecated: once openvas-server < 2.0.1 is not supported anymore this can be removed)
- script_add_preference(name:"Use per-target login information", type:"checkbox", value:"no");
-# Following values will be used for the default case of "single" login definition for all targets
-# (deprecated: once openvas-server < 2.0.1 is not supported anymore this can be removed)
- script_add_preference(name:"SSH login name:", type:"entry", value:"sshovas");
- script_add_preference(name:"SSH password (unsafe!):", type:"password", value:"");
- script_add_preference(name:"SSH public key:", type:"file", value:"");
- script_add_preference(name:"SSH private key:", type:"file", value:"");
- script_add_preference(name:"SSH key passphrase:", type:"password", value:"");
-
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
-use_new = script_get_preference("Use per-target login information");
+ssh_login_name     = script_get_preference( "SSH login name:" );
+ssh_password       = script_get_preference( "SSH password (unsafe!):" );
+ssh_public_key     = script_get_preference_file_content( "SSH public key:" );
+ssh_private_key    = script_get_preference_file_content( "SSH private key:" );
+ssh_key_passphrase = script_get_preference( "SSH key passphrase:" );
 
-if(use_new == "no")
-{
-  # Old-style "single" login for all targets
-  ssh_login_name = script_get_preference("SSH login name:");
-  ssh_password = script_get_preference("SSH password (unsafe!):");
-  ssh_public_key = script_get_preference_file_content("SSH public key:");
-  ssh_private_key = script_get_preference_file_content("SSH private key:");
-  ssh_key_passphrase = script_get_preference("SSH key passphrase:");
+if( ssh_login_name )     set_kb_item( name:"Secret/SSH/login", value:ssh_login_name );
+if( ssh_password )       set_kb_item( name:"Secret/SSH/password", value:ssh_password );
+if( ssh_public_key )     set_kb_item( name:"Secret/SSH/publickey", value:ssh_public_key );
+if( ssh_private_key )    set_kb_item( name:"Secret/SSH/privatekey", value:ssh_private_key );
+if( ssh_key_passphrase ) set_kb_item( name:"Secret/SSH/passphrase", value:ssh_key_passphrase );
 
-  if (ssh_login_name) set_kb_item(name: "Secret/SSH/login", value: ssh_login_name);
-  if (ssh_password) set_kb_item(name:"Secret/SSH/password", value:ssh_password);
-  if (ssh_public_key) set_kb_item(name: "Secret/SSH/publickey", value: ssh_public_key);
-  if (ssh_private_key) set_kb_item(name: "Secret/SSH/privatekey", value: ssh_private_key);
-  if (ssh_key_passphrase) set_kb_item(name: "Secret/SSH/passphrase", value: ssh_key_passphrase);
-}
-
-exit(0);
+exit( 0 );

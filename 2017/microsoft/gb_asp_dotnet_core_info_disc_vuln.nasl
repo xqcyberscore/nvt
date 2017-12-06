@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_info_disc_vuln.nasl 7855 2017-11-22 04:40:39Z santu $
+# $Id: gb_asp_dotnet_core_info_disc_vuln.nasl 7992 2017-12-05 08:34:22Z teissa $
 #
 # Microsoft ASP.NET Core Information Disclosure Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812097");
-  script_version("$Revision: 7855 $");
+  script_version("$Revision: 7992 $");
   script_cve_id("CVE-2017-8700");
   script_bugtraq_id(101712);
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 05:40:39 +0100 (Wed, 22 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-17 12:17:13 +0530 (Fri, 17 Nov 2017)");
   script_name("Microsoft ASP.NET Core Information Disclosure Vulnerability");
 

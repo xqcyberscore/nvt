@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 7570 2017-10-26 07:33:23Z asteins $
+# $Id: products_eol.inc 7997 2017-12-05 15:36:22Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7570 $
+# $Revision: 7997 $
 #
 ###############################################################################
 
@@ -156,7 +156,7 @@ eol_cpes[ 'cpe:/a:otrs:otrs' ]               = make_array(
 
 # https://github.com/owncloud/core/wiki/Maintenance-and-Release-Schedule
 eol_cpes[ 'cpe:/a:owncloud:owncloud' ]       = make_array(
-                                                           'versions',      '8.2:2017-05-31;8.1:2017-02-28;8.0:2016-10-31;7.0:2016-05-31;6.0:2015-09-01;5.0:2015-03-01;4.5:2013-07-01;4.0:2013-07-01;3.0:2012-04-01;2.0:2012-01-01;1.0:2011-10-01',
+                                                           'versions',      '9.0:2017-12-05;8.2:2017-05-31;8.1:2017-02-28;8.0:2016-10-31;7.0:2016-05-31;6.0:2015-09-01;5.0:2015-03-01;4.5:2013-07-01;4.0:2013-07-01;3.0:2012-04-01;2.0:2012-01-01;1.0:2011-10-01',
                                                            'version_regex', '^([0-9]+\\.[0-9]+)'
                                                          );
 
@@ -273,7 +273,7 @@ function product_reached_eol( cpe, version, debug ) {
 
     v_d = eregmatch( pattern:'^([^:]+):(.*)$', string:tv );
     if( isnull( v_d[1] ) || isnull( v_d[2] ) ) {
-      if( debug ) display( "DEBUG: eol_cpes array has a wrong 'version:date' syntax." ); 
+      if( debug ) display( "DEBUG: eol_cpes array has a wrong 'version:date' syntax." );
       return;
     }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_4d5618a962_webkitgtk4_fc26.nasl 7989 2017-12-05 06:57:22Z teissa $
+# $Id: gb_fedora_2017_4d5618a962_webkitgtk4_fc26.nasl 7992 2017-12-05 08:34:22Z teissa $
 #
 # Fedora Update for webkitgtk4 FEDORA-2017-4d5618a962
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873839");
-  script_version("$Revision: 7989 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-05 07:57:22 +0100 (Tue, 05 Dec 2017) $");
+  script_version("$Revision: 7992 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-04 18:48:31 +0530 (Mon, 04 Dec 2017)");
   script_cve_id("CVE-2017-13798", "CVE-2017-13788", "CVE-2017-13803");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for webkitgtk4 FEDORA-2017-4d5618a962");
   script_tag(name: "summary", value: "Check the version of webkitgtk4");

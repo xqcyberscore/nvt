@@ -1,6 +1,6 @@
-###############################################################################
-# OpenVAS
-# $Id: gb_snmp_authorization.nasl 7235 2017-09-22 13:15:52Z cfischer $
+##############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_snmp_authorization.nasl 7993 2017-12-05 09:04:08Z cfischer $
 #
 # Set information for SNMP authorization in KB.
 #
@@ -29,21 +29,16 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105076");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7235 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 15:15:52 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 7993 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-05 10:04:08 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-09-02 10:42:27 +0200 (Tue, 02 Sep 2014)");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("SNMP Authorization");
-
-  script_tag(name:"summary", value:"This script allows users to enter the information
-  required to authorize and login via SNMP.
-
-  These data are used by tests that require authentication.");
-
+  script_name("SNMP Authorization"); # nb: Don't change the script name, this name is hardcoded within some manager functions...
   script_category(ACT_SETTINGS);
   script_copyright("Copyright 2014 Greenbone Networks GmbH");
   script_family("Credentials");
 
+  # Don't change the preference names, those names are hardcoded within some manager functions...
   script_add_preference(name:"SNMP Community:", type:"password", value:"");
 
   if( defined_func( "snmpv3_get" ) ) {
@@ -53,6 +48,11 @@ if(description)
     script_add_preference(name:"SNMPv3 Privacy Password:", type:"password", value:"");
     script_add_preference(name:"SNMPv3 Privacy Algorithm:", type:"radio", value:"aes;des");
   }
+
+  script_tag(name:"summary", value:"This script allows users to enter the information
+  required to authorize and login via SNMP.
+
+  These data are used by tests that require authentication.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

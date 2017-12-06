@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_cotp_detect.nasl 7270 2017-09-26 09:49:58Z cfischer $
+# $Id: gb_simatic_s7_cotp_detect.nasl 7998 2017-12-06 04:32:22Z ckuersteiner $
 #
 # Siemens SIMATIC S7 Device Detection (COTP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106099");
- script_version ("$Revision: 7270 $");
- script_tag(name: "last_modification", value: "$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
+ script_version ("$Revision: 7998 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-12-06 05:32:22 +0100 (Wed, 06 Dec 2017) $");
  script_tag(name: "creation_date", value: "2016-06-17 17:08:52 +0700 (Fri, 17 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -175,7 +175,6 @@ readComponentID = raw_string(0x03, 0x00, 0x00, 0x21, 0x02, 0xf0, 0x80, 0x32,
 recv = cotp_send_recv(req: readComponentID, soc: soc);
 model = "unknown";
 
-
 if (recv) {
   dataPacket = cotp_extract_packet(data: recv);
 
@@ -189,7 +188,7 @@ if (recv) {
       element = substr(dataPacket, i, i+element_size);
       if (hexstr(element[1]) == "01") {
         plcName = substr(element, 2);
-        mod = eregmatch(pattern: "simatic([ ,]+)?([0-9]+)", string: plcName, icase: TRUE);
+        mod = eregmatch(pattern: "simatic([ ,]+)?(.*)", string: plcName, icase: TRUE);
         if (mod[2]) {
           model = mod[2];
         }
@@ -197,7 +196,7 @@ if (recv) {
       else
         if (hexstr(element[1]) == "02") {
           moduleName = substr(element, 2);
-          mod = eregmatch(pattern: "((CPU )||(S7-))([0-9]+)", string: moduleName, icase: TRUE);
+          mod = eregmatch(pattern: "((CPU )||(S7-))(.*)", string: moduleName, icase: TRUE);
           if (mod[4]) {
             model = mod[4];
           }

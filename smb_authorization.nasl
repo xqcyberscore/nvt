@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_authorization.nasl 6741 2017-07-17 15:53:49Z cfischer $
+# $Id: smb_authorization.nasl 7993 2017-12-05 09:04:08Z cfischer $
 #
 # Set information for smb authorization in KB.
 #
@@ -35,16 +35,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.90023");
-  script_version("$Revision: 6741 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 17:53:49 +0200 (Mon, 17 Jul 2017) $");
+  script_version("$Revision: 7993 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-05 10:04:08 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-06-02 00:42:27 +0200 (Mon, 02 Jun 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("SMB Authorization");
+  script_name("SMB Authorization"); # nb: Don't change the script name, this name is hardcoded within some manager functions...
   script_category(ACT_SETTINGS);
   script_copyright("Copyright 2008, 2014 Greenbone Networks GmbH");
   script_family("Credentials");
 
+  # Don't change the preference names, those names are hardcoded within some manager functions...
   script_add_preference(name:"SMB login:", type:"entry", value:"");
   script_add_preference(name:"SMB password:", type:"password", value:"");
   script_add_preference(name:"SMB domain (optional):", type:"entry", value:"");
@@ -66,3 +67,5 @@ smb_domain   = script_get_preference( "SMB domain (optional):" );
 if( smb_login )    set_kb_item( name:"SMB/login_filled/0", value:smb_login );
 if( smb_password ) set_kb_item( name:"SMB/password_filled/0", value:smb_password );
 if( smb_domain )   set_kb_item( name:"SMB/domain_filled/0", value:smb_domain );
+
+exit( 0 );

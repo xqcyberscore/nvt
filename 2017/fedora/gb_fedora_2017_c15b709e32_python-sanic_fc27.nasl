@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_c15b709e32_python-sanic_fc27.nasl 7983 2017-12-04 13:10:03Z santu $
+# $Id: gb_fedora_2017_c15b709e32_python-sanic_fc27.nasl 7992 2017-12-05 08:34:22Z teissa $
 #
 # Fedora Update for python-sanic FEDORA-2017-c15b709e32
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873849");
-  script_version("$Revision: 7983 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-04 14:10:03 +0100 (Mon, 04 Dec 2017) $");
+  script_version("$Revision: 7992 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-04 18:48:11 +0530 (Mon, 04 Dec 2017)");
   script_cve_id("CVE-2017-16762");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for python-sanic FEDORA-2017-c15b709e32");
   script_tag(name: "summary", value: "Check the version of python-sanic");

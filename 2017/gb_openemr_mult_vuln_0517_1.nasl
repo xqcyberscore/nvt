@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_mult_vuln_0517_1.nasl 7832 2017-11-20 13:43:31Z asteins $
+# $Id: gb_openemr_mult_vuln_0517_1.nasl 7992 2017-12-05 08:34:22Z teissa $
 #
 # OpenEMR Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:open-emr:openemr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106635");
-  script_version("$Revision: 7832 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-20 14:43:31 +0100 (Mon, 20 Nov 2017) $");
+  script_version("$Revision: 7992 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-03-07 08:12:26 +0700 (Tue, 07 Mar 2017)");
-  script_tag(name: "cvss_base", value: "5.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-6394", "CVE-2017-1000241");
   script_bugtraq_id(96539, 96576);

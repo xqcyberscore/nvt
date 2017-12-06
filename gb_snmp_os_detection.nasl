@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_os_detection.nasl 7758 2017-11-14 15:05:56Z cfischer $
+# $Id: gb_snmp_os_detection.nasl 7995 2017-12-05 15:10:59Z cfischer $
 #
 # SNMP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103429");
-  script_version("$Revision: 7758 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 16:05:56 +0100 (Tue, 14 Nov 2017) $");
+  script_version("$Revision: 7995 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-05 16:10:59 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-02-17 10:17:12 +0100 (Fri, 17 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -453,7 +453,7 @@ if( "Novell UnixWare" >< sysdesc ) {
   exit( 0 );
 }
 
-if( "ProSafe" >< sysdesc ) {
+if( "ProSafe" >< sysdesc || "ProSAFE" >< sysdesc ) {
   exit( 0 ); # 1.3.6.1.4.1.25623.1.0.108163 (gb_netgear_prosafe_snmp_detect.nasl)
 }
 

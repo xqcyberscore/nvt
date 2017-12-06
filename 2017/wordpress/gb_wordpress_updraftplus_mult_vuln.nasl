@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_updraftplus_mult_vuln.nasl 7897 2017-11-24 07:09:48Z ckuersteiner $
+# $Id: gb_wordpress_updraftplus_mult_vuln.nasl 7992 2017-12-05 08:34:22Z teissa $
 #
 # WordPress UpdraftPlus Plugin Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140535");
-  script_version("$Revision: 7897 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-24 08:09:48 +0100 (Fri, 24 Nov 2017) $");
+  script_version("$Revision: 7992 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-24 13:22:19 +0700 (Fri, 24 Nov 2017)");
-  script_tag(name: "cvss_base", value: "8.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:N");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-16870", "CVE-2017-16871");
 

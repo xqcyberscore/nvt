@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4047211.nasl 7773 2017-11-15 13:21:06Z santu $
+# $Id: gb_ms_kb4047211.nasl 7992 2017-12-05 08:34:22Z teissa $
 #
 # Windows Search Denial of Service Vulnerability (KB4047211)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812086");
-  script_version("$Revision: 7773 $");
+  script_version("$Revision: 7992 $");
   script_cve_id("CVE-2017-11788");
   script_bugtraq_id(101711);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 14:21:06 +0100 (Wed, 15 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-15 07:25:52 +0530 (Wed, 15 Nov 2017)");
   script_name("Windows Search Denial of Service Vulnerability (KB4047211)");
 

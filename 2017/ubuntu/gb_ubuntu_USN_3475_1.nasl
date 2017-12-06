@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3475_1.nasl 7726 2017-11-10 08:08:47Z santu $
+# $Id: gb_ubuntu_USN_3475_1.nasl 7992 2017-12-05 08:34:22Z teissa $
 #
 # Ubuntu Update for openssl USN-3475-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843360");
-  script_version("$Revision: 7726 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-10 09:08:47 +0100 (Fri, 10 Nov 2017) $");
+  script_version("$Revision: 7992 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-07 11:05:00 +0100 (Tue, 07 Nov 2017)");
   script_cve_id("CVE-2017-3735", "CVE-2017-3736");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for openssl USN-3475-1");
   script_tag(name: "summary", value: "Check the version of openssl");
