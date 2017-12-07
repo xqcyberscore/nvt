@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cambium_networks_services_server_detect.nasl 7951 2017-11-30 14:04:23Z asteins $
+# $Id: gb_cambium_networks_services_server_detect.nasl 8011 2017-12-06 12:34:58Z jschulte $
 #
 # Cambium Networks Services Server Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113059");
-  script_version("$Revision: 7951 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-30 15:04:23 +0100 (Thu, 30 Nov 2017) $");
+  script_version("$Revision: 8011 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-06 13:34:58 +0100 (Wed, 06 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-30 10:23:24 +0100 (Thu, 30 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,16 +61,23 @@ include( "http_keepalive.inc" );
 port = get_http_port( default: 80 );
 foreach dir ( make_list_unique( "/", cgi_dirs( port: port ) ) ) {
   foreach file ( make_list( "/", "/index.html" ) ) {
+
     if( dir == "/" ) url = file;
     else url = dir + file;
+
     resp = http_get_cache( item: url, port: port );
-    if( match = eregmatch( pattern: "<title>Cambium Networks Services Server</title>", string: resp ) ) {
+
+    if( resp =~ "<title>Cambium Networks Services Server</title>" && resp =~ 'href="http://cambiumnetworks.com"' ) {
+
       version_match = eregmatch( pattern: "<i>\(([0-9.]+)\)</i>", string: resp );
       version = "unknown";
       if ( version_match[1] ) version = version_match[1];
+
       set_kb_item( name: "cambium-networks/services-server/detected", value: TRUE );
+
       cpe = build_cpe( value: version, exp: "^([0-9.]+)", base: "cpe:/a:cambium-networks:services-server:");
       if( !cpe ) cpe = "cpe:/a:cambium-networks:services-server";
+
       # Build Report and register product
       build_report( app: "Cambium Networks Services Server", ver: version, concluded: version_match[0], cpe: cpe, insloc: dir, port: port );
       exit( 0 );

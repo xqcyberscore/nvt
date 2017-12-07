@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3518.nasl 7604 2017-11-01 06:48:12Z asteins $
+# $Id: deb_3518.nasl 8008 2017-12-06 10:53:07Z teissa $
 # Auto-generated from advisory DSA 3518-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703518);
-    script_version("$Revision: 7604 $");
+    script_version("$Revision: 8008 $");
     script_cve_id("CVE-2016-3153", "CVE-2016-3154");
     script_name("Debian Security Advisory DSA 3518-1 (spip - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-06 11:53:07 +0100 (Wed, 06 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-03-16 00:00:00 +0100 (Wed, 16 Mar 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3518.html");
 
-    script_summary("Debian Security Advisory DSA 3518-1 (spip - security update)");
 
     script_category(ACT_GATHER_INFO);
 

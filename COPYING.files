@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 06 Dec 2017 07:56:01 +0100
+# Automatically created on:  Thu, 07 Dec 2017 08:23:10 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47556,6 +47556,8 @@
 2017/apple/gb_apple_safari_HT208223.nasl: GPLv2+
 2017/apple/gb_apple_safari_spoofing_n_xss_vuln_HT208116.nasl: GPLv2+
 2017/apple/gb_apple_xcode_code_exec_or_dos_vuln_macosx.nasl: GPLv2+
+2017/atlassian/gb_atlassian_confluence_xss_vuln.nasl: GPLv2+
+2017/atlassian/gb_atlassian_fisheye_crucible_rce_vuln.nasl: GPLv2+
 2017/centos/gb_CESA-2017_2930_kernel_centos7.nasl: GPLv2+
 2017/centos/gb_CESA-2017_3071_ntp_centos6.nasl: GPLv2+
 2017/centos/gb_CESA-2017_3075_wget_centos7.nasl: GPLv2+
@@ -51004,6 +51006,7 @@
 2017/gb_netgear_cve_2016_5649.nasl: GPLv2+
 2017/gb_netgear_cve-2017-5521.nasl: GPLv2+
 2017/gb_netgear_dgn2200_rce_vuln.nasl: GPLv2+
+2017/gb_netgear_GS108E_default_password.nasl: GPLv2+
 2017/gb_netip_sentinel_8_0_1.nasl: GPLv2+
 2017/gb_netscape_enterprise_server_auth_bof_vuln.nasl: GPLv2+
 2017/gb_netscape_fasttrack_server_auth_bof_vuln.nasl: GPLv2+
@@ -51041,8 +51044,11 @@
 2017/gb_ntp_rand_no_gen_weakness_brute_force_vuln.nasl: GPLv2+
 2017/gb_nuxeo_platform_dir_trav_vuln.nasl: GPLv2+
 2017/gb_oilrig_malware_detection.nasl: GPLv2+
+2017/gb_opencast_auth_bypass.nasl: GPLv2+
 2017/gb_opencast_default_credentials.nasl: GPLv2+
+2017/gb_opencast_rce_vuln.nasl: GPLv2+
 2017/gb_openemr_db_disc_vuln.nasl: GPLv2+
+2017/gb_openemr_mult_vuln_0317.nasl: GPLv2+
 2017/gb_openemr_mult_vuln_0517_1.nasl: GPLv2+
 2017/gb_openemr_mult_vuln_0517_2.nasl: GPLv2+
 2017/gb_openldap_ber_get_next_dos_vuln.nasl: GPLv2+
@@ -53608,6 +53614,7 @@ gb_netgain_em_detect.nasl: GPLv2+
 gb_netgear_dgn2200_detect.nasl: GPLv2+
 gb_netgear_nighthawk_router_detect.nasl: GPLv2+
 gb_netgear_prosafe_consolidation.nasl: GPLv2+
+gb_netgear_prosafe_http_detect.nasl: GPLv2+
 gb_netgear_prosafe_snmp_detect.nasl: GPLv2+
 gb_netgear_wnr2000_router_detect.nasl: GPLv2+
 gb_netiq_access_manager_detect.nasl: GPLv2+
@@ -55152,6 +55159,7 @@ GSHB/EL15/GSHB_M5_131.nasl: GPLv2+
 GSHB/EL15/GSHB_M5_145.nasl: GPLv2+
 GSHB/EL15/GSHB_M5_147.nasl: GPLv2+
 GSHB/EL15/GSHB.nasl: GPLv2+
+GSHB/EL15/GSHB_WMI_UAC_config.nasl: GPLv2+
 GSHB/GSHB_Apache_SSL.nasl: GPLv2+
 GSHB/GSHB_BruteForce.inc: GPLv2+
 GSHB/GSHB_IIS_metabase.nasl: GPLv2+
@@ -55172,6 +55180,7 @@ GSHB/GSHB_SLAD_Netstat_natcp.nasl: GPLv2+
 GSHB/GSHB_SLAD_SFC_verifyonly.nasl: GPLv2+
 GSHB/GSHB_SLAD_snort.nasl: GPLv2+
 GSHB/GSHB_SMB_SDDL.nasl: GPLv2+
+GSHB/GSHB_SMB_UAC_Config.nasl: GPLv2+
 GSHB/GSHB_smtp_eicar_test.nasl: GPLv2+
 GSHB/GSHB_smtp_mailbomb_test.nasl: GPLv2+
 GSHB/GSHB_SMTP_sendmail.nasl: GPLv2+
@@ -55254,7 +55263,6 @@ GSHB/GSHB_WMI_removable-media.nasl: GPLv2+
 GSHB/GSHB_WMI_ScreenSaver_Status.nasl: GPLv2+
 GSHB/GSHB_WMI_SNMP_Communities.nasl: GPLv2+
 GSHB/GSHB_WMI_TerminalServerSettings.nasl: GPLv2+
-GSHB/GSHB_WMI_UAC_config.nasl: GPLv2+
 GSHB/GSHB_WMI_W2K3_ClientFunk.nasl: GPLv2+
 GSHB/GSHB_WMI_WinAdminTools.nasl: GPLv2+
 GSHB/GSHB_WMI_WinFirewallStat.nasl: GPLv2+

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3519.nasl 7604 2017-11-01 06:48:12Z asteins $
+# $Id: deb_3519.nasl 8008 2017-12-06 10:53:07Z teissa $
 # Auto-generated from advisory DSA 3519-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703519);
-    script_version("$Revision: 7604 $");
+    script_version("$Revision: 8008 $");
     script_cve_id("CVE-2015-8339", "CVE-2015-8340", "CVE-2015-8341", "CVE-2015-8550", "CVE-2015-8555", "CVE-2016-1570", "CVE-2016-1571", "CVE-2016-2270", "CVE-2016-2271");
     script_name("Debian Security Advisory DSA 3519-1 (xen - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-06 11:53:07 +0100 (Wed, 06 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-03-17 00:00:00 +0100 (Thu, 17 Mar 2016)");
     script_tag(name:"cvss_base", value:"7.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3519.html");
 
-    script_summary("Debian Security Advisory DSA 3519-1 (xen - security update)");
 
     script_category(ACT_GATHER_INFO);
 

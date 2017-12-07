@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_palo_alto_panOS_version.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_palo_alto_panOS_version.nasl 8015 2017-12-07 05:40:46Z ckuersteiner $
 #
 # Palo Alto PAN-OS Version Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105263");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 8015 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 06:40:46 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-04-22 14:02:11 +0200 (Wed, 22 Apr 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,7 +71,7 @@ else
 
 app = 'Palo Alto PAN-OS';
 vers = 'unknown';
-cpe = 'cpe:/o:altaware:palo_alto_networks_panos';
+cpe = 'cpe:/o:paloaltonetworks:pan-os';
 
 version = eregmatch( pattern:vpattern, string:system );
 if( ! isnull( version[1] ) )

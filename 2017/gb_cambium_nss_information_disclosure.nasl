@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cambium_nss_information_disclosure.nasl 7951 2017-11-30 14:04:23Z asteins $
+# $Id: gb_cambium_nss_information_disclosure.nasl 8011 2017-12-06 12:34:58Z jschulte $
 #
 # Cambium Networks Services Server Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113060");
-  script_version("$Revision: 7951 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-30 15:04:23 +0100 (Thu, 30 Nov 2017) $");
+  script_version("$Revision: 8011 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-06 13:34:58 +0100 (Wed, 06 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-30 11:49:50 +0100 (Thu, 30 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -71,17 +71,23 @@ if( ! dir = get_app_location( cpe: CPE, port: port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-files = make_list( "/httpd.conf", "/windows/apache2/conf/server.key", "/windows/apache2/conf/server.pem", "/windows/apache2/conf/httpd.conf",
-                   "/stack/php/php.ini", "/windows/php/php.ini",
-                   "/stack/postgresql/data/pg_hba.conf", "/stack/postgresql/data/postgresql.conf",
-                   "/logs/",
-                   "/scripts/cnss_test_users.sql", "/scripts/cnss_seed_users.sql" );
+files = make_array( "/httpd.conf", "ServerRoot",
+                    "/windows/apache2/conf/server.key", "BEGIN PRIVATE KEY",
+                    "/windows/apache2/conf/server.pem", "BEGIN PRIVATE KEY",
+                    "/windows/apache2/conf/httpd.conf", "ServerRoot",
+                    "/stack/php/php.ini", "About php.ini",
+                    "/windows/php/php.ini", "About php.ini",
+                    "/stack/postgresql/data/ph_hba.conf", "PostgreSQL Client Authentication Configuration File",
+                    "/stack/postgresql/data/postgresql.conf", "PostgreSQL configuration file",
+                    "/logs", "Index of /logs",
+                    "/scripts/cnss_test_users.sql", "INSERT INTO",
+                    "/scripts/cnss_seed_users.sql", "INSERT INTO" );
 
 file_list = "";
-foreach file ( files ) {
+foreach file ( keys( files ) ) {
   res = http_get_cache( port: port, item: dir + file);
 
-  if( "200 OK" >< res ) {
+  if( res =~ "^HTTP/1\.[01] 200" && files[file] >< res ) {
     VULN = TRUE;
     file_list += file + '\r\n';
   }

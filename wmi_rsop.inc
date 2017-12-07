@@ -42,9 +42,13 @@ function wmi_rsop_accesstoken(handle)
   return rsopList;
 }
 
-function wmi_rsop_auditpolicy(handle)
+function wmi_rsop_auditpolicy(handle, select)
 {
-  query = 'Select * from RSOP_AuditPolicy where precedence=1';
+  if(select){
+    query = 'Select ' + select + ' from RSOP_AuditPolicy where precedence=1';
+  }else{
+    query = 'Select * from RSOP_AuditPolicy where precedence=1';
+  }
 
   rsopList = wmi_query_rsop(wmi_handle:handle, query:query);
 
@@ -59,6 +63,23 @@ function wmi_rsop_policysetting(handle)
 {
   query = 'Select * from RSOP_PolicySetting where precedence=1';
 
+  rsopList = wmi_query_rsop(wmi_handle:handle, query:query);
+
+  if(("NTSTATUS" >< rsopList) || !rsopList){
+    return(0);
+  }
+
+  return rsopList;
+}
+
+function wmi_rsop_userprivilegeright(handle, select){
+  if(select){
+    query = 'select ' + select + ' from RSOP_UserPrivilegeRight where precedence=1';
+  }else{
+    query = 'select * from RSOP_UserPrivilegeRight where precedence=1';
+  }
+
+  display( query);
   rsopList = wmi_query_rsop(wmi_handle:handle, query:query);
 
   if(("NTSTATUS" >< rsopList) || !rsopList){

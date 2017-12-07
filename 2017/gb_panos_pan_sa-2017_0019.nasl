@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0019.nasl 6873 2017-08-08 12:35:26Z teissa $
+# $Id: gb_panos_pan_sa-2017_0019.nasl 8015 2017-12-07 05:40:46Z ckuersteiner $
 #
 # Palo Alto PAN-OS Cross-Site Scripting Vulnerability
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/o:altaware:palo_alto_networks_panos';
+CPE = 'cpe:/o:paloaltonetworks:pan-os';
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106976");
-  script_version("$Revision: 6873 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-08 14:35:26 +0200 (Tue, 08 Aug 2017) $");
+  script_version("$Revision: 8015 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-07 06:40:46 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-07-21 11:50:18 +0700 (Fri, 21 Jul 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

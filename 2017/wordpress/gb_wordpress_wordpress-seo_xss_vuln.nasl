@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wordpress-seo_xss_vuln.nasl 7810 2017-11-17 10:46:09Z asteins $
+# $Id: gb_wordpress_wordpress-seo_xss_vuln.nasl 8016 2017-12-07 06:31:25Z asteins $
 #
 # WordPress Yoast SEO Plugin XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112127");
-  script_version("$Revision: 7810 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-17 11:46:09 +0100 (Fri, 17 Nov 2017) $");
+  script_version("$Revision: 8016 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-07 07:31:25 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-17 12:00:00 +0100 (Fri, 17 Nov 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-16842");
 

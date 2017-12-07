@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0018.nasl 6840 2017-08-03 08:38:20Z ckuersteiner $
+# $Id: gb_panos_pan_sa-2017_0018.nasl 8015 2017-12-07 05:40:46Z ckuersteiner $
 #
 # Palo Alto PAN-OS Kernel Vulnerability
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/o:altaware:palo_alto_networks_panos';
+CPE = 'cpe:/o:paloaltonetworks:pan-os';
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106882");
-  script_version("$Revision: 6840 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-03 10:38:20 +0200 (Thu, 03 Aug 2017) $");
+  script_version("$Revision: 8015 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-07 06:40:46 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-06-20 09:10:58 +0700 (Tue, 20 Jun 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");

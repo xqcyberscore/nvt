@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_prosafe_consolidation.nasl 7995 2017-12-05 15:10:59Z cfischer $
+# $Id: gb_netgear_prosafe_consolidation.nasl 8013 2017-12-06 14:43:57Z cfischer $
 #
 # NETGEAR ProSAFE Devices Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108307");
-  script_version("$Revision: 7995 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-05 16:10:59 +0100 (Tue, 05 Dec 2017) $");
+  script_version("$Revision: 8013 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-06 15:43:57 +0100 (Wed, 06 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-05 09:03:31 +0100 (Tue, 05 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_netgear_prosafe_snmp_detect.nasl"); # WIP: "gb_netgear_prosafe_http_detect.nasl");
+  script_dependencies("gb_netgear_prosafe_snmp_detect.nasl", "gb_netgear_prosafe_http_detect.nasl");
   script_mandatory_keys("netgear/prosafe/detected");
 
   script_tag(name:"summary", value:"The script reports a detected NETGEAR ProSAFE device including the
@@ -119,7 +119,11 @@ if( snmp_ports = get_kb_list( "netgear/prosafe/snmp/port" ) ) {
 
 if( http_ports = get_kb_list( "netgear/prosafe/http/port" ) ) {
   foreach port( http_ports ) {
+    concluded = get_kb_item( "netgear/prosafe/http/" + port + "/concluded" );
     extra += "HTTP(s) on port " + port + '/tcp\n';
+    if( concluded ) {
+      extra += 'Concluded from: ' + concluded + '\n';
+    }
     register_product( cpe:hw_cpe, location:location, port:port, service:"www" );
     register_product( cpe:os_cpe, location:location, port:port, service:"www" );
   }

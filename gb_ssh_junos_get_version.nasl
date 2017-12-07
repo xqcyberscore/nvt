@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_junos_get_version.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_ssh_junos_get_version.nasl 8007 2017-12-06 09:50:38Z ckuersteiner $
 #
 # Get Junos Software Version
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96200");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 8007 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-06 10:50:38 +0100 (Wed, 06 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-07-13 11:48:37 +0200 (Wed, 13 Jul 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,11 +62,18 @@ if( ! sysversion || "JUNOS" >!< sysversion ) exit(0);
 
 set_kb_item( name:"junos/show_version", value:sysversion );
 
-v = eregmatch( pattern:"KERNEL ([^ ]+) .+on ([0-9]{4}-[0-9]{2}-[0-9]{2})", string:sysversion );
-if( isnull( v[1] ) ) exit( 0 );
+v = eregmatch(pattern: 'Junos: ([^\r\n]+)', string: sysversion);
+if( isnull( v[1] ) ) {
+  v = eregmatch( pattern:"KERNEL ([^ ]+) .+on ([0-9]{4}-[0-9]{2}-[0-9]{2})", string:sysversion );
+  if (isnull(v[1]))
+    exit( 0 );
+}
 
 version = v[1];
-build = v[2];
+
+b = eregmatch( pattern:"KERNEL ([^ ]+) .+on ([0-9]{4}-[0-9]{2}-[0-9]{2})", string:sysversion );
+if (!isnull(b[2]))
+  build = b[2];
 
 cpe = "cpe:/o:juniper:junos:" + version;
 

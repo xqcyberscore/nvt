@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_341.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_M4_341.nasl 8004 2017-12-06 09:02:19Z emoss $
 #
 # IT-Grundschutz, 13. EL, Maﬂnahme 4.341
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94167);
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 8004 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-06 10:02:19 +0100 (Wed, 06 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-11-20 15:57:23 +0100 (Wed, 20 Nov 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_family("IT-Grundschutz-13");
   script_mandatory_keys("Tools/Present/wmi");
   script_mandatory_keys("Compliance/Launch/GSHB-13");
-  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_UAC_config.nasl", "GSHB/GSHB_WMI_ProtectedMode.nasl");
+  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/EL15/GSHB_WMI_UAC_config.nasl", "GSHB/GSHB_WMI_ProtectedMode.nasl");
   script_require_keys("WMI/UAC");
   script_tag(name : "summary" , value :
 "IT-Grundschutz M4.341: Integrit‰tsschutz ab Windows Vista.

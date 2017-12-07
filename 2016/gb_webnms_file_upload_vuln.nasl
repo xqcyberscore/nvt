@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webnms_file_upload_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
+# $Id: gb_webnms_file_upload_vuln.nasl 8006 2017-12-06 09:26:55Z cfischer $
 #
 # WebNMS 5.2 / 5.2 SP1 Multiple Vulnerabilities
 #
@@ -25,11 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:zohocorp:webnms";
+
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106242");
-  script_version("$Revision: 6166 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
+  script_version("$Revision: 8006 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-06 10:26:55 +0100 (Wed, 06 Dec 2017) $");
   script_tag(name: "creation_date", value: "2016-09-13 17:11:16 +0700 (Tue, 13 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,9 +48,9 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("gb_webnms_detect.nasl");
   script_require_ports("Services/www", 9090);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("webnms/installed");
 
   script_tag(name: "summary", value: "WebNMS Framework 5.2 / 5.2 SP1 is prone to multiple vulnerabilities.");
 
@@ -73,6 +75,7 @@ user which the WebNMS server is running and to gain access to sensitive data on 
   script_tag(name: "solution", value: "See https://forums.webnms.com/topic/recent-vulnerabilities-in-webnms-and-how-to-protect-the-server-against-them for a mitigation procedure.");
 
   script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/2712");
+  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40229/");
 
   exit(0);
 }
@@ -81,13 +84,18 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port(default: 9090);
+if (!port = get_app_port(cpe: CPE)) exit(0);
+if (!dir = get_app_location(cpe: CPE, port: port)) exit(0);
 
-req = http_get(port: port, item: "/servlets/FileUploadServlet");
+if (dir == "/") dir = "";
+url = dir + "/servlets/FileUploadServlet";
+
+req = http_get(port: port, item: url);
 res = http_keepalive_send_recv(port: port, data: req, bodyonly: FALSE);
 
-if (res =~ "HTTP/1.. 405") {
-  report = report_vuln_url(port: port, url: "/servlets/FileUploadServlet");
+# The servlet seems to only allow PUT requests
+if (res =~ "^HTTP/1\.[01] 405") {
+  report = report_vuln_url(port: port, url: url);
   security_message(port: port, data: report);
   exit(0);
 }

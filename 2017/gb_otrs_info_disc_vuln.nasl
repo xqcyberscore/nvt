@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_info_disc_vuln.nasl 7804 2017-11-17 08:21:54Z asteins $
+# $Id: gb_otrs_info_disc_vuln.nasl 8016 2017-12-07 06:31:25Z asteins $
 #
 # OTRS Information Disclosure Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:otrs:otrs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112126");
-  script_version("$Revision: 7804 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-17 09:21:54 +0100 (Fri, 17 Nov 2017) $");
+  script_version("$Revision: 8016 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-07 07:31:25 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-17 09:39:38 +0100 (Fri, 17 Nov 2017)");
-  script_tag(name: "cvss_base", value: "6.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-15864");
 

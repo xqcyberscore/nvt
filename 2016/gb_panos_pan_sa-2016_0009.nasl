@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0009.nasl 6840 2017-08-03 08:38:20Z ckuersteiner $
+# $Id: gb_panos_pan_sa-2016_0009.nasl 8015 2017-12-07 05:40:46Z ckuersteiner $
 #
 # Palo Alto PAN-OS PAN-SA-2016-0009
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/o:altaware:palo_alto_networks_panos';
+CPE = 'cpe:/o:paloaltonetworks:pan-os';
 
 if (description)
 {
@@ -33,7 +33,7 @@ if (description)
  script_tag(name:"cvss_base", value:"3.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
  script_cve_id("CVE-2016-2219");
- script_version ("$Revision: 6840 $");
+ script_version ("$Revision: 8015 $");
 
  script_name("Palo Alto PAN-OS PAN-SA-2016-0009");
 
@@ -51,7 +51,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-03 10:38:20 +0200 (Thu, 03 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 06:40:46 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-07-05 16:56:13 +0200 (Tue, 05 Jul 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("Palo Alto PAN-OS Local Security Checks");

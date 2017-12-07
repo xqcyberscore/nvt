@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_341.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: GSHB_M4_341.nasl 8004 2017-12-06 09:02:19Z emoss $
 #
 # IT-Grundschutz, 12. EL, Maßnahme 4.341
 #
@@ -45,8 +45,8 @@ Soweit technisch möglich umgesetzt (aktiviertes UAC und geschützter Modus in ver
 if(description)
 {
   script_id(94092);
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 8004 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-06 10:02:19 +0100 (Wed, 06 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-11-07 13:38:53 +0100 (Mon, 07 Nov 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,7 +58,7 @@ if(description)
   script_family("IT-Grundschutz-12");
   script_mandatory_keys("Tools/Present/wmi");
   script_mandatory_keys("Compliance/Launch/GSHB-12");
-  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_UAC_config.nasl", "GSHB/GSHB_WMI_ProtectedMode.nasl");
+  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/EL15/GSHB_WMI_UAC_config.nasl", "GSHB/GSHB_WMI_ProtectedMode.nasl");
   script_require_keys("WMI/UAC");
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name:"deprecated", value:TRUE);

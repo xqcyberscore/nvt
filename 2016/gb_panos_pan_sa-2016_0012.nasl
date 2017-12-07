@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/o:altaware:palo_alto_networks_panos';
+CPE = 'cpe:/o:paloaltonetworks:pan-os';
 
 if (description)
 {
@@ -33,7 +33,7 @@ if (description)
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2016-1712");
- script_version ("$Revision: 6840 $");
+ script_version ("$Revision: 8015 $");
 
  script_name("Palo Alto PAN-OS Local privilege escalation (PAN-SA-2016-0012)");
 
@@ -51,7 +51,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-03 10:38:20 +0200 (Thu, 03 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 06:40:46 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-07-14 10:37:09 +0200 (Thu, 14 Jul 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("Palo Alto PAN-OS Local Security Checks");
