@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mod_access_referer.nasl 6693 2017-07-12 10:10:27Z cfischer $
+# $Id: mod_access_referer.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: mod_access_referer 1.0.2 NULL pointer dereference
 #
 # Authors:
@@ -39,8 +39,8 @@ has not been updated for a long time.";
 if(description)
 {
  script_id(11543); 
- script_version("$Revision: 6693 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 12:10:27 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2003-1054");
  script_bugtraq_id(7375);
@@ -50,7 +50,6 @@ if(description)
  name = "mod_access_referer 1.0.2 NULL pointer dereference";
  script_name(name);
  
- summary = "Apache module mode_access_referer 1.0.2 contains a NULL pointer dereference vulnerability";
  
  script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");

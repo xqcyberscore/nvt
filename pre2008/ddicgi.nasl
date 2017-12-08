@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ddicgi.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: ddicgi.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: ddicgi.exe vulnerability
 #
 # Authors:
@@ -33,8 +33,8 @@ tag_solution = "remove it from the cgi-bin or scripts directory.";
 if(description)
 {
  script_id(11728);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1657);
  script_tag(name:"cvss_base", value:"10.0");
@@ -47,7 +47,6 @@ if(description)
  
 
 
- summary = "Checks for the ddicgi.exe file";
  
  
  script_category(ACT_DENIAL);

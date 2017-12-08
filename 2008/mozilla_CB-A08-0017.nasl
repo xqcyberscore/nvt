@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mozilla_CB-A08-0017.nasl 7784 2017-11-16 08:42:29Z cfischer $
+# $Id: mozilla_CB-A08-0017.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Mozilla Firefox, Thunderbird, Seamonkey. Several vulnerabilitys (Linux)
 #
 # Authors:
@@ -43,14 +43,14 @@ Impact
 
 tag_solution = "All Users should upgrade to the latest versions of Firefox, Thunderbird or Seamonkey.";
 
-# $Revision: 7784 $
+# $Revision: 8023 $
 
 if(description)
 {
 
  script_id(90014);
- script_version("$Revision: 7784 $");
- script_tag(name:"last_modification", value:"$Date: 2017-11-16 09:42:29 +0100 (Thu, 16 Nov 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-06-17 20:22:38 +0200 (Tue, 17 Jun 2008)");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -60,7 +60,6 @@ if(description)
 
  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2008/mfsa2008-14.html");
 
- summary = "Mozilla Firefox, Thunderbird, Seamonkey. Several vulnerabilitys";
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
  script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_netgear_GS108T_default_password.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: sw_netgear_GS108T_default_password.nasl 8025 2017-12-07 08:54:14Z cfischer $
 #
-# Netgear GS108T Default Password
+# NETGEAR ProSAFE GS108T Default Password
 #
 # Authors:
 # Christian Fischer <info@schutzwerk.com>
@@ -28,24 +28,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105629");
-  script_version ("$Revision: 5527 $");
+  script_version("$Revision: 8025 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:54:14 +0100 (Thu, 07 Dec 2017) $");
+  script_tag(name:"creation_date", value:"2016-04-29 11:25:48 +0200 (Fri, 29 Apr 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_name("Netgear GS108T Default Password");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
-  script_tag(name:"creation_date", value:"2016-04-29 11:25:48 +0200 (Fri, 29 Apr 2016)");
+  script_name("NETGEAR ProSAFE GS108T Default Password");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_dependencies("gb_netgear_prosafe_consolidation.nasl");
+  script_mandatory_keys("netgear/prosafe/http/detected");
 
   script_xref(name:"URL", value:"https://www.netgear.com/support/product/GS108Tv1.aspx");
 
   script_tag(name:"solution", value:"Change the password.");
-  script_tag(name:"summary", value:"The remote Netgear GS108T device has the default password 'password'.");
-  script_tag(name:"affected", value:"Netgear GS108T devices. Other models might be also affected.");
+
+  script_tag(name:"summary", value:"The remote NETGEAR ProSAFE GS108T device has the default password 'password'.");
+
+  script_tag(name:"affected", value:"NETGEAR ProSAFE GS108T devices. Other models might be also affected.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"Workaround");
@@ -56,36 +57,19 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port( default:80 );
+if( ! port = get_kb_item( "netgear/prosafe/http/port" ) ) exit( 0 );
 
-buf = http_get_cache( item:"/", port:port );
+req = http_post_req( port:port, url:"/login.cgi", data:"password=password&rtime=" + unixtime() + ".99", add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
+res = http_keepalive_send_recv( port:port, data:req );
+if( ! res ) exit( 0 );
 
-if( "<title>NetGear" >!< buf ) exit( 0 );
+cookie = get_cookie_from_header( buf:res, pattern:"Broadcom-WebSuperSmart=([^; ]+)" );
+if( isnull( cookie ) ) exit( 0 );
 
-host = http_host_name( port:port );
-
-data = string( "password=password&rtime=" + unixtime() + ".99" );
-len = strlen( data );
-
-req = string( "POST /login.cgi HTTP/1.1\r\n",
-              "Host: ", host, "\r\n",
-              "DNT: 1\r\n",
-              "Referer: http://", host, "/\r\n",
-              "Content-Type: application/x-www-form-urlencoded\r\n",
-              "Content-Length: ", len, "\r\n",
-              "\r\n",
-              data );
+req = http_get_req( port:port, url:"/sysinfo.html", add_headers:make_array( "Cookie", "Broadcom-WebSuperSmart=" + cookie ) );
 res = http_keepalive_send_recv( port:port, data:req );
 
-cookie = eregmatch( pattern:"Broadcom-WebSuperSmart=([0-9a-zA-Z]+);", string:res );
-if( isnull( cookie[1] ) ) exit( 0 );
-
-req = string( "GET /sysinfo.html HTTP/1.1\r\n",
-              "Host: ", host, "\r\n",
-              "Cookie: Broadcom-WebSuperSmart=", cookie[1], "\r\n\r\n" );
-res = http_keepalive_send_recv( port:port, data:req );
-
-if( "System Information" >< res && "MAC address" >< res ) {
+if( res =~ "^HTTP/1\.[01] 200" && "System Information" >< res && "MAC address" >< res ) {
   security_message( port:port, data:"It was possible to login with the default password 'password'" );
   exit( 0 );
 }

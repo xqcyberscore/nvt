@@ -53,8 +53,8 @@ as announced in the referenced advisory FreeBSD-SA-09:04.bind.asc";
 if(description)
 {
  script_id(63243);
- script_version("$Revision: 4847 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-23 10:33:16 +0100 (Fri, 23 Dec 2016) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-01-20 22:42:09 +0100 (Tue, 20 Jan 2009)");
  script_cve_id("CVE-2009-0025");
  script_tag(name:"cvss_base", value:"6.8");
@@ -63,7 +63,6 @@ if(description)
  script_name(name);
 
 
- summary = "FreeBSD Security Advisory (FreeBSD-SA-09:04.bind.asc)";
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"package");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: open_nntp_server.nasl 7172 2017-09-18 11:07:34Z cfischer $
+# $Id: open_nntp_server.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Open News server
 #
 # Authors:
@@ -42,8 +42,8 @@ to read and/or post 'politically incorrects' articles.
 if(description)
 {
  script_id(17204);
- script_version("$Revision: 7172 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:07:34 +0200 (Mon, 18 Sep 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -51,7 +51,6 @@ if(description)
  name = "Open News server";
  script_name(name);
  
- summary = "Public NNTP server is open to outside";
  
  script_category(ACT_GATHER_INFO);
  

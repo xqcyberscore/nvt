@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mysql_single_row_subselect_dos.nasl 7176 2017-09-18 12:01:01Z cfischer $
+# $Id: mysql_single_row_subselect_dos.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: MySQL Single Row Subselect Remote DoS
 #
 # Authors:
@@ -40,8 +40,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 7176 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"2.1");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
@@ -54,7 +54,6 @@ if(description)
  name = "MySQL Single Row Subselect Remote DoS";
  script_name(name);
  
- summary = "Checks the remote MySQL version";
  
  script_category(ACT_GATHER_INFO);
   

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms02-018.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: smb_nt_ms02-018.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Cumulative Patch for Internet Information Services (Q327696)
 #
 # Authors:
@@ -51,8 +51,8 @@ http://www.microsoft.com/technet/security/bulletin/ms02-018.mspx";
 if(description)
 {
  script_id(10943);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(4006, 4474, 4476, 4478, 4490, 6069, 6070, 6071, 6072);
  script_cve_id("CVE-2002-0147", "CVE-2002-0149",
@@ -67,7 +67,6 @@ if(description)
  script_name(name);
  
 
- summary = "Determines whether October 30, 2002 IIS Cumulative patches (Q327696) are installed";
 
  
  script_category(ACT_GATHER_INFO);

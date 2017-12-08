@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: snmpwalk_portscan.nasl 7225 2017-09-22 06:06:17Z emoss $
+# $Id: snmpwalk_portscan.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: snmpwalk 'scanner'
 #
 # Authors:
@@ -29,8 +29,8 @@ if(description)
  script_id(14274);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_version("$Revision: 7225 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-22 08:06:17 +0200 (Fri, 22 Sep 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "snmpwalk 'scanner'";
@@ -38,7 +38,6 @@ if(description)
  
 
  
- summary = "Find open ports with snmpwalk";
  
  script_category(ACT_SCANNER);
  

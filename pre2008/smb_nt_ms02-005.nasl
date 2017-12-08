@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms02-005.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: smb_nt_ms02-005.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: IE 5.01 5.5 6.0 Cumulative patch (890923)
 #
 # Authors:
@@ -37,8 +37,8 @@ See http://www.microsoft.com/technet/security/bulletin/ms05-020.mspx";
 if(description)
 {
  script_id(10861);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-0842", "CVE-2004-0727", "CVE-2004-0216", "CVE-2004-0839",
                "CVE-2004-0844", "CVE-2004-0843", "CVE-2004-0841", "CVE-2004-0845",
@@ -68,7 +68,6 @@ if(description)
 
 
 
- summary = "Determines whether the hotfix 890923 is installed";
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

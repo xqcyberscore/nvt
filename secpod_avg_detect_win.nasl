@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_avg_detect_win.nasl 7293 2017-09-27 08:49:48Z cfischer $
+# $Id: secpod_avg_detect_win.nasl 8036 2017-12-08 05:55:03Z cfischer $
 #
 # AVG AntiVirus Version Detection (Windows)
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900718");
-  script_version("$Revision: 7293 $");
+  script_version("$Revision: 8036 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 06:55:03 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-05-29 07:35:11 +0200 (Fri, 29 May 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("AVG AntiVirus Version Detection (Windows)");
@@ -80,8 +80,8 @@ foreach ver (make_list("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "2012"
   if(avgVer)
   {
     set_kb_item(name:"AVG/AV/Win/Ver", value:avgVer);
-    register_cpe(tmpVers:avgVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:avg:avg_anti-virus:", insloc:avgPath, 
-                 app:"AVG Antivirus", concluded:avgVer);
+    register_and_report_cpe(app:"AVG Antivirus", ver:avgVer, base:"cpe:/a:avg:avg_anti-virus:",
+                            expr:"^([0-9.]+)", insloc:avgPath, concluded:avgVer);
     exit(0);
 
   }
@@ -106,8 +106,8 @@ if(!avgVer)
   if(avgVer)
   {
     set_kb_item(name:"AVG/AV/Win/Ver", value:avgVer);
-    register_cpe(tmpVers:avgVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:avg:avg_anti-virus:", insloc:avgPath,
-                 app:"AVG Antivirus", concluded:avgVer);
+    register_and_report_cpe(app:"AVG Antivirus", ver:avgVer, base:"cpe:/a:avg:avg_anti-virus:",
+                            expr:"^([0-9.]+)", insloc:avgPath, concluded:avgVer);
     exit(0);
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 7874 2017-11-22 19:39:38Z cfischer $
+# $Id: os_eol.inc 8025 2017-12-07 08:54:14Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7874 $
+# $Revision: 8025 $
 #
 ###############################################################################
 
@@ -817,9 +817,11 @@ function os_reached_eol( cpe, debug ) {
 
   base_cpe = get_base_cpe( cpe:cpe );
 
-  if( ! array_key_exist( key:base_cpe, array:eol_cpes, part_match:TRUE ) && base_cpe != "cpe:/o:linux:linux_kernel" && base_cpe != "cpe:/o:linux:kernel" ) {
-    if( debug ) display( "DEBUG: Base CPE " + base_cpe + " not in eol_cpes array." );
-    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#Base CPE '" + base_cpe + "' passed to cpe parameter of os_reached_eol is not in the list of EOL products" );
+  if( ! array_key_exist( key:base_cpe, array:eol_cpes, part_match:TRUE ) ) {
+    if( debug ) {
+      display( "DEBUG: Base CPE " + base_cpe + " not in eol_cpes array." );
+      set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#Base CPE '" + base_cpe + "' passed to cpe parameter of os_reached_eol is not in the list of EOL products" );
+    }
     return;
   }
 

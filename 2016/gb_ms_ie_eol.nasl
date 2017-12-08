@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_eol.nasl 2381 2016-01-12 12:21:23Z antu123 $
+# $Id: gb_ms_ie_eol.nasl 8031 2017-12-07 13:03:33Z teissa $
 #
 # Microsoft Internet Explorer End Of Life Detection
 #
@@ -29,27 +29,19 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806657");
-  script_version("$Revision: 2381 $");
+  script_version("$Revision: 8031 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-12 13:21:23 +0100 (Tue, 12 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 14:03:33 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-01-12 15:30:21 +0530 (Tue, 12 Jan 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Internet Explorer End Of Life Detection");
-
-
-  tag_summary =
-"Detection of installed version of Microsoft Internet Explorer and check whether
-it has reached end of life.
-
-The script logs in via smb, detects the version of Microsoft Internet Explorer
-on remote host and sets the KB.";
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/lifecycle#gp/Microsoft-Internet-Explorer");
 
-  script_summary("Check for Internet Explorer version and determine if it has reached end of life");
+  script_tag(name: "summary" , value: "Check for Internet Explorer version and determine if it has reached end of life");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

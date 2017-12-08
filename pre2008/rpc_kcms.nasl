@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: rpc_kcms.nasl 7175 2017-09-18 11:55:15Z cfischer $
+# $Id: rpc_kcms.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Kcms Profile Server
 #
 # Authors:
@@ -42,8 +42,8 @@ http://www.securityfocus.com/bid/2605";
 if(description)
 {
  script_id(10832);
- script_version("$Revision: 7175 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2605);
  script_tag(name:"cvss_base", value:"4.6");
@@ -54,7 +54,6 @@ if(description)
  name = "Kcms Profile Server";
  script_name(name);
  
- summary = "Checks the presence of a Kcms service";
  
  script_category(ACT_GATHER_INFO);
  script_copyright("This script is Copyright (C) 2002 Michael Scheidell");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: gnutls_CB-A08-0079.nasl 5661 2017-03-21 11:39:13Z cfi $
+# $Id: gnutls_CB-A08-0079.nasl 8024 2017-12-07 08:47:24Z teissa $
 # Description: GnuTLS < 2.2.5 vulnerability (Linux)
 #
 # Authors:
@@ -54,13 +54,13 @@ tag_impact = "CVE-2008-1948
 
 tag_solution = "All GnuTLS users should upgrade to the latest version:";
 
-# $Revision: 5661 $
+# $Revision: 8024 $
 
 if(description)
 {
   script_id(90026);
-  script_version("$Revision: 5661 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:39:13 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 8024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:47:24 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-09-06 11:16:56 +0200 (Sat, 06 Sep 2008)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -68,7 +68,6 @@ if(description)
   name = "GnuTLS < 2.2.5 vulnerability (Linux)";
   script_name(name);
 
-  summary = "Determines GnuTLS < 2.2.5 vulnerability";
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");

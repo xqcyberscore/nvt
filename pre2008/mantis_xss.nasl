@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mantis_xss.nasl 6702 2017-07-12 13:49:41Z cfischer $
+# $Id: mantis_xss.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Mantis multiple unspecified XSS
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "Upgrade to Mantis 0.18.1 or newer.";
 if(description)
 {
  script_id(14344);
- script_version("$Revision: 6702 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(9184);
  script_tag(name:"cvss_base", value:"4.3");
@@ -53,7 +53,6 @@ if(description)
  
 
 
- summary = "Checks for the version of Mantis";
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

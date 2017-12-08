@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851431");
-  script_version("$Revision: 6676 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:56:06 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 15:40:57 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-11-11 05:47:37 +0100 (Fri, 11 Nov 2016)");
   script_cve_id("CVE-2016-6911", "CVE-2016-7568", "CVE-2016-8670");
   script_tag(name:"cvss_base", value:"7.5");
@@ -53,7 +53,7 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:2772_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-11/msg00022.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of gd");
+  script_tag(name: "summary" , value: "Check for the Version of gd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

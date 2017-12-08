@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mercur_imap_buffer_overflow.nasl 4489 2016-11-14 08:23:54Z teissa $
+# $Id: mercur_imap_buffer_overflow.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Mercur Mailserver/Messaging version <= 5.0 IMAP Overflow Vulnerability
 #
 # Authors:
@@ -43,8 +43,8 @@ by trusted sources only.";
 
 if (description) {
  script_id(200050);
- script_version("$Revision: 4489 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,7 +55,6 @@ if (description) {
 
  name = "Mercur Mailserver/Messaging version <= 5.0 IMAP Overflow Vulnerability";
  script_name(name);
- summary = "Checks for buffer overflows in Mercur Mailserver/Messaging IMAP Services";
 
  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");

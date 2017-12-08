@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: w32_spybot_worm_variant.nasl 7551 2017-10-24 12:24:05Z cfischer $
+# $Id: w32_spybot_worm_variant.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: w32.spybot.fcd worm infection
 #
 # Authors:
@@ -38,8 +38,8 @@ definitions.";
 if(description)
 {
  script_id(15520);
- script_version("$Revision: 7551 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:24:05 +0200 (Tue, 24 Oct 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -47,7 +47,6 @@ if(description)
  name = "w32.spybot.fcd worm infection";
  script_name(name);
  
- summary = "Detects if w32.spybot.fcd is installed on the remote host";
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_active");

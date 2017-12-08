@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: msadcs_dll.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: msadcs_dll.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: RDS / MDAC Vulnerability (msadcs.dll) located
 #
 # Authors:
@@ -35,8 +35,8 @@ Also, BUGTRAQ ID 529 on www.securityfocus.com ( http://www.securityfocus.com/bid
 if(description)
 {
  script_id(10357);
- script_version("$Revision: 6056 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(529);
  script_xref(name:"IAVA", value:"1999-a-0010");
@@ -49,7 +49,6 @@ if(description)
  name = "RDS / MDAC Vulnerability (msadcs.dll) located";
  script_name(name);
 
- summary = "Determines the presence of msadcs.dll";
  script_category(ACT_GATHER_INFO);
  
  script_copyright("This script is Copyright (C) 2000 Roelof Temmingh <roelof@sensepost.com>");

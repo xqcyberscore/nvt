@@ -29,8 +29,8 @@ tag_summary = "This plugin runs ncrack to find SSH accounts & passwords by brute
 if(description)
 {
  script_id(80105);
- script_version("$Revision: 6841 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-03 13:59:21 +0200 (Thu, 03 Aug 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  name = "ncrack: SSH";
  script_name(name);
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
@@ -40,7 +40,6 @@ if(description)
 
  script_tag(name:"qod_type", value:"remote_vul");
  
- summary = "Brute force SSH authentication with ncrack";
  
  script_category(ACT_ATTACK);
  script_copyright("This script is Copyright (C) 2009 Vlatko Kosturjak");

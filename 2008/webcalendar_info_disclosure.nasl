@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: webcalendar_info_disclosure.nasl 6703 2017-07-12 13:57:25Z cfischer $
+# $Id: webcalendar_info_disclosure.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: WebCalendar User Account Enumeration Disclosure Issue
 #
 # Authors:
@@ -39,8 +39,8 @@ or the password is invalid.";
 if(description)
 {
  script_id(80021);
- script_version("$Revision: 6703 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:57:25 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 19:51:47 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -51,7 +51,6 @@ if(description)
  name = "WebCalendar User Account Enumeration Disclosure Issue";
  script_name(name);
  
- summary = "Checks for WebCalendar User Account Enumeration Disclosure weakness";
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");

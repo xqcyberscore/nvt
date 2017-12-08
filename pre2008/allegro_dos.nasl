@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: allegro_dos.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: allegro_dos.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Allegro Software RomPager 2.10 Denial of Service
 #
 # Authors:
@@ -31,8 +31,8 @@ tag_solution = "Upgrade to the latest version, or apply a patch.";
 if(description)
 {
  script_id(19304);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_bugtraq_id(1290);
  script_cve_id("CVE-2000-0470");
@@ -44,7 +44,6 @@ if(description)
  script_name(name);
 
 
- summary = "Checks for version of Allegro Software RomPager";
 
 
  script_category(ACT_GATHER_INFO);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-filemaker-pwd-disclosure.nasl 5016 2017-01-17 09:06:21Z teissa $
+# $Id: remote-detect-filemaker-pwd-disclosure.nasl 8022 2017-12-07 08:23:28Z teissa $
 # Description: FileMaker Pro Client Authentication User Password Disclosure Vulnerability
 #
 # remote-detect-filemaker-pwd-disclosure.nasl
@@ -51,8 +51,8 @@ http://www.filemaker.com/ti/108462.html";
 if(description)
 {
 script_id(101001);
-script_version("$Revision: 5016 $");
-script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+script_version("$Revision: 8022 $");
+script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:23:28 +0100 (Thu, 07 Dec 2017) $");
 script_tag(name:"creation_date", value:"2009-03-08 15:05:20 +0100 (Sun, 08 Mar 2009)");
 script_tag(name:"cvss_base", value:"7.5");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -62,7 +62,6 @@ script_name(name);
  
 script_tag(name:"qod_type", value:"remote_vul");
 
-summary = "FileMaker Pro Client Authentication User Password Disclosure Vulnerability";
 
 script_category(ACT_ATTACK);
 

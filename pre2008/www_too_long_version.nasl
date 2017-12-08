@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: www_too_long_version.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: www_too_long_version.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: HTTP version number overflow
 #
 # Authors:
@@ -43,8 +43,8 @@ tag_solution = "upgrade your software or protect it with a filtering reverse pro
 if(description)
 {
  script_id(11061);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(5319, 5320, 5322, 5324);
  script_tag(name:"cvss_base", value:"7.5");
@@ -54,7 +54,6 @@ if(description)
  script_name(name);
  
 
- summary = "too long HTTP version kills the web server";
  
  script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");

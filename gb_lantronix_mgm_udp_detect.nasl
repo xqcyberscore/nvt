@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_mgm_udp_detect.nasl 7929 2017-11-29 09:59:29Z cfischer $
+# $Id: gb_lantronix_mgm_udp_detect.nasl 8020 2017-12-07 08:09:44Z cfischer $
 #
 # Lantronix Remote Configuration Protocol Detection (UDP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108299");
-  script_version("$Revision: 7929 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-29 10:59:29 +0100 (Wed, 29 Nov 2017) $");
+  script_version("$Revision: 8020 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:09:44 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-28 08:03:31 +0100 (Tue, 28 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -92,8 +92,8 @@ for( i = 16; i < 20; i++ ) {
 }
 info["Gateway"] = gateway;
 
-# collect Subnet
-info["Subnet bits"] = hexstr( getconf_recv[10] );
+# collect host bits of the device
+info["Host bits"] = hexstr( getconf_recv[10] );
 
 # collect Password
 for( i = 12; i < 16; i++ ) {

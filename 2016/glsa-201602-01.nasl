@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
 # Description: Gentoo Linux security check
-# $Id: glsa-201602-01.nasl 6591 2017-07-07 09:15:39Z cfischer $
+# $Id: glsa-201602-01.nasl 8029 2017-12-07 12:38:42Z teissa $
 
 # Authors:
 # Eero Volotinen <eero.volotinen@solinor.com>
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.121440");
-script_version("$Revision: 6591 $");
+script_version("$Revision: 8029 $");
 script_tag(name:"creation_date", value:"2016-02-05 14:00:43 +0200 (Fri, 05 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:15:39 +0200 (Fri, 07 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-12-07 13:38:42 +0100 (Thu, 07 Dec 2017) $");
 script_name("Gentoo Linux Local Check: https://security.gentoo.org/glsa/201602-01");
 script_tag(name: "insight", value: "Multiple vulnerabilities have been discovered in QEMU. Please review the CVE identifiers referenced below for details."); 
 script_tag(name : "solution", value : "update software");
@@ -39,7 +39,7 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
 script_category(ACT_GATHER_INFO);
-script_summary("Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201602-01");
+script_tag(name: "summary" , value: "Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201602-01");
 script_copyright("Eero Volotinen");
 script_family("Gentoo Local Security Checks");
 exit(0);

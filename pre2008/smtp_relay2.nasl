@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay2.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: smtp_relay2.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Mail relaying (thorough test)
 #
 # Authors:
@@ -44,8 +44,8 @@ your SMTP server cannot be used as a relay any more.";
 if(description)
 {
  script_id(11852);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,6 @@ if(description)
  name = "Mail relaying (thorough test)";
  script_name(name);
 
- summary = "Tries misc invalid tricks to circumvent anti-relay functions";
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_active");

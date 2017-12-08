@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: remote-MS06-056.nasl 6519 2017-07-04 14:08:14Z cfischer $
+# $Id: remote-MS06-056.nasl 8022 2017-12-07 08:23:28Z teissa $
 # Description: 
 # Microsoft Security Bulletin MS06-056
 # .NET Framework 2.0 Cross-Site Scripting Vulnerability - CVE-2006-3436 
@@ -65,8 +65,8 @@ http://www.microsoft.com/technet/security/Bulletin/MS06-056.mspx";
 if(description)
 {
 script_id(101006);
-script_version("$Revision: 6519 $");
-script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
+script_version("$Revision: 8022 $");
+script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:23:28 +0100 (Thu, 07 Dec 2017) $");
 script_tag(name:"creation_date", value:"2009-03-15 21:21:09 +0100 (Sun, 15 Mar 2009)");
 script_tag(name:"cvss_base", value:"4.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -77,7 +77,6 @@ script_name(name);
  
 script_tag(name:"qod_type", value:"remote_banner"); 
 
-summary = ".NET Framework 2.0 Cross-Site Scripting Vulnerability";
 
 script_category(ACT_ATTACK);
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mysql_multiple_flaws2.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: mysql_multiple_flaws2.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: MySQL multiple flaws (2)
 #
 # Authors:
@@ -44,8 +44,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(11357);
  script_cve_id("CVE-2004-0835","CVE-2004-0837");
@@ -59,7 +59,6 @@ if(description)
  script_name(name);
  
 
- summary = "Checks for the remote MySQL version";
  
  script_category(ACT_GATHER_INFO);
  

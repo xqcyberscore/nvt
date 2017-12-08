@@ -28,8 +28,8 @@ tag_summary = "This plugin runs phrasen/drescher to find SSH accounts & password
 if(description)
 {
  script_id(80106); 
- script_version("$Revision: 6841 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-03 13:59:21 +0200 (Thu, 03 Aug 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-08-10 08:41:48 +0200 (Mon, 10 Aug 2009)");
  name = "phrasen|drescher: SSH";
  script_name(name);
@@ -38,7 +38,6 @@ if(description)
 
  script_tag(name:"qod_type", value:"remote_vul");
  
- summary = "Brute force SSH authentication with phrasen|drescher";
  
  script_category(ACT_ATTACK);
  script_copyright("This script is Copyright (C) 2009 Vlatko Kosturjak");

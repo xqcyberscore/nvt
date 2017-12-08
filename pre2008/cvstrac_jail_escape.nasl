@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cvstrac_jail_escape.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: cvstrac_jail_escape.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: CVSTrac chdir() chroot jail escape
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "Update to version 1.1.4 or disable this CGI suite";
 if(description)
 {
  script_id(14288);
- script_version("$Revision: 6056 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:N/A:N");
@@ -52,7 +52,6 @@ if(description)
  
 
 
- summary = "Checks for CVSTrac version";
  
  
  script_category(ACT_GATHER_INFO);

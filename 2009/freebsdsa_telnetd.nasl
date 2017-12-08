@@ -52,8 +52,8 @@ as announced in the referenced advisory FreeBSD-SA-09:05.telnetd.asc";
 if(description)
 {
  script_id(63418);
- script_version("$Revision: 4865 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-02-18 23:13:28 +0100 (Wed, 18 Feb 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -61,7 +61,6 @@ if(description)
  script_name(name);
 
 
- summary = "FreeBSD Security Advisory (FreeBSD-SA-09:05.telnetd.asc)";
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"package");

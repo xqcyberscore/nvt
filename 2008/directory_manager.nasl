@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: directory_manager.nasl 4053 2016-09-14 05:26:09Z teissa $
+# $Id: directory_manager.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Directory Manager's edit_image.php
 #
 # Authors:
@@ -32,8 +32,8 @@ tag_solution = "Upgrade your software or firewall your web server";
 if(description)
 {
  script_id(80054);;
- script_version("$Revision: 4053 $");
- script_tag(name:"last_modification", value:"$Date: 2016-09-14 07:26:09 +0200 (Wed, 14 Sep 2016) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_bugtraq_id(3288);
  script_tag(name:"cvss_base", value:"7.5");
@@ -43,7 +43,6 @@ if(description)
  name = "Directory Manager's edit_image.php";
  script_name(name);
  
- summary = "Detects edit_image.php";
  
  
  script_category(ACT_GATHER_INFO);

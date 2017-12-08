@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882599");
-  script_version("$Revision: 6658 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:51:48 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8029 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 13:38:42 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-11-20 05:37:33 +0100 (Sun, 20 Nov 2016)");
   script_cve_id("CVE-2016-7545");
   script_tag(name:"cvss_base", value:"7.2");
@@ -51,7 +51,7 @@ in the context of the parent shell, escaping the sandbox. (CVE-2016-7545)
 
   script_xref(name: "CESA", value: "2016:2702");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-November/022147.html");
-  script_summary("Check for the Version of policycoreutils");
+  script_tag(name: "summary" , value: "Check for the Version of policycoreutils");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: scan_info.nasl 7385 2017-10-09 12:02:13Z cfischer $
+# $Id: scan_info.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Information about the scan
 #
 # Authors:
@@ -46,8 +46,8 @@ if(description)
  script_id(19506);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_version("$Revision: 7385 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-09 14:02:13 +0200 (Mon, 09 Oct 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "Information about the scan";
@@ -55,7 +55,6 @@ if(description)
  
 
 
- summary = "Displays information about the scan";
  
  script_category(ACT_END);
  

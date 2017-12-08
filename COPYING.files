@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 07 Dec 2017 08:23:10 +0100
+# Automatically created on:  Fri, 08 Dec 2017 07:53:12 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -17968,7 +17968,6 @@
 2011/freebsd_xrdb.nasl: GPLv2
 2011/freebsd_yahoo-ui.nasl: GPLv2
 2011/freebsd_ZendFramework2.nasl: GPLv2
-2011/gather-hardware-info.nasl: GPLv2+
 2011/gb_1024_cms_50275.nasl: GPLv2+
 2011/gb_absoluteftp_list_cmd_bof_vuln.nasl: GPLv2+
 2011/gb_actfax_46412.nasl: GPLv2+
@@ -47520,8 +47519,11 @@
 2017/apache/gb_apache_optionsbleed.nasl: GPLv2+
 2017/apache/gb_apache_optionsbleed_version.nasl: GPLv2+
 2017/apache/gb_apache_roller_code_exec_n_xss_vuln.nasl: GPLv2+
+2017/apache/gb_apache_roller_xml_rpc_protocol_xxe_vuln.nasl: GPLv2+
 2017/apache/gb_apache_struts_convention_plugin_path_traversal_vuln_lin.nasl: GPLv2+
 2017/apache/gb_apache_struts_convention_plugin_path_traversal_vuln_win.nasl: GPLv2+
+2017/apache/gb_apache_struts_dos_n_deserial_vuln_lin.nasl: GPLv2+
+2017/apache/gb_apache_struts_dos_n_deserial_vuln_win.nasl: GPLv2+
 2017/apache/gb_apache_struts_problem_report_xss_vuln.nasl: GPLv2+
 2017/apache/gb_apache_struts_remote_code_exec_vuln_nov17_lin.nasl: GPLv2+
 2017/apache/gb_apache_struts_remote_code_exec_vuln_nov17_win.nasl: GPLv2+
@@ -50153,6 +50155,7 @@
 2017/gb_garretcom_switch_mult_vuln.nasl: GPLv2+
 2017/gb_geneko_info_disc_vuln_exploit.nasl: GPLv2+
 2017/gb_geneko_info_disc_vuln.nasl: GPLv2+
+2017/gb_geovap_reliance_scada_xss_vuln.nasl: GPLv2+
 2017/gb_github_enterprise_2_8_10.nasl: GPLv2+
 2017/gb_github_enterprise_management_console_rce_03_17.nasl: GPLv2+
 2017/gb_git_remote_code_exec_vuln_win.nasl: GPLv2+
@@ -50397,6 +50400,8 @@
 2017/gb_jenkins_20171011_win.nasl: GPLv2+
 2017/gb_jenkins_20171108_lin.nasl: GPLv2+
 2017/gb_jenkins_20171108_win.nasl: GPLv2+
+2017/gb_jenkins_20171203_lin.nasl: GPLv2+
+2017/gb_jenkins_20171203_win.nasl: GPLv2+
 2017/gb_jenkins_java_deserialization_vul_07_2017.nasl: GPLv2+
 2017/gb_jetbrains_loc_file_disc_vuln.nasl: GPLv2+
 2017/gb_jetty_sec_bypass_vuln.nasl: GPLv2+
@@ -52292,6 +52297,9 @@
 2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-11_lin.nasl: GPLv2+
 2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-11_macosx.nasl: GPLv2+
 2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-11_win.nasl: GPLv2+
+2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-12_lin.nasl: GPLv2+
+2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-12_macosx.nasl: GPLv2+
+2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-12_win.nasl: GPLv2+
 2017/google/gb_google_chrome_stable-channel-update-for-desktop_21-2017-09_lin.nasl: GPLv2+
 2017/google/gb_google_chrome_stable-channel-update-for-desktop_21-2017-09_macosx.nasl: GPLv2+
 2017/google/gb_google_chrome_stable-channel-update-for-desktop_21-2017-09_win.nasl: GPLv2+
@@ -52317,6 +52325,7 @@
 2017/kaltura/gb_kaltura_mult_vuln.nasl: GPLv2+
 2017/kannel/gb_kannel_priv_esc_vuln.nasl: GPLv2+
 2017/magento/gb_magento_file_disc_vuln.nasl: GPLv2+
+2017/manageengine/gb_manageengine_appli_manager_mult_sql_inj_vuln.nasl: GPLv2+
 2017/manageengine/gb_manageengine_servicedesk_mult_vuln.nasl: GPLv2+
 2017/microsoft/gb_asp_dotnet_core_dos_vuln.nasl: GPLv2+
 2017/microsoft/gb_asp_dotnet_core_info_disc_vuln.nasl: GPLv2+
@@ -52418,8 +52427,14 @@
 2017/mozilla/gb_mozilla_firefox_mfsa_2017-21_2017-22_win.nasl: GPLv2+
 2017/mozilla/gb_mozilla_firefox_mfsa_2017-24_2017-25_macosx.nasl: GPLv2+
 2017/mozilla/gb_mozilla_firefox_mfsa_2017-24_2017-25_win.nasl: GPLv2+
+2017/mozilla/gb_mozilla_firefox_mfsa_2017-27_info_disc_macosx.nasl: GPLv2+
+2017/mozilla/gb_mozilla_firefox_mfsa_2017-27_info_disc_win.nasl: GPLv2+
+2017/mozilla/gb_mozilla_firefox_mfsa_2017-27_sec_bypass_macosx.nasl: GPLv2+
+2017/mozilla/gb_mozilla_firefox_mfsa_2017-27_sec_bypass_win.nasl: GPLv2+
 2017/mozilla/gb_mozilla_thunderbird_mfsa_2017-23_2017-23_macosx.nasl: GPLv2+
 2017/mozilla/gb_mozilla_thunderbird_mfsa_2017-23_2017-23_win.nasl: GPLv2+
+2017/mozilla/gb_mozilla_thunderbird_mfsa_2017-26_2017-26_macosx.nasl: GPLv2+
+2017/mozilla/gb_mozilla_thunderbird_mfsa_2017-26_2017-26_win.nasl: GPLv2+
 2017/nagios/gb_nagios_priv_esc_vuln.nasl: GPLv2+
 2017/noontec/gb_terramaster_tos_rce_vuln.nasl: GPLv2+
 2017/octopus/gb_octopus_deploy_access_vuln.nasl: GPLv2+
@@ -52523,6 +52538,12 @@
 2017/phpmyadmin/gb_phpmyadmin_mult_vuln_oct12_lin.nasl: GPLv2+
 2017/phpmyadmin/gb_phpmyadmin_mult_vuln_oct12_win.nasl: GPLv2+
 2017/phpmyfaq/gb_phpmyfaq_xss_vuln.nasl: GPLv2+
+2017/postgresql/gb_postgresql_info_disc_vuln_dec17_lin.nasl: GPLv2+
+2017/postgresql/gb_postgresql_info_disc_vuln_dec17_win.nasl: GPLv2+
+2017/postgresql/gb_postgresql_priv_esc_vuln_dec17_lin.nasl: GPLv2+
+2017/postgresql/gb_postgresql_priv_esc_vuln_dec17_win.nasl: GPLv2+
+2017/postgresql/gb_postgresql_sec_bypass_vuln_dec17_lin.nasl: GPLv2+
+2017/postgresql/gb_postgresql_sec_bypass_vuln_dec17_win.nasl: GPLv2+
 2017/powerdns/gb_pdns_api_vuln.nasl: GPLv2+
 2017/powerdns/gb_pdns_dos1.nasl: GPLv2+
 2017/powerdns/gb_pdns_mult_vuln.nasl: GPLv2+
@@ -52537,6 +52558,12 @@
 2017/redhat/gb_RHSA-2017_3247-01_firefox.nasl: GPLv2+
 2017/redhat/gb_RHSA-2017_3260-01_samba.nasl: GPLv2+
 2017/redhat/gb_RHSA-2017_3263-01_curl.nasl: GPLv2+
+2017/redhat/gb_RHSA-2017_3269-01_procmail.nasl: GPLv2+
+2017/redhat/gb_RHSA-2017_3270-01_apr.nasl: GPLv2+
+2017/redhat/gb_RHSA-2017_3278-01_samba4.nasl: GPLv2+
+2017/redhat/gb_RHSA-2017_3315-01_kernel.nasl: GPLv2+
+2017/redhat/gb_RHSA-2017_3368-01_qemu-kvm.nasl: GPLv2+
+2017/redhat/gb_RHSA-2017_3372-01_thunderbird.nasl: GPLv2+
 2017/redis/gb_redis_cross_proto_vuln.nasl: GPLv2+
 2017/samba/gb_samba_CVE-2017-14746.nasl: GPLv2+
 2017/samba/gb_samba_CVE-2017-15275.nasl: GPLv2+
@@ -52577,6 +52604,7 @@
 2017/ubuntu/gb_ubuntu_USN_3476_1.nasl: GPLv2+
 2017/ubuntu/gb_ubuntu_USN_3477_1.nasl: GPLv2+
 2017/ubuntu/gb_ubuntu_USN_3477_2.nasl: GPLv2+
+2017/ubuntu/gb_ubuntu_USN_3477_3.nasl: GPLv2+
 2017/ubuntu/gb_ubuntu_USN_3479_1.nasl: GPLv2+
 2017/ubuntu/gb_ubuntu_USN_3480_1.nasl: GPLv2+
 2017/ubuntu/gb_ubuntu_USN_3480_2.nasl: GPLv2+
@@ -52591,11 +52619,17 @@
 2017/ubuntu/gb_ubuntu_USN_3486_1.nasl: GPLv2+
 2017/ubuntu/gb_ubuntu_USN_3487_1.nasl: GPLv2+
 2017/ubuntu/gb_ubuntu_USN_3488_1.nasl: GPLv2+
+2017/ubuntu/gb_ubuntu_USN_3490_1.nasl: GPLv2+
 2017/ubuntu/gb_ubuntu_USN_3491_1.nasl: GPLv2+
 2017/ubuntu/gb_ubuntu_USN_3492_1.nasl: GPLv2+
 2017/ubuntu/gb_ubuntu_USN_3493_1.nasl: GPLv2+
 2017/ubuntu/gb_ubuntu_USN_3494_1.nasl: GPLv2+
 2017/ubuntu/gb_ubuntu_USN_3495_1.nasl: GPLv2+
+2017/ubuntu/gb_ubuntu_USN_3497_1.nasl: GPLv2+
+2017/ubuntu/gb_ubuntu_USN_3498_1.nasl: GPLv2+
+2017/ubuntu/gb_ubuntu_USN_3499_1.nasl: GPLv2+
+2017/ubuntu/gb_ubuntu_USN_3500_1.nasl: GPLv2+
+2017/ubuntu/gb_ubuntu_USN_3501_1.nasl: GPLv2+
 2017/unitrends/gb_unitrends_mult_vuln.nasl: GPLv2+
 2017/unitrends/gb_unitrends_rce_vuln.nasl: GPLv2+
 2017/vmware/gb_vmware_esxi_guest_rpc_null_pointer_deref_vuln.nasl: GPLv2+
@@ -52751,6 +52785,7 @@ ftpd_no_cmd.nasl: GPLv2
 ftp_func.inc: GPLv2
 ftpserver_detect_type_nd_version.nasl: GPLv2
 ftp_writeable_directories.nasl: GPLv2
+gather-hardware-info.nasl: GPLv2+
 gather-package-list-docker-container.inc: GPLv2+
 gather-package-list.nasl: GPLv2
 gb_2532gigs_detect.nasl: GPLv2+
@@ -53259,6 +53294,7 @@ gb_gather_linux_host_infos.nasl: GPLv2+
 gb_gather_windows_uptime.nasl: GPLv2+
 gb_gd_graphics_library_detect_lin.nasl: GPLv2+
 gb_geneko_router_snmp_detect.nasl: GPLv2+
+gb_geovap_reliance_scada_detect.nasl: GPLv2+
 gb_ge_snmp_web_interface_adapter_detect.nasl: GPLv2+
 gb_get_http_banner.nasl: GPLv2+
 gb_getsimple_cms_detect.nasl: GPLv2+
@@ -53616,6 +53652,7 @@ gb_netgear_nighthawk_router_detect.nasl: GPLv2+
 gb_netgear_prosafe_consolidation.nasl: GPLv2+
 gb_netgear_prosafe_http_detect.nasl: GPLv2+
 gb_netgear_prosafe_snmp_detect.nasl: GPLv2+
+gb_netgear_prosafe_telnet_detect.nasl: GPLv2+
 gb_netgear_wnr2000_router_detect.nasl: GPLv2+
 gb_netiq_access_manager_detect.nasl: GPLv2+
 gb_netiq_sentinel_detect.nasl: GPLv2+
@@ -54317,6 +54354,7 @@ gsf/2017/fortinet/gb_fortinet_fortios_info_disc_vuln.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortinet_fortios_mult_xss_vuln.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortinet_fortios_user_groups_xss_vuln.nasl: GPLv2+
 gsf/2017/fortinet/gb_fortiweb_FG-IR-17-131.nasl: GPLv2+
+gsf/2017/gb_bacnet_info_discl_vuln.nasl: GPLv2+
 gsf/2017/gb_codesys_mult_vuln.nasl: GPLv2+
 gsf/2017/gb_spidercontrol_scada_webserver_code_exec_vuln.nasl: GPLv2+
 gsf/2017/gb_winexesvc_service_delete.nasl: GPLv2+

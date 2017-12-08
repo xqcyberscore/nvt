@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: patchlink_detection.nasl 7293 2017-09-27 08:49:48Z cfischer $
+# $Id: patchlink_detection.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Patchlink Detection
 #
 # Authors:
@@ -37,14 +37,13 @@ if(description)
 {
  script_id(80039);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7293 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "Patchlink Detection";
  script_name(name);
 
- summary = "Checks for the presence of Patchlink";
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
  script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav and Tenable Network Security");

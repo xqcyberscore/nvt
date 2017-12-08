@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iis_xss_idc.nasl 6702 2017-07-12 13:49:41Z cfischer $
+# $Id: iis_xss_idc.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: IIS XSS via IDC error
 #
 # Authors:
@@ -31,16 +31,15 @@ in the URL, that will appear in the resulting page.";
 if(description)
 {
  script_id(11142);
- script_version("$Revision: 6702 $");
+ script_version("$Revision: 8023 $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(5900);
  name = "IIS XSS via IDC error";
  script_name(name);
 
- summary = "Tests for IIS XSS via IDC errors";
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_active");

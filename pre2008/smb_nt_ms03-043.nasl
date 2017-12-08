@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms03-043.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: smb_nt_ms03-043.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Buffer Overrun in Messenger Service (828035)
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "see http://www.microsoft.com/technet/security/bulletin/ms03-043.
 if(description)
 {
  script_id(11888);
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(8826);
  script_tag(name:"cvss_base", value:"7.5");
@@ -50,7 +50,6 @@ if(description)
  script_name(name);
  
 
- summary = "Checks for hotfix Q828035";
 
  
  script_category(ACT_GATHER_INFO);

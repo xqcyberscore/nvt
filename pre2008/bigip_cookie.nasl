@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: bigip_cookie.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: bigip_cookie.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: F5 BIG-IP Cookie Persistence
 #
 # Authors:
@@ -42,8 +42,8 @@ tag_solution = "http://asia.f5.com/solutions/archives/techbriefs/cookie.html";
 if(description)
 {
  script_id(20089);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"2.1");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
@@ -51,7 +51,6 @@ if(description)
  name = "F5 BIG-IP Cookie Persistence";
  script_name(name);
 
- summary = "F5 BIG-IP(R) Cookie Persistence";
 
 
  script_category(ACT_GATHER_INFO);

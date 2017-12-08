@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: asp_source_space.nasl 7275 2017-09-26 11:46:31Z cfischer $
+# $Id: asp_source_space.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: ASP source using %20 trick
 #
 # Authors:
@@ -45,8 +45,8 @@ tag_solution = "install all the latest security patches";
 if(description)
 {
  script_id(11071);
- script_version("$Revision: 7275 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2975);
  script_tag(name:"cvss_base", value:"5.0");
@@ -58,7 +58,6 @@ if(description)
 
 
 
- summary = "downloads the source of ASP scripts";
  
  
  script_category(ACT_GATHER_INFO);

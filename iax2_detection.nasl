@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iax2_detection.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: iax2_detection.nasl 8022 2017-12-07 08:23:28Z teissa $
 # Description: Inter-Asterisk eXchange Protocol Detection
 #
 # Authors:
@@ -37,15 +37,14 @@ used by trusted sources only.";
 if (description) {
 script_id(20834);
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5499 $");
-script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version("$Revision: 8022 $");
+script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:23:28 +0100 (Thu, 07 Dec 2017) $");
 script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
 script_tag(name:"cvss_base", value:"0.0");
 
 name = "Inter-Asterisk eXchange Protocol Detection";
 script_name(name);
 
-summary = "Checks if the remote system is running the IAX2 protocol";
 script_category(ACT_GATHER_INFO);
 script_tag(name:"qod_type", value:"remote_banner");
 script_family("Service detection");

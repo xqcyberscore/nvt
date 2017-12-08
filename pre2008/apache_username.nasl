@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_username.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: apache_username.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Apache UserDir Sensitive Information Disclosure
 #
 # Authors:
@@ -50,8 +50,8 @@ http://www.securiteam.com/unixfocus/5WP0C1F5FI.html";
 if(description)
 {
  script_id(10766); 
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(3335);
  script_cve_id("CVE-2001-1013");
@@ -62,7 +62,6 @@ if(description)
  script_name(name);
 
 
- summary = "Apache UserDir Sensitive Information Disclosure";
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");

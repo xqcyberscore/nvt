@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4033.nasl 7761 2017-11-15 05:36:23Z teissa $
+# $Id: deb_4033.nasl 8018 2017-12-07 07:32:50Z teissa $
 #
 # Auto-generated from advisory DSA 4033-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704033");
-  script_version("$Revision: 7761 $");
+  script_version("$Revision: 8018 $");
   script_cve_id("CVE-2017-15923");
   script_name("Debian Security Advisory DSA 4033-1 (konversation - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 06:36:23 +0100 (Wed, 15 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 08:32:50 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-13 00:00:00 +0100 (Mon, 13 Nov 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

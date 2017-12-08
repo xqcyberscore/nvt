@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_AST-2017-011.nasl 7721 2017-11-10 06:02:17Z ckuersteiner $
+# $Id: gb_asterisk_AST-2017-011.nasl 8018 2017-12-07 07:32:50Z teissa $
 #
 # Asterisk Memory Leak Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140495");
-  script_version("$Revision: 7721 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-10 07:02:17 +0100 (Fri, 10 Nov 2017) $");
+  script_version("$Revision: 8018 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-07 08:32:50 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-09 10:52:58 +0700 (Thu, 09 Nov 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-16672");
 

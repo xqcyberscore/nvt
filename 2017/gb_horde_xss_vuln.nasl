@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_xss_vuln.nasl 7861 2017-11-22 10:03:30Z ckuersteiner $
+# $Id: gb_horde_xss_vuln.nasl 8018 2017-12-07 07:32:50Z teissa $
 #
 # Horde Groupware Multiple XSS Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:horde:horde_groupware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140527");
-  script_version("$Revision: 7861 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-22 11:03:30 +0100 (Wed, 22 Nov 2017) $");
+  script_version("$Revision: 8018 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-07 08:32:50 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-22 17:09:33 +0700 (Wed, 22 Nov 2017)");
-  script_tag(name: "cvss_base", value: "5.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-16906", "CVE-2017-16907", "CVE-2017-16906");
 

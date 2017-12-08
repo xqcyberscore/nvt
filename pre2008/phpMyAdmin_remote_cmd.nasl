@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phpMyAdmin_remote_cmd.nasl 6703 2017-07-12 13:57:25Z cfischer $
+# $Id: phpMyAdmin_remote_cmd.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: phpMyAdmin remote command execution
 #
 # Authors:
@@ -43,8 +43,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 6703 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:57:25 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-2630");
  script_bugtraq_id(11391);
@@ -56,7 +56,6 @@ if(description)
  script_name(name);
  
 
- summary = "Checks the version of phpMyAdmin";
  
  
  script_category(ACT_GATHER_INFO);

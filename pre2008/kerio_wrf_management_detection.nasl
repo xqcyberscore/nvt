@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: kerio_wrf_management_detection.nasl 7175 2017-09-18 11:55:15Z cfischer $
+# $Id: kerio_wrf_management_detection.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Kerio WinRoute Firewall HTTP/HTTPS Management Detection
 #
 # Authors:
@@ -39,8 +39,8 @@ or filter incoming requests to the ports from untrusted sources.";
 
 if (description) {
  script_id(20225);
- script_version("$Revision: 7175 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -49,7 +49,6 @@ if (description) {
  script_name(name);
 
 
- summary = "Check if Kerio WinRoute Firewall HTTP/HTTPS management is enabled";
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

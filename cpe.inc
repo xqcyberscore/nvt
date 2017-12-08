@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cpe.inc 7580 2017-10-26 11:16:36Z cfischer $
+# $Id: cpe.inc 8036 2017-12-08 05:55:03Z cfischer $
 #
 # CPE Support Functions
 #
@@ -28,7 +28,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7580 $
+# $Revision: 8036 $
 #
 ###############################################################################
 
@@ -97,18 +97,6 @@ function build_report(app, ver, concluded, cpe, base, exp, insloc, port, conclUr
                                            concluded:concluded,
                                            concludedUrl:conclUrl),
                                            port:port);
-}
-
-## Function to Register Product and Build report
-function register_cpe(tmpVers, tmpExpr, tmpBase, insloc, app, port, concluded)
-{
-  local_var cpe;
-
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-  if(cpe){
-    build_report(app, ver:tmpVers, concluded:tmpVers, cpe, insloc, port);
-  }
 }
 
 ## Function to Register Product and Build report

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: eftp_bufferoverflow.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: eftp_bufferoverflow.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: EFTP buffer overflow
 #
 # Authors:
@@ -34,8 +34,8 @@ tag_solution = "upgrade EFTP to 2.0.8.x";
 if(description)
 {
  script_id(10928);
- script_version("$Revision: 6056 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(3330);
  script_tag(name:"cvss_base", value:"7.5");
@@ -44,7 +44,6 @@ if(description)
  name = "EFTP buffer overflow";
  script_name(name);
  
- summary = "EFTP buffer overflow";
  
  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");

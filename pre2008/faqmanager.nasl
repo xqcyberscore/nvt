@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: faqmanager.nasl 6702 2017-07-12 13:49:41Z cfischer $
+# $Id: faqmanager.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: FAQManager Arbitrary File Reading Vulnerability
 #
 # Authors:
@@ -34,8 +34,8 @@ www.fourteenminutes.com/code/faqmanager/";
 if(description)
 {
  script_id(10837);
- script_version("$Revision: 6702 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2002-2033");
  script_bugtraq_id(3810);
@@ -44,7 +44,6 @@ if(description)
  name = "FAQManager Arbitrary File Reading Vulnerability";
  script_name(name);
  
- summary = "Tests for FAQManager Arbitrary File Reading Vulnerability";
  
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

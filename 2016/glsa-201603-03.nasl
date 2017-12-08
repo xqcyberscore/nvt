@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
 # Description: Gentoo Linux security check
-# $Id: glsa-201603-03.nasl 6591 2017-07-07 09:15:39Z cfischer $
+# $Id: glsa-201603-03.nasl 8032 2017-12-07 14:40:57Z teissa $
 
 # Authors:
 # Eero Volotinen <eero.volotinen@solinor.fi>
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.121445");
-script_version("$Revision: 6591 $");
+script_version("$Revision: 8032 $");
 script_tag(name:"creation_date", value:"2016-03-10 07:16:47 +0200 (Thu, 10 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:15:39 +0200 (Fri, 07 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-12-07 15:40:57 +0100 (Thu, 07 Dec 2017) $");
 script_name("Gentoo Linux Local Check: https://security.gentoo.org/glsa/201603-03");
 script_tag(name: "insight", value: "Remote authenticated users with certain permissions can read arbitrary files or possibly execute arbitrary code via .. in the _skin parameter to index.php. Additionally, a cross-site scripting (XSS) vulnerability in program/js/app.js allows remote authenticated users to inject arbitrary web script or HTML via the file name in a drag-n-drop file upload."); 
 script_tag(name : "solution", value : "update software");
@@ -42,7 +42,7 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
 script_category(ACT_GATHER_INFO);
-script_summary("Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201603-03");
+script_tag(name: "summary" , value: "Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201603-03");
 script_copyright("Eero Volotinen");
 script_family("Gentoo Local Security Checks");
 exit(0);

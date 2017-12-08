@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sgi_rpc_passwd.nasl 7277 2017-09-26 12:45:58Z cfischer $
+# $Id: sgi_rpc_passwd.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: irix rpc.passwd overflow
 #
 # Authors:
@@ -35,8 +35,8 @@ it, or see SGI advisory #20020601-01-P";
 if(description)
 {
  script_id(80034);
- script_version("$Revision: 7277 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
  script_bugtraq_id(4939);
  script_cve_id("CVE-2002-0357");
@@ -50,7 +50,6 @@ if(description)
  
  script_name(name);
  
- summary = "heap overflow through rpc.passwd";
  
  script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul"); 

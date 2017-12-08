@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: www_too_long_header11.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: www_too_long_header11.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: HTTP 1.1 header overflow
 #
 # Authors:
@@ -53,8 +53,8 @@ tag_solution = "upgrade your software or protect it with a filtering reverse pro
 if(description)
 {
  script_id(11129);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2003-0180");
  script_bugtraq_id(6951);
@@ -64,7 +64,6 @@ if(description)
  script_name(name);
  
 
- summary = "Too long HTTP 1.1 header kills the web server";
  
  script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");

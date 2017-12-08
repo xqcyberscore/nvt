@@ -49,8 +49,8 @@ as announced in the referenced advisory FreeBSD-SA-08:05.openssh.asc";
 if(description)
 {
  script_id(60840);
- script_version("$Revision: 4175 $");
- script_tag(name:"last_modification", value:"$Date: 2016-09-29 07:45:50 +0200 (Thu, 29 Sep 2016) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-09-04 20:41:11 +0200 (Thu, 04 Sep 2008)");
  script_cve_id("CVE-2008-1483");
  script_tag(name:"cvss_base", value:"6.9");
@@ -59,7 +59,6 @@ if(description)
  script_name(name);
 
 
- summary = "FreeBSD Security Advisory (FreeBSD-SA-08:05.openssh.asc)";
 
  script_category(ACT_GATHER_INFO);
 

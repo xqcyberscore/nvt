@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: photopost_sql_injection.nasl 6702 2017-07-12 13:49:41Z cfischer $
+# $Id: photopost_sql_injection.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: PhotoPost showgallery.php SQL Injection
 #
 # Authors:
@@ -31,8 +31,8 @@ tag_solution = "Upgrade to the newest version of this software.";
 if(description)
 {
  script_id(16101);
- script_version("$Revision: 6702 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,7 +43,6 @@ if(description)
  script_xref(name:"OSVDB", value:"12742");
  name = "PhotoPost showgallery.php SQL Injection";
  script_name(name);
- summary = "Checks for the presence of an SQL injection in showgallery.php";
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  

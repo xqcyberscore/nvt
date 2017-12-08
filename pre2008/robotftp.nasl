@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: robotftp.nasl 7297 2017-09-27 09:54:01Z cfischer $
+# $Id: robotftp.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: RobotFTP DoS
 #
 # Authors:
@@ -39,8 +39,8 @@ tag_solution = "Use a different FTP server";
 if(description)
 {
  script_id(12082);
- script_version("$Revision: 7297 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(9729);
  script_tag(name:"cvss_base", value:"5.0");
@@ -52,7 +52,6 @@ if(description)
 
 
 
- summary = "Checks for version of RobotFTP";
  
  
  script_category(ACT_GATHER_INFO);

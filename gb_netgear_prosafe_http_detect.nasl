@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_prosafe_http_detect.nasl 8013 2017-12-06 14:43:57Z cfischer $
+# $Id: gb_netgear_prosafe_http_detect.nasl 8020 2017-12-07 08:09:44Z cfischer $
 #
 # NETGEAR ProSAFE Devices Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108308");
-  script_version("$Revision: 8013 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-06 15:43:57 +0100 (Wed, 06 Dec 2017) $");
+  script_version("$Revision: 8020 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:09:44 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-05 09:03:31 +0100 (Tue, 05 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,16 +54,29 @@ include("http_keepalive.inc");
 port = get_http_port( default:80 );
 buf  = http_get_cache( item:"/", port:port );
 
-# nb: Take care to consider that Netgear can't decide which writing
-# to use, even on the same product with different firmwares.
+# nb: Note that NETGEAR has switched the writing of their name and brandings between the years,
+# which changed between firmwares of e.g. the same device
+# GS108Ev3 with different firmwares:
 #<title>NETGEAR ProSAFE Plus Switch</title>
 #<title>Netgear Prosafe Plus Switch</title>
 #<div class="switchInfo">GS108Ev3 - 8-Port Gigabit ProSAFE Plus Switch</div>
+#
+#<TITLE>NetGear GSM7224V2</TITLE>	<!-- Netgear Page Title		-->
+#<TITLE>NETGEAR GSM7224V2</TITLE>	<!-- Netgear Page Title		-->
+#<title>NetGear GS108TV1</title>
+#
+#<TITLE>Netgear System Login</TITLE>
+#<IMG SRC = "/base/images/netgear_gsm7224_banner.gif" ALIGN="CENTER">
 
 if( buf =~ "^HTTP/1\.[01] 200" &&
     ( "<title>NETGEAR ProSAFE" >< buf ||
       "<title>Netgear Prosafe" >< buf ||
-      '<div class="switchInfo">.*ProSAFE.*</div>' >< buf ) ) {
+      '<div class="switchInfo">.*ProSAFE.*</div>' >< buf ||
+      ( egrep( pattern:"<title>netgear", string:buf, icase:TRUE ) &&
+        ( "/base/images/netgear_" >< buf || "/base/netgear_login.html" >< buf || buf =~ "<td>Copyright &copy; .* Netgear &reg;</td>" || "login.cgi" >< buf )
+      )
+    )
+  ) {
 
   model      = "unknown";
   fw_version = "unknown";
@@ -73,6 +86,18 @@ if( buf =~ "^HTTP/1\.[01] 200" &&
   if( mod[1] ) {
     model = mod[1];
     set_kb_item( name:"netgear/prosafe/http/" + port + "/concluded", value:mod[0] );
+  } else {
+    mod = eregmatch( pattern:"/base/images/netgear_([0-9a-zA-Z\\-]+)_banner.gif", string:buf, icase:TRUE );
+    if( mod[1] ) {
+      model = mod[1];
+      set_kb_item( name:"netgear/prosafe/http/" + port + "/concluded", value:mod[0] );
+    } else {
+      mod = eregmatch( pattern:"<TITLE>NetGear ([0-9a-zA-Z\\-]+)</TITLE>", string:buf, icase:TRUE );
+      if( mod[1] ) {
+        model = mod[1];
+        set_kb_item( name:"netgear/prosafe/http/" + port + "/concluded", value:mod[0] );
+      }
+    }
   }
 
   set_kb_item( name:"netgear/prosafe/http/" + port + "/model", value:model );

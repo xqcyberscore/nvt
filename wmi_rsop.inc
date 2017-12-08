@@ -79,7 +79,6 @@ function wmi_rsop_userprivilegeright(handle, select){
     query = 'select * from RSOP_UserPrivilegeRight where precedence=1';
   }
 
-  display( query);
   rsopList = wmi_query_rsop(wmi_handle:handle, query:query);
 
   if(("NTSTATUS" >< rsopList) || !rsopList){

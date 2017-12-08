@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ircd_ignition_ircop_vuln.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: ircd_ignition_ircop_vuln.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: IgnitionServer Irc operator privilege escalation vulnerability
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Upgrade to IgnitionServer 0.2.1-BRC1 or newer";
 if(description)
 {
  script_id(14388);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-2553");
  script_bugtraq_id(9783);
@@ -51,7 +51,6 @@ if(description)
  
 
 
- summary = "checks the version of the remote ircd";
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

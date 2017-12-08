@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mod_ssl_hook_functions_format_string_vuln.nasl 6702 2017-07-12 13:49:41Z cfischer $
+# $Id: mod_ssl_hook_functions_format_string_vuln.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: mod_ssl hook functions format string vulnerability
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "Upgrade to version 2.8.19 or newer";
 if(description)
 {
  script_id(13651);
- script_version("$Revision: 6702 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(10736);
  script_cve_id("CVE-2004-0700");
@@ -51,7 +51,6 @@ if(description)
  name = "mod_ssl hook functions format string vulnerability";
 
  script_name(name);
- summary = "Checks for version of mod_ssl";
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
  script_copyright("This script is Copyright (C) 2004 David Maciejak");

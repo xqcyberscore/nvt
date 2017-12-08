@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: limbo_multiple_flaws.nasl 7165 2017-09-18 08:57:44Z cfischer $
+# $Id: limbo_multiple_flaws.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Limbo CMS Multiple Vulnerabilities
 #
 # Authors:
@@ -52,8 +52,8 @@ tag_solution = "Apply the patch http://www.limbo-cms.com/downs/patch_1_0_4_2.zip
 if(description)
 {
  script_id(20824);
- script_version("$Revision: 7165 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -71,7 +71,6 @@ if(description)
  name = "Limbo CMS Multiple Vulnerabilities";
  script_name(name);
  
- summary = "Checks for multiple vulnerabilities in Limbo";
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  

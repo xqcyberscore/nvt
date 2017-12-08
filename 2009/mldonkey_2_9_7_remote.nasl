@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mldonkey_2_9_7_remote.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: mldonkey_2_9_7_remote.nasl 8024 2017-12-07 08:47:24Z teissa $
 #
 # MLdonkey HTTP Request Arbitrary File Download Vulnerability
 #
@@ -41,8 +41,8 @@ tag_solution = "Fixes are available; please see the http://www.nongnu.org/mldonk
 if(description)
 {
   script_id(100057);
-  script_version("$Revision: 5002 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+  script_version("$Revision: 8024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:47:24 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-17 18:51:21 +0100 (Tue, 17 Mar 2009)");
   script_bugtraq_id(33865);
   script_cve_id("CVE-2009-0753");
@@ -52,9 +52,7 @@ if(description)
   script_name("MLdonkey HTTP Request Arbitrary File Download Vulnerability");
 
   script_tag(name:"qod_type", value:"remote_vul");
- 
-  summary = "Determine if MLdonkey is vulnerable to HTTP Request Arbitrary File Download";
- 
+
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   family = "Peer-To-Peer File Sharing";

@@ -90,10 +90,9 @@ tag_affected = "glibc on openSUSE 11.1, openSUSE 11.2";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "http://www.novell.com/linux/security/advisories/2010_52_glibc.html");
   script_id(850148);
-  script_version("$Revision: 6670 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:40:38 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8035 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 06:29:51 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-11-16 14:49:48 +0100 (Tue, 16 Nov 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

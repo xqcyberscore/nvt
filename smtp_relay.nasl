@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_relay.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: smtp_relay.nasl 8023 2017-12-07 08:36:26Z teissa $
 #
 # SMTP Open Relay Test
 #
@@ -33,15 +33,14 @@ tag_summary = "The remote SMTP server is insufficiently protected against relayi
 if(description)
 {
  script_id(100073);
- script_version("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  name = "Mail relaying";
  script_name(name);
  
- summary = "Checks if the mail server can be used as a open relay"; 
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");

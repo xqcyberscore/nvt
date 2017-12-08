@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iis_ida_isapi.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: iis_ida_isapi.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: IIS .IDA ISAPI filter applied
 #
 # Authors:
@@ -54,8 +54,8 @@ if they are not required for the operation of your site.";
 if(description)
 {
  script_id(10695);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_xref(name:"IAVA", value:"2001-a-0008");
  script_bugtraq_id(2880);
@@ -66,7 +66,6 @@ if(description)
  script_name(name);
  
 
- summary = "Tests for IIS .ida ISAPI filter";
  
  
  script_category(ACT_GATHER_INFO);

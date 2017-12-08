@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: nisd_overflow.nasl 4803 2016-12-19 13:00:35Z mime $
+# $Id: nisd_overflow.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: rpc.nisd overflow
 #
 # Authors:
@@ -31,8 +31,8 @@ tag_solution = "disable this service if you don't use it, or apply the relevant 
 if(description)
 {
  script_id(80029);
- script_version("$Revision: 4803 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-19 14:00:35 +0100 (Mon, 19 Dec 2016) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
  script_bugtraq_id(104);
  script_tag(name:"cvss_base", value:"10.0");
@@ -44,7 +44,6 @@ if(description)
  script_name(name);
  
 
- summary = "buffer overflow through rpc.nisd";
  
  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ipswitch_whatsup_info_disclosure.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: ipswitch_whatsup_info_disclosure.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Ipswitch WhatsUp Professional Multiple Vulnerabilities
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "Unknown at this time.";
 if(description)
 {
  script_id(80068);;
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -54,7 +54,6 @@ if(description)
  name = "Ipswitch WhatsUp Professional Multiple Vulnerabilities";
  script_name(name);
  
- summary = "Checks for Ipswitch WhatsUp Professional Information Disclosure";
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

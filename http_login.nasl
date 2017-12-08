@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: http_login.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: http_login.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: HTTP login page
 #
 # Authors:
@@ -29,15 +29,14 @@ if(description)
 {
  script_id(11149);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  
  name = "HTTP login page";
  script_name(name);
   
- summary = "Log through HTTP page";
  
  script_category(ACT_GATHER_INFO); # Has to run after find_service
  script_tag(name:"qod_type", value:"remote_banner");

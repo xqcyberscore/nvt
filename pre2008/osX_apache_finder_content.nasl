@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: osX_apache_finder_content.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: osX_apache_finder_content.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: MacOS X Finder reveals contents of Apache Web files
 #
 # Authors:
@@ -46,8 +46,8 @@ And restart Apache.";
 if(description)
 {
  script_id(10773); 
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2001-1446");
  script_bugtraq_id(3325);
@@ -57,7 +57,6 @@ if(description)
  script_name(name);
  
 
- summary = "MacOS X Finder reveals contents of Apache Web files";
  
  
  script_category(ACT_GATHER_INFO);

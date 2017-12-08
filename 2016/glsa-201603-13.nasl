@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
 # Description: Gentoo Linux security check
-# $Id: glsa-201603-13.nasl 6591 2017-07-07 09:15:39Z cfischer $
+# $Id: glsa-201603-13.nasl 8029 2017-12-07 12:38:42Z teissa $
 
 # Authors:
 # Eero Volotinen <eero.volotinen@solinor.fi>
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.121455");
-script_version("$Revision: 6591 $");
+script_version("$Revision: 8029 $");
 script_tag(name:"creation_date", value:"2016-03-14 15:52:48 +0200 (Mon, 14 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:15:39 +0200 (Fri, 07 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-12-07 13:38:42 +0100 (Thu, 07 Dec 2017) $");
 script_name("Gentoo Linux Local Check: https://security.gentoo.org/glsa/201603-13");
 script_tag(name: "insight", value: "The pluto IKE daemon in Libreswan, when built with NSS, allows remote attackers to cause a Denial of Service (assertion failure and daemon restart) via a zero DH g^x value in a KE payload in a IKE packet. Additionally, remote attackers could cause a Denial of Service (daemon restart) via an IKEv1 packet with (1) unassigned bits set in the IPSEC DOI value or (2) the next payload value set to ISAKMP_NEXT_SAK."); 
 script_tag(name : "solution", value : "update software");
@@ -42,7 +42,7 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
 script_category(ACT_GATHER_INFO);
-script_summary("Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201603-13");
+script_tag(name: "summary" , value: "Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201603-13");
 script_copyright("Eero Volotinen");
 script_family("Gentoo Local Security Checks");
 exit(0);

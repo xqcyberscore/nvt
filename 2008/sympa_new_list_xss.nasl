@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sympa_new_list_xss.nasl 7176 2017-09-18 12:01:01Z cfischer $
+# $Id: sympa_new_list_xss.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Sympa New List Cross-Site Scripting Vulnerability
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Update to version 4.1.3 or newer.";
 if(description)
 {
  script_id(80090);;
- script_version("$Revision: 7176 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -52,7 +52,6 @@ if(description)
  name = "Sympa New List Cross-Site Scripting Vulnerability";
  script_name(name);
 
- summary = "Checks sympa version";
  
  script_category(ACT_GATHER_INFO);
 

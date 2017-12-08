@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: xeneo_percent_DoS.nasl 6702 2017-07-12 13:49:41Z cfischer $
+# $Id: xeneo_percent_DoS.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Xeneo web server %A DoS
 #
 # Authors:
@@ -49,8 +49,8 @@ tag_solution = "upgrade your web server or use another";
 if(description)
 {
  script_id(11546);
- script_version("$Revision: 6702 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(6098);
  script_tag(name:"cvss_base", value:"5.0");
@@ -61,7 +61,6 @@ if(description)
  script_name(name);
  
 
- summary = "Crashes Xeneo web server with /%A or /%";
  
  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");

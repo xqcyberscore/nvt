@@ -1,17 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_irfanview_detect.nasl 7588 2017-10-27 06:53:29Z santu $
+# $Id: secpod_irfanview_detect.nasl 8036 2017-12-08 05:55:03Z cfischer $
 #
 # IrfanView Version Detection
 #
 # Authors:
 # Sharath S <sharaths@secpod.com>
-#
-# Updated By: Madhuri D <dmadhuri@secpod.com> on 2012-02-14
-#  - Added register_cpe, initialized variables
-#
-# Updated By: Kashinath T <tkashinath@secpod.com> on 2017-10-26 
-#  - Added support for 64bit and new style.
 #
 # Copyright:
 # Copyright (c) 2009 SecPod, http://www.secpod.com
@@ -34,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900376");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7588 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 08:53:29 +0200 (Fri, 27 Oct 2017) $");
+  script_version("$Revision: 8036 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 06:55:03 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-06-24 07:17:25 +0200 (Wed, 24 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("IrfanView Version Detection");

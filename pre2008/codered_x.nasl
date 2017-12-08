@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: codered_x.nasl 6702 2017-07-12 13:49:41Z cfischer $
+# $Id: codered_x.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: CodeRed version X detection
 #
 # Authors:
@@ -48,8 +48,8 @@ http://www.microsoft.com/technet/itsolutions/security/tools/redfix.asp";
 if(description)
 {
  script_id(10713); 
- script_version("$Revision: 6702 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2880);
  script_tag(name:"cvss_base", value:"10.0");
@@ -60,7 +60,6 @@ if(description)
  script_name(name);
 
 
- summary = "CodeRed version X detection";
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_active");

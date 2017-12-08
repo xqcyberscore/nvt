@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: stonegate_detect.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: stonegate_detect.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: StoneGate client authentication detection
 #
 # Authors:
@@ -32,8 +32,8 @@ tag_solution = "Restrict incoming traffic to this port";
 if(description)
 {
  script_id(11762);
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,7 +44,6 @@ if(description)
  
 
 
- summary = "Check for StoneGate firewall client authentication prompt";
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

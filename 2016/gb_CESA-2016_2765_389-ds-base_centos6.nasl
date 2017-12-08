@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882594");
-  script_version("$Revision: 6658 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:51:48 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 15:40:57 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-11-20 05:37:13 +0100 (Sun, 20 Nov 2016)");
   script_cve_id("CVE-2016-4992", "CVE-2016-5405", "CVE-2016-5416");
   script_tag(name:"cvss_base", value:"5.0");
@@ -96,7 +96,7 @@ updates. (BZ#1358390)
 
   script_xref(name: "CESA", value: "2016:2765");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-November/022149.html");
-  script_summary("Check for the Version of 389-ds-base");
+  script_tag(name: "summary" , value: "Check for the Version of 389-ds-base");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: securenet_sensor_detect.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: securenet_sensor_detect.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Intrusion.com SecureNet sensor detection
 #
 # Authors:
@@ -28,14 +28,13 @@ if(description)
 {
  script_id(18534);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "Intrusion.com SecureNet sensor detection";
  script_name(name);
 
- summary = "Checks for Intrusion.com SecureNet sensor console";
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
  script_copyright("This script is Copyright (C) 2005 David Maciejak");

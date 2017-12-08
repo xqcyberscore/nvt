@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3100_1.nasl 7943 2017-11-30 11:54:54Z santu $
+# $Id: gb_suse_2017_3100_1.nasl 8018 2017-12-07 07:32:50Z teissa $
 #
 # SuSE Update for tboot openSUSE-SU-2017:3100-1 (tboot)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851652");
-  script_version("$Revision: 7943 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-30 12:54:54 +0100 (Thu, 30 Nov 2017) $");
+  script_version("$Revision: 8018 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 08:32:50 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-26 07:32:39 +0100 (Sun, 26 Nov 2017)");
   script_cve_id("CVE-2017-16837");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for tboot openSUSE-SU-2017:3100-1 (tboot)");
   script_tag(name: "summary", value: "Check the version of tboot");

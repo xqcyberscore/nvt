@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bftpd__mem_leak_vuln.nasl 7837 2017-11-21 03:33:59Z ckuersteiner $
+# $Id: gb_bftpd__mem_leak_vuln.nasl 8018 2017-12-07 07:32:50Z teissa $
 #
 # Bftpd Memory Leak Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:bftpd:bftpd";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140515");
-  script_version("$Revision: 7837 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-21 04:33:59 +0100 (Tue, 21 Nov 2017) $");
+  script_version("$Revision: 8018 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-07 08:32:50 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-21 10:35:01 +0700 (Tue, 21 Nov 2017)");
-  script_tag(name: "cvss_base", value: "4.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-16892");
 

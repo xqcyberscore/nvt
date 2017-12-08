@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 7995 2017-12-05 15:10:59Z cfischer $
+# $Id: host_details.inc 8025 2017-12-07 08:54:14Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7995 $
+# $Revision: 8025 $
 #
 ###############################################################################
 
@@ -956,8 +956,8 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
   {
     app_versions = get_version_from_cpe( cpe:x_cpe );
 
-    if( ! app_versions && ! x_loc ) return;
     if( ! app_versions && exit_no_version == TRUE ) exit( 0 );
+    if( ! app_versions && ! x_loc ) return;
 
     if( app_versions )
       ret_arr['version'] = app_versions;
@@ -979,8 +979,8 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
   {
     app_versions = get_version_from_cpe( cpe:x_cpe );
 
-    if( ! app_versions && ! x_proto ) return;
     if( ! app_versions && exit_no_version == TRUE ) exit( 0 );
+    if( ! app_versions && ! x_proto ) return;
 
     if( app_versions )
       ret_arr['version'] = app_versions;

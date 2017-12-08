@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: flash_player_CB-A08-0059.nasl 5661 2017-03-21 11:39:13Z cfi $
+# $Id: flash_player_CB-A08-0059.nasl 8024 2017-12-07 08:47:24Z teissa $
 # Description: Adobe Flash Player 9.0.115.0 and earlier vulnerability (Linux)
 #
 # Authors:
@@ -63,13 +63,13 @@ tag_summary = "The remote host is probably affected by the vulnerabilities
 
 tag_solution = "All Adobe Flash Player users should upgrade to the latest version:";
 
-# $Revision: 5661 $
+# $Revision: 8024 $
 
 if(description)
 {
   script_id(90018);
-  script_version("$Revision: 5661 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:39:13 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 8024 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:47:24 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-09-03 22:30:27 +0200 (Wed, 03 Sep 2008)");
   script_cve_id("CVE-2007-5275", "CVE-2007-6019", "CVE-2007-6243",
                 "CVE-2007-6637", "CVE-2008-1654", "CVE-2008-1655");
@@ -79,7 +79,6 @@ if(description)
   name = "Adobe Flash Player 9.0.115.0 and earlier vulnerability (Linux)";
   script_name(name);
 
-  summary = "Determines the Version of Flashplayer";
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");

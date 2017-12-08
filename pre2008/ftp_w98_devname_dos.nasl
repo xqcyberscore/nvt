@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ftp_w98_devname_dos.nasl 6315 2017-06-12 10:34:26Z cfischer $
+# $Id: ftp_w98_devname_dos.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: FTP Windows 98 MS/DOS device names DOS
 #
 # Authors:
@@ -45,8 +45,8 @@ Reference : http://online.securityfocus.com/archive/1/195054";
 if(description)
 {
  script_id(10929);
- script_version("$Revision: 6315 $");
- script_tag(name:"last_modification", value:"$Date: 2017-06-12 12:34:26 +0200 (Mon, 12 Jun 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1043);
  script_cve_id("CVE-2000-0168");
@@ -56,7 +56,6 @@ if(description)
  
 
 
- summary = "Crashes Windows 98";
  
  script_category(ACT_KILL_HOST);
   script_tag(name:"qod_type", value:"remote_vul");

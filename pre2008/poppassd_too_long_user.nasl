@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: poppassd_too_long_user.nasl 7175 2017-09-18 11:55:15Z cfischer $
+# $Id: poppassd_too_long_user.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: poppassd USER overflow
 #
 # Authors:
@@ -33,8 +33,8 @@ tag_solution = "upgrade your software or use another one";
 if(description)
 {
  script_id(17295);
- script_version("$Revision: 7175 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:55:15 +0200 (Mon, 18 Sep 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -46,7 +46,6 @@ if(description)
  
  script_name(name);
  
- summary = "Sends a too long USER command to poppassd";
 
  
  script_category(ACT_DESTRUCTIVE_ATTACK);

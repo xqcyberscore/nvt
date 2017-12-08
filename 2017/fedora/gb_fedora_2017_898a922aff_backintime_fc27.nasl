@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_898a922aff_backintime_fc27.nasl 7911 2017-11-27 04:54:41Z santu $
+# $Id: gb_fedora_2017_898a922aff_backintime_fc27.nasl 8018 2017-12-07 07:32:50Z teissa $
 #
 # Fedora Update for backintime FEDORA-2017-898a922aff
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873649");
-  script_version("$Revision: 7911 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-27 05:54:41 +0100 (Mon, 27 Nov 2017) $");
+  script_version("$Revision: 8018 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 08:32:50 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-23 08:03:59 +0100 (Thu, 23 Nov 2017)");
   script_cve_id("CVE-2017-16667");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for backintime FEDORA-2017-898a922aff");
   script_tag(name: "summary", value: "Check the version of backintime");

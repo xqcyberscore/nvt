@@ -52,8 +52,8 @@ as announced in the referenced advisory FreeBSD-SA-09:09.pipe.asc";
 if(description)
 {
  script_id(64206);
- script_version("$Revision: 4865 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-06-15 19:20:43 +0200 (Mon, 15 Jun 2009)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -61,7 +61,6 @@ if(description)
  script_name(name);
 
 
- summary = "FreeBSD Security Advisory (FreeBSD-SA-09:09.pipe.asc)";
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"package");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: goaheadwebserver_source_disclosure.nasl 7176 2017-09-18 12:01:01Z cfischer $
+# $Id: goaheadwebserver_source_disclosure.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: GoAhead WebServer Script Source Code Disclosure
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "Upgrade to GoAhead WebServer 2.1.8 or a newer release.";
 
 if (description) {
  script_id(2000099); 
- script_version("$Revision: 7176 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 14:01:01 +0200 (Mon, 18 Sep 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -53,7 +53,6 @@ if (description) {
 
  name = "GoAhead WebServer Script Source Code Disclosure";
  script_name(name);
- summary = "Checks for script source disclosure in GoAhead Webserver <= 2.1.7";
 
  script_category(ACT_GATHER_INFO);
  script_family("Web Servers");

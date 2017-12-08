@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: compaq_wbem_SSI_DoS.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: compaq_wbem_SSI_DoS.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Compaq Web SSI DoS
 #
 # Authors:
@@ -42,8 +42,8 @@ tag_solution = "contact your vendor for a patch,
 if(description)
 {
  script_id(11980);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
 
  name = "Compaq Web SSI DoS";
@@ -51,7 +51,6 @@ if(description)
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
- summary = "<!> crashes Compaq Web Management Agent";
 
  script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");

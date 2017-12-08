@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: remote-MS07-040.nasl 6519 2017-07-04 14:08:14Z cfischer $
+# $Id: remote-MS07-040.nasl 8022 2017-12-07 08:23:28Z teissa $
 # Description: 
 # Microsoft Security Bulletin MS07-040 - Critical
 # Vulnerabilities in .NET Framework Could Allow Remote Code Execution 
@@ -40,8 +40,8 @@ http://www.microsoft.com/technet/security/bulletin/ms07-040.mspx";
 if(description)
 {
 script_id(101005);
-script_version("$Revision: 6519 $");
-script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
+script_version("$Revision: 8022 $");
+script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:23:28 +0100 (Thu, 07 Dec 2017) $");
 script_tag(name:"creation_date", value:"2009-03-15 21:09:08 +0100 (Sun, 15 Mar 2009)");
 script_tag(name:"cvss_base", value:"9.3");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -51,7 +51,6 @@ script_name(name);
  
 script_tag(name:"qod_type", value:"remote_banner"); 
 
-summary = ".NET Framework Multiples Criticals Vulnerabilities";
 
 script_category(ACT_ATTACK);
 

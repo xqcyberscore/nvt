@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_api_vuln.nasl 7916 2017-11-28 02:06:23Z ckuersteiner $
+# $Id: gb_pdns_api_vuln.nasl 8026 2017-12-07 09:00:29Z ckuersteiner $
 #
 # PowerDNS Recursor File Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:powerdns:recursor';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140544");
-  script_version("$Revision: 7916 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-28 03:06:23 +0100 (Tue, 28 Nov 2017) $");
+  script_version("$Revision: 8026 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-07 10:00:29 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-28 08:39:40 +0700 (Tue, 28 Nov 2017)");
   script_tag(name: "cvss_base", value: "4.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:P/A:N");
@@ -77,7 +77,6 @@ include("host_details.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-display("yep\n");
 if (!infos = get_app_version_and_proto(cpe: CPE, port: port))
   exit(0);
 

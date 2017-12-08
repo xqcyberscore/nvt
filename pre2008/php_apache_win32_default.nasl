@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: php_apache_win32_default.nasl 6702 2017-07-12 13:49:41Z cfischer $
+# $Id: php_apache_win32_default.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: PHP.EXE / Apache Win32 Arbitrary File Reading Vulnerability
 #
 # Authors:
@@ -35,8 +35,8 @@ tag_solution = "Obtain the latest version from http://www.php.net";
 if(description)
 {
  script_id(10839);
- script_version("$Revision: 6702 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2002-2029");
  script_bugtraq_id(3786);
@@ -49,7 +49,6 @@ if(description)
  script_xref(name : "URL" , value : "http://www.securitytracker.com/alerts/2002/Jan/1003104.html");
  script_xref(name : "URL" , value : "http://www.php.net");
 
- summary = "Tests for PHP.EXE / Apache Win32 Arbitrary File Reading Vulnerability";
  
  
  script_category(ACT_ATTACK);

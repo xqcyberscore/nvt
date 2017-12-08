@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phorum_register_xss.nasl 6702 2017-07-12 13:49:41Z cfischer $
+# $Id: phorum_register_xss.nasl 8022 2017-12-07 08:23:28Z teissa $
 # Description: Phorum register.php Cross-Site Scripting
 #
 # Authors:
@@ -33,8 +33,8 @@ tag_solution = "Upgrade to Phorum 5.0.18 or later.";
 
 if (description) {
 script_id(19584);
-script_version("$Revision: 6702 $");
-script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:49:41 +0200 (Wed, 12 Jul 2017) $");
+script_version("$Revision: 8022 $");
+script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:23:28 +0100 (Thu, 07 Dec 2017) $");
 script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
 script_bugtraq_id(14726);
 script_cve_id("CVE-2005-2836");
@@ -43,7 +43,6 @@ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 name = "Phorum register.php Cross-Site Scripting";
 script_name(name);
 
-summary = "Checks for cross-site scripting vulnerability in Phorum's register.php";
 script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
 script_copyright("This script is Copyright (C) 2005 David Maciejak");

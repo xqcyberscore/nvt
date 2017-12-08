@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: visnetic_mailserver_flaws.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: visnetic_mailserver_flaws.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: VisNetic / Merak Mail Server multiple flaws
 #
 # Authors:
@@ -45,8 +45,8 @@ tag_solution = "Upgrade to Merak Mail Server 8.3.5.r / VisNetic Mail Server vers
 if(description)
 {
  script_id(20346);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,6 @@ if(description)
  name = "VisNetic / Merak Mail Server multiple flaws";
  script_name(name);
  
- summary = "Checks for VisNetic Mail Server arbitrary script include";
  
  
  script_category(ACT_ATTACK);

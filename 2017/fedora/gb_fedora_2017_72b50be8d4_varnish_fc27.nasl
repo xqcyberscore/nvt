@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_72b50be8d4_varnish_fc27.nasl 7943 2017-11-30 11:54:54Z santu $
+# $Id: gb_fedora_2017_72b50be8d4_varnish_fc27.nasl 8018 2017-12-07 07:32:50Z teissa $
 #
 # Fedora Update for varnish FEDORA-2017-72b50be8d4
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873813");
-  script_version("$Revision: 7943 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-30 12:54:54 +0100 (Thu, 30 Nov 2017) $");
+  script_version("$Revision: 8018 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 08:32:50 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-28 07:46:14 +0100 (Tue, 28 Nov 2017)");
   script_cve_id("CVE-2017-8807");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for varnish FEDORA-2017-72b50be8d4");
   script_tag(name: "summary", value: "Check the version of varnish");

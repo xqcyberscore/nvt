@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: typsoft_ftp_DoS.nasl 6472 2017-06-28 19:56:31Z cfischer $
+# $Id: typsoft_ftp_DoS.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: TypSoft FTP STOR/RETR DoS
 #
 # Authors:
@@ -45,8 +45,8 @@ tag_solution = "upgrade your software or use another FTP service.";
 if(description)
 {
  script_id(11097);
- script_version("$Revision: 6472 $");
- script_tag(name:"last_modification", value:"$Date: 2017-06-28 21:56:31 +0200 (Wed, 28 Jun 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(3409);
  script_tag(name:"cvss_base", value:"5.0");
@@ -57,7 +57,6 @@ if(description)
  script_name(name);
  
 
- summary = "Crashes the remote TypSoft FTP server";
  
  script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");

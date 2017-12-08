@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_GS108E_default_password.nasl 8013 2017-12-06 14:43:57Z cfischer $
+# $Id: gb_netgear_GS108E_default_password.nasl 8025 2017-12-07 08:54:14Z cfischer $
 #
 # NETGEAR ProSAFE GS108E Default Password
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108309");
-  script_version("$Revision: 8013 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-06 15:43:57 +0100 (Wed, 06 Dec 2017) $");
+  script_version("$Revision: 8025 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:54:14 +0100 (Thu, 07 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-05 09:03:31 +0100 (Tue, 05 Dec 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -61,6 +61,7 @@ if( ! port = get_kb_item( "netgear/prosafe/http/port" ) ) exit( 0 );
 
 req = http_post_req( port:port, url:"/login.cgi", data:"password=password", add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
 res = http_keepalive_send_recv( port:port, data:req );
+if( ! res ) exit( 0 );
 
 cookie = get_cookie_from_header( buf:res, pattern:"GS108SID=([^; ]+)" );
 if( isnull( cookie ) ) exit( 0 );
@@ -69,8 +70,8 @@ req = http_get_req( port:port, url:"/switch_info.htm", add_headers:make_array( "
 res = http_keepalive_send_recv( port:port, data:req );
 
 # Logout the session as the device can't handle multiple open sessions
-req2 = http_get_req( port:port, url:"/logout.cgi", add_headers:make_array( "Cookie", "GS108SID=" + cookie ) );
-res2 = http_keepalive_send_recv( port:port, data:req2 );
+req = http_get_req( port:port, url:"/logout.cgi", add_headers:make_array( "Cookie", "GS108SID=" + cookie ) );
+http_keepalive_send_recv( port:port, data:req );
 
 if( res =~ "^HTTP/1\.[01] 200" && ( "<title>Switch Information</title>" >< res || ">Switch Name</td>" >< res || ">MAC Address</td>" >< res || ">Firmware Version</td>" >< res ) ) {
   security_message( port:port, data:"It was possible to login with the default password 'password'" );

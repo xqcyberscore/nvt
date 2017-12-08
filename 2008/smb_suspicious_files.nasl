@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_suspicious_files.nasl 7332 2017-09-29 14:16:56Z cfischer $
+# $Id: smb_suspicious_files.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: Potentially unwanted software
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "See the URLs which will appear in the report";
 if(description)
 {
  script_id(80042);
- script_version("$Revision: 7332 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,6 @@ if(description)
  
 
 
- summary = "Checks for the presence of differents dll on the remote host";
 
  
  script_category(ACT_GATHER_INFO);

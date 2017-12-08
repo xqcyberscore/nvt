@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iis5_printer.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: iis5_printer.nasl 8023 2017-12-07 08:36:26Z teissa $
 # Description: NT IIS 5.0 Malformed HTTP Printer Request Header Buffer Overflow Vulnerability
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "See http://www.microsoft.com/technet/security/bulletin/ms01-023.
 if(description)
 {
  script_id(10657);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_xref(name:"IAVA", value:"2001-a-0005");
  script_bugtraq_id(2674);
@@ -53,7 +53,6 @@ if(description)
 
 
  # Summary
- summary = "Tests for a remote buffer overflow in IIS 5.0";
 
  # Category
  script_category(ACT_DESTRUCTIVE_ATTACK);

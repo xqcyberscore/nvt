@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: portbunny.nasl 6841 2017-08-03 11:59:21Z emoss $
+# $Id: portbunny.nasl 8023 2017-12-07 08:36:26Z teissa $
 #
 # Use portbunny as scanner
 #
@@ -37,15 +37,14 @@ if(description)
 {
  script_id(80002);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6841 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-03 13:59:21 +0200 (Thu, 03 Aug 2017) $");
+ script_version("$Revision: 8023 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:36:26 +0100 (Thu, 07 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-08-31 23:34:05 +0200 (Sun, 31 Aug 2008)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "portbunny (NASL wrapper)";
  script_name(name);
 
 
- summary = "Performs portscan";
  script_category(ACT_SCANNER);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2008 Vlatko Kosturjak");
