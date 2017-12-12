@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2012_1154_1.nasl 8045 2017-12-08 08:39:37Z santu $
 #
 # SuSE Update for java-1_7_0-openjdk openSUSE-SU-2012:1154-1 (java-1_7_0-openjdk)
 #
@@ -115,8 +116,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-09/msg00008.html");
   script_id(850432);
-  script_version("$Revision: 6673 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:45:02 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8045 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:39:37 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:23 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-0547", "CVE-2012-1682", "CVE-2012-3136", "CVE-2012-4681");
   script_tag(name:"cvss_base", value:"10.0");

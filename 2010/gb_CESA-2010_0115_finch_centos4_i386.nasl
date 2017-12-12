@@ -60,8 +60,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2010-February/016511.html");
   script_id(880370);
-  script_version("$Revision: 6652 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:46:00 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8068 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 07:31:34 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-02-22 13:38:33 +0100 (Mon, 22 Feb 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -69,7 +69,7 @@ if(description)
   script_cve_id("CVE-2010-0277", "CVE-2010-0420", "CVE-2010-0423");
   script_name("CentOS Update for finch CESA-2010:0115 centos4 i386");
 
-  script_summary("Check for the Version of finch");
+  script_tag(name: "summary" , value: "Check for the Version of finch");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

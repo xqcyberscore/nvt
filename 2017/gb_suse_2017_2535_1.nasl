@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2535_1.nasl 7336 2017-10-04 05:42:02Z asteins $
+# $Id: gb_suse_2017_2535_1.nasl 8048 2017-12-08 09:05:48Z santu $
 #
 # SuSE Update for emacs openSUSE-SU-2017:2535-1 (emacs)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851621");
-  script_version("$Revision: 7336 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
+  script_version("$Revision: 8048 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-09-21 07:19:43 +0200 (Thu, 21 Sep 2017)");
   script_cve_id("CVE-2017-14482");
   script_tag(name:"cvss_base", value:"6.8");
@@ -51,7 +51,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2017:2535_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2017-09/msg00077.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

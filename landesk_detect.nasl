@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: landesk_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: landesk_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Landesk Detection
 #
@@ -32,8 +32,8 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5888 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+ script_version("$Revision: 8078 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-10-30 14:42:19 +0100 (Fri, 30 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -52,7 +52,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
 include("misc_func.inc");
-include("cpe.inc");
 include("host_details.inc");
 
 ## Constant values

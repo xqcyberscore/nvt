@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2016_2368_1.nasl 8047 2017-12-08 08:56:07Z santu $
 #
 # SuSE Update for MozillaFirefox, mozilla-nss openSUSE-SU-2016:2368-1 (MozillaFirefox, mozilla-nss)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851395");
-  script_version("$Revision: 6676 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:56:06 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8047 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-09-25 05:45:03 +0200 (Sun, 25 Sep 2016)");
   script_cve_id("CVE-2016-2827", "CVE-2016-5256", "CVE-2016-5257", "CVE-2016-5270", 
                 "CVE-2016-5271", "CVE-2016-5272", "CVE-2016-5273", "CVE-2016-5274", 
@@ -98,7 +99,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2016:2368_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-09/msg00019.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

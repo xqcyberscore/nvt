@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2013_0323_1.nasl 8045 2017-12-08 08:39:37Z santu $
 #
 # SuSE Update for Mozilla openSUSE-SU-2013:0323-1 (Mozilla)
 #
@@ -108,8 +109,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2013-02/msg00017.html");
   script_id(850405);
-  script_version("$Revision: 6673 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:45:02 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8045 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:39:37 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:28 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2013-0765", "CVE-2013-0772", "CVE-2013-0773", "CVE-2013-0774",
                 "CVE-2013-0775", "CVE-2013-0776", "CVE-2013-0777", "CVE-2013-0778",

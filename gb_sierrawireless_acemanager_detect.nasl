@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sierrawireless_acemanager_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_sierrawireless_acemanager_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Sierra Wireless AceManager Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106075");
- script_version ("$Revision: 5499 $");
- script_tag(name: "last_modification", value: "$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version ("$Revision: 8078 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
  script_tag(name: "creation_date", value: "2016-05-17 08:27:15 +0700 (Tue, 17 May 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,7 +60,6 @@ is a web based utility to manage and configure AirLink devices.");
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:9443);

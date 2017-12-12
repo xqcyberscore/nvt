@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2016_0243_1.nasl 8047 2017-12-08 08:56:07Z santu $
 #
 # SuSE Update for ffmpeg openSUSE-SU-2016:0243-1 (ffmpeg)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851193");
-  script_version("$Revision: 6676 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:56:06 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8047 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-02-02 17:17:40 +0100 (Tue, 02 Feb 2016)");
   script_cve_id("CVE-2016-1897", "CVE-2016-1898");
   script_tag(name:"cvss_base", value:"4.3");
@@ -48,7 +49,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2016:0243_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-01/msg00034.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

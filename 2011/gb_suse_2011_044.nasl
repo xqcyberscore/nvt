@@ -34,10 +34,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "http://www.suse.com/support/security/advisories/2011_44_acroread.html");
   script_id(850173);
-  script_version("$Revision: 6671 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:42:45 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8041 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 08:28:21 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-12-05 12:16:18 +0530 (Mon, 05 Dec 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

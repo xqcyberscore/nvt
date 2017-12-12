@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2998_1.nasl 7760 2017-11-15 05:34:04Z teissa $
+# $Id: gb_suse_2017_2998_1.nasl 8049 2017-12-08 09:11:55Z santu $
 #
 # SuSE Update for java-1_8_0-openjdk openSUSE-SU-2017:2998-1 (java-1_8_0-openjdk)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851646");
-  script_version("$Revision: 7760 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 06:34:04 +0100 (Wed, 15 Nov 2017) $");
+  script_version("$Revision: 8049 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:11:55 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-13 07:24:54 +0100 (Mon, 13 Nov 2017)");
   script_cve_id("CVE-2016-10165", "CVE-2016-9840", "CVE-2016-9841", "CVE-2016-9842", "CVE-2016-9843", "CVE-2017-10274", "CVE-2017-10281", "CVE-2017-10285", "CVE-2017-10295", "CVE-2017-10345", "CVE-2017-10346", "CVE-2017-10347", "CVE-2017-10348", "CVE-2017-10349", "CVE-2017-10350", "CVE-2017-10355", "CVE-2017-10356", "CVE-2017-10357", "CVE-2017-10388");
   script_tag(name:"cvss_base", value:"7.5");
@@ -71,7 +71,6 @@ if(description)
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2017:2998_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2017-11/msg00022.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

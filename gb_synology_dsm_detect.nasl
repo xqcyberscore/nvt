@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_dsm_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_synology_dsm_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Synology DiskStation Detection
 #
@@ -31,8 +31,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103786");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5888 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+ script_version ("$Revision: 8078 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
  script_tag(name:"creation_date", value:"2013-09-12 10:58:59 +0200 (Thu, 12 Sep 2013)");
  script_tag(name:"qod_type", value:"remote_banner");
  script_name("Synology DiskStation Manager Detection");
@@ -51,7 +51,6 @@ tag_summary = "The script sends a connection request to determine if it is a Syn
  exit(0);
 }
 
-include("cpe.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cnpilot_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_cnpilot_snmp_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # On Cambium Networks cnPilot Detect (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140186");
-  script_version("$Revision: 7236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 8078 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-03-14 17:03:28 +0100 (Tue, 14 Mar 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,7 +52,6 @@ This script performs SNMP based detection of Cambium Networks cnPilot.");
   exit(0);
 }
 
-include("cpe.inc");
 include("host_details.inc");
 include("snmp_func.inc");
 

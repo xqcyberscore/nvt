@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: axigen_web_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: axigen_web_detect.nasl 8052 2017-12-08 10:13:55Z ckuersteiner $
 #
 # Axigen Web Detection
 #
@@ -30,22 +30,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100176");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 8052 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 11:13:55 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Axigen Web Detection");
 
-  tag_summary =
-"Detection of installed version of Axigen.
+  script_tag(name: "summary", value: "Detection of installed version of Axigen.
 
-This script sends HTTP GET request and try to get the version from the
-response, and sets the result in KB.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+This script sends HTTP GET request and try to get the version from the response, and sets the result in KB.");
 
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
@@ -59,66 +54,54 @@ response, and sets the result in KB.";
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-axPort = "";
-req = "";
-buf= "";
-app_found = "";
-version = "";
-
-## Get http port
 axPort = get_http_port(default:80);
-if(!axPort){
-  axPort = 80;
-}
 
-## Check the port status
-if(!get_port_state(axPort)){
+url = "/index.hsp?login=";
+
+buf = http_get_cache(port: axPort, item: url);
+
+if (egrep(pattern: 'Server: Axigen-.*', string: buf, icase: TRUE)) {
+  app_found = eregmatch(string: buf, pattern: 'Server: Axigen-(Webmail|Webadmin)',icase:TRUE);
+  if (!isnull(app_found[1]))
+    axigen_app = app_found[1];
+
+  vers = "unknown";
+
+  version = eregmatch(string: buf, pattern: '<title>AXIGEN Web[mail|admin]+[^0-9]+([0-9.]+)</title>',icase:TRUE);
+
+  if (!isnull(version[1]))
+    vers=version[1];
+  else
+  {
+    version = eregmatch(string: buf, pattern: ">[V|v]ersion ([0-9.]+)<");
+    if (!isnull(version[1]))
+      vers = version[1];
+    else {
+      # e.g. lib_login.js?v=1000
+      version = eregmatch(string: buf, pattern: "\?v=([0-9.]+)");
+      if (!isnull(version[1]) && strlen(version[1]) == 4) {
+        vers = version[1];
+        vers = substr(vers, 0, 1) + '.' + vers[2] + '.' + vers[3];
+      }
+    }
+  }
+
+  set_kb_item(name: "axigen/installed", value: TRUE);
+
+  ## build cpe and store it as host_detail
+  cpe = build_cpe(value: vers, exp: "^([0-9.]+)", base: "cpe:/a:gecad_technologies:axigen_mail_server:");
+  if (isnull(cpe))
+    cpe = "cpe:/a:gecad_technologies:axigen_mail_server";
+
+  register_product(cpe: cpe, location: "/", port: axPort);
+
+  log_message(data: build_detection_report(app:"Axigen " + axigen_app, version: vers, install: "/",
+                                           cpe: cpe, concluded: version[0]),
+              port: axPort);
   exit(0);
 }
 
-##Construct URL
-url = string("/index.hsp?login=");
-
-##Send the Request
-req = http_get(item:url, port:axPort);
-buf = http_keepalive_send_recv(port:axPort, data:req, bodyonly:FALSE);
-
-if( buf == NULL ) exit(0);
-
-if(egrep(pattern: 'Server: Axigen-.*', string: buf, icase: TRUE) )
-{
-  app_found = eregmatch(string: buf, pattern: 'Server: Axigen-(Webmail|Webadmin)',icase:TRUE);
-  axigen_app = app_found[1];
-
-  vers = string("unknown");
-  ### try to get version.
-  version = eregmatch(string: buf, pattern: '<title>AXIGEN Web[mail|admin]+[^0-9]+([0-9.]+)</title>',icase:TRUE);
-
-  if (version[1]){
-    vers=version[1];
-  }
-  else
-  {
-    version = eregmatch(string: buf, pattern:">[V|v]ersion ([0-9.]+)<");
-    if(version)vers=version[1];
-  }
-
-  tmp_version = string(vers," under /");
-  set_kb_item(name: string("www/", axPort, "/axigen"), value: tmp_version);
-  set_kb_item(name:"axigen/installed", value:TRUE);
-
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:gecad_technologies:axigen_mail_server:");
-  if(isnull(cpe))
-    cpe = "cpe:/a:gecad_technologies:axigen_mail_server";
-
-  register_product(cpe:cpe, location:"/", port:axPort);
-
-  log_message(data: build_detection_report(app:"Axigen", version:vers, install:"/",
-                                           cpe:cpe, concluded:vers));
-}
+exit(0);

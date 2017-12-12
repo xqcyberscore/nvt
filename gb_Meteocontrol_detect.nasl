@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_Meteocontrol_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_Meteocontrol_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Meteocontrol WWB'log Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107004");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 8078 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"creation_date", value:"2016-05-20 10:42:39 +0100 (Fri, 20 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
@@ -52,7 +52,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-include("cpe.inc");
 
 port = get_http_port(default:80);
 url = '/html/en/index.html';

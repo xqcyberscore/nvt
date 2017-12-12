@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2014_1626_1.nasl 8044 2017-12-08 08:32:49Z santu $
 #
 # SuSE Update for chromium openSUSE-SU-2014:1626-1 (chromium)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850624");
-  script_version("$Revision: 6759 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_version("$Revision: 8044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:32:49 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-12-13 05:53:58 +0100 (Sat, 13 Dec 2014)");
   script_cve_id("CVE-2014-0574", "CVE-2014-7899", "CVE-2014-7900", "CVE-2014-7901",
                 "CVE-2014-7902", "CVE-2014-7903", "CVE-2014-7904", "CVE-2014-7905",
@@ -62,7 +63,6 @@ if(description)
   script_tag(name: "affected", value: "chromium on openSUSE 13.1");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "openSUSE-SU", value: "2014:1626_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-12/msg00015.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);

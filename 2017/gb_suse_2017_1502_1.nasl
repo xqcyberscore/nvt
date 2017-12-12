@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2017_1502_1.nasl 8048 2017-12-08 09:05:48Z santu $
 #
 # SuSE Update for chromium openSUSE-SU-2017:1502-1 (chromium)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851564");
-  script_version("$Revision: 7859 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 10:05:55 +0100 (Wed, 22 Nov 2017) $");
+  script_version("$Revision: 8048 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-06-08 06:04:51 +0200 (Thu, 08 Jun 2017)");
   script_cve_id("CVE-2017-5070", "CVE-2017-5071", "CVE-2017-5072", "CVE-2017-5073", 
                   "CVE-2017-5074", "CVE-2017-5075", "CVE-2017-5076", "CVE-2017-5077", "CVE-2017-5078", 
@@ -56,7 +57,6 @@ if(description)
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2017:1502_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2017-06/msg00004.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2012_0265_1.nasl 8043 2017-12-08 08:20:47Z santu $
 #
 # SuSE Update for flash-player openSUSE-SU-2012:0265-1 (flash-player)
 #
@@ -51,10 +52,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "http://195.135.221.135/opensuse-security-announce/2012-02/msg00014.html");
   script_id(850292);
-  script_version("$Revision: 6672 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:43:53 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8043 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:20:47 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-02 23:36:37 +0530 (Thu, 02 Aug 2012)");
   script_cve_id("CVE-2012-0751", "CVE-2012-0752", "CVE-2012-0753", "CVE-2012-0754", "CVE-2012-0755", "CVE-2012-0756", "CVE-2012-0767");
   script_tag(name:"cvss_base", value:"10.0");

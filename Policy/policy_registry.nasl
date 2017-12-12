@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_registry.nasl 7811 2017-11-17 11:52:16Z cfischer $
+# $Id: policy_registry.nasl 8073 2017-12-11 09:40:10Z cfischer $
 #
 # Windows Registry Check
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105988");
-  script_version("$Revision: 7811 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 12:52:16 +0100 (Fri, 17 Nov 2017) $");
+  script_version("$Revision: 8073 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 10:40:10 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-05-22 12:17:31 +0700 (Fri, 22 May 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -125,8 +125,18 @@ for (i=0; i<max_index(valid_lines_list); i++) {
       reg_content = registry_get_sz(key:key, item:value);
     else if (type == "REG_BINARY")
       reg_content = registry_get_binary(key:key, item:value);
-    if (reg_content == content && present == "true" ||
-        reg_content != content && present == "false") {
+
+    #nb: REG_DWORD might also return a numeric 0 so checking for !isnull() in this special case
+    if (type == "REG_DWORD" && !isnull(reg_content) && content == "*" && present == "true") {
+      set_kb_item(name:"policy/registry/ok_list", value:hive + '\\' + key + '\\' + value + ' | ' + present + ' | ' + content + ' | ' + reg_content);
+    } else if (type == "REG_DWORD" && !isnull(reg_content) && content == "*" && present == "false") {
+      set_kb_item(name:"policy/registry/violation_list", value:hive + '\\' + key + '\\' + value + ' | ' + present + ' | ' + content + ' | ' + reg_content);
+    } else if (reg_content && content == "*" && present == "true") {
+      set_kb_item(name:"policy/registry/ok_list", value:hive + '\\' + key + '\\' + value + ' | ' + present + ' | ' + content + ' | ' + reg_content);
+    } else if (reg_content && content == "*" && present == "false") {
+      set_kb_item(name:"policy/registry/violation_list", value:hive + '\\' + key + '\\' + value + ' | ' + present + ' | ' + content + ' | ' + reg_content);
+    } else if (reg_content == content && present == "true" ||
+               reg_content != content && present == "false") {
       set_kb_item(name:"policy/registry/ok_list", value:hive + '\\' + key + '\\' + value + ' | ' + present + ' | ' + content + ' | ' + reg_content);
     }
     else {

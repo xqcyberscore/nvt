@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2016_2537_1.nasl 8047 2017-12-08 08:56:07Z santu $
 #
 # SuSE Update for compat-openssl098 openSUSE-SU-2016:2537-1 (compat-openssl098)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851412");
-  script_version("$Revision: 6676 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:56:06 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8047 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-10-15 05:53:17 +0200 (Sat, 15 Oct 2016)");
   script_cve_id("CVE-2016-2177", "CVE-2016-2178", "CVE-2016-2179", "CVE-2016-2181", 
                 "CVE-2016-2182", "CVE-2016-2183", "CVE-2016-6302", "CVE-2016-6303", 
@@ -75,7 +76,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2016:2537_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-10/msg00029.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2513_1.nasl 7237 2017-09-22 15:00:35Z cfischer $
+# $Id: gb_suse_2017_2513_1.nasl 8048 2017-12-08 09:05:48Z santu $
 #
 # SuSE Update for qemu openSUSE-SU-2017:2513-1 (qemu)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851620");
-  script_version("$Revision: 7237 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 17:00:35 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 8048 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-09-18 07:19:40 +0200 (Mon, 18 Sep 2017)");
   script_cve_id("CVE-2017-10664", "CVE-2017-10806", "CVE-2017-11334", "CVE-2017-11434");
   script_tag(name:"cvss_base", value:"5.0");
@@ -71,7 +71,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2017:2513_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2017-09/msg00068.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

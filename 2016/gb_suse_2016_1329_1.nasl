@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2016_1329_1.nasl 8047 2017-12-08 08:56:07Z santu $
 #
 # SuSE Update for ntp openSUSE-SU-2016:1329-1 (ntp)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851318");
-  script_version("$Revision: 6959 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
+  script_version("$Revision: 8047 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-05-19 05:22:13 +0200 (Thu, 19 May 2016)");
   script_cve_id("CVE-2015-7704", "CVE-2015-7705", "CVE-2015-7974", "CVE-2016-1547", 
                 "CVE-2016-1548", "CVE-2016-1549", "CVE-2016-1550", "CVE-2016-1551", 
@@ -68,7 +69,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2016:1329_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-05/msg00052.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

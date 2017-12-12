@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2013_0847_1.nasl 8045 2017-12-08 08:39:37Z santu $
 #
 # SuSE Update for kernel openSUSE-SU-2013:0847-1 (kernel)
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(850480);
-  script_version("$Revision: 6673 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:45:02 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8045 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:39:37 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:32 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2013-0913", "CVE-2013-1767", "CVE-2013-1774", "CVE-2013-1796",
                 "CVE-2013-1797", "CVE-2013-1798", "CVE-2013-2094", "CVE-2013-1928");
@@ -110,7 +111,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name: "openSUSE-SU", value: "2013:0847_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2013-05/msg00018.html");
   script_summary("Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

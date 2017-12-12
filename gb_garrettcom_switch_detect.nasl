@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_garrettcom_switch_detect.nasl 7113 2017-09-13 06:03:30Z cfischer $
+# $Id: gb_garrettcom_switch_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Belden GarrettCom Switch Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106833");
- script_version ("$Revision: 7113 $");
- script_tag(name: "last_modification", value: "$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
+ script_version ("$Revision: 8078 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
  script_tag(name: "creation_date", value: "2017-05-26 15:04:01 +0700 (Fri, 26 May 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,7 +55,6 @@ The script sends a connection request to the server and attempts to detect Belde
  exit(0);
 }
 
-include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

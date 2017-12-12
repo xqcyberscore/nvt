@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2014_1122_1.nasl 8046 2017-12-08 08:48:56Z santu $
 #
 # SuSE Update for glibc SUSE-SU-2014:1122-1 (glibc)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850912");
-  script_version("$Revision: 6675 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:54:28 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-10-16 14:10:31 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2012-4412", "CVE-2013-0242", "CVE-2013-4237", "CVE-2013-4332", "CVE-2013-4788", "CVE-2014-4043", "CVE-2014-5119");
   script_tag(name:"cvss_base", value:"7.5");
@@ -80,7 +81,6 @@ if(description)
   script_tag(name: "affected", value: "glibc on SUSE Linux Enterprise Server 11 SP1 LTSS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "SUSE-SU", value: "2014:1122_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-09/msg00013.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

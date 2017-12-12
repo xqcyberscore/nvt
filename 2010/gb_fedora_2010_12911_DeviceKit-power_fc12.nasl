@@ -34,8 +34,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-August/046008.html");
   script_id(862339);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8082 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-12 07:31:24 +0100 (Tue, 12 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-24 07:04:19 +0200 (Tue, 24 Aug 2010)");
   script_xref(name: "FEDORA", value: "2010-12911");
   script_tag(name:"cvss_base", value:"3.6");
@@ -43,7 +43,7 @@ if(description)
   script_cve_id("CVE-2010-1172");
   script_name("Fedora Update for DeviceKit-power FEDORA-2010-12911");
 
-  script_summary("Check for the Version of DeviceKit-power");
+  script_tag(name: "summary" , value: "Check for the Version of DeviceKit-power");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

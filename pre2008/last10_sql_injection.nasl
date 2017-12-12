@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: last10_sql_injection.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: last10_sql_injection.nasl 8078 2017-12-11 14:28:55Z cfischer $
 # Description: vBulletin last10.php SQL Injection
 #
 # Authors:
@@ -27,8 +27,8 @@ CPE = 'cpe:/a:vbulletin:vbulletin';
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.16043");
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 8078 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -61,7 +61,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-include("cpe.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );

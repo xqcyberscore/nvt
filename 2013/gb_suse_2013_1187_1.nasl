@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2013_1187_1.nasl 8045 2017-12-08 08:39:37Z santu $
 #
 # SuSE Update for 3.0.80 openSUSE-SU-2013:1187-1 (3.0.80)
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(850509);
-  script_version("$Revision: 6673 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:45:02 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8045 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:39:37 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:47 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2012-6548", "CVE-2012-6549", "CVE-2013-0160", "CVE-2013-0268",
                 "CVE-2013-0311", "CVE-2013-0914", "CVE-2013-1772", "CVE-2013-1792",
@@ -114,7 +115,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name: "openSUSE-SU", value: "2013:1187_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2013-07/msg00018.html");
   script_summary("Check for the Version of 3.0.80");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencast_auth_bypass.nasl 8012 2017-12-06 13:36:37Z jschulte $
+# $Id: gb_opencast_auth_bypass.nasl 8053 2017-12-08 11:43:10Z cfischer $
 #
 # Opencast Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113062");
-  script_version("$Revision: 8012 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-06 14:36:37 +0100 (Wed, 06 Dec 2017) $");
+  script_version("$Revision: 8053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 12:43:10 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-06 14:58:59 +0100 (Wed, 06 Dec 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -69,7 +69,7 @@ include( "host_details.inc" );
 include( "version_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_port( cpe: CPE ) ) exit( 0 );
+if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
 
 if( version_is_less_equal( version: version, test_version: "2.2.3" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "2.2.4" );

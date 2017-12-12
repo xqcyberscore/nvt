@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_directadmin_dos_vuln.nasl 7337 2017-10-04 06:29:35Z asteins $
+# $Id: gb_directadmin_dos_vuln.nasl 8075 2017-12-11 10:32:06Z asteins $
 #
 # DirectAdmin DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:directadmin:directadmin';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106501");
-  script_version("$Revision: 7337 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-04 08:29:35 +0200 (Wed, 04 Oct 2017) $");
+  script_version("$Revision: 8075 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-11 11:32:06 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-01-09 10:12:05 +0700 (Mon, 09 Jan 2017)");
   script_tag(name:"cvss_base", value: "5.0");
   script_tag(name:"cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -60,7 +60,7 @@ DirectAdmin with a overly long password which results in a denial of service con
 
   script_tag(name: "affected", value: "DirectAdmin 1.50.1 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 4th October, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 11th December, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40996");

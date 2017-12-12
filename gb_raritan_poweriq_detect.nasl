@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_raritan_poweriq_detect.nasl 6184 2017-05-22 10:25:33Z ckuerste $
+# $Id: gb_raritan_poweriq_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Raritan PowerIQ Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106817");
- script_version ("$Revision: 6184 $");
- script_tag(name: "last_modification", value: "$Date: 2017-05-22 12:25:33 +0200 (Mon, 22 May 2017) $");
+ script_version ("$Revision: 8078 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
  script_tag(name: "creation_date", value: "2017-05-22 10:12:10 +0700 (Mon, 22 May 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,7 +55,6 @@ The script sends a connection request to the server and attempts to detect Rarit
  exit(0);
 }
 
-include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

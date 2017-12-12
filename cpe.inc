@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cpe.inc 8036 2017-12-08 05:55:03Z cfischer $
+# $Id: cpe.inc 8053 2017-12-08 11:43:10Z cfischer $
 #
 # CPE Support Functions
 #
@@ -28,7 +28,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8036 $
+# $Revision: 8053 $
 #
 ###############################################################################
 
@@ -110,26 +110,28 @@ function register_and_report_cpe( app, ver, concluded, cpename, base, expr, insl
   }
 
   ## setting location if location variable value is null
-  if( ! insloc ) insloc = "undefined";
+  if( ! insloc ) insloc = "unknown";
 
   ## setting concluded if value is null
   if( ! concluded && ver ) concluded = ver;
 
-  ## setting Version unknown if not available
+  ## setting version to unknown if not available
   if( ! ver ) ver = "unknown";
 
   if( ! regProto ) regProto = "tcp";
 
-  ##Build CPE
   if( ! cpename && base ) {
     cpename = build_cpe( value:ver, exp:expr, base:base );
-    if(tolower(ver) == "unknown") {
-      cpename = base ;
+    if( ! cpename ) {
+      if( substr( base, strlen( base ) - 1, strlen( base ) - 1 ) == ":" ) {
+        cpename = substr( base, 0, strlen( base ) - 2 );
+      } else {
+        cpename = base;
+      }
     }
   }
 
-  if(cpename)
-  {
+  if( cpename ) {
     register_product( cpe:cpename, location:insloc, port:regPort, proto:regProto, service:regService );
 
     log_message( data:build_detection_report( app:app,

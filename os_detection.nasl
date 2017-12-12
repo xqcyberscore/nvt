@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 7995 2017-12-05 15:10:59Z cfischer $
+# $Id: os_detection.nasl 8077 2017-12-11 14:15:34Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 7995 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-05 16:10:59 +0100 (Tue, 05 Dec 2017) $");
+  script_version("$Revision: 8077 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:15:34 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,6 +52,7 @@ if(description)
                       "gb_extremeos_snmp_detect.nasl", "gb_palo_alto_webgui_detect.nasl",
                       "gb_cisco_asa_version_snmp.nasl", "gb_cisco_asa_version.nasl",
                       "gb_arista_eos_snmp_detect.nasl", "gb_netgear_prosafe_consolidation.nasl",
+                      "gb_hirschmann_consolidation.nasl",
                       "gb_xenserver_version.nasl", "gb_cisco_ios_xe_version.nasl",
                       "gb_mcafee_email_gateway_version.nasl", "gb_brocade_netiron_snmp_detect.nasl",
                       "gb_arubaos_detect.nasl", "gb_cyberoam_umt_ngfw_detect.nasl",

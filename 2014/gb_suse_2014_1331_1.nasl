@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2014_1331_1.nasl 8044 2017-12-08 08:32:49Z santu $
 #
 # SuSE Update for update openSUSE-SU-2014:1331-1 (update)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850621");
-  script_version("$Revision: 6692 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:32:49 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-10-30 05:44:03 +0100 (Thu, 30 Oct 2014)");
   script_cve_id("CVE-2014-3513", "CVE-2014-3566", "CVE-2014-3567", "CVE-2014-3568");
   script_tag(name:"cvss_base", value:"7.1");
@@ -49,7 +50,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "openSUSE-SU", value: "2014:1331_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-10/msg00008.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

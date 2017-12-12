@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wso2_carbon_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
+# $Id: gb_wso2_carbon_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # WSO2 Carbon Products Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106178");
- script_version ("$Revision: 6701 $");
- script_tag(name: "last_modification", value: "$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
+ script_version ("$Revision: 8078 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
  script_tag(name: "creation_date", value: "2016-10-10 12:16:07 +0700 (Mon, 10 Oct 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,7 +56,6 @@ products and the version.");
  exit(0);
 }
 
-include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

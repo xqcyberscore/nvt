@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2014_0248_2.nasl 8046 2017-12-08 08:48:56Z santu $
 #
 # SuSE Update for Mozilla SUSE-SU-2014:0248-2 (Mozilla)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850949");
-  script_version("$Revision: 6675 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:54:28 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-10-16 14:52:32 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-1477", "CVE-2014-1479", "CVE-2014-1480", "CVE-2014-1481", "CVE-2014-1482", "CVE-2014-1483", "CVE-2014-1484", "CVE-2014-1485", "CVE-2014-1486", "CVE-2014-1487", "CVE-2014-1488", "CVE-2014-1489", "CVE-2014-1490", "CVE-2014-1491");
   script_tag(name:"cvss_base", value:"10.0");
@@ -137,7 +138,6 @@ if(description)
   script_tag(name: "affected", value: "Mozilla on SUSE Linux Enterprise Server 11 SP2 LTSS, SUSE Linux Enterprise Server 11 SP1 LTSS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "SUSE-SU", value: "2014:0248_2");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-02/msg00011.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

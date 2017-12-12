@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2017_1141_1.nasl 8048 2017-12-08 09:05:48Z santu $
 #
 # SuSE Update for virtualbox openSUSE-SU-2017:1141-1 (virtualbox)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851546");
-  script_version("$Revision: 6677 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:58:27 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8048 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-05-03 06:46:40 +0200 (Wed, 03 May 2017)");
   script_cve_id("CVE-2017-3513", "CVE-2017-3538", "CVE-2017-3558", "CVE-2017-3559",
                 "CVE-2017-3561", "CVE-2017-3563", "CVE-2017-3575", "CVE-2017-3576",
@@ -89,7 +90,6 @@ if(description)
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2017:1141_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2017-05/msg00001.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

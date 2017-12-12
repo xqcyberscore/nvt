@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sendio_detect.nasl 6811 2017-07-28 08:55:43Z ckuersteiner $
+# $Id: gb_sendio_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Sendio Detection
 #
@@ -32,8 +32,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105292");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6811 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-28 10:55:43 +0200 (Fri, 28 Jul 2017) $");
+ script_version ("$Revision: 8078 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
  script_tag(name:"creation_date", value:"2015-06-10 11:04:45 +0200 (Wed, 10 Jun 2015)");
  script_name("Sendio Detection");
 
@@ -53,7 +53,6 @@ from the reply.");
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );

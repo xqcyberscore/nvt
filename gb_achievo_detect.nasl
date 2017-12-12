@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_achievo_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
+# $Id: gb_achievo_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Achievo Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807645");
-  script_version("$Revision: 5815 $");
+  script_version("$Revision: 8078 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:25:00 +0530 (Wed, 06 Apr 2016)");
   script_name("Achievo Detection");
 
@@ -49,7 +49,6 @@ if(description)
   exit(0);
 }
 
-include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

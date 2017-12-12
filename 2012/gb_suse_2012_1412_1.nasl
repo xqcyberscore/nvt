@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2012_1412_1.nasl 8043 2017-12-08 08:20:47Z santu $
 #
 # SuSE Update for Mozilla Suite openSUSE-SU-2012:1412-1 (Mozilla Suite)
 #
@@ -44,10 +45,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "http://195.135.221.135/opensuse-security-announce/2012-10/msg00019.html");
   script_id(850356);
-  script_version("$Revision: 6672 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:43:53 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8043 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:20:47 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:56 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-4194", "CVE-2012-4195", "CVE-2012-4196");
   script_tag(name:"cvss_base", value:"5.1");

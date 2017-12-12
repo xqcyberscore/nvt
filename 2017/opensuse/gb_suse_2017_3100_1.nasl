@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3100_1.nasl 8018 2017-12-07 07:32:50Z teissa $
+# $Id: gb_suse_2017_3100_1.nasl 8049 2017-12-08 09:11:55Z santu $
 #
 # SuSE Update for tboot openSUSE-SU-2017:3100-1 (tboot)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851652");
-  script_version("$Revision: 8018 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 08:32:50 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 8049 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:11:55 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-26 07:32:39 +0100 (Sun, 26 Nov 2017)");
   script_cve_id("CVE-2017-16837");
   script_tag(name:"cvss_base", value:"4.6");
@@ -65,7 +65,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2017:3100_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2017-11/msg00039.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

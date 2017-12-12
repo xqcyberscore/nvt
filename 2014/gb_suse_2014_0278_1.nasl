@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2014_0278_1.nasl 8044 2017-12-08 08:32:49Z santu $
 #
 # SuSE Update for flash-player openSUSE-SU-2014:0278-1 (flash-player)
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(850571);
-  script_version("$Revision: 6674 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:45:49 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:32:49 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-02-25 16:47:57 +0530 (Tue, 25 Feb 2014)");
   script_cve_id("CVE-2014-0498", "CVE-2014-0499", "CVE-2014-0502");
   script_tag(name:"cvss_base", value:"10.0");
@@ -54,7 +55,6 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "openSUSE-SU", value: "2014:0278_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-02/msg00015.html");
   script_summary("Check for the Version of flash-player");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

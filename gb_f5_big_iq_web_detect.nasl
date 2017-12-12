@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_iq_web_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: gb_f5_big_iq_web_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # F5 Networks  BIG-IQ Webinterface Detection
 #
@@ -31,8 +31,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 7076 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+ script_version ("$Revision: 8078 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
  script_tag(name:"creation_date", value:"2015-01-12 14:37:50 +0100 (Mon, 12 Jan 2015)");
  script_name("F5 Networks BIG-IQ Webinterface Detection");
 
@@ -53,7 +53,6 @@ from the reply.");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
-include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:443 );

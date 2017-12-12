@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2014_0584_1.nasl 8044 2017-12-08 08:32:49Z santu $
 #
 # SuSE Update for MozillaThunderbird,seamonkey openSUSE-SU-2014:0584-1 (MozillaThunderbird,seamonkey)
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(850585);
-  script_version("$Revision: 6674 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:45:49 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:32:49 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-05-05 11:21:20 +0530 (Mon, 05 May 2014)");
   script_cve_id("CVE-2014-1493", "CVE-2014-1494", "CVE-2014-1497", "CVE-2014-1498",
                 "CVE-2014-1499", "CVE-2014-1500", "CVE-2014-1502", "CVE-2014-1504",
@@ -85,7 +86,6 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "openSUSE-SU", value: "2014:0584_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-04/msg00016.html");
   script_summary("Check for the Version of MozillaThunderbird,seamonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

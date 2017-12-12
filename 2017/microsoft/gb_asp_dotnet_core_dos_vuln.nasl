@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_dos_vuln.nasl 7855 2017-11-22 04:40:39Z santu $
+# $Id: gb_asp_dotnet_core_dos_vuln.nasl 8063 2017-12-09 11:46:24Z teissa $
 #
 # Microsoft ASP.NET Core Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812099");
-  script_version("$Revision: 7855 $");
+  script_version("$Revision: 8063 $");
   script_cve_id("CVE-2017-11883");
   script_bugtraq_id(101835);
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 05:40:39 +0100 (Wed, 22 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-09 12:46:24 +0100 (Sat, 09 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-20 15:14:33 +0530 (Mon, 20 Nov 2017)");
   script_name("Microsoft ASP.NET Core Denial of Service Vulnerability");
 

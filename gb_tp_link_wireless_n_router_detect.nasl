@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tp_link_wireless_n_router_detect.nasl 7588 2017-10-27 06:53:29Z santu $
+# $Id: gb_tp_link_wireless_n_router_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # TP-Link Wireless Router Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811880");
-  script_version("$Revision: 7588 $");
+  script_version("$Revision: 8078 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 08:53:29 +0200 (Fri, 27 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-10-25 14:30:38 +0530 (Wed, 25 Oct 2017)");
   script_name("TP-Link Wireless Router Detection");
 
@@ -51,7 +51,6 @@ if(description)
 }
 
 
-include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ace_application_control_engine_detect.nasl 4081 2016-09-16 10:16:48Z ckuerste $
+# $Id: gb_cisco_ace_application_control_engine_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Cisco ACE Application Control Engine Detection 
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106257");
- script_version ("$Revision: 4081 $");
- script_tag(name: "last_modification", value: "$Date: 2016-09-16 12:16:48 +0200 (Fri, 16 Sep 2016) $");
+ script_version ("$Revision: 8078 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
  script_tag(name: "creation_date", value: "2016-09-16 15:00:47 +0700 (Fri, 16 Sep 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,7 +53,6 @@ The script sends a connection request to the server and attempts to extract the 
  exit(0);
 }
 
-include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");

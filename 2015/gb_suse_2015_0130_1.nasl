@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2015_0130_1.nasl 8046 2017-12-08 08:48:56Z santu $
 #
 # SuSE Update for openssl openSUSE-SU-2015:0130-1 (openssl)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850630");
-  script_version("$Revision: 6675 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:54:28 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-01-24 05:48:38 +0100 (Sat, 24 Jan 2015)");
   script_cve_id("CVE-2014-3569", "CVE-2014-3570", "CVE-2014-3571", "CVE-2014-3572", "CVE-2014-8275", "CVE-2015-0204", "CVE-2015-0205", "CVE-2015-0206");
   script_tag(name:"cvss_base", value:"5.0");
@@ -66,7 +67,6 @@ if(description)
   script_tag(name: "affected", value: "openssl on openSUSE 13.1");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "openSUSE-SU", value: "2015:0130_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-01/msg00021.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);

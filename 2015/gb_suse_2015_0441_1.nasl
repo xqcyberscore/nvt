@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2015_0441_1.nasl 8046 2017-12-08 08:48:56Z santu $
 #
 # SuSE Update for chromium openSUSE-SU-2015:0441-1 (chromium)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850639");
-  script_version("$Revision: 6675 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:54:28 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-03-06 14:17:10 +0100 (Fri, 06 Mar 2015)");
   script_cve_id("CVE-2014-7923", "CVE-2014-7924", "CVE-2014-7925", "CVE-2014-7926", "CVE-2014-7927", "CVE-2014-7928", "CVE-2014-7929", "CVE-2014-7930", "CVE-2014-7931", "CVE-2014-7932", "CVE-2014-7933", "CVE-2014-7934", "CVE-2014-7935", "CVE-2014-7936", "CVE-2014-7937", "CVE-2014-7938", "CVE-2014-7939", "CVE-2014-7940", "CVE-2014-7941", "CVE-2014-7942", "CVE-2014-7943", "CVE-2014-7944", "CVE-2014-7945", "CVE-2014-7946", "CVE-2014-7947", "CVE-2014-7948", "CVE-2015-1205", "CVE-2015-1209", "CVE-2015-1210", "CVE-2015-1211", "CVE-2015-1212");
   script_tag(name:"cvss_base", value:"7.5");
@@ -79,7 +80,6 @@ if(description)
   script_tag(name: "affected", value: "chromium on openSUSE 13.1");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "openSUSE-SU", value: "2015:0441_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-03/msg00005.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

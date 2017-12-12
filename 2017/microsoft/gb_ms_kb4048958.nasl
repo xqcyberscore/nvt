@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4048958.nasl 7773 2017-11-15 13:21:06Z santu $
+# $Id: gb_ms_kb4048958.nasl 8063 2017-12-09 11:46:24Z teissa $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4048958)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812207");
-  script_version("$Revision: 7773 $");
+  script_version("$Revision: 8063 $");
   script_cve_id("CVE-2017-11827", "CVE-2017-11831", "CVE-2017-11768", "CVE-2017-11788",
                 "CVE-2017-11880", "CVE-2017-11791", "CVE-2017-11834", "CVE-2017-11837",
                 "CVE-2017-11838", "CVE-2017-11842", "CVE-2017-11843", "CVE-2017-11846",
@@ -35,9 +35,9 @@ if(description)
                 "CVE-2017-11851", "CVE-2017-11853", "CVE-2017-11855", "CVE-2017-11856",
                 "CVE-2017-11858", "CVE-2017-11869");
   script_bugtraq_id(101482);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 14:21:06 +0100 (Wed, 15 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-09 12:46:24 +0100 (Sat, 09 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-15 10:47:54 +0530 (Wed, 15 Nov 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4048958)");
 

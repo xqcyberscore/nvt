@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4048959.nasl 7773 2017-11-15 13:21:06Z santu $
+# $Id: gb_ms_kb4048959.nasl 8063 2017-12-09 11:46:24Z teissa $
 #
 # Microsoft Windows Server 2012 Multiple Vulnerabilities (KB4048959)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812139");
-  script_version("$Revision: 7773 $");
+  script_version("$Revision: 8063 $");
   script_cve_id("CVE-2017-11869", "CVE-2017-11768", "CVE-2017-11788", "CVE-2017-11880", 
                 "CVE-2017-11791", "CVE-2017-11827", "CVE-2017-11834", "CVE-2017-11842", 
                 "CVE-2017-11843", "CVE-2017-11846", "CVE-2017-11847", "CVE-2017-11848", 
@@ -36,9 +36,9 @@ if(description)
   script_bugtraq_id(101742, 101705, 101711, 101755, 101715, 101703, 101725, 101719, 101740,
 	            101741, 101729, 101709, 101762, 101738, 101763, 101764, 101751, 101716,
 	            101721, 101726);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 14:21:06 +0100 (Wed, 15 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-09 12:46:24 +0100 (Sat, 09 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-15 10:19:08 +0530 (Wed, 15 Nov 2017)");
   script_name("Microsoft Windows Server 2012 Multiple Vulnerabilities (KB4048959)");
 

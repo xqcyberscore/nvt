@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2991_1.nasl 7760 2017-11-15 05:34:04Z teissa $
+# $Id: gb_suse_2017_2991_1.nasl 8049 2017-12-08 09:11:55Z santu $
 #
 # SuSE Update for webkit2gtk3 openSUSE-SU-2017:2991-1 (webkit2gtk3)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851645");
-  script_version("$Revision: 7760 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 06:34:04 +0100 (Wed, 15 Nov 2017) $");
+  script_version("$Revision: 8049 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:11:55 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-11 07:31:25 +0100 (Sat, 11 Nov 2017)");
   script_cve_id("CVE-2016-7586", "CVE-2016-7589", "CVE-2016-7592", "CVE-2016-7599", 
                 "CVE-2016-7623", "CVE-2016-7632", "CVE-2016-7635", "CVE-2016-7639", 
@@ -95,7 +95,6 @@ detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2017:2991_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2017-11/msg00019.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

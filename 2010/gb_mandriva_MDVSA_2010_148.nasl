@@ -60,8 +60,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-08/msg00005.php");
   script_id(831124);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8082 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-12 07:31:24 +0100 (Tue, 12 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-13 14:24:53 +0200 (Fri, 13 Aug 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -69,7 +69,7 @@ if(description)
   script_cve_id("CVE-2010-2528");
   script_name("Mandriva Update for pidgin MDVSA-2010:148 (pidgin)");
 
-  script_summary("Check for the Version of pidgin");
+  script_tag(name: "summary" , value: "Check for the Version of pidgin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

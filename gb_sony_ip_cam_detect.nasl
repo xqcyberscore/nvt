@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sony_ip_cam_detect.nasl 4735 2016-12-09 16:48:54Z teissa $
+# $Id: gb_sony_ip_cam_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Sony IPELA Engine IP Cameras Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.107105");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 4735 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-09 17:48:54 +0100 (Fri, 09 Dec 2016) $");
+ script_version ("$Revision: 8078 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-12-09 12:56:26 +0100 (Fri, 09 Dec 2016)");
  script_name("Sony IPELA Engine IP Cameras Detection");
 
@@ -53,7 +53,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
 include("host_details.inc");
-include("cpe.inc");
 
 port = get_http_port( default:8080 );
 buf = http_get_cache( port:port, item:"/" );

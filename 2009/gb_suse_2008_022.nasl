@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2008_022.nasl 8050 2017-12-08 09:34:29Z santu $
 #
 # SuSE Update for flash-player SUSE-SA:2008:022
 #
@@ -39,10 +40,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "http://www.novell.com/linux/security/advisories/2008_22_flashplayer.html");
   script_id(850000);
-  script_version("$Revision: 6667 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:29:32 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8050 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:34:29 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-01-23 16:44:26 +0100 (Fri, 23 Jan 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

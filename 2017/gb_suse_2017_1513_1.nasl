@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2017_1513_1.nasl 8048 2017-12-08 09:05:48Z santu $
 #
 # SuSE Update for the openSUSE-SU-2017:1513-1 (the)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851566");
-  script_version("$Revision: 6677 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:58:27 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8048 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-06-09 06:51:33 +0200 (Fri, 09 Jun 2017)");
   script_cve_id("CVE-2017-7487", "CVE-2017-7645", "CVE-2017-8890", "CVE-2017-9074", 
                 "CVE-2017-9075", "CVE-2017-9076", "CVE-2017-9077", "CVE-2017-9150"); 
@@ -77,7 +78,6 @@ if(description)
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2017:1513_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2017-06/msg00006.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2015_1842_1.nasl 8046 2017-12-08 08:48:56Z santu $
 #
 # SuSE Update for the openSUSE-SU-2015:1842-1 (bbswitch)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851121");
-  script_version("$Revision: 6675 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:54:28 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-10-30 07:57:50 +0100 (Fri, 30 Oct 2015)");
   script_cve_id("CVE-2015-0272", "CVE-2015-1333", "CVE-2015-2925", "CVE-2015-3290",
                 "CVE-2015-5283", "CVE-2015-5707", "CVE-2015-7872");
@@ -92,7 +93,6 @@ if(description)
   script_tag(name: "affected", value: "bbswitch on openSUSE 13.2");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "openSUSE-SU", value: "2015:1842_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-10/msg00024.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

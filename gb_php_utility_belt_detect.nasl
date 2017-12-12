@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_utility_belt_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_php_utility_belt_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Php Utility Belt Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807613");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 8078 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-03-18 17:24:39 +0530 (Fri, 18 Mar 2016)");
   script_name("Php Utility Belt Detection");
   script_category(ACT_GATHER_INFO);
@@ -51,7 +51,6 @@ if(description)
 }
 
 include("http_func.inc");
-include("cpe.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 

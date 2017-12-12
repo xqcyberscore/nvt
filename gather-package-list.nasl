@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 7911 2017-11-27 04:54:41Z santu $
+# $Id: gather-package-list.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 7911 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-27 05:54:41 +0100 (Mon, 27 Nov 2017) $");
+  script_version("$Revision: 8078 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -67,7 +67,6 @@ if(description)
 
 include("ssh_func.inc");
 include("host_details.inc");
-include("cpe.inc");
 
 cmdline = 0;
 SCRIPT_DESC = "Determine OS and list of installed packages via SSH login";
@@ -218,9 +217,11 @@ OS_CPE = make_array(
 
     # Debian
     "DEB10.0", "cpe:/o:debian:debian_linux:10.0",
+    "DEB9.3", "cpe:/o:debian:debian_linux:9.3",
     "DEB9.2", "cpe:/o:debian:debian_linux:9.2",
     "DEB9.1", "cpe:/o:debian:debian_linux:9.1",
     "DEB9.0", "cpe:/o:debian:debian_linux:9.0",
+    "DEB8.10", "cpe:/o:debian:debian_linux:8.10",
     "DEB8.9", "cpe:/o:debian:debian_linux:8.9",
     "DEB8.8", "cpe:/o:debian:debian_linux:8.8",
     "DEB8.7", "cpe:/o:debian:debian_linux:8.7",

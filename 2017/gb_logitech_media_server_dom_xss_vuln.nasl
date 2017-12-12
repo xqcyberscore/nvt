@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_logitech_media_server_dom_xss_vuln.nasl 7588 2017-10-27 06:53:29Z santu $
+# $Id: gb_logitech_media_server_dom_xss_vuln.nasl 8075 2017-12-11 10:32:06Z asteins $
 #
 # Logitech Media Server DOM Based XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:logitech:media_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811878");
-  script_version("$Revision: 7588 $");
+  script_version("$Revision: 8075 $");
   script_cve_id("CVE-2017-15687");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 08:53:29 +0200 (Fri, 27 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 11:32:06 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-10-24 18:15:51 +0530 (Tue, 24 Oct 2017)");
   script_name("Logitech Media Server DOM Based XSS Vulnerability");
 
@@ -57,7 +57,7 @@ if(description)
   7.7.5, 7.9.1, 7.7.2, 7.7.1, 7.7.6 and 7.9.0");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  25th October, 2017. Information regarding this issue will be updated once 
+  11th December, 2017. Information regarding this issue will be updated once 
   solution details are available. For updates refer to https://www.logitech.com.");
 
 

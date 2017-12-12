@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hirschmann_webui_detect.nasl 7987 2017-12-05 03:05:03Z ckuersteiner $
+# $Id: gb_hirschmann_webui_detect.nasl 8077 2017-12-11 14:15:34Z cfischer $
 #
-# Hirschmann Devices Web UI Detection
+# Hirschmann Devices Detection (Web UI)
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,15 +28,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140575");
-  script_version("$Revision: 7987 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-05 04:05:03 +0100 (Tue, 05 Dec 2017) $");
+  script_version("$Revision: 8077 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-11 15:15:34 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-12-04 14:40:12 +0700 (Mon, 04 Dec 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_name("Hirschmann Devices Web UI Detection");
+  script_name("Hirschmann Devices Detection (Web UI)");
 
   script_tag(name: "summary" , value: "Detection of Hirschmann devices over HTTP.
 
@@ -47,7 +47,7 @@ its version.");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -56,46 +56,47 @@ its version.");
   exit(0);
 }
 
-include("cpe.inc");
-include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default: 443);
-
 res = http_get_cache(port: port, item: "/");
 
-if (('VALUE="com.hirschmann.' >< res && 'productName' >< res) ||
-    ("img/hirschLogo.gif" >< res && "GAI.SESSIONID" >< res)) {
-  version = "unknown";
+if (res =~ "^HTTP/1\.[01] 200" &&
+     ('VALUE="com.hirschmann.' >< res && 'productName' >< res) ||
+     ("img/hirschLogo.gif" >< res && "GAI.SESSIONID" >< res)) {
 
-  mod = eregmatch(pattern: '"productName" VALUE="([^"]+)', string: res);
-  if (isnull(mod[1])) {
-    mod = eregmatch(pattern: "<title>([^<]+)", string: res);
-    if (isnull(mod[1]))
-      exit(0);
+  set_kb_item( name:"hirschmann_device/detected", value:TRUE );
+  set_kb_item( name:"hirschmann_device/http/detected", value:TRUE );
+  set_kb_item( name:"hirschmann_device/http/port", value:port );
+
+  fw_version      = "unknown";
+  product_name    = "unknown";
+  model_shortname = "unknown";
+
+  prod_name = eregmatch(pattern: '"productName" VALUE="([^"]+)', string: res);
+  if (isnull(prod_name[1])) {
+    prod_name = eregmatch(pattern: "<title>([^<]+)", string: res);
+    if (!isnull(prod_name[1]))
+      product_name = prod_name[1];
+      concluded += prod_name[0] + '\n';
+  } else {
+    product_name = prod_name[1];
+    concluded += prod_name[0] + '\n';
   }
-  model = mod[1];
-  set_kb_item(name: "hirschmann_device/model", value: model);
 
   vers = eregmatch(pattern: '"productVersion" VALUE="([0-9.]+)', string: res);
   if (!isnull(vers[1])) {
-    version = vers[1];
-    set_kb_item(name: "hirschmann_device/version", value: version);
+    fw_version = vers[1];
+    concluded += vers[0] + '\n';
   }
 
-  set_kb_item(name: "hirschmann_device/detected", value: TRUE);
+  set_kb_item(name: "hirschmann_device/http/" + port + "/fw_version", value: fw_version);
+  set_kb_item(name: "hirschmann_device/http/" + port + "/product_name", value: product_name);
+  set_kb_item(name: "hirschmann_device/http/" + port + "/model_shortname", value: model_shortname);
 
-  cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/o:belden:hirschmann_firmware:");
-  if (!cpe)
-    cpe = 'cpe:/o:belden:hirschmann_firmware';
-
-  register_product(cpe: cpe, location: "/", port: port);
-
-  log_message(data: build_detection_report(app: "Hirschmann " + model, version: version, install: "/", cpe: cpe,
-                                           concluded: vers[0]),
-              port: port);
-  exit(0);
+  if (concluded)
+    set_kb_item(name: "hirschmann_device/http/" + port + "/concluded", value: concluded);
 }
 
 exit(0);

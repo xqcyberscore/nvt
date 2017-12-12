@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smb_windows_detect.nasl 6763 2017-07-19 16:51:22Z cfischer $
+# $Id: gb_smb_windows_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # SMB Windows Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103621");
-  script_version("$Revision: 6763 $");
+  script_version("$Revision: 8078 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 18:51:22 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-08-27 12:14:14 +0200 (Wed, 27 Aug 2008)");
   script_name("SMB Windows Detection");
   script_category(ACT_GATHER_INFO);
@@ -49,7 +49,6 @@ if(description)
 }
 
 include("host_details.inc");
-include("cpe.inc");
 include("smb_nt.inc");
 
 SCRIPT_DESC = "SMB Windows Detection";

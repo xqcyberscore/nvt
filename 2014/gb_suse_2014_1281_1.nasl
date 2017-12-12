@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2014_1281_1.nasl 8044 2017-12-08 08:32:49Z santu $
 #
 # SuSE Update for xen openSUSE-SU-2014:1281-1 (xen)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850620");
-  script_version("$Revision: 6750 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_version("$Revision: 8044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:32:49 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-10-10 06:08:22 +0200 (Fri, 10 Oct 2014)");
   script_cve_id("CVE-2013-4344", "CVE-2013-4540", "CVE-2014-3124", "CVE-2014-3967", "CVE-2014-3968", "CVE-2014-4021", "CVE-2014-7154", "CVE-2014-7155", "CVE-2014-7156", "CVE-2014-7188");
   script_tag(name:"cvss_base", value:"8.3");
@@ -69,7 +70,6 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "openSUSE-SU", value: "2014:1281_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-10/msg00003.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

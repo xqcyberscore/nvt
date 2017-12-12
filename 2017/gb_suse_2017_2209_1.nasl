@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2209_1.nasl 7021 2017-08-30 06:29:55Z santu $
+# $Id: gb_suse_2017_2209_1.nasl 8048 2017-12-08 09:05:48Z santu $
 #
 # SuSE Update for MozillaThunderbird openSUSE-SU-2017:2209-1 (MozillaThunderbird)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851598");
-  script_version("$Revision: 7021 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 08:29:55 +0200 (Wed, 30 Aug 2017) $");
+  script_version("$Revision: 8048 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-08-19 07:36:44 +0200 (Sat, 19 Aug 2017)");
   script_cve_id("CVE-2017-7753", "CVE-2017-7779", "CVE-2017-7782", "CVE-2017-7784", 
                 "CVE-2017-7785", "CVE-2017-7786", "CVE-2017-7787", "CVE-2017-7791", 
@@ -86,7 +86,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2017:2209_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2017-08/msg00056.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

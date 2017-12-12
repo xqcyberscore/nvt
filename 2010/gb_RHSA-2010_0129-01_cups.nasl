@@ -46,8 +46,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2010-March/msg00003.html");
   script_id(870224);
-  script_version("$Revision: 6684 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:43:49 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8037 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 07:32:03 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-03-05 12:48:43 +0100 (Fri, 05 Mar 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -55,7 +55,7 @@ if(description)
   script_cve_id("CVE-2010-0302", "CVE-2009-3553");
   script_name("RedHat Update for cups RHSA-2010:0129-01");
 
-  script_summary("Check for the Version of cups");
+  script_tag(name: "summary" , value: "Check for the Version of cups");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

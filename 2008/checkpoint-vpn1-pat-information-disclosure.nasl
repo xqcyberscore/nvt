@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: checkpoint-vpn1-pat-information-disclosure.nasl 7144 2017-09-15 12:14:43Z cfischer $
+# $Id: checkpoint-vpn1-pat-information-disclosure.nasl 8078 2017-12-11 14:28:55Z cfischer $
 # Description: Checkpoint VPN-1 PAT information disclosure
 #
 # Authors:
@@ -47,8 +47,8 @@ where this vulnerability is reported.";
 if (description)
 {
 	script_id(80096);
-	script_version("$Revision: 7144 $");
-	script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:14:43 +0200 (Fri, 15 Sep 2017) $");
+	script_version("$Revision: 8078 $");
+	script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
 	script_tag(name:"creation_date", value:"2008-11-05 16:59:22 +0100 (Wed, 05 Nov 2008)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -69,7 +69,6 @@ if (description)
 	exit(0);
 }
 
-include("cpe.inc");
 include("host_details.inc");
 
 if(TARGET_IS_IPV6())exit(0);

@@ -84,10 +84,9 @@ tag_affected = "kernel on SUSE SLES 9";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "http://www.novell.com/linux/security/advisories/2011_08_kernel.html");
   script_id(850159);
-  script_version("$Revision: 6671 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:42:45 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8041 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 08:28:21 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-02-16 14:19:17 +0100 (Wed, 16 Feb 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");

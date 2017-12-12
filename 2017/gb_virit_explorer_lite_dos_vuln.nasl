@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_virit_explorer_lite_dos_vuln.nasl 7918 2017-11-28 07:11:21Z teissa $
+# $Id: gb_virit_explorer_lite_dos_vuln.nasl 8076 2017-12-11 12:55:06Z teissa $
 #
 # TG Soft Vir.IT eXplorer Lite Denial Of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:tg_soft:vir.it_explorer_lite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107266");
-  script_version("$Revision: 7918 $");
+  script_version("$Revision: 8076 $");
   script_cve_id("CVE-2017-16948");
   script_tag(name:"cvss_base", value:"1.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-28 08:11:21 +0100 (Tue, 28 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 13:55:06 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-27 09:50:38 +0700 (Mon, 27 Nov 2017)");
   script_name("TG Soft Vir.IT eXplorer Lite Denial Of Service Vulnerability");
 
@@ -55,7 +55,7 @@ regarding this issue will be updated once the solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"registry");
 
   script_xref(name : "URL" , value : "https://vuldb.com/fr/?id.109971");
 

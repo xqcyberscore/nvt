@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iprotect_default_ssh_credentials.nasl 7953 2017-11-30 15:08:11Z cfischer $
+# $Id: gb_iprotect_default_ssh_credentials.nasl 8061 2017-12-08 15:07:15Z cfischer $
 #
 # iProtect Server Default SSH Login
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108306");
-  script_version("$Revision: 7953 $");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-30 16:08:11 +0100 (Thu, 30 Nov 2017) $");
+  script_version("$Revision: 8061 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 16:07:15 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-30 14:22:43 +0100 (Thu, 30 Nov 2017)");
   script_name("iProtect Server Default SSH Login");
   script_category(ACT_ATTACK);

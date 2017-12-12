@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webcenter_content_detect.nasl 7022 2017-08-30 08:57:06Z santu $
+# $Id: gb_oracle_webcenter_content_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Oracle WebCenter Content Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811709");
-  script_version("$Revision: 7022 $");
+  script_version("$Revision: 8078 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 10:57:06 +0200 (Wed, 30 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-08-18 12:44:35 +0530 (Fri, 18 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle WebCenter Content Detection");
@@ -54,7 +54,6 @@ if(description)
 ### Code Starts Here
 ##
 
-include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

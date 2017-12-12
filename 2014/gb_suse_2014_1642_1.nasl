@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2014_1642_1.nasl 8044 2017-12-08 08:32:49Z santu $
 #
 # SuSE Update for Server openSUSE-SU-2014:1642-1 (Server)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850625");
-  script_version("$Revision: 6759 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_version("$Revision: 8044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:32:49 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-12-16 05:58:20 +0100 (Tue, 16 Dec 2014)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -40,7 +41,6 @@ if(description)
   script_tag(name: "affected", value: "Server on openSUSE 13.1, openSUSE 12.3");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "openSUSE-SU", value: "2014:1642_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-12/msg00017.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);

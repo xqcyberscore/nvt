@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2007_017.nasl 8050 2017-12-08 09:34:29Z santu $
 #
 # SuSE Update for clamav SUSE-SA:2007:017
 #
@@ -45,10 +46,9 @@ tag_solution = "Please Install the Updated Packages.";
 
 if(description)
 {
-  script_xref(name : "URL" , value : "http://www.novell.com/linux/security/advisories/2007_17_clamav.html");
   script_id(850107);
-  script_version("$Revision: 6667 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:29:32 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8050 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:34:29 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-01-28 13:40:10 +0100 (Wed, 28 Jan 2009)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");

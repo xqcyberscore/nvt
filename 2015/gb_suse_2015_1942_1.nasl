@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2015_1942_1.nasl 8046 2017-12-08 08:48:56Z santu $
 #
 # SuSE Update for MozillaFirefox, openSUSE-SU-2015:1942-1 (MozillaFirefox,)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851132");
-  script_version("$Revision: 6675 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:54:28 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-11-10 06:11:47 +0100 (Tue, 10 Nov 2015)");
   script_cve_id("CVE-2015-4513", "CVE-2015-4514", "CVE-2015-4515", "CVE-2015-4518",
                 "CVE-2015-7181", "CVE-2015-7182", "CVE-2015-7183", "CVE-2015-7185",
@@ -96,7 +97,6 @@ if(description)
   script_tag(name: "affected", value: "MozillaFirefox, on openSUSE 13.2, openSUSE 13.1");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "openSUSE-SU", value: "2015:1942_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-11/msg00015.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

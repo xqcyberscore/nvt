@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_configuration_management_detect.nasl 5787 2017-03-30 10:26:10Z cfi $
+# $Id: gb_novell_zenworks_configuration_management_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Novell ZENworks Control Center Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105252");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5787 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 12:26:10 +0200 (Thu, 30 Mar 2017) $");
+ script_version ("$Revision: 8078 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
  script_tag(name:"creation_date", value:"2015-04-10 20:08:50 +0200 (Fri, 10 Apr 2015)");
  script_name("Novell ZENworks Control Center Detection");
 
@@ -51,7 +51,6 @@ request to the server and attempts to detect Novell ZENworks Control Center");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
-include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:443 );

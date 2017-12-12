@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_3315-01_kernel.nasl 8019 2017-12-07 07:42:09Z santu $
+# $Id: gb_RHSA-2017_3315-01_kernel.nasl 8039 2017-12-08 07:14:34Z teissa $
 #
 # RedHat Update for kernel RHSA-2017:3315-01
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812318");
-  script_version("$Revision: 8019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 08:42:09 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 8039 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 08:14:34 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-01 12:17:14 +0100 (Fri, 01 Dec 2017)");
   script_cve_id("CVE-2017-1000380");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2017:3315-01");
   script_tag(name: "summary", value: "Check the version of kernel");

@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2012_1647_1.nasl 8045 2017-12-08 08:39:37Z santu $
 #
 # SuSE Update for libxml2 openSUSE-SU-2012:1647-1 (libxml2)
 #
@@ -39,8 +40,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-12/msg00014.html");
   script_id(850384);
-  script_version("$Revision: 6673 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:45:02 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8045 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:39:37 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:41 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-5134");
   script_tag(name:"cvss_base", value:"6.8");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_esrs_webinterface.nasl 5151 2017-01-31 15:55:21Z mime $
+# $Id: gb_emc_esrs_webinterface.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # EMC Secure Remote Services Webinterface Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140137");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5151 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-31 16:55:21 +0100 (Tue, 31 Jan 2017) $");
+ script_version ("$Revision: 8078 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
  script_tag(name:"creation_date", value:"2017-01-31 15:41:36 +0100 (Tue, 31 Jan 2017)");
  script_name("EMC Secure Remote Services Webinterface Detection");
 
@@ -50,7 +50,6 @@ if (description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
-include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:9443);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service4.nasl 7646 2017-11-03 12:11:12Z cfischer $
+# $Id: find_service4.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Service Detection with 'JSON' Request
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108199");
-  script_version("$Revision: 7646 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 13:11:12 +0100 (Fri, 03 Nov 2017) $");
+  script_version("$Revision: 8078 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-07-20 14:08:04 +0200 (Thu, 20 Jul 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -50,7 +50,6 @@ if(description)
   exit(0);
 }
 
-include("cpe.inc");
 include("host_details.inc");
 include("misc_func.inc");
 include("global_settings.inc");

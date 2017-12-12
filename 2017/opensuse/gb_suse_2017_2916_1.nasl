@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2916_1.nasl 7673 2017-11-07 05:08:13Z teissa $
+# $Id: gb_suse_2017_2916_1.nasl 8049 2017-12-08 09:11:55Z santu $
 #
 # SuSE Update for xen openSUSE-SU-2017:2916-1 (xen)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851639");
-  script_version("$Revision: 7673 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-07 06:08:13 +0100 (Tue, 07 Nov 2017) $");
+  script_version("$Revision: 8049 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:11:55 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-01 21:48:37 +0100 (Wed, 01 Nov 2017)");
   script_cve_id("CVE-2017-15588", "CVE-2017-15589", "CVE-2017-15590", "CVE-2017-15591", 
                 "CVE-2017-15592", "CVE-2017-15593", "CVE-2017-15594", "CVE-2017-15595", 
@@ -88,7 +88,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2017:2916_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2017-11/msg00000.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

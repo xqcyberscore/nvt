@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linknat_vos_detect.nasl 4893 2016-12-30 15:49:57Z cfi $
+# $Id: gb_linknat_vos_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # Linknat VOS SoftSwitch Detection (SIP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106084");
- script_version ("$Revision: 4893 $");
- script_tag(name: "last_modification", value: "$Date: 2016-12-30 16:49:57 +0100 (Fri, 30 Dec 2016) $");
+ script_version ("$Revision: 8078 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
  script_tag(name: "creation_date", value: "2016-05-25 12:53:28 +0700 (Wed, 25 May 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,7 +55,6 @@ number.");
  exit(0);
 }
 
-include("cpe.inc");
 include("host_details.inc");
 include("sip.inc");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: adaptbb_detect.nasl 7928 2017-11-29 09:42:17Z ckuersteiner $
+# $Id: adaptbb_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # AdaptBB Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100127");
-  script_version("$Revision: 7928 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-29 10:42:17 +0100 (Wed, 29 Nov 2017) $");
+  script_version("$Revision: 8078 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-12 20:09:50 +0200 (Sun, 12 Apr 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -51,7 +51,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );

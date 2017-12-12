@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_broadwin_webaccess_detect.nasl 6000 2017-04-21 11:07:29Z cfi $
+# $Id: gb_broadwin_webaccess_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # BroadWin WebAccess Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105327");
-  script_version("$Revision: 6000 $");
+  script_version("$Revision: 8078 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-08-20 17:37:34 +0200 (Thu, 20 Aug 2015)");
   script_name("BroadWin WebAccess Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -52,7 +52,6 @@ if(description)
   exit(0);
 }
 
-include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");

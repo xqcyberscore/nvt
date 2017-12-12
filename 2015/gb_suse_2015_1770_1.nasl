@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2015_1770_1.nasl 8046 2017-12-08 08:48:56Z santu $
 #
 # SuSE Update for flash-player SUSE-SU-2015:1770-1 (flash-player)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851117");
-  script_version("$Revision: 6675 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:54:28 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-10-17 08:18:39 +0200 (Sat, 17 Oct 2015)");
   script_cve_id("CVE-2015-7645");
   script_tag(name:"cvss_base", value:"9.3");
@@ -45,7 +46,6 @@ if(description)
   script_tag(name: "affected", value: "flash-player on SUSE Linux Enterprise Desktop 12");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "SUSE-SU", value: "2015:1770_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-10/msg00016.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

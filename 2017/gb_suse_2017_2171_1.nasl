@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2171_1.nasl 7658 2017-11-06 05:53:53Z teissa $
+# $Id: gb_suse_2017_2171_1.nasl 8048 2017-12-08 09:05:48Z santu $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2017:2171-1 (Linux Kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851593");
-  script_version("$Revision: 7658 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-06 06:53:53 +0100 (Mon, 06 Nov 2017) $");
+  script_version("$Revision: 8048 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-08-16 07:33:36 +0200 (Wed, 16 Aug 2017)");
   script_cve_id("CVE-2017-1000111", "CVE-2017-1000112", "CVE-2017-8831");
   script_tag(name:"cvss_base", value:"7.2");
@@ -98,7 +98,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2017:2171_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2017-08/msg00047.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

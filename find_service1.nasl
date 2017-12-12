@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 7414 2017-10-12 14:22:07Z cfischer $
+# $Id: find_service1.nasl 8038 2017-12-08 06:37:32Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 7414 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 16:22:07 +0200 (Thu, 12 Oct 2017) $");
+  script_version("$Revision: 8038 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 07:37:32 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -516,6 +516,20 @@ if( "ActiveMQ" >< r && ( "PlatformDetails" >< r || "StackTraceEnable" >< r || "P
   set_kb_item( name:"ActiveMQ/JMS/banner/" + port, value:bin2string( ddata:r ) );
   register_service( port:port, proto:"activemq_jms", message:"A ActiveMQ JMS service seems to be running on this port." );
   log_message( port:port, data:"A ActiveMQ JMS service seems to be running on this port." );
+  exit( 0 );
+}
+
+# 0x00:  00 3A 2D 45 52 52 20 45 72 72 6F 72 20 72 65 61    .:-ERR Error rea
+# 0x10:  64 69 6E 67 20 66 72 6F 6D 20 73 6F 63 6B 65 74    ding from socket
+# 0x20:  3A 20 55 6E 6B 6E 6F 77 6E 20 70 72 6F 74 6F 63    : Unknown protoc
+# 0x30:  6F 6C 20 65 78 63 65 70 74 69 6F 6E 00 00          ol exception..
+#
+# Weblogic 12.3 NodeManager
+# nb: Using only the default port 5556 as the pattern looks too generic
+# and might match against other Java based products.
+if( port == 5556 && ":-ERR Error reading from socket: Unknown protocol exception" >< r ) {
+  register_service( port:port, proto:"nodemanager", message:"A Weblogic NodeManager service seems to be running on this port." );
+  log_message( port:port, data:"A Weblogic NodeManager service seems to be running on this port." );
   exit( 0 );
 }
 

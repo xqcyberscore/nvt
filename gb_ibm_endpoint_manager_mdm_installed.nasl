@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_endpoint_manager_mdm_installed.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_ibm_endpoint_manager_mdm_installed.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # IBM Endpoint Manager MDM Installed
 #
@@ -31,8 +31,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 6125 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+ script_version ("$Revision: 8078 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
  script_tag(name:"creation_date", value:"2014-12-03 13:24:33 +0100 (Wed, 03 Dec 2014)");
  script_name("IBM Endpoint Manager MDM Installed");
 
@@ -54,7 +54,6 @@ component is installed.");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
-include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:443 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: gather-package-list-docker-container.inc 8002 2017-12-06 07:17:58Z cfischer $
+# $Id: gather-package-list-docker-container.inc 8066 2017-12-10 09:01:59Z cfischer $
 #
 # Functions for OS Detection in Docker Containers
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 8002 $
+# $Revision: 8066 $
 #
 ###############################################################################
 
@@ -146,9 +146,11 @@ OS_CPE = make_array(
 
     # Debian
     "DEB10.0", "cpe:/o:debian:debian_linux:10.0",
+    "DEB9.3", "cpe:/o:debian:debian_linux:9.3",
     "DEB9.2", "cpe:/o:debian:debian_linux:9.2",
     "DEB9.1", "cpe:/o:debian:debian_linux:9.1",
     "DEB9.0", "cpe:/o:debian:debian_linux:9.0",
+    "DEB8.10", "cpe:/o:debian:debian_linux:8.10",
     "DEB8.9", "cpe:/o:debian:debian_linux:8.9",
     "DEB8.8", "cpe:/o:debian:debian_linux:8.8",
     "DEB8.7", "cpe:/o:debian:debian_linux:8.7",

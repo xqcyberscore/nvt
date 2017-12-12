@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_snmp_version.nasl 7239 2017-09-22 16:10:31Z cfischer $
+# $Id: gb_junos_snmp_version.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # JunOS SNMP Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103809");
-  script_version("$Revision: 7239 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 8078 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-10-14 14:24:09 +0200 (Mon, 14 Oct 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,6 @@ if(description)
 
 include("dump.inc");
 include("host_details.inc");
-include("cpe.inc");
 include("snmp_func.inc");
 
 function parse_result(data) {

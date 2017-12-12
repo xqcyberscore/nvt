@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_obby_detect.nasl 7278 2017-09-26 13:20:44Z cfischer $
+# $Id: sw_obby_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
 #
 # obby Service Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111045");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7278 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 8078 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-11-05 09:00:00 +0100 (Thu, 05 Nov 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("obby Service Detection");
@@ -47,7 +47,6 @@ if(description)
  exit(0);
 }
 
-include("cpe.inc");
 include("host_details.inc");
 include("misc_func.inc");
 

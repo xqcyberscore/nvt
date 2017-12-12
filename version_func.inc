@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: version_func.inc 7884 2017-11-23 12:54:50Z cfischer $
+# $Id: version_func.inc 8051 2017-12-08 09:51:24Z santu $
 #
 # Helper functions for various version related tests
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7884 $
+# $Revision: 8051 $
 #
 ###############################################################################
 
@@ -90,8 +90,10 @@ function version_test( version, test_version, less, icase, debug ) {
   version = ereg_replace( pattern:"( |\-|\.\.|_|update_)", string:version, replace:"." );
 
   ##Next few lines for Java only
-  ##For case 1.7.0update1 --> 1.7.0.1
-  version = ereg_replace( pattern:"update", string:version, replace:".");
+  ##For case 1.7.0update1 --> 1.7.0.update.1
+  if(version =~ "[0-9]update[0-9]"){
+    version = ereg_replace( pattern:"update", string:version, replace:".update.");
+  }
   ##Few Java NVTs are doing this, removing e.g. '-b11'
   version = ereg_replace( pattern:"-b[0-9][0-9]", string:version, replace:"");
 

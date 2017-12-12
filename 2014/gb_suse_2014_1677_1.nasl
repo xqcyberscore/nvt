@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2014_1677_1.nasl 8044 2017-12-08 08:32:49Z santu $
 #
 # SuSE Update for the openSUSE-SU-2014:1677-1 (kernel)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850628");
-  script_version("$Revision: 6724 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_version("$Revision: 8044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:32:49 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-12-22 05:56:12 +0100 (Mon, 22 Dec 2014)");
   script_cve_id("CVE-2013-2891", "CVE-2013-2898", "CVE-2014-0181", "CVE-2014-0206",
                 "CVE-2014-1739", "CVE-2014-3181", "CVE-2014-3182", "CVE-2014-3184",
@@ -100,7 +101,6 @@ detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "affected", value: "kernel on openSUSE 13.1");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "openSUSE-SU", value: "2014:1677_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-12/msg00021.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);

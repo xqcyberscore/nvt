@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_virit_explorer_lite_detect.nasl 7931 2017-11-29 11:16:24Z asteins $
+# $Id: gb_virit_explorer_lite_detect.nasl 8074 2017-12-11 10:01:33Z teissa $
 #
 # TG Soft Vir.IT eXplorer Lite Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107265");
-  script_version("$Revision: 7931 $");
+  script_version("$Revision: 8074 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-29 12:16:24 +0100 (Wed, 29 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 11:01:33 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value: "2017-11-27 09:50:38 +0700 (Mon, 27 Nov 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("TG Soft Vir.IT eXplorer Lite Detection");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name: "summary" , value: "Detection of installed version of
   TG Soft Vir.IT eXplorer Lite on Windows.
 
-  The script logs in via smb, searches for kaspersky in the registry, gets the
-  TG Soft Vir.IT eXplorer Lite installation path from registry and fetches version.");
+  The script logs in via smb, searches for TG Soft Vir.IT eXplorer Lite in the registry, gets the installation path and fetches the version.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2868_1.nasl 7604 2017-11-01 06:48:12Z asteins $
+# $Id: gb_suse_2017_2868_1.nasl 8049 2017-12-08 09:11:55Z santu $
 #
 # SuSE Update for mysql-community-server openSUSE-SU-2017:2868-1 (mysql-community-server)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851633");
-  script_version("$Revision: 7604 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
+  script_version("$Revision: 8049 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:11:55 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-10-27 20:17:43 +0200 (Fri, 27 Oct 2017)");
   script_cve_id("CVE-2017-10155", "CVE-2017-10227", "CVE-2017-10268", "CVE-2017-10276", 
                 "CVE-2017-10279", "CVE-2017-10283", "CVE-2017-10286", "CVE-2017-10294", 
@@ -79,7 +79,6 @@ NVT and check if the version is vulnerable or not.");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "openSUSE-SU", value: "2017:2868_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2017-10/msg00076.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

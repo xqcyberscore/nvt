@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_suse_2014_0204_1.nasl 8044 2017-12-08 08:32:49Z santu $
 #
 # SuSE Update for kernel openSUSE-SU-2014:0204-1 (kernel)
 #
@@ -28,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_id(850566);
-  script_version("$Revision: 6674 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 15:45:49 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 8044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:32:49 +0100 (Fri, 08 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-02-11 10:39:05 +0530 (Tue, 11 Feb 2014)");
   script_cve_id("CVE-2013-0343", "CVE-2013-1792", "CVE-2013-4348", "CVE-2013-4511",
                 "CVE-2013-4513", "CVE-2013-4514", "CVE-2013-4515", "CVE-2013-4587",
@@ -143,7 +144,6 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name: "openSUSE-SU", value: "2014:0204_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-02/msg00002.html");
   script_summary("Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

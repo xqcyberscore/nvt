@@ -35,16 +35,16 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-02/msg00024.php");
   script_id(830892);
-  script_version("$Revision: 6569 $");
+  script_version("$Revision: 8068 $");
   script_cve_id("CVE-2010-0624");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-11 07:31:34 +0100 (Mon, 11 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-02-19 13:38:15 +0100 (Fri, 19 Feb 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_xref(name: "MDVA", value: "2010:065");
   script_name("Mandriva Update for mandriva-release MDVA-2010:065 (mandriva-release)");
 
-  script_summary("Check for the Version of mandriva-release");
+  script_tag(name: "summary" , value: "Check for the Version of mandriva-release");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
