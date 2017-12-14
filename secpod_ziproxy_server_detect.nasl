@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ziproxy_server_detect.nasl 5676 2017-03-22 16:29:37Z cfi $
+# $Id: secpod_ziproxy_server_detect.nasl 8087 2017-12-12 13:12:04Z teissa $
 #
 # Ziproxy Server Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script detects the installed version of Ziproxy Server
 
 if(description)
 {
-  script_id(900522);
+  script_oid("1.3.6.1.4.1.25623.1.0.900522");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5676 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
+ script_version("$Revision: 8087 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:19:12 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Ziproxy Server Version Detection");

@@ -37,8 +37,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-July/044023.html");
   script_id(862241);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8109 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-14 07:31:15 +0100 (Thu, 14 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-16 10:40:49 +0200 (Fri, 16 Jul 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,7 +46,7 @@ if(description)
   script_cve_id("CVE-2010-1119", "CVE-2010-1400", "CVE-2010-1778", "CVE-2010-1303", "CVE-2010-1392", "CVE-2010-1396", "CVE-2010-1397", "CVE-2010-1398", "CVE-2010-1412", "CVE-2010-1770", "CVE-2010-1773", "CVE-2010-1774", "CVE-2010-0047", "CVE-2010-0648", "CVE-2010-0656", "CVE-2009-2841", "CVE-2010-1766", "CVE-2010-1772");
   script_name("Fedora Update for qt FEDORA-2010-11011");
 
-  script_summary("Check for the Version of qt");
+  script_tag(name: "summary" , value: "Check for the Version of qt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

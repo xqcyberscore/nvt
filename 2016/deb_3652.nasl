@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3652.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3652.nasl 8115 2017-12-14 07:30:22Z teissa $
 # Auto-generated from advisory DSA 3652-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,13 +29,13 @@
 
 if(description)
 {
-    script_id(703652);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703652");
+    script_version("$Revision: 8115 $");
     script_cve_id("CVE-2016-4562", "CVE-2016-4563", "CVE-2016-4564", "CVE-2016-5010",
                   "CVE-2016-5687", "CVE-2016-5688", "CVE-2016-5689", "CVE-2016-5690",
                   "CVE-2016-5691", "CVE-2016-5841", "CVE-2016-5842", "CVE-2016-6491");
     script_name("Debian Security Advisory DSA 3652-1 (imagemagick - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-14 08:30:22 +0100 (Thu, 14 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-08-25 00:00:00 +0200 (Thu, 25 Aug 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

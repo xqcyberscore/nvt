@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sql_injection.nasl 6905 2017-08-11 11:50:56Z cfischer $
+# $Id: sql_injection.nasl 8106 2017-12-13 14:42:54Z cfischer $
 #
 # Test for generic SQL injection in Web Applications
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11139");
-  script_version("$Revision: 6905 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-11 13:50:56 +0200 (Fri, 11 Aug 2017) $");
+  script_version("$Revision: 8106 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-13 15:42:54 +0100 (Wed, 13 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning", "Settings/disable_generic_webapp_scanning");
+  script_exclude_keys("Settings/disable_cgi_scanning", "global_settings/disable_generic_webapp_scanning");
 
   script_xref(name:"URL", value:"http://en.wikipedia.org/wiki/SQL_injection");
   script_xref(name:"URL", value:"http://www.securiteam.com/securityreviews/5DP0N1P76E.html");
@@ -73,7 +73,9 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 # nb: We also don't want to run if optimize_test is set to "no"
-if( get_kb_item( "Settings/disable_cgi_scanning" ) || get_kb_item( "Settings/disable_generic_webapp_scanning" ) ) exit( 0 );
+if( get_kb_item( "Settings/disable_cgi_scanning" ) ||
+    get_kb_item( "global_settings/disable_generic_webapp_scanning" ) )
+  exit( 0 );
 
 single_quote = raw_string(0x27);
 

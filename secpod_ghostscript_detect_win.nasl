@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ghostscript_detect_win.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: secpod_ghostscript_detect_win.nasl 8087 2017-12-12 13:12:04Z teissa $
 #
 # Ghostscript Version Detection (Windows)
 #
@@ -29,10 +29,10 @@ tag_summary = "This script detects the installed version of Ghostscript and
 
 if(description)
 {
-  script_id(900539);
+  script_oid("1.3.6.1.4.1.25623.1.0.900539");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 8087 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-28 07:58:48 +0200 (Tue, 28 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Ghostscript Version Detection (Windows)");

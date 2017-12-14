@@ -36,16 +36,16 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-04/msg00045.php");
   script_id(831021);
-  script_version("$Revision: 6569 $");
+  script_version("$Revision: 8109 $");
   script_cve_id("CVE-2008-6218", "CVE-2010-1205", "CVE-2010-2249");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-14 07:31:15 +0100 (Thu, 14 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-30 14:39:22 +0200 (Fri, 30 Apr 2010)");
    script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_xref(name: "MDVA", value: "2010:133");
   script_name("Mandriva Update for gdm MDVA-2010:133 (gdm)");
 
-  script_summary("Check for the Version of gdm");
+  script_tag(name: "summary" , value: "Check for the Version of gdm");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

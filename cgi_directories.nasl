@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 7428 2017-10-13 11:45:53Z cfischer $
+# $Id: cgi_directories.nasl 8106 2017-12-13 14:42:54Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 7428 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 13:45:53 +0200 (Fri, 13 Oct 2017) $");
+  script_version("$Revision: 8106 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-13 15:42:54 +0100 (Wed, 13 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,10 +55,11 @@ if(description)
 
   - The configured 'cgi_path' within the 'Scanner Preferences' of the scan config in use
 
-  - The configured 'Enable CGI scanning' and 'Enable generic web application scanning' within the 'Global variable settings'
-  of the scan config in use
+  - The configured 'Enable CGI scanning', 'Enable generic web application scanning' and 
+    'Add historic /scripts and /cgi-bin to directories for CGI scanning' within the
+    'Global variable settings' of the scan config in use
 
-  If you think any of these are wrong please report openvas-plugins@wald.intevation.org");
+  If you think any of these are wrong please report to openvas-plugins@wald.intevation.org");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -95,7 +96,7 @@ maxPagesReached = get_kb_item( "www/" + port + "/content/max_pages_reached" );
 
 #TODO: Add no404.nasl
 
-if( get_kb_item( "Settings/disable_generic_webapp_scanning" ) ) {
+if( get_kb_item( "global_settings/disable_generic_webapp_scanning" ) ) {
   report += 'Generic web application scanning is disabled for this host via the "Enable generic web application scanning" option within the "Global variable settings" of the scan config in use.\n\n';
 }
 
@@ -119,6 +120,12 @@ if( can_host_asp( port:port ) ) {
   report += 'This service seems to be able to host ASP scripts.\n\n';
 } else {
   report += 'This service seems to be NOT able to host ASP scripts.\n\n';
+}
+
+if( get_kb_item( "global_settings/exclude_historic_cgi_dirs" ) ) {
+  report += 'Historic /scripts and /cgi-bin are not added to the directories used for CGI scanning. ';
+  report += 'You can enable this again with the "Add historic /scripts and /cgi-bin to directories for CGI scanning" ';
+  report += 'option within the "Global variable settings" of the scan config in use.\n\n';
 }
 
 if( ! isnull( authRequireDirs ) ) {

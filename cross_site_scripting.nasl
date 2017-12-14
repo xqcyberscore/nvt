@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cross_site_scripting.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: cross_site_scripting.nasl 8087 2017-12-12 13:12:04Z teissa $
 # Description: Web Server Cross Site Scripting
 #
 # Authors:
@@ -59,9 +59,9 @@ Solutions:
 
 if (description)
 {
- script_id(10815);
- script_version("$Revision: 5499 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.10815");
+ script_version("$Revision: 8087 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

@@ -41,8 +41,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-11/msg00045.php");
   script_id(831269);
-  script_version("$Revision: 6564 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:55:29 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8109 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-14 07:31:15 +0100 (Thu, 14 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-12-09 08:26:35 +0100 (Thu, 09 Dec 2010)");
   script_xref(name: "MDVSA", value: "2010:244");
   script_tag(name:"cvss_base", value:"4.3");
@@ -50,7 +50,7 @@ if(description)
   script_cve_id("CVE-2010-4329");
   script_name("Mandriva Update for phpmyadmin MDVSA-2010:244 (phpmyadmin)");
 
-  script_summary("Check for the Version of phpmyadmin");
+  script_tag(name: "summary" , value: "Check for the Version of phpmyadmin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

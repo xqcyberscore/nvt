@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: punBB_detect.nasl 5795 2017-03-30 14:04:00Z cfi $
+# $Id: punBB_detect.nasl 8086 2017-12-12 13:08:13Z teissa $
 # Description: PunBB detection
 #
 # Authors:
@@ -34,10 +34,10 @@ PunBB is an open-source discussion board written in PHP.";
 
 if(description)
 {
-  script_id(15936);
+  script_oid("1.3.6.1.4.1.25623.1.0.15936");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5795 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 16:04:00 +0200 (Thu, 30 Mar 2017) $");
+  script_version("$Revision: 8086 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:08:13 +0100 (Tue, 12 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("PunBB detection");

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_security_essentials_mal_prot_eng_rce_vuln.nasl 8056 2017-12-08 12:47:50Z santu $
+# $Id: gb_ms_security_essentials_mal_prot_eng_rce_vuln.nasl 8112 2017-12-14 07:13:00Z santu $
 #
-# Microsoft Malware Protection Engine on Security Essentials Remote Code Execution Vulnerability
+# Microsoft Malware Protection Engine on Security Essentials Multiple Remote Code Execution Vulnerabilities
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812239");
-  script_version("$Revision: 8056 $");
-  script_cve_id("CVE-2017-11937");
-  script_bugtraq_id(102070);
+  script_version("$Revision: 8112 $");
+  script_cve_id("CVE-2017-11937", "CVE-2017-11940");
+  script_bugtraq_id(102070, 102104);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 13:47:50 +0100 (Fri, 08 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-14 08:13:00 +0100 (Thu, 14 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-08 11:55:19 +0530 (Fri, 08 Dec 2017)");
   script_tag(name:"qod_type", value:"executable_version");
-  script_name("Microsoft Malware Protection Engine on Security Essentials Remote Code Execution Vulnerability");
+  script_name("Microsoft Malware Protection Engine on Security Essentials Multiple Remote Code Execution Vulnerabilities");
 
   script_tag(name: "summary" , value:"This host is missing an important security
   update according to Microsoft Security Updates released for Microsoft Malware
@@ -44,7 +44,7 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exists when the Microsoft 
+  script_tag(name: "insight" , value:"Multiple flaws exists when the Microsoft 
   Malware Protection Engine does not properly scan a specially crafted file, 
   leading to memory corruption.");
 
@@ -65,6 +65,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-11937");
+  script_xref(name : "URL" , value : "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-11940");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

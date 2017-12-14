@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_smartftp_client_detect.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: secpod_smartftp_client_detect.nasl 8087 2017-12-12 13:12:04Z teissa $
 #
 # SmartFTP Client Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script finds the installed SmartFTP Client version and
 
 if(description)
 {
-  script_id(902447);
+  script_oid("1.3.6.1.4.1.25623.1.0.902447");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5374 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 8087 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SmartFTP Client Version Detection");

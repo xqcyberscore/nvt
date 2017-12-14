@@ -54,8 +54,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-06/msg00026.php");
   script_id(831085);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8092 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:31:16 +0100 (Wed, 13 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-25 12:25:26 +0200 (Fri, 25 Jun 2010)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -63,7 +63,7 @@ if(description)
   script_cve_id("CVE-2005-1080", "CVE-2006-3619", "CVE-2010-0831");
   script_name("Mandriva Update for fastjar MDVSA-2010:122 (fastjar)");
 
-  script_summary("Check for the Version of fastjar");
+  script_tag(name: "summary" , value: "Check for the Version of fastjar");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

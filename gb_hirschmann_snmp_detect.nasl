@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hirschmann_snmp_detect.nasl 8077 2017-12-11 14:15:34Z cfischer $
+# $Id: gb_hirschmann_snmp_detect.nasl 8111 2017-12-14 07:03:31Z cfischer $
 #
 # Hirschmann Devices Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108313");
-  script_version("$Revision: 8077 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:15:34 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 8111 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-14 08:03:31 +0100 (Thu, 14 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-11 11:03:31 +0100 (Mon, 11 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,8 +47,6 @@ if(description)
 
   exit(0);
 }
-
-# TODO: Evaluate if the software version is provided by a dedicated OID
 
 include("host_details.inc");
 include("snmp_func.inc");
@@ -71,12 +69,44 @@ model_shortname = "unknown";
 # Hirschmann EAGLE Security Device
 # Hirschmann Modular Industrial Communication Equipment
 # Hirschmann Railswitch
-prod_name = eregmatch( pattern:"^Hirschmann ([^\n]+)", string:sysdesc );
+prod_name = eregmatch( pattern:'^Hirschmann ([^\n]+)', string:sysdesc );
 if( prod_name[1] ) product_name = prod_name[1];
+
+# https://github.com/librenms/librenms/blob/master/mibs/hirschmann/hmpriv.mib
+# http://www.circitor.fr/Mibs/Html/H/HMPRIV-MGMT-SNMP-MIB.php
+oid = snmp_get( port:port, oid:"1.3.6.1.4.1.248.14.1.1.2.0" ); #hmSysVersion, hmPNIOSoftwareRelease seems to be not available on the tested devices
+
+# SW: 5.07 CH: 1.00 BP: 000
+# SW: L2P-09.0.04 CH: 1.10 BP: 000
+sw_banner = eregmatch( pattern:"^SW: (.*) CH: ", string:oid );
+
+if( sw_banner ) {
+
+  set_kb_item( name:"hirschmann_device/snmp/" + port + "/concluded", value:oid );
+  set_kb_item( name:"hirschmann_device/snmp/" + port + "/concludedOID", value:"1.3.6.1.4.1.248.14.1.1.2.0" );
+
+  vers_nd_model = eregmatch( pattern:"([0-9a-zA-Z]+)-([0-9a-zA-Z]+-)?([0-9.]+)", string:sw_banner[1] );
+
+  if( vers_nd_model ) {
+
+    fw_version = vers_nd_model[3];
+
+    if( vers_nd_model[2] ) {
+      model_shortname  = vers_nd_model[1] + "-";
+      model_shortname += ereg_replace( pattern:"-$", string:vers_nd_model[2], replace:"" );
+    } else {
+      model_shortname = vers_nd_model[1];
+    }
+  } else {
+    vers = eregmatch( pattern:"([0-9.]+)", string:sw_banner[1] );
+    if( vers ) fw_version = vers[1];
+  }
+} else {
+  set_kb_item( name:"hirschmann_device/snmp/" + port + "/concluded", value:sysdesc );
+}
 
 set_kb_item( name:"hirschmann_device/snmp/" + port + "/fw_version", value:fw_version );
 set_kb_item( name:"hirschmann_device/snmp/" + port + "/product_name", value:product_name );
 set_kb_item( name:"hirschmann_device/snmp/" + port + "/model_shortname", value:model_shortname );
-set_kb_item( name:"hirschmann_device/snmp/" + port + "/concluded", value:sysdesc );
 
 exit( 0 );

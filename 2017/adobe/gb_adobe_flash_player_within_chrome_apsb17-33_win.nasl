@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_within_chrome_apsb17-33_win.nasl 7773 2017-11-15 13:21:06Z santu $
+# $Id: gb_adobe_flash_player_within_chrome_apsb17-33_win.nasl 8108 2017-12-14 06:10:17Z santu $
 #
 # Adobe Flash Player Within Google Chrome Security Update( apsb17-33 )- Windows
 #
@@ -24,17 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:adobe:flash_player";
+CPE = "cpe:/a:adobe:flash_player_chrome";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812143");
-  script_version("$Revision: 7773 $");
+  script_version("$Revision: 8108 $");
   script_cve_id("CVE-2017-3112", "CVE-2017-3114", "CVE-2017-11213", "CVE-2017-11215", 
-		"CVE-2017-11225" );
+		"CVE-2017-11225");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 14:21:06 +0100 (Wed, 15 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-14 07:10:17 +0100 (Thu, 14 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-15 13:50:38 +0530 (Wed, 15 Nov 2017)");
   script_name("Adobe Flash Player Within Google Chrome Security Update( apsb17-33 )- Windows");
 

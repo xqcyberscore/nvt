@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_cisco-sa-20171115-ipp.nasl 7779 2017-11-16 03:42:02Z ckuersteiner $
+# $Id: gb_cisco_ip_phone_cisco-sa-20171115-ipp.nasl 8091 2017-12-13 06:22:57Z teissa $
 #
 # Cisco IP Phone 8800 Series Command Injection Vulnerability in Debug Shell
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140503");
-  script_version("$Revision: 7779 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-16 04:42:02 +0100 (Thu, 16 Nov 2017) $");
+  script_version("$Revision: 8091 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-13 07:22:57 +0100 (Wed, 13 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-16 09:53:34 +0700 (Thu, 16 Nov 2017)");
-  script_tag(name: "cvss_base", value: "6.5");
-  script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:M/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-12305");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_host_alive_check6.nasl 6954 2017-08-17 17:13:11Z cfischer $
+# $Id: gb_host_alive_check6.nasl 8106 2017-12-13 14:42:54Z cfischer $
 #
 # Mark host as dead if going offline (failed ICMP ping) during scan - Phase 6
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108220");
-  script_version("$Revision: 6954 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-17 19:13:11 +0200 (Thu, 17 Aug 2017) $");
+  script_version("$Revision: 8106 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-13 15:42:54 +0100 (Wed, 13 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-08-17 11:18:02 +0200 (Thu, 17 Aug 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_family("Service detection");
   script_dependencies("default_http_auth_credentials.nasl", "default_ssh_credentials.nasl", "find_service_nmap.nasl",
                       "gb_host_alive_check5.nasl", "unknown_services.nasl"); # Trying to enforce that this NVT is running late in its category
-  script_mandatory_keys("Settings/mark_host_dead_failed_icmp");
+  script_mandatory_keys("global_settings/mark_host_dead_failed_icmp");
 
   script_tag(name:"summary", value:"This plugin checks the target host in the phase 6 of a scan
   and marks it as 'dead' to the scanner if it is not answering to an ICMP ping anymore.

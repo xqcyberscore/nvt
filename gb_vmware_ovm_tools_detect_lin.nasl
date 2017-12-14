@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_ovm_tools_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_vmware_ovm_tools_detect_lin.nasl 8087 2017-12-12 13:12:04Z teissa $
 #
 # VMware Open Virtual Machine Tools Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script finds the installed VMware Open Virtual Machine Tools
 
 if(description)
 {
-  script_id(801916);
+  script_oid("1.3.6.1.4.1.25623.1.0.801916");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+ script_version("$Revision: 8087 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-04-13 15:50:09 +0200 (Wed, 13 Apr 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("VMware Open Virtual Machine Tools Version Detection");

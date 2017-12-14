@@ -72,8 +72,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-08/msg00021.php");
   script_id(831138);
-  script_version("$Revision: 6564 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:55:29 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8092 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:31:16 +0100 (Wed, 13 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-30 16:59:25 +0200 (Mon, 30 Aug 2010)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -81,7 +81,7 @@ if(description)
   script_cve_id("CVE-2010-1644", "CVE-2010-1645", "CVE-2009-4032", "CVE-2010-2543", "CVE-2010-2544", "CVE-2010-2545");
   script_name("Mandriva Update for cacti MDVSA-2010:160 (cacti)");
 
-  script_summary("Check for the Version of cacti");
+  script_tag(name: "summary" , value: "Check for the Version of cacti");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

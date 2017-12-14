@@ -81,8 +81,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(850128);
-  script_version("$Revision: 8035 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 06:29:51 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8092 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:31:16 +0100 (Wed, 13 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-03-05 12:48:43 +0100 (Fri, 05 Mar 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -90,7 +90,7 @@ if(description)
   script_cve_id("CVE-2009-1571", "CVE-2009-3988", "CVE-2010-0159", "CVE-2010-0160", "CVE-2010-0162");
   script_name("SuSE Update for MozillaFirefox,seamonkey SUSE-SA:2010:015");
 
-  script_summary("Check for the Version of MozillaFirefox,seamonkey");
+  script_tag(name: "summary" , value: "Check for the Version of MozillaFirefox,seamonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

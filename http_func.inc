@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 7922 2017-11-28 10:06:28Z cfischer $
+# $Id: http_func.inc 8106 2017-12-13 14:42:54Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7922 $
+# $Revision: 8106 $
 #
 ###############################################################################
 
@@ -472,7 +472,7 @@ function cgi_dirs( port ) {
   usercgis = get_kb_list( "/user/cgis" );
   if( isnull( usercgis ) ) usercgis = "/";
   if( isnull( kb ) ) {
-    kb = make_list( usercgis, "/cgi-bin", "/scripts", "/" );
+    kb = make_list( usercgis, "/" );
   } else {
     kb = make_list( usercgis, kb, "/" );
   }

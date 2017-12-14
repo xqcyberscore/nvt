@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: viewvc_detect.nasl 5744 2017-03-28 07:25:23Z cfi $
+# $Id: viewvc_detect.nasl 8087 2017-12-12 13:12:04Z teissa $
 #
 # ViewVC Detection
 #
@@ -29,10 +29,10 @@ Subversion version control repositories.";
 
 if(description)
 {
- script_id(100261);
+ script_oid("1.3.6.1.4.1.25623.1.0.100261");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5744 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 09:25:23 +0200 (Tue, 28 Mar 2017) $");
+ script_version("$Revision: 8087 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-08-26 20:38:31 +0200 (Wed, 26 Aug 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("ViewVC Detection");

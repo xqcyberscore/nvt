@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_me_mult_bof_n_priv_esc_vuln.nasl 7866 2017-11-22 13:19:49Z santu $
+# $Id: gb_intel_me_mult_bof_n_priv_esc_vuln.nasl 8091 2017-12-13 06:22:57Z teissa $
 #
 # Intel Management Engine Privilege Escalation And Buffer Overflow Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/h:intel:management_engine';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812221");
-  script_version("$Revision: 7866 $");
+  script_version("$Revision: 8091 $");
   script_cve_id("CVE-2017-5705", "CVE-2017-5708");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 14:19:49 +0100 (Wed, 22 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:22:57 +0100 (Wed, 13 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-22 13:16:37 +0530 (Wed, 22 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Intel Management Engine Privilege Escalation And Buffer Overflow Vulnerabilities");

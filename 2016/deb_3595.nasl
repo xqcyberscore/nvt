@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3595.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3595.nasl 8115 2017-12-14 07:30:22Z teissa $
 # Auto-generated from advisory DSA 3595-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,13 +29,13 @@
 
 if(description)
 {
-    script_id(703595);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703595");
+    script_version("$Revision: 8115 $");
     script_cve_id("CVE-2016-0640", "CVE-2016-0641", "CVE-2016-0643", "CVE-2016-0644",
                   "CVE-2016-0646", "CVE-2016-0647", "CVE-2016-0648", "CVE-2016-0649",
                   "CVE-2016-0650", "CVE-2016-0655", "CVE-2016-0666", "CVE-2016-0668");
     script_name("Debian Security Advisory DSA 3595-1 (mariadb-10.0 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-14 08:30:22 +0100 (Thu, 14 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-06-05 00:00:00 +0200 (Sun, 05 Jun 2016)");
     script_tag(name:"cvss_base", value:"4.9");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:P");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: zone_alarm_local_dos.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: zone_alarm_local_dos.nasl 8087 2017-12-12 13:12:04Z teissa $
 # Description: ZoneAlarm Pro local DoS
 #
 # Authors:
@@ -36,10 +36,10 @@ tag_solution = "Upgrade to the latest version of this software";
 
 if(description)
 {
- script_id(14726);
- script_version("$Revision: 5499 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.14726");
+ script_version("$Revision: 8087 $");
  script_cve_id("CVE-2004-2713");
- script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_xref(name:"OSVDB", value:"9761");
  script_tag(name:"cvss_base", value:"1.9");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: PC_anywhere_tcp.nasl 7552 2017-10-24 13:00:36Z cfischer $
+# $Id: PC_anywhere_tcp.nasl 8086 2017-12-12 13:08:13Z teissa $
 # Description: pcAnywhere TCP
 #
 # Authors:
@@ -29,10 +29,10 @@ tag_solution = "Disable this service if you do not use it.";
 
 if(description)
 {
-  script_id(10794);
+  script_oid("1.3.6.1.4.1.25623.1.0.10794");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7552 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 8086 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:08:13 +0100 (Tue, 12 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   name = "pcAnywhere TCP";

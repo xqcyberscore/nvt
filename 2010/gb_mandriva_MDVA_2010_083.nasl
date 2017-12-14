@@ -39,16 +39,16 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-02/msg00063.php");
   script_id(830921);
-  script_version("$Revision: 6569 $");
+  script_version("$Revision: 8092 $");
   script_cve_id("CVE-2010-0825");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:31:16 +0100 (Wed, 13 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-03-02 08:46:47 +0100 (Tue, 02 Mar 2010)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
   script_xref(name: "MDVA", value: "2010:083");
   script_name("Mandriva Update for initscripts MDVA-2010:083 (initscripts)");
 
-  script_summary("Check for the Version of initscripts");
+  script_tag(name: "summary" , value: "Check for the Version of initscripts");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

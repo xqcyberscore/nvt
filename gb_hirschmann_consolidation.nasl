@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hirschmann_consolidation.nasl 8077 2017-12-11 14:15:34Z cfischer $
+# $Id: gb_hirschmann_consolidation.nasl 8089 2017-12-12 14:51:20Z cfischer $
 #
 # Hirschmann Devices Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108311");
-  script_version("$Revision: 8077 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:15:34 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 8089 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-12 15:51:20 +0100 (Tue, 12 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-11 11:03:31 +0100 (Mon, 11 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_hirschmann_webui_detect.nasl", "gb_hirschmann_snmp_detect.nasl"); # WIP:, "gb_hirschmann_telnet_detect.nasl"
+  script_dependencies("gb_hirschmann_webui_detect.nasl", "gb_hirschmann_snmp_detect.nasl", "gb_hirschmann_telnet_detect.nasl");
   script_mandatory_keys("hirschmann_device/detected");
 
   script_tag(name:"summary", value:"The script reports a detected Hirschmann device including the
@@ -56,7 +56,6 @@ detected_fw_version      = "unknown";
 detected_product_name    = "unknown";
 detected_model_shortname = "unknown";
 
-# nb: SNMP is often only providing the product_name
 foreach source( make_list( "http", "telnet", "snmp" ) ) {
 
   fw_version_list = get_kb_list( "hirschmann_device/" + source + "/*/fw_version" );
@@ -135,9 +134,12 @@ if( telnet_ports = get_kb_list( "hirschmann_device/telnet/port" ) ) {
 
 if( snmp_ports = get_kb_list( "hirschmann_device/snmp/port" ) ) {
   foreach port( snmp_ports ) {
-    concluded = get_kb_item( "hirschmann_device/snmp/" + port + "/concluded" );
+    concluded    = get_kb_item( "hirschmann_device/snmp/" + port + "/concluded" );
+    concludedOID = get_kb_item( "hirschmann_device/snmp/" + port + "/concludedOID" );
     extra += "SNMP on port " + port + '/udp\n';
-    if( concluded ) {
+    if( concluded && concludedOID ) {
+      extra += 'Concluded from ' + concluded + ' via OID: ' + concludedOID + '\n';
+    } else if( concluded ) {
       extra += 'Concluded from SNMP SysDesc: ' + concluded + '\n';
     }
     register_product( cpe:hw_cpe, location:location, port:port, service:"snmp", proto:"udp" );

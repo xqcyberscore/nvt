@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ingres_db_detect.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: ingres_db_detect.nasl 8115 2017-12-14 07:30:22Z teissa $
 #
 # Ingres Database Detection
 #
@@ -29,10 +29,10 @@ database management system.";
 
 if (description)
 {
- script_id(100479);
+ script_oid("1.3.6.1.4.1.25623.1.0.100479");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5505 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+ script_version("$Revision: 8115 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-14 08:30:22 +0100 (Thu, 14 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-01-29 17:41:41 +0100 (Fri, 29 Jan 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Ingres Database Detection");

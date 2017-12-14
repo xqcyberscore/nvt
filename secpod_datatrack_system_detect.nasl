@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_datatrack_system_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: secpod_datatrack_system_detect.nasl 8087 2017-12-12 13:12:04Z teissa $
 #
 # DataTrack System Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script finds the installed DataTrack System version and save
 
 if(description)
 {
-  script_id(902061);
+  script_oid("1.3.6.1.4.1.25623.1.0.902061");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5499 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version("$Revision: 8087 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-01 15:40:11 +0200 (Tue, 01 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("DataTrack System Version Detection");

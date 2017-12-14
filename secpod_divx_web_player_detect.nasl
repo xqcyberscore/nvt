@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_divx_web_player_detect.nasl 7140 2017-09-15 09:41:22Z cfischer $
+# $Id: secpod_divx_web_player_detect.nasl 8087 2017-12-12 13:12:04Z teissa $
 #
 # DivX Web Player Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script detects the version of DivX Web Player
 
 if(description)
 {
-  script_id(900534);
+  script_oid("1.3.6.1.4.1.25623.1.0.900534");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
+ script_version("$Revision: 8087 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("DivX Web Player Version Detection");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3454.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3454.nasl 8115 2017-12-14 07:30:22Z teissa $
 # Auto-generated from advisory DSA 3454-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703454);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703454");
+    script_version("$Revision: 8115 $");
     script_cve_id("CVE-2015-5307", "CVE-2015-8104", "CVE-2016-0495", "CVE-2016-0592");
     script_name("Debian Security Advisory DSA 3454-1 (virtualbox - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-14 08:30:22 +0100 (Thu, 14 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-01-27 00:00:00 +0100 (Wed, 27 Jan 2016)");
     script_tag(name:"cvss_base", value:"4.9");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");

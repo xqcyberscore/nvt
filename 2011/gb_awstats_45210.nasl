@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_awstats_45210.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_awstats_45210.nasl 8083 2017-12-12 06:49:29Z ckuersteiner $
 #
 # AWStats Unspecified 'LoadPlugin' Directory Traversal Vulnerability
 #
@@ -24,60 +24,55 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "AWStats is prone to an unspecified directory-traversal vulnerability
-because it fails to sufficiently sanitize user-supplied input data.
-
-The impact of this issue is currently unknown. We will update this BID
-when more information emerges.
-
-Versions prior to AWStats 7.0 are vulnerable.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
+CPE = "cpe:/a:awstats:awstats";
 
 if (description)
 {
- script_id(103041);
- script_version("$Revision: 7052 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103041");
+ script_version("$Revision: 8083 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-12 07:49:29 +0100 (Tue, 12 Dec 2017) $");
  script_tag(name:"creation_date", value:"2011-01-25 13:20:03 +0100 (Tue, 25 Jan 2011)");
  script_bugtraq_id(45210);
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_cve_id("CVE-2010-4369");
+ script_cve_id("CVE-2010-4369");
 
  script_name("AWStats Unspecified 'LoadPlugin' Directory Traversal Vulnerability");
-
 
  script_tag(name:"qod_type", value:"remote_banner");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("awstats_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/45210");
- script_xref(name : "URL" , value : "http://awstats.sourceforge.net/docs/awstats_changelog.txt");
- script_xref(name : "URL" , value : "http://sourceforge.net/tracker/?func=detail&aid=2537928&group_id=13764&atid=113764");
- script_xref(name : "URL" , value : "http://awstats.sourceforge.net/");
+ script_mandatory_keys("awstats/installed");
+
+ script_tag(name: "solution", value: "Updates are available. Please see the references for more information.");
+
+ script_tag(name: "summary", value: "AWStats is prone to an unspecified directory-traversal vulnerability because
+it fails to sufficiently sanitize user-supplied input data.
+
+Versions prior to AWStats 7.0 are vulnerable.");
+
+ script_xref(name: "URL", value: "https://www.securityfocus.com/bid/45210");
+ script_xref(name: "URL", value: "http://awstats.sourceforge.net/docs/awstats_changelog.txt");
+ script_xref(name: "URL", value: "http://sourceforge.net/tracker/?func=detail&aid=2537928&group_id=13764&atid=113764");
+ script_xref(name: "URL", value: "http://awstats.sourceforge.net/");
  exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if(vers = get_version_from_kb(port:port,app:"awstats")) {
+if (!vers = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-  if(version_is_less(version: vers, test_version: "7.0")) {
-      security_message(port:port);
-      exit(0);
-  }
-
+if (version_is_less(version: vers, test_version: "7.0")) {
+  report = report_fixed_ver(installed_version: vers, fixed_version: "7.0");
+  security_message(port: port, data: report);
+  exit(0);
 }
 
-exit(0);
+exit(99);

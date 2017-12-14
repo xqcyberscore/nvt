@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_setseed_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_setseed_detect.nasl 8096 2017-12-13 07:51:50Z teissa $
 #
 # SetSeed CMS Detection
 #
@@ -30,8 +30,8 @@ if(description)
 {
  script_id(103326);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8078 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+ script_version("$Revision: 8096 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-13 08:51:50 +0100 (Wed, 13 Dec 2017) $");
  script_tag(name:"creation_date", value:"2011-11-03 08:00:00 +0100 (Thu, 03 Nov 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("SetSeed CMS Detection");

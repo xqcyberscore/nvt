@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3674.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3674.nasl 8115 2017-12-14 07:30:22Z teissa $
 # Auto-generated from advisory DSA 3674-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,13 +29,13 @@
 
 if(description)
 {
-    script_id(703674);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703674");
+    script_version("$Revision: 8115 $");
     script_cve_id("CVE-2016-5250", "CVE-2016-5257", "CVE-2016-5261", "CVE-2016-5270",
                   "CVE-2016-5272", "CVE-2016-5274", "CVE-2016-5276", "CVE-2016-5277",
                   "CVE-2016-5278", "CVE-2016-5280", "CVE-2016-5281", "CVE-2016-5284");
     script_name("Debian Security Advisory DSA 3674-1 (firefox-esr - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-14 08:30:22 +0100 (Thu, 14 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-09-22 00:00:00 +0200 (Thu, 22 Sep 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

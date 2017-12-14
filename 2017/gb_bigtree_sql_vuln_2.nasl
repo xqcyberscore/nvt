@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_sql_vuln_2.nasl 8070 2017-12-11 06:39:21Z teissa $
+# $Id: gb_bigtree_sql_vuln_2.nasl 8091 2017-12-13 06:22:57Z teissa $
 #
 # BigTree CMS SQL Injection Vulnerability (2)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:bigtree:bigtree";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112141");
-  script_version("$Revision: 8070 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-11 07:39:21 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 8091 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-13 07:22:57 +0100 (Wed, 13 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-28 08:33:19 +0100 (Tue, 28 Nov 2017)");
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-16961");
 

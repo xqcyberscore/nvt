@@ -39,13 +39,13 @@ if(description)
   script_cve_id("CVE-2010-0164","CVE-2010-0165","CVE-2010-0167","CVE-2010-0168","CVE-2010-0170","CVE-2010-0172","CVE-2010-0173","CVE-2010-0174","CVE-2010-0175","CVE-2010-0176","CVE-2010-0177","CVE-2010-0178","CVE-2010-0179","CVE-2010-0181","CVE-2010-0182","CVE-2010-1122");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+ script_version("$Revision: 8092 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:31:16 +0100 (Wed, 13 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-16 17:02:11 +0200 (Fri, 16 Apr 2010)");
   script_xref(name: "MDVA", value: "2010:118");
   script_name("Mandriva Update for firefox-ext-plasmanotify MDVA-2010:118 (firefox-ext-plasmanotify)");
 
-  script_summary("Check for the Version of firefox-ext-plasmanotify");
+  script_tag(name: "summary" , value: "Check for the Version of firefox-ext-plasmanotify");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

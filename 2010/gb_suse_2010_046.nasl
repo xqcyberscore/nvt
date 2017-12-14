@@ -93,8 +93,8 @@ tag_affected = "kernel on openSUSE 11.2";
 if(description)
 {
   script_id(850143);
-  script_version("$Revision: 8035 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 06:29:51 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8092 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:31:16 +0100 (Wed, 13 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-01 08:16:52 +0200 (Fri, 01 Oct 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -102,7 +102,7 @@ if(description)
   script_cve_id("CVE-2009-1389", "CVE-2009-4537", "CVE-2010-1087", "CVE-2010-1146", "CVE-2010-1148", "CVE-2010-1162", "CVE-2010-1437", "CVE-2010-1636", "CVE-2010-1641", "CVE-2010-2066", "CVE-2010-2071", "CVE-2010-2226", "CVE-2010-2248", "CVE-2010-2478", "CVE-2010-2492", "CVE-2010-2495", "CVE-2010-2521", "CVE-2010-2524", "CVE-2010-2537", "CVE-2010-2538", "CVE-2010-2798", "CVE-2010-2803", "CVE-2010-2942", "CVE-2010-2946", "CVE-2010-2954", "CVE-2010-2955", "CVE-2010-2959", "CVE-2010-2960", "CVE-2010-3015", "CVE-2010-3078", "CVE-2010-3079", "CVE-2010-3080", "CVE-2010-3081", "CVE-2010-3084", "CVE-2010-3296", "CVE-2010-3297", "CVE-2010-3298", "CVE-2010-3301");
   script_name("SuSE Update for kernel SUSE-SA:2010:046");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

@@ -29,12 +29,12 @@
 
 if(description)
 {
-    script_id(703633);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703633");
+    script_version("$Revision: 8115 $");
     script_cve_id("CVE-2015-8338", "CVE-2016-4480", "CVE-2016-4962", "CVE-2016-5242",
                   "CVE-2016-6258");
     script_name("Debian Security Advisory DSA 3633-1 (xen - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-14 08:30:22 +0100 (Thu, 14 Dec 2017) $");
     script_tag(name:"creation_date", value:"2016-08-02 10:55:39 +0530 (Tue, 02 Aug 2016)");
     script_tag(name:"cvss_base", value:"7.2");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");

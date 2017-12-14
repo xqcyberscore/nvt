@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_CVE_2017_12611.nasl 7336 2017-10-04 05:42:02Z asteins $
+# $Id: gb_apache_struts_CVE_2017_12611.nasl 8106 2017-12-13 14:42:54Z cfischer $
 #
 # Apache Struts 'CVE-2017-12611' Remote Code Execution Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108243");
-  script_version("$Revision: 7336 $");
+  script_version("$Revision: 8106 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-13 15:42:54 +0100 (Wed, 13 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-09-11 12:00:00 +0200 (Mon, 11 Sep 2017)");
   script_cve_id("CVE-2017-12611");
   script_name("Apache Struts 'CVE-2017-12611' Remote Code Execution Vulnerability");
@@ -40,7 +40,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning", "Settings/disable_generic_webapp_scanning");
+  script_exclude_keys("Settings/disable_cgi_scanning", "global_settings/disable_generic_webapp_scanning");
 
   script_xref(name:"URL", value:"https://struts.apache.org/docs/s2-053.html");
 
@@ -71,7 +71,9 @@ include("host_details.inc");
 include("url_func.inc");
 
 # nb: We also don't want to run if optimize_test is set to "no"
-if( get_kb_item( "Settings/disable_cgi_scanning" ) || get_kb_item( "Settings/disable_generic_webapp_scanning" ) ) exit( 0 );
+if( get_kb_item( "Settings/disable_cgi_scanning" ) ||
+    get_kb_item( "global_settings/disable_generic_webapp_scanning" ) )
+  exit( 0 );
 
 port = get_http_port( default:80 );
 

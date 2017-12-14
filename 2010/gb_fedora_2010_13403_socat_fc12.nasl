@@ -38,8 +38,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-September/046681.html");
   script_id(862361);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8109 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-14 07:31:15 +0100 (Thu, 14 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-07 07:38:40 +0200 (Tue, 07 Sep 2010)");
   script_xref(name: "FEDORA", value: "2010-13403");
   script_tag(name:"cvss_base", value:"6.8");
@@ -47,7 +47,7 @@ if(description)
   script_cve_id("CVE-2010-2799");
   script_name("Fedora Update for socat FEDORA-2010-13403");
 
-  script_summary("Check for the Version of socat");
+  script_tag(name: "summary" , value: "Check for the Version of socat");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

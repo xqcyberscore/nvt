@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_default_dir_trav.nasl 7298 2017-09-27 11:54:10Z cfischer $
+# $Id: gb_http_default_dir_trav.nasl 8106 2017-12-13 14:42:54Z cfischer $
 #
 # Generic HTTP Directory Traversal Check
 #
@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113002");
-  script_version("$Revision: 7298 $");
+  script_version("$Revision: 8106 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 13:54:10 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-13 15:42:54 +0100 (Wed, 13 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-09-26 10:00:00 +0200 (Tue, 26 Sep 2017)");
   script_name("Generic HTTP Directory Traversal Check");
   script_category(ACT_ATTACK);
@@ -40,7 +40,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("http_version.nasl", "find_service.nasl", "webmirror.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning", "Settings/disable_generic_webapp_scanning");
+  script_exclude_keys("Settings/disable_cgi_scanning", "global_settings/disable_generic_webapp_scanning");
 
   script_xref(name:"URL", value:"https://www.owasp.org/index.php/Path_Traversal");
 
@@ -68,7 +68,9 @@ include("misc_func.inc");
 include("host_details.inc");
 
 # nb: We also don't want to run if optimize_test is set to "no"
-if( get_kb_item( "Settings/disable_cgi_scanning" ) || get_kb_item( "Settings/disable_generic_webapp_scanning" ) ) exit( 0 );
+if( get_kb_item( "Settings/disable_cgi_scanning" ) ||
+    get_kb_item( "global_settings/disable_generic_webapp_scanning" ) )
+  exit( 0 );
 
 port = get_http_port( default:80 );
 cgis = get_kb_list( "www/" + port + "/cgis" );

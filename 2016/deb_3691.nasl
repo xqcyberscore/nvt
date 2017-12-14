@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3691.nasl 6959 2017-08-18 07:24:59Z asteins $
+# $Id: deb_3691.nasl 8115 2017-12-14 07:30:22Z teissa $
 # Auto-generated from advisory DSA 3691-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,12 +29,12 @@
 
 if(description)
 {
-    script_id(703691);
-    script_version("$Revision: 6959 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703691");
+    script_version("$Revision: 8115 $");
     script_cve_id("CVE-2013-5653", "CVE-2016-7976", "CVE-2016-7977", "CVE-2016-7978",
                   "CVE-2016-7979", "CVE-2016-8602");
     script_name("Debian Security Advisory DSA 3691-1 (ghostscript - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-14 08:30:22 +0100 (Thu, 14 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-10-12 00:00:00 +0200 (Wed, 12 Oct 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

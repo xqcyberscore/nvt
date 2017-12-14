@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_diskstation_xss_vuln.nasl 7292 2017-09-27 08:38:54Z santu $
+# $Id: gb_synology_diskstation_xss_vuln.nasl 8114 2017-12-14 07:25:09Z santu $
 #
 # Synology DiskStation Manager Cross-Site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/o:synology:dsm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805391");
-  script_version("$Revision: 7292 $");
+  script_version("$Revision: 8114 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:38:54 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-14 08:25:09 +0100 (Thu, 14 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-05-28 13:19:38 +0530 (Thu, 28 May 2015)");
   script_tag(name:"qod", value:"50"); # Prone to false positives and doesn't match existing qod_types
   script_name("Synology DiskStation Manager Cross-Site Scripting Vulnerability");
@@ -70,8 +70,13 @@ if(description)
   script_dependencies("gb_synology_dsm_detect.nasl");
   script_mandatory_keys("synology_dsm/installed");
   script_require_ports("Services/www", 5000);
+
+  # This script was deprecated to avoid false positive,since the extra check is not possible.
+  script_tag(name:"deprecated", value:TRUE);
   exit(0);
 }
+
+exit( 66 );
 
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_support_tickets_detect.nasl 5840 2017-04-03 12:02:24Z cfi $
+# $Id: gb_php_support_tickets_detect.nasl 8087 2017-12-12 13:12:04Z teissa $
 #
 # PHP Support Tickets Detection
 #
@@ -29,10 +29,10 @@ system.";
 
 if(description)
 {
- script_id(103255);
+ script_oid("1.3.6.1.4.1.25623.1.0.103255");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5840 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
+ script_version("$Revision: 8087 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
  script_tag(name:"creation_date", value:"2011-09-14 13:31:57 +0200 (Wed, 14 Sep 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("PHP Support Tickets Detection");

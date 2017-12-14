@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 7922 2017-11-28 10:06:28Z cfischer $
+# $Id: misc_func.inc 8111 2017-12-14 07:03:31Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7922 $
+# $Revision: 8111 $
 #
 ###############################################################################
 
@@ -902,7 +902,7 @@ function get_unknown_port( default, nodefault, ipproto ) {
     if( ipproto == "udp" ) {
       udp = TRUE;
       # nb: We only want to return all unknown UDP ports if this is explicitely enabled within global_settings.nasl
-      if( get_kb_item( "Settings/non-default_udp_service_discovery" ) ) {
+      if( get_kb_item( "global_settings/non-default_udp_service_discovery" ) ) {
         port = get_kb_item( "Services/udp/unknown" );
       } else {
         port = default;
@@ -961,7 +961,7 @@ function get_unknown_port_list( default, nodefault, ipproto ) {
     if( ipproto == "udp" ) {
       udp = TRUE;
       # nb: We only want to return all unknown UDP ports if this is explicitely enabled within global_settings.nasl
-      if( get_kb_item( "Settings/non-default_udp_service_discovery" ) ) {
+      if( get_kb_item( "global_settings/non-default_udp_service_discovery" ) ) {
         port_list = get_kb_list( "Services/udp/unknown" );
       } else {
         port_list = make_list( default );

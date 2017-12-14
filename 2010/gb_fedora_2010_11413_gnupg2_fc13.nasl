@@ -43,16 +43,16 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-August/044935.html");
   script_id(862303);
-  script_version("$Revision: 6625 $");
+  script_version("$Revision: 8109 $");
   script_cve_id("CVE-2010-2547");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-14 07:31:15 +0100 (Thu, 14 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-06 10:34:50 +0200 (Fri, 06 Aug 2010)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
   script_xref(name: "FEDORA", value: "2010-11413");
   script_name("Fedora Update for gnupg2 FEDORA-2010-11413");
 
-  script_summary("Check for the Version of gnupg2");
+  script_tag(name: "summary" , value: "Check for the Version of gnupg2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
