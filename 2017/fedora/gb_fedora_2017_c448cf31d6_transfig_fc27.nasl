@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_c448cf31d6_transfig_fc27.nasl 8085 2017-12-12 10:25:30Z santu $
+# $Id: gb_fedora_2017_c448cf31d6_transfig_fc27.nasl 8118 2017-12-14 08:01:12Z asteins $
 #
 # Fedora Update for transfig FEDORA-2017-c448cf31d6
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873880");
-  script_version("$Revision: 8085 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 11:25:30 +0100 (Tue, 12 Dec 2017) $");
+  script_version("$Revision: 8118 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-14 09:01:12 +0100 (Thu, 14 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-10 08:10:42 +0100 (Sun, 10 Dec 2017)");
   script_cve_id("CVE-2017-16899");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for transfig FEDORA-2017-c448cf31d6");
   script_tag(name: "summary", value: "Check the version of transfig");

@@ -53,8 +53,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2010-June/msg00011.html");
   script_id(870280);
-  script_version("$Revision: 6684 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:43:49 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8130 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 07:31:09 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-18 17:26:33 +0200 (Fri, 18 Jun 2010)");
   script_xref(name: "RHSA", value: "2010:0488-01");
   script_tag(name:"cvss_base", value:"7.5");
@@ -62,7 +62,7 @@ if(description)
   script_cve_id("CVE-2010-2063");
   script_name("RedHat Update for samba and samba3x RHSA-2010:0488-01");
 
-  script_summary("Check for the Version of samba and samba3x");
+  script_tag(name: "summary" , value: "Check for the Version of samba and samba3x");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

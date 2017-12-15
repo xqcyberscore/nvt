@@ -36,8 +36,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-November/050977.html");
   script_id(862590);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8130 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 07:31:09 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-12-02 08:39:14 +0100 (Thu, 02 Dec 2010)");
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
@@ -45,7 +45,7 @@ if(description)
   script_cve_id("CVE-2010-2941");
   script_name("Fedora Update for cups FEDORA-2010-17641");
 
-  script_summary("Check for the Version of cups");
+  script_tag(name: "summary" , value: "Check for the Version of cups");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

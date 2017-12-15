@@ -55,8 +55,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-11/msg00023.php");
   script_id(831249);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8130 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 07:31:09 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-11-16 14:49:48 +0100 (Tue, 16 Nov 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -64,7 +64,7 @@ if(description)
   script_cve_id("CVE-2010-3702", "CVE-2010-3704");
   script_name("Mandriva Update for poppler MDVSA-2010:230 (poppler)");
 
-  script_summary("Check for the Version of poppler");
+  script_tag(name: "summary" , value: "Check for the Version of poppler");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 14 Dec 2017 09:05:38 +0100
+# Automatically created on:  Fri, 15 Dec 2017 08:21:51 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -50535,7 +50535,6 @@
 2017/gb_kilerrat_trojan_detect.nasl: GPLv2+
 2017/gb_knot_dns_tsig_auth_vuln.nasl: GPLv2+
 2017/gb_kodak_insite_xss_vuln.nasl: GPLv2+
-2017/gb_kodi_file_disc_vuln.nasl: GPLv2+
 2017/gb_kunena_forum_mult_vuln.nasl: GPLv2+
 2017/gb_kunena_forum_sqli_vuln.nasl: GPLv2+
 2017/gb_kunena_forum_xss_vuln.nasl: GPLv2+
@@ -51370,16 +51369,6 @@
 2017/gb_puppet_enterprise_mult_vuln.nasl: GPLv2+
 2017/gb_putty_dll_hijacking_vuln_win.nasl: GPLv2+
 2017/gb_pydio_before_607_mult_vuln.nasl: GPLv2+
-2017/gb_qnap_nas_heap_overflow_vuln.nasl: GPLv2+
-2017/gb_qnap_nas_transcode_server_com_exec_vuln.nasl: GPLv2+
-2017/gb_qnap_qts_20170213.nasl: GPLv2+
-2017/gb_qnap_qts_20170313.nasl: GPLv2+
-2017/gb_qnap_qts_20170313_remote.nasl: GPLv2+
-2017/gb_qnap_qts_20170517.nasl: GPLv2+
-2017/gb_qnap_qts_20170729.nasl: GPLv2+
-2017/gb_qnap_qts_comm_inj.nasl: GPLv2+
-2017/gb_qnap_qts_rce.nasl: GPLv2+
-2017/gb_qnap_rce_20170313.nasl: GPLv2+
 2017/gb_quagga_dos_vuln.nasl: GPLv2+
 2017/gb_quick_heal_av_mult_vuln.nasl: GPLv2+
 2017/gb_quickheal_dos_May_17.nasl: GPLv2+
@@ -51837,6 +51826,7 @@
 2017/gb_terramaster_file_upload_vuln.nasl: GPLv2+
 2017/gb_thycotic_secret_server_redirect_vuln.nasl: GPLv2+
 2017/gb_tiandy_tech_info_disc_vuln.nasl: GPLv2+
+2017/gb_tibco_tibbr_mult_vuln.nasl: GPLv2+
 2017/gb_tiki_wiki_cms_152_lfi.nasl: GPLv2+
 2017/gb_tiki_wiki_cms_xss1.nasl: GPLv2+
 2017/gb_tiki_wiki_cms_xss2.nasl: GPLv2+
@@ -52419,6 +52409,9 @@
 2017/joomla/gb_joomla_two_factor_auth_bypass_vuln_nov17.nasl: GPLv2+
 2017/kaltura/gb_kaltura_mult_vuln.nasl: GPLv2+
 2017/kannel/gb_kannel_priv_esc_vuln.nasl: GPLv2+
+2017/kodi/gb_kodi_file_disc_vuln.nasl: GPLv2+
+2017/kodi/gb_kodi_mul_vuln_jun_2017.nasl: GPLv2+
+2017/kodi/gb_kodi_mul_vuln_jun_2017_win.nasl: GPLv2+
 2017/magento/gb_magento_file_disc_vuln.nasl: GPLv2+
 2017/manageengine/gb_manageengine_appli_manager_mult_sql_inj_vuln.nasl: GPLv2+
 2017/manageengine/gb_manageengine_servicedesk_mult_vuln.nasl: GPLv2+
@@ -52665,7 +52658,17 @@
 2017/powerdns/gb_pdns_dos1.nasl: GPLv2+
 2017/powerdns/gb_pdns_dos2.nasl: GPLv2+
 2017/powerdns/gb_pdns_mult_vuln.nasl: GPLv2+
+2017/qnap/gb_qnap_nas_heap_overflow_vuln.nasl: GPLv2+
+2017/qnap/gb_qnap_nas_transcode_server_com_exec_vuln.nasl: GPLv2+
+2017/qnap/gb_qnap_qts_20170213.nasl: GPLv2+
+2017/qnap/gb_qnap_qts_20170313.nasl: GPLv2+
+2017/qnap/gb_qnap_qts_20170313_remote.nasl: GPLv2+
+2017/qnap/gb_qnap_qts_20170517.nasl: GPLv2+
+2017/qnap/gb_qnap_qts_20170729.nasl: GPLv2+
+2017/qnap/gb_qnap_qts_comm_inj.nasl: GPLv2+
 2017/qnap/gb_qnap_qts_media_library_com_inj_vuln.nasl: GPLv2+
+2017/qnap/gb_qnap_qts_rce.nasl: GPLv2+
+2017/qnap/gb_qnap_rce_20170313.nasl: GPLv2+
 2017/redhat/gb_RHSA-2017_3071-01_ntp.nasl: GPLv2+
 2017/redhat/gb_RHSA-2017_3075-01_wget.nasl: GPLv2+
 2017/redhat/gb_RHSA-2017_3080-01_tomcat6.nasl: GPLv2+
@@ -54174,6 +54177,7 @@ gb_terramaster_nas_detect.nasl: GPLv2+
 gb_thunderbird_detect_lin.nasl: GPLv2+
 gb_thunderbird_detect_win.nasl: GPLv2+
 gb_thycotic_secret_server_detect.nasl: GPLv2+
+gb_tibco_tibbr_detect.nasl: GPLv2+
 gb_tigervnc_detect_win.nasl: GPLv2+
 gb_titan_ftp_detect.nasl: GPLv2+
 gb_tls_fallback_scsv_enabled.nasl: GPLv2+

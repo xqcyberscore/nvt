@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3487_1.nasl 7911 2017-11-27 04:54:41Z santu $
+# $Id: gb_ubuntu_USN_3487_1.nasl 8118 2017-12-14 08:01:12Z asteins $
 #
 # Ubuntu Update for linux USN-3487-1
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843376");
-  script_version("$Revision: 7911 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-27 05:54:41 +0100 (Mon, 27 Nov 2017) $");
+  script_version("$Revision: 8118 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-14 09:01:12 +0100 (Thu, 14 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-22 07:32:50 +0100 (Wed, 22 Nov 2017)");
   script_cve_id("CVE-2017-12188", "CVE-2017-1000255", "CVE-2017-12153", "CVE-2017-12154",
                 "CVE-2017-12190", "CVE-2017-12192", "CVE-2017-14156", "CVE-2017-14489",
                 "CVE-2017-14954", "CVE-2017-15265", "CVE-2017-15537", "CVE-2017-15649",
                 "CVE-2017-16525", "CVE-2017-16526", "CVE-2017-16527", "CVE-2017-16529",
                 "CVE-2017-16530", "CVE-2017-16531", "CVE-2017-16533", "CVE-2017-16534"); 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3487-1");
   script_tag(name: "summary", value: "Check the version of linux");

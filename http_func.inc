@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 8106 2017-12-13 14:42:54Z cfischer $
+# $Id: http_func.inc 8129 2017-12-14 17:51:27Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8106 $
+# $Revision: 8129 $
 #
 ###############################################################################
 
@@ -482,10 +482,10 @@ function cgi_dirs( port ) {
 
 function can_host_php( port ) {
 
-  local_var port, banner, sig, files;
+  local_var port, banner, files, srv_pattern;
 
   if( ! port ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#can_host_php" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#can_host_php" );
     return;
   }
 
@@ -493,85 +493,77 @@ function can_host_php( port ) {
 
   files = get_kb_list( "www/" + port + "/content/extensions/php*" );
   if( ! isnull( files ) ) {
-    #display( get_host_ip(), " hosts PHP - ", files[0], "\n" );
-    return TRUE; # Hosting .php+ files
+    return TRUE; # Hosting .php* files
   }
 
   banner = get_http_banner( port:port );
-
   if( ! banner ) {
-    return FALSE;
+    return FALSE; # Broken Web Server
   } else {
 
-    if( tolower( banner ) =~ 'powered.*php' || tolower( banner ) =~ "server.*php.*" ) return TRUE;
+    banner = tolower( banner );
 
-    if( egrep( pattern:"^Server:.*apache|nginx|thttpd|aolserver|pi3web|zeus|iis|icewarp|lighttpd|hiawatha|litespeed|caddy", string:banner, icase:TRUE ) ) {
-      #display( get_host_ip(), " may host PHP\n" );
+    if( banner =~ 'powered.*php' ||
+        banner =~ "server.*php.*" ||
+        banner =~ "^set-cookie:.*phpsessid" ||
+        "content-type: application/x-appweb-php" >< banner )
+      return TRUE;
+
+    # TODO: Find more possible web server to add
+    srv_pattern  = "(apache|nginx|thttpd|aolserver|pi3web|zeus|iis|icewarp|lighttpd|";
+    srv_pattern += "hiawatha|litespeed|caddy|panweb|embedthis-http|embedthis-appweb|mbedthis-appweb)";
+
+    if( egrep( pattern:"^Server:.*" + srv_pattern, string:banner, icase:TRUE ) ) {
       return TRUE;
     }
   }
 
-  # TBD: This looks wrong... (See if( ! banner ) above)
-  sig = banner;
-  if( ! sig ) {
-    return TRUE; # Unknown web server - might be able to host a PHP website
-  }
-
-  if( egrep( pattern:"apache|thttpd|aolserver|pi3web|zeus|iis", string:sig, icase:TRUE ) ) {
-    #display( get_host_ip(), " may be PHP site (sig)\n" );
-    return TRUE;
+  if( egrep( pattern:"^Server:.*", string:banner, icase:TRUE ) ) {
+    return FALSE; # Unknown web server, should be added above if we know that it can host a PHP website
   } else {
-    #display( get_host_ip(), " is definitely NOT a PHP site (sig) - ", sig, "\n" );
-    return FALSE;
+    return TRUE; # Server: banner hidden - might be able to host a PHP website
   }
 }
 
 function can_host_asp( port ) {
 
-  local_var port, banner, sig, files;
+  local_var port, banner, files, srv_pattern;
 
   if( ! port ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#can_host_asp" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#can_host_asp" );
     return;
   }
 
   files = get_kb_list( "www/" + port + "/content/extensions/asp*" );
   if( ! isnull( files ) ) {
-    #display( get_host_ip(), " hosts ASP - ", files[0], "\n" );
-    return TRUE; # Hosting .asp files
+    return TRUE; # Hosting .asp / .aspx files
   }
 
   banner = get_http_banner( port:port );
   if( ! banner ) {
-    return FALSE;
+    return FALSE; # Broken Web Server
   } else {
-    if( egrep( pattern:"^Server:.*IIS", string:banner, icase:TRUE ) ) {
-      #display( get_host_ip(), " may host ASP\n" );
+
+    banner = tolower( banner );
+
+    if( banner =~ 'powered.*asp' ||
+        banner =~ "server.*asp.*" ||
+        banner =~ "^set-cookie:.*asp\.net_sessionid" ||
+        banner =~ "^set-cookie:.*aspsessionid" ||
+        "x-aspnet-version" >< banner )
+      return TRUE;
+
+    srv_pattern = "(iis|goahead-webs)"; # TODO: Find more possible web server to add
+
+    if( egrep( pattern:"^Server:.*" + srv_pattern, string:banner, icase:TRUE ) ) {
       return TRUE;
     }
   }
 
-  if( tolower( banner ) =~ 'powered.*asp' || tolower( banner ) =~  "server.*asp.*" ) return TRUE;
-
-  # TBD: This looks wrong... (See if( ! banner ) above)
-  sig = banner;
-  if( ! sig ) {
-    #display( get_host_ip(), " has no sig\n" );
-    # Could not fingerprint it, even though we know that IIS fingerprint
-    # is quite reliable
-    if( egrep( pattern:"^Server:.*", string:banner, icase:TRUE ) ) {
-      return FALSE;
-    } else {
-      return TRUE; # Unknown web server - might be able to host a ASP website
-    }
-  }
-
-  if( egrep( pattern:"iis", string:sig, icase:TRUE ) ) {
-    #display( get_host_ip(), " may be ASP site (sig)\n" );
-    return TRUE;
+  if( egrep( pattern:"^Server:.*", string:banner, icase:TRUE ) ) {
+    return FALSE; # Unknown web server, should be added above if we know that it can host a ASP/ASP.NET website
   } else {
-    #display( get_host_ip(), " is definitely NOT a ASP site (sig) - ", sig, "\n" );
-    return FALSE;
+    return TRUE; # Server: banner hidden - might be able to host a ASP/ASP.NET website
   }
 }
 

@@ -56,8 +56,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-07/msg00026.php");
   script_id(831119);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8130 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 07:31:09 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_xref(name: "MDVSA", value: "2010:143");
   script_tag(name:"cvss_base", value:"5.1");
@@ -65,7 +65,7 @@ if(description)
   script_cve_id("CVE-2010-2547");
   script_name("Mandriva Update for gnupg2 MDVSA-2010:143 (gnupg2)");
 
-  script_summary("Check for the Version of gnupg2");
+  script_tag(name: "summary" , value: "Check for the Version of gnupg2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

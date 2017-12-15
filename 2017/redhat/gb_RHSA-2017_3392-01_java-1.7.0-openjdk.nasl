@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_3392-01_java-1.7.0-openjdk.nasl 8110 2017-12-14 06:39:02Z santu $
+# $Id: gb_RHSA-2017_3392-01_java-1.7.0-openjdk.nasl 8118 2017-12-14 08:01:12Z asteins $
 #
 # RedHat Update for java-1.7.0-openjdk RHSA-2017:3392-01
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812340");
-  script_version("$Revision: 8110 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-14 07:39:02 +0100 (Thu, 14 Dec 2017) $");
+  script_version("$Revision: 8118 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-14 09:01:12 +0100 (Thu, 14 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-07 07:36:42 +0100 (Thu, 07 Dec 2017)");
   script_cve_id("CVE-2017-10193", "CVE-2017-10198", "CVE-2017-10274", "CVE-2017-10281",
                 "CVE-2017-10285", "CVE-2017-10295", "CVE-2017-10345", "CVE-2017-10346",
                 "CVE-2017-10347", "CVE-2017-10348", "CVE-2017-10349", "CVE-2017-10350",
                 "CVE-2017-10355", "CVE-2017-10356", "CVE-2017-10357", "CVE-2017-10388");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for java-1.7.0-openjdk RHSA-2017:3392-01");
   script_tag(name: "summary", value: "Check the version of java-1.7.0-openjdk");

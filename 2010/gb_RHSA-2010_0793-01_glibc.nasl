@@ -50,8 +50,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2010-October/msg00029.html");
   script_id(870350);
-  script_version("$Revision: 6684 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:43:49 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8130 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 07:31:09 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-11-04 12:09:38 +0100 (Thu, 04 Nov 2010)");
   script_xref(name: "RHSA", value: "2010:0793-01");
   script_tag(name:"cvss_base", value:"7.2");
@@ -59,7 +59,7 @@ if(description)
   script_cve_id("CVE-2010-3856");
   script_name("RedHat Update for glibc RHSA-2010:0793-01");
 
-  script_summary("Check for the Version of glibc");
+  script_tag(name: "summary" , value: "Check for the Version of glibc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

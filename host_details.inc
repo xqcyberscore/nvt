@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 8077 2017-12-11 14:15:34Z cfischer $
+# $Id: host_details.inc 8127 2017-12-14 14:46:28Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8077 $
+# $Revision: 8127 $
 #
 ###############################################################################
 
@@ -1266,12 +1266,15 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       banner == "Server: Apache-Coyote/1.1" ||
       banner == "Server: HASP LM" || # Is running under windows and linux
       banner == "Server: Mbedthis-Appweb" || # Is running under various OS variants
+      banner == "Server: Embedthis-Appweb" || # Is running under various OS variants
+      banner == "Server: Embedthis-http" || # Is running under various OS variants
       banner == "Server: GoAhead-Webs" || # Is running under various OS variants
       banner == "Server: Mojolicious (Perl)" || # Cross-platform
       banner == "+OK POP3 ready" ||
       banner == "220 FTP server ready" ||
       banner == "Server: NessusWWW" || # Nessus could be running on Windows, Linux/Unix or MacOS
       "erver: BBC " >< banner || # OV Communication Broker runs on various different OS variants
+      "Server: PanWeb Server/" >< banner || # Already covered by gb_palo_alto_webgui_detect.nasl
       egrep( pattern:"^OS String: Unix; SMB String: Samba ([0-9.]+)a?$", string:banner ) || # e.g. OS String: Unix; SMB String: Samba 4.0.9 set by smb_nativelanman.nasl
       egrep( pattern:"^220 ([0-9a-zA-Z._\-]+) ESMTP$", string:banner ) || # e.g. 220 hostname ESMTP
       egrep( pattern:"ESMTP Exim ([0-9._]+) ", string:banner ) || # e.g. 220 host ESMTP Exim 4.84_2 Tue, 01 Aug 2017 13:01:18 +0200
@@ -1292,6 +1295,7 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       egrep( pattern:"^Server: HASP LM/([0-9.]+)$", string:banner ) || # Is running under windows and linux
       egrep( pattern:"^Server: Mbedthis-Appweb/([0-9.]+)$", string:banner ) || # Is running under various OS variants
       egrep( pattern:"^Server: Embedthis-http/([0-9.]+)$", string:banner ) || # Is running under various OS variants, banner e.g. Server: Embedthis-http/4.0.0
+      egrep( pattern:"^Server: Embedthis-Appweb/([0-9.]+)$", string:banner ) || # Is running under various OS variants
       egrep( pattern:"^Server: GoAhead-Webs/([0-9.]+)$", string:banner ) || # Is running under various OS variants
       egrep( pattern:"^Server: Allegro-Software-RomPager/([0-9.]+)$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
       egrep( pattern:"^Server: CompaqHTTPServer/([0-9.]+) HPE System Management Homepage$", string:banner ) || # Is running under various OS variants

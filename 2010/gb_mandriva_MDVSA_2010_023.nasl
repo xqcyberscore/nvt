@@ -42,8 +42,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-01/msg00070.php");
   script_id(830841);
-  script_version("$Revision: 6564 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:55:29 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8130 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 07:31:09 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-01-22 10:23:05 +0100 (Fri, 22 Jan 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,7 +51,7 @@ if(description)
   script_cve_id("CVE-2009-4427");
   script_name("Mandriva Update for phpldapadmin MDVSA-2010:023 (phpldapadmin)");
 
-  script_summary("Check for the Version of phpldapadmin");
+  script_tag(name: "summary" , value: "Check for the Version of phpldapadmin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

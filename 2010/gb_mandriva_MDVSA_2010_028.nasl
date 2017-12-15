@@ -56,8 +56,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-01/msg00078.php");
   script_id(830855);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8130 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 07:31:09 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-01-29 14:09:25 +0100 (Fri, 29 Jan 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -65,7 +65,7 @@ if(description)
   script_cve_id("CVE-2009-2408", "CVE-2009-2702", "CVE-2009-1692", "CVE-2009-2537", "CVE-2009-0689");
   script_name("Mandriva Update for kdelibs4 MDVSA-2010:028 (kdelibs4)");
 
-  script_summary("Check for the Version of kdelibs4");
+  script_tag(name: "summary" , value: "Check for the Version of kdelibs4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

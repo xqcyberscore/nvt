@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3505_1.nasl 8110 2017-12-14 06:39:02Z santu $
+# $Id: gb_ubuntu_USN_3505_1.nasl 8118 2017-12-14 08:01:12Z asteins $
 #
 # Ubuntu Update for linux-firmware USN-3505-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843392");
-  script_version("$Revision: 8110 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-14 07:39:02 +0100 (Thu, 14 Dec 2017) $");
+  script_version("$Revision: 8118 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-14 09:01:12 +0100 (Thu, 14 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-07 07:41:02 +0100 (Thu, 07 Dec 2017)");
   script_cve_id("CVE-2017-13080", "CVE-2017-13081");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"2.9");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-firmware USN-3505-1");
   script_tag(name: "summary", value: "Check the version of linux-firmware");

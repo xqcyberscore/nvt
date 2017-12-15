@@ -54,13 +54,13 @@ if(description)
   script_cve_id("CVE-2010-2761","CVE-2010-4410");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+ script_version("$Revision: 8130 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 07:31:09 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-11-23 15:30:07 +0100 (Tue, 23 Nov 2010)");
   script_xref(name: "MDVSA", value: "2010:237");
   script_name("Mandriva Update for perl-CGI MDVSA-2010:237 (perl-CGI)");
 
-  script_summary("Check for the Version of perl-CGI");
+  script_tag(name: "summary" , value: "Check for the Version of perl-CGI");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

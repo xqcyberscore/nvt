@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_priv_esc_vuln_dec17_win.nasl 8027 2017-12-07 09:50:33Z santu $
+# $Id: gb_postgresql_priv_esc_vuln_dec17_win.nasl 8118 2017-12-14 08:01:12Z asteins $
 #
 # PostgreSQL Privilege Escalation Vulnerability-Dec17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812313");
-  script_version("$Revision: 8027 $");
+  script_version("$Revision: 8118 $");
   script_cve_id("CVE-2017-12172");
   script_bugtraq_id(101949);
-  script_tag(name:"cvss_base", value:"6.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 10:50:33 +0100 (Thu, 07 Dec 2017) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-14 09:01:12 +0100 (Thu, 14 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-04 16:50:41 +0530 (Mon, 04 Dec 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("PostgreSQL Privilege Escalation Vulnerability-Dec17 (Windows)");

@@ -89,8 +89,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-09/msg00007.php");
   script_id(831152);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8130 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 07:31:09 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-14 15:35:55 +0200 (Tue, 14 Sep 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -98,7 +98,7 @@ if(description)
   script_cve_id("CVE-2010-2764", "CVE-2010-2769", "CVE-2010-2768", "CVE-2010-2762", "CVE-2010-2766", "CVE-2010-3167", "CVE-2010-3168", "CVE-2010-2753", "CVE-2010-2760", "CVE-2010-2765", "CVE-2010-3166", "CVE-2010-2767", "CVE-2010-3169");
   script_name("Mandriva Update for firefox MDVSA-2010:173 (firefox)");
 
-  script_summary("Check for the Version of firefox");
+  script_tag(name: "summary" , value: "Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
