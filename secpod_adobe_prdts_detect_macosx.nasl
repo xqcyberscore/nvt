@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
+# $Id: secpod_adobe_prdts_detect_macosx.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # Adobe Products Version Detection (Mac OS X)
 #
@@ -39,11 +39,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902711");
-  script_version("$Revision: 6484 $");
+  script_version("$Revision: 8141 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Products Version Detection (Mac OS X)");
@@ -121,7 +121,7 @@ if(buffer != NULL)
     ## Set the version in KB
     set_kb_item(name: "Adobe/Flash/Player/MacOSX/Version", value:flashVer[1]);
 
-    replace_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
+    set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
 
     ## Build cpe
     cpe = build_cpe(value:flashVer[1], exp:"^([0-9.]+)", base:"cpe:/a:adobe:flash_player:");
@@ -147,7 +147,7 @@ if("com.adobe.shockwave" >< buffer)
   {
     ## Set the version in KB
     set_kb_item(name: "Adobe/Shockwave/Player/MacOSX/Version", value:version[1]);
-    replace_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
+    set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
 
     ## Build cpe
     cpe = build_cpe(value:version[1], exp:"^([0-9.]+)", base:"cpe:/a:adobe:shockwave_player:");
@@ -181,7 +181,7 @@ if(!isnull(airVer) && "does not exist" >!< airVer)
 {
   ## Set the version in KB
   set_kb_item(name: "Adobe/Air/MacOSX/Version", value:airVer);
-  replace_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
+  set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
 
   ## Build cpe
   cpe = build_cpe(value:airVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:adobe_air:");
@@ -206,7 +206,7 @@ if(!isnull(readerVer) && "does not exist" >!< readerVer)
 {
   ## Set the version in KB
   set_kb_item(name: "Adobe/Reader/MacOSX/Version", value:readerVer);
-  replace_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
+  set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
 
   ## Build cpe
   cpe = build_cpe(value:readerVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:acrobat_reader:");
@@ -238,7 +238,7 @@ if(!isnull(acrobatVer) && "does not exist" >!< acrobatVer)
 {
   ## Set the version in KB
   set_kb_item(name: "Adobe/Acrobat/MacOSX/Version", value:acrobatVer);
-  replace_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
+  set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
 
   ## Build cpe
   cpe = build_cpe(value:acrobatVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:acrobat:");

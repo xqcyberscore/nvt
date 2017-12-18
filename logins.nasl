@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: logins.nasl 5302 2017-02-15 14:56:50Z cfi $
+# $Id: logins.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # Login configurations
 #
@@ -48,8 +48,8 @@ default_imap_password = "";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10870");
-  script_version("$Revision: 5302 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-15 15:56:50 +0100 (Wed, 15 Feb 2017) $");
+  script_version("$Revision: 8143 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -172,7 +172,7 @@ if( ! smb_ntv1 ) smb_ntv1 = "no"; # Default from script preference
 if( smb_ntv1 == "yes" ) {
   set_kb_item( name:"SMB/dont_send_ntlmv1", value:TRUE );
   if( smb_ctxt != "yes" ) {
-    replace_kb_item( name:"SMB/dont_send_in_cleartext", value:TRUE );
+    set_kb_item( name:"SMB/dont_send_in_cleartext", value:TRUE );
   }
 }
 

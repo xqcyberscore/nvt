@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_admanager_plus_detection.nasl 5038 2017-01-19 10:05:46Z teissa $
+# $Id: gb_manageengine_admanager_plus_detection.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # ManageEngine ADManager Plus Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107131");
-  script_version("$Revision: 5038 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-19 11:05:46 +0100 (Thu, 19 Jan 2017) $");
+  script_version("$Revision: 8142 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-01-19 16:11:25 +0530 (Thu, 19 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -73,7 +73,7 @@ version = version[0] + '.' + version[1] + '.' + version[2] + version[3];
 
 set_kb_item( name:"www/" + port + "/admanager/plus", value:version );
 set_kb_item( name:"admanager/plus/version", value:version );
-replace_kb_item( name:"admanager/plus/installed", value:TRUE );
+set_kb_item( name:"admanager/plus/installed", value:TRUE );
 
 cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:admanager:plus:" );
 

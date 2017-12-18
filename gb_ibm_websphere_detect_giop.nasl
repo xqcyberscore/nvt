@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_detect_giop.nasl 7922 2017-11-28 10:06:28Z cfischer $
+# $Id: gb_ibm_websphere_detect_giop.nasl 8137 2017-12-15 11:26:42Z cfischer $
 #
 # IBM WebSphere Application Server Detection Detection (GIOP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105834");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7922 $");
- script_tag(name:"last_modification", value:"$Date: 2017-11-28 11:06:28 +0100 (Tue, 28 Nov 2017) $");
+ script_version ("$Revision: 8137 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-07-29 15:04:09 +0200 (Fri, 29 Jul 2016)");
  script_name("IBM WebSphere Application Server Detection (GIOP)");
 
@@ -103,7 +103,7 @@ if( "WebSphere" >!< data ) exit( 0 );
 vers = 'unknown';
 cpe = 'cpe:/a:ibm:websphere_application_server';
 
-replace_kb_item(name:"ibm_websphere_application_server/installed", value:TRUE );
+set_kb_item(name:"ibm_websphere_application_server/installed", value:TRUE );
 
 data = parse_result( data:data );
 

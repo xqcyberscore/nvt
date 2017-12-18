@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dns_server_tcp.nasl 6786 2017-07-21 16:20:30Z cfischer $
+# $Id: dns_server_tcp.nasl 8140 2017-12-15 12:08:32Z cfischer $
 #
 # DNS Server Detection (TCP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108018");
-  script_version("$Revision: 6786 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 18:20:30 +0200 (Fri, 21 Jul 2017) $");
+  script_version("$Revision: 8140 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-22 17:08:49 +0100 (Sun, 22 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -78,7 +78,7 @@ if( isnull ( buf ) ) {
 if( strlen( buf ) > 5 ) {
   if( ord( buf[4] ) & 0x80 ) {
     set_kb_item( name:"DNS/tcp/" + port, value:TRUE );
-    replace_kb_item( name:"DNS/identified", value:TRUE );
+    set_kb_item( name:"DNS/identified", value:TRUE );
     banner = dnsVersionReq( soc:soc, proto:"tcp", port:port );
     if( banner ) report = 'The remote DNS server banner is:\n\n' + banner;
     register_service( port:port, ipproto:"tcp", proto:"domain", message:report );

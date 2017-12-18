@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuxeo_platform_detect.nasl 6761 2017-07-19 14:40:40Z cfischer $
+# $Id: gb_nuxeo_platform_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
 #
 # Nuxeo Platform Detection 
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106695");
-  script_version("$Revision: 6761 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-19 16:40:40 +0200 (Wed, 19 Jul 2017) $");
+  script_version("$Revision: 8137 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-03-27 14:18:27 +0700 (Mon, 27 Mar 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -75,7 +75,7 @@ if ("nxtimezone.js" >< res && "nxstartup.faces" >< res && "Nuxeo and respective 
     set_kb_item(name: "nuxeo_platform/version", value: version);
   }
 
-  replace_kb_item(name: "nuxeo_platform/installed", value: TRUE);
+  set_kb_item(name: "nuxeo_platform/installed", value: TRUE);
 
   cpe_vers = str_replace(string: tolower(version), find: " ", replace: "-");
   cpe = build_cpe(value: cpe_vers, exp: "([0-9lts.-]+)", base: "cpe:/a:nuxeo:platform:");

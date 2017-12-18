@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vacron_nvr_detect.nasl 7433 2017-10-13 13:18:22Z cfischer $
+# $Id: gb_vacron_nvr_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Vacron NVR IP Surveillance Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107189");
-  script_version("$Revision: 7433 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 15:18:22 +0200 (Fri, 13 Oct 2017) $");
+  script_version("$Revision: 8138 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-10-11 10:31:53 +0200 (Wed, 11 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,7 +61,7 @@ res = http_get_cache(item: "/", port: appPort);
 if ("<title>VACRON NVR LOGIN</title>" >< res && "<strong>ADVANCES IN SECURITY SOLUTION</strong>" >< res && "vacron nvr login" >< res)
 {
     version = "unknown";
-    replace_kb_item(name:"vacron_nvr/installed", value:TRUE);
+    set_kb_item(name:"vacron_nvr/installed", value:TRUE);
 
     cpe = build_cpe(value:version, base:"cpe:/a:vacron:nvr:");
     if (!cpe)

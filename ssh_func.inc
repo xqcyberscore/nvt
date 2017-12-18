@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 7979 2017-12-04 10:32:54Z cfischer $
+# $Id: ssh_func.inc 8144 2017-12-15 13:19:55Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7979 $
+# $Revision: 8144 $
 #
 ###############################################################################
 
@@ -2316,10 +2316,10 @@ function ssh_broken_random_login( port ) {
   if( ! soc = open_sock_tcp( port ) ) return;
   login = ssh_login( socket:soc, login:user, password:pass, pub:NULL, priv:NULL, passphrase:NULL );
   close( soc );
-  replace_kb_item( name:"SSH/" + port + "/broken/random_login/checked", value:TRUE );
+  set_kb_item( name:"SSH/" + port + "/broken/random_login/checked", value:TRUE );
 
   if( login == 0 ) {
-    replace_kb_item( name:"SSH/" + port + "/broken/random_login", value:TRUE );
+    set_kb_item( name:"SSH/" + port + "/broken/random_login", value:TRUE );
     return TRUE;
   }
   return;

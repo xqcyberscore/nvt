@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netbios_name_get.nasl 7328 2017-09-29 13:20:55Z cfischer $
+# $Id: netbios_name_get.nasl 8140 2017-12-15 12:08:32Z cfischer $
 #
 # Using NetBIOS to retrieve information from a Windows host
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10150");
-  script_version("$Revision: 7328 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-29 15:20:55 +0200 (Fri, 29 Sep 2017) $");
+  script_version("$Revision: 8140 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -346,7 +346,7 @@ if( strlen( result ) > 56 ) {
   }
 
   if( adapter_name == "00:00:00:00:00:00" ) {
-    replace_kb_item( name:"SMB/samba", value:TRUE );
+    set_kb_item( name:"SMB/samba", value:TRUE );
     hole_answer += string( "\nThis SMB server seems to be a SAMBA server (this is not a security risk, this is for your information). This can be told because this server claims to have a null MAC address." );
   } else {
     hole_answer += string( "\nThe remote host has the following MAC address on its adapter :\n" );

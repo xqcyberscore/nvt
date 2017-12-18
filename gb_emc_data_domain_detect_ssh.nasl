@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_data_domain_detect_ssh.nasl 5158 2017-02-01 14:53:04Z mime $
+# $Id: gb_emc_data_domain_detect_ssh.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # EMC Data Domain Detection (SSH)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140140");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5158 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-01 15:53:04 +0100 (Wed, 01 Feb 2017) $");
+ script_version ("$Revision: 8145 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2017-02-01 12:25:05 +0100 (Wed, 01 Feb 2017)");
  script_name("EMC Data Domain Detection (SSH)");
 
@@ -54,7 +54,7 @@ if( ! uname = get_kb_item( "emc/data_domain_os/uname" ) ) exit( 0 );
 
 if("Data Domain OS" >!< uname ) exit( 0 );
 
-replace_kb_item( name:"emc/data_domain/installed", value:TRUE );
+set_kb_item( name:"emc/data_domain/installed", value:TRUE );
 
 # Welcome to Data Domain OS 6.0.0.9-544198
 vb = eregmatch( pattern:'Data Domain OS ([0-9.]+[^-]+)-([0-9]+)', string:uname );

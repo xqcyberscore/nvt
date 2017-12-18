@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: X.nasl 7422 2017-10-13 08:38:16Z cfischer $
+# $Id: X.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # X Server Detection
 #
@@ -38,8 +38,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10407");
-  script_version("$Revision: 7422 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 10:38:16 +0200 (Fri, 13 Oct 2017) $");
+  script_version("$Revision: 8138 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -168,7 +168,7 @@ for( port = 6000; port < 6010; port++ ) {
         extra = "Server answered with: " + textres;
       }
       set_kb_item( name:"X11/" + port + "/open", value:TRUE );
-      replace_kb_item( name:"X11/open", value:TRUE );
+      set_kb_item( name:"X11/open", value:TRUE );
 
       register_service( port:port, proto:"X11" );
       register_and_report_cpe( app:"X Windows Server", ver:ver, base:"cpe:/a:x.org:x11:", expr:"^([0-9.]+([a-z0-9]+)?)", regPort:port, insloc:port + "/tcp", extra:extra );

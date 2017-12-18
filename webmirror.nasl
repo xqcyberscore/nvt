@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmirror.nasl 8106 2017-12-13 14:42:54Z cfischer $
+# $Id: webmirror.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # WEBMIRROR 2.0
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10662");
-  script_version("$Revision: 8106 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 15:42:54 +0100 (Wed, 13 Dec 2017) $");
+  script_version("$Revision: 8139 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -136,7 +136,7 @@ function add_auth( url ) {
     if( ! Check401 && url != "/" ) return;
 
     set_kb_item( name:"www/" + port + "/content/auth_required", value:url );
-    replace_kb_item( name:"www/content/auth_required", value:TRUE );
+    set_kb_item( name:"www/content/auth_required", value:TRUE );
     URLs_auth_hash[url] = 1;
     if( url == "/" ) RootPasswordProtected = TRUE;
   }
@@ -164,7 +164,7 @@ function add_url( url ) {
     if( strlen( ext ) && ext[0] != "/" ) {
       set_kb_item( name:"www/" + port + "/content/extensions/" + ext, value:url );
       if( ext == "action" || ext == "jsp" || ext == "do" )
-        replace_kb_item( name:"www/action_jsp_do", value:TRUE );
+        set_kb_item( name:"www/action_jsp_do", value:TRUE );
     }
 
     add_cgi_dir( dir:url, append_pattern:TRUE ); # Append the "/?PageServices and" "/?D=A"
@@ -973,7 +973,7 @@ foreach URL( URLs ) {
     URLs_hash[URL] = 1;
     if( cnt >= max_pages ) {
       if( debug ) display( "*** Max pages ", max_pages, " reached, stopping test.\n" );
-      replace_kb_item( name:"www/" + port + "/content/max_pages_reached", value:TRUE );
+      set_kb_item( name:"www/" + port + "/content/max_pages_reached", value:TRUE );
       break;
     }
   }

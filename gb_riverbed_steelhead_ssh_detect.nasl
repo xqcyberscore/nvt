@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_riverbed_steelhead_ssh_detect.nasl 6280 2017-06-06 02:31:37Z ckuersteiner $
+# $Id: gb_riverbed_steelhead_ssh_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
 #
 # Riverbed SteelHead Detection (SSH)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106845");
-  script_version("$Revision: 6280 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-06 04:31:37 +0200 (Tue, 06 Jun 2017) $");
+  script_version("$Revision: 8140 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-06-02 13:17:40 +0700 (Fri, 02 Jun 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,7 +65,7 @@ banner = get_kb_item("SSH/textbanner/" + port);
 if ("Riverbed SteelHead" >!< banner)
   exit(0);
 
-replace_kb_item(name: "riverbed/steelhead/detected", value: TRUE);
+set_kb_item(name: "riverbed/steelhead/detected", value: TRUE);
 
 version = "unknown";
 report_app = "Riverbed SteelHead";

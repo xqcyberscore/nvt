@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: kerio_firewall_admin_port.nasl 5247 2017-02-09 10:21:21Z cfi $
+# $Id: kerio_firewall_admin_port.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # Description: Kerio Personal Firewall Admin Service
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18183");
-  script_version("$Revision: 5247 $");
+  script_version("$Revision: 8139 $");
   script_bugtraq_id(13458);
   script_cve_id("CVE-2005-1062", "CVE-2005-1063");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-09 11:21:21 +0100 (Thu, 09 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Kerio Personal Firewall Admin Service");
   script_category(ACT_GATHER_INFO);
@@ -104,7 +104,7 @@ function kpf_isWeakAdminProtocol( port ) {
 port = get_unknown_port( default:44334 ); # default kpf port
 
 if( kpf_isWeakAdminProtocol( port:port ) ) {
-  replace_kb_item( name:"kpf_admin_port/detected", value:TRUE );
+  set_kb_item( name:"kpf_admin_port/detected", value:TRUE );
   register_service( port:port, proto:"kerio" );
   security_message( port:port );
   exit( 0 );

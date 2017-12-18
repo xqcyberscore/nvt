@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_detect_win.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: gb_clamav_detect_win.nasl 8146 2017-12-15 13:40:59Z cfischer $
 #
 # ClamAV Version Detection (Windows)
 #
@@ -36,10 +36,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800555");
-  script_version("$Revision: 6040 $");
+  script_version("$Revision: 8146 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ClamAV Version Detection (Windows)");
@@ -115,7 +115,7 @@ foreach key (key_list)
       }
       if(clamVer)
       {
-        replace_kb_item(name:"ClamAV/installed", value:TRUE);
+        set_kb_item(name:"ClamAV/installed", value:TRUE);
         set_kb_item(name:"ClamAV/Win/Ver", value:clamVer);
 
         ## build cpe
@@ -138,7 +138,7 @@ foreach key (key_list)
 
       if(clamVer)
       {
-        replace_kb_item(name:"ClamAV/installed", value:TRUE);
+        set_kb_item(name:"ClamAV/installed", value:TRUE);
         set_kb_item(name:"ClamAV/Win/Ver", value:clamVer);
         ## build cpe
         cpe = build_cpe(value:clamVer, exp:"^([0-9.]+)", base:"cpe:/a:clamav:clamav:");
@@ -156,7 +156,7 @@ foreach key (key_list)
   {
     if("64" >< os_arch && "x86" >!< clamPath)
     {
-      replace_kb_item(name:"ClamAV/installed", value:TRUE);
+      set_kb_item(name:"ClamAV/installed", value:TRUE);
       set_kb_item(name:"ClamAV64/Win/Ver", value:clamVer);
 
       ## Build CPE

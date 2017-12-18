@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipswitch_imail_server_detect.nasl 7484 2017-10-18 13:29:18Z cfischer $
+# $Id: gb_ipswitch_imail_server_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # Ipswitch IMail Server Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811256");
-  script_version("$Revision: 7484 $");
+  script_version("$Revision: 8145 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-18 15:29:18 +0200 (Wed, 18 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-07-26 16:06:50 +0530 (Wed, 26 Jul 2017)");
   script_name("Ipswitch IMail Server Detection");
 
@@ -59,7 +59,7 @@ include("imap_func.inc");
 
 function get_version(banner, port, service) {
 
-  replace_kb_item(name: "Ipswitch/IMail/detected", value: TRUE);
+  set_kb_item(name: "Ipswitch/IMail/detected", value: TRUE);
   version = "unknown";
   install = port + "/tcp";
 

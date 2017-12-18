@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_easy_file_sharing_web_server_detect.nasl 6076 2017-05-05 18:03:36Z cfi $
+# $Id: gb_easy_file_sharing_web_server_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # Easy File Sharing Web Server Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806517");
-  script_version("$Revision: 6076 $");
+  script_version("$Revision: 8145 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 20:03:36 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-11-05 11:28:37 +0530 (Thu, 05 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Easy File Sharing Web Server Version Detection");
@@ -67,7 +67,7 @@ if(banner && "Server: Easy File Sharing Web Server" >< banner)
   }
 
   set_kb_item(name:"www/" + easyPort + "/", value:easyVer);
-  replace_kb_item(name:"Easy/File/Sharing/WebServer/installed", value:TRUE);
+  set_kb_item(name:"Easy/File/Sharing/WebServer/installed", value:TRUE);
 
   cpe = build_cpe(value: easyVer, exp:"([0-9.]+)", base:"cpe:/a:efssoft:easy_file_sharing_web_server:");
   if(isnull(cpe))

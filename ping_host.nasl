@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ping_host.nasl 7559 2017-10-25 10:55:03Z cfischer $
+# $Id: ping_host.nasl 8140 2017-12-15 12:08:32Z cfischer $
 #
 # Ping Host
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("$Revision: 7559 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 12:55:03 +0200 (Wed, 25 Oct 2017) $");
+  script_version("$Revision: 8140 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -206,9 +206,9 @@ if( "yes" >< use_nmap ) {
     } else if( res && "Nmap done" >< res && "Host seems down" >< res ) {
       # For later use in e.g. os_fingerprint.nasl
       if( TARGET_IS_IPV6() )
-        replace_kb_item( name:"ICMPv6/EchoRequest/failed", value:TRUE );
+        set_kb_item( name:"ICMPv6/EchoRequest/failed", value:TRUE );
       else
-        replace_kb_item( name:"ICMPv4/EchoRequest/failed", value:TRUE );
+        set_kb_item( name:"ICMPv4/EchoRequest/failed", value:TRUE );
     }
   }
 
@@ -317,7 +317,7 @@ if( "yes" >< use_nmap ) {
         }
       }
       # For later use in e.g. os_fingerprint.nasl
-      replace_kb_item( name:"ICMPv6/EchoRequest/failed", value:TRUE );
+      set_kb_item( name:"ICMPv6/EchoRequest/failed", value:TRUE );
     } else {
 
       # ICMPv4
@@ -358,7 +358,7 @@ if( "yes" >< use_nmap ) {
         }
       }
       # For later use in e.g. os_fingerprint.nasl
-      replace_kb_item( name:"ICMPv4/EchoRequest/failed", value:TRUE );
+      set_kb_item( name:"ICMPv4/EchoRequest/failed", value:TRUE );
     }
   }
 
@@ -383,7 +383,7 @@ if( "yes" >< report_dead ) {
 }
 
 if( "yes" >< mark_dead ) {
-  replace_kb_item( name:"Host/dead", value:TRUE );
+  set_kb_item( name:"Host/dead", value:TRUE );
 }
 
 exit( 0 );

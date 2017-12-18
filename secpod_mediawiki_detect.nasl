@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mediawiki_detect.nasl 6286 2017-06-06 14:13:46Z cfischer $
+# $Id: secpod_mediawiki_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
 #
 # MediaWiki Version Detection
 #
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900420");
-  script_version("$Revision: 6286 $");
+  script_version("$Revision: 8146 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-06 16:13:46 +0200 (Tue, 06 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-12-29 13:55:43 +0100 (Mon, 29 Dec 2008)");
   script_name("MediaWiki Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -80,7 +80,7 @@ foreach dir( make_list_unique( "/wiki", "/mediawiki", cgi_dirs( port:port ) ) ) 
       }
     }
 
-    replace_kb_item( name:"mediawiki/installed", value:TRUE );
+    set_kb_item( name:"mediawiki/installed", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:mediawiki:mediawiki:" );
     if( isnull( cpe ) )

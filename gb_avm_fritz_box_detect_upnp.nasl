@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_detect_upnp.nasl 4956 2017-01-05 16:30:47Z cfi $
+# $Id: gb_avm_fritz_box_detect_upnp.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # AVM FRITZ!Box Detection (UPnP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108038");
-  script_version("$Revision: 4956 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-05 17:30:47 +0100 (Thu, 05 Jan 2017) $");
+  script_version("$Revision: 8145 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-01-05 13:21:05 +0100 (Thu, 05 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,7 +55,7 @@ if( ! get_udp_port_state( port ) ) exit( 0 );
 banner = get_kb_item( "upnp/" + port + "/server" );
 if( egrep( pattern:"SERVER: FRITZ!Box", string:banner, icase:TRUE ) ) {
 
-  replace_kb_item( name:"avm_fritz_box/detected", value:TRUE );
+  set_kb_item( name:"avm_fritz_box/detected", value:TRUE );
   set_kb_item( name:"avm_fritz_box/upnp/detected", value:TRUE );
   set_kb_item( name:"avm_fritz_box/upnp/port", value:port );
   replace_kb_item( name:"avm_fritz_box/upnp/" + port + "/concluded", value:banner );

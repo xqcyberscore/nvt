@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quixplorer_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_quixplorer_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # QuiXplorer Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800630");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5888 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_version("$Revision: 8142 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-06-16 15:46:51 +0200 (Tue, 16 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("QuiXplorer Version Detection");
@@ -74,7 +74,7 @@ foreach dir( make_list_unique( "/quixplorer", "/quixplore", cgi_dirs( port:port 
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/"+ port + "/QuiXplorer", value:tmp_version );
-    replace_kb_item( name:"QuiXplorer/installed", value:TRUE );
+    set_kb_item( name:"QuiXplorer/installed", value:TRUE );
 
     ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", base:"cpe:/a:claudio_klingler:quixplorer:" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cmscout_detect.nasl 5843 2017-04-03 13:42:51Z cfi $
+# $Id: gb_cmscout_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # CMScout Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800790");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5843 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:42:51 +0200 (Mon, 03 Apr 2017) $");
+  script_version("$Revision: 8139 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-09 08:34:53 +0200 (Wed, 09 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("CMScout Version Detection");
@@ -75,7 +75,7 @@ foreach dir( make_list_unique( "/", "/cmscout", "/cmscout", cgi_dirs( port:port 
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/CMScout", value:tmp_version );
-    replace_kb_item( name:"CMScout/installed", value:TRUE );
+    set_kb_item( name:"CMScout/installed", value:TRUE );
 
     ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:cmscout:cmscout:" );

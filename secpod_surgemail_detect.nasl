@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_surgemail_detect.nasl 7478 2017-10-18 11:11:40Z asteins $
+# $Id: secpod_surgemail_detect.nasl 8144 2017-12-15 13:19:55Z cfischer $
 #
 # SurgeMail Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900839");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7478 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-18 13:11:40 +0200 (Wed, 18 Oct 2017) $");
+  script_version("$Revision: 8144 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-09-15 09:32:43 +0200 (Tue, 15 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -59,7 +59,7 @@ include("pop3_func.inc");
 banner = get_http_banner(port:7110);
 
 if("surgemail" >< banner){
-  replace_kb_item(name:"SurgeMail/Installed", value:TRUE);
+  set_kb_item(name:"SurgeMail/Installed", value:TRUE);
 
   version = "unknown";
   ver = eregmatch(pattern:"Version ([0-9.]+)([a-z][0-9]?(-[0-9])?)?", string:banner);
@@ -105,7 +105,7 @@ if(!get_port_state(surgemail_port)){
 rcvRes = http_get_cache(item:"/", port:surgemail_port);
 
 if(egrep(pattern:"SurgeMail", string:rcvRes, icase:1)){
-  replace_kb_item(name:"SurgeMail/Installed", value:TRUE);
+  set_kb_item(name:"SurgeMail/Installed", value:TRUE);
 
   smtpPorts = get_kb_list("Services/smtp");
   if(!smtpPorts) smtpPorts = make_list(25);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pqi_air_pen_express_remote_detect.nasl 6007 2017-04-21 14:22:35Z cfi $
+# $Id: gb_pqi_air_pen_express_remote_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # PQI Air Pen Express Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807535");
-  script_version("$Revision: 6007 $");
+  script_version("$Revision: 8143 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 16:22:35 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-02-18 10:58:19 +0530 (Thu, 18 Feb 2016)");
   script_name("PQI Air Pen Express Remote Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -65,7 +65,7 @@ if( rcvRes && '<TITLE>Air Pen express' >< rcvRes ) {
   version = "unknown";
 
   set_kb_item(name:"www/" + pqiPort + "/PQI/Air/Pen/Express", value:version);
-  replace_kb_item(name:"PQI/Air/Pen/Express/Installed", value:TRUE);
+  set_kb_item(name:"PQI/Air/Pen/Express/Installed", value:TRUE);
 
   cpe = "cpe:/a:pqi:air:pen:express";
 

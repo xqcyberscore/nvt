@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: hp_data_protector_installed.nasl 6436 2017-06-27 06:33:28Z cfischer $
+# $Id: hp_data_protector_installed.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # HP/HPE (OpenView Storage) Data Protector Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19601");
-  script_version("$Revision: 6436 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 08:33:28 +0200 (Tue, 27 Jun 2017) $");
+  script_version("$Revision: 8141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -99,7 +99,7 @@ if( "HP OpenView Storage Data Protector" >< response ||
   # In case the service wasn't identified before
   register_service( port:port, proto:"hp_dataprotector" );
 
-  replace_kb_item( name:"hp_data_protector/installed", value:TRUE );
+  set_kb_item( name:"hp_data_protector/installed", value:TRUE );
   set_kb_item( name:"hp_data_protector/" + port + "/version", value:versions[1] );
   set_kb_item( name:"hp_data_protector/" + port + "/build", value:builds[1] );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dns_server.nasl 7366 2017-10-06 10:55:39Z cfischer $
+# $Id: dns_server.nasl 8146 2017-12-15 13:40:59Z cfischer $
 #
 # DNS Server Detection (UDP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100069");
-  script_version("$Revision: 7366 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-06 12:55:39 +0200 (Fri, 06 Oct 2017) $");
+  script_version("$Revision: 8146 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-22 17:08:49 +0100 (Sun, 22 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -77,7 +77,7 @@ if( isnull ( buf ) ) {
 if( strlen( buf ) > 3 ) {
   if( ord( buf[2] ) & 0x80 ) {
     set_kb_item( name:"DNS/udp/" + port, value:TRUE );
-    replace_kb_item( name:"DNS/identified", value:TRUE );
+    set_kb_item( name:"DNS/identified", value:TRUE );
     register_service( port:port, ipproto:"udp", proto:"domain" );
     banner = dnsVersionReq( soc:soc, proto:"udp", port:port );
     if( banner ) report = 'The remote DNS server banner is:\n\n' + banner;

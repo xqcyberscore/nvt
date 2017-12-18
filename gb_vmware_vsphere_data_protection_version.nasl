@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vsphere_data_protection_version.nasl 4861 2016-12-28 12:22:34Z mime $
+# $Id: gb_vmware_vsphere_data_protection_version.nasl 8144 2017-12-15 13:19:55Z cfischer $
 #
 # vSphere Data Protection Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140102");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 4861 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-28 13:22:34 +0100 (Wed, 28 Dec 2016) $");
+ script_version ("$Revision: 8144 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-12-28 09:34:09 +0100 (Wed, 28 Dec 2016)");
  script_name("vSphere Data Protection Detection");
 
@@ -54,7 +54,7 @@ if( ! rls = get_kb_item( "vmware/vSphere_Data_Protection/rls" ) ) exit( 0 );
 cpe = 'cpe:/a:vmware:vsphere_data_protection';
 version ="unknown";
 
-replace_kb_item( name:"vmware/vSphere_Data_Protection/installed", value:TRUE );
+set_kb_item( name:"vmware/vSphere_Data_Protection/installed", value:TRUE );
 
 # <product>vSphere Data Protection 6.1</product>
 # <version>6.1.0.173</version>

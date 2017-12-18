@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsa_detect.nasl 6845 2017-08-03 14:41:54Z cfischer $
+# $Id: gb_gsa_detect.nasl 8135 2017-12-15 10:45:19Z cfischer $
 #
 # Greenbone Security Assistant Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103841");
-  script_version("$Revision: 6845 $");
+  script_version("$Revision: 8135 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-03 16:41:54 +0200 (Thu, 03 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 11:45:19 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-11-29 14:30:41 +0100 (Fri, 29 Nov 2013)");
   script_name("Greenbone Security Assistant Detection");
   script_category(ACT_GATHER_INFO);
@@ -65,9 +65,10 @@ if( buf =~ "^HTTP/1\.[01] 200" && "Greenbone Security Assistant" >< buf ) {
   version = eregmatch( string:buf, pattern:'<span class="version">Version ([^<]+)</span>', icase:FALSE );
   if( ! isnull( version[1] ) ) vers = version[1];
 
-  replace_kb_item( name:"gsa/installed", value:TRUE );
+  set_kb_item( name:"gsa/installed", value:TRUE );
   set_kb_item( name:"gsa/" + port + "/version", value:vers );
-  replace_kb_item( name:"openvas_framework_component/installed", value:TRUE );
+  set_kb_item( name:"gsa_or_gsa_ng/" + port + "/detected", value:TRUE );
+  set_kb_item( name:"openvas_framework_component/installed", value:TRUE );
 
   cpe = build_cpe( value:vers, exp:"^([0-9.-]+)", base:"cpe:/a:greenbone:greenbone_security_assistant:" );
   if( isnull( cpe ) )
@@ -90,9 +91,10 @@ if( buf =~ "^HTTP/1\.[01] 200" && "<title>Greenbone Security Assistant NG</title
 
   vers = "unknown";
 
-  replace_kb_item( name:"gsa_ng/installed", value:TRUE );
+  set_kb_item( name:"gsa_ng/installed", value:TRUE );
   set_kb_item( name:"gsa_ng/" + port + "/version", value:vers );
-  replace_kb_item( name:"openvas_components/installed", value:TRUE );
+  set_kb_item( name:"gsa_or_gsa_ng/" + port + "/detected", value:TRUE );
+  set_kb_item( name:"openvas_components/installed", value:TRUE );
 
   cpe = build_cpe( value:vers, exp:"^([0-9.-]+)", base:"cpe:/a:greenbone:greenbone_security_assistant_ng:" );
   if( isnull( cpe ) )

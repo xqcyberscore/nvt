@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_cpe_detect.nasl 6909 2017-08-11 13:38:48Z asteins $
+# $Id: gb_windows_cpe_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # Windows Application CPE Detection
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96207");
-  script_version("$Revision: 6909 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-11 15:38:48 +0200 (Fri, 11 Aug 2017) $");
+  script_version("$Revision: 8143 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-04-26 12:54:47 +0200 (Tue, 26 Apr 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -2228,7 +2228,7 @@ if (ipnathlp)register_host_detail(name:app, value:"cpe:/a:microsoft:windows_nt_h
 
 if (ExchProductMajor || Exch2010ProductMajor || Exch2013ProductMajor){
   cpe = "cpe:/a:microsoft:exchange_server";
-  replace_kb_item( name:"MS/Exchange/Server/installed", value:TRUE );
+  set_kb_item( name:"MS/Exchange/Server/installed", value:TRUE );
   if (ExchProductMajor != "0"){
     if(ExchSPBuild == "837")register_host_detail(name:app, value:cpe + ":4.0", desc:SCRIPT_DESC);
     else if(ExchSPBuild == "1457")register_host_detail(name:app, value:cpe + ":5.0", desc:SCRIPT_DESC);

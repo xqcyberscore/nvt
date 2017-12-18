@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_detect_lin.nasl 8087 2017-12-12 13:12:04Z teissa $
+# $Id: gb_clamav_detect_lin.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # CalmAV Version Detection (Linux)
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800553");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8087 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
+ script_version("$Revision: 8138 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("ClamAV Version Detection (Linux)");
@@ -70,7 +70,7 @@ foreach binaryFile (getPath)
                           ver_pattern:"ClamAV ([0-9.]+)", sock:sock);
   if(avVer[1] != NULL)
   {
-    replace_kb_item(name:"ClamAV/installed", value:TRUE);
+    set_kb_item(name:"ClamAV/installed", value:TRUE);
     set_kb_item(name:"ClamAV/Lin/Ver", value:avVer[1]);
     log_message(data:"Clam Anti Virus version " + avVer[1] + " running at" + 
                        " location " + binaryFile + " was detected on the host");

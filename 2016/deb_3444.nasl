@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3444.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3444.nasl 8131 2017-12-15 07:30:28Z teissa $
 # Auto-generated from advisory DSA 3444-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703444);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703444");
+    script_version("$Revision: 8131 $");
     script_cve_id("CVE-2016-1564");
     script_name("Debian Security Advisory DSA 3444-1 (wordpress - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-15 08:30:28 +0100 (Fri, 15 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-01-13 00:00:00 +0100 (Wed, 13 Jan 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

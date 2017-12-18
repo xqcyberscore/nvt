@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_get_installed_sw.nasl 7238 2017-09-22 15:12:48Z cfischer $
+# $Id: gb_snmp_get_installed_sw.nasl 8144 2017-12-15 13:19:55Z cfischer $
 #
 # SNMP Read Installed Software Packages
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106913");
-  script_version("$Revision: 7238 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-22 17:12:48 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 8144 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-06-29 15:32:58 +0700 (Thu, 29 Jun 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -77,7 +77,7 @@ for (i=1; i <= 800; i++) {
 }
 
 if (sw) {
-  replace_kb_item(name: "SNMP/installed_software/available", value: TRUE);
+  set_kb_item(name: "SNMP/installed_software/available", value: TRUE);
   set_kb_item(name: "SNMP/" + port + "/installed_software", value: sw);
 }
 

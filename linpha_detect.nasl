@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: linpha_detect.nasl 5255 2017-02-10 08:56:42Z cfi $
+# $Id: linpha_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # LinPHA Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100119");
-  script_version("$Revision: 5255 $");
+  script_version("$Revision: 8141 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 09:56:42 +0100 (Fri, 10 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-10 19:06:18 +0200 (Fri, 10 Apr 2009)");
   script_name("LinPHA Detection");
   script_category(ACT_GATHER_INFO);
@@ -79,7 +79,7 @@ foreach dir( make_list_unique( "/linpha", "/image", "/album", cgi_dirs( port:por
 
     tmp_version = vers + " under " + install;
     set_kb_item( name:"www/" + port + "/linpha", value:tmp_version );
-    replace_kb_item( name:"linpha/installed", value:TRUE );
+    set_kb_item( name:"linpha/installed", value:TRUE );
 
     cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:linpha:linpha:" );
     if( isnull( cpe ) )

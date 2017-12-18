@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_detect_win.nasl 7582 2017-10-26 11:56:51Z cfischer $
+# $Id: gb_firefox_detect_win.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # Mozilla Firefox Version Detection (Windows)
 #
@@ -42,10 +42,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800014");
-  script_version("$Revision: 7582 $");
+  script_version("$Revision: 8142 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Mozilla Firefox Version Detection (Windows)");
@@ -251,7 +251,7 @@ foreach key (key_list)
     if(ESR && location)
     {
       set_kb_item(name:"Firefox-ESR/Win/Ver", value:foxVer);
-      replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE );
+      set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE );
   
       ## build cpe
       cpe = build_cpe(value:foxVer, exp:"^([0-9.]+)([0-9a-zA-Z]*)", base:"cpe:/a:mozilla:firefox_esr:");
@@ -272,8 +272,8 @@ foreach key (key_list)
     else if(location)
     {
       set_kb_item(name:"Firefox/Win/Ver", value:foxVer);
-      replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE );
-      replace_kb_item(name:"Firefox/Linux_or_Win/installed", value:TRUE);
+      set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE );
+      set_kb_item(name:"Firefox/Linux_or_Win/installed", value:TRUE);
 
       ## build cpe
       cpe = build_cpe(value:foxVer, exp:"^([0-9.]+)([0-9a-zA-Z]*)", base:"cpe:/a:mozilla:firefox:");

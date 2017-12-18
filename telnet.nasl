@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: telnet.nasl 7718 2017-11-09 15:45:46Z cfischer $
+# $Id: telnet.nasl 8147 2017-12-15 13:51:17Z cfischer $
 #
 # Check for Telnet Server
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100074");
-  script_version("$Revision: 7718 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-09 16:45:46 +0100 (Thu, 09 Nov 2017) $");
+  script_version("$Revision: 8147 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:51:17 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-24 15:43:44 +0100 (Tue, 24 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -131,11 +131,11 @@ foreach port( ports ) {
   if( no_telnet_banner( banner:banner ) ) continue;
 
   if( "login:" >!< tolower( banner ) )
-    replace_kb_item( name:'telnet/' + port + '/no_login_banner', value:TRUE ); # for check_account()
+    set_kb_item( name:'telnet/' + port + '/no_login_banner', value:TRUE ); # for check_account()
 
   register_service( port:port, proto:"telnet", message:"A telnet server seems to be running on this port" );
   set_telnet_banner( port:port, banner:banner );
-  replace_kb_item( name:"telnet/banner/available", value:TRUE );
+  set_kb_item( name:"telnet/banner/available", value:TRUE );
 
   log_message( port:port, data:'A telnet server seems to be running on this port' );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ldap_detect.nasl 5230 2017-02-08 10:00:04Z cfi $
+# $Id: ldap_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # LDAP Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100082");
-  script_version("$Revision: 5230 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 11:00:04 +0100 (Wed, 08 Feb 2017) $");
+  script_version("$Revision: 8145 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-27 12:39:47 +0100 (Fri, 27 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,7 +58,7 @@ port = get_unknown_port( default:389 );
 
 if( ldap_alive( port:port ) ) {
   register_service( port:port, proto:"ldap" );
-  replace_kb_item( name:"ldap/detected", value:TRUE );
+  set_kb_item( name:"ldap/detected", value:TRUE );
   if( is_ldapv3( port:port ) ) report = "The LDAP Server supports LDAPv3.";
   log_message( port:port, data:report );
 }

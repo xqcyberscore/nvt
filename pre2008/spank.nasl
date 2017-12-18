@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: spank.nasl 6315 2017-06-12 10:34:26Z cfischer $
+# $Id: spank.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # spank.c
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(11901);
-  script_version("$Revision: 6315 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-12 12:34:26 +0200 (Mon, 12 Jun 2017) $");
+  script_version("$Revision: 8145 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -117,7 +117,7 @@ preventing you from working properly.
 Solution: contact your operating system vendor for a patch.
            Filter out multicast addresses (224.0.0.0/4)";
   security_message(port: 0, proto: "tcp", data: report);
-  replace_kb_item( name:"Host/dead", value:TRUE );
+  set_kb_item( name:"Host/dead", value:TRUE );
 }
 else if (r)
   security_message(port: 0, proto: "tcp");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_ssh_detect.nasl 6233 2017-05-29 10:07:04Z ckuerste $
+# $Id: gb_cisco_pis_ssh_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
 #
 # Cisco Prime Infrastructure Detection (SSH)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105612");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6233 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-29 12:07:04 +0200 (Mon, 29 May 2017) $");
+ script_version ("$Revision: 8137 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-04-20 15:22:13 +0200 (Wed, 20 Apr 2016)");
  script_name("Cisco Prime Infrastructure Detection (SSH)");
 
@@ -56,7 +56,7 @@ if( ! system = get_kb_item( "cisco_pis/show_ver" ) ) exit( 0 );
 
 if( "Cisco Prime Infrastructure" >!< system ) exit( 0 );
 
-replace_kb_item( name:"cisco/pis/detected", value:TRUE );
+set_kb_item( name:"cisco/pis/detected", value:TRUE );
 
 cpe = 'cpe:/a:cisco:prime_infrastructure';
 vers = 'unknown';

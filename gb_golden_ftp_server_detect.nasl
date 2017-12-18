@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_golden_ftp_server_detect.nasl 6515 2017-07-04 11:54:15Z cfischer $
+# $Id: gb_golden_ftp_server_detect.nasl 8147 2017-12-15 13:51:17Z cfischer $
 #
 # Golden FTP Server Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801072");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6515 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
+  script_version("$Revision: 8147 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:51:17 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-12-05 12:49:16 +0100 (Sat, 05 Dec 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Golden FTP Server Version Detection");
@@ -64,7 +64,7 @@ if(("220 Golden FTP Server" >< banner) && ("Pro"  >!<  banner))
     set_kb_item(name:"Golden/FTP/Free/Ver", value: version);
   }
 
-  replace_kb_item(name: "Golden/FTP/Free_or_Pro/installed", value: TRUE);
+  set_kb_item(name: "Golden/FTP/Free_or_Pro/installed", value: TRUE);
   set_kb_item(name: "Golden/FTP/Free/installed", value: TRUE);
 
   cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:kmint21:golden_ftp_server:");
@@ -89,7 +89,7 @@ if("220 Golden FTP Server Pro" >< banner)
     set_kb_item(name: "Golden/FTP/Pro/Ver", value: version);
   }
 
-  replace_kb_item(name: "Golden/FTP/Free_or_Pro/installed", value: TRUE);
+  set_kb_item(name: "Golden/FTP/Free_or_Pro/installed", value: TRUE);
   set_kb_item(name: "Golden/FTP/Pro/installed", value: TRUE);
 
   cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:kmint21:golden_ftp_server:");

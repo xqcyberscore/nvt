@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_soliddb_detect.nasl 7268 2017-09-26 08:43:43Z cfischer $
+# $Id: gb_ibm_soliddb_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # SolidDB Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100721");
-  script_version("$Revision: 7268 $");
+  script_version("$Revision: 8139 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 10:43:43 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-21 19:56:46 +0200 (Wed, 21 Jul 2010)");
   script_name("SolidDB Detection");
   script_category(ACT_GATHER_INFO);
@@ -129,7 +129,7 @@ if( ( len == 35 || len >= 27 ) &&
 
     cpe = "cpe:/a:ibm:soliddb";
 
-    replace_kb_item( name:"IBM-soliddb/installed", value:TRUE );
+    set_kb_item( name:"IBM-soliddb/installed", value:TRUE );
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"IBM solidDB Server",
@@ -139,7 +139,7 @@ if( ( len == 35 || len >= 27 ) &&
                                               port:port );
   } else {
 
-    replace_kb_item( name:"IBM-soliddb/installed", value:TRUE );
+    set_kb_item( name:"IBM-soliddb/installed", value:TRUE );
     set_kb_item( name:"soliddb/" + port + "/version", value:vers );
 
     ## if build version is required you need to use the get_kb_item() instead of get_app_version() in vulnerable nvt.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openoffice_unquoted_search_path_n_code_exec_vuln.nasl 7963 2017-12-01 07:19:17Z santu $
+# $Id: gb_apache_openoffice_unquoted_search_path_n_code_exec_vuln.nasl 8149 2017-12-15 14:58:09Z cfischer $
 #
 # Apache OpenOffice 'Unquoted Search Path' And Remote Code Execution Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812223");
-  script_version("$Revision: 7963 $");
+  script_version("$Revision: 8149 $");
   script_cve_id("CVE-2016-6803", "CVE-2016-6804");
   script_bugtraq_id(94418, 93774);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:19:17 +0100 (Fri, 01 Dec 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 15:58:09 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-22 15:10:57 +0530 (Wed, 22 Nov 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Apache OpenOffice 'Unquoted Search Path' And Remote Code Execution Vulnerabilities");

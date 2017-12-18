@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vnc_security_types.nasl 4469 2016-11-10 17:35:07Z cfi $
+# $Id: vnc_security_types.nasl 8146 2017-12-15 13:40:59Z cfischer $
 #
 # VNC security types
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19288");
-  script_version("$Revision: 4469 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-10 18:35:07 +0100 (Thu, 10 Nov 2016) $");
+  script_version("$Revision: 8146 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -103,7 +103,7 @@ if( major == 3 && minor >= 3 && minor < 7 ) {
   if( rfb_sec[ st ] ) report = strcat( report, ' (', rfb_sec[st], ')' );
   log_message( port:port, data:report );
   replace_kb_item( name:"vnc/" + port + "/security_types", value:st );
-  replace_kb_item( name:"vnc/security_types", value:TRUE );
+  set_kb_item( name:"vnc/security_types", value:TRUE );
 
 } else if( major > 3 || minor >= 7 ) {
 
@@ -139,7 +139,7 @@ if( major == 3 && minor >= 3 && minor < 7 ) {
       }
       st = ord( r );
       replace_kb_item( name:"vnc/" + port + "/security_types", value:st );
-      replace_kb_item( name:"vnc/security_types", value:TRUE );
+      set_kb_item( name:"vnc/security_types", value:TRUE );
       if( rfb_sec[st] ) {
         report = strcat( report, '+ ', st, ' (', rfb_sec[st], ')\n' );
       } else {

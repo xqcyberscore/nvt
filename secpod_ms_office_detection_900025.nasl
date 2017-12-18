@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_detection_900025.nasl 7153 2017-09-15 15:03:32Z cfischer $
+# $Id: secpod_ms_office_detection_900025.nasl 8144 2017-12-15 13:19:55Z cfischer $
 #
 # Microsoft Office Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900025");
-  script_version("$Revision: 7153 $");
+  script_version("$Revision: 8144 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 17:03:32 +0200 (Fri, 15 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Office Version Detection");
@@ -115,7 +115,7 @@ foreach key (key_list)
         }
 
           set_kb_item(name:"MS/Office/Viewer/Ver", value:MSOffVer);
-          replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
+          set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
           build_report(app:MSOffName, ver:MSOffVer, insloc:MSOffLoc, concluded:MSOffVer,
                        exp:"^([0-9.]+)", base:"cpe:/a:microsoft:office_word_viewer:");
@@ -124,7 +124,7 @@ foreach key (key_list)
           if("64" >< os_arch && "Wow6432Node" >!< key && "32-bit" >!< MSOffName)
           {
             set_kb_item(name:"MS/Office/Viewer64/Ver", value:MSOffVer);
-            replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
+            set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
             build_report(app:MSOffName, ver:MSOffVer, insloc:MSOffLoc, concluded:MSOffVer,
                          exp:"^([0-9.]+)", base:"cpe:/a:microsoft:office_word_viewer:x64:");
@@ -154,7 +154,7 @@ foreach key (key_list)
             ##  Set the version for 32 bit App on 64 bit OS
             set_kb_item(name:"MS/Office/InstallPath", value:MSOffLoc);
             set_kb_item(name:"MS/Office/Ver", value:MSOffVer);
-            replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE ); 
+            set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE ); 
 
             ## build cpe and store it as host_detail
             for (i = 0; i < MAX-1; i = i + 2)
@@ -169,7 +169,7 @@ foreach key (key_list)
             if( "x64" >< os_arch && "Wow6432Node" >!< key && "32-bit" >!< MSOffName)
             {
               set_kb_item(name:"MS/Office64/Ver", value:MSOffVer);
-              replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE ); 
+              set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE ); 
 
               ## build cpe and store it as host_detail
               for (i = 0; i < MAX-1; i = i + 2)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_ssh_credentials.nasl 7062 2017-09-05 16:35:06Z cfischer $
+# $Id: default_ssh_credentials.nasl 8140 2017-12-15 12:08:32Z cfischer $
 #
 # SSH Brute Force Logins With Default Credentials
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108013");
-  script_version("$Revision: 7062 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 18:35:06 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 8140 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-09-06 14:38:09 +0200 (Tue, 06 Sep 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,7 +71,7 @@ c = 0;
 d = script_get_preference( "Seconds to wait between probes" );
 if( int( d ) > 0 ) delay = int( d );
 
-replace_kb_item( name:"default_ssh_credentials/started", value:TRUE );
+set_kb_item( name:"default_ssh_credentials/started", value:TRUE );
 
 foreach credential( credentials ) {
 

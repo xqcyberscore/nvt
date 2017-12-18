@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 8129 2017-12-14 17:51:27Z cfischer $
+# $Id: http_func.inc 8150 2017-12-15 17:08:06Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8129 $
+# $Revision: 8150 $
 #
 ###############################################################################
 
@@ -492,9 +492,10 @@ function can_host_php( port ) {
   if( get_kb_item( "www/" + port + "/PHP" ) ) return TRUE;
 
   files = get_kb_list( "www/" + port + "/content/extensions/php*" );
-  if( ! isnull( files ) ) {
-    return TRUE; # Hosting .php* files
-  }
+  if( ! isnull( files ) ) return TRUE; # Hosting .php* files
+
+  if( get_kb_item( "greenbone/gos/http/" + port + "/detected" ) ) return FALSE;
+  if( get_kb_item( "gsa_or_gsa_ng/" + port + "/detected" ) ) return FALSE;
 
   banner = get_http_banner( port:port );
   if( ! banner ) {
@@ -521,7 +522,11 @@ function can_host_php( port ) {
   if( egrep( pattern:"^Server:.*", string:banner, icase:TRUE ) ) {
     return FALSE; # Unknown web server, should be added above if we know that it can host a PHP website
   } else {
-    return TRUE; # Server: banner hidden - might be able to host a PHP website
+    if( "user-agent: loolwsd wopi" >< banner || "x-powered-by: express" >< banner ) {
+      return FALSE; # We know that this can't host a PHP website
+    } else {
+      return TRUE; # Server: banner hidden - might be able to host a PHP website
+    }
   }
 }
 
@@ -535,9 +540,10 @@ function can_host_asp( port ) {
   }
 
   files = get_kb_list( "www/" + port + "/content/extensions/asp*" );
-  if( ! isnull( files ) ) {
-    return TRUE; # Hosting .asp / .aspx files
-  }
+  if( ! isnull( files ) ) return TRUE; # Hosting .asp / .aspx files
+
+  if( get_kb_item( "greenbone/gos/http/" + port + "/detected" ) ) return FALSE;
+  if( get_kb_item( "gsa_or_gsa_ng/" + port + "/detected" ) ) return FALSE;
 
   banner = get_http_banner( port:port );
   if( ! banner ) {
@@ -563,7 +569,11 @@ function can_host_asp( port ) {
   if( egrep( pattern:"^Server:.*", string:banner, icase:TRUE ) ) {
     return FALSE; # Unknown web server, should be added above if we know that it can host a ASP/ASP.NET website
   } else {
-    return TRUE; # Server: banner hidden - might be able to host a ASP/ASP.NET website
+    if( "user-agent: loolwsd wopi" >< banner || "x-powered-by: express" >< banner ) {
+      return FALSE; # We know that this can't host a ASP/ASP.NET website
+    } else {
+      return TRUE; # Server: banner hidden - might be able to host a ASP/ASP.NET website
+    }
   }
 }
 

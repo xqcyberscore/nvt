@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_aem_remote_detect.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_adobe_aem_remote_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # Adobe Experience Manager Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807067");
-  script_version("$Revision: 7006 $");
+  script_version("$Revision: 8139 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-02-11 14:43:49 +0530 (Thu, 11 Feb 2016)");
   script_name("Adobe Experience Manager Remote Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -76,7 +76,7 @@ if( rcvRes =~ "HTTP/1\.. 200" && ( "<title>AEM Sign In" >< rcvRes ||
     sndReq = http_get( item:url, port:port );
     rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
     if( rcvRes =~ "HTTP/1.. 401" && "OSGi Management Console" >< rcvRes ) {
-      replace_kb_item( name:"www/content/auth_required", value:TRUE );
+      set_kb_item( name:"www/content/auth_required", value:TRUE );
       set_kb_item( name:"www/" + port + "/content/auth_required", value:url );
       extra = "The OSGi Management Console is reachable at: " + report_vuln_url( port:port, url:url, url_only:TRUE );
       break;

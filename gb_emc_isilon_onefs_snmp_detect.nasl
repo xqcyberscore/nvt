@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_onefs_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_emc_isilon_onefs_snmp_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
 #
 # EMC Isilon OneFS Devices Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106552");
-  script_version("$Revision: 7236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 8140 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-01-30 15:26:27 +0700 (Mon, 30 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -69,7 +69,7 @@ if ("Isilon OneFS" >< sysdesc) {
     set_kb_item(name: "emc_isilon_onefs/version", value: version);
   }
 
-  replace_kb_item(name: "emc_isilon_onefs/detected", value: TRUE);
+  set_kb_item(name: "emc_isilon_onefs/detected", value: TRUE);
 
   cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/o:emc:isilon_onefs:");
   if (!cpe)

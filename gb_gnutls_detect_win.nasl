@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnutls_detect_win.nasl 6516 2017-07-04 12:20:47Z cfischer $
+# $Id: gb_gnutls_detect_win.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # GnuTLS Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800916");
-  script_version("$Revision: 6516 $");
+  script_version("$Revision: 8143 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-02-03 13:43:16 +0530 (Mon, 03 Feb 2014)");
   script_tag(name:"qod_type", value:"registry");
   script_name("GnuTLS Version Detection (Windows)");
@@ -103,7 +103,7 @@ foreach key (key_list)
 
       if(gnuTLSName)
       {
-        replace_kb_item(name:"GnuTLS_or_OpenSSL/Win/Installed", value:TRUE);
+        set_kb_item(name:"GnuTLS_or_OpenSSL/Win/Installed", value:TRUE);
         set_kb_item(name:"GnuTLS/Win/Ver", value:gnuTLSName);
 
         ## build cpe
@@ -116,7 +116,7 @@ foreach key (key_list)
 
         if("x64" >< osArch && "Wow6432Node" >!< key)
         {
-          replace_kb_item(name:"GnuTLS_or_OpenSSL/Win/Installed", value:TRUE);
+          set_kb_item(name:"GnuTLS_or_OpenSSL/Win/Installed", value:TRUE);
           set_kb_item(name:"GnuTLS64/Win/Ver", value:gnuTLSName);
 
           ## build cpe

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_detect_win.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_openssl_detect_win.nasl 8144 2017-12-15 13:19:55Z cfischer $
 #
 # OpenSSL Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800257");
-  script_version("$Revision: 7000 $");
+  script_version("$Revision: 8144 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("OpenSSL Version Detection (Windows)");
@@ -104,7 +104,7 @@ foreach key (key_list)
       sslPath = registry_get_sz(key:key + item, item:"InstallLocation");
       if(sslver[0] != NULL)
       {
-        replace_kb_item(name:"GnuTLS_or_OpenSSL/Win/Installed", value:TRUE);
+        set_kb_item(name:"GnuTLS_or_OpenSSL/Win/Installed", value:TRUE);
         set_kb_item(name:"OpenSSL/Win/Ver", value:sslver[0]);
 
         ## build cpe and store it as host_detail
@@ -118,7 +118,7 @@ foreach key (key_list)
         ## 64 bit apps on 64 bit platform
         if("x64" >< os_arch && "Wow6432Node" >!< key)
         {
-          replace_kb_item(name:"GnuTLS_or_OpenSSL/Win/Installed", value:TRUE);
+          set_kb_item(name:"GnuTLS_or_OpenSSL/Win/Installed", value:TRUE);
           set_kb_item(name:"OpenSSL64/Win/Ver", value:sslver[0]);
           cpe = build_cpe(value:sslver[0], exp:"^([0-9.]+[a-z]?)", base:"cpe:/a:openssl:openssl:x64:");
           if(isnull(cpe))

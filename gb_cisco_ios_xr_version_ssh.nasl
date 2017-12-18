@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_version_ssh.nasl 6239 2017-05-30 01:48:49Z ckuerste $
+# $Id: gb_cisco_ios_xr_version_ssh.nasl 8146 2017-12-15 13:40:59Z cfischer $
 #
 # Cisco IOS XR Detection (SSH)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105530");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6239 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-30 03:48:49 +0200 (Tue, 30 May 2017) $");
+ script_version ("$Revision: 8146 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-01-26 17:59:41 +0100 (Tue, 26 Jan 2016)");
  script_name("Cisco IOS XR Detection (SSH)");
 
@@ -53,7 +53,7 @@ if( ! system = get_kb_item( "cisco/show_version" ) ) exit( 0 );
 
 if( ! egrep( pattern:"^.* IOS[ -]XR Software.*Version [0-9]+\.[0-9.]+", string:system ) ) exit( 0 );
 
-replace_kb_item( name:"cisco_ios_xr/detected", value:TRUE );
+set_kb_item( name:"cisco_ios_xr/detected", value:TRUE );
 
 vers = 'unknown';
 cpe = 'cpe:/o:cisco:ios_xr';

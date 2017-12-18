@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmin.nasl 6776 2017-07-20 14:40:59Z cfischer $
+# $Id: webmin.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # Check for Webmin / Usermin
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10757");
-  script_version("$Revision: 6776 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 16:40:59 +0200 (Thu, 20 Jul 2017) $");
+  script_version("$Revision: 8143 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -75,15 +75,15 @@ foreach port ( ports ) {
 
       vers = "unknown";
       install = "/";
-      replace_kb_item( name:"usermin_or_webmin/installed", value:TRUE );
+      set_kb_item( name:"usermin_or_webmin/installed", value:TRUE );
 
       if( "Usermin Server" >< banner ) {
         set_kb_item( name:"www/" + port + "/usermin", value:TRUE );
-        replace_kb_item( name:"usermin/installed", value:TRUE );
+        set_kb_item( name:"usermin/installed", value:TRUE );
         usermin = TRUE;
       } else {
         set_kb_item( name:"www/" + port + "/webmin", value:TRUE );
-        replace_kb_item( name:"webmin/installed", value:TRUE );
+        set_kb_item( name:"webmin/installed", value:TRUE );
         webmin = TRUE;
       }
 

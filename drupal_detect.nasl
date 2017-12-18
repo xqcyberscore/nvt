@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: drupal_detect.nasl 7166 2017-09-18 09:14:09Z cfischer $
+# $Id: drupal_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Drupal Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100169");
-  script_version("$Revision: 7166 $");
+  script_version("$Revision: 8138 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_name("Drupal Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -130,7 +130,7 @@ foreach dir( make_list_unique( "/", "/drupal", "/cms", cgi_dirs( port:port ) ) )
 
     tmp_ver = version + " under " + install;
     set_kb_item( name:"www/" + port + "/drupal", value:tmp_ver );
-    replace_kb_item( name:"drupal/installed", value:TRUE );
+    set_kb_item( name:"drupal/installed", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:drupal:drupal:" );
     if( ! cpe )

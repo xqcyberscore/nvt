@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpgroupware_detect.nasl 7166 2017-09-18 09:14:09Z cfischer $
+# $Id: phpgroupware_detect.nasl 8144 2017-12-15 13:19:55Z cfischer $
 #
 # phpgroupware Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100092");
-  script_version("$Revision: 7166 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 8144 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-30 14:26:52 +0200 (Mon, 30 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -90,7 +90,7 @@ foreach dir( make_list_unique( "/phpgroupware", "/phpgw", cgi_dirs( port:port ) 
     
     tmp_version = vers + " under " + install;
     set_kb_item( name:"www/" + port + "/phpGroupWare", value:tmp_version );
-    replace_kb_item( name:"phpGroupWare/installed", value:TRUE );
+    set_kb_item( name:"phpGroupWare/installed", value:TRUE );
    
     cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:phpgroupware:phpgroupware:" );
     if( isnull( cpe ) )

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_detect_win.nasl 6469 2017-06-28 14:24:07Z cfischer $
+# $Id: gb_thunderbird_detect_win.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # Mozilla Thunderbird Version Detection (Windows)
 #
@@ -39,10 +39,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800015");
-  script_version("$Revision: 6469 $");
+  script_version("$Revision: 8145 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 16:24:07 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Mozilla Thunderbird Version Detection (Windows)");
@@ -140,7 +140,7 @@ foreach regKey (make_list( key + "\Mozilla", key + "\mozilla.org"))
       if(readmeText && readmeText =~ "comm-esr")
       {
         set_kb_item(name:"Thunderbird-ESR/Win/Ver", value:tbirdVer);
-        replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE );
+        set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE );
 
         ## build cpe
         cpe = build_cpe(value:tbirdVer, exp:"^([0-9.]+)", base:"cpe:/a:mozilla:thunderbird_esr:");
@@ -152,7 +152,7 @@ foreach regKey (make_list( key + "\Mozilla", key + "\mozilla.org"))
       else
       {
         set_kb_item(name:"Thunderbird/Win/Ver", value:tbirdVer);
-        replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE );
+        set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE );
 
         ## build cpe
         cpe = build_cpe(value:tbirdVer, exp:"^([0-9.]+)", base:"cpe:/a:mozilla:thunderbird:");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plesk_detect.nasl 6722 2017-07-14 08:54:37Z cfischer $
+# $Id: gb_plesk_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # Plesk Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103740");
-  script_version("$Revision: 6722 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 10:54:37 +0200 (Fri, 14 Jul 2017) $");
+  script_version("$Revision: 8143 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-06-17 16:27:41 +0200 (Mon, 17 Jun 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -69,7 +69,7 @@ if( buf =~ "<title>(Parallels Plesk|Plesk Onyx)" ) {
   version = eregmatch( pattern:"<title>(Parallels Plesk( Panel)?|Plesk Onyx) ([0-9.]+)</title>", string:buf );
   if( ! isnull( version[3] ) ) vers = version[3];
 
-  replace_kb_item( name:"plesk/installed", value:TRUE );
+  set_kb_item( name:"plesk/installed", value:TRUE );
 
   cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:parallels:parallels_plesk_panel:" );
   if( isnull( cpe ) )

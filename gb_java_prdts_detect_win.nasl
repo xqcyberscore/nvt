@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_win.nasl 7699 2017-11-08 12:10:34Z santu $
+# $Id: gb_java_prdts_detect_win.nasl 8146 2017-12-15 13:40:59Z cfischer $
 #
 # Sun Java Products Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800383");
-  script_version("$Revision: 7699 $");
+  script_version("$Revision: 8146 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Sun Java Products Version Detection (Windows)");
@@ -122,8 +122,8 @@ foreach jreKey (adkeylist)
          if(jreVer[1] != NULL)
          {
             set_kb_item(name:"Sun/Java/JRE/Win/Ver", value:jreVer[1]);
-            replace_kb_item(name:"Sun/Java/JDK_or_JRE/Win/installed", value:TRUE);
-            replace_kb_item(name:"Sun/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE);
+            set_kb_item(name:"Sun/Java/JDK_or_JRE/Win/installed", value:TRUE);
+            set_kb_item(name:"Sun/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE);
             if(flagjre9)
             {
               jreVer_or = jreVer[1] ;
@@ -240,8 +240,8 @@ foreach jdkKey (adkeylist)
        if(jdkVer[1] != NULL)
        {
          set_kb_item(name:"Sun/Java/JDK/Win/Ver", value:jdkVer[1]);
-         replace_kb_item(name:"Sun/Java/JDK_or_JRE/Win/installed", value:TRUE);
-         replace_kb_item(name:"Sun/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE);
+         set_kb_item(name:"Sun/Java/JDK_or_JRE/Win/installed", value:TRUE);
+         set_kb_item(name:"Sun/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE);
          jdVer = ereg_replace(pattern:"_|-", string:jdkVer[1], replace: ".");
 
          jdkVer1 = eregmatch(pattern:"([0-9]+\.[0-9]+\.[0-9]+)\.([0-9]+)", string:jdVer);

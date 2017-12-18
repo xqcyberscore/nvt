@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teamspeak_detect.nasl 5278 2017-02-12 17:04:45Z cfi $
+# $Id: gb_teamspeak_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # TeamSpeak 2/3 Server Detection (TCP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100681");
-  script_version("$Revision: 5278 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-12 18:04:45 +0100 (Sun, 12 Feb 2017) $");
+  script_version("$Revision: 8139 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-18 12:11:06 +0200 (Fri, 18 Jun 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -86,7 +86,7 @@ foreach port( make_list( sport, tport ) ) {
     register_service( port:port, proto:"teamspeak-serverquery" );
     app = "TeamSpeak 3 Server";
     set_kb_item( name:"teamspeak3_server/" + port, value:vers );
-    replace_kb_item( name:"teamspeak3_server/installed", value:TRUE );
+    set_kb_item( name:"teamspeak3_server/installed", value:TRUE );
     cpe = "cpe:/a:teamspeak:teamspeak3";
 
   } else {
@@ -100,7 +100,7 @@ foreach port( make_list( sport, tport ) ) {
     register_service( port:port, proto:"teamspeak-tcpquery" );
     app = "TeamSpeak 2 Server";
     set_kb_item( name:"teamspeak2_server/" + port, value:vers );
-    replace_kb_item( name:"teamspeak2_server/installed", value:TRUE );
+    set_kb_item( name:"teamspeak2_server/installed", value:TRUE );
     cpe = "cpe:/a:teamspeak:teamspeak2";
   }
 

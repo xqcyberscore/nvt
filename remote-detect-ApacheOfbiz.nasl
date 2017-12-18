@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-ApacheOfbiz.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: remote-detect-ApacheOfbiz.nasl 8137 2017-12-15 11:26:42Z cfischer $
 #
 # This script ensure that the Apache Open For Business (Apache OFBiz) is installed and running
 #
@@ -25,8 +25,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101019");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_version("$Revision: 8137 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-18 23:46:40 +0200 (Sat, 18 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache Open For Business service detection");
@@ -74,7 +74,7 @@ foreach module( modules ) {
 
     if( ( ofbizTitlePattern && 'ofbiz' >< ofbizTitlePattern[1] ) || "neogia_logo.png" >< response ) {
       report += " Detected Apache Open For Business Module[" + ofbizTitlePattern[1] +"] ";
-      replace_kb_item( name:"ApacheOFBiz/installed", value:TRUE );
+      set_kb_item( name:"ApacheOFBiz/installed", value:TRUE );
       installed = TRUE;
 		
       if( vendor ) {
@@ -84,7 +84,7 @@ foreach module( modules ) {
       }
 
       if( servletContainer ) {
-        replace_kb_item( name:"ApacheCoyote/installed", value:TRUE );
+        set_kb_item( name:"ApacheCoyote/installed", value:TRUE );
         replace_kb_item( name:"ApacheCoyote/version", value:servletContainer[1] );
         report += " on " + servletContainer[0];
       }

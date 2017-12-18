@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3629.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3629.nasl 8131 2017-12-15 07:30:28Z teissa $
 # Auto-generated from advisory DSA 3629-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,13 +29,13 @@
 
 if(description)
 {
-    script_id(703629);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703629");
+    script_version("$Revision: 8131 $");
     script_cve_id("CVE-2015-7974", "CVE-2015-7977", "CVE-2015-7978", "CVE-2015-7979",
                   "CVE-2015-8138", "CVE-2015-8158", "CVE-2016-1547", "CVE-2016-1548",
                   "CVE-2016-1550", "CVE-2016-2516", "CVE-2016-2518");
     script_name("Debian Security Advisory DSA 3629-1 (ntp - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-15 08:30:28 +0100 (Fri, 15 Dec 2017) $");
     script_tag(name:"creation_date", value:"2016-08-02 10:56:41 +0530 (Tue, 02 Aug 2016)");
     script_tag(name:"cvss_base", value:"7.1");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");

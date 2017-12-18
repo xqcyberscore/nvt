@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_av_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
+# $Id: gb_kaspersky_av_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Kaspersky AntiVirus Version Detection
 #
@@ -38,10 +38,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800241");
-  script_version("$Revision: 5943 $");
+  script_version("$Revision: 8138 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-02-16 16:42:20 +0100 (Mon, 16 Feb 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Kaspersky AntiVirus Version Detection");
@@ -144,7 +144,7 @@ foreach item (registry_enum_keys(key:key))
       }
       if(kavwVer)
       {
-        replace_kb_item(name:"Kaspersky/products/installed", value:TRUE);
+        set_kb_item(name:"Kaspersky/products/installed", value:TRUE);
         set_kb_item(name:"Kaspersky/AV-Workstation/Ver", value:kavwVer);
         ## build cpe and store it as host_detail
         register_and_report_cpe(app:"Kaspersky Anti-Virus", ver:kavwVer, base:"cpe:/a:kaspersky_lab:kaspersky_anti-virus:6.0::workstations",
@@ -163,7 +163,7 @@ foreach item (registry_enum_keys(key:key))
     }
     if(kavsVer != NULL)
     {
-      replace_kb_item(name:"Kaspersky/products/installed", value:TRUE);
+      set_kb_item(name:"Kaspersky/products/installed", value:TRUE);
       set_kb_item(name:"Kaspersky/AV-FileServer/Ver", value:kavsVer);
 
       ## build cpe and store it as host_detail
@@ -183,7 +183,7 @@ foreach item (registry_enum_keys(key:key))
     }
     if(kavVer != NULL)
     {
-      replace_kb_item(name:"Kaspersky/products/installed", value:TRUE);
+      set_kb_item(name:"Kaspersky/products/installed", value:TRUE);
       set_kb_item(name:"Kaspersky/AV/Ver", value:kavVer);
 
       ## build cpe and store it as host_detail
@@ -206,7 +206,7 @@ foreach item (registry_enum_keys(key:key))
 
     if(kisVer != NULL)
     {
-      replace_kb_item(name:"Kaspersky/products/installed", value:TRUE);
+      set_kb_item(name:"Kaspersky/products/installed", value:TRUE);
       set_kb_item(name:"Kaspersky/IntNetSec/Ver", value:kisVer);
 
       ## build cpe and store it as host_detail
@@ -229,7 +229,7 @@ foreach item (registry_enum_keys(key:key))
 
     if(kisVer != NULL)
     {
-      replace_kb_item(name:"Kaspersky/products/installed", value:TRUE);
+      set_kb_item(name:"Kaspersky/products/installed", value:TRUE);
       set_kb_item(name:"Kaspersky/TotNetSec/Ver", value:kisVer);
 
       ## build cpe and store it as host_detail

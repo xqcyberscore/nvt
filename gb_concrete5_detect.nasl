@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_concrete5_detect.nasl 6080 2017-05-08 09:21:57Z cfi $
+# $Id: gb_concrete5_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # Concrete5 CMS Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106757");
- script_version ("$Revision: 6080 $");
- script_tag(name: "last_modification", value: "$Date: 2017-05-08 11:21:57 +0200 (Mon, 08 May 2017) $");
+ script_version ("$Revision: 8142 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name: "creation_date", value: "2017-04-18 16:13:12 +0200 (Tue, 18 Apr 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -81,7 +81,7 @@ foreach dir (make_list_unique("/", cgi_dirs(port: port))) {
       set_kb_item(name: "concrete5/version", value: version);
     }
 
-    replace_kb_item(name: "concrete5/installed", value: TRUE);
+    set_kb_item(name: "concrete5/installed", value: TRUE);
 
     cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:concrete5:concrete5:");
     if (!cpe)

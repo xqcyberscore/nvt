@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smbv1_server_detect.nasl 5959 2017-04-17 14:34:41Z veerendragg $
+# $Id: gb_smbv1_server_detect.nasl 8144 2017-12-15 13:19:55Z cfischer $
 #
 # SMBv1 Server Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810549");
-  script_version("$Revision: 5959 $");
+  script_version("$Revision: 8144 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-17 16:34:41 +0200 (Mon, 17 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-02-14 15:12:01 +0530 (Tue, 14 Feb 2017)");
   script_name("SMBv1 Server Detection");
   script_category(ACT_GATHER_INFO);
@@ -78,8 +78,8 @@ smb1_value2 = registry_get_dword(item:"SMB1", key:key2);
 if((smb1_value1 == 1 || smb1_value2 == 1) ||
     (smb1_value1 == "" && smb1_value2 == ""))
 {
-  replace_kb_item( name:"smb_v1_server/enabled", value:TRUE );
-  replace_kb_item( name:"smb_v1/enabled", value:TRUE );
+  set_kb_item( name:"smb_v1_server/enabled", value:TRUE );
+  set_kb_item( name:"smb_v1/enabled", value:TRUE );
   report = "SMBv1 is enabled for the SMB Server";
   log_message( port:0, data:report );
   exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cyrus_imap_server_detect.nasl 5918 2017-04-10 14:18:09Z cfi $
+# $Id: secpod_cyrus_imap_server_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
 #
 # Cyrus IMAP Server Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902220");
-  script_version("$Revision: 5918 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 16:18:09 +0200 (Mon, 10 Apr 2017) $");
+  script_version("$Revision: 8140 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -72,7 +72,7 @@ foreach port( ports ) {
     vers = eregmatch(pattern:"IMAP4? v([0-9.]+)", string:banner);
     if( ! isnull( vers[1] ) ) version = vers[1];
 
-    replace_kb_item( name:"Cyrus/installed", value:TRUE );
+    set_kb_item( name:"Cyrus/installed", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:cmu:cyrus_imap_server:");
     if( isnull( cpe ) )
@@ -101,7 +101,7 @@ if( "Cyrus POP3" >< banner && "server ready" >< banner ) {
   vers = eregmatch(pattern:"POP3 v([0-9.]+)", string:banner);
   if( ! isnull( vers[1] ) ) version = vers[1];
 
-  replace_kb_item( name:"Cyrus/installed", value:TRUE );
+  set_kb_item( name:"Cyrus/installed", value:TRUE );
 
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:cmu:cyrus_imap_server:");
   if( isnull( cpe ) )

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interspire_iem_detect.nasl 7509 2017-10-19 13:53:31Z cfischer $
+# $Id: gb_interspire_iem_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # Interspire IEM Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112086");
-  script_version("$Revision: 7509 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 15:53:31 +0200 (Thu, 19 Oct 2017) $");
+  script_version("$Revision: 8142 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-10-18 15:11:22 +0200 (Wed, 18 Oct 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -75,7 +75,7 @@ foreach dir (make_list_unique("/", "/iem", "/IEM", cgi_dirs(port:port)))
        "$(document.frmLogin.ss_takemeto).val('index.php');" >< res ||
        '<td style="padding:10px 0px 5px 0px">Login with your username and password below.</td>' >< res ))
   {
-    replace_kb_item(name:"interspire/iem/installed", value:TRUE);
+    set_kb_item(name:"interspire/iem/installed", value:TRUE);
     version = "unknown";
 
     if (ver = eregmatch(pattern:"Powered by.* ([0-9.]+)</a>", string:res, icase:TRUE))

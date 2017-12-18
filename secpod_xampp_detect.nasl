@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xampp_detect.nasl 6507 2017-07-03 13:32:13Z cfischer $
+# $Id: secpod_xampp_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # XAMPP Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900526");
-  script_version("$Revision: 6507 $");
+  script_version("$Revision: 8141 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 15:32:13 +0200 (Mon, 03 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-30 15:53:34 +0200 (Mon, 30 Mar 2009)");
   script_name("XAMPP Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -106,7 +106,7 @@ if( ! installed || version == "unknown" ) {
 if( installed ) {
 
   set_kb_item( name:"www/" + port + "/XAMPP", value:version );
-  replace_kb_item( name:"xampp/installed", value:TRUE );
+  set_kb_item( name:"xampp/installed", value:TRUE );
 
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:apachefriends:xampp:" );
   if( isnull( cpe ) )

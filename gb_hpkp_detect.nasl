@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpkp_detect.nasl 7395 2017-10-10 14:12:44Z cfischer $
+# $Id: gb_hpkp_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # SSL/TLS: HTTP Public Key Pinning (HPKP) Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108245");
-  script_version("$Revision: 7395 $");
+  script_version("$Revision: 8145 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-10 16:12:44 +0200 (Tue, 10 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-10-09 08:07:41 +0200 (Mon, 09 Oct 2017)");
   script_name("SSL/TLS: HTTP Public Key Pinning (HPKP) Detection");
   script_category(ACT_GATHER_INFO);
@@ -70,7 +70,7 @@ banner = get_http_banner( port:port );
 if( ! banner || banner !~ "^HTTP/1\.[01] (20[0146]|30[12378])" ) exit( 0 );
 
 if( ! pkp = egrep( pattern:'^Public-Key-Pins: ', string:banner, icase:TRUE ) ) { # Public-Key-Pins-Report-Only is used for testing only
-  replace_kb_item( name:"hpkp/missing", value:TRUE );
+  set_kb_item( name:"hpkp/missing", value:TRUE );
   set_kb_item( name:"hpkp/missing/port", value:port );
   exit( 0 );
 }
@@ -78,7 +78,7 @@ if( ! pkp = egrep( pattern:'^Public-Key-Pins: ', string:banner, icase:TRUE ) ) {
 # max-age is required: https://tools.ietf.org/html/rfc7469#page-19
 # Assume a missing HPKP if its not specified
 if( "max-age=" >!< tolower( pkp ) ) {
-  replace_kb_item( name:"hpkp/missing", value:TRUE );
+  set_kb_item( name:"hpkp/missing", value:TRUE );
   set_kb_item( name:"hpkp/missing/port", value:port );
   set_kb_item( name:"hpkp/max_age/missing/" + port, value:TRUE );
   set_kb_item( name:"hpkp/" + port + "/banner", value:pkp );
@@ -87,7 +87,7 @@ if( "max-age=" >!< tolower( pkp ) ) {
 
 # Assuming missing support if value is set to zero
 if( "max-age=0" >< tolower( pkp ) ) {
-  replace_kb_item( name:"hpkp/missing", value:TRUE );
+  set_kb_item( name:"hpkp/missing", value:TRUE );
   set_kb_item( name:"hpkp/missing/port", value:port );
   set_kb_item( name:"hpkp/max_age/zero/" + port, value:TRUE );
   set_kb_item( name:"hpkp/" + port + "/banner", value:pkp );
@@ -97,19 +97,19 @@ if( "max-age=0" >< tolower( pkp ) ) {
 # Assuming missing support if no pin-sha256= is included
 # Currently only pin-sha256 is supported / defined but this might change in the future
 if( "pin-sha256=" >!< tolower( pkp ) ) {
-  replace_kb_item( name:"hpkp/missing", value:TRUE );
+  set_kb_item( name:"hpkp/missing", value:TRUE );
   set_kb_item( name:"hpkp/missing/port", value:port );
   set_kb_item( name:"hpkp/pin/missing/" + port, value:TRUE );
   set_kb_item( name:"hpkp/" + port + "/banner", value:pkp );
   exit( 0 );
 }
 
-replace_kb_item( name:"hpkp/available", value:TRUE );
+set_kb_item( name:"hpkp/available", value:TRUE );
 set_kb_item( name:"hpkp/available/port", value:port );
 set_kb_item( name:"hpkp/" + port + "/banner", value:pkp );
 
 if( "includesubdomains" >!< tolower( pkp ) ) {
-  replace_kb_item( name:"hpkp/includeSubDomains/missing", value:TRUE );
+  set_kb_item( name:"hpkp/includeSubDomains/missing", value:TRUE );
   set_kb_item( name:"hpkp/includeSubDomains/missing/port", value:port );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_artemis_detect.nasl 7440 2017-10-16 07:39:45Z cfischer $
+# $Id: gb_apache_activemq_artemis_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
 #
 # Apache ActiveMQ Artemis Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809341");
-  script_version("$Revision: 7440 $");
+  script_version("$Revision: 8140 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-16 09:39:45 +0200 (Mon, 16 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-10-06 14:54:29 +0530 (Thu, 06 Oct 2016)");
   script_name("Apache ActiveMQ Artemis Detection");
   script_category(ACT_GATHER_INFO);
@@ -76,7 +76,7 @@ if( egrep( pattern:"<title>ActiveMQ Artemis Web .* API</title>", string:buf, ica
   if( ! cpe )
     cpe = "cpe:/a:apache:activemq_artemis";
 
-  replace_kb_item( name:"ActiveMQ/Artemis/installed", value:TRUE );
+  set_kb_item( name:"ActiveMQ/Artemis/installed", value:TRUE );
 
   register_product( cpe:cpe, location:install, port:port, service:"www" );
 

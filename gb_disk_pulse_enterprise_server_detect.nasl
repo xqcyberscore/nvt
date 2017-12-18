@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_disk_pulse_enterprise_server_detect.nasl 5694 2017-03-23 12:33:50Z cfi $
+# $Id: gb_disk_pulse_enterprise_server_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
 #
 # Disk Pulse Enterprise Server Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809056");
-  script_version("$Revision: 5694 $");
+  script_version("$Revision: 8137 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 13:33:50 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-10-05 16:17:52 +0530 (Wed, 05 Oct 2016)");
   script_name("Disk Pulse Enterprise Server Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -69,7 +69,7 @@ if( "Disk Pulse Enterprise Login" >< rcvRes && ">User Name" >< rcvRes && ">Passw
   vers = eregmatch( pattern:">Disk Pulse Enterprise v([0-9.]+)", string:rcvRes );
   if( vers[1] ) diskVer = vers[1];
 
-  replace_kb_item( name:"DiskPulse/Enterprise/Server/installed", value:TRUE );
+  set_kb_item( name:"DiskPulse/Enterprise/Server/installed", value:TRUE );
 
   cpe = build_cpe( value:diskVer, exp:"([0-9.]+)", base:"cpe:/a:diskpulse:diskpulse_enterprise_web_server:" );
   if( isnull( cpe ) )

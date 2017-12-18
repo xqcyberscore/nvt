@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mantis_detect.nasl 5964 2017-04-18 09:30:30Z cfi $
+# $Id: mantis_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # Mantis Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100061");
-  script_version("$Revision: 5964 $");
+  script_version("$Revision: 8139 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:30:30 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-19 11:22:36 +0100 (Thu, 19 Mar 2009)");
   script_name("Mantis Detection");
   script_category(ACT_GATHER_INFO);
@@ -123,7 +123,7 @@ foreach dir( make_list_unique( "/mantis", "/mantisbt", "/bugs", "/bugtracker", c
     }
 
     set_kb_item( name:"www/" + port + "/mantis", value: version + " under " + install );
-    replace_kb_item( name:"mantisbt/installed", value:TRUE );
+    set_kb_item( name:"mantisbt/installed", value:TRUE );
 
     ## build cpe and store it as host_detail
     ## not possible to combine cpe regex due to

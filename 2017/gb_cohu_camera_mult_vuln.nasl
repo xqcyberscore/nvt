@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cohu_camera_mult_vuln.nasl 7893 2017-11-24 04:30:03Z ckuersteiner $
+# $Id: gb_cohu_camera_mult_vuln.nasl 8149 2017-12-15 14:58:09Z cfischer $
 #
 # Cohu 3960HD Multiple Vulnerability
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140533");
-  script_version("$Revision: 7893 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-24 05:30:03 +0100 (Fri, 24 Nov 2017) $");
+  script_version("$Revision: 8149 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-15 15:58:09 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-24 10:59:47 +0700 (Fri, 24 Nov 2017)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-8860", "CVE-2017-8861", "CVE-2017-8862", "CVE-2017-8863", "CVE-2017-8864");
 

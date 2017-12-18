@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_mgate_telnet_detect.nasl 4537 2016-11-16 11:06:58Z cfi $
+# $Id: gb_moxa_mgate_telnet_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Moxa MGate Detection (telnet)
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105822");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version ("$Revision: 4537 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-16 12:06:58 +0100 (Wed, 16 Nov 2016) $");
+  script_version ("$Revision: 8138 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-07-25 13:26:43 +0200 (Mon, 25 Jul 2016)");
   script_name("Moxa MGate Detection (telnet)");
   script_category(ACT_GATHER_INFO);
@@ -83,7 +83,7 @@ if( ! isnull( mod[1] ) )
   replace_kb_item( name:"moxa/mgate/model", value:model );
 }
 
-replace_kb_item( name:'moxa/mgate/installed', value:TRUE );
+set_kb_item( name:'moxa/mgate/installed', value:TRUE );
 register_product( cpe:cpe, location:port + '/tcp', port:port, service:'telnet' );
 
 report = 'Moxa MGate telnet console is running at this port.\n\n' +

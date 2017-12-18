@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mpu2016_detect.nasl 5510 2017-03-08 06:58:49Z cfi $
+# $Id: gb_mpu2016_detect.nasl 8147 2017-12-15 13:51:17Z cfischer $
 #
 # Emerson Network Power Avocent MergePoint Unity 2016 KVM Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103893");
-  script_version("$Revision: 5510 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 07:58:49 +0100 (Wed, 08 Mar 2017) $");
+  script_version("$Revision: 8147 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:51:17 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-01-27 18:43:12 +0100 (Mon, 27 Jan 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,7 +66,7 @@ install = "/";
 version = eregmatch ( pattern:"Appliance firmware version ([0-9.]+)", string:buf );
 if( ! isnull( version[1] ) ) vers = version[1];
  
-replace_kb_item( name:"MPU2016/installed", value:TRUE );
+set_kb_item( name:"MPU2016/installed", value:TRUE );
 
 cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/h:emerson:network_power_avocent_mergepoint_unity_2016_firmware:" );
 if( isnull( cpe ) )

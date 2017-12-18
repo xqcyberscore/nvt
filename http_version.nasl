@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_version.nasl 7913 2017-11-27 08:48:58Z cfischer $
+# $Id: http_version.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # HTTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10107");
-  script_version("$Revision: 7913 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-27 09:48:58 +0100 (Mon, 27 Nov 2017) $");
+  script_version("$Revision: 8141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -206,12 +206,12 @@ if( soc ) {
 
     if( egrep( pattern:"^Server:.*Netscape-Enterprise.*", string:svrline ) ) {
       set_kb_item( name:"www/iplanet", value:TRUE );
-      replace_kb_item( name:"www/netscape_servers", value:TRUE );
+      set_kb_item( name:"www/netscape_servers", value:TRUE );
     }
 
     if( egrep( pattern:"^Server:.*Netscape-Administrator.*", string:svrline ) ) {
       set_kb_item( name:"www/iplanet", value:TRUE );
-      replace_kb_item( name:"www/netscape_servers", value:TRUE );
+      set_kb_item( name:"www/netscape_servers", value:TRUE );
     }
 
     if( egrep( pattern:"^Server:.*thttpd/.*", string:svrline ) )
@@ -333,7 +333,7 @@ if( soc ) {
 
     if( egrep( pattern:"^Server:.*Netscape-FastTrack.*", string:svrline ) ) {
       set_kb_item( name:"www/netscape-fasttrack", value:TRUE );
-      replace_kb_item( name:"www/netscape_servers", value:TRUE );
+      set_kb_item( name:"www/netscape_servers", value:TRUE );
     }
 
     if( egrep( pattern:"^Server:.*AkamaiGHost.*", string:svrline ) )
@@ -347,7 +347,7 @@ if( soc ) {
 
     if( egrep( pattern:"^Server:.*Netscape-Commerce.*", string:svrline ) ) {
       set_kb_item( name:"www/netscape-commerce", value:TRUE );
-      replace_kb_item( name:"www/netscape_servers", value:TRUE );
+      set_kb_item( name:"www/netscape_servers", value:TRUE );
     }
 
     if( egrep( pattern:"^Server:.*Oracle_Web_listener.*", string:svrline ) )

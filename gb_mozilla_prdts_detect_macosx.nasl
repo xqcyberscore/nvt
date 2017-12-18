@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_detect_macosx.nasl 6487 2017-06-29 12:50:11Z cfischer $
+# $Id: gb_mozilla_prdts_detect_macosx.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Mozilla Products Version Detection (Mac OS X)
 #
@@ -36,10 +36,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802179");
-  script_version("$Revision: 6487 $");
+  script_version("$Revision: 8138 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 14:50:11 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Mozilla Products Version Detection (Mac OS X)");
@@ -123,7 +123,7 @@ if(!isnull(ffVer) && "does not exist" >!< ffVer)
     if(esrVer)
     {
       set_kb_item(name: "Mozilla/Firefox-ESR/MacOSX/Version", value:ffVer);
-      replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
+      set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
 
       ## Build CPE
       cpe = build_cpe(value:ffVer, exp:"^([0-9.]+)([a-zA-Z0-9]+)?", base:"cpe:/a:mozilla:firefox_esr:");
@@ -135,7 +135,7 @@ if(!isnull(ffVer) && "does not exist" >!< ffVer)
     else
     {
       set_kb_item(name: "Mozilla/Firefox/MacOSX/Version", value:ffVer);
-      replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
+      set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
       ## Build CPE
       cpe = build_cpe(value:ffVer, exp:"^([0-9.]+)([a-zA-Z0-9]+)?", base:"cpe:/a:mozilla:firefox:");
       if(isnull(cpe))
@@ -171,7 +171,7 @@ if(!isnull(smVer) && "does not exist" >!< smVer)
 
   ## Set the version in KB
   set_kb_item(name: "SeaMonkey/MacOSX/Version", value:smVer);
-  replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
+  set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
   ## build cpe
   cpe = build_cpe(value:smVer, exp:"^([0-9.]+)", base:"cpe:/a:mozilla:seamonkey:");
   if(isnull(cpe))
@@ -221,7 +221,7 @@ if(!isnull(tbVer) && "does not exist" >!< tbVer)
     if(thuVer)
     {
       set_kb_item(name: "ThunderBird-ESR/MacOSX/Version", value:tbVer);
-      replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
+      set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
 
       ## build cpe
       cpe = build_cpe(value:tbVer, exp:"^([0-9.]+)([a-zA-Z0-9]+)?", base:"cpe:/a:mozilla:thunderbird_esr:");
@@ -233,7 +233,7 @@ if(!isnull(tbVer) && "does not exist" >!< tbVer)
     else
     {
       set_kb_item(name: "ThunderBird/MacOSX/Version", value:tbVer);
-      replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
+      set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
 
       ## build cpe
       cpe = build_cpe(value:tbVer, exp:"^([0-9.]+)([a-zA-Z0-9]+)?", base:"cpe:/a:mozilla:thunderbird:");

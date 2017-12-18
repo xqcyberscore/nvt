@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_openview_nnm_detect.nasl 5428 2017-02-27 07:50:09Z cfi $
+# $Id: secpod_hp_openview_nnm_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # HP OpenView Network Node Manager Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900242");
-  script_version("$Revision: 5428 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 08:50:09 +0100 (Mon, 27 Feb 2017) $");
+  script_version("$Revision: 8139 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-01 15:40:11 +0200 (Tue, 01 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -73,7 +73,7 @@ if( ( "Network Node Manager Home Base" >< res || "hp OpenView Network Node Manag
     set_kb_item( name:"www/"+ port + "/HP/OVNNM/Ver", value:version );
   }
 
-  replace_kb_item( name:"HP/OVNNM/installed", value:TRUE );
+  set_kb_item( name:"HP/OVNNM/installed", value:TRUE );
 
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:hp:openview_network_node_manager:" );
   if( ! cpe )

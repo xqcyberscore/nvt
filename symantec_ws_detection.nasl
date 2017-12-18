@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: symantec_ws_detection.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: symantec_ws_detection.nasl 8142 2017-12-15 13:00:23Z cfischer $
 # Description: Symantec Web Security Detection
 #
 # Authors:
@@ -26,8 +26,8 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.80019");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version("$Revision: 8142 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 19:51:47 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Symantec Web Security Detection");
@@ -72,7 +72,7 @@ if ( banner && "erver: SWS-" >< banner ) {
   }
 
   set_kb_item(name:"www/" + port + "/SWS", value:version);
-  replace_kb_item(name:"SymantecWS/installed", value:TRUE);
+  set_kb_item(name:"SymantecWS/installed", value:TRUE);
    
   ## build cpe and store it as host_detail
   cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:symantec:web_security:");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_detect_lin.nasl 5158 2017-02-01 14:53:04Z mime $
+# $Id: gb_php_detect_lin.nasl 8144 2017-12-15 13:19:55Z cfischer $
 #
 # PHP Version Detection (Linux, local)
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103592");
-  script_version("$Revision: 5158 $");
+  script_version("$Revision: 8144 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-01 15:53:04 +0100 (Wed, 01 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-10-25 10:12:52 +0200 (Thu, 25 Oct 2012)");
   script_name("PHP Version Detection (Linux, local)");
   script_category(ACT_GATHER_INFO);
@@ -78,7 +78,7 @@ foreach executableFile( paths ) {
   if( ! php_ver[1] || "The PHP Group" >< php_ver[0] ) continue;
 
   set_kb_item( name:"PHP/Ver/lin", value:php_ver[1] );
-  replace_kb_item( name:"php/installed", value:TRUE );
+  set_kb_item( name:"php/installed", value:TRUE );
 
   cpe = build_cpe( value:php_ver[1], exp:"([0-9.]+)", base:"cpe:/a:php:php:" );
   if( isnull( cpe ) )

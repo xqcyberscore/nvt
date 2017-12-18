@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_log_event_manager_web_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_solarwinds_log_event_manager_web_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
 #
 # SolarWinds Log & Event Manager Web Interface Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105448");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8078 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+ script_version ("$Revision: 8137 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2015-11-12 14:10:31 +0100 (Thu, 12 Nov 2015)");
  script_name("SolarWinds Log & Event Manager Web Interface Detection");
 
@@ -60,7 +60,7 @@ buf = http_get_cache( item:"/", port:port );
 
 if( "<title>SolarWinds Log &amp; Event Manager</title>" >!< buf ) exit( 0 );
 
-replace_kb_item( name:"solarwinds_lem/installed", value:TRUE );
+set_kb_item( name:"solarwinds_lem/installed", value:TRUE );
 
 url = '/lem/assets/config/version.txt';
 req = http_get( item:url, port:port );

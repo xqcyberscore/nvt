@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_composr_cms_detect.nasl 6366 2017-06-16 17:36:27Z teissa $
+# $Id: gb_composr_cms_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # Composr CMS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107216");
-  script_version("$Revision: 6366 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-16 19:36:27 +0200 (Fri, 16 Jun 2017) $");
+  script_version("$Revision: 8145 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"creation_date", value:"2017-06-12 06:40:16 +0200 (Mon, 12 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
@@ -82,7 +82,7 @@ foreach dir(make_list_unique( "/", cgi_dirs( port:appPort ) ) ) {
     if (tmpVer[2]) Ver += " " + tmpVer[2];
   }
 
-  replace_kb_item(name:"composr_cms/installed", value:TRUE);
+  set_kb_item(name:"composr_cms/installed", value:TRUE);
 
   cpe = build_cpe(value:Ver, exp:"^([0-9.]+)", base:"cpe:/a:composr:cms:");
   if (cpe && tmpVer[2]) cpe+= tmpVer[2];

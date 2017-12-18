@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_riak_detect_http.nasl 6701 2017-07-12 13:04:06Z cfischer $
+# $Id: gb_riak_detect_http.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # Basho Riak Detection (HTTP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105590");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6701 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
+ script_version ("$Revision: 8139 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-03-30 13:30:23 +0200 (Wed, 30 Mar 2016)");
  script_name("Basho Riak Detection (HTTP)");
 
@@ -89,7 +89,7 @@ else
 
 register_product( cpe:cpe, location:"/", port:port, service:'www' );
 set_kb_item( name:"riad/http/stats", value:val_rep );
-replace_kb_item( name:"riad/installed", value:TRUE );
+set_kb_item( name:"riad/installed", value:TRUE );
 
 report = build_detection_report( app:"Basho Riak", version:vers, install: '/',concluded:version[0],cpe:cpe, extra:'\nStats:' + val_rep + '\n' );
 

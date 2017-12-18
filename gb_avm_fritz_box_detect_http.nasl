@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_detect_http.nasl 4966 2017-01-06 15:21:01Z cfi $
+# $Id: gb_avm_fritz_box_detect_http.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # AVM FRITZ!Box Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108036");
-  script_version("$Revision: 4966 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-06 16:21:01 +0100 (Fri, 06 Jan 2017) $");
+  script_version("$Revision: 8138 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-01-05 13:21:05 +0100 (Thu, 05 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,7 +61,7 @@ buf = http_get_cache( item:"/", port:port );
 
 if( "FRITZ!Box" >< buf && ( "AVM" >< buf || "logincheck.lua" >< buf || "/cgi-bin/webcm" >< buf ) ) {
 
-  replace_kb_item( name:"avm_fritz_box/detected", value:TRUE );
+  set_kb_item( name:"avm_fritz_box/detected", value:TRUE );
   set_kb_item( name:"avm_fritz_box/http/detected", value:TRUE );
   set_kb_item( name:"avm_fritz_box/http/port", value:port );
 

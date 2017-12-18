@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dokuwiki_detect.nasl 7166 2017-09-18 09:14:09Z cfischer $
+# $Id: gb_dokuwiki_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # DokuWiki Version Detection
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800587");
-  script_version("$Revision: 7166 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 8142 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-06-19 09:45:44 +0200 (Fri, 19 Jun 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -91,7 +91,7 @@ foreach dir( make_list_unique( "/", "/wiki", "/dokuwiki", cgi_dirs( port:port ) 
   if( "://www.dokuwiki.org/update_check" >< rcv2 &&
       ( '<div class="notify">' >< rcv2 || '<div class="msg notify">' >< rcv2 ) ) {
     set_kb_item( name:"dokuwiki/missing_updates/" + port + install, value:TRUE );
-    replace_kb_item( name:"dokuwiki/missing_updates", value:TRUE );
+    set_kb_item( name:"dokuwiki/missing_updates", value:TRUE );
   }
 
   # Try to get the version from the generator which included the version up to release 2009-12-25

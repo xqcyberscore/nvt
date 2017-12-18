@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 8077 2017-12-11 14:15:34Z cfischer $
+# $Id: os_detection.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 8077 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:15:34 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 8143 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -161,7 +161,7 @@ foreach oid( OS_CPE_SRC ) {
 if( ! found_best ) {
   report += "No Best matching OS identified.";
   # Setting the runs_key to unixoide makes sure that we still schedule NVTs using Host/runs_unixoide as a fallback
-  replace_kb_item( name:"Host/runs_unixoide", value:TRUE );
+  set_kb_item( name:"Host/runs_unixoide", value:TRUE );
 } else {
   # TBD: Move into host_details.nasl?
   set_kb_item( name:"HostDetails/OS/BestMatch", value:best_match );

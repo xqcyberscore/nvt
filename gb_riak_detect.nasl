@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_riak_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_riak_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # Basho Riak Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105589");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5877 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+ script_version ("$Revision: 8145 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-03-30 12:30:23 +0200 (Wed, 30 Mar 2016)");
  script_name("Basho Riak Detection");
 
@@ -99,7 +99,7 @@ else
 
 register_service( port:port, proto:"riad_pb" );
 
-replace_kb_item( name:"riad/installed", value:TRUE );
+set_kb_item( name:"riad/installed", value:TRUE );
 set_kb_item( name:"riad/pb/port", value:port );
 
 register_product( cpe:cpe, location:port + "/tcp", port:port, service:'riad_pb' );

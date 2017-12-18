@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Directory_Scanner.nasl 8106 2017-12-13 14:42:54Z cfischer $
+# $Id: DDI_Directory_Scanner.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # Directory Scanner
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("$Revision: 8106 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 15:42:54 +0100 (Wed, 13 Dec 2017) $");
+  script_version("$Revision: 8143 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -117,7 +117,7 @@ function add_auth_dir_list( dir, port ) {
     }
 
     dir_key = "www/" + port + "/content/auth_required";
-    replace_kb_item( name:"www/content/auth_required", value:TRUE );
+    set_kb_item( name:"www/content/auth_required", value:TRUE );
     if( debug ) display( "Setting KB key: ", dir_key, " to '", dir, "'\n" );
     set_kb_item( name:dir_key, value:dir );
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: socks.nasl 5252 2017-02-09 16:34:10Z cfi $
+# $Id: socks.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # SOCKS server detection
 #
@@ -36,8 +36,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11865");
-  script_version("$Revision: 5252 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-09 17:34:10 +0100 (Thu, 09 Feb 2017) $");
+  script_version("$Revision: 8138 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -126,7 +126,7 @@ function test_socks( port ) {
       } else {
         exp = NULL;
       }
-      replace_kb_item( name:"socks4/detected", value:TRUE );
+      set_kb_item( name:"socks4/detected", value:TRUE );
       mark_socks_proxy( port:port, ver:4, ext_ip:ext );
     }
   }
@@ -165,7 +165,7 @@ function test_socks( port ) {
       } else {
         ext = strcat(ord(data[4]), '.', ord(data[5]), '.', ord(data[6]), '.', ord(data[7]));
       }
-      replace_kb_item( name:"socks5/detected", value:TRUE );
+      set_kb_item( name:"socks5/detected", value:TRUE );
       mark_socks_proxy( port:port, ver:5, ext_ip:ext, authm:authm );
     }
   }

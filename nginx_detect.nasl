@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nginx_detect.nasl 6355 2017-06-16 08:59:27Z cfischer $
+# $Id: nginx_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # nginx Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100274");
-  script_version("$Revision: 6355 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-16 10:59:27 +0200 (Fri, 16 Jun 2017) $");
+  script_version("$Revision: 8139 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-10-01 18:57:31 +0200 (Thu, 01 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -105,7 +105,7 @@ if( installed ) {
 
   install = port + "/tcp";
   set_kb_item( name:"nginx/" + port + "/version", value:vers );
-  replace_kb_item( name:"nginx/installed", value:TRUE );
+  set_kb_item( name:"nginx/installed", value:TRUE );
 
   cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:nginx:nginx:" );
   if( isnull( cpe ) )

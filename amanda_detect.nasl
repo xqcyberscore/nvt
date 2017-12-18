@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: amanda_detect.nasl 4818 2016-12-20 16:41:46Z cfi $
+# $Id: amanda_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Amanda client version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10462");
-  script_version("$Revision: 4818 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-20 17:41:46 +0100 (Tue, 20 Dec 2016) $");
+  script_version("$Revision: 8138 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -68,7 +68,7 @@ function get_version( soc, port, timeout ) {
       data = string( "Amanda version: ", version );
       log_message( port:port, data:data, protocol:"udp" );
       register_service( port:port, ipproto:"udp", proto:"amanda" );
-      replace_kb_item( name:"Amanda/running", value:TRUE );
+      set_kb_item( name:"Amanda/running", value:TRUE );
     }
   }
 }

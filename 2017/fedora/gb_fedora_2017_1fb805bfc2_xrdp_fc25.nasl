@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_1fb805bfc2_xrdp_fc25.nasl 8085 2017-12-12 10:25:30Z santu $
+# $Id: gb_fedora_2017_1fb805bfc2_xrdp_fc25.nasl 8149 2017-12-15 14:58:09Z cfischer $
 #
 # Fedora Update for xrdp FEDORA-2017-1fb805bfc2
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873867");
-  script_version("$Revision: 8085 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 11:25:30 +0100 (Tue, 12 Dec 2017) $");
+  script_version("$Revision: 8149 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 15:58:09 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-09 08:11:24 +0100 (Sat, 09 Dec 2017)");
   script_cve_id("CVE-2017-16927");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for xrdp FEDORA-2017-1fb805bfc2");
   script_tag(name: "summary", value: "Check the version of xrdp");

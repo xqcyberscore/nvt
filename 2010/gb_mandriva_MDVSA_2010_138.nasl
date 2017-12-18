@@ -50,8 +50,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-07/msg00020.php");
   script_id(831113);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8153 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 07:30:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-26 16:14:51 +0200 (Mon, 26 Jul 2010)");
   script_xref(name: "MDVSA", value: "2010:138");
   script_tag(name:"cvss_base", value:"5.0");
@@ -59,7 +59,7 @@ if(description)
   script_cve_id("CVE-2010-2529");
   script_name("Mandriva Update for iputils MDVSA-2010:138 (iputils)");
 
-  script_summary("Check for the Version of iputils");
+  script_tag(name: "summary" , value: "Check for the Version of iputils");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

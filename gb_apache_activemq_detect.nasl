@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_detect.nasl 7440 2017-10-16 07:39:45Z cfischer $
+# $Id: gb_apache_activemq_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Apache ActiveMQ Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105330");
-  script_version("$Revision: 7440 $");
+  script_version("$Revision: 8138 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-16 09:39:45 +0200 (Mon, 16 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-08-24 12:33:07 +0200 (Mon, 24 Aug 2015)");
   script_name("Apache ActiveMQ Detection");
   script_category(ACT_GATHER_INFO);
@@ -111,8 +111,8 @@ foreach jmsPort( jmsPorts ) {
     if( ! cpe )
       cpe = "cpe:/a:apache:activemq";
 
-    replace_kb_item( name:"ActiveMQ/installed", value:TRUE );
-    replace_kb_item( name:"ActiveMQ/JMS/detected", value:TRUE );
+    set_kb_item( name:"ActiveMQ/installed", value:TRUE );
+    set_kb_item( name:"ActiveMQ/JMS/detected", value:TRUE );
 
     register_product( cpe:cpe, location:install, port:jmsPort, service:"jms" );
 
@@ -143,15 +143,15 @@ if( egrep( pattern:"(Apache )?ActiveMQ( Console)?</title>", string:buf, icase:TR
 
   #Basic auth check for default_http_auth_credentials.nasl
   if( 'WWW-Authenticate: basic realm="ActiveMQRealm"' >< buf ) {
-    replace_kb_item( name:"www/content/auth_required", value:TRUE );
+    set_kb_item( name:"www/content/auth_required", value:TRUE );
     set_kb_item( name:"www/" + port + "/content/auth_required", value:url );
     set_kb_item( name:"www/" + port + "/ActiveMQ/Web/auth_required", value:url );
-    replace_kb_item( name:"ActiveMQ/Web/auth_required", value:TRUE );
-    replace_kb_item( name:"ActiveMQ/Web/auth_or_unprotected", value:TRUE );
+    set_kb_item( name:"ActiveMQ/Web/auth_required", value:TRUE );
+    set_kb_item( name:"ActiveMQ/Web/auth_or_unprotected", value:TRUE );
   } else if( egrep( pattern:"(Apache )?ActiveMQ( Console)?</title>", string:buf, icase:TRUE ) ) {
     set_kb_item( name:"www/" + port + "/ActiveMQ/Web/unprotected", value:url );
-    replace_kb_item( name:"ActiveMQ/Web/unprotected", value:TRUE );
-    replace_kb_item( name:"ActiveMQ/Web/auth_or_unprotected", value:TRUE );
+    set_kb_item( name:"ActiveMQ/Web/unprotected", value:TRUE );
+    set_kb_item( name:"ActiveMQ/Web/auth_or_unprotected", value:TRUE );
   }
 
   ##Getting version from admin page, in some cases admin page is accessible where we can get the version
@@ -162,8 +162,8 @@ if( egrep( pattern:"(Apache )?ActiveMQ( Console)?</title>", string:buf, icase:TR
   if( ! cpe )
     cpe = "cpe:/a:apache:activemq";
 
-  replace_kb_item( name:"ActiveMQ/installed", value:TRUE );
-  replace_kb_item( name:"ActiveMQ/Web/detected", value:TRUE );
+  set_kb_item( name:"ActiveMQ/installed", value:TRUE );
+  set_kb_item( name:"ActiveMQ/Web/detected", value:TRUE );
 
   register_product( cpe:cpe, location:install, port:port, service:"www" );
 

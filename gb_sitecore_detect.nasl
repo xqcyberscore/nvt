@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitecore_detect.nasl 7460 2017-10-17 12:52:46Z emoss $
+# $Id: gb_sitecore_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
 #
 # Sitecore CMS Detection
 #
@@ -32,8 +32,8 @@ if(description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:N");
 
- script_version ("$Revision: 7460 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-17 14:52:46 +0200 (Tue, 17 Oct 2017) $");
+ script_version ("$Revision: 8146 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2017-10-16 15:54:00 +0200 (Mon, 16 Oct 2017)");
 
  script_name("Sitecore CMS Detection");
@@ -99,7 +99,7 @@ foreach dir( make_list_unique( "/", "/sitecore", cgi_dirs( port:port ) ) ) {
       if( isnull( cpe ) )
         cpe = "cpe:/a:sitecore:cms";
 
-      replace_kb_item( name:"sitecore/cms/installed", value:TRUE );
+      set_kb_item( name:"sitecore/cms/installed", value:TRUE );
 
       register_product( cpe:cpe, location:install, port:port );
 

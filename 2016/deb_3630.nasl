@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3630.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3630.nasl 8131 2017-12-15 07:30:28Z teissa $
 # Auto-generated from advisory DSA 3630-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703630);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703630");
+    script_version("$Revision: 8131 $");
     script_cve_id("CVE-2016-6207");
     script_name("Debian Security Advisory DSA 3630-1 (libgd2 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-15 08:30:28 +0100 (Fri, 15 Dec 2017) $");
     script_tag(name:"creation_date", value:"2016-08-02 10:56:59 +0530 (Tue, 02 Aug 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_web_detect.nasl 6239 2017-05-30 01:48:49Z ckuerste $
+# $Id: gb_cisco_firepower_management_center_web_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # Cisco FirePOWER Management Center Web Interface Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105521");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6239 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-30 03:48:49 +0200 (Tue, 30 May 2017) $");
+ script_version ("$Revision: 8142 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-01-19 17:03:19 +0100 (Tue, 19 Jan 2016)");
  script_name("Cisco FirePOWER Management Center Web Interface Detection");
 
@@ -67,7 +67,7 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( "<title>Login</title>" >!< buf || "Cisco" >!< buf ) exit( 0 );
 
-replace_kb_item( name:'cisco_fire_linux_os/installed', value:TRUE );
+set_kb_item( name:'cisco_fire_linux_os/installed', value:TRUE );
 
 version = eregmatch( pattern:'\\?v=([0-9.]+)-([0-9]+)', string:buf );
 

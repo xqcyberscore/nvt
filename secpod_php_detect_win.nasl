@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_detect_win.nasl 4492 2016-11-14 10:09:18Z cfi $
+# $Id: secpod_php_detect_win.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # PHP Version Detection (Windows, local)
 #
@@ -36,10 +36,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902435");
-  script_version("$Revision: 4492 $");
+  script_version("$Revision: 8143 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 11:09:18 +0100 (Mon, 14 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_name("PHP Version Detection (Windows, local)");
   script_category(ACT_GATHER_INFO);
@@ -131,7 +131,7 @@ if( phpVer != NULL ) {
 
   ## Set PHP version in KB
   set_kb_item( name:"PHP/Ver/win", value:phpVer );
-  replace_kb_item( name:"php/installed", value:TRUE );
+  set_kb_item( name:"php/installed", value:TRUE );
 
   ## build cpe and store it as host_detail
   if( ver ) {

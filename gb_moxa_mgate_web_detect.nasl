@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_mgate_web_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_moxa_mgate_web_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # Moxa MGate Detection (HTTP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105821");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5888 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+ script_version ("$Revision: 8145 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-07-25 12:58:51 +0200 (Mon, 25 Jul 2016)");
  script_name("Moxa MGate Detection (HTTP)");
 
@@ -98,7 +98,7 @@ for( i = 0; i < max_index( lines ); i++ )
   }
 }
 
-replace_kb_item( name:'moxa/mgate/installed', value:TRUE );
+set_kb_item( name:'moxa/mgate/installed', value:TRUE );
 register_product( cpe:cpe, location:"/", port:port, service:'www' );
 
 report = 'Moxa MGate web console is running at this port.\n\n' +

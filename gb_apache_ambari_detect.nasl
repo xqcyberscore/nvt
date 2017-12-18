@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_detect.nasl 7166 2017-09-18 09:14:09Z cfischer $
+# $Id: gb_apache_ambari_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
 #
 # Apache Ambari Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808648");
-  script_version("$Revision: 7166 $");
+  script_version("$Revision: 8140 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-08-09 18:35:29 +0530 (Tue, 09 Aug 2016)");
   script_name("Apache Ambari Detection");
   script_category(ACT_GATHER_INFO);
@@ -73,7 +73,7 @@ if( rcvRes =~ "HTTP/1\.[0-1] 200" && "Ambari" >< rcvRes && rcvRes =~ "Licensed u
   vers = eregmatch( pattern:"App.version = '([0-9]\.[0-9]\.[0-9])(\.[0-9.])?';", string:rcvRes );
   if( vers[1] ) version = vers[1];
 
-  replace_kb_item( name:"Apache/Ambari/Installed", value:TRUE );
+  set_kb_item( name:"Apache/Ambari/Installed", value:TRUE );
 
   cpe = build_cpe( value:version, exp:"([0-9.]+)", base:"cpe:/a:apache:ambari:" );
   if( ! cpe )

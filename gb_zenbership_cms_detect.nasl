@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zenbership_cms_detect.nasl 6370 2017-06-19 13:00:34Z teissa $
+# $Id: gb_zenbership_cms_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # Zenbership CMS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107220");
-  script_version("$Revision: 6370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-19 15:00:34 +0200 (Mon, 19 Jun 2017) $");
+  script_version("$Revision: 8139 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-06-12 06:40:16 +0200 (Mon, 12 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -76,10 +76,8 @@ foreach dir(make_list_unique( "/", cgi_dirs( port: appPort ) ) ) {
     Ver = tmpVer[1];
   }
 
-  replace_kb_item(name: "zenbership/installed", value: TRUE);
-
+  set_kb_item(name: "zenbership/installed", value: TRUE);
   set_kb_item(name: "zenbership/version", value: Ver);
-
 
   cpe = build_cpe(value: Ver, exp: "^([0-9a-z]+)", base: "cpe:/a:castlamp:zenbership:");
 

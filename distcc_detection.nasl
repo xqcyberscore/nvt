@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: distcc_detection.nasl 5420 2017-02-25 14:12:54Z cfi $
+# $Id: distcc_detection.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # DistCC Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12638");
-  script_version("$Revision: 5420 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-25 15:12:54 +0100 (Sat, 25 Feb 2017) $");
+  script_version("$Revision: 8143 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
@@ -84,7 +84,7 @@ response = recv( socket:soc, length:255 );
 close( soc );
 
 if( "DONE00000" >< response ) {
-  replace_kb_item( name:"distcc/installed", value:TRUE );
+  set_kb_item( name:"distcc/installed", value:TRUE );
   register_service( port:port, proto:"distcc" );
   security_message( port:port );
   exit( 0 );

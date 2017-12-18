@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_web_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_cisco_esa_web_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Cisco Email Security Appliance Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105314");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version ("$Revision: 8138 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2015-07-06 11:43:00 +0200 (Mon, 06 Jul 2015)");
  script_name("Cisco Email Security Appliance Web Interface Detection");
 
@@ -60,7 +60,7 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( buf !~ "<title>\s*Cisco\s*Email Security (Virtual )?Appliance" ) exit( 0 );
 
-replace_kb_item( name:"cisco_esa/installed", value:TRUE );
+set_kb_item( name:"cisco_esa/installed", value:TRUE );
 cpe = 'cpe:/h:cisco:email_security_appliance';
 
 if( "Set-Cookie" >< buf )

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3479_1.nasl 7809 2017-11-17 09:43:26Z santu $
+# $Id: gb_ubuntu_USN_3479_1.nasl 8149 2017-12-15 14:58:09Z cfischer $
 #
 # Ubuntu Update for postgresql-9.6 USN-3479-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843363");
-  script_version("$Revision: 7809 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 10:43:26 +0100 (Fri, 17 Nov 2017) $");
+  script_version("$Revision: 8149 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 15:58:09 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-15 07:29:47 +0100 (Wed, 15 Nov 2017)");
   script_cve_id("CVE-2017-15098", "CVE-2017-15099");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for postgresql-9.6 USN-3479-1");
   script_tag(name: "summary", value: "Check the version of postgresql-9.6");

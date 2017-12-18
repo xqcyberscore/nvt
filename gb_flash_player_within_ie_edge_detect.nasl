@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_within_ie_edge_detect.nasl 6434 2017-06-27 05:32:09Z santu $
+# $Id: gb_flash_player_within_ie_edge_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # Adobe Flash Player Within Microsoft IE And Microsoft Edge Detection
 #
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810611");
-  script_version("$Revision: 6434 $");
+  script_version("$Revision: 8141 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 07:32:09 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-03-10 12:18:44 +0530 (Fri, 10 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Flash Player Within Microsoft IE And Microsoft Edge Detection");
@@ -101,7 +101,7 @@ ie = get_kb_item("MS/IE/Installed");
 if(ie)
 {
   set_kb_item(name:"AdobeFlashPlayer/IE/Ver", value:fileVer);
-  replace_kb_item( name:"AdobeFlash/IE_or_EDGE/Installed", value:TRUE );
+  set_kb_item( name:"AdobeFlash/IE_or_EDGE/Installed", value:TRUE );
   base_cpe = "cpe:/a:adobe:flash_player_internet_explorer";
 }
 else
@@ -111,7 +111,7 @@ else
   if(edge)
   {
     set_kb_item(name:"AdobeFlashPlayer/EDGE/Ver", value:fileVer);
-    replace_kb_item( name:"AdobeFlash/IE_or_EDGE/Installed", value:TRUE );
+    set_kb_item( name:"AdobeFlash/IE_or_EDGE/Installed", value:TRUE );
     base_cpe = "cpe:/a:adobe:flash_player_edge";
   }
 }

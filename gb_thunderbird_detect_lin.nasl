@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_thunderbird_detect_lin.nasl 8146 2017-12-15 13:40:59Z cfischer $
 #
 # Mozilla Thunderbird Version Detection (Linux)
 #
@@ -30,8 +30,8 @@ tag_summary = "This script retrieves Mozilla ThunderBird Version and
 if(description)
 {
   script_id(800018);
-  script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_version("$Revision: 8146 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-10-07 14:21:23 +0200 (Tue, 07 Oct 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -72,7 +72,7 @@ foreach binary_birdName (birdName)
   if(birdVer)
   {
     set_kb_item(name:"Thunderbird/Linux/Ver", value:birdVer[0]);
-    replace_kb_item(name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Linux/Installed", value:TRUE);
+    set_kb_item(name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Linux/Installed", value:TRUE);
     log_message(data:"Mozilla Thunderbird version " + birdVer[0] + 
                   " running at location " + binary_birdName + " was detected on the host");
     ssh_close_connection();

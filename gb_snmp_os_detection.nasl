@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_os_detection.nasl 7995 2017-12-05 15:10:59Z cfischer $
+# $Id: gb_snmp_os_detection.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # SNMP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103429");
-  script_version("$Revision: 7995 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-05 16:10:59 +0100 (Tue, 05 Dec 2017) $");
+  script_version("$Revision: 8139 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-02-17 10:17:12 +0100 (Fri, 17 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -287,7 +287,7 @@ if( ( sysdesc =~ "^Cisco IOS" || "IOS (tm)" >< sysdesc ) && ( "Cisco IOS XR" >!<
   if( ! isnull( version[1] ) ) {
     register_and_report_os( os:'IOS', version:version[1], cpe:"cpe:/o:cisco:ios", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
     set_kb_item( name:"cisco_ios/snmp/version", value:version[1] );
-    replace_kb_item( name:"cisco_ios/detected", value:TRUE );
+    set_kb_item( name:"cisco_ios/detected", value:TRUE );
   } else {
     register_and_report_os( os:'IOS', cpe:"cpe:/o:cisco:ios", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
@@ -306,7 +306,7 @@ if( ( sysdesc =~ "^Cisco IOS" || "IOS (tm)" >< sysdesc ) && "Cisco IOS XR" >!< s
 
     register_and_report_os( os:'IOS XE', version:version[1], cpe:"cpe:/o:cisco:ios_xe", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
     set_kb_item( name:"cisco_ios_xe/snmp/version", value:version[1] );
-    replace_kb_item( name:"cisco_ios_xe/detected", value:TRUE );
+    set_kb_item( name:"cisco_ios_xe/detected", value:TRUE );
   } else {
     register_and_report_os( os:'IOS XE', cpe:"cpe:/o:cisco:ios_xe", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }

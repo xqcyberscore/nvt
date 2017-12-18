@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ata_187_sip_detect.nasl 7133 2017-09-14 14:31:13Z cfischer $
+# $Id: gb_cisco_ata_187_sip_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # Cisco ATA 187 Detection (SIP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140085");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7133 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-14 16:31:13 +0200 (Thu, 14 Sep 2017) $");
+ script_version ("$Revision: 8141 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-12-01 14:02:18 +0100 (Thu, 01 Dec 2016)");
  script_name("Cisco ATA 187 Detection (SIP)");
 
@@ -59,7 +59,7 @@ banner = get_sip_banner( port:port, proto:proto );
 if( ! banner || "Cisco-ATA187/" >!< banner ) exit( 0 );
 
 cpe = 'cpe:/o:cisco:ata_187_analog_telephone_adaptor_firmware';
-replace_kb_item( name:"cisco/ata187/detected", value:TRUE);
+set_kb_item( name:"cisco/ata187/detected", value:TRUE);
 vers = 'unknown';
 
 # Cisco-ATA187/9.2.3

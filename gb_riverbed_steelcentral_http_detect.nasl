@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_riverbed_steelcentral_http_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_riverbed_steelcentral_http_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # Riverbed SteelCentral Detection (HTTP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105787");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version ("$Revision: 8143 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-06-30 13:36:05 +0200 (Thu, 30 Jun 2016)");
  script_name("Riverbed SteelCentral Detection (HTTP)");
 
@@ -66,8 +66,8 @@ if( "<title>Riverbed Technology, Inc.</title>" >< buf )
 
   if( "device_name" >< buf && "sw_version" >< buf && "model" >< buf )
   {
-    replace_kb_item( name:"riverbed/SteelCentral/detected", value:TRUE );
-    if( "-VE" >< buf ) replace_kb_item( name:"riverbed/SteelCentral/is_vm", value:TRUE );
+    set_kb_item( name:"riverbed/SteelCentral/detected", value:TRUE );
+    if( "-VE" >< buf ) set_kb_item( name:"riverbed/SteelCentral/is_vm", value:TRUE );
     set_kb_item( name:"riverbed/SteelCentral/http_interface/detected", value:TRUE );
 
     cpe = 'cpe:/a:riverbed:steelcentral';

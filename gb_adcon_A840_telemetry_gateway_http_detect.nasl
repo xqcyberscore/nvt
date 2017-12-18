@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adcon_A840_telemetry_gateway_http_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_adcon_A840_telemetry_gateway_http_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Adcon A840 Telemetry Gateway Detection (HTTP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105489");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version ("$Revision: 8138 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2015-12-17 16:12:43 +0100 (Thu, 17 Dec 2015)");
  script_name("Adcon A840 Telemetry Gateway Detection (HTTP)");
 
@@ -57,7 +57,7 @@ port = get_http_port( default:80 );
 buf =  http_get_cache( item:"/", port:port );
 if( ! buf || "Welcome to the A840 Telemetry Gateway" >!< buf ) exit( 0 );
 
-replace_kb_item( name:"tg_A840/installed", value:TRUE );
+set_kb_item( name:"tg_A840/installed", value:TRUE );
 set_kb_item( name:"tg_A840/http/port", value:port );
 
 version = eregmatch( pattern:'>Release ([0-9.]+[^,]+),', string:buf );

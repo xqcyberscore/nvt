@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mautic_detect.nasl 6321 2017-06-13 11:17:30Z cfischer $
+# $Id: gb_mautic_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # Mautic Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108182");
-  script_version("$Revision: 6321 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-13 13:17:30 +0200 (Tue, 13 Jun 2017) $");
+  script_version("$Revision: 8145 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-06-13 12:57:33 +0200 (Tue, 13 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -86,7 +86,7 @@ foreach dir( make_list_unique( "/", "/mautic", cgi_dirs( port:port ) ) ) {
       conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
     }
 
-    replace_kb_item( name:"Mautic/installed", value:TRUE );
+    set_kb_item( name:"Mautic/installed", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:mautic:mautic:" );
     if( ! cpe )

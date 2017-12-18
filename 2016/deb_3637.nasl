@@ -29,15 +29,15 @@
 
 if(description)
 {
-    script_id(703637);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703637");
+    script_version("$Revision: 8131 $");
     script_cve_id("CVE-2016-1704", "CVE-2016-1705", "CVE-2016-1706", "CVE-2016-1707",
                   "CVE-2016-1708", "CVE-2016-1709", "CVE-2016-1710", "CVE-2016-1711",
                   "CVE-2016-5127", "CVE-2016-5128", "CVE-2016-5129", "CVE-2016-5130",
                   "CVE-2016-5131", "CVE-2016-5132", "CVE-2016-5133", "CVE-2016-5134",
                   "CVE-2016-5135", "CVE-2016-5136", "CVE-2016-5137");
     script_name("Debian Security Advisory DSA 3637-1 (chromium-browser - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-15 08:30:28 +0100 (Fri, 15 Dec 2017) $");
     script_tag(name:"creation_date", value:"2016-08-04 16:27:39 +0530 (Thu, 04 Aug 2016)");
     script_tag(name:"cvss_base", value:"9.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

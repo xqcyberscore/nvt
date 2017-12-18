@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_support_tickets_detect.nasl 8087 2017-12-12 13:12:04Z teissa $
+# $Id: gb_php_support_tickets_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # PHP Support Tickets Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103255");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8087 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
+ script_version("$Revision: 8139 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2011-09-14 13:31:57 +0200 (Wed, 14 Sep 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("PHP Support Tickets Detection");
@@ -78,7 +78,7 @@ foreach dir( make_list_unique( "/tickets", "/support", cgi_dirs( port:port ) ) )
     }
 
     set_kb_item(name: string("www/", port, "/php_support_tickets"), value: string(vers," under ",install));
-    replace_kb_item( name:"php_support_tickets/installed", value:TRUE );
+    set_kb_item( name:"php_support_tickets/installed", value:TRUE );
 
     if(vers == "unknown") {
       register_host_detail(name:"App", value:string("cpe:/a:triangle_solutions:php_support_tickets"), nvt:SCRIPT_OID, desc:SCRIPT_DESC);

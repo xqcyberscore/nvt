@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adcon_A840_telemetry_gateway_telnet_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_adcon_A840_telemetry_gateway_telnet_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # Adcon A840 Telemetry Gateway Detection (Telnet)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105488");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version ("$Revision: 8143 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2015-12-17 16:01:19 +0100 (Thu, 17 Dec 2015)");
  script_name("Adcon A840 Telemetry Gateway Detection");
 
@@ -58,7 +58,7 @@ if( ! get_port_state( port ) ) exit( 0 );
 banner = get_telnet_banner( port: port );
 if( ! banner || "Telemetry Gateway A840" >!< banner ) exit( 0 );
 
-replace_kb_item( name:'tg_A840/installed', value:TRUE );
+set_kb_item( name:'tg_A840/installed', value:TRUE );
 set_kb_item( name:'tg_A840/telnet/port', value:port );
 
 version = eregmatch( pattern:'Telemetry Gateway A840 Version ([0-9.]+[^\r\n ]+)', string:banner );

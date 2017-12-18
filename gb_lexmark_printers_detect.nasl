@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lexmark_printers_detect.nasl 7967 2017-12-01 08:17:56Z cfischer $
+# $Id: gb_lexmark_printers_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # Lexmark Printer Detection
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103685");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7967 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 09:17:56 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8142 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-03-28 11:31:24 +0100 (Thu, 28 Mar 2013)");
   script_name("Lexmark Printer Detection");
   script_category(ACT_GATHER_INFO);
@@ -90,7 +90,7 @@ foreach url(keys(urls)) {
 
       pref = get_kb_item("global_settings/exclude_printers");
       if( pref == "yes" ) {
-         replace_kb_item( name:"Host/dead", value:TRUE );
+         set_kb_item( name:"Host/dead", value:TRUE );
          log_message( port:port, data:'The remote host is a printer. The scan has been disabled against this host.\nIf you want to scan the remote host, uncheck the "Exclude printers from scan" option and re-scan it.');
       }
       exit(0);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_virtualbox_detect_win.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: secpod_sun_virtualbox_detect_win.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Sun VirtualBox Version Detection (Windows)
 #
@@ -34,10 +34,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901053");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 8138 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-11-26 06:39:46 +0100 (Thu, 26 Nov 2009)");
   script_name("Sun VirtualBox Version Detection (Windows)");
   script_tag(name:"summary", value:"Detection of installed version of Sun/Oracle VirtualBox.
@@ -72,7 +72,7 @@ if(!get_kb_item("SMB/WindowsVersion")){
 function building_cpe(version, insPath)
 {
   set_kb_item(name:"Oracle/VirtualBox/Win/Ver", value:version);
-  replace_kb_item(name:"VirtualBox/Win/installed", value: TRUE);
+  set_kb_item(name:"VirtualBox/Win/installed", value: TRUE);
   if(version_is_less(version:version, test_version:"3.2.0"))
   {
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:sun:virtualbox:");
@@ -186,7 +186,7 @@ foreach item (registry_enum_keys(key:path))
     {
       ## set KB
       set_kb_item(name:"Sun/xVM-VirtualBox/Win/Ver", value:xvmVer);
-      replace_kb_item(name:"VirtualBox/Win/installed", value: TRUE);
+      set_kb_item(name:"VirtualBox/Win/installed", value: TRUE);
 
       ## Get install location
      inPath = registry_get_sz(key:path + item,  item:"InstallLocation");

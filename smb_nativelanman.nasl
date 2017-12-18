@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: smb_nativelanman.nasl 7732 2017-11-10 10:29:01Z cfischer $
+# $Id: smb_nativelanman.nasl 8147 2017-12-15 13:51:17Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 7732 $");
+  script_version("$Revision: 8147 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-10 11:29:01 +0100 (Fri, 10 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:51:17 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -131,8 +131,8 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
         if( vers[1] ) version = vers[1];
 
         samba = TRUE;
-        replace_kb_item( name:"SMB/samba", value:TRUE ); # TODO: Decide which one to use and update all other NVTs
-        replace_kb_item( name:"samba/detected", value:TRUE );
+        set_kb_item( name:"SMB/samba", value:TRUE ); # TODO: Decide which one to use and update all other NVTs
+        set_kb_item( name:"samba/detected", value:TRUE );
 
         cpe = build_cpe( value:version, exp:"([0-9.]+)", base:"cpe:/a:samba:samba:" );
         if( ! cpe )

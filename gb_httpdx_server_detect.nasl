@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdx_server_detect.nasl 4780 2016-12-16 08:45:05Z cfi $
+# $Id: gb_httpdx_server_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
 #
 # httpdx Server Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800960");
-  script_version("$Revision: 4780 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-16 09:45:05 +0100 (Fri, 16 Dec 2016) $");
+  script_version("$Revision: 8146 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-10-23 16:18:41 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -70,7 +70,7 @@ foreach port( ftpPorts ) {
         vers = httpdxVer[1];
       }
 
-      replace_kb_item( name:"httpdx/installed", value:TRUE );
+      set_kb_item( name:"httpdx/installed", value:TRUE );
 
       ## build cpe and store it as host_detail
       cpe = build_cpe( value:vers, exp:"^([0-9.]+([a-z]+)?)", base:"cpe:/a:jasper:httpdx:" );
@@ -102,7 +102,7 @@ if( banner && "httpdx" >< banner ) {
     vers = httpdxVer[1];
   }
 
-  replace_kb_item( name:"httpdx/installed", value:TRUE );
+  set_kb_item( name:"httpdx/installed", value:TRUE );
 
   ## build cpe and store it as host_detail
   cpe = build_cpe( value:vers, exp:"^([0-9.]+([a-z]+)?)", base:"cpe:/a:jasper:httpdx:" );

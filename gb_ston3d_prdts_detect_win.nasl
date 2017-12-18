@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ston3d_prdts_detect_win.nasl 7293 2017-09-27 08:49:48Z cfischer $
+# $Id: gb_ston3d_prdts_detect_win.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # StoneTrip Ston3d Products Version Detection (Windows)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800573");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7293 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
+  script_version("$Revision: 8145 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-06-16 15:11:01 +0200 (Tue, 16 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("StoneTrip Ston3d Products Version Detection (Windows)");
@@ -59,7 +59,7 @@ key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 sapVer = registry_get_sz(key:key + "Ston3D Standalone Engine", item:"DisplayVersion");
 if(sapVer != NULL)
 {
-  replace_kb_item(name:"Ston3D/Standalone_or_Web/Player/Win/Installed", value:TRUE);
+  set_kb_item(name:"Ston3D/Standalone_or_Web/Player/Win/Installed", value:TRUE);
   set_kb_item(name:"Ston3D/Standalone/Player/Win/Ver", value:sapVer);
 
   ## build cpe and store it as host_detail
@@ -70,7 +70,7 @@ if(sapVer != NULL)
 wpVer = registry_get_sz(key:key + "Ston3D Web Player", item:"DisplayVersion");
 if(wpVer != NULL)
 {
-  replace_kb_item(name:"Ston3D/Standalone_or_Web/Player/Win/Installed", value:TRUE);
+  set_kb_item(name:"Ston3D/Standalone_or_Web/Player/Win/Installed", value:TRUE);
   set_kb_item(name:"Ston3D/Web/Player/Ver", value:wpVer);
 
   ## build cpe and store it as host_detail

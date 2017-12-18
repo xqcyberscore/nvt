@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_slysoft_prdts_detect.nasl 6516 2017-07-04 12:20:47Z cfischer $
+# $Id: gb_slysoft_prdts_detect.nasl 8147 2017-12-15 13:51:17Z cfischer $
 #
 # SlySoft Product(s) Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800391");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6516 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
+  script_version("$Revision: 8147 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:51:17 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-16 16:39:16 +0200 (Thu, 16 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SlySoft Product(s) Version Detection");
@@ -72,7 +72,7 @@ if(anydvdPath)
   anydvdVer = get_version(dllPath:anydvdPath + "\AnyDVD.exe", string:"prod", offs:332560);
   if(anydvdVer != NULL)
   {
-    replace_kb_item(name:"Slysoft/Products/Installed", value:TRUE);
+    set_kb_item(name:"Slysoft/Products/Installed", value:TRUE);
     set_kb_item(name:"AnyDVD/Ver", value:anydvdVer);
 
     ## build cpe and store it as host_detail
@@ -89,7 +89,7 @@ if(clonedvdPath)
   dvdVer = get_version(dllPath:clonedvdPath + "\CloneDVD2.exe", string:"prod", offs:332560);
   if(dvdVer != NULL)
   {
-    replace_kb_item(name:"Slysoft/Products/Installed", value:TRUE);
+    set_kb_item(name:"Slysoft/Products/Installed", value:TRUE);
     set_kb_item(name:"CloneDVD/Ver", value:dvdVer);
 
     ## build cpe and store it as host_detail
@@ -104,7 +104,7 @@ else
   dvdVer = get_version(dllPath:clonedvdPath + "\CloneDVD.exe", string:"prod", offs:332560);
   if(dvdVer != NULL)
   {
-    replace_kb_item(name:"Slysoft/Products/Installed", value:TRUE);
+    set_kb_item(name:"Slysoft/Products/Installed", value:TRUE);
     set_kb_item(name:"CloneDVD/Ver", value:dvdVer);
 
     ## build cpe and store it as host_detail
@@ -121,7 +121,7 @@ if(clonecdPath)
   cdVer = get_version( dllPath:clonecdPath + "\CloneCD.exe", string:"prod", offs:332560);
   if(cdVer != NULL)
   {
-    replace_kb_item(name:"Slysoft/Products/Installed", value:TRUE);
+    set_kb_item(name:"Slysoft/Products/Installed", value:TRUE);
     set_kb_item(name:"CloneCD/Ver", value:cdVer);
 
     ## build cpe and store it as host_detail
@@ -138,7 +138,7 @@ if(drivePath)
   driveVer = get_version( dllPath:drivePath + "\VCDPrefs.exe", string:"prod", offs:332560);
   if(driveVer != NULL)
   {
-    replace_kb_item(name:"Slysoft/Products/Installed", value:TRUE);
+    set_kb_item(name:"Slysoft/Products/Installed", value:TRUE);
     set_kb_item(name:"VirtualCloneDrive/Ver", value:driveVer);
 
     ## build cpe and store it as host_detail

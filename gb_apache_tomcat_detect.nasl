@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_detect.nasl 6139 2017-05-16 14:38:35Z cfi $
+# $Id: gb_apache_tomcat_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
 #
 # Apache Tomcat Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800371");
-  script_version("$Revision: 6139 $");
+  script_version("$Revision: 8137 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 16:38:35 +0200 (Tue, 16 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-18 14:25:01 +0100 (Wed, 18 Mar 2009)");
   script_name("Apache Tomcat Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -116,7 +116,7 @@ foreach url( authDirs ) {
     if( "Tomcat Manager Application" >< authRes || "Tomcat Host Manager Application" >< authRes ||
         "Tomcat Manager Application" >< authRes ) {
       set_kb_item( name:"www/" + port + "/ApacheTomcat/auth_required", value:url );
-      replace_kb_item( name:"ApacheTomcat/auth_required", value:TRUE );
+      set_kb_item( name:"ApacheTomcat/auth_required", value:TRUE );
       identified = TRUE;
       extraUrls += report_vuln_url( port:port, url:url, url_only:TRUE ) + '\n';
     }
@@ -150,7 +150,7 @@ if( identified ) {
   }
 
   set_kb_item( name:"www/" + port + "/ApacheTomcat", value:vers );
-  replace_kb_item( name:"ApacheTomcat/installed", value:TRUE );
+  set_kb_item( name:"ApacheTomcat/installed", value:TRUE );
 
   cpe = build_cpe( value:vers, exp:"^([0-9.RCM]+)", base:"cpe:/a:apache:tomcat:" );
   if( isnull( cpe ) )

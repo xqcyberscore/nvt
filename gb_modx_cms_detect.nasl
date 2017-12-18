@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_cms_detect.nasl 5882 2017-04-06 11:53:46Z cfi $
+# $Id: gb_modx_cms_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # MODX Evolution/Revolution CMS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106458");
-  script_version("$Revision: 5882 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 13:53:46 +0200 (Thu, 06 Apr 2017) $");
+  script_version("$Revision: 8145 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-12-09 11:42:44 +0700 (Fri, 09 Dec 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -126,7 +126,7 @@ foreach dir( make_list_unique( "/", "/modx", "/evolution", "/revolution", cgi_di
       }
     }
 
-    replace_kb_item( name:"modx_cms/installed", value:TRUE );
+    set_kb_item( name:"modx_cms/installed", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+(-rc[1-9]+)?)", base:base_cpe + ":" );
     if( ! cpe )

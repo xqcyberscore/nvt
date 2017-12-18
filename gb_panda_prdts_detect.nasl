@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_prdts_detect.nasl 6516 2017-07-04 12:20:47Z cfischer $
+# $Id: gb_panda_prdts_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # Panda Products Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801079");
-  script_version("$Revision: 6516 $");
+  script_version("$Revision: 8139 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-12-14 09:18:47 +0100 (Mon, 14 Dec 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Panda Products Version Detection");
@@ -108,7 +108,7 @@ foreach key (key_list)
       pandaPath = registry_get_sz(key:key + item, item:"InstallLocation");
       if(pandaVer != NULL)
       {
-          replace_kb_item(name:"Panda/Products/Installed", value:TRUE);
+          set_kb_item(name:"Panda/Products/Installed", value:TRUE);
           set_kb_item(name:"Panda/GoldProtection/Ver", value:pandaVer);
           cpe = build_cpe(value:pandaVer, exp:"^([0-9.]+)", base:"cpe:/a:pandasecurity:panda_gold_protection:");
           if(!cpe)
@@ -126,7 +126,7 @@ foreach key (key_list)
       pandaPath = registry_get_sz(key:key + item, item:"InstallLocation");
       if(pandaVer != NULL)
       {
-          replace_kb_item(name:"Panda/Products/Installed", value:TRUE);
+          set_kb_item(name:"Panda/Products/Installed", value:TRUE);
           set_kb_item(name:"Panda/SmallBusinessProtection/Ver", value:pandaVer);
           if(pandaVer =~ "^(16|17\.0)")
           {
@@ -146,7 +146,7 @@ foreach key (key_list)
       pandaPath = registry_get_sz(key:key + item, item:"InstallLocation");
       if(pandaVer != NULL)
       {
-        replace_kb_item(name:"Panda/Products/Installed", value:TRUE);
+        set_kb_item(name:"Panda/Products/Installed", value:TRUE);
         set_kb_item(name:"Panda/InternetSecurity/Ver", value:pandaVer);
         if(pandaVer =~ "^(16|17|19\.0)")
         {
@@ -177,7 +177,7 @@ foreach key (key_list)
       pandaPath = registry_get_sz(key:key + item, item:"InstallLocation");
       if(pandaVer != NULL)
       {
-        replace_kb_item(name:"Panda/Products/Installed", value:TRUE);
+        set_kb_item(name:"Panda/Products/Installed", value:TRUE);
         set_kb_item(name:"Panda/GlobalProtection/Ver", value:pandaVer);
         if(pandaVer =~ "^(3\.0)")
         {
@@ -208,7 +208,7 @@ foreach key (key_list)
       pandaPath = registry_get_sz(key:key + item, item:"InstallLocation");
       if(pandaVer != NULL)
       {
-        replace_kb_item(name:"Panda/Products/Installed", value:TRUE);
+        set_kb_item(name:"Panda/Products/Installed", value:TRUE);
         set_kb_item(name:"Panda/Antivirus/Ver", value:pandaVer);
         if(pandaVer =~ "^(9\.0)")
         {

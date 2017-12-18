@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_palo_alto_webgui_detect.nasl 8015 2017-12-07 05:40:46Z ckuersteiner $
+# $Id: gb_palo_alto_webgui_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # Palo Alto Device Web Management Interface Detection
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105261");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 06:40:46 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 8142 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-04-22 13:08:50 +0200 (Wed, 22 Apr 2015)");
   script_name("Palo Alto Device Web Management Interface Detection");
   script_category(ACT_GATHER_INFO);
@@ -61,7 +61,7 @@ res = http_get_cache( item:"/php/login.php", port:port );
 if( "Server: PanWeb Server/" >< banner || 
     ( "/login/images/logo-pan-" >< res && "'js/Pan.js'></script>" >< res ) ) {
 
-  replace_kb_item( name:"palo_alto/webui", value:TRUE );
+  set_kb_item( name:"palo_alto/webui", value:TRUE );
   set_kb_item( name:"palo_alto/webui/port", value:port );
 
   register_and_report_os( os:"PAN-OS", cpe:"cpe:/o:paloaltonetworks:pan-os", banner_type:"HTTP Login Page", port:port, desc:"Palo Alto Device Web Management Interface Detection", runs_key:"unixoide" );

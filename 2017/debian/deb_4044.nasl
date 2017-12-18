@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4044.nasl 7894 2017-11-24 06:14:13Z teissa $
+# $Id: deb_4044.nasl 8149 2017-12-15 14:58:09Z cfischer $
 #
 # Auto-generated from advisory DSA 4044-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704044");
-  script_version("$Revision: 7894 $");
+  script_version("$Revision: 8149 $");
   script_cve_id("CVE-2017-16613");
   script_name("Debian Security Advisory DSA 4044-1 (swauth - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 07:14:13 +0100 (Fri, 24 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 15:58:09 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-21 00:00:00 +0100 (Tue, 21 Nov 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

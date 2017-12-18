@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wmi_access.nasl 6894 2017-08-10 13:52:23Z cfischer $
+# $Id: gb_wmi_access.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # Check for access via WMI
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108205");
-  script_version("$Revision: 6894 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-10 15:52:23 +0200 (Thu, 10 Aug 2017) $");
+  script_version("$Revision: 8139 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-08-09 13:47:59 +0200 (Wed, 09 Aug 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,6 +65,6 @@ if( ! handle ) exit( 0 );
 
 wmi_close( wmi_handle:handle );
 
-replace_kb_item( name:"WMI/access_successful", value:TRUE );
+set_kb_item( name:"WMI/access_successful", value:TRUE );
 
 exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sun_dir_server_detect.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: sun_dir_server_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # Sun Java System Directory Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100437");
-  script_version("$Revision: 5190 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 8143 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-01-12 12:22:08 +0100 (Tue, 12 Jan 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -95,7 +95,7 @@ info = "";
 
 if( "Sun-Directory-Server" >< str ) {
 
-  replace_kb_item( name:"SunJavaDirServer/installed", value:TRUE );
+  set_kb_item( name:"SunJavaDirServer/installed", value:TRUE );
 
   version = eregmatch( string:str, pattern:"Sun-Directory-Server/([0-9.]+([^#]+)?)" );
   if( ! isnull( version[1] ) ) {

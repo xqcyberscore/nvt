@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ssl_ciphers.inc 7578 2017-10-26 11:00:21Z cfischer $
+# $Id: secpod_ssl_ciphers.inc 8137 2017-12-15 11:26:42Z cfischer $
 #
 # Check SSL Weak Ciphers and Supported Ciphers
 #
@@ -28,7 +28,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7578 $
+# $Revision: 8137 $
 #
 ###############################################################################
 
@@ -539,9 +539,9 @@ function report_cipher( cipher_name, ssl_port, ssl_ver ) {
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/supported_ciphers", value:cipherName );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/strong_ciphers", value:cipherName );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/nonweak_ciphers", value:cipherName );
-    replace_kb_item( name:"secpod_ssl_ciphers/supported_ciphers", value:TRUE );
-    replace_kb_item( name:"secpod_ssl_ciphers/nonweak_ciphers", value:TRUE );
-    replace_kb_item( name:"secpod_ssl_ciphers/strong_ciphers", value:TRUE );
+    set_kb_item( name:"secpod_ssl_ciphers/supported_ciphers", value:TRUE );
+    set_kb_item( name:"secpod_ssl_ciphers/nonweak_ciphers", value:TRUE );
+    set_kb_item( name:"secpod_ssl_ciphers/strong_ciphers", value:TRUE );
   }
 
   ## Check for Medium ciphers
@@ -550,9 +550,9 @@ function report_cipher( cipher_name, ssl_port, ssl_ver ) {
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/supported_ciphers", value:cipherName );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/medium_ciphers", value:cipherName );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/nonweak_ciphers", value:cipherName );
-    replace_kb_item( name:"secpod_ssl_ciphers/supported_ciphers", value:TRUE );
-    replace_kb_item( name:"secpod_ssl_ciphers/nonweak_ciphers", value:TRUE );
-    replace_kb_item( name:"secpod_ssl_ciphers/medium_ciphers", value:TRUE );
+    set_kb_item( name:"secpod_ssl_ciphers/supported_ciphers", value:TRUE );
+    set_kb_item( name:"secpod_ssl_ciphers/nonweak_ciphers", value:TRUE );
+    set_kb_item( name:"secpod_ssl_ciphers/medium_ciphers", value:TRUE );
   }
 
   ## Check for weak cipher
@@ -560,8 +560,8 @@ function report_cipher( cipher_name, ssl_port, ssl_ver ) {
     cipherName = ereg_replace( pattern:" :.*", string:cipher_name, replace:"" );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/supported_ciphers", value:cipherName );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/weak_ciphers", value:cipherName );
-    replace_kb_item( name:"secpod_ssl_ciphers/supported_ciphers", value:TRUE );
-    replace_kb_item( name:"secpod_ssl_ciphers/weak_ciphers", value:TRUE );
+    set_kb_item( name:"secpod_ssl_ciphers/supported_ciphers", value:TRUE );
+    set_kb_item( name:"secpod_ssl_ciphers/weak_ciphers", value:TRUE );
   }
 
   ## Check for Null ciphers
@@ -569,15 +569,15 @@ function report_cipher( cipher_name, ssl_port, ssl_ver ) {
     cipherName = ereg_replace( pattern:" :.*", string:cipher_name, replace:"" );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/supported_ciphers", value:cipherName );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/null_ciphers", value:cipherName );
-    replace_kb_item( name:"secpod_ssl_ciphers/supported_ciphers", value:TRUE );
-    replace_kb_item( name:"secpod_ssl_ciphers/null_ciphers", value:TRUE );
+    set_kb_item( name:"secpod_ssl_ciphers/supported_ciphers", value:TRUE );
+    set_kb_item( name:"secpod_ssl_ciphers/null_ciphers", value:TRUE );
   }
 
   ## Check for Anonymous ciphers
   if( "_anon_" >< cipher_name ) {
     cipherName = ereg_replace( pattern:" :.*", string:cipher_name, replace:"" );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/anon_ciphers", value:cipherName );
-    replace_kb_item( name:"secpod_ssl_ciphers/anon_ciphers", value:TRUE );
+    set_kb_item( name:"secpod_ssl_ciphers/anon_ciphers", value:TRUE );
   }
 }
 

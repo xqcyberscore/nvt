@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_ssh_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_cisco_firepower_management_center_ssh_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # Cisco Firepower Management Center Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105519");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5499 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version ("$Revision: 8143 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-01-19 16:05:51 +0100 (Tue, 19 Jan 2016)");
  script_name("Cisco Firepower Management Center Detection");
 
@@ -105,7 +105,7 @@ if( model )
   rep_model = 'Model: ' + model + '\n';
 }
 
-replace_kb_item( name:'cisco_fire_linux_os/installed', value:TRUE );
+set_kb_item( name:'cisco_fire_linux_os/installed', value:TRUE );
 
 log_message( data: build_detection_report( app:'Cisco Firepower Management Center',
                                            version:rep_version,

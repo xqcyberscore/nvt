@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ziproxy_server_detect.nasl 8087 2017-12-12 13:12:04Z teissa $
+# $Id: secpod_ziproxy_server_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # Ziproxy Server Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900522");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8087 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
+ script_version("$Revision: 8141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:19:12 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Ziproxy Server Version Detection");
@@ -73,7 +73,7 @@ if(get_port_state(zipPort))
 
     if(ziproxyVer[1] != NULL){
       set_kb_item(name:"www/" + zipPort + "/Ziproxy", value:ziproxyVer[1]);
-      replace_kb_item(name:"Ziproxy/installed", value:TRUE);
+      set_kb_item(name:"Ziproxy/installed", value:TRUE);
       log_message(data:"Ziproxy Server version " + ziproxyVer[1] +
                          " was detected on the host");
    

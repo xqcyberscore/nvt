@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ata_187_web_detect.nasl 4654 2016-12-01 14:46:45Z mime $
+# $Id: gb_cisco_ata_187_web_detect.nasl 8144 2017-12-15 13:19:55Z cfischer $
 #
 # Cisco ATA 187 Detection (HTTP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140084");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 4654 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-01 15:46:45 +0100 (Thu, 01 Dec 2016) $");
+ script_version ("$Revision: 8144 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-12-01 13:31:46 +0100 (Thu, 01 Dec 2016)");
  script_name("Cisco ATA 187 Detection (HTTP)");
 
@@ -62,7 +62,7 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 if( "<title>Cisco Systems, Inc.</title>" >!< buf || "Cisco ATA 187" >!< buf ) exit( 0 );
 
 cpe = 'cpe:/o:cisco:ata_187_analog_telephone_adaptor_firmware';
-replace_kb_item( name:"cisco/ata187/detected", value:TRUE);
+set_kb_item( name:"cisco/ata187/detected", value:TRUE);
 
 lines = split( buf );
 vers = 'unknown';

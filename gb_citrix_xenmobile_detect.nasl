@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_xenmobile_detect.nasl 6385 2017-06-21 07:06:43Z ckuersteiner $
+# $Id: gb_citrix_xenmobile_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # Citrix XenMobile Server Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105569");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6385 $");
- script_tag(name:"last_modification", value:"$Date: 2017-06-21 09:06:43 +0200 (Wed, 21 Jun 2017) $");
+ script_version ("$Revision: 8141 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-03-15 18:31:10 +0100 (Tue, 15 Mar 2016)");
  script_name("Citrix XenMobile Server Detection");
 
@@ -66,7 +66,7 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 if( "<title>XenMobile" >!< buf || "Citrix Systems" >!< buf ) exit( 0 );
 
 cpe = 'cpe:/a:citrix:xenmobile_server';
-replace_kb_item( name:"citrix_xenmobile_server/installed", value:TRUE );
+set_kb_item( name:"citrix_xenmobile_server/installed", value:TRUE );
 
 cookie = get_cookie_from_header(buf: buf, pattern: "(JSESSIONID=[^;]+)");
 

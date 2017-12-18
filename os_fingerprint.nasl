@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: os_fingerprint.nasl 7560 2017-10-25 11:12:22Z cfischer $
+# $Id: os_fingerprint.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # ICMP based OS Fingerprinting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("$Revision: 7560 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 13:12:22 +0200 (Wed, 25 Oct 2017) $");
+  script_version("$Revision: 8141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -481,7 +481,7 @@ function ModuleB() {
         result += "," + ttl;
     } else {
         # For later use in e.g. 2011/gb_icmp_timestamps.nasl
-        replace_kb_item( name:"ICMPv4/TimestampRequest/failed", value:TRUE );
+        set_kb_item( name:"ICMPv4/TimestampRequest/failed", value:TRUE );
         result += "n,,";
     }
 
@@ -545,7 +545,7 @@ function ModuleC() {
         result += "," + ttl;
     } else {
         # For later use by other NVTs
-        replace_kb_item( name:"ICMPv4/AddressMaskRequest/failed", value:TRUE );
+        set_kb_item( name:"ICMPv4/AddressMaskRequest/failed", value:TRUE );
         result += "n,,";
     }
 
@@ -606,7 +606,7 @@ function ModuleD() {
         result += "," + ttl;
     } else {
         # For later use by other NVTs
-        replace_kb_item( name:"ICMPv4/InfoRequest/failed", value:TRUE );
+        set_kb_item( name:"ICMPv4/InfoRequest/failed", value:TRUE );
         result = "n,,";
     }
 
@@ -829,7 +829,7 @@ function ModuleE() {
             result += ",unexpected";
     } else {
         # For later use by other NVTs
-        replace_kb_item( name:"ICMPv4/UDPPortUnreachable/failed", value:TRUE );
+        set_kb_item( name:"ICMPv4/UDPPortUnreachable/failed", value:TRUE );
         result += "n,,,,,,,,,,";
     }
 

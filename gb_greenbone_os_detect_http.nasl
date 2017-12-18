@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_os_detect_http.nasl 7888 2017-11-23 14:20:55Z asteins $
+# $Id: gb_greenbone_os_detect_http.nasl 8135 2017-12-15 10:45:19Z cfischer $
 #
 # Greenbone Security Manager (GSM) / Greenbone OS (GOS) Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112137");
-  script_version("$Revision: 7888 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 15:20:55 +0100 (Thu, 23 Nov 2017) $");
+  script_version("$Revision: 8135 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 11:45:19 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-23 10:50:05 +0100 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,6 +66,7 @@ if( buf =~ "HTTP/1\.. 200" && ( ( "<title>Greenbone Security Assistant" >< buf &
   set_kb_item( name:"greenbone/gos/detected", value:TRUE );
   set_kb_item( name:"greenbone/gos/http/detected", value:TRUE );
   set_kb_item( name:"greenbone/gos/http/port", value:port );
+  set_kb_item( name:"greenbone/gos/http/" + port + "/detected", value:TRUE );
 
   vers = "unknown";
   version = eregmatch( string:buf, pattern:'<div class="gos_version">Greenbone OS ([^<]+)</div>', icase:FALSE );

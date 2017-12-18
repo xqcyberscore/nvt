@@ -42,16 +42,16 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-02/msg00041.php");
   script_id(830891);
-  script_version("$Revision: 6569 $");
+  script_version("$Revision: 8153 $");
   script_cve_id("CVE-2009-2820", "CVE-2009-3553", "CVE-2010-0302", "CVE-2010-0393");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 07:30:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-02-19 13:38:15 +0100 (Fri, 19 Feb 2010)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_xref(name: "MDVA", value: "2010:073");
   script_name("Mandriva Update for dhcp MDVA-2010:073 (dhcp)");
 
-  script_summary("Check for the Version of dhcp");
+  script_tag(name: "summary" , value: "Check for the Version of dhcp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

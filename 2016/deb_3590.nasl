@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3590.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3590.nasl 8131 2017-12-15 07:30:28Z teissa $
 # Auto-generated from advisory DSA 3590-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,8 +29,8 @@
 
 if(description)
 {
-    script_id(703590);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703590");
+    script_version("$Revision: 8131 $");
     script_cve_id("CVE-2016-1667", "CVE-2016-1668", "CVE-2016-1669", "CVE-2016-1670",
                   "CVE-2016-1672", "CVE-2016-1673", "CVE-2016-1674", "CVE-2016-1675",
                   "CVE-2016-1676", "CVE-2016-1677", "CVE-2016-1678", "CVE-2016-1679",
@@ -39,7 +39,7 @@ if(description)
                   "CVE-2016-1688", "CVE-2016-1689", "CVE-2016-1690", "CVE-2016-1691",
                   "CVE-2016-1692", "CVE-2016-1693", "CVE-2016-1694", "CVE-2016-1695");
     script_name("Debian Security Advisory DSA 3590-1 (chromium-browser - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-15 08:30:28 +0100 (Fri, 15 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-06-01 00:00:00 +0200 (Wed, 01 Jun 2016)");
     script_tag(name:"cvss_base", value:"9.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

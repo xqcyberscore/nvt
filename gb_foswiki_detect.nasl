@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foswiki_detect.nasl 5126 2017-01-27 14:56:16Z cfi $
+# $Id: gb_foswiki_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # Foswiki Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800612");
-  script_version("$Revision: 5126 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 15:56:16 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 8141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-05-11 08:41:11 +0200 (Mon, 11 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -84,7 +84,7 @@ foreach dir( make_list_unique( "/", "/foswiki", "/wiki", cgi_dirs( port:port ) )
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/Foswiki", value:tmp_version );
-    replace_kb_item( name:"Foswiki/installed", value:TRUE );
+    set_kb_item( name:"Foswiki/installed", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:foswiki:foswiki:" );
     if( isnull( cpe ) )

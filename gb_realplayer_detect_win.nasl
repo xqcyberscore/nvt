@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_detect_win.nasl 6516 2017-07-04 12:20:47Z cfischer $
+# $Id: gb_realplayer_detect_win.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # RealPlayer Application Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800508");
-  script_version("$Revision: 6516 $");
+  script_version("$Revision: 8142 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-02-18 15:32:11 +0100 (Wed, 18 Feb 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("RealPlayer Application Version Detection");
@@ -124,14 +124,14 @@ if(isnull(rpVer))
 ## Check if it RealPlayer Enterprise
 if("RealPlayer Enterprise" >< rpFile)
 {
-  replace_kb_item(name:"RealPlayer/RealPlayer_or_Enterprise/Win/Installed", value:TRUE);
+  set_kb_item(name:"RealPlayer/RealPlayer_or_Enterprise/Win/Installed", value:TRUE);
   set_kb_item(name:"RealPlayer-Enterprise/Win/Ver", value:rpVer);
   cpe = build_cpe(value:rpVer, exp:"^([0-9.]+)", base:"cpe:/a:realnetworks:realplayer:" +
                                rpVer + "::enterprise");
 }
 else
 {
-  replace_kb_item(name:"RealPlayer/RealPlayer_or_Enterprise/Win/Installed", value:TRUE);
+  set_kb_item(name:"RealPlayer/RealPlayer_or_Enterprise/Win/Installed", value:TRUE);
   set_kb_item(name:"RealPlayer/Win/Ver", value:rpVer);
   cpe = build_cpe(value:rpVer, exp:"^([0-9.]+)", base:"cpe:/a:realnetworks:realplayer:");
 }

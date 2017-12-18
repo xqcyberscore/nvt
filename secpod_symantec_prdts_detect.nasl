@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_symantec_prdts_detect.nasl 6517 2017-07-04 13:34:20Z cfischer $
+# $Id: secpod_symantec_prdts_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # Symantec Product(s) Version Detection
 #
@@ -40,10 +40,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900332");
-  script_version("$Revision: 6517 $");
+  script_version("$Revision: 8139 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-30 15:53:34 +0200 (Mon, 30 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec Product(s) Version Detection");
@@ -120,7 +120,7 @@ foreach symkey(key_list)
       navVer = registry_get_sz(key:symkey + item, item:"DisplayVersion");
       if(navVer)
       {
-        replace_kb_item(name:"Symantec_or_Norton/Products/Win/Installed", value:TRUE);
+        set_kb_item(name:"Symantec_or_Norton/Products/Win/Installed", value:TRUE);
         set_kb_item(name:"Symantec/Norton-AV/Ver", value:navVer);
 
         ## Get Install Location
@@ -144,7 +144,7 @@ foreach symkey(key_list)
       nisVer = registry_get_sz(key:symkey + item, item:"DisplayVersion");
       if(nisVer)
       {
-        replace_kb_item(name:"Symantec_or_Norton/Products/Win/Installed", value:TRUE);
+        set_kb_item(name:"Symantec_or_Norton/Products/Win/Installed", value:TRUE);
         set_kb_item(name:"Norton/InetSec/Ver", value:nisVer);
 
         ## Get Install Location
@@ -168,7 +168,7 @@ foreach symkey(key_list)
       pcawVer = registry_get_sz(key:symkey + item, item:"DisplayVersion");
       if(pcawVer)
       {
-        replace_kb_item(name:"Symantec_or_Norton/Products/Win/Installed", value:TRUE);
+        set_kb_item(name:"Symantec_or_Norton/Products/Win/Installed", value:TRUE);
         set_kb_item(name:"Symantec/pcAnywhere/Ver", value:pcawVer);
 
         ## Get Install Location
@@ -192,7 +192,7 @@ foreach symkey(key_list)
       esmVer = registry_get_sz(key:symkey + item, item:"DisplayVersion");
       if(esmVer)
       {
-        replace_kb_item(name:"Symantec_or_Norton/Products/Win/Installed", value:TRUE);
+        set_kb_item(name:"Symantec_or_Norton/Products/Win/Installed", value:TRUE);
         set_kb_item(name:"Symantec/ESM/Ver", value:esmVer);
         set_kb_item(name:"Symantec/ESM/Component", value:symantecName);
 
@@ -219,7 +219,7 @@ foreach symkey(key_list)
       savceVer = registry_get_sz(key:symkey + item, item:"DisplayVersion");
       if(savceVer)
       {
-        replace_kb_item(name:"Symantec_or_Norton/Products/Win/Installed", value:TRUE);
+        set_kb_item(name:"Symantec_or_Norton/Products/Win/Installed", value:TRUE);
         set_kb_item(name:"Symantec/SAVCE/Ver", value:savceVer);
 
         ## Get Install Location
@@ -248,7 +248,7 @@ foreach symkey(key_list)
 
         if(imVer)
         {
-          replace_kb_item(name:"Symantec_or_Norton/Products/Win/Installed", value:TRUE);
+          set_kb_item(name:"Symantec_or_Norton/Products/Win/Installed", value:TRUE);
           set_kb_item(name:"Symantec/IM/Manager", value:imVer);
 
           ## Build CPE
@@ -272,7 +272,7 @@ foreach symkey(key_list2)
     nisVer = registry_get_sz(key:symkey, item:"Version");
     if(nisVer)
     {
-      replace_kb_item(name:"Symantec_or_Norton/Products/Win/Installed", value:TRUE);
+      set_kb_item(name:"Symantec_or_Norton/Products/Win/Installed", value:TRUE);
       set_kb_item(name:"Symantec/Endpoint/Protection", value:nisVer);
 
       ## Get Install Location

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_detect_ftp.nasl 5054 2017-01-20 13:52:19Z cfi $
+# $Id: gb_avm_fritz_box_detect_ftp.nasl 8147 2017-12-15 13:51:17Z cfischer $
 #
 # AVM FRITZ!Box Detection (FTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108039");
-  script_version("$Revision: 5054 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 14:52:19 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 8147 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:51:17 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-01-05 13:21:05 +0100 (Thu, 05 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,7 +55,7 @@ banner = get_ftp_banner( port:port );
 
 if( "FRITZ!Box" >< banner && "FTP server ready." >< banner  ) {
 
-  replace_kb_item( name:"avm_fritz_box/detected", value:TRUE );
+  set_kb_item( name:"avm_fritz_box/detected", value:TRUE );
   set_kb_item( name:"avm_fritz_box/ftp/detected", value:TRUE );
   set_kb_item( name:"avm_fritz_box/ftp/port", value:port );
   set_kb_item( name:"avm_fritz_box/ftp/" + port + "/concluded", value:banner );

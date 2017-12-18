@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eyesofnetwork_detect_ssh.nasl 6189 2017-05-22 15:08:51Z cfi $
+# $Id: gb_eyesofnetwork_detect_ssh.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # Eyes Of Network (EON) Detection (SSH)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108166");
-  script_version("$Revision: 6189 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-22 17:08:51 +0200 (Mon, 22 May 2017) $");
+  script_version("$Revision: 8143 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-05-22 09:21:05 +0200 (Mon, 22 May 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,8 +53,8 @@ include("host_details.inc");
 if( ! rls = get_kb_item( "eyesofnetwork/rls" ) ) exit( 0 );
 port = get_kb_item( "eyesofnetwork/ssh/port" );
 
-replace_kb_item( name:"eyesofnetwork/detected", value:TRUE );
-replace_kb_item( name:"eyesofnetwork/ssh/detected", value:TRUE );
+set_kb_item( name:"eyesofnetwork/detected", value:TRUE );
+set_kb_item( name:"eyesofnetwork/ssh/detected", value:TRUE );
 
 version = "unknown";
 

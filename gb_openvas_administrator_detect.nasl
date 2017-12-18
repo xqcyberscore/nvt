@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvas_administrator_detect.nasl 6820 2017-07-31 11:37:34Z cfischer $
+# $Id: gb_openvas_administrator_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # OpenVAS Administrator Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103826");
-  script_version("$Revision: 6820 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-31 13:37:34 +0200 (Mon, 31 Jul 2017) $");
+  script_version("$Revision: 8145 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-11-08 12:28:10 +0100 (Fri, 08 Nov 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,8 +63,8 @@ if( "oap_response" >< ret && "GET_VERSION" >< ret ) {
 
   version = "unknown";
 
-  replace_kb_item( name:"openvas_administrator/installed", value:TRUE );
-  replace_kb_item( name:"openvas_framework_component/installed", value:TRUE );
+  set_kb_item( name:"openvas_administrator/installed", value:TRUE );
+  set_kb_item( name:"openvas_framework_component/installed", value:TRUE );
   cpe = "cpe:/a:openvas:openvas_administrator";
   install = port + "/tcp";
 

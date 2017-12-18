@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_investintech_prdts_detect.nasl 6517 2017-07-04 13:34:20Z cfischer $
+# $Id: gb_investintech_prdts_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # Investintech Products Version Detection
 #
@@ -28,9 +28,9 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802501");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6517 $");
+  script_version("$Revision: 8139 $");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-11-09 17:25:24 +0530 (Wed, 09 Nov 2011)");
   script_name("Investintech Products Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -77,7 +77,7 @@ foreach item (registry_enum_keys(key:key))
       pdfVer = fetch_file_version(sysPath:pdfPath, file_name:"SlimPDF Reader.exe");
       if(pdfVer != NULL)
       {
-        replace_kb_item(name:"Investintech/Products/Installed", value:TRUE);
+        set_kb_item(name:"Investintech/Products/Installed", value:TRUE);
         set_kb_item(name:"SlimPDF/Reader/Ver", value:pdfVer);
         ## build cpe and store it as host_detail
         register_and_report_cpe(app:"SlimPDF Reader", ver:pdfVer, base:"cpe:/a:investintech:slimpdf_reader:",
@@ -93,7 +93,7 @@ foreach item (registry_enum_keys(key:key))
     docVer = registry_get_sz(key:key + item, item:"DisplayVersion");
     if(docVer != NULL)
     {
-      replace_kb_item(name:"Investintech/Products/Installed", value:TRUE);
+      set_kb_item(name:"Investintech/Products/Installed", value:TRUE);
       set_kb_item(name:"Able2Doc/Ver", value:docVer);
 
       ## build cpe and store it as host_detail
@@ -108,7 +108,7 @@ foreach item (registry_enum_keys(key:key))
     docVer = registry_get_sz(key:key + item, item:"DisplayVersion");
     if(docVer != NULL)
     {
-      replace_kb_item(name:"Investintech/Products/Installed", value:TRUE);
+      set_kb_item(name:"Investintech/Products/Installed", value:TRUE);
       set_kb_item(name:"Able2Doc/Pro/Ver", value:docVer);
 
       ## build cpe and store it as host_detail
@@ -123,7 +123,7 @@ foreach item (registry_enum_keys(key:key))
     docVer = registry_get_sz(key:key + item, item:"DisplayVersion");
     if(docVer != NULL)
     {
-      replace_kb_item(name:"Investintech/Products/Installed", value:TRUE);
+      set_kb_item(name:"Investintech/Products/Installed", value:TRUE);
       set_kb_item(name:"Able2Extract/Ver", value:docVer);
 
       ## build cpe and store it as host_detail
@@ -137,7 +137,7 @@ foreach item (registry_enum_keys(key:key))
     serVer = registry_get_sz(key:key + item, item:"DisplayVersion");
     if(serVer != NULL)
     {
-      replace_kb_item(name:"Investintech/Products/Installed", value:TRUE);
+      set_kb_item(name:"Investintech/Products/Installed", value:TRUE);
       set_kb_item(name:"Able2Extract/PDF/Server/Ver", value:serVer);
 
       ## build cpe and store it as host_detail

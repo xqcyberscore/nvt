@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_proftpd_server_detect.nasl 4774 2016-12-15 12:52:36Z cfi $
+# $Id: secpod_proftpd_server_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # ProFTPD Server Version Detection (Local)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900506");
-  script_version("$Revision: 4774 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-15 13:52:36 +0100 (Thu, 15 Dec 2016) $");
+  script_version("$Revision: 8139 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-02-20 17:40:17 +0100 (Fri, 20 Feb 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -79,8 +79,8 @@ foreach binPath( ftpPaths ) {
     if( ftpVer != NULL ) {
 
       # Set KB for ProFTPD from File Version
-      replace_kb_item( name:"ProFTPD/0/Ver", value:ftpVer );
-      replace_kb_item( name:"ProFTPD/Installed", value:TRUE );
+      set_kb_item( name:"ProFTPD/0/Ver", value:ftpVer );
+      set_kb_item( name:"ProFTPD/Installed", value:TRUE );
 
       ## build cpe and store it as host_detail
       cpe = build_cpe( value:ftpVer, exp:"^([0-9.]+)(rc[0-9]+)?", base:"cpe:/a:proftpd:proftpd:" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_masscan.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_masscan.nasl 8146 2017-12-15 13:40:59Z cfischer $
 #
 # masscan (NASL wrapper)
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105924");
-  script_version ("$Revision: 6750 $");
+  script_version ("$Revision: 8146 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("masscan (NASL wrapper)");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");  
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");  
   script_tag(name:"creation_date", value:"2014-10-07 11:55:49 +0700 (Tue, 07 Oct 2014)");
   script_category(ACT_SCANNER);
   script_tag(name:"qod_type", value:"remote_probe");
@@ -131,7 +131,7 @@ res = egrep(string:res, pattern:"Host: +" + esc_ip + " ");
 if (!res) {
   mark_dead = get_kb_item("/ping_host/mark_dead");
   if (mark_dead >< "yes") {
-    replace_kb_item( name:"Host/dead", value:TRUE );
+    set_kb_item( name:"Host/dead", value:TRUE );
   }
   exit(0);
 }

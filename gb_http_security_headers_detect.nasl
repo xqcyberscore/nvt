@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_security_headers_detect.nasl 7484 2017-10-18 13:29:18Z cfischer $
+# $Id: gb_http_security_headers_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # HTTP Security Headers Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112081");
-  script_version("$Revision: 7484 $");
+  script_version("$Revision: 8141 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-18 15:29:18 +0200 (Wed, 18 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-10-13 13:12:41 +0200 (Fri, 13 Oct 2017)");
   script_name("HTTP Security Headers Detection");
   script_category(ACT_GATHER_INFO);
@@ -75,7 +75,7 @@ foreach known_header( known_headers ) {
     headers = split( chomp( headergrep ), sep:": ", keep:FALSE);
     headers_array[headers[0]] = headers[1];
 
-    replace_kb_item( name:tolower( known_header ) + "/available", value:TRUE );
+    set_kb_item( name:tolower( known_header ) + "/available", value:TRUE );
     set_kb_item( name:tolower( known_header ) + "/available/port", value:port );
     set_kb_item( name:tolower( known_header ) + "/" + port + "/banner", value:headers[1] );
 
@@ -83,7 +83,7 @@ foreach known_header( known_headers ) {
     missing_headers = TRUE;
     missing_array[known_header] = ""; # TBD / TODO: Give some suggestions for default / recommended values?
 
-    replace_kb_item( name:tolower( known_header ) + "/missing", value:TRUE );
+    set_kb_item( name:tolower( known_header ) + "/missing", value:TRUE );
     set_kb_item( name:tolower( known_header ) + "/missing/port", value:port );
   }
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_apr_detect.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_apache_apr_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # Apache APR Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(800680);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+ script_version("$Revision: 8141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-08-17 14:35:19 +0200 (Mon, 17 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache APR Version Detection");
@@ -74,7 +74,7 @@ foreach path (make_list("apr-config" ,"apr-1-config"))
 
     if(aprVer[0] != NULL)
     {
-      replace_kb_item(name:"Apache/APR_or_Utils/Installed", value:TRUE);
+      set_kb_item(name:"Apache/APR_or_Utils/Installed", value:TRUE);
       set_kb_item(name:"Apache/APR/Ver", value:aprVer[0]);
       log_message(data:"Apache APR version " + aprVer[0] + " running at location "
                          + binaryFile +  " was detected on the host");

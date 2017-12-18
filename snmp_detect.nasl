@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmp_detect.nasl 7366 2017-10-06 10:55:39Z cfischer $
+# $Id: snmp_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # A SNMP Agent is running
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10265");
-  script_version("$Revision: 7366 $");
+  script_version("$Revision: 8142 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-06 12:55:39 +0200 (Fri, 06 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("A SNMP Agent is running");
   script_category(ACT_SETTINGS);
@@ -121,8 +121,8 @@ if( defined_func( "snmpv3_get" ) ) {
       # We don't need to set those keys multiple times
       if( ! SNMP_v1 ) {
         SNMP_v1 = TRUE;
-        replace_kb_item( name:"SNMP/" + port + "/v1/working", value:TRUE );
-        replace_kb_item( name:"SNMP/" + port + "/working", value:TRUE );
+        set_kb_item( name:"SNMP/" + port + "/v1/working", value:TRUE );
+        set_kb_item( name:"SNMP/" + port + "/working", value:TRUE );
         replace_kb_item( name:"SNMP/" + port + "/prefered_version", value:1 );
       }
     }
@@ -147,8 +147,8 @@ if( defined_func( "snmpv3_get" ) ) {
       # We don't need to set those keys multiple times
       if( ! SNMP_v2c ) {
         SNMP_v2c = TRUE;
-        replace_kb_item( name:"SNMP/" + port + "/v2c/working", value:TRUE );
-        replace_kb_item( name:"SNMP/" + port + "/working", value:TRUE );
+        set_kb_item( name:"SNMP/" + port + "/v2c/working", value:TRUE );
+        set_kb_item( name:"SNMP/" + port + "/working", value:TRUE );
         replace_kb_item( name:"SNMP/" + port + "/prefered_version", value:2 );
       }
     }
@@ -157,8 +157,8 @@ if( defined_func( "snmpv3_get" ) ) {
   v3check = check_snmpv3( port:port );
   if( v3check == 1 ) {
     SNMP_v3 = TRUE;
-    replace_kb_item( name:"SNMP/" + port + "/v3/working", value:TRUE );
-    replace_kb_item( name:"SNMP/" + port + "/working", value:TRUE );
+    set_kb_item( name:"SNMP/" + port + "/v3/working", value:TRUE );
+    set_kb_item( name:"SNMP/" + port + "/working", value:TRUE );
     replace_kb_item( name:"SNMP/" + port + "/prefered_version", value:3 );
   } else if( v3check == 2 ) {
     SNMP_v3 = TRUE;
@@ -188,7 +188,7 @@ if( defined_func( "snmpv3_get" ) ) {
 
     log_message( port:port, proto:"udp", data:report );
     register_service( port:port, ipproto:"udp", proto:"snmp" );
-    replace_kb_item( name:"SNMP/detected", value:TRUE );
+    set_kb_item( name:"SNMP/detected", value:TRUE );
     exit( 0 );
   }
 # nb: This is just a fallback to detect SNMP, however none of the SNMP functions from snmp_func.inc will work
@@ -244,14 +244,14 @@ if( defined_func( "snmpv3_get" ) ) {
           if( ver[i] == "1" && ! v1_detected ) {
             v1_detected = TRUE;
             data += string( "SNMP v", ver[i], "\n" );
-            replace_kb_item( name:"SNMP/" + port + "/v1/working", value:TRUE );
-            replace_kb_item( name:"SNMP/" + port + "/working", value:TRUE );
+            set_kb_item( name:"SNMP/" + port + "/v1/working", value:TRUE );
+            set_kb_item( name:"SNMP/" + port + "/working", value:TRUE );
             replace_kb_item( name:"SNMP/" + port + "/prefered_version", value:1 );
           } else if( ver[i] == "2c" && ! v2c_detected ) {
             v2c_detected = TRUE;
             data += string( "SNMP v", ver[i], "\n" );
-            replace_kb_item( name:"SNMP/" + port + "/v2c/working", value:TRUE );
-            replace_kb_item( name:"SNMP/" + port + "/working", value:TRUE );
+            set_kb_item( name:"SNMP/" + port + "/v2c/working", value:TRUE );
+            set_kb_item( name:"SNMP/" + port + "/working", value:TRUE );
             replace_kb_item( name:"SNMP/" + port + "/prefered_version", value:2 );
           } else if( ver[i] == "2u" && ! v2u_detected ) {
             v2u_detected = TRUE;
@@ -268,7 +268,7 @@ if( defined_func( "snmpv3_get" ) ) {
     if( flag > 0 ) {
       log_message( port:port, data:data, protocol:"udp" );
       register_service( port:port, ipproto:"udp", proto:"snmp" );
-      replace_kb_item( name:"SNMP/detected", value:TRUE );
+      set_kb_item( name:"SNMP/detected", value:TRUE );
     }
     close( socudp161 ); # end if (socudp161)
   }

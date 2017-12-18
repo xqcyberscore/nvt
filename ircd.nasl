@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ircd.nasl 5433 2017-02-27 12:16:32Z cfi $
+# $Id: ircd.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # IRC daemon identification
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11156");
-  script_version("$Revision: 5433 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 13:16:32 +0100 (Mon, 27 Feb 2017) $");
+  script_version("$Revision: 8138 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -69,7 +69,7 @@ while( a = recv_line( socket:soc, length:4096 ) ) {
     send( socket:soc, data:a );
   } else if( a =~ "^ERROR :Closing Link" ) {
     report = 'Unable to get the version of this service due to the error:\n\n' + a;
-    replace_kb_item( name:"ircd/detected", value:TRUE );
+    set_kb_item( name:"ircd/detected", value:TRUE );
     log_message( port:port, data:report );
     close( soc );
     exit( 0 );
@@ -85,8 +85,8 @@ close( soc );
 if( ! v ) exit( 0 );
 
 set_kb_item( name:"irc/banner/" + port, value:v );
-replace_kb_item( name:"ircd/detected", value:TRUE );
-replace_kb_item( name:"ircd/banner", value:TRUE );
+set_kb_item( name:"ircd/detected", value:TRUE );
+set_kb_item( name:"ircd/banner", value:TRUE );
 
 # Answer looks like:
 # :irc.sysdoor.com 351 nessus123 2.8/csircd-1.13. irc.sysdoor.com :http://www.codestud.com/ircd

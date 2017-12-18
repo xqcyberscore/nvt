@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_system_center_configmgr_detect_win.nasl 6520 2017-07-04 14:28:49Z cfischer $
+# $Id: gb_ms_system_center_configmgr_detect_win.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Microsoft System Center Configuration Manager Version Detection
 #
@@ -36,11 +36,11 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803023";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6520 $");
+  script_version("$Revision: 8138 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:28:49 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-09-12 09:47:47 +0530 (Wed, 12 Sep 2012)");
   script_name("Microsoft System Center Configuration Manager Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -124,7 +124,7 @@ foreach key (keylist)
           if(smsVer)
           {
 
-            replace_kb_item(name:"MS/SMS_or_ConfigMgr/Installed", value:TRUE);
+            set_kb_item(name:"MS/SMS_or_ConfigMgr/Installed", value:TRUE);
 
             ## Set Version in KB
             set_kb_item(name:"MS/SMS/Version", value:smsVer);
@@ -163,7 +163,7 @@ foreach key (keylist)
           if(confmgrVer)
           {
 
-            replace_kb_item(name:"MS/SMS_or_ConfigMgr/Installed", value:TRUE);
+            set_kb_item(name:"MS/SMS_or_ConfigMgr/Installed", value:TRUE);
 
             ## Set Version in KB
             set_kb_item(name:"MS/ConfigMgr/Version", value:confmgrVer);
@@ -204,7 +204,7 @@ foreach key (keylist)
         if(confmgrVer)
         {
 
-          replace_kb_item(name:"MS/SMS_or_ConfigMgr/Installed", value:TRUE);
+          set_kb_item(name:"MS/SMS_or_ConfigMgr/Installed", value:TRUE);
 
           if(confmgrName =~ "R3"){
             ## Set Version in KB

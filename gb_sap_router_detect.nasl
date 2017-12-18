@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_router_detect.nasl 6787 2017-07-21 16:58:52Z cfischer $
+# $Id: gb_sap_router_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # SAProuter Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105034");
-  script_version("$Revision: 6787 $");
+  script_version("$Revision: 8142 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 18:58:52 +0200 (Fri, 21 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-05-27 14:06:45 +0200 (Tue, 27 May 2014)");
   script_name("SAProuter Detection");
   script_category(ACT_GATHER_INFO);
@@ -82,7 +82,7 @@ close( soc );
 
 if( ! buf || "SAProuter" >!< buf ) exit( 0 );
 
-replace_kb_item( name:"SAProuter/installed", value:TRUE );
+set_kb_item( name:"SAProuter/installed", value:TRUE );
 register_service( port:port, proto:"SAProuter" );
 
 buf = bin2string( ddata:buf, noprint_replacement:' ' );

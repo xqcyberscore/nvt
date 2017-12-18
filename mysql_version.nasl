@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mysql_version.nasl 6788 2017-07-21 19:16:52Z cfischer $
+# $Id: mysql_version.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # Detection of MySQL/MariaDB
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100152");
-  script_version("$Revision: 6788 $");
+  script_version("$Revision: 8141 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("MySQL/MariaDB Detection");
   script_category(ACT_GATHER_INFO);
@@ -142,8 +142,8 @@ if( MySQL_FOUND ) {
     version = "unknown";
   }
 
-  replace_kb_item( name:"MySQL/installed", value:TRUE );
-  replace_kb_item( name:"MySQL_MariaDB/installed", value:TRUE );
+  set_kb_item( name:"MySQL/installed", value:TRUE );
+  set_kb_item( name:"MySQL_MariaDB/installed", value:TRUE );
 
   register_service( port:port, proto:"mysql" );
 
@@ -199,8 +199,8 @@ if( MariaDB_FOUND ) {  # If MariaDB is found in the port, set the version for Ma
     version = "unknown";
   }
 
-  replace_kb_item( name:"MariaDB/installed", value:TRUE );
-  replace_kb_item( name:"MySQL_MariaDB/installed", value:TRUE );
+  set_kb_item( name:"MariaDB/installed", value:TRUE );
+  set_kb_item( name:"MySQL_MariaDB/installed", value:TRUE );
 
   register_service( port:port, proto:"mysql" );
 

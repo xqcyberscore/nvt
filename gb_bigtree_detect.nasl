@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_detect.nasl 5968 2017-04-18 14:00:24Z cfi $
+# $Id: gb_bigtree_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
 #
 # BigTree CMS Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807791");
-  script_version("$Revision: 5968 $");
+  script_version("$Revision: 8137 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 16:00:24 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-04-18 12:45:32 +0530 (Mon, 18 Apr 2016)");
   script_name("BigTree CMS Remote Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -80,7 +80,7 @@ foreach dir( make_list_unique( "/", "/BigTree", "/cms", "/bigtree", cgi_dirs( po
       version = eregmatch( pattern:'Version ([0-9.]+)', string:res );
       if( version[1]) vers = version[1];
 
-      replace_kb_item( name:"BigTree/Installed", value:TRUE );
+      set_kb_item( name:"BigTree/Installed", value:TRUE );
 
       cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:bigtree:bigtree:" );
       if( ! cpe )

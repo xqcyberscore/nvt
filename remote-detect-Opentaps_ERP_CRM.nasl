@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-Opentaps_ERP_CRM.nasl 6955 2017-08-18 05:54:18Z cfischer $
+# $Id: remote-detect-Opentaps_ERP_CRM.nasl 8140 2017-12-15 12:08:32Z cfischer $
 #
 # This script ensure that the Opentaps ERP + CRM is installed and running
 #
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101021");
-  script_version("$Revision: 6955 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-18 07:54:18 +0200 (Fri, 18 Aug 2017) $");
+  script_version("$Revision: 8140 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 00:18:39 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -80,7 +80,7 @@ if( softwareReply ) {
   if( opentapsTitlePattern ) {
     if( 'opentaps' >< opentapsTitlePattern[0] ) {
       report += " The remote host is running " + opentapsTitlePattern[1];
-      replace_kb_item( name:"OpentapsERP/installed", value:TRUE );
+      set_kb_item( name:"OpentapsERP/installed", value:TRUE );
       replace_kb_item( name:"OpentapsERP/port", value:port );
     } else {
       exit( 0 );
@@ -90,7 +90,7 @@ if( softwareReply ) {
   }
 
   if( servletContainer ) {
-    replace_kb_item( name:"ApacheCoyote/installed", value:TRUE );
+    set_kb_item( name:"ApacheCoyote/installed", value:TRUE );
     replace_kb_item( name:"ApacheCoyote/version", value:servletContainer[1] );
     report += " on " + servletContainer[0];
   }
@@ -103,7 +103,7 @@ if( versionReply ) {
 
   if( version ) {
     report += " Detected " + version[1] + " " + version[2];
-    replace_kb_item( name:"OpentapsERP/installed", value:TRUE );
+    set_kb_item( name:"OpentapsERP/installed", value:TRUE );
     replace_kb_item( name:"OpentapsERP/version", value:version[2] );
     replace_kb_item( name:"OpentapsERP/port", value:port );
   } else {
@@ -111,7 +111,7 @@ if( versionReply ) {
   }
 
   if( servletContainer ) {
-    replace_kb_item( name:"ApacheCoyote/installed", value:TRUE );
+    set_kb_item( name:"ApacheCoyote/installed", value:TRUE );
     replace_kb_item( name:"ApacheCoyote/version", value:servletContainer[1] );
     report += " on " + servletContainer[0];
   }

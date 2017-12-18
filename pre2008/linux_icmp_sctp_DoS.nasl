@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: linux_icmp_sctp_DoS.nasl 7146 2017-09-15 12:38:49Z cfischer $
+# $Id: linux_icmp_sctp_DoS.nasl 8144 2017-12-15 13:19:55Z cfischer $
 # Description: Malformed ICMP Packets May Cause a Denial of Service (SCTP)
 #
 # Authors:
@@ -43,8 +43,8 @@ tag_solution = "Ugprade to Linux 2.6.13 or newer, or disable SCTP support.";
 if(description)
 {
  script_id(19777);
- script_version("$Revision: 7146 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:38:49 +0200 (Fri, 15 Sep 2017) $");
+ script_version("$Revision: 8144 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:N");
@@ -89,6 +89,6 @@ alive = end_denial();
 if(!alive)
 {
  security_message();
- replace_kb_item( name:"Host/dead", value:TRUE );
+ set_kb_item( name:"Host/dead", value:TRUE );
 }
 

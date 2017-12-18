@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipam_detect.nasl 5698 2017-03-23 14:04:51Z cfi $
+# $Id: gb_ipam_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # PHPIPAM Web Application Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.107046");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5698 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:04:51 +0100 (Thu, 23 Mar 2017) $");
+ script_version ("$Revision: 8142 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-09-12 13:18:59 +0200 (Mon, 12 Sep 2016)");
  script_name("PHPIPAM Web Application Detection");
 
@@ -72,7 +72,7 @@ foreach dir( make_list_unique( "/", "/phpipam", cgi_dirs( port:http_port ) ) ) {
     if( version[1] && version[2]) vers = version[1] + "." + version[2];
 
     set_kb_item( name:"ipam/" + http_port + "/version", value:vers );
-    replace_kb_item( name:"ipam/installed", value:TRUE );
+    set_kb_item( name:"ipam/installed", value:TRUE );
 
     cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:ipam:ipam:" );
     if( isnull( cpe ) )

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: amap.nasl 7150 2017-09-15 13:20:49Z cfischer $
+# $Id: amap.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # amap (NASL wrapper)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14663");
-  script_version("$Revision: 7150 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 15:20:49 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 8138 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -265,5 +265,5 @@ Risk : None / High\n");
   set_kb_item(name: "Amap/"+proto+"/"+port+"/FullBanner", value: banner);
 
   #mandatory_key for external_svc_ident.nasl
-  replace_kb_item( name:"external_svc_ident/available", value:TRUE );
+  set_kb_item( name:"external_svc_ident/available", value:TRUE );
  }

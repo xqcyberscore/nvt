@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmp_default_communities.nasl 7310 2017-09-28 09:57:57Z cfischer $
+# $Id: snmp_default_communities.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # Default community names of the SNMP Agent
 #
@@ -65,8 +65,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103914");
-  script_version("$Revision: 7310 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-28 11:57:57 +0200 (Thu, 28 Sep 2017) $");
+  script_version("$Revision: 8139 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -305,7 +305,7 @@ for( j = 0; communities[j]; j++ ) {
   if( result ) {
     count++;
     set_kb_item( name:"SNMP/" + port + "/v12c/detected_community", value:communities[j] );
-    replace_kb_item( name:"SNMP/v12c/detected_community", value:TRUE );
+    set_kb_item( name:"SNMP/v12c/detected_community", value:TRUE );
   }
 }
 

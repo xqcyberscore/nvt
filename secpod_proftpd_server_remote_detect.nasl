@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_proftpd_server_remote_detect.nasl 4777 2016-12-15 14:28:45Z cfi $
+# $Id: secpod_proftpd_server_remote_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # ProFTPD Server Version Detection (Remote)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900815");
-  script_version("$Revision: 4777 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-15 15:28:45 +0100 (Thu, 15 Dec 2016) $");
+  script_version("$Revision: 8143 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-08-14 14:09:35 +0200 (Fri, 14 Aug 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -61,7 +61,7 @@ banner = get_ftp_banner( port:port );
 
 if( "ProFTPD" >< banner ) {
 
-  replace_kb_item( name:"ProFTPD/Installed", value:TRUE );
+  set_kb_item( name:"ProFTPD/Installed", value:TRUE );
 
   ftpVer = eregmatch( pattern:"(ProFTPD|NASFTPD Turbo station) ([0-9.]+)([A-Za-z0-9]+)?( Server \(ProFTPD\))?",
                       string:banner );

@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 15 Dec 2017 08:21:51 +0100
+# Automatically created on:  Mon, 18 Dec 2017 08:14:14 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47539,6 +47539,8 @@
 2017/apache/gb_apache_subversion_dos_vuln_nov17.nasl: GPLv2+
 2017/apache/gb_apache_tomcat_http_put_code_exec_vuln_win.nasl: GPLv2+
 2017/apache/gb_apache_tomcat_http_put_jsp_upload_code_exec_vuln.nasl: GPLv2+
+2017/apache/gb_apache_tomcat_servletsecurity_annotation_sec_bypass_vuln_lin.nasl: GPLv2+
+2017/apache/gb_apache_tomcat_servletsecurity_annotation_sec_bypass_vuln_win.nasl: GPLv2+
 2017/apache/gb_apache_tomcat_virtualdircontext_info_disc_vuln_lin.nasl: GPLv2+
 2017/apache/gb_apache_tomcat_virtualdircontext_info_disc_vuln_win.nasl: GPLv2+
 2017/apache/gb_apache_traffic_server_access_bypass_vuln.nasl: GPLv2+
@@ -47551,6 +47553,7 @@
 2017/apache/gb_apache_wicket_xss_vuln_nov17.nasl: GPLv2+
 2017/apple/gb_apple_icloud_HT208142.nasl: GPLv2+
 2017/apple/gb_apple_icloud_HT208225.nasl: GPLv2+
+2017/apple/gb_apple_icloud_HT208328.nasl: GPLv2+
 2017/apple/gb_apple_itunes_HT208141.nasl: GPLv2+
 2017/apple/gb_apple_itunes_HT208224.nasl: GPLv2+
 2017/apple/gb_apple_macosx_code_exec_n_info_disc_vuln_HT208221.nasl: GPLv2+
@@ -47566,6 +47569,7 @@
 2017/apple/gb_apple_macosx_mult_vuln_HT208144.nasl: GPLv2+
 2017/apple/gb_apple_macosx_mult_vuln_HT208221.nasl: GPLv2+
 2017/apple/gb_apple_macosx_server_rce_n_dos_vuln.nasl: GPLv2+
+2017/apple/gb_apple_quicktime_mult_vuln_HT203092_win.nasl: GPLv2+
 2017/apple/gb_apple_safari_HT208223.nasl: GPLv2+
 2017/apple/gb_apple_safari_spoofing_n_xss_vuln_HT208116.nasl: GPLv2+
 2017/apple/gb_apple_xcode_code_exec_or_dos_vuln_macosx.nasl: GPLv2+
@@ -47615,6 +47619,7 @@
 2017/citrix/gb_xenserver_ctx228867.nasl: GPLv2+
 2017/citrix/gb_xenserver_ctx229057.nasl: GPLv2+
 2017/citrix/gb_xenserver_ctx230138.nasl: GPLv2+
+2017/citrix/gb_xenserver_ctx230624.nasl: GPLv2+
 2017/deb_3750.nasl: GPLv2+
 2017/deb_3751.nasl: GPLv2+
 2017/deb_3752.nasl: GPLv2+
@@ -50652,6 +50657,7 @@
 2017/gb_microsoft_windows_gdi32dll_info_disclose_vuln.nasl: GPLv2+
 2017/gb_microsoft_windows_ie_n_egde_type_confusion_rce_vuln.nasl: GPLv2+
 2017/gb_miele_pst10_dir_trav_vuln.nasl: GPLv2+
+2017/gb_mikrotik_mult_vuln.nasl: GPLv2+
 2017/gb_mikrotik_packet_flooding_mult_dos_vuln.nasl: GPLv2+
 2017/gb_mikrotik_routeros_krack_vuln.nasl: GPLv2+
 2017/gb_mikrotik_routeros_l2tp_mitm_attack_vuln.nasl: GPLv2+
@@ -52379,6 +52385,9 @@
 2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-11_lin.nasl: GPLv2+
 2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-11_macosx.nasl: GPLv2+
 2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-11_win.nasl: GPLv2+
+2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-12-1_lin.nasl: GPLv2+
+2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-12-1_macosx.nasl: GPLv2+
+2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-12-1_win.nasl: GPLv2+
 2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-12_lin.nasl: GPLv2+
 2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-12_macosx.nasl: GPLv2+
 2017/google/gb_google_chrome_stable-channel-update-for-desktop-2017-12_win.nasl: GPLv2+
@@ -52386,6 +52395,8 @@
 2017/google/gb_google_chrome_stable-channel-update-for-desktop_21-2017-09_macosx.nasl: GPLv2+
 2017/google/gb_google_chrome_stable-channel-update-for-desktop_21-2017-09_win.nasl: GPLv2+
 2017/hikvision/gb_hikvision_ip_cameras_mult_vuln.nasl: GPLv2+
+2017/horde/gb_horde_gollem_module_unauthorized_file_download_vuln_lin.nasl: GPLv2+
+2017/horde/gb_horde_gollem_module_unauthorized_file_download_vuln_win.nasl: GPLv2+
 2017/hp/gb_hp_printer_rce_vuln.nasl: GPLv2+
 2017/ibm/gb_ibm_db2_dos_vuln_sep17.nasl: GPLv2+
 2017/ibm/gb_ibm_db2_log_information_disclosure_vuln.nasl: GPLv2+
@@ -52623,6 +52634,14 @@
 2017/oracle/gb_mysql_unspecified_vuln05_july13_lin.nasl: GPLv2+
 2017/oracle/gb_mysql_unspecified_vuln06_july13_lin.nasl: GPLv2+
 2017/oracle/gb_oracle_db_mult_unspecified_vuln_oct17.nasl: GPLv2+
+2017/oracle/gb_oracle_mysql_jan2012-366304_01_lin.nasl: GPLv2+
+2017/oracle/gb_oracle_mysql_jan2012-366304_01_win.nasl: GPLv2+
+2017/oracle/gb_oracle_mysql_jan2012-366304_02_lin.nasl: GPLv2+
+2017/oracle/gb_oracle_mysql_jan2012-366304_02_win.nasl: GPLv2+
+2017/oracle/gb_oracle_mysql_jan2012-366304_03_lin.nasl: GPLv2+
+2017/oracle/gb_oracle_mysql_jan2012-366304_03_win.nasl: GPLv2+
+2017/oracle/gb_oracle_mysql_jan2012-366304_04_lin.nasl: GPLv2+
+2017/oracle/gb_oracle_mysql_jan2012-366304_04_win.nasl: GPLv2+
 2017/oracle/gb_oracle_mysql_multiple_vuln01_nov12_lin.nasl: GPLv2+
 2017/oracle/gb_oracle_mysql_multiple_vuln02_nov12_lin.nasl: GPLv2+
 2017/oracle/gb_oracle_mysql_multiple_vuln03_nov12_lin.nasl: GPLv2+
@@ -52781,6 +52800,8 @@
 2017/wireshark/gb_wireshark_wnpa-sec-2017-44_win.nasl: GPLv2+
 2017/wireshark/gb_wireshark_wnpa-sec-2017-46_wnpa-sec-2017-45_macosx.nasl: GPLv2+
 2017/wireshark/gb_wireshark_wnpa-sec-2017-46_wnpa-sec-2017-45_win.nasl: GPLv2+
+2017/wireshark/gb_wireshark_wnpa-sec-2017-49_wnpa-sec-2017-47_macosx.nasl: GPLv2+
+2017/wireshark/gb_wireshark_wnpa-sec-2017-49_wnpa-sec-2017-47_win.nasl: GPLv2+
 2017/wordpress/gb_wordpress_count-per-day_sql_inj_vuln.nasl: GPLv2+
 2017/wordpress/gb_wordpress_duplicator_xss_vuln.nasl: GPLv2+
 2017/wordpress/gb_wordpress_easy-appointments_xss_vuln.nasl: GPLv2+
@@ -53714,7 +53735,10 @@ gb_Meteocontrol_detect.nasl: GPLv2+
 gb_microsoft_edge_detect.nasl: GPLv2+
 gb_microsoft_lync_detect_macosx.nasl: GPLv2+
 gb_microsoft_office_detect_macosx.nasl: GPLv2+
-gb_mikrotik_router_routeros_detect.nasl: GPLv2+
+gb_mikrotik_router_routeros_consolidation.nasl: GPLv2+
+gb_mikrotik_router_routeros_ftp_detect.nasl: GPLv2+
+gb_mikrotik_router_routeros_telnet_detect.nasl: GPLv2+
+gb_mikrotik_router_routeros_webui_detect.nasl: GPLv2+
 gb_miniupnp_detect_tcp.nasl: GPLv2+
 gb_miniupnp_detect_udp.nasl: GPLv2+
 gb_mitel_enterprise_manager_detect.nasl: GPLv2+
@@ -54382,6 +54406,7 @@ gsf/2017/cisco/gb_cisco_apic_cisco-sa-20171129-apic.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_apic_em_cisco-sa-20171101-apicem.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_asa_cisco-sa-20171004-asa1.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_asa_cisco-sa-20171004-asa.nasl: GPLv2+
+gsf/2017/cisco/gb_cisco_asa_cisco-sa-20171212-bleichenbacher.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_cucm_cisco-sa-20170906-ucm.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_cucm_cisco-sa-20171004-ucm.nasl: GPLv2+
 gsf/2017/cisco/gb_cisco_cucm_cisco-sa-20171115-ucm.nasl: GPLv2+
@@ -54470,6 +54495,7 @@ gsf/2017/emc/gb_rsa_archer_mult_vuln1.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K02692210.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K10002335.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K13421245.nasl: GPLv2+
+gsf/2017/f5/gb_f5_big_ip_K14363514.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K19430431.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K21154730.nasl: GPLv2+
 gsf/2017/f5/gb_f5_big_ip_K21905460.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_http_auth_credentials.nasl 7428 2017-10-13 11:45:53Z cfischer $
+# $Id: default_http_auth_credentials.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # HTTP Brute Force Logins With Default Credentials
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108041");
-  script_version("$Revision: 7428 $");
+  script_version("$Revision: 8142 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 13:45:53 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-09-06 14:38:09 +0200 (Tue, 06 Sep 2011)");
   script_name("HTTP Brute Force Logins With Default Credentials");
   script_category(ACT_ATTACK);
@@ -78,7 +78,7 @@ port = get_http_port( default:80 );
 
 if( ! urls = get_kb_list( "www/" + port + "/content/auth_required" ) ) exit( 0 );
 
-replace_kb_item( name:"default_http_auth_credentials/started", value:TRUE );
+set_kb_item( name:"default_http_auth_credentials/started", value:TRUE );
 
 # nb: There are various NVTs setting a /content/auth_required. This
 # makes sure we're not testing URLs which are set multiple times.

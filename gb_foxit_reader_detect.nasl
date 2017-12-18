@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_detect.nasl 6515 2017-07-04 11:54:15Z cfischer $
+# $Id: gb_foxit_reader_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
 #
 # Foxit Reader Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800536");
-  script_version("$Revision: 6515 $");
+  script_version("$Revision: 8140 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-17 05:28:51 +0100 (Tue, 17 Mar 2009)");
   script_name("Foxit Reader Version Detection");
 
@@ -126,7 +126,7 @@ foreach key (key_list)
 
   if(foxitVer)
   {
-    replace_kb_item(name:"Foxit/Phantom_or_Reader/Installed", value:TRUE);
+    set_kb_item(name:"Foxit/Phantom_or_Reader/Installed", value:TRUE);
     set_kb_item(name:"Foxit/Reader/Ver", value:foxitVer);
 
     if(!foxitPath){

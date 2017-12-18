@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_task_freak_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: secpod_task_freak_detect.nasl 8144 2017-12-15 13:19:55Z cfischer $
 #
 # Task Freak Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902053");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6032 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_version("$Revision: 8144 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Task Freak Version Detection");
@@ -74,7 +74,7 @@ foreach dir( make_list_unique( "/taskfreak", "/Taskfreak", "/", cgi_dirs( port:p
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/TaskFreak", value:tmp_version );
-    replace_kb_item( name:"TaskFreak/installed", value:TRUE );
+    set_kb_item( name:"TaskFreak/installed", value:TRUE );
 
     ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:taskfreak:taskfreak%21:" );

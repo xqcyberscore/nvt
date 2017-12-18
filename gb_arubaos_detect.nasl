@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arubaos_detect.nasl 7471 2017-10-18 09:03:18Z cfischer $
+# $Id: gb_arubaos_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # ArubaOS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105244");
-  script_version("$Revision: 7471 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-18 11:03:18 +0200 (Wed, 18 Oct 2017) $");
+  script_version("$Revision: 8143 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-04-07 13:29:41 +0200 (Tue, 07 Apr 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,7 +60,7 @@ if( ! sysdesc ) exit( 0 );
 # ArubaOS Version 6.1.2.3-2.1.0.0
 if( "ArubaOS" >!< sysdesc ) exit( 0 );
 
-replace_kb_item( name:"ArubaOS/installed", value:TRUE );
+set_kb_item( name:"ArubaOS/installed", value:TRUE );
 cpe = "cpe:/o:arubanetworks:arubaos";
 
 vers    = "unknown";

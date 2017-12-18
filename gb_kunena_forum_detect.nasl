@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kunena_forum_detect.nasl 5687 2017-03-23 09:50:41Z cfi $
+# $Id: gb_kunena_forum_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # Kunena Forum Extension for Joomla Detection
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:joomla:joomla';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108105");
-  script_version("$Revision: 5687 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 10:50:41 +0100 (Thu, 23 Mar 2017) $");
+  script_version("$Revision: 8139 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-03-23 09:57:33 +0100 (Thu, 23 Mar 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -87,7 +87,7 @@ if( "<name>plg_kunena_kunena</name>" >< res || "<name>plg_kunena_kunena</name>" 
   }
 
   set_kb_item( name:"www/" + port + "/kunena_forum", value:version );
-  replace_kb_item( name:"kunena_forum/installed", value:TRUE );
+  set_kb_item( name:"kunena_forum/installed", value:TRUE );
 
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:kunena:kunena:");
   if( isnull( cpe ) )

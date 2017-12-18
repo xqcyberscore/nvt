@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ironport_csma_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_cisco_ironport_csma_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
 #
 # Cisco IronPort Content Security Management Appliance Detection
 #
@@ -27,10 +27,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803753");
-  script_version("$Revision: 7000 $");
+  script_version("$Revision: 8140 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-09-03 18:58:59 +0530 (Tue, 03 Sep 2013)");
   script_name("Cisco IronPort Content Security Management Appliance Web Interface Detection");
 
@@ -84,7 +84,7 @@ if( "Set-Cookie" >< csmaRes )
   if( ! isnull( cookie[1] ) ) set_kb_item( name:"cisco_csm/http/cookie", value:cookie[1] );
 }
 
-replace_kb_item( name:"cisco_csm/installed", value:TRUE );
+set_kb_item( name:"cisco_csm/installed", value:TRUE );
 set_kb_item( name:"cisco_csm/http/port", value:csmaPort );
 
 csmaVersion = eregmatch(string: csmaRes, pattern: "v(([0-9.]+)-?[0-9]+)");

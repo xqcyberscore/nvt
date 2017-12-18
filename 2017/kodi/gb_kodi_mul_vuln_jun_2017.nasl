@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodi_mul_vuln_jun_2017.nasl 8126 2017-12-14 14:26:55Z asteins $
+# $Id: gb_kodi_mul_vuln_jun_2017.nasl 8133 2017-12-15 08:15:46Z teissa $
 #
 # Kodi Multiple vulnerabilitie June 2017 (Linux)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:kodi:kodi_web_server";
 if(description)
 {
     script_oid("1.3.6.1.4.1.25623.1.0.107276");
-    script_version("$Revision: 8126 $");
-    script_tag(name:"last_modification", value:"$Date: 2017-12-14 15:26:55 +0100 (Thu, 14 Dec 2017) $");
+    script_version("$Revision: 8133 $");
+    script_tag(name:"last_modification", value:"$Date: 2017-12-15 09:15:46 +0100 (Fri, 15 Dec 2017) $");
     script_tag(name:"creation_date", value:"2017-12-14 14:23:07 +0100 (Thu, 14 Dec 2017)");
     script_cve_id("CVE-2017-8314");
     script_bugtraq_id(98668);
 
-    script_tag(name:"cvss_base", value:"10.0");
-    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"4.3");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
     script_tag(name:"qod_type", value:"remote_banner_unreliable");
     script_name("Kodi Multiple Vulnerabilities June 2017 (Linux)");

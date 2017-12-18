@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_geoserver_detect.nasl 6135 2017-05-16 11:33:09Z cfi $
+# $Id: secpod_geoserver_detect.nasl 8144 2017-12-15 13:19:55Z cfischer $
 #
 # GeoServer Version Detection
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900945");
-  script_version("$Revision: 6135 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 13:33:09 +0200 (Tue, 16 May 2017) $");
+  script_version("$Revision: 8144 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-09-22 10:03:41 +0200 (Tue, 22 Sep 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -59,7 +59,7 @@ include("host_details.inc");
 function register_and_report( ver, dir, port, cpe, concluded, conclUrl )
 {
   set_kb_item(name:"www/" + port + "/GeoServer",  value:ver + " under " + dir );
-  replace_kb_item(name:"GeoServer/installed", value:TRUE);
+  set_kb_item(name:"GeoServer/installed", value:TRUE);
 
   register_product( cpe:cpe, location:dir, port:port );
   log_message( data: build_detection_report( app:"GeoServer",

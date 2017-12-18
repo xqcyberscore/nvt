@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_encryption_server_ldap_version.nasl 5184 2017-02-03 08:18:36Z cfi $
+# $Id: gb_symantec_encryption_server_ldap_version.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # Symantec Encryption Server Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105559");
-  script_version("$Revision: 5184 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 09:18:36 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 8141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-02-24 13:49:24 +0100 (Wed, 24 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,7 +71,7 @@ close( soc );
 
 if( "pgpVersion" >!< recv || "PGPServerInfo" >!< recv || "PGP Universal Server" >!< recv ) exit( 0 );
 
-replace_kb_item( name:"symantec_encryption_server/installed", value:TRUE );
+set_kb_item( name:"symantec_encryption_server/installed", value:TRUE );
 cpe = 'cpe:/a:symantec:encryption_management_server';
 
 resp = bin2string( ddata:recv, noprint_replacement:' ' );

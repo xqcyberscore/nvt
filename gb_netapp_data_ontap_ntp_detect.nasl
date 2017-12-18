@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netapp_data_ontap_ntp_detect.nasl 7049 2017-09-04 09:35:49Z ckuersteiner $
+# $Id: gb_netapp_data_ontap_ntp_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # NetApp Data ONTAP Detection (NTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140347");
-  script_version("$Revision: 7049 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-04 11:35:49 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 8142 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-09-04 15:55:36 +0700 (Mon, 04 Sep 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -70,7 +70,7 @@ if ("Data ONTAP" >< os) {
     replace_kb_item(name: "netapp_data_ontap/version", value: version);
   }
 
-  replace_kb_item(name: "netapp_data_ontap/detected", value: TRUE);
+  set_kb_item(name: "netapp_data_ontap/detected", value: TRUE);
 
   cpe = build_cpe(value: version, exp: "^([0-9P.]+)", base: "cpe:/o:netapp:data_ontap:");
   if (!cpe)

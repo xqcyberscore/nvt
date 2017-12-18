@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eyesofnetwork_detect_http.nasl 6256 2017-05-31 12:15:45Z cfi $
+# $Id: gb_eyesofnetwork_detect_http.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # Eyes Of Network (EON) Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108165");
-  script_version("$Revision: 6256 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 14:15:45 +0200 (Wed, 31 May 2017) $");
+  script_version("$Revision: 8139 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-05-22 09:21:05 +0200 (Mon, 22 May 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -88,8 +88,8 @@ if( buf =~ "^HTTP/1\.[0-1] 200" && ( "<title>EyesOfNetwork</title>" >< buf || ">
   }
 
 
-  replace_kb_item( name:"eyesofnetwork/detected", value:TRUE );
-  replace_kb_item( name:"eyesofnetwork/http/detected", value:TRUE );
+  set_kb_item( name:"eyesofnetwork/detected", value:TRUE );
+  set_kb_item( name:"eyesofnetwork/http/detected", value:TRUE );
   set_kb_item( name:"eyesofnetwork/http/port", value:port );
 }
 

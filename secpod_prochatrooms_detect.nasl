@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_prochatrooms_detect.nasl 4857 2016-12-27 15:03:32Z cfi $
+# $Id: secpod_prochatrooms_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # Pro Chat Rooms Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900330");
-  script_version("$Revision: 4857 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-27 16:03:32 +0100 (Tue, 27 Dec 2016) $");
+  script_version("$Revision: 8145 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-31 07:06:59 +0200 (Tue, 31 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -74,7 +74,7 @@ foreach dir( make_list_unique( "/prochatrooms", cgi_dirs( port:port ) ) ) {
     if( ! isnull( pcrVer[2] ) ) version = pcrVer[2];
 
     set_kb_item( name:"www/"+ port + "/ProChatRooms", value:version );
-    replace_kb_item( name:"ProChatRooms/installed", value:TRUE );
+    set_kb_item( name:"ProChatRooms/installed", value:TRUE );
    
     ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:pro_chat_rooms:pro_chat_rooms:" );

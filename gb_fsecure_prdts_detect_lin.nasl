@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fsecure_prdts_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_fsecure_prdts_detect_lin.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # F-Secure Multiple Products Version Detection (Linux)
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(800357);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+ script_version("$Revision: 8138 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-13 14:39:10 +0100 (Fri, 13 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("F-Secure Multiple Products Version Detection (Linux)");
@@ -88,7 +88,7 @@ if(fsavPaths != NULL)
       }
       if(fsavName[0] =~ "Linux Security")
       {
-        replace_kb_item(name:"F-Sec/Products/Lin/Installed", value:TRUE);
+        set_kb_item(name:"F-Sec/Products/Lin/Installed", value:TRUE);
         set_kb_item(name:"F-Sec/AV/LnxSec/Ver", value:fsavVer);
 
         ## build cpe and store it as host_detail
@@ -97,7 +97,7 @@ if(fsavPaths != NULL)
       }
       if(fsavName[0] =~ "Linux Client Security")
       {
-        replace_kb_item(name:"F-Sec/Products/Lin/Installed", value:TRUE);
+        set_kb_item(name:"F-Sec/Products/Lin/Installed", value:TRUE);
         set_kb_item(name:"F-Sec/AV/LnxClntSec/Ver", value:fsavVer);
 
         ## build cpe and store it as host_detail
@@ -107,7 +107,7 @@ if(fsavPaths != NULL)
       }
       if(fsavName[0] =~ "Linux Server Security")
       {
-        replace_kb_item(name:"F-Sec/Products/Lin/Installed", value:TRUE);
+        set_kb_item(name:"F-Sec/Products/Lin/Installed", value:TRUE);
         set_kb_item(name:"F-Sec/AV/LnxSerSec/Ver", value:fsavVer);
 
         ## build cpe and store it as host_detail
@@ -149,7 +149,7 @@ if(fsigkPaths != NULL)
         else{
           fsigkVer = fsigkVer[1];
         }
-        replace_kb_item(name:"F-Sec/Products/Lin/Installed", value:TRUE);
+        set_kb_item(name:"F-Sec/Products/Lin/Installed", value:TRUE);
         set_kb_item(name:"F-Sec/IntGatekeeper/Lnx/Ver", value:fsigkVer);
 
         ## build cpe and store it as host_detail

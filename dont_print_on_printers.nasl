@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dont_print_on_printers.nasl 7297 2017-09-27 09:54:01Z cfischer $
+# $Id: dont_print_on_printers.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Do not print on AppSocket and socketAPI printers
 #
@@ -29,8 +29,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7297 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
+  script_version("$Revision: 8138 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Do not print on AppSocket and socketAPI printers");
@@ -428,5 +428,5 @@ exit( 0 );
 #
 #  register_service(port: 9100, proto: "ignore-this-printer-port");
 #
-#  #replace_kb_item( name:"Host/dead", value:TRUE );
+#  #set_kb_item( name:"Host/dead", value:TRUE );
 #}

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_detect.nasl 7205 2017-09-20 14:23:50Z cfischer $
+# $Id: gb_nextcloud_detect.nasl 8144 2017-12-15 13:19:55Z cfischer $
 #
 # Nextcloud Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809413");
-  script_version("$Revision: 7205 $");
+  script_version("$Revision: 8144 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 16:23:50 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-09-27 12:37:02 +0530 (Tue, 27 Sep 2016)");
   script_name("Nextcloud Detection");
   script_category(ACT_GATHER_INFO);
@@ -89,7 +89,7 @@ foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/Nextcloud", "/cloud",
       buf2 = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
       if( buf2 =~ "HTTP/1.. 401" ) {
-        replace_kb_item( name:"www/content/auth_required", value:TRUE );
+        set_kb_item( name:"www/content/auth_required", value:TRUE );
         set_kb_item( name:"www/" + port + "/content/auth_required", value:authurl );
         break;
       }
@@ -115,8 +115,8 @@ foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/Nextcloud", "/cloud",
     if( ! isNC ) continue;
 
     set_kb_item( name:"nextcloud/install/" + port + "/" + install, value:TRUE ); # For gb_owncloud_detect.nasl to avoid double detection of Nextcloud and ownCloud
-    replace_kb_item( name:"owncloud_or_nextcloud/installed", value:TRUE );
-    replace_kb_item( name:"nextcloud/installed", value:TRUE );
+    set_kb_item( name:"owncloud_or_nextcloud/installed", value:TRUE );
+    set_kb_item( name:"nextcloud/installed", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.a-zA-Z]+)", base:"cpe:/a:nextcloud:nextcloud:" );
     if( isnull( cpe ) )

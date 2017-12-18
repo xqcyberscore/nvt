@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_data_domain_detect_snmp.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_emc_data_domain_detect_snmp.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # EMC Data Domain Detection (SNMP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140142");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7236 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+ script_version ("$Revision: 8141 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2017-02-01 12:25:05 +0100 (Wed, 01 Feb 2017)");
  script_name("EMC Data Domain Detection (SNMP)");
 
@@ -58,7 +58,7 @@ if(!sysdesc) exit(0);
 
 if("Data Domain OS" >!< sysdesc ) exit( 0 );
 
-replace_kb_item( name:"emc/data_domain/installed", value:TRUE );
+set_kb_item( name:"emc/data_domain/installed", value:TRUE );
 
 # Data Domain OS 6.0.0.9-544198
 vb = eregmatch( pattern:'Data Domain OS ([0-9.]+[^-]+)-([0-9]+)', string:sysdesc );

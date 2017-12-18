@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zhone_znid_gpon_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_zhone_znid_gpon_snmp_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # ZHONE ZNID GPON Device Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108089");
-  script_version("$Revision: 7236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 8141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-10-15 11:45:06 +0200 (Thu, 15 Oct 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,7 +57,7 @@ if(!sysdesc) exit(0);
 
 if( "ZNID-GPON" >!< sysdesc || "Zhone Indoor Network Interface" >!< sysdesc ) exit( 0 );
 
-replace_kb_item( name:"zhone/installed", value:TRUE );
+set_kb_item( name:"zhone/installed", value:TRUE );
 
 vers = "unknown";
 install = port + "/udp";

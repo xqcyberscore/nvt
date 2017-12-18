@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_detect.nasl 6533 2017-07-05 08:41:34Z santu $
+# $Id: gb_ms_office_web_apps_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Microsoft Office Web Apps Detection
 #
@@ -29,11 +29,11 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802466";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6533 $");
+  script_version("$Revision: 8138 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 10:41:34 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-10-11 10:29:56 +0530 (Thu, 11 Oct 2012)");
   script_name("Microsoft Office Web Apps Detection");
 
@@ -90,11 +90,11 @@ foreach item (registry_enum_keys(key:key))
       }
 
       set_kb_item(name:"MS/Office/Web/Apps/Path", value:insPath);
-      replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
+      set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
       ## Set the KB item
       set_kb_item(name:"MS/Office/Web/Apps/Ver", value:spVer);
-      replace_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
+      set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
       cpe = build_cpe(value:spVer, exp:"^([0-9.]+)",
                            base:"cpe:/a:microsoft:office_web_apps:");
 

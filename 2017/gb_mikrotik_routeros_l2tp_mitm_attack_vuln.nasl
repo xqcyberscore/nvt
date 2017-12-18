@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_routeros_l2tp_mitm_attack_vuln.nasl 7480 2017-10-18 11:44:20Z cfischer $
+# $Id: gb_mikrotik_routeros_l2tp_mitm_attack_vuln.nasl 8134 2017-12-15 09:56:07Z jschulte $
 #
 # MikroTik RouterOS 'L2TP' Man-in-the-Middle Attack Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/o:mikrotik:routeros";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810609");
-  script_version("$Revision: 7480 $");
+  script_version("$Revision: 8134 $");
   script_cve_id("CVE-2017-6297");
   script_bugtraq_id(96447);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-18 13:44:20 +0200 (Wed, 18 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 10:56:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-03-09 16:21:26 +0530 (Thu, 09 Mar 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("MikroTik RouterOS 'L2TP' Man-in-the-Middle Attack Vulnerability");
@@ -69,7 +69,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_mikrotik_router_routeros_detect.nasl");
+  script_dependencies("gb_mikrotik_router_routeros_consolidation.nasl");
   script_mandatory_keys("mikrotik/detected");
 
   exit(0);

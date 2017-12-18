@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_sysdesc.nasl 7239 2017-09-22 16:10:31Z cfischer $
+# $Id: gb_snmp_sysdesc.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # Get SysDescription via SNMP
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103416");
-  script_version("$Revision: 7239 $");
+  script_version("$Revision: 8139 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-02-14 10:07:41 +0100 (Tue, 14 Feb 2012)");
   script_name("Get SysDescription via SNMP");
   script_category(ACT_SETTINGS);
@@ -83,7 +83,7 @@ if( defined_func( "snmpv3_get" ) ) {
   if( ! res = snmp_get( port:port, oid:'1.3.6.1.2.1.1.1.0' ) ) exit( 0 );
 
   set_kb_item( name:"SNMP/" + port + "/sysdesc", value:res );
-  replace_kb_item( name:"SNMP/sysdesc/available", value:TRUE );
+  set_kb_item( name:"SNMP/sysdesc/available", value:TRUE );
   exit( 0 );
 
 } else {
@@ -124,7 +124,7 @@ if( defined_func( "snmpv3_get" ) ) {
 
     if( res = parse_result( data:result ) ) {
       set_kb_item( name:"SNMP/" + port + "/sysdesc", value:res );
-      replace_kb_item( name:"SNMP/sysdesc/available", value:TRUE );
+      set_kb_item( name:"SNMP/sysdesc/available", value:TRUE );
       close( soc );
       exit( 0 );
     }

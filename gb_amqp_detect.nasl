@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_amqp_detect.nasl 5247 2017-02-09 10:21:21Z cfi $
+# $Id: gb_amqp_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # AMQP Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105030");
-  script_version("$Revision: 5247 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-09 11:21:21 +0100 (Thu, 09 Feb 2017) $");
+  script_version("$Revision: 8143 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-05-21 12:39:47 +0100 (Wed, 21 May 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -76,7 +76,7 @@ else if ( pv == 3 ) protocol = 'SASL';
 set_kb_item( name:"amqp/" + port + "/protocol", value:pv );
 set_kb_item( name:"amqp/" + port + "/version", value:version );
 set_kb_item( name:"amqp/" + port + "/version/raw", value:buf[5] + buf[6] + buf[7] );
-replace_kb_item( name:"amqp/installed", value:TRUE );
+set_kb_item( name:"amqp/installed", value:TRUE );
 
 report = 'An AMQP server is running on this host.\n\nVersion:  ' + version + '\nProtocol: ' + protocol + '\n';
 log_message( port:port, data:report );

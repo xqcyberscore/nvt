@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: proxy_use.nasl 6891 2017-08-10 12:44:59Z cfischer $
+# $Id: proxy_use.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # HTTP Proxy Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100083");
-  script_version("$Revision: 6891 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-10 14:44:59 +0200 (Thu, 10 Aug 2017) $");
+  script_version("$Revision: 8142 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-28 19:13:00 +0100 (Sat, 28 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -81,7 +81,7 @@ foreach port( ports ) {
     set_kb_item( name:"Services/http_proxy", value:port );
 
     if( egrep( pattern: "squid", string: buf, icase:TRUE ) ) {
-      replace_kb_item( name:"www/squid", value:TRUE );
+      set_kb_item( name:"www/squid", value:TRUE );
     }
 
     if( VIA = egrep( pattern: "^Via:.*$", string: buf ) ) {

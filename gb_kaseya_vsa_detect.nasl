@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaseya_vsa_detect.nasl 6005 2017-04-21 13:14:30Z cfi $
+# $Id: gb_kaseya_vsa_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # Kaseya VSA Detection 
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106738");
-  script_version("$Revision: 6005 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-21 15:14:30 +0200 (Fri, 21 Apr 2017) $");
+  script_version("$Revision: 8143 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-04-10 14:46:29 +0200 (Mon, 10 Apr 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -77,7 +77,7 @@ if ("/themes/default/images/logoforLogin.gif" >< res && "/vsapres/js/kaseya/web/
     set_kb_item(name: "kaseya_vsa/version", value: version);
   }
 
-  replace_kb_item(name: "kaseya_vas/installed", value: TRUE);
+  set_kb_item(name: "kaseya_vas/installed", value: TRUE);
 
   cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:kaseya:virtual_system_administrator:");
   if (!cpe)

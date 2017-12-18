@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: OpenVAS_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: OpenVAS_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # OpenVAS Scanner Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100076");
-  script_version("$Revision: 8078 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 8139 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-24 18:59:36 +0100 (Tue, 24 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,8 +66,8 @@ foreach protocol( make_list( "1.0", "1.1", "1.2", "2.0" ) ) {
 
   if( ereg( pattern:"^< OTP/" + protocol + " >$", string:res ) ) {
 
-    replace_kb_item( name:"openvas_scanner/installed", value:TRUE );
-    replace_kb_item( name:"openvas_framework_component/installed", value:TRUE );
+    set_kb_item( name:"openvas_scanner/installed", value:TRUE );
+    set_kb_item( name:"openvas_framework_component/installed", value:TRUE );
 
     cpe = "cpe:/a:openvas:openvas_scanner";
     vers = "unknown";

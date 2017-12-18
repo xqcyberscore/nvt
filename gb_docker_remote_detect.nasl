@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_docker_remote_detect.nasl 5895 2017-04-07 14:44:59Z mime $
+# $Id: gb_docker_remote_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
 #
 # Docker Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105809");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5895 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 16:44:59 +0200 (Fri, 07 Apr 2017) $");
+ script_version ("$Revision: 8146 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-07-13 16:11:18 +0200 (Wed, 13 Jul 2016)");
  script_name("Docker Detection");
 
@@ -173,7 +173,7 @@ report = build_detection_report( app:'Docker', version:rep_vers, install:port + 
 
 if( cdata )
 {
-  replace_kb_item( name:"docker/container/present", value:TRUE );
+  set_kb_item( name:"docker/container/present", value:TRUE );
   report += '\n\nThe following containers where detected running on the remote host:\n\n' + cdata;
 }
 

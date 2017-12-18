@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_version_ssh.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_cisco_ios_xe_version_ssh.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # Cisco IOS XE Software Version Detection (ssh)
 #
@@ -29,8 +29,8 @@ tag_summary = "Get Cisco IOS XE Software Version via SSH.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105658");
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 8145 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-05-09 15:41:31 +0200 (Mon, 09 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,7 +57,7 @@ if( ! show_ver = get_kb_item( "cisco/show_version" ) ) exit( 0 );
 if( show_ver !~ 'IOS[ -]XE Software.*,' ) exit( 0 );
 
 set_kb_item( name:'cisco/show_ver', value:show_ver );
-replace_kb_item( name:"cisco_ios_xe/detected", value:TRUE );
+set_kb_item( name:"cisco_ios_xe/detected", value:TRUE );
 
 version = 'unknown';
 

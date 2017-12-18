@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_detect_win.nasl 7153 2017-09-15 15:03:32Z cfischer $
+# $Id: gb_adobe_flash_player_detect_win.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Adobe Flash Player/Flash CS/AIR/Flex Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800029");
-  script_version("$Revision: 7153 $");
+  script_version("$Revision: 8138 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 17:03:32 +0200 (Fri, 15 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-10-16 18:25:33 +0200 (Thu, 16 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Flash Player/Flash CS/AIR/Flex Version Detection (Windows)");
@@ -115,7 +115,7 @@ foreach key (key_list)
         checkduplicate_path += insPath + ", ";
 
         set_kb_item(name:"Adobe/Air/Win/Ver", value:airVer);
-        replace_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
+        set_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
 
         ## Build CPE
         cpe = build_cpe(value:airVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:adobe_air:");
@@ -145,7 +145,7 @@ foreach key (key_list)
       if(fcsVer[1] != NULL)
       {
         set_kb_item(name:"Adobe/FlashCS/Win/Ver", value:fcsVer[1]);
-        replace_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
+        set_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
 
         ## Build CPE
         cpe = build_cpe(value:fcsVer[1], exp:"^([0-9.]+)", base:"cpe:/a:adobe:flash_cs:");
@@ -184,7 +184,7 @@ foreach key (key_list)
       if(playerVer != NULL)
       {
         set_kb_item(name:"AdobeFlashPlayer/Win/Ver", value:playerVer);
-        replace_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
+        set_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
 
         ## Build CPE
         cpe = build_cpe(value:playerVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:flash_player:");

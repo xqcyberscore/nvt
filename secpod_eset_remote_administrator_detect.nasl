@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_eset_remote_administrator_detect.nasl 6517 2017-07-04 13:34:20Z cfischer $
+# $Id: secpod_eset_remote_administrator_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # ESET Remote Administrator Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900508");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6517 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
+ script_version("$Revision: 8141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-02-26 05:27:20 +0100 (Thu, 26 Feb 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("ESET Remote Administrator Version Detection");
@@ -61,7 +61,7 @@ if(registry_key_exists(key:"SOFTWARE\ESET\ESET Remote Administrator\Console"))
                                    "\Console\CurrentVersion\Info",
                                item:"ProductVersion");
   if(consoleVer != NULL){
-    replace_kb_item(name:"ESET/RemoteAdmin/Console_or_Server/Installed", value:TRUE);
+    set_kb_item(name:"ESET/RemoteAdmin/Console_or_Server/Installed", value:TRUE);
     set_kb_item(name:"ESET/RemoteAdmin/Console/Ver", value:consoleVer);
 
     ## build cpe and store it as host_detail
@@ -76,7 +76,7 @@ if(registry_key_exists(key:"SOFTWARE\ESET\ESET Remote Administrator\Server"))
                                 "\Server\CurrentVersion\Info",
                             item:"ProductVersion");
   if(servVer != NULL){
-    replace_kb_item(name:"ESET/RemoteAdmin/Console_or_Server/Installed", value:TRUE);
+    set_kb_item(name:"ESET/RemoteAdmin/Console_or_Server/Installed", value:TRUE);
     set_kb_item(name:"ESET/RemoteAdmin/Server/Ver", value:servVer);
 
     ## build cpe and store it as host_detail

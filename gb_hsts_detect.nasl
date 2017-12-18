@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hsts_detect.nasl 7395 2017-10-10 14:12:44Z cfischer $
+# $Id: gb_hsts_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
 #
 # SSL/TLS: HTTP Strict Transport Security (HSTS) Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105876");
-  script_version("$Revision: 7395 $");
+  script_version("$Revision: 8140 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-10 16:12:44 +0200 (Tue, 10 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-08-22 13:07:41 +0200 (Mon, 22 Aug 2016)");
   script_name("SSL/TLS: HTTP Strict Transport Security (HSTS) Detection");
   script_category(ACT_GATHER_INFO);
@@ -71,7 +71,7 @@ banner = get_http_banner( port:port );
 if( ! banner || banner !~ "^HTTP/1\.[01] (20[0146]|30[12378])" ) exit( 0 );
 
 if( ! sts = egrep( pattern:'^Strict-Transport-Security: ', string:banner, icase:TRUE ) ) { # Header fields are case-insensitive: https://tools.ietf.org/html/rfc7230#section-3.2
-  replace_kb_item( name:"hsts/missing", value:TRUE );
+  set_kb_item( name:"hsts/missing", value:TRUE );
   set_kb_item( name:"hsts/missing/port", value:port );
   exit( 0 );
 }
@@ -79,7 +79,7 @@ if( ! sts = egrep( pattern:'^Strict-Transport-Security: ', string:banner, icase:
 # max-age is required: https://tools.ietf.org/html/rfc6797#page-16
 # Assume a missing HSTS if its not specified
 if( "max-age=" >!< tolower( sts ) ) {
-  replace_kb_item( name:"hsts/missing", value:TRUE );
+  set_kb_item( name:"hsts/missing", value:TRUE );
   set_kb_item( name:"hsts/missing/port", value:port );
   set_kb_item( name:"hsts/max_age/missing/" + port, value:TRUE );
   set_kb_item( name:"hsts/" + port + "/banner", value:sts );
@@ -90,24 +90,24 @@ if( "max-age=" >!< tolower( sts ) ) {
 # A max-age value of zero (i.e., "max-age=0") signals the UA to
 # cease regarding the host as a Known HSTS Host
 if( "max-age=0" >< tolower( sts ) ) {
-  replace_kb_item( name:"hsts/missing", value:TRUE );
+  set_kb_item( name:"hsts/missing", value:TRUE );
   set_kb_item( name:"hsts/missing/port", value:port );
   set_kb_item( name:"hsts/max_age/zero/" + port, value:TRUE );
   set_kb_item( name:"hsts/" + port + "/banner", value:sts );
   exit( 0 );
 }
 
-replace_kb_item( name:"hsts/available", value:TRUE );
+set_kb_item( name:"hsts/available", value:TRUE );
 set_kb_item( name:"hsts/available/port", value:port );
 set_kb_item( name:"hsts/" + port + "/banner", value:sts );
 
 if( "includesubdomains" >!< tolower( sts ) ) {
-  replace_kb_item( name:"hsts/includeSubDomains/missing", value:TRUE );
+  set_kb_item( name:"hsts/includeSubDomains/missing", value:TRUE );
   set_kb_item( name:"hsts/includeSubDomains/missing/port", value:port );
 }
 
 if( "preload" >!< tolower( sts ) ) {
-  replace_kb_item( name:"hsts/preload/missing", value:TRUE );
+  set_kb_item( name:"hsts/preload/missing", value:TRUE );
   set_kb_item( name:"hsts/preload/missing/port", value:port );
 }
 

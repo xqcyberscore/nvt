@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lotus_domino_detect.nasl 6825 2017-08-01 06:06:31Z cfischer $
+# $Id: gb_lotus_domino_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Lotus/IBM Domino Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100597");
-  script_version("$Revision: 6825 $");
+  script_version("$Revision: 8138 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-01 08:06:31 +0200 (Tue, 01 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-22 20:18:17 +0200 (Thu, 22 Apr 2010)");
   script_name("Lotus/IBM Domino Detection");
   script_category(ACT_GATHER_INFO);
@@ -91,8 +91,8 @@ foreach port( ports ) {
       if( ! isnull( version[2] ) ) domino_ver = version[2];
 
       set_kb_item( name:"Domino/Version", value:domino_ver );
-      replace_kb_item( name:"Domino/Installed", value:TRUE );
-      replace_kb_item( name:"SMTP/domino", value:TRUE );
+      set_kb_item( name:"Domino/Installed", value:TRUE );
+      set_kb_item( name:"SMTP/domino", value:TRUE );
       set_kb_item( name:"SMTP/" + port + "/Domino", value:domino_ver );
 
       ## build cpe and store it as host_detail
@@ -129,7 +129,7 @@ foreach port( ports ) {
       if( ! isnull( version[1] ) ) domino_ver = version[1];
 
       set_kb_item( name:"Domino/Version", value:domino_ver );
-      replace_kb_item( name:"Domino/Installed", value:TRUE );
+      set_kb_item( name:"Domino/Installed", value:TRUE );
 
       ## build cpe and store it as host_detail
       cpe = build_cpe( value:domino_ver, exp:"([0-9][^ ]+)", base:"cpe:/a:ibm:lotus_domino:" );
@@ -165,7 +165,7 @@ foreach port( ports ) {
       if( ! isnull( version[2] ) ) domino_ver = version[2];
 
       set_kb_item( name:"Domino/Version", value:domino_ver );
-      replace_kb_item( name:"Domino/Installed", value:TRUE );
+      set_kb_item( name:"Domino/Installed", value:TRUE );
 
       ## build cpe and store it as host_detail
       cpe = build_cpe( value:domino_ver, exp:"([0-9][^ ]+)", base:"cpe:/a:ibm:lotus_domino:" );
@@ -282,8 +282,8 @@ if( installed ) {
   install = port + "/tcp";
 
   set_kb_item( name:"Domino/Version", value:final_ver );
-  replace_kb_item( name:"dominowww/installed", value:TRUE );
-  replace_kb_item( name:"Domino/Installed", value:TRUE );
+  set_kb_item( name:"dominowww/installed", value:TRUE );
+  set_kb_item( name:"Domino/Installed", value:TRUE );
 
   ## build cpe and store it as host_detail
   cpe = build_cpe( value:final_ver, exp:"([0-9][^ ]+)", base:"cpe:/a:ibm:lotus_domino:" );

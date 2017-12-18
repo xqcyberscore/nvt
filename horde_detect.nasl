@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: horde_detect.nasl 7861 2017-11-22 10:03:30Z ckuersteiner $
+# $Id: horde_detect.nasl 8136 2017-12-15 10:59:51Z santu $
 # Description: Horde Detection
 #
 # Authors:
@@ -24,8 +24,8 @@
 
 if (description) {
   script_oid("1.3.6.1.4.1.25623.1.0.15604");
-  script_version("$Revision: 7861 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 11:03:30 +0100 (Wed, 22 Nov 2017) $");
+  script_version("$Revision: 8136 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 11:59:51 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -57,7 +57,6 @@ include("http_keepalive.inc");
 port = get_http_port(default: 443);
 
 if (get_kb_item("www/no404/" + port)) exit(0);
-
 # Search for Horde in a couple of different locations in addition to cgi_dirs().
 dirs = make_list_unique( cgi_dirs(port:port), "/horde", "/" );
 
@@ -81,19 +80,20 @@ foreach dir (dirs) {
     res = http_keepalive_send_recv(port:port, data:req);
 
     if (res == NULL) continue;
-
     if (egrep(string:res, pattern:"^HTTP/1\.. 200 ")) {
       # Specify pattern used to identify version string.
       # - version 3.x
       if (file =~ "^/services/help") {
+
         if("about" >< file)
-          pat = ">This is Horde (.+)";
+          pat = ">This is Horde (.+).</h2>";
         if("menu" >< file)
           pat = '>Horde ([0-9.]+[^<]*)<';
+        
       }
       #   nb: test.php available is itself a vulnerability but sometimes available.
       else if (file == "/test.php") {
-        pat = "^ *<li>Horde: +(.+) *</li> *$";
+        pat = "^ *<li>horde: +(.+) *</li> *$";
       }
       #   nb: another security risk -- ability to view PHP source.
       else if (file == "/lib/version.phps") {
@@ -111,6 +111,7 @@ foreach dir (dirs) {
       version = "unknown";
 
       vers = eregmatch(pattern: pat, string: res);
+      if (!vers) continue;
       if (!isnull(vers[1])) {
         version = vers[1];
         concUrl = file;
@@ -127,7 +128,7 @@ foreach dir (dirs) {
       register_product(cpe: cpe, location: install, port: port);
 
       log_message(data: build_detection_report(app: "Horde", version: version, install: install, cpe: cpe,
-                                               concluded: vers[0], concludedUrl: concUrl),
+                                               concluded: version, concludedUrl: concUrl),
                   port: port);
       exit(0); 
     }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap_net.nasl 7221 2017-09-21 13:05:11Z cfischer $
+# $Id: nmap_net.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # Launch Nmap for Network Scanning (nmap_net system)
 #
@@ -34,8 +34,8 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.104000";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 7221 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-21 15:05:11 +0200 (Thu, 21 Sep 2017) $");
+  script_version("$Revision: 8141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-05-31 15:59:37 +0200 (Tue, 31 May 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -110,7 +110,7 @@ function report_host_alive() {
     state = get_kb_item("Host/State");
     if (isnull(state) || "up" >!< state) {
         # Host is dead, mark it as such
-        replace_kb_item( name:"Host/dead", value:TRUE );
+        set_kb_item( name:"Host/dead", value:TRUE );
     }
 }
 

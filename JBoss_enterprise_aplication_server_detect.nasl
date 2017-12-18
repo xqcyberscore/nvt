@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: JBoss_enterprise_aplication_server_detect.nasl 4217 2016-10-05 12:26:26Z cfi $
+# $Id: JBoss_enterprise_aplication_server_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
 #
 # JBoss Multiple Products Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100387");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4217 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 14:26:26 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 8140 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-12-10 14:34:38 +0100 (Thu, 10 Dec 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("JBoss Multiple Products Detection");
@@ -118,7 +118,7 @@ if( egrep( pattern:"X-Powered-By.*JBoss(AS|EAS)?-", string:banner ) ) {
       appName = "JBoss Enterprise Application Platform";
       banner = "JBossEAP-" + ident[1];
     } else {
-      replace_kb_item( name:"jboss/detected", value:TRUE );
+      set_kb_item( name:"jboss/detected", value:TRUE );
       set_kb_item( name:"jboss/port", value:port );
       #No error fingerprint available
       log_message( data:build_detection_report( app:"Unknown JBoss",
@@ -140,7 +140,7 @@ if( identified ) {
 
   set_kb_item( name:"www/" + port + "/" + identifier, value:vers );
   set_kb_item( name:identifier + "/installed", value:TRUE );
-  replace_kb_item( name:"jboss/detected", value:TRUE );
+  set_kb_item( name:"jboss/detected", value:TRUE );
   set_kb_item( name:"jboss/port", value:port );
 
   cpe = build_cpe( value:vers, exp:"(^[0-9.]+)", base:tmpCpe + ":" );

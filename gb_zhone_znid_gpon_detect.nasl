@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zhone_znid_gpon_detect.nasl 5483 2017-03-04 13:27:49Z cfi $
+# $Id: gb_zhone_znid_gpon_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # ZHONE ZNID GPON Device Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105404");
-  script_version("$Revision: 5483 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-04 14:27:49 +0100 (Sat, 04 Mar 2017) $");
+  script_version("$Revision: 8138 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-10-15 11:45:06 +0200 (Thu, 15 Oct 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,7 +54,7 @@ port = get_telnet_port( default:23 );
 banner = get_telnet_banner( port:port );
 if( ! banner || "Model: ZNID-GPON" >!< banner ) exit( 0 );
 
-replace_kb_item( name:"zhone/installed", value:TRUE );
+set_kb_item( name:"zhone/installed", value:TRUE );
 
 vers = "unknown";
 install = port + "/tcp";

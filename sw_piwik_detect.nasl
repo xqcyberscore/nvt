@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_piwik_detect.nasl 5924 2017-04-11 06:17:24Z cfi $
+# $Id: sw_piwik_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
 #
 # Piwik Analytics Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111046");
-  script_version("$Revision: 5924 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 08:17:24 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 8140 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-11-05 13:00:00 +0100 (Thu, 05 Nov 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -84,7 +84,7 @@ foreach dir( make_list_unique( "/", "/piwik", "/analytics", cgi_dirs( port:port 
       cpe = 'cpe:/a:cpe:/a:piwik:piwik';
 
     set_kb_item( name:"www/" + port + "/piwik", value:version );
-    replace_kb_item( name:"piwik/installed", value:TRUE );
+    set_kb_item( name:"piwik/installed", value:TRUE );
 
     register_product( cpe:cpe, location:install, port:port );
 

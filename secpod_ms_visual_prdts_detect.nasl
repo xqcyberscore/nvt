@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_visual_prdts_detect.nasl 6517 2017-07-04 13:34:20Z cfischer $
+# $Id: secpod_ms_visual_prdts_detect.nasl 8147 2017-12-15 13:51:17Z cfischer $
 #
 # Microsoft Visual Product(s) Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900808");
-  script_version("$Revision: 6517 $");
+  script_version("$Revision: 8147 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:51:17 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-08-03 06:30:10 +0200 (Mon, 03 Aug 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Visual Products Version Detection");
@@ -110,7 +110,7 @@ foreach item (registry_enum_keys(key:visual_key))
 
     if(studioVer != NULL)
     {
-      replace_kb_item(name:"Microsoft/VisualStudio_or_VisualStudio.NET/Installed", value:TRUE);
+      set_kb_item(name:"Microsoft/VisualStudio_or_VisualStudio.NET/Installed", value:TRUE);
       set_kb_item(name:"Microsoft/VisualStudio/Ver", value:studioVer);
 
       insPath = registry_get_sz(key:visual_key + item, item:"InstallLocation");
@@ -133,7 +133,7 @@ foreach item (registry_enum_keys(key:visual_key))
     netVer = registry_get_sz(key:visual_key + item, item:"DisplayVersion");
     if(netVer != NULL)
     {
-      replace_kb_item(name:"Microsoft/VisualStudio_or_VisualStudio.Net/Installed", value:TRUE);
+      set_kb_item(name:"Microsoft/VisualStudio_or_VisualStudio.Net/Installed", value:TRUE);
       set_kb_item(name:"Microsoft/VisualStudio.Net/Ver", value:netVer);
 
       insPath = registry_get_sz(key:visual_key + item, item:"InstallLocation");

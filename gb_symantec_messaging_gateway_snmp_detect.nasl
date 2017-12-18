@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_snmp_detect.nasl 7239 2017-09-22 16:10:31Z cfischer $
+# $Id: gb_symantec_messaging_gateway_snmp_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
 #
 # Symantec Messaging Gateway Detection (SNMP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105718");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7239 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
+ script_version ("$Revision: 8146 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2016-05-17 12:13:39 +0200 (Tue, 17 May 2016)");
  script_name("Symantec Messaging Gateway Detection (SNMP)");
 
@@ -58,7 +58,7 @@ if (!infos = snmp_get_sw_oid(pattern: "sms-appliance-release", port: port))
 
 package = infos['package'];
 
-replace_kb_item(name: "smg/installed", value: TRUE);
+set_kb_item(name: "smg/installed", value: TRUE);
 
 vers = eregmatch(pattern: 'sms-appliance-release-([0-9+][^ $\r\n"]+)', string: package);
 if (!isnull(vers[1])) {

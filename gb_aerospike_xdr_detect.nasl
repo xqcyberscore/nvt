@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aerospike_xdr_detect.nasl 5125 2017-01-27 14:52:37Z mime $
+# $Id: gb_aerospike_xdr_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
 #
 # Aerospike Database Detection (XDR)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140130");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5125 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-27 15:52:37 +0100 (Fri, 27 Jan 2017) $");
+ script_version ("$Revision: 8137 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2017-01-27 13:21:27 +0100 (Fri, 27 Jan 2017)");
  script_name("Aerospike Database Detection (XDR)");
 
@@ -81,7 +81,7 @@ if( strlen( recv ) != len ) exit( 0 );
 
 if( "Aerospike" >!< recv ) exit( 0 );
 
-replace_kb_item( name:"aerospike/detected", value:TRUE );
+set_kb_item( name:"aerospike/detected", value:TRUE );
 cpe = 'cpe:/a:aerospike:database_server';
 
 version = "unknown";

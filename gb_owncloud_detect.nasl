@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_detect.nasl 7205 2017-09-20 14:23:50Z cfischer $
+# $Id: gb_owncloud_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # ownCloud Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103564");
-  script_version("$Revision: 7205 $");
+  script_version("$Revision: 8142 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 16:23:50 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-09-12 14:18:24 +0200 (Wed, 12 Sep 2012)");
   script_name("ownCloud Detection");
   script_category(ACT_GATHER_INFO);
@@ -90,7 +90,7 @@ foreach dir( make_list_unique( "/", "/oc", "/owncloud", "/ownCloud", "/OwnCloud"
       buf2 = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
       if( buf2 =~ "HTTP/1.. 401" ) {
-        replace_kb_item( name:"www/content/auth_required", value:TRUE );
+        set_kb_item( name:"www/content/auth_required", value:TRUE );
         set_kb_item( name:"www/" + port + "/content/auth_required", value:authurl );
         break;
       }
@@ -99,8 +99,8 @@ foreach dir( make_list_unique( "/", "/oc", "/owncloud", "/ownCloud", "/OwnCloud"
     ver = eregmatch( string:buf, pattern:'version":"([0-9.a]+)","versionstring":"([0-9. a-zA-Z]+)"', icase:TRUE );
     if( ! isnull( ver[2] ) ) version = ereg_replace( pattern:" ", replace:"", string:ver[2] );
 
-    replace_kb_item( name:"owncloud_or_nextcloud/installed", value:TRUE );
-    replace_kb_item( name:"owncloud/installed", value:TRUE );
+    set_kb_item( name:"owncloud_or_nextcloud/installed", value:TRUE );
+    set_kb_item( name:"owncloud/installed", value:TRUE );
 
     if( "You are accessing the server from an untrusted domain" >< buf ) {
       extra = "ownCloud is blocking full access to this server because the scanner is accessing the server from an untrusted domain.";

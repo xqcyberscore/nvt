@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_detect_macosx.nasl 6537 2017-07-05 10:50:23Z santu $
+# $Id: gb_libreoffice_detect_macosx.nasl 8144 2017-12-15 13:19:55Z cfischer $
 #
 # LibreOffice Version Detection (Mac OS X)
 #
@@ -30,11 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803063");
-  script_version("$Revision: 6537 $");
+  script_version("$Revision: 8144 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"executable_version");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 12:50:23 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-11-26 17:26:43 +0530 (Mon, 26 Nov 2012)");
   script_name("LibreOffice Version Detection (Mac OS X)");
 
@@ -92,11 +92,11 @@ if(liboVer[1] && liboVer[3])
   buildVer = liboVer[1] + "." + liboVer[3];
 
 set_kb_item(name: "LibreOffice/MacOSX/Version", value: liboVer[1]);
-replace_kb_item( name:"LibreOffice/MacOSX/Installed", value:TRUE );
+set_kb_item( name:"LibreOffice/MacOSX/Installed", value:TRUE );
 
 if(buildVer){
   set_kb_item(name: "LibreOffice-Build/MacOSX/Version", value: buildVer);
-  replace_kb_item( name:"LibreOffice/MacOSX/Installed", value:TRUE ); 
+  set_kb_item( name:"LibreOffice/MacOSX/Installed", value:TRUE ); 
 }
   
 

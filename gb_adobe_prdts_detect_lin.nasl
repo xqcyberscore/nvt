@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_adobe_prdts_detect_lin.nasl 8147 2017-12-15 13:51:17Z cfischer $
 #
 # Adobe Reader Version Detection (Linux)
 #
@@ -32,10 +32,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800108";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 7823 $");
+  script_version("$Revision: 8147 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:51:17 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-10-04 09:54:24 +0200 (Sat, 04 Oct 2008)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe products version detection (Linux)");
@@ -87,7 +87,7 @@ foreach path (adobePath)
   {
     ## Set the KB
     set_kb_item(name:"Adobe/Reader/Linux/Version", value:adobeVer[0]);
-    replace_kb_item(name:"Adobe/Air_or_Flash_or_Reader/Linux/Installed", value:TRUE);
+    set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/Linux/Installed", value:TRUE);
 
     ## Build CPE
     cpe = build_cpe(value: adobeVer[0], exp:"^([0-9.]+)", base:"cpe:/a:adobe:acrobat_reader:");

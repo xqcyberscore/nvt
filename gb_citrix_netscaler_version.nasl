@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_version.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_citrix_netscaler_version.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # Citrix NetScaler Version Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105271");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version ("$Revision: 8143 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2015-05-11 16:54:59 +0200 (Mon, 11 May 2015)");
  script_name("Citrix NetScaler Version Detection");
 
@@ -81,7 +81,7 @@ if( "NetScaler" >< system )
 
   if( ! isnull( _build[2] ) )
   {
-    if( _build[2] == 'e' )  replace_kb_item( name:"citrix_netscaler/enhanced_build", value:TRUE );
+    if( _build[2] == 'e' ) set_kb_item( name:"citrix_netscaler/enhanced_build", value:TRUE );
   }
 } 
 else
@@ -102,7 +102,7 @@ else
     build = v[2] + '.' + v[3];
     replace_kb_item( name:"citrix_netscaler/build", value:build);
 
-    if( v[4] && v[4] == 'e' ) replace_kb_item( name:"citrix_netscaler/enhanced_build", value:TRUE );
+    if( v[4] && v[4] == 'e' ) set_kb_item( name:"citrix_netscaler/enhanced_build", value:TRUE );
   }
 }
 

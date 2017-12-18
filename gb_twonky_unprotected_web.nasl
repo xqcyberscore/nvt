@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twonky_unprotected_web.nasl 5029 2017-01-18 13:42:10Z cfi $
+# $Id: gb_twonky_unprotected_web.nasl 8139 2017-12-15 11:57:25Z cfischer $
 #
 # Twonky Server Unprotected Web Console
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:twonky:twonky_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108007");
-  script_version("$Revision: 5029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-18 14:42:10 +0100 (Wed, 18 Jan 2017) $");
+  script_version("$Revision: 8139 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-09-28 12:00:00 +0200 (Wed, 28 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -78,7 +78,7 @@ req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( buf =~ "HTTP/1.. 401" ) {
-  replace_kb_item( name:"www/content/auth_required", value:TRUE );
+  set_kb_item( name:"www/content/auth_required", value:TRUE );
   set_kb_item( name:"www/" + port + "/content/auth_required", value:url );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: serendipity_detect.nasl 5137 2017-01-30 11:03:15Z cfi $
+# $Id: serendipity_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
 #
 # Serendipity Detection
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100112");
-  script_version("$Revision: 5137 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-30 12:03:15 +0100 (Mon, 30 Jan 2017) $");
+  script_version("$Revision: 8145 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-08 12:09:59 +0200 (Wed, 08 Apr 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -93,7 +93,7 @@ foreach dir( make_list_unique( "/serendipity", "/", cgi_dirs( port:port ) ) ) {
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/serendipity", value:tmp_version );
-    replace_kb_item( name:"Serendipity/installed", value:TRUE );
+    set_kb_item( name:"Serendipity/installed", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:s9y:serendipity:" );
     if( isnull( cpe ) )

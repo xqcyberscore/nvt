@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mpu2016_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_mpu2016_snmp_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
 #
 # Emerson Network Power Avocent MergePoint Unity 2016 KVM Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108088");
-  script_version("$Revision: 7236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 8146 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-01-27 18:43:12 +0100 (Mon, 27 Jan 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,7 +65,7 @@ install = port + "/udp";
 version = eregmatch( pattern:'^MPU2016 ([0-9.]+)$', string:sysdesc );
 if( ! isnull( version[1] ) ) vers = version[1];
 
-replace_kb_item( name:"MPU2016/installed", value:TRUE );
+set_kb_item( name:"MPU2016/installed", value:TRUE );
 
 cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/h:emerson:network_power_avocent_mergepoint_unity_2016_firmware:" );
 if( isnull( cpe ) )

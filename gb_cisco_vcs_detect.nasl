@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_detect.nasl 4893 2016-12-30 15:49:57Z cfi $
+# $Id: gb_cisco_vcs_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
 #
 # Cisco TelePresence Video Communication Server Detection (SIP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105332");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 4893 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-30 16:49:57 +0100 (Fri, 30 Dec 2016) $");
+ script_version ("$Revision: 8142 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2015-08-27 14:44:28 +0200 (Thu, 27 Aug 2015)");
  script_name("Cisco TelePresence Video Communication Server Detection (SIP)");
 
@@ -93,7 +93,7 @@ if( ! isnull( version[2] ) )
   set_kb_item( name:"cisco_vcs/sip/version", value:vers );
 }
 
-replace_kb_item( name:"cisco_vcs/installed",value:TRUE );
+set_kb_item( name:"cisco_vcs/installed",value:TRUE );
 
 location = port + "/" + proto;
 

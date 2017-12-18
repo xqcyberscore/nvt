@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sendmail_expn.nasl 5899 2017-04-08 08:51:52Z cfi $
+# $Id: sendmail_expn.nasl 8147 2017-12-15 13:51:17Z cfischer $
 #
 # Check if Mailserver answer to VRFY and EXPN requests
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100072");
-  script_version("$Revision: 5899 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-08 10:51:52 +0200 (Sat, 08 Apr 2017) $");
+  script_version("$Revision: 8147 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:51:17 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-23 19:32:33 +0100 (Mon, 23 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -86,7 +86,7 @@ if( "250" >< ehlotxt || "550" >< ehlotxt ) {
       send( socket:soc, data:string("VRFY "+rand));
       vrfy_txt2 = smtp_recv_line( socket:soc );
       if( "252" >!< vrfy_txt2 ) {
-        replace_kb_item( name:"SMTP/vrfy", value:TRUE );
+        set_kb_item( name:"SMTP/vrfy", value:TRUE );
         VULN = TRUE;
         report += string("'VRFY root' produces the following answer: ", vrfy_txt, "\n");
       }
@@ -104,7 +104,7 @@ if( "250" >< ehlotxt || "550" >< ehlotxt ) {
         "lists are confidential" >!< expn_txt &&
         "EXPN command has been disabled" >!< expn_txt && # https://msg.wikidoc.info/index.php/DISABLE_EXPAND
         "not available" >!< expn_txt ) {
-      replace_kb_item( name:"SMTP/expn", value:TRUE );
+      set_kb_item( name:"SMTP/expn", value:TRUE );
       VULN = TRUE;
       report += string("'EXPN root' produces the following answer: ", expn_txt, "\n");
     }

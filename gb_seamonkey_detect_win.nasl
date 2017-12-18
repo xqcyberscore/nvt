@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seamonkey_detect_win.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: gb_seamonkey_detect_win.nasl 8138 2017-12-15 11:42:07Z cfischer $
 #
 # Mozilla Seamonkey Version Detection (Windows)
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800016");
-  script_version("$Revision: 6444 $");
+  script_version("$Revision: 8138 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Mozilla SeaMonkey Version Detection (Windows)");
@@ -124,7 +124,7 @@ foreach item (registry_enum_keys(key:key))
         insPath = "Could not find the install location";
 
       set_kb_item(name:"Seamonkey/Win/Ver", value: seaVer);
-      replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE ); 
+      set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE ); 
 
       ## build cpe
       cpe = build_cpe(value: seaVer, exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:mozilla:seamonkey:");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_soplanning_detect.nasl 7053 2017-09-04 12:20:53Z asteins $
+# $Id: gb_soplanning_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
 #
 # Simple Online Planning Version Detection
 #
@@ -27,10 +27,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112034");
-  script_version("$Revision: 7053 $");
+  script_version("$Revision: 8137 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 14:20:53 +0200 (Mon, 04 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-09-04 12:33:04 +0200 (Mon, 04 Sep 2017)");
   script_name("Simple Online Planning Version Detection");
   script_tag(name:"summary", value:"Detection of installed version
@@ -73,7 +73,7 @@ foreach dir(make_list_unique("/", "/SOPlanning/www/", cgi_dirs(port:port))) {
   {
     version = "unknown";
 
-    replace_kb_item( name:"SOPlanning/Installed", value:TRUE );
+    set_kb_item( name:"SOPlanning/Installed", value:TRUE );
 
     ver = eregmatch( pattern:'<small>v([0-9.]+)</small>', string:rcvRes);
     if (!isnull(ver[1])) version = ver[1];

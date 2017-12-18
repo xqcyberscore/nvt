@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vcenter_detect.nasl 7270 2017-09-26 09:49:58Z cfischer $
+# $Id: gb_vmware_vcenter_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
 #
 # VMware ESX detection (Web)
 #
@@ -30,8 +30,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_oid("1.3.6.1.4.1.25623.1.0.103659");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7270 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
+ script_version("$Revision: 8143 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2013-02-06 17:30:38 +0100 (Wed, 06 Feb 2013)");
  script_name("VMware vCenter detection (Web)");
 
@@ -136,7 +136,7 @@ set_kb_item(name:"VMware_vCenter/build", value: build);
 set_kb_item(name:"VMware_vCenter/port", value: port);
 
 # mandatory key for gb_apache_struts_CVE_2017_5638.nasl
-replace_kb_item(name:"www/action_jsp_do", value: TRUE);
+set_kb_item(name:"www/action_jsp_do", value: TRUE);
 
 log_message(data: build_detection_report(app:"VMware vCenter Server", version:vers, install:port + '/tcp', cpe:cpe, concluded: rs),
             port:port);

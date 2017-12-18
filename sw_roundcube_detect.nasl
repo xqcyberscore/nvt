@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_roundcube_detect.nasl 5896 2017-04-07 14:47:18Z cfi $
+# $Id: sw_roundcube_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
 #
 # Roundcube Webmail Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111027");
-  script_version("$Revision: 5896 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 16:47:18 +0200 (Fri, 07 Apr 2017) $");
+  script_version("$Revision: 8137 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-08-21 16:00:00 +0200 (Fri, 21 Aug 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -84,7 +84,7 @@ foreach dir( make_list_unique( "/", "/roundcube", "/webmail", "/mail", cgi_dirs(
       cpe = 'cpe:/a:roundcube:webmail';
 
     set_kb_item( name:"www/" + port + "/roundcube", value:version );
-    replace_kb_item( name:"roundcube/installed", value:TRUE );
+    set_kb_item( name:"roundcube/installed", value:TRUE );
 
     register_product( cpe:cpe, location:install, port:port );
 

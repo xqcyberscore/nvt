@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_web_detect.nasl 6239 2017-05-30 01:48:49Z ckuerste $
+# $Id: gb_cisco_wsa_web_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
 #
 # Cisco Web Security Appliance Web Interface Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105340");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6239 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-30 03:48:49 +0200 (Tue, 30 May 2017) $");
+ script_version ("$Revision: 8137 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
  script_tag(name:"creation_date", value:"2015-09-01 11:42:29 +0200 (Tue, 01 Sep 2015)");
  script_name("Cisco Web Security Appliance Web Interface Detection");
 
@@ -61,7 +61,7 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( buf !~ "<title>\s*Cisco\s*Web Security (Virtual )?Appliance" ) exit( 0 );
 
-replace_kb_item(name:"cisco_wsa/installed",value:TRUE);
+set_kb_item(name:"cisco_wsa/installed",value:TRUE);
 cpe = 'cpe:/h:cisco:web_security_appliance';
 
 if( "Set-Cookie" >< buf )

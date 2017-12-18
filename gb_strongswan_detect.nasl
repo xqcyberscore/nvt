@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_strongswan_detect.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_strongswan_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
 #
 # StrongSwan Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(800631);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+ script_version("$Revision: 8141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-06-19 09:45:44 +0200 (Fri, 19 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("StrongSwan Version Detection");
@@ -71,7 +71,7 @@ foreach swanBin (paths)
                             ver_pattern:"strongSwan U(([0-9.]+)(rc[0-9])?)");
   if(swanVer[1] != NULL)
   {
-    replace_kb_item(name:"Openswan_or_StrongSwan/Lin/Installed", value:TRUE);
+    set_kb_item(name:"Openswan_or_StrongSwan/Lin/Installed", value:TRUE);
     set_kb_item(name:"StrongSwan/Ver", value:swanVer[1]);
     log_message(data:"StrongSwan version " + swanVer[1] + " running at location " 
                        + swanBin + " was detected on the host");
