@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3635.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3635.nasl 8154 2017-12-18 07:30:14Z teissa $
 # Auto-generated from advisory DSA 3635-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703635);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703635");
+    script_version("$Revision: 8154 $");
     script_cve_id("CVE-2014-9906", "CVE-2015-8949");
     script_name("Debian Security Advisory DSA 3635-1 (libdbd-mysql-perl - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-18 08:30:14 +0100 (Mon, 18 Dec 2017) $");
     script_tag(name:"creation_date", value:"2016-08-04 16:27:17 +0530 (Thu, 04 Aug 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");

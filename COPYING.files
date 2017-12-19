@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 18 Dec 2017 08:14:14 +0100
+# Automatically created on:  Tue, 19 Dec 2017 07:58:48 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47934,6 +47934,9 @@
 2017/debian/deb_4062.nasl: GPLv2+
 2017/debian/deb_4063.nasl: GPLv2+
 2017/debian/deb_4064.nasl: GPLv2+
+2017/debian/deb_4065.nasl: GPLv2+
+2017/debian/deb_4066.nasl: GPLv2+
+2017/debian/deb_4068.nasl: GPLv2+
 2017/digium/gb_asterisk_AST-2017-009.nasl: GPLv2+
 2017/digium/gb_asterisk_AST-2017-010.nasl: GPLv2+
 2017/digium/gb_asterisk_AST-2017-011.nasl: GPLv2+

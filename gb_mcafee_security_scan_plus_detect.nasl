@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_security_scan_plus_detect.nasl 7287 2017-09-27 06:56:51Z cfischer $
+# $Id: gb_mcafee_security_scan_plus_detect.nasl 8159 2017-12-18 15:10:39Z cfischer $
 #
 # Intel Security McAfee Security Scan Plus Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810823");
-  script_version("$Revision: 7287 $");
+  script_version("$Revision: 8159 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-03-22 11:19:49 +0530 (Wed, 22 Mar 2017)");
   script_name("Intel Security McAfee Security Scan Plus Version Detection (Windows)");
 
@@ -99,14 +99,7 @@ if("McAfee Security Scan Plus" >< prot_Name)
   if(prot_Ver)
   {
     set_kb_item(name:"McAfee/SecurityScanPlus/Win/Ver", value:prot_Ver);
-
-    ## build cpe and store it as host_detail                
-    cpe = build_cpe(value:prot_Ver, exp:"^([0-9.]+)", base:"cpe:/a:intel:mcafee_security_scan_plus:");
-    if(isnull(cpe))
-      cpe = 'cpe:/a:intel:mcafee_security_scan_plus';
-
-    ## Register Product and Build Report
-    build_report(app:"Intel Security McAfee Security Scan Plus", ver:prot_Ver, cpe:cpe, insloc:prot_Path); 
+    register_and_report_cpe( app:"Intel Security McAfee Security Scan Plus", ver:prot_Ver, base:"cpe:/a:intel:mcafee_security_scan_plus:", expr:"^([0-9.]+)", insloc:prot_Path );
     exit(0); 
   }  
 }

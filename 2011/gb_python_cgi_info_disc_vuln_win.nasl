@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_cgi_info_disc_vuln_win.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_python_cgi_info_disc_vuln_win.nasl 8160 2017-12-18 15:33:57Z cfischer $
 #
 # Python CGIHTTPServer Module Information Disclosure Vulnerability
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
+CPE = "cpe:/a:python:python";
+
 tag_impact = "Successful exploitation could allow attackers to gain access to potentially
   sensitive information contained in arbitrary scripts by requesting cgi script
   without / in the beginning of URL.";
@@ -46,8 +48,8 @@ tag_summary = "This host is installed with Python and is prone to Information
 if(description)
 {
   script_id(801796);
-  script_version("$Revision: 7019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_version("$Revision: 8160 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2011-1015");
   script_bugtraq_id(46541);
@@ -63,7 +65,7 @@ if(description)
   script_family("General");
   script_name("Python CGIHTTPServer Module Information Disclosure Vulnerability");
   script_dependencies("gb_python_detect_win.nasl");
-  script_mandatory_keys("Python/Win/Ver");
+  script_mandatory_keys("Python6432/Win/Installed");
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "solution" , value : tag_solution);
@@ -74,12 +76,11 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Get the version from KB
-pyVer = get_kb_item("Python/Win/Ver");
-if(!pyVer){
+## Get version
+if(!pyVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_mult_vuln_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
+# $Id: gb_python_mult_vuln_win.nasl 8160 2017-12-18 15:33:57Z cfischer $
 #
 # Python Multiple Vulnerabilities (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
+CPE = "cpe:/a:python:python";
+
 tag_impact = "Successful exploitation could allows attackers to access sensitive information
   or cause a denial of service of a Python web application, processing URLs, via
   a specially-crafted urllib open URL request.";
@@ -45,8 +47,8 @@ tag_summary = "This host is installed with Python and is prone to multiple
 if(description)
 {
   script_id(801797);
-  script_version("$Revision: 6519 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
+  script_version("$Revision: 8160 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2011-1521");
   script_tag(name:"cvss_base", value:"6.4");
@@ -61,7 +63,7 @@ if(description)
   script_family("General");
   script_name("Python Multiple Vulnerabilities (Windows)");
   script_dependencies("gb_python_detect_win.nasl");
-  script_mandatory_keys("Python/Win/Ver");
+  script_mandatory_keys("Python6432/Win/Installed");
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "solution" , value : tag_solution);
@@ -72,12 +74,11 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Get the version from KB
-pyVer = get_kb_item("Python/Win/Ver");
-if(!pyVer){
+## Get version
+if(!pyVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

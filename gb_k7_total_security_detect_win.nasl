@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_total_security_detect_win.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_k7_total_security_detect_win.nasl 8159 2017-12-18 15:10:39Z cfischer $
 #
 # K7 Total Security Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805460");
-  script_version("$Revision: 6125 $");
+  script_version("$Revision: 8159 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-01-02 11:26:06 +0530 (Fri, 02 Jan 2015)");
   script_name("K7 Total Security Version Detection (Windows)");
 
@@ -93,33 +93,22 @@ foreach key (key_list)
     k7tsecName = registry_get_sz(key:key + item, item:"DisplayName");
 
     ## Confirm for K7TotalSecurity
-    if("K7TotalSecurity" >< k7tsecName)
-    {
+    if("K7TotalSecurity" >< k7tsecName) {
       k7tsecVer = registry_get_sz(key:key + item, item:"DisplayVersion");
       k7tsecPath = registry_get_sz(key:key + item, item:"InstallLocation");
-      if(!k7tsecPath)
-      {
+      if(!k7tsecPath) {
         k7tsecPath = "Unable to find the install location from registry";
       }
 
-      set_kb_item(name:"K7/TotalSecurity/Win/Ver", value:k7tsecVer);
+      set_kb_item(name:"K7/TotalSecurity6432/Win/Installed", value:TRUE);
 
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:k7tsecVer, exp:"^([0-9.]+)", base:"cpe:/a:k7computing:total_security:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:k7computing:total_security";
-
-      ## Register for 64 bit app on 64 bit OS once again
-      if("64" >< os_arch && "Wow6432Node" >!< key)
-      {
+      if("64" >< os_arch && "Wow6432Node" >!< key) {
         set_kb_item(name:"K7/TotalSecurity64/Win/Ver", value:k7tsecVer);
-        cpe = build_cpe(value:k7tsecVer, exp:"^([0-9.]+)", base:"cpe:/a:k7computing:total_security:x64:");
-
-        if(isnull(cpe))
-          cpe = "cpe:/a:k7computing:total_security:x64";
+        register_and_report_cpe( app:"K7 TotalSecurity", ver:k7tsecVer, base:"cpe:/a:k7computing:total_security:x64:", expr:"^([0-9.]+)", insloc:k7tsecPath );
+      } else {
+        set_kb_item(name:"K7/TotalSecurity/Win/Ver", value:k7tsecVer);
+        register_and_report_cpe( app:"K7 TotalSecurity", ver:k7tsecVer, base:"cpe:/a:k7computing:total_security:", expr:"^([0-9.]+)", insloc:k7tsecPath );
       }
-      ## Register Product and Build Report
-      build_report(app:"K7 TotalSecurity", ver:k7tsecVer, cpe:cpe, insloc:k7tsecPath);
     }
   }
 }

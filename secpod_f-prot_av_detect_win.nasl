@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_f-prot_av_detect_win.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: secpod_f-prot_av_detect_win.nasl 8162 2017-12-19 06:15:07Z cfischer $
 #
 # F-PROT Antivirus Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900553");
-  script_version("$Revision: 7052 $");
+  script_version("$Revision: 8162 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:15:07 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("F-PROT Antivirus Version Detection (Windows)");
@@ -110,25 +110,16 @@ foreach item (registry_enum_keys(key:key))
       if(!insLoc)
         insLoc = "Unable to find the install location";
 
-      set_kb_item(name:"F-Prot/AV/Win/Ver", value:fprotVer);
-
-      ## build cpe
-      cpe = build_cpe(value:fprotVer, exp:"^([0-9.]+)", base:"cpe:/a:f-prot:f-prot_antivirus:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:f-prot:f-prot_antivirus";
+      set_kb_item(name:"F-Prot/AV/Win/Installed", value:TRUE);
 
       ## Register for 64 bit app on 64 bit OS once again
-      if("64" >< os_arch && "x64" >< fprotName)
-      {
+      if("64" >< os_arch && "x64" >< fprotName) {
         set_kb_item(name:"F-Prot64/AV/Win/Ver", value:fprotVer);
-
-        ## Build CPE
-        cpe = build_cpe(value:fprotVer, exp:"^([0-9.]+)", base:"cpe:/a:f-prot:f-prot_antivirus:x64:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:f-prot:f-prot_antivirus:x64";
+        register_and_report_cpe( app:fprotName, ver:fprotVer, concluded:fprotVer, base:"cpe:/a:f-prot:f-prot_antivirus:x64:", expr:"^([0-9.]+)", insloc:insLoc );
+      } else {
+        set_kb_item(name:"F-Prot/AV/Win/Ver", value:fprotVer);
+        register_and_report_cpe( app:fprotName, ver:fprotVer, concluded:fprotVer, base:"cpe:/a:f-prot:f-prot_antivirus:", expr:"^([0-9.]+)", insloc:insLoc );
       }
-
-      build_report(app:fprotName, ver:fprotVer, cpe:cpe, insloc:insLoc, concluded:fprotVer);
     }
   }
 }

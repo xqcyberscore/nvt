@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3505.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3505.nasl 8154 2017-12-18 07:30:14Z teissa $
 # Auto-generated from advisory DSA 3505-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,8 +29,8 @@
 
 if(description)
 {
-    script_id(703505);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703505");
+    script_version("$Revision: 8154 $");
     script_cve_id("CVE-2015-7830", "CVE-2015-8711", "CVE-2015-8712", "CVE-2015-8713",
                   "CVE-2015-8714", "CVE-2015-8715", "CVE-2015-8716", "CVE-2015-8717",
                   "CVE-2015-8718", "CVE-2015-8719", "CVE-2015-8720", "CVE-2015-8721",
@@ -38,7 +38,7 @@ if(description)
                   "CVE-2015-8726", "CVE-2015-8727", "CVE-2015-8728", "CVE-2015-8729",
                   "CVE-2015-8730", "CVE-2015-8732", "CVE-2015-8733");
     script_name("Debian Security Advisory DSA 3505-1 (wireshark - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-18 08:30:14 +0100 (Mon, 18 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-03-04 00:00:00 +0100 (Fri, 04 Mar 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");

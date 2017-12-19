@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_integer_overflow_vuln_oct14_win.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_python_integer_overflow_vuln_oct14_win.nasl 8160 2017-12-18 15:33:57Z cfischer $
 #
 # Python Integer Overflow Vulnerability - 01 Oct14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:python:python";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804939");
-  script_version("$Revision: 6759 $");
+  script_version("$Revision: 8160 $");
   script_cve_id("CVE-2014-7185");
   script_bugtraq_id(70089);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-10-17 12:50:02 +0530 (Fri, 17 Oct 2014)");
 
   script_name("Python Integer Overflow Vulnerability - 01 Oct14 (Windows)");
@@ -68,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_python_detect_win.nasl");
-  script_mandatory_keys("Python/Win/Ver");
+  script_mandatory_keys("Python6432/Win/Installed");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_websvn_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
+# $Id: secpod_websvn_detect.nasl 8159 2017-12-18 15:10:39Z cfischer $
 #
 # WebSVN script version detection
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900440");
-  script_version("$Revision: 8140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 8159 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-01-23 16:33:16 +0100 (Fri, 23 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -74,8 +74,7 @@ foreach dir (make_list_unique("/", "/websvn", "/svn", cgi_dirs(port:websvnPort))
     svnVer = eregmatch(pattern:"WebSVN ([0-9.]+)", string:rcvRes);
     if(svnVer[1] == NULL){
        svnVer = "Unknown";
-    } 
-    else{
+    } else{
       svnVer = svnVer[1];
     }
     
@@ -83,14 +82,7 @@ foreach dir (make_list_unique("/", "/websvn", "/svn", cgi_dirs(port:websvnPort))
     if( svnVer != "Unknown" ){
       set_kb_item(name:"www/" + websvnPort + "/WebSVN", value:svnVer);
     }
-    
-    ## build cpe and store it as host_detail
-    cpe = build_cpe(value:svnVer, exp:"^([0-9.]+)", base:"cpe:/a:tigris:websvn:");
-    if(isnull(cpe)){
-      cpe = "cpe:/a:tigris:websvn";
-    }
-
-    build_report(app:"WebSVN", ver:svnVer, concluded:svnVer, cpe:cpe, insloc:install, port:websvnPort);
+    register_and_report_cpe( app:"WebSVN", ver:svnVer, concluded:svnVer, base:"cpe:/a:tigris:websvn:", expr:"^([0-9.]+)", insloc:install, regPort:websvnPort );
     exit(0);
   }
 }

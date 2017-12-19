@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rsa_auth_agent_detect_win.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_rsa_auth_agent_detect_win.nasl 8159 2017-12-18 15:10:39Z cfischer $
 #
 # RSA Authentication Agent Detection (Windows)
 #
@@ -32,10 +32,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803748");
-  script_version("$Revision: 7000 $");
+  script_version("$Revision: 8159 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-08-28 10:27:23 +0530 (Wed, 28 Aug 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_name("RSA Authentication Agent Detection (Windows)");
@@ -115,51 +115,28 @@ foreach key(key_list)
     if("RSA Authentication Agent" >< rsaName && "Web for IIS" >!< rsaName &&
         registry_key_exists(key:"SOFTWARE\RSA\RSA Authentication Agent"))
     {
-      set_kb_item(name:"RSA/AuthenticationAgent/Ver", value:rsaVer);
-
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:rsaVer, exp:"^([0-9.]+)", base:"cpe:/a:emc:rsa_authentication_agent:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:emc:rsa_authentication_agent";
-
-      ## 64 bit apps on 64 bit platform
-      if("x64" >< os_arch)
-      {
-         set_kb_item(name:"RSA/AuthenticationAgent64/Ver", value:rsaVer);
-
-         ## build cpe and store it as host_detail
-         cpe = build_cpe(value:rsaVer, exp:"^([0-9.]+)", base:"cpe:/a:emc:rsa_authentication_agent:x64:");
-         if(isnull(cpe))
-           cpe = "cpe:/a:emc:rsa_authentication_agent:x64";
+      set_kb_item(name:"RSA/AuthenticationAgent6432/Installed", value:rsaVer);
+      if("x64" >< os_arch) {
+        set_kb_item(name:"RSA/AuthenticationAgent64/Ver", value:rsaVer);
+        register_and_report_cpe( app:"RSA Authentication Agent", ver:rsaVer, concluded:rsaVer, base:"cpe:/a:emc:rsa_authentication_agent:x64:", expr:"^([0-9.]+)", insloc:insloc );
+      } else {
+        set_kb_item(name:"RSA/AuthenticationAgent/Ver", value:rsaVer);
+        register_and_report_cpe( app:"RSA Authentication Agent", ver:rsaVer, concluded:rsaVer, base:"cpe:/a:emc:rsa_authentication_agent:", expr:"^([0-9.]+)", insloc:insloc );
       }
-
-      ## Register product and build report
-      build_report(app:"RSA Authentication Agent", ver:rsaVer, cpe:cpe, insloc:insloc, concluded:rsaVer);
-
       continue;
     }
 
     ## RSA Authentication Agent for IIS
     if("RSA Authentication Agent for Web for IIS" >< rsaName && registry_key_exists(key:"SOFTWARE\RSAACEAgents\Web"))
     {
-      set_kb_item(name:"RSA/AuthenticationAgentWebIIS/Ver", value:rsaVer);
-      cpe = build_cpe(value:rsaVer, exp:"^([0-9.]+)", base:"cpe:/a:emc:rsa_authentication_agent_iis:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:emc:rsa_authentication_agent_iis";
-
-      ## 64 bit apps on 64 bit platform
-      if("x64" >< os_arch)
-      {
+      set_kb_item(name:"RSA/AuthenticationAgentWebIIS6432/Installed", value:TRUE);
+      if("x64" >< os_arch) {
         set_kb_item(name:"RSA/AuthenticationAgentWebIIS64/Ver", value:rsaVer);
-
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:rsaVer, exp:"^([0-9.]+)", base:"cpe:/a:emc:rsa_authentication_agent_iis:x64:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:emc:rsa_authentication_agent_iis:x64";
+        register_and_report_cpe( app:"RSA Authentication Agent", ver:rsaVer, concluded:rsaVer, base:"cpe:/a:emc:rsa_authentication_agent_iis:x64:", expr:"^([0-9.]+)", insloc:insloc );
+      } else {
+        set_kb_item(name:"RSA/AuthenticationAgentWebIIS/Ver", value:rsaVer);
+        register_and_report_cpe( app:"RSA Authentication Agent", ver:rsaVer, concluded:rsaVer, base:"cpe:/a:emc:rsa_authentication_agent_iis:", expr:"^([0-9.]+)", insloc:insloc );
       }
-
-      ## Register product and build report
-      build_report(app:"RSA Authentication Agent", ver:rsaVer, cpe:cpe, insloc:insloc, concluded:rsaVer);
     }
   }
 }

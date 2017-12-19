@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rsa_auth_agent_iis_auth_bypass_vuln_win.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_rsa_auth_agent_iis_auth_bypass_vuln_win.nasl 8160 2017-12-18 15:33:57Z cfischer $
 #
 # RSA Authentication Agent for IIS Authentication Bypass Vulnerability
 #
@@ -24,45 +24,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804150";
 CPE = "cpe:/a:emc:rsa_authentication_agent_iis";
 
 if (description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6086 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804150");
+  script_version("$Revision: 8160 $");
   script_cve_id("CVE-2013-3280");
   script_bugtraq_id(63303);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-11-25 15:39:27 +0530 (Mon, 25 Nov 2013)");
   script_name("RSA Authentication Agent for IIS Authentication Bypass Vulnerability");
 
-  tag_summary =
-"The host is installed with RSA Authentication Agent for IIS and is prone to
+  tag_summary = "The host is installed with RSA Authentication Agent for IIS and is prone to
 authentication bypass vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
- tag_insight =
-"The flaw is due to fail open design error.";
+ tag_insight = "The flaw is due to fail open design error.";
 
-  tag_impact =
-"Successful exploitation will allow local attacker to bypass certain security
+  tag_impact = "Successful exploitation will allow local attacker to bypass certain security
 restrictions and gain unauthorized privileged access.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"RSA Authentication Agent version 7.1.x before 7.1.2 for IIS.";
+  tag_affected = "RSA Authentication Agent version 7.1.x before 7.1.2 for IIS.";
 
-  tag_solution =
-"Upgrade to version 7.1.2 or later,
+  tag_solution = "Upgrade to version 7.1.2 or later,
 For updates refer to http://www.rsa.com/node.aspx?id=2575";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -80,7 +72,7 @@ For updates refer to http://www.rsa.com/node.aspx?id=2575";
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_rsa_auth_agent_detect_win.nasl");
-  script_mandatory_keys("RSA/AuthenticationAgentWebIIS/Ver");
+  script_mandatory_keys("RSA/AuthenticationAgentWebIIS6432/Installed");
   exit(0);
 }
 
@@ -92,7 +84,7 @@ include("host_details.inc");
 rsaAutVer = "";
 
 ## Get version from KB
-rsaAutVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID);
+rsaAutVer = get_app_version(cpe:CPE);
 if(rsaAutVer && rsaAutVer =~ "^7.1")
 {
   ## Check for version

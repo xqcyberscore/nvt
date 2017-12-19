@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_symantec_prdts_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
+# $Id: secpod_symantec_prdts_detect.nasl 8159 2017-12-18 15:10:39Z cfischer $
 #
 # Symantec Product(s) Version Detection
 #
@@ -40,10 +40,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900332");
-  script_version("$Revision: 8139 $");
+  script_version("$Revision: 8159 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-30 15:53:34 +0200 (Mon, 30 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec Product(s) Version Detection");
@@ -128,13 +128,7 @@ foreach symkey(key_list)
         if(! navPath){
           navPath = "Could not find the install Location from registry";
         }
-
-        ## Build CPE
-        cpe = build_cpe(value:navVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:norton_antivirus:");
-        if(isnull(cpe))
-          cpe = 'cpe:/a:symantec:norton_antivirus';
-
-        build_report(app:symantecName, ver:navVer, cpe:cpe, insloc:navPath, concluded:navVer);
+        register_and_report_cpe( app:symantecName, ver:navVer, concluded:navVer, base:"cpe:/a:symantec:norton_antivirus:", expr:"^([0-9.]+)", insloc:navPath );
       }
     }
 
@@ -152,13 +146,7 @@ foreach symkey(key_list)
         if(! nisPath){
           nisPath = "Could not find the install Location from registry";
         }
-
-        ## Build CPE
-        cpe = build_cpe(value:nisVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:norton_internet_security:");
-        if(isnull(cpe))
-          cpe = 'cpe:/a:symantec:norton_internet_security';
-
-        build_report(app:symantecName, ver:nisVer, cpe:cpe, insloc:nisPath, concluded:nisVer);
+        register_and_report_cpe( app:symantecName, ver:nisVer, concluded:nisVer, base:"cpe:/a:symantec:norton_internet_security:", expr:"^([0-9.]+)", insloc:nisPath );
       }
     }
 
@@ -176,13 +164,7 @@ foreach symkey(key_list)
         if(! pcawPath){
           pcawPath = "Could not find the install Location from registry";
         }
-
-        ## Build CPE
-        cpe = build_cpe(value: pcawVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:pcanywhere:");
-        if(isnull(cpe))
-          cpe = 'cpe:/a:symantec:pcanywhere';
-
-        build_report(app:symantecName, ver:pcawVer, cpe:cpe, insloc:pcawPath, concluded:pcawVer);
+        register_and_report_cpe( app:symantecName, ver:pcawVer, concluded:pcawVer, base:"cpe:/a:symantec:pcanywhere:", expr:"^([0-9.]+)", insloc:pcawPath );
       }
     }
 
@@ -203,13 +185,7 @@ foreach symkey(key_list)
         }
 
         set_kb_item(name:"Symantec/ESM/Path", value:esmPath);
-
-        ## Build CPE
-        cpe = build_cpe(value:esmVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:enterprise_security_manager:");
-        if(isnull(cpe))
-          cpe = 'cpe:/a:symantec:enterprise_security_manager';
-
-        build_report(app:symantecName, ver:esmVer, cpe:cpe, insloc:esmPath, concluded:esmVer);
+        register_and_report_cpe( app:symantecName, ver:esmVer, concluded:esmVer, base:"cpe:/a:symantec:enterprise_security_manager:", expr:"^([0-9.]+)", insloc:esmPath );
       }
     }
 
@@ -227,13 +203,7 @@ foreach symkey(key_list)
         if(! savcePath){
           savcePath = "Could not find the install Location from registry";
         }
-
-        ## Build CPE
-        cpe = build_cpe(value: savceVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:antivirus:");
-        if(isnull(cpe))
-          cpe = 'cpe:/a:symantec:antivirus';
-
-        build_report(app:symantecName, ver:savceVer, cpe:cpe, insloc:savcePath, concluded:savceVer);
+        register_and_report_cpe( app:symantecName, ver:savceVer, concluded:savceVer, base:"cpe:/a:symantec:antivirus:", expr:"^([0-9.]+)", insloc:savcePath );
       }
     }
 
@@ -250,13 +220,7 @@ foreach symkey(key_list)
         {
           set_kb_item(name:"Symantec_or_Norton/Products/Win/Installed", value:TRUE);
           set_kb_item(name:"Symantec/IM/Manager", value:imVer);
-
-          ## Build CPE
-          cpe = build_cpe(value: imVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:im_manager:");
-          if(isnull(cpe))
-            cpe = 'cpe:/a:symantec:im_manager';
-
-          build_report(app:symantecName, ver:imVer, cpe:cpe, insloc:imPath, concluded:imVer);
+          register_and_report_cpe( app:symantecName, ver:imVer, concluded:imVer, base:"cpe:/a:symantec:im_manager:", expr:"^([0-9.]+)", insloc:imPath );
         }
       }
     }
@@ -289,21 +253,11 @@ foreach symkey(key_list2)
       {
         ## Set kb for product type
         set_kb_item(name:"Symantec/SEP/SmallBusiness", value:nisType);
-
-        ## Build CPE
-        cpe = build_cpe(value:nisVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:endpoint_protection:"
-                                     + nisVer + ":small_business");
+        base = "cpe:/a:symantec:endpoint_protection:" + nisVer + ":small_business";
+      } else{
+        base = "cpe:/a:symantec:endpoint_protection:";
       }
-      else{
-        ## Build CPE
-        cpe = build_cpe(value: nisVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:endpoint_protection:");
-      }
-
-      if(isnull(cpe))
-        cpe = 'cpe:/a:symantec:endpoint_protection';
-
-      build_report(app:"Symantec Endpoint Protection", ver:nisVer, cpe:cpe, insloc:nisPath, concluded:nisVer);
-
+      register_and_report_cpe( app:"Symantec Endpoint Protection", ver:nisVer, concluded:nisVer, base:base, expr:"^([0-9.]+)", insloc:nisPath );
     }
   }
 }

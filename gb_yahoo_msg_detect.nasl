@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yahoo_msg_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
+# $Id: gb_yahoo_msg_detect.nasl 8159 2017-12-18 15:10:39Z cfischer $
 #
 # Yahoo! Messenger Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801149");
-  script_version("$Revision: 5871 $");
+  script_version("$Revision: 8159 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-12-08 05:49:24 +0100 (Tue, 08 Dec 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Yahoo! Messenger Version Detection");
@@ -116,14 +116,7 @@ foreach key (key_list)
     if(ymsgVer)
     {
       set_kb_item(name:"YahooMessenger/Ver", value:ymsgVer);
-
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:ymsgVer, exp:"^([0-9.]+)", base:"cpe:/a:yahoo:messenger:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:yahoo:messenger";
-
-      ## Register Product and Build Report
-      build_report(app: "Yahoo Messenger", ver:ymsgVer, cpe:cpe, insloc:ymsgPath);
+      register_and_report_cpe( app:"Yahoo Messenger", ver:ymsgVer, base:"cpe:/a:yahoo:messenger:", expr:"^([0-9.]+)", insloc:ymsgPath );
     }
   }
 }

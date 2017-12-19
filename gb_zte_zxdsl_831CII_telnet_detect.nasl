@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_zxdsl_831CII_telnet_detect.nasl 7947 2017-11-30 12:36:50Z santu $
+# $Id: gb_zte_zxdsl_831CII_telnet_detect.nasl 8158 2017-12-18 13:18:20Z cfischer $
 #
 # ZTE ZXDSL 831CII Detection (Telnet)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.811354");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7947 $");
- script_tag(name:"last_modification", value:"$Date: 2017-11-30 13:36:50 +0100 (Thu, 30 Nov 2017) $");
+ script_version ("$Revision: 8158 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-18 14:18:20 +0100 (Mon, 18 Dec 2017) $");
  script_tag(name:"creation_date", value:"2017-11-28 16:53:25 +0530 (Tue, 28 Nov 2017)");
  script_name("ZTE ZXDSL 831CII Detection (Telnet)");
 
@@ -62,7 +62,6 @@ banner = get_telnet_banner(port:ztport);
 if(!banner || "Welcome to ZXDSL 831CII" >!< banner) exit( 0 );
 
 vers = 'unknown';
-cpe = 'cpe:/h:zte:zxdsl_831CII';
 
 set_kb_item( name:'ZXDSL_831CII/Installed', value:TRUE );
 
@@ -71,10 +70,9 @@ version = eregmatch(pattern:'ZTE Inc., Software Release ZXDSL 831CIIV([0-9a-zA-Z
 if(version[1])
 {
   vers = version[1];
-  cpe += ':' + vers;
   set_kb_item( name:'ZXDSL_831CII/telnet/version', value:vers );
 }
 
-build_report(app:"ZTE ZXDSL 831CII", ver:vers, concluded:version, cpe:cpe, insloc:"/", port:ztport);
+register_and_report_cpe( app:"ZTE ZXDSL 831CII", ver:vers, concluded:version, base:"cpe:/h:zte:zxdsl_831CII:", expr:"([0-9a-zA-Z_.]+)", insloc:"/", regPort:ztport );
 
 exit(0);

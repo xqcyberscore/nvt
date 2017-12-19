@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pgp_desktop_detect_win.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: gb_pgp_desktop_detect_win.nasl 8162 2017-12-19 06:15:07Z cfischer $
 #
 # Symantec PGP/Encryption Desktop Version Detection (Windows)
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800215");
-  script_version("$Revision: 8138 $");
+  script_version("$Revision: 8162 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:15:07 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-01-06 15:38:06 +0100 (Tue, 06 Jan 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec PGP/Encryption Desktop Version Detection (Windows)");
@@ -107,55 +107,27 @@ foreach item (registry_enum_keys(key:key))
     if("PGP Desktop" >< appName)
     {
       set_kb_item(name:"PGPDesktop_or_EncryptionDesktop/Win/Installed", value:TRUE);
-      set_kb_item(name:"PGPDesktop/Win/Ver", value:deskVer);
-
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:deskVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:pgp_desktop:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:symantec:pgp_desktop";
-
-      build_report(app: appName, ver: deskVer, cpe: cpe, insloc: insloc);
 
       ## 64 bit apps on 64 bit platform
-      if("x64" >< os_arch)
-      {
-        set_kb_item(name:"PGPDesktop_or_EncryptionDesktop/Win/Installed", value:TRUE);
+      if("x64" >< os_arch) {
         set_kb_item(name:"PGPDesktop64/Win/Ver", value:deskVer);
-
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:deskVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:pgp_desktop:x64:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:symantec:pgp_desktop:x64";
-
-        ## Register Product and Build Report
-        build_report(app: appName, ver: deskVer, cpe: cpe, insloc: insloc);
+        register_and_report_cpe( app:appName, ver:deskVer, base:"cpe:/a:symantec:pgp_desktop:x64:", expr:"^([0-9.]+)", insloc:insloc );
+      } else {
+        set_kb_item(name:"PGPDesktop/Win/Ver", value:deskVer);
+        register_and_report_cpe( app:appName, ver:deskVer, base:"cpe:/a:symantec:pgp_desktop:", expr:"^([0-9.]+)", insloc:insloc );
       }
     }
     else
     {
       set_kb_item(name:"PGPDesktop_or_EncryptionDesktop/Win/Installed", value:TRUE);
-      set_kb_item(name:"EncryptionDesktop/Win/Ver", value:deskVer);
-
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:deskVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:encryption_desktop:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:symantec:encryption_desktop";
-
-      build_report(app: appName, ver: deskVer, cpe: cpe, insloc: insloc);
 
       ## 64 bit apps on 64 bit platform
-      if("x64" >< os_arch)
-      {
-        set_kb_item(name:"PGPDesktop_or_EncryptionDesktop/Win/Installed", value:TRUE);
+      if("x64" >< os_arch) {
         set_kb_item(name:"EncryptionDesktop64/Win/Ver", value:deskVer);
-
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:deskVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:encryption_desktop:x64:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:symantec:encryption_desktop:x64";
-
-        ## Register Product and Build Report
-        build_report(app: appName, ver: deskVer, cpe: cpe, insloc: insloc);
+        register_and_report_cpe( app:appName, ver:deskVer, base:"cpe:/a:symantec:encryption_desktop:x64:", expr:"^([0-9.]+)", insloc:insloc );
+      } else {
+        set_kb_item(name:"EncryptionDesktop/Win/Ver", value:deskVer);
+        register_and_report_cpe( app:appName, ver:deskVer, base:"cpe:/a:symantec:encryption_desktop:", expr:"^([0-9.]+)", insloc:insloc );
       }
     }
   }

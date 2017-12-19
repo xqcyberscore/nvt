@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_bof_vuln_mar14_win.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_python_bof_vuln_mar14_win.nasl 8160 2017-12-18 15:33:57Z cfischer $
 #
 # Python 'socket.recvfrom_into' Buffer Overflow Vulnerability Mar14 (Windows)
 #
@@ -30,13 +30,13 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804322";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 8160 $");
   script_cve_id("CVE-2014-1912");
   script_bugtraq_id(65379);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-03-05 12:18:28 +0530 (Wed, 05 Mar 2014)");
   script_name("Python 'socket.recvfrom_into' Buffer Overflow Vulnerability Mar14 (Windows)");
 
@@ -90,7 +90,7 @@ http://bugs.python.org/issue20246
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_python_detect_win.nasl");
-  script_mandatory_keys("Python/Win/Ver");
+  script_mandatory_keys("Python6432/Win/Installed");
   exit(0);
 }
 
@@ -103,7 +103,7 @@ include("global_settings.inc");
 pyVer = "";
 
 ## Get version
-if(!pyVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!pyVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

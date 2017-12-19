@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tortoise_svn_detect.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_tortoise_svn_detect.nasl 8162 2017-12-19 06:15:07Z cfischer $
 #
 # TortoiseSVN Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801289");
-  script_version("$Revision: 7052 $");
+  script_version("$Revision: 8162 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:15:07 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-21 16:43:08 +0200 (Tue, 21 Sep 2010)");
   script_tag(name:"qod_type", value:"registry");
   script_name("TortoiseSVN Version Detection");
@@ -98,26 +98,16 @@ foreach item (registry_enum_keys(key:key))
         insLoc = "Could not find the install location from registry";
       }
 
-      set_kb_item(name:"TortoiseSVN/Ver", value:AppVer);
-
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:AppVer, exp:"^([0-9.]+)", base:"cpe:/a:tigris:tortoisesvn:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:tigris:tortoisesvn";
+      set_kb_item(name:"TortoiseSVN/Installed", value:TRUE);
 
       ## Register for 64 bit app on 64 bit OS once again
-      if("64" >< os_arch)
-      {
+      if("64" >< os_arch) {
         set_kb_item(name:"TortoiseSVN64/Ver", value:AppVer);
-
-        ## Build CPE
-        cpe = build_cpe(value:AppVer, exp:"^([0-9.]+)", base:"cpe:/a:tigris:tortoisesvn:x64:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:tigris:tortoisesvn:x64";
+        register_and_report_cpe( app:AppName, ver:AppVer, concluded:AppVer, base:"cpe:/a:tigris:tortoisesvn:x64:", expr:"^([0-9.]+)", insloc:insLoc );
+      } else {
+        set_kb_item(name:"TortoiseSVN/Ver", value:AppVer);
+        register_and_report_cpe( app:AppName, ver:AppVer, concluded:AppVer, base:"cpe:/a:tigris:tortoisesvn:", expr:"^([0-9.]+)", insloc:insLoc );
       }
-    
-      ## Register product and build report
-      build_report(app:AppName, ver:AppVer, cpe:cpe, insloc:insLoc, concluded:AppName);
     }
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_total_protection_detect.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_mcafee_total_protection_detect.nasl 8159 2017-12-18 15:10:39Z cfischer $
 #
 # McAfee Total Protection Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807236");
-  script_version("$Revision: 7052 $");
+  script_version("$Revision: 8159 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-02-08 15:26:18 +0530 (Mon, 08 Feb 2016)");
   script_name("McAfee Total Protection Version Detection (Windows)");
 
@@ -102,14 +102,7 @@ foreach item (registry_enum_keys(key:key))
     if(prot_Ver)
     {
       set_kb_item(name:"McAfee/TotalProtection/Win/Ver", value:prot_Ver);
-
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:prot_Ver, exp:"^([0-9.]+)", base:"cpe:/a:mcafee:total_protection:");
-      if(isnull(cpe))
-        cpe = 'cpe:/a:mcafee:total_protection';
-
-      ## Register Product and Build Report
-      build_report(app:"McAfee Total Protection", ver:prot_Ver, cpe:cpe, insloc:prot_Path); 
+      register_and_report_cpe( app:"McAfee Total Protection", ver:prot_Ver, base:"cpe:/a:mcafee:total_protection:", expr:"^([0-9.]+)", insloc:prot_Path );
       exit(0); 
     }  
   }

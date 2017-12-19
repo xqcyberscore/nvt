@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3488.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3488.nasl 8154 2017-12-18 07:30:14Z teissa $
 # Auto-generated from advisory DSA 3488-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703488);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703488");
+    script_version("$Revision: 8154 $");
     script_cve_id("CVE-2014-8132", "CVE-2015-3146", "CVE-2016-0739");
     script_name("Debian Security Advisory DSA 3488-1 (libssh - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-18 08:30:14 +0100 (Mon, 18 Dec 2017) $");
     script_tag(name:"creation_date", value:"2016-03-08 12:37:45 +0530 (Tue, 08 Mar 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

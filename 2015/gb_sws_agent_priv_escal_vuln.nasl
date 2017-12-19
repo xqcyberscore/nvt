@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sws_agent_priv_escal_vuln.nasl 6170 2017-05-19 09:03:42Z teissa $
+# $Id: gb_sws_agent_priv_escal_vuln.nasl 8160 2017-12-18 15:33:57Z cfischer $
 #
 # Symantec Workspace Streaming Agent Privilege Escalation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:workspace_streaming";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805542");
-  script_version("$Revision: 6170 $");
+  script_version("$Revision: 8160 $");
   script_cve_id("CVE-2015-1484");
   script_bugtraq_id(73925);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-04-29 16:34:56 +0530 (Wed, 29 Apr 2015)");
   script_name("Symantec Workspace Streaming Agent Privilege Escalation Vulnerability");
 
@@ -69,7 +69,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_symantec_workspace_streaming_detect.nasl");
-  script_mandatory_keys("Symantec/Workspace/Streaming/Agent/Win/Ver");
+  script_mandatory_keys("Symantec/Workspace/Streaming/Agent/Win6432/Installed");
   exit(0);
 }
 

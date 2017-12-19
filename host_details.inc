@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 8127 2017-12-14 14:46:28Z cfischer $
+# $Id: host_details.inc 8156 2017-12-18 11:48:16Z cfischer $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8127 $
+# $Revision: 8156 $
 #
 ###############################################################################
 
@@ -99,6 +99,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.106494", # gb_arista_eos_snmp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108307", # gb_netgear_prosafe_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108311", # gb_hirschmann_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.810608", # gb_mikrotik_router_routeros_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.105144", # gb_xenserver_version.nasl
     "1.3.6.1.4.1.25623.1.0.105659", # gb_cisco_ios_xe_version.nasl
     "1.3.6.1.4.1.25623.1.0.105155", # gb_mcafee_email_gateway_version.nasl
@@ -169,6 +170,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.106875", # gb_aerohive_hiveos_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108307", # gb_netgear_prosafe_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108311", # gb_hirschmann_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.810608", # gb_mikrotik_router_routeros_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.105144", # gb_xenserver_version.nasl
     "1.3.6.1.4.1.25623.1.0.105659", # gb_cisco_ios_xe_version.nasl
     "1.3.6.1.4.1.25623.1.0.105155", # gb_mcafee_email_gateway_version.nasl
@@ -1275,6 +1277,8 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
       banner == "Server: NessusWWW" || # Nessus could be running on Windows, Linux/Unix or MacOS
       "erver: BBC " >< banner || # OV Communication Broker runs on various different OS variants
       "Server: PanWeb Server/" >< banner || # Already covered by gb_palo_alto_webgui_detect.nasl
+      " FTP server (MikroTik " >< banner || # Already covered by gb_mikrotik_router_routeros_consolidation.nasl
+      egrep( pattern:"^MikroTik ", string:banner ) || # Already covered by gb_mikrotik_router_routeros_consolidation.nasl
       egrep( pattern:"^OS String: Unix; SMB String: Samba ([0-9.]+)a?$", string:banner ) || # e.g. OS String: Unix; SMB String: Samba 4.0.9 set by smb_nativelanman.nasl
       egrep( pattern:"^220 ([0-9a-zA-Z._\-]+) ESMTP$", string:banner ) || # e.g. 220 hostname ESMTP
       egrep( pattern:"ESMTP Exim ([0-9._]+) ", string:banner ) || # e.g. 220 host ESMTP Exim 4.84_2 Tue, 01 Aug 2017 13:01:18 +0200

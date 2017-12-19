@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_workspace_streaming_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
+# $Id: gb_symantec_workspace_streaming_detect.nasl 8159 2017-12-18 15:10:39Z cfischer $
 #
 # Symantec Workspace Streaming (SWS) Agent Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805541");
-  script_version("$Revision: 5871 $");
+  script_version("$Revision: 8159 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-04-28 18:51:34 +0530 (Tue, 28 Apr 2015)");
   script_name("Symantec Workspace Streaming (SWS) Agent Version Detection (Windows)");
 
@@ -95,29 +95,15 @@ foreach item (registry_enum_keys(key:key))
       }
     }
 
-    if(agentVer)
-    {
-      set_kb_item(name:"Symantec/Workspace/Streaming/Agent/Win/Ver", value:agentVer);
-
-    ## build cpe and store it as host_detail
-      cpe = build_cpe(value:agentVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:workspace_streaming:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:symantec:workspace_streaming";
-
-      ## Register for 64 bit app on 64 bit OS once again
-      if("64" >< os_arch)
-      {
+    if(agentVer) {
+      set_kb_item(name:"Symantec/Workspace/Streaming/Agent/Win6432/Installed", value:TRUE);
+      if("64" >< os_arch) {
         set_kb_item(name:"Symantec/Workspace/Streaming/Agent/Win64/Ver", value:agentVer);
-
-        ## Build CPE
-        cpe = build_cpe(value:agentVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:workspace_streaming:x64:");
-
-        if(isnull(cpe))
-          cpe = "cpe:/a:symantec:workspace_streaming:x64";
+        register_and_report_cpe( app:agentName, ver:agentVer, base:"cpe:/a:symantec:workspace_streaming:x64:", expr:"^([0-9.]+)", insloc:agentPath );
+      } else {
+        set_kb_item(name:"Symantec/Workspace/Streaming/Agent/Win/Ver", value:agentVer);
+        register_and_report_cpe( app:agentName, ver:agentVer, base:"cpe:/a:symantec:workspace_streaming:", expr:"^([0-9.]+)", insloc:agentPath );
       }
-
-      ## Register Product and Build Report
-      build_report(app:agentName, ver:agentVer, cpe:cpe, insloc:agentPath);
     }
     exit(0);
   }

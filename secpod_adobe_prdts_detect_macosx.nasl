@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_detect_macosx.nasl 8141 2017-12-15 12:43:22Z cfischer $
+# $Id: secpod_adobe_prdts_detect_macosx.nasl 8159 2017-12-18 15:10:39Z cfischer $
 #
 # Adobe Products Version Detection (Mac OS X)
 #
@@ -39,11 +39,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902711");
-  script_version("$Revision: 8141 $");
+  script_version("$Revision: 8159 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Products Version Detection (Mac OS X)");
@@ -118,19 +118,9 @@ if(buffer != NULL)
 
   if(flashVer[1] != NULL)
   {
-    ## Set the version in KB
     set_kb_item(name: "Adobe/Flash/Player/MacOSX/Version", value:flashVer[1]);
-
     set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
-
-    ## Build cpe
-    cpe = build_cpe(value:flashVer[1], exp:"^([0-9.]+)", base:"cpe:/a:adobe:flash_player:");
-    if(isnull(cpe))
-      cpe = "cpe:/a:adobe:flash_player";
-
-    ## Register Product and Build Report
-    build_report(app: "Adobe Flash Player", ver: flashVer[1], cpe: cpe,
-                 insloc: "/Applications/Install Adobe Flash Player.app");
+    register_and_report_cpe( app:"Adobe Flash Player", ver:flashVer[1], base:"cpe:/a:adobe:flash_player:", expr:"^([0-9.]+)", insloc:"/Applications/Install Adobe Flash Player.app" );
   }
 }
 
@@ -145,17 +135,9 @@ if("com.adobe.shockwave" >< buffer)
   version = eregmatch(pattern:"shockwave[^\n]([0-9.]+)", string:buffer);
   if(version[1] != NULL)
   {
-    ## Set the version in KB
     set_kb_item(name: "Adobe/Shockwave/Player/MacOSX/Version", value:version[1]);
     set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
-
-    ## Build cpe
-    cpe = build_cpe(value:version[1], exp:"^([0-9.]+)", base:"cpe:/a:adobe:shockwave_player:");
-    if(isnull(cpe))
-      cpe = "cpe:/a:adobe:shockwave_player";
-
-    ## Register Product and Build Report
-    build_report(app: "Adobe Shockwave Player", ver: version[1], cpe: cpe, insloc: "/Applications");
+    register_and_report_cpe( app:"Adobe Shockwave Player", ver:version[1], base:"cpe:/a:adobe:shockwave_player:", expr:"^([0-9.]+)", insloc:"/Applications" );
   }
 }
 
@@ -179,20 +161,10 @@ if(!isnull(airVer) && "does not exist" >< airVer){
 
 if(!isnull(airVer) && "does not exist" >!< airVer)
 {
-  ## Set the version in KB
   set_kb_item(name: "Adobe/Air/MacOSX/Version", value:airVer);
   set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
-
-  ## Build cpe
-  cpe = build_cpe(value:airVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:adobe_air:");
-  if(isnull(cpe))
-    cpe = "cpe:/a:adobe:adobe_air";
-
-    ## Register Product and Build Report
-    build_report(app: "Adobe Air", ver: airVer, cpe: cpe,
-                 insloc: "/Applications/Adobe AIR Installer.app");
+  register_and_report_cpe( app:"Adobe Air", ver:airVer, base:"cpe:/a:adobe:adobe_air:", expr:"^([0-9.]+)", insloc:"/Applications/Adobe AIR Installer.app" );
 }
-
 
 ####################################
 ##
@@ -204,17 +176,9 @@ readerVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
 
 if(!isnull(readerVer) && "does not exist" >!< readerVer)
 {
-  ## Set the version in KB
   set_kb_item(name: "Adobe/Reader/MacOSX/Version", value:readerVer);
   set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
-
-  ## Build cpe
-  cpe = build_cpe(value:readerVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:acrobat_reader:");
-  if(isnull(cpe))
-    cpe = "cpe:/a:adobe:acrobat_reader";
-
-  ## Register Product and Build Report
-  build_report(app: "Adobe Reader", ver: readerVer, cpe: cpe, insloc: "/Applications/Adobe Reader.app");
+  register_and_report_cpe( app:"Adobe Reader", ver:readerVer, base:"cpe:/a:adobe:acrobat_reader:", expr:"^([0-9.]+)", insloc:"/Applications/Adobe Reader.app" );
 }
 
 
@@ -236,18 +200,9 @@ foreach ver (make_list("XI", "X", "10", "9", "8"))
 ## Exit if version not found
 if(!isnull(acrobatVer) && "does not exist" >!< acrobatVer)
 {
-  ## Set the version in KB
   set_kb_item(name: "Adobe/Acrobat/MacOSX/Version", value:acrobatVer);
   set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/MacOSX/Installed", value:TRUE);
-
-  ## Build cpe
-  cpe = build_cpe(value:acrobatVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:acrobat:");
-  if(isnull(cpe))
-    cpe = "cpe:/a:adobe:acrobat";
-
-  ## Register Product and Build Report
-  build_report(app: "Adobe Acrobat", ver: acrobatVer, cpe: cpe, insloc: "/Applications/Adobe Acrobat");
+  register_and_report_cpe( app:"Adobe Acrobat", ver:acrobatVer, base:"cpe:/a:adobe:acrobat:", expr:"^([0-9.]+)", insloc:"/Applications/Adobe Acrobat" );
 }
 
-## Close Socket
 close(sock);

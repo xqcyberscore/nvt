@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3731.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3731.nasl 8154 2017-12-18 07:30:14Z teissa $
 # Auto-generated from advisory DSA 3731-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,8 +29,8 @@
 
 if(description)
 {
-    script_id(703731);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703731");
+    script_version("$Revision: 8154 $");
     script_cve_id("CVE-2016-5181", "CVE-2016-5182", "CVE-2016-5183", "CVE-2016-5184",
                   "CVE-2016-5185", "CVE-2016-5186", "CVE-2016-5187", "CVE-2016-5188",
                   "CVE-2016-5189", "CVE-2016-5190", "CVE-2016-5191", "CVE-2016-5192",
@@ -44,7 +44,7 @@ if(description)
                   "CVE-2016-5224", "CVE-2016-5225", "CVE-2016-5226", "CVE-2016-9650",
                   "CVE-2016-9651", "CVE-2016-9652");
     script_name("Debian Security Advisory DSA 3731-1 (chromium-browser - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-18 08:30:14 +0100 (Mon, 18 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-12-11 00:00:00 +0100 (Sun, 11 Dec 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");

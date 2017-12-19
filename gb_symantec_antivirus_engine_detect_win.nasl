@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_antivirus_engine_detect_win.nasl 7938 2017-11-30 08:19:37Z santu $
+# $Id: gb_symantec_antivirus_engine_detect_win.nasl 8158 2017-12-18 13:18:20Z cfischer $
 #
 # Symantec Antivirus Engine Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808533");
-  script_version("$Revision: 7938 $");
+  script_version("$Revision: 8158 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-30 09:19:37 +0100 (Thu, 30 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 14:18:20 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-07-05 11:35:48 +0530 (Tue, 05 Jul 2016)");
   script_name("Symantec Antivirus Engine Version Detection (Windows)");
 
@@ -113,7 +113,7 @@ foreach item (registry_enum_keys(key:key))
                          "SOFTWARE\Symantec\SharedDefs\SymcData-spcVirDef64\");
     foreach key1(key_list)
     { 
-      appPath =registry_get_sz(key:key1, item:"SesmInstallApp");
+      appPath = registry_get_sz(key:key1, item:"SesmInstallApp");
       if(appPath){
         break;
       }
@@ -124,12 +124,7 @@ foreach item (registry_enum_keys(key:key))
     {
       set_kb_item(name:"Symantec/Antivirus/Engine/Ver", value:symVer);
 
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:symVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:anti-virus_engine:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:symantec:anti-virus_engine";
-      
-      build_report(app: "Symantec Antivirus Engine", ver:symVer, cpe: cpe, insloc:symPath, concluded:symVer); 
+      register_and_report_cpe( app:"Symantec Antivirus Engine", ver:symVer, concluded:symVer, base:"cpe:/a:symantec:anti-virus_engine:", expr:"^([0-9.]+)", insloc:symPath );
     }
     exit(0);
   }

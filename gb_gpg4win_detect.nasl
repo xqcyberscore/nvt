@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gpg4win_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
+# $Id: gb_gpg4win_detect.nasl 8159 2017-12-18 15:10:39Z cfischer $
 #
 # Gpg4win And Components Version Detection (Windows)
 #
@@ -32,10 +32,10 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.801128";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 8140 $");
+  script_version("$Revision: 8159 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-11-02 14:39:30 +0100 (Mon, 02 Nov 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Gpg4win And Components Version Detection (Windows)");
@@ -110,14 +110,7 @@ foreach key (key_list)
     {
       set_kb_item(name:"Gpg4win_or_Kleopatra/Win/Installed", value:TRUE);
       set_kb_item(name:"Gpg4win/Win/Ver", value:gpgVer);
-
-      ## build cpe
-      cpe = build_cpe(value:gpgVer, exp:"^([0-9.]+)", base:"cpe:/a:gpg4win:gpg4win:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:gpg4win:gpg4win";
-
-      ## Register Product and Build Report
-      build_report(app: "Gpg4win", ver: gpgVer, cpe: cpe, insloc: gpgPath);
+      register_and_report_cpe( app:"Gpg4win", ver:gpgVer, base:"cpe:/a:gpg4win:gpg4win:", expr:"^([0-9.]+)", insloc:gpgPath );
 
       # Set KB for Kleopatra
       if(gpgPath)
@@ -133,14 +126,7 @@ foreach key (key_list)
         {
           set_kb_item(name:"Gpg4win_or_Kleopatra/Win/Installed", value:TRUE);
           set_kb_item(name:"Kleopatra/Win/Ver", value:kleoVer[1]);
-
-          ## build cpe
-          cpe = build_cpe(value:kleoVer[1], exp:"^([0-9.]+)", base:"cpe:/a:kde-apps:kleopatra:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:kde-apps:kleopatra";
-
-          ## Register Product and Build Report
-          build_report(app: "Kleopatra", ver: kleoVer[1], cpe: cpe, insloc: gpgPath);
+          register_and_report_cpe( app:"Kleopatra", ver:kleoVer[1], base:"cpe:/a:kde-apps:kleopatra:", expr:"^([0-9.]+)", insloc:gpgPath );
         }
 
         # Set KB for GNU Privacy Assistant
@@ -148,14 +134,7 @@ foreach key (key_list)
         if(gpaVer[1])
         {
           set_kb_item(name:"GPA/Win/Ver", value:gpaVer[1]);
-
-          ## build cpe, taking cpe as "cpe:/a:gnu:privacy_assistant:"
-          cpe = build_cpe(value:gpaVer[1], exp:"^([0-9.]+)", base:"cpe:/a:gnu:privacy_assistant:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:gnu:privacy_assistant";
-
-          ## Register Product and Build Report
-          build_report(app: "GNU Privacy Assistant", ver: gpaVer[1], cpe: cpe, insloc: gpgPath);
+          register_and_report_cpe( app:"GNU Privacy Assistant", ver:gpaVer[1], base:"cpe:/a:gnu:privacy_assistant:", expr:"^([0-9.]+)", insloc:gpgPath );
         }
       }
     }

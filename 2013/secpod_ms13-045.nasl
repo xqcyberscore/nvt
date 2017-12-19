@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-045.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: secpod_ms13-045.nasl 8160 2017-12-18 15:33:57Z cfischer $
 #
 # Windows Essentials Information Disclosure Vulnerability (2813707)
 #
@@ -24,8 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:microsoft:windows_essentials";
+
 tag_impact = "Successful exploitation allow attackers to overwrite arbitrary files and
   could led to launch further attacks.
+
   Impact Level: System/Application";
 
 tag_affected = "Windows Essentials 2012 and prior";
@@ -40,11 +43,11 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(903210);
-  script_version("$Revision: 6086 $");
+  script_version("$Revision: 8160 $");
   script_cve_id("CVE-2013-0096");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-05-15 16:30:40 +0530 (Wed, 15 May 2013)");
   script_name("Windows Essentials Information Disclosure Vulnerability (2813707)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2813707");
@@ -53,7 +56,7 @@ if(description)
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_windows_live_essentials_detect.nasl");
-  script_mandatory_keys("Windows/Essentials/Ver", "Windows/Essentials/Loc");
+  script_mandatory_keys("Windows/Essentials6432/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -64,33 +67,33 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
+include("host_details.inc");
 
 ## Variable Initailization
 winVer = "";
 winLoc = "";
 exeVer = "";
 
-winVer = get_kb_item("Windows/Essentials/Ver");
-if(winVer)
-{
-  # Get Location from KB
-  winLoc = get_kb_item("Windows/Essentials/Loc");
-  if(winLoc)
-  {
-    exeVer = fetch_file_version(sysPath:winLoc, file_name:"Installer\wlarp.exe");
-    if(exeVer)
-    {
-      # Grep for version < 16.4.3508.205
-      if(version_is_less(version:exeVer, test_version:"16.4.3508.205"))
-      {
-        security_message(0);
-        exit(0);
-      }
-    }
+if( ! infos = get_app_version_and_location( cpe:CPE ) ) exit( 0 );
+
+winVer = infos['version'];
+if(!winVer){
+  exit(0);
+}
+
+winLoc = infos['location'];
+if(!winLoc || "Could not find the install location" >< winLoc){
+  exit(0);
+}
+
+exeVer = fetch_file_version(sysPath:winLoc, file_name:"Installer\wlarp.exe");
+if(exeVer) {
+  if(version_is_less(version:exeVer, test_version:"16.4.3508.205")) {
+    security_message(0);
+    exit(0);
   }
 }

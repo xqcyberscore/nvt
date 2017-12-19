@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_router_routeros_consolidation.nasl 8134 2017-12-15 09:56:07Z jschulte $
+# $Id: gb_mikrotik_router_routeros_consolidation.nasl 8161 2017-12-18 16:10:24Z cfischer $
 #
 # MikroTik RouterOS Detection Consolidation
 #
@@ -28,17 +28,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810608");
-  script_version("$Revision: 8134 $");
+  script_version("$Revision: 8161 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 10:56:07 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 17:10:24 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-03-09 15:28:48 +0530 (Thu, 09 Mar 2017)");
   script_name("MikroTik RouterOS Detection Consolidation");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_mikrotik_router_routeros_ftp_detect.nasl", "gb_mikrotik_router_routeros_telnet_detect.nasl", "gb_mikrotik_router_routeros_webui_detect.nasl");
-  script_mandatory_keys("mikrotic/detected");
+  script_mandatory_keys("mikrotik/detected");
 
   script_tag(name:"summary", value:"Detection of MikroTik RouterOS.
 
@@ -89,9 +89,9 @@ if( telnet_ports = get_kb_list( "mikrotik/telnet/port" ) ) {
   foreach port( telnet_ports ) {
     concluded = get_kb_item( "mikrotik/telnet/" + port + "/concluded" );
     extra += "Telnet on port " + port + '/tcp\n';
-      if( concluded ) {
-        extra += 'Concluded from: ' + concluded + '\n';
-      }
+    if( concluded ) {
+      extra += 'Concluded from: ' + concluded + '\n';
+    }
     register_product( cpe: CPE, location: location, port: port, service: "telnet" );
   }
 }
@@ -103,10 +103,14 @@ if( ftp_ports = get_kb_list( "mikrotik/ftp/port" ) ) {
     if( concluded ) {
       extra += 'Concluded from: ' + concluded + '\n';
     }
-
     register_product( cpe: CPE, location: location, port: port, service: "ftp" );
   }
 }
+
+if( version != "unknown" ) 
+  register_and_report_os( os:"Mikrotik Router OS", version:version, cpe:"cpe:/o:mikrotik:routeros", desc:"MikroTik RouterOS Detection Consolidation", runs_key:"unixoide" );
+else
+  register_and_report_os( os:"Mikrotik Router OS", cpe:CPE, desc:"MikroTik RouterOS Detection Consolidation", runs_key:"unixoide" );
 
 report = build_detection_report( app: "Mikrotik Router OS",
                                  version: detected_version,

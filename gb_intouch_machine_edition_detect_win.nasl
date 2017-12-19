@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intouch_machine_edition_detect_win.nasl 7905 2017-11-24 12:58:24Z santu $
+# $Id: gb_intouch_machine_edition_detect_win.nasl 8158 2017-12-18 13:18:20Z cfischer $
 #
 # InTouch Machine Edition Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812216");
-  script_version("$Revision: 7905 $");
+  script_version("$Revision: 8158 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 13:58:24 +0100 (Fri, 24 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 14:18:20 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-20 14:22:07 +0530 (Mon, 20 Nov 2017)");
    script_tag(name:"qod_type", value:"registry");
   script_name("InTouch Machine Edition Version Detection (Windows)");
@@ -99,11 +99,7 @@ foreach key (key_list)
       if(itmVer)
       {
         set_kb_item(name:"InTouch/MachineEdition/Win/Ver", value:itmVer);
-
-        cpe = build_cpe(value:itmVer, exp:"^([0-9.]+)", base:"cpe:/a:schneider_electric:intouch_machine_edition:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:schneider_electric:intouch_machine_edition";
-        build_report(app: "InTouch Machine Edition", ver:itmVer, cpe: cpe, insloc:itmPath);
+        register_and_report_cpe( app:"InTouch Machine Edition", ver:itmVer, base:"cpe:/a:schneider_electric:intouch_machine_edition:", expr:"^([0-9.]+)", insloc:itmPath );
       }
     }
   }

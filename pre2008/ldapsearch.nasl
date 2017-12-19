@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ldapsearch.nasl 7940 2017-11-30 10:04:48Z cfischer $
+# $Id: ldapsearch.nasl 8155 2017-12-18 08:24:14Z cfischer $
 #
 # LDAP information extraction with ldapsearch
 #
@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.91984");
-  script_version("$Revision: 7940 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-30 11:04:48 +0100 (Thu, 30 Nov 2017) $");
+  script_version("$Revision: 8155 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 09:24:14 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2006-04-23 14:49:44 +0200 (Sun, 23 Apr 2006)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -160,60 +160,8 @@ null_base = get_kb_item( "LDAP/" + port + "/NULL_BASE" );
 null_bind = get_kb_item( "LDAP/" + port + "/NULL_BIND" );
 ldapv3 = is_ldapv3( port:port );
 
-if( null_base ) {
-
-  #first do ldapsearch -h x.x.x.x -b '' -x -C -s base
-  type = "null-base";
-  value = '';
-  args = scanopts( port:port, type:type, value:value, host:host, timelimit:timelimit, sizelimit:sizelimit );
-
-  res = pread( cmd:"ldapsearch", argv:args, nice:5 );
-  res = res_check( res:res );
-
-  #this is insecure, but there's no other way to do this at the moment.
-  if( res ) {
-    base_report = makereport( res:res, args:args );
-  }
-
-  if( null_bind && res ) {
-    #then ldapsearch -h x.x.x.x -b dc=X,dc=Y -x -C -s base 'objectclass=*' -P3 -A
-    type = "null-bind";
-
-    #this gets the dc values so we can use them for a ldapsearch down the branch..
-    val = getdc( res:res );
-
-    #get the first two dc values to pass it to LDAPsearch.
-    value = "dc=" + val[0] + "dc=" + val[1];
-
-    #note that for deeper searches we would want use the other values in the array.
-    #we could make this recursive so a user can specify how many branches we want to examine.
-    #but then we would need to grab other things like the cn values and use those in the requests.
-
-    args = scanopts( port:port, type:type, value:value, host:host, timelimit:timelimit, sizelimit:sizelimit );
-
-    res = pread( cmd:"ldapsearch", argv:args, nice:5 );
-    res = res_check( res:res );
-
-    #this is insecure, but unfortunately there's no other way to do this at the moment.
-    if( res ) {
-      bind_report = makereport( res:res, args:args );
-    }
-  }
-
-  if( bind_report || base_report ) {
-
-    data = 'Grabbed the following information with a null-bind, null-base request:\n';
-
-    if( bind_report == base_report ) {
-     data += bind_report;
-    } else {
-     data += bind_report + base_report;
-    }
-    log_message( port:port, data:data );
-  }
-
 # Anonymous bind is required for LDAPv3 so try to gather infos from such an anonymous bind
-} else if( ldapv3 ) {
+if( ldapv3 ) {
 
   # Don't continue if we got an IPv4 or IPv6 back
   if( eregmatch( pattern:"([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})", string:host ) ||
@@ -262,6 +210,57 @@ if( null_base ) {
         }
       }
     }
+  }
+} else if( null_base ) {
+
+  #first do ldapsearch -h x.x.x.x -b '' -x -C -s base
+  type = "null-base";
+  value = '';
+  args = scanopts( port:port, type:type, value:value, host:host, timelimit:timelimit, sizelimit:sizelimit );
+
+  res = pread( cmd:"ldapsearch", argv:args, nice:5 );
+  res = res_check( res:res );
+
+  #this is insecure, but there's no other way to do this at the moment.
+  if( res ) {
+    base_report = makereport( res:res, args:args );
+  }
+
+  if( null_bind && res ) {
+    #then ldapsearch -h x.x.x.x -b dc=X,dc=Y -x -C -s base 'objectclass=*' -P3 -A
+    type = "null-bind";
+
+    #this gets the dc values so we can use them for a ldapsearch down the branch..
+    val = getdc( res:res );
+
+    #get the first two dc values to pass it to LDAPsearch.
+    value = "dc=" + val[0] + ",dc=" + val[1];
+
+    #note that for deeper searches we would want use the other values in the array.
+    #we could make this recursive so a user can specify how many branches we want to examine.
+    #but then we would need to grab other things like the cn values and use those in the requests.
+
+    args = scanopts( port:port, type:type, value:value, host:host, timelimit:timelimit, sizelimit:sizelimit );
+
+    res = pread( cmd:"ldapsearch", argv:args, nice:5 );
+    res = res_check( res:res );
+
+    #this is insecure, but unfortunately there's no other way to do this at the moment.
+    if( res ) {
+      bind_report = makereport( res:res, args:args );
+    }
+  }
+
+  if( bind_report || base_report ) {
+
+    data = 'Grabbed the following information with a null-bind, null-base request:\n';
+
+    if( bind_report == base_report ) {
+     data += bind_report;
+    } else {
+     data += bind_report + base_report;
+    }
+    log_message( port:port, data:data );
   }
 }
 

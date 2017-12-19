@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geovap_reliance_scada_detect.nasl 8021 2017-12-07 08:16:09Z asteins $
+# $Id: gb_geovap_reliance_scada_detect.nasl 8159 2017-12-18 15:10:39Z cfischer $
 #
 # Geovap Reliance SCADA Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112149");
-  script_version("$Revision: 8021 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:16:09 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 8159 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-06 15:47:24 +0100 (Wed, 06 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -89,15 +89,13 @@ foreach dir ( make_list_unique( "/", cgi_dirs( port: port ) ) ) {
     }
 
     # Build CPE for versions like '4.7.3 Update 1'
-    if ( version_match[4] ) cpe = build_cpe( value: version, exp: "^([0-9.]+).*([0-9])", base: "cpe:/a:geovap:reliance-scada:" );
+    if ( version_match[4] )
+      exp = "^([0-9.]+).*([0-9])";
     # Build CPE for versions like '4.6.3.22616'
-    else cpe = build_cpe( value: version, exp: "^([0-9.]+)", base: "cpe:/a:geovap:reliance-scada:" );
+    else
+      exp = "^([0-9.]+)";
 
-    if( !cpe ) cpe = "cpe:/a:geovap:reliance-scada";
-
-    # Build Report and register product
-    build_report( app: "Geovap Reliance SCADA", ver: version, concluded: version_match[0], cpe: cpe, insloc: dir, port: port, extra: version_match[3] );
+    register_and_report_cpe( app: "Geovap Reliance SCADA", ver: version, concluded: version_match[0], base: "cpe:/a:geovap:reliance-scada:", expr: exp, insloc: dir, regPort: port, extra: version_match[3] );
     exit( 0 );
   }
 }
-

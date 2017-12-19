@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_lync_detect_win.nasl 8141 2017-12-15 12:43:22Z cfischer $
+# $Id: secpod_ms_lync_detect_win.nasl 8159 2017-12-18 15:10:39Z cfischer $
 #
 # Microsoft Lync Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902843");
-  script_version("$Revision: 8141 $");
+  script_version("$Revision: 8159 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-06-13 12:12:12 +0530 (Wed, 13 Jun 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Lync Version Detection");
@@ -111,173 +111,80 @@ foreach key (key_list)
         ## Check for Microsoft Lync Attendant
         if("Attendant" >< lyncName)
         {
-          ## Set Version in KB
-          set_kb_item(name:"MS/Lync/Attendant/Ver", value:ver);
-
-          ## Set Path in KB, it may required in vulnerable plugin
           set_kb_item(name:"MS/Lync/Attendant/path", value:path);
-
           set_kb_item(name:"MS/Lync/Installed", value:TRUE);
+          set_kb_item(name:"MS/Lync/Attendant6432/Installed", value:TRUE);
 
           ## Register for 64 bit app on 64 bit OS once again
-          if("32" >< os_arch || "Wow6432Node" >< key)
-          {
-            ## Build CPE
-            cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
-                            base:"cpe:/a:microsoft:lync:" + rlsVer[0] + "::attendant_x86:");
-            if(isnull(cpe))
-              cpe = "cpe:/a:microsoft:lync:" + rlsVer[0] + "::attendant_x86";
-
+          if("32" >< os_arch || "Wow6432Node" >< key) {
+            set_kb_item(name:"MS/Lync/Attendant/Ver", value:ver);
+            register_and_report_cpe( app:lyncName, ver:ver, concluded:ver, base:"cpe:/a:microsoft:lync:" + rlsVer[0] + "::attendant_x86:", expr:"^([0-9.]+)", insloc:path );
           }
-
           ## Register for 64 bit app on 64 bit OS
-          if("64" >< os_arch && "Wow6432Node" >!< key)
+          else if("64" >< os_arch && "Wow6432Node" >!< key)
           {
-            ## Set Version in KB
             set_kb_item(name:"MS/Lync/Attendant64/Ver", value:ver);
-            set_kb_item(name:"MS/Lync/Installed", value:TRUE);
-
-            ## Build CPE
-            cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
-                            base:"cpe:/a:microsoft:lync:" + rlsVer[0] + "::attendant_x64:");
-            if(isnull(cpe))
-              cpe = "cpe:/a:microsoft:lync:" + rlsVer[0] + "::attendant_x64";
-
+            register_and_report_cpe( app:lyncName, ver:ver, concluded:ver, base:"cpe:/a:microsoft:lync:" + rlsVer[0] + "::attendant_x64:", expr:"^([0-9.]+)", insloc:path );
           }
-          build_report(app:lyncName, ver:ver, cpe:cpe, insloc:path, concluded:ver);
         }
 
         ## Check for Microsoft Lync Attendee
-        else if("Attendee"  >< lyncName)
+        else if("Attendee" >< lyncName)
         {
-          ## Set Version in KB
           set_kb_item(name:"MS/Lync/Attendee/Ver", value:ver);
-
-          ## Set Path in KB
           set_kb_item(name:"MS/Lync/Attendee/path", value:path);
-
           set_kb_item(name:"MS/Lync/Installed", value:TRUE);
-
-          ## Build CPE
-          cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
-                          base:"cpe:/a:microsoft:lync:" + rlsVer[0] + "::attendee:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:microsoft:lync:" + rlsVer[0] + "::attendee";
-
-          build_report(app:lyncName, ver:ver, cpe:cpe, insloc:path, concluded:ver);
+          register_and_report_cpe( app:lyncName, ver:ver, concluded:ver, base:"cpe:/a:microsoft:lync:" + rlsVer[0] + "::attendee:", expr:"^([0-9.]+)", insloc:path );
         }
 
         ## Check for Microsoft Office Communicator
-        else if("Microsoft Office Communicator"  >< lyncName)
+        else if("Microsoft Office Communicator" >< lyncName)
         {
-          ## Set Version in KB
-          set_kb_item(name:"MS/Office/Communicator/Ver", value:ver);
-
-          ## Set Path in KB
           set_kb_item(name:"MS/Office/Communicator/path", value:path);
-
-          ## Build CPE
-          cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
-                          base:"cpe:/a:microsoft:office_communicator:" + rlsVer[0] + ":");
-          if(isnull(cpe))
-            cpe = "cpe:/a:microsoft:office_communicator:" + rlsVer[0];
+          set_kb_item(name:"MS/Office/Communicator6432/Installed", value:TRUE);
 
           ## Register for 64 bit app on 64 bit OS
-          if("64" >< os_arch && "Wow6432Node" >!< key)
-          {
-            ## Set Version in KB
+          if("64" >< os_arch && "Wow6432Node" >!< key) {
             set_kb_item(name:"MS/Office/Communicator64/Ver", value:ver);
-
-            ## Build CPE
-            cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
-                            base:"cpe:/a:microsoft:office_communicator:" + rlsVer[0] + ":x64:");
-            if(isnull(cpe))
-              cpe = "cpe:/a:microsoft:office_communicator:" + rlsVer[0] + ":x64";
-
+            register_and_report_cpe( app:lyncName, ver:ver, concluded:ver, base:"cpe:/a:microsoft:office_communicator:" + rlsVer[0] + ":x64:", expr:"^([0-9.]+)", insloc:path );
+          } else {
+            set_kb_item(name:"MS/Office/Communicator/Ver", value:ver);
+            register_and_report_cpe( app:lyncName, ver:ver, concluded:ver, base:"cpe:/a:microsoft:office_communicator:" + rlsVer[0] + ":", expr:"^([0-9.]+)", insloc:path );
           }
-          build_report(app:lyncName, ver:ver, cpe:cpe, insloc:path, concluded:ver);
         }
 
         ## Check for Microsoft Lync Basic
-        else if("Lync Basic"  >< lyncName)
+        else if("Lync Basic" >< lyncName)
         {
-          ## Set Version in KB
-          set_kb_item(name:"MS/Lync/Basic/Ver", value:ver);
-
-          ## Set Path in KB
           set_kb_item(name:"MS/Lync/Basic/path", value:path);
-
           set_kb_item(name:"MS/Lync/Installed", value:TRUE);
+          set_kb_item(name:"MS/Lync/Basic6432/Installed", value:TRUE);
 
-          ## Build CPE
-          cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
-                          base:"cpe:/a:microsoft:lync_basic:" + rlsVer[0] + ":");
-          if(isnull(cpe))
-            cpe = "cpe:/a:microsoft:lync_basic:" + rlsVer[0];
-
-          if("64" >< os_arch && "Wow6432Node" >!< key)
-          {
-            ## Set Version in KB
+          if("64" >< os_arch && "Wow6432Node" >!< key) {
             set_kb_item(name:"MS/Lync/Basic64/Ver", value:ver);
-
-            set_kb_item(name:"MS/Lync/Installed", value:TRUE);
-
-            ## Build CPE
-            cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
-                          base:"cpe:/a:microsoft:lync_basic:" + rlsVer[0] + "::x64:");
-            if(isnull(cpe))
-              cpe = "cpe:/a:microsoft:lync_basic:" + rlsVer[0] + "::x64";
+            register_and_report_cpe( app:lyncName, ver:ver, concluded:ver, base:"cpe:/a:microsoft:lync_basic:" + rlsVer[0] + "::x64:", expr:"^([0-9.]+)", insloc:path );
+          } else if ("32" >< os_arch || "Wow6432Node" >< key) {
+            set_kb_item(name:"MS/Lync/Basic/Ver", value:ver);
+            register_and_report_cpe( app:lyncName, ver:ver, concluded:ver, base:"cpe:/a:microsoft:lync_basic:" + rlsVer[0] + "::x86:", expr:"^([0-9.]+)", insloc:path );
+          } else {
+            set_kb_item(name:"MS/Lync/Basic/Ver", value:ver);
+            register_and_report_cpe( app:lyncName, ver:ver, concluded:ver, base:"cpe:/a:microsoft:lync_basic:" + rlsVer[0] + ":", expr:"^([0-9.]+)", insloc:path );
           }
-
-          if("32" >< os_arch || "Wow6432Node" >< key)
-          {
-            ## Build CPE
-            cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
-                          base:"cpe:/a:microsoft:lync_basic:" + rlsVer[0] + "::x86:");
-            if(isnull(cpe))
-              cpe = "cpe:/a:microsoft:lync_basic:" + rlsVer[0] + "::x86";
-
-          }
-          build_report(app:lyncName, ver:ver, cpe:cpe, insloc:path, concluded:ver);
-        }
-
-        else
-        {
-          ## Set Version in KB
-          set_kb_item(name:"MS/Lync/Ver", value:ver);
-
-          ## Set Path in KB
+        } else {
           set_kb_item(name:"MS/Lync/path", value:path);
-
           set_kb_item(name:"MS/Lync/Installed", value:TRUE);
+          set_kb_item(name:"MS/Lync6432/Installed", value:TRUE);
 
-          ## Build CPE
-          cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
-                          base:"cpe:/a:microsoft:lync:"  + rlsVer[0] + ":");
-
-          if("64" >< os_arch && "Wow6432Node" >!< key)
-          {
-            ## Set Version in KB
+          if("64" >< os_arch && "Wow6432Node" >!< key) {
             set_kb_item(name:"MS/Lync64/Ver", value:ver);
-
-            set_kb_item(name:"MS/Lync/Installed", value:TRUE);
-
-            ## Build CPE
-            cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
-                            base:"cpe:/a:microsoft:lync:"  + rlsVer[0] + "::x64:");
-            if(isnull(cpe))
-              cpe = "cpe:/a:microsoft:lync:" + rlsVer[0] + "::x64";
+            register_and_report_cpe( app:lyncName, ver:ver, concluded:ver, base:"cpe:/a:microsoft:lync:"  + rlsVer[0] + "::x64:", expr:"^([0-9.]+)", insloc:path );
+          } else if("32" >< os_arch || "Wow6432Node" >< key) {
+            set_kb_item(name:"MS/Lync/Ver", value:ver);
+            register_and_report_cpe( app:lyncName, ver:ver, concluded:ver, base:"cpe:/a:microsoft:lync:"  + rlsVer[0] + "::x86:", expr:"^([0-9.]+)", insloc:path );
+          } else {
+            set_kb_item(name:"MS/Lync/Ver", value:ver);
+            register_and_report_cpe( app:lyncName, ver:ver, concluded:ver, base:"cpe:/a:microsoft:lync:"  + rlsVer[0] + ":", expr:"^([0-9.]+)", insloc:path );
           }
-
-          if("32" >< os_arch || "Wow6432Node" >< key)
-          {
-            ## Build CPE
-            cpe = build_cpe(value:ver, exp:"^([0-9.]+)",
-                            base:"cpe:/a:microsoft:lync:"  + rlsVer[0] + "::x86:");
-            if(isnull(cpe))
-              cpe = "cpe:/a:microsoft:lync:" + rlsVer[0] + "::x86";
-          }
-          build_report(app:lyncName, ver:ver, cpe:cpe, insloc:path, concluded:ver);
         }
       }
     }

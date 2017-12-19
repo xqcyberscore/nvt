@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_router_routeros_telnet_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
+# $Id: gb_mikrotik_router_routeros_telnet_detect.nasl 8156 2017-12-18 11:48:16Z cfischer $
 #
 # MikroTik RouterOS Detection (Telnet)
 #
@@ -28,10 +28,10 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113070");
-  script_version("$Revision: 8137 $");
+  script_version("$Revision: 8156 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 12:48:16 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-14 13:17:18 +0100 (Thu, 14 Dec 2017)");
   script_name("MikroTik RouterOS Detection (Telnet)");
   script_category(ACT_GATHER_INFO);
@@ -53,31 +53,25 @@ if( description )
 include( "host_details.inc" );
 include( "telnet_func.inc" );
 
-ports = get_kb_list( "Services/telnet" );
-if( ! ports ) ports = make_list( 23, 2323 );
+port = get_telnet_port( default:23 );
+banner = get_telnet_banner( port: port );
+if( "MikroTik" >!< banner || "Login:" >!< banner ) exit( 0 );
 
-foreach port( ports ) {
+version = "unknown";
+install = port + "/tcp";
+set_kb_item( name: "mikrotik/detected", value: TRUE );
+set_kb_item( name: "mikrotik/telnet/detected", value: TRUE );
 
-  if( ! get_port_state( port ) ) continue;
-  banner = get_telnet_banner( port: port );
-  if( "MikroTik" >!< banner || "Login:" >!< banner ) continue;
+# MikroTik v6.34.6 (bugfix)
+# Login:
+vers = eregmatch( pattern: "MikroTik v([A-Za-z0-9.]+)", string: banner );
+if( vers[1] ) version = vers[1];
 
-  version = "unknown";
-  install = port + "/tcp";
-  set_kb_item( name: "mikrotik/detected", value: TRUE );
-  set_kb_item( name: "mikrotik/telnet/detected", value: TRUE );
-
-  # MikroTik v6.34.6 (bugfix)
-  # Login:
-  vers = eregmatch( pattern: "MikroTik v([A-Za-z0-9.]+)", string: banner );
-  if( vers[1] ) version = vers[1];
-
-  if( version != "unknown" ) {
-    set_kb_item( name: "mikrotik/telnet/" + port + "/concluded", value: vers[0] );
-  }
-
-  set_kb_item( name: "mikrotik/telnet/port", value: port );
-  set_kb_item( name: "mikrotik/telnet/" + port + "/version", value: vers[0] );
+if( version != "unknown" ) {
+  set_kb_item( name: "mikrotik/telnet/" + port + "/concluded", value: vers[0] );
 }
+
+set_kb_item( name: "mikrotik/telnet/port", value: port );
+set_kb_item( name: "mikrotik/telnet/" + port + "/version", value: version );
 
 exit( 0 );

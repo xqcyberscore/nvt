@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quickheal_dos_May_17.nasl 6067 2017-05-04 13:15:52Z teissa $
+# $Id: gb_quickheal_dos_May_17.nasl 8160 2017-12-18 15:33:57Z cfischer $
 #
 # QuickHeal CVE-2015-8285 Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:quickheal:antivirus_pro";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107160");
-  script_version("$Revision: 6067 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 15:15:52 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 8160 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-05-02 10:28:58 +0200 (Tue, 02 May 2017)");
   script_cve_id("CVE-2015-8285");
   script_bugtraq_id(97996);
@@ -56,7 +56,7 @@ if(description)
   script_family("General");
 
   script_dependencies("gb_quick_heal_av_detect.nasl");
-  script_mandatory_keys("QuickHeal/Antivirus/Pro");
+  script_mandatory_keys("QuickHeal/Antivirus6432/Pro/Installed");
 
   exit(0);
 }

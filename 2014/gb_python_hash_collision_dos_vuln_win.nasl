@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: gb_python_hash_collision_dos_vuln_win.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_python_hash_collision_dos_vuln_win.nasl 8160 2017-12-18 15:33:57Z cfischer $
 #
 # Python 'Hash Collision' Denial of Service Vulnerability (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:python:python";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804632");
-  script_version("$Revision: 6692 $");
+  script_version("$Revision: 8160 $");
   script_cve_id("CVE-2013-7040");
   script_bugtraq_id(64194);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-06-09 14:43:46 +0530 (Mon, 09 Jun 2014)");
   script_name("Python 'Hash Collision' Denial of Service Vulnerability (Windows)");
 
@@ -79,7 +79,7 @@ For updates refer to www.python.org/download";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_python_detect_win.nasl");
-  script_mandatory_keys("Python/Win/Ver");
+  script_mandatory_keys("Python6432/Win/Installed");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_heal_ts_mult_vuln.nasl 7198 2017-09-20 08:10:07Z jschulte $
+# $Id: gb_quick_heal_ts_mult_vuln.nasl 8160 2017-12-18 15:33:57Z cfischer $
 #
 # Quick Heal Total Security Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:quick_heal:total_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811551");
-  script_version("$Revision: 7198 $");
+  script_version("$Revision: 8160 $");
   script_cve_id("CVE-2017-8773", "CVE-2017-8774", "CVE-2017-8775", "CVE-2017-8776");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 10:10:07 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-08-02 12:24:09 +0530 (Wed, 02 Aug 2017)");
   script_name("Quick Heal Total Security Multiple Vulnerabilities");
 
@@ -76,7 +76,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_quick_heal_ts_detect.nasl");
-  script_mandatory_keys("QuickHeal/TotalSecurity");
+  script_mandatory_keys("QuickHeal/TotalSecurity6432/Installed");
   exit(0);
 }
 

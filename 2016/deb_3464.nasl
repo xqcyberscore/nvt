@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3464.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3464.nasl 8154 2017-12-18 07:30:14Z teissa $
 # Auto-generated from advisory DSA 3464-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,12 +29,12 @@
 
 if(description)
 {
-    script_id(703464);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703464");
+    script_version("$Revision: 8154 $");
     script_cve_id("CVE-2015-3226", "CVE-2015-3227", "CVE-2015-7576", "CVE-2015-7577",
                   "CVE-2015-7581", "CVE-2016-0751", "CVE-2016-0752", "CVE-2016-0753");
     script_name("Debian Security Advisory DSA 3464-1 (rails - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-18 08:30:14 +0100 (Mon, 18 Dec 2017) $");
     script_tag(name:"creation_date", value:"2016-02-05 13:14:24 +0530 (Fri, 05 Feb 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

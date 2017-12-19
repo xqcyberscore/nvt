@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_powerzip_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: secpod_powerzip_detect.nasl 8159 2017-12-18 15:10:39Z cfischer $
 #
 # PowerZip Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900490");
-  script_version("$Revision: 7000 $");
+  script_version("$Revision: 8159 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-31 07:06:59 +0200 (Tue, 31 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PowerZip Version Detection");
@@ -129,15 +129,7 @@ foreach key (key_list)
     if(zipVer != NULL)
     {
       set_kb_item(name:"PowerZip/Ver", value:zipVer);
-
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:zipVer, exp:"^([0-9.]+)", base:"cpe:/a:powerzip:powerzip:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:powerzip:powerzip";
-
-      ## Register Product and Build Report
-      build_report(app: "Powerzip", ver:zipVer , cpe:cpe, insloc:zipPath);
-
+      register_and_report_cpe( app:"Powerzip", ver:zipVer, base:"cpe:/a:powerzip:powerzip:", expr:"^([0-9.]+)", insloc:zipPath );
     }
   }
 }

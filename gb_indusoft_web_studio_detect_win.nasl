@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_indusoft_web_studio_detect_win.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_indusoft_web_studio_detect_win.nasl 8158 2017-12-18 13:18:20Z cfischer $
 #
 # InduSoft Web Studio Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806001");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 8158 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 14:18:20 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-08-19 15:48:22 +0530 (Wed, 19 Aug 2015)");
    script_tag(name:"qod_type", value:"registry");
   script_name("InduSoft Web Studio Version Detection (Windows)");
@@ -104,12 +104,7 @@ foreach key (key_list)
       if(studioVer)
       {
         set_kb_item(name:"InduSoft/WebStudio/Win/Ver", value:studioVer);
-
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:studioVer, exp:"^([0-9.]+)", base:"cpe:/a:schneider_electric:indusoft_web_studio:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:schneider_electric:indusoft_web_studio";
-        build_report(app: "InduSoft Web Studio", ver:studioVer, cpe: cpe, insloc:studioPath);
+        register_and_report_cpe( app:"InduSoft Web Studio", ver:studioVer, base:"cpe:/a:schneider_electric:indusoft_web_studio:", expr:"^([0-9.]+)", insloc:studioPath );
       }
     }
   }

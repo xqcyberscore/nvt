@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_workspace_streaming_info_disc_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_symantec_workspace_streaming_info_disc_vuln.nasl 8160 2017-12-18 15:33:57Z cfischer $
 #
 # Symantec Workspace Streaming Information Disclosure Vulnerability
 # 
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:workspace_streaming";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808586");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 8160 $");
   script_cve_id("CVE-2014-1649");
   script_bugtraq_id(67189);
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-07-18 17:09:19 +0530 (Mon, 18 Jul 2016)");
   script_name("Symantec Workspace Streaming Information Disclosure Vulnerability");
 
@@ -68,7 +68,7 @@ if(description)
   script_family("General");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_symantec_workspace_streaming_detect.nasl");
-  script_mandatory_keys("Symantec/Workspace/Streaming/Agent/Win/Ver");
+  script_mandatory_keys("Symantec/Workspace/Streaming/Agent/Win6432/Installed");
   exit(0);
 }
 

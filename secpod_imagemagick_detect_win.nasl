@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_imagemagick_detect_win.nasl 5871 2017-04-05 13:33:48Z antu123 $
+# $Id: secpod_imagemagick_detect_win.nasl 8162 2017-12-19 06:15:07Z cfischer $
 #
 # ImageMagick Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900562");
-  script_version("$Revision: 5871 $");
+  script_version("$Revision: 8162 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:15:07 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-06-02 08:16:42 +0200 (Tue, 02 Jun 2009)");
   script_name("ImageMagick Version Detection (Windows)");
 
@@ -106,25 +106,16 @@ foreach key (key_list)
           imPath = "Unable to find the install location from registry";
         }
 
-        set_kb_item(name:"ImageMagick/Win/Ver", value:imVer[1]);
-     
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:imVer[1], exp:"^([0-9.]+)", base:"cpe:/a:imagemagick:imagemagick:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:imagemagick:imagemagick";
+        set_kb_item(name:"ImageMagick/Win/Installed", value:TRUE);
 
         ## Register for 64 bit app on 64 bit OS once again
-        if("64" >< os_arch && "Wow6432Node" >!< key)
-        {
+        if("64" >< os_arch && "Wow6432Node" >!< key) {
           set_kb_item(name:"ImageMagick64/Win/Ver", value:imVer[1]);
-          cpe = build_cpe(value:imVer[1], exp:"^([0-9.]+)", base:"cpe:/a:imagemagick:imagemagick:x64:");
-
-          if(isnull(cpe))
-            cpe = "cpe:/a:imagemagick:imagemagick:x64";
+          register_and_report_cpe( app:"ImageMagick", ver:imVer[1], base:"cpe:/a:imagemagick:imagemagick:x64:", expr:"^([0-9.]+)", insloc:imPath );
+        } else {
+          set_kb_item(name:"ImageMagick/Win/Ver", value:imVer[1]);
+          register_and_report_cpe( app:"ImageMagick", ver:imVer[1], base:"cpe:/a:imagemagick:imagemagick:", expr:"^([0-9.]+)", insloc:imPath );
         }
-
-        ## Register Product and Build Report
-        build_report(app:"ImageMagick", ver:imVer[1], cpe:cpe, insloc:imPath);
       }
     }
   }

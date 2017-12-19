@@ -23,18 +23,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:quickheal:antivirus_pro";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804181";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6074 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804181");
+  script_version("$Revision: 8160 $");
   script_cve_id("CVE-2013-6767");
   script_bugtraq_id(64402);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-12-30 20:51:30 +0530 (Mon, 30 Dec 2013)");
   script_name("Quick Heal Antivirus Pro 'pepoly.dll' Stack Buffer Overflow Vulnerability");
 
@@ -79,7 +79,7 @@ features, remove the product or replace the product by another one.";
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_quick_heal_av_detect.nasl");
-  script_mandatory_keys("QuickHeal/Antivirus/Pro");
+  script_mandatory_keys("QuickHeal/Antivirus6432/Pro/Installed");
   exit(0);
 }
 
@@ -90,7 +90,7 @@ include("version_func.inc");
 qhVer = "";
 
 ## Get version
-if(!qhVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!qhVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realplayer_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
+# $Id: secpod_realplayer_detect_macosx.nasl 8158 2017-12-18 13:18:20Z cfischer $
 #
 # RealNetworks RealPlayer Version Detection (Mac OS X)
 #
@@ -33,10 +33,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902622";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6484 $");
+  script_version("$Revision: 8158 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 14:18:20 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-08-31 10:37:30 +0200 (Wed, 31 Aug 2011)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("RealNetworks RealPlayer Version Detection (Mac OS X)");
@@ -104,19 +104,9 @@ insloc = "Unable to find the install Location.";
 
 if(fullVer)
 {
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value:fullVer, exp:"^([0-9.]+)", base:"cpe:/a:realnetworks:realplayer:");
-  if(isnull(cpe))
-    cpe = "cpe:/a:realnetworks:realplayer";
-
   set_kb_item(name: "RealPlayer/MacOSX/FullVer", value:fullVer);
-  build_report(app:"RealPlayer", ver:fullVer, concluded:fullVer, cpe, insloc:insloc);
+  register_and_report_cpe( app:"RealPlayer", ver:fullVer, concluded:fullVer, base:"cpe:/a:realnetworks:realplayer:", expr:"^([0-9.]+)", insloc:insloc );
   exit(0);
 }
 
-## build cpe and store it as host_detail
-cpe = build_cpe(value:realVer, exp:"^([0-9.]+)", base:"cpe:/a:realnetworks:realplayer:");
-if(isnull(cpe))
-  cpe = "cpe:/a:realnetworks:realplayer";
-
-build_report(app:"RealPlayer", ver:realVer, concluded:fullVer, cpe, insloc:insloc);
+register_and_report_cpe( app:"RealPlayer", ver:realVer, concluded:realVer, base:"cpe:/a:realnetworks:realplayer:", expr:"^([0-9.]+)", insloc:insloc );

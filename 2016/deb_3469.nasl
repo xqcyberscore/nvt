@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3469.nasl 7597 2017-10-27 12:23:39Z asteins $
+# $Id: deb_3469.nasl 8154 2017-12-18 07:30:14Z teissa $
 # Auto-generated from advisory DSA 3469-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,13 +29,13 @@
 
 if(description)
 {
-    script_id(703469);
-    script_version("$Revision: 7597 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703469");
+    script_version("$Revision: 8154 $");
     script_cve_id("CVE-2015-7295", "CVE-2015-7504", "CVE-2015-7512", "CVE-2015-8345",
                   "CVE-2015-8504", "CVE-2015-8558", "CVE-2015-8743", "CVE-2016-1568",
                   "CVE-2016-1714", "CVE-2016-1922");
     script_name("Debian Security Advisory DSA 3469-1 (qemu - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-10-27 14:23:39 +0200 (Fri, 27 Oct 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-18 08:30:14 +0100 (Mon, 18 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-02-08 00:00:00 +0100 (Mon, 08 Feb 2016)");
     script_tag(name:"cvss_base", value:"9.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

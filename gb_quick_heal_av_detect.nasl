@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804180");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 8159 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-12-30 17:37:18 +0530 (Mon, 30 Dec 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Quick Heal Anti-Virus Version Detection");
@@ -100,28 +100,14 @@ foreach key (key_list)
       qhVer = fetch_file_version(sysPath: qhPath, file_name:"scanner.exe");
       if(qhVer)
       {
-        set_kb_item(name:"QuickHeal/Antivirus/Pro", value:qhVer);
-
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:qhVer, exp:"^([0-9.]+)", base:"cpe:/a:quickheal:antivirus_pro:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:quickheal:antivirus_pro";
-
-        ## Register Product and Build Report
-        build_report(app: qhName, ver:qhVer, cpe:cpe, insloc:qhPath);
-
+        set_kb_item(name:"QuickHeal/Antivirus6432/Pro/Installed", value:TRUE);
         ## 64 bit apps on 64 bit platform
-        if("x64" >< os_arch)
-        {
+        if("x64" >< os_arch) {
           set_kb_item(name:"QuickHeal/Antivirus64/Pro", value:qhVer);
-
-          ## build cpe and store it as host_detail
-          cpe = build_cpe(value:qhVer, exp:"^([0-9.]+)", base:"cpe:/a:quickheal:antivirus_pro:x64:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:quickheal:antivirus_pro:x64";
-
-          ## Register Product and Build Report
-          build_report(app: qhName, ver:qhVer, cpe:cpe, insloc:qhPath);
+          register_and_report_cpe( app:qhName, ver:qhVer, base:"cpe:/a:quickheal:antivirus_pro:x64:", expr:"^([0-9.]+)", insloc:qhPath );
+        } else {
+          set_kb_item(name:"QuickHeal/Antivirus/Pro", value:qhVer);
+          register_and_report_cpe( app:qhName, ver:qhVer, base:"cpe:/a:quickheal:antivirus_pro:", expr:"^([0-9.]+)", insloc:qhPath );
         }
       }
     }
