@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_obj_code_exec_vuln_win.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: gb_adobe_flash_player_obj_code_exec_vuln_win.nasl 8178 2017-12-19 13:42:38Z cfischer $
 #
 # Adobe Flash Player Object Confusion Remote Code Execution Vulnerability (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:adobe:flash_player";
+
 tag_insight = "The flaw is due to an error related to object confusion.
 
   NOTE: Further information is not available.";
@@ -42,12 +44,12 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 if(description)
 {
   script_id(802772);
-  script_version("$Revision: 6022 $");
+  script_version("$Revision: 8178 $");
   script_cve_id("CVE-2012-0779");
   script_bugtraq_id(53395);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-05-08 13:53:41 +0530 (Tue, 08 May 2012)");
   script_name("Adobe Flash Player Object Confusion Remote Code Execution Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49096/");
@@ -58,7 +60,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_require_keys("AdobeFlashPlayer/Win/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);
@@ -69,20 +71,19 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-flashVer = "";
-
-## Get the version
-flashVer = get_kb_item("AdobeFlashPlayer/Win/Ver");
-if(!flashVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Check for Adobe Flash Player versions prior to 10.3.183.19 and 11.2.202.235
-if(version_is_less(version:flashVer, test_version:"10.3.183.19") ||
-   version_in_range(version:flashVer, test_version:"11.0",  test_version2:"11.2.202.233")){
-  security_message(0);
+if( version_is_less( version:vers, test_version:"10.3.183.19" ) ||
+    version_in_range( version:vers, test_version:"11.0",  test_version2:"11.2.202.233" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"10.3.183.19 or 11.2.202.235", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

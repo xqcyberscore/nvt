@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_dos_vuln_june17_win.nasl 7676 2017-11-07 08:01:38Z asteins $
+# $Id: gb_vlc_media_player_mult_dos_vuln_june17_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
 #
 # VLC Media Player Multiple Denial-of-Service Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811077");
-  script_version("$Revision: 7676 $");
+  script_version("$Revision: 8174 $");
   script_cve_id("CVE-2017-9301","CVE-2017-9300");
   script_bugtraq_id(98747, 98746);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-07 09:01:38 +0100 (Tue, 07 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-06-05 14:19:32 +0530 (Mon, 05 Jun 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VLC Media Player Multiple Denial-of-Service Vulnerabilities (Windows)");
@@ -69,7 +69,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
-  script_mandatory_keys("VLCPlayer/Win/Ver");
+  script_mandatory_keys("VLCPlayer/Win/Installed");
   exit(0);
 }
 

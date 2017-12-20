@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phplive_detect.nasl 5739 2017-03-27 14:48:05Z cfi $
+# $Id: phplive_detect.nasl 8168 2017-12-19 07:30:15Z teissa $
 #
 # PHP Live! Detection
 #
@@ -29,10 +29,10 @@ customer support communication directly from a website.";
 
 if(description)
 {
- script_id(100302);
+ script_oid("1.3.6.1.4.1.25623.1.0.100302");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5739 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:48:05 +0200 (Mon, 27 Mar 2017) $");
+ script_version("$Revision: 8168 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-10-11 19:51:15 +0200 (Sun, 11 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("PHP Live! Detection");

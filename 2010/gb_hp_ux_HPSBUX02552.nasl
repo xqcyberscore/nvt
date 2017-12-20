@@ -39,8 +39,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www11.itrc.hp.com/service/cki/docDisplay.do?docId=emr_na-c02285980");
   script_id(835239);
-  script_version("$Revision: 6583 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 16:12:45 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8164 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:30:41 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-01 08:16:52 +0200 (Fri, 01 Oct 2010)");
   script_xref(name: "HPSBUX", value: "02552");
   script_tag(name:"cvss_base", value:"6.8");
@@ -48,7 +48,7 @@ if(description)
   script_cve_id("CVE-2010-2712");
   script_name("HP-UX Update for Software Distributor (sd) HPSBUX02552");
 
-  script_summary("Check for the Version of Software Distributor (sd)");
+  script_tag(name: "summary" , value: "Check for the Version of Software Distributor (sd)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("HP-UX Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_memory_corruption_vuln_win.nasl 5404 2017-02-23 12:41:31Z antu123 $
+# $Id: gb_imagemagick_mult_memory_corruption_vuln_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
 #
 # ImageMagick Multiple Memory Corruption Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810562");
-  script_version("$Revision: 5404 $");
+  script_version("$Revision: 8173 $");
   script_cve_id("CVE-2016-8862", "CVE-2016-8866");
   script_bugtraq_id(93794);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 13:41:31 +0100 (Thu, 23 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-02-21 10:39:33 +0530 (Tue, 21 Feb 2017)");
   script_name("ImageMagick Multiple Memory Corruption Vulnerabilities (Windows)");
 
@@ -71,7 +71,7 @@ if(description)
   script_family("General");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
-  script_mandatory_keys("ImageMagick/Win/Ver");
+  script_mandatory_keys("ImageMagick/Win/Installed");
   exit(0);
 }
 

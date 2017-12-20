@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantis_42233.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_mantis_42233.nasl 8168 2017-12-19 07:30:15Z teissa $
 #
 # Mantis 'manage_proj_cat_add.php' HTML Injection Vulnerability
 #
@@ -40,9 +40,9 @@ tag_solution = "Updates are available; please see the references for more inform
 
 if (description)
 {
- script_id(100746);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100746");
+ script_version("$Revision: 8168 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-08-06 12:49:38 +0200 (Fri, 06 Aug 2010)");
  script_bugtraq_id(42233);
  script_tag(name:"cvss_base", value:"2.1");

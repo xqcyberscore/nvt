@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openmairie_openfoncier_mult_file_incl_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_openmairie_openfoncier_mult_file_incl_vuln.nasl 8168 2017-12-19 07:30:15Z teissa $
 #
 # openMairie openFoncier Multiple File Inclusion Vulnerabilities
 #
@@ -46,9 +46,9 @@ multiple file inclusion vulnerabilities.";
 
 if(description)
 {
-  script_id(902049);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902049");
+  script_version("$Revision: 8168 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1945");
   script_tag(name:"cvss_base", value:"6.8");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_dec13_win.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_adobe_air_mult_vuln01_dec13_win.nasl 8176 2017-12-19 12:50:00Z cfischer $
 #
 # Adobe AIR Multiple Vulnerabilities-01 Dec13 (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804170";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6086 $");
+  script_version("$Revision: 8176 $");
   script_cve_id("CVE-2013-5331", "CVE-2013-5332");
   script_bugtraq_id(64199, 64201);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:50:00 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-12-18 17:17:12 +0530 (Wed, 18 Dec 2013)");
   script_name("Adobe AIR Multiple Vulnerabilities-01 Dec13 (Windows)");
 
@@ -79,7 +79,7 @@ For updates refer to  http://get.adobe.com/air";
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_mandatory_keys("Adobe/Air/Win/Ver");
+  script_mandatory_keys("Adobe/Air/Win/Installed");
   exit(0);
 }
 

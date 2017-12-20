@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3746.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3746.nasl 8168 2017-12-19 07:30:15Z teissa $
 # Auto-generated from advisory DSA 3746-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,14 +29,14 @@
 
 if(description)
 {
-    script_id(703746);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703746");
+    script_version("$Revision: 8168 $");
     script_cve_id("CVE-2015-8808", "CVE-2016-2317", "CVE-2016-2318", "CVE-2016-3714",
                   "CVE-2016-3715", "CVE-2016-5118", "CVE-2016-5240", "CVE-2016-7800",
                   "CVE-2016-7996", "CVE-2016-7997", "CVE-2016-8682", "CVE-2016-8683",
                   "CVE-2016-8684", "CVE-2016-9830");
     script_name("Debian Security Advisory DSA 3746-1 (graphicsmagick - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-12-24 00:00:00 +0100 (Sat, 24 Dec 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");

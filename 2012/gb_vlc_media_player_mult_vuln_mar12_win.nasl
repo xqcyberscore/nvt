@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_vuln_mar12_win.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_vlc_media_player_mult_vuln_mar12_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
 #
 # VLC Media Player Multiple Vulnerabilities - Mar 12 (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:videolan:vlc_media_player";
+
 tag_impact = "Successful exploitation could allow attackers to cause a denial of service or
   possibly execute arbitrary code via crafted streams.
   Impact Level: System/Application";
@@ -39,11 +41,11 @@ tag_summary = "This host is installed with VLC Media Player and is prone to
 if(description)
 {
   script_id(802722);
-  script_version("$Revision: 5963 $");
+  script_version("$Revision: 8174 $");
   script_cve_id("CVE-2012-1775", "CVE-2012-1776");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-03-21 11:52:20 +0530 (Wed, 21 Mar 2012)");
   script_name("VLC Media Player Multiple Vulnerabilities - Mar 12 (Windows)");
   script_xref(name : "URL" , value : "http://www.videolan.org/security/sa1201.html");
@@ -53,7 +55,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
-  script_require_keys("VLCPlayer/Win/Ver");
+  script_mandatory_keys("VLCPlayer/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -64,19 +66,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-vlcVer = "";
-
-## Get the version from KB
-vlcVer = get_kb_item("VLCPlayer/Win/Ver");
-if(!vlcVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Check for VLC Media Player Version less than 2.0.1
-if(version_is_less(version:vlcVer, test_version:"2.0.1")){
-  security_message(0);
+if(version_is_less( version:vers, test_version:"2.0.1" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.0.1", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

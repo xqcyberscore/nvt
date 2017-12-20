@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_inventory_sql_inj_vuln.nasl 7277 2017-09-26 12:45:58Z cfischer $
+# $Id: gb_php_inventory_sql_inj_vuln.nasl 8170 2017-12-19 08:59:48Z cfischer $
 #
 # PHP Inventory 'user' and 'pass' Parameters SQL Injection Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802534");
-  script_version("$Revision: 7277 $");
+  script_version("$Revision: 8170 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-4595", "CVE-2009-4596", "CVE-2009-4597");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:59:48 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-12-05 15:37:27 +0530 (Mon, 05 Dec 2011)");
   script_name("PHP Inventory 'user' and 'pass' Parameters SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -58,7 +58,7 @@ if(description)
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"qod", value:"50"); # Vuln check below is quite unreliable
   exit(0);
 }
 

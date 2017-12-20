@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_heal_is_mult_vuln.nasl 7198 2017-09-20 08:10:07Z jschulte $
+# $Id: gb_quick_heal_is_mult_vuln.nasl 8169 2017-12-19 08:42:31Z cfischer $
 #
 # Quick Heal Internet Security Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:quick_heal:internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811552");
-  script_version("$Revision: 7198 $");
+  script_version("$Revision: 8169 $");
   script_cve_id("CVE-2017-8773", "CVE-2017-8774", "CVE-2017-8775", "CVE-2017-8776");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 10:10:07 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-08-02 12:24:09 +0530 (Wed, 02 Aug 2017)");
   script_name("Quick Heal Internet Security Multiple Vulnerabilities");
 
@@ -76,28 +76,21 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_quick_heal_is_detect.nasl");
-  script_mandatory_keys("QuickHeal/InternetSecurity");
+  script_mandatory_keys("QuickHeal/InternetSecurity/Installed");
   exit(0);
 }
 
-
-# Code starts from here
-
-include("version_func.inc");
 include("host_details.inc");
+include("version_func.inc");
 
-# Variable Initialization
-quickVer = "";
-
-## Get InternetSecurity version
-if(!quickVer = get_app_version(cpe:CPE)){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+quickVer = infos['version'];
+path = infos['location'];
 
 ## Check for InternetSecurity Versions less than or equal to 10.1.0.316
 if(version_is_less_equal(version:quickVer, test_version:"10.1.0.316"))
 {
-  report = report_fixed_ver(installed_version:quickVer, fixed_version:"Noneavailable");
+  report = report_fixed_ver(installed_version:quickVer, fixed_version:"See references", install_path:path);
   security_message(data:report);
   exit(0);
 }

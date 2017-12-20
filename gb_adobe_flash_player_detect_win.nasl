@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_detect_win.nasl 8162 2017-12-19 06:15:07Z cfischer $
+# $Id: gb_adobe_flash_player_detect_win.nasl 8178 2017-12-19 13:42:38Z cfischer $
 #
 # Adobe Flash Player/Flash CS/AIR/Flex Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800029");
-  script_version("$Revision: 8162 $");
+  script_version("$Revision: 8178 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:15:07 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-10-16 18:25:33 +0200 (Thu, 16 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Flash Player/Flash CS/AIR/Flex Version Detection (Windows)");
@@ -115,6 +115,7 @@ foreach key (key_list)
         checkduplicate_path += insPath + ", ";
 
         set_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
+        set_kb_item(name:"Adobe/Air/Win/Installed", value:TRUE);
 
         ## Register for 64 bit app on 64 bit OS once again
         if("64" >< os_arch && "Wow6432Node" >!< key) {
@@ -165,6 +166,7 @@ foreach key (key_list)
       if(playerVer != NULL)
       {
         set_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
+        set_kb_item(name:"AdobeFlashPlayer/Win/Installed", value:TRUE);
 
         ## Register for 64 bit app on 64 bit OS once again
         if("64" >< os_arch && "Wow6432Node" >!< key) {

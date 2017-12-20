@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb16-36_win.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: gb_adobe_flash_player_apsb16-36_win.nasl 8178 2017-12-19 13:42:38Z cfischer $
 #
 # Adobe Flash Player Security Updates( apsb16-36 )-Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809462");
-  script_version("$Revision: 5689 $");
+  script_version("$Revision: 8178 $");
   script_cve_id("CVE-2016-7855" );
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-10-27 18:41:34 +0530 (Thu, 27 Oct 2016)");
   script_name("Adobe Flash Player Security Updates( apsb16-36 )-Windows");
 
@@ -68,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_mandatory_keys("AdobeFlashPlayer/Win/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
   exit(0);
 }
 

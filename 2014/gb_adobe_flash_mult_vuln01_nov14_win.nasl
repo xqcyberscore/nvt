@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_mult_vuln01_nov14_win.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_adobe_flash_mult_vuln01_nov14_win.nasl 8178 2017-12-19 13:42:38Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities(APSB14-24)-(Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804793");
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 8178 $");
   script_cve_id("CVE-2014-0573", "CVE-2014-0574", "CVE-2014-0576", "CVE-2014-0577",
                 "CVE-2014-0581", "CVE-2014-0582", "CVE-2014-0583", "CVE-2014-0584",
                 "CVE-2014-0585", "CVE-2014-0586", "CVE-2014-0588", "CVE-2014-0589",
@@ -39,7 +39,7 @@ if(description)
                     71045, 71048, 71051, 71046, 71036, 71049, 71047, 71050, 71040);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-11-14 11:33:04 +0530 (Fri, 14 Nov 2014)");
   script_name("Adobe Flash Player Multiple Vulnerabilities(APSB14-24)-(Windows)");
 
@@ -79,7 +79,7 @@ if(description)
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_mandatory_keys("AdobeFlashPlayer/Win/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
   exit(0);
 }
 

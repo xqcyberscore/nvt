@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_subtitle_rce_vuln_win.nasl 6336 2017-06-14 13:49:57Z teissa $
+# $Id: gb_vlc_media_player_subtitle_rce_vuln_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
 #
 # VLC Media Player Subtitle Remote Code Execution Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811052");
-  script_version("$Revision: 6336 $");
+  script_version("$Revision: 8174 $");
   script_cve_id("CVE-2017-8313", "CVE-2017-8312", "CVE-2017-8311", "CVE-2017-8310");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-14 15:49:57 +0200 (Wed, 14 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-05-24 12:47:56 +0530 (Wed, 24 May 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VLC Media Player Subtitle Remote Code Execution Vulnerability (Windows)");
@@ -69,7 +69,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
-  script_mandatory_keys("VLCPlayer/Win/Ver");
+  script_mandatory_keys("VLCPlayer/Win/Installed");
   exit(0);
 }
 

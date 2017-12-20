@@ -82,8 +82,8 @@ tag_affected = "kernel on SUSE SLES 9";
 if(description)
 {
   script_id(850140);
-  script_version("$Revision: 8035 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 06:29:51 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8164 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:30:41 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-10 14:21:00 +0200 (Fri, 10 Sep 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -91,7 +91,7 @@ if(description)
   script_cve_id("CVE-2007-6206", "CVE-2007-6733", "CVE-2008-0598", "CVE-2008-3275", "CVE-2009-1389", "CVE-2009-4020", "CVE-2009-4537", "CVE-2010-0727", "CVE-2010-1083", "CVE-2010-1088", "CVE-2010-1188", "CVE-2010-2521");
   script_name("SuSE Update for kernel SUSE-SA:2010:036");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

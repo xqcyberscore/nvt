@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpWebThings_detect.nasl 5739 2017-03-27 14:48:05Z cfi $
+# $Id: phpWebThings_detect.nasl 8168 2017-12-19 07:30:15Z teissa $
 #
 # phpWebThings Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This host is running phpWebThings a free, PHP and MySQL driven
 
 if(description)
 {
- script_id(100219);
+ script_oid("1.3.6.1.4.1.25623.1.0.100219");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5739 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:48:05 +0200 (Mon, 27 Mar 2017) $");
+ script_version("$Revision: 8168 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-06-14 17:19:03 +0200 (Sun, 14 Jun 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("phpWebThings Detection");

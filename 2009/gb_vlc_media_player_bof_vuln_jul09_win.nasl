@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_bof_vuln_jul09_win.nasl 4906 2017-01-02 13:06:55Z teissa $
+# $Id: gb_vlc_media_player_bof_vuln_jul09_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
 #
 # VLC Media Player SMB 'Win32AddConnection()' BOF Vulnerability - July09 (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:videolan:vlc_media_player";
+
 tag_solution = "Apply the available patch from below link,
   http://git.videolan.org/?p=vlc.git;a=commit;h=e60a9038b13b5eb805a76755efc5c6d5e080180f
 
@@ -44,8 +46,8 @@ tag_summary = "This host is installed with VLC Media Player and is prone to
 if(description)
 {
   script_id(800663);
-  script_version("$Revision: 4906 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 14:06:55 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 8174 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-07-18 09:37:41 +0200 (Sat, 18 Jul 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -61,8 +63,8 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
-  script_require_keys("VLCPlayer/Win/Ver");
-  script_require_ports("Services/www");
+  script_mandatory_keys("VLCPlayer/Win/Installed");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -73,13 +75,17 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-vlcVer = get_kb_item("VLCPlayer/Win/Ver");
-if(vlcVer != NULL)
-{
-  if(version_is_less_equal(version:vlcVer, test_version:"0.9.9")){
-    security_message(0);
-  }
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
+if( version_is_less_equal( version:vers, test_version:"0.9.9" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"See references", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

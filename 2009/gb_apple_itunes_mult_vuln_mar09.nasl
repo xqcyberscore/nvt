@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_mar09.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_apple_itunes_mult_vuln_mar09.nasl 8169 2017-12-19 08:42:31Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:apple:itunes";
+
 tag_impact = "This issue may be exploited to gain the user's itune credentials when
   subscribing to a malicious podcast and to cause denial of service.
   Impact Level: Application";
@@ -41,8 +43,8 @@ tag_summary = "This host has Apple iTunes installed, which is prone to multiple
 if(description)
 {
   script_id(800543);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 8169 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-18 05:31:55 +0100 (Wed, 18 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -57,7 +59,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
-  script_require_keys("iTunes/Win/Ver");
+  script_mandatory_keys("iTunes/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -67,12 +69,17 @@ if(description)
 }
 
 
+include("host_details.inc");
 include("version_func.inc");
 
-ver = get_kb_item("iTunes/Win/Ver");
-if(!ver){
-  exit(0);
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
+if( version_is_less( ersion:vers, test_version:"8.1.0.51" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"8.1.0.51", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
-if(version_is_less(version:ver, test_version:"8.1.0.51")){
- security_message(0);
-}
+
+exit( 99 );

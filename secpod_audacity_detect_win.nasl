@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_audacity_detect_win.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: secpod_audacity_detect_win.nasl 8168 2017-12-19 07:30:15Z teissa $
 #
 # Audacity Version Detection (Windows)
 #
@@ -29,10 +29,10 @@ tag_summary = "This script detects the installed version of Audacity and sets
 
 if(description)
 {
-  script_id(900304);
+  script_oid("1.3.6.1.4.1.25623.1.0.900304");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 8168 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-02-18 15:32:11 +0100 (Wed, 18 Feb 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Audacity Version Detection (Windows)");

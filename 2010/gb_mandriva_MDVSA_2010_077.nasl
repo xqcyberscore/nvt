@@ -45,8 +45,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-04/msg00020.php");
   script_id(830990);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8164 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:30:41 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-19 16:47:49 +0200 (Mon, 19 Apr 2010)");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
@@ -54,7 +54,7 @@ if(description)
   script_cve_id("CVE-2010-0826");
   script_name("Mandriva Update for nss_db MDVSA-2010:077 (nss_db)");
 
-  script_summary("Check for the Version of nss_db");
+  script_tag(name: "summary" , value: "Check for the Version of nss_db");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

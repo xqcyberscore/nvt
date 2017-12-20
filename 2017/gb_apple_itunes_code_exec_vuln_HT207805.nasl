@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_code_exec_vuln_HT207805.nasl 6268 2017-06-01 14:48:58Z teissa $
+# $Id: gb_apple_itunes_code_exec_vuln_HT207805.nasl 8169 2017-12-19 08:42:31Z cfischer $
 #
 # Apple iTunes Code Execution Vulnerability-HT207805 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810989");
-  script_version("$Revision: 6268 $");
+  script_version("$Revision: 8169 $");
   script_cve_id("CVE-2017-6984"); 
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-01 16:48:58 +0200 (Thu, 01 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-05-16 12:30:16 +0530 (Tue, 16 May 2017)");
   script_name("Apple iTunes Code Execution Vulnerability-HT207805 (Windows)");
 
@@ -64,7 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
-  script_mandatory_keys("iTunes/Win/Ver");
+  script_mandatory_keys("iTunes/Win/Installed");
   exit(0);
 }
 

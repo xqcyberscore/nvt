@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_remote_code_exec_vuln_winxp.nasl 6519 2017-07-04 14:08:14Z cfischer $
+# $Id: gb_adobe_flash_player_remote_code_exec_vuln_winxp.nasl 8178 2017-12-19 13:42:38Z cfischer $
 #
 # Adobe Flash Player Remote Code Execution Vulnerability (WinXP)
 #
@@ -28,6 +28,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:adobe:flash_player";
+
 tag_impact = "Successful exploitation could allow remote attackers to crash an affected
   system or execute arbitrary code by tricking a user into visiting a specially
   crafted web page.
@@ -44,8 +46,8 @@ tag_summary = "This host has Adobe Flash Player installed and is prone to remote
 if(description)
 {
   script_id(800420);
-  script_version("$Revision: 6519 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
+  script_version("$Revision: 8178 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-01-13 15:42:20 +0100 (Wed, 13 Jan 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -61,7 +63,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Windows");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_mandatory_keys("AdobeFlashPlayer/Win/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -70,16 +72,24 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
+include("host_details.inc");
+include("version_func.inc");
 
 if(hotfix_check_sp(xp:4) <= 0){
   exit(0);
 }
 
-adobeVer = get_kb_item("AdobeFlashPlayer/Win/Ver");
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
 # Grep for versions 6 Series
-if((adobeVer) && (adobeVer =~ "^6\.")){
-   security_message(0);
+if( vers =~ "^6\." ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"10.0.42.34", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

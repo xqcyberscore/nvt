@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_integer_overflow_vuln03_jun13_win.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_imagemagick_integer_overflow_vuln03_jun13_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
 #
 # ImageMagick Integer Overflow Vulnerability - 03 June (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:imagemagick:imagemagick";
+
 tag_impact = "Successful exploitation will allow an attacker to cause denial of service
   condition result in loss of availability for the application.
   Impact Level: Application";
@@ -44,10 +46,10 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_id(803818);
-  script_version("$Revision: 6104 $");
+  script_version("$Revision: 8173 $");
   script_cve_id("CVE-2012-1186");
   script_bugtraq_id(51957);
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-06-24 14:42:53 +0530 (Mon, 24 Jun 2013)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -61,19 +63,21 @@ if(description)
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
-  script_mandatory_keys("ImageMagick/Win/Ver");
+  script_mandatory_keys("ImageMagick/Win/Installed");
   exit(0);
 }
 
+include("host_details.inc");
 include("version_func.inc");
 
-imageVer = get_kb_item("ImageMagick/Win/Ver");
-if(!imageVer){
-  exit(0);
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
+if( version_is_less( version:vers, test_version:"6.7.5.9" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"6.7.5.9", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-if(version_is_less(version:imageVer, test_version:"6.7.5.9"))
-{
-  security_message(0);
-  exit(0);
-}
+exit( 99 );

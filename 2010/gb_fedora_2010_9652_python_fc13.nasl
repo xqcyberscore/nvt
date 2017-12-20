@@ -48,8 +48,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-June/042751.html");
   script_id(862160);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8164 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:30:41 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-18 17:26:33 +0200 (Fri, 18 Jun 2010)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -57,7 +57,7 @@ if(description)
   script_cve_id("CVE-2010-1634", "CVE-2010-2089", "CVE-2008-5983");
   script_name("Fedora Update for python FEDORA-2010-9652");
 
-  script_summary("Check for the Version of python");
+  script_tag(name: "summary" , value: "Check for the Version of python");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

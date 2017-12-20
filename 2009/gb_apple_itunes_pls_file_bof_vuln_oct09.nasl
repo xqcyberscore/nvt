@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_pls_file_bof_vuln_oct09.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_apple_itunes_pls_file_bof_vuln_oct09.nasl 8169 2017-12-19 08:42:31Z cfischer $
 #
 # Apple iTunes '.pls' Files Buffer Overflow Vulnerability
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:apple:itunes";
+
 tag_impact = "Successful exploitation will allow attacker to execute arbitrary code within
   the context of the affected application, failed exploit attempts will result in
   a denial of service condition.
@@ -40,8 +42,8 @@ tag_summary = "This host has Apple iTunes installed, which is prone to Buffer
 if(description)
 {
   script_id(801105);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 8169 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-10-01 12:15:29 +0200 (Thu, 01 Oct 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -56,7 +58,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
-  script_require_keys("iTunes/Win/Ver");
+  script_mandatory_keys("iTunes/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -65,15 +67,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-itunesVer = get_kb_item("iTunes/Win/Ver");
-if(!itunesVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 # Check for iTunes version prior to 9.0.1 (9.0.1.8)
-if(version_is_less(version:itunesVer, test_version:"9.0.1.8")){
-  security_message(0);
+if( version_is_less( version:vers, test_version:"9.0.1.8" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"9.0.1.8", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

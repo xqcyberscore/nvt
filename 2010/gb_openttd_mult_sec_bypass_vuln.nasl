@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openttd_mult_sec_bypass_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: gb_openttd_mult_sec_bypass_vuln.nasl 8168 2017-12-19 07:30:15Z teissa $
 #
 # OpenTTD Multiple Security bypass vulnerabilities
 #
@@ -42,9 +42,9 @@ tag_summary = "This host is installed with OpenTTD and is prone to multiple
 
 if(description)
 {
-  script_id(801206);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801206");
+  script_version("$Revision: 8168 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-13 09:36:55 +0200 (Thu, 13 May 2010)");
   script_bugtraq_id(39874);
   script_cve_id("CVE-2010-0401", "CVE-2010-0402", "CVE-2010-0406");

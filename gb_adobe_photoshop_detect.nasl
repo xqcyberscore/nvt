@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_detect.nasl 8162 2017-12-19 06:15:07Z cfischer $
+# $Id: gb_adobe_photoshop_detect.nasl 8169 2017-12-19 08:42:31Z cfischer $
 #
 # Adobe Photoshop Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801224");
-  script_version("$Revision: 8162 $");
+  script_version("$Revision: 8169 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:15:07 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-15 06:05:27 +0200 (Tue, 15 Jun 2010)");
   script_name("Adobe Photoshop Version Detection");
 
@@ -163,7 +163,7 @@ foreach item (registry_enum_keys(key:key))
       checkduplicate  += tmp_version + ", ";
 
       set_kb_item(name:"Adobe/Photoshop/ProdVer", value:prodVer);
-      set_kb_item(name:"Adobe/Photoshop6432/Installed", value:TRUE);
+      set_kb_item(name:"Adobe/Photoshop/Installed", value:TRUE);
 
       if("x64" >< os_arch && "64 Bit" >< appPath) {
         set_kb_item(name:"Adobe/Photoshop64/Ver", value:tmp_version);

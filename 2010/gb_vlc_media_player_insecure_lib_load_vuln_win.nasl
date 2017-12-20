@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_insecure_lib_load_vuln_win.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_vlc_media_player_insecure_lib_load_vuln_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
 #
 # VLC Media Player File Opening Insecure Library Loading Vulnerability (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:videolan:vlc_media_player";
+
 tag_impact = "Successful exploitation will allow the attackers to execute arbitrary code and
   conduct DLL hijacking attacks.
   Impact Level: Application.";
@@ -40,8 +42,8 @@ tag_summary = "This host is installed with VLC media player and is prone to inse
 if(description)
 {
   script_id(801500);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 8174 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-03 15:47:26 +0200 (Fri, 03 Sep 2010)");
   script_cve_id("CVE-2010-3124");
   script_tag(name:"cvss_base", value:"9.3");
@@ -57,7 +59,7 @@ if(description)
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
-  script_require_keys("VLCPlayer/Win/Ver");
+  script_mandatory_keys("VLCPlayer/Win/Installed");
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -68,14 +70,18 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("version_func.inc");
 
-vlcVer = get_kb_item("VLCPlayer/Win/Ver");
-if(!vlcVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 # VLC Media Player Version 1.1.3 and prior.
-if(version_is_less(version:vlcVer, test_version:"1.1.4")){
-  security_message(0);
+if( version_is_less( version:vers, test_version:"1.1.4" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.1.4", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

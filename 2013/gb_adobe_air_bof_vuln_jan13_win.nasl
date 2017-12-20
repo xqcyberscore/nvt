@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_bof_vuln_jan13_win.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_adobe_air_bof_vuln_jan13_win.nasl 8176 2017-12-19 12:50:00Z cfischer $
 #
 # Adobe Air Buffer Overflow Vulnerability (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:adobe:adobe_air";
+
 tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
   code or cause denial of service condition.
   Impact Level: System/Application";
@@ -39,12 +41,12 @@ tag_summary = "This host is installed with Adobe Air and is prone to buffer
 if(description)
 {
   script_id(803443);
-  script_version("$Revision: 6086 $");
+  script_version("$Revision: 8176 $");
   script_cve_id("CVE-2013-0630");
   script_bugtraq_id(57184);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:50:00 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-03-21 13:10:21 +0530 (Thu, 21 Mar 2013)");
   script_name("Adobe Air Buffer Overflow Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51771");
@@ -55,7 +57,7 @@ if(description)
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_mandatory_keys("Adobe/Air/Win/Ver");
+  script_mandatory_keys("Adobe/Air/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -66,20 +68,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-airVer = "";
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
-# Check for Adobe Air
-airVer = get_kb_item("Adobe/Air/Win/Ver");
-if(airVer)
-{
-  # Grep for version less than 3.5.0.1060
-  if(version_is_less(version:airVer, test_version:"3.5.0.1060"))
-  {
-    security_message(0);
-    exit(0);
-  }
+# Grep for version less than 3.5.0.1060
+if( version_is_less( version:vers, test_version:"3.5.0.1060" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"3.5.0.1060", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

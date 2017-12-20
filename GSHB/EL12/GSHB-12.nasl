@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB-12.nasl 7850 2017-11-21 14:31:39Z emoss $
+# $Id: GSHB-12.nasl 8165 2017-12-19 06:39:31Z cfischer $
 #
 # IT-Grundschutz, 12. Ergänzungslieferung
 #
@@ -124,13 +124,15 @@ depend = make_list("M4_001", "M4_002", "M4_003", "M4_004", "M4_005", "M4_007",
 if(description)
 {
   script_id(94000);
-  script_version("$Revision: 7850 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-21 15:31:39 +0100 (Tue, 21 Nov 2017) $");
+  script_version("$Revision: 8165 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:39:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-12-09 15:38:53 +0100 (Fri, 09 Dec 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("IT-Grundschutz, 12. EL");
-  script_category(ACT_END);
+  # Dependency GSHB_M4_007.nasl is running in ACT_ATTACK because it depends on
+  # GSHB_SSH_TELNET_BruteForce.nasl which is in ACT_ATTACK as well.
+  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"general_note");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Compliance");

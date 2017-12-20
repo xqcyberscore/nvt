@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_swf_mult_code_exec_vuln_win.nasl 5424 2017-02-25 16:52:36Z teissa $
+# $Id: gb_adobe_flash_player_swf_mult_code_exec_vuln_win.nasl 8178 2017-12-19 13:42:38Z cfischer $
 #
 # Adobe Flash Player 'SWF' File Multiple Code Execution Vulnerability - Windows
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:adobe:flash_player";
+
 tag_impact = "Successful exploitation will allow remote attackers to execute
 arbitrary code in the context of the affected application.
 
@@ -45,11 +47,11 @@ multiple arbitrary code execution vulnerabilities.";
 if(description)
 {
   script_id(802540);
-  script_version("$Revision: 5424 $");
+  script_version("$Revision: 8178 $");
   script_cve_id("CVE-2011-4694", "CVE-2011-4693");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-12-09 11:41:37 +0530 (Fri, 09 Dec 2011)");
   script_name("Adobe Flash Player 'SWF' File Multiple Code Execution Vulnerability - Windows");
   script_xref(name : "URL" , value : "http://partners.immunityinc.com/movies/VulnDisco-Flash0day-v2.mov");
@@ -59,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_require_keys("AdobeFlashPlayer/Win/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -70,14 +72,17 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-# Check for Adobe Flash Player
-playerVer = get_kb_item("AdobeFlashPlayer/Win/Ver");
-if(playerVer != NULL)
-{
-  if(version_is_equal(version:playerVer, test_version:"11.1.102.55")){
-    security_message(0);
-  }
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
+if( version_is_equal( version:vers, test_version:"11.1.102.55" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"None", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

@@ -45,8 +45,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-May/041803.html");
   script_id(861969);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8164 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:30:41 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-28 10:00:59 +0200 (Fri, 28 May 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if(description)
   script_cve_id("CVE-2010-1624", "CVE-2010-0277", "CVE-2010-0420", "CVE-2010-0423", "CVE-2010-0013", "CVE-2009-3615", "CVE-2009-2703", "CVE-2009-3083", "CVE-2009-3084", "CVE-2009-3085", "CVE-2009-2694");
   script_name("Fedora Update for pidgin FEDORA-2010-8523");
 
-  script_summary("Check for the Version of pidgin");
+  script_tag(name: "summary" , value: "Check for the Version of pidgin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

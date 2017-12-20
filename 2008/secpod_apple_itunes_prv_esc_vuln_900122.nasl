@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_itunes_prv_esc_vuln_900122.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: secpod_apple_itunes_prv_esc_vuln_900122.nasl 8169 2017-12-19 08:42:31Z cfischer $
 # Description: Apple iTunes Local Privilege Escalation Vulnerability 
 #
 # Authors:
@@ -23,6 +23,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
+CPE = "cpe:/a:apple:itunes";
+
 tag_impact = "Successful exploitation will allow local users to obtain elevated
         privileges thus compromising the affected system.
  Impact Level : System";
@@ -43,8 +45,8 @@ tag_summary = "The host is installed with Apple iTunes, which prone to privilege
 if(description)
 {
  script_id(900122);
- script_version("$Revision: 5375 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 8169 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
  script_bugtraq_id(31089);
  script_cve_id("CVE-2008-3636");
@@ -56,9 +58,8 @@ if(description)
  script_family("Denial of Service");
  script_name("Apple iTunes Local Privilege Escalation Vulnerability");
 
- script_dependencies("secpod_reg_enum.nasl",
-                     "secpod_apple_itunes_detection_win_900123.nasl");
- script_mandatory_keys("SMB/WindowsVersion");
+ script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
+ script_mandatory_keys("iTunes/Win/Installed");
  script_xref(name : "URL" , value : "http://securitytracker.com/alerts/2008/Sep/1020839.html");
  script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce//2008/Sep/msg00001.html");
  script_tag(name : "summary" , value : tag_summary);
@@ -69,12 +70,17 @@ if(description)
  exit(0);
 }
 
+include("host_details.inc");
+include("version_func.inc");
 
- if(!get_kb_item("SMB/WindowsVersion")){
-        exit(0);
- }
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
- if(egrep(pattern:"^([0-6]\..*|7\.[0-9](\..*)?)$", 
-          string:get_kb_item("iTunes/Win/Ver"))){
-        security_message(0);
- }
+if( egrep( pattern:"^([0-6]\..*|7\.[0-9](\..*)?)$", string:vers ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"8.0", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
+}
+
+exit( 99 );

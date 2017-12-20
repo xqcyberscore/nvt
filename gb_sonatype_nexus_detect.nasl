@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonatype_nexus_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_sonatype_nexus_detect.nasl 8167 2017-12-19 07:04:10Z ckuersteiner $
 #
 # Sonatype Nexus OSS/Pro Version Detection
 #
@@ -27,59 +27,47 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805324");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 8167 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:04:10 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-01-20 13:00:12 +0530 (Tue, 20 Jan 2015)");
   script_name("Sonatype Nexus OSS/Pro Version Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
-  Sonatype Nexus.
+  script_tag(name: "summary" , value: "Detection of installed version of Sonatype Nexus.
 
-  This script sends HTTP GET request and try to get the version from the
-  response, and sets the result in KB.");
+This script sends HTTP GET request and try to get the version from the response, and sets the result in KB.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8081);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name: "URL", value: "http://www.sonatype.org/nexus/");
+
   exit(0);
 }
-
 
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variables Initialization
-nexusPort  = "";
-dir  = "";
-sndReq = "";
-rcvRes = "";
-nexusVer = "";
-cpe = "";
-url = "";
-installed = 0;
-
-##Sonatype Nexus Port
 nexusPort = get_http_port(default:8081);
 
 banner = get_http_banner(port:nexusPort);
 
 ## Confirm the server from banner
 if(banner && "erver: Nexus" >< banner) {
-
-  installed = 1;
+  installed = TRUE;
   version = "unknown";
+
   nexusVer = eregmatch(pattern:"Server: Nexus.([0-9.]+(-[0-9]+)?)", string:banner, icase:TRUE);
-  if(nexusVer[1] != NULL) {
+  if(!isnull(nexusVer[1])) {
     version = nexusVer[1];
     install = "/";
   }
@@ -87,49 +75,42 @@ if(banner && "erver: Nexus" >< banner) {
 
 if(!nexusVer) {
   foreach dir (make_list_unique("/", "/nexus",  cgi_dirs(port:nexusPort))) {
-
     install = dir;
     if(dir == "/") dir = "";
 
     ## if version is not available in banner request for '/#welcome' page
-    sndReq = http_get(item: dir + "/#welcome", port:nexusPort);
-    rcvRes = http_keepalive_send_recv(port:nexusPort, data:sndReq);
+    rcvRes = http_get_cache(item: dir + "/#welcome", port:nexusPort);
 
     ##Confirm Application with '/#welcome' page
-    if(rcvRes && (">Sonatype Nexus<" >< rcvRes ||
-       ">Sonatype Nexus Professional<" >< rcvRes))
-    {
-      installed = 1;
+    if(rcvRes && (">Sonatype Nexus<" >< rcvRes || ">Sonatype Nexus Professional<" >< rcvRes)) {
+      installed = TRUE;
       version = "unknown";
+
       nexusVer = eregmatch(pattern:"nexusVersion=([0-9.]+(-[0-9]+)?)", string:rcvRes);
-      if(nexusVer[1] != NULL){
+      if(!isnull(nexusVer[1]))
         version = nexusVer[1];
-      }
     }
   }
 }
 
-if(installed)
-{
+if(installed) {
   # version will be in this format nexusVer = "2.11.1-01"
   # for replacing '-' with '.'
   version = str_replace(string:version, find:"-", replace:".");
 
-  ##Set the KB
   set_kb_item(name:"www/" + nexusPort + "/nexus", value:version);
   set_kb_item(name:"nexus/installed",value:TRUE);
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:version, exp:"([0-9.]+)", base:"cpe:/a:sonatype:nexus:");
-  if(isnull(cpe))
+  if(!cpe)
     cpe = "cpe:/a:sonatype:nexus";
 
-  ##Register Product and Build Report
   register_product(cpe:cpe, location:install, port:nexusPort);
-  log_message(data: build_detection_report(app: "Sonatype Nexus",
-                                           version:version,
-                                           install:install,
-                                           cpe:cpe,
+
+  log_message(data: build_detection_report(app: "Sonatype Nexus", version:version, install:install, cpe:cpe,
                                            concluded:nexusVer[0]),
-                                           port:nexusPort);
+              port:nexusPort);
+  exit(0);
 }
+
+exit(0);

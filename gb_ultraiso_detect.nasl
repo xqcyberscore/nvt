@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ultraiso_detect.nasl 7332 2017-09-29 14:16:56Z cfischer $
+# $Id: gb_ultraiso_detect.nasl 8168 2017-12-19 07:30:15Z teissa $
 #
 # UltraISO Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script detects the installed version of UltraISO and
 
 if(description)
 {
-  script_id(800274);
+  script_oid("1.3.6.1.4.1.25623.1.0.800274");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7332 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-29 16:16:56 +0200 (Fri, 29 Sep 2017) $");
+ script_version("$Revision: 8168 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-13 15:50:35 +0200 (Mon, 13 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("UltraISO Version Detection");

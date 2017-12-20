@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_waveletdenoiseimage_fun_dos_vuln_win.nasl 5280 2017-02-13 07:45:58Z antu123 $
+# $Id: gb_imagemagick_waveletdenoiseimage_fun_dos_vuln_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
 #
 # ImageMagick 'WaveletDenoiseImage' Function Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810539");
-  script_version("$Revision: 5280 $");
+  script_version("$Revision: 8173 $");
   script_cve_id("CVE-2016-9298");
   script_bugtraq_id(94310);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-13 08:45:58 +0100 (Mon, 13 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-02-07 16:01:33 +0530 (Tue, 07 Feb 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick 'WaveletDenoiseImage' Function Denial of Service Vulnerability (Windows)");
@@ -67,7 +67,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
-  script_mandatory_keys("ImageMagick/Win/Ver");
+  script_mandatory_keys("ImageMagick/Win/Installed");
   exit(0);
 }
 

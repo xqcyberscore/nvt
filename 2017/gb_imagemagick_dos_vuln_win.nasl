@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_dos_vuln_win.nasl 6249 2017-05-30 13:27:41Z teissa $
+# $Id: gb_imagemagick_dos_vuln_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
 #
 # ImageMagick coders/rle.c Denial of Service Vulnerability (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107206");
-  script_version("$Revision: 6249 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-30 15:27:41 +0200 (Tue, 30 May 2017) $");
+  script_version("$Revision: 8173 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-05-23 19:30:51 +0200 (Tue, 23 May 2017)");
   script_cve_id("CVE-2017-9144");
   script_bugtraq_id(98603);
@@ -59,7 +59,7 @@ if(description)
 
   script_family("General");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
-  script_mandatory_keys("ImageMagick/Win/Ver");
+  script_mandatory_keys("ImageMagick/Win/Installed");
 
   exit(0);
 }

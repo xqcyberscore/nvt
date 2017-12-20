@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3426.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3426.nasl 8168 2017-12-19 07:30:15Z teissa $
 # Auto-generated from advisory DSA 3426-2 using nvtgen 1.0
 # Script version: 2.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(807312);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.807312");
+    script_version("$Revision: 8168 $");
     script_cve_id("CVE-2015-8543");
     script_name("Debian Security Advisory DSA 3426-2 (ctdb - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
     script_tag(name:"creation_date", value:"2016-03-08 12:38:02 +0530 (Tue, 08 Mar 2016)");
     script_tag(name:"cvss_base", value:"6.9");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");

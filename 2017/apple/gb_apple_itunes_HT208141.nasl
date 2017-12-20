@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_HT208141.nasl 7604 2017-11-01 06:48:12Z asteins $
+# $Id: gb_apple_itunes_HT208141.nasl 8169 2017-12-19 08:42:31Z cfischer $
 #
 # Apple iTunes Security Updates (HT208141)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811879");
-  script_version("$Revision: 7604 $");
+  script_version("$Revision: 8169 $");
   script_cve_id("CVE-2017-7081", "CVE-2017-7087", "CVE-2017-7091", "CVE-2017-7092", 
                 "CVE-2017-7093", "CVE-2017-7094", "CVE-2017-7095", "CVE-2017-7096", 
                 "CVE-2017-7098", "CVE-2017-7099", "CVE-2017-7100", "CVE-2017-7102", 
@@ -38,7 +38,7 @@ if(description)
   script_bugtraq_id(100985, 100995, 100994, 101006, 100998, 100986, 101005);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-10-25 11:53:06 +0530 (Wed, 25 Oct 2017)");
   script_name("Apple iTunes Security Updates (HT208141)");
 
@@ -74,7 +74,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
-  script_mandatory_keys("iTunes/Win/Ver");
+  script_mandatory_keys("iTunes/Win/Installed");
   exit(0);
 }
 

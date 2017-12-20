@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_jb2_file_dos_vuln.nasl 7588 2017-10-27 06:53:29Z santu $
+# $Id: gb_xnview_jb2_file_dos_vuln.nasl 8172 2017-12-19 09:32:03Z jschulte $
 #
 # XnView 'jb2 file' DoS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811952");
-  script_version("$Revision: 7588 $");
+  script_version("$Revision: 8172 $");
   script_cve_id("CVE-2017-14580");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 08:53:29 +0200 (Fri, 27 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 10:32:03 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-10-26 10:35:33 +0530 (Thu, 26 Oct 2017)");
   script_name("XnView 'jb2 file' DoS Vulnerability");
 
@@ -44,7 +44,7 @@ if(description)
   of the detection NVT and check if the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"The flaw exists due to an improper handling
-  of crafted '.jb2' file."); 
+  of crafted '.jb2' file.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to to execute arbitrary code or cause a denial of service.
@@ -54,7 +54,7 @@ if(description)
   script_tag(name: "affected" , value:"XnView Version 2.41");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  26th Oct, 2017. Information regarding this issue will be updated once the
+  19th December, 2017. Information regarding this issue will be updated once the
   solution details are available.
   For updates refer to http://www.xnview.com/en/");
 

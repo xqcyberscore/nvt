@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mp4a_vuln_dos_win.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_vlc_media_player_mp4a_vuln_dos_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
 #
 # VLC Media Player mp4a Denial of Service Vulnerability (Windows)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6086 $");
+  script_version("$Revision: 8174 $");
   script_cve_id("CVE-2013-4388");
   script_bugtraq_id(62724);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-10-22 19:22:32 +0530 (Tue, 22 Oct 2013)");
   script_name("VLC Media Player mp4a Denial of Service Vulnerability (Windows)");
 
@@ -81,7 +81,7 @@ For updates refer to http://www.videolan.org/vlc";
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
-  script_mandatory_keys("VLCPlayer/Win/Ver");
+  script_mandatory_keys("VLCPlayer/Win/Installed");
   exit(0);
 }
 

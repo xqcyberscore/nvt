@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_bof_vuln_win.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_vlc_media_player_mult_bof_vuln_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
 #
 # VLC Media Player Real Demuxer File Handling Array Indexing Vulnerabilities (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:videolan:vlc_media_player";
+
 tag_impact = "Successful exploitation will allow the attackers to crash an affected application
   or compromise a vulnerable system by convincing a user to open a malicious media
   file or to visit a specially crafted web page.
@@ -41,8 +43,8 @@ tag_summary = "This host is installed with VLC media player and is prone to
 if(description)
 {
   script_id(801565);
-  script_version("$Revision: 7019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_version("$Revision: 8174 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-01-08 10:30:18 +0100 (Sat, 08 Jan 2011)");
   script_cve_id("CVE-2010-3907");
   script_tag(name:"cvss_base", value:"9.3");
@@ -56,7 +58,7 @@ if(description)
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
-  script_require_keys("VLCPlayer/Win/Ver");
+  script_mandatory_keys("VLCPlayer/Win/Installed");
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -67,14 +69,18 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("version_func.inc");
 
-vlcVer = get_kb_item("VLCPlayer/Win/Ver");
-if(!vlcVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 # VLC Media Player Version 1.1.5 and prior.
-if(version_is_less(version:vlcVer, test_version:"1.1.6")){
-  security_message(0);
+if( version_is_less( version:vers, test_version:"1.1.6" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.1.6", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

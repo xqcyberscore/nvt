@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_code_exec_vuln.nasl 4635 2016-11-28 08:14:54Z antu123 $
+# $Id: gb_apple_itunes_code_exec_vuln.nasl 8169 2017-12-19 08:42:31Z cfischer $
 #
 # Apple iTunes Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810208");
-  script_version("$Revision: 4635 $");
+  script_version("$Revision: 8169 $");
   script_cve_id("CVE-2016-1742");
   script_bugtraq_id(90688);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-28 09:14:54 +0100 (Mon, 28 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-11-22 11:05:47 +0530 (Tue, 22 Nov 2016)");
   script_name("Apple iTunes Arbitrary Code Execution Vulnerability (Windows)");
 
@@ -68,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
-  script_mandatory_keys("iTunes/Win/Ver");
+  script_mandatory_keys("iTunes/Win/Installed");
   exit(0);
 }
 

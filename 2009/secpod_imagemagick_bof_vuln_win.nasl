@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_imagemagick_bof_vuln_win.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_imagemagick_bof_vuln_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
 #
 # ImageMagick Buffer Overflow Vulnerability (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:imagemagick:imagemagick";
+
 tag_impact = "Attackers can exploit this issue by executing arbitrary code via a crafted
   TIFF files in the context of an affected application.
   Impact Level: Application";
@@ -38,8 +40,8 @@ tag_summary = "The host is installed with ImageMagick and is prone to Buffer
 if(description)
 {
   script_id(900564);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 8173 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-06-02 08:16:42 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -52,7 +54,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
-  script_require_keys("ImageMagick/Win/Ver");
+  script_mandatory_keys("ImageMagick/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -63,14 +65,17 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-imageVer = get_kb_item("ImageMagick/Win/Ver");
-if(!imageVer){
-  exit(0);
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
+if( version_is_less( version:vers, test_version:"6.5.2.9" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"6.5.2.9", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-if(version_is_less(version:imageVer, test_version:"6.5.2.9")){
-  security_message(0);
-}
+exit( 99 );

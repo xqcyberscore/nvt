@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_heap_buf_ov_vuln_win.nasl 7223 2017-09-21 14:06:29Z cfischer $
+# $Id: gb_imagemagick_heap_buf_ov_vuln_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
 #
 # ImageMagick CVE-2017-14224 Heap Buffer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107241");
-  script_version("$Revision: 7223 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-21 16:06:29 +0200 (Thu, 21 Sep 2017) $");
+  script_version("$Revision: 8173 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-09-12 14:49:44 +0200 (Tue, 12 Sep 2017)");
   script_cve_id("CVE-2017-14224");
   script_bugtraq_id(100702);
@@ -56,7 +56,7 @@ if(description)
   script_family("General");
 
   script_dependencies("secpod_imagemagick_detect_win.nasl");
-  script_mandatory_keys("ImageMagick/Win/Ver");
+  script_mandatory_keys("ImageMagick/Win/Installed");
 
   exit(0);
 }

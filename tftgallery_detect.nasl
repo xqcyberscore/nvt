@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tftgallery_detect.nasl 5744 2017-03-28 07:25:23Z cfi $
+# $Id: tftgallery_detect.nasl 8168 2017-12-19 07:30:15Z teissa $
 #
 # TFT Gallery Detection
 #
@@ -29,10 +29,10 @@ using PHP.";
 
 if(description)
 {
- script_id(100324);
+ script_oid("1.3.6.1.4.1.25623.1.0.100324");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5744 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 09:25:23 +0200 (Tue, 28 Mar 2017) $");
+ script_version("$Revision: 8168 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
  script_tag(name:"creation_date", value:"2009-10-29 12:31:54 +0100 (Thu, 29 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("TFT Gallery Detection");

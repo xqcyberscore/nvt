@@ -44,9 +44,9 @@ as announced in the referenced advisory FreeBSD-SA-10:02.ntpd.asc";
 
 if(description)
 {
- script_id(66662);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.66662");
+ script_version("$Revision: 8168 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-01-11 23:48:26 +0100 (Mon, 11 Jan 2010)");
  script_cve_id("CVE-2009-3563");
  script_tag(name:"cvss_base", value:"6.4");

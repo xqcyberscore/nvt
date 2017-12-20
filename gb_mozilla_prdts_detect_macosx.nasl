@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_detect_macosx.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: gb_mozilla_prdts_detect_macosx.nasl 8180 2017-12-19 14:11:38Z cfischer $
 #
 # Mozilla Products Version Detection (Mac OS X)
 #
@@ -36,15 +36,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802179");
-  script_version("$Revision: 8138 $");
+  script_version("$Revision: 8180 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 15:11:38 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Mozilla Products Version Detection (Mac OS X)");
 
-  tag_summary = "Detection of installed version of Mozilla Firefox on Max OS X.
+  tag_summary = "Detection of installed version of Mozilla products on Max OS X.
 
 The script logs in via ssh, searches for folder Mozilla products '.app' and
 queries the related 'info.plist' file for string 'CFBundleShortVersionString'
@@ -66,16 +66,12 @@ include("ssh_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-## start script
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);
 }
 
-## Checking for Mac OS X
-if(!get_kb_item("ssh/login/osx_name"))
-{
+if(!get_kb_item("ssh/login/osx_name")){
   close(sock);
   exit(0);
 }
@@ -111,41 +107,26 @@ if(!isnull(ffVer) && "does not exist" >!< ffVer)
       {
         foreach binaryName (esrFile)
         {
-          ## Get the version
-          esrVer = get_bin_version(full_prog_name:"cat", sock:sock,
-                                   version_argv:chomp(binaryName),
-                                   ver_pattern:"mozilla-esr");
+          ## Checks if this is an ESR
+          isFfEsr = get_bin_version(full_prog_name:"cat", sock:sock,
+                                    version_argv:chomp(binaryName),
+                                    ver_pattern:"mozilla-esr");
         }
       }
     }
 
-    ## Set the version in KB and CPE
-    if(esrVer)
+    if(isFfEsr)
     {
       set_kb_item(name: "Mozilla/Firefox-ESR/MacOSX/Version", value:ffVer);
       set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
-
-      ## Build CPE
-      cpe = build_cpe(value:ffVer, exp:"^([0-9.]+)([a-zA-Z0-9]+)?", base:"cpe:/a:mozilla:firefox_esr:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:mozilla:firefox_esr";
-
-      appName = 'Mozilla Firefox ESR';
+      register_and_report_cpe( app:"Mozilla Firefox ESR", ver:ffVer, base:"cpe:/a:mozilla:firefox_esr:", expr:"^([0-9.]+)([a-zA-Z0-9]+)?", insloc:"/Applications/Firefox.app" );
     }
     else
     {
       set_kb_item(name: "Mozilla/Firefox/MacOSX/Version", value:ffVer);
       set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
-      ## Build CPE
-      cpe = build_cpe(value:ffVer, exp:"^([0-9.]+)([a-zA-Z0-9]+)?", base:"cpe:/a:mozilla:firefox:");
-      if(isnull(cpe))
-        cpe = 'cpe:/a:mozilla:firefox';
-
-      appName = 'Mozilla Firefox';
+      register_and_report_cpe( app:"Mozilla Firefox", ver:ffVer, base:"cpe:/a:mozilla:firefox:", expr:"^([0-9.]+)([a-zA-Z0-9]+)?", insloc:"/Applications/Firefox.app" );
     }
-
-    ## Register Product and Build Report
-    build_report(app: appName, ver: ffVer, cpe: cpe, insloc: "/Applications/Firefox.app");
   }
 }
 
@@ -167,22 +148,12 @@ if(!isnull(smVer) && "does not exist" >!< smVer)
     }
   }
 
-  dir = "/Applications/SeaMonkey.app";
-
-  ## Set the version in KB
   set_kb_item(name: "SeaMonkey/MacOSX/Version", value:smVer);
   set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
-  ## build cpe
-  cpe = build_cpe(value:smVer, exp:"^([0-9.]+)", base:"cpe:/a:mozilla:seamonkey:");
-  if(isnull(cpe))
-    cpe = 'cpe:/a:mozilla:seamonkey';
-
-  ## Register Product and Build Report
-  build_report(app: "Mozilla SeaMonkey", ver: smVer, cpe: cpe, insloc: "/Applications/SeaMonkey.app");
+  register_and_report_cpe( app:"Mozilla SeaMonkey", ver:smVer, base:"cpe:/a:mozilla:seamonkey:", expr:"^([0-9.]+)", insloc:"/Applications/SeaMonkey.app" );
 }
 
-
-## Get the version of ThunderBird
+## Get the version of Thunderbird
 tbVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
               "Thunderbird.app/Contents/Info CFBundleShortVersionString"));
 
@@ -210,43 +181,26 @@ if(!isnull(tbVer) && "does not exist" >!< tbVer)
     {
       foreach binaryName (thuFile)
       {
-        ## Get the version
-        thuVer = get_bin_version(full_prog_name:"cat", sock:sock,
-                                 version_argv:chomp(binaryName),
-                                 ver_pattern:"comm-esr");
+        ## Checks if this is an ESR
+        isTbEsr = get_bin_version(full_prog_name:"cat", sock:sock,
+                                  version_argv:chomp(binaryName),
+                                  ver_pattern:"comm-esr");
       }
     }
 
-    ## Set the version in KB and CPE
-    if(thuVer)
+    if(isTbEsr)
     {
       set_kb_item(name: "ThunderBird-ESR/MacOSX/Version", value:tbVer);
       set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
-
-      ## build cpe
-      cpe = build_cpe(value:tbVer, exp:"^([0-9.]+)([a-zA-Z0-9]+)?", base:"cpe:/a:mozilla:thunderbird_esr:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:mozilla:thunderbird_esr";
-
-      appName = 'Mozilla ThunderBird ESR';
+      register_and_report_cpe( app:"Mozilla Thunderbird ESR", ver:tbVer, base:"cpe:/a:mozilla:thunderbird_esr:", expr:"^([0-9.]+)([a-zA-Z0-9]+)?", insloc:"/Applications/Thunderbird.app" );
     }
     else
     {
       set_kb_item(name: "ThunderBird/MacOSX/Version", value:tbVer);
       set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
-
-      ## build cpe
-      cpe = build_cpe(value:tbVer, exp:"^([0-9.]+)([a-zA-Z0-9]+)?", base:"cpe:/a:mozilla:thunderbird:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:mozilla:thunderbird";
-
-      appName = 'Mozilla ThunderBird';
+      register_and_report_cpe( app:"Mozilla Thunderbird", ver:tbVer, base:"cpe:/a:mozilla:thunderbird:", expr:"^([0-9.]+)([a-zA-Z0-9]+)?", insloc:"/Applications/Thunderbird.app" );
     }
-
-    ## Register Product and Build Report
-    build_report(app: appName, ver: tbVer, cpe: cpe, insloc: "/Applications/Thunderbird.app");
   }
 }
 
-## Close Socket
 close(sock);

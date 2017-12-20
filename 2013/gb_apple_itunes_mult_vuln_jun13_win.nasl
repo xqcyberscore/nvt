@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_jun13_win.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_apple_itunes_mult_vuln_jun13_win.nasl 8169 2017-12-19 08:42:31Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities - June13 (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:apple:itunes";
+
 tag_impact = "Successful exploitation will allow attackers to execute arbitrary code,
   conduct Man-in-the-Middle (MitM) attack or cause heap-based buffer overflow.
   Impact Level: System/Application";
@@ -43,7 +45,7 @@ tag_summary = "This host is installed with Apple iTunes and is prone to
 if(description)
 {
   script_id(803806);
-  script_version("$Revision: 6115 $");
+  script_version("$Revision: 8169 $");
   script_cve_id("CVE-2013-1014", "CVE-2013-1011", "CVE-2013-1010", "CVE-2013-1008",
                 "CVE-2013-1007", "CVE-2013-1006", "CVE-2013-1005", "CVE-2013-1004",
                 "CVE-2013-1003", "CVE-2013-1002", "CVE-2013-1001", "CVE-2013-1000",
@@ -55,7 +57,7 @@ if(description)
                                          59956, 59955, 59954, 59953, 59944);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-06-06 13:03:34 +0530 (Thu, 06 Jun 2013)");
   script_name("Apple iTunes Multiple Vulnerabilities - June13 (Windows)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5766");
@@ -65,7 +67,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
-  script_mandatory_keys("iTunes/Win/Ver");
+  script_mandatory_keys("iTunes/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -76,20 +78,18 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ituneVer = "";
-
-##Get the version from kb
-ituneVer= get_kb_item("iTunes/Win/Ver");
-if(!ituneVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Check for the vulnerable version
-if(version_is_less(version:ituneVer, test_version:"11.0.3"))
-{
-  security_message(0);
-  exit(0);
+if( version_is_less( version:vers, test_version:"11.0.3" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"11.0.3", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

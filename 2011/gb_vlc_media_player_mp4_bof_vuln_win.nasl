@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mp4_bof_vuln_win.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_vlc_media_player_mp4_bof_vuln_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
 #
 # VLC Media Player 'MP4_ReadBox_skcr()' Buffer Overflow Vulnerability (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:videolan:vlc_media_player";
+
 tag_impact = "Successful exploitation could allow attackers to execute arbitrary code by
   tricking a user into opening a malicious file or visiting a specially crafted
   web page.
@@ -40,8 +42,8 @@ tag_summary = "The host is installed with VLC Media Player and is prone buffer
 if(description)
 {
   script_id(801784);
-  script_version("$Revision: 7019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_version("$Revision: 8174 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_cve_id("CVE-2011-1684");
   script_bugtraq_id(47293);
@@ -56,7 +58,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
-  script_require_keys("VLCPlayer/Win/Ver");
+  script_mandatory_keys("VLCPlayer/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -67,16 +69,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Get the version from KB
-vlcVer = get_kb_item("VLCPlayer/Win/Ver");
-if(!vlcVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Check for VLC Media Player Version less than 1.1.9
-if(version_is_less(version:vlcVer, test_version:"1.1.9")){
-  security_message(0);
+if( version_is_less( version:vers, test_version:"1.1.9" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.1.9", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

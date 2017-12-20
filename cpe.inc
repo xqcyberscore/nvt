@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cpe.inc 8053 2017-12-08 11:43:10Z cfischer $
+# $Id: cpe.inc 8183 2017-12-19 16:49:26Z cfischer $
 #
 # CPE Support Functions
 #
@@ -28,7 +28,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8053 $
+# $Revision: 8183 $
 #
 ###############################################################################
 
@@ -116,18 +116,14 @@ function register_and_report_cpe( app, ver, concluded, cpename, base, expr, insl
   if( ! concluded && ver ) concluded = ver;
 
   ## setting version to unknown if not available
-  if( ! ver ) ver = "unknown";
+  if( ! ver || ver == "" ) ver = "unknown";
 
   if( ! regProto ) regProto = "tcp";
 
   if( ! cpename && base ) {
     cpename = build_cpe( value:ver, exp:expr, base:base );
     if( ! cpename ) {
-      if( substr( base, strlen( base ) - 1, strlen( base ) - 1 ) == ":" ) {
-        cpename = substr( base, 0, strlen( base ) - 2 );
-      } else {
-        cpename = base;
-      }
+      cpename = ereg_replace( pattern:":$", string:base, replace:"" );
     }
   }
 

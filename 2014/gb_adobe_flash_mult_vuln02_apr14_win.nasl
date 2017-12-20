@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_mult_vuln02_apr14_win.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_adobe_flash_mult_vuln02_apr14_win.nasl 8178 2017-12-19 13:42:38Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities - 02 Apr14 (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804537";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6715 $");
+  script_version("$Revision: 8178 $");
   script_cve_id("CVE-2014-0507", "CVE-2014-0508", "CVE-2014-0509");
   script_bugtraq_id(66701, 66699, 66703);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-04-11 12:45:39 +0530 (Fri, 11 Apr 2014)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - 02 Apr14 (Windows)");
 
@@ -82,7 +82,7 @@ For updates refer to  http://get.adobe.com/flashplayer";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_mandatory_keys("AdobeFlashPlayer/Win/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
   exit(0);
 }
 

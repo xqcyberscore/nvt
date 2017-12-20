@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3727.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3727.nasl 8168 2017-12-19 07:30:15Z teissa $
 # Auto-generated from advisory DSA 3727-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703727);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703727");
+    script_version("$Revision: 8168 $");
     script_cve_id("CVE-2016-4330", "CVE-2016-4331", "CVE-2016-4332", "CVE-2016-4333");
     script_name("Debian Security Advisory DSA 3727-1 (hdf5 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-12-02 17:27:07 +0530 (Fri, 02 Dec 2016)");
     script_tag(name:"cvss_base", value:"6.9");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");

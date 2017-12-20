@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_web_interface_metadata_title_xss_vul_win.nasl 6486 2017-06-29 09:59:06Z teissa $
+# $Id: gb_vlc_web_interface_metadata_title_xss_vul_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
 #
 # VLC Media Player Web Interface Cross Site Scripting Vulnerability Dec15 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806752");
-  script_version("$Revision: 6486 $");
+  script_version("$Revision: 8174 $");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-12-01 10:33:43 +0530 (Tue, 01 Dec 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VLC Media Player Web Interface Cross Site Scripting Vulnerability Dec15 (Windows)");
@@ -66,7 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
-  script_mandatory_keys("VLCPlayer/Win/Ver");
+  script_mandatory_keys("VLCPlayer/Win/Installed");
   exit(0);
 }
 

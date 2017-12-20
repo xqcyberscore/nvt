@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flexera_installanywhere_detect_win.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_flexera_installanywhere_detect_win.nasl 8181 2017-12-19 14:34:06Z cfischer $
 #
 # Flexera InstallAnywhere Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809011");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 8181 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 15:34:06 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-08-29 13:05:30 +0530 (Mon, 29 Aug 2016)");
   script_name("Flexera InstallAnywhere Version Detection (Windows)");
   script_tag(name: "summary" , value: "Detection of installed version of
@@ -48,7 +48,6 @@ if(description)
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -97,13 +96,6 @@ foreach item (registry_enum_keys(key:key))
     }
 
     set_kb_item(name:"InstallAnywhere/Win/Ver", value:installVer);
-
-    ## build cpe and store it as host_detail
-    cpe = build_cpe(value:installVer, exp:"^([0-9.]+)", base:"cpe:/a:flexerasoftware:installanywhere:");
-    if(isnull(cpe))
-      cpe = "cpe:/a:flexerasoftware:installanywhere";
-
-    ## Register Product and Build Report
-    build_report(app:"Flexera InstallAnywhere", ver:installVer, cpe:cpe, insloc:installPath);
+    register_and_report_cpe( app:"Flexera InstallAnywhere", ver:installVer, base:"cpe:/a:flexerasoftware:installanywhere:", expr:"^([0-9.]+)", insloc:installPath );
   }
 }

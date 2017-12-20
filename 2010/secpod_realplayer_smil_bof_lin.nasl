@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realplayer_smil_bof_lin.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_realplayer_smil_bof_lin.nasl 8168 2017-12-19 07:30:15Z teissa $
 #
 # RealNetworks RealPlayer SMIL file BOF Vulnerability (Linux)
 #
@@ -36,9 +36,9 @@ tag_summary = "This host is installed with RealPlayer which is prone to Buffer
 
 if(description)
 {
-  script_id(902109);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902109");
+  script_version("$Revision: 8168 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-02-02 07:26:26 +0100 (Tue, 02 Feb 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

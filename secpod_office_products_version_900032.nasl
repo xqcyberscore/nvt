@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_office_products_version_900032.nasl 8142 2017-12-15 13:00:23Z cfischer $#
+# $Id: secpod_office_products_version_900032.nasl 8183 2017-12-19 16:49:26Z cfischer $#
 #
 # MS Office Products Version Detection
 #
@@ -58,8 +58,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900032");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8142 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 8183 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 17:49:26 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("MS Office Products Version Detection");
@@ -75,7 +75,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("version_func.inc");
@@ -88,10 +87,10 @@ WORDVIEW_LIST = make_list(" ^(9\..*)", "cpe:/a:microsoft:office_word_viewer:2000
                           "^(12\..*)", "cpe:/a:microsoft:office_word_viewer:2007",
                           "^(14\..*)", "cpe:/a:microsoft:office_word_viewer:2010",
                           "^(15\..*)", "cpe:/a:microsoft:office_word_viewer:2013",
-			              "^(16\..*)", "cpe:/a:microsoft:office_word_viewer:2016");
+                          "^(16\..*)", "cpe:/a:microsoft:office_word_viewer:2016");
 WORDVIEW_MAX = max_index(WORDVIEW_LIST);
 
-XLVIEW_LIST = make_list( "^(9\..*)", "cpe:/a:microsoft:office_excel_viewer:2000",
+XLVIEW_LIST = make_list("^(9\..*)", "cpe:/a:microsoft:office_excel_viewer:2000",
                         "^(10\..*)", "cpe:/a:microsoft:office_excel_viewer:2002",
                         "^(11\..*)", "cpe:/a:microsoft:office_excel_viewer:2003",
                         "^(12\..*)", "cpe:/a:microsoft:office_excel_viewer:2007",
@@ -100,70 +99,70 @@ XLVIEW_LIST = make_list( "^(9\..*)", "cpe:/a:microsoft:office_excel_viewer:2000"
                         "^(16\..*)", "cpe:/a:microsoft:office_excel_viewer:2016");
 XLVIEW_MAX = max_index(XLVIEW_LIST);
 
-PPVIEW_LIST = make_list( "^(9\..*)", "cpe:/a:microsoft:office_powerpoint_viewer:2000",
+PPVIEW_LIST = make_list("^(9\..*)", "cpe:/a:microsoft:office_powerpoint_viewer:2000",
                         "^(10\..*)", "cpe:/a:microsoft:office_powerpoint_viewer:2002",
                         "^(11\..*)", "cpe:/a:microsoft:office_powerpoint_viewer:2003",
                         "^(12\..*)", "cpe:/a:microsoft:office_powerpoint_viewer:2007",
                         "^(14\..*)", "cpe:/a:microsoft:office_powerpoint_viewer:2010",
                         "^(15\..*)", "cpe:/a:microsoft:office_powerpoint_viewer:2013",
-			            "^(16\..*)", "cpe:/a:microsoft:office_powerpoint_viewer:2016");
+                        "^(16\..*)", "cpe:/a:microsoft:office_powerpoint_viewer:2016");
 PPVIEW_MAX = max_index(PPVIEW_LIST);
 
-VISIO_LIST = make_list( "^(9\..*)", "cpe:/a:microsoft:visio_viewer:2000",
+VISIO_LIST = make_list("^(9\..*)", "cpe:/a:microsoft:visio_viewer:2000",
                        "^(10\..*)", "cpe:/a:microsoft:visio_viewer:2002",
                        "^(11\..*)", "cpe:/a:microsoft:visio_viewer:2003",
                        "^(12\..*)", "cpe:/a:microsoft:visio_viewer:2007",
                        "^(14\..*)", "cpe:/a:microsoft:visio_viewer:2010",
                        "^(15\..*)", "cpe:/a:microsoft:visio_viewer:2013",
-		               "^(16\..*)", "cpe:/a:microsoft:visio_viewer:2016");
+                       "^(16\..*)", "cpe:/a:microsoft:visio_viewer:2016");
 VISIO_MAX = max_index(VISIO_LIST);
 
-WORD_LIST = make_list( "^(9\..*)", "cpe:/a:microsoft:office_word:2000",
+WORD_LIST = make_list("^(9\..*)", "cpe:/a:microsoft:office_word:2000",
                       "^(10\..*)", "cpe:/a:microsoft:office_word:2002",
                       "^(11\..*)", "cpe:/a:microsoft:office_word:2003",
                       "^(12\..*)", "cpe:/a:microsoft:office_word:2007",
                       "^(14\..*)", "cpe:/a:microsoft:office_word:2010",
                       "^(15\..*)", "cpe:/a:microsoft:office_word:2013",
-		              "^(16\..*)", "cpe:/a:microsoft:office_word:2016");
+                      "^(16\..*)", "cpe:/a:microsoft:office_word:2016");
 WORD_MAX = max_index(WORD_LIST);
 
-EXCEL_LIST = make_list( "^(9\..*)", "cpe:/a:microsoft:office_excel:2000",
+EXCEL_LIST = make_list("^(9\..*)", "cpe:/a:microsoft:office_excel:2000",
                        "^(10\..*)", "cpe:/a:microsoft:office_excel:2002",
                        "^(11\..*)", "cpe:/a:microsoft:office_excel:2003",
                        "^(12\..*)", "cpe:/a:microsoft:office_excel:2007",
                        "^(14\..*)", "cpe:/a:microsoft:office_excel:2010",
                        "^(15\..*)", "cpe:/a:microsoft:office_excel:2013",
-		               "^(16\..*)", "cpe:/a:microsoft:office_excel:2016");
+                       "^(16\..*)", "cpe:/a:microsoft:office_excel:2016");
 EXCEL_MAX = max_index(EXCEL_LIST);
 
-ACCESS_LIST = make_list( "^(9\..*)", "cpe:/a:microsoft:access:2000",
+ACCESS_LIST = make_list("^(9\..*)", "cpe:/a:microsoft:access:2000",
                         "^(10\..*)", "cpe:/a:microsoft:access:2002",
                         "^(11\..*)", "cpe:/a:microsoft:access:2003",
                         "^(12\..*)", "cpe:/a:microsoft:access:2007",
                         "^(14\..*)", "cpe:/a:microsoft:access:2010",
                         "^(15\..*)", "cpe:/a:microsoft:access:2013",
-			            "^(16\..*)", "cpe:/a:microsoft:access:2016");
+                        "^(16\..*)", "cpe:/a:microsoft:access:2016");
 ACCESS_MAX = max_index(ACCESS_LIST);
 
-POWERPNT_LIST = make_list( "^(9\..*)", "cpe:/a:microsoft:office_powerpoint:2000",
+POWERPNT_LIST = make_list("^(9\..*)", "cpe:/a:microsoft:office_powerpoint:2000",
                           "^(10\..*)", "cpe:/a:microsoft:office_powerpoint:2002",
                           "^(11\..*)", "cpe:/a:microsoft:office_powerpoint:2003",
                           "^(12\..*)", "cpe:/a:microsoft:office_powerpoint:2007",
                           "^(14\..*)", "cpe:/a:microsoft:office_powerpoint:2010",
                           "^(15\..*)", "cpe:/a:microsoft:office_powerpoint:2013",
-		                  "^(16\..*)", "cpe:/a:microsoft:office_powerpoint:2016");
+                          "^(16\..*)", "cpe:/a:microsoft:office_powerpoint:2016");
 POWERPNT_MAX = max_index(POWERPNT_LIST);
 
-OUTLOOK_LIST = make_list( "^(9\..*)", "cpe:/a:microsoft:outlook:2000",
+OUTLOOK_LIST = make_list("^(9\..*)", "cpe:/a:microsoft:outlook:2000",
                          "^(10\..*)", "cpe:/a:microsoft:outlook:2002",
                          "^(11\..*)", "cpe:/a:microsoft:outlook:2003",
                          "^(12\..*)", "cpe:/a:microsoft:outlook:2007",
                          "^(14\..*)", "cpe:/a:microsoft:outlook:2010",
                          "^(15\..*)", "cpe:/a:microsoft:outlook:2013",
-			             "^(16\..*)", "cpe:/a:microsoft:outlook:2016");
+                         "^(16\..*)", "cpe:/a:microsoft:outlook:2016");
 OUTLOOK_MAX = max_index(OUTLOOK_LIST);
 
-PUBLISHER_LIST = make_list( "^(9\..*)", "cpe:/a:microsoft:office_publisher:2000",
+PUBLISHER_LIST = make_list("^(9\..*)", "cpe:/a:microsoft:office_publisher:2000",
                            "^(10\..*)", "cpe:/a:microsoft:office_publisher:2002",
                            "^(11\..*)", "cpe:/a:microsoft:office_publisher:2003",
                            "^(12\..*)", "cpe:/a:microsoft:office_publisher:2007",
@@ -172,7 +171,6 @@ PUBLISHER_LIST = make_list( "^(9\..*)", "cpe:/a:microsoft:office_publisher:2000"
                            "^(16\..*)", "cpe:/a:microsoft:office_publisher:2016");
 PUBLISHER_MAX = max_index(PUBLISHER_LIST);
 
-## start script
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
@@ -182,8 +180,7 @@ if(!registry_key_exists(key:"SOFTWARE\Microsoft\Office")){
 }
 
 # Word Viewer
-wordviewFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-                                   "\App Paths\wordview.exe", item:"Path");
+wordviewFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\wordview.exe", item:"Path");
 if(wordviewFile)
 {
   set_kb_item(name:"SMB/Office/WordView/Install/Path", value:wordviewFile);
@@ -197,11 +194,13 @@ if(wordviewFile)
     set_kb_item(name:"SMB/Office/WordView/Version", value:wordviewVer);
     set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
-    ## build cpe and store it as host_detail  
     for (i = 0; i < WORDVIEW_MAX-1; i = i + 2) {
-
-       register_and_report_cpe(app:"Microsoft Office WordView", ver:wordviewVer, base:WORDVIEW_LIST[i+1],
-                               expr:WORDVIEW_LIST[i]);
+      # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
+      if( egrep( string:wordviewVer, pattern:WORDVIEW_LIST[i] ) ) {
+        register_and_report_cpe(app:"Microsoft Office WordView", ver:wordviewVer, insloc:wordviewFile,
+                                base:WORDVIEW_LIST[i+1], expr:WORDVIEW_LIST[i]);
+        break;
+      }
     }
   }
 }
@@ -217,116 +216,115 @@ if(isnull(key_list)){
 
 foreach key(key_list)
 {
-
-foreach item (registry_enum_keys(key:key))
-{
-  if("Microsoft Office Excel Viewer" ><
-     registry_get_sz(key:key + item, item:"DisplayName"))
+  foreach item (registry_enum_keys(key:key))
   {
-    xlviewVer = registry_get_sz(key:key + item, item:"DisplayVersion");
-    if(xlviewVer != NULL)
+    if("Microsoft Office Excel Viewer" >< registry_get_sz(key:key + item, item:"DisplayName"))
     {
-      if("Wow6432Node" >< key ) {
-        xlviewFile = registry_get_sz(key:"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion",
-                                     item:"ProgramFilesDir");
-      } else {
-        xlviewFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                                     item:"ProgramFilesDir");
-      }
-
-      if(xlviewVer =~ "^11(\..*)")
-        xlviewFile += "\Microsoft Office\Office11\XLVIEW.EXE";
-      else if(xlviewVer =~ "^12(\..*)")
-        xlviewFile += "\Microsoft Office\Office12\XLVIEW.EXE";
-      else if(xlviewVer =~ "^14(\..*)")
-         xlviewFile += "\Microsoft Office\Office14\XLVIEW.EXE";
-      else if(xlviewVer =~ "^15(\..*)")
-         xlviewFile += "\Microsoft Office\Office15\XLVIEW.EXE";
-      else if(xlviewVer =~ "^16(\..*)")
-         xlviewFile += "\Microsoft Office\Office16\XLVIEW.EXE";
-
-      if(xlviewFile != NULL)
+      xlviewVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+      if(xlviewVer != NULL)
       {
-        share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:xlviewFile);
-        xlview = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:xlviewFile);
-        xlviewVer = GetVer(file:xlview, share:share);
-        if(xlviewVer != NULL){
-          set_kb_item(name:"SMB/Office/XLView/Version", value:xlviewVer);
-          set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
+        if("Wow6432Node" >< key ) {
+          xlviewFile = registry_get_sz(key:"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
+        } else {
+          xlviewFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
+        }
 
-          ## build cpe and store it as host_detail  
-          for (i = 0; i < XLVIEW_MAX-1; i = i + 2) {
-            register_and_report_cpe(app:"Microsoft Office Excel Viewer", ver:xlviewVer, base:XLVIEW_LIST[i+1],
-                                   expr:XLVIEW_LIST[i]);
+        if(xlviewVer =~ "^11(\..*)")
+          xlviewFile += "\Microsoft Office\Office11\XLVIEW.EXE";
+        else if(xlviewVer =~ "^12(\..*)")
+          xlviewFile += "\Microsoft Office\Office12\XLVIEW.EXE";
+        else if(xlviewVer =~ "^14(\..*)")
+           xlviewFile += "\Microsoft Office\Office14\XLVIEW.EXE";
+        else if(xlviewVer =~ "^15(\..*)")
+           xlviewFile += "\Microsoft Office\Office15\XLVIEW.EXE";
+        else if(xlviewVer =~ "^16(\..*)")
+           xlviewFile += "\Microsoft Office\Office16\XLVIEW.EXE";
+
+        if(xlviewFile != NULL)
+        {
+          share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:xlviewFile);
+          xlview = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:xlviewFile);
+          xlviewVer = GetVer(file:xlview, share:share);
+          if(xlviewVer != NULL){
+            set_kb_item(name:"SMB/Office/XLView/Version", value:xlviewVer);
+            set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
+
+            for (i = 0; i < XLVIEW_MAX-1; i = i + 2) {
+              # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
+              if( egrep( string:xlviewVer, pattern:XLVIEW_LIST[i] ) ) {
+                register_and_report_cpe(app:"Microsoft Office Excel Viewer", ver:xlviewVer, insloc:xlviewFile,
+                                        base:XLVIEW_LIST[i+1], expr:XLVIEW_LIST[i]);
+                break;
+              }
+            }
           }
         }
       }
     }
-  }
-  if("Microsoft Office PowerPoint Viewer" >< registry_get_sz(key:key + item, item:"DisplayName")||
-          "Microsoft PowerPoint Viewer" >< registry_get_sz(key:key + item, item:"DisplayName")) 
-  {
-    pptviewVer = registry_get_sz(key:key + item, item:"DisplayVersion");
-    if(pptviewVer != NULL)
+    if("Microsoft Office PowerPoint Viewer" >< registry_get_sz(key:key + item, item:"DisplayName")||
+       "Microsoft PowerPoint Viewer" >< registry_get_sz(key:key + item, item:"DisplayName")) 
     {
-      if("Wow6432Node" >< key ) {
-        ppviewFile = registry_get_sz(key:"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion",
-                                     item:"ProgramFilesDir");
-      } else {
-        ppviewFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                                     item:"ProgramFilesDir");
-      }
-
-      if(pptviewVer =~ "^11(\..*)")
-        ppviewFile += "\Microsoft Office\PowerPoint Viewer\PPTVIEW.exe";
-      else if(pptviewVer =~ "^12(\..*)")
-        ppviewFile += "\Microsoft Office\Office12\PPTVIEW.exe";
-      else if (pptviewVer =~ "^14(\..*)")
-        ppviewFile += "\Microsoft Office\Office14\PPTVIEW.exe";
-      else if (pptviewVer =~ "^15(\..*)")
-        ppviewFile += "\Microsoft Office\Office15\PPTVIEW.exe";
-      else if (pptviewVer =~ "^16(\..*)")
-        ppviewFile += "\Microsoft Office\Office16\PPTVIEW.exe";
-
-      if(ppviewFile != NULL)
+      pptviewVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+      if(pptviewVer != NULL)
       {
-        share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:ppviewFile);
-        pptview = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:ppviewFile);
-        pptviewVer = GetVer(file:pptview, share:share);
-        if(pptviewVer != NULL){
-          set_kb_item(name:"SMB/Office/PPView/Version", value:pptviewVer);
-          set_kb_item(name:"SMB/Office/PPView/FilePath", value:ppviewFile);
-          set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );  
+        if("Wow6432Node" >< key ) {
+          ppviewFile = registry_get_sz(key:"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
+        } else {
+          ppviewFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
+        }
 
-          ## build cpe and store it as host_detail  
-          for (i = 0; i < PPVIEW_MAX-1; i = i + 2) {
-             register_and_report_cpe(app:"Microsoft PowerPoint Viewer", ver:pptviewVer, base:PPVIEW_LIST[i+1],
-                                   expr:PPVIEW_LIST[i]);
+        if(pptviewVer =~ "^11(\..*)")
+          ppviewFile += "\Microsoft Office\PowerPoint Viewer\PPTVIEW.exe";
+        else if(pptviewVer =~ "^12(\..*)")
+          ppviewFile += "\Microsoft Office\Office12\PPTVIEW.exe";
+        else if (pptviewVer =~ "^14(\..*)")
+          ppviewFile += "\Microsoft Office\Office14\PPTVIEW.exe";
+        else if (pptviewVer =~ "^15(\..*)")
+          ppviewFile += "\Microsoft Office\Office15\PPTVIEW.exe";
+        else if (pptviewVer =~ "^16(\..*)")
+          ppviewFile += "\Microsoft Office\Office16\PPTVIEW.exe";
+
+        if(ppviewFile != NULL)
+        {
+          share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:ppviewFile);
+          pptview = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:ppviewFile);
+          pptviewVer = GetVer(file:pptview, share:share);
+          if(pptviewVer != NULL){
+            set_kb_item(name:"SMB/Office/PPView/Version", value:pptviewVer);
+            set_kb_item(name:"SMB/Office/PPView/FilePath", value:ppviewFile);
+            set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );  
+
+            for (i = 0; i < PPVIEW_MAX-1; i = i + 2) {
+              # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
+              if( egrep( string:pptviewVer, pattern:PPVIEW_LIST[i] ) ) {
+                register_and_report_cpe(app:"Microsoft PowerPoint Viewer", ver:pptviewVer, insloc:ppviewFile,
+                                        base:PPVIEW_LIST[i+1], expr:PPVIEW_LIST[i]);
+                break;
+              }
+            }
           }
         }
       }
     }
-  }
-  if("Compatibility Pack" ><
-     registry_get_sz(key:key + item, item:"DisplayName"))
-  {
-    cPackVer = registry_get_sz(key:key + item, item:"DisplayVersion");
-    if(cPackVer != NULL){
-      set_kb_item(name:"SMB/Office/ComptPack/Version", value:cPackVer);
-      set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
+    if("Compatibility Pack" >< registry_get_sz(key:key + item, item:"DisplayName"))
+    {
+      cPackVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+      if(cPackVer != NULL){
+        set_kb_item(name:"SMB/Office/ComptPack/Version", value:cPackVer);
+        set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
-      ## build cpe and store it as host detail
-      register_and_report_cpe(app:"Microsoft Office Compatibility Pack", ver:cPackVer,
-                              base:"cpe:/a:microsoft:compatibility_pack_word_excel_powerpoint:2007:",
-                              expr:"^(12\..)*");
+        # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
+        if( cPackVer =~ "^(12\..*)" ) {
+          register_and_report_cpe(app:"Microsoft Office Compatibility Pack", ver:cPackVer,
+                                  base:"cpe:/a:microsoft:compatibility_pack_word_excel_powerpoint:2007:", expr:"^(12\..*)");
+        }
+      }
     }
   }
-}
 }
 
 # Office Groove
-groovePath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-                                 "\App Paths\GROOVE.EXE", item:"Path");
+groovePath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\GROOVE.EXE", item:"Path");
 if(groovePath != NULL)
 {
   groovePath += "\GROOVE.exe";
@@ -337,18 +335,18 @@ if(groovePath != NULL)
     set_kb_item(name:"SMB/Office/Groove/Version", value:grooveVer);
     set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
-    ## build cpe and store it as host detail
-    register_and_report_cpe(app:"Microsoft Office Groove", ver:grooveVer,
-                              base:"cpe:/a:microsoft:office_groove:2007:",
-                              expr:"^(12\..)*");
+    # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
+    if( grooveVer =~ "^(12\..*)" ) {
+      register_and_report_cpe(app:"Microsoft Office Groove", ver:grooveVer, insloc:groovePath,
+                              base:"cpe:/a:microsoft:office_groove:2007:", expr:"^(12\..*)");
+    }
   }
 }
 
 # Office Power Point Convertes
 if(registry_key_exists(key:"SOFTWARE\Microsoft\Office"))
 {
-  ppcnvFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                              item:"ProgramFilesDir");
+  ppcnvFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
   if(ppcnvFile)
   {
     ppcnvFile += "\Microsoft Office\Office12\PPCNVCOM.exe";
@@ -359,33 +357,31 @@ if(registry_key_exists(key:"SOFTWARE\Microsoft\Office"))
       set_kb_item(name:"SMB/Office/PowerPntCnv/Version", value:ppcnvVer);
       set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
-      ## build cpe and store it as host detail
-      ##Need to update base value
-      register_and_report_cpe(app:"Microsoft Offic Power Point", ver:ppcnvVer,
-                              base:"",
-                              expr:"^(12\..)*");
+      # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
+      if( ppcnvVer =~ "^(12\..*)" ) {
+        ##Need to update base value
+        register_and_report_cpe(app:"Microsoft Offic Power Point", ver:ppcnvVer, insloc:ppcnvFile,
+                                base:"", expr:"^(12\..)*");
+      }
     }
   }
 }
-
 
 visiovVer = "";
 visioPath = "";
 exePath = "";
 # Office Visio Viewer
-visioPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                            item:"ProgramFilesDir");
-visioPath1 = registry_get_sz(key:"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion",
-                            item:"ProgramFilesDir");
+visioPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
+visioPath1 = registry_get_sz(key:"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
 if(visioPath || visioPath1)
 {
   foreach path (make_list("Office12", "Office14", "Office15", "Office16"))
   {
     ## Get Version from msptls.dll
-    exePath = visioPath + "\Microsoft Office\" + path ;
+    exePath = visioPath + "\Microsoft Office\" + path;
     visiovVer = fetch_file_version(sysPath:exePath, file_name:"Vpreview.exe");
     if(!visiovVer) {
-      exePath = visioPath1 + "\Microsoft Office\" + path ;
+      exePath = visioPath1 + "\Microsoft Office\" + path;
       visiovVer = fetch_file_version(sysPath:exePath, file_name:"Vpreview.exe");
     }
     if(visiovVer)
@@ -394,10 +390,13 @@ if(visioPath || visioPath1)
       set_kb_item(name:"SMB/Office/VisioViewer/Ver", value:visiovVer);
       set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE ); 
 
-      ## build cpe and store it as host_detail  
       for (i = 0; i < VISIO_MAX-1; i = i + 2) {
-        register_and_report_cpe(app:"Microsoft Office VisioViewer", ver:visiovVer,
-                                base:VISIO_LIST[i+1], expr:VISIO_LIST[i]);
+        # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
+        if( egrep( string:visiovVer, pattern:VISIO_LIST[i] ) ) {
+          register_and_report_cpe(app:"Microsoft Office VisioViewer", ver:visiovVer, insloc:exePath + "\Vpreview.exe",
+                                  base:VISIO_LIST[i+1], expr:VISIO_LIST[i]);
+          break;
+        }
       }
     }
   }
@@ -409,8 +408,7 @@ if(!get_kb_item("MS/Office/Ver") && !registry_key_exists(key:"SOFTWARE\Microsoft
 }
 
 # Office Word
-wordFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-                               "\App Paths\Winword.exe", item:"Path");
+wordFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Winword.exe", item:"Path");
 if(wordFile)
 {
   set_kb_item(name:"SMB/Office/Word/Install/Path", value:wordFile);
@@ -424,17 +422,19 @@ if(wordFile)
     set_kb_item(name:"SMB/Office/Word/Version", value:wordVer);
     set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE ); 
 
-    ## build cpe and store it as host_detail  
     for (i = 0; i < WORD_MAX-1; i = i + 2) {
-       register_and_report_cpe(app:"Microsoft Office Word", ver:wordVer,
-                                 base:WORD_LIST[i+1], expr:WORD_LIST[i]);
+      # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
+      if( egrep( string:wordVer, pattern:WORD_LIST[i] ) ) {
+        register_and_report_cpe(app:"Microsoft Office Word", ver:wordVer, insloc:wordFile,
+                                base:WORD_LIST[i+1], expr:WORD_LIST[i]);
+        break;
+      }
     }
   }
 }
 
 # Office Excel
-excelFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-                                "\App Paths\Excel.exe", item:"Path");
+excelFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Excel.exe", item:"Path");
 if(excelFile)
 {
   set_kb_item(name:"SMB/Office/Excel/Install/Path", value:excelFile);
@@ -448,17 +448,19 @@ if(excelFile)
     set_kb_item(name:"SMB/Office/Excel/Version", value:excelVer);
     set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
-    ## build cpe and store it as host_detail  
     for (i = 0; i < EXCEL_MAX-1; i = i + 2) {
-       register_and_report_cpe(app:"Microsoft Office Excel", ver:excelVer,
-                                 base:EXCEL_LIST[i+1], expr:EXCEL_LIST[i]);
+      # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
+      if( egrep( string:excelVer, pattern:EXCEL_LIST[i] ) ) {
+        register_and_report_cpe(app:"Microsoft Office Excel", ver:excelVer, insloc:excelFile,
+                                base:EXCEL_LIST[i+1], expr:EXCEL_LIST[i]);
+        break;
+      }
     }
   }
 }
 
 # Office Access
-accessFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-                                 "\App Paths\MSACCESS.exe", item:"Path");
+accessFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\MSACCESS.exe", item:"Path");
 if(accessFile)
 {
   accessFile += "\msaccess.exe";
@@ -469,17 +471,19 @@ if(accessFile)
     set_kb_item(name:"SMB/Office/Access/Version", value:accessVer);
     set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
-    ## build cpe and store it as host_detail  
     for (i = 0; i < ACCESS_MAX-1; i = i + 2) {
-       register_and_report_cpe(app:"Microsoft Office Access", ver:accessVer,
-                                 base:ACCESS_LIST[i+1], expr:ACCESS_LIST[i]);
+      # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
+      if( egrep( string:accessVer, pattern:ACCESS_LIST[i] ) ) {
+        register_and_report_cpe(app:"Microsoft Office Access", ver:accessVer, insloc:accessFile,
+                                base:ACCESS_LIST[i+1], expr:ACCESS_LIST[i]);
+        break;
+      }
     }
   }
 }
 
 # Office PowerPoint
-powerpointFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-                                     "\App Paths\PowerPnt.exe", item:"Path");
+powerpointFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\PowerPnt.exe", item:"Path");
 if(powerpointFile)
 {
   powerpointFile += "\powerpnt.exe";
@@ -490,37 +494,40 @@ if(powerpointFile)
     set_kb_item(name:"SMB/Office/PowerPnt/Version", value:powerPptVer);
     set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
-    ## build cpe and store it as host_detail  
     for (i = 0; i < POWERPNT_MAX-1; i = i + 2) {
-       register_and_report_cpe(app:"Microsoft Office PowerPoint", ver:powerPptVer,
-                                 base:POWERPNT_LIST[i+1], expr:POWERPNT_LIST[i]);
+      # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
+      if( egrep( string:powerPptVer, pattern:POWERPNT_LIST[i] ) ) {
+        register_and_report_cpe(app:"Microsoft Office PowerPoint", ver:powerPptVer, insloc:powerpointFile,
+                                base:POWERPNT_LIST[i+1], expr:POWERPNT_LIST[i]);
+        break;
+      }
     }
   }
 }
 
 # Office Word Converter
-wordcnvFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                              item:"ProgramFilesDir");
+wordcnvFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
 if(wordcnvFile)
 {
   wordcnvFile += "\Microsoft Office\Office12\Wordconv.exe";
   share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:wordcnvFile);
   word  = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:wordcnvFile);
   wordcnvVer = GetVer(file:word, share:share);
-   if(wordcnvVer){
+  if(wordcnvVer){
     set_kb_item(name:"SMB/Office/WordCnv/Version", value:wordcnvVer);
     set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
-    ## build cpe and store it as host detail
-    ## Add BASE Value
-    register_and_report_cpe(app:"Microsoft Office Word Converter", ver:wordcnvVer,
-                                 base:"", expr:"^(12\..*)");
+    # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
+    if( wordcnvVer =~ "^(12\..*)" ) {
+      ## Add BASE Value
+      register_and_report_cpe(app:"Microsoft Office Word Converter", ver:wordcnvVer, insloc:wordcnvFile,
+                              base:"", expr:"^(12\..*)");
+    }
   }
 }
 
 # Office Excel Converter
-xlcnvFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                            item:"ProgramFilesDir");
+xlcnvFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
 if(xlcnvFile)
 {
   xlcnvFile += "\Microsoft Office\Office12\excelcnv.exe";
@@ -531,56 +538,60 @@ if(xlcnvFile)
     set_kb_item(name:"SMB/Office/XLCnv/Version", value:xlcnvVer);
     set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
-    ## Add BASE Value
-    ## build cpe and store it as host detail
-    register_and_report_cpe(app:"Microsoft Office Excel Converter", ver:xlcnvVer,
-                                 base:"", expr:"^(12\..*)");
+    # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
+    if( xlcnvVer =~ "^(12\..*)" ) {
+      ## Add BASE Value
+      register_and_report_cpe(app:"Microsoft Office Excel Converter", ver:xlcnvVer, insloc:xlcnvFile,
+                              base:"", expr:"^(12\..*)");
+    }
   }
 }
 
 # Office Publisher
-pubFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-                              "\App Paths\MSPUB.EXE", item:"Path");
+pubFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\MSPUB.EXE", item:"Path");
 if(pubFile)
 {
   set_kb_item(name:"SMB/Office/Publisher/Installed/Path", value:pubFile);
   set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
  
   share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:pubFile);
-  pub = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                     string:pubFile + "\MSPUB.exe");
+  pub = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:pubFile + "\MSPUB.exe");
   pubVer = GetVer(file:pub, share:share);
   if(pubVer){
     set_kb_item(name:"SMB/Office/Publisher/Version", value:pubVer);
     set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
-    ## build cpe and store it as host_detail  
     for (i = 0; i < PUBLISHER_MAX-1; i = i + 2) {
-      register_and_report_cpe(app:"Microsoft Office Publisher", ver:pubVer,
-                                 base:PUBLISHER_LIST[i+1], expr:PUBLISHER_LIST[i]);
+      # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
+      if( egrep( string:pubVer, pattern:PUBLISHER_LIST[i] ) ) {
+        register_and_report_cpe(app:"Microsoft Office Publisher", ver:pubVer, insloc:pubFile + "\MSPUB.exe",
+                                base:PUBLISHER_LIST[i+1], expr:PUBLISHER_LIST[i]);
+        break;
+      }
     }
   }
 }
 
 # Office outlook
-outlookFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-                              "\App Paths\OUTLOOK.EXE", item:"Path");
+outlookFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\OUTLOOK.EXE", item:"Path");
 if(outlookFile)
 {
   set_kb_item(name:"SMB/Office/Outlook/Install/Path", value:outlookFile);
 
   share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:outlookFile);
-  outlookFile = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                             string:outlookFile + "\OUTLOOK.EXE");
-  outlookVer = GetVer(file:outlookFile, share:share);
+  outlook = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:outlookFile + "\OUTLOOK.EXE");
+  outlookVer = GetVer(file:outlook, share:share);
   if(outlookVer){
     set_kb_item(name:"SMB/Office/Outlook/Version", value:outlookVer);
     set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
-    ## build cpe and store it as host_detail  
     for (i = 0; i < OUTLOOK_MAX-1; i = i + 2) {
-      register_and_report_cpe(app:"Microsoft Office Outlook", ver:outlookVer,
-                                 base:OUTLOOK_LIST[i+1], expr:OUTLOOK_LIST[i]);
+      # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
+      if( egrep( string:outlookVer, pattern:OUTLOOK_LIST[i] ) ) {
+        register_and_report_cpe(app:"Microsoft Office Outlook", ver:outlookVer, insloc:outlookFile + "\OUTLOOK.EXE",
+                                base:OUTLOOK_LIST[i+1], expr:OUTLOOK_LIST[i]);
+        break;
+      }
     }
   }
 }

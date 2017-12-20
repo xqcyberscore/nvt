@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_code_exec_vuln_jan17.nasl 5141 2017-01-31 07:40:05Z antu123 $
+# $Id: gb_apple_itunes_mult_code_exec_vuln_jan17.nasl 8169 2017-12-19 08:42:31Z cfischer $
 #
 # Apple iTunes Multiple Code Execution Vulnerabilities Jan17 (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810526");
-  script_version("$Revision: 5141 $");
+  script_version("$Revision: 8169 $");
   script_cve_id("CVE-2017-2354", "CVE-2017-2355", "CVE-2017-2356", "CVE-2017-2366");
   script_bugtraq_id(95736, 95733);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 08:40:05 +0100 (Tue, 31 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-01-30 13:20:32 +0530 (Mon, 30 Jan 2017)");
   script_name("Apple iTunes Multiple Code Execution Vulnerabilities Jan17 (Windows)");
 
@@ -68,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
-  script_mandatory_keys("iTunes/Win/Ver");
+  script_mandatory_keys("iTunes/Win/Installed");
   exit(0);
 }
 

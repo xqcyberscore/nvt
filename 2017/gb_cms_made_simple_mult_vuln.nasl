@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_mult_vuln.nasl 7968 2017-12-01 08:26:28Z asteins $
+# $Id: gb_cms_made_simple_mult_vuln.nasl 8171 2017-12-19 09:09:46Z jschulte $
 #
 # CMS Made Simple 2.2.3.1 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112119");
-  script_version("$Revision: 7968 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-01 09:26:28 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 8171 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-19 10:09:46 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-13 13:56:33 +0100 (Mon, 13 Nov 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("CMS Made Simple 2.2.3.1 Multiple Vulnerabilities");
 
@@ -65,8 +65,7 @@ a related issue to CVE-2010-3882. (CVE-2017-16799)");
 
   script_tag(name: "affected", value: "CMS Made Simple version 2.2.3.1.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 13th November, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Upgrade to CMS Made Simple version 2.2.4 or above.");
 
   script_xref(name: "URL", value: "https://github.com/bsmali4/cve/blob/master/CMS%20Made%20Simple%20Stored%20XSS.md");
   script_xref(name: "URL", value: "https://github.com/bsmali4/cve/blob/master/CMS%20Made%20Simple%20UPLOAD%20FILE%20XSS.md");
@@ -84,7 +83,7 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_equal(version: version, test_version: "2.2.3.1")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+  report = report_fixed_ver(installed_version: version, fixed_version: "2.2.4");
   security_message(port: port, data: report);
   exit(0);
 }

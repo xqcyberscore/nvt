@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_integer_overflow_vuln01_jun13_win.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_imagemagick_integer_overflow_vuln01_jun13_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
 #
 # ImageMagick Integer Overflow Vulnerability - 01 June13 (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:imagemagick:imagemagick";
+
 tag_impact = "Successful exploitation will allow a context-dependent attacker to cause
   denial of service condition or potentially execute arbitrary code.
   Impact Level: Application/System";
@@ -40,10 +42,10 @@ tag_summary = "The host is installed with ImageMagick and is prone to integer
 if(description)
 {
   script_id(803814);
-  script_version("$Revision: 6125 $");
+  script_version("$Revision: 8173 $");
   script_cve_id("CVE-2012-1185");
   script_bugtraq_id(51957);
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-06-24 11:06:50 +0530 (Mon, 24 Jun 2013)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -54,7 +56,7 @@ if(description)
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
-  script_mandatory_keys("ImageMagick/Win/Ver");
+  script_mandatory_keys("ImageMagick/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -65,15 +67,17 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("version_func.inc");
 
-imageVer = get_kb_item("ImageMagick/Win/Ver");
-if(!imageVer){
-  exit(0);
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
+if( version_is_less( version:vers, test_version:"6.7.5.1" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"6.7.5.1", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-if(version_is_less(version:imageVer, test_version:"6.7.5.1"))
-{
-  security_message(0);
-  exit(0);
-}
+exit( 99 );

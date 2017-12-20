@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_storage_mirroring_unspecified_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_hp_storage_mirroring_unspecified_vuln.nasl 8169 2017-12-19 08:42:31Z cfischer $
 #
 # HP StorageWorks Storage Mirroring Unspecified Vulnerability
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:adobe:photoshop_cc2017";
+
 tag_impact = "Successful exploitation could allow remote attackers to execute arbitrary code
   via unknown vectors.
   Impact Level: Application/System";
@@ -37,22 +39,20 @@ tag_summary = "This host is installed with HP StorageWorks Storage Mirroring and
 if(description)
 {
   script_id(801357);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 8169 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-15 06:05:27 +0200 (Tue, 15 Jun 2010)");
   script_cve_id("CVE-2010-1962"); 
   script_bugtraq_id(40539); 
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("HP StorageWorks Storage Mirroring Unspecified Vulnerability");
-
-
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_hp_storage_mirroring_detect.nasl");
-  script_require_keys("HP/SWSM");
+  script_mandatory_keys("HP/SWSM/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -64,16 +64,17 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Get version from KB
-hpsmVer = get_kb_item("HP/SWSM");
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
-if(hpsmVer)
-{
-  ## Grep for HP StorageWorks Storage Mirroring version 5 before 5.2.1.870.0
-  if(version_in_range(version:hpsmVer, test_version:"5.0", test_version2:"5.2.1.869")){
-    security_message(0);
-  }
+## Grep for HP StorageWorks Storage Mirroring version 5 before 5.2.1.870.0
+if( version_in_range( version:vers, test_version:"5.0", test_version2:"5.2.1.869" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"5.2.1.870.0", install_path:path );
+  security_message( port:0, data:report );
 }
+
+exit( 99 );

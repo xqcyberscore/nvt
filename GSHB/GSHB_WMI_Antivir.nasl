@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_Antivir.nasl 7279 2017-09-26 13:40:36Z cfischer $
+# $Id: GSHB_WMI_Antivir.nasl 8177 2017-12-19 13:39:45Z emoss $
 #
 # WMI AntiVirus Test
 #
@@ -33,8 +33,8 @@ tag_summary = "Tests WMI AntiVirus Status.";
 if(description)
 {
   script_id(96011);
-  script_version("$Revision: 7279 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:40:36 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 8177 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:39:45 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,6 @@ if(description)
   script_mandatory_keys("Compliance/Launch/GSHB");
   script_mandatory_keys("Tools/Present/wmi");
    
-#  script_require_ports(139, 445);
   script_dependencies("toolcheck.nasl", "smb_login.nasl", "GSHB_WMI_OSInfo.nasl");
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
@@ -114,11 +113,12 @@ if(OSVER == '5.1' || (OSVER == '5.2' && OSNAME >< 'Microsoft(R) Windows(R) XP Pr
  }
 
 }
-if((OSVER == '6.0' || OSVER == '6.1' || OSVER == '6.2') && OSTYPE =='1'){ #Windows Vista, Windows 7 and Windows 8
+if((OSVER == '6.0' || OSVER == '6.1' || OSVER == '6.2' || OSVER == '6.3' || OSVER == '10.0') && OSTYPE =='1'){ #Windows Vista, Windows 7, Windows 8 and Windows 10
 
     ns = 'root\\SecurityCenter2';
     query1 = 'select displayName from AntiVirusProduct';
     query2 = 'select productState from AntiVirusProduct';
+    query3 = 'select * from AntiVirusProduct';
 
     handle = wmi_connect(host:host, username:usrname, password:passwd, ns:ns);
 
@@ -130,6 +130,7 @@ if((OSVER == '6.0' || OSVER == '6.1' || OSVER == '6.2') && OSTYPE =='1'){ #Windo
 
     AntiVir_Name = wmi_query(wmi_handle:handle, query:query1);
     AntiVir_State = wmi_query(wmi_handle:handle, query:query2);
+    AntiVir_SecurityCenter2 = wmi_query(wmi_handle:handle, query:query3);
 
     wmi_close(wmi_handle:handle);
 
@@ -145,11 +146,13 @@ if(!AntiVir_Name) AntiVir_Name = "None";
 if(!AntiVir_UpDate) AntiVir_UpDate = "None";
 if(!AntiVir_Enable) AntiVir_Enable = "None";
 if(!AntiVir_State) AntiVir_State = "None";
+if(!AntiVir_SecurityCenter2) AntiVir_SecurityCenter2 = "None";
 
 set_kb_item(name:"WMI/Antivir", value:Antivir);
 set_kb_item(name:"WMI/Antivir/Name", value:AntiVir_Name);
 set_kb_item(name:"WMI/Antivir/UptoDate", value:AntiVir_UpDate);
 set_kb_item(name:"WMI/Antivir/Enable", value:AntiVir_Enable);
 set_kb_item(name:"WMI/Antivir/State", value:AntiVir_State);
+set_kb_item(name:"WMI/Antivir/SecurityCenter2", value:AntiVir_SecurityCenter2);
 exit(0);
 

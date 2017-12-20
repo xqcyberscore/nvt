@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3458.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3458.nasl 8168 2017-12-19 07:30:15Z teissa $
 # Auto-generated from advisory DSA 3458-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,12 +29,12 @@
 
 if(description)
 {
-    script_id(703458);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703458");
+    script_version("$Revision: 8168 $");
     script_cve_id("CVE-2015-7575", "CVE-2016-0402", "CVE-2016-0448", "CVE-2016-0466",
                   "CVE-2016-0483", "CVE-2016-0494");
     script_name("Debian Security Advisory DSA 3458-1 (openjdk-7 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-01-27 00:00:00 +0100 (Wed, 27 Jan 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");

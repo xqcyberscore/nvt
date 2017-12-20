@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flash_player_mult_vuln_win_sep11.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: secpod_adobe_flash_player_mult_vuln_win_sep11.nasl 8178 2017-12-19 13:42:38Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities September-2011 (Windows)
 #
@@ -24,20 +24,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:adobe:flash_player";
+
 tag_impact = "Successful exploitation will let attackers to execute arbitrary code or cause
   a denial of service.
   Impact Level: System/Application";
 tag_affected = "Adobe Flash Player versions prior to 10.3.183.10 on Windows.";
 tag_insight = "The flaws are due to
+
   - Stack-based buffer overflow in the ActionScript Virtual Machine (AVM)
     component, allows remote attackers to execute arbitrary code via
     unspecified vectors.
+
   - logic error issue, allows attackers to execute arbitrary code or cause a
     denial of service (browser crash) via unspecified vectors.
+
   - security control bypass, allows attackers to bypass intended access
     restrictions and obtain sensitive information via unspecified vectors
+
   - logic error vulnerability, allows remote attackers to execute arbitrary
     code via crafted streaming media.
+
   - Cross-site scripting (XSS) vulnerability, allows remote attackers to
     inject arbitrary web script or HTML via a crafted URL.";
 tag_solution = "Upgrade to Adobe Flash Player version 10.3.183.10 or later.
@@ -48,8 +55,8 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 if(description)
 {
   script_id(902738);
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 8178 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-09-30 15:58:03 +0200 (Fri, 30 Sep 2011)");
   script_cve_id("CVE-2011-2426", "CVE-2011-2427", "CVE-2011-2428",
                 "CVE-2011-2429", "CVE-2011-2430", "CVE-2011-2444");
@@ -64,7 +71,7 @@ if(description)
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_require_keys("AdobeFlashPlayer/Win/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -73,16 +80,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Get the version from KB
-flashVer = get_kb_item("AdobeFlashPlayer/Win/Ver");
-if(!flashVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Check for Adobe Flash Player versions prior to 10.3.183.10
-if(version_is_less(version:flashVer, test_version:"10.3.183.10")){
-  security_message(0);
+if( version_is_less( version:vers, test_version:"10.3.183.10" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"10.3.183.10", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

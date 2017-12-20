@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_vuln_jul13_win.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_vlc_media_player_mult_vuln_jul13_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
 #
 # VLC Media Player Multiple Vulnerabilities - July 13 (Windows)
 #
@@ -24,46 +24,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "
-  Impact Level: System/Application";
+CPE = "cpe:/a:videolan:vlc_media_player";
 
 if(description)
 {
   script_id(803900);
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 8174 $");
   script_cve_id("CVE-2013-1868", "CVE-2012-5855");
   script_bugtraq_id(57079,56405);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-07-16 14:24:20 +0530 (Tue, 16 Jul 2013)");
   script_name("VLC Media Player Multiple Vulnerabilities - July 13 (Windows)");
 
-  tag_summary =
-"This host is installed with VLC Media Player and is prone to multiple
+  tag_summary = "This host is installed with VLC Media Player and is prone to multiple
 vulnerabilities.";
 
-  tag_insight =
-"Multiple flaws due to,
+  tag_insight = "Multiple flaws due to,
+
  - Error in 'SHAddToRecentDocs()' function.
+
  - Error due to improper validation of user supplied inputs when handling
    HTML subtitle files.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to overflow buffer, cause denial
-of service or potentially execution of arbitrary code.";
+  tag_impact = "Successful exploitation will allow attackers to overflow buffer, cause denial
+of service or potentially execution of arbitrary code.
 
-  tag_affected =
-"VLC media player version 2.0.4 and prior on Windows";
+  Impact Level: System/Application";
 
-  tag_solution =
-"Upgrade to VLC media player version 2.0.5 or later,
+  tag_affected = "VLC media player version 2.0.4 and prior on Windows";
+
+  tag_solution = "Upgrade to VLC media player version 2.0.5 or later,
 For updates refer to http://www.videolan.org/vlc";
-
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
@@ -80,25 +76,22 @@ For updates refer to http://www.videolan.org/vlc";
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
-  script_mandatory_keys("VLCPlayer/Win/Ver");
+  script_mandatory_keys("VLCPlayer/Win/Installed");
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-vlcVer = "";
-
-## Get the version from KB
-vlcVer = get_kb_item("VLCPlayer/Win/Ver");
-if(!vlcVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Check for VLC Media Player Version <= 2.0.4
-if(version_is_less_equal(version:vlcVer, test_version:"2.0.4"))
-{
-  security_message(0);
-  exit(0);
+if( version_is_less_equal( version:vers, test_version:"2.0.4" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.0.5", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3471.nasl 7900 2017-11-24 10:35:02Z asteins $
+# $Id: deb_3471.nasl 8168 2017-12-19 07:30:15Z teissa $
 # Auto-generated from advisory DSA 3471-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,15 +29,15 @@
 
 if(description)
 {
-    script_id(703471);
-    script_version("$Revision: 7900 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703471");
+    script_version("$Revision: 8168 $");
     script_cve_id("CVE-2015-7295", "CVE-2015-7504", "CVE-2015-7512", "CVE-2015-7549",
                   "CVE-2015-8345", "CVE-2015-8504", "CVE-2015-8550", "CVE-2015-8558",
                   "CVE-2015-8567", "CVE-2015-8568", "CVE-2015-8613", "CVE-2015-8619",
                   "CVE-2015-8743", "CVE-2015-8744", "CVE-2015-8745", "CVE-2016-1568",
                   "CVE-2016-1714", "CVE-2016-1922", "CVE-2016-1981");
     script_name("Debian Security Advisory DSA 3471-1 (qemu - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-11-24 11:35:02 +0100 (Fri, 24 Nov 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-02-08 00:00:00 +0100 (Mon, 08 Feb 2016)");
     script_tag(name:"cvss_base", value:"9.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_apr10.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_apple_itunes_mult_vuln_apr10.nasl 8169 2017-12-19 08:42:31Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities - Apr10
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:apple:itunes";
+
 tag_impact = "Successful exploitation could allow the attacker to cause denial of service and
   obtain system privileges during installation.
   Impact Level: Application";
@@ -43,8 +45,8 @@ tag_summary = "This host has iTunes installed, which is prone to multiple
 if(description)
 {
   script_id(800495);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 8169 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-06 08:47:09 +0200 (Tue, 06 Apr 2010)");
   script_cve_id("CVE-2010-0531", "CVE-2010-0532");
   script_tag(name:"cvss_base", value:"6.9");
@@ -59,7 +61,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
-  script_require_keys("iTunes/Win/Ver");
+  script_mandatory_keys("iTunes/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -68,15 +70,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-ituneVer= get_kb_item("iTunes/Win/Ver");
-if(!ituneVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 #  Apple iTunes version < 9.1 (9.1.0.79)
-if(version_is_less(version:ituneVer, test_version:"9.1.0.79")){
-  security_message(0);
+if( version_is_less( version:vers, test_version:"9.1.0.79" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"9.1.0.79", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

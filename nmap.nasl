@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap.nasl 8137 2017-12-15 11:26:42Z cfischer $
+# $Id: nmap.nasl 8163 2017-12-19 06:26:30Z cfischer $
 #
 # Nmap (NASL wrapper)
 #
@@ -30,11 +30,14 @@
 # Nmap can be found at :
 # <http://nmap.org>
 
+include("gos_funcs.inc");
+include("version_func.inc");
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14259");
-  script_version("$Revision: 8137 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 8163 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:26:30 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,7 +56,15 @@ if(description)
   script_add_preference(name:"Fragment IP packets (bypasses firewalls)", type:"checkbox", value:"no");
   script_add_preference(name:"Do not randomize the  order  in  which ports are scanned", type:"checkbox", value:"no");
   script_add_preference(name:"Source port :", value:"", type:"entry");
-  script_add_preference(name:"Timing policy :", type:"radio", value:"Normal;Insane;Aggressive;Polite;Sneaky;Paranoid;Custom");
+
+  gos_version = get_local_gos_version();
+  if( strlen( gos_version ) > 0 &&
+      version_is_greater_equal( version:gos_version, test_version:"4.2.4" ) ) {
+    script_add_preference(name:"Timing policy :", type:"radio", value:"Aggressive;Insane;Normal;Polite;Sneaky;Paranoid;Custom");
+  } else {
+    script_add_preference(name:"Timing policy :", type:"radio", value:"Normal;Insane;Aggressive;Polite;Sneaky;Paranoid;Custom");
+  }
+
   script_add_preference(name:"Max Retries :", value:"", type:"entry");
   script_add_preference(name:"Host Timeout (ms) :", value:"", type:"entry");
   script_add_preference(name:"Min RTT Timeout (ms) :", value:"", type:"entry");

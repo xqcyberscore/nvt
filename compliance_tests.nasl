@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: compliance_tests.nasl 7883 2017-11-23 11:22:59Z emoss $
+# $Id: compliance_tests.nasl 8168 2017-12-19 07:30:15Z teissa $
 #
 # Compliance Tests
 #
@@ -28,9 +28,9 @@ tag_summary = "This script controls various compliance tests like IT-Grundschutz
 
 if(description)
 {
-  script_id(95888);
-  script_version("$Revision: 7883 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 12:22:59 +0100 (Thu, 23 Nov 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.95888");
+  script_version("$Revision: 8168 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

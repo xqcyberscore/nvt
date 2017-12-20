@@ -59,8 +59,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2010-January/msg00018.html");
   script_id(870212);
-  script_version("$Revision: 6684 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:43:49 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8164 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:30:41 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-01-25 13:25:54 +0100 (Mon, 25 Jan 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -68,7 +68,7 @@ if(description)
   script_cve_id("CVE-2010-0097", "CVE-2010-0290", "CVE-2009-4022");
   script_name("RedHat Update for bind RHSA-2010:0062-02");
 
-  script_summary("Check for the Version of bind");
+  script_tag(name: "summary" , value: "Check for the Version of bind");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

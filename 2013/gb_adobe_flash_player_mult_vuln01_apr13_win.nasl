@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_apr13_win.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_adobe_flash_player_mult_vuln01_apr13_win.nasl 8178 2017-12-19 13:42:38Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities -01 April 13 (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:adobe:flash_player";
+
 tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
   code or cause denial-of-service condition.
   Impact Level: System/Application";
@@ -33,8 +35,11 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 tag_solution = "Upgrade to version 10.3.183.68 or 11.6.602.180,
   For updates refer to http://www.adobe.com/products/flash.html";
 tag_insight = "Multiple flaws due to,
+
   - Heap based overflow via unspecified vectors.
+
   - Integer overflow via unspecified vectors.
+
   - Use-after-free errors.";
 tag_affected = "Adobe Flash Player 10.3.183.67 and earlier, and 11.x to 11.6.602.179 on
   Windows";
@@ -47,12 +52,12 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_id(803374);
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 8178 $");
   script_cve_id("CVE-2013-1375","CVE-2013-1371","CVE-2013-0650","CVE-2013-0646");
   script_bugtraq_id(58439,58438,58440,58436);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-04-18 13:10:34 +0530 (Thu, 18 Apr 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -65,25 +70,23 @@ if(description)
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_mandatory_keys("AdobeFlashPlayer/Win/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
   exit(0);
 }
 
+include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-playerVer = "";
-
-## Get Adobe Flash Player Version from KB
-playerVer = get_kb_item("AdobeFlashPlayer/Win/Ver");
-if(!playerVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Check for Adobe Flash Player version prior to 10.3.183.68 or 11.6.602.180
-if(version_is_less(version:playerVer, test_version:"10.3.183.68") ||
-   version_in_range(version:playerVer, test_version:"11.0", test_version2:"11.6.602.179"))
-{
-  security_message(0);
-  exit(0);
+if( version_is_less( version:vers, test_version:"10.3.183.68" ) ||
+    version_in_range( version:vers, test_version:"11.0", test_version2:"11.6.602.179" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"10.3.183.68 or 11.6.602.180", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

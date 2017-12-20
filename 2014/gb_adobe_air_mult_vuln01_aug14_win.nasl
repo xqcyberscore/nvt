@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_aug14_win.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_adobe_air_mult_vuln01_aug14_win.nasl 8176 2017-12-19 12:50:00Z cfischer $
 #
 # Adobe AIR Multiple Vulnerabilities-01 Aug14 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804745");
-  script_version("$Revision: 6715 $");
+  script_version("$Revision: 8176 $");
   script_cve_id("CVE-2014-0538", "CVE-2014-0540", "CVE-2014-0541", "CVE-2014-0542",
                 "CVE-2014-0543", "CVE-2014-0544", "CVE-2014-0545", "CVE-2014-5333");
   script_bugtraq_id(69192, 69190, 69191, 69194, 69195, 69196, 69197, 69320);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:50:00 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-08-19 14:52:44 +0530 (Tue, 19 Aug 2014)");
   script_name("Adobe AIR Multiple Vulnerabilities-01 Aug14 (Windows)");
 
@@ -79,7 +79,7 @@ For updates refer to  http://get.adobe.com/air";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_mandatory_keys("Adobe/Air/Win/Ver");
+  script_mandatory_keys("Adobe/Air/Win/Installed");
   exit(0);
 }
 

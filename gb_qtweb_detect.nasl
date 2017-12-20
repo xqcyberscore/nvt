@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qtweb_detect.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: gb_qtweb_detect.nasl 8168 2017-12-19 07:30:15Z teissa $
 #
 # QtWeb Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script detects the installed version of QtWeb Browser
 
 if(description)
 {
-  script_id(800898);
+  script_oid("1.3.6.1.4.1.25623.1.0.800898");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 8168 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-09-08 18:25:53 +0200 (Tue, 08 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("QtWeb Version Detection");

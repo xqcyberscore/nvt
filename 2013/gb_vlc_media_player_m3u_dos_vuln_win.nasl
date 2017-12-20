@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 8174 $");
   script_cve_id("CVE-2013-6283");
   script_bugtraq_id(61844 );
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-11-05 12:38:13 +0530 (Tue, 05 Nov 2013)");
   script_name("VLC Media Player M3U Denial of Service Vulnerability (Windows)");
 
@@ -78,7 +78,7 @@ For updates refer to http://www.videolan.org/vlc";
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
-  script_mandatory_keys("VLCPlayer/Win/Ver");
+  script_mandatory_keys("VLCPlayer/Win/Installed");
   exit(0);
 }
 

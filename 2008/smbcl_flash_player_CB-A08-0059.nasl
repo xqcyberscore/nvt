@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smbcl_flash_player_CB-A08-0059.nasl 5661 2017-03-21 11:39:13Z cfi $
+# $Id: smbcl_flash_player_CB-A08-0059.nasl 8178 2017-12-19 13:42:38Z cfischer $
 # Description: Adobe Flash Player 9.0.115.0 and earlier vulnerability (Windows)
 #
 # Authors:
@@ -30,13 +30,13 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.90019");
-  script_version("$Revision: 5661 $");
+  script_version("$Revision: 8178 $");
   script_cve_id("CVE-2007-5275", "CVE-2007-6019", "CVE-2007-6243",
                 "CVE-2007-6637", "CVE-2008-1654", "CVE-2008-1655");
   script_bugtraq_id(26930, 28694, 26966, 27034, 28696, 28697);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:39:13 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-09-03 22:30:27 +0200 (Wed, 03 Sep 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Flash Player 9.0.115.0 and earlier vulnerability (Windows)");
@@ -95,7 +95,7 @@ if(description)
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Windows");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_mandatory_keys("AdobeFlashPlayer/Win/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
   exit(0);
 }
 

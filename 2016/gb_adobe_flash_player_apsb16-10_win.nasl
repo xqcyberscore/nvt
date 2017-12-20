@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb16-10_win.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: gb_adobe_flash_player_apsb16-10_win.nasl 8178 2017-12-19 13:42:38Z cfischer $
 #
 # Adobe Flash Player Security Updates( apsb16-10 )-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807653");
-  script_version("$Revision: 5712 $");
+  script_version("$Revision: 8178 $");
   script_cve_id("CVE-2016-1006", "CVE-2016-1011", "CVE-2016-1012", "CVE-2016-1013", 
 		"CVE-2016-1014", "CVE-2016-1015", "CVE-2016-1016", "CVE-2016-1017", 
 		"CVE-2016-1018", "CVE-2016-1019", "CVE-2016-1020", "CVE-2016-1021", 
@@ -38,7 +38,7 @@ if(description)
 		"CVE-2016-1030", "CVE-2016-1031", "CVE-2016-1032", "CVE-2016-1033");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-04-12 18:40:52 +0530 (Tue, 12 Apr 2016)");
   script_name("Adobe Flash Player Security Updates( apsb16-10 )-Windows");
 
@@ -78,7 +78,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_mandatory_keys("AdobeFlashPlayer/Win/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
   exit(0);
 }
 

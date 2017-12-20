@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tortoise_svn_insecure_lib_load_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_tortoise_svn_insecure_lib_load_vuln.nasl 8169 2017-12-19 08:42:31Z cfischer $
 #
 # TortoiseSVN Insecure Library Loading Vulnerability
 #
@@ -23,6 +23,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
+CPE = "cpe:/a:tigris:tortoisesvn";
 
 tag_impact = "Successful exploitation could allow remote attackers to execute
 arbitrary code and conduct DLL hijacking attacks.
@@ -47,36 +49,19 @@ tag_summary = "This host is installed with TortoiseSVN and is prone to insecure
 if(description)
 {
   script_id(801290);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 8169 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-21 16:43:08 +0200 (Tue, 21 Sep 2010)");
   script_cve_id("CVE-2010-3199");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("TortoiseSVN Insecure Library Loading Vulnerability");
-  desc = "
-  Summary:
-  " + tag_summary + "
-
-  Vulnerability Insight:
-  " + tag_insight + "
-
-  Impact:
-  " + tag_impact + "
-
-  Affected Software/OS:
-  " + tag_affected + "
-
-  Solution:
-  " + tag_solution;
-
-
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_tortoise_svn_detect.nasl");
-  script_require_keys("TortoiseSVN/Ver");
+  script_mandatory_keys("TortoiseSVN/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -89,16 +74,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Get version from KB
-svnVer = get_kb_item("TortoiseSVN/Ver");
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
-if(svnVer != NULL)
-{
-  ##Check for TortoiseSVN versions < 1.6.19898
-  if( version_is_less_equal(version:svnVer, test_version: "1.6.19898") ){
-    security_message(0);
-  }
+##Check for TortoiseSVN versions <= 1.6.19898
+if( version_is_less_equal( version:vers, test_version: "1.6.19898" ) ){
+  report = report_fixed_ver( installed_version:vers, fixed_version:"None", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

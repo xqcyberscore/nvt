@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_apsb16-23_win.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_adobe_air_apsb16-23_win.nasl 8176 2017-12-19 12:50:00Z cfischer $
 #
 # Adobe Air Security Updates( apsb16-23 )-Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808167");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 8176 $");
   script_cve_id("CVE-2016-4126" );
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:50:00 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-06-17 10:47:28 +0530 (Fri, 17 Jun 2016)");
   script_name("Adobe Air Security Updates( apsb16-23 )-Windows");
 
@@ -69,7 +69,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_mandatory_keys("Adobe/Air/Win/Ver");
+  script_mandatory_keys("Adobe/Air/Win/Installed");
   exit(0);
 }
 

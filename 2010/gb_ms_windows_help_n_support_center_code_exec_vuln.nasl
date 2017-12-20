@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_help_n_support_center_code_exec_vuln.nasl 6529 2017-07-05 06:05:51Z cfischer $
+# $Id: gb_ms_windows_help_n_support_center_code_exec_vuln.nasl 8168 2017-12-19 07:30:15Z teissa $
 #
 # MS Windows Help and Support Center Remote Code Execution Vulnerability
 #
@@ -55,9 +55,9 @@ tag_summary = "This host is prone to remote code execution vulnerability.";
 
 if(description)
 {
-  script_id(801358);
-  script_version("$Revision: 6529 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 08:05:51 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801358");
+  script_version("$Revision: 8168 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
   script_cve_id("CVE-2010-1885", "CVE-2010-2265"); 
   script_tag(name:"cvss_base", value:"9.3");

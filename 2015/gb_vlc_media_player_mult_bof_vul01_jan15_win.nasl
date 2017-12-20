@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_bof_vul01_jan15_win.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: gb_vlc_media_player_mult_bof_vul01_jan15_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
 #
 # VLC Media Player Multiple Buffer Overflow Vulnerabilities-01 Jan15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805308");
-  script_version("$Revision: 6404 $");
+  script_version("$Revision: 8174 $");
   script_cve_id("CVE-2011-3623");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-01-05 12:58:41 +0530 (Mon, 05 Jan 2015)");
   script_name("VLC Media Player Multiple Buffer Overflow Vulnerabilities-01 Jan15 (Windows)");
 
@@ -71,7 +71,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
-  script_mandatory_keys("VLCPlayer/Win/Ver");
+  script_mandatory_keys("VLCPlayer/Win/Installed");
   exit(0);
 }
 

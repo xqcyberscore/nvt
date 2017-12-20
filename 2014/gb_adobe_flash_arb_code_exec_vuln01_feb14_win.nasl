@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804085";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6995 $");
+  script_version("$Revision: 8178 $");
   script_cve_id("CVE-2014-0497");
   script_bugtraq_id(65327);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-02-05 15:02:43 +0530 (Wed, 05 Feb 2014)");
   script_name("Adobe Flash Player Arbitrary Code Execution Vulnerability - 01 Feb14 (Windows)");
 
@@ -82,7 +82,7 @@ For updates refer to  http://get.adobe.com/flashplayer";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_mandatory_keys("AdobeFlashPlayer/Win/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
   exit(0);
 }
 

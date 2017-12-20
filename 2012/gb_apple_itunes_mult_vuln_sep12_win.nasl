@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_sep12_win.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_apple_itunes_mult_vuln_sep12_win.nasl 8169 2017-12-19 08:42:31Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities - Sep 12 (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:apple:itunes";
+
 tag_impact = "Successful exploitation could allow attackers to conduct spoofing attacks,
   disclose potentially sensitive information, bypass certain security
   restrictions, manipulate certain data and compromise a user's system.
@@ -38,7 +40,7 @@ tag_summary = "This host is installed with Apple iTunes and is prone to multiple
 if(description)
 {
   script_id(802962);
-  script_version("$Revision: 5950 $");
+  script_version("$Revision: 8169 $");
   script_cve_id("CVE-2011-3016", "CVE-2011-3021", "CVE-2011-3027", "CVE-2011-3032",
                 "CVE-2011-3034", "CVE-2011-3035", "CVE-2011-3036", "CVE-2011-3037",
                 "CVE-2011-3038", "CVE-2011-3039", "CVE-2011-3040", "CVE-2011-3041",
@@ -84,7 +86,7 @@ if(description)
                     51641, 51911, 38368, 54680, 54203, 54386, 55534);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-09-17 17:25:24 +0530 (Mon, 17 Sep 2012)");
   script_name("Apple iTunes Multiple Vulnerabilities - Sep 12 (Windows)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5485");
@@ -95,7 +97,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
-  script_require_keys("iTunes/Win/Ver");
+  script_mandatory_keys("iTunes/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -106,17 +108,18 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("version_func.inc");
 
-## Varaible Initialization
-ituneVer = "";
-
-ituneVer= get_kb_item("iTunes/Win/Ver");
-if(!ituneVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Apple iTunes version < 10.7 (10.7.0.21)
-if(version_is_less(version:ituneVer, test_version:"10.7.0.21")){
-  security_message(0);
+if( version_is_less( version:vers, test_version:"10.7.0.21" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"10.7.0.21", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3168.nasl 6608 2017-07-07 12:05:05Z cfischer $
+# $Id: deb_3168.nasl 8168 2017-12-19 07:30:15Z teissa $
 # Auto-generated from advisory DSA 3168-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -29,11 +29,11 @@
 
 if(description)
 {
-    script_id(703168);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703168");
+    script_version("$Revision: 8168 $");
     script_cve_id("CVE-2012-6684");
     script_name("Debian Security Advisory DSA 3168-1 (ruby-redcloth - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
     script_tag(name: "creation_date", value: "2015-02-22 00:00:00 +0100 (Sun, 22 Feb 2015)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

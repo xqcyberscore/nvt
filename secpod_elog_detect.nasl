@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_elog_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: secpod_elog_detect.nasl 8168 2017-12-19 07:30:15Z teissa $
 #
 # ELOG Version Detection
 #
@@ -29,10 +29,10 @@ tag_summary = "This script finds the running ELOG Version and saves the
 
 if(description)
 {
-  script_id(901008);
+  script_oid("1.3.6.1.4.1.25623.1.0.901008");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5877 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+ script_version("$Revision: 8168 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-08-26 14:01:08 +0200 (Wed, 26 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("ELOG Version Detection");

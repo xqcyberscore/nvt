@@ -29,12 +29,12 @@
 
 if(description)
 {
-    script_id(703639);
-    script_version("$Revision: 6608 $");
+    script_oid("1.3.6.1.4.1.25623.1.0.703639");
+    script_version("$Revision: 8168 $");
     script_cve_id("CVE-2015-8834", "CVE-2016-5832", "CVE-2016-5834", "CVE-2016-5835",
                   "CVE-2016-5837", "CVE-2016-5838", "CVE-2016-5839");
     script_name("Debian Security Advisory DSA 3639-1 (wordpress - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-07-07 14:05:05 +0200 (Fri, 07 Jul 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
     script_tag(name:"creation_date", value:"2016-08-04 16:27:41 +0530 (Thu, 04 Aug 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");

@@ -45,9 +45,9 @@ tag_affected = "lvm2 on Mandriva Linux 2009.1,
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-09/msg00004.php");
-  script_id(831147);
-  script_version("$Revision: 8037 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 07:32:03 +0100 (Fri, 08 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.831147");
+  script_version("$Revision: 8168 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-07 15:09:12 +0200 (Tue, 07 Sep 2010)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");

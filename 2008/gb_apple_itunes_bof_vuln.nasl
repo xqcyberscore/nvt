@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_bof_vuln.nasl 4456 2016-11-09 12:40:37Z cfi $
+# $Id: gb_apple_itunes_bof_vuln.nasl 8169 2017-12-19 08:42:31Z cfischer $
 #
 # Apple iTunes Malformed .mov File Buffer Overflow Vulnerability
 #
@@ -24,11 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:apple:itunes";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800318");
-  script_version("$Revision: 4456 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 13:40:37 +0100 (Wed, 09 Nov 2016) $");
+  script_version("$Revision: 8169 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-12-18 14:07:48 +0100 (Thu, 18 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -38,9 +40,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("secpod_reg_enum.nasl",
-                      "secpod_apple_itunes_detection_win_900123.nasl");
-  script_mandatory_keys("iTunes/Win/Ver");
+  script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
+  script_mandatory_keys("iTunes/Win/Installed");
 
   script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/7296");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/46984");
@@ -72,10 +73,16 @@ if(description)
   exit(0);
 }
 
-if( ! version = get_kb_item( "iTunes/Win/Ver" ) ) exit( 0 );
+include("host_details.inc");
+include("version_func.inc");
 
-if( version =~ "^8\.0\.2\.20$" ) {
-  security_message( port:0 );
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
+if( vers =~ "^8\.0\.2\.20$" ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"9.1.1", install_path:path );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

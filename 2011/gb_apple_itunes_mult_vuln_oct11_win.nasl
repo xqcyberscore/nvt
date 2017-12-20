@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_oct11_win.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_apple_itunes_mult_vuln_oct11_win.nasl 8169 2017-12-19 08:42:31Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities - Oct 11
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:apple:itunes";
+
 tag_impact = "Successful exploitation could allow attackers to execute arbitrary code in
   the context of the user running the affected application. Failed attacks may
   cause denial of service conditions.
@@ -38,8 +40,8 @@ tag_summary = "This host is installed with Apple iTunes and is prone to multiple
 if(description)
 {
   script_id(802193);
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_version("$Revision: 8169 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-10-20 08:43:23 +0200 (Thu, 20 Oct 2011)");
   script_cve_id("CVE-2011-0259", "CVE-2011-0200", "CVE-2011-3252", "CVE-2011-3219",
                 "CVE-2011-0204", "CVE-2011-0215", "CVE-2010-1823", "CVE-2011-0164",
@@ -77,7 +79,7 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
-  script_require_keys("iTunes/Win/Ver");
+  script_mandatory_keys("iTunes/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -88,15 +90,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-ituneVer= get_kb_item("iTunes/Win/Ver");
-if(!ituneVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Apple iTunes version < 10.5 (10.5.0.142)
-if(version_is_less(version:ituneVer, test_version:"10.5.0.142")){
-  security_message(0);
+if( version_is_less( version:vers, test_version:"10.5.0.142" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"10.5.0.142", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

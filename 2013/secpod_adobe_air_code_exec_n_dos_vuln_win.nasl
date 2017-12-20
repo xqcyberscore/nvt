@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_air_code_exec_n_dos_vuln_win.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: secpod_adobe_air_code_exec_n_dos_vuln_win.nasl 8176 2017-12-19 12:50:00Z cfischer $
 #
 # Adobe Air Code Execution and DoS Vulnerabilities (Windows)
 #
@@ -24,43 +24,40 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "
-  Impact Level: System/Application";
+CPE = "cpe:/a:adobe:adobe_air";
 
 if(description)
 {
   script_id(903319);
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 8176 $");
   script_cve_id("CVE-2012-0772", "CVE-2012-0773", "CVE-2012-0724", "CVE-2012-0725");
   script_bugtraq_id(52748, 52916, 52914);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:50:00 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-08-26 14:09:42 +0530 (Mon, 26 Aug 2013)");
   script_name("Adobe Air Code Execution and DoS Vulnerabilities (Windows)");
 
-  tag_summary =
-"This host is installed with Air and is prone to code execution and denial of
+  tag_summary = "This host is installed with Air and is prone to code execution and denial of
 service vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"The flaws are due to
+  tag_insight = "The flaws are due to
+
 - An error within an ActiveX Control when checking the URL security domain.
+
 - An unspecified error within the NetStream class.";
 
-  tag_impact =
-"Successful exploitation will allow remote attackers to execute arbitrary
-code or cause a denial of service (memory corruption) via unknown vectors.";
+  tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
+code or cause a denial of service (memory corruption) via unknown vectors.
 
-  tag_affected =
-"Adobe AIR version prior to 3.2.0.2070 on Windows";
+  Impact Level: System/Application";
 
-  tag_solution =
-"Update to Adobe Air version 3.2.0.2070 or later,
+  tag_affected = "Adobe AIR version prior to 3.2.0.2070 on Windows";
+
+  tag_solution = "Update to Adobe Air version 3.2.0.2070 or later,
 For updates refer to http://get.adobe.com/air";
 
 
@@ -80,24 +77,22 @@ For updates refer to http://get.adobe.com/air";
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_mandatory_keys("Adobe/Air/Win/Ver");
+  script_mandatory_keys("Adobe/Air/Win/Installed");
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-airVer = "";
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
-## Check for Adobe Air
-airVer = get_kb_item("Adobe/Air/Win/Ver");
-if(airVer)
-{
-  ## Grep for version < 3.2.0.2070
-  if(version_is_less(version:airVer, test_version:"3.2.0.2070"))
-  {
-    security_message(0);
-    exit(0);
-  }
+## Grep for version < 3.2.0.2070
+if( version_is_less( version:vers, test_version:"3.2.0.2070" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"3.2.0.2070", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

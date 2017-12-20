@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_dos_vuln01_jan17_win.nasl 5098 2017-01-25 09:14:20Z antu123 $
+# $Id: gb_imagemagick_mult_dos_vuln01_jan17_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
 #
 # ImageMagick Multiple Denial of Service Vulnerabilities-01 Jan17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810517");
-  script_version("$Revision: 5098 $");
+  script_version("$Revision: 8173 $");
   script_cve_id("CVE-2016-7799", "CVE-2016-7906");
   script_bugtraq_id(93264, 93271);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 10:14:20 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-01-23 18:09:22 +0530 (Mon, 23 Jan 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick Multiple Denial of Service Vulnerabilities-01 Jan17 (Windows)");
@@ -70,7 +70,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
-  script_mandatory_keys("ImageMagick/Win/Ver");
+  script_mandatory_keys("ImageMagick/Win/Installed");
   exit(0);
 }
 

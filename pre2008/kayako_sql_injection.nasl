@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: kayako_sql_injection.nasl 6761 2017-07-19 14:40:40Z cfischer $
+# $Id: kayako_sql_injection.nasl 8170 2017-12-19 08:59:48Z cfischer $
 #
 # Kayako eSupport SQL Injection and Cross-Site-Scripting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16022");
-  script_version("$Revision: 6761 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 16:40:40 +0200 (Wed, 19 Jul 2017) $");
+  script_version("$Revision: 8170 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:59:48 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1412", "CVE-2004-1413");
   script_bugtraq_id(12037);
@@ -47,7 +47,7 @@ if(description)
   script_tag(name:"summary", value:"The remote host is running a version of Kayako eSupport which is vulnerable
   to a SQL injection vulnerability as well as a cross site scripting.");
 
-  script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"qod", value:"50"); # Vuln check below is quite unreliable
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);

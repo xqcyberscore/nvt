@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_win_feb11.nasl 5424 2017-02-25 16:52:36Z teissa $
+# $Id: gb_adobe_flash_player_mult_vuln_win_feb11.nasl 8178 2017-12-19 13:42:38Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities February-2011 (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:adobe:flash_player";
+
 tag_impact = "Successful exploitation will let attackers to execute arbitrary code or cause
   a denial of service.
   Impact Level: Application/System";
@@ -40,8 +42,8 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 if(description)
 {
   script_id(801847);
-  script_version("$Revision: 5424 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+  script_version("$Revision: 8178 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-02-15 08:14:35 +0100 (Tue, 15 Feb 2011)");
   script_cve_id("CVE-2011-0558", "CVE-2011-0559", "CVE-2011-0560",
                 "CVE-2011-0561", "CVE-2011-0571", "CVE-2011-0572",
@@ -61,7 +63,7 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_require_keys("AdobeFlashPlayer/Win/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -70,15 +72,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-flashVer = get_kb_item("AdobeFlashPlayer/Win/Ver");
-if(!flashVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Check for Adobe Flash Player versions prior to 10.2.152.26
-if(version_is_less(version:flashVer, test_version:"10.2.152.26")){
-  security_message(0);
+if( version_is_less( version:vers, test_version:"10.2.152.26" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"10.2.152.26", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_f-prot_av_sec_bypass_vuln_win.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_f-prot_av_sec_bypass_vuln_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
 #
 # F-PROT AntiVirus Security Bypass Vulnerability (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:f-prot:f-prot_antivirus";
+
 tag_impact = "Attackers can exploit this issue to bypass the malware detection and
   to execute arbitrary code.
   Impact Level: System/Application";
@@ -38,21 +40,20 @@ tag_summary = "The host is installed with F-PROT AntiVirus and is prone to
 if(description)
 {
   script_id(900554);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 8173 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-1783");
   script_bugtraq_id(34896);
   script_name("F-PROT AntiVirus Security Bypass Vulnerability (Windows)");
-
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("General");
   script_dependencies("secpod_f-prot_av_detect_win.nasl");
-  script_require_keys("F-Prot/AV/Win/Ver");
+  script_mandatory_keys("F-Prot/AV/Win/Installed");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -65,14 +66,17 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-avVer = get_kb_item("F-Prot/AV/Win/Ver");
-if(!avVer){
-  exit(0);
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
+if( version_is_less_equal( version:vers, test_version:"6.0.9.1" ) ){
+  report = report_fixed_ver( installed_version:vers, fixed_version:"6.0.9.3", install_path:path);
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-if(version_is_less_equal(version:avVer, test_version:"6.0.9.1")){
-  security_message(0);
-}
+exit( 99 );

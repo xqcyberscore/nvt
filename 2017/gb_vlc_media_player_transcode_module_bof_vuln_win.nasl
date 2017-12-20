@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_transcode_module_bof_vuln_win.nasl 5788 2017-03-30 10:59:45Z antu123 $
+# $Id: gb_vlc_media_player_transcode_module_bof_vuln_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
 #
 # VLC Media Player 'audio.c' Heap-Based Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810721");
-  script_version("$Revision: 5788 $");
+  script_version("$Revision: 8174 $");
   script_cve_id("CVE-2014-6440");
   script_bugtraq_id(72950);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 12:59:45 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-03-30 15:38:41 +0530 (Thu, 30 Mar 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VLC Media Player 'audio.c' Heap-Based Buffer Overflow Vulnerability (Windows)");
@@ -68,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
-  script_mandatory_keys("VLCPlayer/Win/Ver");
+  script_mandatory_keys("VLCPlayer/Win/Installed");
   exit(0);
 }
 

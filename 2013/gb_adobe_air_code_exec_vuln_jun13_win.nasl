@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_code_exec_vuln_jun13_win.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_adobe_air_code_exec_vuln_jun13_win.nasl 8176 2017-12-19 12:50:00Z cfischer $
 #
 # Adobe Air Remote Code Execution Vulnerability -June13 (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:adobe:adobe_air";
+
 tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
   code on the target system or cause a denial of service (memory corruption)
   via unspecified vectors.
@@ -39,12 +41,12 @@ tag_summary = "This host is installed with Adobe Air and is prone to remote code
 if(description)
 {
   script_id(803664);
-  script_version("$Revision: 6074 $");
+  script_version("$Revision: 8176 $");
   script_cve_id("CVE-2013-3343");
   script_bugtraq_id(60478);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:50:00 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-06-18 15:20:47 +0530 (Tue, 18 Jun 2013)");
   script_name("Adobe Air Remote Code Execution Vulnerability -June13 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53751");
@@ -53,7 +55,7 @@ if(description)
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_mandatory_keys("Adobe/Air/Win/Ver");
+  script_mandatory_keys("Adobe/Air/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -64,19 +66,18 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-airVer = "";
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
-# Check for Adobe Air
-airVer = get_kb_item("Adobe/Air/Win/Ver");
-if(airVer)
-{
-  # Grep for vulnerable version
-  if(version_is_less_equal(version:airVer, test_version:"3.7.0.1860"))
-  {
-    security_message(0);
-    exit(0);
-  }
+# Grep for vulnerable version
+if( version_is_less_equal( version:vers, test_version:"3.7.0.1860" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"3.7.0.2090", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_on_location_lib_load_vuln_win.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_adobe_on_location_lib_load_vuln_win.nasl 8168 2017-12-19 07:30:15Z teissa $
 #
 # Adobe On Location Insecure Library Loading Vulnerability (Windows)
 #
@@ -45,9 +45,9 @@ insecure library loading vulnerability.";
 
 if(description)
 {
-  script_id(801511);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801511");
+  script_version("$Revision: 8168 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-10 16:37:50 +0200 (Fri, 10 Sep 2010)");
   script_cve_id("CVE-2010-3151");
   script_tag(name:"cvss_base", value:"9.3");
