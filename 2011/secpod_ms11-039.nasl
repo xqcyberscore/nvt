@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-039.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-039.nasl 8190 2017-12-20 09:44:30Z cfischer $
 #
 # Microsoft .NET Framework and Silverlight Remote Code Execution Vulnerability (2514842)
 #
@@ -46,8 +46,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902523);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 8190 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:44:30 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-06-15 15:55:00 +0200 (Wed, 15 Jun 2011)");
   script_cve_id("CVE-2011-0664");
   script_bugtraq_id(48212);
@@ -74,11 +74,11 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
+include("host_details.inc");
 
 ## Check for OS and Service Pack
 if(hotfix_check_sp(xp:4, win2003:3, winVista:3, win2008:3, win7:2) <= 0){
@@ -94,14 +94,16 @@ if((hotfix_missing(name:"2478663") == 0) || (hotfix_missing(name:"2478662") == 0
 }
 
 ## Get Silverlight version from KB
-mslVer = get_kb_item("Microsoft/Silverlight");
-if(mslVer)
-{
+infos = get_app_version_and_location( cpe:"cpe:/a:microsoft:silverlight" );
+mslVers = infos['version'];
+mslPath = infos['location'];
+
+if( mslVers ) {
   ## Check for Microsoft Silverlight version prior to 4.0.60531.0
-  if(version_is_less(version:mslVer, test_version:"4.0.60531.0"))
-  {
-    security_message(0);
-    exit(0);
+  if( version_is_less( version:mslVers, test_version:"4.0.60531.0" ) ) {
+    report = report_fixed_ver( installed_version:mslVers, fixed_version:"4.0.60531.0", install_path:mslPath );
+    security_message( port:0, data:report );
+    exit( 0 );
   }
 }
 

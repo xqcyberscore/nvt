@@ -1,6 +1,6 @@
 ###############################################################################
 ## OpenVAS Vulnerability Test
-## $Id: secpod_ms08-065_remote.nasl 5394 2017-02-22 09:22:42Z teissa $
+## $Id: secpod_ms08-065_remote.nasl 8187 2017-12-20 07:30:09Z teissa $
 ##
 ## Message Queuing Remote Code Execution Vulnerability (951071) - Remote
 ##
@@ -39,9 +39,9 @@ tag_summary = "This host is missing important security update according to
 
 if(description)
 {
-  script_id(900244);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900244");
+  script_version("$Revision: 8187 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:27:19 +0200 (Wed, 09 Jun 2010)");
   script_bugtraq_id(31637);
   script_cve_id("CVE-2008-3479");

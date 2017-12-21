@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xampp_multiple_vuln_jun_09.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: xampp_multiple_vuln_jun_09.nasl 8187 2017-12-20 07:30:09Z teissa $
 #
 # XAMPP Multiple Vulnerabilities June 2009
 #
@@ -51,9 +51,9 @@ affected as well.";
 
 if (description)
 {
- script_id(100483);
- script_version("$Revision: 5401 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100483");
+ script_version("$Revision: 8187 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-02-02 21:07:02 +0100 (Tue, 02 Feb 2010)");
  script_bugtraq_id(37997,37998,37999);
  script_tag(name:"cvss_base", value:"7.5");

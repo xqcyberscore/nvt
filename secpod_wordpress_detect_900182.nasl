@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_detect_900182.nasl 5871 2017-04-05 13:33:48Z antu123 $
+# $Id: secpod_wordpress_detect_900182.nasl 8197 2017-12-20 12:50:38Z cfischer $
 #
 # WordPress Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900182");
-  script_version("$Revision: 5871 $");
+  script_version("$Revision: 8197 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:50:38 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-12-26 14:23:17 +0100 (Fri, 26 Dec 2008)");
   script_name("WordPress Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -86,62 +86,40 @@ foreach dir( make_list_unique( "/", "/blog", "/wordpress", "/wordpress-mu", cgi_
     if( res && "WordPress" >< res && res =~ "HTTP/1.. 200" ) {
 
       if( "WordPress Mu" >< res ) {
-
         version = "unknown";
-
         wpmuVer = eregmatch( pattern:"WordPress ([0-9]\.[0-9.]+)", string:res );
-
         if( wpmuVer[1] ) version = wpmuVer[1];
         tmp_version = version + " under " + install;
-
-        ## Set the KB
         set_kb_item( name:"www/" + port + "/WordPress-Mu", value:tmp_version );
         set_kb_item( name:"wordpress/installed", value:TRUE );
-
-        ## Build CPE
-        mu_cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:wordpress:wordpress_mu:" );
-        if( ! mu_cpe )
-          mu_cpe = 'cpe:/a:wordpress:wordpress_mu';
 
         ## Check if version is already set
         if (version + ", " >< checkduplicate){
           continue;
         }
-
         ##Assign detected version value to checkduplicate so as to check in next loop iteration
         checkduplicate  += version + ", ";
 
-        ## Register Product and Build Report
-        build_report( app:"WordPress-Mu", ver:version, concluded:wpmuVer[0], cpe:mu_cpe, insloc:install, port:port );
+        register_and_report_cpe( app:"WordPress-Mu", ver:version, concluded:wpmuVer[0], base:"cpe:/a:wordpress:wordpress_mu:", expr:"^([0-9.]+)", insloc:install, regPort:port );
       }
 
       if( "WordPress Mu" >!< res ) {
 
         wpVer = eregmatch( pattern:"WordPress ([0-9]\.[0-9.]+)", string:res );
         if( wpVer[1] ) {
-
           flag = 1;
           tmp_version = wpVer[1] + " under " + install;
-
-          ## Set the KB
           set_kb_item( name:"www/" + port + "/WordPress", value:tmp_version );
           set_kb_item( name:"wordpress/installed", value:TRUE );
-
-          ## Build CPE
-          cpe = build_cpe( value:wpVer[1], exp:"^([0-9.]+)", base:"cpe:/a:wordpress:wordpress:" );
-          if( ! cpe )
-            cpe = 'cpe:/a:wordpress:wordpress';
 
           ## Check if version is already set
           if (wpVer[1] + ", " >< checkduplicate){
             continue;
           }
-
           ##Assign detected version value to checkduplicate so as to check in next loop iteration
           checkduplicate  += wpVer[1] + ", ";
 
-          ## Register Product and Build Report
-          build_report( app:"WordPress", ver:wpVer[1], concluded:wpVer[0], cpe:cpe, insloc:install, port:port );
+          register_and_report_cpe( app:"WordPress", ver:wpVer[1], concluded:wpVer[0], base:"cpe:/a:wordpress:wordpress:", expr:"^([0-9.]+)", insloc:install, regPort:port );
         }
       }
     }
@@ -166,26 +144,17 @@ if( ! flag ) {
       if( wpVer[1] ) {
         tmp_version = wpVer[1] + " under " + install;
         flag = 1;
-
-        # Set the KB
         set_kb_item( name:"www/" + port + "/WordPress", value:tmp_version );
         set_kb_item( name:"wordpress/installed", value:TRUE );
-
-        ## Build CPE
-        cpe = build_cpe( value:wpVer[1], exp:"^([0-9.]+)", base:"cpe:/a:wordpress:wordpress:" );
-        if( ! cpe )
-          cpe = 'cpe:/a:wordpress:wordpress';
 
         ## Check if version is already set
         if (wpVer[1] + ", " >< checkduplicate){
           continue;
         }
-
         ##Assign detected version value to checkduplicate so as to check in next loop iteration
         checkduplicate  += wpVer[1] + ", ";
 
-        ## Register Product and Build Report
-        build_report( app:"WordPress", ver:wpVer[1], concluded:wpVer[0], cpe:cpe, insloc:install, port:port );
+        register_and_report_cpe( app:"WordPress", ver:wpVer[1], concluded:wpVer[0], base:"cpe:/a:wordpress:wordpress:", expr:"^([0-9.]+)", insloc:install, regPort:port );
       }
     }
   }
@@ -208,35 +177,23 @@ if( ! flag ) {
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
     if( res && '<!-- generator="WordPress' >< res && res =~ "HTTP/1.. 200" ) {
-
       version = "unknown";
-
       wpVer = eregmatch( pattern:'<!-- generator="WordPress/([0-9.]+)', string:res );
       if( wpVer[1] ) version = wpVer[1];
-
       tmp_version = version + " under " + install;
       flag = 1 ;
       if( dir == "" ) rootInstalled = 1;
-
-      # Set the KB
       set_kb_item( name:"www/" + port + "/WordPress", value:tmp_version );
       set_kb_item( name:"wordpress/installed", value:TRUE );
-
-      ## Build CPE
-      cpe = build_cpe( value:wpVer[1], exp:"^([0-9.]+)", base:"cpe:/a:wordpress:wordpress:" );
-      if( ! cpe )
-        cpe = 'cpe:/a:wordpress:wordpress';
 
       ## Check if version is already set
       if (version + ", " >< checkduplicate){
         continue;
       }
-
       ##Assign detected version value to checkduplicate so as to check in next loop iteration
       checkduplicate  += version + ", ";
 
-      ## Register Product and Build Report
-      build_report( app:"WordPress", ver:version, concluded:wpVer[0], cpe:cpe, insloc:install, port:port );
+      register_and_report_cpe( app:"WordPress", ver:version, concluded:wpVer[0], base:"cpe:/a:wordpress:wordpress:", expr:"^([0-9.]+)", insloc:install, regPort:port );
     }
   }
 }
@@ -258,35 +215,23 @@ if( ! flag ) {
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
     if( res && "<generator>http://wordpress.org/" >< res && res =~ "HTTP/1.. 200" ) {
-
       version = "unknown";
-
       wpVer = eregmatch( pattern:"v=([0-9.]+)</generator>", string:res );
       if( wpVer[1] ) version = wpVer[1];
-
       tmp_version = version + " under " + install;
       flag = 1 ;
       if( dir == "" ) rootInstalled = 1;
-
-      # Set the KB
       set_kb_item( name:"www/" + port + "/WordPress", value:tmp_version );
       set_kb_item( name:"wordpress/installed", value:TRUE );
 
-      ## Build CPE
-      cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:wordpress:wordpress:" );
-      if( ! cpe )
-        cpe = 'cpe:/a:wordpress:wordpress';
- 
       ## Check if version is already set
       if (version + ", " >< checkduplicate){
         continue;
       }
-
       ##Assign detected version value to checkduplicate so as to check in next loop iteration
       checkduplicate  += version + ", ";
 
-      ## Register Product and Build Report
-      build_report( app:"WordPress", ver:version, concluded:wpVer[0], cpe:cpe, insloc:install, port:port );
+      register_and_report_cpe( app:"WordPress", ver:version, concluded:wpVer[0], base:"cpe:/a:wordpress:wordpress:", expr:"^([0-9.]+)", insloc:install, regPort:port );
     }
   }
 }
@@ -307,34 +252,22 @@ if( ! flag ) {
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
     if( res && "wp-includes" >< res && "wp-admin" >< res && res =~ "HTTP/1.. 200" ) {
-
       version = "unknown";
-
       wpVer = eregmatch( pattern:"ver=([0-9.]+)", string:res );
       if( wpVer[1] ) version = wpVer[1];
-
       if( dir == "" ) rootInstalled = 1;
       tmp_version = version + " under " + install;
-
-      # Set the KB
       set_kb_item( name:"www/" + port + "/WordPress", value:tmp_version );
       set_kb_item( name:"wordpress/installed", value:TRUE);
-
-      ## Build CPE
-      cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:wordpress:wordpress:" );
-      if( ! cpe )
-        cpe = 'cpe:/a:wordpress:wordpress';
 
       ## Check if version is already set
       if (version + ", " >< checkduplicate){
         continue;
       }
-
       ##Assign detected version value to checkduplicate so as to check in next loop iteration
       checkduplicate  += version + ", ";
 
-      ## Register Product and Build Report
-      build_report( app:"WordPress", ver:version, concluded:wpVer[0], cpe:cpe, insloc:install, port:port );
+      register_and_report_cpe( app:"WordPress", ver:version, concluded:wpVer[0], base:"cpe:/a:wordpress:wordpress:", expr:"^([0-9.]+)", insloc:install, regPort:port );
     }
   }
 }

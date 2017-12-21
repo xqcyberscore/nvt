@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_backup_exec_prdts_cmd_exec_vuln_win.nasl 6517 2017-07-04 13:34:20Z cfischer $
+# $Id: gb_symantec_backup_exec_prdts_cmd_exec_vuln_win.nasl 8199 2017-12-20 13:37:22Z cfischer $
 #
 # Symantec Backup Exec Products Arbitrary Command Execution vulnerability
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is installed with Symantec Backup Exec Products and is
 if(description)
 {
   script_id(801798);
-  script_version("$Revision: 6517 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:34:20 +0200 (Tue, 04 Jul 2017) $");
+  script_version("$Revision: 8199 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:37:22 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-06-17 11:16:31 +0200 (Fri, 17 Jun 2011)");
   script_cve_id("CVE-2011-0546");
   script_bugtraq_id(47824);
@@ -56,7 +56,7 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_symantec_backup_exec_detect.nasl");
-  script_mandatory_keys("Symantec/Backup/Exec/Win/Installed");
+  script_mandatory_keys("Symantec/BackupExec/Win/Installed");
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -67,29 +67,31 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-if(!get_kb_item("SMB/WindowsVersion")){
-  exit(0);
-}
-
 ## Check for Symantec Backup Exec for Windows Servers Version
-symVer = get_kb_item("Symantec/Backup/Exec/Win/Server");
-if(symVer)
-{
-  if(version_in_range(version:symVer, test_version:"11.0", test_version2:"12.5.2213"))
-  {
-    security_message(0);
-    exit(0);
+servInfos = get_app_version_and_location( cpe:"cpe:/a:symantec:veritas_backup_exec_for_windows_servers" );
+servVers  = servInfos['version'];
+servPath  = servInfos['location'];
+
+if( servVers ) {
+  if( version_in_range( version:servVers, test_version:"11.0", test_version2:"12.5.2213" ) ) {
+    report = report_fixed_ver( installed_version:servVers, fixed_version:"See references", install_path:servPath );
+    security_message( port:0, data:report );
+    exit( 0 );
   }
 }
 
 ## Check for Symantec Backup Exec for 2010 Version
-symVer = get_kb_item("Symantec/Backup/Exec/2010");
-if(symVer)
-{
-  if(version_in_range(version:symVer, test_version:"13.0", test_version2:"13.0.4164")){
-     security_message(0);
-  }
+infos = get_app_version_and_location( cpe:"cpe:/a:symantec:backup_exec", exit_no_version:TRUE );
+vers  = infos['version'];
+path  = infos['location'];
+
+if( version_in_range( version:vers, test_version:"13.0", test_version2:"13.0.4164" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"13.0 R3", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

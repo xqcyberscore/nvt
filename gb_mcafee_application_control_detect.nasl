@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_application_control_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_mcafee_application_control_detect.nasl 8197 2017-12-20 12:50:38Z cfischer $
 #
 # McAfee Application Control Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806979");
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 8197 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:50:38 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-01-20 15:17:03 +0530 (Wed, 20 Jan 2016)");
   script_name("McAfee Application Control Version Detection");
 
@@ -92,28 +92,15 @@ foreach item (registry_enum_keys(key:key))
       mcafeePath = "Unable to find the install location from registry";
     }
 
-    set_kb_item(name:"McAfee/Application/Control/Win/Ver", value:mcafeeVer);
+    set_kb_item(name:"McAfee/Application/Control/Win/Installed", value:TRUE);
 
-    ## build cpe and store it as host_detail
-    cpe = build_cpe(value:mcafeeVer, exp:"^([0-9.]+)", base:"cpe:/a:mcafee:application_control:");
-    if(isnull(cpe)){
-      cpe = "cpe:/a:mcafee:application_control";
-    }
-
-    ## Register Product and Build Report
-    build_report(app:"McAfee Application Control", ver:mcafeeVer, cpe:cpe, insloc:mcafeePath);
-
-    ## Register for 64 bit app on 64 bit OS once again
-    if("64" >< os_arch)
-    {
+    ## Register for 64 bit app on 64 bit OS
+    if("64" >< os_arch) {
       set_kb_item(name:"McAfee/Application/Control64/Win/Ver", value:mcafeeVer);
-      cpe = build_cpe(value:mcafeeVer, exp:"^([0-9.]+)", base:"cpe:/a:mcafee:application_control:x64:");
-      if(isnull(cpe)){
-        cpe = "cpe:/a:mcafee:application_control:x64";
-      }
-
-      ## Register Product and Build Report
-      build_report(app:"McAfee Application Control", ver:mcafeeVer, cpe:cpe, insloc:mcafeePath);
+      register_and_report_cpe( app:"McAfee Application Control", ver:mcafeeVer, base:"cpe:/a:mcafee:application_control:x64:", expr:"^([0-9.]+)", insloc:mcafeePath );
+    } else {
+      set_kb_item(name:"McAfee/Application/Control/Win/Ver", value:mcafeeVer);
+      register_and_report_cpe( app:"McAfee Application Control", ver:mcafeeVer, base:"cpe:/a:mcafee:application_control:", expr:"^([0-9.]+)", insloc:mcafeePath );
     }
     exit(0);
   }

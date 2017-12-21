@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_detection_900025.nasl 8144 2017-12-15 13:19:55Z cfischer $
+# $Id: secpod_ms_office_detection_900025.nasl 8191 2017-12-20 09:51:15Z cfischer $
 #
 # Microsoft Office Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900025");
-  script_version("$Revision: 8144 $");
+  script_version("$Revision: 8191 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:51:15 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Office Version Detection");
@@ -139,7 +139,10 @@ foreach key (key_list)
         MSOffVer = registry_get_sz(key:key + item, item:"DisplayVersion");
         if(MSOffVer)
         {
-          MSOffLoc= registry_get_sz(key:key + item, item:"InstallLocation");
+          MSOffLoc = registry_get_sz(key:key + item, item:"InstallLocation");
+          if(!MSOffLoc){
+            MSOffLoc = "Could not find the install location from registry";
+          }
 
           if(MSOffVer != NULL)
           {

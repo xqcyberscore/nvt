@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_groupshield_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_mcafee_groupshield_detect.nasl 8197 2017-12-20 12:50:38Z cfischer $
 #
 # McAfee GroupShield Version Detection
 #
@@ -24,24 +24,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800618";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6065 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800618");
+  script_version("$Revision: 8197 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:50:38 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-05-22 10:20:17 +0200 (Fri, 22 May 2009)");
   script_name("McAfee GroupShield Version Detection");
 
-tag_summary =
-"Detection of installed version of McAfee GroupShield on Windows.
+tag_summary ="Detection of installed version of McAfee GroupShield on Windows.
 
 The script logs in via smb, searches for McAfee GroupShield in the registry
 and gets the version from registry.";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name:"qod_type", value:"registry");
@@ -53,7 +49,6 @@ and gets the version from registry.";
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -92,30 +87,18 @@ foreach groupshieldKey (key_list)
         groupshieldPath = "Couldn find the install location from registry";
       }
 
-      if(groupshieldVer != NULL)
-      {
-        set_kb_item(name:"McAfee/GroupShield/Exchange/Ver", value:groupshieldVer);
+      if(groupshieldVer != NULL) {
 
+        set_kb_item(name:"McAfee/GroupShield/Exchange/Installed", value:TRUE);
 
-        cpe = build_cpe(value:groupshieldVer, exp:"^([0-9.]+)", base:"cpe:/a:mcafee:groupshield:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:mcafee:groupshield";
-
-        ## Register Product and Build Report
-        build_report(app: "McAfee GroupShield", ver: groupshieldVer, cpe: cpe, insloc: groupshieldPath);
-      }
-
-      ## 64 bit apps on 64 bit platform
-      if(groupshieldVer != NULL && "x64" >< osArch && "Wow6432Node" >!< groupshieldKey)
-      {
-        set_kb_item(name:"McAfee/GroupShield64/Exchange/Ver", value:groupshieldVer);
-
-        cpe = build_cpe(value:groupshieldVer, exp:"^([0-9.]+)", base:"cpe:/a:mcafee:groupshield:x64:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:mcafee:groupshield:x64";
-
-        ## Register Product and Build Report
-        build_report(app: "McAfee GroupShield", ver: groupshieldVer, cpe: cpe, insloc: groupshieldPath);
+        ## 64 bit apps on 64 bit platform
+        if("x64" >< osArch && "Wow6432Node" >!< groupshieldKey) {
+          set_kb_item(name:"McAfee/GroupShield64/Exchange/Ver", value:groupshieldVer);
+          register_and_report_cpe( app:"McAfee GroupShield", ver:groupshieldVer, base:"cpe:/a:mcafee:groupshield:x64:", expr:"^([0-9.]+)", insloc:groupshieldPath );
+        } else {
+          set_kb_item(name:"McAfee/GroupShield/Exchange/Ver", value:groupshieldVer);
+          register_and_report_cpe( app:"McAfee GroupShield", ver:groupshieldVer, base:"cpe:/a:mcafee:groupshield:", expr:"^([0-9.]+)", insloc:groupshieldPath );
+        }
       }
     }
   }

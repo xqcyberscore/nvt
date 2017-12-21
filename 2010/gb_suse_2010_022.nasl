@@ -34,8 +34,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(850132);
-  script_version("$Revision: 8035 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 06:29:51 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8205 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 07:30:37 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-29 13:13:58 +0200 (Thu, 29 Apr 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -43,7 +43,7 @@ if(description)
   script_cve_id("CVE-2010-0190", "CVE-2010-0191", "CVE-2010-0192", "CVE-2010-0193", "CVE-2010-0194", "CVE-2010-0195", "CVE-2010-0196", "CVE-2010-0197", "CVE-2010-0198", "CVE-2010-0199", "CVE-2010-0201", "CVE-2010-0202", "CVE-2010-0203", "CVE-2010-0204", "CVE-2010-1241");
   script_name("SuSE Update for acroread SUSE-SA:2010:022");
 
-  script_summary("Check for the Version of acroread");
+  script_tag(name: "summary" , value: "Check for the Version of acroread");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

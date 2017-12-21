@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synergy_detect_win.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_synergy_detect_win.nasl 8189 2017-12-20 09:10:19Z cfischer $
 #
 # Synergy Version Detection (Windows)
 #
@@ -26,18 +26,16 @@
 
 if(description)
 {
-
   script_oid("1.3.6.1.4.1.25623.1.0.801871");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 8189 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:10:19 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Synergy Version Detection (Windows)");
 
-tag_summary =
-"Detection of installed version of Synergy.
+tag_summary = "Detection of installed version of Synergy.
 
 The script logs in via smb, searches for Synergy in the registry and
 gets the version from registry.";
@@ -53,7 +51,6 @@ gets the version from registry.";
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -101,25 +98,16 @@ foreach key (key_list)
           appLoc = "Couldn find the install location from registry";
         }
 
-        # Set KB for Synergy
-        set_kb_item(name:"Synergy/Win/Ver", value:synVer);
-
-        cpe = build_cpe(value:synVer, exp:"^([0-9.]+)", base:"cpe:/a:synergy-foss:synergy:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:synergy-foss:synergy";
+        set_kb_item(name:"Synergy/Win/Installed", value:TRUE);
 
         ## 64 bit apps on 64 bit platform
-        if("x64" >< osArch && "Wow6432Node" >!< key)
-        {
+        if("x64" >< osArch && "Wow6432Node" >!< key)  {
           set_kb_item(name:"Synergy64/Win/Ver", value:synVer);
-
-          cpe = build_cpe(value:synVer, exp:"^([0-9.]+)", base:"cpe:/a:synergy-foss:synergy:x64:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:synergy-foss:synergy:x64";
+          register_and_report_cpe( app:appName, ver:synVer, base:"cpe:/a:synergy-foss:synergy:x64:", expr:"^([0-9.]+)", insloc:appLoc );
+        } else {
+          set_kb_item(name:"Synergy/Win/Ver", value:synVer);
+          register_and_report_cpe( app:appName, ver:synVer, base:"cpe:/a:synergy-foss:synergy:", expr:"^([0-9.]+)", insloc:appLoc );
         }
-
-        ## Register Product and Build Report
-        build_report(app: appName, ver:synVer, cpe:cpe, insloc:appLoc);
       }
     }
   }

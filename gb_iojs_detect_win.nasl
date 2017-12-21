@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iojs_detect_win.nasl 7140 2017-09-15 09:41:22Z cfischer $
+# $Id: gb_iojs_detect_win.nasl 8197 2017-12-20 12:50:38Z cfischer $
 #
 # io.js Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805942");
-  script_version("$Revision: 7140 $");
+  script_version("$Revision: 8197 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:50:38 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-08-04 17:21:51 +0530 (Tue, 04 Aug 2015)");
   script_name("io.js Version Detection (Windows)");
 
@@ -50,7 +50,6 @@ if(description)
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -102,25 +101,17 @@ foreach key (key_list)
       if(!ioPath){
         ioPath = "Unable to find the install location from registry";
       }
-      set_kb_item(name:"iojs/Win/Ver", value:ioVer);
 
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:ioVer, exp:"^([0-9.]+)", base:"cpe:/a:iojs:io.js:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:iojs:io.js";
+      set_kb_item(name:"iojs/Win/Installed", value:TRUE);
 
-      ## Register for 64 bit app on 64 bit OS once again
-      if("64" >< os_arch && "Wow6432Node" >!< key)
-      {
+      ## Register for 64 bit app on 64 bit OS
+      if("64" >< os_arch && "Wow6432Node" >!< key) {
         set_kb_item(name:"iojs64/Win/Ver", value:ioVer);
-
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:ioVer, exp:"^([0-9.]+)", base:"cpe:/a:iojs:io.js:x64:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:iojs:io.js:x64";
+        register_and_report_cpe( app:"io.js", ver:ioVer, base:"cpe:/a:iojs:io.js:x64:", expr:"^([0-9.]+)", insloc:ioPath );
+      } else {
+        set_kb_item(name:"iojs/Win/Ver", value:ioVer);
+        register_and_report_cpe( app:"io.js", ver:ioVer, base:"cpe:/a:iojs:io.js:", expr:"^([0-9.]+)", insloc:ioPath );
       }
-      ## Register Product and Build Report
-      build_report(app:"io.js", ver:ioVer, cpe:cpe, insloc:ioPath);
     }
   }
 }

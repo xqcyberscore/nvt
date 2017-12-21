@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln_win.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_openssl_mult_vuln_win.nasl 8193 2017-12-20 10:46:55Z cfischer $
 #
 # OpenSSL Multiple Vulnerabilities (Windows)
 #
@@ -24,26 +24,34 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:openssl:openssl";
+
 tag_impact = "Successful exploitation will let the attacker cause memory access violation,
   security bypass or can cause denial of service.";
+
 tag_affected = "OpenSSL version prior to 0.9.8k on all running platform.";
+
 tag_insight = "- error exists in the 'ASN1_STRING_print_ex()' function when printing
     'BMPString' or 'UniversalString' strings which causes invalid memory
     access violation.
+
   - 'CMS_verify' function incorrectly handles an error condition when
     processing malformed signed attributes.
+
   - error when processing malformed 'ASN1' structures which causes invalid
     memory access violation.";
+
 tag_solution = "Upgrade to OpenSSL version 0.9.8k
   http://openssl.org";
+
 tag_summary = "This host is installed with OpenSSL and is prone to Multiple
   Vulnerabilities.";
 
 if(description)
 {
   script_id(800258);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 8193 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 11:46:55 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -58,7 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_openssl_detect_win.nasl");
-  script_require_keys("OpenSSL/Win/Ver");
+  script_mandatory_keys("OpenSSL/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -69,15 +77,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-opensslVer = get_kb_item("OpenSSL/Win/Ver");
-if(!opensslVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 # Grep for OpenSSL version prior to 0.9.8k
-if(version_is_less(version:opensslVer, test_version:"0.9.8k")){
-  security_message(0);
+if( version_is_less( version:vers, test_version:"0.9.8k" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"0.9.8k", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_live_msngr_charset_dos_vuln.nasl 6532 2017-07-05 07:42:05Z cfischer $
+# $Id: secpod_ms_live_msngr_charset_dos_vuln.nasl 8193 2017-12-20 10:46:55Z cfischer $
 #
 # Microsoft MSN Live Messneger Denial of Service Vulnerability
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:microsoft:windows_live_messenger";
+
 tag_impact = "Successful exploitation will let the attacker execute arbitrary codes in the
   context of the application and can cause denial of service.
 
@@ -40,8 +42,8 @@ tag_summary = "This host is running Microsoft MSN Live Messenger and is prone
 if(description)
 {
   script_id(900461);
-  script_version("$Revision: 6532 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 8193 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 11:46:55 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-02-26 05:27:20 +0100 (Thu, 26 Feb 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -54,7 +56,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_ms_win_live_messenger_detect.nasl");
-  script_mandatory_keys("MS/LiveMessenger/Ver");
+  script_mandatory_keys("MS/LiveMessenger/Installed");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
@@ -65,15 +67,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-liveVer = get_kb_item("MS/LiveMessenger/Ver");
-if(!liveVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 # Grep for 'msnmsgr.exe' version 14.0.8064.0206 or prior.
-if(version_is_less_equal(version:liveVer, test_version:"14.0.8064.0206")){
-  security_message(0);
+if( version_is_less_equal( version:vers, test_version:"14.0.8064.0206" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"None", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

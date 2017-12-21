@@ -33,9 +33,9 @@ tag_summary = "Microsoft Internet Explorer 5.01, 6, and 7 allows remote attacker
 
 if(description)
 {
-  script_id(102057);
-  script_version("$Revision: 6527 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.102057");
+  script_version("$Revision: 8187 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_bugtraq_id(24418, 24423, 24372, 24429, 24426, 22966);
   script_cve_id("CVE-2007-1751", "CVE-2007-1750", "CVE-2007-0218",

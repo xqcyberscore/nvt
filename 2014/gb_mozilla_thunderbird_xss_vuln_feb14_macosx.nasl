@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_xss_vuln_feb14_macosx.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_mozilla_thunderbird_xss_vuln_feb14_macosx.nasl 8200 2017-12-20 13:48:45Z cfischer $
 #
 # Mozilla Thunderbird Multiple XSS Vulnerabilities Feb14 (Mac OS X)
 #
@@ -24,18 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:mozilla:thunderbird:";
+CPE = "cpe:/a:mozilla:thunderbird";
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804504";
 
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 8200 $");
   script_cve_id("CVE-2013-6674", "CVE-2014-2018");
   script_bugtraq_id(65158, 65620);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-02-19 16:29:45 +0530 (Wed, 19 Feb 2014)");
   script_name("Mozilla Thunderbird Multiple XSS Vulnerabilities Feb14 (Mac OS X)");
 

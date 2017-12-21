@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_silverlight_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_ms_silverlight_detect.nasl 8190 2017-12-20 09:44:30Z cfischer $
 #
 # Microsoft Silverlight Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801934");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 8190 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:44:30 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Silverlight Version Detection");
@@ -114,10 +114,11 @@ foreach key (key_list)
   {
     ## Get application name
     app_name = registry_get_sz(key:unKey + item, item:"DisplayName");
-    if("Microsoft Silverlight" >!< app_name)
-    {
+    if("Microsoft Silverlight" >!< app_name){
        continue;
     }
+
+    set_kb_item(name:"Microsoft/Silverlight/Installed", value:TRUE);
 
     ## Get version if not available in previous path
     if(!msl_ver || msl_ver == "0"){
@@ -129,33 +130,19 @@ foreach key (key_list)
     break;
   }
 
-  ## This might be needed for older NVTs
-  if(msl_ver){
-    ## Set KB for Microsoft Silverlight
-    set_kb_item(name:"Microsoft/Silverlight", value:msl_ver);
-  }
+  if(msl_ver && "Microsoft Silverlight" >< app_name) {
 
-  if(msl_ver && "Microsoft Silverlight" >< app_name)
-  {
-    ## build cpe and store it as host_detail
-    cpe = build_cpe(value:msl_ver, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:silverlight:");
-    if(isnull(cpe))
-      cpe = "cpe:/a:microsoft:silverlight";
-
-    ##Register Product and Build Report
-    build_report(app: "Microsoft Silverlight", ver:msl_ver, cpe:cpe, insloc:ins_loc);
+   if(!ins_loc){
+      ins_loc = "Couldn find the install location from registry";
+    }
 
     ## 64 bit apps on 64 bit platform
-    if("x64" >< os_arch && "Wow6432Node" >!< key)
-    {
-      set_kb_item(name:"Microsoft/Silverlight64", value:msl_ver);
-
-      cpe = build_cpe(value:msl_ver, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:silverlight:x64:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:microsoft:silverlight:x64";
-
-      ## Register Product and Build Report
-      build_report(app: "Microsoft Silverlight", ver:msl_ver, cpe:cpe, insloc:ins_loc);
+    if("x64" >< os_arch && "Wow6432Node" >!< key) {
+      set_kb_item(name:"Microsoft/Silverlight64/Ver", value:msl_ver);
+      register_and_report_cpe( app:"Microsoft Silverlight", ver:msl_ver, base:"cpe:/a:microsoft:silverlight:x64:", expr:"^([0-9.]+)", insloc:ins_loc );
+    } else {
+      set_kb_item(name:"Microsoft/Silverlight/Ver", value:msl_ver);
+      register_and_report_cpe( app:"Microsoft Silverlight", ver:msl_ver, base:"cpe:/a:microsoft:silverlight:", expr:"^([0-9.]+)", insloc:ins_loc );
     }
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_file_reporter_files_del_vuln_win.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_novell_file_reporter_files_del_vuln_win.nasl 8201 2017-12-20 14:28:50Z cfischer $
 #
 # Novell File Reporter 'SRS' Tag Arbitrary File Deletion Vulnerability
 #
@@ -23,6 +23,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
+CPE = "cpe:/a:novell:file_reporter";
 
 tag_impact = "Successful exploitation could allow remote attackers to delete
 arbitrary files.
@@ -47,8 +49,8 @@ arbitrary file deletion vulnerability.";
 if(description)
 {
   script_id(801960);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 8201 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 15:28:50 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_cve_id("CVE-2011-2750");
   script_tag(name:"cvss_base", value:"5.0");
@@ -62,7 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_novell_prdts_detect_win.nasl");
-  script_require_keys("Novell/FileReporter/Ver");
+  script_mandatory_keys("Novell/FileReporter/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -73,15 +75,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Get version from KB
-nfrVer = get_kb_item("Novell/FileReporter/Ver");
-if(nfrVer)
-{
-  ## Check for  Novell File Reporter version less than or equal 1.0.4.2
-  if(version_is_less_equal(version:nfrVer, test_version:"1.0.400.2")){
-    security_message(0);
-  }
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
+## Check for  Novell File Reporter version less than or equal 1.0.4.2
+if( version_is_less_equal( version:vers, test_version:"1.0.400.2" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"None", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_iprint_client_stack_bof_vuln_win.nasl 5637 2017-03-21 07:30:30Z antu123 $
+# $Id: gb_novell_iprint_client_stack_bof_vuln_win.nasl 8201 2017-12-20 14:28:50Z cfischer $
 #
 # Novell iPrint Client Stack Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:novell:iprint";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810590");
-  script_version("$Revision: 5637 $");
+  script_version("$Revision: 8201 $");
   script_cve_id("CVE-2013-1091");
   script_bugtraq_id(59612);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 08:30:30 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 15:28:50 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-03-14 13:19:08 +0530 (Tue, 14 Mar 2017)");
   script_name("Novell iPrint Client Stack Buffer Overflow Vulnerability (Windows)");
 
@@ -66,7 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_novell_prdts_detect_win.nasl");
-  script_mandatory_keys("Novell/iPrint/Ver");
+  script_mandatory_keys("Novell/iPrint/Installed");
   exit(0);
 }
 

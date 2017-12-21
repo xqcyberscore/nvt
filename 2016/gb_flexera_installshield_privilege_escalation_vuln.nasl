@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flexera_installshield_privilege_escalation_vuln.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_flexera_installshield_privilege_escalation_vuln.nasl 8200 2017-12-20 13:48:45Z cfischer $
 #
 # Flexera InstallShield Privilege Escalation Vulnerability
 #
@@ -24,17 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:flexerasoftware:installshield:2015:";
+CPE = "cpe:/a:flexerasoftware:installshield:2015";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809006");
-  script_version("$Revision: 5598 $");
+  script_version("$Revision: 8200 $");
   script_cve_id("CVE-2016-2542");
   script_bugtraq_id(84213);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-08-19 19:16:31 +0530 (Fri, 19 Aug 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Flexera InstallShield Privilege Escalation Vulnerability");
@@ -93,10 +93,10 @@ if(!inshieldVer = get_kb_item("Flexera/InstallShield/Win/Ver")){
 sysPath = get_app_location(cpe:CPE);
 if(!sysPath)
 {
-  CPE = "cpe:/a:flexerasoftware:installshield:2014:";
+  CPE = "cpe:/a:flexerasoftware:installshield:2014";
   sysPath = get_app_location(cpe:CPE);
   if(!sysPath){
-    CPE = "cpe:/a:flexerasoftware:installshield:2013:";
+    CPE = "cpe:/a:flexerasoftware:installshield:2013";
   }
   if(!sysPath){
     exit(0);

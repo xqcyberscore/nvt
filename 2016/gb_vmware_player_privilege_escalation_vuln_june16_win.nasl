@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_player_privilege_escalation_vuln_june16_win.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_vmware_player_privilege_escalation_vuln_june16_win.nasl 8200 2017-12-20 13:48:45Z cfischer $
 #
 # VMware Player Privilege Escalation vulnerability June16 (Windows)
 #
@@ -24,16 +24,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:vmware:player:";
+CPE = "cpe:/a:vmware:player";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808110");
-  script_version("$Revision: 5650 $");
+  script_version("$Revision: 8200 $");
   script_cve_id("CVE-2016-2077");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 17:28:32 +0530 (Fri, 03 Jun 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Player Privilege Escalation vulnerability June16 (Windows)");

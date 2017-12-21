@@ -35,8 +35,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-July/044516.html");
   script_id(862294);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8205 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 07:30:37 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-30 15:25:34 +0200 (Fri, 30 Jul 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -44,7 +44,7 @@ if(description)
   script_cve_id("CVE-2010-2534");
   script_name("Fedora Update for openttd FEDORA-2010-11401");
 
-  script_summary("Check for the Version of openttd");
+  script_tag(name: "summary" , value: "Check for the Version of openttd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

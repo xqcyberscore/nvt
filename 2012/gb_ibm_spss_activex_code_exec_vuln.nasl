@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_spss_activex_code_exec_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_ibm_spss_activex_code_exec_vuln.nasl 8194 2017-12-20 11:29:51Z cfischer $
 #
 # IBM SPSS SamplePower 'VsVIEW6' ActiveX Control Multiple Code Execution Vulnerabilities (Windows)
 #
@@ -23,6 +23,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
+CPE = "cpe:/a:ibm:spss_samplepower";
 
 tag_solution = "No solution or patch was made available for at least one year
 since disclosure of this vulnerability. Likely none will be provided anymore.
@@ -52,12 +54,12 @@ to buffer overflow vulnerability.";
 if(description)
 {
   script_id(802600);
-  script_version("$Revision: 5963 $");
+  script_version("$Revision: 8194 $");
   script_bugtraq_id(51448);
   script_cve_id("CVE-2012-0189");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 12:29:51 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-02-01 11:11:11 +0530 (Wed, 01 Feb 2012)");
   script_name("IBM SPSS SamplePower 'VsVIEW6' ActiveX Control Multiple Code Execution Vulnerabilities (Windows)");
 
@@ -71,7 +73,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_ibm_spss_sample_power_detect_win.nasl");
-  script_require_keys("IBM/SPSS/Win/Ver");
+  script_mandatory_keys("IBM/SPSS/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -84,20 +86,24 @@ if(description)
 include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_activex.inc");
+include("host_details.inc");
 
-## Get version from KB
-version = get_kb_item("IBM/SPSS/Win/Ver");
-if(version)
-{
-  ## Check for IBM SPSS SamplePower 3.0
-  if(version_is_equal(version:version, test_version:"3.0"))
-  {
-    ## CLSID
-    clsid = "{6E84D662-9599-11D2-9367-20CC03C10627}";
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
-    ## Check if Kill-Bit is set
-    if(is_killbit_set(clsid:clsid) == 0){
-      security_message(0);
-    }
+## Check for IBM SPSS SamplePower 3.0
+if( version_is_equal( version:vers, test_version:"3.0" ) ) {
+
+  ## CLSID
+  clsid = "{6E84D662-9599-11D2-9367-20CC03C10627}";
+
+  ## Check if Kill-Bit is set
+  if( is_killbit_set( clsid:clsid ) == 0 ) {
+    report = "Installed version is 3.0 and Kill-Bit for CLSID " + clsid + " is not set.";
+    security_message( port:0, data:report );
+    exit( 0 );
   }
 }
+
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_netextender_detect_win.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_dell_sonicwall_netextender_detect_win.nasl 8189 2017-12-20 09:10:19Z cfischer $
 #
 # Dell SonicWall NetExtender Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806042");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 8189 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:10:19 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:38:49 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Dell SonicWall NetExtender Version Detection (Windows)");
@@ -100,17 +100,9 @@ foreach item (registry_enum_keys(key:key))
       netextPath = "Unable to find the install location from registry";
     }
 
-    if(netextVer)
-    {
+    if(netextVer){
       set_kb_item(name:"Dell/SonicWall/NetExtender/Win/Ver", value:netextVer);
-
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:netextVer, exp:"^([0-9.]+)", base:"cpe:/o:dell:sonicwall_netextender:");
-      if(isnull(cpe))
-        cpe = "cpe:/o:dell:sonicwall_netextender";
-
-      build_report(app: "Dell SonicWall NetExtender",
-                   ver:netextVer, cpe: cpe, insloc:netextPath);
+      register_and_report_cpe( app:"Dell SonicWall NetExtender", ver:netextVer, base:"cpe:/o:dell:sonicwall_netextender:", expr:"^([0-9.]+)", insloc:netextPath );
     }
   }
 }

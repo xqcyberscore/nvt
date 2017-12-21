@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_874bd165c0_perl-DBD-MySQL_fc27.nasl 8185 2017-12-20 04:08:16Z santu $
+# $Id: gb_fedora_2017_874bd165c0_perl-DBD-MySQL_fc27.nasl 8203 2017-12-21 05:55:19Z cfischer $
 #
 # Fedora Update for perl-DBD-MySQL FEDORA-2017-874bd165c0
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873924");
-  script_version("$Revision: 8185 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 05:08:16 +0100 (Wed, 20 Dec 2017) $");
+  script_version("$Revision: 8203 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 06:55:19 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-19 08:10:26 +0100 (Tue, 19 Dec 2017)");
   script_cve_id("CVE-2017-10789");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for perl-DBD-MySQL FEDORA-2017-874bd165c0");
   script_tag(name: "summary", value: "Check the version of perl-DBD-MySQL");

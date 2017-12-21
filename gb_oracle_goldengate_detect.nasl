@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_goldengate_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $ 
+# $Id: gb_oracle_goldengate_detect.nasl 8199 2017-12-20 13:37:22Z cfischer $ 
 #
 # Oracle GoldenGate Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807247");
-  script_version("$Revision: 5871 $");
+  script_version("$Revision: 8199 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:37:22 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-02-11 17:49:15 +0530 (Thu, 11 Feb 2016)");
   script_name("Oracle GoldenGate Version Detection");
 
@@ -49,7 +49,6 @@ if(description)
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -111,26 +110,15 @@ foreach key (key_list)
           oraPath = "Unable to find the install location from registry";
         }
 
-        set_kb_item(name:"Oracle/GoldenGate/Win/Ver", value:oraVer);
-
-        ## Build cpe
-        cpe = build_cpe(value:oraVer, exp:"([0-9.]+)", base:"cpe:/a:oracle:goldengate:");
-        if(isnull(cpe))
-          cpe = 'cpe:/a:oracle:goldengate';
-
-        build_report(app:"Oracle GoldenGate", ver:oraVer, cpe:cpe, insloc:oraPath);
+        set_kb_item(name:"Oracle/GoldenGate/Win/Installed", value:TRUE);
 
         ## Register for 64 bit app on 64 bit OS once again
-        if("64" >< os_arch && "Wow6432Node" >!< key)
-        {
+        if("64" >< os_arch && "Wow6432Node" >!< key) {
           set_kb_item(name:"Oracle/GoldenGate64/Win/Ver", value:oraVer);
-
-          ## Build CPE
-          cpe = build_cpe(value:oraVer, exp:"^([0-9.]+)", base:"cpe:/a:oracle:goldengate:x64:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:oracle:goldengate:x64";
- 
-          build_report(app:"Oracle GoldenGate", ver:oraVer, cpe:cpe, insloc:oraPath);
+          register_and_report_cpe( app:"Oracle GoldenGate", ver:oraVer, base:"cpe:/a:oracle:goldengate:x64:", expr:"^([0-9.]+)", insloc:oraPath );
+        } else {
+          set_kb_item(name:"Oracle/GoldenGate/Win/Ver", value:oraVer);
+          register_and_report_cpe( app:"Oracle GoldenGate", ver:oraVer, base:"cpe:/a:oracle:goldengate:", expr:"^([0-9.]+)", insloc:oraPath );
         }
         exit(0);
       }

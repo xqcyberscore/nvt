@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_net_idnty_code_exec_vuln.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_novell_net_idnty_code_exec_vuln.nasl 8201 2017-12-20 14:28:50Z cfischer $
 #
 # Novell NetIdentity Agent Pointer Dereference Remote Code Execution Vulnerability
 #
@@ -24,9 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:novell:netidentity_client";
+
 tag_impact = "Successful exploitation will let the attacker execute arbitrary code in the
   context of the affected application with system privileges through a valid
   IPC$ connection.
+
   Impact Level: System";
 tag_affected = "Novell NetIdentity Agent version prior to 1.2.4 on Windows.";
 tag_insight = "Handling of RPC messages over the XTIERRPCPIPE named pipe in 'xtagent.exe',
@@ -40,8 +43,8 @@ tag_summary = "The host is installed with Novell NetIdentity Agent and is prone
 if(description)
 {
   script_id(900341);
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 8201 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 15:28:50 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-24 16:23:28 +0200 (Fri, 24 Apr 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -58,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("General");
   script_dependencies("secpod_novell_prdts_detect_win.nasl");
-  script_require_keys("Novell/NetIdentity/Ver");
+  script_mandatory_keys("Novell/NetIdentity/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -67,15 +70,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-netidVer = get_kb_item("Novell/NetIdentity/Ver");
-if(!netidVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 # Check for Novell NetIdentity version prior to 1.2.4
-if(version_is_less(version:netidVer, test_version:"1.2.4")){
-  security_message(0);
+if( version_is_less( version:vers, test_version:"1.2.4" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.2.4", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

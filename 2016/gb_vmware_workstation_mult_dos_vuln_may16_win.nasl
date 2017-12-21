@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_mult_dos_vuln_may16_win.nasl 5941 2017-04-12 12:01:06Z antu123 $
+# $Id: gb_vmware_workstation_mult_dos_vuln_may16_win.nasl 8200 2017-12-20 13:48:45Z cfischer $
 #
 # VMware Workstation Multiple Vulnerabilities May16 (Windows)
 #
@@ -24,17 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:vmware:workstation:";
+CPE = "cpe:/a:vmware:workstation";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806759");
-  script_version("$Revision: 5941 $");
+  script_version("$Revision: 8200 $");
   script_cve_id("CVE-2014-8370", "CVE-2015-1043", "CVE-2015-1044", "CVE-2015-2341");
   script_bugtraq_id(72338, 72337, 72336, 75094);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 14:01:06 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-05-20 09:35:33 +0530 (Fri, 20 May 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Workstation Multiple Vulnerabilities May16 (Windows)");

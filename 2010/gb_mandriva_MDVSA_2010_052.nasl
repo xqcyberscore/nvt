@@ -44,8 +44,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-03/msg00005.php");
   script_id(830935);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8186 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 07:30:34 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-03-12 17:02:32 +0100 (Fri, 12 Mar 2010)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if(description)
   script_cve_id("CVE-2010-0427");
   script_name("Mandriva Update for sudo MDVSA-2010:052 (sudo)");
 
-  script_summary("Check for the Version of sudo");
+  script_tag(name: "summary" , value: "Check for the Version of sudo");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

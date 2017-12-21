@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpbb_37882.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: phpbb_37882.nasl 8187 2017-12-20 07:30:09Z teissa $
 #
 # phpBB Forum ID Security Bypass Vulnerability
 #
@@ -35,9 +35,9 @@ tag_solution = "Updates are available. Please see the references for details.";
 
 if (description)
 {
- script_id(100463);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100463");
+ script_version("$Revision: 8187 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-01-25 18:49:48 +0100 (Mon, 25 Jan 2010)");
  script_cve_id("CVE-2010-1630");
  script_bugtraq_id(37882);

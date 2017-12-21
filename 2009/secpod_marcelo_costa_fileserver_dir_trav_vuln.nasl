@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_marcelo_costa_fileserver_dir_trav_vuln.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_marcelo_costa_fileserver_dir_trav_vuln.nasl 8193 2017-12-20 10:46:55Z cfischer $
 #
 # Marcelo Costa FileServer Component Directory Traversal Vulnerability
 #
@@ -23,6 +23,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
+CPE = "cpe:/a:microsoft:messenger_plus%21_live";
 
 tag_impact = "Successful exploitation will allow attackers to cause Directory
 Traversal attacks on the affected product.
@@ -47,8 +49,8 @@ vulnerability.";
 if(description)
 {
   script_id(900810);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 8193 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 11:46:55 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-08-05 14:14:14 +0200 (Wed, 05 Aug 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
@@ -63,7 +65,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("General");
   script_dependencies("gb_ms_win_live_messenger_detect.nasl");
-  script_mandatory_keys("MS/MessengerPlus/Ver", "MS/MessengerPlus/Path");
+  script_mandatory_keys("MS/MessengerPlus/Installed", "MS/MessengerPlus/Path");
   script_require_ports(139, 445);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
@@ -74,23 +76,19 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
+include("host_details.inc");
 
-if( ! version = get_kb_item( "MS/MessengerPlus/Ver" ) ) exit( 0 );
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+version  = infos['version'];
+plusPath = infos['location'];
+if( ! plusPath ) exit( 0 );
 
 # Check for Messenger Plus! Live Installation
-if( version =~ "^4\..*")
+if( version =~ "^4\..*" )
 {
-  # Get for Installed Location of Messenger Plus! Live
-  plusPath = get_kb_item("MS/MessengerPlus/Path");
-
-  if(isnull(plusPath)){
-    exit(0);
-  }
-
   fsPath = NULL;
   if("\Uninstall.exe" >< plusPath)
     fsPath = plusPath - "\Uninstall.exe" + "\Scripts\FileServer\fsVersion.txt";

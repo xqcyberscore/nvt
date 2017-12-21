@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_guest_privilege_escalation_vuln_aug16_lin.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_vmware_workstation_guest_privilege_escalation_vuln_aug16_lin.nasl 8200 2017-12-20 13:48:45Z cfischer $
 #
 # VMware Workstation Guest Privilege Escalation Vulnerability Aug16 (Linux)
 #
@@ -24,17 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:vmware:workstation:";
+CPE = "cpe:/a:vmware:workstation";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809003");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 8200 $");
   script_cve_id("CVE-2015-6933");
   script_bugtraq_id(79958);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-08-19 11:12:41 +0530 (Fri, 19 Aug 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VMware Workstation Guest Privilege Escalation Vulnerability Aug16 (Linux)");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netsparker_detect_win.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: gb_netsparker_detect_win.nasl 8199 2017-12-20 13:37:22Z cfischer $
 #
 # Netsparker Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805960");
-  script_version("$Revision: 6040 $");
+  script_version("$Revision: 8199 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:37:22 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-08-19 15:48:22 +0530 (Wed, 19 Aug 2015)");
    script_tag(name:"qod_type", value:"registry");
   script_name("Netsparker Version Detection (Windows)");
@@ -108,14 +108,8 @@ foreach key (key_list)
       if(netVer)
       {
         set_kb_item(name:"Netsparker/Win/Ver", value:netVer);
-
-        ## build cpe and store it as host_detail, NO CPE Name found Creating CPE Name as
-        ## cpe:/a:netsparker:wass:
-        cpe = build_cpe(value:netVer, exp:"^([0-9.]+)", base:"cpe:/a:netsparker:wass:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:netsparker:wass";
-        build_report(app: "Netsparker - Web Application Security Scanner",
-                     ver:netVer, cpe: cpe, insloc:netPath);
+        ## NO CPE Name found, using cpe:/a:netsparker:wass: CPE Name
+        register_and_report_cpe( app:"Netsparker - Web Application Security Scanner", ver:netVer, base:"cpe:/a:netsparker:wass:", expr:"^([0-9.]+)", insloc:netPath );
       }
     }
   }

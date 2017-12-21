@@ -51,8 +51,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2010-July/msg00001.html");
   script_id(870285);
-  script_version("$Revision: 6684 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:43:49 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8205 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 07:30:37 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-02 14:26:21 +0200 (Fri, 02 Jul 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -60,7 +60,7 @@ if(description)
   script_cve_id("CVE-2007-4829");
   script_name("RedHat Update for perl-Archive-Tar RHSA-2010:0505-01");
 
-  script_summary("Check for the Version of perl-Archive-Tar");
+  script_tag(name: "summary" , value: "Check for the Version of perl-Archive-Tar");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

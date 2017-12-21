@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_str_buf_cat_dos_vuln_win.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_ruby_str_buf_cat_dos_vuln_win.nasl 8196 2017-12-20 12:13:37Z cfischer $
 #
 # Ruby 'str_buf_cat' function Denial-of-Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ruby-lang:ruby";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804888");
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 8196 $");
   script_cve_id("CVE-2014-3916");
   script_bugtraq_id(67705);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:13:37 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-11-21 11:58:24 +0530 (Fri, 21 Nov 2014)");
   script_name("Ruby 'str_buf_cat' function Denial-of-Service Vulnerability (Windows)");
 
@@ -69,7 +69,7 @@ if(description)
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_ruby_detect_win.nasl");
-  script_mandatory_keys("Ruby/Win/Ver");
+  script_mandatory_keys("Ruby/Win/Installed");
   exit(0);
 }
 

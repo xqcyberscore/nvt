@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_ultimate_security_detect_win.nasl 7140 2017-09-15 09:41:22Z cfischer $
+# $Id: gb_k7_ultimate_security_detect_win.nasl 8199 2017-12-20 13:37:22Z cfischer $
 #
 # K7 Ultimate Security Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805462");
-  script_version("$Revision: 7140 $");
+  script_version("$Revision: 8199 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:37:22 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-01-02 11:26:06 +0530 (Fri, 02 Jan 2015)");
   script_name("K7 Ultimate Security Version Detection (Windows)");
 
@@ -97,29 +97,20 @@ foreach key (key_list)
     {
       k7usecVer = registry_get_sz(key:key + item, item:"DisplayVersion");
       k7usecPath = registry_get_sz(key:key + item, item:"InstallLocation");
-      if(!k7usecPath)
-      {
+      if(!k7usecPath) {
         k7usecPath = "Unable to find the install location from registry";
       }
 
-      set_kb_item(name:"K7/UltimateSecurity/Win/Ver", value:k7usecVer);
+      set_kb_item(name:"K7/UltimateSecurity/Win/Installed", value:TRUE);
 
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:k7usecVer, exp:"^([0-9.]+)", base:"cpe:/a:k7computing:ultimate_security:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:k7computing:ultimate_security";
-
-      ## Register for 64 bit app on 64 bit OS once again
-      if("64" >< os_arch && "Wow6432Node" >!< key)
-      {
+      ## Register for 64 bit app on 64 bit OS
+      if("64" >< os_arch && "Wow6432Node" >!< key) {
         set_kb_item(name:"K7/UltimateSecurity64/Win/Ver", value:k7usecVer);
-        cpe = build_cpe(value:k7usecVer, exp:"^([0-9.]+)", base:"cpe:/a:k7computing:ultimate_security:x64:");
-
-        if(isnull(cpe))
-          cpe = "cpe:/a:k7computing:ultimate_security:x64";
+        register_and_report_cpe( app:"K7 UltimateSecurity", ver:k7usecVer, base:"cpe:/a:k7computing:ultimate_security:x64:", expr:"^([0-9.]+)", insloc:k7usecPath );
+      } else {
+        set_kb_item(name:"K7/UltimateSecurity/Win/Ver", value:k7usecVer);
+        register_and_report_cpe( app:"K7 UltimateSecurity", ver:k7usecVer, base:"cpe:/a:k7computing:ultimate_security:", expr:"^([0-9.]+)", insloc:k7usecPath );
       }
-      ## Register Product and Build Report
-      build_report(app:"K7 UltimateSecurity", ver:k7usecVer, cpe:cpe, insloc:k7usecPath);
     }
   }
 }

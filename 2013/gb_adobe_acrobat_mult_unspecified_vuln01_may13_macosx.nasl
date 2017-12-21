@@ -24,13 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:adobe:acrobat:";
+CPE = "cpe:/a:adobe:acrobat";
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803617";
 
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6074 $");
+  script_version("$Revision: 8200 $");
   script_cve_id("CVE-2013-3342", "CVE-2013-3341", "CVE-2013-3340", "CVE-2013-3339",
                 "CVE-2013-3338", "CVE-2013-3337", "CVE-2013-2737", "CVE-2013-2736",
                 "CVE-2013-2735", "CVE-2013-2734", "CVE-2013-2733", "CVE-2013-2732",
@@ -43,7 +43,7 @@ if(description)
                     59927, 59915, 59913, 59912, 59909, 59907, 59902);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-05-28 10:51:02 +0530 (Tue, 28 May 2013)");
   script_name("Adobe Acrobat Multiple Unspecified Vulnerabilities -01 May13 (Mac OS X)");
 

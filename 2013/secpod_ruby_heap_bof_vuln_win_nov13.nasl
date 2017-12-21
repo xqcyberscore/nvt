@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_heap_bof_vuln_win_nov13.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: secpod_ruby_heap_bof_vuln_win_nov13.nasl 8196 2017-12-20 12:13:37Z cfischer $
 #
 # Ruby Interpreter Heap Overflow Vulnerability Nov13 (Windows)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ruby-lang:ruby";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 8196 $");
   script_cve_id("CVE-2013-4164");
   script_bugtraq_id(63873);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:13:37 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-11-27 20:39:27 +0530 (Wed, 27 Nov 2013)");
   script_name("Ruby Interpreter Heap Overflow Vulnerability Nov13 (Windows)");
 
@@ -79,7 +79,7 @@ For updates refer to http://www.ruby-lang.org";
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("General");
   script_dependencies("secpod_ruby_detect_win.nasl");
-  script_mandatory_keys("Ruby/Win/Ver");
+  script_mandatory_keys("Ruby/Win/Installed");
   exit(0);
 }
 

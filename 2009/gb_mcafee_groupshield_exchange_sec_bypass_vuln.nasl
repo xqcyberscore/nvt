@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_groupshield_exchange_sec_bypass_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_mcafee_groupshield_exchange_sec_bypass_vuln.nasl 8197 2017-12-20 12:50:38Z cfischer $
 #
 # McAfee GroupShield for Exchange X-Header Security Bypass Vulnerability
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
+CPE = "cpe:/a:mcafee:groupshield";
+
 tag_impact = "Successful exploits will let the attacker craft malicious
 contents inside the X-Header and can bypass antivirus detection and launch
 further attacks into the affected system.
@@ -46,8 +48,8 @@ Exchange and is prone to X-Header Security Bypass Vulnerability.";
 if(description)
 {
   script_id(800619);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 8197 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:50:38 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-05-22 10:20:17 +0200 (Fri, 22 May 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -62,7 +64,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("SMTP problems");
   script_dependencies("gb_mcafee_groupshield_detect.nasl");
-  script_require_keys("McAfee/GroupShield/Exchange/Ver");
+  script_mandatory_keys("McAfee/GroupShield/Exchange/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -72,14 +74,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-groupVer = get_kb_item("McAfee/GroupShield/Exchange/Ver");
-if(groupVer != NULL)
-{
-  # Grep for McAfee Groupshield for Exchange version 6.0.616.102
-  if(version_is_less_equal(version:groupVer, test_version:"6.0.616.102")){
-    security_message(0);
-  }
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
+# Grep for McAfee Groupshield for Exchange version 6.0.616.102
+if( version_is_less_equal( version:vers, test_version:"6.0.616.102" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"None", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_sizer_microsoft_sharepoint_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_hpe_sizer_microsoft_sharepoint_detect.nasl 8199 2017-12-20 13:37:22Z cfischer $
 #
 # HPE Sizing for Microsoft SharePoint Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809455");
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 8199 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:37:22 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-10-17 16:22:36 +0530 (Mon, 17 Oct 2016)");
   script_name("HPE Sizing for Microsoft SharePoint Version Detection (Windows)");
 
@@ -95,29 +95,16 @@ foreach item (registry_enum_keys(key:key))
       if(!hpPath){
         hpPath = "Couldn find the install location from registry";
       }
-      ## Set the version in KB
+
       set_kb_item(name:"HPE/sizer/microsoft/sharepoint/Win/Ver", value:hpVer);
 
       if("SharePoint 2010" >< hpName)
       {
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:hpVer, exp:"^([0-9.]+)", base:"cpe:/a:hp:sizer_for_microsoft_sharepoint_2010:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:hp:sizer_for_microsoft_sharepoint_2010";
-
-        ## Register Product and Build Report
-        register_product(cpe:cpe, location:hpPath);
-
-        build_report(app:hpName, ver: hpVer, cpe: cpe, insloc: hpPath);
+        register_and_report_cpe( app:hpName, ver:hpVer, base:"cpe:/a:hp:sizer_for_microsoft_sharepoint_2010:", expr:"^([0-9.]+)", insloc:hpPath );
       }
       if("SharePoint 2013" >< hpName)
       {
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:hpVer, exp:"^([0-9.]+)", base:"cpe:/a:hp:sizer_for_microsoft_sharepoint_2013:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:hp:sizer_for_microsoft_sharepoint_2013";
-
-        build_report(app:hpName, ver: hpVer, cpe: cpe, insloc: hpPath);
+        register_and_report_cpe( app:hpName, ver:hpVer, base:"cpe:/a:hp:sizer_for_microsoft_sharepoint_2013:", expr:"^([0-9.]+)", insloc:hpPath );
       }
     }
   }

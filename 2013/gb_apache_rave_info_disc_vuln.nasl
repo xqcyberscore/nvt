@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_rave_info_disc_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_apache_rave_info_disc_vuln.nasl 8200 2017-12-20 13:48:45Z cfischer $
 #
 # Apache Rave User Information Disclosure Vulnerability
 #
@@ -37,17 +37,17 @@ tag_summary = "The host is running Apache Rave and is prone to information
   disclosure vulnerability.";
 
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803180";
-CPE = "cpe:/a:apache:rave:";
+CPE = "cpe:/a:apache:rave";
 
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 8200 $");
   script_cve_id("CVE-2013-1814");
   script_bugtraq_id(58455);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-03-14 16:32:56 +0530 (Thu, 14 Mar 2013)");
   script_name("Apache Rave User Information Disclosure Vulnerability");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/82758");

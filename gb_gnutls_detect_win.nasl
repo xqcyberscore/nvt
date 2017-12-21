@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnutls_detect_win.nasl 8143 2017-12-15 13:11:11Z cfischer $
+# $Id: gb_gnutls_detect_win.nasl 8193 2017-12-20 10:46:55Z cfischer $
 #
 # GnuTLS Version Detection (Windows)
 #
@@ -27,20 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800916");
-  script_version("$Revision: 8143 $");
+  script_version("$Revision: 8193 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 11:46:55 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-02-03 13:43:16 +0530 (Mon, 03 Feb 2014)");
   script_tag(name:"qod_type", value:"registry");
   script_name("GnuTLS Version Detection (Windows)");
 
-  tag_summary =
-"Detection of installed version of GnuTLS on Windows.
+  tag_summary = "Detection of installed version of GnuTLS on Windows.
 
 The script logs in via smb, searches for GnuTLS in the registry
 and gets the version from registry.";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_category(ACT_GATHER_INFO);
@@ -51,7 +49,6 @@ and gets the version from registry.";
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -92,40 +89,22 @@ foreach key (key_list)
     if("GnuTLS" >< gnuTLSName)
     {
 
-      ## Get the version
-      gnuTLSName = registry_get_sz(key:key + item, item:"DisplayVersion");
-
-      ## Get the installed path
+      gnuTLSVers = registry_get_sz(key:key + item, item:"DisplayVersion");
       gnuTLSPath = registry_get_sz(key:key + item, item:"InstallLocation");
       if(!gnuTLSPath){
         gnuTLSPath = "Couldn find the install location from registry";
       }
 
-      if(gnuTLSName)
+      if(gnuTLSVers)
       {
         set_kb_item(name:"GnuTLS_or_OpenSSL/Win/Installed", value:TRUE);
-        set_kb_item(name:"GnuTLS/Win/Ver", value:gnuTLSName);
-
-        ## build cpe
-        cpe = build_cpe(value:gnuTLSName, exp:"^([0-9.]+)", base:"cpe:/a:gnu:gnutls:");
-        if(!cpe)
-          cpe = "cpe:/a:gnu:gnutls";
-
-        ## Register Product and Build Report
-        build_report(app: "GnuTLS", ver:gnuTLSName, cpe:cpe, insloc:gnuTLSPath);
-
-        if("x64" >< osArch && "Wow6432Node" >!< key)
-        {
-          set_kb_item(name:"GnuTLS_or_OpenSSL/Win/Installed", value:TRUE);
-          set_kb_item(name:"GnuTLS64/Win/Ver", value:gnuTLSName);
-
-          ## build cpe
-          cpe = build_cpe(value:gnuTLSName, exp:"^([0-9.]+)", base:"cpe:/a:gnu:gnutls:x64:");
-          if(!cpe)
-            cpe = "cpe:/a:gnu:gnutls:x64";
-
-          ## Register Product and Build Report
-          build_report(app: "GnuTLS", ver:gnuTLSName, cpe:cpe, insloc:gnuTLSPath);
+        set_kb_item(name:"GnuTLS/Win/Installed", value:TRUE);
+        if("x64" >< osArch && "Wow6432Node" >!< key) {
+          set_kb_item(name:"GnuTLS64/Win/Ver", value:gnuTLSVers);
+          register_and_report_cpe( app:"GnuTLS", ver:gnuTLSVers, base:"cpe:/a:gnu:gnutls:x64:", expr:"^([0-9.]+)", insloc:gnuTLSPath );
+        } else {
+          set_kb_item(name:"GnuTLS/Win/Ver", value:gnuTLSVers);
+          register_and_report_cpe( app:"GnuTLS", ver:gnuTLSVers, base:"cpe:/a:gnu:gnutls:", expr:"^([0-9.]+)", insloc:gnuTLSPath );
         }
 
         ## To improve performance by avoiding extra iteration over uninstall path

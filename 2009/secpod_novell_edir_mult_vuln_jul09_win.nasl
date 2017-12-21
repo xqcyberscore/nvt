@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_edir_mult_vuln_jul09_win.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_novell_edir_mult_vuln_jul09_win.nasl 8201 2017-12-20 14:28:50Z cfischer $
 #
 # Novell eDirectory Multiple Vulnerabilities - Jul09 (Windows)
 #
@@ -24,27 +24,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:novell:edirectory";
+
 tag_impact = "Successful exploitation allows attackers to crash the service
   leading to denial of service condition.
+
   Impact Level: Application";
+
 tag_affected = "Novell eDirectory 8.8 before SP5 on Windows.";
+
 tag_insight = "- An unspecified error occurs in DS\NDSD component while processing malformed
     LDAP request containing multiple . (dot) wildcard characters in the Relative
     Distinguished Name (RDN).
+
   - An unspecified error occurs in DS\NDSD component while processing malformed
     bind LDAP packets.
+
   - Off-by-one error occurs in the iMonitor component while processing
     malicious HTTP request with a crafted Accept-Language header.";
+
 tag_solution = "Upgrade to  Novell eDirectory 8.8 SP5 or later
   http://www.novell.com/products/edirectory/";
+
 tag_summary = "This host is running Novell eDirectory and is prone to multiple
   vulnerabilities.";
 
 if(description)
 {
   script_id(900599);
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 8201 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 15:28:50 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-07-29 08:37:44 +0200 (Wed, 29 Jul 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -59,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("secpod_novell_prdts_detect_win.nasl");
-  script_require_keys("Novell/eDir/Win/Ver");
+  script_mandatory_keys("Novell/eDir/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -70,24 +79,17 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-edirPort = 8028;
-if(!get_port_state(edirPort))
-{
-  edirPort = 8030;
-  if(!get_port_state(edirPort)){
-    exit(0);
-  }
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
+if( version_in_range( version:vers, test_version:"8.8", test_version2:"8.8.SP4" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"8.8 SP5", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-eDirVer =  get_kb_item("Novell/eDir/Win/Ver");
-if(!eDirVer){
-  exit(0);
-}
-
-if(version_in_range(version:eDirVer, test_version:"8.8",
-                                     test_version2:"8.8.SP4")){
-  security_message(edirPort);
-}
+exit( 99 );

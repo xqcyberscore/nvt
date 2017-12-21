@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_sizer_microsoft_lync_server_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_hpe_sizer_microsoft_lync_server_detect.nasl 8189 2017-12-20 09:10:19Z cfischer $
 #
 # HPE Sizing for Microsoft Lync Server Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809453");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 8189 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:10:19 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-10-17 16:22:36 +0530 (Mon, 17 Oct 2016)");
   script_name("HPE Sizing for Microsoft Lync Server Version Detection (Windows)");
 
@@ -95,27 +95,14 @@ foreach item (registry_enum_keys(key:key))
       if(!hpPath){
         hpPath = "Couldn find the install location from registry";
       }
-      ## Set the version in KB
+
       set_kb_item(name:"HPE/sizer/microsoft/lync/server", value:hpVer);
 
-
-      if("Lync Server 2010" >< hpName)
-      {
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:hpVer, exp:"^([0-9.]+)", base:"cpe:/a:hp:sizer_for_microsoft_lync_server_2010:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:hp:sizer_for_microsoft_lync_server_2010";
-
-        build_report(app:hpName, ver: hpVer, cpe: cpe, insloc: hpPath);     
+      if("Lync Server 2010" >< hpName) {
+        register_and_report_cpe( app:hpName, ver:hpVer, base:"cpe:/a:hp:sizer_for_microsoft_lync_server_2010:", expr:"^([0-9.]+)", insloc:hpPath );
       }
-      if("Lync Server 2013" >< hpName)
-      {
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:hpVer, exp:"^([0-9.]+)", base:"cpe:/a:hp:sizer_for_microsoft_lync_server_2013:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:hp:sizer_for_microsoft_lync_server_2013";
-
-        build_report(app:hpName, ver: hpVer, cpe: cpe, insloc: hpPath);
+      if("Lync Server 2013" >< hpName) {
+        register_and_report_cpe( app:hpName, ver:hpVer, base:"cpe:/a:hp:sizer_for_microsoft_lync_server_2013:", expr:"^([0-9.]+)", insloc:hpPath );
       }
     }
   }

@@ -68,8 +68,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-November/050237.html");
   script_id(862636);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8205 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 07:30:37 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-12-02 08:39:14 +0100 (Thu, 02 Dec 2010)");
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
@@ -77,7 +77,7 @@ if(description)
   script_cve_id("CVE-2010-3851");
   script_name("Fedora Update for libguestfs FEDORA-2010-16835");
 
-  script_summary("Check for the Version of libguestfs");
+  script_tag(name: "summary" , value: "Check for the Version of libguestfs");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

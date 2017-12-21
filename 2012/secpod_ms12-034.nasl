@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-034.nasl 5341 2017-02-18 16:59:12Z cfi $
+# $Id: secpod_ms12-034.nasl 8190 2017-12-20 09:44:30Z cfischer $
 #
 # MS Security Update For Microsoft Office, .NET Framework, and Silverlight (2681578)
 #
@@ -61,7 +61,7 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902832);
-  script_version("$Revision: 5341 $");
+  script_version("$Revision: 8190 $");
   script_bugtraq_id(50462, 53324, 53326, 53327, 53335, 53347, 53351, 53358,
                     53360, 53363);
   script_cve_id("CVE-2011-3402", "CVE-2012-0159", "CVE-2012-0162", "CVE-2012-0164",
@@ -69,7 +69,7 @@ if(description)
                 "CVE-2012-0181", "CVE-2012-1848");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 17:59:12 +0100 (Sat, 18 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:44:30 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-05-09 09:09:09 +0530 (Wed, 09 May 2012)");
   script_name("MS Security Update For Microsoft Office, .NET Framework, and Silverlight (2681578)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49120");
@@ -96,11 +96,11 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
+include("host_details.inc");
 
 ## Check for OS and Service Pack
 if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3, winVista:3,
@@ -109,15 +109,17 @@ if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3, winVista:3,
 }
 
 ## Get Silverlight version from KB
-mslVer = get_kb_item("Microsoft/Silverlight");
-if(mslVer)
-{
+infos = get_app_version_and_location( cpe:"cpe:/a:microsoft:silverlight" );
+mslVers = infos['version'];
+mslPath = infos['location'];
+
+if( mslVers ) {
   ## Check for Microsoft Silverlight version prior to 4.1.10329
-  if(version_is_less(version:mslVer, test_version:"4.1.10329") ||
-     version_in_range(version:mslVer, test_version:"5.0", test_version2:"5.1.10410"))
-  {
-    security_message(0);
-    exit(0);
+  if( version_is_less( version:mslVers, test_version:"4.1.10329" ) ||
+      version_in_range( version:mslVers, test_version:"5.0", test_version2:"5.1.10410" ) ) {
+    report = report_fixed_ver( installed_version:mslVers, vulnerable_range:"< 4.1.10329 and 5.0 - 5.1.10410", install_path:mslPath );
+    security_message( port:0, data:report );
+    exit( 0 );
   }
 }
 

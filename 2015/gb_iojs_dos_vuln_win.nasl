@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iojs_dos_vuln_win.nasl 6243 2017-05-30 09:04:14Z teissa $
+# $Id: gb_iojs_dos_vuln_win.nasl 8200 2017-12-20 13:48:45Z cfischer $
 #
 # io.js 'V8 utf-8 decoder' Denial Of Service Vulnerability (Windows)
 #
@@ -24,17 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:iojs:io.js:";
+CPE = "cpe:/a:iojs:io.js";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805944");
-  script_version("$Revision: 6243 $");
+  script_version("$Revision: 8200 $");
   script_cve_id("CVE-2015-5380");
   script_bugtraq_id(75556);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-08-04 18:22:15 +0530 (Tue, 04 Aug 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("io.js 'V8 utf-8 decoder' Denial Of Service Vulnerability (Windows)");
@@ -68,7 +68,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_iojs_detect_win.nasl");
-  script_mandatory_keys("iojs/Win/Ver");
+  script_mandatory_keys("iojs/Win/Installed");
   exit(0);
 }
 

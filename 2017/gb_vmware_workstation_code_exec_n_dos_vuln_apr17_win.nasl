@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_code_exec_n_dos_vuln_apr17_win.nasl 5962 2017-04-18 08:01:50Z teissa $
+# $Id: gb_vmware_workstation_code_exec_n_dos_vuln_apr17_win.nasl 8200 2017-12-20 13:48:45Z cfischer $
 #
 # VMware Workstation Code Execution And DoS Vulnerabilities Apr17 (Windows)
 #
@@ -24,18 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:vmware:workstation:";
+CPE = "cpe:/a:vmware:workstation";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810744");
-  script_version("$Revision: 5962 $");
+  script_version("$Revision: 8200 $");
   script_cve_id("CVE-2015-2340", "CVE-2015-2339", "CVE-2015-2338", "CVE-2015-2337",
                 "CVE-2015-2336", "CVE-2012-0897");
   script_bugtraq_id(75092, 75095, 51426);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 10:01:50 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-04-07 17:06:57 +0530 (Fri, 07 Apr 2017)");
   script_name("VMware Workstation Code Execution And DoS Vulnerabilities Apr17 (Windows)");
 

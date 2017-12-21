@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_player_mult_dos_vuln_may16_win.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: gb_vmware_player_mult_dos_vuln_may16_win.nasl 8200 2017-12-20 13:48:45Z cfischer $
 #
 # VMware Player Multiple Vulnerabilities May16 (Windows)
 #
@@ -24,17 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:vmware:player:";
+CPE = "cpe:/a:vmware:player";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806757");
-  script_version("$Revision: 5689 $");
+  script_version("$Revision: 8200 $");
   script_cve_id("CVE-2014-8370", "CVE-2015-1043", "CVE-2015-1044");
   script_bugtraq_id(72338, 72337, 72336);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-05-20 09:35:33 +0530 (Fri, 20 May 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Player Multiple Vulnerabilities May16 (Windows)");

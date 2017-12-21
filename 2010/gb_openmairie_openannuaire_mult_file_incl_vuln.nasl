@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openmairie_openannuaire_mult_file_incl_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_openmairie_openannuaire_mult_file_incl_vuln.nasl 8187 2017-12-20 07:30:09Z teissa $
 #
 # OpenMairie openAnnuaire Multiple File Include Vulnerabilities
 #
@@ -45,9 +45,9 @@ multiple remote file inclusion vulnerabilities.";
 
 if(description)
 {
-  script_id(800780);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800780");
+  script_version("$Revision: 8187 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1921", "CVE-2010-1920");
   script_bugtraq_id(39887);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_iprint_client_mult_bof_vuln_win.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_novell_iprint_client_mult_bof_vuln_win.nasl 8201 2017-12-20 14:28:50Z cfischer $
 #
 # Novell iPrint Client Multiple BOF Vulnerabilities (Windows)
 #
@@ -24,8 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:novell:iprint";
+
 tag_impact = "Successful exploitation lets the remote attacker have a control over the remote
   system registers allowing execution of malformed shellcode.
+
   Impact Level: System";
 tag_affected = "Novell iPrint Client version prior to 5.32";
 tag_insight = "Multiple flaws are due to inadequate boundary checks on user supplied
@@ -39,8 +42,8 @@ tag_summary = "This host is running Novell iPrint Client and is prone to multipl
 if(description)
 {
   script_id(900729);
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 8201 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 15:28:50 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-12-21 07:14:17 +0100 (Mon, 21 Dec 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -57,7 +60,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
   script_dependencies("secpod_novell_prdts_detect_win.nasl");
-  script_require_keys("Novell/Client/Ver");
+  script_mandatory_keys("Novell/iPrint/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -68,14 +71,17 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-iPrintVer =  get_kb_item("Novell/iPrint/Ver");
-if(!iPrintVer){
-  exit(0);
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
+if( version_is_less( version:vers, test_version:"5.32" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"5.32", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-if(version_is_less(version:iPrintVer, test_version:"5.32")){
-  security_message(0);
-}
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: viewvc_37518.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: viewvc_37518.nasl 8187 2017-12-20 07:30:09Z teissa $
 #
 # ViewVC Versions Prior to 1.1.3 Multiple Remote Vulnerabilities
 #
@@ -40,9 +40,9 @@ tag_solution = "Vendor updates are available. Please see the references for deta
 
 if (description)
 {
- script_id(100414);
- script_version("$Revision: 5401 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100414");
+ script_version("$Revision: 8187 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-01-04 18:09:12 +0100 (Mon, 04 Jan 2010)");
  script_cve_id("CVE-2010-0004", "CVE-2010-0005");
  script_bugtraq_id(37518);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_heap_bof_vuln_win_dec09.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_ruby_heap_bof_vuln_win_dec09.nasl 8196 2017-12-20 12:13:37Z cfischer $
 #
 # Ruby Interpreter Heap Overflow Vulnerability (Windows) - Dec09
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:ruby-lang:ruby";
+
 tag_solution = "Apply the patch,
   ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.1-p376.tar.bz2
 
@@ -44,8 +46,8 @@ tag_summary = "This host is installed with Ruby Interpreter and is prone to Heap
 if(description)
 {
   script_id(900725);
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 8196 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:13:37 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-12-23 08:41:41 +0100 (Wed, 23 Dec 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -61,7 +63,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
   script_dependencies("secpod_ruby_detect_win.nasl");
-  script_require_keys("Ruby/Win/Ver");
+  script_mandatory_keys("Ruby/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -70,16 +72,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-rubyVer = get_kb_item("Ruby/Win/Ver");
-if(!rubyVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 # Grep for Ruby Interpreter version from 1.9.1 to 1.9.1 Patch Level 375
-if(version_in_range(version:rubyVer, test_version:"1.9.1",
-                                     test_version2:"1.9.1.p375")){
-  security_message(0);
+if( version_in_range( version:vers, test_version:"1.9.1", test_version2:"1.9.1.p375" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.9.1.p376", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

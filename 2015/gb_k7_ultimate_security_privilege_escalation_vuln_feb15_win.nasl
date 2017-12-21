@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_ultimate_security_privilege_escalation_vuln_feb15_win.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: gb_k7_ultimate_security_privilege_escalation_vuln_feb15_win.nasl 8199 2017-12-20 13:37:22Z cfischer $
 #
 # K7 Ultimate Security Privilege Escalation Vulnerabilities Feb15 (Windows)
 #
@@ -24,16 +24,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:k7computing:ultimate_security:";
+CPE = "cpe:/a:k7computing:ultimate_security";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805453");
-  script_version("$Revision: 6431 $");
+  script_version("$Revision: 8199 $");
   script_cve_id("CVE-2014-9643");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:37:22 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-01-27 17:11:51 +0530 (Tue, 27 Jan 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("K7 Ultimate Security Privilege Escalation Vulnerabilities Feb15 (Windows)");
@@ -66,10 +66,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_k7_ultimate_security_detect_win.nasl");
-  script_mandatory_keys("K7/UltimateSecurity/Win/Ver");
+  script_mandatory_keys("K7/UltimateSecurity/Win/Installed");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

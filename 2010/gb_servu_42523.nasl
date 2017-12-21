@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_servu_42523.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_servu_42523.nasl 8187 2017-12-20 07:30:09Z teissa $
 #
 # Serv-U Denial of Service and Security Bypass Vulnerabilities
 #
@@ -37,9 +37,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100767);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100767");
+ script_version("$Revision: 8187 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-08-31 14:30:50 +0200 (Tue, 31 Aug 2010)");
  script_bugtraq_id(42523);
  script_tag(name:"cvss_base", value:"7.5");

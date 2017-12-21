@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_random_number_generation_dos_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: secpod_ruby_random_number_generation_dos_vuln.nasl 8196 2017-12-20 12:13:37Z cfischer $
 #
 # Ruby Random Number Generation Local Denial Of Service Vulnerability
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:ruby-lang:ruby";
+
 tag_impact = "Successful exploits may allow local attackers to cause denial-of-service
   conditions.
   Impact Level: Application";
@@ -40,8 +42,8 @@ tag_summary = "This host is installed with Ruby and is prone to local denial of
 if(description)
 {
   script_id(902558);
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_version("$Revision: 8196 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:13:37 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_cve_id("CVE-2011-2686");
   script_bugtraq_id(49015);
@@ -57,7 +59,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_ruby_detect_win.nasl");
-  script_require_keys("Ruby/Win/Ver");
+  script_mandatory_keys("Ruby/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -66,16 +68,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Get Version from KB
-rubyVer = get_kb_item("Ruby/Win/Ver");
-if(!rubyVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Check for Ruby Versions prior to 1.8.7-p352
-if(version_in_range(version:rubyVer, test_version:"1.8.7", test_version2:"1.8.7.p351")) {
-  security_message(0);
+if( version_in_range( version:vers, test_version:"1.8.7", test_version2:"1.8.7.p351" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.8.7-p352", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

@@ -24,12 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:adobe:acrobat:";
+CPE = "cpe:/a:adobe:acrobat";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805386");
-  script_version("$Revision: 6159 $");
+  script_version("$Revision: 8200 $");
   script_cve_id("CVE-2015-3076", "CVE-2015-3075", "CVE-2015-3074", "CVE-2015-3073",
                 "CVE-2015-3072", "CVE-2015-3071", "CVE-2015-3070", "CVE-2015-3069",
                 "CVE-2015-3068", "CVE-2015-3067", "CVE-2015-3066", "CVE-2015-3065",
@@ -44,7 +44,7 @@ if(description)
                     74600, 74603, 74600, 74601, 74599);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-05-15 13:23:06 +0530 (Fri, 15 May 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Acrobat Multiple Vulnerabilities - 01 May15 (Mac OS X)");

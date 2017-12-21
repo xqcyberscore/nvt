@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_n_gnutls_ssl_spoof_vuln_win.nasl 6516 2017-07-04 12:20:47Z cfischer $
+# $Id: gb_openssl_n_gnutls_ssl_spoof_vuln_win.nasl 8193 2017-12-20 10:46:55Z cfischer $
 #
 # OpenSSL/GnuTLS SSL Server Spoofing Vulnerability (Windows)
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is running OpenSSL/GnuTLS and is prone to SSL server
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800917");
-  script_version("$Revision: 6516 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
+  script_version("$Revision: 8193 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 11:46:55 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-08-05 14:14:14 +0200 (Wed, 05 Aug 2009)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -65,29 +65,32 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
+include("version_func.inc");
 
-include ("version_func.inc");
+opensslInfos = get_app_version_and_location( cpe:"cpe:/a:openssl:openssl" );
+opensslVers  = opensslInfos['version'];
+opensslPath  = opensslInfos['location'];
 
-opensslVer = get_kb_item("OpenSSL/Win/Ver");
-if(opensslVer != NULL)
-{
+if( opensslVers ) {
   # Grep for OpenSSL version 0.9.8 <= 0.9.8k
-  if(version_in_range(version:opensslVer, test_version:"0.9.8",
-                                          test_version2:"0.9.8k"))
-  {
-    security_message(0);
-    exit(0);
+  if( version_in_range( version:opensslVers, test_version:"0.9.8", test_version2:"0.9.8k" ) ) {
+    report = report_fixed_ver( installed_version:opensslVers, fixed_version:"1.0.0", install_path:opensslPath );
+    security_message( port:0, data:report );
+    exit( 0 );
   }
 }
 
-gnutlsVer = get_kb_item("GnuTLS/Win/Ver");
-if(gnutlsVer != NULL)
-{
-  # Grep for GnuTLS version 2.6.0 < 2.6.4 and 2.7.0 < 2.7.4
-  if(version_in_range(version:gnutlsVer, test_version:"2.6.0",
-                                        test_version2:"2.6.3")||
-     version_in_range(version:gnutlsVer, test_version:"2.7.0",
-                                        test_version2:"2.7.3")){
-    security_message(0);
-  }
+gbutlsInfos = get_app_version_and_location( cpe:"cpe:/a:gnu:gnutls", exit_no_version:TRUE );
+gnutlsVers  = gnutlsInfos['version'];
+gnutlsPath  = gnutlsInfos['location'];
+
+# Grep for GnuTLS version 2.6.0 < 2.6.4 and 2.7.0 < 2.7.4
+if( version_in_range( version:gnutlsVers, test_version:"2.6.0", test_version2:"2.6.3" ) ||
+    version_in_range( version:gnutlsVers, test_version:"2.7.0", test_version2:"2.7.3" ) ) {
+  report = report_fixed_ver( installed_version:gnutlsVers, fixed_version:"2.6.4/2.7.4", install_path:gnutlsPath );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

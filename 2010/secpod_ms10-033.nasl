@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-033.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms10-033.nasl 8187 2017-12-20 07:30:09Z teissa $
 #
 # Microsoft Media Decompression Remote Code Execution Vulnerability (979902)
 #
@@ -28,9 +28,9 @@
 
 if(description)
 {
-  script_id(900246);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900246");
+  script_version("$Revision: 8187 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:19:57 +0200 (Wed, 09 Jun 2010)");
   script_bugtraq_id(40432, 40464);
   script_cve_id("CVE-2010-1879", "CVE-2010-1880");

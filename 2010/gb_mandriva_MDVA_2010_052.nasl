@@ -36,16 +36,16 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-02/msg00008.php");
   script_id(830868);
-  script_version("$Revision: 6564 $");
+  script_version("$Revision: 8205 $");
   script_cve_id("CVE-2010-0427");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:55:29 +0200 (Thu, 06 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 07:30:37 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-02-15 16:07:49 +0100 (Mon, 15 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
   script_xref(name: "MDVA", value: "2010:052");
   script_name("Mandriva Update for microcode_ctl MDVA-2010:052 (microcode_ctl)");
 
-  script_summary("Check for the Version of microcode_ctl");
+  script_tag(name: "summary" , value: "Check for the Version of microcode_ctl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

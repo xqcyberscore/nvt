@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms14-014.nasl 7653 2017-11-03 14:24:06Z cfischer $
+# $Id: gb_silverlight_ms14-014.nasl 8190 2017-12-20 09:44:30Z cfischer $
 #
 # Microsoft Silverlight DEP/ASLR Security Bypass Vulnerability (2932677)
 #
@@ -25,46 +25,38 @@
 ###############################################################################
 
 CPE = "cpe:/a:microsoft:silverlight";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804407";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 7653 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804407");
+  script_version("$Revision: 8190 $");
   script_cve_id("CVE-2014-0319");
   script_bugtraq_id(66046);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 15:24:06 +0100 (Fri, 03 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:44:30 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-03-12 08:02:21 +0530 (Wed, 12 Mar 2014)");
   script_name("Microsoft Silverlight DEP/ASLR Security Bypass Vulnerability (2932677)");
 
-  tag_summary =
-"This host is missing an important security update according to
+  tag_summary = "This host is missing an important security update according to
 Microsoft Bulletin MS14-014.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"Flaw is caused when Silverlight improperly handles certain objects in
+  tag_insight = "Flaw is caused when Silverlight improperly handles certain objects in
 memory.";
 
-  tag_impact =
-"Successful exploitation will allow remote attackers to obtain potentially
+  tag_impact = "Successful exploitation will allow remote attackers to obtain potentially
 sensitive information.
 
 Impact Level: Application";
 
-  tag_affected =
-"Microsoft Silverlight version 5 on Windows";
+  tag_affected = "Microsoft Silverlight version 5 on Windows";
 
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and update
+  tag_solution = "Run Windows Update and update the listed hotfixes or download and update
 mentioned hotfixes in the advisory from the below link,
 https://technet.microsoft.com/en-us/security/bulletin/ms14-014";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -80,7 +72,7 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-014";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_silverlight_detect.nasl");
-  script_mandatory_keys("Microsoft/Silverlight");
+  script_mandatory_keys("Microsoft/Silverlight/Installed");
   exit(0);
 }
 
@@ -91,7 +83,7 @@ include("version_func.inc");
 msl_ver = "";
 
 ## Get the version
-if(!msl_ver = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!msl_ver = get_app_version(cpe:CPE)){
   exit(0);
 }
 

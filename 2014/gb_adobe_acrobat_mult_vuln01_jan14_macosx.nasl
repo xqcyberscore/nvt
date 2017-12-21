@@ -24,18 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:adobe:acrobat:";
+CPE = "cpe:/a:adobe:acrobat";
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804071";
 
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6759 $");
+  script_version("$Revision: 8200 $");
   script_cve_id("CVE-2014-0493", "CVE-2014-0495", "CVE-2014-0496");
   script_bugtraq_id(64802, 64803, 64804);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-01-21 12:57:21 +0530 (Tue, 21 Jan 2014)");
   script_name("Adobe Acrobat Multiple Vulnerabilities - 01 Jan14 (Mac OS X)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_mult_vuln_nov17.nasl 7790 2017-11-16 13:11:14Z santu $
+# $Id: gb_adobe_connect_mult_vuln_nov17.nasl 8192 2017-12-20 09:53:28Z teissa $
 #
 # Adobe Connect Multiple Vulnerabilities Nov17
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:connect";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812212");
-  script_version("$Revision: 7790 $");
+  script_version("$Revision: 8192 $");
   script_cve_id("CVE-2017-11291", "CVE-2017-11287", "CVE-2017-11288", "CVE-2017-11289", 
                 "CVE-2017-11290");
   script_bugtraq_id(101838);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-16 14:11:14 +0100 (Thu, 16 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:53:28 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-16 12:45:11 +0530 (Thu, 16 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe Connect Multiple Vulnerabilities Nov17");

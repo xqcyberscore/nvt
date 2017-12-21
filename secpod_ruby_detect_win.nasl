@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_detect_win.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: secpod_ruby_detect_win.nasl 8196 2017-12-20 12:13:37Z cfischer $
 #
 # Ruby Interpreter Version Detection (Windows)
 #
@@ -36,10 +36,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900799");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 8196 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:13:37 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-12-23 08:41:41 +0100 (Wed, 23 Dec 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Ruby Interpreter Version Detection (Windows)");
@@ -58,7 +58,6 @@ if(description)
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -112,25 +111,16 @@ foreach key1 (key1_list)
         if(patch)
         {
           rubyVer = item  + ".p" + patch;
-          set_kb_item(name:"Ruby/Win/Ver", value:rubyVer);
-
-          ## Build CPE
-          cpe = build_cpe(value:rubyVer, exp:"^([0-9.]+[a-z0-9]+?)", base:"cpe:/a:ruby-lang:ruby:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:ruby-lang:ruby";
+          set_kb_item(name:"Ruby/Win/Installed", value:TRUE);
 
           ## Register for 64 bit app on 64 bit OS
-          if("64" >< os_arch && "x64" >< build)
-          {
+          if("64" >< os_arch && "x64" >< build) {
             set_kb_item(name:"Ruby64/Win/Ver", value:rubyVer);
-
-            ## Build CPE
-            cpe = build_cpe(value:rubyVer, exp:"^([0-9.]+[a-z0-9]+?)", base:"cpe:/a:ruby-lang:ruby:x64:");
-            if(isnull(cpe))
-              cpe = "cpe:/a:ruby-lang:ruby:x64";
-
+            register_and_report_cpe( app:"Ruby", ver:rubyVer, concluded:rubyVer, base:"cpe:/a:ruby-lang:ruby:x64:", expr:"^([0-9.]+[a-z0-9]+?)", insloc:rubyLoc );
+          } else {
+            set_kb_item(name:"Ruby/Win/Ver", value:rubyVer);
+            register_and_report_cpe( app:"Ruby", ver:rubyVer, concluded:rubyVer, base:"cpe:/a:ruby-lang:ruby:", expr:"^([0-9.]+[a-z0-9]+?)", insloc:rubyLoc );
           }
-          build_report(app:"Ruby", ver:rubyVer, cpe:cpe, insloc:rubyLoc, concluded:rubyVer);
           exit(0);
         }
       }
@@ -153,25 +143,16 @@ foreach key (key_list)
         if(rubyVer != NULL)
         {
           rubyVer = ereg_replace(pattern:"-", string:rubyVer, replace:".");
-          set_kb_item(name:"Ruby/Win/Ver", value:rubyVer);
+          set_kb_item(name:"Ruby/Win/Installed", value:TRUE);
 
-          ## Build CPE
-          cpe = build_cpe(value:rubyVer, exp:"^([0-9.]+[a-z0-9]+?)", base:"cpe:/a:ruby-lang:ruby:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:ruby-lang:ruby";
-
-          ## Register for 64 bit app on 64 bit OS once again
-          if("64" >< os_arch && "Wow6432Node" >!< key)
-          {
+          ## Register for 64 bit app on 64 bit OS
+          if("64" >< os_arch && "Wow6432Node" >!< key) {
             set_kb_item(name:"Ruby64/Win/Ver", value:rubyVer);
-
-            ## Build CPE
-            cpe = build_cpe(value:rubyVer, exp:"^([0-9.]+[a-z0-9]+?)", base:"cpe:/a:ruby-lang:ruby:x64:");
-            if(isnull(cpe))
-              cpe = "cpe:/a:ruby-lang:ruby:x64";
-
+            register_and_report_cpe( app:"Ruby", ver:rubyVer, concluded:rubyVer, base:"cpe:/a:ruby-lang:ruby:x64:", expr:"^([0-9.]+[a-z0-9]+?)", insloc:rubyLoc );
+          } else {
+            set_kb_item(name:"Ruby/Win/Ver", value:rubyVer);
+            register_and_report_cpe( app:"Ruby", ver:rubyVer, concluded:rubyVer, base:"cpe:/a:ruby-lang:ruby:", expr:"^([0-9.]+[a-z0-9]+?)", insloc:rubyLoc );
           }
-          build_report(app:"Ruby", ver:rubyVer, cpe:cpe, insloc:rubyLoc, concluded:rubyVer);
           exit(0);
         }
       }

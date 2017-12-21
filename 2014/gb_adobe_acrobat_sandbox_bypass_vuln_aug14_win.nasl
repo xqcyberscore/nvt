@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_sandbox_bypass_vuln_aug14_win.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_adobe_acrobat_sandbox_bypass_vuln_aug14_win.nasl 8200 2017-12-20 13:48:45Z cfischer $
 #
 # Adobe Acrobat Sandbox Bypass Vulnerability - Aug14 (Windows)
 #
@@ -24,17 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:adobe:acrobat:";
+CPE = "cpe:/a:adobe:acrobat";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804814");
-  script_version("$Revision: 6637 $");
+  script_version("$Revision: 8200 $");
   script_cve_id("CVE-2014-0546");
   script_bugtraq_id(69193);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-08-19 12:25:49 +0530 (Tue, 19 Aug 2014)");
   script_name("Adobe Acrobat Sandbox Bypass Vulnerability - Aug14 (Windows)");
 

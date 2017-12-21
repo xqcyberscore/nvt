@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_editions_mult_info_disc_vuln_apsb17-39_macosx.nasl 7790 2017-11-16 13:11:14Z santu $
+# $Id: gb_adobe_digital_editions_mult_info_disc_vuln_apsb17-39_macosx.nasl 8192 2017-12-20 09:53:28Z teissa $
 #
 # Adobe Digital Editions Multiple Information Disclosure Vulnerabilities - APSB17-39 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812091");
-  script_version("$Revision: 7790 $");
+  script_version("$Revision: 8192 $");
   script_cve_id("CVE-2017-11273", "CVE-2017-11297", "CVE-2017-11298", "CVE-2017-11299",
                 "CVE-2017-11300", "CVE-2017-11301");
   script_bugtraq_id(101839);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification",  value:"$Date: 2017-11-16 14:11:14 +0100 (Thu, 16 Nov 2017) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification",  value:"$Date: 2017-12-20 10:53:28 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-16 11:02:44 +0530 (Thu, 16 Nov 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Digital Editions Multiple Information Disclosure Vulnerabilities - APSB17-39 (Mac OS X)");

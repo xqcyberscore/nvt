@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugzilla_code_injection_n_sec_bypass_vulns.nasl 5999 2017-04-21 09:02:32Z teissa $
+# $Id: gb_bugzilla_code_injection_n_sec_bypass_vulns.nasl 8200 2017-12-20 13:48:45Z cfischer $
 #
 # Bugzilla LDAP Code Injection And Security Bypass Vulnerabilities
 #
@@ -41,17 +41,17 @@ tag_summary = "The host is running Bugzilla and is prone to code injection
   and security bypass vulnerabilities.";
 
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.892672";
-CPE = "cpe:/a:mozilla:bugzilla:";
+CPE = "cpe:/a:mozilla:bugzilla";
 
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5999 $");
+  script_version("$Revision: 8200 $");
   script_cve_id("CVE-2012-4747, CVE-2012-3981");
   script_bugtraq_id(55349);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-09-11 11:13:14 +0530 (Tue, 11 Sep 2012)");
   script_name("Bugzilla LDAP Code Injection And Security Bypass Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.bugzilla.org/security/3.6.10/");

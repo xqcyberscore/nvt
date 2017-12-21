@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_sslkss_dos_vuln_win.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_openssl_sslkss_dos_vuln_win.nasl 8193 2017-12-20 10:46:55Z cfischer $
 #
 # OpenSSL 'kssl_keytab_is_available()' Denial Of Service Vulnerability (Windows)
 #
@@ -24,24 +24,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:openssl:openssl";
+
 tag_impact = "Successful exploitation will allow attacker to cause denial of service
   conditions.
+
   Impact Level: Application";
+
 tag_affected = "OpenSSL version prior to 0.9.8n on Windows.";
+
 tag_insight = "The flaw is due to error in 'kssl_keytab_is_available()' function in
   'ssl/kssl.c' which does not check a certain return value when Kerberos is
   enabled. This allows NULL pointer dereference and daemon crash via SSL
   cipher negotiation.";
+
 tag_solution = "Upgrade to version 0.9.8n or later.
   For updates refer tohttp://www.slproweb.com/products/Win32OpenSSL.html";
+
 tag_summary = "This host is installed with OpenSSL and is prone to Denial Of
   Service Vulnerability.";
 
 if(description)
 {
   script_id(800490);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 8193 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 11:46:55 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-03-10 15:48:25 +0100 (Wed, 10 Mar 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -51,12 +58,11 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=569774");
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=567711");
   script_xref(name : "URL" , value : "http://permalink.gmane.org/gmane.comp.security.oss.general/2636");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_openssl_detect_win.nasl");
-  script_require_keys("OpenSSL/Win/Ver");
+  script_mandatory_keys("OpenSSL/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -67,14 +73,17 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-opensslVer = get_kb_item("OpenSSL/Win/Ver");
-if(isnull(opensslVer)){
-  exit(0);
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
+if( version_is_less( version:vers, test_version:"0.9.8n" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"0.9.8n", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-if(version_is_less(version:opensslVer, test_version:"0.9.8n")){
-   security_message(0);
-}
+exit( 99 );

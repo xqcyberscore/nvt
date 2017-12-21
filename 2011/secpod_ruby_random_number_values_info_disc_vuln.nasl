@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_random_number_values_info_disc_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: secpod_ruby_random_number_values_info_disc_vuln.nasl 8196 2017-12-20 12:13:37Z cfischer $
 #
 # Ruby Random Number Values Information Disclosure Vulnerability
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:ruby-lang:ruby";
+
 tag_impact = "Successful exploits may allow attackers to predict random number values.
   Impact Level: Application";
 tag_affected = "Ruby Versions prior to Ruby 1.8.6-p114";
@@ -39,8 +41,8 @@ tag_summary = "This host is installed with Ruby and is prone to information
 if(description)
 {
   script_id(902559);
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 8196 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:13:37 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_cve_id("CVE-2011-3009");
   script_bugtraq_id(49126);
@@ -55,7 +57,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_ruby_detect_win.nasl");
-  script_require_keys("Ruby/Win/Ver");
+  script_mandatory_keys("Ruby/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -64,16 +66,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Get Version from KB
-rubyVer = get_kb_item("Ruby/Win/Ver");
-if(!rubyVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Check for Ruby Versions prior to 1.8.6-p114
-if(version_is_less(version:rubyVer, test_version:"1.8.6.p114")) {
-  security_message(0);
+if( version_is_less( version:vers, test_version:"1.8.6.p114" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.8.6.p114", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

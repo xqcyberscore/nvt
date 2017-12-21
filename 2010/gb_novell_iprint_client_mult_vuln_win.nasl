@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_iprint_client_mult_vuln_win.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_novell_iprint_client_mult_vuln_win.nasl 8201 2017-12-20 14:28:50Z cfischer $
 #
 # Novell iPrint Client Multiple Security Vulnerabilities (Windows)
 #
@@ -27,6 +27,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:novell:iprint";
+
 tag_solution = "Apply patch from below link
   http://download.novell.com/Download?buildid=ftwZBxEFjIg~
 
@@ -51,8 +53,8 @@ tag_summary = "The host is installed with Novell iPrint Client and is prone to
 if(description)
 {
   script_id(801423);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 8201 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 15:28:50 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-16 09:09:42 +0200 (Mon, 16 Aug 2010)");
   script_cve_id("CVE-2010-3109", "CVE-2010-3108", "CVE-2010-3107", "CVE-2010-3106");
   script_bugtraq_id(42100);
@@ -69,7 +71,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_novell_prdts_detect_win.nasl");
-  script_require_keys("Novell/iPrint/Ver");
+  script_mandatory_keys("Novell/iPrint/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -84,12 +86,10 @@ include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_activex.inc");
 include("secpod_smb_func.inc");
+include("host_details.inc");
 
-## Get the version from KB
-iPrintVer = get_kb_item("Novell/iPrint/Ver");
-if(!iPrintVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+iPrintVer = infos['version'];
 
 ## Check for Novell iPrint Client Version <= 5.40
 if(version_is_less_equal(version:iPrintVer, test_version:"5.40"))

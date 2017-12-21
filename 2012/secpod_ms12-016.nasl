@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-016.nasl 5366 2017-02-20 13:55:38Z cfi $
+# $Id: secpod_ms12-016.nasl 8190 2017-12-20 09:44:30Z cfischer $
 #
 # Microsoft .NET Framework and Microsoft Silverlight Remote Code Execution Vulnerabilities (2651026)
 #
@@ -46,12 +46,12 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902811);
-  script_version("$Revision: 5366 $");
+  script_version("$Revision: 8190 $");
   script_cve_id("CVE-2012-0014", "CVE-2012-0015");
   script_bugtraq_id(51938, 51940);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:55:38 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:44:30 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-02-15 10:10:10 +0530 (Wed, 15 Feb 2012)");
   script_name("Microsoft .NET Framework and Microsoft Silverlight Remote Code Execution Vulnerabilities (2651026)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48030");
@@ -76,11 +76,11 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
+include("host_details.inc");
 
 ## Variables Initialization
 key = "";
@@ -95,14 +95,16 @@ if(hotfix_check_sp(xp:4, win2003:3, winVista:3, win2008:3, win7:2) <= 0){
 }
 
 ## Get Silverlight version from KB
-mslVer = get_kb_item("Microsoft/Silverlight");
-if(mslVer)
-{
+infos = get_app_version_and_location( cpe:"cpe:/a:microsoft:silverlight" );
+mslVers = infos['version'];
+mslPath = infos['location'];
+
+if( mslVers ) {
   ## Check for Microsoft Silverlight version prior to 4.1.10111
-  if(version_is_less(version:mslVer, test_version:"4.1.10111"))
-  {
-    security_message(0);
-    exit(0);
+  if( version_is_less( version:mslVers, test_version:"4.1.10111" ) ) {
+    report = report_fixed_ver( installed_version:mslVers, fixed_version:"4.1.10111", install_path:mslPath );
+    security_message( port:0, data:report );
+    exit( 0 );
   }
 }
 

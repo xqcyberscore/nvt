@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_rexml_parser_xxe_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_ruby_rexml_parser_xxe_vuln.nasl 8196 2017-12-20 12:13:37Z cfischer $
 #
 # Ruby 'REXML' Parser XML Entity Expansion (XEE) Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ruby-lang:ruby";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805202");
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 8196 $");
   script_cve_id("CVE-2014-8090");
   script_bugtraq_id(71230);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:13:37 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-12-01 18:02:14 +0530 (Mon, 01 Dec 2014)");
   script_name("Ruby 'REXML' Parser XML Entity Expansion (XEE) Vulnerability (Windows)");
 
@@ -67,7 +67,7 @@ if(description)
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_ruby_detect_win.nasl");
-  script_mandatory_keys("Ruby/Win/Ver");
+  script_mandatory_keys("Ruby/Win/Installed");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_groupwise_client_activex_bof_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_novell_groupwise_client_activex_bof_vuln.nasl 8201 2017-12-20 14:28:50Z cfischer $
 #
 # Novell Groupwise Client ActiveX Control Buffer Overflow Vulnerability
 #
@@ -23,6 +23,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
+CPE = "cpe:/a:novell:groupwise";
 
 tag_solution = "No solution or patch was made available for at least one year
 since disclosure of this vulnerability. Likely none will be provided anymore.
@@ -47,8 +49,8 @@ and is prone to Buffer Overflow vulnerability.";
 if(description)
 {
   script_id(800973);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 8201 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 15:28:50 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-11-09 14:01:44 +0100 (Mon, 09 Nov 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -64,7 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_novell_prdts_detect_win.nasl");
-  script_require_keys("Novell/Groupwise/Client/Win/Ver");
+  script_mandatory_keys("Novell/Groupwise/Client/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -74,16 +76,14 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_activex.inc");
 include("secpod_smb_func.inc");
+include("host_details.inc");
 
-gcVer = get_kb_item("Novell/Groupwise/Client/Win/Ver");
-if(gcVer == NULL){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+gcVer = infos['version'];
 
 if(version_is_less_equal(version:gcVer, test_version:"7.0.3.1294"))
 {

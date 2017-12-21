@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_silverlight_multiple_memory_leak_vuln.nasl 7653 2017-11-03 14:24:06Z cfischer $
+# $Id: gb_ms_silverlight_multiple_memory_leak_vuln.nasl 8190 2017-12-20 09:44:30Z cfischer $
 #
 # Microsoft Silverlight Multiple Memory Leak Vulnerabilities
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:microsoft:silverlight";
+
 tag_impact = "Successful exploitation will allow attacker to cause denial of service.
   Impact Level: Application";
 tag_affected = "Microsoft Silverlight version 4 before 4.0.60310.0";
@@ -42,8 +44,8 @@ tag_summary = "This host is installed with Microsoft Silverlight and is prone to
 if(description)
 {
   script_id(801935);
-  script_version("$Revision: 7653 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 15:24:06 +0100 (Fri, 03 Nov 2017) $");
+  script_version("$Revision: 8190 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:44:30 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_cve_id("CVE-2011-1844", "CVE-2011-1845");
   script_tag(name:"cvss_base", value:"7.8");
@@ -57,7 +59,7 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_ms_silverlight_detect.nasl");
-  script_mandatory_keys("Microsoft/Silverlight");
+  script_mandatory_keys("Microsoft/Silverlight/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -66,17 +68,20 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-mslVer = get_kb_item("Microsoft/Silverlight");
-if(!mslVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
+if( vers !~ "^4\." ) exit( 99 );
 
 # Check for Microsoft Silverlight 4 before 4.0.60310.0
-if(version_in_range(version:mslVer, test_version:"4.0", test_version2:"4.0.60309.0")){
-  report = 'Silverlight version:  ' + mslVer  + '\n' +
-           'Vulnerable range:  4.0 - 4.0.60309.0' + '\n' ;
-  security_message(data:report);
+if( version_in_range( version:vers, test_version:"4.0", test_version2:"4.0.60309.0" ) ) {
+  report = report_fixed_ver( installed_version:vers, vulnerable_range:"4.0 - 4.0.60309.0", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

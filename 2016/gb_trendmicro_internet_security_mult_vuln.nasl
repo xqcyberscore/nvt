@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_internet_security_mult_vuln.nasl 6416 2017-06-23 10:02:44Z cfischer $
+# $Id: gb_trendmicro_internet_security_mult_vuln.nasl 8199 2017-12-20 13:37:22Z cfischer $
 #
 # TrendMicro Internet Security Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:trendmicro:internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808638");
-  script_version("$Revision: 6416 $");
+  script_version("$Revision: 8199 $");
   script_cve_id("CVE-2016-1225", "CVE-2016-1226");
   script_bugtraq_id(90999);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 12:02:44 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:37:22 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-08-05 12:51:56 +0530 (Fri, 05 Aug 2016)");
   script_name("TrendMicro Internet Security Multiple Vulnerabilities");
 
@@ -68,7 +68,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_trendmicro_internet_security_detect.nasl");
-  script_mandatory_keys("TrendMicro/Ver");
+  script_mandatory_keys("TrendMicro/IS/Installed");
   exit(0);
 }
 
@@ -78,7 +78,6 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-##Get the version and location from cpe
 if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 
 treVer = infos['version'];
@@ -105,7 +104,7 @@ if(version_is_equal(version:treVer, test_version:"8.0") ||
   ## Checking fix already applied or not
   ## Check for the plugDaemonHost.dll version 
   if(version_is_less(version:sysVer, test_version:minRequireVer)) {
-    report = report_fixed_ver(installed_version:treVer, fixed_version:"Apply the Patch");
+    report = report_fixed_ver(installed_version:treVer, fixed_version:"Apply the Patch", install_path:sysPath);
     security_message(data:report);
     exit(0);
   }

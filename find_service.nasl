@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service.nasl 7922 2017-11-28 10:06:28Z cfischer $
+# $Id: find_service.nasl 8188 2017-12-20 08:01:27Z cfischer $
 #
 # Wrapper for calling built-in NVT "find_service" which was previously
 # a binary ".nes".
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10330");
-  script_version("$Revision: 7922 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-28 11:06:28 +0100 (Tue, 28 Nov 2017) $");
+  script_version("$Revision: 8188 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 09:01:27 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-01-14 10:12:23 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,33 +71,35 @@ if( get_kb_item( "Host/dead" ) ) exit( 0 );
 # Run the built-in NVT "find_service"
 plugin_run_find_service();
 
-# Check for zebos_routing_shell and register it to avoid wrong service detection (dns, sip, yahoo messenger, ...)
+if( ! COMMAND_LINE ) {
 
-p = 2650;
-if( get_port_state( p ) ) {
-  soc = open_sock_tcp( p );
-  if( soc ) {
-    recv = recv( socket:soc, length:128 );
-    close( soc );
-    if( "ZebOS" >< recv ) {
-      register_service( port:p, proto:"zebos_routing_shell", message:"A ZebOS routing shell seems to be running on this port." );
-      log_message( port:p, data:"A ZebOS routing shell seems to be running on this port." );
-      exit( 0 );
+  # Check for zebos_routing_shell and register it to avoid wrong service detection (dns, sip, yahoo messenger, ...)
+  p = 2650;
+  if( get_port_state( p ) ) {
+    soc = open_sock_tcp( p );
+    if( soc ) {
+      recv = recv( socket:soc, length:128 );
+      close( soc );
+      if( "ZebOS" >< recv ) {
+        register_service( port:p, proto:"zebos_routing_shell", message:"A ZebOS routing shell seems to be running on this port." );
+        log_message( port:p, data:"A ZebOS routing shell seems to be running on this port." );
+        exit( 0 );
+      }
     }
   }
-}
 
-# This service will be killed during later service detections so avoid this by checking it in here
-p = 27960;
-if( get_port_state( p ) ) {
-  soc = open_sock_tcp( p );
-  if( soc ) {
-    recv = recv( socket:soc, length:128 );
-    close( soc );
-    if( egrep( pattern:"Welcome (.*). You have ([0-9]+) seconds to identify.", string:recv ) ) {
-      register_service( port:p, proto:"enemyterritory", message:"An Enemy Territory Admin Mod seems to be running on this port." );
-      log_message( port:p, data:"An Enemy Territory Admin Mod seems to be running on this port." );
-      exit( 0 );
+  # This service will be killed during later service detections so avoid this by checking it in here
+  p = 27960;
+  if( get_port_state( p ) ) {
+    soc = open_sock_tcp( p );
+    if( soc ) {
+      recv = recv( socket:soc, length:128 );
+      close( soc );
+      if( egrep( pattern:"Welcome (.*). You have ([0-9]+) seconds to identify.", string:recv ) ) {
+        register_service( port:p, proto:"enemyterritory", message:"An Enemy Territory Admin Mod seems to be running on this port." );
+        log_message( port:p, data:"An Enemy Territory Admin Mod seems to be running on this port." );
+        exit( 0 );
+      }
     }
   }
 }

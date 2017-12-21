@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln01_sep14_macosx.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_adobe_acrobat_mult_vuln01_sep14_macosx.nasl 8200 2017-12-20 13:48:45Z cfischer $
 #
 # Adobe Acrobat Multiple Vulnerabilities-01 Sep14 (Mac OS X)
 #
@@ -24,18 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:adobe:acrobat:";
+CPE = "cpe:/a:adobe:acrobat";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804488");
-  script_version("$Revision: 6769 $");
+  script_version("$Revision: 8200 $");
   script_cve_id("CVE-2014-0560", "CVE-2014-0561", "CVE-2014-0563", "CVE-2014-0565",
                 "CVE-2014-0566", "CVE-2014-0567", "CVE-2014-0568", "CVE-2014-0562");
   script_bugtraq_id(69823, 69821, 69826, 69824, 69825, 69827, 69828, 69822);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-09-19 14:49:23 +0530 (Fri, 19 Sep 2014)");
 
   script_name("Adobe Acrobat Multiple Vulnerabilities-01 Sep14 (Mac OS X)");

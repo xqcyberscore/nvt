@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_677069c484_python26_fc27.nasl 8185 2017-12-20 04:08:16Z santu $
+# $Id: gb_fedora_2017_677069c484_python26_fc27.nasl 8203 2017-12-21 05:55:19Z cfischer $
 #
 # Fedora Update for python26 FEDORA-2017-677069c484
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873927");
-  script_version("$Revision: 8185 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 05:08:16 +0100 (Wed, 20 Dec 2017) $");
+  script_version("$Revision: 8203 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 06:55:19 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-19 08:10:53 +0100 (Tue, 19 Dec 2017)");
   script_cve_id("CVE-2017-1000158");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for python26 FEDORA-2017-677069c484");
   script_tag(name: "summary", value: "Check the version of python26");

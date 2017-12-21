@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_windows_messenger_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: secpod_windows_messenger_detect.nasl 8199 2017-12-20 13:37:22Z cfischer $
 #
 # Microsoft MSN Messenger Service Version Detection
 #
@@ -30,21 +30,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902915");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 8199 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:37:22 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-05-30 14:53:42 +0530 (Wed, 30 May 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft MSN Messenger Service Version Detection");
 
-  tag_summary =
-"Detection of installed version of Microsoft MSN Messenger.
+  tag_summary = "Detection of installed version of Microsoft MSN Messenger.
 
 The script logs in via smb, searches for Microsoft MSN Messenger in the
 registry and gets the exe file path from 'InstallationDirectory' string
 in registry and version from the 'msmsgs.exe'";
-
 
   script_tag(name : "summary" , value : tag_summary);
 
@@ -56,7 +54,6 @@ in registry and version from the 'msmsgs.exe'";
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("cpe.inc");
 include("smb_nt.inc");
@@ -115,7 +112,6 @@ foreach key (key_list)
       msgKey = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
     }
 
-    ##Iterate
     foreach item (registry_enum_keys(key:msgKey))
     {
       ## Check for the Application
@@ -130,15 +126,8 @@ foreach key (key_list)
 
   if(msnVer)
   {
-    ## Set the KB item
     set_kb_item(name:"Microsoft/MSN/Messenger/Ver", value:msnVer);
-    cpe = build_cpe(value:msnVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:msn_messenger:");
-
-    if(isnull(cpe))
-      cpe = "cpe:/a:microsoft:msn_messenger";
-
-    ## Register Product and Build Report
-    build_report(app:"Microsoft MSN Messenger Service", ver:msnVer, cpe:cpe, insloc:path);
+    register_and_report_cpe( app:"Microsoft MSN Messenger Service", ver:msnVer, base:"cpe:/a:microsoft:msn_messenger:", expr:"^([0-9.]+)", insloc:path );
     exit(0);
   }
 }

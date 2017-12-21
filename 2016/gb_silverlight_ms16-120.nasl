@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms16-120.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_silverlight_ms16-120.nasl 8190 2017-12-20 09:44:30Z cfischer $
 #
 # Microsoft Silverlight Information Disclosure Vulnerability (3192884)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807373");
-  script_version("$Revision: 5568 $");
+  script_version("$Revision: 8190 $");
   script_cve_id("CVE-2016-3209");
   script_bugtraq_id(93385);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:44:30 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-10-12 11:57:27 +0530 (Wed, 12 Oct 2016)");
   script_name("Microsoft Silverlight Information Disclosure Vulnerability (3192884)");
 
@@ -70,7 +70,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_silverlight_detect.nasl");
-  script_mandatory_keys("Microsoft/Silverlight");
+  script_mandatory_keys("Microsoft/Silverlight/Installed");
   exit(0);
 }
 

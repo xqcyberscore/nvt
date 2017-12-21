@@ -50,8 +50,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-10/msg00032.php");
   script_id(831214);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8186 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 07:30:34 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-26 09:06:02 +0200 (Tue, 26 Oct 2010)");
   script_xref(name: "MDVSA", value: "2010:212");
   script_tag(name:"cvss_base", value:"7.2");
@@ -59,7 +59,7 @@ if(description)
   script_cve_id("CVE-2010-3856");
   script_name("Mandriva Update for glibc MDVSA-2010:212 (glibc)");
 
-  script_summary("Check for the Version of glibc");
+  script_tag(name: "summary" , value: "Check for the Version of glibc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smbcl_gnutls_CB-A08-0079.nasl 5661 2017-03-21 11:39:13Z cfi $
+# $Id: smbcl_gnutls_CB-A08-0079.nasl 8193 2017-12-20 10:46:55Z cfischer $
 # Description: GnuTLS < 2.2.4 vulnerability (Windows)
 #
 # Authors:
@@ -60,14 +60,13 @@ Impact
 
 tag_solution = "All GnuTLS users should upgrade to the latest version.";
 
-# $Revision: 5661 $
+CPE = "cpe:/a:gnu:gnutls";
 
 if(description)
 {
-
  script_id(90027);
- script_version("$Revision: 5661 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:39:13 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 8193 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-20 11:46:55 +0100 (Wed, 20 Dec 2017) $");
  script_tag(name:"creation_date", value:"2008-09-06 20:50:27 +0200 (Sat, 06 Sep 2008)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -79,19 +78,23 @@ if(description)
  script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
  script_family("General");
  script_dependencies("gb_gnutls_detect_win.nasl");
- script_require_keys("GnuTLS/Win/Ver");
+ script_mandatory_keys("GnuTLS/Win/Installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
+include("host_details.inc");
+include("version_func.inc");
 
-include ("version_func.inc");
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
-gnutlsVer = get_kb_item("GnuTLS/Win/Ver");
-if(gnutlsVer != NULL)
-{
-  if(version_is_less(version:gnutlsVer, test_version:"2.2.4")){
-    security_message(0);
-  }
+if( version_is_less( version:vers, test_version:"2.2.4" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.2.4", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

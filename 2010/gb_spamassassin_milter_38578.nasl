@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spamassassin_milter_38578.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_spamassassin_milter_38578.nasl 8187 2017-12-20 07:30:09Z teissa $
 #
 # SpamAssassin Milter Plugin 'mlfi_envrcpt()' Remote Arbitrary Command Injection Vulnerability
 #
@@ -37,9 +37,9 @@ be vulnerable.";
 
 if (description)
 {
- script_id(100528);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100528");
+ script_version("$Revision: 8187 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-03-15 13:03:19 +0100 (Mon, 15 Mar 2010)");
  script_cve_id("CVE-2010-1132");
  script_bugtraq_id(38578);

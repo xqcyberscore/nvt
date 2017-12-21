@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms15-049.nasl 7653 2017-11-03 14:24:06Z cfischer $
+# $Id: gb_silverlight_ms15-049.nasl 8190 2017-12-20 09:44:30Z cfischer $
 #
 # Microsoft Silverlight Elevation of Privilege Vulnerability (3058985)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805554");
-  script_version("$Revision: 7653 $");
+  script_version("$Revision: 8190 $");
   script_cve_id("CVE-2015-1715");
   script_bugtraq_id(74503);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 15:24:06 +0100 (Fri, 03 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:44:30 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-05-13 12:50:27 +0530 (Wed, 13 May 2015)");
   script_name("Microsoft Silverlight Elevation of Privilege Vulnerability (3058985)");
 
@@ -73,7 +73,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_silverlight_detect.nasl");
-  script_mandatory_keys("Microsoft/Silverlight");
+  script_mandatory_keys("Microsoft/Silverlight/Installed");
   exit(0);
 }
 

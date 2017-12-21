@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openttd_dos_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: secpod_openttd_dos_vuln.nasl 8187 2017-12-20 07:30:09Z teissa $
 #
 # OpenTTD 'NetworkSyncCommandQueue()' Denial of Service Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is installed with OpenTTD and is prone to denial of
 
 if(description)
 {
-  script_id(901136);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901136");
+  script_version("$Revision: 8187 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_bugtraq_id(41804);
   script_cve_id("CVE-2010-2534");

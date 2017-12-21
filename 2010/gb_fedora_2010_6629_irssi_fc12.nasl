@@ -38,13 +38,13 @@ if(description)
   script_cve_id("CVE-2010-1155","CVE-2010-1156");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+ script_version("$Revision: 8205 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 07:30:37 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-17 16:00:10 +0200 (Mon, 17 May 2010)");
   script_xref(name: "FEDORA", value: "2010-6629");
   script_name("Fedora Update for irssi FEDORA-2010-6629");
 
-  script_summary("Check for the Version of irssi");
+  script_tag(name: "summary" , value: "Check for the Version of irssi");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

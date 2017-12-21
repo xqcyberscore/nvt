@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_internet_security_code_exec_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_trendmicro_internet_security_code_exec_vuln.nasl 8199 2017-12-20 13:37:22Z cfischer $
 #
 # Trend Micro Internet Security Pro 'UfPBCtrl.dll' Code Execution Vulnerability
 #
@@ -24,11 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:trendmicro:internet_security";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801264");
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 8199 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:37:22 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-03 15:47:26 +0200 (Fri, 03 Sep 2010)");
   script_cve_id("CVE-2010-3189");
   script_tag(name:"cvss_base", value:"9.3");
@@ -38,7 +40,7 @@ if(description)
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_trendmicro_internet_security_detect.nasl");
-  script_mandatory_keys("TrendMicro/Ver");
+  script_mandatory_keys("TrendMicro/IS/Installed");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/61397");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2185");
@@ -69,17 +71,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Get version from KB
-tmVer = get_kb_item("TrendMicro/Ver");
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Check for Trend Micro Internet Security Pro 2010 (Version 17.50)
-if( version_is_equal(version:tmVer, test_version:"17.50") ){
-  report = report_fixed_ver(installed_version:tmVer, fixed_version:"17.50 Hotfix 1695");
-  security_message(data:report);
-  exit(0);
+if( version_is_equal( version:vers, test_version:"17.50" ) ){
+  report = report_fixed_ver( installed_version:vers, fixed_version:"17.50 Hotfix 1695", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-exit(99);
+exit( 99 );

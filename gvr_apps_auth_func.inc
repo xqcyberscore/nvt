@@ -24,7 +24,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-# $Revision: 7252 $
+# $Revision: 8206 $
 
 
 #To get TYPO3 session cookie
@@ -33,7 +33,7 @@ function get_typo3_login_cookie(cinstall, tport, chost)
 {
   url = cinstall + "/typo3/index.php";
   treq = http_get(item:string(url), port:tport);
-  tres = http_send_recv(port:tport, data:treq, bodyonly:FALSE);
+  tres = http_keepalive_send_recv(port:tport, data:treq, bodyonly:FALSE);
 
   username = urlencode(str:get_kb_item("http/login"));
   password = urlencode(str:get_kb_item("http/password"));
@@ -98,5 +98,5 @@ function get_typo3_logout(loc, lport, lhost, lcookie)
                 "Connection: keep-alive\r\n",
                 "Cookie: ", lcookie, "\r\n",
                 "Content-Type: application/x-www-form-urlencoded\r\n\r\n");
-  lres = http_send_recv(port:lport, data:lreq, bodyonly:FALSE);
+  lres = http_keepalive_send_recv(port:lport, data:lreq, bodyonly:FALSE);
 }

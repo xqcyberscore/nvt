@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_otrs_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: secpod_otrs_detect.nasl 8206 2017-12-21 07:17:57Z cfischer $
 #
 # Open Ticket Request System (OTRS) and ITSM Version Detection
 #
@@ -30,66 +30,65 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902018");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 8206 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:17:57 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-02-22 13:34:53 +0100 (Mon, 22 Feb 2010)");
   script_name("Open Ticket Request System (OTRS) and ITSM Version Detection");
-
-  script_tag(name: "summary" , value: "Detection of installed version of
-  Open Ticket Request System (OTRS) and ITSM.
-
-  The script sends a connection request to the server and attempts to extract
-  the version number from the reply.");
-
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (c) 2010 SecPod");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"summary", value:"Detection of installed version of
+  Open Ticket Request System (OTRS) and ITSM.
+
+  The script sends a connection request to the server and attempts to extract
+  the version number from the reply.");
+
   script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-##Get Port
-otrsPort = get_http_port( default:80 );
+port = get_http_port( default:80 );
 
-#Iterate possible paths
-foreach dir (make_list_unique( "/", "/support", "/OTRS", "/otrs", cgi_dirs( port:otrsPort ) ) ) {
+foreach dir( make_list_unique( "/", "/support", "/OTRS", "/otrs", cgi_dirs( port:port ) ) ) {
 
-  otrsInstalled = 0;
+  otrsInstalled = FALSE;
   install = dir;
   if( dir == "/" ) dir = "";
 
   foreach path( make_list( "/public.pl", "/index.pl", "/installer.pl" ) ) {
 
-    sndReq = http_get( item: dir + path, port:otrsPort );
-    rcvRes = http_keepalive_send_recv( port:otrsPort, data:sndReq, bodyonly:TRUE );
+    req = http_get( item:dir + path, port:port );
+    res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
-    if( rcvRes && ( egrep( pattern:"Powered by OTRS|Powered by.*OTRS", string:rcvRes ) ) ) {
+    if( res && ( egrep( pattern:"Powered by OTRS|Powered by.*OTRS", string:res ) ) ) {
 
-      otrsInstalled = 1;
+      otrsInstalled = TRUE;
       vers = "unknown";
 
       ## Pattern for OTRS 4 and up
-      otrsVer = eregmatch( pattern:'title="OTRS ([0-9.]+)"', string:rcvRes );
+      otrsVer = eregmatch( pattern:'title="OTRS ([0-9.]+)"', string:res );
       if( otrsVer[1] ) {
         vers = otrsVer[1];
       } else {
         ## Pattern for OTRS 3
-        otrsVer = eregmatch( pattern:"Powered by.*>OTRS ([0-9.]+)<", string:rcvRes );
+        otrsVer = eregmatch( pattern:"Powered by.*>OTRS ([0-9.]+)<", string:res );
         if( otrsVer[1] ) {
           vers = otrsVer[1];
         } else {
           ## Pattern for OTRS below version 3
-          otrsVer = eregmatch( pattern:">Powered by OTRS ([0-9.]+)<", string:rcvRes );
+          otrsVer = eregmatch( pattern:">Powered by OTRS ([0-9.]+)<", string:res );
           vers = otrsVer[1];
         }
       }
@@ -99,38 +98,28 @@ foreach dir (make_list_unique( "/", "/support", "/OTRS", "/otrs", cgi_dirs( port
   if( otrsInstalled ) {
 
     if( vers != "unknown" ) {
-      set_kb_item( name:"www/" + otrsPort + "/OTRS", value:vers + ' under ' + install );
+      set_kb_item( name:"www/" + port + "/OTRS", value:vers + ' under ' + install );
     }
 
     set_kb_item( name:"OTRS/installed", value:TRUE );
-
-    cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:otrs:otrs:" );
-    if( isnull( cpe ) )
-       cpe = 'cpe:/a:otrs:otrs';
-
-    ## Register OTRS Product and Build Report
-    build_report( app:"OTRS", ver:vers, concluded:otrsVer[0], cpe:cpe, insloc:install, port:otrsPort );
+    register_and_report_cpe( app:"OTRS", ver:vers, concluded:otrsVer[0], base:"cpe:/a:otrs:otrs:", expr:"^([0-9.]+)", insloc:install, regPort:port );
   }
 
   ## To detect OTRS::ITSM
-  rcvRes = http_get_cache( item: dir + "/index.pl", port:otrsPort );
+  res = http_get_cache( item:dir + "/index.pl", port:port );
 
-  if( rcvRes && "Welcome to OTRS::ITSM" >< rcvRes ) {
+  if( res && "Welcome to OTRS::ITSM" >< res ) {
 
-    itsmver = eregmatch( pattern:"Welcome to OTRS::ITSM ([0-9\.\w]+)" , string:rcvRes);
+    vers = "unknown";
+    itsmver = eregmatch( pattern:"Welcome to OTRS::ITSM ([0-9\.\w]+)", string:res );
 
-    if( itsmver[1] != NULL ) {
-      set_kb_item( name:"www/" + otrsPort + "/OTRS ITSM", value:itsmver[1] + ' under ' + install );
+    if( itsmver[1] ) {
+      vers = itsmver[1];
+      set_kb_item( name:"www/" + port + "/OTRS ITSM", value:vers + ' under ' + install );
     }
 
     set_kb_item( name:"OTRS ITSM/installed", value:TRUE );
-
-    cpe = build_cpe( value:itsmver[1], exp:"^([0-9.]+)", base:"cpe:/a:otrs:otrs_itsm:" );
-    if( isnull( cpe ) )
-        cpe = 'cpe:/a:otrs:otrs_itsm';
-
-    ## Register ITSM Product and Build Report
-    build_report( app:"OTRS ITSM", ver:itsmver[1], concluded:itsmver[0], cpe:cpe, insloc:install, port:otrsPort );
+    register_and_report_cpe( app:"OTRS ITSM", ver:vers, concluded:itsmver[0], base:"cpe:/a:otrs:otrs_itsm:", expr:"^([0-9.]+)", insloc:install, regPort:port );
   }
 }
 

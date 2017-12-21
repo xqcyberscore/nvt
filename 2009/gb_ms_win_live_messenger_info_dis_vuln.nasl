@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_live_messenger_info_dis_vuln.nasl 6532 2017-07-05 07:42:05Z cfischer $
+# $Id: gb_ms_win_live_messenger_info_dis_vuln.nasl 8193 2017-12-20 10:46:55Z cfischer $
 #
 # Microsoft Windows Live Messenger Information Disclosure Vulnerability
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:microsoft:windows_live_messenger";
+
 tag_impact = "Successful exploitation could lead to unauthorized information disclosure.
   Impact Level: System/Application";
 tag_affected = "Microsoft, Windows Live Messenger Client version 8.5.1302.1018 and prior.";
@@ -42,8 +44,8 @@ tag_summary = "This host has Windows Live Messenger Client installed and is pron
 if(description)
 {
   script_id(800332);
-  script_version("$Revision: 6532 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 8193 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 11:46:55 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-01-08 07:43:30 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -56,9 +58,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("Web application abuses");
+  script_family("General");
   script_dependencies("gb_ms_win_live_messenger_detect.nasl");
-  script_mandatory_keys("MS/LiveMessenger/Ver");
+  script_mandatory_keys("MS/LiveMessenger/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -68,15 +70,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-lmVer = get_kb_item("MS/LiveMessenger/Ver");
-if(!lmVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 # Grep for the version 8.5.1302.1018 and prior
-if(version_is_less_equal(version:lmVer, test_version:"8.5.1302.1018")){
-  security_message(0);
+if( version_is_less_equal( version:vers, test_version:"8.5.1302.1018" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"None", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

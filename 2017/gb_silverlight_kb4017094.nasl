@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_kb4017094.nasl 5945 2017-04-12 15:37:08Z antu123 $
+# $Id: gb_silverlight_kb4017094.nasl 8190 2017-12-20 09:44:30Z cfischer $
 #
 # Microsoft Silverlight Information Disclosure Vulnerability (KB4017094)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810742");
-  script_version("$Revision: 5945 $");
+  script_version("$Revision: 8190 $");
   script_cve_id("CVE-2013-6629");
   script_bugtraq_id(63676);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 17:37:08 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:44:30 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-04-12 14:56:42 +0530 (Wed, 12 Apr 2017)");
   script_name("Microsoft Silverlight Information Disclosure Vulnerability (KB4017094)");
 
@@ -69,10 +69,9 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_silverlight_detect.nasl");
-  script_mandatory_keys("Microsoft/Silverlight");
+  script_mandatory_keys("Microsoft/Silverlight/Installed");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

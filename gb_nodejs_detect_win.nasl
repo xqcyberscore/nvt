@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_detect_win.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_nodejs_detect_win.nasl 8189 2017-12-20 09:10:19Z cfischer $
 #
 # Node.js Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805941");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 8189 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:10:19 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-08-04 17:21:51 +0530 (Tue, 04 Aug 2015)");
   script_name("Node.js Version Detection (Windows)");
 
@@ -49,7 +49,6 @@ if(description)
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -101,25 +100,17 @@ foreach key (key_list)
       if(!noPath){
         noPath = "Unable to find the install location from registry";
       }
-      set_kb_item(name:"Nodejs/Win/Ver", value:noVer);
 
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:noVer, exp:"^([0-9.]+)", base:"cpe:/a:nodejs:node.js:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:nodejs:node.js";
+      set_kb_item(name:"Nodejs/Win/Installed", value:TRUE);
 
-      ## Register for 64 bit app on 64 bit OS once again
-      if("64" >< os_arch && "Wow6432Node" >!< key)
-      {
+      ## Register for 64 bit app on 64 bit OS
+      if("64" >< os_arch && "Wow6432Node" >!< key) {
         set_kb_item(name:"Nodejs64/Win/Ver", value:noVer);
-
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:noVer, exp:"^([0-9.]+)", base:"cpe:/a:nodejs:node.js:x64:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:nodejs:node.js:x64";
+        register_and_report_cpe( app:"Node.js", ver:noVer, base:"cpe:/a:nodejs:node.js:x64:", expr:"^([0-9.]+)", insloc:noPath );
+      } else {
+        set_kb_item(name:"Nodejs/Win/Ver", value:noVer);
+        register_and_report_cpe( app:"Node.js", ver:noVer, base:"cpe:/a:nodejs:node.js:", expr:"^([0-9.]+)", insloc:noPath );
       }
-      ## Register Product and Build Report
-      build_report(app:"Node.js", ver:noVer, cpe:cpe, insloc:noPath);
     }
   }
 }

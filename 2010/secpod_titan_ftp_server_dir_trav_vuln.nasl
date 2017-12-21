@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_titan_ftp_server_dir_trav_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_titan_ftp_server_dir_trav_vuln.nasl 8187 2017-12-20 07:30:09Z teissa $
 #
 # Titan FTP Server 'XCRC' and 'COMB' Directory Traversal Vulnerabilities
 #
@@ -46,9 +46,9 @@ traversal vulnerabilities.";
 
 if(description)
 {
-  script_id(902087);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902087");
+  script_version("$Revision: 8187 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-02 08:02:13 +0200 (Fri, 02 Jul 2010)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");

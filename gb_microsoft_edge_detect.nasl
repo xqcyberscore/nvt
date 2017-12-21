@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_edge_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
+# $Id: gb_microsoft_edge_detect.nasl 8193 2017-12-20 10:46:55Z cfischer $
 #
 # Microsoft Edge Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806184");
-  script_version("$Revision: 8143 $");
+  script_version("$Revision: 8193 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 11:46:55 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-01-04 15:07:42 +0530 (Mon, 04 Jan 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Edge Version Detection (Windows)");
@@ -76,12 +76,5 @@ if(ver != NULL)
   set_kb_item(name:"MS/Edge/Version", value:ver);
   set_kb_item(name:"MS/Edge/Installed", value:TRUE);
   set_kb_item( name:"MS/IE_or_EDGE/Installed", value:TRUE );
-
-  ## Build CPE
-  cpe = build_cpe(value:ver, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:edge:");
-  if(isnull(cpe))
-    cpe = "cpe:/a:microsoft:edge";
-
-  ## Register Product and Build Report
-  build_report(app: "Microsoft Edge", ver: ver, cpe: cpe, insloc: sysPath);
+  register_and_report_cpe( app:"Microsoft Edge", ver:ver, base:"cpe:/a:microsoft:edge:", expr:"^([0-9.]+)", insloc:sysPath );
 }

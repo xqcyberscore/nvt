@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms16-109.nasl 7656 2017-11-03 16:28:52Z cfischer $
+# $Id: gb_silverlight_ms16-109.nasl 8190 2017-12-20 09:44:30Z cfischer $
 #
 # Microsoft Silverlight Remote Code Execution Vulnerability (3182373)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809309");
-  script_version("$Revision: 7656 $");
+  script_version("$Revision: 8190 $");
   script_cve_id("CVE-2016-3367");
   script_bugtraq_id(92837);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 17:28:52 +0100 (Fri, 03 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:44:30 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-09-14 08:56:33 +0530 (Wed, 14 Sep 2016)");
   script_name("Microsoft Silverlight Remote Code Execution Vulnerability (3182373)");
 
@@ -70,10 +70,9 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_silverlight_detect.nasl");
-  script_mandatory_keys("Microsoft/Silverlight");
+  script_mandatory_keys("Microsoft/Silverlight/Installed");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

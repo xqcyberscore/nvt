@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_live_messenger_detect.nasl 7582 2017-10-26 11:56:51Z cfischer $
+# $Id: gb_ms_win_live_messenger_detect.nasl 8193 2017-12-20 10:46:55Z cfischer $
 #
 # Microsoft Windows Live Messenger Client Version Detection
 #
@@ -30,20 +30,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800331");
-  script_version("$Revision: 7582 $");
+  script_version("$Revision: 8193 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 11:46:55 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-01-08 07:43:30 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Windows Live Messenger Client Version Detection");
 
-tag_summary =
-"Detection of installed version of Microsoft Windows Live Messenger.
+tag_summary = "Detection of installed version of Microsoft Windows Live Messenger.
 
 The script logs in via smb, searches for Microsoft Windows Live Messenger
 in the registry and gets the version from registry.";
-
 
   script_tag(name : "summary" , value : tag_summary);
 
@@ -55,7 +53,6 @@ in the registry and gets the version from registry.";
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -122,24 +119,16 @@ foreach key (key_list)
         checkduplicate  += livemgrVer + ", ";
         checkduplicate_path += appLoc + ", ";
  
-        # Set KB for Windows Live Messenger
-        set_kb_item(name:"MS/LiveMessenger/Ver", value:livemgrVer);
+        set_kb_item(name:"MS/LiveMessenger/Installed", value:TRUE);
  
-        cpe = build_cpe(value:livemgrVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:windows_live_messenger:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:microsoft:windows_live_messenger";
-
         ## 64 bit apps on 64 bit platform
-        if("x64" >< osArch && "Wow6432Node" >!< key)
-        {
+        if("x64" >< osArch && "Wow6432Node" >!< key)  {
           set_kb_item(name:"MS/LiveMessenger64/Ver", value:livemgrVer);
-
-          cpe = build_cpe(value:livemgrVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:windows_live_messenger:x64:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:microsoft:windows_live_messenger:x64";
+          register_and_report_cpe( app:appName, ver:livemgrVer, base:"cpe:/a:microsoft:windows_live_messenger:x64:", expr:"^([0-9.]+)", insloc:appLoc );
+        } else {
+          set_kb_item(name:"MS/LiveMessenger/Ver", value:livemgrVer);
+          register_and_report_cpe( app:appName, ver:livemgrVer, base:"cpe:/a:microsoft:windows_live_messenger:", expr:"^([0-9.]+)", insloc:appLoc );
         }
-        ## Register Product and Build Report
-        build_report(app: appName, ver:livemgrVer, cpe:cpe, insloc:appLoc);
       }
     }
 
@@ -169,28 +158,19 @@ foreach key (key_list)
         }  
       }
 
-      # Set KB for Version and Path of Messenger Plus!
       if(!isnull(msgPlusVer))
       {
-        set_kb_item(name:"MS/MessengerPlus/Ver", value:msgPlusVer);
         set_kb_item(name:"MS/MessengerPlus/Path", value:plusPath[1]);
-      
-        # Set KB for Windows Live Messenger Plus!
-        cpe = build_cpe(value:msgPlusVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:messenger_plus%21_live:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:microsoft:messenger_plus%21_live";
+        set_kb_item(name:"MS/MessengerPlus/Installed", value:TRUE);
 
         ## 64 bit apps on 64 bit platform
-        if("x64" >< osArch && "Wow6432Node" >!< key)
-        {
+        if("x64" >< osArch && "Wow6432Node" >!< key) {
           set_kb_item(name:"MS/MessengerPlus64/Ver", value:msgPlusVer);
-
-          cpe = build_cpe(value:msgPlusVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:messenger_plus%21_live:x64:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:microsoft:messenger_plus%21_live:x64:";
+          register_and_report_cpe( app:appName, ver:msgPlusVer, base:"cpe:/a:microsoft:messenger_plus%21_live:x64:", expr:"^([0-9.]+)", insloc:plusPath[1] );
+        } else {
+          set_kb_item(name:"MS/MessengerPlus/Ver", value:msgPlusVer);
+          register_and_report_cpe( app:appName, ver:msgPlusVer, base:"cpe:/a:microsoft:messenger_plus%21_live:", expr:"^([0-9.]+)", insloc:plusPath[1] );
         }
-        ## Register Product and Build Report
-        build_report(app: appName, ver:msgPlusVer, cpe:cpe, insloc:plusPath[1]);
       }
     }
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tapatalk_sql_inj_vuln.nasl 7801 2017-11-17 07:10:11Z asteins $
+# $Id: gb_tapatalk_sql_inj_vuln.nasl 8200 2017-12-20 13:48:45Z cfischer $
 #
 # Tapatalk Blind SQL Injection Vulnerability
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:tapatalk:tapatalk:";
+CPE = "cpe:/a:tapatalk:tapatalk";
 
 if (description)
 {
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-2023");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version ("$Revision: 7801 $");
+  script_version ("$Revision: 8200 $");
 
   script_name("Tapatalk Blind SQL Injection Vulnerability");
 
@@ -55,7 +55,7 @@ if (description)
 
   script_tag(name:"solution_type", value: "VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 08:10:11 +0100 (Fri, 17 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-11-27 14:20:39 +0700 (Thu, 27 Nov 2014)");
   script_summary("Check for vulnerable Tapatalk plugin.");
   script_category(ACT_GATHER_INFO);

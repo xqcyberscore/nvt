@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb17-28_lin.nasl 7118 2017-09-13 15:08:32Z santu $
+# $Id: gb_adobe_flash_player_apsb17-28_lin.nasl 8192 2017-12-20 09:53:28Z teissa $
 #
 # Adobe Flash Player Security Updates(apsb17-28)-Linux
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811682");
-  script_version("$Revision: 7118 $");
+  script_version("$Revision: 8192 $");
   script_cve_id("CVE-2017-11281", "CVE-2017-11282");
   script_bugtraq_id(100710, 100716);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 17:08:32 +0200 (Wed, 13 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:53:28 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-09-13 11:08:08 +0530 (Wed, 13 Sep 2017)");
   script_name("Adobe Flash Player Security Updates(apsb17-28)-Linux");
 

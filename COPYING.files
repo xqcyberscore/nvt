@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 20 Dec 2017 07:47:04 +0100
+# Automatically created on:  Thu, 21 Dec 2017 09:01:13 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -51257,6 +51257,7 @@
 2017/gb_owncloud_mult_vuln_feb17_win.nasl: GPLv2+
 2017/gb_owncloud_mult_vuln_may17.nasl: GPLv2+
 2017/gb_owncloud_mult_xss_vuln.nasl: GPLv2+
+2017/gb_panda_global_protection_system_crash_dos_vuln.nasl: GPLv2+
 2017/gb_panda_kernel_memory_access_driver_code_exec_vuln.nasl: GPLv2+
 2017/gb_panos_pan_sa-2016_0027.nasl: GPLv2+
 2017/gb_panos_pan_sa-2017_0003.nasl: GPLv2+
@@ -54614,6 +54615,7 @@ gsf/2017/paloaltonetworks/gb_panos_pan_sa-2017-0025.nasl: GPLv2+
 gsf/2017/paloaltonetworks/gb_panos_pan_sa-2017-0026.nasl: GPLv2+
 gsf/2017/paloaltonetworks/gb_panos_pan_sa-2017-0027.nasl: GPLv2+
 gsf/2017/paloaltonetworks/gb_panos_pan_sa-2017-0028.nasl: GPLv2+
+gsf/2017/paloaltonetworks/gb_panos_partial_auth_bypass.nasl: GPLv2+
 gsf/2017/saia/gb_saia_pcd_info_descl_vuln.nasl: GPLv2+
 gsf/2017/sap/gb_sap_netweaver_xml_xss_vuln.nasl: GPLv2+
 gsf/2017/sap/gb_sap_netweaver_xss_vuln_09_17.nasl: GPLv2+

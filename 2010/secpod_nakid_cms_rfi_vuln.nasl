@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nakid_cms_rfi_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_nakid_cms_rfi_vuln.nasl 8187 2017-12-20 07:30:09Z teissa $
 #
 # Nakid CMS 'core[system_path]' Parameter Remote File Inclusion Vulnerability
 #
@@ -45,9 +45,9 @@ inclusion vulnerability.";
 
 if(description)
 {
-  script_id(902082);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902082");
+  script_version("$Revision: 8187 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-25 16:56:31 +0200 (Fri, 25 Jun 2010)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");

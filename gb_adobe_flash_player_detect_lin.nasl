@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_detect_lin.nasl 8146 2017-12-15 13:40:59Z cfischer $
+# $Id: gb_adobe_flash_player_detect_lin.nasl 8197 2017-12-20 12:50:38Z cfischer $
 #
 # Adobe Flash Player/AIR Version Detection (Linux)
 #
@@ -30,15 +30,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.800032";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 8146 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800032");
+  script_version("$Revision: 8197 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:50:38 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-10-21 16:25:40 +0200 (Tue, 21 Oct 2008)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Flash Player/AIR Version Detection (Linux)");
@@ -59,7 +57,6 @@ and set it in KB.";
 
   exit(0);
 }
-
 
 include("ssh_func.inc");
 include("version_func.inc");
@@ -107,14 +104,7 @@ if(flashName != NULL)
 
         set_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Linux/Installed", value:TRUE);
         set_kb_item(name:"AdobeFlashPlayer/Linux/Ver", value:flashVer);
-
-        ## Build CPE
-        cpe = build_cpe(value:flashVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:flash_player:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:adobe:flash_player";
-
-        ## Register Product and Build Report
-        build_report(app: "Adobe Flash Player", ver: flashVer, cpe: cpe, insloc: binaryName);
+        register_and_report_cpe( app:"Adobe Flash Player", ver:flashVer, base:"cpe:/a:adobe:flash_player:", expr:"^([0-9.]+)", insloc:binaryName );
       }
     }
   }
@@ -138,14 +128,7 @@ if(airPaths != NULL)
 
         set_kb_item(name:"Adobe/Air_or_Flash_or_Reader/Linux/Installed", value:TRUE);
         set_kb_item(name:"Adobe/Air/Linux/Ver", value:airVer);
-
-        ## Build CPE
-        cpe = build_cpe(value:airVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:adobe_air:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:adobe:adobe_air";
-
-        ## Register Product and Build Report
-        build_report(app: "Adobe AIR", ver: airVer, cpe: cpe, insloc: airPath);
+        register_and_report_cpe( app:"Adobe AIR", ver:airVer, base:"cpe:/a:adobe:adobe_air:", expr:"^([0-9.]+)", insloc:airPath );
       }
     }
   }

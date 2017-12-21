@@ -59,8 +59,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2010-September/016962.html");
   script_id(880425);
-  script_version("$Revision: 6652 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:46:00 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8205 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 07:30:37 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-10 14:21:00 +0200 (Fri, 10 Sep 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -68,7 +68,7 @@ if(description)
   script_cve_id("CVE-2010-2760", "CVE-2010-2765", "CVE-2010-2767", "CVE-2010-2768", "CVE-2010-3167", "CVE-2010-3168", "CVE-2010-3169");
   script_name("CentOS Update for seamonkey CESA-2010:0680 centos3 i386");
 
-  script_summary("Check for the Version of seamonkey");
+  script_tag(name: "summary" , value: "Check for the Version of seamonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

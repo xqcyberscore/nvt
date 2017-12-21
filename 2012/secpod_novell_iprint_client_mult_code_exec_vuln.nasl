@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_iprint_client_mult_code_exec_vuln.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: secpod_novell_iprint_client_mult_code_exec_vuln.nasl 8201 2017-12-20 14:28:50Z cfischer $
 #
 # Novell iPrint Client Multiple Remote Code Execution Vulnerabilities
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:novell:iprint";
+
 tag_impact = "Successful exploitation could allow attackers to execute arbitrary code,
   cause buffer overflow or a denial of service condition.
   Impact Level: System/Application";
@@ -43,12 +45,12 @@ tag_summary = "This host is installed with Novell iPrint Client and is prone to
 if(description)
 {
   script_id(902674);
-  script_version("$Revision: 5958 $");
+  script_version("$Revision: 8201 $");
   script_cve_id("CVE-2011-4185", "CVE-2011-4186", "CVE-2011-4187");
   script_bugtraq_id(51926);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 15:28:50 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-04-26 12:20:02 +0530 (Thu, 26 Apr 2012)");
   script_name("Novell iPrint Client Multiple Remote Code Execution Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47867/");
@@ -63,7 +65,7 @@ if(description)
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("General");
   script_dependencies("secpod_novell_prdts_detect_win.nasl");
-  script_require_keys("Novell/iPrint/Ver");
+  script_mandatory_keys("Novell/iPrint/Installed");
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -72,20 +74,18 @@ if(description)
   exit(0);
 }
 
-
-include("smb_nt.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-iPrintVer = "";
-
-## Get the version from KB
-iPrintVer = get_kb_item("Novell/iPrint/Ver");
-if(!iPrintVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Check for Novell iPrint Client Version less than 5.78(05.78.00)
-if(version_is_less(version:iPrintVer, test_version:"5.78")){
- security_message(0);
+if( version_is_less( version:vers, test_version:"5.78" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"5.78", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

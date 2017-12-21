@@ -34,8 +34,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-June/043370.html");
   script_id(862172);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8186 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 07:30:34 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-25 12:25:26 +0200 (Fri, 25 Jun 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -43,7 +43,7 @@ if(description)
   script_cve_id("CVE-2010-1121", "CVE-2010-1200", "CVE-2010-1201", "CVE-2010-1202", "CVE-2010-0183", "CVE-2010-1198", "CVE-2010-1196", "CVE-2010-1199", "CVE-2010-1125", "CVE-2010-1197", "CVE-2008-5913");
   script_name("Fedora Update for mozvoikko FEDORA-2010-10344");
 
-  script_summary("Check for the Version of mozvoikko");
+  script_tag(name: "summary" , value: "Check for the Version of mozvoikko");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ####################################G###########################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_prdts_detect_win.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: secpod_novell_prdts_detect_win.nasl 8201 2017-12-20 14:28:50Z cfischer $
 #
 # Novell Multiple Products Version Detection
 #
@@ -44,18 +44,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900340");
-  script_version("$Revision: 7076 $");
+  script_version("$Revision: 8201 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 15:28:50 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-24 16:23:28 +0200 (Fri, 24 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Novell Multiple Products Version Detection");
 
-    tag_summary =
-"This script detects the installed version of Novell Products and sets the
-result in KB.";
-
+  tag_summary = "This script detects the installed version of Novell Products and sets the
+  result in KB.";
 
   script_tag(name : "summary" , value : tag_summary);
 
@@ -67,7 +65,6 @@ result in KB.";
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -137,34 +134,22 @@ foreach key(key_novell)
       eDirPath = "Could not find install location" ;
       if(eDirVer[1] != NULL && eDirVer[2] != NULL){
         eDirVer = eDirVer[1] + "." + eDirVer[2];
-      }
-      else{
+      } else {
         eDirVer = eDirVer[1];
       }
       if(eDirVer)
       {
-        set_kb_item(name:"Novell/eDir/Win/Ver", value:eDirVer);
 
-        ## Build CPE
-        cpe = build_cpe(value:eDirVer, exp:"^([0-9.]+([a-z0-9]+)?)",
-                        base:"cpe:/a:novell:edirectory:");
-        if(isnull(cpe))
-          cpe = 'cpe:/a:novell:edirectory';
+        set_kb_item(name:"Novell/eDir/Win/Installed", value:TRUE);
 
         ## 64 bit apps on 64 bit platform
-        if("x64" >< os_arch)
-        {
+        if("x64" >< os_arch) {
           set_kb_item(name:"Novell/eDir/Win64/Ver", value:eDirVer);
-
-          ## build cpe and store it as host_detail
-          cpe = build_cpe(value:eDirVer, exp:"^([0-9.]+([a-z0-9]+)?)",
-                          base:"cpe:/a:novell:edirectory:x64:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:novell:edirectory:x64";
-
+          register_and_report_cpe( app:"Novell eDirectory", ver:eDirVer, concluded:eDirVer, base:"cpe:/a:novell:edirectory:x64:", expr:"^([0-9.]+([a-z0-9]+)?)", insloc:eDirPath );
+        } else {
+          set_kb_item(name:"Novell/eDir/Win/Ver", value:eDirVer);
+          register_and_report_cpe( app:"Novell eDirectory", ver:eDirVer, concluded:eDirVer, base:"cpe:/a:novell:edirectory:", expr:"^([0-9.]+([a-z0-9]+)?)", insloc:eDirPath );
         }
-        build_report(app:"Novell eDirectory", ver:eDirVer, cpe:cpe,
-                     insloc:eDirPath, concluded:eDirVer);
       }
     }
   }
@@ -196,32 +181,22 @@ foreach key(key_novell)
           clientVersion = clientVersion[1] + "." + clientVersion[2];
         }
       }
-    }
-    else{
+    } else {
       clientVersion = registry_get_sz(key:key, item:"CurrentVersion");
     }
 
-    if(clientVersion)
-    {
-      set_kb_item(name:"Novell/Client/Ver", value:clientVersion);
+    if(clientVersion) {
 
-      ## Build CPE
-      cpe = build_cpe(value:clientVer, exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:novell:client:");
-      if(isnull(cpe))
-        cpe = 'cpe:/a:novell:client';
+      set_kb_item(name:"Novell/Client/Installed", value:TRUE);
 
       ## 64 bit apps on 64 bit platform
-      if("x64" >< os_arch)
-      {
-        set_kb_item(name:"Novell/Client64/Ver", value:clientVersion);
-
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:clientVer, exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:novell:client:x64:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:novell:client:x64:";
-
+      if("x64" >< os_arch) {
+        set_kb_item(name:"Novell/Client64/Ver", value:clientVer);
+        register_and_report_cpe( app:"Novell Client", ver:clientVersion, concluded:clientVer, base:"cpe:/a:novell:client:x64:", expr:"^([0-9.]+([a-z0-9]+)?)", insloc:clientPath );
+      } else {
+        set_kb_item(name:"Novell/Client/Ver", value:clientVer);
+        register_and_report_cpe( app:"Novell Client", ver:clientVersion, concluded:clientVer, base:"cpe:/a:novell:client:", expr:"^([0-9.]+([a-z0-9]+)?)", insloc:clientPath );
       }
-      build_report(app:"Novell Client", ver:clientVersion, cpe:cpe, insloc:clientPath, concluded:clientVersion);
     }
   }
 
@@ -245,16 +220,9 @@ foreach key(key_novell)
         }
         if(netidVer[1] != NULL)
         {
+          set_kb_item(name:"Novell/NetIdentity/Installed", value:TRUE);
           set_kb_item(name:"Novell/NetIdentity/Ver", value:netidVer[1]);
-
-          ## build cpe and store it as host_detail
-          cpe = build_cpe(value:netidVer[1], exp:"^([0-9.]+)",
-                          base:"cpe:/a:novell:netidentity_client:");
-          if(!cpe)
-            cpe="cpe:/a:novell:netidentity_client";
-
-          build_report(app:"Novell NetIdentity", ver:netidVer[1],
-                       cpe:cpe, insloc:netidPath, concluded:netidVer[1]);
+          register_and_report_cpe( app:"Novell NetIdentity", ver:netidVer[1], concluded:netidVer[0], base:"cpe:/a:novell:netidentity_client:", expr:"^([0-9.]+)", insloc:netidPath );
 
           buildVer = registry_get_sz(key:unins_key + item, item:"DisplayVersion");
           if(!buildVer){
@@ -278,15 +246,9 @@ foreach key(key_novell)
       gcVer = fetch_file_version(sysPath:gcPath, file_name:"GrpWise.exe");
       if(gcVer != NULL)
       {
+        set_kb_item(name:"Novell/Groupwise/Client/Win/Installed", value:TRUE);
         set_kb_item(name:"Novell/Groupwise/Client/Win/Ver", value:gcVer);
-
-        ## Build CPE
-        cpe = build_cpe(value:gcVer, exp:"^([0-9.]+)", base:"cpe:/a:novell:groupwise:");
-        if(isnull(cpe))
-          cpe = 'cpe:/a:novell:groupwise';
-
-        build_report(app:"Novell Groupwise Client", ver:gcVer,
-                     cpe:cpe, insloc:gcPath, concluded:gcVer);
+        register_and_report_cpe( app:"Novell Groupwise Client", ver:gcVer, concluded:gcVer, base:"cpe:/a:novell:groupwise:", expr:"^([0-9.]+)", insloc:gcPath );
       }
     }
   }
@@ -307,31 +269,20 @@ foreach key(key_novell)
         nfrVer = registry_get_sz(key:unins_key + item, item:"DisplayVersion");
         if(nfrVer != NULL)
         {
-          set_kb_item(name:"Novell/FileReporter/Ver", value:nfrVer);
-
-          ## Build CPE
-          cpe = build_cpe(value:nfrVer, exp:"^([0-9.]+)",
-                          base:"cpe:/a:novell:file_reporter:");
-          if(isnull(cpe))
-            cpe = 'cpe:/a:novell:file_reporter';
-
+          set_kb_item(name:"Novell/FileReporter/Installed", value:TRUE);
           ## 64 bit apps on 64 bit platform
-          if("x64" >< os_arch)
-          {
+          if("x64" >< os_arch) {
             set_kb_item(name:"Novell/FileReporter64/Ver", value:nfrVer);
-
-            ## build cpe and store it as host_detail
-            cpe = build_cpe(value:nfrVer, exp:"^([0-9.]+)", base:"cpe:/a:novell:file_reporter:x64:");
-            if(isnull(cpe))
-              cpe = "cpe:/a:novell:file_reporter:x64:";
+            register_and_report_cpe( app:"Novell File Reporter", ver:nfrVer, concluded:nfrVer, base:"cpe:/a:novell:file_reporter:x64:", expr:"^([0-9.]+)", insloc:nfrPath );
+          } else {
+            set_kb_item(name:"Novell/FileReporter/Ver", value:nfrVer);
+            register_and_report_cpe( app:"Novell File Reporter", ver:nfrVer, concluded:nfrVer, base:"cpe:/a:novell:file_reporter:", expr:"^([0-9.]+)", insloc:nfrPath );
           }
-          build_report(app:"Novell File Reporter", ver:nfrVer, cpe:cpe, insloc:nfrPath, concluded:nfrVer);
         }
       }
     }
   }
 }
-
 
 ##Novell-iPrint Client 32-bit app cannot be installed on 64-bit Architecture
 ## Set KB for Novell iPrint Client
@@ -346,9 +297,7 @@ if(registry_key_exists(key:key_iprint))
     iprintVer = eregmatch(pattern:"([0-9.]+)" , string:ver);
     iprintVer = iprintVer[1];
     install= install-"/uninstall";
-  }
-  else
-  {
+  } else {
     iprintName = registry_get_sz(key:ip_key, item:"DisplayName");
     install=registry_get_sz(key:ip_key, item:"UninstallString");
     if("iPrint" >< iprintName)
@@ -363,25 +312,16 @@ if(registry_key_exists(key:key_iprint))
 
   if(iprintVer)
   {
-    set_kb_item(name:"Novell/iPrint/Ver", value:iprintVer);
 
-    ## build cpe and store it as host_detail
-    cpe = build_cpe(value:iprintVer, exp:"^([0-9.]+)",
-                        base:"cpe:/a:novell:iprint:");
-    if(!cpe)
-      cpe="cpe:/a:novell:iprint";
+    set_kb_item(name:"Novell/iPrint/Installed", value:TRUE);
 
     ## 64 bit apps on 64 bit platform
-    if("x64" >< os_arch)
-    {
+    if("x64" >< os_arch) {
       set_kb_item(name:"Novell/iPrint64/Ver", value:iprintVer);
-
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:iprintVer, exp:"^([0-9.]+)", base:"cpe:/a:novell:iprint:x64:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:novell:iprint:x64:";
-
+      register_and_report_cpe( app:"Novell iPrint Client", ver:iprintVer, concluded:iprintVer, base:"cpe:/a:novell:iprint:x64:", expr:"^([0-9.]+)", insloc:install );
+    } else {
+      set_kb_item(name:"Novell/iPrint/Ver", value:iprintVer);
+      register_and_report_cpe( app:"Novell iPrint Client", ver:iprintVer, concluded:iprintVer, base:"cpe:/a:novell:iprint:", expr:"^([0-9.]+)", insloc:install );
     }
-    build_report(app:"Novell iPrint Client", ver:iprintVer, cpe:cpe, insloc:install, concluded:iprintVer);
   }
 }

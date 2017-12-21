@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_internet_security_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_trendmicro_internet_security_detect.nasl 8199 2017-12-20 13:37:22Z cfischer $
 #
 # Trend Micro Internet Security Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801263");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 8199 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:37:22 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-03 15:47:26 +0200 (Fri, 03 Sep 2010)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Trend Micro Internet Security Version Detection");
@@ -99,26 +99,16 @@ foreach item (registry_enum_keys(key:key))
         insLoc = "Could not find the install location from registry";
       }
 
-      set_kb_item(name:"TrendMicro/Ver", value:AppVer);
+      set_kb_item(name:"TrendMicro/IS/Installed", value:TRUE);
 
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:AppVer, exp:"^([0-9.]+)", base:"cpe:/a:trendmicro:internet_security:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:trendmicro:internet_security";
-
-      ## Register for 64 bit app on 64 bit OS once again
-      if("64" >< os_arch)
-      {
-        set_kb_item(name:"TrendMicro64/Ver", value:AppVer);
-
-        ## Build CPE
-        cpe = build_cpe(value:AppVer, exp:"^([0-9.]+)", base:"cpe:/a:trendmicro:internet_security:x64:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:trendmicro:internet_security:x64";
+      ## Register for 64 bit app on 64 bit OS
+      if("64" >< os_arch) {
+        set_kb_item(name:"TrendMicro/IS64/Ver", value:AppVer);
+        register_and_report_cpe( app:AppName, ver:AppVer, concluded:AppName, base:"cpe:/a:trendmicro:internet_security:x64:", expr:"^([0-9.]+)", insloc:insLoc );
+      } else {
+        set_kb_item(name:"TrendMicro/IS/Ver", value:AppVer);
+        register_and_report_cpe( app:AppName, ver:AppVer, concluded:AppName, base:"cpe:/a:trendmicro:internet_security:", expr:"^([0-9.]+)", insloc:insLoc );
       }
-
-      ## Register product and build report
-      build_report(app:AppName, ver:AppVer, cpe:cpe, insloc:insLoc, concluded:AppName);
     }
   }
 }

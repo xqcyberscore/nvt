@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synergy_protocol_info_disc_vuln_win.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_synergy_protocol_info_disc_vuln_win.nasl 8189 2017-12-20 09:10:19Z cfischer $
 #
 # Synergy Protocol Information Disclosure Vulnerability (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:synergy-foss:synergy";
+
 tag_impact = "Successful exploitation will allow attacker to obtain sensitive
 information that could aid in further attacks.
 
@@ -46,8 +48,8 @@ disclosure vulnerability.";
 if(description)
 {
   script_id(801872);
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 8189 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:10:19 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -58,7 +60,7 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_synergy_detect_win.nasl");
-  script_require_keys("Synergy/Win/Ver");
+  script_mandatory_keys("Synergy/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -69,15 +71,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Get version from KB
-ver = get_kb_item("Synergy/Win/Ver");
-if(ver)
-{
-  ## Check for Synergy Version 1.4
-  if(version_in_range(version:ver, test_version:"1.4.0", test_version2:"1.4.2")){
-    security_message(0);
-  }
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
+## Check for Synergy Version 1.4
+if( version_in_range( version:vers, test_version:"1.4.0", test_version2:"1.4.2" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"None", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

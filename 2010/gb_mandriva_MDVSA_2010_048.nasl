@@ -40,9 +40,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-02/msg00055.php");
-  script_id(830903);
-  script_version("$Revision: 8068 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 07:31:34 +0100 (Mon, 11 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.830903");
+  script_version("$Revision: 8187 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-20 08:30:09 +0100 (Wed, 20 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-03-02 08:46:47 +0100 (Tue, 02 Mar 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
