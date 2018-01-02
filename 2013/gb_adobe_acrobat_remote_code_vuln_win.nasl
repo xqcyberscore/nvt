@@ -29,12 +29,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804112";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 8200 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2013-5325");
   script_bugtraq_id(62888);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-10-18 08:57:35 +0530 (Fri, 18 Oct 2013)");
   script_name("Adobe Acrobat Remote Code Execution Vulnerability(Windows)");
 
@@ -80,7 +80,7 @@ For updates refer to http://www.adobe.com/downloads/updates.html";
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Acrobat/Win/Ver");
+  script_mandatory_keys("Adobe/Acrobat/Win/Installed");
   exit(0);
 }
 

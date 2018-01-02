@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_dos_vuln_lin.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_vlc_media_player_dos_vuln_lin.nasl 8254 2017-12-28 07:29:05Z teissa $
 #
 # VLC Media Player Meta-Information Denial of Service Vulnerability (Linux)
 #
@@ -37,9 +37,9 @@ tag_summary = "The host is installed with VLC Media Player and is prone to Denia
 
 if(description)
 {
-  script_id(801430);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801430");
+  script_version("$Revision: 8254 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-19 10:23:11 +0200 (Thu, 19 Aug 2010)");
   script_cve_id("CVE-2010-2937");
   script_bugtraq_id(42386);

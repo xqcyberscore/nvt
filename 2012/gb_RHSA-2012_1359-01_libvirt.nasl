@@ -66,8 +66,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-October/msg00013.html");
   script_id(870845);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8265 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 07:29:23 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-10-12 09:19:43 +0530 (Fri, 12 Oct 2012)");
   script_cve_id("CVE-2012-4423");
   script_tag(name:"cvss_base", value:"5.0");
@@ -75,7 +75,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:1359-01");
   script_name("RedHat Update for libvirt RHSA-2012:1359-01");
 
-  script_summary("Check for the Version of libvirt");
+  script_tag(name: "summary" , value: "Check for the Version of libvirt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

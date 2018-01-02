@@ -66,8 +66,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-October/msg00015.html");
   script_id(870617);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8249 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 07:29:56 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:34:25 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2011-3348", "CVE-2011-3368", "CVE-2011-3192");
   script_tag(name:"cvss_base", value:"7.8");
@@ -75,7 +75,7 @@ if(description)
   script_xref(name: "RHSA", value: "2011:1391-01");
   script_name("RedHat Update for httpd RHSA-2011:1391-01");
 
-  script_summary("Check for the Version of httpd");
+  script_tag(name: "summary" , value: "Check for the Version of httpd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

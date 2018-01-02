@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_dec09_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_prdts_mult_vuln_dec09_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Flash Player/Air Multiple Vulnerabilities - dec09 (Windows)
 #
@@ -27,33 +27,46 @@
 tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary code,
   gain elevated privileges, gain knowledge of certain information and conduct
   clickjacking attacks.
+
   Impact Level: System/Application";
+
 tag_affected = "Adobe AIR version prior to 1.5.3
+
   Adobe Flash Player 10 version prior to 10.0.42.34 on Windows";
+
 tag_insight = "The multiple Flaws are due to:
+
   - An error occurred while parsing JPEG dimensions contained within an SWF file
     can be exploited to cause a heap-based buffer overflow.
+
   - An unspecified error may allow injection of data and potentially lead to
     execution of arbitrary code.
+
   - An unspecified error possibly related to 'getProperty()' can be exploited
     to corrupt memory and may allow execution of arbitrary code.
+
   - An unspecified error can be exploited to corrupt memory and may allow
     execution of arbitrary code.
+
   - An integer overflow error when generating ActionScript exception handlers
     in 'Verifier::parseExceptionHandlers()' can be exploited to corrupt memory.
+
   - Various unspecified errors may potentially allow execution of arbitrary code.
+
   - An error may disclose information about local file names.";
+
 tag_solution = "Update to Adobe Air 1.5.3 or Adobe Flash Player 10.0.42.34
   http://get.adobe.com/air
   http://www.adobe.com/support/flashplayer/downloads.html";
+
 tag_summary = "This host is installed with Adobe Flash Player/Air and is prone to
   multiple vulnerabilities.";
 
 if(description)
 {
   script_id(801083);
-  script_version("$Revision: 6475 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_version("$Revision: 8210 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-12-17 08:14:37 +0100 (Thu, 17 Dec 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -80,12 +93,11 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-# Check for Adobe Flash Player
-playerVer = get_kb_item("AdobeFlashPlayer/Win/Ver");
-if(playerVer != NULL)
+CPE = "cpe:/a:adobe:flash_player";
+if(playerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   # Grep for version 10.x < 10.0.32.18
   if(version_in_range(version:playerVer, test_version:"10.0", test_version2:"10.0.42.33")) {
@@ -93,9 +105,8 @@ if(playerVer != NULL)
   }
 }
 
-# Check for Adobe Air
-airVer = get_kb_item("Adobe/Air/Win/Ver");
-if(airVer != NULL)
+CPE = "cpe:/a:adobe:adobe_air";
+if(airVer = get_app_version(cpe:CPE))
 {
   # Grep for version < 1.5.3
   if(version_is_less(version:airVer, test_version:"1.5.3")){

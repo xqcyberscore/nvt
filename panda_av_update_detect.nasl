@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102048");
-  script_version("$Revision: 6456 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 8217 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 14:24:55 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,7 +37,7 @@ if(description)
   script_family("Service detection");
   script_dependencies("smb_reg_service_pack.nasl", "gb_panda_prdts_detect.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("Panda/Products/Installed");
 
   tag_summary = "Extracts date of the last update for Panda Antivirus software, from the 
   Titanium.ini file and stores it to KB.";
@@ -49,18 +49,11 @@ if(description)
   exit(0);
 }
 
-
-#
 # This script is tested on Panda Antivirus 2005 through 2007
 # For other versions of Panda software might not work due to non-existent titanium.ini file 
-#
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
-
-
-port = get_kb_item("SMB/transport");
-if (!port) port = 445;
 
 #Detect if there is any Panda software installed
 if(!registry_key_exists(key:"SOFTWARE\Panda Software")){
@@ -94,11 +87,12 @@ for(i = 0; i < 3; i++){
     last_update = ereg_replace(pattern:"^PavSigDate=(.*)$", replace:"\1", string:last_update);
     last_update = last_update - string("\r\n"); #removing the endline chars
 
-    if(!last_update)
-    {
+    if(!last_update) {
       log_message(data:"Could not find last date of signature base update in file Titanium.ini");
       exit(-1);
     }
+
+    set_kb_item(name:"Panda/LastUpdate/Available", value:TRUE);
 
     #setting KB items
     if(i == 0)

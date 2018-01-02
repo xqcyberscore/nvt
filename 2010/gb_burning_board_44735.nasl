@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_burning_board_44735.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_burning_board_44735.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # Woltlab Burning Board 'locator.php' SQL Injection Vulnerability
 #
@@ -38,9 +38,9 @@ be affected.";
 
 if (description)
 {
- script_id(100896);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100896");
+ script_version("$Revision: 8258 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-11-09 13:58:26 +0100 (Tue, 09 Nov 2010)");
  script_bugtraq_id(44735);
  script_tag(name:"cvss_base", value:"7.5");

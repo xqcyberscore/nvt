@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realplayer_mult_code_exec_vuln_lin.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_realplayer_mult_code_exec_vuln_lin.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # RealNetworks RealPlayer Multiple Code Execution Vulnerabilities (Linux)
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with RealPlayer which is prone to multiple
 
 if(description)
 {
-  script_id(902108);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902108");
+  script_version("$Revision: 8258 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-02-02 07:26:26 +0100 (Tue, 02 Feb 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

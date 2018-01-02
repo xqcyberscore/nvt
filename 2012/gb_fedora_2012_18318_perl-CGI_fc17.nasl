@@ -42,8 +42,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-November/093398.html");
   script_id(864899);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8253 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 07:29:51 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-11-29 09:37:38 +0530 (Thu, 29 Nov 2012)");
   script_cve_id("CVE-2012-5526");
   script_tag(name:"cvss_base", value:"5.0");
@@ -51,7 +51,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-18318");
   script_name("Fedora Update for perl-CGI FEDORA-2012-18318");
 
-  script_summary("Check for the Version of perl-CGI");
+  script_tag(name: "summary" , value: "Check for the Version of perl-CGI");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

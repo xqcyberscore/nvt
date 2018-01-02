@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_detect_win.nasl 8144 2017-12-15 13:19:55Z cfischer $
+# $Id: secpod_adobe_prdts_detect_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Products Version Detection (Windows)
 #
@@ -35,25 +35,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.900319";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 8144 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900319");
+  script_version("$Revision: 8210 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Products Version Detection (Windows)");
 
-  tag_summary =
-"Detection of installed version of Adobe Products.
+  tag_summary = "Detection of installed version of Adobe Products.
 
 The script logs in via smb, searches for Adobe Products in the registry
 and gets the version from 'DisplayVersion' string in registry.";
-
 
   script_tag(name : "summary" , value : tag_summary);
 
@@ -146,28 +142,19 @@ foreach key (keylist)
             continue;
           }
 
-          checkdupAcrbt  += acrobatVer + ", ";
+          checkdupAcrbt += acrobatVer + ", ";
 
-          ##  Set the version for 32 bit Adobe Acrobat on 32 bit OS
-          ##  Set the version for 32 bit Adobe Acrobat on 64 bit OS
-          ## this key needs to be set for 64-bit app on 64 bit OS also
-          ## as only Adobe/Acrobat/Win/Ver key is used as mandatory key
-          ## for all scripts
-          set_kb_item(name:"Adobe/Acrobat/Win/Ver", value:acrobatVer);
+          set_kb_item(name:"Adobe/Acrobat/Win/Installed", value:TRUE);
           set_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
 
           ## Set version for 64 bit Adobe Acrobat on 64 bit OS
           if( "x64" >< osArch && "Wow6432Node" >!< key){
             set_kb_item(name:"Adobe/Acrobat64/Win/Ver", value:acrobatVer);
+            register_and_report_cpe( app:adobeName, ver:acrobatVer, base:"cpe:/a:adobe:acrobat:x64:", expr:"^([0-9.]+)", insloc:insPath );
+          } else {
+            set_kb_item(name:"Adobe/Acrobat/Win/Ver", value:acrobatVer);
+            register_and_report_cpe( app:adobeName, ver:acrobatVer, base:"cpe:/a:adobe:acrobat:", expr:"^([0-9.]+)", insloc:insPath );
           }
-
-          ## Build CPE
-          cpe = build_cpe(value:acrobatVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:acrobat:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:adobe:acrobat";
-
-          ## Register Product and Build Report
-          build_report(app: adobeName, ver: acrobatVer, cpe: cpe, insloc: insPath);
         }
       }
 
@@ -186,38 +173,22 @@ foreach key (keylist)
 
           checkdupRdr += readerVer + ", ";
 
-          ##  Set the version for 32 bit Adobe Reader on 32 bit OS
-          ##  Set the version for 32 bit Adobe Reader on 64 bit OS
-          ## this key needs to be set for 64-bit app on 64 bit OS also
-          ## as only Adobe/Reader/Win/Ver key is used as mandatory key
-          ## for all scripts
-          set_kb_item(name:"Adobe/Reader/Win/Ver", value:readerVer);
+          set_kb_item(name:"Adobe/Reader/Win/Installed", value:TRUE);
           set_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
 
           # set version for 64 bit Adobe Acrobat on 64 bit OS
           if( "x64" >< osArch && "Wow6432Node" >!< key){
             set_kb_item(name:"Adobe/Reader64/Win/Ver", value:readerVer);
-          }
-          else
-          {
-            ##  Set the version for 32 bit Adobe Reader on 32 bit OS
-            ##  Set the version for 32 bit Adobe Reader on 64 bit OS
+            register_and_report_cpe( app:adobeName, ver:readerVer, base:"cpe:/a:adobe:acrobat_reader:x64:", expr:"^([0-9.]+)", insloc:insPath );
+          } else {
             set_kb_item(name:"Adobe/Reader/Win/Ver", value:readerVer);
+            register_and_report_cpe( app:adobeName, ver:readerVer, base:"cpe:/a:adobe:acrobat_reader:", expr:"^([0-9.]+)", insloc:insPath );
           }
-
-          ## Build CPE
-          cpe = build_cpe(value:readerVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:acrobat_reader:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:adobe:acrobat_reader";
-
-          ## Register Product and Build Report
-          build_report(app: adobeName, ver: readerVer, cpe: cpe, insloc: insPath);
         }
       }
     }
   }
 }
-
 
 ## Adobe Audition
 ## Check for 32 bit platform
@@ -257,27 +228,16 @@ foreach key (adkeylist)
           }
 
           checkdupAud  += audVer + ", ";
-
-          ##  Set the version for 32 bit Adobe Audition on 32 bit OS
-          ##  Set the version for 32 bit Adobe Audition on 64 bit OS
-          ## this key needs to be set for 64-bit app on 64 bit OS also
-          ## as only Adobe/Audition/Win/Ver key is used as mandatory key
-          ## for all scripts
-          set_kb_item(name:"Adobe/Audition/Win/Ver", value:audVer);
-
+          set_kb_item(name:"Adobe/Audition/Win/Installed", value:TRUE);
 
           ## set version for 64 bit Adobe Audition on 64 bit OS
           if( "x64" >< osArch && "Wow6432Node" >!< key){
             set_kb_item(name:"Adobe/Audition64/Win/Ver", value:audVer);
+            register_and_report_cpe( app:audName, ver:audVer, base:"cpe:/a:adobe:audition:x64:", expr:"^([0-9.]+)", insloc:insPath );
+          } else {
+            set_kb_item(name:"Adobe/Audition/Win/Ver", value:audVer);
+            register_and_report_cpe( app:audName, ver:audVer, base:"cpe:/a:adobe:audition:", expr:"^([0-9.]+)", insloc:insPath );
           }
-
-          ## Build CPE
-          cpe = build_cpe(value:audVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:audition:");
-          if(isnull(cpe))
-            cpe = "cpe:/a:adobe:audition";
-
-          ## Register Product and Build Report
-          build_report(app: audName, ver: audVer, cpe: cpe, insloc: insPath);
         }
       }
     }

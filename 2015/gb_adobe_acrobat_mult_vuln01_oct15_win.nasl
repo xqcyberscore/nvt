@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln01_oct15_win.nasl 6376 2017-06-20 10:00:24Z teissa $
+# $Id: gb_adobe_acrobat_mult_vuln01_oct15_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Acrobat Multiple Vulnerabilities - 01 October15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806505");
-  script_version("$Revision: 6376 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2015-5583", "CVE-2015-5586", "CVE-2015-6683", "CVE-2015-6684",
                 "CVE-2015-6685", "CVE-2015-6686", "CVE-2015-6687", "CVE-2015-6688",
                 "CVE-2015-6689", "CVE-2015-6690", "CVE-2015-6691", "CVE-2015-6692",
@@ -47,7 +47,7 @@ if(description)
                 "CVE-2015-7829", "CVE-2015-7650", "CVE-2015-8458");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-10-20 10:15:23 +0530 (Tue, 20 Oct 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Acrobat Multiple Vulnerabilities - 01 October15 (Windows)");
@@ -90,7 +90,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Acrobat/Win/Ver");
+  script_mandatory_keys("Adobe/Acrobat/Win/Installed");
   exit(0);
 }
 

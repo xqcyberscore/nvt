@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_feb10_lin.nasl 6476 2017-06-29 07:32:00Z cfischer $
+# $Id: gb_adobe_prdts_mult_vuln_feb10_lin.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # Adobe Flash Player/Air Multiple Vulnerabilities - feb10 (Linux)
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is installed with Adobe Flash Player/Air and is prone t
 
 if(description)
 {
-  script_id(800476);
-  script_version("$Revision: 6476 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:32:00 +0200 (Thu, 29 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800476");
+  script_version("$Revision: 8250 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-02-19 11:58:13 +0100 (Fri, 19 Feb 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

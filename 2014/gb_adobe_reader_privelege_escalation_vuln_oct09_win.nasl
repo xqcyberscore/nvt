@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_privelege_escalation_vuln_oct09_win.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_adobe_reader_privelege_escalation_vuln_oct09_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader 'Download Manager' Privilege Escalation Vulnerability (Windows)
 #
@@ -25,46 +25,38 @@
 ###############################################################################
 
 CPE = "cpe:/a:adobe:acrobat_reader";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804368";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6637 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804368");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2009-2564");
   script_bugtraq_id(35740);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-04-08 16:15:57 +0530 (Tue, 08 Apr 2014)");
   script_name("Adobe Reader 'Download Manager' Privilege Escalation Vulnerability (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to privilege escalation
+  tag_summary = "This host is installed with Adobe Reader and is prone to privilege escalation
 vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"Flaw is due to insecure permissions being set on the NOS installation
+  tag_insight = "Flaw is due to insecure permissions being set on the NOS installation
 directory within Corel getPlus Download Manager.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to gain escalated privileges on
+  tag_impact = "Successful exploitation will allow attackers to gain escalated privileges on
 the system.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Reader 7.x before 7.1.4, 8.x before 8.1.7 and 9.x before 9.2 on
+  tag_affected = "Adobe Reader 7.x before 7.1.4, 8.x before 8.1.7 and 9.x before 9.2 on
 Windows.";
 
-  tag_solution =
-"Upgrade to Adobe Reader 7.1.4 or 8.1.7 or 9.2 or later. For updates refer
+  tag_solution = "Upgrade to Adobe Reader 7.1.4 or 8.1.7 or 9.2 or later. For updates refer
 http://www.adobe.com/downloads";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -84,19 +76,14 @@ http://www.adobe.com/downloads";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
-if(!readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

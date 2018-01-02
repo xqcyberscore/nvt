@@ -39,9 +39,9 @@ tag_affected = "libfishsound on Fedora 13";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-June/042714.html");
-  script_id(862142);
-  script_version("$Revision: 8082 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 07:31:24 +0100 (Tue, 12 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.862142");
+  script_version("$Revision: 8207 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-11 13:46:51 +0200 (Fri, 11 Jun 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln01_sep14_win.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_adobe_reader_mult_vuln01_sep14_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities-01 Sep14 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804485");
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2014-0560", "CVE-2014-0561", "CVE-2014-0563", "CVE-2014-0565",
                 "CVE-2014-0566", "CVE-2014-0567", "CVE-2014-0568");
   script_bugtraq_id(69823, 69821, 69826, 69824, 69825, 69827, 69828);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-09-19 13:22:24 +0530 (Fri, 19 Sep 2014)");
 
   script_name("Adobe Reader Multiple Vulnerabilities-01 Sep14 (Windows)");
@@ -47,13 +47,18 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"Multiple Flaws are due to,
+
   - An use-after-free error can be exploited to execute arbitrary code.
+
   - An error within the implementation of the 'replace()' JavaScript function
     can be exploited to cause a heap-based buffer overflow via specially crafted
     arguments.
+
   - An error within the 3DIF Plugin (3difr.x3d) can be exploited to cause
     a heap-based buffer overflow via a specially crafted PDF file.
+
   - Some unspecified errors can be exploited to cause a memory corruption.
+
   - An unspecified error can be exploited to bypass certain sandbox
     restrictions.");
 
@@ -78,18 +83,13 @@ if(description)
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
 if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }

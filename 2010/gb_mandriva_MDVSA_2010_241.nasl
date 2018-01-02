@@ -49,8 +49,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-11/msg00040.php");
   script_id(831264);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8245 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-12-02 08:39:14 +0100 (Thu, 02 Dec 2010)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -58,7 +58,7 @@ if(description)
   script_cve_id("CVE-2010-3999");
   script_name("Mandriva Update for gnucash MDVSA-2010:241 (gnucash)");
 
-  script_summary("Check for the Version of gnucash");
+  script_tag(name: "summary" , value: "Check for the Version of gnucash");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

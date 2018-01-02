@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_bof_vuln_win.nasl 8196 2017-12-20 12:13:37Z cfischer $
+# $Id: gb_ruby_bof_vuln_win.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # Ruby 'ARGF.inplace_mode' Buffer Overflow Vulnerability
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is installed with Ruby and is prone to buffer overflow
 
 if(description)
 {
-  script_id(801375);
-  script_version("$Revision: 8196 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:13:37 +0100 (Wed, 20 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801375");
+  script_version("$Revision: 8266 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-07-16 19:44:55 +0200 (Fri, 16 Jul 2010)");
   script_cve_id("CVE-2010-2489");
   script_bugtraq_id(41321);

@@ -44,8 +44,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:179");
   script_id(831756);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8265 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 07:29:23 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-12-14 09:52:30 +0530 (Fri, 14 Dec 2012)");
   script_cve_id("CVE-2012-5519");
   script_tag(name:"cvss_base", value:"7.2");
@@ -53,7 +53,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:179");
   script_name("Mandriva Update for cups MDVSA-2012:179 (cups)");
 
-  script_summary("Check for the Version of cups");
+  script_tag(name: "summary" , value: "Check for the Version of cups");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

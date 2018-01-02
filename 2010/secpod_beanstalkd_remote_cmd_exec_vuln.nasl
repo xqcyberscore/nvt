@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_beanstalkd_remote_cmd_exec_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_beanstalkd_remote_cmd_exec_vuln.nasl 8254 2017-12-28 07:29:05Z teissa $
 #
 # Beanstalkd Job Data Remote Command Execution Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is running Beanstalkd and is prone to remote command
 
 if(description)
 {
-  script_id(901122);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901122");
+  script_version("$Revision: 8254 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-21 15:32:44 +0200 (Mon, 21 Jun 2010)");
   script_cve_id("CVE-2010-2060");
   script_bugtraq_id(40516);

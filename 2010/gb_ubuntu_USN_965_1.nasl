@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_965_1.nasl 7965 2017-12-01 07:38:25Z santu $
+# $Id: gb_ubuntu_USN_965_1.nasl 8254 2017-12-28 07:29:05Z teissa $
 #
 # Ubuntu Update for OpenLDAP vulnerabilities USN-965-1
 #
@@ -52,9 +52,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-965-1/");
-  script_id(840478);
-  script_version("$Revision: 7965 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:38:25 +0100 (Fri, 01 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.840478");
+  script_version("$Revision: 8254 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-13 14:24:53 +0200 (Fri, 13 Aug 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

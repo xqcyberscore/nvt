@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3741.nasl 8115 2017-12-14 07:30:22Z teissa $
+# $Id: deb_3741.nasl 8261 2017-12-29 09:13:46Z teissa $
 # Auto-generated from advisory DSA 3741-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_oid("1.3.6.1.4.1.25623.1.0.703741");
-    script_version("$Revision: 8115 $");
+    script_version("$Revision: 8261 $");
     script_cve_id("CVE-2016-1254");
     script_name("Debian Security Advisory DSA 3741-1 (tor - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-12-14 08:30:22 +0100 (Thu, 14 Dec 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-12-29 10:13:46 +0100 (Fri, 29 Dec 2017) $");
     script_tag(name: "creation_date", value: "2016-12-20 00:00:00 +0100 (Tue, 20 Dec 2016)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"5.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

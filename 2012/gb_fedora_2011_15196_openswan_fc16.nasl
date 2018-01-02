@@ -47,8 +47,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-December/070695.html");
   script_id(864024);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8267 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 07:29:17 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-04-02 13:01:50 +0530 (Mon, 02 Apr 2012)");
   script_cve_id("CVE-2011-4073");
   script_tag(name:"cvss_base", value:"4.0");
@@ -56,7 +56,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2011-15196");
   script_name("Fedora Update for openswan FEDORA-2011-15196");
 
-  script_summary("Check for the Version of openswan");
+  script_tag(name: "summary" , value: "Check for the Version of openswan");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

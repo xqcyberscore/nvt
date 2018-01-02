@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_mult_dos_vuln_win.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_opera_mult_dos_vuln_win.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # Opera Browser Multiple Denial Of Service Vulnerability (Windows)
 #
@@ -51,9 +51,9 @@ Multiple Denial of Service vulnerability.";
 
 if(description)
 {
-  script_id(902182);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902182");
+  script_version("$Revision: 8266 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1989", "CVE-2010-1993");
   script_tag(name:"cvss_base", value:"5.0");

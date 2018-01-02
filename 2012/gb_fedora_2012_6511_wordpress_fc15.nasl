@@ -35,8 +35,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-May/080366.html");
   script_id(864234);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8249 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 07:29:56 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-05-14 12:32:07 +0530 (Mon, 14 May 2012)");
   script_cve_id("CVE-2011-0700", "CVE-2011-0701", "CVE-2012-2399", "CVE-2012-2400",
                 "CVE-2012-2401", "CVE-2012-2402", "CVE-2012-2403", "CVE-2012-2404");
@@ -45,7 +45,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-6511");
   script_name("Fedora Update for wordpress FEDORA-2012-6511");
 
-  script_summary("Check for the Version of wordpress");
+  script_tag(name: "summary" , value: "Check for the Version of wordpress");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

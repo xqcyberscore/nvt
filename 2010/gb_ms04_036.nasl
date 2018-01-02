@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms04_036.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_ms04_036.nasl 8246 2017-12-26 07:29:20Z teissa $
 #
 # Windows NT NNTP Component Buffer Overflow
 #
@@ -36,9 +36,9 @@ issue for supported versions of the operating system.";
 
 if (description)
 {
- script_id(100608);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100608");
+ script_version("$Revision: 8246 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-26 08:29:20 +0100 (Tue, 26 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-04-26 19:54:51 +0200 (Mon, 26 Apr 2010)");
  script_cve_id("CVE-2004-0574");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CMScout_43260.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_CMScout_43260.nasl 8244 2017-12-25 07:29:28Z teissa $
 #
 # CMScout IBrowser TinyMCE Plugin Local File Include Vulnerability
 #
@@ -35,9 +35,9 @@ CMScout 2.09 is vulnerable; other versions may also be affected.";
 
 if(description)
 {
- script_id(100807);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100807");
+ script_version("$Revision: 8244 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-09-16 16:08:48 +0200 (Thu, 16 Sep 2010)");
  script_bugtraq_id(43260);
  script_tag(name:"cvss_base", value:"6.8");

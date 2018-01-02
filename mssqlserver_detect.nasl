@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mssqlserver_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
+# $Id: mssqlserver_detect.nasl 8230 2017-12-22 08:51:56Z cfischer $
 #
 # Microsoft SQL TCP/IP listener is running
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10144");
-  script_version("$Revision: 8145 $");
+  script_version("$Revision: 8230 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 09:51:56 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Microsoft SQL TCP/IP listener is running");
   script_category(ACT_GATHER_INFO);
@@ -97,6 +97,7 @@ register_service( port:port, proto:"mssql" );
 register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", port:port, desc:"Microsoft SQL TCP/IP listener is running", runs_key:"windows" );
 
 set_kb_item( name:"MS/SQLSERVER/Running", value:TRUE );
+set_kb_item(name:"OpenDatabase/found", value:TRUE);
 
 # https://en.wikipedia.org/wiki/History_of_Microsoft_SQL_Server#Release_summary
 if( version =~ "^1\.0" ) {

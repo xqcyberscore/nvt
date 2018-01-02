@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_tftp_server_dos_vuln.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_quick_tftp_server_dos_vuln.nasl 8237 2017-12-22 10:33:02Z cfischer $
 #
 # Quick TFTP Server Long Filename Denial Of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803714");
-  script_version("$Revision: 6125 $");
+  script_version("$Revision: 8237 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:33:02 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-06-10 18:00:09 +0530 (Mon, 10 Jun 2013)");
   script_name("Quick TFTP Server Long Filename Denial Of Service Vulnerability");
 
@@ -40,6 +40,7 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2013 Greenbone Networks");
   script_family("Denial of Service");
+  script_dependencies("tftpd_detect.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
 
   script_tag(name : "impact" , value : "Successful exploitation will allow attackers to cause denial

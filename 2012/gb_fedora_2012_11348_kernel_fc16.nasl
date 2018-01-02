@@ -37,8 +37,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-August/084642.html");
   script_id(864592);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8245 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-06 11:20:48 +0530 (Mon, 06 Aug 2012)");
   script_cve_id("CVE-2012-2390", "CVE-2012-2372", "CVE-2011-4131", "CVE-2012-2123",
                 "CVE-2012-2119", "CVE-2012-1601", "CVE-2012-1568", "CVE-2012-1179",
@@ -50,7 +50,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-11348");
   script_name("Fedora Update for kernel FEDORA-2012-11348");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_audition_ses_mult_bof_vuln_win.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: secpod_adobe_audition_ses_mult_bof_vuln_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Audition '.ses' Multiple Buffer Overflow Vulnerabilities (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:adobe:audition";
+
 tag_impact = "Successful exploitation could allow attackers to execute arbitrary
 code or cause a denial of service via crafted data in unspecified fields in
 the TRKM chunk in an Audition Session file.
@@ -45,8 +47,8 @@ buffer overflow vulnerabilities.";
 if(description)
 {
   script_id(902373);
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_version("$Revision: 8210 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_cve_id("CVE-2011-0614", "CVE-2011-0615");
   script_bugtraq_id(47841, 47838);
@@ -62,7 +64,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Audition/Win/Ver");
+  script_mandatory_keys("Adobe/Audition/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -73,16 +75,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Get the version from KB
-audVer = get_kb_item("Adobe/Audition/Win/Ver");
-if(!audVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 ## Check for Adobe Audition version <= 3.0.1
-if(version_is_less_equal(version:audVer, test_version:"3.0.1")){
-  security_message(0);
+if( version_is_less_equal( version:vers, test_version:"3.0.1" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"CS5.5", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

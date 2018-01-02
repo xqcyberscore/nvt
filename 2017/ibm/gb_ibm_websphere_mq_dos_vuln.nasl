@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_dos_vuln.nasl 8084 2017-12-12 08:05:38Z jschulte $
+# $Id: gb_ibm_websphere_mq_dos_vuln.nasl 8225 2017-12-22 06:03:44Z teissa $
 #
 # IBM WebSphere MQ 7.5, 8.0 and 9.0 DoS Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113066");
-  script_version("$Revision: 8084 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 09:05:38 +0100 (Tue, 12 Dec 2017) $");
+  script_version("$Revision: 8225 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 07:03:44 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-08 14:11:12 +0100 (Fri, 08 Dec 2017)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
 
   script_tag(name:"qod_type", value:"registry");
 

@@ -75,8 +75,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-09/msg00011.php");
   script_id(831151);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8226 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 07:30:26 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-14 15:35:55 +0200 (Tue, 14 Sep 2010)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -84,7 +84,7 @@ if(description)
   script_cve_id("CVE-2009-2693", "CVE-2009-2901", "CVE-2009-2902", "CVE-2010-1157", "CVE-2010-2227");
   script_name("Mandriva Update for tomcat5 MDVSA-2010:177 (tomcat5)");
 
-  script_summary("Check for the Version of tomcat5");
+  script_tag(name: "summary" , value: "Check for the Version of tomcat5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

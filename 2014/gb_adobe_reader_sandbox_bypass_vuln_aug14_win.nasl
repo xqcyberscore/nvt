@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_sandbox_bypass_vuln_aug14_win.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_adobe_reader_sandbox_bypass_vuln_aug14_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader Sandbox Bypass Vulnerability - Aug14 (Windows)
 #
@@ -29,38 +29,32 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804813");
-  script_version("$Revision: 6715 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2014-0546");
   script_bugtraq_id(69193);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-08-19 12:05:17 +0530 (Tue, 19 Aug 2014)");
   script_name("Adobe Reader Sandbox Bypass Vulnerability - Aug14 (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to sandbox bypass
+  tag_summary = "This host is installed with Adobe Reader and is prone to sandbox bypass
 vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"Flaw exists due to some unspecified error.";
+  tag_insight = "Flaw exists due to some unspecified error.";
 
- tag_impact =
-"Successful exploitation will allow attacker to bypass sandbox restrictions
+ tag_impact = "Successful exploitation will allow attacker to bypass sandbox restrictions
 and execute native code in a privileged context.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Reader X version 10.x before 10.1.11 and XI version 11.x before 11.0.08
+  tag_affected = "Adobe Reader X version 10.x before 10.1.11 and XI version 11.x before 11.0.08
 on Windows.";
 
-  tag_solution =
-"Upgrade to version 10.1.11 or 11.0.08 or higher,
+  tag_solution = "Upgrade to version 10.1.11 or 11.0.08 or higher,
 For updates refer to http://get.adobe.com/reader";
 
 
@@ -78,7 +72,7 @@ For updates refer to http://get.adobe.com/reader";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
 

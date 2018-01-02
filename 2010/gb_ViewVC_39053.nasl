@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ViewVC_39053.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_ViewVC_39053.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # ViewVC Regular Expression Search Cross Site Scripting Vulnerability
 #
@@ -38,9 +38,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100562);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100562");
+ script_version("$Revision: 8258 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-03-31 12:56:41 +0200 (Wed, 31 Mar 2010)");
  script_bugtraq_id(39053);
  script_cve_id("CVE-2010-0132");

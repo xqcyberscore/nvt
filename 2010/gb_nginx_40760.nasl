@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_40760.nasl 7552 2017-10-24 13:00:36Z cfischer $
+# $Id: gb_nginx_40760.nasl 8254 2017-12-28 07:29:05Z teissa $
 #
 # nginx Remote Source Code Disclosure and Denial of Service Vulnerabilities
 #
@@ -37,9 +37,9 @@ be affected.";
 
 if (description)
 {
- script_id(100676);
- script_version("$Revision: 7552 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-24 15:00:36 +0200 (Tue, 24 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100676");
+ script_version("$Revision: 8254 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-06-14 14:19:59 +0200 (Mon, 14 Jun 2010)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

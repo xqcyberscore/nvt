@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pyftpdlib_dos_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_pyftpdlib_dos_vuln.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # pyftpdlib FTP Server Denial of Service Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is running pyftpdlib FTP server and is prone to Denial 
 
 if(description)
 {
-  script_id(801614);
-  script_version("$Revision: 7573 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801614");
+  script_version("$Revision: 8228 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-28 11:50:37 +0200 (Thu, 28 Oct 2010)");
   script_cve_id("CVE-2009-5010");
   script_tag(name:"cvss_base", value:"4.3");

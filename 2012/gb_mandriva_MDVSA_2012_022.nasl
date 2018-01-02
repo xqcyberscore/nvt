@@ -44,8 +44,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2012-02/msg00025.php");
   script_id(831550);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8253 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 07:29:51 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-03-09 19:16:07 +0530 (Fri, 09 Mar 2012)");
   script_cve_id("CVE-2011-3026");
   script_tag(name:"cvss_base", value:"7.5");
@@ -53,7 +53,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:022");
   script_name("Mandriva Update for libpng MDVSA-2012:022 (libpng)");
 
-  script_summary("Check for the Version of libpng");
+  script_tag(name: "summary" , value: "Check for the Version of libpng");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

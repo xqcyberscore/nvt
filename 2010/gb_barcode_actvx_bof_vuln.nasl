@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barcode_actvx_bof_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_barcode_actvx_bof_vuln.nasl 8244 2017-12-25 07:29:28Z teissa $
 #
 # BarCodeWiz 'BarcodeWiz.dll' ActiveX Control BOF Vulnerability
 #
@@ -48,9 +48,9 @@ bufer overflow vulnerability.";
 
 if(description)
 {
-  script_id(801395);
-  script_version("$Revision: 7573 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801395");
+  script_version("$Revision: 8244 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-06 17:02:44 +0200 (Fri, 06 Aug 2010)");
   script_cve_id("CVE-2010-2932");
   script_bugtraq_id(42097);

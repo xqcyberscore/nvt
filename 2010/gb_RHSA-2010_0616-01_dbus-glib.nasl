@@ -58,8 +58,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2010-August/msg00014.html");
   script_id(870309);
-  script_version("$Revision: 6684 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:43:49 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 07:30:04 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-13 14:24:53 +0200 (Fri, 13 Aug 2010)");
   script_xref(name: "RHSA", value: "2010:0616-01");
   script_tag(name:"cvss_base", value:"3.6");
@@ -67,7 +67,7 @@ if(description)
   script_cve_id("CVE-2010-1172");
   script_name("RedHat Update for dbus-glib RHSA-2010:0616-01");
 
-  script_summary("Check for the Version of dbus-glib");
+  script_tag(name: "summary" , value: "Check for the Version of dbus-glib");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

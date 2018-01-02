@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mundimail_41957.nasl 5761 2017-03-29 10:54:12Z cfi $
+# $Id: gb_mundimail_41957.nasl 8244 2017-12-25 07:29:28Z teissa $
 #
 # Mundi Mail Multiple Remote Command Execution Vulnerabilities
 #
@@ -36,9 +36,9 @@ be affected.";
 
 if(description)
 {
- script_id(100727);
- script_version("$Revision: 5761 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:54:12 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100727");
+ script_version("$Revision: 8244 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-08-02 14:28:14 +0200 (Mon, 02 Aug 2010)");
  script_bugtraq_id(41957);
  script_tag(name:"cvss_base", value:"7.5");

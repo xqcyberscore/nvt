@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-021.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms10-021.nasl 8244 2017-12-25 07:29:28Z teissa $
 #
 # Microsoft Windows Kernel Could Allow Elevation of Privilege (979683)
 #
@@ -29,9 +29,9 @@
 
 if(description)
 {
-  script_id(900236);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900236");
+  script_version("$Revision: 8244 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-14 17:51:53 +0200 (Wed, 14 Apr 2010)");
   script_bugtraq_id(39297, 39309, 39323, 39324, 39318, 39319, 39320, 39322);
   script_tag(name:"cvss_base", value:"7.2");

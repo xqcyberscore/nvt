@@ -47,15 +47,15 @@ if(description)
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:080");
   script_id(831632);
   script_cve_id("CVE-2012-2392","CVE-2012-2393","CVE-2012-2394");
- script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+ script_version("$Revision: 8245 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-03 09:57:00 +0530 (Fri, 03 Aug 2012)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
   script_xref(name: "MDVSA", value: "2012:080");
   script_name("Mandriva Update for wireshark MDVSA-2012:080 (wireshark)");
 
-  script_summary("Check for the Version of wireshark");
+  script_tag(name: "summary" , value: "Check for the Version of wireshark");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

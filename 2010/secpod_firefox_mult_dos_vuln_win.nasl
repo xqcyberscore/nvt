@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_mult_dos_vuln_win.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_firefox_mult_dos_vuln_win.nasl 8254 2017-12-28 07:29:05Z teissa $
 #
 # Mozilla Firefox Multiple Denial Of Service vulnerabilities (Windows)
 #
@@ -49,9 +49,9 @@ multiple Denial of Service vulnerabilities.";
 
 if(description)
 {
-  script_id(902186);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902186");
+  script_version("$Revision: 8254 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1986", "CVE-2010-1987", "CVE-2010-1988");
   script_tag(name:"cvss_base", value:"10.0");

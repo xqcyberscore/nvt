@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln01_jan16_win.nasl 5782 2017-03-30 09:01:05Z teissa $
+# $Id: gb_adobe_reader_mult_vuln01_jan16_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities - 01 January16 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806820");
-  script_version("$Revision: 5782 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2016-0931", "CVE-2016-0932", "CVE-2016-0933", "CVE-2016-0934", 
 		"CVE-2016-0935", "CVE-2016-0936", "CVE-2016-0937", "CVE-2016-0938", 
 		"CVE-2016-0939", "CVE-2016-0940", "CVE-2016-0941", "CVE-2016-0942", 
@@ -37,7 +37,7 @@ if(description)
 		"CVE-2016-0947", "CVE-2016-1111" );
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-01-18 14:04:08 +0530 (Mon, 18 Jan 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 January16 (Windows)");
@@ -49,12 +49,19 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight", value:"Multiple flaws are due to:
+
   - Untrusted search path vulnerability in Adobe Download Manager
+
   - Some use-after-free vulnerabilities.
+
   - A double-free vulnerability.
+
   - Some memory leak vulnerabilities.
+
   - Some security bypass vulnerabilities.
+
   - Multiple memory corruption vulnerabilities.
+
   - Some Javascript API execution restriction bypass vulnerabilities.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow
@@ -76,23 +83,17 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
 if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check Adobe Reader vulnerable versions
 if(version_in_range(version:readerVer, test_version:"11.0", test_version2:"11.0.13"))
 {
   report = report_fixed_ver(installed_version:readerVer, fixed_version:"11.0.14");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tor_dir_queries_info_disc_vuln_win.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_tor_dir_queries_info_disc_vuln_win.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # Tor Directory Queries Information Disclosure Vulnerability (win)
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is installed with Tor and is prone to Information Discl
 
 if(description)
 {
-  script_id(901100);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901100");
+  script_version("$Revision: 8266 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-01-28 16:24:05 +0100 (Thu, 28 Jan 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

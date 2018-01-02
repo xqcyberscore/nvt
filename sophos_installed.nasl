@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sophos_installed.nasl 7000 2017-08-24 11:51:46Z teissa $
-# Description: Sophos Anti Virus Check
+# $Id: sophos_installed.nasl 8208 2017-12-21 07:33:41Z cfischer $
+#
+# Sophos Anti Virus Check
 #
 # Authors:
 # Jason Haar <Jason.Haar@trimble.co.nz>
@@ -25,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12215");
-  script_version("$Revision: 7000 $");
+  script_version("$Revision: 8208 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:33:41 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Sophos Anti Virus Check");
@@ -47,7 +49,6 @@ if(description)
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -100,17 +101,13 @@ if(!version)
 
       if(sophosVer)
       {
+        set_kb_item(name:"Sophos/Anti-Virus/Win/Installed", value:TRUE);
         set_kb_item(name:"Sophos/Anti-Virus/Win/Ver", value:sophosVer);
-
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:sophosVer, exp:"^([0-9.]+)", base:"cpe:/a:sophos:anti-virus:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:sophos:anti-virus";
-        build_report(app: "Sophos Anti-Virus", ver:sophosVer, cpe: cpe, insloc:sophosPath);
-        }
+        register_and_report_cpe( app:"Sophos Anti-Virus", ver:sophosVer, base:"cpe:/a:sophos:anti-virus:", expr:"^([0-9.]+)", insloc:sophosPath );
       }
     }
   }
+}
 
 
 # Checks to see if the service is running

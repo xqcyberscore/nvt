@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_bof_vuln_jun11_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_prdts_mult_bof_vuln_jun11_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader and Acrobat Multiple BOF Vulnerabilities June-2011 (Windows)
 #
@@ -24,12 +24,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802110";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6475 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802110");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2011-2094", "CVE-2011-2095", "CVE-2011-2096", "CVE-2011-2097",
                 "CVE-2011-2098", "CVE-2011-2099", "CVE-2011-2100", "CVE-2011-2101",
                 "CVE-2011-2104", "CVE-2011-2105", "CVE-2011-2106");
@@ -37,36 +35,30 @@ if(description)
                     48248, 48249);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_name("Adobe Reader and Acrobat Multiple BOF Vulnerabilities June-2011 (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader/Acrobat and is prone to multiple
+  tag_summary = "This host is installed with Adobe Reader/Acrobat and is prone to multiple
 buffer overflow vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"Multiple flaws are caused by buffer overflow errors in the applications, which
+  tag_insight = "Multiple flaws are caused by buffer overflow errors in the applications, which
 allows attackers to execute arbitrary code via unspecified vectors.";
 
-  tag_impact =
-"Successful exploitation will let local attackers to application to crash and
+  tag_impact = "Successful exploitation will let local attackers to application to crash and
 potentially take control of the affected system.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Acrobat version 8.0 to 8.2.6, 9.0 to 9.4.4 and 10.0 to 10.0.3
+  tag_affected = "Adobe Acrobat version 8.0 to 8.2.6, 9.0 to 9.4.4 and 10.0 to 10.0.3
+
 Adobe Reader version 8.0 to 8.2.6, 9.0 to 9.4.4 and 10.0 to 10.0.3";
 
-  tag_solution =
-"Upgrade to Adobe Acrobat and Reader version 10.1, 9.4.5 or 8.3 or later.
+  tag_solution = "Upgrade to Adobe Acrobat and Reader version 10.1, 9.4.5 or 8.3 or later.
 For updates refer to http://www.adobe.com/support/downloads/product.jsp?product=10&platform=Windows";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -86,19 +78,11 @@ For updates refer to http://www.adobe.com/support/downloads/product.jsp?product=
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-acrobatVer = "";
-
-#CPE for adobe reader
 CPE = "cpe:/a:adobe:acrobat_reader";
-
-## Get Reader Version
-if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   if(readerVer =~ "^(8|9|10)")
   {
@@ -111,8 +95,8 @@ if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
   }
 }
 
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(acrobatVer != NULL)
+CPE = "cpe:/a:adobe:acrobat";
+if(acrobatVer = get_app_version(cpe:CPE))
 {
   ## Check for Adobe Acrobat versions
   if(version_in_range(version:acrobatVer, test_version:"8.2", test_version2:"8.2.6")||

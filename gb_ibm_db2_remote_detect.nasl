@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_remote_detect.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_ibm_db2_remote_detect.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # IBM DB2 Remote Version Detection
 #
@@ -30,26 +30,23 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_version("$Revision: 8236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-03 15:47:26 +0200 (Fri, 03 Sep 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM DB2 Remote Version Detection");
 
-  tag_summary =
-"Detection of IBM DB2.
+  tag_summary = "Detection of IBM DB2.
 
 The script sends a connection request to the server and attempts to
 extract the version number from the reply.";
-
 
   script_tag(name : "summary" , value : tag_summary);
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
   script_require_udp_ports(523);
   exit(0);
 }
@@ -95,7 +92,9 @@ if(soc)
     ver =  eregmatch(pattern:"([0-9]+)", string:hole_data);
     if(ver[1])
     {
-      set_kb_item(name:"IBM-DB2/Remote/ver",value:ver[1]);
+      set_kb_item(name:"IBM-DB2/Remote/ver", value:ver[1]);
+      set_kb_item(name:"IBM-DB2/Remote/" + port + "/ver", value:ver[1]);
+      set_kb_item(name:"OpenDatabase/found", value:TRUE);
 
       ## build cpe and store it as host_detail
       cpe = build_cpe(value:ver[1], exp:"^([0-9.]+)", base:"cpe:/a:ibm:db2:");

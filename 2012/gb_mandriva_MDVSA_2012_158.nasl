@@ -45,8 +45,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:158");
   script_id(831739);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8249 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 07:29:56 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-10-05 09:46:25 +0530 (Fri, 05 Oct 2012)");
   script_cve_id("CVE-2012-2673");
   script_tag(name:"cvss_base", value:"5.0");
@@ -54,7 +54,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:158");
   script_name("Mandriva Update for gc MDVSA-2012:158 (gc)");
 
-  script_summary("Check for the Version of gc");
+  script_tag(name: "summary" , value: "Check for the Version of gc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: postgresql_detect.nasl 4688 2016-12-06 12:48:55Z cfi $
+# $Id: postgresql_detect.nasl 8230 2017-12-22 08:51:56Z cfischer $
 #
 # PostgreSQL Detection
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100151");
-  script_version("$Revision: 4688 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 13:48:55 +0100 (Tue, 06 Dec 2016) $");
+  script_version("$Revision: 8230 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 09:51:56 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 21:21:19 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -252,6 +252,7 @@ if ((dump[0] == "E")  &&
 
     if (!isnull(vers)) {
       set_kb_item(name:"PostgreSQL/Remote/" + port + "/Ver", value:vers);
+      set_kb_item(name:"OpenDatabase/found", value:TRUE);
     }
   }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_apsb17-11_win.nasl 5957 2017-04-14 14:32:46Z veerendragg $
+# $Id: gb_adobe_acrobat_apsb17-11_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Acrobat Security Updates(apsb17-11)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810872");
-  script_version("$Revision: 5957 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2017-3011", "CVE-2017-3012", "CVE-2017-3013", "CVE-2017-3014", 
                 "CVE-2017-3015", "CVE-2017-3018", "CVE-2017-3019", "CVE-2017-3020", 
                 "CVE-2017-3021", "CVE-2017-3022", "CVE-2017-3024", "CVE-2017-3025", 
@@ -44,7 +44,7 @@ if(description)
                 "CVE-2017-3041", "CVE-2017-3029", "CVE-2017-3053" );
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-14 16:32:46 +0200 (Fri, 14 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-04-14 12:38:23 +0530 (Fri, 14 Apr 2017)");
   script_name("Adobe Acrobat Security Updates(apsb17-11)-Windows");
 
@@ -79,7 +79,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Acrobat/Win/Ver");
+  script_mandatory_keys("Adobe/Acrobat/Win/Installed");
   exit(0);
 }
 

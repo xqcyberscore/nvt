@@ -41,14 +41,14 @@ if(description)
   script_id(864286);
   script_tag(name:"cvss_base", value:"6.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+ script_version("$Revision: 8265 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 07:29:23 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-06-08 10:11:04 +0530 (Fri, 08 Jun 2012)");
   script_cve_id("CVE-2012-0219");
   script_xref(name: "FEDORA", value: "2012-8328");
   script_name("Fedora Update for socat FEDORA-2012-8328");
 
-  script_summary("Check for the Version of socat");
+  script_tag(name: "summary" , value: "Check for the Version of socat");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

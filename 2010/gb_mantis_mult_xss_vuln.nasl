@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantis_mult_xss_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_mantis_mult_xss_vuln.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # MantisBT Multiple Cross-site scripting Vulnerabilities
 #
@@ -44,9 +44,9 @@ tag_summary = "This host is running MantisBT and is prone to multiple cross-site
 
 if(description)
 {
-  script_id(801603);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801603");
+  script_version("$Revision: 8228 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-08 08:29:14 +0200 (Fri, 08 Oct 2010)");
   script_cve_id("CVE-2010-3303", "CVE-2010-3763");
   script_bugtraq_id(43604);

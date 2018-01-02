@@ -39,8 +39,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-September/046962.html");
   script_id(862360);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8226 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 07:30:26 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-07 07:38:40 +0200 (Tue, 07 Sep 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if(description)
   script_cve_id("CVE-2010-2287", "CVE-2010-2286", "CVE-2010-2284", "CVE-2010-2283", "CVE-2010-2995", "CVE-2010-1455", "CVE-2010-2992", "CVE-2010-2993");
   script_name("Fedora Update for wireshark FEDORA-2010-13427");
 
-  script_summary("Check for the Version of wireshark");
+  script_tag(name: "summary" , value: "Check for the Version of wireshark");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

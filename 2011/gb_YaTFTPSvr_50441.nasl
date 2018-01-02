@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_YaTFTPSvr_50441.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_YaTFTPSvr_50441.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # YaTFTPSvr TFTP Server Directory Traversal Vulnerability
 #
@@ -28,7 +28,7 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103321");
  script_bugtraq_id(50441);
- script_version ("$Revision: 7044 $");
+ script_version ("$Revision: 8236 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("YaTFTPSvr TFTP Server Directory Traversal Vulnerability");
@@ -37,13 +37,13 @@ if (description)
  script_xref(name : "URL" , value : "http://sites.google.com/site/zhaojieding2/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520302");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
  script_tag(name:"creation_date", value:"2011-11-01 08:00:00 +0100 (Tue, 01 Nov 2011)");
  script_category(ACT_ATTACK);
  script_family("Remote file access");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl");
- script_require_udp_ports("Services/udp/tftp");
+ script_dependencies("tftpd_detect.nasl");
+ script_require_udp_ports("Services/udp/tftp", 69);
  script_tag(name : "summary" , value : "YaTFTPSvr TFTP Server is prone to a directory-traversal vulnerability
  because it fails to sufficiently sanitize user-supplied input.");
  script_tag(name : "impact" , value : "A remote attacker could exploit this vulnerability using directory-

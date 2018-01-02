@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftp_voyager_dir_trav_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_ftp_voyager_dir_trav_vuln.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # FTP Voyager Directory Traversal Vulnerability
 #
@@ -46,9 +46,9 @@ traversal vulnerability.";
 
 if(description)
 {
-  script_id(801627);
-  script_version("$Revision: 5374 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801627");
+  script_version("$Revision: 8250 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-11-04 14:21:53 +0100 (Thu, 04 Nov 2010)");
   script_bugtraq_id(43869);
   script_cve_id("CVE-2010-4154");

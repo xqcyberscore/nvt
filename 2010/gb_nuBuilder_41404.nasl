@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuBuilder_41404.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_nuBuilder_41404.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # nuBuilder Local File Include and Cross Site Scripting Vulnerabilities
 #
@@ -42,9 +42,9 @@ nuBuilder 10.04.20 is vulnerable; other versions may also be affected.";
 
 if(description)
 {
- script_id(100704);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100704");
+ script_version("$Revision: 8228 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-07-07 12:47:04 +0200 (Wed, 07 Jul 2010)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

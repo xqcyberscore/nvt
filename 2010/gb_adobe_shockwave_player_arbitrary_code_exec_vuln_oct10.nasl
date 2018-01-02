@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_arbitrary_code_exec_vuln_oct10.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_adobe_shockwave_player_arbitrary_code_exec_vuln_oct10.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # Adobe Shockwave player Arbitrary Code Execution Vulnerability
 #
@@ -44,9 +44,9 @@ arbitrary code execution vulnerability.";
 
 if(description)
 {
-  script_id(801476);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801476");
+  script_version("$Revision: 8258 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-11-02 18:01:36 +0100 (Tue, 02 Nov 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

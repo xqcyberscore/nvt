@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_fisheye_crucible_rce_vuln.nasl 8014 2017-12-07 04:40:22Z ckuersteiner $
+# $Id: gb_atlassian_fisheye_crucible_rce_vuln.nasl 8247 2017-12-26 13:32:16Z cfischer $
 #
 # Atlassian FishEye and Crucible RCE Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:atlassian:fisheye";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140588");
-  script_version("$Revision: 8014 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-07 05:40:22 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 8247 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-26 14:32:16 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-12-07 11:26:13 +0700 (Thu, 07 Dec 2017)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-14591");
 

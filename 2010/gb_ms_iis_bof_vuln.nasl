@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_iis_bof_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_ms_iis_bof_vuln.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # Microsoft IIS ASP Stack Based Buffer Overflow Vulnerability
 #
@@ -40,9 +40,9 @@ tag_summary = "The host is running Microsoft IIS Webserver and is prone to
 
 if(description)
 {
-  script_id(801520);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801520");
+  script_version("$Revision: 8250 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-08 08:29:14 +0200 (Fri, 08 Oct 2010)");
   script_bugtraq_id(43138);
   script_cve_id("CVE-2010-2730");

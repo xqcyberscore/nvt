@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pelco_videoxpert_mult_vuln.nasl 7764 2017-11-15 06:26:49Z cfischer $
+# $Id: gb_pelco_videoxpert_mult_vuln.nasl 8238 2017-12-22 10:33:38Z ckuersteiner $
 #
 # Pelco VideoXpert Multiple Vulnerabilities
 #
@@ -30,15 +30,17 @@ CPE = "cpe:/a:pelco:videoxpert";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106936");
-  script_version("$Revision: 7764 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-15 07:26:49 +0100 (Wed, 15 Nov 2017) $");
+  script_version("$Revision: 8238 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-22 11:33:38 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-07-11 09:20:39 +0700 (Tue, 11 Jul 2017)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
+  script_cve_id("CVE-2017-9964", "CVE-2017-9965", "CVE-2017-9966");
+
   script_tag(name: "qod_type", value: "exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("Pelco VideoXpert Multiple Vulnerabilities");
 
@@ -52,20 +54,23 @@ if (description)
   script_tag(name: "summary", value: "Pelco VideoXpert is prone to multiple vulnerabilities:
 
 - Directory traversal vulnerability which allows unauthenticated attackers to read arbitrary files in the context
-of the web server.
+of the web server. (CVE-2017-9965)
 
 - Missing encryption of sensitive information. The software transmits sensitive data using double Base64 encoding
 for the Cookie 'auth_token' in a communication channel that can be sniffed by unauthorized actors or arbitrarely
 be read from the vxcore log file directly using directory traversal attack resulting in authentication bypass/
-session hijacking.");
+session hijacking. (CVE-2017-9964)
+
+- By replacing certain files, an authorized user can obtain system privileges and the inserted code would execute
+at an elevated privilege level. (CVE-2017-9966)");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 15th November, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update to version 2.1 or later.");
 
   script_xref(name: "URL", value: "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5419.php");
   script_xref(name: "URL", value: "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5420.php");
+  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-355-02");
 
   exit(0);
 }

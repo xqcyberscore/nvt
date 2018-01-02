@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_etd_file_dos_vuln_win.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_adobe_reader_etd_file_dos_vuln_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader '.ETD File' Denial of Service Vulnerability (Windows)
 #
@@ -25,44 +25,36 @@
 ###############################################################################
 
 CPE = "cpe:/a:adobe:acrobat_reader";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804384";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6724 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804384");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2004-1153");
   script_bugtraq_id(11934);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-04-10 15:10:46 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader '.ETD File' Denial of Service Vulnerability (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to denial of service
+  tag_summary = "This host is installed with Adobe Reader and is prone to denial of service
 vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"Flaw is due to the format string error in '.etd' file.";
+  tag_insight = "Flaw is due to the format string error in '.etd' file.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to execute arbitrary code on
+  tag_impact = "Successful exploitation will allow attackers to execute arbitrary code on
 the system and gain sensitive information.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Reader version 6.0.0 through 6.0.2 on Windows.";
+  tag_affected = "Adobe Reader version 6.0.0 through 6.0.2 on Windows.";
 
-  tag_solution =
-"Upgrade to Adobe Reader version 6.0.3 or later. For updates refer to
+  tag_solution = "Upgrade to Adobe Reader version 6.0.3 or later. For updates refer to
 http://get.adobe.com/reader";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -79,19 +71,14 @@ http://get.adobe.com/reader";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
-if(!readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

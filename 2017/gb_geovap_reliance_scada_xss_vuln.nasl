@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geovap_reliance_scada_xss_vuln.nasl 8021 2017-12-07 08:16:09Z asteins $
+# $Id: gb_geovap_reliance_scada_xss_vuln.nasl 8225 2017-12-22 06:03:44Z teissa $
 #
 # Geovap Reliance SCADA XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:geovap:reliance-scada";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112150");
-  script_version("$Revision: 8021 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:16:09 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 8225 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 07:03:44 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-07 08:23:03 +0100 (Thu, 07 Dec 2017)");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

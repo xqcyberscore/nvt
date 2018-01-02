@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ddrLPD_39904.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_ddrLPD_39904.nasl 8207 2017-12-21 07:30:12Z teissa $
 #
 # ddrLPD Remote Denial of Service Vulnerability
 #
@@ -34,9 +34,9 @@ ddrLPD 1.0 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100626);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100626");
+ script_version("$Revision: 8207 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-05-05 18:44:23 +0200 (Wed, 05 May 2010)");
  script_bugtraq_id(39904);
  script_tag(name:"cvss_base", value:"5.0");

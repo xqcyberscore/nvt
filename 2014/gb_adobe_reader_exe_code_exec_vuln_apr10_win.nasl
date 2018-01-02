@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_exe_code_exec_vuln_apr10_win.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_adobe_reader_exe_code_exec_vuln_apr10_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader EXE Code Execution Vulnerability Apr10 (Windows)
 #
@@ -25,41 +25,34 @@
 ###############################################################################
 
 CPE = "cpe:/a:adobe:acrobat_reader";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804367";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6663 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804367");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2009-4764");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-04-08 14:57:04 +0530 (Tue, 08 Apr 2014)");
   script_name("Adobe Reader EXE Code Execution Vulnerability Apr10 (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to exe code execution
+  tag_summary = "This host is installed with Adobe Reader and is prone to exe code execution
 vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"Flaw is due to some unspecified error.";
+  tag_insight = "Flaw is due to some unspecified error.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to possibly execute arbitrary
+  tag_impact = "Successful exploitation will allow attackers to possibly execute arbitrary
 code and compromise a user's system.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Reader 8.x through 8.1.7 and 9.x through 9.3 on Windows.";
+  tag_affected = "Adobe Reader 8.x through 8.1.7 and 9.x through 9.3 on Windows.";
 
-  tag_solution =
-"No solution or patch was made available for at least one year
+  tag_solution = "No solution or patch was made available for at least one year
 since disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.";
@@ -80,18 +73,14 @@ features, remove the product or replace the product by another one.";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
-if(!readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: tftpd_overflow.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: tftpd_overflow.nasl 8237 2017-12-22 10:33:02Z cfischer $
 # Description: TFTPD overflow
 #
 # Authors:
@@ -27,8 +27,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.18264");
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 8237 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:33:02 +0100 (Fri, 22 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -37,13 +37,13 @@ if(description)
  script_bugtraq_id(401, 5328, 7819);
  script_cve_id("CVE-2002-0813", "CVE-2003-0380");
  script_name( "TFTPD overflow");
- 
 
  # Not ACT_DESTRUCTIVE_ATTACK (see CVE-2002-0813)
  script_category(ACT_KILL_HOST);
  
  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
  script_family( "Gain a shell remotely");
+ script_dependencies("tftpd_detect.nasl");
  script_require_udp_ports("Services/udp/tftp", 69);
 
  script_tag(name : "solution" , value : "Upgrade your software, or disable this service");

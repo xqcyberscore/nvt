@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_uri_remote_code_exec_vuln_oct07_win.nasl 6995 2017-08-23 11:52:03Z teissa $
+# $Id: gb_adobe_reader_uri_remote_code_exec_vuln_oct07_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader URI Handler Remote Code Execution Vulnerabilities Oct07 (Windows)
 #
@@ -25,45 +25,37 @@
 ###############################################################################
 
 CPE = "cpe:/a:adobe:acrobat_reader";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804376";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6995 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804376");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2007-5020", "CVE-2007-3896");
   script_bugtraq_id(25748, 25945);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-04-10 10:20:46 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader URI Handler Remote Code Execution Vulnerabilities Oct07 (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to remote code execution
+  tag_summary = "This host is installed with Adobe Reader and is prone to remote code execution
 vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"Flaws are due to an input validation error when handling specially crafted
+  tag_insight = "Flaws are due to an input validation error when handling specially crafted
 URIs with registered URI handlers.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to execute arbitrary code and
+  tag_impact = "Successful exploitation will allow attackers to execute arbitrary code and
 compromise a user's system.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Reader version 8.1 and prior on Windows.";
+  tag_affected = "Adobe Reader version 8.1 and prior on Windows.";
 
-  tag_solution =
-"Upgrade to Adobe Reader version 8.1.1 or later. For updates refer to
+  tag_solution = "Upgrade to Adobe Reader version 8.1.1 or later. For updates refer to
 http://get.adobe.com/reader";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -83,7 +75,7 @@ http://get.adobe.com/reader";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
 
@@ -97,11 +89,7 @@ if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3)<= 0)
   exit(0);
 }
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
-if(!readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

@@ -49,8 +49,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-January/071660.html");
   script_id(863675);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8257 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 07:29:46 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-01-09 12:53:09 +0530 (Mon, 09 Jan 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -58,7 +58,7 @@ if(description)
   script_cve_id("CVE-2011-4615", "CVE-2011-5027");
   script_name("Fedora Update for zabbix FEDORA-2011-17559");
 
-  script_summary("Check for the Version of zabbix");
+  script_tag(name: "summary" , value: "Check for the Version of zabbix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

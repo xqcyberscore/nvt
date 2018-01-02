@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_3278-01_samba4.nasl 8019 2017-12-07 07:42:09Z santu $
+# $Id: gb_RHSA-2017_3278-01_samba4.nasl 8247 2017-12-26 13:32:16Z cfischer $
 #
 # RedHat Update for samba4 RHSA-2017:3278-01
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812319");
-  script_version("$Revision: 8019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 08:42:09 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 8247 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 14:32:16 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-30 07:33:25 +0100 (Thu, 30 Nov 2017)");
   script_cve_id("CVE-2017-14746", "CVE-2017-15275");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for samba4 RHSA-2017:3278-01");
   script_tag(name: "summary", value: "Check the version of samba4");

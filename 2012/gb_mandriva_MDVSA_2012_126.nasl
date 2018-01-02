@@ -42,8 +42,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:126");
   script_id(831714);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8249 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 07:29:56 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-09 10:25:26 +0530 (Thu, 09 Aug 2012)");
   script_cve_id("CVE-2012-2807");
   script_tag(name:"cvss_base", value:"6.8");
@@ -51,7 +51,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:126");
   script_name("Mandriva Update for libxml2 MDVSA-2012:126 (libxml2)");
 
-  script_summary("Check for the Version of libxml2");
+  script_tag(name: "summary" , value: "Check for the Version of libxml2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

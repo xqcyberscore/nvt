@@ -53,9 +53,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902269);
-  script_version("$Revision: 7550 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902269");
+  script_version("$Revision: 8250 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-22 15:51:55 +0200 (Fri, 22 Oct 2010)");
   script_cve_id("CVE-2010-0020", "CVE-2010-0021", "CVE-2010-0022", "CVE-2010-0231");
   script_tag(name:"cvss_base", value:"10.0");

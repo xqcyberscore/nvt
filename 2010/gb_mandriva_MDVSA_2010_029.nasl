@@ -59,15 +59,15 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-01/msg00085.php");
   script_id(830845);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 07:30:04 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-01-29 14:09:25 +0100 (Fri, 29 Jan 2010)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_xref(name: "MDVSA", value: "2010:029");
   script_name("Mandriva Update for rootcerts MDVSA-2010:029 (rootcerts)");
 
-  script_summary("Check for the Version of rootcerts");
+  script_tag(name: "summary" , value: "Check for the Version of rootcerts");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pumpkin_tftp_server_dos_vuln.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: secpod_pumpkin_tftp_server_dos_vuln.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # PumpKIN TFTP Server Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900648");
-  script_version("$Revision: 5309 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 8236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-05-19 08:03:45 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -44,7 +44,7 @@ if(description)
   script_category(ACT_MIXED_ATTACK);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
-  script_dependencies("find_service.nasl", "secpod_pumpkin_tftp_detect.nasl");
+  script_dependencies("secpod_pumpkin_tftp_detect.nasl");
   script_require_keys("PumpKIN/TFTP/Ver");
   script_require_udp_ports("Services/udp/tftp", 69);
 

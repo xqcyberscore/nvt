@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cpe.inc 8183 2017-12-19 16:49:26Z cfischer $
+# $Id: cpe.inc 8211 2017-12-21 10:38:01Z cfischer $
 #
 # CPE Support Functions
 #
@@ -28,7 +28,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8183 $
+# $Revision: 8211 $
 #
 ###############################################################################
 
@@ -63,40 +63,6 @@ function build_cpe( value, exp, base ) {
     }
   }
   return NULL;
-}
-
-## Function to Register Product and Build report
-function build_report(app, ver, concluded, cpe, base, exp, insloc, port, conclUrl, extra)
-{
-
-  ## setting location if location variable value is null
-  if(!insloc)
-   insloc = "Could not find the install location";
-  
-  if(base && exp)
-  {
-    cpe = build_cpe(value:ver, exp:exp, base:base);
-    if(isnull(cpe))
-      exit(0);
-  }
-
-  if(port)
-    register_product(cpe:cpe, location:insloc, port:port);
-  else
-    register_product(cpe:cpe, location:insloc);
-
-  if(!concluded){
-    concluded = ver;
-  }
-
-  log_message(data: build_detection_report(app:app,
-                                           version:ver,
-                                           install:insloc,
-                                           cpe:cpe,
-                                           extra: extra,
-                                           concluded:concluded,
-                                           concludedUrl:conclUrl),
-                                           port:port);
 }
 
 ## Function to Register Product and Build report

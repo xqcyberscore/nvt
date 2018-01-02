@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_code_exec_vuln_jul09_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: secpod_adobe_prdts_code_exec_vuln_jul09_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Products '.pdf' and '.swf' Code Execution Vulnerability - July09 (Windows)
 #
@@ -24,48 +24,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.900806";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6475 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900806");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2009-1862");
   script_bugtraq_id(35759);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-07-29 08:37:44 +0200 (Wed, 29 Jul 2009)");
   script_name("Adobe Products '.pdf' and '.swf' Code Execution Vulnerability - July09 (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe products and are prone to remote code
+  tag_summary = "This host is installed with Adobe products and are prone to remote code
 execution vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"- An unspecified error exists in Adobe Flash Player which can be exploited via
+  tag_insight = "- An unspecified error exists in Adobe Flash Player which can be exploited via
 a specially crafted flash application in a '.pdf' file.
+
 - Error occurs in 'authplay.dll' in Adobe Reader/Acrobat whlie processing '.swf'
 content and can be exploited to execute arbitrary code.";
 
-  tag_impact =
-"Successful exploitation will allow remote attackers to cause code execution.
+  tag_impact = "Successful exploitation will allow remote attackers to cause code execution.
 
 Impact Level: Application";
 
-  tag_affected =
-"Adobe Reader/Acrobat version 9.x to 9.1.2
+  tag_affected = "Adobe Reader/Acrobat version 9.x to 9.1.2
+
 Adobe Flash Player version 9.x to 9.0.159.0 and 10.x to 10.0.22.87 on Windows.";
 
-  tag_solution =
-"Upgrade to Adobe Reader/Acrobat version 9.1.3 or later.
+  tag_solution = "Upgrade to Adobe Reader/Acrobat version 9.1.3 or later.
 Upgrade to Adobe Flash Player version 9.0.246.0 or 10.0.32.18 or later.
 For updates refer to http://www.adobe.com/";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -95,16 +88,8 @@ include("secpod_smb_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-acrobatVer = "";
-playerVer = "";
-
-
-# Get KB for Adobe Flash Player
-playerVer = get_kb_item("AdobeFlashPlayer/Win/Ver");
-
-if(playerVer != NULL)
+CPE = "cpe:/a:adobe:flash_player";
+if(playerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   # Check for Adobe Flash Player version 9.x to 9.0.159.0 or 10.x to 10.0.22.87
   if(version_in_range(version:playerVer, test_version:"9.0", test_version2:"9.0.159.0") ||
@@ -114,11 +99,8 @@ if(playerVer != NULL)
   }
 }
 
-##CPE for adobe reader
 CPE = "cpe:/a:adobe:acrobat_reader";
-
-## Get version
-if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   authplayDll = registry_get_sz(key:"SOFTWARE\Adobe\Acrobat Reader\9.0" +
                                     "\Installer", item:"Path");
@@ -141,10 +123,8 @@ if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
   }
 }
 
-# Get KB for Adobe Acrobat
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-
-if(acrobatVer != NULL)
+CPE = "cpe:/a:adobe:acrobat";
+if(acrobatVer = get_app_version(cpe:CPE))
 {
   authplayDll = registry_get_sz(key:"SOFTWARE\Adobe\Adobe Acrobat\9.0" +
                                     "\Installer", item:"Path");

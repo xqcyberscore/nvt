@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_esc_priv_jun_2016.nasl 4596 2016-11-22 11:28:55Z teissa $
+# $Id: gb_panda_esc_priv_jun_2016.nasl 8218 2017-12-21 14:14:04Z cfischer $
 #
 # Panda Small Business Protection - Privilege Escalation June 2016 (Windows) 
 #
@@ -24,23 +24,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker replace the affected binary file
-  with a malicious binary which will be executed with SYSTEM privileges.
+CPE = "cpe:/a:pandasecurity:panda_small_business_protection";
 
-  Impact level: System.";
+tag_impact = "Successful exploitation will let the attacker replace the affected binary file
+with a malicious binary which will be executed with SYSTEM privileges.
+
+Impact level: System.";
 
 tag_affected = "Panda Small Business Protection (16.1.2)";
-tag_insight = "As the USERS group has write permissions over the folder where the PSEvents.exe process is located, it is possible to execute malicious code as Local System.";
+
+tag_insight = "As the USERS group has write permissions over the folder where the PSEvents.exe
+process is located, it is possible to execute malicious code as Local System.";
+
 tag_solution = "Install Panda Hotfix for this vulnerability.
 http://www.pandasecurity.com/uk/support/card?id=100053";
+
 tag_summary = "This host is running Panda Small Business Protection and is prone to Privilege
-  Escalation Vulnerability.";
+Escalation Vulnerability.";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107085");
-  script_version("$Revision: 4596 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-22 12:28:55 +0100 (Tue, 22 Nov 2016) $");
+  script_version("$Revision: 8218 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 15:14:04 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-11-18 09:18:47 +0100 (Fri, 18 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -61,15 +67,17 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("version_func.inc");
 
-# Check for the Panda Small Business Protection
-if(pandaVer = get_kb_item("Panda/SmallBusinessProtection/Ver"))
-{
-  if(version_is_equal(version:pandaVer, test_version:"16.01.02")){
-    report = 'Installed version: ' + pandaVer + '\n' +
-           'Fixed versions: Install Panda Hotfix for this vulnerability.
-http://www.pandasecurity.com/uk/support/card?id=100053  \n';
-    security_message(data: report);
-  }
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers  = infos['version'];
+path  = infos['location'];
+
+if( version_is_equal( version:vers, test_version:"16.01.02" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"See references", install_path:path );
+  security_message( data:report );
+  exit( 0 );
 }
+
+exit( 99 );

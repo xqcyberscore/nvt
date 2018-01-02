@@ -39,8 +39,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-April/078401.html");
   script_id(864160);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8249 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 07:29:56 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-04-20 10:20:19 +0530 (Fri, 20 Apr 2012)");
   script_cve_id("CVE-2011-3439");
   script_tag(name:"cvss_base", value:"9.3");
@@ -48,7 +48,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-4946");
   script_name("Fedora Update for freetype FEDORA-2012-4946");
 
-  script_summary("Check for the Version of freetype");
+  script_tag(name: "summary" , value: "Check for the Version of freetype");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

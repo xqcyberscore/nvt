@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: echo_udp.nasl 5615 2017-03-20 12:34:43Z cfi $
+# $Id: echo_udp.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # Check for echo Service (UDP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108102");
-  script_version("$Revision: 5615 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 13:34:43 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 8236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-24 15:43:44 +0100 (Tue, 24 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -40,7 +40,6 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Useless services");
-  script_dependencies("find_service.nasl");
   script_require_udp_ports("Services/udp/echo", 7);
 
   script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0635");

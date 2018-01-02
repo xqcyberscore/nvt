@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_920_1.nasl 7965 2017-12-01 07:38:25Z santu $
+# $Id: gb_ubuntu_USN_920_1.nasl 8244 2017-12-25 07:29:28Z teissa $
 #
 # Ubuntu Update for Firefox 3.0 and Xulrunner vulnerabilities USN-920-1
 #
@@ -58,9 +58,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-920-1/");
-  script_id(840418);
-  script_version("$Revision: 7965 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:38:25 +0100 (Fri, 01 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.840418");
+  script_version("$Revision: 8244 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-16 17:02:11 +0200 (Fri, 16 Apr 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

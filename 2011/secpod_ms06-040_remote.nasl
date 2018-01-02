@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms06-040_remote.nasl 6228 2017-05-29 08:25:09Z cfi $
+# $Id: secpod_ms06-040_remote.nasl 8215 2017-12-21 11:46:59Z cfischer $
 #
 # Microsoft Windows Server Service Remote Code Execution Vulnerability (921883)
 #
@@ -28,20 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902782");
-  script_version("$Revision: 6228 $");
+  script_version("$Revision: 8215 $");
   script_bugtraq_id(19409);
   script_cve_id("CVE-2006-3439");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2011-12-30 11:26:07 +0530 (Fri, 30 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 10:25:09 +0200 (Mon, 29 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 12:46:59 +0100 (Thu, 21 Dec 2017) $");
   script_name("Microsoft Windows Server Service Remote Code Execution Vulnerability (921883)");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("find_service.nasl", "netbios_name_get.nasl");
+  script_dependencies("os_detection.nasl");
   script_require_ports(139, 445);
-  script_exclude_keys("SMB/samba");
+  script_mandatory_keys("Host/runs_windows");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/21388/");
   script_xref(name:"URL", value:"http://securitytracker.com/id?1016667");
@@ -53,7 +53,9 @@ if(description)
   Impact Level: System";
 
   tag_affected = "Microsoft Windows XP Service Pack 2 and prior
+
   Microsoft Windows 2K3 Service Pack 1 and prior
+
   Microsoft Windows 2000 Service Pack 4 and prior.";
 
   tag_insight = "The flaw is due to a boundary error in the 'CanonicalizePathName()'

@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805383");
-  script_version("$Revision: 6132 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2015-3076", "CVE-2015-3075", "CVE-2015-3074", "CVE-2015-3073",
                 "CVE-2015-3072", "CVE-2015-3071", "CVE-2015-3070", "CVE-2015-3069",
                 "CVE-2015-3068", "CVE-2015-3067", "CVE-2015-3066", "CVE-2015-3065",
@@ -44,7 +44,7 @@ if(description)
                     74600, 74603, 74600, 74601, 74599);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-05-15 12:55:10 +0530 (Fri, 15 May 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 May15 (Windows)");
@@ -56,8 +56,10 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight", value:"Multiple flaws exists due to,
+
   - Error 'ScriptBridgeUtils', 'AFParseDate', 'ADBCAnnotEnumerator'
     'WDAnnotEnumerator', 'AFNSimple_Calculate', and 'app.Monitors'.
+
   - Multiple user-supplied inputs are not properly validated, and an
     use-after-free error.");
 
@@ -81,16 +83,12 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-## Variable Initialization
-readerVer = "";
 
 ## Get version
 if(!readerVer = get_app_version(cpe:CPE)){

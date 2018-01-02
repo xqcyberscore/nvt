@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netop_detect_udp.nasl 4822 2016-12-21 07:19:58Z cfi $
+# $Id: netop_detect_udp.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # NetOp products UDP detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15766");
-  script_version("$Revision: 4822 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 08:19:58 +0100 (Wed, 21 Dec 2016) $");
+  script_version("$Revision: 8236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,8 +37,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This NASL script is Copyright 2004 Corsaire Limited and Danware Data A/S.");
   script_family("Service detection");
-  script_dependencies("find_service.nasl", "find_service2.nasl", "gb_open_udp_ports.nasl");
-  script_require_udp_ports("Services/udp/unknown", 6502, 1971); #TODO: We should do something similar to the TCP "Services/unknown" for UDP
+  script_dependencies("gb_open_udp_ports.nasl");
+  script_require_udp_ports("Services/udp/unknown", 6502, 1971);
 
   tag_summary = "This script detects if the remote system has a Danware NetOp
   program enabled and running on UDP. These programs are used
@@ -56,7 +56,8 @@ if(description)
   exit(0);
 }
 
-include('netop.inc');
+include("netop.inc");
+include("http_func.inc"); # For make_list_unique()
 
 function test( port ) {
 
@@ -64,7 +65,7 @@ function test( port ) {
   
   if( socket ) {
 
-    send( socket:socket, data:helo_pkt_udp );
+    send( socket:socket, data:helo_pkt_udp ); # helo_pkt_udp is global in netop.inc
   
     banner_pkt = recv( socket:socket, length:1500, timeout:3 );
   
@@ -77,17 +78,12 @@ function test( port ) {
 addr = get_host_ip();
 proto_nam = 'udp';
 
-# test default ports
-foreach port( make_list( 6502, 1971 ) ) {
+ports = get_all_udp_ports_list();
+# Adding the default ports if unscanned_closed_udp = no
+ports = make_list_unique( ports, 6502, 1971 );
+
+foreach port( ports ) {
   if( ! get_udp_port_state( port ) ) continue;
-  test( port:port );
-}
-
-# retrieve and test unknown services
-port = get_kb_item( "UDP/PORTS" );
-if( isnull( port ) ) exit( 0 );
-
-if( get_udp_port_state( port ) ) {
   test( port:port );
 }
 

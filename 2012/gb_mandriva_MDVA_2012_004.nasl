@@ -49,15 +49,15 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2012-01/msg00008.php");
   script_id(831526);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8267 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 07:29:17 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-01-16 19:03:41 +0530 (Mon, 16 Jan 2012)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_xref(name: "MDVA", value: "2012:004");
   script_name("Mandriva Update for php MDVA-2012:004 (php)");
 
-  script_summary("Check for the Version of php");
+  script_tag(name: "summary" , value: "Check for the Version of php");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

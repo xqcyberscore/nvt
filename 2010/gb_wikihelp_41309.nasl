@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wikihelp_41309.nasl 5761 2017-03-29 10:54:12Z cfi $
+# $Id: gb_wikihelp_41309.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # Wiki Web Help 'uploadimage.php' Arbitrary File Upload Vulnerability
 #
@@ -39,9 +39,9 @@ information.";
 
 if(description)
 {
- script_id(100702);
- script_version("$Revision: 5761 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:54:12 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100702");
+ script_version("$Revision: 8228 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-07-06 13:44:35 +0200 (Tue, 06 Jul 2010)");
  script_bugtraq_id(41309);
  script_tag(name:"cvss_base", value:"4.6");

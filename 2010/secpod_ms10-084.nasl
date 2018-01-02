@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-084.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-084.nasl 8246 2017-12-26 07:29:20Z teissa $
 #
 # Windows Local Procedure Call Privilege Elevation Vulnerability (2360937)
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902322);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902322");
+  script_version("$Revision: 8246 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 08:29:20 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-13 17:10:12 +0200 (Wed, 13 Oct 2010)");
   script_cve_id("CVE-2010-3222");
   script_bugtraq_id(43777);

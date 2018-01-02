@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: fsp_detection.nasl 5200 2017-02-05 14:18:31Z cfi $
+# $Id: fsp_detection.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # Detect FSP Compatible Hosts
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11987");
-  script_version("$Revision: 5200 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-05 15:18:31 +0100 (Sun, 05 Feb 2017) $");
+  script_version("$Revision: 8236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,7 +36,6 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
   script_family("Service detection");
-  script_dependencies("find_service.nasl");
   script_require_udp_ports(21, 2000, 2221);
 
   script_xref(name:"URL", value:"http://fsp.sourceforge.net/");

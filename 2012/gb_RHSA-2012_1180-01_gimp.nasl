@@ -57,8 +57,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-August/msg00016.html");
   script_id(870810);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8267 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 07:29:17 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-08-21 11:43:30 +0530 (Tue, 21 Aug 2012)");
   script_cve_id("CVE-2011-2896", "CVE-2012-3403", "CVE-2012-3481");
   script_tag(name:"cvss_base", value:"6.8");
@@ -66,7 +66,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:1180-01");
   script_name("RedHat Update for gimp RHSA-2012:1180-01");
 
-  script_summary("Check for the Version of gimp");
+  script_tag(name: "summary" , value: "Check for the Version of gimp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

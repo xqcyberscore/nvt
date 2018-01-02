@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_player_bof_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_apple_quicktime_player_bof_vuln.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # QuickTime Player Streaming Debug Error Logging Buffer Overflow Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "The host is running QuickTime Player and is prone to buffer overf
 
 if(description)
 {
-  script_id(801427);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801427");
+  script_version("$Revision: 8258 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-16 09:09:42 +0200 (Mon, 16 Aug 2010)");
   script_cve_id("CVE-2010-1799");
   script_bugtraq_id(41962);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ciscokits_tftp_server_write_dos_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_ciscokits_tftp_server_write_dos_vuln.nasl 8237 2017-12-22 10:33:02Z cfischer $
 #
 # CiscoKits CCNA TFTP Server 'Write' Command Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802232");
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_version("$Revision: 8237 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:33:02 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_bugtraq_id(49045);
   script_tag(name:"cvss_base", value:"7.8");
@@ -43,6 +43,7 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");
+  script_dependencies("tftpd_detect.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
 
   script_tag(name : "impact" , value : "Successful exploitation could allow an attacker to cause denial

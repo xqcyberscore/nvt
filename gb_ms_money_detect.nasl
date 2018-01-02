@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_money_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_ms_money_detect.nasl 8209 2017-12-21 08:12:18Z cfischer $
 #
 # Microsoft Money Version Detection
 #
@@ -24,25 +24,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800217";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
+  script_oid("1.3.6.1.4.1.25623.1.0.800217");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 8209 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 09:12:18 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-01-08 14:06:04 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Money Version Detection");
 
-tag_summary =
-"Detection of installed version of Microsoft Money on Windows.
+tag_summary = "Detection of installed version of Microsoft Money on Windows.
 
 The script logs in via smb, searches for Microsoft Money in the registry
 and gets the version from registry.";
-
 
   script_tag(name : "summary" , value : tag_summary);
 
@@ -54,7 +50,6 @@ and gets the version from registry.";
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -104,29 +99,17 @@ foreach key (key_list)
       ver = eregmatch(pattern:"Microsoft Money ([0-9]+)", string:name);
       if(ver[1] != NULL)
       {
-        set_kb_item(name:"MS/Money/Version", value:ver[1]);
 
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:ver[1], exp:"^([0-9]+)", base:"cpe:/a:microsoft:money:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:microsoft:money";
+        set_kb_item(name:"MS/Money/Win/Installed", value:TRUE);
 
-        ## Register Product and Build Report
-        build_report(app: "Microsoft Money", ver: ver[1], cpe: cpe, insloc: InstallPath);
-      }
-
-      ## 64 bit apps on 64 bit platform
-      if(ver[1] != NULL && "x64" >< osArch && "Wow6432Node" >!< key)
-      {
-        set_kb_item(name:"MS/Money64/Version", value:ver[1]);
-
-        ## build cpe and store it as host_detail
-        cpe = build_cpe(value:ver[1], exp:"^([0-9]+)", base:"cpe:/a:microsoft:money:x64:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:microsoft:money:x64";
-
-        ## Register Product and Build Report
-        build_report(app: "Microsoft Money", ver: ver[1], cpe: cpe, insloc: InstallPath);
+        ## 64 bit apps on 64 bit platform
+        if("x64" >< osArch && "Wow6432Node" >!< key) {
+          set_kb_item(name:"MS/Money64/Win/Version", value:ver[1]);
+          register_and_report_cpe( app:"Microsoft Money", ver:ver[1], base:"cpe:/a:microsoft:money:x64:", expr:"^([0-9]+)", insloc: InstallPath );
+        } else {
+          set_kb_item(name:"MS/Money/Win/Version", value:ver[1]);
+          register_and_report_cpe( app:"Microsoft Money", ver:ver[1], base:"cpe:/a:microsoft:money:", expr:"^([0-9]+)", insloc: InstallPath );
+        }
       }
     }
   }

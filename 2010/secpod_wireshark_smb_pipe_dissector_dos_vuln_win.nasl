@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_smb_pipe_dissector_dos_vuln_win.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_wireshark_smb_pipe_dissector_dos_vuln_win.nasl 8254 2017-12-28 07:29:05Z teissa $
 #
 # Wireshark SMB PIPE Dissector Denial of Service Vulnerability (Windows)
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with Wireshark and is prone to Denial of
 
 if(description)
 {
-  script_id(902197);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902197");
+  script_version("$Revision: 8254 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-22 13:34:32 +0200 (Tue, 22 Jun 2010)");
   script_cve_id("CVE-2010-2285");
   script_tag(name:"cvss_base", value:"3.3");

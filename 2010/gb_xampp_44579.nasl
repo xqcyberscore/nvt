@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xampp_44579.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_xampp_44579.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # XAMPP Cross Site Scripting and Information Disclosure Vulnerabilities
 #
@@ -37,9 +37,9 @@ XAMPP 1.7.3 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100885);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100885");
+ script_version("$Revision: 8228 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-11-02 13:46:58 +0100 (Tue, 02 Nov 2010)");
  script_bugtraq_id(44579);
  script_tag(name:"cvss_base", value:"5.0");

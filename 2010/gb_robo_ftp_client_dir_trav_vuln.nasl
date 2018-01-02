@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_robo_ftp_client_dir_trav_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_robo_ftp_client_dir_trav_vuln.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # Robo-FTP Directory Traversal Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is installed with Robo-FTP and is prone to directory
 
 if(description)
 {
-  script_id(801626);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801626");
+  script_version("$Revision: 8250 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-11-16 10:37:01 +0100 (Tue, 16 Nov 2010)");
   script_bugtraq_id(44073);
   script_cve_id("CVE-2010-4095");

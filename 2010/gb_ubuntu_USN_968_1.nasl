@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_968_1.nasl 7965 2017-12-01 07:38:25Z santu $
+# $Id: gb_ubuntu_USN_968_1.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # Ubuntu Update for base-files vulnerability USN-968-1
 #
@@ -41,9 +41,9 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-968-1/");
-  script_id(840475);
-  script_version("$Revision: 7965 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:38:25 +0100 (Fri, 01 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.840475");
+  script_version("$Revision: 8266 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-08-06 10:34:50 +0200 (Fri, 06 Aug 2010)");
   script_xref(name: "USN", value: "968-1");
   script_tag(name:"cvss_base", value:"9.3");

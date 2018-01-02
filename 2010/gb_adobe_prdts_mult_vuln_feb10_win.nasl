@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_feb10_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_prdts_mult_vuln_feb10_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Flash Player/Air Multiple Vulnerabilities - feb10 (Windows)
 #
@@ -27,22 +27,27 @@
 tag_impact = "Successful exploitation will allow remote attackers to bypass security
   restrictions.
   Impact Level: Application";
+
 tag_affected = "Adobe AIR version prior to 1.5.3.9130
+
   Adobe Flash Player 10 version prior to 10.0.45.2 on Windows";
+
 tag_insight = "Cross domain vulnerabilities present in Adobe Flash Player/Adobe Air allows
   remote attackers to bypass intended sandbox restrictions and make
   cross-domain requests via unspecified vectors.";
+
 tag_solution = "Update to Adobe Air 1.5.3.9130 or Adobe Flash Player 10.0.45.2,
   http://get.adobe.com/air
   http://www.adobe.com/support/flashplayer/downloads.html";
+
 tag_summary = "This host is installed with Adobe Flash Player/Air and is prone to
   multiple vulnerabilities.";
 
 if(description)
 {
   script_id(800475);
-  script_version("$Revision: 6475 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_version("$Revision: 8210 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-02-19 11:58:13 +0100 (Fri, 19 Feb 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -67,12 +72,11 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-# Check for Adobe Flash Player
-playerVer = get_kb_item("AdobeFlashPlayer/Win/Ver");
-if(playerVer != NULL)
+CPE = "cpe:/a:adobe:flash_player";
+if(playerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   # Grep for version 10.x < 10.0.45.2
   if(version_in_range(version:playerVer, test_version:"10.0", test_version2:"10.0.45.1"))
@@ -82,9 +86,8 @@ if(playerVer != NULL)
   }
 }
 
-# Check for Adobe Air
-airVer = get_kb_item("Adobe/Air/Win/Ver");
-if(airVer != NULL)
+CPE = "cpe:/a:adobe:adobe_air";
+if(airVer = get_app_version(cpe:CPE))
 {
   # Grep for version < 1.5.3.9130
   if(version_is_less(version:airVer, test_version:"1.5.3.9130")){

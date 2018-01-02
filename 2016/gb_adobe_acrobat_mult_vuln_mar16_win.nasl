@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln_mar16_win.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: gb_adobe_acrobat_mult_vuln_mar16_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Acrobat Multiple Vulnerabilities March16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807469");
-  script_version("$Revision: 5712 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2016-1007", "CVE-2016-1008", "CVE-2016-1009");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-03-10 11:12:19 +0530 (Thu, 10 Mar 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Acrobat Multiple Vulnerabilities March16 (Windows)");
@@ -67,7 +67,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Acrobat/Win/Ver");
+  script_mandatory_keys("Adobe/Acrobat/Win/Installed");
   exit(0);
 }
 

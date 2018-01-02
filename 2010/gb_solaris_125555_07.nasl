@@ -33,8 +33,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(855894);
-  script_version("$Revision: 5358 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:17:29 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 8245 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-03-31 14:20:46 +0200 (Wed, 31 Mar 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -43,7 +43,7 @@ if(description)
 
   script_xref(name : "URL" , value : "http://sunsolve.sun.com/search/document.do?assetkey=1-21-125555-07-1");
 
-  script_summary("Check for the Version of behavior");
+  script_tag(name: "summary" , value: "Check for the Version of behavior");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Solaris Local Security Checks");

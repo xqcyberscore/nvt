@@ -65,8 +65,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2010-May/016633.html");
   script_id(880397);
-  script_version("$Revision: 6652 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:46:00 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8245 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-17 16:00:10 +0200 (Mon, 17 May 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -74,7 +74,7 @@ if(description)
   script_cve_id("CVE-2007-5935", "CVE-2009-0791", "CVE-2009-3609", "CVE-2010-0739", "CVE-2010-0827", "CVE-2010-1440");
   script_name("CentOS Update for tetex CESA-2010:0401 centos3 i386");
 
-  script_summary("Check for the Version of tetex");
+  script_tag(name: "summary" , value: "Check for the Version of tetex");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

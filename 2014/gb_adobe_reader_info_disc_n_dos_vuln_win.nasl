@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_info_disc_n_dos_vuln_win.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_adobe_reader_info_disc_n_dos_vuln_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader Information Disclosure & Denial of Service Vulnerabilities (Windows)
 #
@@ -25,47 +25,41 @@
 ###############################################################################
 
 CPE = "cpe:/a:adobe:acrobat_reader";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804398";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6769 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804398");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2005-0035", "CVE-2005-0492");
   script_bugtraq_id(12989);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-04-15 11:58:59 +0530 (Tue, 15 Apr 2014)");
   script_name("Adobe Reader Information Disclosure & Denial of Service Vulnerabilities (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to information disclosure
+  tag_summary = "This host is installed with Adobe Reader and is prone to information disclosure
 and denial of service vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"Flaws exist due to,
+  tag_insight = "Flaws exist due to,
+
 - An unspecified error in the 'LoadFile' method.
+
 - An unspecified error within the processing of PDF documents containing a
 negative root page node 'Count' value.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to conduct denial of service
+  tag_impact = "Successful exploitation will allow attackers to conduct denial of service
 attack and the disclosure of sensitive information.
 
 Impact Level: Application";
 
-  tag_affected =
-"Adobe Reader version 7.0 and earlier on Windows.";
+  tag_affected = "Adobe Reader version 7.0 and earlier on Windows.";
 
-  tag_solution =
-"Upgrade to Adobe Reader version 7.0.5 or later. For
+  tag_solution = "Upgrade to Adobe Reader version 7.0.5 or later. For
 updates refer to http://get.adobe.com/reader";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -83,19 +77,14 @@ updates refer to http://get.adobe.com/reader";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
-if(!readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

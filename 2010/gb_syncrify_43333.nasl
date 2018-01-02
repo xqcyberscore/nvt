@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_syncrify_43333.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_syncrify_43333.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # Syncrify Multiple Remote Security Bypass Vulnerabilities
 #
@@ -35,9 +35,9 @@ tag_solution = "Updates are available. Please see the references for details.";
 
 if (description)
 {
- script_id(100820);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100820");
+ script_version("$Revision: 8258 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-09-22 16:24:51 +0200 (Wed, 22 Sep 2010)");
  script_bugtraq_id(43333);
 

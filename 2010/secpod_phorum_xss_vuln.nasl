@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_phorum_xss_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_phorum_xss_vuln.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # Phorum Cross-Site Scripting Vulnerability
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is running Phorum and is prone to cross-site
 
 if(description)
 {
-  script_id(902179);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902179");
+  script_version("$Revision: 8250 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1629");
   script_tag(name:"cvss_base", value:"4.3");

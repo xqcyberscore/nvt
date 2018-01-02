@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_object_tag_dos_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_apple_safari_object_tag_dos_vuln.nasl 8244 2017-12-25 07:29:28Z teissa $
 #
 # Apple Safari Nested 'object' Tag Remote Denial Of Service vulnerability
 #
@@ -45,9 +45,9 @@ Denial Of Service vulnerability";
 
 if(description)
 {
-  script_id(800744);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800744");
+  script_version("$Revision: 8244 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-01 11:04:35 +0200 (Thu, 01 Apr 2010)");
   script_cve_id("CVE-2010-1131");
   script_bugtraq_id(38884);

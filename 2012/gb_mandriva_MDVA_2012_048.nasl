@@ -35,15 +35,15 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVA-2012:048");
   script_id(831688);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8265 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 07:29:23 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-06-22 10:33:07 +0530 (Fri, 22 Jun 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_xref(name: "MDVA", value: "2012:048");
   script_name("Mandriva Update for firefox MDVA-2012:048 (firefox)");
 
-  script_summary("Check for the Version of firefox");
+  script_tag(name: "summary" , value: "Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

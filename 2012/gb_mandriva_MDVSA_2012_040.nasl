@@ -50,8 +50,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:040");
   script_id(831635);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8249 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 07:29:56 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-03 09:57:55 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2012-1573");
   script_tag(name:"cvss_base", value:"5.0");
@@ -59,7 +59,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:040");
   script_name("Mandriva Update for gnutls MDVSA-2012:040 (gnutls)");
 
-  script_summary("Check for the Version of gnutls");
+  script_tag(name: "summary" , value: "Check for the Version of gnutls");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

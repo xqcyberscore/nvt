@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-016.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-016.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # Microsoft Windows Movie Maker Could Allow Remote Code Execution Vulnerability (975561)
 #
@@ -48,9 +48,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(900232);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900232");
+  script_version("$Revision: 8228 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-03-10 15:48:25 +0100 (Wed, 10 Mar 2010)");
   script_bugtraq_id(38515);
   script_cve_id("CVE-2010-0265");

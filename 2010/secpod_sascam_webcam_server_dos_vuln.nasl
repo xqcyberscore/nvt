@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sascam_webcam_server_dos_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_sascam_webcam_server_dos_vuln.nasl 8207 2017-12-21 07:30:12Z teissa $
 #
 # SasCAM Request Processing Denial of Service Vulnerability
 #
@@ -45,9 +45,9 @@ of service vulnerability.";
 
 if(description)
 {
-  script_id(901132);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901132");
+  script_version("$Revision: 8207 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-02 08:02:13 +0200 (Fri, 02 Jul 2010)");
   script_cve_id("CVE-2010-2505");
   script_tag(name:"cvss_base", value:"5.0");

@@ -54,8 +54,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-October/018963.html");
   script_id(881532);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8245 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-11-02 11:00:48 +0530 (Fri, 02 Nov 2012)");
   script_cve_id("CVE-2012-4194", "CVE-2012-4195", "CVE-2012-4196");
   script_tag(name:"cvss_base", value:"5.1");
@@ -63,7 +63,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:1413");
   script_name("CentOS Update for thunderbird CESA-2012:1413 centos6 ");
 
-  script_summary("Check for the Version of thunderbird");
+  script_tag(name: "summary" , value: "Check for the Version of thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

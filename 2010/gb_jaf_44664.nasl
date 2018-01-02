@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jaf_44664.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_jaf_44664.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # JAF CMS Multiple Remote File Include and Remote Shell Command Execution Vulnerabilities
 #
@@ -42,9 +42,9 @@ JAF CMS 4.0 RC2 is vulnerable; other versions may also be affected.";
 
 if(description)
 {
- script_id(100895);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100895");
+ script_version("$Revision: 8228 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-11-05 13:21:25 +0100 (Fri, 05 Nov 2010)");
  script_bugtraq_id(44664);
  script_tag(name:"cvss_base", value:"7.5");

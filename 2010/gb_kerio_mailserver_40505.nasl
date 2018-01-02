@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerio_mailserver_40505.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_kerio_mailserver_40505.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # Multiple Kerio Products Administration Console File Disclosure and Corruption Vulnerability
 #
@@ -39,9 +39,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100666);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100666");
+ script_version("$Revision: 8250 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-06-03 13:39:07 +0200 (Thu, 03 Jun 2010)");
  script_bugtraq_id(40505);
 

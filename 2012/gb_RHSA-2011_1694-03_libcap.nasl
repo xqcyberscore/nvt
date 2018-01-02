@@ -50,8 +50,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-December/msg00016.html");
   script_id(870710);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8267 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 07:29:17 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:51:50 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2011-4099");
   script_tag(name:"cvss_base", value:"4.6");
@@ -59,7 +59,7 @@ if(description)
   script_xref(name: "RHSA", value: "2011:1694-03");
   script_name("RedHat Update for libcap RHSA-2011:1694-03");
 
-  script_summary("Check for the Version of libcap");
+  script_tag(name: "summary" , value: "Check for the Version of libcap");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

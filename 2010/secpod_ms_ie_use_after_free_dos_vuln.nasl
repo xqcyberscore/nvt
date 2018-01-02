@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_ie_use_after_free_dos_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_ms_ie_use_after_free_dos_vuln.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # Microsoft Internet Explorer 'CSS Import Rule' Use-after-free Vulnerability
 #
@@ -45,10 +45,10 @@ This NVT has been replaced by NVT secpod_ms11-003.nasl
 
 if(description)
 {
-  script_id(902325);
-  script_version("$Revision: 5394 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902325");
+  script_version("$Revision: 8228 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-12-31 07:04:16 +0100 (Fri, 31 Dec 2010)");
   script_cve_id("CVE-2010-3971");
   script_bugtraq_id(45246);

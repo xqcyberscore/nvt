@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0315_1.nasl 8043 2017-12-08 08:20:47Z santu $
+# $Id: gb_suse_2012_0315_1.nasl 8249 2017-12-27 06:29:56Z teissa $
 #
 # SuSE Update for csound openSUSE-SU-2012:0315-1 (csound)
 #
@@ -36,8 +36,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(850208);
-  script_version("$Revision: 8043 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:20:47 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8249 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 07:29:56 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-02 20:46:05 +0530 (Thu, 02 Aug 2012)");
   script_cve_id("CVE-2012-0270");
   script_tag(name:"cvss_base", value:"7.5");
@@ -45,7 +45,7 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2012:0315_1");
   script_name("SuSE Update for csound openSUSE-SU-2012:0315-1 (csound)");
 
-  script_summary("Check for the Version of csound");
+  script_tag(name: "summary" , value: "Check for the Version of csound");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

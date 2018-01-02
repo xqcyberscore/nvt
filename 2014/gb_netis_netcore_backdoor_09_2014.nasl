@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netis_netcore_backdoor_09_2014.nasl 4819 2016-12-20 17:00:29Z cfi $
+# $Id: gb_netis_netcore_backdoor_09_2014.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # Backdoor Access To Netcore/Netis Devices
 #
@@ -28,16 +28,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105075");
-  script_version("$Revision: 4819 $");
+  script_version("$Revision: 8236 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-20 18:00:29 +0100 (Tue, 20 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-09-01 12:03:46 +0200 (Mon, 01 Sep 2014)");
   script_name("Backdoor Access To Netcore/Netis Devices");
   script_category(ACT_ATTACK);
   script_family("General");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl");
   script_require_udp_ports(53413);
 
   script_xref(name:"URL", value:"http://blog.trendmicro.com/trendlabs-security-intelligence/netis-routers-leave-wide-open-backdoor/");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mit_krb5_kpasswd_pingpong_dos_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_mit_krb5_kpasswd_pingpong_dos_vuln.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # MIT Kerberos 5 kpasswd UDP Packet Denial Of Service Vulnerability
 #
@@ -40,10 +40,10 @@ tag_summary = "This host is running MIT Kerberos and is prone to denial of
 if(description)
 {
   script_id(802056);
-  script_version("$Revision: 6074 $");
+  script_version("$Revision: 8236 $");
   script_bugtraq_id(60008);
   script_cve_id("CVE-2002-2443");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-06-20 10:48:39 +0530 (Thu, 20 Jun 2013)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -56,7 +56,6 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("find_service.nasl");
   script_require_udp_ports(464);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

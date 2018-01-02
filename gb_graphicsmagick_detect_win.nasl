@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphicsmagick_detect_win.nasl 7287 2017-09-27 06:56:51Z cfischer $
+# $Id: gb_graphicsmagick_detect_win.nasl 8209 2017-12-21 08:12:18Z cfischer $
 #
 # GraphicsMagick Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800514");
-  script_version("$Revision: 7287 $");
+  script_version("$Revision: 8209 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 09:12:18 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-02-18 15:32:11 +0100 (Wed, 18 Feb 2009)");
   script_name("GraphicsMagick Version Detection (Windows)");
 
@@ -95,29 +95,16 @@ foreach key (key_list)
     if(!gmPath){
       gmPath = "Unable to find the install location from registry";
     }
-  
-    ## Set KB
-    set_kb_item(name:"GraphicsMagick/Win/Ver", value:gmVer);
-  
-    ## build cpe and store it as host_detail
-    cpe = build_cpe(value:gmVer, exp:"^([0-9.]+)", base:"cpe:/a:graphicsmagick:graphicsmagick:");
-    if(isnull(cpe)){
-      cpe = "cpe:/a:graphicsmagick:graphicsmagick";
-    }
 
-    ## Register for 64 bit app on 64 bit OS again
-    if("64" >< os_arch && "Wow6432Node" >!< key)
-    {
+    set_kb_item(name:"GraphicsMagick/Win/Installed", value:TRUE);
+
+    ## Register for 64 bit app on 64 bit OS
+    if("64" >< os_arch && "Wow6432Node" >!< key) {
       set_kb_item(name:"GraphicsMagick64/Win/Ver", value:gmVer);
-   
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:gmVer, exp:"^([0-9.]+)", base:"cpe:/a:graphicsmagick:graphicsmagick:x64:");
-      if(isnull(cpe)){
-        cpe = "cpe:/a:graphicsmagick:graphicsmagick:x64";
-      }
+      register_and_report_cpe( app:"GraphicsMagick", ver:gmVer, base:"cpe:/a:graphicsmagick:graphicsmagick:x64:", expr:"^([0-9.]+)", insloc:gmPath );
+    } else {
+      set_kb_item(name:"GraphicsMagick/Win/Ver", value:gmVer);
+      register_and_report_cpe( app:"GraphicsMagick", ver:gmVer, base:"cpe:/a:graphicsmagick:graphicsmagick:", expr:"^([0-9.]+)", insloc:gmPath );
     }
-
-    ## Register Product and Build Report
-    build_report(app:"GraphicsMagick", ver:gmVer, cpe:cpe, insloc:gmPath);
   }
 }

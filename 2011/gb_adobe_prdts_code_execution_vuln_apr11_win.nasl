@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_code_execution_vuln_apr11_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_prdts_code_execution_vuln_apr11_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Products Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -24,48 +24,40 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.801921";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6475 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801921");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2011-0611");
   script_bugtraq_id(47314);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_name("Adobe Products Arbitrary Code Execution Vulnerability (Windows)");
 
-  tag_summary =
-"This host has Adobe Acrobat or Adobe Reader or Adobe flash Player installed
+  tag_summary = "This host has Adobe Acrobat or Adobe Reader or Adobe flash Player installed
 and is prone to code execution vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"The flaw is due to an error in handling 'SWF' file in adobe flash player and
+  tag_insight = "The flaw is due to an error in handling 'SWF' file in adobe flash player and
 'Authplay.dll' in Adobe acrobat/reader. which allows attackers to execute
 arbitrary code or cause a denial of service via crafted flash content.";
 
-  tag_impact =
-"Successful exploitation will let attackers to corrupt memory and execute
+  tag_impact = "Successful exploitation will let attackers to corrupt memory and execute
 arbitrary code on the system with elevated privileges.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Flash Player version 10.2.153.1 and prior on Windows.
+  tag_affected = "Adobe Flash Player version 10.2.153.1 and prior on Windows.
+
 Adobe Reader/Acrobat version 9.x to 9.4.3 and 10.x to 10.0.2 on windows.";
 
-  tag_solution =
-"Upgrade adobe flash player to version 10.2.159.1 or later,
+  tag_solution = "Upgrade adobe flash player to version 10.2.159.1 or later,
 Update Adobe Reader/Acrobat to version 9.4.4 or 10.0.3 or later,
 For updates refer to http://www.adobe.com";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -87,20 +79,11 @@ For updates refer to http://www.adobe.com";
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-acrobatVer = "";
-flashVer = "";
-
-#CPE for adobe reader
 CPE = "cpe:/a:adobe:acrobat_reader";
-
-## Get Reader Version
-if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   if(readerVer =~ "^(9|10)")
   {
@@ -111,9 +94,8 @@ if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
   }
 }
 
-# Check for Adobe Acrobat
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(acrobatVer)
+CPE = "cpe:/a:adobe:acrobat";
+if(acrobatVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   if(version_in_range(version:acrobatVer, test_version:"9.0", test_version2:"9.4.3") ||
      version_in_range(version:acrobatVer, test_version:"10.0", test_version2:"10.0.2"))
@@ -123,10 +105,10 @@ if(acrobatVer)
   }
 }
 
-# Check for Adobe Flash Player version <= 10.2.153.1
-flashVer = get_kb_item("AdobeFlashPlayer/Win/Ver");
-if(flashVer)
+CPE = "cpe:/a:adobe:flash_player";
+if(flashVer = get_app_version(cpe:CPE))
 {
+  # Check for Adobe Flash Player version <= 10.2.153.1
   if(version_is_less_equal(version:flashVer, test_version:"10.2.153.1")){
     security_message(0);
   }

@@ -41,9 +41,9 @@ tag_summary = "The remote host is missing Mac OS X Security Update 2010-001.
 
 if(description)
 {
- script_id(102020);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.102020");
+ script_version("$Revision: 8244 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-04-06 10:41:02 +0200 (Tue, 06 Apr 2010)");
  script_name("Mac OS X Security Update 2010-001");
  script_tag(name:"cvss_base", value:"9.3");

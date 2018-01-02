@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 8156 2017-12-18 11:48:16Z cfischer $
+# $Id: os_detection.nasl 8215 2017-12-21 11:46:59Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 8156 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 12:48:16 +0100 (Mon, 18 Dec 2017) $");
+  script_version("$Revision: 8215 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 12:46:59 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,8 +37,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  # Keep order the same as in host_details.inc. Also add OS register NVTs there if adding here.
-  # Keep in sync with os_detection.nasl as well.
+  # Keep order the same as in host_details.inc. Also add NVTs registering an OS there if adding here.
+  # Keep in sync with gb_nmap_os_detection.nasl as well.
   script_dependencies("gb_greenbone_os_detect.nasl", "gb_ami_megarac_sp_web_detect.nasl",
                       "gb_ros_detect.nasl", "gb_apple_mobile_detect.nasl",
                       "gb_vmware_esx_web_detect.nasl", "gb_vmware_esx_snmp_detect.nasl",

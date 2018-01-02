@@ -62,8 +62,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-July/msg00016.html");
   script_id(870790);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8253 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 07:29:51 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-07-19 10:28:00 +0530 (Thu, 19 Jul 2012)");
   script_cve_id("CVE-2012-1948", "CVE-2012-1951", "CVE-2012-1952", "CVE-2012-1953",
                 "CVE-2012-1954", "CVE-2012-1955", "CVE-2012-1957", "CVE-2012-1958",
@@ -74,7 +74,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:1089-01");
   script_name("RedHat Update for thunderbird RHSA-2012:1089-01");
 
-  script_summary("Check for the Version of thunderbird");
+  script_tag(name: "summary" , value: "Check for the Version of thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

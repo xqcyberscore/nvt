@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foreman_xss_vuln.nasl 7674 2017-11-07 06:54:24Z ckuersteiner $
+# $Id: gb_foreman_xss_vuln.nasl 8247 2017-12-26 13:32:16Z cfischer $
 #
 # Foreman XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:theforeman:foreman";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140490");
-  script_version("$Revision: 7674 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-07 07:54:24 +0100 (Tue, 07 Nov 2017) $");
+  script_version("$Revision: 8247 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-26 14:32:16 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-07 10:56:49 +0700 (Tue, 07 Nov 2017)");
-  script_tag(name: "cvss_base", value: "4.9");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-15100");
 

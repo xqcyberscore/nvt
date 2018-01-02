@@ -51,8 +51,8 @@ tag_affected = "flash-player on openSUSE 11.0, openSUSE 11.1, openSUSE 11.2";
 if(description)
 {
   script_id(850133);
-  script_version("$Revision: 8035 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 06:29:51 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 07:30:04 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-23 12:17:53 +0200 (Wed, 23 Jun 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -60,7 +60,7 @@ if(description)
   script_cve_id("CVE-2008-4546", "CVE-2009-3793", "CVE-2010-1297", "CVE-2010-2160", "CVE-2010-2161", "CVE-2010-2162", "CVE-2010-2163", "CVE-2010-2164", "CVE-2010-2165", "CVE-2010-2166", "CVE-2010-2167", "CVE-2010-2169", "CVE-2010-2170", "CVE-2010-2171", "CVE-2010-2172", "CVE-2010-2173", "CVE-2010-2174", "CVE-2010-2175", "CVE-2010-2176", "CVE-2010-2177", "CVE-2010-2178", "CVE-2010-2179", "CVE-2010-2180", "CVE-2010-2181", "CVE-2010-2182", "CVE-2010-2183", "CVE-2010-2184", "CVE-2010-2185", "CVE-2010-2186", "CVE-2010-2187", "CVE-2010-2188", "CVE-2010-2189");
   script_name("SuSE Update for flash-player SUSE-SA:2010:024");
 
-  script_summary("Check for the Version of flash-player");
+  script_tag(name: "summary" , value: "Check for the Version of flash-player");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

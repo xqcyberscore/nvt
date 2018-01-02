@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_mult_vuln_apr10_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: secpod_adobe_prdts_mult_vuln_apr10_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Acrobat and Reader PDF Handling Multiple Vulnerabilities (Windows)
 #
@@ -24,12 +24,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902161";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6475 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902161");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2010-0190", "CVE-2010-0191", "CVE-2010-0192", "CVE-2010-0193",
                 "CVE-2010-0194", "CVE-2010-0195", "CVE-2010-0196", "CVE-2010-0197",
                 "CVE-2010-0198", "CVE-2010-0199", "CVE-2010-0201", "CVE-2010-0202",
@@ -37,37 +35,31 @@ if(description)
   script_bugtraq_id(39329);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-16 16:17:26 +0200 (Fri, 16 Apr 2010)");
   script_name("Adobe Acrobat and Reader PDF Handling Multiple Vulnerabilities (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader/Acrobat and is prone to multiple
+  tag_summary = "This host is installed with Adobe Reader/Acrobat and is prone to multiple
 vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"The flaws are due to buffer overflows, memory corruptions and input validation
+  tag_insight = "The flaws are due to buffer overflows, memory corruptions and input validation
 errors when processing malformed data within a PDF document.";
 
-  tag_impact =
-"Successful exploitation will let attackers to inject malicious scripting code,
+  tag_impact = "Successful exploitation will let attackers to inject malicious scripting code,
 disclose sensitive information or execute arbitrary code by tricking a user
 into opening a specially crafted PDF document.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Reader version  8.x before 8.2.2 and 9.x before 9.3.2,
+  tag_affected = "Adobe Reader version  8.x before 8.2.2 and 9.x before 9.3.2,
+
 Adobe Acrobat version 8.x before 8.2.2  and 9.x before 9.3.2 on windows.";
 
-  tag_solution =
-"Upgrade to Adobe Reader/Acrobat version 9.3.2 or 8.2.2
+  tag_solution = "Upgrade to Adobe Reader/Acrobat version 9.3.2 or 8.2.2
 For updates refer to http://www.adobe.com";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -89,19 +81,11 @@ For updates refer to http://www.adobe.com";
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-acrobatVer = "";
-
-#CPE for adobe reader
 CPE = "cpe:/a:adobe:acrobat_reader";
-
-## Get Reader Version
-if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   if(readerVer =~ "^(8|9)")
   {
@@ -113,13 +97,12 @@ if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
   }
 }
 
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(!acrobatVer){
-  exit(0);
-}
-
-# Check for Adobe Acrobat version 9.x to 9.3.1, and 8.0 < 8.2.1
-if(version_in_range(version:acrobatVer, test_version:"8.0", test_version2:"8.2.1") ||
-   version_in_range(version:acrobatVer, test_version:"9.0", test_version2:"9.3.1")){
-  security_message(0);
+CPE = "cpe:/a:adobe:acrobat";
+if(acrobatVer = get_app_version(cpe:CPE))
+{
+  # Check for Adobe Acrobat version 9.x to 9.3.1, and 8.0 < 8.2.1
+  if(version_in_range(version:acrobatVer, test_version:"8.0", test_version2:"8.2.1") ||
+     version_in_range(version:acrobatVer, test_version:"9.0", test_version2:"9.3.1")){
+    security_message(0);
+  }
 }

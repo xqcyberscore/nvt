@@ -41,8 +41,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:172");
   script_id(831751);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8249 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 07:29:56 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-11-23 12:00:04 +0530 (Fri, 23 Nov 2012)");
   script_cve_id("CVE-2012-4504");
   script_tag(name:"cvss_base", value:"10.0");
@@ -50,7 +50,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:172");
   script_name("Mandriva Update for libproxy MDVSA-2012:172 (libproxy)");
 
-  script_summary("Check for the Version of libproxy");
+  script_tag(name: "summary" , value: "Check for the Version of libproxy");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

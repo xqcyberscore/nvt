@@ -37,8 +37,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-October/050164.html");
   script_id(862523);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8226 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 07:30:26 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-11-16 14:49:48 +0100 (Tue, 16 Nov 2010)");
   script_xref(name: "FEDORA", value: "2010-16622");
   script_tag(name:"cvss_base", value:"6.9");
@@ -46,7 +46,7 @@ if(description)
   script_cve_id("CVE-2010-3999");
   script_name("Fedora Update for gnucash FEDORA-2010-16622");
 
-  script_summary("Check for the Version of gnucash");
+  script_tag(name: "summary" , value: "Check for the Version of gnucash");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

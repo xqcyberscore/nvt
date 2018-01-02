@@ -43,9 +43,9 @@ tag_affected = "mantis on Fedora 13";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-September/048659.html");
-  script_id(862438);
-  script_version("$Revision: 8092 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:31:16 +0100 (Wed, 13 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.862438");
+  script_version("$Revision: 8246 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 08:29:20 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-01 16:10:21 +0200 (Fri, 01 Oct 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

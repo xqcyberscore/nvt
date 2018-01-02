@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: WikyBlog_38386.nasl 5762 2017-03-29 11:20:04Z cfi $
+# $Id: WikyBlog_38386.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # WikyBlog Multiple Remote Input Validation Vulnerabilities
 #
@@ -43,9 +43,9 @@ WikyBlog 1.7.3rc2 is vulnerable; other versions may also be affected.";
 
 if(description)
 {
- script_id(100506);
- script_version("$Revision: 5762 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:20:04 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100506");
+ script_version("$Revision: 8266 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-02-24 18:35:31 +0100 (Wed, 24 Feb 2010)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_arbitrary_code_exec_vuln_nov10_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_prdts_arbitrary_code_exec_vuln_nov10_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Products Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -49,8 +49,8 @@ installed, and is prone to arbitrary code execution vulnerability.";
 if(description)
 {
   script_id(801477);
-  script_version("$Revision: 6475 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_version("$Revision: 8210 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-11-10 14:58:25 +0100 (Wed, 10 Nov 2010)");
   script_cve_id("CVE-2010-3654");
   script_bugtraq_id(44504);
@@ -77,13 +77,13 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-# Check for Adobe Reader version <= 9.4
-readerVer = get_kb_item("Adobe/Reader/Win/Ver");
-if(readerVer)
+CPE = "cpe:/a:adobe:acrobat_reader";
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
+  # Check for Adobe Reader version <= 9.4
   if(version_in_range(version:readerVer, test_version:"9.0.0", test_version2:"9.4"))
   {
     security_message(0);
@@ -91,19 +91,19 @@ if(readerVer)
   }
 }
 
-# Check for Adobe Acrobat version <= 9.4
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(acrobatVer)
+CPE = "cpe:/a:adobe:acrobat";
+if(acrobatVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
+  # Check for Adobe Acrobat version <= 9.4
   if(version_in_range(version:acrobatVer, test_version:"9.0.0", test_version2:"9.4")){
     security_message(0);
   }
 }
 
-# Check for Adobe Flash Player version <= 10.1.85.3
-flashVer = get_kb_item("AdobeFlashPlayer/Win/Ver");
-if(flashVer)
+CPE = "cpe:/a:adobe:flash_player";
+if(flashVer = get_app_version(cpe:CPE))
 {
+  # Check for Adobe Flash Player version <= 10.1.85.3
   if(version_is_less_equal(version:flashVer, test_version:"10.1.85.3")){
     security_message(0);
   }

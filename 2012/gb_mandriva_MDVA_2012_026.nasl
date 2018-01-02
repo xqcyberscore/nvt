@@ -36,15 +36,15 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2012-03/msg00002.php");
   script_id(831556);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8265 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 07:29:23 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-03-07 11:20:41 +0530 (Wed, 07 Mar 2012)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
   script_xref(name: "MDVA", value: "2012:026");
   script_name("Mandriva Update for kdeedu4 MDVA-2012:026 (kdeedu4)");
 
-  script_summary("Check for the Version of kdeedu4");
+  script_tag(name: "summary" , value: "Check for the Version of kdeedu4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

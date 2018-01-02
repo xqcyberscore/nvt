@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_remote_code_exec_vuln_winxp.nasl 8178 2017-12-19 13:42:38Z cfischer $
+# $Id: gb_adobe_flash_player_remote_code_exec_vuln_winxp.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # Adobe Flash Player Remote Code Execution Vulnerability (WinXP)
 #
@@ -45,9 +45,9 @@ tag_summary = "This host has Adobe Flash Player installed and is prone to remote
 
 if(description)
 {
-  script_id(800420);
-  script_version("$Revision: 8178 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800420");
+  script_version("$Revision: 8228 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-01-13 15:42:20 +0100 (Wed, 13 Jan 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

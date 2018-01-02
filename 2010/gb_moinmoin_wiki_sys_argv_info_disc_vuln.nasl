@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moinmoin_wiki_sys_argv_info_disc_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_moinmoin_wiki_sys_argv_info_disc_vuln.nasl 8207 2017-12-21 07:30:12Z teissa $
 #
 # MoinMoin Wiki 'sys.argv' Information Disclosure Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is running MoinMoin Wiki and is prone to Information
 
 if(description)
 {
-  script_id(800171);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800171");
+  script_version("$Revision: 8207 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-03-05 10:09:57 +0100 (Fri, 05 Mar 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

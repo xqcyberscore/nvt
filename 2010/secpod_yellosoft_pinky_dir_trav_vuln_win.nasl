@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_yellosoft_pinky_dir_trav_vuln_win.nasl 5796 2017-03-30 14:15:11Z cfi $
+# $Id: secpod_yellosoft_pinky_dir_trav_vuln_win.nasl 8207 2017-12-21 07:30:12Z teissa $
 #
 # YelloSoft Pinky Directory Traversal Vulnerability
 #
@@ -45,9 +45,9 @@ Traversal vulnerability.";
 
 if(description)
 {
-  script_id(902253);
-  script_version("$Revision: 5796 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 16:15:11 +0200 (Thu, 30 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902253");
+  script_version("$Revision: 8207 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-29 09:26:02 +0200 (Wed, 29 Sep 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

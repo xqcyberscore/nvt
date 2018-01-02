@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_team_speak_client_command_exe_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_team_speak_client_command_exe_vuln.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # TeamSpeak Client Arbitrary command execution vulnerability (Windows)
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with TeamSpeak client and is prone to
 
 if(description)
 {
-  script_id(801537);
-  script_version("$Revision: 5374 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801537");
+  script_version("$Revision: 8266 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-04 14:21:53 +0100 (Thu, 04 Nov 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_safe_40305.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_perl_safe_40305.nasl 8254 2017-12-28 07:29:05Z teissa $
 #
 # Perl Safe Module 'reval()' and 'rdo()' CVE-2010-1447 Restriction-Bypass Vulnerabilities
 #
@@ -34,9 +34,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100673);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100673");
+ script_version("$Revision: 8254 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-06-14 14:19:59 +0200 (Mon, 14 Jun 2010)");
  script_bugtraq_id(40305);
  script_tag(name:"cvss_base", value:"8.5");

@@ -36,10 +36,10 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-03/msg00042.php");
-  script_id(830963);
-  script_version("$Revision: 8109 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.830963");
+  script_version("$Revision: 8254 $");
   script_cve_id("CVE-2010-1639", "CVE-2010-1640");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-14 07:31:15 +0100 (Thu, 14 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-03-31 14:20:46 +0200 (Wed, 31 Mar 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");

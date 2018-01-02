@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_database_open_access_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: secpod_database_open_access_vuln.nasl 8230 2017-12-22 08:51:56Z cfischer $
 #
 # Database Open Access Vulnerability
 #
@@ -27,27 +27,33 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902799");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5988 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+  script_version("$Revision: 8230 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 09:51:56 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-03-01 17:10:53 +0530 (Thu, 01 Mar 2012)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Database Open Access Vulnerability");
   script_copyright("Copyright (C) 2012 SecPod");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
-  script_dependencies("oracle_tnslsnr_version.nasl", "gb_ibm_db2_remote_detect.nasl",
-                      "postgresql_detect.nasl", "mssqlserver_detect.nasl", "secpod_open_tcp_ports.nasl",
-                      "gb_ibm_soliddb_detect.nasl", "mysql_version.nasl");
+  script_dependencies("oracle_tnslsnr_version.nasl", "gb_ibm_db2_remote_detect.nasl", "postgresql_detect.nasl",
+                      "mssqlserver_detect.nasl", "gb_ibm_soliddb_detect.nasl", "mysql_version.nasl",
+                      "secpod_open_tcp_ports.nasl", "gb_open_udp_ports.nasl");
+  script_mandatory_keys("OpenDatabase/found");
 
   script_xref(name:"URL", value:"https://www.pcisecuritystandards.org/security_standards/index.php?id=pci_dss_v1-2.pdf");
 
-  tag_affected = "MySQL
-  IBM DB2
-  PostgreSQL
-  IBM solidDB
-  Oracle Database
-  Microsoft SQL Server";
+  tag_affected = "- MySQL/MariaDB
+
+  - IBM DB2
+
+  - PostgreSQL
+
+  - IBM solidDB
+
+  - Oracle Database
+
+  - Microsoft SQL Server";
 
   tag_solution = "Restrict Database access to remote systems.";
 
@@ -55,6 +61,7 @@ if(description)
   information of the database.
 
   Impact Level: Application";
+
   tag_insight = "Do not restricting direct access of databases to the remote systems.";
 
   tag_summary = "The host is running a Database server and is prone to information
@@ -72,184 +79,144 @@ if(description)
   exit(0);
 }
 
-
-include("http_func.inc");
+include("http_func.inc"); # For make_list_unique()
 include("network_func.inc");
-include("http_keepalive.inc");
 include("misc_func.inc");
 
-## Variable Initialization
-port = 0;
-ports = "";
-udp_port = "";
-udp_ports = "";
-oracle_db = "";
-ibm_db2 = "";
-mysql = "";
-mssql = "";
-solid_db = "";
-postgre_sql = "";
-mssql_port = 0;
+function is_oracle_db( port ) {
 
-## Function to check Oracle Database
-function is_oracle_db(port)
-{
-  local_var ver;
+  local_var port, ver;
 
-  ver = get_kb_item("oracle_tnslsnr/" + port + "/version");
-  if(ver){
-     return(1);
-  }
-  else return(0);
+  ver = get_kb_item( "oracle_tnslsnr/" + port + "/version" );
+  if( ver )
+    return TRUE;
+  else
+    return FALSE;
 }
 
-## Function to check IBM DB2
-function is_ibm_db2(port)
-{
-  local_var ibmVer;
+function is_ibm_db2( port ) {
 
-  ibmVer = get_kb_item("IBM-DB2/Remote/ver");
-  if(ibmVer){
-     return(1);
-  }
-  else return(0);
+  local_var port, ibmVer;
+
+  ibmVer = get_kb_item( "IBM-DB2/Remote/" + port + "/ver" );
+  if( ibmVer )
+    return TRUE;
+  else
+    return FALSE;
 }
 
-## Function to check Postgresql
-function is_postgre_sql(port)
-{
-  local_var psqlver;
+function is_postgre_sql( port ) {
 
-  psqlver = get_kb_item(string("PostgreSQL/Remote/",port,"/Ver"));
-  if(psqlver){
-    return(1);
-  }
-  else return(0);
+  local_var port, psqlver;
+
+  psqlver = get_kb_item( "PostgreSQL/Remote/" + port + "/Ver" );
+  if( psqlver )
+    return TRUE;
+  else
+    return FALSE;
 }
 
-## Function to check SolidDB
-function is_solid_db(port)
-{
-  local_var solidVer;
+function is_solid_db( port ) {
 
-  solidVer = get_kb_item(string("soliddb/", port, "/version"));
-  if(solidVer){
-    return(1);
-  }
-  else return(0);
+  local_var port, solidVer;
+
+  solidVer = get_kb_item( "soliddb/" + port + "/version" );
+  if( solidVer )
+    return TRUE;
+  else
+    return FALSE;
 }
 
-## Function to check MSSQL
-function is_mssql()
-{
-  mssql_port = get_kb_item("Services/mssql");
-  if(mssql_port){
-    return(1);
-  }
-  else return(0);
+function is_mssql( port ) {
+
+  local_var port, mssql_rls;
+
+  mssql_rls = get_kb_item( "MS/SQLSERVER/" + port + "/releasename" );
+  if( mssql_rls )
+    return TRUE;
+  else
+    return FALSE;
 }
 
-## Function to check MySQL
-function is_mysql(port)
-{
-  local_var myVer;
+function is_mysql( port ) {
 
-  myVer = get_kb_item(string("mysql/version/", port));
-  if(myVer){
-   return(1);
-  }
-  else return(0);
+  local_var port, myVer;
+
+  myVer = get_kb_item( "mysql/version/" + port );
+  if( myVer )
+    return TRUE;
+  else
+    return FALSE;
 }
 
-## List all running ports
+function is_mariadb( port ) {
+
+  local_var port, mariaVer;
+
+  mariaVer = get_kb_item( "mariadb/version/" + port );
+  if( mariaVer )
+    return TRUE;
+  else
+    return FALSE;
+}
+
+# nb: This function is already checking for get_port_state()
+# and is returning an empty list if no port was found
 ports = get_all_tcp_ports_list();
+# Adding the default ports if unscanned_closed = no
+ports = make_list_unique( ports, 5432, 1433, 1315, 3306, 1521 );
 
-foreach port( ports )
-{
-  if(!get_tcp_port_state(port)){
+foreach port( ports ) {
+
+  oracle_db = is_oracle_db( port:port );
+  if( oracle_db ) {
+    log_message( data:"Oracle database can be accessed by remote attackers", port:port );
     continue;
   }
 
-  ## Checking for oracle database
-  oracle_db = is_oracle_db(port:port);
-  if(oracle_db == 1)
-  {
-    log_message(data:string("Oracle database can be accessed by remote attackers"), port:port);
+  mysql = is_mysql( port:port );
+  if( mysql ) {
+    log_message( data:"MySQL can be accessed by remote attackers", port:port );
     continue;
   }
 
-  ## Checking for MySQL
-  mysql = is_mysql(port:port);
-  if(mysql == 1)
-  {
-    log_message(data:string("MySQL can be accessed by remote attackers"), port:port);
+  mariadb = is_mariadb( port:port );
+  if( mariadb ) {
+    log_message( data:"MariaDB can be accessed by remote attackers", port:port );
     continue;
   }
 
-  ## Checking for Postgresql
-  postgre_sql = is_postgre_sql(port:port);
-  if(postgre_sql == 1)
-  {
-    log_message(data:string("Postgresql database can be accessed by remote attackers"), port:port);
+  postgre_sql = is_postgre_sql( port:port );
+  if( postgre_sql ) {
+    log_message( data:"PostgreSQL database can be accessed by remote attackers", port:port );
     continue;
   }
 
-  ## Checking for solidDB
-  solid_db = is_solid_db(port:port);
-  if(solid_db == 1)
-  {
-    log_message(data:string("SolidDB can be accessed by remote attackers"), port:port);
+  solid_db = is_solid_db( port:port );
+  if( solid_db ) {
+    log_message( data:"SolidDB can be accessed by remote attackers", port:port);
+    continue;
+  }
+
+  mssql = is_mssql();
+  if( mssql ) {
+    log_message( data:"Microsoft SQL Server can be accessed by remote attackers", port:port );
     continue;
   }
 }
 
-## Checking for MS SQL
-mssql = is_mssql();
-if(mssql == 1){
-  log_message(data:string("MS SQL can be accessed by remote attackers"), port:mssql_port);
-}
+# nb: This function is already checking for get_udp_port_state()
+# and is returning an empty list if no port was found
+udp_ports = get_all_udp_ports_list();
+# Adding the default port if unscanned_closed_udp = no
+udp_ports = make_list_unique( udp_ports, 523 );
 
-
-## List all udp ports
-udp_ports = get_kb_list("Ports/udp/*");
-if(udp_ports)
-{
-  foreach udp_port (keys(udp_ports))
-  {
-    ## Grep the port
-    udp_port = eregmatch(string:udp_port, pattern:"Ports/udp/([0-9]+)");
-
-    if(!udp_port[1]){
-      continue;
-    }
-
-    udp_port = udp_port[1];
-
-    if(!get_udp_port_state(udp_port)){
-      continue;
-    }
-
-    ## Checking for IBM DB2
-    ibm_db2 = is_ibm_db2(port:udp_port);
-    if(ibm_db2 == 1)
-    {
-      log_message(data:string("IBM DB2 can be accessed by remote attackers"), port:udp_port, proto: "udp");
-      exit(0);
-    }
+foreach udp_port( udp_ports ) {
+  ibm_db2 = is_ibm_db2( port:udp_port );
+  if( ibm_db2 ) {
+    log_message( data:"IBM DB2 can be accessed by remote attackers", port:udp_port, proto:"udp" );
+    continue;
   }
-  exit(0);
 }
 
-## If get_kb_list("Ports/udp/*") did not list udp ports
-## Taking IBM-DB2 default port, manually
-
-udp_port = 523;
-if(!get_udp_port_state(udp_port)){
-  exit(0);
-}
-
-## Checking for IBM DB2
-ibm_db2 = is_ibm_db2(port:udp_port);
-if(ibm_db2 == 1){
-  log_message(data:string("IBM DB2 can be accessed by remote attackers"), port:udp_port, proto: "udp");
-}
+exit( 0 );

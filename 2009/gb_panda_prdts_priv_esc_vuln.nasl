@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_prdts_priv_esc_vuln.nasl 6516 2017-07-04 12:20:47Z cfischer $
+# $Id: gb_panda_prdts_priv_esc_vuln.nasl 8218 2017-12-21 14:14:04Z cfischer $
 #
 # Panda Products Privilege Escalation Vulnerability
 #
@@ -44,8 +44,8 @@ tag_summary = "This host is running panda Products and is prone to Privilege
 if(description)
 {
   script_id(801080);
-  script_version("$Revision: 6516 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 14:20:47 +0200 (Tue, 04 Jul 2017) $");
+  script_version("$Revision: 8218 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 15:14:04 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-12-14 09:18:47 +0100 (Mon, 14 Dec 2009)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -61,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Privilege escalation");
   script_dependencies("gb_panda_prdts_detect.nasl");
-  script_require_keys("Panda/Products/Installed");
+  script_mandatory_keys("Panda/Products/Installed");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
@@ -70,29 +70,31 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
 # Check for the Panda Antivirus 2010(9.01.00) and prior
-if(pandaVer = get_kb_item("Panda/Antivirus/Ver"))
-{
-  if(version_in_range(version:pandaVer, test_version:"9.0", test_version2:"9.01.00")){
-    security_message(0);
+if( version = get_app_version( cpe:"cpe:/a:pandasecurity:panda_av_pro_2010", nofork:TRUE ) ) {
+  if( version_in_range( version:version, test_version:"9.0", test_version2:"9.01.00" ) ) {
+    report = report_fixed_ver( installed_version:version, fixed_version:"See references" );
+    security_message( port:0, data:report );
   }
 }
 
 # Check for the Panda Internet Security 2010(15.01.00) and prior
-else if(pandaVer = get_kb_item("Panda/InternetSecurity/Ver"))
-{
-  if(version_in_range(version:pandaVer, test_version:"15.0", test_version2:"15.01.00")){
-    security_message(0);
+if( version = get_app_version( cpe:"cpe:/a:pandasecurity:panda_internet_security_2010", nofork:TRUE ) ) {
+  if( version_in_range( version:version, test_version:"15.0", test_version2:"15.01.00" ) ) {
+    report = report_fixed_ver( installed_version:version, fixed_version:"See references" );
+    security_message( port:0, data:report );
   }
 }
 
 #Check for the Panda Global Protection 2010 (3.01.00) and prrior.
-else if(pandaVer = get_kb_item("Panda/GlobalProtection/Ver"))
-{
-   if(version_in_range(version:pandaVer, test_version:"3.0", test_version2:"3.01.00")){
-    security_message(0);
+if( version = get_app_version( cpe:"cpe:/a:pandasecurity:panda_global_protection_2010" ) ) {
+  if( version_in_range( version:version, test_version:"3.0", test_version2:"3.01.00" ) ) {
+    report = report_fixed_ver( installed_version:version, fixed_version:"See references" );
+    security_message( port:0, data:report );
   }
 }
+
+exit( 0 );

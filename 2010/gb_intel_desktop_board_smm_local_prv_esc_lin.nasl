@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_desktop_board_smm_local_prv_esc_lin.nasl 6522 2017-07-04 15:22:28Z cfischer $
+# $Id: gb_intel_desktop_board_smm_local_prv_esc_lin.nasl 8207 2017-12-21 07:30:12Z teissa $
 #
 # Intel Desktop Boards SMM Local Privilege Escalation Vulnerability (Linux)
 #
@@ -39,9 +39,9 @@ tag_summary = "This host has Intel Desktop Boards running which is prone to
 
 if(description)
 {
-  script_id(800164);
-  script_version("$Revision: 6522 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:22:28 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800164");
+  script_version("$Revision: 8207 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-02-11 16:37:59 +0100 (Thu, 11 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");

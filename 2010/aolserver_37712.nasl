@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: aolserver_37712.nasl 5391 2017-02-22 07:03:34Z cfi $
+# $Id: aolserver_37712.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # AOLServer Terminal Escape Sequence in Logs Command Injection Vulnerability
 #
@@ -35,9 +35,9 @@ AOLServer 4.5.1 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100442);
- script_version("$Revision: 5391 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 08:03:34 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100442");
+ script_version("$Revision: 8266 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-13 11:20:27 +0100 (Wed, 13 Jan 2010)");
  script_bugtraq_id(37712);
  script_cve_id("CVE-2009-4494");

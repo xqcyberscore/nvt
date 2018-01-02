@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-001_remote.nasl 5502 2017-03-06 16:02:22Z cfi $
+# $Id: secpod_ms09-001_remote.nasl 8215 2017-12-21 11:46:59Z cfischer $
 #
 # Vulnerabilities in SMB Could Allow Remote Code Execution (958687) - Remote
 #
@@ -27,19 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900233");
-  script_version("$Revision: 5502 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 17:02:22 +0100 (Mon, 06 Mar 2017) $");
+  script_version("$Revision: 8215 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 12:46:59 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-03-18 15:44:57 +0100 (Thu, 18 Mar 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_bugtraq_id(31179);
   script_cve_id("CVE-2008-4114", "CVE-2008-4834", "CVE-2008-4835");
   script_name("Vulnerabilities in SMB Could Allow Remote Code Execution (958687) - Remote");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("find_service.nasl");
+  script_dependencies("os_detection.nasl");
   script_require_ports(139, 445);
+  script_mandatory_keys("Host/runs_windows");
 
   script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/6463");
   script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms09-001.mspx");
@@ -51,7 +52,9 @@ if(description)
   Impact Level: System/Network";
 
   tag_affected = "Microsoft Windows 2K Service Pack 4 and prior.
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2003 Service Pack 2 and prior.";
 
   tag_insight = "The issue is due to the way Server Message Block (SMB) Protocol software

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3500_1.nasl 8019 2017-12-07 07:42:09Z santu $
+# $Id: gb_ubuntu_USN_3500_1.nasl 8247 2017-12-26 13:32:16Z cfischer $
 #
 # Ubuntu Update for libxfont USN-3500-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843386");
-  script_version("$Revision: 8019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 08:42:09 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 8247 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 14:32:16 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-30 07:34:49 +0100 (Thu, 30 Nov 2017)");
   script_cve_id("CVE-2017-16611");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for libxfont USN-3500-1");
   script_tag(name: "summary", value: "Check the version of libxfont");

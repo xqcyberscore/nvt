@@ -1,6 +1,6 @@
 ###############################################################################
 ## OpenVAS Vulnerability Test
-# $Id: gb_panda_antiv_esc_priv_cve_14_3450.nasl 4678 2016-12-05 15:16:17Z teissa $
+# $Id: gb_panda_antiv_esc_priv_cve_14_3450.nasl 8218 2017-12-21 14:14:04Z cfischer $
 #
 # Privilege Escalation in Panda Antivirus Pro 2014 CVE-2014-3450 (Windows) 
 #
@@ -24,23 +24,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:pandasecurity:panda_av_pro_2014";
+
 tag_impact = "This vulnerability allows for privilege escalation on the local system..
 
-  Impact level: System.";
+Impact level: System.";
 
-tag_affected = "Panda Gold Protection v13.01.01";
+tag_affected = "Panda Antivirus Pro 2014 v13.01.01";
 
-tag_insight = "As the USERS group has write permissions over the folder where the PSEvents.exe process is located, it is possible to execute malicious code as Local System.";
+tag_insight = "As the USERS group has write permissions over the folder where the PSEvents.exe
+process is located, it is possible to execute malicious code as Local System.";
+
 tag_solution = "Install Panda Hotfix for this vulnerability, see the vendor advisory.";
+
 tag_summary = "This host is running panda Products and is prone to Privilege
-  Escalation Vulnerability.";
+Escalation Vulnerability.";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107089");
-  script_version("$Revision: 4678 $");
+  script_version("$Revision: 8218 $");
   script_cve_id("CVE-2014-3450");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-05 16:16:17 +0100 (Mon, 05 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 15:14:04 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-11-21 09:18:47 +0100 (Mon, 21 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -62,18 +67,17 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-# Check for the Panda Antivirus Pro
-if(pandaVer = get_kb_item("Panda/Antivirus/Ver"))
-{
-    if(version_is_equal(version:pandaVer, test_version:"13.01.01")){
-    report = report_fixed_ver(installed_version:pandaVer, fixed_version:"See Vendor");
-    security_message( data:report );
-  }
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers  = infos['version'];
+path  = infos['location'];
+
+if( version_is_equal( version:vers, test_version:"13.01.01" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"See references", install_path:path );
+  security_message( data:report );
+  exit( 0 );
 }
 
 exit( 99 );
-
-

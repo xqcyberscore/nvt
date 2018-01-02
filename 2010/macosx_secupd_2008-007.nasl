@@ -55,9 +55,9 @@ tag_summary = "The remote host is missing Security Update 2008-007.
 
 if(description)
 {
- script_id(102025);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.102025");
+ script_version("$Revision: 8258 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-05-12 14:48:44 +0200 (Wed, 12 May 2010)");
  script_cve_id("CVE-2007-6420","CVE-2008-1678","CVE-2008-2364","CVE-2008-1389","CVE-2008-3912","CVE-2008-3913","CVE-2008-3914","CVE-2008-3642","CVE-2008-3641","CVE-2008-3643","CVE-2008-1767","CVE-2007-2691","CVE-2007-5969","CVE-2008-0226","CVE-2008-0227","CVE-2008-2079","CVE-2008-3645","CVE-2007-4850","CVE-2008-0674","CVE-2008-2371","CVE-2008-3646","CVE-2008-3647","CVE-2008-4211","CVE-2008-4212","CVE-2008-4214","CVE-2007-6286","CVE-2008-0002","CVE-2008-1232","CVE-2008-1947","CVE-2008-2370","CVE-2008-2938","CVE-2007-5333","CVE-2007-5342","CVE-2007-5461","CVE-2008-2712","CVE-2008-4101","CVE-2008-3432","CVE-2008-3294","CVE-2008-4215");
  script_name("Mac OS X Security Update 2008-007");

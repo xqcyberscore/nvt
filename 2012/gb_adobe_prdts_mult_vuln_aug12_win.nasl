@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_aug12_win.nasl 5988 2017-04-20 09:02:29Z teissa $
+# $Id: gb_adobe_prdts_mult_vuln_aug12_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities - Windows
 #
@@ -30,7 +30,7 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.802936";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5988 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2012-4149", "CVE-2012-4148", "CVE-2012-4147", "CVE-2012-2051",
                 "CVE-2012-2050", "CVE-2012-4160", "CVE-2012-2049", "CVE-2012-4159",
                 "CVE-2012-4158", "CVE-2012-4157", "CVE-2012-4156", "CVE-2012-4155",
@@ -40,7 +40,7 @@ if(description)
                     55018, 55017, 55016, 55015, 55012, 55027, 55013, 55010, 55011);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-20 11:01:35 +0530 (Mon, 20 Aug 2012)");
   script_name("Adobe Reader Multiple Vulnerabilities - Windows");
 
@@ -85,7 +85,7 @@ For updates refer to http://www.adobe.com";
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1080_1.nasl 8043 2017-12-08 08:20:47Z santu $
+# $Id: gb_suse_2012_1080_1.nasl 8267 2018-01-02 06:29:17Z teissa $
 #
 # SuSE Update for gimp openSUSE-SU-2012:1080-1 (gimp)
 #
@@ -35,8 +35,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(850318);
-  script_version("$Revision: 8043 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:20:47 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8267 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 07:29:17 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:41 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-2763", "CVE-2012-3236", "CVE-2012-3403", "CVE-2012-3481");
   script_tag(name:"cvss_base", value:"7.5");
@@ -44,7 +44,7 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2012:1080_1");
   script_name("SuSE Update for gimp openSUSE-SU-2012:1080-1 (gimp)");
 
-  script_summary("Check for the Version of gimp");
+  script_tag(name: "summary" , value: "Check for the Version of gimp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

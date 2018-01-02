@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: zeus_webserver_37829.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: zeus_webserver_37829.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # Zeus Web Server 'SSL2_CLIENT_HELLO' Remote Buffer Overflow Vulnerability
 #
@@ -37,9 +37,9 @@ Versions prior to Zeus Web Server 4.3r5 are vulnerable.";
 
 if (description)
 {
- script_id(100452);
- script_version("$Revision: 5401 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100452");
+ script_version("$Revision: 8250 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-01-20 10:52:14 +0100 (Wed, 20 Jan 2010)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

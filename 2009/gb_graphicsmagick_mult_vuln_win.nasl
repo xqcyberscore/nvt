@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphicsmagick_mult_vuln_win.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_graphicsmagick_mult_vuln_win.nasl 8209 2017-12-21 08:12:18Z cfischer $
 #
 # GraphicsMagick Multiple Vulnerabilities (Windows)
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:graphicsmagick:graphicsmagick";
+
 tag_impact = "A remote user could execute arbitrary code on the target system and can
   cause denial-of-service or compromise a vulnerable system via specially
   crafted PALM, PICT, XCF, DPX, and CINEON images.
@@ -31,22 +33,29 @@ tag_impact = "A remote user could execute arbitrary code on the target system an
   Impact level: System/Application";
 
 tag_affected = "GraphicsMagick version prior to 1.1.14 and 1.2.3 on Windows.";
+
 tag_insight = "Multiple flaws due to,
+
   - two boundary errors within the ReadPALMImage function in coders/palm.c,
+
   - a boundary error within the DecodeImage function in coders/pict.a,
+
   - unknown errors within the processing of XCF, DPX, and CINEON images.
+
   - error exists while processing malformed data in DPX which causes input
     validation vulnerability.";
+
 tag_solution = "Update to version 1.1.14 or 1.2.3,
   http://sourceforge.net/projects/graphicsmagick";
+
 tag_summary = "This host is running GraphicsMagick graphics tool and is prone
   to multiple buffer overflow/underflow vulnerabilities.";
 
 if(description)
 {
   script_id(800515);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 8209 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 09:12:18 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-02-18 15:32:11 +0100 (Wed, 18 Feb 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -65,7 +74,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_graphicsmagick_detect_win.nasl");
-  script_require_keys("GraphicsMagick/Win/Ver");
+  script_mandatory_keys("GraphicsMagick/Win/Installed");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
@@ -76,16 +85,19 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-gmVer = get_kb_item("GraphicsMagick/Win/Ver");
-if(gmVer == NULL){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 # Check for version 1.0 to 1.1.13 and 1.2 to 1.2.2
-if(version_in_range(version:gmVer, test_version:"1.0", test_version2:"1.1.13") ||
-   version_in_range(version:gmVer, test_version:"1.2", test_version2:"1.2.2")){
-  security_message(0);
+if( version_in_range( version:vers, test_version:"1.0", test_version2:"1.1.13" ) ||
+    version_in_range( version:vers, test_version:"1.2", test_version2:"1.2.2" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.1.14/1.2.3", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

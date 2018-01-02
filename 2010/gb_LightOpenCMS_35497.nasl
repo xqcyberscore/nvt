@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_LightOpenCMS_35497.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_LightOpenCMS_35497.nasl 8244 2017-12-25 07:29:28Z teissa $
 #
 # LightOpenCMS 'smarty.php' Local File Include Vulnerability
 #
@@ -37,9 +37,9 @@ LightOpenCMS 0.1 pre-alpha is vulnerable.";
 
 if(description)
 {
- script_id(100849);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100849");
+ script_version("$Revision: 8244 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-10-08 13:09:30 +0200 (Fri, 08 Oct 2010)");
  script_bugtraq_id(35497);
  script_tag(name:"cvss_base", value:"9.3");

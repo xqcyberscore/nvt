@@ -67,8 +67,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-January/msg00021.html");
   script_id(870668);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8265 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 07:29:23 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:44:57 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2011-4108", "CVE-2011-4576", "CVE-2011-4577", "CVE-2011-4619");
   script_tag(name:"cvss_base", value:"5.0");
@@ -76,7 +76,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:0059-01");
   script_name("RedHat Update for openssl RHSA-2012:0059-01");
 
-  script_summary("Check for the Version of openssl");
+  script_tag(name: "summary" , value: "Check for the Version of openssl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -34,8 +34,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-October/049604.html");
   script_id(862465);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 07:30:04 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-22 16:42:09 +0200 (Fri, 22 Oct 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -43,7 +43,7 @@ if(description)
   script_cve_id("CVE-2010-1407", "CVE-2010-1405", "CVE-2010-1664", "CVE-2010-1421", "CVE-2010-1807", "CVE-2010-1760", "CVE-2010-1422", "CVE-2010-1665", "CVE-2010-1771", "CVE-2010-2648", "CVE-2010-1784", "CVE-2010-1785", "CVE-2010-1786", "CVE-2010-1787", "CVE-2010-1780", "CVE-2010-1782", "CVE-2010-1788", "CVE-2010-1762", "CVE-2010-1386", "CVE-2010-2264", "CVE-2010-1761", "CVE-2010-3259", "CVE-2010-1416", "CVE-2010-1417", "CVE-2010-1418", "CVE-2010-1770", "CVE-2010-1773", "CVE-2010-3257", "CVE-2010-1774", "CVE-2010-1759", "CVE-2010-1767", "CVE-2010-3113", "CVE-2010-3116", "CVE-2010-3115", "CVE-2010-3114", "CVE-2010-1758", "CVE-2010-1814", "CVE-2010-1815", "CVE-2010-1812", "CVE-2010-1793", "CVE-2010-1792", "CVE-2010-1790", "CVE-2010-1772", "CVE-2010-1392");
   script_name("Fedora Update for webkitgtk FEDORA-2010-15957");
 
-  script_summary("Check for the Version of webkitgtk");
+  script_tag(name: "summary" , value: "Check for the Version of webkitgtk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

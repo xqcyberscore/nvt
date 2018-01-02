@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_int_overflow_vuln_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_prdts_int_overflow_vuln_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader/Acrobat Font Parsing Integer Overflow Vulnerability (Windows)
 #
@@ -30,6 +30,7 @@ file containing a specially crafted TrueType font.
 Impact Level: Application";
 
 tag_affected = "Adobe Reader version 8.2.3 and 9.3.3
+
 Adobe Acrobat version 9.3.3 on Windows.";
 
 tag_insight = "The flaw is due to an integer overflow error in 'CoolType.dll'
@@ -45,8 +46,8 @@ parsing integer overflow vulnerability.";
 if(description)
 {
   script_id(801419);
-  script_version("$Revision: 6475 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_version("$Revision: 8210 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-06 17:02:44 +0200 (Fri, 06 Aug 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -70,13 +71,11 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Get KB for Adobe Reader
-readerVer = get_kb_item("Adobe/Reader/Win/Ver");
-
-if(readerVer != NULL)
+CPE = "cpe:/a:adobe:acrobat_reader";
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   ## Check for Adobe Reader versions 8.2.3 and 9.3.3
   if(version_is_equal(version:readerVer, test_version:"8.2.3") ||
@@ -87,10 +86,8 @@ if(readerVer != NULL)
   }
 }
 
-# Get KB for Adobe Acrobat
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-
-if(acrobatVer != NULL)
+CPE = "cpe:/a:adobe:acrobat";
+if(acrobatVer = get_app_version(cpe:CPE))
 {
   ## Check for Adobe Acrobat version equal to 9.3.3
   if(version_is_equal(version:acrobatVer, test_version:"9.3.3")){

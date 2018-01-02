@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_out_of_bounds_vuln_feb15_win.nasl 6453 2017-06-28 09:59:05Z teissa $
+# $Id: gb_adobe_reader_out_of_bounds_vuln_feb15_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader Out-of-bounds Vulnerability Feb15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805438");
-  script_version("$Revision: 6453 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2014-9161");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-02-03 17:42:27 +0530 (Tue, 03 Feb 2015)");
   script_name("Adobe Reader Out-of-bounds Vulnerability Feb15 (Windows)");
 
@@ -67,7 +67,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
 

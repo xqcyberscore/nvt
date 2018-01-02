@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_money_dos_vuln.nasl 4918 2017-01-02 14:56:10Z cfi $
+# $Id: gb_ms_money_dos_vuln.nasl 8209 2017-12-21 08:12:18Z cfischer $
 #
 # Microsoft Money 'prtstb06.dll' Denial of Service Vulnerability
 #
@@ -24,8 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:microsoft:money";
+
 tag_impact = "Successful exploitation will allow attacker to change the vulnerable
   EIP value and can cause denial of service to the application.
+
   Impact Level: Application";
 tag_affected = "Microsoft Money 2006 on Windows.";
 tag_insight = "The flaw is due to an error in the Windows Based Script Host which lets
@@ -43,8 +46,8 @@ tag_summary = "This host has Microsoft Money installed and is prone to Denial
 if(description)
 {
   script_id(800218);
-  script_version("$Revision: 4918 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:56:10 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 8209 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 09:12:18 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-01-08 14:06:04 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -57,7 +60,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_ms_money_detect.nasl");
-  script_mandatory_keys("MS/Money/Version");
+  script_mandatory_keys("MS/Money/Win/Installed");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
@@ -66,16 +69,22 @@ if(description)
   script_tag(name : "summary" , value : tag_summary);
 
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
+include("host_details.inc");
+include("version_func.inc");
 
-msmVer = get_kb_item("MS/Money/Version");
-if(!msmVer){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
 # Check for version Microsoft Money 2006
-if(msmVer =~ "2006"){
-  security_message(0);
+if( vers =~ "2006" ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"None", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

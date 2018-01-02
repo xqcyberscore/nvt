@@ -36,8 +36,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-December/094672.html");
   script_id(864950);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8257 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 07:29:46 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-12-18 10:00:00 +0530 (Tue, 18 Dec 2012)");
   script_cve_id("CVE-2012-5510", "CVE-2012-5511", "CVE-2012-5512", "CVE-2012-5513",
                 "CVE-2012-5514", "CVE-2012-5515", "CVE-2012-4535", "CVE-2012-4536",
@@ -51,7 +51,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-19828");
   script_name("Fedora Update for xen FEDORA-2012-19828");
 
-  script_summary("Check for the Version of xen");
+  script_tag(name: "summary" , value: "Check for the Version of xen");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fins_udp_detect.nasl 7922 2017-11-28 10:06:28Z cfischer $
+# $Id: gb_fins_udp_detect.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # Factory Interface Network Service (FINS) Detection (UDP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140538");
- script_version ("$Revision: 7922 $");
- script_tag(name: "last_modification", value: "$Date: 2017-11-28 11:06:28 +0100 (Tue, 28 Nov 2017) $");
+ script_version ("$Revision: 8236 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
  script_tag(name: "creation_date", value: "2017-11-24 15:03:31 +0700 (Fri, 24 Nov 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,7 +47,6 @@ developed by Omron to provide a consistent way for PLCs and computers on various
 
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_family("Service detection");
- script_dependencies("find_service.nasl");
  script_require_udp_ports(9600);
 
  script_xref(name: "URL", value: "http://www.omron.com/");

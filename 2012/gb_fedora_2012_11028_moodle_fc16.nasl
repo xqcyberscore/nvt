@@ -36,8 +36,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-August/084564.html");
   script_id(864582);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8253 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 07:29:51 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-03 11:15:08 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2012-3387", "CVE-2012-3388", "CVE-2012-3389", "CVE-2012-3390", "CVE-2012-3391", "CVE-2012-3392", "CVE-2012-3393", "CVE-2012-3394", "CVE-2012-3395", "CVE-2012-3396", "CVE-2012-3397", "CVE-2012-3398", "CVE-2012-2353");
   script_tag(name:"cvss_base", value:"6.5");
@@ -45,7 +45,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-11028");
   script_name("Fedora Update for moodle FEDORA-2012-11028");
 
-  script_summary("Check for the Version of moodle");
+  script_tag(name: "summary" , value: "Check for the Version of moodle");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln_win_apr10.nasl 7699 2017-11-08 12:10:34Z santu $
+# $Id: gb_oracle_java_se_mult_vuln_win_apr10.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # Oracle Java SE Multiple Vulnerabilities (Windows)
 #
@@ -44,9 +44,9 @@ tag_summary = "This host is installed with Sun Java SE and is prone to multiple
 
 if(description)
 {
-  script_id(800499);
-  script_version("$Revision: 7699 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800499");
+  script_version("$Revision: 8258 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-07 16:20:50 +0200 (Wed, 07 Apr 2010)");
   script_cve_id("CVE-2009-3555", "CVE-2010-0082", "CVE-2010-0084", "CVE-2010-0085",
                 "CVE-2010-0087", "CVE-2010-0088", "CVE-2010-0089", "CVE-2010-0090",

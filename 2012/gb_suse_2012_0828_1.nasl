@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0828_1.nasl 8043 2017-12-08 08:20:47Z santu $
+# $Id: gb_suse_2012_0828_1.nasl 8245 2017-12-26 06:29:59Z teissa $
 #
 # SuSE Update for java-1_6_0-openjdk openSUSE-SU-2012:0828-1 (java-1_6_0-openjdk)
 #
@@ -52,8 +52,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(850206);
-  script_version("$Revision: 8043 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:20:47 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8245 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:31 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-1711", "CVE-2012-1713", "CVE-2012-1716", "CVE-2012-1717",
                 "CVE-2012-1718", "CVE-2012-1719", "CVE-2012-1723", "CVE-2012-1724",
@@ -63,7 +63,7 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2012:0828_1");
   script_name("SuSE Update for java-1_6_0-openjdk openSUSE-SU-2012:0828-1 (java-1_6_0-openjdk)");
 
-  script_summary("Check for the Version of java-1_6_0-openjdk");
+  script_tag(name: "summary" , value: "Check for the Version of java-1_6_0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

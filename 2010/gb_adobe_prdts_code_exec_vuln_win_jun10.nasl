@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_code_exec_vuln_win_jun10.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_prdts_code_exec_vuln_win_jun10.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Products Remote Code Execution Vulnerability - jun10 (Windows)
 #
@@ -39,6 +39,7 @@ arbitrary code by tricking a user into opening a specially crafted PDF file.
 Impact Level: System/Application";
 
 tag_affected = "Adobe Reader/Acrobat version 9.x to 9.3.2
+
 Adobe Flash Player version 9.0.x to 9.0.262 and 10.x to 10.0.45.2";
 
 tag_insight = "The flaw is due to a memory corruption error in the 'authplay.dll'
@@ -51,8 +52,8 @@ remote code execution vulnerability.";
 if(description)
 {
   script_id(801360);
-  script_version("$Revision: 6475 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_version("$Revision: 8210 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-15 06:05:27 +0200 (Tue, 15 Jun 2010)");
   script_cve_id("CVE-2010-1297");
   script_bugtraq_id(40586);
@@ -78,12 +79,11 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-# Check for Adobe Flash Player
-pVer = get_kb_item("AdobeFlashPlayer/Win/Ver");
-if(pVer != NULL)
+CPE = "cpe:/a:adobe:flash_player";
+if(pVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   #  Adobe Flash Player version 9.0.0 to 9.0.262 and 10.x to 10.0.45.2
   if(version_in_range(version:pVer, test_version:"9.0.0", test_version2:"9.0.262") ||
@@ -94,9 +94,8 @@ if(pVer != NULL)
   }
 }
 
-# Adobe Acrobat
-acVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(acVer != NULL)
+CPE = "cpe:/a:adobe:acrobat";
+if(acVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   # Grep for Adobe Acrobat version 9.0 to 9.3.2
   if(version_in_range(version:acVer, test_version:"9.0", test_version2:"9.3.2"))
@@ -106,9 +105,8 @@ if(acVer != NULL)
   }
 }
 
-# Adobe Reader
-arVer = get_kb_item("Adobe/Reader/Win/Ver");
-if(arVer != NULL)
+CPE = "cpe:/a:adobe:acrobat_reader";
+if(arVer = get_app_version(cpe:CPE))
 {
   # Grep for Adobe Reader version 9.0 to 9.3.2
   if(version_in_range(version:arVer, test_version:"9.0", test_version2:"9.3.2")){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ciscokits_tftp_server_dos_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: secpod_ciscokits_tftp_server_dos_vuln.nasl 8237 2017-12-22 10:33:02Z cfischer $
 #
 # Ciscokits TFTP Server Long Filename Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902460");
-  script_version("$Revision: 7019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_version("$Revision: 8237 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:33:02 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-07-27 14:47:11 +0200 (Wed, 27 Jul 2011)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -40,6 +40,7 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Denial of Service");
+  script_dependencies("tftpd_detect.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
 
   script_tag(name : "impact" , value : "Successful exploitation will allow attackers to cause denial

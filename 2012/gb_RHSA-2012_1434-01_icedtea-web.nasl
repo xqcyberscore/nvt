@@ -53,8 +53,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-November/msg00003.html");
   script_id(870858);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8245 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-11-09 09:33:10 +0530 (Fri, 09 Nov 2012)");
   script_cve_id("CVE-2012-4540");
   script_tag(name:"cvss_base", value:"6.8");
@@ -62,7 +62,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:1434-01");
   script_name("RedHat Update for icedtea-web RHSA-2012:1434-01");
 
-  script_summary("Check for the Version of icedtea-web");
+  script_tag(name: "summary" , value: "Check for the Version of icedtea-web");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

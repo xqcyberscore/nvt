@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_auth_bypass.nasl 8057 2017-12-08 13:32:23Z jschulte $
+# $Id: gb_ibm_websphere_mq_auth_bypass.nasl 8241 2017-12-22 13:40:20Z cfischer $
 #
 # IBM WebSphere MQ 8.0 And 9.0 Authentication Bypass
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113065");
-  script_version("$Revision: 8057 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 14:32:23 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8241 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 14:40:20 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-08 13:45:46 +0100 (Fri, 08 Dec 2017)");
-  script_tag(name:"cvss_base", value:"2.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"registry");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_40332.nasl 6948 2017-08-17 07:13:38Z asteins $
+# $Id: gb_cacti_40332.nasl 8246 2017-12-26 07:29:20Z teissa $
 #
 # Cacti Multiple Cross Site Scripting Vulnerabilities
 #
@@ -39,9 +39,9 @@ tag_solution = "Updates are available. Please see the references for details.";
 
 if (description)
 {
- script_id(100655);
- script_version("$Revision: 6948 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-17 09:13:38 +0200 (Thu, 17 Aug 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100655");
+ script_version("$Revision: 8246 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-26 08:29:20 +0100 (Tue, 26 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-05-25 18:01:00 +0200 (Tue, 25 May 2010)");
  script_tag(name:"cvss_base", value:"6.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");

@@ -53,8 +53,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2010-March/msg00010.html");
   script_id(870226);
-  script_version("$Revision: 6684 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:43:49 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8226 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 07:30:26 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-03-22 11:34:53 +0100 (Mon, 22 Mar 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -62,7 +62,7 @@ if(description)
   script_cve_id("CVE-2005-4268", "CVE-2010-0624");
   script_name("RedHat Update for cpio RHSA-2010:0145-01");
 
-  script_summary("Check for the Version of cpio");
+  script_tag(name: "summary" , value: "Check for the Version of cpio");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

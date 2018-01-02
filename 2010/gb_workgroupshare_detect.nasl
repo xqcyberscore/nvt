@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_workgroupshare_detect.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_workgroupshare_detect.nasl 8246 2017-12-26 07:29:20Z teissa $
 #
 # WorkgroupShare Detection
 #
@@ -31,10 +31,10 @@ protocols.";
 
 if (description)
 {
- script_id(100518);
+ script_oid("1.3.6.1.4.1.25623.1.0.100518");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 8246 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-26 08:29:20 +0100 (Tue, 26 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-03-05 14:01:46 +0100 (Fri, 05 Mar 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("WorkgroupShare Detection");

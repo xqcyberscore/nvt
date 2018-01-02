@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssl_funcs.inc 7922 2017-11-28 10:06:28Z cfischer $
+# $Id: ssl_funcs.inc 8231 2017-12-22 09:17:27Z cfischer $
 #
 # Implementation of common ssl functions
 #
@@ -25,7 +25,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7922 $
+# $Revision: 8231 $
 #
 ###############################################################################
 
@@ -2152,14 +2152,5 @@ function get_supported_tls_versions( port, min ) {
 
 # add gb_tls_version_get.nasl as dependency if you use this
 function get_ssl_port() {
-
-  local_var port;
-
-  port = get_kb_item( "ssl_tls/port" );
-  # nb: Set by gb_dont_scan_fragile_device.nasl. Some devices are even crashing
-  # if we're touching one or more ports of them with our SSL/TLS checks so those
-  # ports gets excluded here.
-  if( get_kb_item( "fragile_port/exclude_tls/" + port ) ) exit( 0 );
-
-  return port;
+  return get_kb_item( "ssl_tls/port" );
 }

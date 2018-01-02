@@ -41,8 +41,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-January/072524.html");
   script_id(863708);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8253 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 07:29:51 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-02-01 11:32:55 +0530 (Wed, 01 Feb 2012)");
   script_cve_id("CVE-2010-2642", "CVE-2011-0433", "CVE-2011-0764", "CVE-2011-1552",
                 "CVE-2011-1553", "CVE-2011-1554");
@@ -51,7 +51,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-0266");
   script_name("Fedora Update for t1lib FEDORA-2012-0266");
 
-  script_summary("Check for the Version of t1lib");
+  script_tag(name: "summary" , value: "Check for the Version of t1lib");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

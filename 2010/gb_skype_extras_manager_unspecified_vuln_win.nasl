@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_skype_extras_manager_unspecified_vuln_win.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_skype_extras_manager_unspecified_vuln_win.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # Skype Extras Manager Unspecified Vulnerability (Windows)
 #
@@ -35,9 +35,9 @@ tag_summary = "The host is installed with Skype and is prone to unspecified
 
 if(description)
 {
-  script_id(801302);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801302");
+  script_version("$Revision: 8228 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2009-4741");
   script_bugtraq_id(36459);

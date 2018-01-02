@@ -87,8 +87,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-April/msg00007.html");
   script_id(870731);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8265 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 07:29:23 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:56:40 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2010-3296", "CVE-2010-4346", "CVE-2010-4526", "CVE-2010-4648",
                 "CVE-2010-4655", "CVE-2010-4656", "CVE-2011-0521", "CVE-2011-0695",
@@ -98,7 +98,7 @@ if(description)
   script_xref(name: "RHSA", value: "2011:0421-01");
   script_name("RedHat Update for kernel RHSA-2011:0421-01");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

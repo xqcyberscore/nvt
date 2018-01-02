@@ -66,8 +66,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2010-October/017041.html");
   script_id(880434);
-  script_version("$Revision: 6652 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:46:00 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 07:30:04 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-19 15:54:15 +0200 (Tue, 19 Oct 2010)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -75,7 +75,7 @@ if(description)
   script_cve_id("CVE-2010-3433");
   script_name("CentOS Update for postgresql CESA-2010:0742 centos4 i386");
 
-  script_summary("Check for the Version of postgresql");
+  script_tag(name: "summary" , value: "Check for the Version of postgresql");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

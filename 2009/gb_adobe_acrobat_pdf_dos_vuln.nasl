@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_pdf_dos_vuln.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_adobe_acrobat_pdf_dos_vuln.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Acrobat PDF File Denial Of Service Vulnerability
 #
@@ -24,21 +24,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:adobe:acrobat";
+
 tag_impact = "Successful attacks results in Denial of Service.
+
   Impact Level: Application";
+
 tag_affected = "Adobe Acrobat version 9.1.1 and prior on Windows.";
+
 tag_insight = "A Stack consumption error exists when handling a PDF file containing a large
   number of '[' characters to the alert method.";
+
 tag_solution = "Upgrade to Adobe Acrobat version 9.1.2 or later,
   For updates refer to http://www.adobe.com/products/acrobat/?promoid=BPDDU";
+
 tag_summary = "This host has Adobe Acrobat or Adobe Acrobat Reader installed and
   is prone to Denial of Service vulnerability.";
 
 if(description)
 {
   script_id(801104);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 8210 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-10-06 07:21:15 +0200 (Tue, 06 Oct 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -52,7 +59,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_require_keys("Adobe/Acrobat/Win/Ver");
+  script_mandatory_keys("Adobe/Acrobat/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -61,16 +68,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
 # Check for Adobe Acrobat version <= 9.1.1
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(acrobatVer)
-{
-  if(version_is_less_equal(version:acrobatVer, test_version:"9.1.1"))
-  {
-    security_message(0);
-    exit(0);
-  }
+if( version_is_less_equal( version:vers, test_version:"9.1.1" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"9.1.2", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

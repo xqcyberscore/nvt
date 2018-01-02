@@ -44,8 +44,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:048");
   script_id(831651);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8257 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 07:29:46 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-03 09:58:39 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2009-3766", "CVE-2011-1429");
   script_tag(name:"cvss_base", value:"6.8");
@@ -53,7 +53,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:048");
   script_name("Mandriva Update for mutt MDVSA-2012:048 (mutt)");
 
-  script_summary("Check for the Version of mutt");
+  script_tag(name: "summary" , value: "Check for the Version of mutt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

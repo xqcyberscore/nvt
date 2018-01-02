@@ -43,9 +43,9 @@ as announced in the referenced advisory FreeBSD-SA-10:08.bzip2.asc";
 
 if(description)
 {
- script_id(68104);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.68104");
+ script_version("$Revision: 8250 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-10-10 19:35:00 +0200 (Sun, 10 Oct 2010)");
  script_cve_id("CVE-2010-0405");
  script_tag(name:"cvss_base", value:"5.1");

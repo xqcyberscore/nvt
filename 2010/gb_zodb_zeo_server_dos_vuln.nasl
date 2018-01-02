@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zodb_zeo_server_dos_vuln.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_zodb_zeo_server_dos_vuln.nasl 8207 2017-12-21 07:30:12Z teissa $
 #
 # Zope Object Database ZEO Server Denial of Service Vulnerability
 #
@@ -42,9 +42,9 @@ tag_summary = "This host is running Zope Object Database and is prone to denial 
 
 if(description)
 {
-  script_id(800185);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800185");
+  script_version("$Revision: 8207 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-11-30 12:42:12 +0100 (Tue, 30 Nov 2010)");
   script_cve_id("CVE-2010-3495");
   script_tag(name:"cvss_base", value:"4.3");

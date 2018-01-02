@@ -66,8 +66,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:169");
   script_id(831749);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8267 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 07:29:17 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 11:02:07 +0530 (Fri, 02 Nov 2012)");
   script_cve_id("CVE-2012-3216", "CVE-2012-5068", "CVE-2012-5077", "CVE-2012-5073",
                 "CVE-2012-5075", "CVE-2012-5072", "CVE-2012-5081", "CVE-2012-5069",
@@ -78,7 +78,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:169");
   script_name("Mandriva Update for java-1.6.0-openjdk MDVSA-2012:169 (java-1.6.0-openjdk)");
 
-  script_summary("Check for the Version of java-1.6.0-openjdk");
+  script_tag(name: "summary" , value: "Check for the Version of java-1.6.0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

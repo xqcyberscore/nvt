@@ -48,9 +48,9 @@ tag_affected = "seamonkey on CentOS 4";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2010-April/016621.html");
-  script_id(880387);
-  script_version("$Revision: 8109 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-14 07:31:15 +0100 (Thu, 14 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.880387");
+  script_version("$Revision: 8266 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-09 11:11:25 +0200 (Fri, 09 Apr 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

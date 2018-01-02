@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lhaplus_untrusted_search_path_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_lhaplus_untrusted_search_path_vuln.nasl 8244 2017-12-25 07:29:28Z teissa $
 #
 # Lhaplus Untrusted search path Vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with Lhaplus and is prone to
 
 if(description)
 {
-  script_id(801462);
-  script_version("$Revision: 5374 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801462");
+  script_version("$Revision: 8244 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-22 15:51:55 +0200 (Fri, 22 Oct 2010)");
   script_cve_id("CVE-2010-2368", "CVE-2010-3158");
   script_tag(name:"cvss_base", value:"6.9");

@@ -48,9 +48,9 @@ tag_summary = "This host is installed with Oracle Java JDK/JRE and is prone to
 
 if(description)
 {
-  script_id(801530);
-  script_version("$Revision: 7699 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 13:10:34 +0100 (Wed, 08 Nov 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801530");
+  script_version("$Revision: 8250 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-28 11:50:37 +0200 (Thu, 28 Oct 2010)");
   script_cve_id("CVE-2010-3550", "CVE-2010-3551", "CVE-2010-3552", "CVE-2010-3553",
                 "CVE-2010-3554", "CVE-2010-3555", "CVE-2010-3556", "CVE-2010-3557",

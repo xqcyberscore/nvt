@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_multiple_vuln01_win.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_openafs_multiple_vuln01_win.nasl 8209 2017-12-21 08:12:18Z cfischer $
 #
 # OpenAFS Multiple Vulnerabilities-01 (Windows)
 #
@@ -29,11 +29,11 @@ CPE= "cpe:/a:openafs:openafs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808076");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 8209 $");
   script_cve_id("CVE-2015-6587", "CVE-2015-3282", "CVE-2015-3283");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 09:12:18 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 19:01:35 +0530 (Wed, 08 Jun 2016)");
   script_name("OpenAFS Multiple Vulnerabilities-01 (Windows)");
 
@@ -72,7 +72,7 @@ if(description)
   script_family("General");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_openafs_detect.nasl");
-  script_mandatory_keys("OpenAFS/Win/Ver");
+  script_mandatory_keys("OpenAFS/Win/Installed");
   exit(0);
 }
 

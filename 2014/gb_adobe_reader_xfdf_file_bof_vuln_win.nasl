@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_xfdf_file_bof_vuln_win.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_adobe_reader_xfdf_file_bof_vuln_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader 'XFDF' File Buffer Overflow Vulnerability (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804387";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6637 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2004-0194");
   script_bugtraq_id(9802);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-04-10 15:10:46 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader 'XFDF' File Buffer Overflow Vulnerability (Windows)");
 
@@ -79,7 +79,7 @@ http://get.adobe.com/reader";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Acrobat/Win/Ver");
+  script_mandatory_keys("Adobe/Acrobat/Win/Installed");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_mar09_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_flash_player_mult_vuln_mar09_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities - Mar09 (Windows)
 #
@@ -33,28 +33,36 @@ tag_solution = "Update to version 1.5.1 for Adobe Air.
   http://www.adobe.com/support/flashplayer/downloads.html#fp9";
 
 tag_impact = "Successful exploitation will allow remote attackers to cause remote code
-  execution, compromise system privileges or may cause exposure of sensitive
-  information.
+  execution, compromise system privileges or may cause exposure of sensitive information.
+
   Impact Level: System/Application";
+
 tag_affected = "Adobe Flex version 3.x or 2.x
+
   Adobe AIR version prior to 1.5.1
+
   Adobe Flash CS3/CS4 Professional
+
   Adobe Flash Player 9 version prior to 9.0.159.0
+
   Adobe Flash Player 10 version prior to 10.0.22.87";
+
 tag_insight = "- Error while processing multiple references to an unspecified object which
-    can be exploited by tricking the user to accessing a malicious crafted SWF
-    file.
+    can be exploited by tricking the user to accessing a malicious crafted SWF file.
+
   - Input validation error in the processing of SWF file.
+
   - Error while displaying the mouse pointer on Windows which may cause
     'Clickjacking' attacks.";
+
 tag_summary = "This host is installed with Adobe Products and is prone to
   multiple vulnerabilities.";
 
 if(description)
 {
   script_id(800359);
-  script_version("$Revision: 6475 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_version("$Revision: 8210 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-10 11:59:23 +0100 (Tue, 10 Mar 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -80,13 +88,13 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-# Check for Adobe Flash Player version prior to 9.0.159.0 or 10.0.22.87
-playerVer = get_kb_item("AdobeFlashPlayer/Win/Ver");
-if(playerVer != NULL)
+CPE = "cpe:/a:adobe:flash_player";
+if(playerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
+  # Check for Adobe Flash Player version prior to 9.0.159.0 or 10.0.22.87
   if(version_is_less(version:playerVer, test_version:"9.0.159.0") ||
      version_in_range(version:playerVer, test_version:"10.0",
                                          test_version2:"10.0.22.86"))
@@ -96,10 +104,10 @@ if(playerVer != NULL)
   }
 }
 
-# Check for Adobe Air version prior to 1.5.1
-airVer = get_kb_item("Adobe/Air/Win/Ver");
-if(airVer != NULL)
+CPE = "cpe:/a:adobe:adobe_air";
+if(airVer = get_app_version(cpe:CPE))
 {
+  # Check for Adobe Air version prior to 1.5.1
   if(version_is_less(version:airVer, test_version:"1.5.1")){
     security_message(0);
   }

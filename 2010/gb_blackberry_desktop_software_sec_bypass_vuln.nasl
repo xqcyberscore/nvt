@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackberry_desktop_software_sec_bypass_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_blackberry_desktop_software_sec_bypass_vuln.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # BlackBerry Desktop Software Security Bypass Vulnerability
 #
@@ -50,9 +50,9 @@ security bypass vulnerability.";
 
 if(description)
 {
-  script_id(801523);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801523");
+  script_version("$Revision: 8228 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-08 08:29:14 +0200 (Fri, 08 Oct 2010)");
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");

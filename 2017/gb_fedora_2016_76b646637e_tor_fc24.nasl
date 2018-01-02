@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872212");
-  script_version("$Revision: 6634 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 09:32:24 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8261 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 10:13:46 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-01-01 05:56:41 +0100 (Sun, 01 Jan 2017)");
   script_cve_id("CVE-2016-1254");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for tor FEDORA-2016-76b646637e");
   script_tag(name: "summary", value: "Check the version of tor");

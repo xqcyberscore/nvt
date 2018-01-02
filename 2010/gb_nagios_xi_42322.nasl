@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_xi_42322.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_nagios_xi_42322.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # Nagios XI Multiple Cross Site Request Forgery Vulnerabilities
 #
@@ -42,9 +42,9 @@ Please see the references for more information.";
 
 if (description)
 {
- script_id(100753);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100753");
+ script_version("$Revision: 8266 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-08-10 14:55:08 +0200 (Tue, 10 Aug 2010)");
  script_bugtraq_id(42322);
  script_tag(name:"cvss_base", value:"4.3");

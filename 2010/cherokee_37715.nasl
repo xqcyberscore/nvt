@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cherokee_37715.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: cherokee_37715.nasl 8207 2017-12-21 07:30:12Z teissa $
 #
 # Cherokee Terminal Escape Sequence in Logs Command Injection Vulnerability
 #
@@ -37,9 +37,9 @@ tag_solution = "Updates are available. Please see the references for details.";
 
 if (description)
 {
- script_id(100440);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100440");
+ script_version("$Revision: 8207 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-01-13 11:20:27 +0100 (Wed, 13 Jan 2010)");
  script_bugtraq_id(37715);
  script_cve_id("CVE-2009-4489");

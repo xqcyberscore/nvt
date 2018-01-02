@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804070";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 8200 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2014-0493", "CVE-2014-0495", "CVE-2014-0496");
   script_bugtraq_id(64802, 64803, 64804);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-01-21 12:51:13 +0530 (Tue, 21 Jan 2014)");
   script_name("Adobe Acrobat Multiple Vulnerabilities - 01 Jan14 (Windows)");
 
@@ -81,7 +81,7 @@ For updates refer to http://www.adobe.com/in/products/acrobat.html";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Acrobat/Win/Ver");
+  script_mandatory_keys("Adobe/Acrobat/Win/Installed");
   exit(0);
 }
 

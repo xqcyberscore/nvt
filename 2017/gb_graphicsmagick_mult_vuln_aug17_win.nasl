@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphicsmagick_mult_vuln_aug17_win.nasl 7109 2017-09-12 09:53:39Z asteins $
+# $Id: gb_graphicsmagick_mult_vuln_aug17_win.nasl 8225 2017-12-22 06:03:44Z teissa $
 #
 # GraphicsMagick Multiple Vulnerabilities - Aug17 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:graphicsmagick:graphicsmagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112027");
-  script_version("$Revision: 7109 $");
+  script_version("$Revision: 8225 $");
   script_cve_id("CVE-2017-11642", "CVE-2017-12935", "CVE-2017-12936", "CVE-2017-12937", "CVE-2017-13063", "CVE-2017-13064", "CVE-2017-13065", "CVE-2017-13066", "CVE-2017-13147", "CVE-2017-13148");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-12 11:53:39 +0200 (Tue, 12 Sep 2017) $");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 07:03:44 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-08-23 11:38:13 +0200 (Wed, 23 Aug 2017)");
   script_name("GraphicsMagick Multiple Vulnerabilities - Aug17 (Windows)");
 
@@ -80,7 +80,7 @@ if(description)
   script_family("General");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_graphicsmagick_detect_win.nasl");
-  script_mandatory_keys("GraphicsMagick/Win/Ver");
+  script_mandatory_keys("GraphicsMagick/Win/Installed");
   exit(0);
 }
 

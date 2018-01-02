@@ -35,8 +35,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-July/044465.html");
   script_id(862271);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8226 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 07:30:26 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-23 16:10:25 +0200 (Fri, 23 Jul 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,7 +44,7 @@ if(description)
   script_cve_id("CVE-2010-1121", "CVE-2010-1200", "CVE-2010-1201", "CVE-2010-1202", "CVE-2010-1196", "CVE-2010-1199", "CVE-2010-1211", "CVE-2010-2752", "CVE-2010-2753", "CVE-2010-1205", "CVE-2010-1213", "CVE-2010-0654", "CVE-2010-2754");
   script_name("Fedora Update for sunbird FEDORA-2010-11361");
 
-  script_summary("Check for the Version of sunbird");
+  script_tag(name: "summary" , value: "Check for the Version of sunbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

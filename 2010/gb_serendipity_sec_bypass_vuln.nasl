@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serendipity_sec_bypass_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_serendipity_sec_bypass_vuln.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # Serendipity 'Xinha WYSIWYG' Editor Security Bypass Vulnerability
 #
@@ -47,9 +47,9 @@ CPE = "cpe:/a:s9y:serendipity";
 
 if(description)
 {
-  script_id(801337);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801337");
+  script_version("$Revision: 8258 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_cve_id("CVE-2010-1916");
   script_tag(name:"cvss_base", value:"7.5");

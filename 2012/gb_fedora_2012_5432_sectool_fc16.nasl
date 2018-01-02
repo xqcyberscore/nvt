@@ -39,8 +39,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-April/076873.html");
   script_id(864146);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8257 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 07:29:46 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-04-11 10:48:21 +0530 (Wed, 11 Apr 2012)");
   script_cve_id("CVE-2012-1615");
   script_tag(name:"cvss_base", value:"7.2");
@@ -48,7 +48,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-5432");
   script_name("Fedora Update for sectool FEDORA-2012-5432");
 
-  script_summary("Check for the Version of sectool");
+  script_tag(name: "summary" , value: "Check for the Version of sectool");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -34,8 +34,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-April/038312.html");
   script_id(861828);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8226 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 07:30:26 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-06 08:56:44 +0200 (Tue, 06 Apr 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -43,7 +43,7 @@ if(description)
   script_cve_id("CVE-2010-0173", "CVE-2010-0174", "CVE-2010-0175", "CVE-2010-0176", "CVE-2010-0177", "CVE-2010-0178", "CVE-2010-0181");
   script_name("Fedora Update for perl-Gtk2-MozEmbed FEDORA-2010-5506");
 
-  script_summary("Check for the Version of perl-Gtk2-MozEmbed");
+  script_tag(name: "summary" , value: "Check for the Version of perl-Gtk2-MozEmbed");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

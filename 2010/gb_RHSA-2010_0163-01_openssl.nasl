@@ -75,8 +75,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2010-March/msg00021.html");
   script_id(870243);
-  script_version("$Revision: 6684 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:43:49 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8226 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 07:30:26 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-03-31 14:20:46 +0200 (Wed, 31 Mar 2010)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -84,7 +84,7 @@ if(description)
   script_cve_id("CVE-2009-0590", "CVE-2009-2409", "CVE-2009-3555");
   script_name("RedHat Update for openssl RHSA-2010:0163-01");
 
-  script_summary("Check for the Version of openssl");
+  script_tag(name: "summary" , value: "Check for the Version of openssl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

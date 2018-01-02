@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cambium_epmp1000_detect.nasl 5474 2017-03-03 08:32:02Z ckuerste $
+# $Id: gb_cambium_epmp1000_detect.nasl 8238 2017-12-22 10:33:38Z ckuersteiner $
 #
 # Cambium Networks ePMP 1000 Detection 
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106627");
-  script_version("$Revision: 5474 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-03 09:32:02 +0100 (Fri, 03 Mar 2017) $");
+  script_version("$Revision: 8238 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-22 11:33:38 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-03-03 10:33:24 +0700 (Fri, 03 Mar 2017)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,7 +64,8 @@ port = get_http_port(default: 80);
 
 res = http_get_cache(port: port, item: "/");
 
-if ("<title>ePMP 1000</title>" >< res && 'data-inactive="No Internet Connectivity"' >< res) {
+if (res =~ "<title>ePMP( 1000)?</title>" && 'data-inactive="No Internet Connectivity"' >< res &&
+    "cambium.min.css" >< res) {
   version = "unknown";
 
   vers = eregmatch(pattern: 'sw_version">([0-9.]+)', string: res);

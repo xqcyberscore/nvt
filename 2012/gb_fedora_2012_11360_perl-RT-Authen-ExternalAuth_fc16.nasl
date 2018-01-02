@@ -36,8 +36,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-August/084852.html");
   script_id(864602);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8245 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-14 10:36:34 +0530 (Tue, 14 Aug 2012)");
   script_cve_id("CVE-2012-2770");
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,7 +45,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-11360");
   script_name("Fedora Update for perl-RT-Authen-ExternalAuth FEDORA-2012-11360");
 
-  script_summary("Check for the Version of perl-RT-Authen-ExternalAuth");
+  script_tag(name: "summary" , value: "Check for the Version of perl-RT-Authen-ExternalAuth");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

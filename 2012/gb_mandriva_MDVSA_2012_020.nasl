@@ -43,8 +43,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2012-02/msg00022.php");
   script_id(831542);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8253 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 07:29:51 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-02-21 19:00:53 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2012-0834");
   script_tag(name:"cvss_base", value:"4.3");
@@ -52,7 +52,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:020");
   script_name("Mandriva Update for phpldapadmin MDVSA-2012:020 (phpldapadmin)");
 
-  script_summary("Check for the Version of phpldapadmin");
+  script_tag(name: "summary" , value: "Check for the Version of phpldapadmin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

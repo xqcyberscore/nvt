@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aardvark_topsites_php_cms_xss_vuln.nasl 5676 2017-03-22 16:29:37Z cfi $
+# $Id: gb_aardvark_topsites_php_cms_xss_vuln.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # Aardvark Topsites PHP 'index.php' Multiple Cross Site Scripting Vulnerabilities
 #
@@ -46,9 +46,9 @@ tag_summary = "This host is running Aardvark Topsites PHP CMS and is prone to cr
 
 if(description)
 {
-  script_id(801556);
-  script_version("$Revision: 5676 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801556");
+  script_version("$Revision: 8228 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-12-09 06:36:39 +0100 (Thu, 09 Dec 2010)");
   script_cve_id("CVE-2010-4097");
   script_bugtraq_id(44390);

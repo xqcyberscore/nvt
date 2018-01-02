@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dissector_bof_vuln_win.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_wireshark_dissector_bof_vuln_win.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # Wireshark Stack-based Buffer Overflow Vulnerability (Windows)
 #
@@ -37,9 +37,9 @@ tag_summary = "The host is installed with Wireshark and is prone to Stack-based
 
 if(description)
 {
-  script_id(801434);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801434");
+  script_version("$Revision: 8250 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-19 10:23:11 +0200 (Thu, 19 Aug 2010)");
   script_cve_id("CVE-2010-2994");
   script_tag(name:"cvss_base", value:"10.0");

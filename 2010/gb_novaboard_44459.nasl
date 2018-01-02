@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novaboard_44459.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_novaboard_44459.nasl 8207 2017-12-21 07:30:12Z teissa $
 #
 # NovaBoard 'nova_lang' Local File Include Vulnerability
 #
@@ -38,9 +38,9 @@ NovaBoard 1.1.4 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100874);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100874");
+ script_version("$Revision: 8207 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-10-28 13:41:07 +0200 (Thu, 28 Oct 2010)");
  script_bugtraq_id(44459);
  script_tag(name:"cvss_base", value:"5.1");

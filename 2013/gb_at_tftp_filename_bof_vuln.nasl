@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_at_tftp_filename_bof_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_at_tftp_filename_bof_vuln.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # AT-TFTP Server Long Filename BoF Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802065");
-  script_version("$Revision: 6086 $");
+  script_version("$Revision: 8236 $");
   script_bugtraq_id(21320);
   script_cve_id("CVE-2006-6184");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-11-26 11:32:51 +0530 (Tue, 26 Nov 2013)");
   script_name("AT-TFTP Server Long Filename BoF Vulnerability");
 
@@ -59,7 +59,7 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("tftpd_detect.nasl", "find_service1.nasl");
+  script_dependencies("tftpd_detect.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
 
   script_tag(name:"solution_type", value:"WillNotFix");

@@ -39,9 +39,9 @@ tag_affected = "mingw32-libtiff on Fedora 13";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-July/043769.html");
-  script_id(862228);
-  script_version("$Revision: 8092 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:31:16 +0100 (Wed, 13 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.862228");
+  script_version("$Revision: 8244 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-12 11:56:20 +0200 (Mon, 12 Jul 2010)");
   script_xref(name: "FEDORA", value: "2010-10460");
   script_tag(name:"cvss_base", value:"6.8");

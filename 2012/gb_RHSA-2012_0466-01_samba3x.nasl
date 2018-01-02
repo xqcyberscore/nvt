@@ -50,14 +50,14 @@ if(description)
   script_id(870584);
   script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8249 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 07:29:56 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-04-11 10:59:47 +0530 (Wed, 11 Apr 2012)");
   script_cve_id("CVE-2012-1182");
   script_xref(name: "RHSA", value: "2012:0466-01");
   script_name("RedHat Update for samba3x RHSA-2012:0466-01");
 
-  script_summary("Check for the Version of samba3x");
+  script_tag(name: "summary" , value: "Check for the Version of samba3x");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_dos_vuln_may09_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_reader_dos_vuln_may09_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader/Acrobat Denial of Service Vulnerability (May09) (Windows)
 #
@@ -24,46 +24,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.800706";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6475 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800706");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2009-1492");
   script_bugtraq_id(34736);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-05-11 08:41:11 +0200 (Mon, 11 May 2009)");
   script_name("Adobe Reader/Acrobat Denial of Service Vulnerability (May09)");
 
-  tag_summary =
-"This host is installed with Adobe Reader/Acrobat and is prone to Denial of
+  tag_summary = "This host is installed with Adobe Reader/Acrobat and is prone to Denial of
 Service vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"This flaw is due to memory corruption error in 'getAnnots' methods in the
+  tag_insight = "This flaw is due to memory corruption error in 'getAnnots' methods in the
 JavaScript API while processing malicious PDF files that calls this vulnerable
 method with crafted integer arguments.";
 
-  tag_impact =
-"Successful exploitation will let the attacker cause memory corruption or
+  tag_impact = "Successful exploitation will let the attacker cause memory corruption or
 denial of service.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Reader/Acrobat version 9.1 and prior on Windows.";
+  tag_affected = "Adobe Reader/Acrobat version 9.1 and prior on Windows.";
 
-  tag_solution =
-"Upgrade to Adobe Reader/Acrobat version 9.3.2 or later,
+  tag_solution = "Upgrade to Adobe Reader/Acrobat version 9.3.2 or later,
 For further updates refer, http://www.adobe.com";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -88,15 +79,9 @@ For further updates refer, http://www.adobe.com";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-acroVer = "";
-
-##CPE for reader
 CPE = "cpe:/a:adobe:acrobat_reader";
 
-## Get version
-if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   # Grep for Adobe Reader version prior to 9.1
   if(version_is_less_equal(version:readerVer, test_version:"9.1")){
@@ -104,8 +89,8 @@ if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
   }
 }
 
-acroVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(acroVer != NULL)
+CPE = "cpe:/a:adobe:acrobat";
+if(acroVer = get_app_version(cpe:CPE))
 {
   # Grep for Adobe Acrobat version prior to 9.1
   if(version_is_less_equal(version:acroVer, test_version:"9.1")){

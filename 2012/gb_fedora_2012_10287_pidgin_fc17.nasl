@@ -46,8 +46,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-July/083599.html");
   script_id(864535);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8253 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 07:29:51 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-30 11:51:16 +0530 (Thu, 30 Aug 2012)");
   script_cve_id("CVE-2012-3374", "CVE-2012-2214", "CVE-2012-2318");
   script_tag(name:"cvss_base", value:"7.5");
@@ -55,7 +55,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-10287");
   script_name("Fedora Update for pidgin FEDORA-2012-10287");
 
-  script_summary("Check for the Version of pidgin");
+  script_tag(name: "summary" , value: "Check for the Version of pidgin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

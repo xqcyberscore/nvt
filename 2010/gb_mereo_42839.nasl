@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mereo_42839.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_mereo_42839.nasl 8244 2017-12-25 07:29:28Z teissa $
 #
 # Mereo 'GET' Request Remote Buffer Overflow Vulnerability
 #
@@ -37,9 +37,9 @@ Mereo 1.9.2 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100776);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100776");
+ script_version("$Revision: 8244 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
  script_bugtraq_id(42839);
  script_tag(name:"cvss_base", value:"5.0");

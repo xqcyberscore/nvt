@@ -49,8 +49,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-December/018350.html");
   script_id(881330);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8257 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 07:29:46 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:25:12 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-4111");
   script_tag(name:"cvss_base", value:"6.8");
@@ -58,7 +58,7 @@ if(description)
   script_xref(name: "CESA", value: "2011:1777");
   script_name("CentOS Update for qemu-img CESA-2011:1777 centos6 ");
 
-  script_summary("Check for the Version of qemu-img");
+  script_tag(name: "summary" , value: "Check for the Version of qemu-img");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

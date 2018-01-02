@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_tools_loc_prev_escl_vuln_lin.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_vmware_prdts_tools_loc_prev_escl_vuln_lin.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # VMware Products Tools Local Privilege Escalation Vulnerability (Linux)
 #
@@ -54,9 +54,9 @@ allows host OS users to gain privileges on the guest OS via unspecified vectors.
 
 if(description)
 {
-  script_id(801560);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801560");
+  script_version("$Revision: 8258 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-12-13 15:28:53 +0100 (Mon, 13 Dec 2010)");
   script_cve_id("CVE-2010-4297");
   script_tag(name:"cvss_base", value:"7.2");

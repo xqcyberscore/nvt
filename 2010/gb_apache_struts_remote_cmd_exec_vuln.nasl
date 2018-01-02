@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_remote_cmd_exec_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_apache_struts_remote_cmd_exec_vuln.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # Struts Remote Command Execution Vulnerability
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is running Struts and is prone to remote command
 
 if(description)
 {
-  script_id(801441);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801441");
+  script_version("$Revision: 8258 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-10 16:37:50 +0200 (Fri, 10 Sep 2010)");
   script_cve_id("CVE-2010-1870");
   script_bugtraq_id(41592);

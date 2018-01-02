@@ -55,8 +55,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2010-December/msg00023.html");
   script_id(870369);
-  script_version("$Revision: 6684 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:43:49 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 07:30:04 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-12-28 07:11:56 +0100 (Tue, 28 Dec 2010)");
   script_xref(name: "RHSA", value: "2010:0970-01");
   script_tag(name:"cvss_base", value:"9.3");
@@ -64,7 +64,7 @@ if(description)
   script_cve_id("CVE-2010-4344");
   script_name("RedHat Update for exim RHSA-2010:0970-01");
 
-  script_summary("Check for the Version of exim");
+  script_tag(name: "summary" , value: "Check for the Version of exim");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

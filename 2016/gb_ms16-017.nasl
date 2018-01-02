@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-017.nasl 6532 2017-07-05 07:42:05Z cfischer $
+# $Id: gb_ms16-017.nasl 8208 2017-12-21 07:33:41Z cfischer $
 #
 # Microsoft Windows Remote Desktop Elevation of Privilege Vulnerability (3134700)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:rdp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807064");
-  script_version("$Revision: 6532 $");
+  script_version("$Revision: 8208 $");
   script_cve_id("CVE-2016-0036");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 09:42:05 +0200 (Wed, 05 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:33:41 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-02-10 09:02:28 +0530 (Wed, 10 Feb 2016)");
   script_name("Microsoft Windows Remote Desktop Elevation of Privilege Vulnerability (3134700)");
 
@@ -54,11 +54,14 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8.1 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64
+
   Microsoft Windows Server 2012
+
   Microsoft Windows Server 2012 R2
+
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows 7 x32/x64 Service Pack 1 and prior");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -77,7 +80,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_rdp_version_detect_win.nasl");
-  script_mandatory_keys("remote/desktop/protocol/Win/Ver");
+  script_mandatory_keys("remote/desktop/protocol/Win/Installed");
   script_require_ports(139, 445);
   exit(0);
 }

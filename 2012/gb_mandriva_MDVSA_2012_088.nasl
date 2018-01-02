@@ -62,8 +62,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:088");
   script_id(831674);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8257 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 07:29:46 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-03 10:00:40 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2012-1947", "CVE-2012-1940", "CVE-2012-1941", "CVE-2012-1946",
                 "CVE-2012-1945", "CVE-2012-1944", "CVE-2012-1938", "CVE-2012-1939",
@@ -73,7 +73,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:088");
   script_name("Mandriva Update for mozilla MDVSA-2012:088 (mozilla)");
 
-  script_summary("Check for the Version of mozilla");
+  script_tag(name: "summary" , value: "Check for the Version of mozilla");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

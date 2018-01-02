@@ -32,8 +32,8 @@ tag_summary = "Panda Software Antivirus/Internet Security before 20070402 allows
 if(description)
 {
   script_id(102049);
-  script_version("$Revision: 5660 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 8217 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 14:24:55 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_cve_id("CVE-2007-1670");
   script_bugtraq_id(23823);
@@ -47,7 +47,7 @@ if(description)
   script_copyright("Copyright (C) 2010 LSS");
   script_family("Denial of Service");
   script_dependencies("panda_av_update_detect.nasl");
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("Panda/LastUpdate/Available");
 
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);

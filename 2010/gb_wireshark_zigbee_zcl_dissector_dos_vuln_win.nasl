@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_zigbee_zcl_dissector_dos_vuln_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
+# $Id: gb_wireshark_zigbee_zcl_dissector_dos_vuln_win.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # Wireshark ZigBee ZCL Dissector Denial of Service Vulnerability (Windows)
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is installed with Wireshark and is prone to denial of
 
 if(description)
 {
-  script_id(801554);
-  script_version("$Revision: 6519 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801554");
+  script_version("$Revision: 8258 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-12-09 06:36:39 +0100 (Thu, 09 Dec 2010)");
   script_cve_id("CVE-2010-4301");
   script_tag(name:"cvss_base", value:"5.0");

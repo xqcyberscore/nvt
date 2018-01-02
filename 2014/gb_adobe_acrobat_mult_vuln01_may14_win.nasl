@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln01_may14_win.nasl 8200 2017-12-20 13:48:45Z cfischer $
+# $Id: gb_adobe_acrobat_mult_vuln01_may14_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Acrobat Multiple Vulnerabilities - 01 May14 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804603");
-  script_version("$Revision: 8200 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2014-0521", "CVE-2014-0522", "CVE-2014-0523", "CVE-2014-0524",
                 "CVE-2014-0525", "CVE-2014-0526", "CVE-2014-0527", "CVE-2014-0528",
                 "CVE-2014-0529");
   script_bugtraq_id(67363, 67360, 67368,67369, 67365, 67370, 67367, 67366, 67362);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:48:45 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-05-22 10:46:12 +0530 (Thu, 22 May 2014)");
   script_name("Adobe Acrobat Multiple Vulnerabilities - 01 May14 (Windows)");
 
@@ -91,7 +91,7 @@ For updates refer http://www.adobe.com/in/products/acrobat.html";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Acrobat/Win/Ver");
+  script_mandatory_keys("Adobe/Acrobat/Win/Installed");
   exit(0);
 }
 

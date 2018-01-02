@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_zxdsl_831CII_access_bypass_vuln.nasl 7947 2017-11-30 12:36:50Z santu $
+# $Id: gb_zte_zxdsl_831CII_access_bypass_vuln.nasl 8241 2017-12-22 13:40:20Z cfischer $
 #
 # ZTE ZXDSL 831CII Access Bypass Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812228");
-  script_version("$Revision: 7947 $");
+  script_version("$Revision: 8241 $");
   script_cve_id("CVE-2017-16953");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-30 13:36:50 +0100 (Thu, 30 Nov 2017) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 14:40:20 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-28 18:25:42 +0530 (Tue, 28 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ZTE ZXDSL 831CII Access Bypass Vulnerability");

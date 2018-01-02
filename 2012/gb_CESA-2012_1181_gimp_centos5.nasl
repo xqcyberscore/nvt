@@ -70,8 +70,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-August/018809.html");
   script_id(881470);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8249 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 07:29:56 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-21 11:44:31 +0530 (Tue, 21 Aug 2012)");
   script_cve_id("CVE-2009-3909", "CVE-2011-2896", "CVE-2012-3402", "CVE-2012-3403",
                 "CVE-2012-3481");
@@ -80,7 +80,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:1181");
   script_name("CentOS Update for gimp CESA-2012:1181 centos5 ");
 
-  script_summary("Check for the Version of gimp");
+  script_tag(name: "summary" , value: "Check for the Version of gimp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

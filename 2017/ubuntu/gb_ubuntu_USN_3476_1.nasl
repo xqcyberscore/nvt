@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3476_1.nasl 7809 2017-11-17 09:43:26Z santu $
+# $Id: gb_ubuntu_USN_3476_1.nasl 8261 2017-12-29 09:13:46Z teissa $
 #
 # Ubuntu Update for postgresql-common USN-3476-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843362");
-  script_version("$Revision: 7809 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 10:43:26 +0100 (Fri, 17 Nov 2017) $");
+  script_version("$Revision: 8261 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 10:13:46 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-10 07:21:24 +0100 (Fri, 10 Nov 2017)");
   script_cve_id("CVE-2016-1255", "CVE-2017-8806");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for postgresql-common USN-3476-1");
   script_tag(name: "summary", value: "Check the version of postgresql-common");

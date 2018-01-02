@@ -88,14 +88,14 @@ if(description)
   script_id(870774);
   script_tag(name:"cvss_base", value:"2.1");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8245 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-06-22 10:26:27 +0530 (Fri, 22 Jun 2012)");
   script_cve_id("CVE-2012-1586");
   script_xref(name: "RHSA", value: "2012:0902-04");
   script_name("RedHat Update for cifs-utils RHSA-2012:0902-04");
 
-  script_summary("Check for the Version of cifs-utils");
+  script_tag(name: "summary" , value: "Check for the Version of cifs-utils");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sip_detection.nasl 7934 2017-11-29 14:51:02Z cfischer $
+# $Id: sip_detection.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # Detect SIP Compatible Hosts (UDP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11963");
-  script_version("$Revision: 7934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-29 15:51:02 +0100 (Wed, 29 Nov 2017) $");
+  script_version("$Revision: 8236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,7 +37,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 Noam Rathaus");
   script_family("Service detection");
-  script_dependencies("gb_open_udp_ports.nasl", "find_service.nasl", "sip_detection_tcp.nasl");
+  script_dependencies("gb_open_udp_ports.nasl", "sip_detection_tcp.nasl");
   script_require_udp_ports("Services/udp/unknown", 5060, 5061, 5070);
 
   script_xref(name:"URL", value:"http://www.cs.columbia.edu/sip/");

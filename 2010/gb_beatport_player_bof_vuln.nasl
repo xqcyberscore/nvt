@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_beatport_player_bof_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: gb_beatport_player_bof_vuln.nasl 8254 2017-12-28 07:29:05Z teissa $
 #
 # Beatport Player '.m3u' File Buffer Overflow Vulnerability
 #
@@ -44,9 +44,9 @@ buffer overflow vulnerability.";
 
 if(description)
 {
-  script_id(800749);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800749");
+  script_version("$Revision: 8254 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-07 16:20:50 +0200 (Wed, 07 Apr 2010)");
   script_cve_id("CVE-2009-4756");
   script_bugtraq_id(34793);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_screenos_version.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_screenos_version.nasl 8245 2017-12-26 06:29:59Z teissa $
 #
 # Juniper ScreenOS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105266");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 8245 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-05-08 14:52:31 +0200 (Fri, 08 May 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ScreenOS/detected");
 
-  script_summary("This script performs SSH based detection of Juniper ScreenOS");
+  script_tag(name: "summary" , value: "This script performs SSH based detection of Juniper ScreenOS");
 
   script_tag(name:"qod_type", value:"package");
 

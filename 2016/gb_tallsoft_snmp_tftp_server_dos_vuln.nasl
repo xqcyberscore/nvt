@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tallsoft_snmp_tftp_server_dos_vuln.nasl 5831 2017-04-03 07:39:50Z teissa $
+# $Id: gb_tallsoft_snmp_tftp_server_dos_vuln.nasl 8237 2017-12-22 10:33:02Z cfischer $
 #
 # TallSoft SNMP TFTP Server Denial Of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806694");
-  script_version("$Revision: 5831 $");
+  script_version("$Revision: 8237 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:39:50 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:33:02 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:27 +0530 (Fri, 01 Apr 2016)");
   script_name("TallSoft SNMP TFTP Server Denial Of Service Vulnerability");
 
@@ -60,6 +60,7 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");
+  script_dependencies("tftpd_detect.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
   exit(0);
 }

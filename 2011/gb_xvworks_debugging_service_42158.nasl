@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xvworks_debugging_service_42158.nasl 7144 2017-09-15 12:14:43Z cfischer $
+# $Id: gb_xvworks_debugging_service_42158.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # VxWorks Debugging Service Security-Bypass Vulnerability
 #
@@ -45,17 +45,17 @@ if (description)
  script_cve_id("CVE-2010-2965");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 7144 $");
+ script_version ("$Revision: 8236 $");
 
  script_name("VxWorks Debugging Service Security-Bypass Vulnerability");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-15 14:14:43 +0200 (Fri, 15 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
  script_tag(name:"creation_date", value:"2011-12-14 16:57:31 +0100 (Wed, 14 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);
  script_family("General");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl","rpcinfo.nasl");
+ script_dependencies("rpcinfo.nasl");
  script_require_udp_ports(17185);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

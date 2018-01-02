@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RealVNC_39895.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_RealVNC_39895.nasl 8254 2017-12-28 07:29:05Z teissa $
 #
 # RealVNC 4.1.3 'ClientCutText' Message Remote Denial of Service Vulnerability
 #
@@ -34,9 +34,9 @@ RealVNC 4.1.3 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100622);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100622");
+ script_version("$Revision: 8254 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-05-04 19:30:07 +0200 (Tue, 04 May 2010)");
  script_bugtraq_id(39895);
  script_tag(name:"cvss_base", value:"5.0");

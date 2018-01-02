@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_oct10_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_prdts_mult_vuln_oct10_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Acrobat and Reader Multiple Vulnerabilities -Oct10 (Windows)
 #
@@ -27,21 +27,27 @@
 tag_impact = "Successful exploitation will let attackers to crash an affected application or
   execute arbitrary code by tricking a user into opening a specially crafted PDF
   document.
+
   Impact Level: System/Application";
+
 tag_affected = "Adobe Reader version 8.x before 8.2.5 and 9.x before 9.4,
+
   Adobe Acrobat version 8.x before 8.2.5  and 9.x before 9.4 on windows.";
+
 tag_insight = "The flaws are caused by memory corruptions, array-indexing, and input validation
   errors when processing malformed data, fonts or images within a PDF document.";
+
 tag_solution = "Upgrade to Adobe Reader/Acrobat version 9.4 or 8.2.5
   For updates refer to http://www.adobe.com";
+
 tag_summary = "This host is installed with Adobe Reader/Acrobat and is prone to
   multiple vulnerabilities.";
 
 if(description)
 {
   script_id(801524);
-  script_version("$Revision: 6475 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_version("$Revision: 8210 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-18 15:37:53 +0200 (Mon, 18 Oct 2010)");
   script_cve_id("CVE-2010-2883", "CVE-2010-2884", "CVE-2010-2888", "CVE-2010-2889",
                 "CVE-2010-2890", "CVE-2010-3619", "CVE-2010-3620", "CVE-2010-3621",
@@ -73,11 +79,11 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-readerVer = get_kb_item("Adobe/Reader/Win/Ver");
-if(readerVer)
+CPE = "cpe:/a:adobe:acrobat_reader";
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   # Check for Adobe Reader version < 8.2.5 and 9.x to 9.3.4
   if(version_is_less(version:readerVer, test_version:"8.2.5") ||
@@ -88,13 +94,12 @@ if(readerVer)
   }
 }
 
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(!acrobatVer){
-  exit(0);
-}
-
-# Check for Adobe Acrobat version < 8.2.5 and 9.x to 9.3.4
-if(version_is_less(version:acrobatVer, test_version:"8.2.5") ||
-   version_in_range(version:acrobatVer, test_version:"9.0", test_version2:"9.3.4")){
-  security_message(0);
+CPE = "cpe:/a:adobe:acrobat";
+if(acrobatVer = get_app_version(cpe:CPE))
+{
+  # Check for Adobe Acrobat version < 8.2.5 and 9.x to 9.3.4
+  if(version_is_less(version:acrobatVer, test_version:"8.2.5") ||
+     version_in_range(version:acrobatVer, test_version:"9.0", test_version2:"9.3.4")){
+    security_message(0);
+  }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_feb13_win.nasl 8176 2017-12-19 12:50:00Z cfischer $
+# $Id: gb_adobe_air_mult_vuln01_feb13_win.nasl 8219 2017-12-21 14:52:18Z cfischer $
 #
 # Adobe AIR Multiple Vulnerabilities -01 Feb13 (Windows)
 #
@@ -28,12 +28,16 @@ CPE = "cpe:/a:adobe:adobe_air";
 
 tag_impact = "Successful exploitation will allow remote attackers to cause buffer overflow,
   remote code execution and corrupt system memory.
+
   Impact Level: System/Application";
 
 tag_affected = "Adobe AIR Version prior to 3.6.0.597 on Windows";
 tag_insight = "Multiple flaws due to
+
   - Dereference already freed memory
+
   - Use-after-free errors
+
   - Integer overflow and some unspecified error.";
 tag_solution = "Update to version 3.6.0.597 or later,
   For updates refer to http://get.adobe.com/air";
@@ -43,8 +47,8 @@ tag_summary = "This host is installed with Adobe AIR and is prone to multiple
 if(description)
 {
   script_id(803410);
-  script_version("$Revision: 8176 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:50:00 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 8219 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 15:52:18 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-02-15 10:50:14 +0530 (Fri, 15 Feb 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -64,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
-  script_require_keys("Adobe/Air/Win/Installed");
+  script_mandatory_keys("Adobe/Air/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

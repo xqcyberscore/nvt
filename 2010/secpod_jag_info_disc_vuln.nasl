@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_jag_info_disc_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_jag_info_disc_vuln.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # JAG (Just Another Guestbook) Information Disclosure Vulnerability
 #
@@ -40,9 +40,9 @@ tag_summary = "The host is running JAG and is prone to Information Disclosure
 
 if(description)
 {
-  script_id(900745);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900745");
+  script_version("$Revision: 8258 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-02-26 10:13:54 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

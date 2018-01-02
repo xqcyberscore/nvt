@@ -38,14 +38,14 @@ if(description)
   script_id(864246);
   script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+ script_version("$Revision: 8267 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 07:29:17 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-05-22 10:09:47 +0530 (Tue, 22 May 2012)");
   script_cve_id("CVE-2012-2369");
   script_xref(name: "FEDORA", value: "2012-8063");
   script_name("Fedora Update for pidgin-otr FEDORA-2012-8063");
 
-  script_summary("Check for the Version of pidgin-otr");
+  script_tag(name: "summary" , value: "Check for the Version of pidgin-otr");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

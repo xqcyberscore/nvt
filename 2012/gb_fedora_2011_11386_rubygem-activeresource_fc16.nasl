@@ -35,8 +35,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-September/065214.html");
   script_id(863911);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8265 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 07:29:23 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-04-02 12:35:54 +0530 (Mon, 02 Apr 2012)");
   script_cve_id("CVE-2011-2931", "CVE-2011-2929", "CVE-2011-2930", "CVE-2011-2932");
   script_tag(name:"cvss_base", value:"7.5");
@@ -44,7 +44,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2011-11386");
   script_name("Fedora Update for rubygem-activeresource FEDORA-2011-11386");
 
-  script_summary("Check for the Version of rubygem-activeresource");
+  script_tag(name: "summary" , value: "Check for the Version of rubygem-activeresource");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

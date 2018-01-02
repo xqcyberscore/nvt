@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_unspecified_vuln_oct10_win.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_firefox_unspecified_vuln_oct10_win.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # Mozilla Firefox Unspecified Vulnerability Oct-10 (Windows)
 #
@@ -43,9 +43,9 @@ unspecified vulnerability.";
 
 if(description)
 {
-  script_id(801475);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801475");
+  script_version("$Revision: 8258 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-11-02 18:01:36 +0100 (Tue, 02 Nov 2010)");
   script_cve_id("CVE-2010-3765");
   script_tag(name:"cvss_base", value:"9.3");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_anti_virus_plus_detect_win.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_k7_anti_virus_plus_detect_win.nasl 8208 2017-12-21 07:33:41Z cfischer $
 #
 # K7 Anti-Virus Plus Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805461");
-  script_version("$Revision: 7000 $");
+  script_version("$Revision: 8208 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:33:41 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-01-02 11:26:06 +0530 (Fri, 02 Jan 2015)");
   script_name("K7 Anti-Virus Plus Version Detection (Windows)");
 
@@ -50,7 +50,6 @@ if(description)
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -97,28 +96,20 @@ foreach key (key_list)
     {
       k7antivirVer = registry_get_sz(key:key + item, item:"DisplayVersion");
       k7antivirPath = registry_get_sz(key:key + item, item:"InstallLocation");
-      if(!k7antivirPath)
-      {
+      if(!k7antivirPath) {
         k7antivirPath = "Unable to find the install location from registry";
       }
-      set_kb_item(name:"K7/AntiVirusPlus/Win/Ver", value:k7antivirVer);
 
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:k7antivirVer, exp:"^([0-9.]+)", base:"cpe:/a:k7computing:anti-virus_plus:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:k7computing:anti-virus_plus";
+      set_kb_item(name:"K7/AntiVirusPlus/Win/Installed", value:TRUE);
 
-      ## Register for 64 bit app on 64 bit OS once again
-      if("64" >< os_arch && "Wow6432Node" >!< key)
-      {
+      ## Register for 64 bit app on 64 bit OS
+      if("64" >< os_arch && "Wow6432Node" >!< key) {
         set_kb_item(name:"K7/AntiVirusPlus64/Win/Ver", value:k7antivirVer);
-        cpe = build_cpe(value:k7antivirVer, exp:"^([0-9.]+)", base:"cpe:/a:k7computing:anti-virus_plus:x64:");
-
-        if(isnull(cpe))
-          cpe = "cpe:/a:k7computing:anti-virus_plus:x64";
+        register_and_report_cpe( app:"K7 AntiVirusPlus", ver:k7antivirVer, base:"cpe:/a:k7computing:anti-virus_plus:x64:", expr:"^([0-9.]+)", insloc:k7antivirPath );
+      } else {
+        set_kb_item(name:"K7/AntiVirusPlus/Win/Ver", value:k7antivirVer);
+        register_and_report_cpe( app:"K7 AntiVirusPlus", ver:k7antivirVer, base:"cpe:/a:k7computing:anti-virus_plus:", expr:"^([0-9.]+)", insloc:k7antivirPath );
       }
-      ## Register Product and Build Report
-      build_report(app:"K7 AntiVirusPlus", ver:k7antivirVer, cpe:cpe, insloc:k7antivirPath);
     }
   }
 }

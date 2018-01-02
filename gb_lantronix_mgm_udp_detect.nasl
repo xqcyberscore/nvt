@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_mgm_udp_detect.nasl 8020 2017-12-07 08:09:44Z cfischer $
+# $Id: gb_lantronix_mgm_udp_detect.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # Lantronix Remote Configuration Protocol Detection (UDP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108299");
-  script_version("$Revision: 8020 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:09:44 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 8236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-28 08:03:31 +0100 (Tue, 28 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,6 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Service detection");
-  script_dependencies("find_service.nasl");
   script_require_udp_ports(30718);
 
   script_tag(name:"summary", value:"A service supporting the Lantronix remote configuration protocol

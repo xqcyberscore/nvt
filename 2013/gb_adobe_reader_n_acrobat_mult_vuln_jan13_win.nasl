@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_n_acrobat_mult_vuln_jan13_win.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_adobe_reader_n_acrobat_mult_vuln_jan13_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities - Jan 13 (Windows)
 #
@@ -25,12 +25,11 @@
 ###############################################################################
 
 CPE = "cpe:/a:adobe:acrobat_reader";
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.803210";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6086 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803210");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2012-1530", "CVE-2013-0601", "CVE-2013-0602", "CVE-2013-0603",
                 "CVE-2013-0604", "CVE-2013-0605", "CVE-2013-0606", "CVE-2013-0607",
                 "CVE-2013-0608", "CVE-2013-0609", "CVE-2013-0610", "CVE-2013-0611",
@@ -43,35 +42,28 @@ if(description)
                     57294, 57275, 57276, 57270, 57295, 57277, 57296, 57285, 57297, 65275);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-01-21 11:48:39 +0530 (Mon, 21 Jan 2013)");
   script_name("Adobe Reader Multiple Vulnerabilities - Jan 13 (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to multiple
+  tag_summary = "This host is installed with Adobe Reader and is prone to multiple
 vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"For more details about the vulnerabilities refer the reference section.";
+  tag_insight = "For more details about the vulnerabilities refer the reference section.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to bypass certain security
+  tag_impact = "Successful exploitation will allow attackers to bypass certain security
 restrictions, execute arbitrary code in the context of the affected application
 or cause a denial of service.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Reader versions 9.x to 9.5.2, 10.x to 10.1.4 and 11.0.0 on Windows";
+  tag_affected = "Adobe Reader versions 9.x to 9.5.2, 10.x to 10.1.4 and 11.0.0 on Windows";
 
-  tag_solution =
-"Upgrade to Adobe Reader version 9.5.3 or 10.1.5 or 11.0.1 or later,
+  tag_solution = "Upgrade to Adobe Reader version 9.5.3 or 10.1.5 or 11.0.1 or later,
 For updates refer to http://www.adobe.com";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -89,16 +81,12 @@ For updates refer to http://www.adobe.com";
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-## Variable Initialization
-readerVer = "";
 
 ## Function to check the versions of abode reader
 function version_check(adver)
@@ -115,8 +103,7 @@ function version_check(adver)
   }
 }
 
-## Get Reader Version
-if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+if(readerVer = get_app_version(cpe:CPE))
 {
   version_check(adver:readerVer);
 }

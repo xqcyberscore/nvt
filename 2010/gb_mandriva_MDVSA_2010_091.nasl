@@ -78,8 +78,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-05/msg00004.php");
   script_id(831026);
-  script_version("$Revision: 6564 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:55:29 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8226 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 07:30:26 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-07 15:42:01 +0200 (Fri, 07 May 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -87,7 +87,7 @@ if(description)
   script_cve_id("CVE-2009-0200", "CVE-2009-0201", "CVE-2009-2139", "CVE-2009-2140", "CVE-2009-3736");
   script_name("Mandriva Update for openoffice.org MDVSA-2010:091 (openoffice.org)");
 
-  script_summary("Check for the Version of openoffice.org");
+  script_tag(name: "summary" , value: "Check for the Version of openoffice.org");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

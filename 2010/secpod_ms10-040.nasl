@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-040.nasl 6605 2017-07-07 11:22:07Z cfischer $
+# $Id: secpod_ms10-040.nasl 8207 2017-12-21 07:30:12Z teissa $
 #
 # Microsoft IIS Authentication Remote Code Execution Vulnerability (982666)
 #
@@ -54,9 +54,9 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(901120);
-  script_version("$Revision: 6605 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 13:22:07 +0200 (Fri, 07 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901120");
+  script_version("$Revision: 8207 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:19:57 +0200 (Wed, 09 Jun 2010)");
   script_bugtraq_id(40573);
   script_cve_id("CVE-2010-1256");

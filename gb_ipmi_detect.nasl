@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_ipmi_detect.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # Detection of IPMI
 #
@@ -36,8 +36,8 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7000 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+ script_version("$Revision: 8236 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
  script_tag(name:"creation_date", value:"2013-11-26 11:39:47 +0100 (Tue, 26 Nov 2013)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -47,7 +47,6 @@ if (description)
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl");
  script_require_udp_ports(623);
 
  script_tag(name : "summary" , value : tag_summary);

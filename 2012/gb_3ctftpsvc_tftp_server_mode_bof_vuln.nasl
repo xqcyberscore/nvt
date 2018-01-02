@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_3ctftpsvc_tftp_server_mode_bof_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
+# $Id: gb_3ctftpsvc_tftp_server_mode_bof_vuln.nasl 8237 2017-12-22 10:33:02Z cfischer $
 #
 # 3CTftpSvc TFTP Server Long Mode Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802658");
-  script_version("$Revision: 5956 $");
+  script_version("$Revision: 8237 $");
   script_cve_id("CVE-2006-6183");
   script_bugtraq_id(21301, 21322);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:33:02 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-07-10 15:15:15 +0530 (Tue, 10 Jul 2012)");
   script_name("3CTftpSvc TFTP Server Long Mode Buffer Overflow Vulnerability");
 
@@ -45,7 +45,8 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_require_udp_ports("Services/udp/tftp");
+  script_dependencies("tftpd_detect.nasl");
+  script_require_udp_ports("Services/udp/tftp", 69);
 
   script_tag(name : "impact" , value : "Successful exploitation will allow attackers to cause the
   application to crash, denying further service to legitimate users.

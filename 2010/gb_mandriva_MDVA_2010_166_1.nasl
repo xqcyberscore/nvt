@@ -49,15 +49,15 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-07/msg00010.php");
   script_id(831105);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8245 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-12 11:56:20 +0200 (Mon, 12 Jul 2010)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_xref(name: "MDVA", value: "2010:166-1");
   script_name("Mandriva Update for php-eaccelerator MDVA-2010:166-1 (php-eaccelerator)");
 
-  script_summary("Check for the Version of php-eaccelerator");
+  script_tag(name: "summary" , value: "Check for the Version of php-eaccelerator");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

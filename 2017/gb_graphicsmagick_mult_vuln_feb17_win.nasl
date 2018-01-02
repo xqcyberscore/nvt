@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphicsmagick_mult_vuln_feb17_win.nasl 5404 2017-02-23 12:41:31Z antu123 $
+# $Id: gb_graphicsmagick_mult_vuln_feb17_win.nasl 8209 2017-12-21 08:12:18Z cfischer $
 #
 # GraphicsMagick Multiple Vulnerabilities-01 Feb17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:graphicsmagick:graphicsmagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810560");
-  script_version("$Revision: 5404 $");
+  script_version("$Revision: 8209 $");
   script_cve_id("CVE-2016-7446", "CVE-2016-7447", "CVE-2016-7448", "CVE-2016-7449");
   script_bugtraq_id(93074);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 13:41:31 +0100 (Thu, 23 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 09:12:18 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-02-21 10:39:33 +0530 (Tue, 21 Feb 2017)");
   script_name("GraphicsMagick Multiple Vulnerabilities-01 Feb17 (Windows)");
 
@@ -78,7 +78,7 @@ if(description)
   script_family("General");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_graphicsmagick_detect_win.nasl");
-  script_mandatory_keys("GraphicsMagick/Win/Ver");
+  script_mandatory_keys("GraphicsMagick/Win/Installed");
   exit(0);
 }
 

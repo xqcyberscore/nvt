@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_bof_vuln_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: secpod_adobe_prdts_bof_vuln_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Buffer Overflow Vulnerability in Adobe Acrobat and Reader (Windows)
 #
@@ -24,48 +24,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.900320";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6475 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900320");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2009-0658", "CVE-2009-0927", "CVE-2009-0193", "CVE-2009-0928",
                 "CVE-2009-1061", "CVE-2009-1062");
   script_bugtraq_id(33751, 34169, 34229);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_name("Buffer Overflow Vulnerability in Adobe Acrobat and Reader (Windows)");
 
-  tag_summary =
-"This host has Adobe Acrobat or Adobe Reader installed, and is prone to buffer
+  tag_summary = "This host has Adobe Acrobat or Adobe Reader installed, and is prone to buffer
 overflow vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"This issue is due to error in array indexing while processing JBIG2 streams
+  tag_insight = "This issue is due to error in array indexing while processing JBIG2 streams
 and unspecified vulnerability related to a JavaScript method.";
 
-  tag_impact =
-"This can be exploited to corrupt arbitrary memory via a specially crafted PDF
+  tag_impact = "This can be exploited to corrupt arbitrary memory via a specially crafted PDF
 file, related to a non-JavaScript function call and to execute arbitrary code
 in context of the affected application.
 
 Impact Level: Application/System";
 
-  tag_affected =
-"Adobe Reader/Acrobat version 9.x < 9.1, 8.x < 8.1.4, 7.x < 7.1.1 on Windows.";
+  tag_affected = "Adobe Reader/Acrobat version 9.x < 9.1, 8.x < 8.1.4, 7.x < 7.1.1 on Windows.";
 
-  tag_solution =
-"Upgrade to Reader/Acrobat version 9.1 or 7.1.1 or 8.1.4 or later. For updates
+  tag_solution = "Upgrade to Reader/Acrobat version 9.1 or 7.1.1 or 8.1.4 or later. For updates
 refer to
 http://www.adobe.com/support/downloads/product.jsp?product=10&platform=Windows";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -92,16 +83,8 @@ http://www.adobe.com/support/downloads/product.jsp?product=10&platform=Windows";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-acrobatVer = "";
-
-
-##CPE for adobe reader
 CPE = "cpe:/a:adobe:acrobat_reader";
-
-## Get version
-if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   # Check for Adobe Reader version prior to 9.1.0 or 8.1.4 or 7.1.1
   if(readerVer =~ "^(7|8|9)")
@@ -113,10 +96,11 @@ if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
     }
   }
 }
-# Check for Acrobat Reader version prior to 9.1.0 or 8.1.4 or 7.1.1
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(acrobatVer)
+
+CPE = "cpe:/a:adobe:acrobat";
+if(acrobatVer = get_app_version(cpe:CPE))
 {
+  # Check for Acrobat Reader version prior to 9.1.0 or 8.1.4 or 7.1.1
   if(version_in_range(version:acrobatVer, test_version:"7.0", test_version2:"7.1.0")||
      version_in_range(version:acrobatVer, test_version:"8.0", test_version2:"8.1.3")||
      acrobatVer =~ "9.0")

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_sep11_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_prdts_mult_vuln_sep11_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader and Acrobat Multiple Vulnerabilities September-2011 (Windows)
 #
@@ -24,12 +24,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802166";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6475 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802166");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2011-2431", "CVE-2011-2432", "CVE-2011-2433", "CVE-2011-2434",
                 "CVE-2011-2435", "CVE-2011-2436", "CVE-2011-2437", "CVE-2011-2438",
                 "CVE-2011-2439", "CVE-2011-2440", "CVE-2011-2441", "CVE-2011-2442");
@@ -37,35 +35,29 @@ if(description)
                     49581, 49584, 49575, 49585);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-10-28 16:17:13 +0200 (Fri, 28 Oct 2011)");
   script_name("Adobe Reader and Acrobat Multiple Vulnerabilities September-2011 (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader/Acrobat and is prone to multiple
+  tag_summary = "This host is installed with Adobe Reader/Acrobat and is prone to multiple
 vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"Multiple flaws are due to memory corruptions, and buffer overflow errors.";
+  tag_insight = "Multiple flaws are due to memory corruptions, and buffer overflow errors.";
 
-  tag_impact =
-"Successful exploitation will let attackers to execute arbitrary code via
+  tag_impact = "Successful exploitation will let attackers to execute arbitrary code via
 unspecified vectors.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Reader version 8.x through 8.3.0, 9.x through 9.4.5 and 10.x through 10.1
+  tag_affected = "Adobe Reader version 8.x through 8.3.0, 9.x through 9.4.5 and 10.x through 10.1
+
 Adobe Acrobat version 8.x through 8.3.0, 9.x through 9.4.5 and 10.x through 10.1";
 
-  tag_solution =
-"Upgrade to Adobe Acrobat and Reader version 10.1.1, 9.4.6 or 8.3.1 or later.
+  tag_solution = "Upgrade to Adobe Acrobat and Reader version 10.1.1, 9.4.6 or 8.3.1 or later.
 For updates refer to http://www.adobe.com";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -85,19 +77,11 @@ For updates refer to http://www.adobe.com";
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-acrobatVer = "";
-
-#CPE for adobe reader
 CPE = "cpe:/a:adobe:acrobat_reader";
-
-## Get Reader Version
-if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   if(readerVer =~ "^(8|9|10)")
   {
@@ -111,8 +95,8 @@ if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
   }
 }
 
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(acrobatVer)
+CPE = "cpe:/a:adobe:acrobat";
+if(acrobatVer = get_app_version(cpe:CPE))
 {
   ## Check for Adobe Acrobat versions
   if(version_in_range(version:acrobatVer, test_version:"10.0", test_version2:"10.1") ||

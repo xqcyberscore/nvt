@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_netdecision_tftp_server_dir_trav_vuln.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_netdecision_tftp_server_dir_trav_vuln.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # NetDecision TFTP Server Multiple Directory Traversal Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900358");
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 8236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-05-29 07:35:11 +0200 (Fri, 29 May 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -43,9 +43,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
-  script_dependencies("find_service.nasl",
-                      "secpod_netdecision_tftp_server_detect.nasl");
-  script_require_keys("NetDecision/TFTP/Ver");
+  script_dependencies("secpod_netdecision_tftp_server_detect.nasl");
+  script_mandatory_keys("NetDecision/TFTP/Ver");
   script_require_udp_ports("Services/udp/tftp", 69);
 
   script_tag(name : "affected" , value : "NetMechanica, NetDecision TFTP Server version 4.2 and prior");

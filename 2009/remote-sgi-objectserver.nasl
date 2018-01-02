@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-sgi-objectserver.nasl 5345 2017-02-18 22:41:52Z cfi $
+# $Id: remote-sgi-objectserver.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # SGI-objectserver
 # replaces objectserver C plugin
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80101");
-  script_version("$Revision: 5345 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 23:41:52 +0100 (Sat, 18 Feb 2017) $");
+  script_version("$Revision: 8236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-03-14 09:49:01 +0100 (Sat, 14 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -34,7 +34,6 @@ if(description)
   script_name("SGI Objectserver vuln");
   script_category(ACT_ATTACK);
   script_family("Gain a shell remotely");
-  script_dependencies("find_service.nasl");
   script_require_udp_ports(5135);
   script_exclude_keys("keys/TARGET_IS_IPV6");
 

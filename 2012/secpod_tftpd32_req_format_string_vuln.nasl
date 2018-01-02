@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tftpd32_req_format_string_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: secpod_tftpd32_req_format_string_vuln.nasl 8237 2017-12-22 10:33:02Z cfischer $
 #
 # TFTPD32 Request Error Message Format String Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902835");
-  script_version("$Revision: 5950 $");
+  script_version("$Revision: 8237 $");
   script_cve_id("CVE-2006-0328");
   script_bugtraq_id(16333);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:33:02 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-05-23 14:14:14 +0530 (Wed, 23 May 2012)");
   script_name("TFTPD32 Request Error Message Format String Vulnerability");
 
@@ -45,7 +45,8 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Denial of Service");
-  script_require_udp_ports("Services/udp/tftp");
+  script_dependencies("tftpd_detect.nasl");
+  script_require_udp_ports("Services/udp/tftp", 69);
 
   script_tag(name : "impact" , value : "Successful exploitation will allow attacker to cause a denial of service.
   Impact Level: Application");

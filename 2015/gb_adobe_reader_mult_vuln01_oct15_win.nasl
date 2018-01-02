@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln01_oct15_win.nasl 6505 2017-07-03 09:58:27Z teissa $
+# $Id: gb_adobe_reader_mult_vuln01_oct15_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities - 01 October15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806503");
-  script_version("$Revision: 6505 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2015-5583", "CVE-2015-5586", "CVE-2015-6683", "CVE-2015-6684",
                 "CVE-2015-6685", "CVE-2015-6686", "CVE-2015-6687", "CVE-2015-6688",
                 "CVE-2015-6689", "CVE-2015-6690", "CVE-2015-6691", "CVE-2015-6692",
@@ -47,7 +47,7 @@ if(description)
                 "CVE-2015-7829", "CVE-2015-8458");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2015-10-20 10:15:23 +0530 (Tue, 20 Oct 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 October15 (Windows)");
@@ -59,13 +59,21 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight", value:"Multiple flaws are due to:
+
   - Improper EScript exception handling.
+
   - Some use-after-free vulnerabilities.
+
   - Some buffer overflow vulnerabilities.
+
   - Some memory leak vulnerabilities.
+
   - Some security bypass vulnerabilities.
+
   - Multiple memory corruption vulnerabilities.
+
   - Some Javascript API execution restriction bypass vulnerabilities.
+
   - Mishandling of junctions in the Synchronizer directory.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow
@@ -90,7 +98,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
 

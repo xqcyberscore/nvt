@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_docsis_dos_vuln_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
+# $Id: gb_wireshark_docsis_dos_vuln_win.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # Wireshark DOCSIS Dissector Denial of Service Vulnerability (Windows)
 #
@@ -39,9 +39,9 @@ tag_summary = "This host is installed with Wireshark and is prone to
 
 if(description)
 {
-  script_id(801208);
-  script_version("$Revision: 6519 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801208");
+  script_version("$Revision: 8258 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_bugtraq_id(39950);
   script_cve_id("CVE-2010-1455");

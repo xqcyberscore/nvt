@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_system_application_server_41638.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_sun_java_system_application_server_41638.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # Sun Java System Application Server CVE-2010-2397 Local Vulnerability
 #
@@ -36,9 +36,9 @@ information.";
 
 if (description)
 {
- script_id(100715);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100715");
+ script_version("$Revision: 8266 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-07-14 13:50:55 +0200 (Wed, 14 Jul 2010)");
  script_bugtraq_id(41638);
  script_tag(name:"cvss_base", value:"2.4");

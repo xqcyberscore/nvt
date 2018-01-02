@@ -36,18 +36,18 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-04/msg00034.php");
   script_id(830997);
-  script_version("$Revision: 6569 $");
+  script_version("$Revision: 8226 $");
   script_cve_id("CVE-2008-5913", "CVE-2010-1125", "CVE-2010-1196", "CVE-2010-1197",
                 "CVE-2010-1198", "CVE-2010-1199", "CVE-2010-1200", "CVE-2010-1202",
                 "CVE-2010-1203");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 07:30:26 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-29 13:13:58 +0200 (Thu, 29 Apr 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_xref(name: "MDVA", value: "2010:125");
   script_name("Mandriva Update for ldetect-lst MDVA-2010:125 (ldetect-lst)");
 
-  script_summary("Check for the Version of ldetect-lst");
+  script_tag(name: "summary" , value: "Check for the Version of ldetect-lst");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

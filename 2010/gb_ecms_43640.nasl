@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecms_43640.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_ecms_43640.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # Evaria ECMS 'Poll.php' Local File Disclosure Vulnerability
 #
@@ -36,9 +36,9 @@ Evaria ECMS 1.1 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100839);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100839");
+ script_version("$Revision: 8228 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-10-04 14:08:22 +0200 (Mon, 04 Oct 2010)");
  script_bugtraq_id(43640);
  script_tag(name:"cvss_base", value:"5.1");

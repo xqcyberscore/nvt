@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_trendmicro_officescan_url_filt_bof_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: secpod_trendmicro_officescan_url_filt_bof_vuln.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # Trend Micro OfficeScan URL Filtering Engine Buffer Overflow Vulnerability
 #
@@ -41,9 +41,9 @@ tag_summary = "This host has Trend Micro OfficeScan running which is prone to
 
 if(description)
 {
-  script_id(900231);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900231");
+  script_version("$Revision: 8266 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-02-19 11:58:13 +0100 (Fri, 19 Feb 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_symantec_epoint_prtn_sec_bypass_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_symantec_epoint_prtn_sec_bypass_vuln.nasl 8207 2017-12-21 07:30:12Z teissa $
 #
 # Symantec Endpoint Protection Scan Bypass Vulnerability
 #
@@ -45,9 +45,9 @@ possible to bypass security scan.";
 
 if(description)
 {
-  script_id(902124);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902124");
+  script_version("$Revision: 8207 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-02-26 10:13:54 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:P");

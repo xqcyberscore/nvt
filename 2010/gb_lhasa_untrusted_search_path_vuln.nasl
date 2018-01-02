@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lhasa_untrusted_search_path_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_lhasa_untrusted_search_path_vuln.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # Lhasa Untrusted search path vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with Lhasa and is prone to untrusted searc
 
 if(description)
 {
-  script_id(801461);
-  script_version("$Revision: 5374 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801461");
+  script_version("$Revision: 8266 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-22 15:51:55 +0200 (Fri, 22 Oct 2010)");
   script_cve_id("CVE-2010-2369");
   script_tag(name:"cvss_base", value:"6.9");

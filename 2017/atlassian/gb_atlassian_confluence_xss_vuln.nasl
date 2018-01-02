@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_confluence_xss_vuln.nasl 8014 2017-12-07 04:40:22Z ckuersteiner $
+# $Id: gb_atlassian_confluence_xss_vuln.nasl 8241 2017-12-22 13:40:20Z cfischer $
 #
 # Atlassian Confluence XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:atlassian:confluence";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140587");
-  script_version("$Revision: 8014 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-07 05:40:22 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 8241 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-22 14:40:20 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-12-07 11:09:51 +0700 (Thu, 07 Dec 2017)");
-  script_tag(name: "cvss_base", value: "4.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-16856");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: amanda_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: amanda_detect.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # Amanda client version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10462");
-  script_version("$Revision: 8138 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 8236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,7 +36,6 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2000 Paul J. Ewing Jr.");
   script_family("Service detection");
-  script_dependencies("find_service.nasl");
   script_require_udp_ports(10080, 10081);
 
   script_tag(name:"summary", value:"This detects the Amanda backup system client

@@ -47,8 +47,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:019");
   script_id(831546);
-  script_version("$Revision: 6567 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:01:17 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8267 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 07:29:17 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 19:01:19 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2012-0840");
   script_tag(name:"cvss_base", value:"5.0");
@@ -56,7 +56,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:019");
   script_name("Mandriva Update for apr MDVSA-2012:019 (apr)");
 
-  script_summary("Check for the Version of apr");
+  script_tag(name: "summary" , value: "Check for the Version of apr");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

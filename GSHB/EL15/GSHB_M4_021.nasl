@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_021.nasl 7883 2017-11-23 11:22:59Z emoss $
+# $Id: GSHB_M4_021.nasl 8268 2018-01-02 06:45:32Z emoss $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.021
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94191);
-  script_version("$Revision: 7883 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 12:22:59 +0100 (Thu, 23 Nov 2017) $");
+  script_version("$Revision: 8268 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 07:45:32 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -204,11 +204,11 @@ if (result != "nicht zutreffend" && result != "Fehler"){
   if(permlogindefs != "none"){
     if (permlogindefs =~ "-rw-(r|-)--(r|-)--.*"){
       result_permlogindefs = string("ok");
-      desc += string('Beim Testen des Systems wurden für die Datei\n/etc/login.defs folgende korrekte Sicherheitsein-\nstellungen festgestellt: ' + permsecuretty + '\n \n'); 
+      desc += string('Beim Testen des Systems wurden für die Datei\n/etc/login.defs folgende korrekte Sicherheitsein-\nstellungen festgestellt: ' + permlogindefs+ '\n \n'); 
     }
     else{
       result_permlogindefs = string("fail");
-      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/etc/login.defs folgende fehlerhafte Sicherheitsein-\nstellungen festgestellt: ' + permsecuretty + '\nBitte ändern Sie diese auf "-rw-r--r--".\n \n' ); 
+      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/etc/login.defs folgende fehlerhafte Sicherheitsein-\nstellungen festgestellt: ' + permlogindefs + '\nBitte ändern Sie diese auf "-rw-r--r--".\n \n' ); 
     }
   } 
 #################

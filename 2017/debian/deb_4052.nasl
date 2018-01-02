@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4052.nasl 7972 2017-12-01 12:23:15Z cfischer $
+# $Id: deb_4052.nasl 8247 2017-12-26 13:32:16Z cfischer $
 #
 # Auto-generated from advisory DSA 4052-1 using nvtgen 1.0
 # Script version: 1.1
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704052");
-  script_version("$Revision: 7972 $");
+  script_version("$Revision: 8247 $");
   script_cve_id("CVE-2017-14176");
   script_name("Debian Security Advisory DSA 4052-1 (bzr - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 13:23:15 +0100 (Fri, 01 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 14:32:16 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-29 00:00:00 +0100 (Wed, 29 Nov 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

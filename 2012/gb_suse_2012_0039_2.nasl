@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0039_2.nasl 8043 2017-12-08 08:20:47Z santu $
+# $Id: gb_suse_2012_0039_2.nasl 8257 2017-12-29 06:29:46Z teissa $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2012:0039-2 (MozillaFirefox)
 #
@@ -51,8 +51,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(850177);
-  script_version("$Revision: 8043 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:20:47 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8257 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 07:29:46 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-02 20:16:05 +0530 (Thu, 02 Aug 2012)");
   script_cve_id("CVE-2011-3658", "CVE-2011-3660", "CVE-2011-3661", "CVE-2011-3663", "CVE-2011-3665");
   script_tag(name:"cvss_base", value:"10.0");
@@ -60,7 +60,7 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2012:0039_2");
   script_name("SuSE Update for MozillaFirefox openSUSE-SU-2012:0039-2 (MozillaFirefox)");
 
-  script_summary("Check for the Version of MozillaFirefox");
+  script_tag(name: "summary" , value: "Check for the Version of MozillaFirefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

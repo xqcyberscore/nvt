@@ -47,8 +47,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-August/017693.html");
   script_id(881401);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8253 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 07:29:51 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:46:24 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-2748", "CVE-2011-2749");
   script_tag(name:"cvss_base", value:"7.8");
@@ -56,7 +56,7 @@ if(description)
   script_xref(name: "CESA", value: "2011:1160");
   script_name("CentOS Update for dhclient CESA-2011:1160 centos4 x86_64");
 
-  script_summary("Check for the Version of dhclient");
+  script_tag(name: "summary" , value: "Check for the Version of dhclient");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

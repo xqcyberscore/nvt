@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_mult_vuln_jun10_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: secpod_adobe_prdts_mult_vuln_jun10_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Flash Player/Air Multiple Vulnerabilities - June10 (Windows)
 #
@@ -26,23 +26,28 @@
 
 tag_impact = "Successful exploitation will allow attackers to obtain sensitive
   information or cause a denial of service.
+
   Impact Level: Application/System.";
 tag_affected = "Adobe AIR version prior to 2.0.2.12610,
+
   Adobe Flash Player before 9.0.277.0 and 10.x before 10.1.53.64 on windows.";
+
 tag_insight = "The flaws are due to input validation errors, memory corruptions,
   array indexing, use-after-free, integer and buffer overflows, and
   invalid pointers when processing malformed Flash content.";
+
 tag_solution = "Update to Adobe  Air2.0.2.12610 or Adobe Flash Player 9.0.277.0 or 10.0.45.2,
   http://get.adobe.com/air
   http://www.adobe.com/support/flashplayer/downloads.html";
+
 tag_summary = "This host is installed with Adobe Flash Player/Air and is prone to
   multiple vulnerabilities.";
 
 if(description)
 {
   script_id(902200);
-  script_version("$Revision: 6475 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_version("$Revision: 8210 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-22 13:34:32 +0200 (Tue, 22 Jun 2010)");
   script_cve_id("CVE-2008-4546", "CVE-2009-3793", "CVE-2010-1297", "CVE-2010-2160",
                 "CVE-2010-2161", "CVE-2010-2162", "CVE-2010-2163", "CVE-2010-2164",
@@ -75,12 +80,11 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-# Check for Adobe Flash Player
-playerVer = get_kb_item("AdobeFlashPlayer/Win/Ver");
-if(playerVer != NULL)
+CPE = "cpe:/a:adobe:flash_player";
+if(playerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   # Grep for version 10.x < 10.0.45.2, less than 9.0.277.0
   if(version_is_less(version:playerVer, test_version:"9.0.277.0") ||
@@ -91,9 +95,8 @@ if(playerVer != NULL)
   }
 }
 
-# Check for Adobe Air
-airVer = get_kb_item("Adobe/Air/Win/Ver");
-if(airVer != NULL)
+CPE = "cpe:/a:adobe:adobe_air";
+if(airVer = get_app_version(cpe:CPE))
 {
   # Grep for version < 2.0.2.12610
   if(version_is_less(version:airVer, test_version:"2.0.2.12610")){

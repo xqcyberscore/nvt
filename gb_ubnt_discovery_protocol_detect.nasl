@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubnt_discovery_protocol_detect.nasl 7926 2017-11-29 06:54:31Z ckuersteiner $
+# $Id: gb_ubnt_discovery_protocol_detect.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # UBNT Discovery Protocol Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106716");
- script_version ("$Revision: 7926 $");
- script_tag(name: "last_modification", value: "$Date: 2017-11-29 07:54:31 +0100 (Wed, 29 Nov 2017) $");
+ script_version ("$Revision: 8236 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
  script_tag(name: "creation_date", value: "2017-04-03 09:45:47 +0700 (Mon, 03 Apr 2017)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -45,7 +45,6 @@ this host.");
 
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
  script_family("Service detection");
- script_dependencies("find_service.nasl");
  script_require_udp_ports(10001);
 
  exit(0);

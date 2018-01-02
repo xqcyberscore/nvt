@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_mult_vuln_feb10_lin01.nasl 6482 2017-06-29 08:31:43Z cfischer $
+# $Id: secpod_mozilla_prdts_mult_vuln_feb10_lin01.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # Mozilla Products Multiple Vulnerabilities feb-10 (Linux)
 #
@@ -49,9 +49,9 @@ tag_summary = "The host is installed with Mozilla Firefox/Seamonkey and is prone
 
 if(description)
 {
-  script_id(902127);
-  script_version("$Revision: 6482 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 10:31:43 +0200 (Thu, 29 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902127");
+  script_version("$Revision: 8258 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-02-26 10:13:54 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

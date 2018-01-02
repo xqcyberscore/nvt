@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_justsystems_ichitaro_prdts_bof_vuln.nasl 6515 2017-07-04 11:54:15Z cfischer $
+# $Id: secpod_justsystems_ichitaro_prdts_bof_vuln.nasl 8244 2017-12-25 07:29:28Z teissa $
 #
 # JustSystems Ichitaro Products 'RTF' Buffer Overflow Vulnerability
 #
@@ -44,9 +44,9 @@ tag_summary = "This host is installed with JustSystems Ichitaro product(s) and i
 
 if(description)
 {
-  script_id(902041);
-  script_version("$Revision: 6515 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902041");
+  script_version("$Revision: 8244 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-16 16:17:26 +0200 (Fri, 16 Apr 2010)");
   script_bugtraq_id(34403);
   script_cve_id("CVE-2009-4737");

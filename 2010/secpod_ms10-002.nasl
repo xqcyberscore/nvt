@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-002.nasl 6527 2017-07-05 05:56:34Z cfischer $
+# $Id: secpod_ms10-002.nasl 8246 2017-12-26 07:29:20Z teissa $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (978207)
 #
@@ -29,9 +29,9 @@
 
 if(description)
 {
-  script_id(901097);
-  script_version("$Revision: 6527 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901097");
+  script_version("$Revision: 8246 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 08:29:20 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-01-22 16:43:14 +0100 (Fri, 22 Jan 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

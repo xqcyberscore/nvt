@@ -70,8 +70,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-November/018974.html");
   script_id(881535);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8245 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-11-09 09:33:56 +0530 (Fri, 09 Nov 2012)");
   script_cve_id("CVE-2012-1568", "CVE-2012-2133", "CVE-2012-3400", "CVE-2012-3511");
   script_tag(name:"cvss_base", value:"7.6");
@@ -79,7 +79,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:1426");
   script_name("CentOS Update for kernel CESA-2012:1426 centos6 ");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

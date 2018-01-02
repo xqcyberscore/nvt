@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-050-remote.nasl 5502 2017-03-06 16:02:22Z cfi $
+# $Id: secpod_ms09-050-remote.nasl 8215 2017-12-21 11:46:59Z cfischer $
 #
 # Microsoft Windows SMB2 Negotiation Protocol Remote Code Execution Vulnerability
 #
@@ -28,19 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900965");
-  script_version("$Revision: 5502 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 17:02:22 +0100 (Mon, 06 Mar 2017) $");
+  script_version("$Revision: 8215 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 12:46:59 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-10-15 12:43:47 +0200 (Thu, 15 Oct 2009)");
   script_bugtraq_id(36299);
   script_cve_id("CVE-2009-2526", "CVE-2009-2532", "CVE-2009-3103");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Microsoft Windows SMB2 Negotiation Protocol Remote Code Execution Vulnerability");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_family("Windows : Microsoft Bulletins");
   script_copyright("Copyright (C) 2009 SecPod");
-  script_dependencies("find_service.nasl");
+  script_dependencies("os_detection.nasl");
   script_require_ports(139, 445);
+  script_mandatory_keys("Host/runs_windows");
 
   script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS09-050.mspx");
 
@@ -51,13 +52,17 @@ if(description)
   Impact Level: System";
 
   tag_affected = "- Windows 7 RC
+
   - Windows Vista and
+
   - Windows 2008 Server";
 
   tag_insight = "Multiple vulnerabilities exists,
+
   - A denial of service vulnerability exists in the way that Microsoft Server
     Message Block (SMB) Protocol software handles specially crafted SMB version
     2 (SMBv2) packets.
+
   - Unauthenticated remote code execution vulnerability exists in the way
     that Microsoft Server Message Block (SMB) Protocol software handles
     specially crafted SMB packets.";

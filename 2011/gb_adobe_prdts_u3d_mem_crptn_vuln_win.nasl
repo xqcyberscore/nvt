@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_u3d_mem_crptn_vuln_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_prdts_u3d_mem_crptn_vuln_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader/Acrobat 'U3D' Component Memory Corruption Vulnerability - Windows
 #
@@ -24,45 +24,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.802542";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6475 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802542");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2011-2462", "CVE-2011-4369");
   script_bugtraq_id(50922, 51092);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-12-09 12:11:46 +0530 (Fri, 09 Dec 2011)");
   script_name("Adobe Reader/Acrobat 'U3D' Component Memory Corruption Vulnerability - Windows");
 
-  tag_summary =
-"This host is installed with Adobe Reader/Acrobat and is prone to memory
+  tag_summary = "This host is installed with Adobe Reader/Acrobat and is prone to memory
 corruption vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"The flaw is due to an unspecified error while handling U3D data.";
+  tag_insight = "The flaw is due to an unspecified error while handling U3D data.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to execute arbitrary code in the
+  tag_impact = "Successful exploitation will allow attackers to execute arbitrary code in the
 context of the affected application or cause a denial of service.
 
 Impact Level: Application";
 
-  tag_affected =
-"Adobe Reader versions 9.x through 9.4.6 and 10.x through 10.1.1 on Windows.
+  tag_affected = "Adobe Reader versions 9.x through 9.4.6 and 10.x through 10.1.1 on Windows.
+
 Adobe Acrobat versions 9.x through 9.4.6 and 10.x through 10.1.1 on Windows.";
 
-  tag_solution =
-"Upgrade to Adobe Reader or Acrobat version 9.4.7 or later.
+  tag_solution = "Upgrade to Adobe Reader or Acrobat version 9.4.7 or later.
 For updates refer to http://www.adobe.com/";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -84,15 +76,9 @@ For updates refer to http://www.adobe.com/";
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-acrobatVer = "";
-
-## Function to check the versions of abode reader and acrobat
 function version_check(ver)
 {
   if(version_in_range(version:ver, test_version:"9.0", test_version2:"9.4.6") ||
@@ -101,20 +87,17 @@ function version_check(ver)
   }
 }
 
-#CPE for adobe reader
 CPE = "cpe:/a:adobe:acrobat_reader";
-
-## Get Reader Version
-if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   if(readerVer =~ "^(9|10)"){
     version_check(ver:readerVer);
   }
 }
 
-## Get Acrobat version
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(acrobatVer){
+CPE = "cpe:/a:adobe:acrobat";
+if(acrobatVer = get_app_version(cpe:CPE))
+{
   version_check(ver:acrobatVer);
 }
 exit(0);

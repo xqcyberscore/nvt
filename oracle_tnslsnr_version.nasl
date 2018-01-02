@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle_tnslsnr_version.nasl 7278 2017-09-26 13:20:44Z cfischer $
+# $Id: oracle_tnslsnr_version.nasl 8230 2017-12-22 08:51:56Z cfischer $
 #
 # Oracle Version Detection
 #
@@ -34,10 +34,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10658");
-  script_version("$Revision: 7278 $");
+  script_version("$Revision: 8230 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 09:51:56 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name( "Oracle Version Detection");
 
@@ -188,8 +188,8 @@ function oracle_version(port)
 
     register_service(port:port, proto:"oracle_tnslsnr");
     set_kb_item(name:"OracleDatabaseServer/installed", value:TRUE);
-    set_kb_item(name:string("oracle_tnslsnr/", port, "/version"),
-                value:version);
+    set_kb_item(name:"oracle_tnslsnr/" + port + "/version", value:version);
+    set_kb_item(name:"OpenDatabase/found", value:TRUE);
 
     ## build cpe and store it as host_detail
     cpe = build_cpe(value: ver[1], exp:"^([0-9.]+)",base:"cpe:/a:oracle:database_server:");

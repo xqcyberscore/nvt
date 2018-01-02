@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_banner_grabber.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_nmap_banner_grabber.nasl 8233 2017-12-22 09:37:31Z cfischer $
 #
 # Wrapper for Nmap Banner Grabber NSE script.
 #
@@ -35,42 +35,35 @@ tag_summary = "This script attempts to connect to the target port and returns
 if(description)
 {
   script_id(801253);
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_version("$Revision: 8233 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 10:37:31 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-10 12:08:05 +0200 (Tue, 10 Aug 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Nmap NSE: Banner Grabber");
   script_category(ACT_GATHER_INFO);
-    script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
-  script_dependencies("secpod_open_tcp_ports.nasl");
   script_family("Nmap NSE");
-
-  script_mandatory_keys("Tools/Present/nmap");
-  script_mandatory_keys("Tools/Launch/nmap_nse");
+  script_dependencies("toolcheck.nasl", "secpod_open_tcp_ports.nasl");
+  script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse", "TCP/PORTS");
   script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"qod_type", value:"remote_analysis");
+
   exit(0);
 }
 
+include("misc_func.inc");
 
-## Required Keys
 if((! get_kb_item("Tools/Present/nmap5.21") &&
    ! get_kb_item("Tools/Present/nmap5.51")) ||
    ! get_kb_item("Tools/Launch/nmap_nse")) {
  exit(0);
 }
 
-## Get TCP Ports
-port = get_kb_item("TCP/PORTS");
-if(!port){
-  exit(0);
-}
+port = get_all_tcp_ports();
 
-## Run nmap and Get the result
-res = pread(cmd: "nmap", argv: make_list("nmap", "--script=banner", "-p", port,
-                                          get_host_ip()));
-
+res = pread(cmd: "nmap", argv: make_list("nmap", "--script=banner", "-p", port, get_host_ip()));
 if(res)
 {
   foreach line (split(res))

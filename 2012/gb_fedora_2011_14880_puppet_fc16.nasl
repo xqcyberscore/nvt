@@ -37,8 +37,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-November/069440.html");
   script_id(863778);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8249 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 07:29:56 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-03-19 12:15:11 +0530 (Mon, 19 Mar 2012)");
   script_cve_id("CVE-2011-3872");
   script_tag(name:"cvss_base", value:"2.6");
@@ -46,7 +46,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2011-14880");
   script_name("Fedora Update for puppet FEDORA-2011-14880");
 
-  script_summary("Check for the Version of puppet");
+  script_tag(name: "summary" , value: "Check for the Version of puppet");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

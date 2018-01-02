@@ -81,8 +81,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-08/msg00016.php");
   script_id(831135);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 07:30:04 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-24 07:04:19 +0200 (Tue, 24 Aug 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -90,7 +90,7 @@ if(description)
   script_cve_id("CVE-2010-2805", "CVE-2010-2806", "CVE-2010-2807", "CVE-2010-2808", "CVE-2010-3053", "CVE-2010-3054");
   script_name("Mandriva Update for freetype2 MDVSA-2010:156 (freetype2)");
 
-  script_summary("Check for the Version of freetype2");
+  script_tag(name: "summary" , value: "Check for the Version of freetype2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

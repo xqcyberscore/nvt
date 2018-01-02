@@ -58,8 +58,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-March/msg00033.html");
   script_id(870641);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8257 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 07:29:46 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:38:38 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2011-0444", "CVE-2011-0538", "CVE-2011-0713", "CVE-2011-1139",
                 "CVE-2011-1140", "CVE-2011-1141");
@@ -68,7 +68,7 @@ if(description)
   script_xref(name: "RHSA", value: "2011:0369-01");
   script_name("RedHat Update for wireshark RHSA-2011:0369-01");
 
-  script_summary("Check for the Version of wireshark");
+  script_tag(name: "summary" , value: "Check for the Version of wireshark");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

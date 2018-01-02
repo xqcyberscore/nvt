@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rdp_version_detect_win.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_rdp_version_detect_win.nasl 8208 2017-12-21 07:33:41Z cfischer $
 #
 # Microsoft Remote Desktop Protocol Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808281");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 8208 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:33:41 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-08-03 17:52:03 +0530 (Wed, 03 Aug 2016)");
   script_name("Microsoft Remote Desktop Protocol Version Detection (Windows)");
 
@@ -48,7 +48,6 @@ if(description)
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -68,18 +67,11 @@ if(!sysPath ){
 ## Get Mstscax.dll file version
 rdpVer = fetch_file_version(sysPath, file_name:"system32\Mstscax.dll");
 
-if(rdpVer)
-{
-  rdpPath = sysPath + "\System32\Mstscax.dll";
+if(rdpVer) {
 
-  ## Set kb
+  rdpPath = sysPath + "\System32\Mstscax.dll";
+  set_kb_item(name:"remote/desktop/protocol/Win/Installed", value:TRUE);
   set_kb_item(name:"remote/desktop/protocol/Win/Ver", value:rdpVer);
 
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value:rdpVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:rdp:");
-  if(isnull(cpe))
-    cpe = "cpe:/a:microsoft:rdp";
-
-  ## Register Product and Build Report
-  build_report(app:"Microsoft Remote Desktop Protocol", ver:rdpVer, cpe:cpe, insloc:rdpPath);
+  register_and_report_cpe( app:"Microsoft Remote Desktop Protocol", ver:rdpVer, base:"cpe:/a:microsoft:rdp:", expr:"^([0-9.]+)", insloc:rdpPath );
 }

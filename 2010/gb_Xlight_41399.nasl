@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_Xlight_41399.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_Xlight_41399.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # Xlight FTP Server Multiple Directory Traversal Vulnerabilities
 #
@@ -39,9 +39,9 @@ information.";
 
 if (description)
 {
- script_id(100708);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100708");
+ script_version("$Revision: 8266 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-07-09 12:33:08 +0200 (Fri, 09 Jul 2010)");
  script_bugtraq_id(41399);
  script_tag(name:"cvss_base", value:"5.0");

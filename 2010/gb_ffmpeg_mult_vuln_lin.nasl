@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ffmpeg_mult_vuln_lin.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_ffmpeg_mult_vuln_lin.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # FFmpeg Multiple Vulnerabilities (Linux)
 #
@@ -48,9 +48,9 @@ tag_summary = "This host is installed with FFmpeg and is prone to multiple
 
 if(description)
 {
-  script_id(800468);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800468");
+  script_version("$Revision: 8258 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-02-17 08:26:50 +0100 (Wed, 17 Feb 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

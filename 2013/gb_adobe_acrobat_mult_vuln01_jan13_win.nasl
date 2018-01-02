@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln01_jan13_win.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_adobe_acrobat_mult_vuln01_jan13_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Acrobat Multiple Vulnerabilities -01 Jan 13 (Windows)
 #
@@ -24,10 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:adobe:acrobat";
+
 if(description)
 {
   script_id(803434);
-  script_version("$Revision: 6079 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2012-1530", "CVE-2013-0601", "CVE-2013-0602", "CVE-2013-0603",
                 "CVE-2013-0604", "CVE-2013-0605", "CVE-2013-0606", "CVE-2013-0607",
                 "CVE-2013-0608", "CVE-2013-0609", "CVE-2013-0610", "CVE-2013-0611",
@@ -40,35 +42,28 @@ if(description)
                     57294, 57275, 57276, 57270, 57295, 57277, 57296, 57285, 57297, 65275);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-03-12 19:05:12 +0530 (Tue, 12 Mar 2013)");
   script_name("Adobe Acrobat Multiple Vulnerabilities -01 Jan 13 (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Acrobat and is prone to multiple
+  tag_summary = "This host is installed with Adobe Acrobat and is prone to multiple
 vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"For more details about the vulnerabilities refer the reference section.";
+  tag_insight = "For more details about the vulnerabilities refer the reference section.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to bypass certain security
+  tag_impact = "Successful exploitation will allow attackers to bypass certain security
 restrictions, execute arbitrary code in the context of the affected
 application or cause a denial of service.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Acrobat versions 9.x to 9.5.2, 10.x to 10.1.4 and 11.0.0 on Windows";
+  tag_affected = "Adobe Acrobat versions 9.x to 9.5.2, 10.x to 10.1.4 and 11.0.0 on Windows";
 
-  tag_solution =
-"Upgrade to Adobe Acrobat version 9.5.3 or 10.1.5 or 11.0.1 or later,
+  tag_solution = "Upgrade to Adobe Acrobat version 9.5.3 or 10.1.5 or 11.0.1 or later,
 For updates refer to http://www.adobe.com";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -86,33 +81,23 @@ For updates refer to http://www.adobe.com";
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Acrobat/Win/Ver");
+  script_mandatory_keys("Adobe/Acrobat/Win/Installed");
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-acrobatVer = "";
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
-## Function to check the versions of abode acrobat
-function version_check(adver)
-{
-  if(adver =~ "^(9|10|11.0)")
-  {
-    if(version_in_range(version:adver, test_version:"9.0", test_version2:"9.5.2") ||
-       version_in_range(version:adver, test_version:"10.0", test_version2:"10.1.4")||
-       version_is_equal(version:adver, test_version:"11.0.0"))
-    {
-      security_message(0);
-      exit(0);
-    }
-  }
+if( version_in_range( version:vers, test_version:"9.0", test_version2:"9.5.2" ) ||
+    version_in_range( version:vers, test_version:"10.0", test_version2:"10.1.4" )||
+    version_is_equal( version:vers, test_version:"11.0.0" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"9.5.3/10.1.5/11.0.1", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-## Get Acrobat version
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(acrobatVer){
-  version_check(adver:acrobatVer);
-}
+exit( 99 );

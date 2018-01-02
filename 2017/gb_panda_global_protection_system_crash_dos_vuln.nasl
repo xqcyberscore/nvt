@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_global_protection_system_crash_dos_vuln.nasl 8202 2017-12-20 14:37:16Z cfischer $
+# $Id: gb_panda_global_protection_system_crash_dos_vuln.nasl 8218 2017-12-21 14:14:04Z cfischer $
 #
 # Panda Global Protection System Crash DoS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108315");
-  script_version("$Revision: 8202 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 15:37:16 +0100 (Wed, 20 Dec 2017) $");
+  script_version("$Revision: 8218 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 15:14:04 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-20 12:31:33 +0100 (Wed, 20 Dec 2017)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
@@ -38,7 +38,7 @@ if( description )
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
-  script_cve_id("CVE-2017-17863", "CVE-2017-17864");
+  script_cve_id("CVE-2017-17683", "CVE-2017-17684");
 
   script_name("Panda Global Protection System Crash DoS Vulnerability");
 
@@ -56,7 +56,7 @@ if( description )
   script_tag(name:"affected", value:"Panda Global Protection through version 17.00.01");
   script_tag(name:"solution", value:"No solution available as of 20th December 2017. Information will be updated once a fix is released.");
 
-  script_xref(name:"URL", value:"https://github.com/k0keoyo/Driver-Loaded-PoC/tree/master/Panda-Antivirus/Panda_Security_Antivirus_0xb3702c04");
+  script_xref(name:"URL", value:"https://github.com/k0keoyo/Driver-Loaded-PoC/tree/master/Panda-Antivirus/Panda_Security_Antivirus_0xb3702c04_");
   script_xref(name:"URL", value:"https://github.com/k0keoyo/Driver-Loaded-PoC/tree/master/Panda-Antivirus/Panda_Security_Antivirus_0xb3702c44");
 
   exit( 0 );
@@ -65,7 +65,10 @@ if( description )
 include( "host_details.inc" );
 include( "version_func.inc" );
 
-if( ! version = get_kb_item( "Panda/GlobalProtection/Ver" ) ) exit( 0 );
+cpe_list = make_list( "cpe:/a:pandasecurity:panda_global_protection_2010",
+                      "cpe:/a:pandasecurity:panda_global_protection_2014" );
+
+if( ! version = get_app_version( cpe: cpe_list ) ) exit( 0 );
 
 if( version_is_less_equal( version: version, test_version: "17.00.01" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );

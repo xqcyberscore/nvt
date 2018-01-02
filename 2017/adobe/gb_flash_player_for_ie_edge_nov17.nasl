@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_for_ie_edge_nov17.nasl 7773 2017-11-15 13:21:06Z santu $
+# $Id: gb_flash_player_for_ie_edge_nov17.nasl 8261 2017-12-29 09:13:46Z teissa $
 #
 # Microsoft IE And Microsoft Edge Multiple Flash Player Vulnerabilities (4048951)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812146");
-  script_version("$Revision: 7773 $");
+  script_version("$Revision: 8261 $");
   script_cve_id("CVE-2017-3112", "CVE-2017-3114", "CVE-2017-11213", "CVE-2017-11215", 
 		"CVE-2017-11225" );
   script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 14:21:06 +0100 (Wed, 15 Nov 2017) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 10:13:46 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-11-15 08:11:04 +0530 (Wed, 15 Nov 2017)");
   script_name("Microsoft IE And Microsoft Edge Multiple Flash Player Vulnerabilities (4048951)");
 

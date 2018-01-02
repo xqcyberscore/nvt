@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-074.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms10-074.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # Microsoft Foundation Classes Could Allow Remote Code Execution Vulnerability (2387149)
 #
@@ -26,9 +26,9 @@
 
 if(description)
 {
-  script_id(902319);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902319");
+  script_version("$Revision: 8266 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-10-13 17:10:12 +0200 (Wed, 13 Oct 2010)");
   script_cve_id("CVE-2010-3227");
   script_bugtraq_id(41333);

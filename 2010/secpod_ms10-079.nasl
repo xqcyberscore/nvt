@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-079.nasl 6533 2017-07-05 08:41:34Z santu $
+# $Id: secpod_ms10-079.nasl 8246 2017-12-26 07:29:20Z teissa $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities (2293194)
 #
@@ -52,9 +52,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902265);
-  script_version("$Revision: 6533 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 10:41:34 +0200 (Wed, 05 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902265");
+  script_version("$Revision: 8246 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 08:29:20 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-13 17:10:12 +0200 (Wed, 13 Oct 2010)");
   script_cve_id("CVE-2010-2747", "CVE-2010-2748", "CVE-2010-2750", "CVE-2010-3214",
                 "CVE-2010-3215", "CVE-2010-3216", "CVE-2010-3217", "CVE-2010-3218",

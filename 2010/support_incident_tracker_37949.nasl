@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: support_incident_tracker_37949.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: support_incident_tracker_37949.nasl 8244 2017-12-25 07:29:28Z teissa $
 #
 # Support Incident Tracker Blank Password Authentication Bypass Vulnerability
 #
@@ -37,9 +37,9 @@ information.";
 
 if (description)
 {
- script_id(100467);
- script_version("$Revision: 5401 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100467");
+ script_version("$Revision: 8244 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-01-26 20:04:43 +0100 (Tue, 26 Jan 2010)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

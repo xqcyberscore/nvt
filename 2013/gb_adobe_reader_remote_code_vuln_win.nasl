@@ -23,46 +23,39 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:adobe:acrobat_reader";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804111";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6115 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804111");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2013-5325");
   script_bugtraq_id(62888);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2013-10-18 08:47:35 +0530 (Fri, 18 Oct 2013)");
   script_name("Adobe Reader Remote Code Execution Vulnerability(Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to Remote Code
+  tag_summary = "This host is installed with Adobe Reader and is prone to Remote Code
 Execution Vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version of Adobe Reader with the help of detect NVT and
+  tag_vuldetect = "Get the installed version of Adobe Reader with the help of detect NVT and
 check it is vulnerable or not.";
 
-  tag_insight =
-"The flaw is due to some error affecting javascript security controls.";
+  tag_insight = "The flaw is due to some error affecting javascript security controls.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to bypass the security controls
+  tag_impact = "Successful exploitation will allow attackers to bypass the security controls
 and execute arbitrary javascript code by launching javascript scheme URIs
 when a PDF file is being viewed in a browser.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Reader version 11.x before 11.0.05 on Windows";
+  tag_affected = "Adobe Reader version 11.x before 11.0.05 on Windows";
 
-  tag_solution =
-"Update to Adobe Reader version 11.0.05 or later,
+  tag_solution = "Update to Adobe Reader version 11.0.05 or later,
 For updates refer to http://www.adobe.com/downloads/updates.html";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -80,19 +73,14 @@ For updates refer to http://www.adobe.com/downloads/updates.html";
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
-if(!readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

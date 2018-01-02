@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weborf_43016.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: gb_weborf_43016.nasl 8246 2017-12-26 07:29:20Z teissa $
 #
 # Weborf HTTP 'modURL()' Function Directory Traversal Vulnerability
 #
@@ -36,9 +36,9 @@ Weborf 0.12.2 and prior versions are vulnerable.";
 
 if (description)
 {
- script_id(100788);
- script_version("$Revision: 6696 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100788");
+ script_version("$Revision: 8246 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-26 08:29:20 +0100 (Tue, 26 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-09-07 15:26:31 +0200 (Tue, 07 Sep 2010)");
  script_bugtraq_id(43016);
  script_tag(name:"cvss_base", value:"5.0");

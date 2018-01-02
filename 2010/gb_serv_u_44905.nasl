@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serv_u_44905.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_serv_u_44905.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # Serv-U Empty Password Authentication Bypass Vulnerability
 #
@@ -36,9 +36,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100914);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100914");
+ script_version("$Revision: 8266 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-11-25 12:46:25 +0100 (Thu, 25 Nov 2010)");
  script_bugtraq_id(44905);
  script_tag(name:"cvss_base", value:"5.0");

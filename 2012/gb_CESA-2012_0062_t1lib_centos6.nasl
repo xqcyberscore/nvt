@@ -69,8 +69,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-January/018395.html");
   script_id(881199);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8257 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 07:29:46 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:40:59 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2010-2642", "CVE-2011-0433", "CVE-2011-0764", "CVE-2011-1552",
                 "CVE-2011-1553", "CVE-2011-1554");
@@ -79,7 +79,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:0062");
   script_name("CentOS Update for t1lib CESA-2012:0062 centos6 ");
 
-  script_summary("Check for the Version of t1lib");
+  script_tag(name: "summary" , value: "Check for the Version of t1lib");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

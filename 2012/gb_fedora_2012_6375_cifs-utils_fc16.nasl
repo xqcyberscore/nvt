@@ -41,14 +41,14 @@ if(description)
   script_id(864206);
   script_tag(name:"cvss_base", value:"2.1");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+ script_version("$Revision: 8253 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 07:29:51 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-05-04 10:46:29 +0530 (Fri, 04 May 2012)");
   script_cve_id("CVE-2012-1586");
   script_xref(name: "FEDORA", value: "2012-6375");
   script_name("Fedora Update for cifs-utils FEDORA-2012-6375");
 
-  script_summary("Check for the Version of cifs-utils");
+  script_tag(name: "summary" , value: "Check for the Version of cifs-utils");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

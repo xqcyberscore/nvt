@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_discloser_sql_inj_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_discloser_sql_inj_vuln.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # Discloser 'more' Parameter SQL Injection Vulnerability
 #
@@ -44,9 +44,9 @@ vulnerability.";
 
 if(description)
 {
-  script_id(902138);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902138");
+  script_version("$Revision: 8266 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_cve_id("CVE-2009-4719");
   script_bugtraq_id(35923);

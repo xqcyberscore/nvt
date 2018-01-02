@@ -39,12 +39,12 @@ tag_affected = "gif2png on Fedora 12";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-November/051229.html");
-  script_id(862564);
+  script_oid("1.3.6.1.4.1.25623.1.0.862564");
   script_cve_id("CVE-2009-5018","CVE-2010-4694","CVE-2010-4695");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 8092 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 07:31:16 +0100 (Wed, 13 Dec 2017) $");
+ script_version("$Revision: 8228 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-11-23 15:30:07 +0100 (Tue, 23 Nov 2010)");
   script_xref(name: "FEDORA", value: "2010-0358");
   script_name("Fedora Update for gif2png FEDORA-2010-0358");

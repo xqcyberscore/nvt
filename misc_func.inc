@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 8111 2017-12-14 07:03:31Z cfischer $
+# $Id: misc_func.inc 8230 2017-12-22 08:51:56Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8111 $
+# $Revision: 8230 $
 #
 ###############################################################################
 
@@ -1398,4 +1398,32 @@ function traversal_files() {
                      "\[boot loader\]", "boot.ini",
                      "; for 16-bit app supporT", "winnt/win.ini",
                      "; for 16-bit app support", "windows/win.ini" );
+}
+
+# Add a dependency to gb_open_udp_ports.nasl if you want to use this
+function get_all_udp_ports( ) {
+
+  local_var port;
+
+  port = get_kb_item( "UDP/PORTS" );
+  if( ! port ) exit( 0 );
+  if( ! get_udp_port_state( port ) ) exit( 0 );
+
+  return port;
+}
+
+# Add a dependency to gb_open_udp_ports.nasl if you want to use this
+function get_all_udp_ports_list( ) {
+
+  local_var _ports, ports, port;
+
+  ports = make_list();
+  _ports = get_kb_list( "UDP/PORTS" );
+
+  foreach port( _ports ) {
+    if( ! get_udp_port_state( port ) ) continue;
+    ports = make_list( ports, port );
+  }
+
+  return ports;
 }

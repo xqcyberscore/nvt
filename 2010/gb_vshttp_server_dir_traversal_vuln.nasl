@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vshttp_server_dir_traversal_vuln.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_vshttp_server_dir_traversal_vuln.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # Visual Synapse HTTP Server Directory Traversal Vulnerability
 #
@@ -46,9 +46,9 @@ directory traversal vulnerability.";
 
 if(description)
 {
-  script_id(801526);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801526");
+  script_version("$Revision: 8228 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-10-18 15:37:53 +0200 (Mon, 18 Oct 2010)");
   script_cve_id("CVE-2010-3743");
   script_bugtraq_id(43830);

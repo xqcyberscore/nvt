@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-061.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms10-061.nasl 8207 2017-12-21 07:30:12Z teissa $
 #
 # Microsoft Windows Print Spooler Service Remote Code Execution Vulnerability (2347290)
 #
@@ -26,9 +26,9 @@
 
 if(description)
 {
-  script_id(901150);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901150");
+  script_version("$Revision: 8207 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-15 17:01:07 +0200 (Wed, 15 Sep 2010)");
   script_cve_id("CVE-2010-2729");
   script_bugtraq_id(43073);

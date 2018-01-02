@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_mem_crptn_vuln_win_jun11.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: secpod_adobe_prdts_mem_crptn_vuln_win_jun11.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader/Acrobat Memory Corruption Vulnerability (Windows)
 #
@@ -24,43 +24,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.902379";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 7019 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902379");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2011-2103");
   script_bugtraq_id(48247);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-07-05 13:15:06 +0200 (Tue, 05 Jul 2011)");
   script_name("Adobe Reader/Acrobat Memory Corruption Vulnerability (Windows)");
 
-  tag_summary =
-"This host has Adobe Reader/Acrobat installed, and is/are prone to memory
+  tag_summary = "This host has Adobe Reader/Acrobat installed, and is/are prone to memory
 corruption vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version is
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version is
 vulnerable or not.";
 
-  tag_insight =
-"The flaw is due to an unspecified error, which leads to memory corruption.";
+  tag_insight = "The flaw is due to an unspecified error, which leads to memory corruption.";
 
-  tag_impact =
-"Successful exploitation allows attackers to execute arbitrary code in the context
+  tag_impact = "Successful exploitation allows attackers to execute arbitrary code in the context
 of the user running the affected application.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Reader version 8.x through 8.2.6
+  tag_affected = "Adobe Reader version 8.x through 8.2.6
+
 Adobe Acrobat version 8.x through 8.2.6";
 
-  tag_solution =
-"Upgrade to Adobe Acrobat and Reader version 8.3 or later. For updates refer to
+  tag_solution = "Upgrade to Adobe Acrobat and Reader version 8.3 or later. For updates refer to
 http://www.adobe.com/support/downloads/product.jsp?product=10&platform=Windows";
 
 
@@ -81,19 +74,11 @@ http://www.adobe.com/support/downloads/product.jsp?product=10&platform=Windows";
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-acrobatVer = "";
-
-##CPE for adobe reader
 CPE = "cpe:/a:adobe:acrobat_reader";
-
-# Check for Adobe Reader
-if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   if(readerVer =~ "^8")
   {
@@ -104,8 +89,8 @@ if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
   }
 }
 
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(acrobatVer != NULL)
+CPE = "cpe:/a:adobe:acrobat";
+if(acrobatVer = get_app_version(cpe:CPE))
 {
   ## Check for Adobe Acrobat versions
   if(version_in_range(version:acrobatVer, test_version:"8.0", test_version2:"8.2.6")){

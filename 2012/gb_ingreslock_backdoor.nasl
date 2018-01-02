@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ingreslock_backdoor.nasl 7293 2017-09-27 08:49:48Z cfischer $
+# $Id: gb_ingreslock_backdoor.nasl 8233 2017-12-22 09:37:31Z cfischer $
 #
 # Possible Backdoor: Ingreslock
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103549");
-  script_version("$Revision: 7293 $");
+  script_version("$Revision: 8233 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 10:37:31 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-22 16:21:38 +0200 (Wed, 22 Aug 2012)");
   script_name("Possible Backdoor: Ingreslock");
   script_category(ACT_ATTACK);
@@ -56,24 +56,22 @@ if(description)
 
 include("misc_func.inc");
 
-ports = get_kb_list( "TCP/PORTS" );
-if( ! ports ) exit( 0 );
+port = get_all_tcp_ports();
 
-foreach port( ports ) {
+soc = open_sock_tcp( port );
+if( ! soc ) exit( 0 );
 
-  if( ! get_port_state( port ) ) continue;
+recv = recv( socket:soc, length:1024 );
+send( socket:soc, data:'id;\r\n\r\n' );
+recv = recv( socket:soc, length:1024 );
+close( soc );
 
-  soc = open_sock_tcp( port );
-  if( ! soc ) continue;
-
-  recv = recv( socket:soc, length:1024 );
-  send( socket:soc, data:'id;\r\n\r\n' );
-  recv = recv( socket:soc, length:1024 );
-  close( soc );
-
-  if( recv =~ "uid=[0-9]+.*gid=[0-9]+" ) {
-    security_message( port:port );
-  }
+if( recv =~ "uid=[0-9]+.*gid=[0-9]+" ) {
+  uid = eregmatch( pattern:"(uid=[0-9]+.*gid=[0-9]+[^ ]+)", string:recv );
+  if( uid )
+    report = "The service is answering to an 'id;' command with the following response: " + uid[1];
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
 exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_blackberry_desktop_insecure_lib_load_vuln_win.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_blackberry_desktop_insecure_lib_load_vuln_win.nasl 8254 2017-12-28 07:29:05Z teissa $
 #
 # BlackBerry Desktop Software Insecure Library Loading Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is installed with BlackBerry Desktop Software and is pr
 
 if(description)
 {
-  script_id(902312);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902312");
+  script_version("$Revision: 8254 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-23 08:13:58 +0200 (Thu, 23 Sep 2010)");
   script_cve_id("CVE-2010-2600");
   script_bugtraq_id(43139);

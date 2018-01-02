@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: mysql.inc 7578 2017-10-26 11:00:21Z cfischer $
+# $Id: mysql.inc 8230 2017-12-22 08:51:56Z cfischer $
 #
 # Functions for MySQL
 #
@@ -27,7 +27,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 7578 $
+# $Revision: 8230 $
 #
 ###############################################################################
 
@@ -45,6 +45,7 @@ function set_mysql_version( port, version ) {
   if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#set_mysql_version" );
 
   set_kb_item( name:"mysql/version/" + port, value:version );
+  set_kb_item( name:"OpenDatabase/found", value:TRUE );
 }
 
 function get_mysql_version( port ) {
@@ -64,6 +65,7 @@ function set_mariadb_version( port, version ) {
   if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#set_mariadb_version" );
 
   set_kb_item( name:"mariadb/version/" + port, value:version );
+  set_kb_item( name:"OpenDatabase/found", value:TRUE );
 }
 
 function get_mariadb_version( port ) {

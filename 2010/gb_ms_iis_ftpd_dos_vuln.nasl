@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_iis_ftpd_dos_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_ms_iis_ftpd_dos_vuln.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # Microsoft Windows IIS FTP Server DOS Vulnerability
 #
@@ -43,9 +43,9 @@ tag_summary = "This host is running Microsoft IIS with FTP server and is prone t
 
 if(description)
 {
-  script_id(801669);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801669");
+  script_version("$Revision: 8266 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-12-27 09:55:05 +0100 (Mon, 27 Dec 2010)");
   script_cve_id("CVE-2010-3972");
   script_bugtraq_id(45542);

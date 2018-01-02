@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sybase_asa_ping.nasl 4822 2016-12-21 07:19:58Z cfi $
+# $Id: sybase_asa_ping.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # Sybase ASA Ping
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80089");
-  script_version("$Revision: 4822 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 08:19:58 +0100 (Wed, 21 Dec 2016) $");
+  script_version("$Revision: 8236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -37,7 +37,6 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2007 David Lodge");
   script_family("Databases");
-  script_dependencies("find_service.nasl");
   script_require_udp_ports(2638);
 
   script_xref(name:"URL", value:"http://www.sybase.com/products/databasemanagement/sqlanywhere");

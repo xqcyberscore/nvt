@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vmware_prdts_dos_vuln_win_apr10.nasl 6518 2017-07-04 13:49:06Z cfischer $
+# $Id: secpod_vmware_prdts_dos_vuln_win_apr10.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # VMware Authorization Service Denial of Service Vulnerability (Windows) -Apr10
 #
@@ -56,9 +56,9 @@ tag_summary = "The host is installed with VMWare product(s) that are vulnerable 
 
 if(description)
 {
-  script_id(902173);
-  script_version("$Revision: 6518 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:49:06 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902173");
+  script_version("$Revision: 8250 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-29 10:23:16 +0200 (Thu, 29 Apr 2010)");
   script_cve_id("CVE-2009-4811");
   script_tag(name:"cvss_base", value:"5.0");

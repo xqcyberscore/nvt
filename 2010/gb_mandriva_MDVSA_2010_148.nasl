@@ -59,9 +59,9 @@ tag_affected = "pidgin on Mandriva Linux 2008.0,
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-08/msg00005.php");
-  script_id(831124);
-  script_version("$Revision: 8082 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 07:31:24 +0100 (Tue, 12 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.831124");
+  script_version("$Revision: 8207 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-13 14:24:53 +0200 (Fri, 13 Aug 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");

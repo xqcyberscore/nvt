@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tls_version_get.nasl 7578 2017-10-26 11:00:21Z cfischer $
+# $Id: gb_tls_version_get.nasl 8232 2017-12-22 09:19:30Z cfischer $
 #
 # SSL/TLS: Version Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105782");
-  script_version("$Revision: 7578 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:00:21 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 8232 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 10:19:30 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-06-29 10:54:20 +0200 (Wed, 29 Jun 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("secpod_open_tcp_ports.nasl", "gb_starttls_pop3.nasl", "gb_starttls_imap.nasl", "gb_starttls_ftp.nasl", "gb_starttls_smtp.nasl",
                       "gb_postgres_tls_support.nasl", "gb_starttls_ldap.nasl", "gb_starttls_nntp.nasl", "gb_starttls_xmpp.nasl", "gb_starttls_mysql.nasl",
-                      "gb_starttls_irc.nasl","gb_starttls_rdp.nasl");
+                      "gb_starttls_irc.nasl", "gb_starttls_rdp.nasl", "gb_dont_scan_fragile_device.nasl");
   script_mandatory_keys("TCP/PORTS");
 
   script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract the SSL/TLS version number from the reply. The Result is stored in the KB.");
@@ -54,8 +54,15 @@ include("ssl_funcs.inc");
 include("byte_func.inc");
 include("misc_func.inc");
 
-port = get_kb_item("TCP/PORTS");
+# nb: Don't use get_all_tcp_ports() as we only want to exclude
+# specific ports from the TLS checks defined in gb_dont_scan_fragile_device.nasl
+port = get_kb_item( "TCP/PORTS" );
 if( ! port || ! get_port_state( port ) ) exit( 0 );
+
+# nb: Set by gb_dont_scan_fragile_device.nasl. Some devices are even crashing
+# if we're touching one or more ports of them with our SSL/TLS checks so those
+# ports gets excluded here.
+if( get_kb_item( "fragile_port/exclude_tls/" + port ) ) exit( 0 );
 
 sup_tls = '';
 

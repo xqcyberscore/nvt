@@ -43,8 +43,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:178");
   script_id(831755);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8257 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 07:29:46 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-12-10 09:50:18 +0530 (Mon, 10 Dec 2012)");
   script_cve_id("CVE-2012-5611");
   script_tag(name:"cvss_base", value:"6.5");
@@ -52,7 +52,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:178");
   script_name("Mandriva Update for mysql MDVSA-2012:178 (mysql)");
 
-  script_summary("Check for the Version of mysql");
+  script_tag(name: "summary" , value: "Check for the Version of mysql");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

@@ -51,8 +51,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-November/018162.html");
   script_id(881268);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8265 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 07:29:23 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:14:01 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2010-4818", "CVE-2010-4819");
   script_tag(name:"cvss_base", value:"8.5");
@@ -60,7 +60,7 @@ if(description)
   script_xref(name: "CESA", value: "2011:1360");
   script_name("CentOS Update for xorg-x11 CESA-2011:1360 centos4 x86_64");
 
-  script_summary("Check for the Version of xorg-x11");
+  script_tag(name: "summary" , value: "Check for the Version of xorg-x11");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

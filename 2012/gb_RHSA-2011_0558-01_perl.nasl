@@ -85,8 +85,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-May/msg00017.html");
   script_id(870613);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8245 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 07:29:59 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:34:05 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2010-2761", "CVE-2010-4410", "CVE-2011-1487");
   script_tag(name:"cvss_base", value:"5.0");
@@ -94,7 +94,7 @@ if(description)
   script_xref(name: "RHSA", value: "2011:0558-01");
   script_name("RedHat Update for perl RHSA-2011:0558-01");
 
-  script_summary("Check for the Version of perl");
+  script_tag(name: "summary" , value: "Check for the Version of perl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

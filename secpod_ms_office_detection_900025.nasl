@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_detection_900025.nasl 8191 2017-12-20 09:51:15Z cfischer $
+# $Id: secpod_ms_office_detection_900025.nasl 8211 2017-12-21 10:38:01Z cfischer $
 #
 # Microsoft Office Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900025");
-  script_version("$Revision: 8191 $");
+  script_version("$Revision: 8211 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:51:15 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:38:01 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Office Version Detection");
@@ -54,7 +54,6 @@ if(description)
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -117,17 +116,13 @@ foreach key (key_list)
           set_kb_item(name:"MS/Office/Viewer/Ver", value:MSOffVer);
           set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
-          build_report(app:MSOffName, ver:MSOffVer, insloc:MSOffLoc, concluded:MSOffVer,
-                       exp:"^([0-9.]+)", base:"cpe:/a:microsoft:office_word_viewer:");
+          register_and_report_cpe( app:MSOffName, ver:MSOffVer, base:"cpe:/a:microsoft:office_word_viewer:", expr:"^([0-9.]+)", insloc:MSOffLoc );
 
           ## Register for 64 bit app on 64 bit OS once again
           if("64" >< os_arch && "Wow6432Node" >!< key && "32-bit" >!< MSOffName)
           {
             set_kb_item(name:"MS/Office/Viewer64/Ver", value:MSOffVer);
-            set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
-
-            build_report(app:MSOffName, ver:MSOffVer, insloc:MSOffLoc, concluded:MSOffVer,
-                         exp:"^([0-9.]+)", base:"cpe:/a:microsoft:office_word_viewer:x64:");
+            register_and_report_cpe( app:MSOffName, ver:MSOffVer, concluded:MSOffVer, base:"cpe:/a:microsoft:office_word_viewer:x64:", expr:"^([0-9.]+)", insloc:MSOffLoc );
           }
         }
         continue;
@@ -172,7 +167,6 @@ foreach key (key_list)
             if( "x64" >< os_arch && "Wow6432Node" >!< key && "32-bit" >!< MSOffName)
             {
               set_kb_item(name:"MS/Office64/Ver", value:MSOffVer);
-              set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE ); 
 
               ## build cpe and store it as host_detail
               for (i = 0; i < MAX-1; i = i + 2)
@@ -183,8 +177,7 @@ foreach key (key_list)
                 }
               }
             }
-            
-            build_report(app:MSOffName, ver:MSOffVer, concluded:MSOffVer, cpe:cpe_final, insloc:MSOffLoc);
+            register_and_report_cpe( app:MSOffName, ver:MSOffVer, concluded:MSOffVer, cpename:cpe_final, insloc:MSOffLoc );
           }
         }
         continue;

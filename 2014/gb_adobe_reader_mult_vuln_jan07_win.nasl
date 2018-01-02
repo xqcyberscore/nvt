@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln_jan07_win.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_adobe_reader_mult_vuln_jan07_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities Jan07 (Windows)
 #
@@ -25,50 +25,44 @@
 ###############################################################################
 
 CPE = "cpe:/a:adobe:acrobat_reader";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804392";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6663 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804392");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2006-5857", "CVE-2007-0046", "CVE-2007-0047", "CVE-2007-0044");
   script_bugtraq_id(21858, 21981);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-04-11 17:14:20 +0530 (Fri, 11 Apr 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities Jan07 (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to multiple
+  tag_summary = "This host is installed with Adobe Reader and is prone to multiple
 vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"Flaws exist due to,
+  tag_insight = "Flaws exist due to,
+
 - Input passed to a hosted PDF file is not properly sanitised by the browser
 plug-in before being returned to users.
+
 - Input passed to a hosted PDF file is not properly handled by the browser
 plug-in.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to cause memory corruption,
+  tag_impact = "Successful exploitation will allow attackers to cause memory corruption,
 execution of arbitrary code, execution of arbitrary script code in a user's
 browser session in context of an affected site and conduct Cross Site Request
 Forgery attacks.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Reader version 7.0.8 and prior on Windows.";
+  tag_affected = "Adobe Reader version 7.0.8 and prior on Windows.";
 
-  tag_solution =
-"Upgrade to Adobe Reader version 7.0.9 or later. For updates refer to
+  tag_solution = "Upgrade to Adobe Reader version 7.0.9 or later. For updates refer to
 http://get.adobe.com/reader";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -86,19 +80,14 @@ http://get.adobe.com/reader";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
-if(!readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

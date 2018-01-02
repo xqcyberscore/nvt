@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zencart_44636.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_zencart_44636.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # Zen Cart 'includes/initsystem.php' Local File Include Vulnerability
 #
@@ -37,9 +37,9 @@ Zen Cart 1.3.9h is vulnerable; other versions may also be affected.";
 
 if(description)
 {
- script_id(100894);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100894");
+ script_version("$Revision: 8250 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-11-05 13:21:25 +0100 (Fri, 05 Nov 2010)");
  script_bugtraq_id(44636);
  script_tag(name:"cvss_base", value:"5.0");

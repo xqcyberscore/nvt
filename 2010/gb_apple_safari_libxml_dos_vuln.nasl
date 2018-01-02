@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_libxml_dos_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_apple_safari_libxml_dos_vuln.nasl 8246 2017-12-26 07:29:20Z teissa $
 #
 # Apple Safari libxml Denial of Service Vulnerability
 #
@@ -44,9 +44,9 @@ tag_summary = "The host is installed with Apple Safari web browser and is prone
 
 if(description)
 {
-  script_id(801638);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801638");
+  script_version("$Revision: 8246 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 08:29:20 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-11-23 14:41:37 +0100 (Tue, 23 Nov 2010)");
   script_cve_id("CVE-2010-4008");
   script_tag(name:"cvss_base", value:"4.3");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_info_disc_vuln_jun05_win.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_adobe_reader_info_disc_vuln_jun05_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader Information Disclosure Vulnerability Jun05 (Windows)
 #
@@ -25,45 +25,37 @@
 ###############################################################################
 
 CPE = "cpe:/a:adobe:acrobat_reader";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804255";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6735 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804255");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2005-1306");
   script_bugtraq_id(13962);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-04-15 17:57:59 +0530 (Tue, 15 Apr 2014)");
   script_name("Adobe Reader Information Disclosure Vulnerability Jun05 (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to information
+  tag_summary = "This host is installed with Adobe Reader and is prone to information
 disclosure vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"Flaw exist due to an error in the adobe reader control which allows reading
+  tag_insight = "Flaw exist due to an error in the adobe reader control which allows reading
 the contents of certain text files.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to gain knowledge of potentially
+  tag_impact = "Successful exploitation will allow attackers to gain knowledge of potentially
 sensitive information.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Reader version 7.0.0 and 7.0.1 on Windows.";
+  tag_affected = "Adobe Reader version 7.0.0 and 7.0.1 on Windows.";
 
-  tag_solution =
-"Upgrade to Adobe Reader 7.0.5 or later. For
+  tag_solution = "Upgrade to Adobe Reader 7.0.5 or later. For
 updates refer to http://get.adobe.com/reader";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -81,18 +73,14 @@ updates refer to http://get.adobe.com/reader";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
-if(!readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

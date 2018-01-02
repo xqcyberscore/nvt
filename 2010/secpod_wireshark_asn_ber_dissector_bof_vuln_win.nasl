@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_asn_ber_dissector_bof_vuln_win.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_wireshark_asn_ber_dissector_bof_vuln_win.nasl 8246 2017-12-26 07:29:20Z teissa $
 #
 # Wireshark ASN.1 BER Dissector Buffer Overflow Vulnerability (Windows)
 #
@@ -35,9 +35,9 @@ tag_summary = "This host is installed with Wireshark and is prone to buffer over
 
 if(description)
 {
-  script_id(902195);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902195");
+  script_version("$Revision: 8246 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 08:29:20 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-06-22 13:34:32 +0200 (Tue, 22 Jun 2010)");
   script_cve_id("CVE-2010-2284");
   script_tag(name:"cvss_base", value:"8.3");

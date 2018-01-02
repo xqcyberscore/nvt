@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phptroubleticket_38486.nasl 5763 2017-03-29 11:54:30Z cfi $
+# $Id: gb_phptroubleticket_38486.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # Phptroubleticket 'vedi_faq.php' SQL Injection Vulnerability
 #
@@ -37,9 +37,9 @@ affected.";
 
 if(description)
 {
- script_id(100515);
- script_version("$Revision: 5763 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:54:30 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100515");
+ script_version("$Revision: 8258 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-03-04 12:28:05 +0100 (Thu, 04 Mar 2010)");
  script_bugtraq_id(38486);
  script_tag(name:"cvss_base", value:"7.5");

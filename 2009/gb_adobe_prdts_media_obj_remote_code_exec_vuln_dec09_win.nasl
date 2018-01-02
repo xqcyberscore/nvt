@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_media_obj_remote_code_exec_vuln_dec09_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_prdts_media_obj_remote_code_exec_vuln_dec09_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader/Acrobat Multimedia Doc.media.newPlayer Code Execution Vulnerability (Windows)
 #
@@ -24,51 +24,43 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.901096";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6475 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901096");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2009-4324");
   script_bugtraq_id(37331);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-12-21 07:14:17 +0100 (Mon, 21 Dec 2009)");
   script_name("Adobe Reader/Acrobat Multimedia Doc.media.newPlayer Code Execution Vulnerability (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader/Acrobat and is prone to
+  tag_summary = "This host is installed with Adobe Reader/Acrobat and is prone to
  Doc.media.newPlayer Remote Code Execution vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"There exists a flaw in the JavaScript module doc.media object while sending a
+  tag_insight = "There exists a flaw in the JavaScript module doc.media object while sending a
 null argument to the newPlayer() method as the exploitation method makes use
 of a vpointer that has not been initialized.";
 
-  tag_impact =
-"Successful exploitation will let attackers to execute arbitrary code and
+  tag_impact = "Successful exploitation will let attackers to execute arbitrary code and
 compromise a user's system.
 
 Impact Level: System";
 
-  tag_affected =
-"Adobe Acrobat version 9.2.0 and prior.
+  tag_affected = "Adobe Acrobat version 9.2.0 and prior.
+
 Adobe Acrobat version 9.2.0 and prior.";
 
-  tag_solution =
-"Adobe Acrobat/Reader version 9.3.2 or later,
+  tag_solution = "Adobe Acrobat/Reader version 9.3.2 or later,
 For updates refer to http://www.adobe.com
 
 Workaround:
 Disable JavaScript execution from the Adobe Acrobat/Reader product
 configuration menu settings.";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -96,15 +88,8 @@ configuration menu settings.";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-acrobatVer = "";
-
-##CPE for adobe reader
 CPE = "cpe:/a:adobe:acrobat_reader";
-
-## Get version
-if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   # Check for Adobe Reader version 9.x to 9.2.0
   if(version_is_less_equal(version:readerVer, test_version:"9.2.0"))
@@ -113,8 +98,8 @@ if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
   }
 }
 
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(acrobatVer != NULL)
+CPE = "cpe:/a:adobe:acrobat";
+if(acrobatVer = get_app_version(cpe:CPE))
 {
   # Check for Adobe Acrobat version 9.x to 9.2.0
   if(version_is_less_equal(version:acrobatVer, test_version:"9.2.0")){

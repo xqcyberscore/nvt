@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wondercms_44916.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_wondercms_44916.nasl 8254 2017-12-28 07:29:05Z teissa $
 #
 # WonderCMS 'page' Parameter Cross Site Scripting And Information Disclosure Vulnerabilities
 #
@@ -40,9 +40,9 @@ tag_solution = "Vendor patch is available. Please see the reference for more det
 
 if(description)
 {
- script_id(100908);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100908");
+ script_version("$Revision: 8254 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-11-18 13:10:44 +0100 (Thu, 18 Nov 2010)");
  script_bugtraq_id(44916);
  script_tag(name:"cvss_base", value:"5.0");

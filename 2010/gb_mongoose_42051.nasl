@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongoose_42051.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_mongoose_42051.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # Mongoose Slash Character Remote File Disclosure Vulnerability
 #
@@ -37,9 +37,9 @@ vulnerable as well.";
 
 if (description)
 {
- script_id(100735);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100735");
+ script_version("$Revision: 8228 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-08-02 14:28:14 +0200 (Mon, 02 Aug 2010)");
  script_bugtraq_id(42051);
  script_tag(name:"cvss_base", value:"5.0");

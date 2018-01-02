@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rip_detect.nasl 4818 2016-12-20 16:41:46Z cfi $
+# $Id: rip_detect.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # RIP detection
 #
@@ -69,8 +69,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11822");
-  script_version("$Revision: 4818 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-20 17:41:46 +0100 (Tue, 20 Dec 2016) $");
+  script_version("$Revision: 8236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -78,7 +78,6 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");
   script_family("Service detection");
-  script_dependencies("find_service.nasl");
   script_require_udp_ports(520);
 
   script_tag(name:"summary", value:"This plugin detects RIP-1 and RIP-2 agents and display

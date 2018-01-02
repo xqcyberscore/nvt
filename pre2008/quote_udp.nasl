@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: quote_udp.nasl 4827 2016-12-21 10:31:05Z cfi $
+# $Id: quote_udp.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # Check for Quote of the day Service (UDP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108029");
-  script_version("$Revision: 4827 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 11:31:05 +0100 (Wed, 21 Dec 2016) $");
+  script_version("$Revision: 8236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -40,7 +40,6 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 1999 Mathieu Perrin");
   script_family("Useless services");
-  script_dependencies("find_service.nasl");
   script_require_udp_ports(17);
 
   script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0103");

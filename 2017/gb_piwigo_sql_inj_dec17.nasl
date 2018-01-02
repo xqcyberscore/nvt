@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_sql_inj_dec17.nasl 8069 2017-12-11 06:32:09Z teissa $
+# $Id: gb_piwigo_sql_inj_dec17.nasl 8241 2017-12-22 13:40:20Z cfischer $
 #
 # Piwigo Sql Injection Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:piwigo:piwigo';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107271");
-  script_version("$Revision: 8069 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-11 07:32:09 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 8241 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-22 14:40:20 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-12-11 11:11:04 +0700 (Mon, 11 Dec 2017)");
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-16893");
 

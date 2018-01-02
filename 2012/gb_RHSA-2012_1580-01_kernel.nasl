@@ -67,8 +67,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-December/msg00025.html");
   script_id(870872);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8249 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 07:29:56 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-12-26 12:04:54 +0530 (Wed, 26 Dec 2012)");
   script_cve_id("CVE-2012-2100", "CVE-2012-2375", "CVE-2012-4444", "CVE-2012-4565",
                 "CVE-2012-5517", "CVE-2011-4131", "CVE-2009-4307");
@@ -77,7 +77,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:1580-01");
   script_name("RedHat Update for kernel RHSA-2012:1580-01");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

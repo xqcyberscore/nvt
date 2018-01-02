@@ -64,8 +64,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-07/msg00015.php");
   script_id(831111);
-  script_version("$Revision: 6569 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:05:37 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 07:30:04 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-16 10:40:49 +0200 (Fri, 16 Jul 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -73,7 +73,7 @@ if(description)
   script_cve_id("CVE-2009-4270", "CVE-2010-1628");
   script_name("Mandriva Update for ghostscript MDVSA-2010:134 (ghostscript)");
 
-  script_summary("Check for the Version of ghostscript");
+  script_tag(name: "summary" , value: "Check for the Version of ghostscript");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

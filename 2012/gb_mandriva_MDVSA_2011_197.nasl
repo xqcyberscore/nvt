@@ -49,8 +49,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-12/msg00030.php");
   script_id(831518);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8253 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 07:29:51 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-01-02 13:29:22 +0530 (Mon, 02 Jan 2012)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -58,7 +58,7 @@ if(description)
   script_cve_id("CVE-2011-0708", "CVE-2011-4566", "CVE-2011-4885");
   script_name("Mandriva Update for php MDVSA-2011:197 (php)");
 
-  script_summary("Check for the Version of php");
+  script_tag(name: "summary" , value: "Check for the Version of php");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

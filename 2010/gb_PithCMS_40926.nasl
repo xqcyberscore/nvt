@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_PithCMS_40926.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_PithCMS_40926.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # PithCMS 'lang' Parameter Local File Include Vulnerability
 #
@@ -39,9 +39,9 @@ tag_solution = "An Update is available. See References.";
 
 if(description)
 {
- script_id(100689);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100689");
+ script_version("$Revision: 8266 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-06-22 12:10:21 +0200 (Tue, 22 Jun 2010)");
  script_bugtraq_id(40926);
  script_tag(name:"cvss_base", value:"2.6");

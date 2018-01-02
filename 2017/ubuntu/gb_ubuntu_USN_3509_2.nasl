@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3509_2.nasl 8110 2017-12-14 06:39:02Z santu $
+# $Id: gb_ubuntu_USN_3509_2.nasl 8247 2017-12-26 13:32:16Z cfischer $
 #
 # Ubuntu Update for linux-aws USN-3509-2
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843400");
-  script_version("$Revision: 8110 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-14 07:39:02 +0100 (Thu, 14 Dec 2017) $");
+  script_version("$Revision: 8247 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-26 14:32:16 +0100 (Tue, 26 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-12-09 07:39:26 +0100 (Sat, 09 Dec 2017)");
   script_cve_id("CVE-2017-16939", "CVE-2017-1000405", "CVE-2017-12193", "CVE-2017-16643");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-aws USN-3509-2");
   script_tag(name: "summary", value: "Check the version of linux-aws");

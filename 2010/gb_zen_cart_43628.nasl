@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zen_cart_43628.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_zen_cart_43628.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # Zen Cart Multiple Input Validation Vulnerabilities
 #
@@ -42,9 +42,9 @@ tag_solution = "Updates are available. Please see the reference for more details
 
 if(description)
 {
- script_id(100840);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100840");
+ script_version("$Revision: 8250 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-10-04 14:08:22 +0200 (Mon, 04 Oct 2010)");
  script_bugtraq_id(43628);
  script_tag(name:"cvss_base", value:"5.0");

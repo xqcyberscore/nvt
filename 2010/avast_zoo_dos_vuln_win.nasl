@@ -30,9 +30,9 @@ tag_summary = "avast! antivirus before 4.7.981 allows remote attackers to
 
 if(description)
 {
-  script_id(102050);
-  script_version("$Revision: 5660 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.102050");
+  script_version("$Revision: 8244 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_cve_id("CVE-2007-1672");
   script_bugtraq_id(23823);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_info_disc_vuln_feb07_win.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_adobe_reader_info_disc_vuln_feb07_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader 'file://' URL Information Disclosure Vulnerability Feb07 (Windows)
 #
@@ -25,43 +25,35 @@
 ###############################################################################
 
 CPE = "cpe:/a:adobe:acrobat_reader";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804380";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6759 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804380");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2007-1199");
   script_bugtraq_id(22753);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-04-10 12:00:46 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader 'file://' URL Information Disclosure Vulnerability Feb07 (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to information disclosure
+  tag_summary = "This host is installed with Adobe Reader and is prone to information disclosure
 vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"Flaw is due to some unspecified error.";
+  tag_insight = "Flaw is due to some unspecified error.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to obtain sensitive information.
+  tag_impact = "Successful exploitation will allow attackers to obtain sensitive information.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Reader version 8 and prior on Windows.";
+  tag_affected = "Adobe Reader version 8 and prior on Windows.";
 
-  tag_solution =
-"Upgrade to Adobe Reader version 8.1.2 or later. For updates refer to
+  tag_solution = "Upgrade to Adobe Reader version 8.1.2 or later. For updates refer to
 http://get.adobe.com/reader";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -78,18 +70,14 @@ http://get.adobe.com/reader";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
-if(!readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

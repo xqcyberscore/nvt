@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-022.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: secpod_ms10-022.nasl 8258 2017-12-29 07:28:57Z teissa $
 #
 # Microsoft VBScript Scripting Engine Remote Code Execution Vulnerability (980232)
 #
@@ -29,9 +29,9 @@
 
 if(description)
 {
-  script_id(902159);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902159");
+  script_version("$Revision: 8258 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-14 17:51:53 +0200 (Wed, 14 Apr 2010)");
   script_cve_id("CVE-2010-0483");
   script_bugtraq_id(38463);

@@ -56,8 +56,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-December/018348.html");
   script_id(881448);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8265 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 07:29:23 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:53:53 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-4601", "CVE-2011-4602");
   script_tag(name:"cvss_base", value:"5.0");
@@ -65,7 +65,7 @@ if(description)
   script_xref(name: "CESA", value: "2011:1821");
   script_name("CentOS Update for finch CESA-2011:1821 centos6 ");
 
-  script_summary("Check for the Version of finch");
+  script_tag(name: "summary" , value: "Check for the Version of finch");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

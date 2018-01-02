@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_prdts_detect.nasl 8158 2017-12-18 13:18:20Z cfischer $
+# $Id: gb_panda_prdts_detect.nasl 8218 2017-12-21 14:14:04Z cfischer $
 #
 # Panda Products Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801079");
-  script_version("$Revision: 8158 $");
+  script_version("$Revision: 8218 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 14:18:20 +0100 (Mon, 18 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 15:14:04 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-12-14 09:18:47 +0100 (Mon, 14 Dec 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Panda Products Version Detection");
@@ -144,7 +144,7 @@ foreach key (key_list)
 
         if(pandaVer =~ "^(15\.0)")
         {
-          register_and_report_cpe( app:"Panda Internet Security", ver:pandaVer, base:"cpe:/a:pandasecurity:panda_internet_security:2010::pro:", expr:"^([0-9.]+)", insloc:pandaPath );
+          register_and_report_cpe( app:"Panda Internet Security", ver:pandaVer, base:"cpe:/a:pandasecurity:panda_internet_security_2010:", expr:"^([0-9.]+)", insloc:pandaPath );
         }
       }
     }
@@ -160,7 +160,7 @@ foreach key (key_list)
         set_kb_item(name:"Panda/GlobalProtection/Ver", value:pandaVer);
         if(pandaVer =~ "^(3\.0)")
         {
-          register_and_report_cpe( app:"Panda Global Protection", ver:pandaVer, base:"cpe:/a:pandasecurity:panda_global_protection:2010:", expr:"^([0-9.]+)", insloc:pandaPath );
+          register_and_report_cpe( app:"Panda Global Protection", ver:pandaVer, base:"cpe:/a:pandasecurity:panda_global_protection_2010:", expr:"^([0-9.]+)", insloc:pandaPath );
         }
 
         if(pandaVer =~ "^(16|17|7\.0)")
@@ -181,7 +181,7 @@ foreach key (key_list)
         set_kb_item(name:"Panda/Antivirus/Ver", value:pandaVer);
         if(pandaVer =~ "^(9\.0)")
         {
-          register_and_report_cpe( app:"Panda Antivirus", ver:pandaVer, base:"cpe:/a:pandasecurity:panda_antivirus::2010::pro:", expr:"^([0-9.]+)", insloc:pandaPath );
+          register_and_report_cpe( app:"Panda Antivirus", ver:pandaVer, base:"cpe:/a:pandasecurity:panda_av_pro_2010:", expr:"^([0-9.]+)", insloc:pandaPath );
         }
 
         if(pandaVer =~ "^(16|17|13\.0)")

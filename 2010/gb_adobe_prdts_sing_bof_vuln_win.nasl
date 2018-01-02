@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_sing_bof_vuln_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_prdts_sing_bof_vuln_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Acrobat and Reader SING 'uniqueName' Buffer Overflow Vulnerability (Windows)
 #
@@ -24,47 +24,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.801515";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6475 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801515");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2010-2883");
   script_bugtraq_id(43057);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-15 08:47:45 +0200 (Wed, 15 Sep 2010)");
   script_name("Adobe Acrobat and Reader SING 'uniqueName' Buffer Overflow Vulnerability (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader/Acrobat and is prone to buffer
+  tag_summary = "This host is installed with Adobe Reader/Acrobat and is prone to buffer
 overflow vulnerability";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
- tag_insight =
-"The flaw is due to a boundary error within 'CoolType.dll' when processing the
+ tag_insight = "The flaw is due to a boundary error within 'CoolType.dll' when processing the
 'uniqueName' entry of SING tables in fonts.";
 
-  tag_impact =
-"Successful exploitation will let attackers to crash an affected application
+  tag_impact = "Successful exploitation will let attackers to crash an affected application
 or execute arbitrary code by tricking a user into opening a specially crafted
 PDF document.
 
 Impact Level: Application";
 
-  tag_affected =
-"Adobe Reader version 9.3.4 and prior.
+  tag_affected = "Adobe Reader version 9.3.4 and prior.
+
 Adobe Acrobat version 9.3.4 and prior on windows.";
 
-  tag_solution =
-"Upgrade to Adobe Reader/Adobe Acrobat version 9.4 or later.
+  tag_solution = "Upgrade to Adobe Reader/Adobe Acrobat version 9.4 or later.
 For updates refer http://www.adobe.com/downloads/";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -86,19 +78,11 @@ For updates refer http://www.adobe.com/downloads/";
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-acrobatVer = "";
-
-##CPE for adobe reader
 CPE = "cpe:/a:adobe:acrobat_reader";
-
-## Get Reader Version
-if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   # Check for Adobe Reader version <= 9.3.4
   if(version_is_less(version:readerVer, test_version:"9.3.4"))
@@ -107,13 +91,12 @@ if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
   }
 }
 
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(!acrobatVer){
-  exit(0);
-}
-
-# Check for Adobe Acrobat version <= 9.3.4
-if(version_is_less_equal(version:acrobatVer, test_version:"9.3.4")){
-  security_message(0);
-  exit(0);
+CPE = "cpe:/a:adobe:acrobat";
+if(acrobatVer = get_app_version(cpe:CPE))
+{
+  # Check for Adobe Acrobat version <= 9.3.4
+  if(version_is_less_equal(version:acrobatVer, test_version:"9.3.4")){
+    security_message(0);
+    exit(0);
+  }
 }

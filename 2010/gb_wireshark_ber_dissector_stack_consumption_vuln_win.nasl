@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ber_dissector_stack_consumption_vuln_win.nasl 6519 2017-07-04 14:08:14Z cfischer $
+# $Id: gb_wireshark_ber_dissector_stack_consumption_vuln_win.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # Wireshark BER Dissector Stack Consumption Vulnerability (Windows)
 #
@@ -38,9 +38,9 @@ tag_summary = "This host is installed with Wireshark and is prone to stack
 
 if(description)
 {
-  script_id(801553);
-  script_version("$Revision: 6519 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 16:08:14 +0200 (Tue, 04 Jul 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801553");
+  script_version("$Revision: 8228 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-12-09 06:36:39 +0100 (Thu, 09 Dec 2010)");
   script_cve_id("CVE-2010-3445");
   script_tag(name:"cvss_base", value:"5.0");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_clamav_mult_dos_vuln_win.nasl 5451 2017-03-01 08:24:31Z cfi $
+# $Id: secpod_clamav_mult_dos_vuln_win.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # ClamAV 'cli_pdf()' and 'cli_scanicon()' Denial of Service Vulnerabilities (Windows)
 #
@@ -40,9 +40,9 @@ tag_summary = "This host has ClamAV installed, and is prone to multiple Denial o
 
 if(description)
 {
-  script_id(902189);
-  script_version("$Revision: 5451 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 09:24:31 +0100 (Wed, 01 Mar 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902189");
+  script_version("$Revision: 8250 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-28 16:52:49 +0200 (Fri, 28 May 2010)");
   script_cve_id("CVE-2010-1639", "CVE-2010-1640");
   script_bugtraq_id(40318, 40317);

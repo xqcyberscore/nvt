@@ -33,8 +33,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-April/038497.html");
   script_id(861862);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 07:30:04 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-04-09 11:11:25 +0200 (Fri, 09 Apr 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,7 @@ if(description)
   script_cve_id("CVE-2010-0092", "CVE-2010-0093", "CVE-2010-0082", "CVE-2010-0084", "CVE-2010-0085", "CVE-2010-0088", "CVE-2010-0091", "CVE-2010-0837", "CVE-2010-0838", "CVE-2010-0845", "CVE-2010-0095", "CVE-2010-0094", "CVE-2009-3555", "CVE-2010-0847", "CVE-2010-0848", "CVE-2010-0841", "CVE-2010-0840");
   script_name("Fedora Update for java-1.6.0-openjdk FEDORA-2010-6025");
 
-  script_summary("Check for the Version of java-1.6.0-openjdk");
+  script_tag(name: "summary" , value: "Check for the Version of java-1.6.0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

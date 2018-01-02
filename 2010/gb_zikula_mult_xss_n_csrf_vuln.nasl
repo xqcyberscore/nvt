@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zikula_mult_xss_n_csrf_vuln.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_zikula_mult_xss_n_csrf_vuln.nasl 8254 2017-12-28 07:29:05Z teissa $
 #
 # Zikula Multiple XSS and CSRF Vulnerabilities
 #
@@ -46,9 +46,9 @@ tag_summary = "This host is running Zikula and is prone to multiple cross-site
 
 if(description)
 {
-  script_id(800773);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800773");
+  script_version("$Revision: 8254 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-13 09:36:55 +0200 (Thu, 13 May 2010)");
   script_cve_id("CVE-2010-1732", "CVE-2010-1724", "CVE-2010-4729");
   script_tag(name:"cvss_base", value:"6.8");

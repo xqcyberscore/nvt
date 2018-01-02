@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_acropdf_dos_vuln_win.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_adobe_reader_acropdf_dos_vuln_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader 'AcroPDF.DLL' Denial of Service Vulnerability (Windows)
 #
@@ -25,46 +25,38 @@
 ###############################################################################
 
 CPE = "cpe:/a:adobe:acrobat_reader";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804377";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6750 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804377");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2007-1377");
   script_bugtraq_id(22856);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-04-10 11:20:46 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader 'AcroPDF.DLL' Denial of Service Vulnerability (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to denial of service
+  tag_summary = "This host is installed with Adobe Reader and is prone to denial of service
 vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"Flaw exists due to some unspecified error within 'AcroPDF.DLL' ActiveX.";
+  tag_insight = "Flaw exists due to some unspecified error within 'AcroPDF.DLL' ActiveX.";
 
-  tag_impact =
-"Successful exploitation will allow attackers to consume all available
+  tag_impact = "Successful exploitation will allow attackers to consume all available
 resources and conduct a denial of service.
 
 Impact Level: Application";
 
-  tag_affected =
-"Adobe Reader version 8.0 Windows.";
+  tag_affected = "Adobe Reader version 8.0 Windows.";
 
-  tag_solution =
-"No solution or patch was made available for at least one year
+  tag_solution = "No solution or patch was made available for at least one year
 since disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -81,18 +73,14 @@ features, remove the product or replace the product by another one.";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
-if(!readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

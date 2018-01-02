@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: remote-MS03-034.nasl 8022 2017-12-07 08:23:28Z teissa $
+# $Id: remote-MS03-034.nasl 8236 2017-12-22 10:28:23Z cfischer $
 # Description: 
 # Microsoft Security Bulletin MS03-034
 # Flaw in NetBIOS Could Lead to Information Disclosure 
@@ -71,8 +71,8 @@ http://www.microsoft.com/downloads/details.aspx?FamilyId=22379951-64A9-446B-AC8F
  if(description)
 {
 script_id(101015);
-script_version("$Revision: 8022 $");
-script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:23:28 +0100 (Thu, 07 Dec 2017) $");
+script_version("$Revision: 8236 $");
+script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
 script_tag(name:"creation_date", value:"2009-03-16 23:15:41 +0100 (Mon, 16 Mar 2009)");
 script_tag(name:"cvss_base", value:"5.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -88,7 +88,7 @@ script_category(ACT_ATTACK);
 script_copyright("Christian Eric Edjenguele <christian.edjenguele@owasp.org>");
 family = "Windows : Microsoft Bulletins";
 script_family(family);
-script_dependencies("find_service.nasl","os_detection.nasl");
+script_dependencies("os_detection.nasl");
 script_require_udp_ports(137);
 script_mandatory_keys("Host/runs_windows");
 

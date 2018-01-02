@@ -57,14 +57,14 @@ if(description)
   script_id(870580);
   script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 8253 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 07:29:51 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-04-05 10:19:41 +0530 (Thu, 05 Apr 2012)");
   script_cve_id("CVE-2012-0060", "CVE-2012-0061", "CVE-2012-0815");
   script_xref(name: "RHSA", value: "2012:0451-01");
   script_name("RedHat Update for rpm RHSA-2012:0451-01");
 
-  script_summary("Check for the Version of rpm");
+  script_tag(name: "summary" , value: "Check for the Version of rpm");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

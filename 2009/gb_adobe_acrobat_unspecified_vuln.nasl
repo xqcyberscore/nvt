@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_unspecified_vuln.nasl 5660 2017-03-21 11:29:28Z cfi $
+# $Id: gb_adobe_acrobat_unspecified_vuln.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Acrobat Unspecified vulnerability
 #
@@ -24,23 +24,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:adobe:acrobat";
+
 tag_impact = "Successful exploitation allows remote attackers to execute arbitrary code
   on the affected system via malicious files.
+
   Impact Level: Application/System";
+
 tag_summary = "This host has Adobe Acrobat installed which is prone to unspecified
   vulnerability.";
 
 tag_affected = "Adobe Acrobat version 9.x before 9.2 on Windows.";
+
 tag_insight = "An unspecified error in Adobe Acrobat can be exploited to bypass intended
   file-extension restrictions via unknown vectors.";
+
 tag_solution = "Upgrade to Adobe Acrobat version 9.2
   For updates refer to http://www.adobe.com/downloads/";
 
 if(description)
 {
   script_id(800959);
-  script_version("$Revision: 5660 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 8210 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2009-10-22 15:34:45 +0200 (Thu, 22 Oct 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -54,7 +60,7 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_require_keys("Adobe/Acrobat/Win/Ver");
+  script_mandatory_keys("Adobe/Acrobat/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -63,14 +69,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
+
 # Check for Adobe Reader version 9.x prior to 9.2
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(acrobatVer)
-{
-  if(version_in_range(version:acrobatVer, test_version:"9.0", test_version2:"9.1.3")){
-    security_message(0);
-  }
+if( version_in_range( version:vers, test_version:"9.0", test_version2:"9.1.3" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"9.2", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

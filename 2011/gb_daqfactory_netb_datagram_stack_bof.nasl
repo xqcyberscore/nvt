@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_daqfactory_netb_datagram_stack_bof.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_daqfactory_netb_datagram_stack_bof.nasl 8236 2017-12-22 10:28:23Z cfischer $
 #
 # Azeotech DAQFactory NETB Datagram Parsing Stack Buffer Overflow Vulnerability
 #
@@ -44,8 +44,8 @@ is prone to denial of service vulnerability.";
 if(description)
 {
   script_id(802037);
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_version("$Revision: 8236 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-10-07 15:45:35 +0200 (Fri, 07 Oct 2011)");
   script_cve_id("CVE-2011-3492");
   script_tag(name:"cvss_base", value:"10.0");
@@ -60,7 +60,6 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("find_service.nasl");
   script_require_udp_ports(20034);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
@@ -69,10 +68,6 @@ if(description)
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }
-
-##
-## The script code starts here
-##
 
 include("network_func.inc");
 

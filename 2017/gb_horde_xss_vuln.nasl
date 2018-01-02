@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_xss_vuln.nasl 8018 2017-12-07 07:32:50Z teissa $
+# $Id: gb_horde_xss_vuln.nasl 8238 2017-12-22 10:33:38Z ckuersteiner $
 #
-# Horde Groupware Multiple XSS Vulnerabilities
+# Horde Groupware Multiple Vulnerabilities
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,19 +30,19 @@ CPE = "cpe:/a:horde:horde_groupware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140527");
-  script_version("$Revision: 8018 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-07 08:32:50 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 8238 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-22 11:33:38 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-11-22 17:09:33 +0700 (Wed, 22 Nov 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
-  script_cve_id("CVE-2017-16906", "CVE-2017-16907", "CVE-2017-16906");
+  script_cve_id("CVE-2017-16906", "CVE-2017-16907", "CVE-2017-16906", "CVE-2017-17781");
 
   script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
   script_tag(name: "solution_type", value: "NoneAvailable");
 
-  script_name("Horde Groupware Multiple XSS Vulnerabilities");
+  script_name("Horde Groupware Multiple Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
@@ -51,9 +51,16 @@ if (description)
   script_dependencies("horde_detect.nasl");
   script_mandatory_keys("horde/installed");
 
-  script_tag(name: "summary", value: "Horde Groupware is prone to multiple cross-site scripting vulnerabilities in
-the URL field in a 'Calendar -> New Event' action, the Color field in a Create Task List action and the Name
-field during creation of a new Resource.");
+  script_tag(name: "summary", value: "Horde Groupware is prone to multiple vulnerabilities.");
+
+  script_tag(name: "insight", value: "Horde Groupware is prone to multiple vulnerabilities:
+
+- Multiple cross-site scripting vulnerabilities in the URL field in a 'Calendar -> New Event' action, the Color
+field in a Create Task List action and the Name field during creation of a new Resource. (CVE-2017-16906,
+CVE-2017-16907, CVE-2017-16906)
+
+- SQL Injection exists via the group parameter to /services/prefs.php or the homePostalCode parameter to
+/turba/search.php.");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 
@@ -61,6 +68,7 @@ field during creation of a new Resource.");
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://code610.blogspot.com/2017/11/rce-via-xss-horde-5219.html");
+  script_xref(name: "URL", value: "https://code610.blogspot.com/2017/12/modus-operandi-horde-52x.html");
 
   exit(0);
 }

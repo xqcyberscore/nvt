@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_cooltype_mem_crptn_vuln_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_prdts_cooltype_mem_crptn_vuln_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader and Acrobat 'CoolType.dll' Memory Corruption Vulnerability
 #
@@ -24,52 +24,44 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.801933";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6475 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801933");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2011-0610");
   script_bugtraq_id(47531);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_name("Adobe Reader and Acrobat 'CoolType.dll' Memory Corruption Vulnerability");
 
-  tag_summary =
-"This host is installed with Adobe Reader/Acrobat and is prone to memory
+  tag_summary = "This host is installed with Adobe Reader/Acrobat and is prone to memory
 corruption and reemote code execution vulnerability";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"This issue is caused by a memory corruption error in the 'CoolType' library
+  tag_insight = "This issue is caused by a memory corruption error in the 'CoolType' library
 when processing the malformed Flash content within a PDF document.";
 
-  tag_impact =
-"Successful exploitation will let attackers to crash an affected application
+  tag_impact = "Successful exploitation will let attackers to crash an affected application
 or compromise a vulnerable system by tricking a user into opening a specially
 crafted PDF file.
 
 Impact Level:Application";
 
-  tag_affected =
-"Adobe Reader version prior to 9.4.4 and 10.x to 10.0.1
+  tag_affected = "Adobe Reader version prior to 9.4.4 and 10.x to 10.0.1
+
 Adobe Acrobat version prior to 9.4.4 and 10.x to 10.0.2 on windows";
 
-  tag_solution =
-"Upgrade to Adobe Reader version 9.4.4 or Acrobat 9.4.4 or 10.0.3
+  tag_solution = "Upgrade to Adobe Reader version 9.4.4 or Acrobat 9.4.4 or 10.0.3
 For updates refer to http://www.adobe.com
 
   *****
   NOTE : No fix available for Adobe Reader X (10.x), vendors are planning to
          address this issue in next quarterly security update for Adobe Reader.
   *****";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -90,19 +82,11 @@ For updates refer to http://www.adobe.com
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-acrobatVer = "";
-
-#CPE for adobe reader
 CPE = "cpe:/a:adobe:acrobat_reader";
-
-## Get Reader Version
-if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   # Check for Adobe Reader version < 9.4.4 and 10.x to 10.0.1
   if(version_is_less(version:readerVer, test_version:"9.4.4") ||
@@ -112,8 +96,8 @@ if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
   }
 }
 
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(acrobatVer)
+CPE = "cpe:/a:adobe:acrobat";
+if(acrobatVer = get_app_version(cpe:CPE))
 {
   # Check for Adobe Acrobat version < 9.4.4 and 10.x to 10.0.2
   if(version_is_less(version:acrobatVer, test_version:"9.4.4") ||

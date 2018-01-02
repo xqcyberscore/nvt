@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugzilla_42275.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_bugzilla_42275.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # Bugzilla Multiple Vulnerabilities
 #
@@ -46,9 +46,9 @@ tag_solution = "Updates are available. Please see the references for more inform
 
 if (description)
 {
- script_id(100749);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100749");
+ script_version("$Revision: 8250 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-08-09 13:36:05 +0200 (Mon, 09 Aug 2010)");
  script_bugtraq_id(42275);
  script_cve_id("CVE-2010-2756","CVE-2010-2757","CVE-2010-2758","CVE-2010-2759");

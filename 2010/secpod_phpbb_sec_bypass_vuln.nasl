@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_phpbb_sec_bypass_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_phpbb_sec_bypass_vuln.nasl 8244 2017-12-25 07:29:28Z teissa $
 #
 # phpBB 'feed.php' Security Bypass Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is running phpBB and is prone to security bypass
 
 if(description)
 {
-  script_id(902180);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902180");
+  script_version("$Revision: 8244 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1627");
   script_tag(name:"cvss_base", value:"4.3");

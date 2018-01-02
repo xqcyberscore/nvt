@@ -86,8 +86,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-October/018122.html");
   script_id(881447);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8267 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 07:29:17 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:53:03 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-3389", "CVE-2011-3521", "CVE-2011-3544", "CVE-2011-3547",
                 "CVE-2011-3548", "CVE-2011-3551", "CVE-2011-3552", "CVE-2011-3553",
@@ -98,7 +98,7 @@ if(description)
   script_xref(name: "CESA", value: "2011:1380");
   script_name("CentOS Update for java CESA-2011:1380 centos5 x86_64");
 
-  script_summary("Check for the Version of java");
+  script_tag(name: "summary" , value: "Check for the Version of java");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

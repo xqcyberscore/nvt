@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_was_admin_console_unspecified_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_ibm_was_admin_console_unspecified_vuln.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # IBM WebSphere Application Server Administration Console DoS vulnerability
 #
@@ -42,9 +42,9 @@ tag_summary = "The host is running IBM WebSphere Application Server and is prone
 
 if(description)
 {
-  script_id(902252);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902252");
+  script_version("$Revision: 8250 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-09-29 09:26:02 +0200 (Wed, 29 Sep 2010)");
   script_cve_id("CVE-2010-0781");
   script_tag(name:"cvss_base", value:"4.0");

@@ -36,15 +36,15 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2012-02/msg00020.php");
   script_id(831545);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8253 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 07:29:51 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-02-21 19:01:19 +0530 (Tue, 21 Feb 2012)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_xref(name: "MDVA", value: "2012:019");
   script_name("Mandriva Update for mozilla-thunderbird MDVA-2012:019 (mozilla-thunderbird)");
 
-  script_summary("Check for the Version of mozilla-thunderbird");
+  script_tag(name: "summary" , value: "Check for the Version of mozilla-thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

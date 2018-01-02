@@ -65,8 +65,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:097");
   script_id(831685);
-  script_version("$Revision: 6571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:07:20 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 8253 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 07:29:51 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-06-22 10:32:48 +0530 (Fri, 22 Jun 2012)");
   script_cve_id("CVE-2011-3389", "CVE-2011-4944", "CVE-2012-0845",
                 "CVE-2012-0876", "CVE-2012-1150");
@@ -75,7 +75,7 @@ if(description)
   script_xref(name: "MDVSA", value: "2012:097");
   script_name("Mandriva Update for python MDVSA-2012:097 (python)");
 
-  script_summary("Check for the Version of python");
+  script_tag(name: "summary" , value: "Check for the Version of python");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

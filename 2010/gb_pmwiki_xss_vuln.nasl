@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pmwiki_xss_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_pmwiki_xss_vuln.nasl 8207 2017-12-21 07:30:12Z teissa $
 #
 # PmWiki Table Feature 'width' Parameter Cross-site scripting vulnerability
 #
@@ -38,9 +38,9 @@ tag_summary = "The host is running PmWiki and is prone to cross-site scripting
 
 if(description)
 {
-  script_id(801210);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801210");
+  script_version("$Revision: 8207 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:30:12 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1481");
   script_bugtraq_id(39994);

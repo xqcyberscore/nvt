@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_GDL_44786.nasl 5760 2017-03-29 10:24:17Z cfi $
+# $Id: gb_GDL_44786.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # GDL 'id' Parameter SQL Injection Vulnerability
 #
@@ -40,9 +40,9 @@ information.";
 
 if(description)
 {
- script_id(100906);
- script_version("$Revision: 5760 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100906");
+ script_version("$Revision: 8250 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-11-16 13:35:09 +0100 (Tue, 16 Nov 2010)");
  script_bugtraq_id(44786);
  script_tag(name:"cvss_base", value:"7.5");

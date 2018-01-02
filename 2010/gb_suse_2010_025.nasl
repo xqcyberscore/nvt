@@ -47,8 +47,8 @@ tag_affected = "samba on openSUSE 11.0, openSUSE 11.1, SUSE SLES 9";
 if(description)
 {
   script_id(850134);
-  script_version("$Revision: 8035 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 06:29:51 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 07:30:04 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-02 14:26:21 +0200 (Fri, 02 Jul 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,7 +56,7 @@ if(description)
   script_cve_id("CVE-2010-0787", "CVE-2010-2063");
   script_name("SuSE Update for samba SUSE-SA:2010:025");
 
-  script_summary("Check for the Version of samba");
+  script_tag(name: "summary" , value: "Check for the Version of samba");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

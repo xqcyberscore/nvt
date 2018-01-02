@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphicsmagick_svg_file_parsing_dos_vuln02_win.nasl 5411 2017-02-24 08:17:10Z teissa $
+# $Id: gb_graphicsmagick_svg_file_parsing_dos_vuln02_win.nasl 8209 2017-12-21 08:12:18Z cfischer $
 #
 # GraphicsMagick 'SVG File Parsing' Denial of Service Vulnerability-02 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:graphicsmagick:graphicsmagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810540");
-  script_version("$Revision: 5411 $");
+  script_version("$Revision: 8209 $");
   script_cve_id("CVE-2016-2317");
   script_bugtraq_id(83241);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-24 09:17:10 +0100 (Fri, 24 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 09:12:18 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-02-07 19:04:50 +0530 (Tue, 07 Feb 2017)");
   script_name("GraphicsMagick 'SVG File Parsing' Denial of Service Vulnerability-02 (Windows)");
 
@@ -71,7 +71,7 @@ if(description)
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_graphicsmagick_detect_win.nasl");
-  script_mandatory_keys("GraphicsMagick/Win/Ver");
+  script_mandatory_keys("GraphicsMagick/Win/Installed");
   exit(0);
 }
 

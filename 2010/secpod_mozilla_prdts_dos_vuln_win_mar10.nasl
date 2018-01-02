@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_dos_vuln_win_mar10.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: secpod_mozilla_prdts_dos_vuln_win_mar10.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # Mozilla Products Denial Of Service Vulnerability (Windows)
 #
@@ -42,9 +42,9 @@ tag_summary = "The host is installed with Thunderbird/Seamonkey and is prone to
 
 if(description)
 {
-  script_id(902142);
-  script_version("$Revision: 6444 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902142");
+  script_version("$Revision: 8250 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-03-30 16:15:33 +0200 (Tue, 30 Mar 2010)");
   script_cve_id("CVE-2010-0163");
   script_bugtraq_id(38831);

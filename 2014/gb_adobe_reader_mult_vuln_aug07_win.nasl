@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln_aug07_win.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_adobe_reader_mult_vuln_aug07_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities - Aug07 (Windows)
 #
@@ -25,44 +25,36 @@
 ###############################################################################
 
 CPE = "cpe:/a:adobe:acrobat_reader";
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.804264";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6715 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804264");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2007-0103");
   script_bugtraq_id(21910);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2014-04-16 12:27:12 +0530 (Wed, 16 Apr 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities - Aug07 (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to multiple
+  tag_summary = "This host is installed with Adobe Reader and is prone to multiple
 vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
 is vulnerable or not.";
 
-  tag_insight =
-"Flaw exist due to unspecified error within Adobe PDF specification.";
+  tag_insight = "Flaw exist due to unspecified error within Adobe PDF specification.";
 
-  tag_impact =
-"Successful exploitation will allow attacker to conduct denial of service,
+  tag_impact = "Successful exploitation will allow attacker to conduct denial of service,
 memory corruption and execution of arbitrary code.
 
 Impact Level: System/Application";
 
-  tag_affected =
-"Adobe Reader before version 8.0 on Windows.";
+  tag_affected = "Adobe Reader before version 8.0 on Windows.";
 
-  tag_solution =
-"Upgrade to Adobe Reader 8.0 or later. For
+  tag_solution = "Upgrade to Adobe Reader 8.0 or later. For
 updates refer to http://get.adobe.com/reader";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -79,19 +71,14 @@ updates refer to http://get.adobe.com/reader";
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
-if(!readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

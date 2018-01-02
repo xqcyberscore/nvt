@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zkteco_zktimeweb_mult_vuln.nasl 7988 2017-12-05 06:22:41Z ckuersteiner $
+# $Id: gb_zkteco_zktimeweb_mult_vuln.nasl 8261 2017-12-29 09:13:46Z teissa $
 #
 # ZKTeco ZKTime Web Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:zkteco:zktime_web';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140579");
-  script_version("$Revision: 7988 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-05 07:22:41 +0100 (Tue, 05 Dec 2017) $");
+  script_version("$Revision: 8261 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-12-29 10:13:46 +0100 (Fri, 29 Dec 2017) $");
   script_tag(name: "creation_date", value: "2017-12-05 12:03:16 +0700 (Tue, 05 Dec 2017)");
-  script_tag(name: "cvss_base", value: "5.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-17056", "CVE-2017-17057");
   script_bugtraq_id(102006, 102007);

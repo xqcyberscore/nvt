@@ -54,8 +54,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-July/018777.html");
   script_id(881460);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8267 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 07:29:17 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-08-03 11:16:57 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2012-1013", "CVE-2012-1015");
   script_tag(name:"cvss_base", value:"9.3");
@@ -63,7 +63,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:1131");
   script_name("CentOS Update for krb5-devel CESA-2012:1131 centos6 ");
 
-  script_summary("Check for the Version of krb5-devel");
+  script_tag(name: "summary" , value: "Check for the Version of krb5-devel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

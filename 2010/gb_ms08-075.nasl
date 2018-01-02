@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-075.nasl 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: gb_ms08-075.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # Microsoft Windows Search Remote Code Execution Vulnerability (959349)
 #
@@ -26,9 +26,9 @@
 
 if(description)
 {
-  script_id(801483);
-  script_version("$Revision: 5934 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801483");
+  script_version("$Revision: 8250 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-12-14 06:32:32 +0100 (Tue, 14 Dec 2010)");
   script_cve_id("CVE-2008-4268", "CVE-2008-4269");
   script_bugtraq_id(32651, 32652);

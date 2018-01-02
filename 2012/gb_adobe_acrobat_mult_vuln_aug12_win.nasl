@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln_aug12_win.nasl 5999 2017-04-21 09:02:32Z teissa $
+# $Id: gb_adobe_acrobat_mult_vuln_aug12_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Acrobat Multiple Vulnerabilities - Windows
 #
@@ -24,21 +24,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:adobe:acrobat";
+
 tag_impact = "Successful exploitation will allow attackers to execute arbitrary code in
   the context of the affected application or cause a denial of service.
+
   Impact Level: System/Application";
+
 tag_affected = "Adobe Acrobat versions 9.x through 9.5.1 and 10.x through 10.1.3 on Windows";
+
 tag_insight = "The flaws are due to unspecified errors which can be exploited to
   corrupt memory.";
+
 tag_solution = "Upgrade to Adobe Acrobat version 9.5.2 or 10.1.4 or later
   For updates refer to http://www.adobe.com";
+
 tag_summary = "This host is installed with Adobe Acrobats and is prone to
   multiple vulnerabilities.";
 
 if(description)
 {
   script_id(803479);
-  script_version("$Revision: 5999 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2012-4149", "CVE-2012-4148", "CVE-2012-4147", "CVE-2012-2051",
                 "CVE-2012-2050", "CVE-2012-4160", "CVE-2012-2049", "CVE-2012-4159",
                 "CVE-2012-4158", "CVE-2012-4157", "CVE-2012-4156", "CVE-2012-4155",
@@ -48,7 +55,7 @@ if(description)
                     55018, 55017, 55016, 55015, 55012, 55027, 55013, 55010, 55011);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-08-20 11:01:35 +0530 (Mon, 20 Aug 2012)");
   script_name("Adobe Acrobat Multiple Vulnerabilities - Windows");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50281");
@@ -57,7 +64,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_require_keys("Adobe/Acrobat/Win/Ver");
+  script_mandatory_keys("Adobe/Acrobat/Win/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -68,25 +75,18 @@ if(description)
   exit(0);
 }
 
-
+include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-acrobatVer = "";
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+vers = infos['version'];
+path = infos['location'];
 
-## Function to check the versions of abode acrobat
-function version_check(ver)
-{
-  if(version_in_range(version:ver, test_version:"9.0", test_version2:"9.5.1") ||
-     version_in_range(version:ver, test_version:"10.0", test_version2:"10.1.3"))
-  {
-    security_message(0);
-    exit(0);
-  }
+if( version_in_range( version:vers, test_version:"9.0", test_version2:"9.5.1" ) ||
+    version_in_range( version:vers, test_version:"10.0", test_version2:"10.1.3" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"9.5.2/10.1.4", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-## Get Acrobat version
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(acrobatVer){
-  version_check(ver:acrobatVer);
-}
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_43454.nasl 6705 2017-07-12 14:25:59Z cfischer $
+# $Id: gb_freepbx_43454.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # FreePBX System Recordings Menu Arbitrary File Upload Vulnerability
 #
@@ -37,9 +37,9 @@ tag_solution = "Updates are available; please see the references for more inform
 
 if (description)
 {
- script_id(100890);
- script_version("$Revision: 6705 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100890");
+ script_version("$Revision: 8266 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-11-03 12:47:25 +0100 (Wed, 03 Nov 2010)");
  script_bugtraq_id(43454);
  script_tag(name:"cvss_base", value:"6.5");

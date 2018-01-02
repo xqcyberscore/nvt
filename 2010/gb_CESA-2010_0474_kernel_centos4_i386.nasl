@@ -86,8 +86,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2010-August/016934.html");
   script_id(880414);
-  script_version("$Revision: 6652 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:46:00 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8226 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 07:30:26 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-08-30 16:59:25 +0200 (Mon, 30 Aug 2010)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -95,7 +95,7 @@ if(description)
   script_cve_id("CVE-2009-3726", "CVE-2010-1173", "CVE-2010-1437");
   script_name("CentOS Update for kernel CESA-2010:0474 centos4 i386");
 
-  script_summary("Check for the Version of kernel");
+  script_tag(name: "summary" , value: "Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

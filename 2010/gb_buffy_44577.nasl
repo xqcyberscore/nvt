@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_buffy_44577.nasl 7297 2017-09-27 09:54:01Z cfischer $
+# $Id: gb_buffy_44577.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # Buffy 'comb' Command Directory Traversal Vulnerability
 #
@@ -36,9 +36,9 @@ Buffy 1.3 is vulnerable; prior versions may also be affected.";
 
 if (description)
 {
- script_id(100886);
- script_version("$Revision: 7297 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-27 11:54:01 +0200 (Wed, 27 Sep 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100886");
+ script_version("$Revision: 8250 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
  script_tag(name:"creation_date", value:"2010-11-02 13:46:58 +0100 (Tue, 02 Nov 2010)");
  script_bugtraq_id(44577);
  script_tag(name:"cvss_base", value:"5.0");

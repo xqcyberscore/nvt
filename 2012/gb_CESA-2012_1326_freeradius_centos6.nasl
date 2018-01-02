@@ -50,8 +50,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-October/018906.html");
   script_id(881509);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8267 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 07:29:17 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-10-03 09:21:46 +0530 (Wed, 03 Oct 2012)");
   script_cve_id("CVE-2012-3547");
   script_tag(name:"cvss_base", value:"6.8");
@@ -59,7 +59,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:1326");
   script_name("CentOS Update for freeradius CESA-2012:1326 centos6 ");
 
-  script_summary("Check for the Version of freeradius");
+  script_tag(name: "summary" , value: "Check for the Version of freeradius");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

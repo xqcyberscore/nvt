@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_win_jul10.nasl 6444 2017-06-27 11:24:02Z santu $
+# $Id: gb_mozilla_prdts_mult_vuln_win_jul10.nasl 8254 2017-12-28 07:29:05Z teissa $
 #
 # Mozilla Products Multiple Vulnerabilities jul-10 (Windows)
 #
@@ -58,9 +58,9 @@ tag_summary = "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird 
 
 if(description)
 {
-  script_id(801385);
-  script_version("$Revision: 6444 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801385");
+  script_version("$Revision: 8254 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-28 08:29:05 +0100 (Thu, 28 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-07-26 16:14:51 +0200 (Mon, 26 Jul 2010)");
   script_bugtraq_id(41824);
   script_cve_id("CVE-2010-1211", "CVE-2010-1212", "CVE-2010-1213",

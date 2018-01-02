@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_msnslp_dir_trav_vuln_win.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_pidgin_msnslp_dir_trav_vuln_win.nasl 8228 2017-12-22 07:29:52Z teissa $
 #
 # Pidgin MSN Custom Smileys File Disclosure Vulnerability (Windows)
 #
@@ -44,9 +44,9 @@ tag_summary = "This host has Pidgin installed and is prone to File Disclosure
 
 if(description)
 {
-  script_id(800421);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800421");
+  script_version("$Revision: 8228 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-01-16 12:13:24 +0100 (Sat, 16 Jan 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

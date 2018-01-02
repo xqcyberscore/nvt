@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_printseps_mem_crptn_vuln_win.nasl 6475 2017-06-29 06:35:11Z cfischer $
+# $Id: gb_adobe_prdts_printseps_mem_crptn_vuln_win.nasl 8250 2017-12-27 07:29:15Z teissa $
 #
 # Adobe Acrobat and Reader 'printSeps()' Function Heap Corruption Vulnerability
 #
@@ -27,21 +27,27 @@
 tag_impact = "Successful exploitation will let attackers to crash an affected application
   or compromise a vulnerable system by tricking a user into opening a specially
   crafted PDF file.
+
   Impact Level:Application";
+
 tag_affected = "Adobe Reader version 8.x to 8.1.7 and 9.x before 9.4.1
+
   Adobe Acrobat version 8.x to 8.1.7 and 9.x before 9.4.1 on windows";
+
 tag_insight = "This issue is caused by a heap corruption error in the 'EScript.api' plugin
   when processing the 'printSeps()' function within a PDF document.";
+
 tag_solution = "Upgrade to Adobe Reader/Acrobat version 9.4.1 or later
   For updates refer to http://www.adobe.com";
+
 tag_summary = "This host is installed with Adobe Reader/Acrobat and is prone to heap
   corruption Vulnerability";
 
 if(description)
 {
-  script_id(801545);
-  script_version("$Revision: 6475 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:35:11 +0200 (Thu, 29 Jun 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801545");
+  script_version("$Revision: 8250 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-11-23 14:41:37 +0100 (Tue, 23 Nov 2010)");
   script_cve_id("CVE-2010-4091");
   script_bugtraq_id(44638);
@@ -69,11 +75,11 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
+include("host_details.inc");
 
-readerVer = get_kb_item("Adobe/Reader/Win/Ver");
-if(readerVer)
+CPE = "cpe:/a:adobe:acrobat_reader";
+if(readerVer = get_app_version(cpe:CPE, nofork:TRUE))
 {
   # Check for Adobe Reader version < 8.1.7 and 9.x to 9.4.0
   if(version_is_less(version:readerVer, test_version:"8.1.7") ||
@@ -84,13 +90,12 @@ if(readerVer)
   }
 }
 
-acrobatVer = get_kb_item("Adobe/Acrobat/Win/Ver");
-if(!acrobatVer){
-  exit(0);
-}
-
-# Check for Adobe Acrobat version < 8.1.7 and 9.x to 9.4.0
-if(version_is_less(version:acrobatVer, test_version:"8.1.7") ||
-   version_in_range(version:acrobatVer, test_version:"9.0", test_version2:"9.4.0")){
-  security_message(0);
+CPE = "cpe:/a:adobe:acrobat";
+if(acrobatVer = get_app_version(cpe:CPE))
+{
+  # Check for Adobe Acrobat version < 8.1.7 and 9.x to 9.4.0
+  if(version_is_less(version:acrobatVer, test_version:"8.1.7") ||
+     version_in_range(version:acrobatVer, test_version:"9.0", test_version2:"9.4.0")){
+    security_message(0);
+  }
 }

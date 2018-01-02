@@ -36,8 +36,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-September/066681.html");
   script_id(863901);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8249 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-27 07:29:56 +0100 (Wed, 27 Dec 2017) $");
   script_tag(name:"creation_date", value:"2012-04-02 12:30:58 +0530 (Mon, 02 Apr 2012)");
   script_cve_id("CVE-2011-1411");
   script_tag(name:"cvss_base", value:"5.8");
@@ -45,7 +45,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2011-12815");
   script_name("Fedora Update for opensaml FEDORA-2011-12815");
 
-  script_summary("Check for the Version of opensaml");
+  script_tag(name: "summary" , value: "Check for the Version of opensaml");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

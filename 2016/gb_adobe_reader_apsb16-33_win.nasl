@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_apsb16-33_win.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_adobe_reader_apsb16-33_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader Security Updates(apsb16-33)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809446");
-  script_version("$Revision: 5598 $");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2016-1089", "CVE-2016-1091", "CVE-2016-6939", "CVE-2016-6940", 
                 "CVE-2016-6941", "CVE-2016-6942", "CVE-2016-6943", "CVE-2016-6944", 
                 "CVE-2016-6945", "CVE-2016-6946", "CVE-2016-6947", "CVE-2016-6948", 
@@ -51,7 +51,7 @@ if(description)
                 "CVE-2016-7853", "CVE-2016-7852");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2016-10-13 12:55:40 +0530 (Thu, 13 Oct 2016)");
   script_name("Adobe Reader Security Updates(apsb16-33)-Windows");
 
@@ -62,9 +62,13 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name: "insight" , value:"The multiple flaws exists due to,
+
   - An use-after-free vulnerabilities.
+
   - The heap buffer overflow vulnerabilities.
+
   - The memory corruption vulnerabilities.
+
   - An integer overflow vulnerability.");
 
   script_tag(name:"impact" , value:"Successful exploitation of this
@@ -89,23 +93,17 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
 if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check Adobe Reader vulnerable versions
 if(version_in_range(version:readerVer, test_version:"11.0", test_version2:"11.0.17"))
 {
   report = report_fixed_ver(installed_version:readerVer, fixed_version:"11.0.18");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mako_web_server_mult_vuln.nasl 7590 2017-10-27 08:19:44Z asteins $
+# $Id: gb_mako_web_server_mult_vuln.nasl 8242 2017-12-22 14:01:22Z cfischer $
 #
 # Mako Web Server Multiple Vulnerabilities 
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mako:mako_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811771");
-  script_version("$Revision: 7590 $");
+  script_version("$Revision: 8242 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 10:19:44 +0200 (Fri, 27 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-22 15:01:22 +0100 (Fri, 22 Dec 2017) $");
   script_tag(name:"creation_date", value:"2017-09-18 16:33:01 +0530 (Mon, 18 Sep 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Mako Web Server Multiple Vulnerabilities");
@@ -67,7 +67,7 @@ if(description)
   may also be affected.");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  27th October, 2017. Information regarding this issue will be updated once
+  22nd December, 2017. Information regarding this issue will be updated once
   solution details are available. For updates refer to,
   https://makoserver.net");
 
@@ -85,29 +85,10 @@ if(description)
   exit(0);
 }
 
-
-##
-#Code Starts Here
-##
-
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
-
-##Variable Initialization
-makoPort = "";
-soc = "";
-check = "";
-pattern = "";
-len = "";
-req = "";
-res = "";
-host = "";
-data = "";
-CMD = "";
-report = "";
-win = "";
 
 ##Get Port
 if(!makoPort = get_app_port(cpe:CPE)){

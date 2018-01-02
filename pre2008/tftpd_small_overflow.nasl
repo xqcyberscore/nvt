@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: tftpd_small_overflow.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: tftpd_small_overflow.nasl 8237 2017-12-22 10:33:02Z cfischer $
 # Description: TFTPD small overflow
 #
 # Authors:
@@ -27,8 +27,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.18493");
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 8237 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:33:02 +0100 (Fri, 22 Dec 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -40,6 +40,7 @@ if(description)
  
  script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");
  script_family( "Gain a shell remotely");
+ script_dependencies("tftpd_detect.nasl");
  script_require_udp_ports("Services/udp/tftp", 69);
 
  script_tag(name : "solution" , value : "Upgrade your software, or disable this service");

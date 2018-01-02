@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_vmx_info_disc_vuln_lin.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_vmware_prdts_vmx_info_disc_vuln_lin.nasl 8266 2018-01-01 07:28:32Z teissa $
 #
 # VMware Products 'vmware-vmx' Information Disclosure Vulnerability (Linux)
 #
@@ -44,9 +44,9 @@ tag_summary = "The host is installed with VMWare products and are prone to
 
 if(description)
 {
-  script_id(801321);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801321");
+  script_version("$Revision: 8266 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-01 08:28:32 +0100 (Mon, 01 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-16 16:17:26 +0200 (Fri, 16 Apr 2010)");
   script_cve_id("CVE-2010-1138");
   script_bugtraq_id(39395);

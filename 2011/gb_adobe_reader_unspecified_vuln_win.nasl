@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_unspecified_vuln_win.nasl 5424 2017-02-25 16:52:36Z teissa $
+# $Id: gb_adobe_reader_unspecified_vuln_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
 #
 # Adobe Reader Unspecified Vulnerability (Windows)
 #
@@ -25,45 +25,37 @@
 ###############################################################################
 
 CPE = "cpe:/a:adobe:acrobat_reader";
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.802165";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 5424 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802165");
+  script_version("$Revision: 8210 $");
   script_cve_id("CVE-2011-1353");
   script_bugtraq_id(49586);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
   script_tag(name:"creation_date", value:"2011-10-28 16:17:13 +0200 (Fri, 28 Oct 2011)");
   script_name("Adobe Reader Unspecified Vulnerability (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to unspecified
+  tag_summary = "This host is installed with Adobe Reader and is prone to unspecified
 vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version is
+  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version is
 vulnerable or not.";
 
-  tag_insight =
-"An unspecified flaw is present in the application which can be exploited
+  tag_insight = "An unspecified flaw is present in the application which can be exploited
 through unknown attack vectors.";
 
-  tag_impact =
-"Successful exploitation will let attackers to gain privileges via unknown
+  tag_impact = "Successful exploitation will let attackers to gain privileges via unknown
 vectors.
 
 Impact Level: Application";
 
-  tag_affected =
-"Adobe Reader version 10.x through 10.1 on Windows";
+  tag_affected = "Adobe Reader version 10.x through 10.1 on Windows";
 
-  tag_solution =
-"Upgrade to Adobe Reader version 10.1.1 or later.
+  tag_solution = "Upgrade to Adobe Reader version 10.1.1 or later.
 For updates refer to http://www.adobe.com";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -79,19 +71,15 @@ For updates refer to http://www.adobe.com";
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
-  script_mandatory_keys("Adobe/Reader/Win/Ver");
+  script_mandatory_keys("Adobe/Reader/Win/Installed");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
 # Check for Adobe Reader
-if(!readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 

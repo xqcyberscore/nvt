@@ -34,8 +34,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2010-October/049832.html");
   script_id(862494);
-  script_version("$Revision: 6625 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:29:16 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-12-25 07:30:04 +0100 (Mon, 25 Dec 2017) $");
   script_tag(name:"creation_date", value:"2010-11-04 12:09:38 +0100 (Thu, 04 Nov 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -43,7 +43,7 @@ if(description)
   script_cve_id("CVE-2010-3175", "CVE-2010-3176", "CVE-2010-3179", "CVE-2010-3180", "CVE-2010-3183", "CVE-2010-3177", "CVE-2010-3178", "CVE-2010-3182");
   script_name("Fedora Update for gnome-web-photo FEDORA-2010-16593");
 
-  script_summary("Check for the Version of gnome-web-photo");
+  script_tag(name: "summary" , value: "Check for the Version of gnome-web-photo");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");
