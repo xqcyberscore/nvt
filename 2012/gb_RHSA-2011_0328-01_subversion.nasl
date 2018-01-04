@@ -54,8 +54,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-March/msg00014.html");
   script_id(870610);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8273 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 07:29:19 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 10:33:56 +0530 (Mon, 09 Jul 2012)");
   script_cve_id("CVE-2011-0715");
   script_tag(name:"cvss_base", value:"4.3");
@@ -63,7 +63,7 @@ if(description)
   script_xref(name: "RHSA", value: "2011:0328-01");
   script_name("RedHat Update for subversion RHSA-2011:0328-01");
 
-  script_summary("Check for the Version of subversion");
+  script_tag(name: "summary" , value: "Check for the Version of subversion");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

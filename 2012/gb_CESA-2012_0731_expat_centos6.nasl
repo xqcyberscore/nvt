@@ -53,8 +53,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-June/018685.html");
   script_id(881114);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8273 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 07:29:19 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:10:51 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2012-0876", "CVE-2012-1148");
   script_tag(name:"cvss_base", value:"5.0");
@@ -62,7 +62,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:0731");
   script_name("CentOS Update for expat CESA-2012:0731 centos6 ");
 
-  script_summary("Check for the Version of expat");
+  script_tag(name: "summary" , value: "Check for the Version of expat");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

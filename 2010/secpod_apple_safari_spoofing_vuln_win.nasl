@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_safari_spoofing_vuln_win.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_apple_safari_spoofing_vuln_win.nasl 8269 2018-01-02 07:28:22Z teissa $
 #
 # Apple Safari Address Bar Spoofing Vulnerability june-10 (Windows)
 #
@@ -45,9 +45,9 @@ vulnerability.";
 
 if(description)
 {
-  script_id(902215);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902215");
+  script_version("$Revision: 8269 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-07-07 07:04:19 +0200 (Wed, 07 Jul 2010)");
   script_cve_id("CVE-2010-2454");
   script_tag(name:"cvss_base", value:"4.3");

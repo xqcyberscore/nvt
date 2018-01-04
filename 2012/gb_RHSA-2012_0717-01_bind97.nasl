@@ -55,8 +55,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-June/msg00004.html");
   script_id(870750);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8273 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 07:29:19 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-06-08 10:12:30 +0530 (Fri, 08 Jun 2012)");
   script_cve_id("CVE-2012-1033", "CVE-2012-1667");
   script_tag(name:"cvss_base", value:"8.5");
@@ -64,7 +64,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:0717-01");
   script_name("RedHat Update for bind97 RHSA-2012:0717-01");
 
-  script_summary("Check for the Version of bind97");
+  script_tag(name: "summary" , value: "Check for the Version of bind97");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yaws_44564.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: gb_yaws_44564.nasl 8269 2018-01-02 07:28:22Z teissa $
 #
 # Yaws URI Directory Traversal Vulnerability
 #
@@ -35,9 +35,9 @@ Yaws 1.89 is vulnerable; other versions may also be affected.";
 
 if (description)
 {
- script_id(100887);
- script_version("$Revision: 6696 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100887");
+ script_version("$Revision: 8269 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-11-02 13:46:58 +0100 (Tue, 02 Nov 2010)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

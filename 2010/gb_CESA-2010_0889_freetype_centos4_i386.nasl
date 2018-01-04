@@ -49,9 +49,9 @@ tag_affected = "freetype on CentOS 4";
 if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2010-November/017183.html");
-  script_id(880454);
-  script_version("$Revision: 8130 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 07:31:09 +0100 (Fri, 15 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.880454");
+  script_version("$Revision: 8269 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-23 15:30:07 +0100 (Tue, 23 Nov 2010)");
   script_xref(name: "CESA", value: "2010:0889");
   script_tag(name:"cvss_base", value:"6.8");

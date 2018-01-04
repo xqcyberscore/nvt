@@ -34,8 +34,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-February/073557.html");
   script_id(863748);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8273 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 07:29:19 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-03-09 19:37:37 +0530 (Fri, 09 Mar 2012)");
   script_cve_id("CVE-2011-3571", "CVE-2011-3563", "CVE-2012-0502", "CVE-2012-0503",
                 "CVE-2012-0505", "CVE-2012-0506", "CVE-2012-0497", "CVE-2012-0501",
@@ -50,7 +50,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-1721");
   script_name("Fedora Update for java-1.6.0-openjdk FEDORA-2012-1721");
 
-  script_summary("Check for the Version of java-1.6.0-openjdk");
+  script_tag(name: "summary" , value: "Check for the Version of java-1.6.0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

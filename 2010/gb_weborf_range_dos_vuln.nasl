@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weborf_range_dos_vuln.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_weborf_range_dos_vuln.nasl 8269 2018-01-02 07:28:22Z teissa $
 #
 # Weborf 'Range' Header Denial of Service Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is running Weborf webserver and is prone to denial of
 
 if(description)
 {
-  script_id(801222);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801222");
+  script_version("$Revision: 8269 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
   script_cve_id("CVE-2010-2262");
   script_bugtraq_id(40575);

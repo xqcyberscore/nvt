@@ -76,8 +76,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-February/msg00027.html");
   script_id(870556);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8273 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 07:29:19 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 18:56:49 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2009-5029", "CVE-2009-5064", "CVE-2010-0830", "CVE-2011-1089",
                 "CVE-2011-4609");
@@ -86,7 +86,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:0126-01");
   script_name("RedHat Update for glibc RHSA-2012:0126-01");
 
-  script_summary("Check for the Version of glibc");
+  script_tag(name: "summary" , value: "Check for the Version of glibc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

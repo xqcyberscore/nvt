@@ -70,8 +70,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-May/017521.html");
   script_id(881427);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8273 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 07:29:19 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:50:39 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2009-3720", "CVE-2010-1634", "CVE-2010-2089", "CVE-2010-3493",
                 "CVE-2011-1015", "CVE-2011-1521");
@@ -80,7 +80,7 @@ if(description)
   script_xref(name: "CESA", value: "2011:0491");
   script_name("CentOS Update for python CESA-2011:0491 centos4 x86_64");
 
-  script_summary("Check for the Version of python");
+  script_tag(name: "summary" , value: "Check for the Version of python");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.1.3.nasl 7883 2017-11-23 11:22:59Z emoss $
+# $Id: GSHB_SYS.1.3.nasl 8271 2018-01-02 15:08:13Z emoss $
 #
 # IT-Grundschutz Baustein: SYS.1.3 Server unter Unix
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109036");
-  script_version("$Revision: 7883 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 12:22:59 +0100 (Thu, 23 Nov 2017) $");
+  script_version("$Revision: 8271 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 16:08:13 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 14:42:28 +0200 (Wed, 15 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
-  script_dependencies("gather-package-list.nasl");
+  script_dependencies("gather-package-list.nasl", "GSHB/GSHB_SSH_AppArmor_SeLinux.nasl");
   script_mandatory_keys("ssh/login/debian_linux", "ssh/login/packages", "Compliance/Launch/GSHB-ITG");
   script_tag(name : "summary" , value : 'Zielsetzung des Bausteins ist der Schutz von Informationen, die von Unix-Servern verarbeitet werden.');
   
@@ -263,10 +263,8 @@ SYS_1_3_A9 += 'Diese Vorgabe kann nicht implementiert werden.\n\n';
 
 # SYS.1.3.A10 Verhinderung der Ausbreitung bei der Ausnutzung von Schwachstellen
 SYS_1_3_A10 = 'SYS.1.3.A10 Verhinderung der Ausbreitung bei der Ausnutzung von Schwachstellen:\n'; 
-cmd = 'dpkg -s apparmor apparmor-utils';
-AppArmor = ssh_cmd(socket:sock, cmd:cmd);
-AppArmor_Basic = ereg(string:AppArmor, pattern:'Package: apparmor\nStatus: install ok installed', multiline:TRUE);
-AppArmor_Utils = ereg(string:AppArmor, pattern:'Package: apparmor-utils\nStatus: install ok installed', multiline:TRUE);
+AppArmor_Basic = get_kb_item("GSHB/AppArmor_Basic");
+AppArmor_Utils = get_kb_item("GSHB/AppArmor_Utils");
 if( AppArmor_Basic == '1' ) {
   SYS_1_3_A10 += 'Das Paket "apparmor" ist auf dem Host installiert.\n';
 }else{
@@ -276,19 +274,16 @@ if( AppArmor_Basic == '1' ) {
 if( AppArmor_Utils != '1' ){
   SYS_1_3_A10 += 'Das Paket "apparmor-utils ist nicht auf dem Host installiert. Für eine weitere Analyse von AppArmor muss dieses Paket installiert sein.\n';
 }else{
-  cmd = '/usr/sbin/aa-status';
-  apparmor_status = ssh_cmd(socket:sock, cmd:cmd);
-  if( "command not found" >< tolower(apparmor_status) || apparmor_status == "" || ! apparmor_status ){
+  AppArmor_Status = get_kb_item("GSHB/AppArmor_Status");
+  if( AppArmor_Status == "error" || ! AppArmor_Status){
     SYS_1_3_A10 += 'AppArmor scheint installiert zu sein. Der Befehl "aa-status" ist jedoch nicht bekannt.\nDies kann an fehlenden Berechtigungen liegen.\n';
   }else{
-    SYS_1_3_A10 += 'AppArmor ist in folgendem Zustand:\n' + apparmor_status + '\n\n';
+    SYS_1_3_A10 += 'AppArmor ist in folgendem Zustand:\n' + AppArmor_Status + '\n\n';
   }
 }
 
-cmd = 'dpkg -s selinux-basics selinux-utils';
-SELinux = ssh_cmd(socket:sock, cmd:cmd);
-SELinux_Basics = ereg(string:SELinux, pattern:'Package: selinux-basics\nStatus: install ok installed', multiline:TRUE);
-SELinux_Utils = ereg(string:SELinux, pattern:'Package: selinux-utils\nStatus: install ok installed', multiline:TRUE);
+SELinux_Basics = get_kb_item("GSHB/SeLinux_Basics");
+SELinux_Utils = get_kb_item("GSHB/SeLinux_Utils");
 if( SELinux_Basics == '1' ){
   SYS_1_3_A10 += 'Das Paket "selinux-bascis" ist auf dem Host installiert.\n';
 }else{
@@ -299,9 +294,8 @@ if( SELinux_Utils != '1' ){
   SYS_1_3_A10 += 'Das Paket "selinux-utils" ist auf dem Host nicht installiert. Für eine weitere Analyse von SELinux muss dieses Paket installiert sein.\n';
 }else{
   SYS_1_3_A10 += 'Das Paket "selinux-utils" ist auf dem Host installiert.\n';
-  cmd = '/usr/sbin/sestatus -b';
-  sestatus = ssh_cmd(socket:sock, cmd:cmd);
-  if( ! sestatus || "command not found" >< tolower(sestatus) ){
+  sestatus = get_kb_item("GSHB/SeLinux_Status");
+  if( ! sestatus || sestatus == "error" ){
     SYS_1_3_A10 += 'Der Befehl "sestatus" ist dem System nicht bekannt. Es können keine Informationen über SELinux gefunden werden.\n';
   }else{
     SYS_1_3_A10 += 'SELinux ist in folgendem Zustand:\n' + sestatus + '\n\n';

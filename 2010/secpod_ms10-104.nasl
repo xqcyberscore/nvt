@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-104.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-104.nasl 8269 2018-01-02 07:28:22Z teissa $
 #
 # Microsoft SharePoint Could Allow Remote Code Execution Vulnerability (2455005)
 #
@@ -40,9 +40,9 @@ tag_summary = "This host is missing a critical security update according to
 
 if(description)
 {
-  script_id(902324);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902324");
+  script_version("$Revision: 8269 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-12-29 07:31:27 +0100 (Wed, 29 Dec 2010)");
   script_cve_id("CVE-2010-3964");
   script_bugtraq_id(45264);

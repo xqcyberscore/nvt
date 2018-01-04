@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: OpenInferno_38402.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: OpenInferno_38402.nasl 8269 2018-01-02 07:28:22Z teissa $
 #
 # OpenInferno OI.Blogs Multiple Local File Include Vulnerabilities
 #
@@ -39,9 +39,9 @@ be affected.";
 
 if (description)
 {
- script_id(100508);
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100508");
+ script_version("$Revision: 8269 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-02-26 12:01:21 +0100 (Fri, 26 Feb 2010)");
  script_bugtraq_id(38402);
  script_tag(name:"cvss_base", value:"6.8");

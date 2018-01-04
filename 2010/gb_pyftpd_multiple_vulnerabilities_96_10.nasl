@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pyftpd_multiple_vulnerabilities_96_10.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_pyftpd_multiple_vulnerabilities_96_10.nasl 8269 2018-01-02 07:28:22Z teissa $
 #
 # pyftpd Multiple Vulnerabilities
 #
@@ -52,9 +52,9 @@ information.";
 
 if (description)
 {
- script_id(100679);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100679");
+ script_version("$Revision: 8269 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-06-15 13:44:31 +0200 (Tue, 15 Jun 2010)");
  script_cve_id("CVE-2010-2072", "CVE-2010-2073");
  script_bugtraq_id(40839,40842);

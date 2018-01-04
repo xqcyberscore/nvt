@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-099.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-099.nasl 8269 2018-01-02 07:28:22Z teissa $
 #
 # Routing and Remote Access Privilege Escalation Vulnerability (2440591)
 #
@@ -41,9 +41,9 @@ tag_summary = "This host is missing an important security update according to
 
 if(description)
 {
-  script_id(900264);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900264");
+  script_version("$Revision: 8269 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-12-15 14:53:45 +0100 (Wed, 15 Dec 2010)");
   script_bugtraq_id(45269);
   script_cve_id("CVE-2010-3963");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: novell_imanager_37672.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: novell_imanager_37672.nasl 8269 2018-01-02 07:28:22Z teissa $
 #
 # Novell iManager Importing/Exporting Schema Stack Buffer Overflow Vulnerability
 #
@@ -39,9 +39,9 @@ references for details.";
 
 if (description)
 {
- script_id(100435);
- script_version("$Revision: 7573 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100435");
+ script_version("$Revision: 8269 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-01-11 11:18:50 +0100 (Mon, 11 Jan 2010)");
  script_bugtraq_id(37672);
  script_cve_id("CVE-2009-4486");

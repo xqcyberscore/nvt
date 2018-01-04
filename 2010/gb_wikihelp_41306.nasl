@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wikihelp_41306.nasl 5760 2017-03-29 10:24:17Z cfi $
+# $Id: gb_wikihelp_41306.nasl 8269 2018-01-02 07:28:22Z teissa $
 #
 # Wiki Web Help Cross Site Scripting and HTML Injection Vulnerabilities
 #
@@ -42,9 +42,9 @@ information.";
 
 if (description)
 {
- script_id(100700);
- script_version("$Revision: 5760 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100700");
+ script_version("$Revision: 8269 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-07-06 13:44:35 +0200 (Tue, 06 Jul 2010)");
  script_bugtraq_id(41306);
  script_tag(name:"cvss_base", value:"2.6");

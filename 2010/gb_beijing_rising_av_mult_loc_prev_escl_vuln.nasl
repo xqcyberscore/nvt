@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_beijing_rising_av_mult_loc_prev_escl_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: gb_beijing_rising_av_mult_loc_prev_escl_vuln.nasl 8269 2018-01-02 07:28:22Z teissa $
 #
 # Rising Antivirus Drivers Multiple Local Privilege Escalation Vulnerabilities
 #
@@ -37,9 +37,9 @@ tag_summary = "This host is installed with Rising Antivirus and is prone to loca
 
 if(description)
 {
-  script_id(800178);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800178");
+  script_version("$Revision: 8269 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-05-13 09:36:55 +0200 (Thu, 13 May 2010)");
   script_bugtraq_id(37951);
   script_cve_id("CVE-2010-1591");

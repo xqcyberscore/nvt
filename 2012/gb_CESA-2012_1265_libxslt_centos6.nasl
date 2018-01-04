@@ -62,8 +62,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-September/018873.html");
   script_id(881494);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8273 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 07:29:19 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-09-17 16:45:53 +0530 (Mon, 17 Sep 2012)");
   script_cve_id("CVE-2011-1202", "CVE-2011-3970", "CVE-2012-2825", "CVE-2012-2870",
                 "CVE-2012-2871");
@@ -72,7 +72,7 @@ if(description)
   script_xref(name: "CESA", value: "2012:1265");
   script_name("CentOS Update for libxslt CESA-2012:1265 centos6 ");
 
-  script_summary("Check for the Version of libxslt");
+  script_tag(name: "summary" , value: "Check for the Version of libxslt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");

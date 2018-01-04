@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0978_1.nasl 8043 2017-12-08 08:20:47Z santu $
+# $Id: gb_suse_2012_0978_1.nasl 8273 2018-01-03 06:29:19Z teissa $
 #
 # SuSE Update for rubygem-actionpack/activerecord-2_3 openSUSE-SU-2012:0978-1 (rubygem-actionpack/activerecord-2_3)
 #
@@ -38,8 +38,8 @@ tag_solution = "Please Install the Updated Packages.";
 if(description)
 {
   script_id(850307);
-  script_version("$Revision: 8043 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:20:47 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 8273 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 07:29:19 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:42 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-2660", "CVE-2012-2694", "CVE-2012-2695");
   script_tag(name:"cvss_base", value:"7.5");
@@ -47,7 +47,7 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2012:0978_1");
   script_name("SuSE Update for rubygem-actionpack/activerecord-2_3 openSUSE-SU-2012:0978-1 (rubygem-actionpack/activerecord-2_3)");
 
-  script_summary("Check for the Version of rubygem-actionpack/activerecord-2_3");
+  script_tag(name: "summary" , value: "Check for the Version of rubygem-actionpack/activerecord-2_3");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

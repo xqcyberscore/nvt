@@ -39,15 +39,15 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-July/083975.html");
   script_id(864551);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8273 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 07:29:19 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 10:46:09 +0530 (Mon, 23 Jul 2012)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:P");
   script_xref(name: "FEDORA", value: "2012-10453");
   script_name("Fedora Update for cifs-utils FEDORA-2012-10453");
 
-  script_summary("Check for the Version of cifs-utils");
+  script_tag(name: "summary" , value: "Check for the Version of cifs-utils");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

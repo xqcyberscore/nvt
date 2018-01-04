@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 02 Jan 2018 08:32:31 +0100
+# Automatically created on:  Wed, 03 Jan 2018 08:11:36 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -52955,6 +52955,7 @@
 2017/wso2/gb_wso2_governance_registry_xss_vuln.nasl: GPLv2+
 2017/wso2/gb_wso2_identity_server_xss_vuln.nasl: GPLv2+
 2017/wso2/gb_wso2_storage_server_xss_vuln.nasl: GPLv2+
+2018/wordpress/gb_wordpress_smart-google-code-inserter_mult_vuln.nasl: GPLv2+
 404.inc: GPLv2+
 aas_detect.nasl: GPLv2+
 adaptbb_detect.nasl: GPLv2+
@@ -55589,6 +55590,7 @@ GSHB/GSHB_smtp_eicar_test.nasl: GPLv2+
 GSHB/GSHB_smtp_mailbomb_test.nasl: GPLv2+
 GSHB/GSHB_SMTP_sendmail.nasl: GPLv2+
 GSHB/GSHB_SSH_aliases.nasl: GPLv2+
+GSHB/GSHB_SSH_AppArmor_SeLinux.nasl: GPLv2+
 GSHB/GSHB_SSH_audio.nasl: GPLv2+
 GSHB/GSHB_SSH_cryptsetup_swap.nasl: GPLv2+
 GSHB/GSHB_SSH_cups.nasl: GPLv2+

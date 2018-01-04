@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_39701.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_ibm_websphere_39701.nasl 8269 2018-01-02 07:28:22Z teissa $
 #
 # IBM WebSphere Application Server SIP Logging Information Disclosure Vulnerability
 #
@@ -41,9 +41,9 @@ CPE = 'cpe:/a:ibm:websphere_application_server';
 
 if (description)
 {
- script_id(100609);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100609");
+ script_version("$Revision: 8269 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
  script_tag(name:"creation_date", value:"2010-04-28 14:05:27 +0200 (Wed, 28 Apr 2010)");
  script_cve_id("CVE-2010-1650", "CVE-2010-1651");
  script_bugtraq_id(39701);

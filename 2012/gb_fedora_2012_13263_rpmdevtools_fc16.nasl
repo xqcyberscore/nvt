@@ -48,8 +48,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2012-September/086159.html");
   script_id(864703);
-  script_version("$Revision: 6627 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 08:31:14 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8273 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 07:29:19 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-09-17 16:39:40 +0530 (Mon, 17 Sep 2012)");
   script_cve_id("CVE-2012-3500");
   script_tag(name:"cvss_base", value:"1.2");
@@ -57,7 +57,7 @@ if(description)
   script_xref(name: "FEDORA", value: "2012-13263");
   script_name("Fedora Update for rpmdevtools FEDORA-2012-13263");
 
-  script_summary("Check for the Version of rpmdevtools");
+  script_tag(name: "summary" , value: "Check for the Version of rpmdevtools");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

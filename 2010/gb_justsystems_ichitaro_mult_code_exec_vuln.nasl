@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_justsystems_ichitaro_mult_code_exec_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_justsystems_ichitaro_mult_code_exec_vuln.nasl 8269 2018-01-02 07:28:22Z teissa $
 #
 # JustSystems Ichitaro Multiple Remote Code Execution Vulnerabilities
 #
@@ -42,9 +42,9 @@ tag_summary = "This host is installed JustSystems Ichitaro and is prone to
 
 if(description)
 {
-  script_id(801642);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801642");
+  script_version("$Revision: 8269 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-11-30 12:42:12 +0100 (Tue, 30 Nov 2010)");
   script_cve_id("CVE-2010-3915", "CVE-2010-3916");
   script_bugtraq_id(44637);

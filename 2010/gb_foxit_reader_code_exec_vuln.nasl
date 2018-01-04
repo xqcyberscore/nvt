@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_code_exec_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_foxit_reader_code_exec_vuln.nasl 8269 2018-01-02 07:28:22Z teissa $
 #
 # Foxit Reader Arbitrary Command Execution Vulnerability
 #
@@ -37,9 +37,9 @@ tag_summary = "The host is installed with Foxit Reader and is prone to
 
 if(description)
 {
-  script_id(801313);
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801313");
+  script_version("$Revision: 8269 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-1239");
   script_tag(name:"cvss_base", value:"9.3");

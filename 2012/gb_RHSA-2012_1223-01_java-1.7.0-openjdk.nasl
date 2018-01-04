@@ -52,8 +52,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-September/msg00002.html");
   script_id(870819);
-  script_version("$Revision: 6686 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:46:01 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 8273 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 07:29:19 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-09-04 11:35:06 +0530 (Tue, 04 Sep 2012)");
   script_cve_id("CVE-2012-0547", "CVE-2012-1682", "CVE-2012-3136", "CVE-2012-4681");
   script_tag(name:"cvss_base", value:"10.0");
@@ -61,7 +61,7 @@ if(description)
   script_xref(name: "RHSA", value: "2012:1223-01");
   script_name("RedHat Update for java-1.7.0-openjdk RHSA-2012:1223-01");
 
-  script_summary("Check for the Version of java-1.7.0-openjdk");
+  script_tag(name: "summary" , value: "Check for the Version of java-1.7.0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -56,8 +56,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2011-April/017380.html");
   script_id(881439);
-  script_version("$Revision: 6654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:48:17 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 8273 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-01-03 07:29:19 +0100 (Wed, 03 Jan 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:52:14 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2010-3710", "CVE-2010-4156", "CVE-2010-4645");
   script_tag(name:"cvss_base", value:"5.0");
@@ -65,7 +65,7 @@ if(description)
   script_xref(name: "CESA", value: "2011:0196");
   script_name("CentOS Update for php53 CESA-2011:0196 centos5 x86_64");
 
-  script_summary("Check for the Version of php53");
+  script_tag(name: "summary" , value: "Check for the Version of php53");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("CentOS Local Security Checks");
